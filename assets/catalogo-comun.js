@@ -34,7 +34,7 @@ function start(){
   var found=source.filter(function(e){return(!state.kind||kind(e)===state.kind)&&(!state.letter||letter(e)===state.letter);});
   var urls=new Set(found.map(function(e){return api.path(e.url);})),fragment=document.createDocumentFragment();
   found.forEach(function(e){var c=cardFor(e);c.hidden=false;fragment.appendChild(c);});
-  cards.forEach(function(c,key){if(!urls.has(key)){if(situation){c.hidden=true;fragment.appendChild(c);}else{c.remove();}}});
+  cards.forEach(function(c,key){if(!urls.has(key))c.remove();});
   list.appendChild(fragment);
   var n=found.length,word=situation?(n===1?(lang()==='en'?'situation':'situación'):(lang()==='en'?'situations':'situaciones')):(n===1?(lang()==='en'?'entry':'ficha'):(lang()==='en'?'entries':'fichas'));
   if(counter){counter.textContent=q?n+(n===1?(lang()==='en'?' result for “':' resultado para «'):(lang()==='en'?' results for “':' resultados para «'))+q+(lang()==='en'?'”':'»'):n+' '+word;if(state.kind)counter.textContent+=' · '+state.kind;if(state.letter)counter.textContent+=' · '+state.letter;}
