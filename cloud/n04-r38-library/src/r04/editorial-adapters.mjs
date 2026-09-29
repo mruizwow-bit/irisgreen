@@ -166,6 +166,7 @@ export async function buildEditorialEntities(options={}){
   const requestedIds=Array.isArray(options.contentIds)&&options.contentIds.length?new Set(options.contentIds):null;
   const requestedDomains=Array.isArray(options.domains)&&options.domains.length?new Set(options.domains):null;
   const freeze=await json(new URL('../../sources/r51-r04/SOURCE_FREEZE.json',import.meta.url));
+  const registry=await json(new URL('../../library-source-registry.json',import.meta.url));
   const safetySnapshot=await json(new URL('../../sources/r51-r04/package/content-safety-snapshot.json',import.meta.url));
   const delta=await json(new URL('../../sources/r51-r04/package/new-leaf-content-102.json',import.meta.url));
   const research=await json(new URL('../../sources/r51-r04/package/research-132.json',import.meta.url));
@@ -177,6 +178,7 @@ export async function buildEditorialEntities(options={}){
     throw new Error('invalid_age_classification_manifest');
   }
   const sourceSha=freeze.canonical_web_source.head;
+  const routeValidationSha=registry.canonical_source.source_sha;
   const deltaById=new Map(delta.records.map(r=>[r.id,r]));
   const researchById=new Map(research.records.map(r=>['research-'+String(r.n).padStart(3,'0'),r]));
   const supportById=new Map(support.records.map(r=>['support-'+r.id,r]));
@@ -210,7 +212,7 @@ export async function buildEditorialEntities(options={}){
         if(deltaRecord){
           page=packageDeltaPage(deltaRecord,locale);
           source=packageSource('package/new-leaf-content-102.json',deltaRecord);
-          routeStatus=gitPathExists(sourceSha,routeToRepoPath(route))?'READY':'APPROVED_PACKAGE_PENDING_A2';
+          routeStatus=gitPathExists(routeValidationSha,routeToRepoPath(route))?'READY':'APPROVED_PACKAGE_PENDING_A2';
         }else{
           const path=routeToRepoPath(route);
           if(!gitPathExists(sourceSha,path)) throw new Error('missing_frozen_a2_page:'+safety.id+':'+locale+':'+path);
@@ -243,7 +245,7 @@ export async function buildEditorialEntities(options={}){
         const page=researchPage(row,locale);
         let route=normalizeRoute(safety[locale==='es'?'url_es':'url_en']);
         let routeStatus='READY';
-        if(locale==='en'&&!gitPathExists(sourceSha,routeToRepoPath(route))){
+        if(locale==='en'&&!gitPathExists(routeValidationSha,routeToRepoPath(route))){
           route=normalizeRoute(safety.url_es);
           routeStatus='EN_ROUTE_NOT_IN_FROZEN_A2_USING_EXISTING_SOURCE_ROUTE';
         }
@@ -291,6 +293,7 @@ export async function buildEditorialEntities(options={}){
     requested_domains:requestedDomains?[...requestedDomains].sort():null,
     requested_content_ids:requestedIds?[...requestedIds].sort():null,
     source_tree:freeze.canonical_web_source.tree,
+    route_validation_source_sha:routeValidationSha,
     content_ids:contentIds.size,
     full_locale_entities:full.length,
     locale_counts:byLocale,
