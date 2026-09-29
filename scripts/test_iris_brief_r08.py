@@ -29,6 +29,9 @@ def check_r05_ui(page,lang):
  assert len(field.input_value())==300,'native maxlength did not limit typing'
  assert submit.is_enabled(),'nonempty query still disabled after authorized activation'
  field.press('Tab');assert submit.evaluate('(e)=>document.activeElement===e'),'submit skipped in keyboard order'
+ settings=page.locator('#sabik-settings')
+ if settings.count() and not settings.is_visible():
+  page.locator('#sabik-settings-toggle').click();assert settings.is_visible(),'Sabik settings did not open'
  page.locator('#sabik-reset').focus();page.locator('#sabik-reset').press('Enter')
  assert field.input_value()=='' and submit.is_disabled()
  assert field.evaluate('(e)=>document.activeElement===e')
@@ -102,11 +105,12 @@ def run():
       row['r05_connection_ui']['automatic_cloud_requests']=0
       page.locator('#sabik-low').click();assert page.locator('#sabik-low').get_attribute('aria-pressed')=='true';page.locator('#sabik-low').click()
       assert page.locator('#sabik-hologram').get_attribute('data-motion-level')!='NORMAL'
-      panel=page.locator('.sabik-panel').bounding_box();content=page.locator('.ig-home-main').bounding_box();assert (panel['x']>=content['x']+content['width']-2) if width==1440 else (panel['y']>=content['y']+content['height']-2)
+      use=page.locator('#ig-home-use').bounding_box();panel=page.locator('.ig-home-v4-sabik').bounding_box();discover=page.locator('#ig-home-discover').bounding_box()
+      assert use and panel and discover and use['y'] < panel['y'] < discover['y'],(route,width,'Home v4 section order')
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')
       workshop_href='/en/workshop/' if row['lang']=='en' else '/es/taller/'
-      assert page.locator(f'.ig-home-area[href="{workshop_href}"]').count()==1
-      assert page.locator('.ig-home-area span').first.bounding_box()['width']>=135
+      assert page.locator(f'.ig-home-v4-card[href="{workshop_href}"]').count()==1
+      assert page.locator('.ig-home-v4-card-copy').first.bounding_box()['width']>=135
       if i==0:
        page.evaluate("IGPreferences.update({contrast:true,controls:true,scale:1.15,transparency:'opaque'})")
        assert page.locator('html').get_attribute('data-ig-contrast')=='on'
