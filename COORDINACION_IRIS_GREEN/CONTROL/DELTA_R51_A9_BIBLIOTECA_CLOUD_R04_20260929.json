@@ -1,103 +1,73 @@
 {
-  "schema": "R51_A9_CONTROL_DELTA/1.0",
+  "schema": "R51_A9_CONTROL_DELTA/1.1",
   "date": "2026-09-29",
   "issue": 314,
-  "status": "R51_A9_R04_PRIVATE_CANDIDATE_VERIFIED_INCREMENTAL_READY",
+  "status": "R51_A9_R04_PRIVATE_PARTIAL_RELEASE_VERIFIED_HOLDS_ISOLATED",
   "branch": "agent9/r51-cloud-library-r04-20260927",
   "verified": {
-    "head": "7816781685d3568b21ddced9338d0f3e06a88062",
-    "workflow_run": 36533602541,
+    "head": "3e9a7fc3b9cd4cd3312e89a59e7505b6dd56e662",
+    "workflow_run": 36535666347,
     "result": "SUCCESS"
+  },
+  "release": {
+    "version": "sabik-r04-private-partial-20260929-f3f72e4e075b",
+    "corpus_sha256": "f3f72e4e075b9653e3fe934e19232c25ebb943ea55eda39db40e623cbd0e5659",
+    "manifest_sha256": "e5f21b259eb4b790bbc3d46fae6a2bf93f4c4e393427d7ea5f3d54b399380b36",
+    "final_r04": false,
+    "immutable": true
   },
   "cloud": {
     "site_id": "47b06e68-ff54-4097-8ad8-336b2d71758a",
     "site_name": "sabik-asistente",
-    "deploy_id": "6abb60f346062fb1a8dfd750",
+    "deploy_id": "6abb66029456439c4426d0ca",
+    "origin": "https://6abb66029456439c4426d0ca--sabik-asistente.netlify.app",
     "store": "sabik-r04-candidates",
     "team_login": true,
+    "readback_verified": true,
     "production_changed": false
   },
   "corpus": {
-    "version": "R04_CANDIDATE_PARTIAL_UNSEALED",
     "entities": 2718,
-    "active_entities": 2572,
-    "held_entities": 146,
-    "components": {
-      "editorial": {
-        "source_records": 965,
-        "entities": 1700,
-        "status": "READY"
-      },
-      "games": {
-        "source_records": 297,
-        "entities": 594,
-        "status": "READY"
-      },
-      "routines": {
-        "source_records": 109,
-        "entities": 218,
-        "status": "READY"
-      },
-      "interests": {
-        "source_records": 72,
-        "entities": 144,
-        "status": "HOLD"
-      },
-      "workshop": {
-        "source_records_integrated": 25,
-        "total_expected": 27,
-        "entities": 50,
-        "status": "PARTIAL"
-      },
-      "quiet_space": {
-        "modules": 6,
-        "entities": 12,
-        "active": 10,
-        "held": 2,
-        "status": "PARTIAL_CRISIS_HOLD"
-      },
-      "home": {
-        "entities": 0,
-        "status": "HOLD"
-      }
+    "active_entities": 2366,
+    "held_entities": 352,
+    "held_breakdown": {
+      "editorial_pending_a2": 206,
+      "interests_pending_r59": 144,
+      "quiet_space_crisis": 2
     }
   },
-  "retrieval": {
+  "qa": {
+    "citation_invalid_urls": 0,
+    "citation_missing_routes": 0,
+    "exact_duplicate_groups": 0,
+    "cross_content_duplicate_groups": 0,
+    "near_duplicate_pairs": 1,
+    "near_duplicate_decision": "KEEP_SEPARATE_REVIEWED_SIMILAR",
     "age_before_ranking": true,
-    "safety_before_ranking": true,
-    "general_safe_by_default": true,
-    "adult_explicit_s2": true,
-    "held_excluded": true,
-    "blob_readback_verified": true
+    "safety_before_ranking": true
   },
-  "incremental": {
-    "delta_types": [
-      "ADDED",
-      "MODIFIED",
-      "UNCHANGED",
-      "REMOVED",
-      "SAFETY_CHANGED",
-      "AGE_CHANGED",
-      "ROUTE_CHANGED",
-      "LOCALE_CHANGED",
-      "SOURCE_CHANGED"
-    ],
-    "tombstones": true,
-    "css_ui_only_no_content_change": true,
-    "single_content_id": true,
-    "single_game_id": true,
-    "single_routine_id": true,
-    "workflow_dispatch_source_sha": true,
-    "workflow_call_source_sha": true
-  },
-  "policies": {
-    "no_user_data": true,
-    "verified_release_immutable": true,
-    "verified_candidate_metadata_days": 365,
-    "verified_candidate_blob_days": 90,
-    "failed_candidate_days": 14
+  "performance": {
+    "editorial": {
+      "full_ms": 5368.91,
+      "incremental_ms": 23.69,
+      "entity_reduction": 0.9988235294117647,
+      "byte_reduction": 0.9988438714011209
+    },
+    "games": {
+      "full_ms": 18.11,
+      "incremental_ms": 12.48,
+      "entity_reduction": 0.9966329966329966,
+      "byte_reduction": 0.9967775252589548
+    },
+    "routines": {
+      "full_ms": 14.29,
+      "incremental_ms": 11.1,
+      "entity_reduction": 0.9908256880733946,
+      "byte_reduction": 0.9904345166988963
+    }
   },
   "blockers": [
+    "EDITORIAL_204_ROUTES_PENDING_A2",
     "HOME_CANONICAL_V4_R2_NOT_YET_ACCEPTED",
     "INTERESTS_CANONICAL_AGE_AND_SAFETY_NOT_RELEASED",
     "WORKSHOP_MODELADO_3D_AND_VIDEOMAPPING_NOT_IN_A2_SOURCE",
