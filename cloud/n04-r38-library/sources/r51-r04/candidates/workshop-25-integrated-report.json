@@ -1,0 +1,28 @@
+{
+  "schema": "R51_A9_WORKSHOP_25_INTEGRATED_REPORT/1.0",
+  "status": "PASS_25_INTEGRATED_STAGED",
+  "source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
+  "integrated_studio_ids": 25,
+  "entities": 50,
+  "locale_counts": {
+    "es": 25,
+    "en": 25
+  },
+  "active": 50,
+  "retrieval_eligible": 50,
+  "canonical_age": "ALL_AGES",
+  "legacy_age_entities": 0,
+  "r47_total_expected": 27,
+  "r47_donor_pending": [
+    {
+      "title_es": "Modelado 3D",
+      "title_en": "3D modelling"
+    },
+    {
+      "title_es": "Videomapping",
+      "title_en": "Video mapping"
+    }
+  ],
+  "coverage_status": "25_A2_INTEGRATED_PLUS_2_R47_DONOR_PENDING",
+  "artifact": "sources/r51-r04/candidates/workshop-25-integrated-entities.json"
+}
