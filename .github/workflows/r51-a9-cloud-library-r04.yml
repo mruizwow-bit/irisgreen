@@ -137,6 +137,10 @@ jobs:
           npm run audit:r04:duplicates
           npm run audit:r04:citations
 
+      - name: Benchmark R51 incremental rebuild
+        working-directory: cloud/n04-r38-library
+        run: npm run benchmark:r04:incremental
+
       - name: Build R51 R04 candidate manifest
         working-directory: cloud/n04-r38-library
         run: npm run build:r04:candidate-manifest
@@ -264,6 +268,30 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           R51_CANDIDATE_NAME: r04-retrieval-proof
           R51_CANDIDATE_FILE: build/r04/r04-private-retrieval-proof.json
+        run: npm run publish:r04:candidate
+
+      - name: Publish R51 duplicate audit
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-duplicate-audit
+          R51_CANDIDATE_FILE: build/r04/r04-duplicate-audit.json
+        run: npm run publish:r04:candidate
+
+      - name: Publish R51 citation audit
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-citation-audit
+          R51_CANDIDATE_FILE: build/r04/r04-citation-route-audit.json
+        run: npm run publish:r04:candidate
+
+      - name: Publish R51 incremental benchmark
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-incremental-benchmark
+          R51_CANDIDATE_FILE: build/r04/r04-incremental-performance.json
         run: npm run publish:r04:candidate
 
       - name: Upload R51 editorial report
