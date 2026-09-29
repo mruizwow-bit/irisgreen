@@ -1,0 +1,17 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R65_CLAUDE_ACK_AFTER_ASTRA_PASS",
+  "estado": "R65_CLAUDE_ACK_ASTRA_PASS_NO_FURTHER_WORK",
+  "source_patch_sha256": "7940e694aabc2ab379bb2b464279a4e3bacebb7eda234056cc8030210e7dafaf",
+  "source_commits": [
+    "93fd2ac6ec511f44cc69e336102e9f0a8419a7ec",
+    "9c3332c3544553e4773eccd34500caf586e7c19a"
+  ],
+  "no_more_r65_work_by_claude": true,
+  "next_gate": "HUMAN_QA_MARIA",
+  "global_debt_preserved": "GLOBAL_FOCUS_TOKEN_DARK_NAVY_FIX_REQUIRED",
+  "no_a2": true,
+  "no_main": true,
+  "no_production": true
+}
