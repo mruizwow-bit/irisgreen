@@ -1925,3 +1925,67 @@ Control:
 `CONTROL_MASTER_SYNC_DELTA_R65_TALLER_21_PLUS_9_20260929.csv`
 
 Normativa: no cambia; consume los canónicos globales vigentes.
+
+## R66 · A2 · Sabik conversacional tipo Alexa · 29/09/2026
+
+Issue: #332  
+Estado: `R66_A2_SABIK_CONVERSATIONAL_INTEGRATION_ORDERED`.
+
+María fija el contrato final de interacción de Sabik:
+
+`texto o voz → mismo Core/Safety/sesión → Cloud/retrieval → respuesta → texto + fuentes → TTS Sabik si el turno es hablado`.
+
+### Precedencia
+
+R66 supersede para Sabik Web:
+- “sin micrófono/STT/TTS dinámico”;
+- “Voz de Sabik = solo WAV fijos”;
+- “retrieval = lista de resultados como producto final”.
+
+Se conserva:
+- Sabik visual actual;
+- Motion R37;
+- B3 PRESENTE/ORIENTAR/TRANSICIÓN/PAUSA/CONFIRMAR;
+- texto siempre disponible;
+- privacidad/minimización;
+- child-safe;
+- citas;
+- Core portable.
+
+### Core
+
+Reutilizar baseline PRE-#144:
+`sabik/nea-core/{intent,retrieval,decision,response,risk,corrections,session,knowledge}`.
+
+No reconstruir otro asistente.
+
+### Cloud
+
+R04 privada parcial verificada:
+- versión `sabik-r04-private-partial-20260929-f3f72e4e075b`;
+- 2.366 entidades activas;
+- 352 HOLD fail-closed.
+
+Puede alimentar el desarrollo/QA privado R66. Gate final requiere R04 final aceptada.
+
+### Voz
+
+- 30 WAV R01 = sistema/fallback;
+- TTS dinámico = respuestas conversacionales;
+- identidad Sabik ES/EN aprobada;
+- no SpeechSynthesis como sustituto final;
+- micrófono solo por gesto;
+- no always-listening/wake word en R66 Web.
+
+### Marcadores
+
+Intermedio:
+`R66_A2_SABIK_CONVERSATIONAL_PRIVATE_PREVIEW_READY_FOR_ASTRA`.
+
+Final:
+`R66_A2_SABIK_ALEXA_STYLE_ES_EN_PREVIEW_READY_FOR_MARIA`.
+
+Normativa:
+`NORMATIVA/ADDENDUM_R66_SABIK_CONVERSATIONAL_VOICE_20260929.md`.
+
+No main. No producción.
