@@ -32,7 +32,19 @@ async def main():
    await page.keyboard.press('Escape')
    await page.evaluate("IGAudience.clear()")
   report['shell']={'routes':len(samples),'canonical_age':'PASS','visible':'PASS'}
+  # Visual evidence from the served artifact / Deploy Preview.
+  await page.set_viewport_size({'width':1440,'height':900})
+  await page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='networkidle')
+  await page.screenshot(path=str(OUT/'conditions-1440.png'),full_page=False)
+  await page.goto(BASE+'/es/taller/',wait_until='networkidle')
+  await page.screenshot(path=str(OUT/'workshop-1440.png'),full_page=False)
+  await page.set_viewport_size({'width':390,'height':844})
+  await page.goto(BASE+'/es/situaciones/',wait_until='networkidle')
+  await page.screenshot(path=str(OUT/'situations-390.png'),full_page=False)
+  await page.goto(BASE+'/es/taller/',wait_until='networkidle')
+  await page.screenshot(path=str(OUT/'workshop-390.png'),full_page=False)
 
+  await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/',wait_until='networkidle')
   await page.wait_for_function("window.IGAudience && window.IGSearch")
   await page.evaluate("IGAudience.set('AGE_0_12')")
@@ -63,6 +75,7 @@ async def main():
   need(await page.locator('#sabik-results .sabik-retrieval-link').count()>0,'Sabik answer has no sources')
   need(await page.locator('#sabik-results').get_attribute('data-retrieval-state')=='results','Sabik result state missing')
   report['sabik']={'text_conversation':'PASS','cloud_unavailable_local_fallback':'PASS','sources':'PASS'}
+  await page.screenshot(path=str(OUT/'home-sabik-answer-1440.png'),full_page=False)
 
   await browser.close()
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
