@@ -77,6 +77,12 @@ jobs:
           npm run build:r04:workshop
           node --test tests/r51-r04-workshop.test.mjs
 
+      - name: R51 Quiet Space editorial build and gate
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:quiet-space
+          node --test tests/r51-r04-quiet-space.test.mjs
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -124,5 +130,16 @@ jobs:
           path: |
             cloud/n04-r38-library/build/r04/workshop-25-integrated-entities.json
             cloud/n04-r38-library/build/r04/workshop-25-integrated-report.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Upload R51 Quiet Space editorial candidate
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r51-a9-r04-quiet-space-editorial-candidate
+          path: |
+            cloud/n04-r38-library/build/r04/quiet-space-editorial-entities.json
+            cloud/n04-r38-library/build/r04/quiet-space-editorial-report.json
           if-no-files-found: error
           retention-days: 14
