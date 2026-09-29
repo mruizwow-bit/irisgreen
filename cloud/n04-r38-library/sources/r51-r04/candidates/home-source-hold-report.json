@@ -1,0 +1,18 @@
+{
+  "schema": "R51_A9_HOME_HOLD_REPORT/1.0",
+  "status": "HOLD_CANONICAL_HOME_V4_REQUIRED",
+  "observed_a2_head": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+  "observed_index_blob": "3d9aa60b31d4670f3a3a90680af7cd8d8b68b3f8",
+  "entities": 0,
+  "active_entities": 0,
+  "indexed_stale_home": false,
+  "required_donor": "Home Iris Green v4.dc.html",
+  "required_donor_sha256": "25e0e9b2ff96b7d629104ac1c55177f733920a882a194ebe04731206bf14f82c",
+  "required_marker": "A2_HOME_V4_NAVY_DEPLOY_PREVIEW_READY_FOR_ASTRA_MARIA",
+  "unblock_when": [
+    "A2 canonical Home v4 committed",
+    "Deploy Preview corresponds to exact A2 HEAD",
+    "ES/EN copy available",
+    "canonical 965/965 age taxonomy consumed"
+  ]
+}
