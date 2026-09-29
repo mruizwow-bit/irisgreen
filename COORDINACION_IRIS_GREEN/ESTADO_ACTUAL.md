@@ -1906,9 +1906,10 @@ R65 queda preparado pero BLOQUEADO hasta que María revise la Deploy Preview de 
 Tras desbloqueo:
 - KEEP 6/6 pilotos;
 - construir exactamente 21 tarjetas restantes;
-- construir las 9 variantes AGE_0_12 ya congeladas en R54;
+- construir exactamente las 9 variantes AGE_0_12 ya identificadas en R54:
+  `circuitos`, `arquitectura`, `composicion`, `sintesis-sonido`, `videomapping`, `color`, `fotografia`, `lenguas-inventadas`, `escritura-restricciones`;
 - no redefinir esas 9;
-- si no existe una lista canónica única, STOP con `R65_AGE_0_12_VARIANT_SET_NOT_CANONICAL_BLOCKED`;
+- no emitir nuevos valores legacy `infancia/childhood`;
 - trabajar en 7 tandas de 3 estudios;
 - mantener target E4 premium 2026;
 - mantener pipeline reproducible AVIF/WebP 1x/2x + hashes + render_config_sha256 + build-strict;
