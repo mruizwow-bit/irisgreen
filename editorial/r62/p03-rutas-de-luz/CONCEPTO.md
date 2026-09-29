@@ -316,3 +316,97 @@ Las dos ventanas están rehechas contra la sala que hay.
 - El testero de la derecha se ve poco; el encuadre lo deja casi de canto.
 - La sala no tiene nada que la feche ni que diga para qué sirve. Es un volumen
   correcto y todavía anónimo.
+
+---
+
+## Segundo rework de QA (62_P03_ASTRA_REWORK_PARTIAL_PASS_TWO_VISUAL_BLOCKERS_REMAIN)
+
+### Bloqueo 1 · El tablero no se leía
+
+Los anclajes vacíos habían quedado tan callados que se leían como clavos o
+desconchones. Dos intentos de arreglarlo **dentro del render** fallaron, y los
+dos por la misma razón:
+
+- **Hueco oscuro con brocal iluminado arriba.** Salieron treinta y cinco setas.
+  Con la luz cayendo desde la izquierda alta, lo que se ilumina dentro de un
+  agujero es su pared de abajo; el filo claro arriba convierte el hueco en
+  bulto.
+- **Hueco pintado con el hierro nuevo, que es oscuro y frío.** Treinta y cinco
+  puntos negros regulares: la cuadrícula otra vez, ahora dentro de la obra.
+
+A veinte píxeles y sobre piedra con grano, ningún dibujo plano sobre el muro se
+lee como agujero. Y el problema estaba mal planteado: **dónde se puede montar
+una pieza no es materia, es información de juego**, y por el §6 de la norma va
+en la capa vectorial, que además es donde se le puede garantizar contraste. En
+el muro queda sólo un hueco de piedra en sombra, muy callado.
+
+En vector van **los anclajes que pisa el haz**, no los treinta y cinco. Marcando
+los treinta y cinco el tablero se lee perfectamente y la lámina se convierte en
+una retícula de anillos encima de la sala: el defecto de la vuelta anterior,
+otra vez, ahora en lila. Un espejo puesto donde no pasa la luz no hace nada, así
+que los sitios que importan son los que el haz toca. Es menos ruido y además
+enseña la regla. Cada marca lleva halo oscuro bajo el trazo de acento: un token
+garantiza contraste contra el fondo de su tema, nunca contra la obra.
+
+La pantalla del sur estaba en x = 10,18 y acababa justo en el muro, con su
+banderola ya fuera del encuadre, enterrada en un testero sin luz. Se ha metido
+a 9,52. El testero dejó de ser una losa negra al entrar el relleno (abajo): la
+banda derecha pasó de 0,30 a 0,36 veces la luminancia del centro.
+
+### Bloqueo 2 · Todo era la misma materia
+
+Aquí lo que falló primero fue la medida. «Si piedra, madera, latón, hierro,
+papel y vidrio se distinguen» estaba en `no_medido`, o sea que nunca se
+comprobó. Medido por familia de material sobre la imagen compuesta, el hierro
+salía a 0,264 de luminancia contra 0,203 de la piedra: **más claro que la
+piedra**, y a 0,002 del papel. La reja de hierro se leía como un relieve
+tallado en la pared, y con razón.
+
+Y bajarle el albedo lo empeoraba. La causa: **el especular de este motor no va
+multiplicado por el albedo**. A rugosidad media el exponente del brillo cae y
+el material se cubre de un velo gris que no responde a lo oscuro que sea. Con
+el albedo bajado de 0,135 a 0,046 el hierro salió *más claro*, no más oscuro.
+Lo que lo arregla es la rugosidad —0,20, brillo concentrado— más `spec_k` de
+0,46 a 0,30.
+
+La niebla hacía la otra mitad: con `fog_k` 0,52 todo lo lejano converge al
+mismo tono. Baja a 0,38.
+
+Y faltaba una segunda luz. Con una sola clave y ambiente hemisférico, todo lo
+que no mira a la luz cae al mismo gris. `shade` acepta ahora un `fill`
+direccional sin sombra —un relleno frío desde el lado contrario— que no es una
+fuente sino el resto de la sala. Por defecto `None`; P01 sigue idéntico byte a
+byte.
+
+Además, el canto del divisor se pintaba de latón mate, así que el vidrio no
+llegaba a verse en ninguna lámina: 35 píxeles de vidrio en toda la escena.
+
+**Medido, antes → después** (distancia RGB entre familias, sobre la imagen
+compuesta):
+
+| | antes | después |
+|---|---|---|
+| peor par | 0,002 (hierro/papel) | 0,054 (madera/hierro) |
+| segundo par | — | 0,070 (piedra/hierro) |
+| hierro | 0,264 | 0,159 |
+| piedra | 0,203 | 0,201 |
+| madera | 0,162 | 0,172 |
+
+La prueba mide ahora esta separación y falla por debajo de 0,045.
+
+### Lo que sigue corto
+
+- 0,054 entre madera y hierro es poco. La sala es oscura a propósito —el asunto
+  es la luz en el aire— y esa oscuridad comprime la materia. Está mejor, no
+  resuelto.
+- Los huecos vacíos siguen dibujando un patrón regular en la zona de revoco, más
+  visible de lo que querría.
+- El vidrio se lee en la lámina de causalidad y apenas en la de gameplay, donde
+  la pieza en mano cae sobre un fondo claro.
+
+### De paso: 419 líneas muertas en el motor
+
+`ig_render_e4.py` tenía duplicado todo el bloque de `box` a `blit_heightfield`:
+dos copias, la segunda tapando a la primera. Venía de un empalme mío mal
+cortado. Borrada la copia muerta, de 1.178 líneas a 774, con P01 idéntico byte
+a byte antes y después.

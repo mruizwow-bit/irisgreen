@@ -80,14 +80,25 @@ MATS = {
     'revoco-roto': ((0.128, 0.110, 0.090), 0.88, 1.60, 2.20),
     'zocalo':   ((0.105, 0.092, 0.078), 0.84, 1.30, 3.00),
     'suelo':    ((0.128, 0.114, 0.096), 0.88, 1.45, 1.55),
-    'viga':     ((0.115, 0.086, 0.058), 0.72, 1.35, 2.30),
+    # Madera más caliente y más clara que la piedra. Con (0.115, 0.086, 0.058)
+    # el valor coincidía con el del muro y lo único que la separaba era un
+    # matiz que a esta luz no llega: la viga se leía como piedra.
+    'viga':     ((0.300, 0.176, 0.076), 0.74, 1.35, 2.30),
     'mensula':  ((0.185, 0.166, 0.140), 0.80, 1.20, 2.60),
     'laton':    ((0.72, 0.545, 0.245), 0.16, 0.35, 3.40),
     'laton-mate': ((0.52, 0.415, 0.225), 0.52, 0.70, 2.90),
     'papel':    ((0.82, 0.775, 0.665), 0.92, 0.55, 3.10),
     'papel-luz':((0.94, 0.885, 0.760), 0.90, 0.55, 3.10),
     'vidrio':   ((0.62, 0.680, 0.672), 0.10, 0.22, 5.00),
-    'hierro':   ((0.135, 0.135, 0.140), 0.44, 0.95, 2.60),
+    # Hierro: más oscuro y frío que la piedra, no gris del mismo valor. Antes
+    # era (0.135, 0.135, 0.140) —el mismo valor que el muro, con matiz neutro—
+    # y la reja se leía como un relieve tallado en la pared.
+    # La rugosidad importa más que el albedo: el especular de este motor no va
+    # multiplicado por el albedo, así que a rugosidad media el hierro se cubre
+    # de un velo gris que no responde a lo oscuro que sea. Bajándole el albedo
+    # de 0,135 a 0,046 el hierro salía *más claro*, no más oscuro. Con 0,20 de
+    # rugosidad el brillo se concentra y el hierro por fin se va abajo.
+    'hierro':   ((0.030, 0.034, 0.046), 0.20, 0.95, 2.60),
     # Los obstáculos llevan material propio y sin despiece: con el aparejo del
     # muro encima, un contrafuerte se leía como una escalera de mano.
     'pilar':    ((0.130, 0.116, 0.098), 0.82, 1.55, 3.20),
@@ -333,8 +344,8 @@ def muro_y_sala(buf):
                   alpha=lambda u, v: ((2 * u - 1) ** 2 + (2 * v - 1) ** 2) < 1.0)
 
     # testeros: el de la izquierda lleva el postigo, el de la derecha cierra
-    blit_quad(buf, [(0, 0, 0), (0, Y_MURO, 0), (0, Y_MURO, AH), (0, 0, AH)], 'muro', 0.66)
-    blit_quad(buf, [(AW, 0, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (AW, 0, AH)], 'muro', 0.52)
+    blit_quad(buf, [(0, 0, 0), (0, Y_MURO, 0), (0, Y_MURO, AH), (0, 0, AH)], 'muro', 0.82)
+    blit_quad(buf, [(AW, 0, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (AW, 0, AH)], 'muro', 0.95)
 
     # suelo: entra en el encuadre, y es lo que dice que hay un dentro
     blit_quad(buf, [(0, 0, 0), (AW, 0, 0), (AW, Y_MURO, 0), (0, Y_MURO, 0)], 'suelo')
@@ -342,7 +353,7 @@ def muro_y_sala(buf):
                     (AW, Y_MURO - 0.14, 0.42), (0, Y_MURO - 0.14, 0.42)], 'zocalo', 1.10)
 
     # techo y vigas, que cierran por arriba
-    blit_quad(buf, [(0, 0, AH), (AW, 0, AH), (AW, Y_MURO, AH), (0, Y_MURO, AH)], 'viga', 0.55)
+    blit_quad(buf, [(0, 0, AH), (AW, 0, AH), (AW, Y_MURO, AH), (0, Y_MURO, AH)], 'viga', 0.34)
     # Las vigas van casi embebidas. Sobresaliendo 38 cm, con el escorzo
     # lateral cada una enseñaba su cara delantera a contraluz y la fila se leía
     # como banderines negros colgados del techo.
@@ -378,19 +389,31 @@ def bastidor(buf, ocupados=()):
     collarines— y ha dejado de ser una retícula.
     """
     ocupados = {(round(x, 3), round(z, 3)) for x, z in ocupados}
+    disco = lambda u, v: ((2 * u - 1) ** 2 + (2 * v - 1) ** 2) < 1.0
     for x, z in anclajes():
-        # Una ménsula corta y oscura. Le puse antes una placa contra el muro y
-        # fue peor: treinta y cinco placas repartidas por la rejilla volvían a
-        # dibujar la cuadrícula que este cambio venía a quitar.
-        box(buf, x - 0.019, Y_PLANO, z - 0.019, 0.038, Y_MURO - Y_PLANO - 0.02, 0.038,
-            'hierro')
+        # En el muro va sólo el hueco labrado, y muy callado. Dos intentos de
+        # hacerlo legible *pintando* sobre el muro —placa oscura, y luego
+        # brocal iluminado— salieron mal: uno devolvía la cuadrícula y el otro
+        # daba treinta y cinco setas. A veinte píxeles y con la piedra llena de
+        # grano, ningún dibujo plano sobre el muro se lee como agujero. Dónde
+        # se puede montar una pieza es información de juego, no materia, y va
+        # en la capa vectorial, que es donde se le puede garantizar contraste.
+        # El hueco es piedra en sombra, no un herraje. Pintado con 'hierro'
+        # —que ahora es oscuro y frío, para que la reja no parezca piedra— los
+        # treinta y cinco huecos se volvieron treinta y cinco puntos negros
+        # regulares: la cuadrícula otra vez, esta vez dentro de la obra.
+        a, b = 0.17, 0.13
+        blit_quad(buf, [(x - a / 2, Y_MURO - 0.006, z - b / 2),
+                        (x + a / 2, Y_MURO - 0.006, z - b / 2),
+                        (x + a / 2, Y_MURO - 0.006, z + b / 2),
+                        (x - a / 2, Y_MURO - 0.006, z + b / 2)],
+                  'muro', 0.46, alpha=disco)
         if (round(x, 3), round(z, 3)) in ocupados:
-            # El latón sólo donde hay pieza. Un anclaje vacío es un agujero en
-            # el muro, no una joya: si todos brillan igual, el tablero no dice
-            # dónde está montado nada.
+            # La ménsula sólo donde hay pieza. Un anclaje vacío es un hueco, y
+            # nada más: el vástago suelto era la mitad de la seta.
+            box(buf, x - 0.019, Y_PLANO, z - 0.019, 0.038, Y_MURO - Y_PLANO - 0.02,
+                0.038, 'hierro')
             box(buf, x - 0.05, Y_PLANO - 0.05, z - 0.04, 0.10, 0.10, 0.08, 'laton-mate')
-        else:
-            box(buf, x - 0.032, Y_PLANO - 0.014, z - 0.026, 0.064, 0.05, 0.052, 'hierro')
 
 
 def espejo(buf, x, z, ori, mat='laton'):
@@ -410,7 +433,7 @@ def espejo(buf, x, z, ori, mat='laton'):
                     (bx, Y_PLANO + d, bz), (ax, Y_PLANO + d, az)], mat)
     blit_quad(buf, [(ax + nx, Y_PLANO - d, az + nz), (bx + nx, Y_PLANO - d, bz + nz),
                     (bx + nx, Y_PLANO + d, bz + nz), (ax + nx, Y_PLANO + d, az + nz)],
-              'laton-mate', 0.72)
+              'vidrio' if mat == 'vidrio' else 'laton-mate', 0.72)
     # pinza sobre la ménsula
     box(buf, x - 0.09, Y_PLANO - 0.09, z - 0.08, 0.18, 0.18, 0.16, 'laton-mate')
 
@@ -651,7 +674,16 @@ def lighting(buf):
         # Ambiente algo más alto que en la primera vuelta: con 0,11 la sala
         # quedaba tan cerrada que la pantalla apagada y los espejos sin usar
         # desaparecían, y desaparecer no es lo mismo que estar apagado.
-        fog_k=0.52, amb_k=0.185, key_k=0.42, spec_k=0.42, shadow_k=0.86)
+        # Relleno frío desde el lado contrario. Con una sola clave, todo lo que
+        # no la mira cae al mismo gris: los testeros se iban a negro y piedra,
+        # hierro y madera dejaban de distinguirse fuera del haz. No tira
+        # sombra: no es una fuente, es el resto de la sala.
+        fill=(np.array([0.78, -0.42, 0.46], np.float32),
+              np.array([0.30, 0.38, 0.54], np.float32), 0.34),
+        # spec_k baja de 0,46 a 0,30 y la niebla de 0,52 a 0,38. Las dos
+        # aplanaban la materia: el especular no depende del albedo y tapaba lo
+        # oscuro por igual, y la niebla llevaba todo lo lejano al mismo tono.
+        fog_k=0.38, amb_k=0.185, key_k=0.42, spec_k=0.30, shadow_k=0.86)
 
 
 # ----------------------------- capa vectorial de chrome sobre el raster ---
@@ -728,6 +760,41 @@ def leyenda_teclado(x, y, paso=124, tam=13):
     return ''.join(o)
 
 
+def huecos_libres(ocupados, tramos):
+    """Los anclajes **donde poner la pieza cambiaría algo**: los que pisa el haz.
+
+    Van en vector y no en el render por dos razones. La primera es la norma:
+    arte y interfaz son capas distintas, y «aquí puedes montar» es interfaz.
+    La segunda es que sobre una pared de piedra con grano no hay dibujo plano
+    que se lea como agujero al tamaño que tienen estos.
+
+    Cada marca lleva halo oscuro debajo del trazo de acento. Un token garantiza
+    contraste contra el fondo de su tema, nunca contra la obra: sobre la
+    lámina, el contraste hay que traérselo puesto.
+
+    Y son **los del haz**, no los treinta y cinco. Marcándolos todos el tablero
+    se lee perfectamente y la lámina se convierte en una cuadrícula de anillos
+    encima de la sala: exactamente el defecto que se venía a corregir, ahora en
+    lila. Un espejo puesto donde no pasa la luz no hace nada, así que los
+    sitios que importan ahora mismo son los que el haz pisa. Es menos ruido y
+    además enseña la regla.
+    """
+    ocupados = {(round(a, 3), round(b, 3)) for a, b in ocupados}
+    o = []
+    for x, z in anclajes():
+        if (round(x, 3), round(z, 3)) in ocupados:
+            continue
+        if not any(_dist_xz(x, z, *t[:4])[0] < 0.26 for t in tramos):
+            continue
+        cx, cy = po((x, Y_PLANO, z))
+        r = abs(po((x + 0.115, Y_PLANO, z))[0] - cx)
+        o.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="none" '
+                 f'stroke="#0B1A2B" stroke-width="3.4" opacity="0.55"/>'
+                 f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="none" '
+                 f'stroke="{T("accent")}" stroke-width="1.5" opacity="0.8"/>')
+    return ''.join(o)
+
+
 def destino():
     """Anillo del anclaje y vertical de caída: la mecánica A → B."""
     ax, az = ANCLAJE_DIVISOR
@@ -751,7 +818,9 @@ def nombre_seleccionado(x, y, tam=19, anchor='start', nombre='Divisor'):
 def overlay_svg(uri):
     ax, az = ANCLAJE_DIVISOR
     px, py = po((ax, Y_PLANO, az + ALZADO_MANO + 0.62))
-    o = [destino(), label_plate(px, py, 'DIVISOR', 17, 1.6),
+    tramos, _ = trazar(ESPEJOS_BASE, {})
+    o = [huecos_libres(list(ESPEJOS_BASE) + [ANCLAJE_DIVISOR], tramos),
+         destino(), label_plate(px, py, 'DIVISOR', 17, 1.6),
          bandeja(44, OUT_H - 96, 62, 78),
          nombre_seleccionado(44 + 2 * 78 + 16, OUT_H - 66),
          leyenda_teclado(OUT_W - 430, OUT_H - 70)]
@@ -799,7 +868,9 @@ def overlay_movil(uri):
     """
     ax, az = ANCLAJE_DIVISOR
     px, py = po((ax, Y_PLANO, az + ALZADO_MANO + 0.62))
-    o = [destino(), label_plate(px, py, 'DIVISOR', 15, 1.4),
+    tramos, _ = trazar(ESPEJOS_BASE, {})
+    o = [huecos_libres(list(ESPEJOS_BASE) + [ANCLAJE_DIVISOR], tramos),
+         destino(), label_plate(px, py, 'DIVISOR', 15, 1.4),
          bandeja(12, OUT_H - 122, 60, 70, etiquetas=True, tam_etiqueta=8.5),
          nombre_seleccionado(OUT_W - 14, OUT_H - 148, tam=17, anchor='end'),
          f'<text x="16" y="{OUT_H-142}" font-family="Georgia, serif" font-size="11.5" '

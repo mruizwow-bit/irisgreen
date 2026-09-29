@@ -38,12 +38,45 @@ REPO = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(REPO / 'scripts'))
 
 import r62_p03_render as p        # noqa: E402
+import ig_render_e4 as e4        # noqa: E402
 
 
 def ruta(tramos):
     """Identidad de una solución: por dónde pasa la luz, redondeado."""
     return tuple(sorted((round(a, 2), round(b, 2), round(c, 2), round(d, 2))
                         for a, b, c, d, _ in tramos))
+
+
+def _materias():
+    """Color medio de cada familia de material sobre la imagen compuesta."""
+    import numpy as np
+    p.SS = 1
+    e4.set_textures(e4.fbm_tile(octaves=6, gain=0.55, lowest=22, seed=17),
+                    e4.fbm_tile(octaves=6, gain=0.61, lowest=40, seed=53))
+    e4.set_theme('navy')
+    p.configure(1180, 900, 104, 120)
+    _, enc = p.trazar(p.ESPEJOS_BASE, {})
+    buf = e4.Buffers()
+    p.build_scene(buf, p.ESPEJOS_BASE, {}, enc, True)
+    img = e4.compose(p.lighting(buf), buf, p.backdrop, exposure=1.80,
+                     vignette=(1.18, 0.62, 1.45), contraste=0.30, pivote=0.36)
+    familias = {'piedra': ['muro', 'revoco', 'revoco-roto', 'zocalo', 'suelo',
+                           'pilar', 'mensula'],
+                'madera': ['viga'], 'laton': ['laton', 'laton-mate'],
+                'hierro': ['hierro'], 'papel': ['papel', 'papel-luz']}
+    medias = {}
+    for fam, mats in familias.items():
+        sel = np.isin(buf.matid, [e4.MAT_IDS[m] for m in mats if m in e4.MAT_IDS])
+        sel &= buf.mask
+        if int(sel.sum()) < 40:
+            continue
+        medias[fam] = img[sel].mean(0)
+    ks = list(medias)
+    pares = sorted((round(float(np.linalg.norm(medias[a] - medias[b])), 4), a, b)
+                   for i, a in enumerate(ks) for b in ks[i + 1:])
+    return {'luminancia': {k: round(float(0.2126 * v[0] + 0.7152 * v[1] + 0.0722 * v[2]), 4)
+                           for k, v in medias.items()},
+            'peor_par': list(pares[0]), 'segundo_par': list(pares[1])}
 
 
 def main():
@@ -160,10 +193,19 @@ def main():
                 if f'>{tecla}</text>' not in txt:
                     fallos.append(f'{f}: la tecla «{tecla}» no está escrita en la lámina')
 
+    # Separación de materias, sobre la imagen compuesta y por familia de
+    # material. Estaba en «no medido», y por eso pasó un render entero en el
+    # que el hierro salía *más claro* que la piedra: bajarle el albedo no lo
+    # oscurecía porque el especular de este motor no va multiplicado por el
+    # albedo. Lo que no se mide, se afirma.
+    r['separacion_de_materias'] = sep = _materias()
+    if sep['peor_par'][0] < 0.045:
+        fallos.append('materias indistinguibles: {} y {} a {}'.format(
+            sep['peor_par'][1], sep['peor_par'][2], sep['peor_par'][0]))
+
     r['no_medido'] = [
         'si la sala parece una sala',
         'si el haz se lee como luz en el aire y no como una línea encima',
-        'si piedra, madera, latón, hierro, papel y vidrio se distinguen',
         'si el segundo estado se entiende sin leer los pies',
     ]
     r['fallos'] = fallos
