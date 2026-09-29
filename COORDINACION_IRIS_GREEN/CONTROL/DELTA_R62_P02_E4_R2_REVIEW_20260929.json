@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P02-E4-R2-ASTRA-REVIEW-20260929",
+  "issue": 326,
+  "date": "2026-09-29",
+  "status": "R62_P02_E4_SCENE_PASS_CAUSALITY_VISUAL_REWORK_REQUIRED",
+  "artifacts": {
+    "gate_json_sha256": "e14ffa53f18dc54fba12cdde53144c7308d91b2b9ad89178874ec0ae9734e867",
+    "render_md_sha256": "7df10dea9d2b25a5ff22c33a879ac881fbd19a2932515ceb458eaa92ec214043",
+    "patch_sha256": "19458c7cd2e231ed63e4061e014fcd581d2160a19bde0018aec3bf302c61fa0e",
+    "bundle_sha256": "d2cfbc64e0b8b20d62abf4f616039216b4889b90e725d65c8fa7dd74472ad380",
+    "bundle_head": "812d405d6b83e6230fea333486d09b2092352be2"
+  },
+  "keep": [
+    "E4_ENGINE",
+    "MECHANIC",
+    "HEIGHTFIELD",
+    "WATER",
+    "ROCK_MATERIAL",
+    "FRONT_SECTION",
+    "FOLIAGE_VARIETY",
+    "BRANCHED_HANGING_PLANTS",
+    "MOBILE_LAYOUT",
+    "MOBILE_LABELS",
+    "LIGHT_DARK",
+    "GAMEPLAY_DESKTOP",
+    "GAMEPLAY_MOBILE"
+  ],
+  "pass_measured": {
+    "moss_delta_pct": 37.7,
+    "rock_scene_luminance_ratio": 1.16,
+    "foliage_families": 4,
+    "dominant_family_pct": 30.8,
+    "unbranched_hanging": 0
+  },
+  "blocker": "CAUSALITY_CHAIN_NOT_IMMEDIATE_VISUALLY",
+  "rework_scope": [
+    "CAUSALITY_NAVY_1440",
+    "CAUSALITY_LIGHT_1440"
+  ],
+  "expected_marker": "R62_P02_TERRARIO_E4_R3_CAUSALITY_READY_FOR_ASTRA_MARIA",
+  "normative_change": false,
+  "holds": [
+    "P03",
+    "P04_P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ]
+}
