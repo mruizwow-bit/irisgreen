@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R61-PECERA-BUBBLES-PASS-RENDER-10MIN-20260929",
+  "issue": 325,
+  "date": "2026-09-29",
+  "status": "R61_PECERA_BUBBLES_PROTOTYPE_HUMAN_APPROVED_RENDER_10MIN_AUTHORIZED",
+  "supersedes_operational_stop": "R61_PECERA_ILLUSTRATED_PASS_BUBBLES_VISUAL_REWORK_REQUIRED",
+  "keep": [
+    "RIGHT_BUBBLE_COLUMN",
+    "ILLUSTRATED_RING_LANGUAGE",
+    "CURRENT_STROKE",
+    "CURRENT_SPEED",
+    "CURRENT_DENSITY",
+    "DEPTH_OCCLUSION",
+    "APPROVED_AUDIO",
+    "APPROVED_COMPOSITION"
+  ],
+  "do_not_reopen": [
+    "ROCK_POSITION",
+    "COMPOSITION",
+    "DENSITY_INCREASE_BY_DEFAULT"
+  ],
+  "authorized": [
+    "RENDER_10MIN",
+    "REMUX_APPROVED_AUDIO",
+    "FINAL_QA",
+    "NORMAL_REDUCED_NO_MOTION",
+    "RESPONSIVE_1440_390_320",
+    "PERFORMANCE",
+    "CODEC_WEIGHT_HASHES_PROVENANCE"
+  ],
+  "expected_marker": "R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA",
+  "holds": [
+    "SECOND_ROOM",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
