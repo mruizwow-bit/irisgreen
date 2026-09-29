@@ -766,3 +766,17 @@ R65 deja de esperar a R64. Claude puede continuar inmediatamente las 21 tarjetas
 R64 HUMAN QA bloquea únicamente el cierre/handoff final, no la producción. Las correcciones humanas posteriores se aplican de forma acotada salvo fallo sistémico.
 
 No cambio normativo.
+
+## R61 · Pecera · burbujas visuales · 29/09/2026
+
+La dirección ilustrada sigue PASS/KEEP, pero falta un elemento reconocible del donor: las burbujas visuales. El audio sí las contiene.
+
+Corrección acotada: burbujas ilustradas, pequeñas, lentas y poco densas, con adaptación NORMAL/REDUCIDO/SIN_MOVIMIENTO.
+
+No se autoriza otro render completo de 10 minutos hasta revisar primero un frame y clip corto.
+
+Estado:
+`R61_PECERA_ILLUSTRATED_PASS_BUBBLES_VISUAL_REWORK_REQUIRED`.
+
+Marcador:
+`R61_PECERA_BUBBLES_VISUAL_READY_FOR_ASTRA_MARIA`.
