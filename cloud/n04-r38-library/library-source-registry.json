@@ -373,8 +373,8 @@
     {
       "domain": "home",
       "content_type": "home_orientation",
-      "authority": "R50_A2",
-      "source_kind": "git",
+      "authority": "HUMAN_QA_HOME_V4_GATE",
+      "source_kind": "hold_until_canonical_a2_v4",
       "source_files": [
         "index.html"
       ],
@@ -382,7 +382,7 @@
         "/",
         "/en/"
       ],
-      "extractor": "extract_home_orientation_r04",
+      "extractor": "extract_home_orientation_r04_after_v4_only",
       "safety_source": "R42_TRANSVERSAL_POLICY",
       "locales": [
         "es",
@@ -394,10 +394,19 @@
         "LOCALE"
       ],
       "owner": "A9",
-      "expected_records": 2,
+      "expected_records": 1,
       "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
       "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
-      "note": "The frozen A2 source has one bilingual Home source at root; no en/index.html route is invented."
+      "note": "The frozen A2 source has one bilingual Home source at root; no en/index.html route is invented.",
+      "active_records": 0,
+      "candidate_active": false,
+      "current_source_status": "HUMAN_QA_FAIL_HOME_NOT_CANONICAL",
+      "required_donor_sha256": "25e0e9b2ff96b7d629104ac1c55177f733920a882a194ebe04731206bf14f82c",
+      "activation_gate": [
+        "A2_HOME_V4_NAVY_DEPLOY_PREVIEW_READY_FOR_ASTRA_MARIA",
+        "CANONICAL_ES_EN_HOME_COPY",
+        "CANONICAL_965_AGE_SOURCE"
+      ]
     }
   ]
 }
