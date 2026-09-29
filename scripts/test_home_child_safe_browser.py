@@ -19,6 +19,7 @@ async def main():
   for path,name in [('/','home-v4-es'),('/en/','home-v4-en')]:
    for w,h in [(1440,900),(390,844)]:
     await capture(page,path,name,w,h);report['screenshots'].append(f'{name}-{w}x{h}.png')
+  await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/',wait_until='networkidle')
   need(await page.get_by_role('heading',name='Empieza por tu parte',exact=True).count()==1,'v4 hero missing')
   need(await page.get_by_role('heading',name='Entra y úsalo',exact=True).count()==1,'v4 use section missing')
