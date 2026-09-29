@@ -31,7 +31,9 @@
     "build:r04:candidate-manifest": "node scripts/build-r04-candidate-manifest.mjs",
     "build:r04:partial-corpus": "node scripts/build-r04-partial-corpus.mjs",
     "build:r04:candidate-binding": "node scripts/build-r04-candidate-binding.mjs",
-    "probe:r04:candidate-store": "node scripts/probe-r04-candidate-store.mjs"
+    "probe:r04:candidate-store": "node scripts/probe-r04-candidate-store.mjs",
+    "audit:r04:duplicates": "node scripts/audit-r04-duplicates.mjs",
+    "audit:r04:citations": "node scripts/audit-r04-citations.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
