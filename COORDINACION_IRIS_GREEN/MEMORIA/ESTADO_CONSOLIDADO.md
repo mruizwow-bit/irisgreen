@@ -780,3 +780,17 @@ Estado:
 
 Marcador:
 `R61_PECERA_BUBBLES_VISUAL_READY_FOR_ASTRA_MARIA`.
+
+## R67 · recuperación transversal A2 · 29/09/2026
+
+Prioridad P0.
+
+El estado integrado de A2 no corresponde a los PASS parciales documentados: la web visible conserva shell antiguo, Taller R64 es una pantalla QA sobre R40, Sabik R66 solo tiene BASE READ y el child-safe S2 duro no está conectado al build.
+
+Se abre #333 / R67 para recuperar una única integración coherente en cuatro fases:
+shell → child-safe → Taller → Sabik.
+
+Solo cuenta como READY integrado:
+`R67_A2_IRIS_GREEN_INTEGRATED_PREVIEW_READY_FOR_MARIA`.
+
+No cambia normativa; hace cumplir contratos ya aprobados.
