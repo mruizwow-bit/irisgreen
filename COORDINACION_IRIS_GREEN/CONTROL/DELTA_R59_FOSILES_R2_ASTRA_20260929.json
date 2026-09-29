@@ -1,0 +1,34 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R59_FOSSILS_R2_ASTRA_REVIEW",
+  "issue": 323,
+  "estado": "R59_ASTRA_FOSSILS_R2_PRODUCT_PASS_QA_PROVENANCE_FIX_REQUIRED",
+  "product_pass": true,
+  "visual_rework_required": false,
+  "verified": {
+    "pieces": 14,
+    "external_urls": 0,
+    "storage": false,
+    "math_random": false,
+    "innerHTML_data": false,
+    "eval": false,
+    "theme_contract": "data-ig-theme",
+    "responsive_390": true,
+    "es_en": true,
+    "initial_transfer_kb": {
+      "desktop_1440": 213.5,
+      "mobile_390": 179.1
+    }
+  },
+  "blockers": [
+    "qa/shots.py names species-specific captures but does not apply the per-species index before capture",
+    "handoff branch name conflicts with current canonical executor assignment and needs provenance reconciliation"
+  ],
+  "example_mismatch": "18-hallazgo-trex-diente.png shows Iguanodon as active detail",
+  "next_marker": "R59_FOSSILS_PILOT_R2_QA_PROVENANCE_FIXED_READY_FOR_ASTRA_MARIA",
+  "no_minerals_yet": true,
+  "no_a2": true,
+  "no_main": true,
+  "no_production": true
+}
