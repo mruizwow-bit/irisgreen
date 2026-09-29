@@ -3,7 +3,7 @@
   "id": "R65-CLAUDE-TALLER-21-PLUS-9-20260929",
   "issue": 330,
   "date": "2026-09-29",
-  "status": "R65_WAIT_HUMAN_QA_R64",
+  "status": "R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64",
   "unlock_marker": "R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65",
   "owner": "Claude",
   "review": "Astra",
@@ -106,5 +106,32 @@
     "NO_MAIN",
     "NO_PRODUCTION",
     "NO_OWN_DEPLOY"
-  ]
+  ],
+  "start_gate": "AUTHORIZED_NOW",
+  "r64_human_qa": {
+    "required_for_start": false,
+    "required_for_final_handoff": true,
+    "marker": "R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65"
+  },
+  "execution_rule": "CONTINUE_BATCHES_WITHOUT_INTERMEDIATE_HUMAN_WAIT",
+  "global_stop_only_if": [
+    "SYSTEMIC_VISUAL_STANDARD_FAILURE",
+    "SYSTEMIC_PIPELINE_FAILURE",
+    "TRANSVERSAL_NORMATIVE_CHANGE",
+    "ASTRA_EXPLICIT_STOP"
+  ],
+  "workflow": {
+    "base": "7 batches x 3 studies",
+    "then": "9 AGE_0_12 variants",
+    "per_batch": [
+      "SOURCE",
+      "RENDER_1X_2X",
+      "AVIF_WEBP",
+      "MANIFEST_FINGERPRINTS",
+      "QA",
+      "REAL_SIZE_CAPTURE",
+      "COMMIT",
+      "MEMORY_CONTROL"
+    ]
+  }
 }
