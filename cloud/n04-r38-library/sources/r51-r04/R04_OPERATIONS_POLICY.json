@@ -1,0 +1,47 @@
+{
+  "schema": "R51_A9_R04_OPERATIONS_POLICY/1.0",
+  "retention": {
+    "verified_releases": {
+      "manifests": "indefinite",
+      "deltas": "indefinite",
+      "source_sha_and_hashes": "indefinite",
+      "corpus_blobs": "indefinite_no_overwrite"
+    },
+    "verified_private_candidates": {
+      "metadata_days": 365,
+      "blob_days": 90,
+      "promote_preserves_indefinitely": true
+    },
+    "failed_candidates": {
+      "blob_days": 14,
+      "ci_artifact_days": 14
+    }
+  },
+  "observability": {
+    "allowed": [
+      "library_version",
+      "source_sha",
+      "build_duration_ms",
+      "fragment_or_entity_counts",
+      "delta_counts",
+      "rebuilt_content_ids_count",
+      "bytes_written",
+      "test_status",
+      "readback_status",
+      "deploy_id",
+      "candidate_status"
+    ],
+    "forbidden": [
+      "user_query",
+      "ip_address",
+      "user_identity",
+      "conversation",
+      "diagnosis",
+      "selected_age_band_per_user",
+      "response_content",
+      "personal_data"
+    ]
+  },
+  "privacy": "NO_USER_DATA",
+  "production_activation": false
+}
