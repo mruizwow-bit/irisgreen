@@ -1,0 +1,21 @@
+{
+  "schema": "R51_A9_QUIET_SPACE_EDITORIAL_REPORT/1.0",
+  "status": "PASS_EDITORIAL_STAGED_CRISIS_HELD",
+  "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+  "module_ids": 6,
+  "entities": 12,
+  "locale_counts": {
+    "es": 6,
+    "en": 6
+  },
+  "active_entities": 10,
+  "held_entities": 2,
+  "active_module_ids": 5,
+  "held_module_ids": [
+    "M-04"
+  ],
+  "crisis_status": "FROZEN_PENDING_CRISIS_COPY_REVIEW",
+  "audiovisual_status": "R46_R53_NOT_INTEGRATED_IN_A2",
+  "r53_media_indexed": false,
+  "artifact": "sources/r51-r04/candidates/quiet-space-editorial-entities.json"
+}
