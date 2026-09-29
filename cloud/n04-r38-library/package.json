@@ -33,7 +33,8 @@
     "build:r04:candidate-binding": "node scripts/build-r04-candidate-binding.mjs",
     "probe:r04:candidate-store": "node scripts/probe-r04-candidate-store.mjs",
     "audit:r04:duplicates": "node scripts/audit-r04-duplicates.mjs",
-    "audit:r04:citations": "node scripts/audit-r04-citations.mjs"
+    "audit:r04:citations": "node scripts/audit-r04-citations.mjs",
+    "benchmark:r04:incremental": "node scripts/benchmark-r04-incremental.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
