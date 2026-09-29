@@ -1,0 +1,53 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R63-SAKURA-VISUAL-PASS-RUNTIME-HANDOFF-20260929",
+  "issue": 328,
+  "date": "2026-09-29",
+  "status": "R63_SAKURA_VISUAL_PASS_RUNTIME_HANDOFF_REQUIRED",
+  "visual_pass": true,
+  "keep": [
+    "SENSORY_ROOM",
+    "CANOPY_LIGHT_NAVY",
+    "BRANCHES_CLUSTERS",
+    "OCULUS",
+    "WALL",
+    "TUBE",
+    "FURNITURE",
+    "COVE",
+    "PETALS",
+    "GOBOS",
+    "REFLECTIONS",
+    "DESKTOP_1440",
+    "MOBILE_390"
+  ],
+  "non_blocking_differences": [
+    "ILLUSTRATIVE_NOT_PHOTOGRAPHIC",
+    "LIGHT_OCULUS_COOLER",
+    "NAVY_RANGE_COMPRESSED",
+    "FLOOR_GOBOS_LESS_EXTENSIVE",
+    "TIGHTER_FRAMING"
+  ],
+  "required_runtime": [
+    "NORMAL_VIDEO",
+    "REDUCED_VIDEO",
+    "NO_MOTION_ZERO_CONTINUOUS_RAF",
+    "REAL_A_B_C_D_TIERS",
+    "SHADER_FAILURE_DIAGNOSTIC",
+    "TEXTURE_UPLOAD_FAILURE_DIAGNOSTIC",
+    "LATE_RESOURCE_ONE_REPAINT",
+    "START_STOP_RESOURCE_RELEASE",
+    "ZERO_AUTOPLAY",
+    "ZERO_EXTERNAL_NETWORK",
+    "ES_EN",
+    "A11Y_1440_390_320"
+  ],
+  "performance": "PENDING_HARDWARE_QA_UNLESS_REPRESENTATIVE_DEVICE",
+  "expected_marker": "R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_READY_FOR_ASTRA_A2",
+  "normative_change": false,
+  "holds": [
+    "NEXT_ROOM",
+    "MAIN",
+    "PRODUCTION",
+    "OWN_PUSH"
+  ]
+}
