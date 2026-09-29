@@ -29,9 +29,10 @@ const release={
   active_entity_count:corpus.active_entity_count,
   held_entity_count:corpus.held_entity_count,
   citation_audit:{status:citations.status,checked:citations.checked,missing_routes:citations.missing_routes,invalid_urls:citations.invalid_urls},
-  duplicate_audit:{status:duplicates.status,exact_duplicate_groups:duplicates.exact_duplicate_groups,cross_content_duplicate_groups:duplicates.cross_content_duplicate_groups},
+  duplicate_audit:{status:duplicates.status,exact_duplicate_groups:duplicates.exact_duplicate_groups,cross_content_duplicate_groups:duplicates.cross_content_duplicate_groups,near_duplicate_pairs:duplicates.near_duplicate_pairs||0,near_duplicate_decisions:(duplicates.near||[]).map(x=>({content_ids:x.content_ids,similarity:x.similarity,decision:x.decision}))},
   performance:perf,
   blockers:[
+    'EDITORIAL_APPROVED_PACKAGE_ROUTES_PENDING_A2',
     'HOME_CANONICAL_V4_R2_NOT_YET_ACCEPTED',
     'INTERESTS_CANONICAL_AGE_AND_SAFETY_NOT_RELEASED',
     'WORKSHOP_MODELADO_3D_AND_VIDEOMAPPING_NOT_IN_A2_SOURCE',
