@@ -1,0 +1,593 @@
+{
+  "schema": "R51_A9_QUIET_SPACE_ENTITIES/1.0",
+  "entities": [
+    {
+      "entity_id": "quiet-space:m-01:es",
+      "content_id": "quiet-space:m-01",
+      "fragment_id": "quiet-space:m-01:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Aquí puedes parar.",
+      "heading": "M-01",
+      "text": "Elige una cosa. No tienes que hacer nada más.\nOscurecer y quedarme quieto\nUn sonido\nUna forma que se mueve despacio\nNecesito a una persona\nVer todo el Rincón\nSalir",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-01:en",
+      "content_id": "quiet-space:m-01",
+      "fragment_id": "quiet-space:m-01:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "You can stop here.",
+      "heading": "M-01",
+      "text": "Choose one thing. You don't have to do anything else.\nDim the screen and stay still\nA sound\nA shape that moves slowly\nI need a person\nSee the whole Quiet space\nLeave",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-03:es",
+      "content_id": "quiet-space:m-03",
+      "fragment_id": "quiet-space:m-03:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Puedes quedarte aquí el tiempo que necesites.",
+      "heading": "M-03",
+      "text": "Salir\nSalir de la pantalla quieta",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-03:en",
+      "content_id": "quiet-space:m-03",
+      "fragment_id": "quiet-space:m-03:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "You can stay here as long as you need.",
+      "heading": "M-03",
+      "text": "Leave\nLeave the still screen",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-04:es",
+      "content_id": "quiet-space:m-04",
+      "fragment_id": "quiet-space:m-04:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Si necesitas a una persona ahora",
+      "heading": "M-04",
+      "text": "Recursos de España.\nSi tú u otra persona estáis en peligro ahora mismo: 112.\nEmergencias. Gratis.\nSi tienes pensamientos de suicidio, o te preocupa alguien: 024.\nGratis y confidencial, a cualquier hora. También por chat y en lengua de signos.\nSi necesitas hablar con alguien: Teléfono de la Esperanza, 717 003 717.\nSi tienes menos de 18 años: Fundación ANAR, 900 20 20 10.\nGratis y confidencial. También tiene chat.\nSi estás fuera de España, usa los servicios de emergencia locales.\nEste sitio no sabe si llamas ni a quién.\nCerrar",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_crisis_help",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_PENDING_CRISIS_COPY_REVIEW",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "INTENTIONAL_ONLY",
+      "safe_variant_id": null,
+      "review_reason": "CRISIS_COPY_REVIEW_PENDING",
+      "active": false,
+      "retrieval_eligible": false,
+      "jurisdiction": "España",
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/policies/112",
+        "https://www.sanidad.gob.es/linea024/home.htm",
+        "https://telefonodelaesperanza.org/",
+        "https://www.anar.org/que-hacemos/telefono-chat-anar/"
+      ],
+      "privacy_notes": [
+        "Este sitio no sabe si llamas ni a quién."
+      ],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        },
+        {
+          "authority": "OFFICIAL_HELP_SOURCES_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/help-sources.v1.1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-04:en",
+      "content_id": "quiet-space:m-04",
+      "fragment_id": "quiet-space:m-04:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "If you need a person now",
+      "heading": "M-04",
+      "text": "These services are in Spain.\nIf you or someone else is in danger right now: 112.\nEmergencies. Free.\nIf you are having thoughts of suicide, or you are worried about someone: 024.\nFree and confidential, any time. Also by chat and in sign language.\nIf you need to talk to someone: Teléfono de la Esperanza, 717 003 717.\nIf you are under 18: Fundación ANAR, 900 20 20 10.\nFree and confidential. There is also a chat.\nIf you are outside Spain, use your local emergency services.\nThis site does not know whether you call, or whom.\nClose",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_crisis_help",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_PENDING_CRISIS_COPY_REVIEW",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S2_HIGH_SENSITIVITY",
+      "discovery": "INTENTIONAL_ONLY",
+      "safe_variant_id": null,
+      "review_reason": "CRISIS_COPY_REVIEW_PENDING",
+      "active": false,
+      "retrieval_eligible": false,
+      "jurisdiction": "España",
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [
+        "https://digital-strategy.ec.europa.eu/en/policies/112",
+        "https://www.sanidad.gob.es/linea024/home.htm",
+        "https://telefonodelaesperanza.org/",
+        "https://www.anar.org/que-hacemos/telefono-chat-anar/"
+      ],
+      "privacy_notes": [
+        "This site does not know whether you call, or whom."
+      ],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        },
+        {
+          "authority": "OFFICIAL_HELP_SOURCES_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/help-sources.v1.1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-06:es",
+      "content_id": "quiet-space:m-06",
+      "fragment_id": "quiet-space:m-06:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Una forma que se mueve despacio",
+      "heading": "M-06",
+      "text": "Mirar la forma\nSolo mira cómo crece y se encoge. No tienes que hacer nada más.\nRespirar con la forma (opcional)\nSi te apetece, toma aire cuando crece y suéltalo despacio cuando se encoge. Si te molesta, vuelve a «Mirar la forma».\nRitmo normal\nMás despacio\nCuánto rato\nSin final\n1 minuto\n3 minutos\n5 minutos\nSin texto\nEmpezar\nParar\nLa forma se ha quedado quieta. Puedes seguir aquí.\nTienes el movimiento reducido: la forma no se mueve. Puedes avanzar tú con «Siguiente».\nSiguiente\nLa forma crece.\nLa forma se encoge.",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-06:en",
+      "content_id": "quiet-space:m-06",
+      "fragment_id": "quiet-space:m-06:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "A shape that moves slowly",
+      "heading": "M-06",
+      "text": "Watch the shape\nJust watch it grow and shrink. You do not have to do anything else.\nBreathe with the shape (optional)\nIf you like, breathe in as it grows and breathe out slowly as it shrinks. If it bothers you, go back to “Watch the shape”.\nNormal pace\nSlower\nHow long\nNo end\n1 minute\n3 minutes\n5 minutes\nNo text\nStart\nStop\nThe shape has stopped. You can stay here.\nYou have reduced motion on: the shape does not move. You can move on yourself with “Next”.\nNext\nThe shape grows.\nThe shape shrinks.",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-07:es",
+      "content_id": "quiet-space:m-07",
+      "fragment_id": "quiet-space:m-07:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Fijarse en lo que hay alrededor",
+      "heading": "M-07",
+      "text": "Un paso cada vez. Puedes saltar cualquier paso.\n¿Cómo prefieres hacerlo?\nCon los sentidos\nSolo mirando fuera de ti\nBusca 5 cosas que puedas ver.\nBusca 4 cosas que puedas tocar.\nBusca 3 cosas que puedas oír.\nBusca 2 cosas que puedas oler.\nBusca 1 cosa que puedas saborear.\nBusca 3 cosas azules.\nCuenta 5 esquinas.\nBusca 2 cosas redondas.\nBusca 1 letra escrita cerca de ti.\nSiguiente\nSaltar este\nYa está. Puedes quedarte aquí o salir.\nSalir",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-07:en",
+      "content_id": "quiet-space:m-07",
+      "fragment_id": "quiet-space:m-07:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "Notice what is around you",
+      "heading": "M-07",
+      "text": "One step at a time. You can skip any step.\nHow would you like to do it?\nWith the senses\nOnly looking around you\nFind 5 things you can see.\nFind 4 things you can touch.\nFind 3 things you can hear.\nFind 2 things you can smell.\nFind 1 thing you can taste.\nFind 3 blue things.\nCount 5 corners.\nFind 2 round things.\nFind 1 written letter near you.\nNext\nSkip this one\nThat's all. You can stay here or leave.\nLeave",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-08:es",
+      "content_id": "quiet-space:m-08",
+      "fragment_id": "quiet-space:m-08:es:main",
+      "locale": "es",
+      "content_type": "quiet_space",
+      "title": "Tarjeta para enseñar",
+      "heading": "M-08",
+      "text": "Elige una frase. Se verá en grande para enseñarla a otra persona.\nNecesito un momento.\nAhora no puedo hablar.\nPor favor, menos ruido.\nEstoy bien. Solo necesito tiempo.\nVolver\nMás tarjetas en Tarjetas Iris",
+      "canonical_url": "https://irisgreen.eu/es/sitio-tranquilo/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    },
+    {
+      "entity_id": "quiet-space:m-08:en",
+      "content_id": "quiet-space:m-08",
+      "fragment_id": "quiet-space:m-08:en:main",
+      "locale": "en",
+      "content_type": "quiet_space",
+      "title": "Card to show",
+      "heading": "M-08",
+      "text": "Choose a sentence. It will show in large type so you can show it to someone.\nI need a moment.\nI can't talk right now.\nLess noise, please.\nI'm OK. I just need time.\nBack\nMore cards in Iris cards",
+      "canonical_url": "https://irisgreen.eu/en/quiet-space/",
+      "source_type": "quiet_space_editorial_control",
+      "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+      "source_version": "a2@7820dcb1ae331804cbb6e8d087c931cd67178ffa:copy-registry.v1.json",
+      "library_version": "R04_CANDIDATE_UNSEALED",
+      "editorial_status": "FROZEN_EDITORIAL_COPY",
+      "audience": [
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "age_classification_reason": "ISSUE_307_EXPLICIT_MINORS_PLUS_ADULT_PRODUCT_SCOPE",
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "safe_variant_id": null,
+      "review_reason": null,
+      "active": true,
+      "retrieval_eligible": true,
+      "jurisdiction": null,
+      "published_or_reviewed_at": "2026-09-23",
+      "source_urls": [],
+      "privacy_notes": [],
+      "excludes": [
+        "frames",
+        "shaders",
+        "particles",
+        "session_state",
+        "temporary_player_urls",
+        "redundant_audio_transcripts"
+      ],
+      "provenance": [
+        {
+          "authority": "A2_INTEGRATED_COPY_REGISTRY",
+          "source_sha": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+          "path": "assets/quiet-space/copy-registry.v1.json"
+        }
+      ]
+    }
+  ]
+}
