@@ -125,6 +125,12 @@ jobs:
           npm run build:r04:interactive-incremental-fixture
           node --test tests/r51-r04-interactive-incremental.test.mjs
 
+      - name: Build R51 partial R04 corpus
+        working-directory: cloud/n04-r38-library
+        run: |
+          npm run build:r04:partial-corpus
+          node --test tests/r51-r04-partial-corpus.test.mjs
+
       - name: Build R51 R04 candidate manifest
         working-directory: cloud/n04-r38-library
         run: npm run build:r04:candidate-manifest
@@ -221,6 +227,14 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           R51_CANDIDATE_NAME: routines-109
           R51_CANDIDATE_FILE: build/r04/routines-entities.json
+        run: npm run publish:r04:candidate
+
+      - name: Publish R51 partial R04 corpus to private Cloud
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          R51_CANDIDATE_NAME: r04-partial-corpus
+          R51_CANDIDATE_FILE: build/r04/r04-partial-corpus.json
         run: npm run publish:r04:candidate
 
       - name: Publish R51 R04 candidate manifest to private Cloud
