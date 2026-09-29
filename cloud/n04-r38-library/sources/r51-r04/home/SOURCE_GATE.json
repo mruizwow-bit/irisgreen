@@ -1,0 +1,25 @@
+{
+  "schema": "R51_A9_HOME_SOURCE_GATE/1.0",
+  "observed_a2": {
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "head": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+    "index_blob_sha1": "3d9aa60b31d4670f3a3a90680af7cd8d8b68b3f8",
+    "status": "HUMAN_QA_FAIL_HOME_NOT_CANONICAL"
+  },
+  "authority": {
+    "issue": 313,
+    "human_qa_comment_id": 5883521554,
+    "required_donor": "Home Iris Green v4.dc.html",
+    "required_donor_sha256": "25e0e9b2ff96b7d629104ac1c55177f733920a882a194ebe04731206bf14f82c",
+    "required_marker": "A2_HOME_V4_NAVY_DEPLOY_PREVIEW_READY_FOR_ASTRA_MARIA"
+  },
+  "expected_library_scope": "orientation_only",
+  "stale_home_entities_allowed": 0,
+  "candidate_active": false,
+  "unblock_when": [
+    "A2 canonical Home v4 committed",
+    "Deploy Preview corresponds to exact A2 HEAD",
+    "ES/EN copy available",
+    "canonical 965/965 age taxonomy consumed"
+  ]
+}
