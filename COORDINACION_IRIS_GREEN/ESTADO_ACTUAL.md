@@ -2082,3 +2082,30 @@ Marcador:
 `R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_READY_FOR_ASTRA_A2`.
 
 Siguiente sala sigue HOLD hasta HUMAN QA María.
+
+## R65 · Taller · ejecución paralela autorizada · 29/09/2026
+
+Estado vigente:
+`R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64`.
+
+María corrige el gate: R65 NO espera a que termine la HUMAN QA de R64 para producir.
+
+Claude continúa ya:
+- 21 tarjetas base en 7 tandas de 3;
+- ciclo completo por tanda: fuente → 1x/2x → AVIF/WebP → manifest/fingerprints → QA → captura → commit → Memoria/Control;
+- después las 9 variantes AGE_0_12 exactas.
+
+La HUMAN QA de R64 sigue siendo necesaria para:
+- aceptación final;
+- handoff/integración A2 final;
+- main/producción.
+
+No bloquea:
+- render;
+- construcción;
+- QA interno;
+- avance de tandas.
+
+Si aparece una corrección humana posterior, se aplica a lo afectado. STOP global solo por fallo sistémico del estándar/pipeline, cambio normativo transversal o STOP explícito Astra.
+
+No cambia normativa transversal.
