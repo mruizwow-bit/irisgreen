@@ -102,9 +102,11 @@ Y las cuatro que añade la R2, una por punto del rework que admite número:
 | --- | --- | --- | --- |
 | Variedad de follaje | familias sobre el terreno · reparto de la mayor | **4 · 31 %** | ≥ 3 · ≤ 45 % |
 | Colgantes ramificadas | ramas hijas por planta · sin ramificar | **3 a 6 · 0** | ≤ 1 sin ramificar |
-| La roca nueva pertenece | su luminancia ÷ la de la escena | **1,16×** | ≤ 2,2× |
+| La roca nueva pertenece | su luminancia ÷ la de la escena | **1,64×** | ≤ 2,2× |
 | La bandeja tiene nombres | etiqueta visible en móvil + `<title>` en las dos | 7 de 7 | todos |
-| Se ve la consecuencia | musgo con roca vs sin roca, mismo encuadre | **+38 %** | ≥ +15 % |
+| Se ve la consecuencia | musgo con roca vs sin roca, en el encuadre que se enseña | **+279 %** | ≥ +15 % |
+| Cuánto cambia el panel | píxeles que cambian entre ANTES y DESPUÉS | **16 %** | ≥ 4 % |
+| Dónde cae ese cambio | parte del cambio dentro de la roca y su sombra | **84 %** | ≥ 55 % |
 
 Dos avisos sobre cómo está medida la de superficie plana, porque las dos formas
 obvias dan números falsos. Sobre el **albedo** da 64 %, y es mentira: la tierra
