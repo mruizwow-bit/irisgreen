@@ -1,0 +1,18 @@
+{
+  "schema": "R51_A9_INTERESTS_CANDIDATE_REPORT/1.0",
+  "status": "PASS_CANDIDATE_STAGED_FAIL_CLOSED",
+  "donor_source_commit": "c9c5941a2f12811908d2ea508e92134f26826119",
+  "interest_ids": 72,
+  "entities": 144,
+  "locale_counts": {
+    "es": 72,
+    "en": 72
+  },
+  "active": 0,
+  "retrieval_eligible": 0,
+  "age_pending_ids": 72,
+  "sealed_r04_eligible": false,
+  "safety_rule": "No age or safety category was inferred. Candidate remains excluded from retrieval.",
+  "next_gate": "R59_CANONICAL_AGE_AND_SAFETY_CLASSIFICATION",
+  "artifact": "sources/r51-r04/candidates/interests-candidate-entities.json"
+}
