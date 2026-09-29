@@ -16,8 +16,9 @@
     return masters.get(state);
   }
   function preferences() {
+    const userMotionOff=Boolean(window.IGPreferences?.get?.().motion);
     return {motionLevel: document.querySelector('#sabik-motion-level')?.value || 'NORMAL',
-      systemReduced: media.matches, globalOff: document.documentElement.dataset.igMotion === 'off', lowIntensity: current.lowIntensity};
+      systemReduced: media.matches, globalOff: userMotionOff, lowIntensity: current.lowIntensity};
   }
   function ensureController() {
     if (controller) return controller;
