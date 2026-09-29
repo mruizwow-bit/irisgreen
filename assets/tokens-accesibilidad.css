@@ -1,0 +1,40 @@
+/* Iris Green · tokens de la capa de accesibilidad cognitiva.
+   Añade variables nuevas; no redefine los tokens ya publicados. */
+:root {
+  --azul-anil: var(--azul);
+  --malva-frambuesa: var(--rosa);
+  --hit-grande: 56px;
+  --gap-controles: 8px;
+  --radio-bloque: 12px;
+  --radio-tarjeta: 16px;
+  --picto-secuencia: 48px;
+  --picto-principal: 64px;
+  --picto-marco: 1px solid var(--tinta);
+  --picto-fondo: var(--papel);
+  --paso-marca: 30px;
+  --paso-borde-ahora: 2px;
+  --paso-trazo-despues: 2px dashed var(--muted);
+  --rol-marca-ancho: 4px;
+  --rol-marca-color: var(--malva-frambuesa);
+  --rol-resumen-fondo: var(--iris-soft);
+  --rol-resumen-tamano: 20px;
+  --sabik-escritorio: 96px;
+  --sabik-movil: 64px;
+  --sabik-minimo: 32px;
+  --sabik-suave-opacidad: .45;
+}
+[data-sabik="suave"]{opacity:var(--sabik-suave-opacidad)}
+[data-sabik="oculto"]{display:none}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+}
+@media (forced-colors: active){
+  .ig-icono{color:CanvasText}
+  .ig-picto,.ig-picto img{border:1px solid CanvasText;background:Canvas;forced-color-adjust:none}
+  .ig-pasos-marca{forced-color-adjust:none}
+}
+@media print{
+  @page{size:A4;margin:16mm}
+  .ig-solo-pantalla{display:none}
+  .ig-url-impresa::after{content:" · " attr(data-url)}
+}

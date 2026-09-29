@@ -1,0 +1,33 @@
+/* Iris Green · marco v1 de los 13 juegos. Solo actúa dentro de las páginas de juego. */
+main[data-ig-game-v1]{padding-bottom:clamp(9rem,18vw,11rem)!important}
+main[data-ig-game-v1] .how[data-rol="orientacion"]{max-width:68ch}
+main[data-ig-game-v1] :where(button,[role="button"],a.ig-game-control){min-height:44px;min-width:44px}
+main[data-ig-game-v1] :where(button,[role="button"],a.ig-game-control):focus-visible{outline:3px solid var(--lila,#5a49a8);outline-offset:3px}
+.ig-game-meta{margin:.35rem 0 1rem;color:var(--muted,#43566d);font-size:.94rem}
+.ig-game-status{min-height:1.4em;margin:.7rem auto 0;text-align:center;color:var(--muted,#43566d);font-size:.9rem}
+.ig-game-bar{
+  position:fixed;z-index:48;left:50%;bottom:max(.7rem,env(safe-area-inset-bottom));transform:translateX(-50%);
+  width:min(760px,calc(100% - 1.5rem));display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;
+  padding:10px;border:1px solid var(--line,#c5ccdf);border-radius:18px;background:rgba(255,255,255,.96);
+  box-shadow:0 10px 30px rgba(23,57,92,.12)
+}
+.ig-game-bar .ig-game-control{display:flex;align-items:center;justify-content:center;gap:.42rem;padding:.55rem .65rem;border:1px solid var(--line,#c5ccdf);border-radius:12px;background:#fff;color:var(--tinta,#17395c);font:inherit;font-weight:700;text-decoration:none;cursor:pointer}
+.ig-game-bar .ig-game-control:hover{background:var(--iris-soft,#E9ECF7)}
+.ig-game-bar .ig-game-control[aria-disabled="true"]{visibility:hidden;pointer-events:none}
+.ig-game-icon{width:20px;height:20px;flex:0 0 20px;color:currentColor}
+.ig-game-icon use{pointer-events:none}
+.ig-game-destination-icon{display:flex;align-items:center;justify-content:center;width:64px;height:64px;margin:12px auto 2px;color:var(--suave-oscuro,#2c4a66)}
+.ig-game-destination-icon .ig-game-icon{width:56px;height:56px}
+.ig-game-choice[aria-pressed="true"]{outline:3px solid var(--lila,#5a49a8);outline-offset:2px}
+#scene.ig-game-scene{position:relative}
+#scene.ig-game-scene button{min-width:44px!important;min-height:44px!important}
+.ig-game-scene-tools{display:flex;flex-wrap:wrap;gap:8px;margin:.75rem 0}
+.ig-game-scene-expanded{position:fixed!important;z-index:70!important;inset:1rem!important;overflow:auto!important;background:#fff!important;padding:1rem!important;border:1px solid var(--line,#c5ccdf)!important;border-radius:18px!important}
+.ig-game-other-ways{margin:.9rem 0;color:var(--tinta,#17395c)}
+.ig-game-other-ways summary{min-height:44px;display:flex;align-items:center;cursor:pointer;font-weight:700}
+@media(max-width:620px){
+  .ig-game-bar{grid-template-columns:repeat(2,minmax(0,1fr));width:calc(100% - 1rem);bottom:max(.45rem,env(safe-area-inset-bottom));padding:8px}
+  main[data-ig-game-v1]{padding-bottom:13rem!important}
+}
+@media(prefers-reduced-motion:reduce){.ig-game-bar,.ig-game-choice{transition:none!important}}
+@media print{.ig-game-bar,.ig-game-scene-tools,.ig-game-status{display:none!important}main[data-ig-game-v1]{padding-bottom:0!important}}
