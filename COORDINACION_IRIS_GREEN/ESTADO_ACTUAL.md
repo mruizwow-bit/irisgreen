@@ -1816,3 +1816,43 @@ Marcador esperado:
 
 Memoria: `MEMORIA/R43_TALLER_DESIGN_ADAPTACION_PRECHECK_20260927.md`.  
 Control: `CONTROL/DELTA_R43_TALLER_DESIGN_ADAPTACION_20260927.json`.
+
+## R63 · Claude · Rincón · Sakura · 29/09/2026
+
+**Estado: `R63_CLAUDE_RINCON_SAKURA_CANDIDATE_ORDERED`.**
+
+Issue operativo: **#328**.
+
+La reselección de salas sensoriales ordenada por María el 29/09 sustituye la dirección anterior de Globos en lo que contradiga R63:
+- Mundo de globos de luz queda retirado del catálogo/generador;
+- Sakura ya existe como prototipo y pasa a cierre reproducible, no a reconstrucción desde capturas;
+- Jardín de luz, Papel y viento, Dentro de una nube y Respiración del espacio quedan congeladas;
+- Faroles flotantes, Lluvia de luz, Agua y reflejos y Bosque bioluminiscente siguen HOLD hasta HUMAN QA de Sakura;
+- R61 Pecera #325 continúa independiente.
+
+Auditoría de entrada:
+- A2 PR #244 observado en `9800661d7b7a085acaf593d9f432b2ec426151b8`, pero Claude debe releer el HEAD vivo al arrancar;
+- A2 y main están divergidos: no usar main como sustituto ni resetear la web;
+- hoja global canónica A2: `assets/ig-global-ui-tokens-2026.css`;
+- PR #303 continúa open/draft/no merged y sus dos fixes no están en el runtime A2 actual;
+- no se localizó un handoff físico de código Sakura en GitHub/Library, solo memoria y evidencia visual.
+
+Gate de fuente:
+si no aparece el código exacto del prototipo, emitir
+`R63_SAKURA_SOURCE_ARTIFACT_MISSING_BLOCKED`
+y STOP; prohibido recrear Sakura desde screenshots o concept art.
+
+R63 exige source exacto + branch/HEAD/tree + PR draft A2 + ES/EN + 1440/390 + NORMAL/REDUCED/NO_MOTION + fallbacks reales + low-stimulation + tokens globales + taxonomía AGE_* + 0 autoplay + fixes #303 + evidencia/performance.
+
+Marcador Claude:
+`R63_CLAUDE_SAKURA_REPRODUCIBLE_READY_FOR_ASTRA`.
+
+Solo María, tras Deploy Preview, puede emitir:
+`R63_SAKURA_HUMAN_APPROVED_UNLOCK_NEXT_ROOM`.
+
+Orden: `ORDENES/R63_CLAUDE_RINCON_SAKURA/01_CLAUDE.md`.  
+Normativa: `NORMATIVA/ADDENDUM_R63_RINCON_SAKURA_20260929.md`.  
+Memoria: `MEMORIA/R63_RINCON_SAKURA_20260929.md`.  
+Control: `CONTROL/DELTA_R63_RINCON_SAKURA_20260929.json`.
+
+No main. No producción. No deploy propio.
