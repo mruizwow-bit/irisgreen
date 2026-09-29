@@ -19,7 +19,7 @@ def main():
    need(txt.count(asset)==1,'Home v4 asset count !=1: '+asset)
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
-  for token in ['id="sabik-form"','id="sabik-settings-toggle"','id="sabik-voice"','id="sabik-motion-level"','id="sabik-reset"']:
+  for token in ['id="sabik-form"','id="sabik-voice"','id="sabik-low"','id="sabik-motion-level"','id="sabik-reset"']:
    need(token in txt,'Real Sabik control missing '+token)
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
