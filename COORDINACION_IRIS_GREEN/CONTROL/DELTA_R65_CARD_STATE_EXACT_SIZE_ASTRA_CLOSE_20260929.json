@@ -1,0 +1,34 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R65_CARD_STATE_EXACT_SIZE_ASTRA_CLOSE",
+  "issue": 330,
+  "estado": "R65_ASTRA_CARD_STATE_EXACT_SIZE_PASS_HUMAN_QA_PENDING",
+  "blockers_closed": {
+    "link_states": true,
+    "exact_size_reconciled": true,
+    "title_off_27_27": true,
+    "mobile_filters_focus": true
+  },
+  "title_off": {
+    "independent_astra_review": true,
+    "unambiguous": 26,
+    "weak_but_pass": "simulaciones",
+    "watch_pairs": [
+      "patrones/lenguas-inventadas"
+    ]
+  },
+  "responsive_contract": {
+    "fixed_240x150": false,
+    "mobile_390": "172x108 approx",
+    "desktop_1440": "223x139 approx",
+    "exact_240x150_reference_points": [
+      526,
+      820,
+      1076
+    ]
+  },
+  "global_debt": "GLOBAL_FOCUS_TOKEN_DARK_NAVY_FIX_REQUIRED",
+  "integration_gate": "R67 phase 3",
+  "next_marker": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING"
+}
