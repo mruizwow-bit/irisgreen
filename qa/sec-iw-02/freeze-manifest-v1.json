@@ -1,0 +1,54 @@
+{
+  "schema": "SEC_IW_02_FREEZE_MANIFEST/1.1",
+  "baseline_sha": "e48b51814afed825a92e83a2f6e51ee8a1c85e45",
+  "contract_id": "SEC-IW-02-ACTIONS-FREEZE-V1",
+  "artifacts": [
+    {
+      "path": ".github/workflows/sec-iw-02-actions-freeze.yml",
+      "blob_sha": "a57e389d25f249c64b6682bf38fda4b0d3efbb6b"
+    },
+    {
+      "path": "qa/sec-iw-02/README.md",
+      "blob_sha": "e4529e136afe2d4f6f587e4f2e4c22c89e056e7c"
+    },
+    {
+      "path": "qa/sec-iw-02/actions-contract-v1.json",
+      "blob_sha": "860998c55282a070200d0dfb4725414846dec730"
+    },
+    {
+      "path": "qa/sec-iw-02/run-actions-gate-v1.py",
+      "blob_sha": "042df1a4c5ad151f95352ba50b9000d26f3eba3b"
+    },
+    {
+      "path": "qa/sec-iw-02/verify-freeze-manifest-v1.py",
+      "blob_sha": "b616fc40cc54a7f0eb7e93a2ad24d3a61e83549e"
+    }
+  ],
+  "target_baseline_blobs": {
+    ".github/workflows/diagnostico-build-investigacion.yml": "b2cc7eb5349937c84f908c6652bc1fdfbe259ce5",
+    ".github/workflows/publicar-investigacion-120.yml": "36933b66b55cca48660fc5fbe920389095cd3322",
+    ".github/workflows/rutinas-visuales.yml": "f50b9fff58e966a1026b0c36d70cd915a14512c9"
+  },
+  "rules": {
+    "qa_only_freeze": true,
+    "productive_workflow_changes_in_freeze": 0,
+    "product_files_allowed": 0,
+    "preferred_checkout_sha": "11d5960a326750d5838078e36cf38b85af677262",
+    "expected_baseline_candidate_gate_failures": [
+      "S06",
+      "S07",
+      "S11"
+    ],
+    "freeze_may_be_edited_after_ready": false,
+    "merge": false,
+    "deploy": false,
+    "production": false
+  },
+  "r2_harness_fix": {
+    "parent_freeze_head": "c5b464b8d8a7414f09d9651375f47a3b6803247d",
+    "issue": "baseline git-show content was stripped while candidate file content preserved final LF",
+    "scope": "QA_ONLY_READER_FIX",
+    "contract_unchanged": true,
+    "target_workflow_blobs_unchanged": true
+  }
+}
