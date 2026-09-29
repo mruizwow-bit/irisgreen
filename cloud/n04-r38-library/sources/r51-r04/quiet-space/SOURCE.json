@@ -1,0 +1,44 @@
+{
+  "schema": "R51_A9_QUIET_SPACE_SOURCE/1.0",
+  "source_repository": "mruizwow-bit/irisgreen",
+  "source_branch": "agent2/sabik-iris-r08-20260924",
+  "source_commit": "7820dcb1ae331804cbb6e8d087c931cd67178ffa",
+  "product_scope": "A2_INTEGRATED_EDITORIAL_AND_CONTROLS_ONLY",
+  "files": {
+    "assets/quiet-space/copy-registry.v1.json": {
+      "git_blob_sha1": "ff7b14e5f2e76adb968d5bad050b82642dfed0a2"
+    },
+    "assets/quiet-space/help-sources.v1.1.json": {
+      "git_blob_sha1": "c26ba8c8f37cd6b388d98ccc3ba695a8940651de"
+    },
+    "es/sitio-tranquilo/index.html": {
+      "git_blob_sha1": "65d78790ed72276d2a77c300a58afec88d36521a"
+    },
+    "en/quiet-space/index.html": {
+      "git_blob_sha1": "086e5ad1639a78d42cd979d4673ddb6ee0e49aa6"
+    }
+  },
+  "routes": {
+    "es": "/es/sitio-tranquilo/",
+    "en": "/en/quiet-space/"
+  },
+  "audience_evidence": {
+    "issue": 307,
+    "rule": "Rincón serves infancy/adolescence and is explicitly adult/modern; content lens also applies to adults.",
+    "canonical_age_bands": [
+      "AGE_0_12",
+      "AGE_13_17",
+      "AGE_18_PLUS"
+    ]
+  },
+  "crisis_copy_status": "FROZEN_PENDING_CRISIS_COPY_REVIEW",
+  "audiovisual_status": "R46_R53_NOT_INTEGRATED_IN_A2",
+  "exclusions": [
+    "frames",
+    "shaders",
+    "particles",
+    "session_state",
+    "temporary_player_urls",
+    "redundant_audio_transcripts"
+  ]
+}
