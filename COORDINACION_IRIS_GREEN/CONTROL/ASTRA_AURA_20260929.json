@@ -1,0 +1,26 @@
+{
+  "schema": "COORD_SHARED/1.0",
+  "fecha": "2026-09-29",
+  "estado": "ASTRA_AURA_SHARED_COORDINATION_ACTIVE",
+  "coordinadoras": {
+    "Astra": [
+      "precedencia",
+      "QA",
+      "gates",
+      "coherencia transversal",
+      "paso a A2/HUMAN QA"
+    ],
+    "Aura": [
+      "ordenes",
+      "memoria",
+      "normativa",
+      "control",
+      "seguimiento",
+      "apoyo operativo"
+    ]
+  },
+  "source_of_truth": "GitHub canonical coordination",
+  "anti_duplication": true,
+  "current_note": "Aura está guardando la orden anterior del carril Juegos; Astra no la duplicará y la revisará cuando quede publicada.",
+  "reconciliation_rule": "latest Maria decision + canonical GitHub + evidence + active order"
+}
