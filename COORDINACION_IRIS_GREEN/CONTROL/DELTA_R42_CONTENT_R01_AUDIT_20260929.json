@@ -1,0 +1,60 @@
+{
+  "schema": "ASTRA_DELTA/1.0",
+  "fecha": "2026-09-29",
+  "id": "R42_CONTENT_R01_INTEGRATION_AUDIT",
+  "source_sha256": "e44633d2c4707e69276c88728a090212f6d791046cc8dbe38399270f5c29551a",
+  "issue": 302,
+  "estado": "R42_CONTENT_R01_NOT_INTEGRATED_AUDIT_REBASE_REQUIRED",
+  "current_inventory": {
+    "main": {
+      "conditions": 185,
+      "situations": 187,
+      "everyday_life": 48,
+      "data": 49,
+      "research": 120
+    },
+    "a2": {
+      "conditions": 185,
+      "situations": 187,
+      "everyday_life": 48,
+      "data": 49,
+      "research": 120
+    }
+  },
+  "r01_target": {
+    "conditions": 226,
+    "situations": 223,
+    "everyday_life": 62,
+    "data": 60,
+    "research": 132
+  },
+  "absent_representative_routes": [
+    "es/datos/empleo-y-discapacidad-en-espana/index.html",
+    "en/data/employment-and-disability-in-spain/index.html",
+    "es/neurodiversidad/condiciones/migrana/index.html",
+    "en/neurodiversity/conditions/migraine/index.html"
+  ],
+  "package_structural_pass": {
+    "new_html": 204,
+    "es_pages": 102,
+    "en_pages": 102,
+    "bad_h1": 0,
+    "bad_hreflang": 0,
+    "source_rows": 126,
+    "distinct_source_urls": 66
+  },
+  "blockers": [
+    "legacy R01 shell must not overwrite current shell",
+    "single buscador.json incompatible with child-safe discovery",
+    "16 S2 require safe/full payload separation",
+    "age taxonomy must migrate to AGE_0_12/AGE_13_17/AGE_18_PLUS/ALL_AGES",
+    "research 121-132 must be rebuilt in current research pipeline",
+    "18 old-baseline guard scripts require line-by-line review",
+    "sitemap/search/index artifacts must be regenerated from live A2",
+    "source revalidation required before publication"
+  ],
+  "decision": "preserve editorial content; rebase/adapt, do not copy package literally",
+  "next_marker": "R42_CONTENT_R01_REBASED_CHILD_SAFE_READY_FOR_ASTRA",
+  "no_main": true,
+  "no_production": true
+}
