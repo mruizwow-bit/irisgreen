@@ -287,8 +287,8 @@
     {
       "domain": "workshop",
       "content_type": "workshop",
-      "authority": "A2_PLUS_APPROVED_R47",
-      "source_kind": "git",
+      "authority": "A2_INTEGRATED_WEB_PLUS_R47_DONOR_PENDING",
+      "source_kind": "git_plus_pending_donor",
       "source_files": [
         "assets/data/taller-r40-catalog.js",
         "assets/data/taller-r42-paths.js"
@@ -312,7 +312,16 @@
       "owner": "A9",
       "expected_records": 27,
       "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
-      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
+      "integrated_records": 25,
+      "pending_donor_records": [
+        "Modelado 3D",
+        "Videomapping"
+      ],
+      "activation_gate": [
+        "R47_DONOR_SOURCE_FOR_2_MISSING_STUDIOS",
+        "FINAL_A2_SOURCE_FREEZE"
+      ]
     },
     {
       "domain": "quiet_space",
