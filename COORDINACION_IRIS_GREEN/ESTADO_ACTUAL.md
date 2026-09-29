@@ -2058,3 +2058,27 @@ Control:
 `CONTROL_MASTER_SYNC_DELTA_R65_CLAUDE_LECTURA_20260929.csv`.
 
 No cambia normativa transversal.
+
+## R63 · Sakura · visual PASS / runtime handoff · 29/09/2026
+
+Estado:
+`R63_SAKURA_VISUAL_PASS_RUNTIME_HANDOFF_REQUIRED`.
+
+Astra revisa las comparativas LIGHT/NAVY y la hoja QA y cierra el rework visual. Sakura ya se lee como sala sensorial de cerezo, no paisaje/wallpaper/confeti. Se congelan canopy, sala, óculo, tubo, mobiliario, cove, pétalos, gobos/reflejos y composición 1440/390.
+
+Pendiente antes de A2:
+- vídeo NORMAL/REDUCIDO;
+- SIN_MOVIMIENTO con 0 RAF continuo;
+- reconciliar tiers A/B/C/D reales sin tier vacío;
+- diagnóstico de fallos shader/texture;
+- late-resource repaint único;
+- lifecycle/resource release;
+- ES/EN + a11y 1440/390/320;
+- performance real o `PENDING_HARDWARE_QA`.
+
+Tras estos checks se autoriza ZIP/handoff reproducible, sin push propio.
+
+Marcador:
+`R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_READY_FOR_ASTRA_A2`.
+
+Siguiente sala sigue HOLD hasta HUMAN QA María.
