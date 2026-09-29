@@ -2024,3 +2024,37 @@ Control:
 `CONTROL_MASTER_SYNC_DELTA_R62_P02_E4_R2_20260929.csv`.
 
 No cambia normativa transversal.
+
+## R65 · Claude leyó la orden canónica y queda en WAIT · 29/09/2026
+
+Estado confirmado:
+`R65_WAIT_HUMAN_QA_R64`.
+
+Claude ha leído íntegramente la orden versionada de #330 y su Control. No ha iniciado el trabajo:
+- arte tocado: NO;
+- fuentes nuevas: 0;
+- renders: 0.
+
+Desbloqueo único:
+`R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65`,
+emitido por María únicamente después de ver/probar la Deploy Preview de #329.
+
+Plan ya comprendido:
+- 21 bases en 7 tandas de 3;
+- después 9 variantes AGE_0_12 exactas;
+- KEEP 6/6;
+- pipeline R54;
+- no shell global ni migración URL desde R65.
+
+El paquete de coordinación recibido de Claude contiene 20 commits y SHA-256
+`77f03ed2e0d65c07386678d172587fa73bafff0ea41a4d15aec92d83abd63bc9`.
+Su base `818440d3` se conserva como dato histórico de esa entrega. El parche completo NO se aplica sobre la rama canónica actual porque ésta ya avanzó posteriormente; se ha portado únicamente el nuevo registro R65.
+
+Memoria:
+`MEMORIA/R65_LECTURA_ORDEN_CANONICA_20260929.md`.
+
+Control:
+`CONTROL/DELTA_R65_CLAUDE_LECTURA_20260929.json` y
+`CONTROL_MASTER_SYNC_DELTA_R65_CLAUDE_LECTURA_20260929.csv`.
+
+No cambia normativa transversal.
