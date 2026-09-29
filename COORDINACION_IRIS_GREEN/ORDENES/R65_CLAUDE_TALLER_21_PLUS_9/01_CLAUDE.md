@@ -14,18 +14,22 @@ Aceptación final: **HUMAN QA María**
 
 ## ESTADO DE ENTRADA
 
-`R65_WAIT_HUMAN_QA_R64`
+`R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64`
 
-Esta orden define el siguiente trabajo del Taller, pero **NO autoriza todavía a ejecutarlo**.
+Esta orden autoriza **producción en paralelo** mientras María revisa la Deploy Preview de R64.
 
-Gate de desbloqueo obligatorio:
+La HUMAN QA de R64 ya NO bloquea el trabajo creativo/técnico de R65.
 
-`R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65`
+Sí bloquea:
+- aceptación final;
+- handoff/integración A2 final;
+- main;
+- producción.
 
-Ese marcador solo puede emitirlo María después de ver/probar la Deploy Preview de #329.
-
-Sin ese marcador:
-**STOP. No render. No escala.**
+Si la HUMAN QA posterior detecta un problema:
+- corregir la parte afectada;
+- no detener las demás tandas;
+- STOP global solo si el hallazgo demuestra un fallo sistémico del estándar o pipeline.
 
 ---
 
@@ -454,7 +458,7 @@ NO deploy propio.
 # 17. GATES
 
 ### WAIT inicial
-`R65_WAIT_HUMAN_QA_R64`
+`R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64`
 
 ### Desbloqueo
 `R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R65`
@@ -913,3 +917,20 @@ Después del visto bueno:
 escalar al catálogo completo (>=200 juegos NUEVOS/útiles únicos + 92 rutinas),
 sin incorporar ni rediseñar los 130 juegos retirados.
 LEER y dejar memoria actualizada de tu trabajo, con hoja de control https://github.com/mruizwow-bit/irisgreen/tree/coordinacion/iris-green-canonica-20260924/COORDINACION_IRIS_GREEN
+
+
+# ADDENDUM ASTRA · EJECUCIÓN PARALELA · 29/09/2026
+
+Estado vigente:
+`R65_PARALLEL_EXECUTION_AUTHORIZED_PENDING_HUMAN_QA_R64`.
+
+Regla operativa:
+- seguir ya con 21 + 9;
+- 7 tandas de 3 bases;
+- cerrar cada tanda técnicamente y pasar a la siguiente sin esperar revisión humana intermedia;
+- después 9 variantes AGE_0_12;
+- registrar cada tanda en Memoria/Control;
+- si después aparece una corrección humana, aplicarla a lo afectado;
+- detener todo solo por fallo sistémico real.
+
+R64 HUMAN QA bloquea únicamente aceptación/handoff final, no producción.
