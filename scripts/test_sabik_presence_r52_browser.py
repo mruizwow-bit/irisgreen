@@ -85,6 +85,11 @@ try:
         evidence["motion"]["transition"] = transition
 
         # REDUCIDO shortens the same R37 movement.
+        # This isolated Motion fixture does not mount iris-mount.mjs; Home v4 now
+        # places these real controls inside the Sabik settings disclosure.
+        settings = page.locator("#sabik-settings")
+        if settings.count() and settings.get_attribute("hidden") is not None:
+            settings.evaluate("(el) => { el.hidden = false; }")
         page.select_option("#sabik-motion-level", "REDUCIDO")
         page.dispatch_event("#sabik-motion-level", "change")
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
