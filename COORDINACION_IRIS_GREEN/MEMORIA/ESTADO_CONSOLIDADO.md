@@ -1,3 +1,29 @@
+## R42 · Contenido R02 · rebase final sobre A2 vivo requerido · 29/09/2026
+
+**Estado: `R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED` · #302.**
+
+El ZIP `iris-green-contenido-R42-20260929.zip` (SHA-256 `aa3649a821da1226dd84bda70f35ee8c8e286cb81c1bd5711af97e71761e8961`) conserva una dirección correcta: 204 páginas nuevas, inventario 226/223/62/60/132/262, clasificación AGE canónica de A2, child-safe, Investigación 132 y guardarraíl exacto.
+
+Pero fue construido sobre A2 `9c721a79`. PR #244 ya está en `2fcb193feaecaa6934e96c14e0eda06d016d0250`, cinco commits por delante. El solapamiento crítico es `scripts/build_site.py`: el HEAD vivo ya incorpora R67 Taller shell y el ZIP aún no.
+
+Por tanto el ZIP actual NO se integra. Claude debe rebasar sobre el HEAD A2 vivo, conservar R67 Taller + child-safe + R51 + Investigación 132 + audit_inventario, regenerar artefactos y repetir baseline/candidato con 0 fallos nuevos.
+
+Trazabilidad a corregir en la misma vuelta:
+- NHS England OSA: publicado 16/11/2023, actualizado 16/09/2024;
+- WHO Gaming FAQ: sin fecha visible; no usar la noticia separada de 2018 como fecha de la FAQ;
+- explicar delta de fuentes R01 66 → R02 60;
+- `fuentes.json` se menciona en Memoria pero no está en el ZIP;
+- reconciliar “405 URL” con 465 campos anómalos observados / 204 strings raw únicos.
+
+Marcador esperado tras el rebase final:
+`R42_CONTENT_R01_REBASED_CHILD_SAFE_READY_FOR_ASTRA`.
+
+Contenido nuevo adicional, A2 integración del ZIP actual, main y producción: HOLD.
+
+Orden: `ORDENES/R42_CONTENT_R02_REBASE_CURRENT_A2/01_CLAUDE.md`.
+
+Normativa: no cambia; se aplican los canónicos vigentes.
+
 ## R61 · Pecera · burbujas prototipo PASS · render 10 min autorizado · 29/09/2026
 
 **Estado: `R61_PECERA_BUBBLES_PROTOTYPE_HUMAN_APPROVED_RENDER_10MIN_AUTHORIZED` · #325.**
