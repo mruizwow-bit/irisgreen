@@ -1,7 +1,8 @@
 # P02 · Terrario vivo · rework visual E4
 
-**Estado:** `R62_P02_TERRARIO_E4_R2_READY_FOR_ASTRA_MARIA`
+**Estado:** `R62_P02_TERRARIO_E4_R3_READY_FOR_ASTRA_MARIA`
 **R1:** `R62_P02_E4_ENGINE_PASS_VISUAL_REFINEMENT_REQUIRED` · motor aceptado
+**R2:** `R62_P02_E4_SCENE_PASS_CAUSALITY_VISUAL_REWORK_REQUIRED` · escena aceptada
 **Fecha:** 29/09/2026
 **Generador:** `scripts/r62_p02_render.py` sobre `scripts/ig_render_e4.py`
 **Mecánica:** sin cambios. `CONCEPTO.md` sigue siendo la fuente; el §16 de la
@@ -230,25 +231,108 @@ Se mantienen los objetivos de 60 px, la tira horizontal, el mundo como
 protagonista y los controles fuera del stage. La séptima casilla asoma cortada:
 la tira se desplaza, y eso lo dice ella sola.
 
+## R3 · que la cadena se vea
+
+La R2 aceptó la escena y rechazó la causalidad, y el diagnóstico era el
+correcto: el `+38 %` era evidencia técnica y la lámina no la enseñaba. Mirando
+el díptico anterior, lo que fallaba era el **primer eslabón**.
+
+### La sombra que decidía el musgo no era la sombra que se veía
+
+El musgo prendía donde una elipse dibujada a mano decía que había sombra, con
+su desplazamiento puesto a ojo junto a cada roca. Como número funcionaba —el
+musgo cambiaba, y bastante—; como imagen no, porque la mancha de musgo no
+tenía nada que ver con la sombra que el render dibujaba. La persona veía dos
+cosas sueltas en el mismo sitio, no una consecuencia.
+
+Ahora la sombra se calcula marchando hacia la luz contra el propio terreno.
+Como las rocas están sumadas a la función de altura, una roca tapa la luz sin
+tratarla aparte: es el mismo cálculo que hace que una loma se dé sombra a sí
+misma. Y el sustrato usa **la misma** función para oscurecerse.
+
+El efecto es el que importa: **la mancha de musgo tiene la forma de la sombra**,
+y la tierra oscurecida también. Tres cosas que antes eran aproximaciones
+distintas ahora coinciden en el sitio, y esa coincidencia es lo que se lee sin
+explicación.
+
+### La roca estaba donde su sombra no servía
+
+Medio metida en el charco, su sombra caía sobre el agua. El primer eslabón
+—«tapa la luz que llegaba a la ladera»— no tenía ladera donde caer, y sin él la
+cadena empieza con un hueco. Ahora está en ladera abierta con suelo seco por
+donde cae la sombra, y cerca del charco, que es lo que sostiene el tercero.
+
+También era demasiado pequeña. Con la luz a unos 38°, una roca de 0,60 proyecta
+0,75 de sombra: del tamaño de la propia roca, o sea invisible como
+consecuencia. A 0,96 la sombra pasa del metro. Probé 1,25 y era peor por el
+otro lado: la roca dominaba el panel y tapaba lo que había antes, con lo que el
+«antes» dejaba de poder compararse con el «después».
+
+### La roca y su sombra se fundían en una sola mancha
+
+Tres vueltas hicieron falta aquí, y las tres las tuve que medir porque el ojo
+me engañaba en las dos direcciones.
+
+Primero salía blanquecina. Medido: su difuso valía **lo mismo** que el del
+sustrato, con el mismo albedo; la diferencia era sólo la luz, porque un domo
+convexo mira a la clave y casi no tiene oclusión mientras la tierra de
+alrededor está en sombra o de canto. Correcto físicamente, y aun así se leía
+como tiza, porque era una forma grande, clara y lisa.
+
+Bajarle el albedo la volvió una mancha oscura indistinguible de su propia
+sombra, que es el error contrario y peor: mataba el segundo eslabón.
+
+Lo que funciona no es el tono medio sino **la estructura interna**: banda
+mineral, agua que escurre desde la cima y oscurece por donde cae, y la corona
+más clara que la base —que además es verdad, una piedra en una orilla está
+mojada abajo y se seca hacia arriba—. Corona iluminada contra suelo oscuro:
+así la roca se separa de su sombra y las dos se leen.
+
+### El musgo nuevo no destacaba del suelo
+
+Medido, el musgo joven salía **más oscuro** que el sustrato. Cambiaba el color
+y no la claridad, y a esa escala el ojo lee antes la claridad. Sube de tono: el
+musgo recién prendido de verdad es amarillo verdoso y más claro que la
+hojarasca de al lado.
+
+### El encuadre
+
+Ceñido a donde pasa el cambio. Con el encuadre ancho los dos paneles estaban
+dominados por lo que no cambia —las colgantes, el helecho grande, el charco— y
+la diferencia quedaba en una esquina.
+
+### Lo que dicen los números ahora
+
+| | R2 | R3 |
+| --- | --- | --- |
+| Musgo con roca vs sin roca, en el encuadre que se enseña | +13 % | **+279 %** |
+| Parte del panel que cambia | — | **16 %** |
+| Parte de ese cambio que cae donde está la roca y su sombra | — | **84 %** |
+
+El segundo y el tercero son la medida nueva, y el tercero es el que de verdad
+dice algo: un cambio grande repartido por todo el panel no se lee como
+consecuencia de nada; concentrado donde cae la sombra, sí. Aun así **sigue sin
+medir si se entiende de un vistazo**, que es juicio y por eso vuelve a
+revisión.
+
 ## Lo que sigue corto, dicho sin adornos
 
-Los tres puntos que dejé escritos en la R1 están hechos: sección frontal,
-variedad de follaje y colgantes. Lo que veo flojo ahora es otra cosa, y también
-conviene que quede escrito antes de que alguien me lo diga:
+Los tres de la R1 y los seis de la R2 están hechos. Lo que veo flojo ahora:
 
 1. **La pared del fondo** es la superficie continua más grande de la lámina y
    se resuelve con textura y bruma. Funciona porque está lejos y tapada, pero
-   si el encuadre cambiara quedaría al descubierto. Necesitaría veta, repisas
-   con más fondo y algo de vegetación agarrada a ella.
-2. **El agua no se mueve.** La superficie tiene destellos y absorción, y con
-   eso se lee como agua quieta. El concepto describe una ondulación muy leve
-   cada varios segundos; en lámina fija no se puede enseñar, pero sí se podría
-   sugerir con una deformación del reflejo del borde.
-3. **La condensación del cristal** casi no se percibe. Está, y a propósito sólo
-   arriba y agrupada, pero a este nivel de luz apenas aporta. O sube un poco o
-   sobra.
+   si el encuadre cambiara quedaría al descubierto.
+2. **El agua no se mueve.** Tiene destellos y absorción, y con eso se lee como
+   agua quieta. En lámina fija no hay más que hacer, pero conviene no olvidar
+   que el concepto describe una ondulación muy leve.
+3. **La condensación del cristal** casi no se percibe. O sube un poco o sobra.
+4. **El render tarda casi media hora por lámina de escritorio.** La sombra
+   geométrica la usan tres pasadas —sustrato, musgo establecido y musgo
+   joven— y cada una la recalcula entera. Cachearla por lámina sería una
+   ganancia grande y no cambiaría ni un píxel. No lo he hecho porque tocaba
+   entregar, no optimizar.
 
-Ninguna de las tres es problema del motor.
+Ninguna es problema del motor.
 
 ## Reproducibilidad
 

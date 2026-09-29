@@ -34,6 +34,10 @@ número:
      resto de la escena. Si dobla largamente a lo que la rodea, es un marcador.
   9. **La bandeja tiene nombres.** Que los siete elementos tengan etiqueta
      visible en móvil y nombre accesible en las dos composiciones.
+ 10. **El díptico enseña el cambio.** Cuánto del panel cambia entre ANTES y
+     DESPUÉS, y —lo que de verdad importa— qué parte de ese cambio cae donde
+     está la roca y su sombra. Un cambio grande repartido por todo el panel no
+     se lee como consecuencia de nada; concentrado donde cae la sombra, sí.
 
 No se mide, y por eso no se declara:
 
@@ -152,7 +156,10 @@ def main():
     for con in (False, True):
         p.MOSTRAR_EN_VUELO = False
         p.con_roca_demo(con)
-        p.configure(560, 512, ventana=(3.95, 8.35))
+        # el encuadre que de verdad se enseña, no uno antiguo: medir el musgo
+        # en una ventana distinta de la del díptico daba un número que no
+        # hablaba de la lámina
+        p.configure(560, 512, ventana=p.VENTANA_CAUSALIDAD, z_rango=p.Z_CAUSALIDAD)
         b2 = e4.Buffers()
         p.build_scene(b2)
         # las dos densidades: el musgo joven es donde más se nota el cambio,
@@ -205,7 +212,7 @@ def main():
     # 8 · la roca nueva no puede robar la lámina
     p.MOSTRAR_EN_VUELO = False
     p.con_roca_demo(True)
-    p.configure(560, 512, ventana=(3.95, 8.35))
+    p.configure(560, 512, ventana=p.VENTANA_CAUSALIDAD, z_rango=p.Z_CAUSALIDAD)
     b4 = e4.Buffers()
     p.build_scene(b4)
     img4 = p.cristal(e4.compose(p.agua(p.lighting(b4), b4), b4, p.backdrop,
@@ -241,6 +248,45 @@ def main():
             if sin_etiqueta:
                 fallos.append(f'bandeja móvil: sin etiqueta visible {sin_etiqueta}')
     r['bandeja_elementos'] = len(nombres)
+
+    # 10 · el díptico enseña el cambio, y lo enseña donde toca
+    p.MOSTRAR_EN_VUELO = False
+    paneles = {}
+    mundos = {}
+    for con in (False, True):
+        p.con_roca_demo(con)
+        p.configure(533, 512, ventana=p.VENTANA_CAUSALIDAD, z_rango=p.Z_CAUSALIDAD)
+        b5 = e4.Buffers()
+        p.build_scene(b5)
+        paneles[con] = p.cristal(e4.compose(p.agua(p.lighting(b5), b5), b5, p.backdrop,
+                                           exposure=1.95, vignette=(1.12, 0.38, 1.55),
+                                           contraste=0.34, pivote=0.38))
+        mundos[con] = (b5.world.copy(), b5.mask.copy())
+    p.con_roca_demo(False)
+    p.MOSTRAR_EN_VUELO = True
+
+    dif = np.abs(paneles[True].mean(-1) - paneles[False].mean(-1))
+    cambia = dif > 0.045
+    r['diptico_cambio_pct'] = round(100 * float(cambia.mean()), 1)
+
+    # ¿dónde está la roca y su sombra nueva, en pantalla?
+    w, msk = mundos[True]
+    x, y = w[..., 0], w[..., 1]
+    p.con_roca_demo(True)
+    som1 = p.sombra_solar(x, np.clip(y, 0.0, None))
+    en_roca = p._en_roca_demo(x, y)
+    p.con_roca_demo(False)
+    som0 = p.sombra_solar(x, np.clip(y, 0.0, None))
+    zona = msk & (en_roca | ((som1 - som0) > 0.15))
+    r['zona_roca_y_sombra_pct'] = round(100 * float(zona.mean()), 1)
+    dentro = float(dif[cambia & zona].sum()) / max(float(dif[cambia].sum()), 1e-6)
+    r['cambio_en_la_zona_pct'] = round(100 * dentro, 1)
+
+    if cambia.mean() < 0.04:
+        fallos.append(f'díptico: sólo cambia el {100*cambia.mean():.1f}% del panel')
+    if dentro < 0.55:
+        fallos.append(f'díptico: sólo el {100*dentro:.0f}% del cambio cae donde está '
+                      f'la roca y su sombra; repartido así no se lee como consecuencia')
 
     r['no_medido'] = [
         'si parece un terrario y no una ficha',

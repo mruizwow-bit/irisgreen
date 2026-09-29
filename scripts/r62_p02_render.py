@@ -68,10 +68,15 @@ MATS = {
     # roca valía lo mismo que el del sustrato, pero la roca era gris neutra en
     # un mundo verde y marrón, así que saltaba por saturación y no por
     # luminosidad. Lleva verde y tierra dentro, que es lo que la integra.
-    'roca-humeda':((0.064, 0.076, 0.058), 0.44, 1.30, 3.30),
+    'roca-humeda':((0.056, 0.066, 0.051), 0.58, 1.95, 4.40),
     # Musgo recién prendido: más claro y más ralo que el establecido. Da un
     # gradiente de densidad en vez de una mancha de sí/no.
-    'musgo-joven':((0.105, 0.190, 0.082), 0.95, 2.70, 8.60),
+    # Musgo recién prendido. Sube de tono respecto a la primera versión: medido,
+    # salía más oscuro que el sustrato, así que la mancha nueva no se distinguía
+    # del suelo en sombra —cambiaba el color y no la claridad, y a esa escala el
+    # ojo lee antes la claridad—. El musgo joven de verdad es amarillo verdoso y
+    # más claro que la hojarasca que tiene al lado.
+    'musgo-joven':((0.168, 0.292, 0.124), 0.95, 2.70, 8.60),
     'pared':     ((0.062, 0.078, 0.074), 0.76, 1.25, 2.40),
     'madera':    ((0.40, 0.30, 0.195), 0.68, 1.35, 2.60),
     'musgo':     ((0.072, 0.135, 0.058), 0.96, 2.90, 7.80),
@@ -119,9 +124,22 @@ LUZ /= np.linalg.norm(LUZ)
 # La roca de la segunda lámina. No está en la escena por defecto: se añade
 # para el «después» del díptico, y todo lo demás —la sombra, la humedad que se
 # retiene, el musgo que prende— sale solo de haberla añadido, porque esas tres
-# cosas ya se calculan a partir de la lista de rocas. La cadena causal no está
+# cosas se calculan a partir de la lista de rocas. La cadena causal no está
 # dibujada: está computada.
-ROCA_DEMO = (6.38, 1.58, 0.88, 0.58, 0.60)
+#
+# Sitio y tamaño elegidos por lo que hacen, no por dónde quedan bien. Antes
+# estaba medio metida en el charco: su sombra caía sobre el agua, así que el
+# primer eslabón —tapa la luz que llegaba a la ladera— no se veía, y sin ese
+# eslabón la cadena empieza con un hueco. Ahora está en ladera abierta, con
+# suelo seco por donde cae la sombra, y cerca del charco, que es lo que sostiene
+# el tercer eslabón.
+#
+# Y es más grande. Con la luz a unos 38°, una roca de 0,60 proyecta apenas
+# 0,75 de sombra: del tamaño de la propia roca, invisible como consecuencia. A
+# 0,96 la sombra mide más de un metro y se lee. Probé 1,25 y era peor de
+# otra manera: la roca pasaba a dominar el panel y tapaba lo que había
+# antes, así que el «antes» dejaba de poder compararse con el «después».
+ROCA_DEMO = (7.85, 1.45, 1.00, 0.68, 0.96)
 
 ROCAS = [
     # (cx, cy, radio x, radio y, altura)
@@ -281,31 +299,27 @@ def pared_fondo(buf):
 
 
 def _humedad(x, y, z):
-    """Tinte del sustrato: oscurece donde hay agua cerca.
+    """Tinte del sustrato: oscurece donde hay agua cerca y donde da sombra.
 
     Es el estado real del sistema hecho visible sin números: la celda junto al
-    charco retiene humedad, y la tierra húmeda es más oscura y más saturada que
-    la seca. También entra la sombra de las rocas, que reduce la pérdida.
+    charco retiene humedad, y la tierra húmeda es más oscura y más fría que la
+    seca. La sombra entra con la **misma** función que decide el musgo, así que
+    la mancha oscura del suelo, la sombra que dibuja el render y el musgo que
+    prende coinciden en el sitio. Cuando cada uno usaba su propia aproximación,
+    la cadena se medía bien y no se veía.
     """
     seco = dist_agua(x, y)
     mojado = 1.0 - seco
-    sombra = np.zeros(np.shape(x), np.float32)
-    for cx, cy, rx, ry, h in ROCAS:
-        # ladera abajo y a la derecha de cada roca, que es donde cae su sombra
-        d = np.sqrt(((x - cx - 0.62) / (rx * 2.4)) ** 2 + ((y - cy - 0.34) / (ry * 2.6)) ** 2)
-        sombra = np.maximum(sombra, np.clip(1.0 - d, 0, 1))
-    # El R2 pide que la cadena se lea sin explicación. El eslabón que menos se
-    # veía era el segundo: la sombra de la roca apenas oscurecía la tierra. Se
-    # sube su peso y el tono mojado se enfría, porque tierra húmeda y en sombra
-    # no es sólo tierra más oscura: también pierde el rojo.
-    k = np.clip(mojado + 0.78 * sombra, 0, 1)[..., None]
+    sombra = sombra_solar(x, y)
+    # 0,58 y no 0,78: con la sombra geométrica la zona oscura es mucho más
+    # marcada que con la elipse de antes, y a 0,78 se tragaba el musgo que
+    # tiene que verse dentro.
+    k = np.clip(mojado + 0.58 * sombra, 0, 1)[..., None]
     oscuro = np.array([0.44, 0.53, 0.56], np.float32)[None, None, :]
     humedo = (1.0 - k) + k * oscuro
 
     # Grumos y hojarasca. El grano fino del material solo daba una moqueta
-    # uniforme, y una imperfección uniforme se lee como patrón, no como uso:
-    # es la segunda de las cinco preguntas de la referencia E4. Esto mete
-    # variación de tono a escala de palmo, que es la que de verdad se ve.
+    # uniforme, y una imperfección uniforme se lee como patrón, no como uso.
     grumo = e4.sample_tex(x * 0.85, y * 0.85)
     hojarasca = e4.sample_grain(x * 2.4 + 11.0, y * 2.4)
     v = (0.80 + 0.40 * grumo) * (0.90 + 0.22 * hojarasca)
@@ -313,7 +327,39 @@ def _humedad(x, y, z):
     return humedo * calido
 
 
+def _veteado_roca(x, y, z):
+    """Veta y chorretones de la roca que se coloca.
+
+    Medida, la roca salía casi dos veces más clara que el sustrato con **el
+    mismo albedo**: la diferencia era sólo la luz, porque un domo convexo mira
+    a la clave y casi no tiene oclusión, mientras que la tierra de alrededor
+    está en sombra o de canto. Eso es correcto físicamente y aun así se leía
+    como tiza, porque era una forma grande, clara y lisa.
+
+    Lo que lo arregla no es bajar más el albedo —eso daría una piedra
+    antinatural— sino romperle la superficie: banda mineral, y agua que
+    escurre desde la cima y oscurece por donde cae. Una piedra con variación
+    de tono dentro deja de leerse como una mancha.
+    """
+    cx, cy, _, _, h = ROCA_DEMO
+    # bandas minerales, inclinadas respecto al eje del canto
+    banda = 0.5 + 0.5 * np.sin((x - cx) * 5.1 + (y - cy) * 2.3 + z * 3.6)
+    fino = e4.sample_tex(x * 3.1, y * 3.1)
+    # chorretón: desde la cima hacia abajo, más oscuro donde el agua escurre
+    alto = np.clip((z - terreno(np.array(x), np.array(y)) + h) / max(h, 1e-6), 0, 1)
+    escurre = e4.sample_grain(x * 2.2 + 3.0, y * 0.45)
+    mojado = np.clip(0.55 - alto, 0, 1) * (0.35 + 0.9 * escurre)
+    # La cima más clara que la base, y no sólo por la luz: una piedra en una
+    # orilla está mojada abajo y se va secando hacia arriba. Esto es lo que
+    # separa la roca de su propia sombra —corona iluminada contra suelo
+    # oscuro— y sin ello las dos se fundían en una sola mancha oscura y el
+    # segundo eslabón de la cadena desaparecía.
+    v = (0.70 + 0.58 * alto) * (0.84 + 0.30 * banda * fino) * (1.0 - 0.40 * mojado)
+    return np.stack([v * 1.00, v * 1.04, v * 0.96], -1)
+
+
 def _en_roca_demo(x, y):
+    """Huella de la roca de demostración, con el mismo contorno roto."""
     cx, cy, rx, ry, _ = ROCA_DEMO
     k = _radio_roto(x, y, cx, cy)
     return ((x - cx) / (rx * k)) ** 2 + ((y - cy) / (ry * k)) ** 2 <= 1.0
@@ -336,7 +382,8 @@ def sustrato(buf):
                                            & (~_en_roca_demo(x, y) if demo else True))
     if demo:
         blit_heightfield(buf, 'roca-humeda', terreno, 0, TW, 0, TD, steps=150,
-                         alpha=lambda x, y, z: _en_roca_demo(x, y))
+                         alpha=lambda x, y, z: _en_roca_demo(x, y),
+                         tint=_veteado_roca, bump_scale=1.8)
 
 
 def _cantos(u, v, densidad, radio, semilla):
@@ -823,6 +870,40 @@ def tapiz(buf):
                      tint=0.85)
 
 
+def sombra_solar(x, y, pasos=22, alcance=2.6):
+    """Cuánta luz directa pierde el punto (x, y) del terreno, de 0 a 1.
+
+    Se marcha desde la superficie hacia la luz y se mira si el terreno se
+    interpone. Como las rocas están sumadas a la función de altura, una roca
+    tapa la luz sin que haya que tratarla aparte: es el mismo cálculo que hace
+    que una loma se dé sombra a sí misma.
+
+    **Por qué importa que sea esto y no una elipse.** Antes la sombra que
+    decidía el musgo era un óvalo dibujado a mano junto a cada roca, con su
+    desplazamiento a ojo. Funcionaba como número —el musgo cambiaba— y fallaba
+    como imagen: la mancha de musgo no tenía nada que ver con la sombra que el
+    render dibujaba, así que la persona veía dos cosas sueltas en vez de una
+    consecuencia. Calculada contra el mismo terreno y la misma luz, **la mancha
+    de musgo tiene la forma de la sombra**, y esa coincidencia es lo que hace
+    legible la cadena sin explicarla.
+
+    El resultado se suaviza con la distancia al ocluyente: la penumbra se abre,
+    igual que en la sombra del render, así que el borde del musgo tampoco es un
+    recorte duro.
+    """
+    z = terreno(x, y)
+    dentro = np.zeros(np.shape(x), np.float32)
+    for i in range(1, pasos + 1):
+        t = alcance * (i / pasos) ** 1.35
+        px = x + LUZ[0] * t
+        py = y + LUZ[1] * t
+        pz = z + LUZ[2] * t
+        tapado = pz < terreno(px, np.clip(py, 0.0, None))
+        # cuanto más cerca está el ocluyente, más cerrada es la sombra
+        dentro = np.maximum(dentro, tapado * (1.0 - 0.55 * (i - 1) / pasos))
+    return dentro
+
+
 def _favorable(x, y):
     """Cuánto le conviene el sitio al musgo: sombra y humedad, de 0 a 1.
 
@@ -832,13 +913,9 @@ def _favorable(x, y):
     mismo cálculo y no de dos aproximaciones parecidas.
     """
     humedo = 1.0 - dist_agua(x, y)
-    sombra = np.zeros(np.shape(x), np.float32)
-    for cx, cy, rx, ry, _ in ROCAS:
-        d = np.sqrt(((x - cx - 0.62) / (rx * 2.4)) ** 2
-                    + ((y - cy - 0.34) / (ry * 2.6)) ** 2)
-        sombra = np.maximum(sombra, np.clip(1.0 - d, 0, 1))
+    sombra = sombra_solar(x, y)
     moteado = e4.sample_grain(x * 1.7, y * 1.7)
-    return humedo * 0.62 + sombra * 1.25 + moteado * 0.30
+    return humedo * 0.58 + sombra * 1.32 + moteado * 0.28
 
 
 def musgo_parches(buf):
@@ -1033,12 +1110,18 @@ def familia(x, y):
 def vegetacion(buf):
     madera(buf, 2.95, 0.95, 4.05, 2.15, 2.95, 0.115)
     madera(buf, 8.05, 0.70, 7.15, 1.55, 1.85, 0.085)
+    demo = ROCA_DEMO in ROCAS
+    def libre(x, y):
+        # no se planta dentro del charco ni debajo de la roca que se coloca
+        return _en_seco(x, y) and not (demo and bool(np.ravel(
+            _en_roca_demo(np.array([float(x)]), np.array([float(y)])))[0]))
+
     for x, y, alto, giro in HELECHOS:
-        if not _en_seco(x, y):
+        if not libre(x, y):
             continue
         helecho(buf, x, y, alto, giro, 'hoja', 'hoja-clara')
     for i, (x, y, alto) in enumerate(MATAS):
-        if not _en_seco(x, y):
+        if not libre(x, y):
             continue
         # tono por planta, además de la familia: dos ejemplares de la misma
         # especie tampoco son idénticos
@@ -1346,6 +1429,12 @@ def overlay_movil(data_uri):
 
 # ------------------------------------------------------ lámina de causalidad ---
 
+# El díptico se ciñe a donde pasa el cambio. Con el encuadre ancho los dos
+# paneles estaban dominados por lo que no cambia —las colgantes, el helecho
+# grande, el charco— y la diferencia quedaba en una esquina.
+VENTANA_CAUSALIDAD = (6.15, 9.95)
+Z_CAUSALIDAD = (1.50, 3.60)
+
 CADENA = (
     ('1', 'La roca ocupa su sitio', 'y tapa la luz que llegaba a la ladera.'),
     ('2', 'Esas celdas quedan en sombra', 'y pierden menos humedad.'),
@@ -1481,7 +1570,7 @@ def main():
         global MOSTRAR_EN_VUELO
         MOSTRAR_EN_VUELO = False
         con_roca_demo(con_roca)
-        configure(w, h, ventana=(3.95, 8.35))
+        configure(w, h, ventana=VENTANA_CAUSALIDAD, z_rango=Z_CAUSALIDAD)
         buf = e4.Buffers()
         build_scene(buf)
         img = cristal(e4.compose(agua(lighting(buf), buf), buf, backdrop,
