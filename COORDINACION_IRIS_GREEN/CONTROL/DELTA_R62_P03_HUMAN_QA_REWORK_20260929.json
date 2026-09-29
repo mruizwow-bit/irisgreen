@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P03-HUMAN-QA-REWORK-20260929",
+  "issue": 326,
+  "date": "2026-09-29",
+  "status": "R62_P03_HUMAN_QA_REWORK_REQUIRED",
+  "supersedes_operational_status": "R62_P03_RUTAS_LUZ_CONCEPT_AUTHORIZED",
+  "keep": [
+    "P03_RUTAS_LUZ_PRODUCT",
+    "CONNECT_REDIRECT_OBSERVE_COMPARE_REDO_LOOP",
+    "MULTIPLE_SOLUTIONS",
+    "LIGHT_AS_MATERIAL",
+    "ACCESSIBILITY_CONCEPT",
+    "AGE_TAXONOMY",
+    "GLOBAL_CHROME_TOKENS"
+  ],
+  "rework": [
+    "ROOM_SPATIAL_READ",
+    "WALL_MATERIAL_AND_IRREGULARITY",
+    "LIGHT_SURFACE_INTERACTION",
+    "CONTACT_SHADOW_OCCLUSION_REFLECTION",
+    "STRUCTURAL_FRAME_INTEGRATION",
+    "MOBILE_SPATIAL_COMPOSITION"
+  ],
+  "expected_marker": "R62_P03_RUTAS_LUZ_E4_R2_READY_FOR_ASTRA_MARIA",
+  "holds": [
+    "P04",
+    "P05",
+    "P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false,
+  "normative_application": [
+    "IRIS_GREEN_VISUAL_STANDARD_SEP_2026",
+    "IRIS_GREEN_VISUAL_EXECUTION_TARGET_E4_PREMIUM_2026"
+  ]
+}
