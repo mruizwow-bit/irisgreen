@@ -13,6 +13,12 @@ on:
         description: 'Canonical web source commit SHA to evaluate incrementally'
         required: false
         type: string
+  workflow_call:
+    inputs:
+      source_sha:
+        description: 'Canonical web source commit SHA supplied by A2 integration'
+        required: false
+        type: string
 
 permissions:
   contents: read
@@ -44,7 +50,7 @@ jobs:
         run: npm ci --ignore-scripts
 
       - name: R51 incremental source update plan
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.source_sha != '' }}
+        if: ${{ inputs.source_sha != '' }}
         working-directory: cloud/n04-r38-library
         env:
           R51_SOURCE_SHA: ${{ inputs.source_sha }}
