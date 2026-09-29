@@ -15,7 +15,8 @@ html[data-ig-theme="dark"]{
   --ig-accent-secondary:#9FDCEA;
   --ig-border-control:#8494A8;
   --ig-separator:#2A4460;
-  --ig-focus:#C3B8FF;
+  --ig-focus-global:#C3B8FF;
+  --ig-focus:var(--ig-focus-global);
   --ig-error:#FFB3C1;
   --ig-success:#9BE0B4;
 }
@@ -34,7 +35,8 @@ html[data-ig-theme="light"]{
   --ig-accent-secondary:#197991;
   --ig-border-control:#7A869D;
   --ig-separator:#D5E1EC;
-  --ig-focus:#5A49A8;
+  --ig-focus-global:#5A49A8;
+  --ig-focus:var(--ig-focus-global);
   --ig-error:#8A2942;
   --ig-success:#1D6B3A;
 }
