@@ -57,6 +57,14 @@ async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'checks':[]}
  async with async_playwright() as p:
   b=await p.chromium.launch();page=await b.new_page()
+  await page.goto(BASE+'/',wait_until='networkidle')
+  structure=await page.evaluate("""() => Object.fromEntries(['.ig-home-v4-use-grid','.ig-home-v4-card','.ig-home-v4-sabik','.ig-home-v4-discover-grid','.ig-home-v4-footer'].map(s=>{const e=document.querySelector(s);return [s,e?getComputedStyle(e).display:null]}))""")
+  need(structure['.ig-home-v4-use-grid']=='grid','Home v4 use grid CSS missing')
+  need(structure['.ig-home-v4-card']=='grid','Home v4 card CSS missing')
+  need(structure['.ig-home-v4-sabik']=='grid','Home v4 Sabik CSS missing')
+  need(structure['.ig-home-v4-discover-grid']=='grid','Home v4 discover CSS missing')
+  need(structure['.ig-home-v4-footer']=='flex','Home v4 footer CSS missing')
+  report['checks'].append('home-v4-css-render-integrity')
   await home_stage(page,'0–12 años',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
   await home_stage(page,'13–17 años',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':False})
   await home_stage(page,'18 años o más',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':True,'Investigación':True,'Ayudas y trámites':True})

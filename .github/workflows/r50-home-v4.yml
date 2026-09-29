@@ -7,6 +7,7 @@ on:
       - 'scripts/apply_home_r42.py'
       - 'scripts/test_home_child_safe_r42.py'
       - 'scripts/test_home_child_safe_browser.py'
+      - 'scripts/test_home_v4_css_integrity.py'
       - 'assets/home-r42-child-safe.css'
       - 'assets/home-r42-child-safe.js'
       - 'assets/ig-global-ui-tokens-2026.css'
@@ -31,7 +32,8 @@ jobs:
         with: {python-version: '3.12'}
       - name: Syntax
         run: |
-          python -m py_compile scripts/apply_home_r42.py scripts/test_home_child_safe_r42.py scripts/test_home_child_safe_browser.py
+          python -m py_compile scripts/apply_home_r42.py scripts/test_home_child_safe_r42.py scripts/test_home_child_safe_browser.py scripts/test_home_v4_css_integrity.py
+          python scripts/test_home_v4_css_integrity.py --root .
           node --check assets/ig-theme.js
           node --check assets/ig-audience.js
           node --check assets/home-r42-child-safe.js
@@ -45,6 +47,8 @@ jobs:
           /tmp/ig-home-v4/bin/python -m playwright install --with-deps chromium >/tmp/ig-home-v4-install.log 2>&1
       - name: Build public site
         run: python scripts/build_site.py
+      - name: Built CSS integrity
+        run: python scripts/test_home_v4_css_integrity.py --root dist
       - name: Static Home v4 gate
         run: python scripts/test_home_child_safe_r42.py --root dist
       - name: Browser Home v4 NAVY

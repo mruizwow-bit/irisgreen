@@ -30,6 +30,16 @@ async def main():
   need(await page.locator('html').get_attribute('data-ig-theme')=='dark','Home does not start DARK NAVY')
   need(await page.locator('body').get_attribute('data-ig-home-version')=='v4','v4 body marker missing')
   need(await page.locator('[data-ig-media-status="pending"]').count()==13,'unapproved media slots were invented/removed')
+  visual=await page.evaluate("""() => {
+    const pick=s=>{const e=document.querySelector(s),c=e&&getComputedStyle(e);return e?{display:c.display,bg:c.backgroundColor,cols:c.gridTemplateColumns,width:e.getBoundingClientRect().width}:null};
+    return {body:getComputedStyle(document.body).backgroundColor,use:pick('.ig-home-v4-use-grid'),card:pick('.ig-home-v4-card'),sabik:pick('.ig-home-v4-sabik'),discover:pick('.ig-home-v4-discover-grid'),footer:pick('.ig-home-v4-footer')};
+  }""")
+  need(visual['body']=='rgb(11, 26, 43)','DARK NAVY body background not rendered '+repr(visual))
+  need(visual['use'] and visual['use']['display']=='grid','Entra y úsalo layout CSS not rendered '+repr(visual))
+  need(visual['card'] and visual['card']['display']=='grid','Home card CSS not rendered '+repr(visual))
+  need(visual['sabik'] and visual['sabik']['display']=='grid' and visual['sabik']['bg']!='rgba(0, 0, 0, 0)','Sabik chassis CSS not rendered '+repr(visual))
+  need(visual['discover'] and visual['discover']['display']=='grid','Entiende y encuentra layout CSS not rendered '+repr(visual))
+  need(visual['footer'] and visual['footer']['display']=='flex','Home footer CSS not rendered '+repr(visual))
   need(await page.get_by_role('button',name='Ajustes de Sabik',exact=True).count()==1,'real Sabik settings control missing')
   await page.get_by_role('button',name='Ajustes de Sabik',exact=True).click();need(await page.locator('#sabik-settings').is_visible(),'Sabik settings did not open')
   need(await page.get_by_role('button',name='Voz de Sabik: Desactivada',exact=False).count()==1,'Sabik voice control missing inside settings')
@@ -64,6 +74,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','css-render-integrity','dark-navy-default','light-alternative','canonical-age-state','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
