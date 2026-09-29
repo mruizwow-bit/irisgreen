@@ -53,17 +53,33 @@ OUT_W, OUT_H = 1180, 900
 TOP_OUT = BOT_OUT = 0.0
 
 # --- la sala, en unidades de mundo ----------------------------------------
-AW, AD, AH = 11.0, 4.2, 8.5      # ancho, fondo, alto
+# El fondo baja de 4,2 a 2,6. No es una decisión de encuadre: la sombra del
+# motor marcha en espacio de pantalla contra el búfer de profundidad, y su
+# alcance en unidades de mundo es finito. Con el plano de juego a 1,1 y el muro
+# a 4,2 el salto era de tres metros largos, más de lo que la marcha recorre, así
+# que ni los pilares ni los espejos proyectaban nada sobre el muro. A 2,6 el
+# salto cabe, y la luz vuelve a actuar sobre la escena en vez de sólo sobre las
+# piezas.
+AW, AD, AH = 11.0, 2.6, 6.6      # ancho, fondo, alto
 Y_MURO = AD                      # plano del muro del fondo
-HAZ_Y0, HAZ_Y1 = 0.62, 1.58      # el haz es una lámina con grosor en profundidad
+# El haz roza el muro a propósito. Con el plano de juego en mitad de la sala,
+# cada brazo tiraba una sombra larguísima y treinta y cinco sombras iguales en
+# diagonal volvían a dibujar la rejilla. Pegado al muro, la sombra de cada
+# pieza es un halo corto detrás de ella y el muro se ilumina de verdad.
+HAZ_Y0, HAZ_Y1 = 1.98, 2.50      # el haz es una lámina con grosor en profundidad
 
 MATS = {
     # La sala va oscura a propósito. El asunto de la lámina es el aire con luz
     # dentro, y con el muro a albedo alto lo que se veía era un muro de ladrillo
     # muy bien texturado con una raya encima.
     'muro':     ((0.145, 0.128, 0.108), 0.86, 1.15, 2.60),
+    # Revoco encima del zócalo de sillarejo. El aparejo regular cruzando toda
+    # la lámina era la superficie más grande y la más uniforme; partir el muro
+    # en dos materiales con el límite irregular es lo que lo quita de en medio.
+    'revoco':   ((0.170, 0.150, 0.124), 0.90, 1.05, 1.55),
+    'revoco-roto': ((0.128, 0.110, 0.090), 0.88, 1.60, 2.20),
     'zocalo':   ((0.105, 0.092, 0.078), 0.84, 1.30, 3.00),
-    'suelo':    ((0.115, 0.102, 0.086), 0.88, 1.45, 2.20),
+    'suelo':    ((0.128, 0.114, 0.096), 0.88, 1.45, 1.55),
     'viga':     ((0.115, 0.086, 0.058), 0.72, 1.35, 2.30),
     'mensula':  ((0.185, 0.166, 0.140), 0.80, 1.20, 2.60),
     'laton':    ((0.72, 0.545, 0.245), 0.16, 0.35, 3.40),
@@ -79,6 +95,7 @@ MATS = {
 
 FEATURES = {
     'muro': {'humedad', 'estratos'}, 'zocalo': {'humedad', 'estratos'},
+    'revoco': {'humedad'}, 'revoco-roto': {'humedad', 'estratos'},
     'suelo': {'humedad'}, 'viga': {'humedad'}, 'mensula': {'humedad'},
     'laton': set(), 'laton-mate': set(), 'papel': set(), 'papel-luz': set(),
     'vidrio': set(), 'hierro': {'humedad'},
@@ -89,7 +106,7 @@ FEATURES = {
 COURSING = {
     'muro': (0.62, 0.285, 0.5),
     'zocalo': (0.46, 0.24, 0.5),
-    'suelo': (0.72, 0.72, 0.0),
+    'suelo': (0.95, 0.95, 0.0),
 }
 FEATURES['pilar'] = {'humedad'}
 
@@ -108,22 +125,22 @@ REJILLA_X = [1.55 + i * 1.42 for i in range(7)]
 # pantalla del norte, y el encargo pide varias soluciones: sin una fila a la
 # altura de las pantallas, la única manera de entrar era por abajo y por una
 # sola columna. La fila de arriba abre la entrada lateral.
-REJILLA_Z = [1.40 + j * 1.12 for j in range(5)] + [6.44]
+REJILLA_Z = [0.95 + j * 0.88 for j in range(5)] + [5.25]
 
 # El postigo se alinea con una fila de la rejilla a propósito: así el primer
 # tramo del haz corre por la misma altura que las ménsulas y la persona ve de
 # entrada que la rejilla y la luz hablan el mismo idioma.
-FUENTE = (0.02, 4.76)            # el postigo, en el muro de la izquierda
+FUENTE = (0.02, 3.59)            # el postigo, en el muro de la izquierda
 FUENTE_DIR = (1.0, 0.0)
 LADO_ESPEJO = 0.86               # la hoja de latón, de tamaño de mano
 
 # Obstáculos: contrafuertes de piedra y una reja colgada. Cortan el rayo.
 OBSTACULOS = [
-    ('contrafuerte', 4.30, 0.00, 0.62, 2.28),    # x, z, ancho, alto
-    ('contrafuerte', 8.55, 0.00, 0.66, 2.60),
+    ('contrafuerte', 4.30, 0.00, 0.62, 1.78),    # x, z, ancho, alto
+    ('contrafuerte', 8.55, 0.00, 0.66, 2.02),
     # La reja tapa la bajada por la segunda columna: es la ruta corta que a
     # primera vista parece la buena, y por eso está ahí.
-    ('reja',         2.28, 3.26, 1.58, 0.18),
+    ('reja',         2.28, 2.42, 1.58, 0.16),
 ]
 
 # Pantallas de papel en hornacinas. Se encienden cuando les llega el haz.
@@ -131,8 +148,8 @@ OBSTACULOS = [
 # justo encima de una ménsula; la del sur, por encima del contrafuerte, que es
 # lo que convierte el contrafuerte en un obstáculo con sentido y no en adorno.
 PANTALLAS = [
-    ('norte', 8.20, 6.20, 1.10, 0.90),           # x, z, ancho, alto
-    ('sur',  10.18, 3.20, 0.82, 1.00),
+    ('norte', 8.20, 5.02, 1.10, 0.84),           # x, z, ancho, alto
+    ('sur',  10.18, 2.28, 0.82, 0.84),
 ]
 
 
@@ -271,20 +288,66 @@ def trazar(espejos, divisores=(), max_rebotes=14):
 Y_PLANO = 0.5 * (HAZ_Y0 + HAZ_Y1)     # profundidad del plano de juego
 
 
+def _perfil_zocalo(u):
+    """Altura del zócalo de sillarejo, ondulada.
+
+    Un límite recto entre los dos materiales sería otra línea horizontal más.
+    Ondulado se lee como lo que es: el revoco se ha ido cayendo por arriba y el
+    sillarejo asoma donde ha aguantado.
+    """
+    x = np.asarray(u, np.float64) * AW
+    return (2.45
+            + 0.55 * np.sin(x * 0.62 + 0.8)
+            + 0.26 * np.sin(x * 1.45 - 2.1)
+            + 0.62 * (_ruido_pared(x * 0.34, np.zeros_like(x)) - 0.5))
+
+
+def _ruido_pared(a, b):
+    a = np.atleast_1d(np.asarray(a, np.float64))
+    b = np.atleast_1d(np.asarray(b, np.float64))
+    a, b = np.broadcast_arrays(a, b)
+    return e4.sample_tex(a, b)
+
+
 def muro_y_sala(buf):
-    blit_quad(buf, [(0, Y_MURO, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (0, Y_MURO, AH)], 'muro')
-    # zócalo corrido
-    blit_quad(buf, [(0, Y_MURO - 0.16, 0), (AW, Y_MURO - 0.16, 0),
-                    (AW, Y_MURO - 0.16, 1.15), (0, Y_MURO - 0.16, 1.15)], 'zocalo')
-    blit_quad(buf, [(0, Y_MURO - 0.16, 1.15), (AW, Y_MURO - 0.16, 1.15),
-                    (AW, Y_MURO, 1.15), (0, Y_MURO, 1.15)], 'zocalo', 1.18)
-    # suelo
+    """La sala: muro del fondo, testeros, suelo y techo.
+
+    Antes esto era un alzado de muro y nada más, y el resultado se leía como
+    cosas colgadas de una pared. Una sala necesita que se vea por dónde acaba:
+    suelo que se aleja, testeros que giran y un techo que cierra. Con eso el
+    haz deja de cruzar un plano y pasa a cruzar un volumen.
+    """
+    # revoco arriba, sillarejo abajo, con el límite irregular
+    blit_quad(buf, [(0, Y_MURO, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (0, Y_MURO, AH)],
+              'revoco',
+              alpha=lambda u, v: v * AH > _perfil_zocalo(u))
+    blit_quad(buf, [(0, Y_MURO, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (0, Y_MURO, AH)],
+              'muro',
+              alpha=lambda u, v: v * AH <= _perfil_zocalo(u))
+    # calas de revoco perdido: el sillarejo asoma por encima del límite
+    for cx, cz, cw, ch in ((1.85, 3.30, 1.25, 0.95), (6.15, 4.55, 0.95, 0.75),
+                           (9.30, 2.95, 1.05, 1.15)):
+        blit_quad(buf, [(cx, Y_MURO - 0.012, cz), (cx + cw, Y_MURO - 0.012, cz),
+                        (cx + cw, Y_MURO - 0.012, cz + ch), (cx, Y_MURO - 0.012, cz + ch)],
+                  'revoco-roto', 0.92,
+                  alpha=lambda u, v: ((2 * u - 1) ** 2 + (2 * v - 1) ** 2) < 1.0)
+
+    # testeros: el de la izquierda lleva el postigo, el de la derecha cierra
+    blit_quad(buf, [(0, 0, 0), (0, Y_MURO, 0), (0, Y_MURO, AH), (0, 0, AH)], 'muro', 0.66)
+    blit_quad(buf, [(AW, 0, 0), (AW, Y_MURO, 0), (AW, Y_MURO, AH), (AW, 0, AH)], 'muro', 0.52)
+
+    # suelo: entra en el encuadre, y es lo que dice que hay un dentro
     blit_quad(buf, [(0, 0, 0), (AW, 0, 0), (AW, Y_MURO, 0), (0, Y_MURO, 0)], 'suelo')
-    # vigas del techo
-    for x0 in (0.9, 3.4, 5.9, 8.4):
-        box(buf, x0, 0.30, AH - 0.62, 0.34, Y_MURO - 0.30, 0.44, 'viga')
-    blit_quad(buf, [(0, 0.30, AH - 0.18), (AW, 0.30, AH - 0.18),
-                    (AW, Y_MURO, AH - 0.18), (0, Y_MURO, AH - 0.18)], 'viga', 0.72)
+    blit_quad(buf, [(0, Y_MURO - 0.14, 0), (AW, Y_MURO - 0.14, 0),
+                    (AW, Y_MURO - 0.14, 0.42), (0, Y_MURO - 0.14, 0.42)], 'zocalo', 1.10)
+
+    # techo y vigas, que cierran por arriba
+    blit_quad(buf, [(0, 0, AH), (AW, 0, AH), (AW, Y_MURO, AH), (0, Y_MURO, AH)], 'viga', 0.55)
+    # Las vigas van casi embebidas. Sobresaliendo 38 cm, con el escorzo
+    # lateral cada una enseñaba su cara delantera a contraluz y la fila se leía
+    # como banderines negros colgados del techo.
+    for x0 in (0.75, 3.05, 5.35, 7.65, 9.95):
+        box(buf, x0, 0.20, AH - 0.20, 0.28, Y_MURO - 0.28, 0.17, 'viga')
 
 
 def postigo(buf):
@@ -301,19 +364,33 @@ def postigo(buf):
                     (0.86, 0.10, z + 0.50), (0.20, 0.42, z + 0.50)], 'viga', 0.9)
 
 
-def bastidor(buf):
-    """Varillas de hierro de suelo a techo: son las que fijan la rejilla.
+def bastidor(buf, ocupados=()):
+    """Brazos de hierro en voladizo desde el muro, uno por anclaje.
 
-    Sin ellas los espejos estarían flotando y la rejilla sería una convención
-    invisible. Con ellas se ve por qué un espejo sólo puede ir donde puede ir.
+    Antes eran siete varillas de suelo a techo. Repartidas por todo el ancho y
+    cruzando la lámina entera, se leían como una cuadrícula dibujada encima del
+    muro, no como algo que estuviera en la sala.
+
+    Un brazo es otra cosa: sale del muro, avanza hacia el observador y termina
+    en su collarín. Tiene volumen, coge la luz por una cara y **proyecta su
+    sombra sobre el muro**, que es lo que dice que hay distancia entre el muro
+    y el plano donde se juega. La rejilla sigue viéndose —está en los
+    collarines— y ha dejado de ser una retícula.
     """
-    for x in REJILLA_X:
-        box(buf, x - 0.026, Y_PLANO - 0.026, 0.0, 0.052, 0.052, AH - 0.20, 'hierro')
+    ocupados = {(round(x, 3), round(z, 3)) for x, z in ocupados}
     for x, z in anclajes():
-        if True:
-            # collarín del anclaje, siempre visible aunque no haya espejo
-            box(buf, x - 0.058, Y_PLANO - 0.058, z - 0.045, 0.116, 0.116, 0.09,
-                'laton-mate')
+        # Una ménsula corta y oscura. Le puse antes una placa contra el muro y
+        # fue peor: treinta y cinco placas repartidas por la rejilla volvían a
+        # dibujar la cuadrícula que este cambio venía a quitar.
+        box(buf, x - 0.019, Y_PLANO, z - 0.019, 0.038, Y_MURO - Y_PLANO - 0.02, 0.038,
+            'hierro')
+        if (round(x, 3), round(z, 3)) in ocupados:
+            # El latón sólo donde hay pieza. Un anclaje vacío es un agujero en
+            # el muro, no una joya: si todos brillan igual, el tablero no dice
+            # dónde está montado nada.
+            box(buf, x - 0.05, Y_PLANO - 0.05, z - 0.04, 0.10, 0.10, 0.08, 'laton-mate')
+        else:
+            box(buf, x - 0.032, Y_PLANO - 0.014, z - 0.026, 0.064, 0.05, 0.052, 'hierro')
 
 
 def espejo(buf, x, z, ori, mat='laton'):
@@ -323,13 +400,19 @@ def espejo(buf, x, z, ori, mat='laton'):
     nx, nz = (bz - az), -(bx - ax)
     n = math.hypot(nx, nz)
     nx, nz = nx / n * g, nz / n * g
-    blit_quad(buf, [(ax, Y_PLANO - 0.24, az), (bx, Y_PLANO - 0.24, bz),
-                    (bx, Y_PLANO + 0.24, bz), (ax, Y_PLANO + 0.24, az)], mat)
-    blit_quad(buf, [(ax + nx, Y_PLANO - 0.24, az + nz), (bx + nx, Y_PLANO - 0.24, bz + nz),
-                    (bx + nx, Y_PLANO + 0.24, bz + nz), (ax + nx, Y_PLANO + 0.24, az + nz)],
+    # El canto de la hoja va en profundidad, y 48 cm de canto eran demasiados:
+    # con el escorzo lateral, el canto de un espejo '/' se proyectaba casi
+    # paralelo a su propia cuerda y la hoja se cerraba en una astilla. Un
+    # espejo es una plancha fina; con el canto fino la hoja se lee como lo que
+    # es, una diagonal con brillo.
+    d = 0.10
+    blit_quad(buf, [(ax, Y_PLANO - d, az), (bx, Y_PLANO - d, bz),
+                    (bx, Y_PLANO + d, bz), (ax, Y_PLANO + d, az)], mat)
+    blit_quad(buf, [(ax + nx, Y_PLANO - d, az + nz), (bx + nx, Y_PLANO - d, bz + nz),
+                    (bx + nx, Y_PLANO + d, bz + nz), (ax + nx, Y_PLANO + d, az + nz)],
               'laton-mate', 0.72)
-    # pinza sobre la varilla
-    box(buf, x - 0.10, Y_PLANO - 0.10, z - 0.09, 0.20, 0.20, 0.18, 'laton-mate')
+    # pinza sobre la ménsula
+    box(buf, x - 0.09, Y_PLANO - 0.09, z - 0.08, 0.18, 0.18, 0.16, 'laton-mate')
 
 
 def obstaculos(buf):
@@ -513,8 +596,8 @@ def resplandor(img, buf, tramos, encendidas):
 
 # --------------------------------------------------------------- encuadre ---
 
-def configure(out_w, out_h, top=0.0, bot=0.0, margen=0.014, rise=0.17,
-              ventana=None, z_rango=None):
+def configure(out_w, out_h, top=0.0, bot=0.0, margen=0.014, rise=0.42,
+              ventana=None, z_rango=None, skew=0.26):
     """Casi alzado: `rise` bajo a propósito.
 
     P02 mira el terrario desde 24° y eso le da el suelo. Aquí el suelo no
@@ -527,13 +610,20 @@ def configure(out_w, out_h, top=0.0, bot=0.0, margen=0.014, rise=0.17,
     TOP_OUT, BOT_OUT = top, bot
     W, H = out_w * SS, out_h * SS
     x0, x1 = ventana if ventana else (0.0, AW)
-    u = W * (1 - 2 * margen) / (x1 - x0)
+    # El ancho útil lo ocupa la sala *escorzada*: el testero del fondo se va
+    # hacia la derecha AD·skew, y si no se descuenta aquí la sala se sale del
+    # encuadre por ese lado.
+    u = W * (1 - 2 * margen) / (x1 - x0 + AD * skew)
     ox = W * margen - x0 * u
-    z_lo, z_hi = z_rango or (0.10, AH - 0.05)
-    alto = (z_hi - z_lo) * u + AD * u * rise
+    # el suelo entra en el encuadre: es lo que dice que hay un dentro
+    z_lo, z_hi = z_rango or (-0.15, AH - 0.10)
+    # Anclado por abajo, no centrado. Centrando, cuando la sala no cabe se
+    # recorta por los dos lados y lo primero que se va es el suelo, que es
+    # justo lo que hace falta para que esto se lea como una sala.
     banda = top * SS
-    oy = banda + (H - banda - bot * SS - alto) / 2 + z_hi * u + AD * u * rise
-    e4.setup(e4.Frontal(u, ox, oy, depth_rise=rise), MATS, out_w, out_h, ss=SS,
+    pie = H - bot * SS
+    oy = pie + z_lo * u
+    e4.setup(e4.Frontal(u, ox, oy, depth_rise=rise, skew=skew), MATS, out_w, out_h, ss=SS,
              coursing=COURSING, features=FEATURES, top=top, bot=bot)
 
 
@@ -685,8 +775,12 @@ def overlay_svg(uri):
 
 
 
-VENTANA_CAUSALIDAD = (4.90, 11.05)
-Z_CAUSALIDAD = (2.70, 7.55)
+VENTANA_CAUSALIDAD = (5.30, 10.95)
+# Igual que en móvil, esta ventana pedía hasta z = 7,55 y el techo está a 6,6.
+# Y estaba mal encuadrada para lo que la lámina tiene que enseñar: la pantalla
+# del sur quedaba cortada por el borde, justo la que se enciende. Las dos
+# pantallas entran enteras, que es lo único que esta lámina viene a demostrar.
+Z_CAUSALIDAD = (1.10, 5.76)
 
 CADENA = (
     ('1', 'El divisor parte el haz', 'la mitad sigue recto y la mitad gira.'),
@@ -794,7 +888,7 @@ def build_scene(buf, espejos, divisores, encendidas, en_mano=True):
     muro_y_sala(buf)
     postigo(buf)
     obstaculos(buf)
-    bastidor(buf)
+    bastidor(buf, list(espejos) + [p for p, _ in dict(divisores).items()])
     for (x, z), ori in espejos.items():
         espejo(buf, x, z, ori)
     for (x, z), ori in dict(divisores).items():
@@ -851,7 +945,11 @@ def main():
         (args.out / f'{nombre}.svg').write_text(overlay(uri), encoding='utf-8')
         print(f'Escrito {args.out}/{nombre}.svg  ({OUT_W}x{OUT_H})')
 
-    VENT_MOVIL, Z_MOVIL = (4.55, 9.45), (3.05, 7.45)
+    # Reencuadre de móvil. El recorte venía de antes de bajar la sala a 6,6 m
+    # de alto: pedía hasta z = 7,45, o sea metro y medio por encima del techo,
+    # y el tercio de arriba de la lámina era techo vacío. Ahora la ventana
+    # empieza en el suelo y acaba justo bajo las vigas.
+    VENT_MOVIL, Z_MOVIL = (4.85, 9.15), (0.45, 6.05)
     laminas = [('gameplay-navy', 'navy', 1180, 900, overlay_svg, 104, 120, None, None),
                ('gameplay-claro', 'claro', 1180, 900, overlay_svg, 104, 120, None, None),
                ('gameplay-movil-navy', 'navy', 390, 730, overlay_movil, 62, 160,

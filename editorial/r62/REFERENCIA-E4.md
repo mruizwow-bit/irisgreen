@@ -201,3 +201,29 @@ Dos preguntas más, las dos por errores concretos que costaron vueltas:
    por (x, y) funciona mientras sea tendido; en una falda salen chorreones.
 7. ¿El vector de vista es el que de verdad tiene la cámara? En P02 tomarlo por
    «de frente» a secas puso el Fresnel del agua a 1 en toda la lámina.
+
+## Lo que P03 añade al motor
+
+**La cámara `Frontal` acepta un sesgo lateral (`skew`).** Sin él, la proyección
+es `x → ox + x·u` y la profundidad no toca la horizontal; la consecuencia es
+que **cualquier plano de x constante proyecta sobre una recta**. Un testero, un
+costado, el canto de cualquier cosa orientada en profundidad: dibujados y
+matemáticamente invisibles. Una sala con esa cámara se lee como alzado por
+geometría, y no hay iluminación que lo arregle.
+
+Con `skew = 0.26` los testeros se abren y la sala tiene retorno. Por defecto
+vale `0`, que es lo que P01 y P02 aprobados tienen dibujado, y
+`test_e4_motor_identico.py` sigue devolviendo las cuatro láminas de P01
+idénticas byte a byte. Entra también en el vector de vista, que pasa a ser
+`normalizar(skew, -1, rise)`: es la misma corrección que ya hubo que hacer al
+dar por bueno `(0,-1,0)`.
+
+**Regla que deja P03:** antes de acusar a la luz de no dar volumen, comprobar
+si la geometría que debería dar ese volumen es visible con la cámara que hay.
+Aquí se perdieron dos intentos iluminando una sala cuyos testeros no podían
+verse.
+
+**Alcance de la marcha de sombras.** Las sombras en espacio de pantalla tienen
+alcance finito en el mundo, del orden de 3,5 unidades. Si el emisor y el
+receptor están más lejos que eso, no hay sombra y no hay aviso: sale una imagen
+plausible y muda. En P03 costó un muro entero a 4,2 de profundidad.

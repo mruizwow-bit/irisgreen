@@ -237,3 +237,82 @@ onda, ni pérdida por ángulo de incidencia.
 una regla clara de juego, no porque se haya modelado un vidrio semirreflectante
 real. Si algún día se añade información óptica de verdad al seleccionar una
 pieza, irá con su fuente y separada de lo que el juego calcula.
+
+---
+
+## Rework de QA humano (R62_P03_HUMAN_QA_REWORK_REQUIRED)
+
+Cuatro defectos señalados, cuatro correcciones. Lo que se cambió y por qué.
+
+### 1 · «No se lee como una sala»
+
+Era cierto y la causa era geométrica, no de iluminación. La cámara frontal
+proyectaba `x → ox + x·u` sin que la profundidad tocara la horizontal, y con
+eso **un plano de x constante —un testero— proyecta sobre una recta**: los
+testeros estaban dibujados desde el principio y era imposible verlos. Ninguna
+cantidad de luz iba a arreglar eso.
+
+La cámara `Frontal` acepta ahora un `skew` que desplaza lateralmente lo que se
+aleja. Con `skew = 0.26` los testeros se abren, el suelo se aleja de verdad y
+la sala tiene retorno. El valor por defecto es `0`, que es exactamente lo que
+P01 y P02 aprobados tienen dibujado: `test_e4_motor_identico.py` sigue dando
+las cuatro láminas de P01 **idénticas byte a byte**. El motor se ha extendido,
+no se ha cambiado.
+
+Con el volumen a la vista se corrigió además el encuadre: anclado por abajo en
+vez de centrado. Centrando, cuando la sala no cabía se recortaba por los dos
+lados y lo primero que se iba era el suelo, que es justo lo que hacía falta.
+
+### 2 · «El muro es una retícula casi perfecta»
+
+Revoco arriba, sillarejo abajo, con el límite entre los dos irregular
+(`_perfil_zocalo`: dos senos de distinto período más ruido) y tres calas de
+revoco perdido por donde asoma la piedra. El muro dejó de tener una sola
+textura y un solo ritmo.
+
+### 3 · «La luz no actúa»
+
+Dos mitades, y sólo tenía diagnosticada una.
+
+La primera: **nada proyectaba sombra sobre el muro**. La causa era la marcha de
+sombras en espacio de pantalla, que tiene alcance finito en el mundo (~3,5
+unidades), contra una separación plano de juego → muro de más de 3 m. El muro
+pasó de y = 4,2 a y = 2,6.
+
+La segunda: **el haz pasaba a un palmo de la pared sin iluminarla**. El plano
+de juego estaba en mitad de la sala; se ha acercado al muro (`HAZ_Y0, HAZ_Y1 =
+1,98 / 2,50`) y ahora el haz roza el muro, lo ilumina a lo largo de todo su
+recorrido y cada pieza tira su sombra corta detrás. Un haz que ilumina algo
+deja de ser una barra pintada encima.
+
+### 4 · «El bastidor es ruido»
+
+Las siete varillas verticales de suelo a techo se fueron. Lo que se probó
+después, y falló, queda anotado porque explica el resultado:
+
+- **Brazos en voladizo con placa contra el muro.** Treinta y cinco placas
+  oscuras repartidas por la rejilla volvían a dibujar la cuadrícula.
+- **Brazos largos.** Con el plano de juego en mitad de la sala cada brazo
+  tiraba una sombra larga, y treinta y cinco sombras iguales en diagonal eran
+  otra vez una retícula, ahora de sombras.
+
+Lo que quedó: una ménsula corta y oscura por anclaje, y **latón sólo donde hay
+pieza montada**. Un anclaje vacío es un agujero en el muro, no una joya: si
+todos brillan igual, el tablero no dice dónde está montado nada.
+
+### Encuadres rehechos
+
+Móvil y causalidad pedían hasta z = 7,45 y z = 7,55 de una sala que ahora mide
+6,6 de alto: el tercio superior de ambas láminas era techo vacío. Además la
+lámina de causalidad cortaba por el borde la pantalla del sur, que es
+precisamente la que se enciende y lo único que esa lámina viene a demostrar.
+Las dos ventanas están rehechas contra la sala que hay.
+
+### Lo que sigue corto
+
+- Los anclajes vacíos han quedado **muy** callados. Se lee mejor como imagen y
+  peor como tablero: en producción habrá que darles un estado de foco al pasar
+  la pieza por encima, no más brillo permanente.
+- El testero de la derecha se ve poco; el encuadre lo deja casi de canto.
+- La sala no tiene nada que la feche ni que diga para qué sirve. Es un volumen
+  correcto y todavía anónimo.

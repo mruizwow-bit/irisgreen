@@ -111,9 +111,15 @@ class Frontal(Camera):
     del agua en vez de sólo su canto. Sin ella el terreno sería una línea.
     """
 
-    def __init__(self, u, ox, oy, tilt=0.30, depth_rise=0.34):
+    def __init__(self, u, ox, oy, tilt=0.30, depth_rise=0.34, skew=0.0):
         self.u = u
         self.ox, self.oy = ox, oy
+        # `skew` desplaza lateralmente lo que se aleja. Con skew = 0 un plano de
+        # x constante —un testero— proyecta sobre una recta y desaparece: la
+        # sala se lee como alzado por geometría, no por iluminación. Con un
+        # sesgo pequeño el testero se abre y la sala tiene retorno. Por defecto
+        # 0, que es lo que P01 y P02 aprobados tienen dibujado.
+        self.skew = skew
         self.tilt = tilt              # desempate de superficies coplanarias
         self.depth_rise = depth_rise  # cuánto sube en pantalla lo que se aleja
         # Hacia dónde está el observador. No es (0,-1,0): un desplazamiento
@@ -124,12 +130,12 @@ class Frontal(Camera):
         # Tomarlo por (0,-1,0) ponía el ángulo de visión a ras del suelo, y con
         # eso el Fresnel del agua salía 1 en toda la lámina: espejo opaco en vez
         # de agua.
-        v = np.array([0.0, -1.0, depth_rise])
+        v = np.array([skew, -1.0, depth_rise])
         self.view = v / np.linalg.norm(v)
 
     def project(self, p):
         x, y, z = p
-        return (self.ox + x * self.u,
+        return (self.ox + x * self.u + y * self.u * self.skew,
                 self.oy - z * self.u - y * self.u * self.depth_rise)
 
     def depth(self, wx, wy, wz):
@@ -138,7 +144,7 @@ class Frontal(Camera):
         return -wy + wz * self.tilt * 0.01
 
     def screen_dir(self, L):
-        return np.array([L[0] * self.u,
+        return np.array([L[0] * self.u + L[1] * self.u * self.skew,
                          -L[2] * self.u - L[1] * self.u * self.depth_rise])
 
     def depth_per_world(self, L):
