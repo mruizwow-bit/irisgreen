@@ -246,6 +246,12 @@ jobs:
           R51_CANDIDATE_FILE: build/r04/r04-candidate-manifest.json
         run: npm run publish:r04:candidate
 
+      - name: Probe private R04 candidate retrieval
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: npm run probe:r04:candidate-store
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
