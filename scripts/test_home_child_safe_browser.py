@@ -41,6 +41,8 @@ async def main():
   need(visual['sabik'] and visual['sabik']['display']=='block' and visual['sabik']['bg']!='rgba(0, 0, 0, 0)','Sabik chassis CSS not rendered '+repr(visual))
   need(visual['discover'] and visual['discover']['display']=='grid','Entiende y encuentra layout CSS not rendered '+repr(visual))
   need(visual['footer'] and visual['footer']['display']=='flex','Home footer CSS not rendered '+repr(visual))
+  await page.set_viewport_size({'width':1440,'height':900})
+  await page.wait_for_timeout(50)
   sabik_geom=await page.evaluate("""() => {
     const img=document.querySelector('#sabik-web-master');
     const widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget');
