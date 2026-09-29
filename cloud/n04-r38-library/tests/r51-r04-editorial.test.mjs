@@ -66,3 +66,14 @@ test('R04 safe variants inherit the reviewed content age bands instead of becomi
     assertCanonicalAgeBands(safeEntity.audience);
   }
 });
+
+test('R04 approved-package routes pending A2 stay held and out of retrieval',()=>{
+  const pending=built.entities.filter(e=>e.route_status==='APPROVED_PACKAGE_PENDING_A2');
+  assert.ok(pending.length>0);
+  assert.equal(built.report.routes_pending_a2,full.filter(e=>e.route_status==='APPROVED_PACKAGE_PENDING_A2').length);
+  assert.equal(built.report.held_pending_a2_entities,pending.length);
+  for(const e of pending){
+    assert.equal(e.active,false,e.entity_id);
+    assert.equal(e.retrieval_eligible,false,e.entity_id);
+  }
+});
