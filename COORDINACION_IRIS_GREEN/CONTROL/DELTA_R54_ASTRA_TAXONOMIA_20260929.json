@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R54-ASTRA-TAXONOMY-DECISION-20260929",
+  "date": "2026-09-29",
+  "issue": 318,
+  "status": "R54_TAXONOMY_DECISION_RESOLVED_R54_SCOPE_LIMITED",
+  "decisions": {
+    "canonical_url_age_values": [
+      "AGE_0_12",
+      "AGE_13_17",
+      "AGE_18_PLUS",
+      "ALL_AGES"
+    ],
+    "legacy_input_compatibility": "ONE_TEMPORARY_MAPPING_FUNCTION_OR_TABLE",
+    "emit_legacy_values": false,
+    "break_existing_48_links": false,
+    "human_qa_6_cards": "PROCEED_AFTER_QA_FIXTURE_CANONICAL_COPY",
+    "rerender_art": false,
+    "migrate_48_public_pages_in_r54": false,
+    "transversal_owner": "A2_GLOBAL"
+  },
+  "qa_fixture_copy": {
+    "es": [
+      "0–12 años",
+      "13–17 años",
+      "18 años o más",
+      "Todas las edades"
+    ],
+    "en": [
+      "Ages 0–12",
+      "Ages 13–17",
+      "Ages 18+",
+      "All ages"
+    ]
+  },
+  "preserved": [
+    "R54_6_OF_6_CARD_ART_KEEP",
+    "DARK_NAVY_DEFAULT",
+    "LIGHT_GLOBAL_ALTERNATIVE",
+    "A2_SINGLE_GLOBAL_TOKEN_SOURCE",
+    "HOME_V4_A2_SCOPE"
+  ],
+  "expected_marker": "R54_CLAUDE_QA_6_CARDS_CANONICAL_AGE_READY_FOR_MARIA",
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_48_PUBLIC_ROUTE_MIGRATION_FROM_R54",
+    "NO_ART_REWORK",
+    "NO_SECOND_GLOBAL_TOKEN_SHEET"
+  ]
+}
