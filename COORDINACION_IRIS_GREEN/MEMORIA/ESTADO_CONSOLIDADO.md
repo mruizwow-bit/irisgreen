@@ -746,3 +746,13 @@ El único unlock sigue siendo `R64_TALLER_6_CARDS_HUMAN_APPROVED_FINAL_UNLOCK_R6
 El paquete de coordinación recibido fue rebasado por Claude sobre `818440d3`, contiene 20 commits y SHA-256 `77f03ed2e0d65c07386678d172587fa73bafff0ea41a4d15aec92d83abd63bc9`. Como la rama canónica avanzó después, no se reaplica el paquete completo: se porta solo el acuse R65 sobre el estado vivo.
 
 No hay cambio normativo.
+
+## R63 · Sakura · visual cerrado / runtime pendiente · 29/09/2026
+
+`R63_SAKURA_VISUAL_PASS_RUNTIME_HANDOFF_REQUIRED`.
+
+Visual PASS: la sala sensorial Sakura queda congelada. No se persigue fotorealismo adicional. Falta únicamente cierre de movimiento/fallback/lifecycle/a11y/performance y handoff reproducible.
+
+Claude puede preparar ZIP cuando esos checks pasen; no push propio. A2 integra después de verificación Astra. Siguiente sala solo tras HUMAN QA María.
+
+Marcador: `R63_CLAUDE_SAKURA_RUNTIME_HANDOFF_READY_FOR_ASTRA_A2`.
