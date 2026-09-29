@@ -1,0 +1,159 @@
+name: Taller definitivo reconcile dry-run
+on:
+  push:
+    branches: [agent2/sabik-iris-r08-20260924]
+    paths:
+      - '.github/workflows/taller-definitivo-reconcile-dryrun.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  reconcile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Reconstruct canonical Taller patches
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/taller-patches
+          for spec in             "visual:9cda5c167954331b50ef1eb92928bcb9da9ee8956e6639d8a4488bd77423d8be"             "pilotos:ba9368ad0f4884973eda10612a8fd9ef7a168c8cd61f7d13e3f75bdd62fde757"             "r2:28d92ff87c05b16fc2ac069a8a4db095e990b26cc09e7aba6b58beb059d0b90b"             "sync:0acae37095ffe42fe275d4f8e403b5dca65f5aee7eea6c3a57e43c738a45affc"             "norma:e2999d63a995d330fbc6ad9f3dab86915a93384507ac7ea76e1c83a706e9000f"             "tokens:f2700650f02b3da75da917494f22c9211f43bfc54ed55bed65733b002d61fe55"
+          do
+            name="${spec%%:*}"; expected="${spec#*:}"
+            cat .taller-definitivo-chain/${name}-*.b64 | tr -d '\n' | base64 -d > /tmp/taller-patches/${name}.patch.gz
+            actual="$(sha256sum /tmp/taller-patches/${name}.patch.gz | awk '{print $1}')"
+            test "$actual" = "$expected"
+            gzip -t /tmp/taller-patches/${name}.patch.gz
+            gzip -dc /tmp/taller-patches/${name}.patch.gz > /tmp/taller-patches/${name}.patch
+          done
+
+      - name: Remove incorrect R64 QA-page mounting locally
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "A2 Taller reconcile"
+          git config user.email "actions@users.noreply.github.com"
+          git restore --source=a7e65891872dd3597b37c2f612fd64f5cc6a4ddd -- es/taller/index.html en/workshop/index.html
+          git rm -f assets/r64-taller-six-cards.js assets/r64-taller-six-cards.css scripts/test_r64_taller_six_cards.py .github/workflows/r64-taller-six-cards.yml 2>/dev/null || true
+          git rm -rf .r64-taller-fix 2>/dev/null || true
+          git add -A
+          git commit -m "dry-run: remove R64 QA overlay before definitive Taller" || true
+
+      - name: Apply R47 definitive plus R54 approved chain
+        shell: bash
+        run: |
+          set -euo pipefail
+          for name in visual pilotos r2 sync norma tokens; do
+            echo "::group::git am $name"
+            if ! git am --3way /tmp/taller-patches/${name}.patch; then
+              echo "CONFLICTS:"
+              git status --short
+              git diff --name-only --diff-filter=U || true
+              git am --abort || true
+              exit 1
+            fi
+            echo "::endgroup::"
+          done
+
+      - name: Reconcile R54 token donor to A2 canonical tokens
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['es/taller/index.html','en/workshop/index.html','scripts/taller_suite/portada.py']:
+              p=Path(name)
+              if p.exists():
+                  s=p.read_text()
+                  s=s.replace('/assets/ig-tokens.css','/assets/ig-global-ui-tokens-2026.css')
+                  s=s.replace('assets/ig-tokens.css','assets/ig-global-ui-tokens-2026.css')
+                  p.write_text(s)
+          p=Path('assets/ig-global-ui-tokens-2026.css')
+          s=p.read_text()
+          if '--ig-shadow-lifted:' not in s:
+              s += '\n:root{--ig-shadow-lifted:0 8px 22px -12px rgb(0 0 0 / .28);}\n'
+              p.write_text(s)
+          Path('assets/ig-tokens.css').unlink(missing_ok=True)
+          PY
+          git add -A
+          git commit -m "dry-run: reconcile Taller launcher with canonical global tokens" || true
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Build definitive Taller
+        run: python scripts/build_site.py
+
+      - name: Verify product is Taller, not QA fixture
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          from bs4 import BeautifulSoup
+          expected_es=[
+            'dibujo','diseno-grafico','patrones','pixel-art','color','comic',
+            'estructuras','arquitectura','maquinas','circuitos','papiroflexia',
+            'programacion','robotica','videojuegos','simulaciones',
+            'ritmo','composicion','sintesis-sonido','videomapping','modelado-3d',
+            'escritura-restricciones','mundos','lenguas-inventadas','juegos-de-mesa',
+            'fotografia','moda-textil','ideas'
+          ]
+          expected_en=[
+            'drawing','graphic-design','patterns-generative-art','pixel-art','colour','comics-storyboarding',
+            'structures','architecture-plans','machines','circuits','origami-polyhedra',
+            'coding','robotics','video-game-design','simulations',
+            'rhythm-sequencer','composition','synthesis-soundscapes','projection-mapping','3d-modelling',
+            'constraint-writing','worlds','invented-languages','board-games',
+            'photography-composition','fashion-textiles','ideas'
+          ]
+          for lang,root,slugs in [('es','es/taller',expected_es),('en','en/workshop',expected_en)]:
+              hub=Path('dist')/root/'index.html'
+              text=hub.read_text()
+              low=text.lower()
+              for forbidden in ['arte r54 aprobado','human qa','taller · r64','seis tarjetas para revisar']:
+                  assert forbidden not in low,(lang,forbidden)
+              soup=BeautifulSoup(text,'html.parser')
+              hrefs={a.get('href') for a in soup.select('a[href]')}
+              for slug in slugs:
+                  route=f'/{root}/{slug}/'
+                  assert route in hrefs,(lang,'missing link',route)
+                  page=Path('dist')/root/slug/'index.html'
+                  assert page.exists(),(lang,'missing page',slug)
+                  pt=page.read_text().lower()
+                  assert 'igt-app' in pt or 'ig-r42-shell' in pt,(lang,'not workspace',slug)
+              assert len(slugs)==27
+          for asset in [
+            'img/taller/escenas/dibujo.avif','img/taller/escenas/estructuras.avif',
+            'img/taller/escenas/programacion.avif','img/taller/escenas/videojuegos.avif',
+            'img/taller/escenas/mundos.avif','img/taller/escenas/modelado-3d.avif']:
+              assert (Path('dist')/asset).exists(),asset
+          print('TALLER_DEFINITIVO_27_27_AND_R54_6_PASS')
+          PY
+
+      - name: Run Taller storage and visual sync gates
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/check_taller_storage.py
+          python scripts/check_escenas_sync.py
+
+      - name: Save reconciliation evidence
+        if: always()
+        shell: bash
+        run: |
+          mkdir -p reports/taller-definitivo-dryrun
+          git status --short > reports/taller-definitivo-dryrun/status.txt
+          git log --oneline --decorate -35 > reports/taller-definitivo-dryrun/log.txt
+          git diff a7e65891872dd3597b37c2f612fd64f5cc6a4ddd..HEAD --stat > reports/taller-definitivo-dryrun/stat.txt || true
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: taller-definitivo-reconcile-dryrun
+          path: reports/taller-definitivo-dryrun
