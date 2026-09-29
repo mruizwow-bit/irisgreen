@@ -9,7 +9,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs && node scripts/build-cloud-library-v2.mjs",
-    "test": "node scripts/build-cloud-library-v2.mjs && node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs tests/request-body-r03.test.mjs tests/source-groups.test.mjs tests/cloud-library-v2.test.mjs tests/cloud-library-http-v2.test.mjs tests/r51-source-freeze.test.mjs tests/r51-source-registry.test.mjs tests/r51-r04-source-reader.test.mjs tests/r51-r04-editorial.test.mjs tests/r51-r04-games.test.mjs tests/r51-r04-routines.test.mjs tests/r51-r04-routines.test.mjs tests/r51-r04-age-taxonomy.test.mjs",
+    "test": "node scripts/build-cloud-library-v2.mjs && node --test tests/library.test.mjs tests/retrieval-r39.test.mjs tests/execution-policy.test.mjs tests/qa-r39-integration.test.mjs tests/request-body-r03.test.mjs tests/source-groups.test.mjs tests/cloud-library-v2.test.mjs tests/cloud-library-http-v2.test.mjs tests/r51-source-freeze.test.mjs tests/r51-source-registry.test.mjs tests/r51-r04-source-reader.test.mjs tests/r51-r04-editorial.test.mjs tests/r51-r04-games.test.mjs tests/r51-r04-routines.test.mjs tests/r51-r04-routines.test.mjs tests/r51-r04-age-taxonomy.test.mjs tests/r51-r04-interests.test.mjs",
     "test:retrieval": "node --test tests/retrieval-r39.test.mjs",
     "probe:retrieval": "node scripts/probe-retrieval-r39.mjs",
     "seal:deploy": "node scripts/seal-deploy.mjs",
@@ -17,7 +17,8 @@
     "seal:cloud-library": "node scripts/seal-cloud-library-v2.mjs",
     "build:r04:editorial": "node scripts/build-r04-editorial.mjs",
     "build:r04:games": "node scripts/build-r04-games.mjs",
-    "build:r04:routines": "node scripts/build-r04-routines.mjs"
+    "build:r04:routines": "node scripts/build-r04-routines.mjs",
+    "build:r04:interests": "node scripts/build-r04-interests.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
