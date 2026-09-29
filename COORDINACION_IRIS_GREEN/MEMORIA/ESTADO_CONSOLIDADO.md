@@ -1,3 +1,20 @@
+## R61 · Pecera · burbujas prototipo PASS · render 10 min autorizado · 29/09/2026
+
+**Estado: `R61_PECERA_BUBBLES_PROTOTYPE_HUMAN_APPROVED_RENDER_10MIN_AUTHORIZED` · #325.**
+
+HUMAN QA aprueba el prototipo de burbujas. KEEP: columna derecha, anillos ilustrados, grosor/velocidad/densidad actuales, oclusiones y composición ya aprobada. No se mueve la roca ni se reabre composición; tampoco se aumenta densidad por defecto.
+
+Se autoriza render completo ≈10 min + remux con audio aprobado + QA final de NORMAL/REDUCIDO/SIN_MOVIMIENTO, 1440/390/320, loop, rendimiento, codec/peso/hashes/provenance.
+
+Siguiente marcador:
+`R61_PECERA_10MIN_ILLUSTRATED_AV_READY_FOR_ASTRA_MARIA`.
+
+Después STOP para Astra/HUMAN QA. Segunda sala, A2, main y producción siguen HOLD.
+
+Orden: `ORDENES/R61_CLAUDE_RINCON_PECERA/04_ASTRA_BURBUJAS_PASS_RENDER_10MIN.md`.
+
+Normativa: sin cambio transversal; se consumen las normas vigentes.
+
 ## R62 · P03 Rutas de luz · HUMAN QA REWORK · 29/09/2026
 
 **Estado: `R62_P03_HUMAN_QA_REWORK_REQUIRED` · #326.**
