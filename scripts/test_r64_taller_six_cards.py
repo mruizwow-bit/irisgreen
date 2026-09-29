@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-import functools, threading, json, sys, traceback
+import functools, threading, json, traceback
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from playwright.sync_api import sync_playwright
 ROOT=Path(__file__).resolve().parents[1]
 DIST=ROOT/'dist'
+OUT=ROOT/'reports/r64-debug.json'; OUT.parent.mkdir(parents=True,exist_ok=True)
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
 server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(DIST)))
@@ -19,32 +20,60 @@ ages={
  '/en/workshop/':['Ages 0–12','Ages 13–17','Ages 18+','All ages'],
 }
 rows=[]
+def save(extra=None):
+    payload={'cases':rows}
+    if extra: payload.update(extra)
+    OUT.write_text(json.dumps(payload,ensure_ascii=False,indent=2))
 try:
   with sync_playwright() as pw:
     b=pw.chromium.launch()
     for route in expected:
       for width in (1440,390):
+        case={'route':route,'width':width,'checks':{}}
+        rows.append(case); save()
         ctx=b.new_context(viewport={'width':width,'height':900},device_scale_factor=2 if width==390 else 1)
         page=ctx.new_page(); errors=[]
         page.on('pageerror',lambda e: errors.append(str(e)))
-        page.goto(base+route,wait_until='networkidle')
-        page.locator('.r64-main').wait_for(timeout=10000)
-        names=page.locator('.r64-card h2').all_inner_texts()
-        assert names==expected[route],(route,width,'names',names)
-        labels=page.locator('.r64-age-buttons button').all_inner_texts()
-        assert labels==ages[route],(route,width,'ages',labels)
-        assert page.locator('.r64-card').count()==6,(route,width,'card count')
-        assert page.locator('html').get_attribute('data-ig-theme')=='dark',(route,width,'dark initial')
-        page.locator('[data-theme="light"]').click()
-        assert page.locator('html').get_attribute('data-ig-theme')=='light',(route,width,'light toggle')
-        assert page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),(route,width,'overflow',page.evaluate('document.documentElement.scrollWidth'),page.evaluate('innerWidth'))
-        for i in range(6):
-          img=page.locator('.r64-card img').nth(i)
-          assert img.evaluate('(e)=>e.complete&&e.naturalWidth>0'),(route,width,'image',i)
-        assert not errors,(route,width,'pageerrors',errors)
-        rows.append({'route':route,'width':width,'names':names,'ages':labels,'errors':errors,'passed':True})
-        ctx.close()
+        try:
+          page.goto(base+route,wait_until='networkidle')
+          case['checks']['goto']=True; save()
+          page.locator('.r64-main').wait_for(timeout=10000)
+          case['checks']['r64_main']=True; save()
+          names=page.locator('.r64-card h2').all_inner_texts(); case['names']=names
+          case['checks']['names']=names==expected[route]; save()
+          assert case['checks']['names'],(route,width,'names',names)
+          labels=page.locator('.r64-age-buttons button').all_inner_texts(); case['ages']=labels
+          case['checks']['ages']=labels==ages[route]; save()
+          assert case['checks']['ages'],(route,width,'ages',labels)
+          case['checks']['card_count']=page.locator('.r64-card').count()==6; save()
+          assert case['checks']['card_count'],(route,width,'card count',page.locator('.r64-card').count())
+          case['theme_initial']=page.locator('html').get_attribute('data-ig-theme')
+          case['checks']['dark_initial']=case['theme_initial']=='dark'; save()
+          assert case['checks']['dark_initial'],(route,width,'dark initial',case['theme_initial'])
+          page.locator('[data-theme="light"]').click()
+          case['theme_after']=page.locator('html').get_attribute('data-ig-theme')
+          case['checks']['light_toggle']=case['theme_after']=='light'; save()
+          assert case['checks']['light_toggle'],(route,width,'light toggle',case['theme_after'])
+          sw=page.evaluate('document.documentElement.scrollWidth'); iw=page.evaluate('innerWidth')
+          case['scrollWidth']=sw; case['innerWidth']=iw; case['checks']['overflow']=sw<=iw+1; save()
+          assert case['checks']['overflow'],(route,width,'overflow',sw,iw)
+          loaded=[]
+          for i in range(6):
+            ok=page.locator('.r64-card img').nth(i).evaluate('(e)=>e.complete&&e.naturalWidth>0')
+            loaded.append(ok)
+          case['images']=loaded; case['checks']['images']=all(loaded); case['pageerrors']=errors; save()
+          assert case['checks']['images'],(route,width,'images',loaded)
+          case['checks']['pageerrors']=not errors; save()
+          assert not errors,(route,width,'pageerrors',errors)
+          case['passed']=True; save()
+        except Exception as e:
+          case['passed']=False; case['error']=repr(e); case['pageerrors']=errors
+          save({'error':repr(e),'traceback':traceback.format_exc()})
+          raise
+        finally:
+          ctx.close()
     b.close()
 finally:
   server.shutdown()
-print(json.dumps({'cases':rows,'passed':len(rows)==4},ensure_ascii=False))
+save({'passed':len(rows)==4 and all(x.get('passed') for x in rows)})
+print(OUT.read_text())
