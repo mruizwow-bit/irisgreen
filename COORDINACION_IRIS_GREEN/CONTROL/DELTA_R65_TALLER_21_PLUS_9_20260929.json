@@ -42,8 +42,23 @@
   ],
   "age_0_12_variants": {
     "count": 9,
-    "source": "existing frozen R54 manifest/registry only",
-    "if_not_canonical": "R65_AGE_0_12_VARIANT_SET_NOT_CANONICAL_BLOCKED"
+    "canonical_ids": [
+      "circuitos",
+      "arquitectura",
+      "composicion",
+      "sintesis-sonido",
+      "videomapping",
+      "color",
+      "fotografia",
+      "lenguas-inventadas",
+      "escritura-restricciones"
+    ],
+    "taxonomy_id": "AGE_0_12",
+    "legacy_output_forbidden": [
+      "infancia",
+      "childhood"
+    ],
+    "rule": "SAME_STUDIO_SAME_PROCESS_SAME_OR_HIGHER_QUALITY_LESS_DENSITY_LARGER_ACTION_MORE_IMMEDIATE_NO_BABY_AESTHETIC"
   },
   "batching": {
     "base": "7 batches x 3 studies",
