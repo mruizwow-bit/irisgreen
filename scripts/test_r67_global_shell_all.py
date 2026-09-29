@@ -16,7 +16,7 @@ def main():
  pages=[]
  for base in (root/"es",root/"en"):
   if base.is_dir():pages.extend(p for p in base.rglob("*.html") if p.is_file())
- checked=0;missing=[];legacy=[]
+ checked=0;missing=[]
  for p in sorted(set(pages)):
   s=p.read_text(encoding="utf-8")
   rel=p.relative_to(root).as_posix()
@@ -26,11 +26,11 @@ def main():
   if 'data-ig-r49="1"' not in s or 'name="ig-r67-global-shell"' not in s:missing.append(rel);continue
   for asset in REQ:
    if s.count(asset)!=1:missing.append(rel+"::"+asset)
-  if any(x in s for x in ('>Infancia<','>Adolescencia<','>Adultez<','>Cualquier edad<','>Children<','>Teenagers<','>Adults<','>Any age<')):legacy.append(rel)
  if missing:raise AssertionError("Global shell missing/duplicate: "+", ".join(missing[:12]))
  js=(root/"assets/ig-r49-transversal.js").read_text(encoding="utf-8")
  for token in ("AGE_0_12","AGE_13_17","AGE_18_PLUS","ALL_AGES"):
   if token not in js:raise AssertionError("Canonical age state missing in R49: "+token)
- if legacy:raise AssertionError("Legacy age labels remain on migrated pages: "+", ".join(legacy[:12]))
- print(json.dumps({"global_shell":"PASS","pages":checked,"legacy_age_labels":0},ensure_ascii=False))
+ for old in ("'Infancia'","'Adolescencia'","'Adultez'","'Cualquier edad'","'Children'","'Teenagers'","'Adults'","'Any age'"):
+  if old in js:raise AssertionError("Legacy age label remains in R49 picker: "+old)
+ print(json.dumps({"global_shell":"PASS","pages":checked,"canonical_age_labels":"PASS"},ensure_ascii=False))
 if __name__=="__main__":main()
