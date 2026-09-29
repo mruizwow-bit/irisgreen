@@ -23,7 +23,8 @@ function parsePrintableData(){
   return {data,code};
 }
 
-export function buildRoutineEntities(){
+export function buildRoutineEntities(options={}){
+  const requestedIds=Array.isArray(options.ids)&&options.ids.length?new Set(options.ids):null;
   const manifestText=gitShow(SOURCE_SHA,'assets/data/r42-routine-download-manifest.json');
   const manifest=JSON.parse(manifestText);
   const {pictos,pictoCode}=parsePictograms();
@@ -33,6 +34,7 @@ export function buildRoutineEntities(){
   const packById=new Map(printable.packs.map(p=>[p.s,p]));
   const entities=[];
   for(const row of manifest.records){
+    if(requestedIds&&!requestedIds.has(row.id)) continue;
     const pack=packById.get(row.id);
     if(!pack) throw new Error('routine_missing_printable_pack:'+row.id);
     if(JSON.stringify(pack.pasos)!==JSON.stringify(row.steps)) throw new Error('routine_step_drift:'+row.id);
@@ -99,9 +101,10 @@ export function buildRoutineEntities(){
     report:{
       schema:'R51_A9_ROUTINES_ADAPTER_REPORT/1.0',
       source_sha:SOURCE_SHA,
-      routine_ids:manifest.records.length,
+      routine_ids:new Set(entities.map(e=>e.content_id)).size,
+      requested_routine_ids:requestedIds?[...requestedIds].sort():null,
       entities:entities.length,
-      step_references:manifest.records.reduce((n,r)=>n+(r.steps?.length||0),0),
+      step_references:entities.filter(e=>e.locale==='es').reduce((n,e)=>n+(e.step_ids?.length||0),0),
       locale_counts:{es:entities.filter(e=>e.locale==='es').length,en:entities.filter(e=>e.locale==='en').length},
       manifest_sha256:sha256Text(manifestText),
       pictogram_registry_sha256:sha256Text(pictoCode),
