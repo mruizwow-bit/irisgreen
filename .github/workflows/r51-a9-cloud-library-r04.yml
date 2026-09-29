@@ -125,6 +125,32 @@ jobs:
           npm run build:r04:interactive-incremental-fixture
           node --test tests/r51-r04-interactive-incremental.test.mjs
 
+      - name: Verify protected Netlify candidate site
+        working-directory: cloud/n04-r38-library
+        env:
+          NETLIFY_SITE_ID: 47b06e68-ff54-4097-8ad8-336b2d71758a
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          if [ -z "${NETLIFY_AUTH_TOKEN:-}" ]; then
+            echo "EXISTING_NETLIFY_DEPLOY_CREDENTIAL_UNAVAILABLE"
+            exit 1
+          fi
+          node <<'NODE'
+          const fs=require('fs');
+          (async()=>{
+            const token=process.env.NETLIFY_AUTH_TOKEN, id=process.env.NETLIFY_SITE_ID;
+            const res=await fetch('https://api.netlify.com/api/v1/sites/'+id,{headers:{Authorization:'Bearer '+token}});
+            if(!res.ok) throw new Error('Netlify site API status '+res.status);
+            const s=await res.json();
+            if(s.id!==id||s.name!=='sabik-asistente'||s.sso_login!==true||s.sso_login_context!=='all'){
+              throw new Error('Protected site identity mismatch');
+            }
+            const prod=s.published_deploy?.id||'';
+            fs.appendFileSync(process.env.GITHUB_ENV,'R51_PRODUCTION_DEPLOY_BEFORE='+prod+'\n');
+            console.log(JSON.stringify({status:'PASS',site_id:id,team_login:true,production_deploy_present:Boolean(prod)}));
+          })().catch(e=>{console.error(e.message);process.exit(1);});
+          NODE
+
       - name: Upload R51 editorial report
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
