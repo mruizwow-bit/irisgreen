@@ -1,0 +1,20 @@
+{
+  "schema": "R51_A9_INCREMENTAL_DELTA_CONTRACT/1.0",
+  "delta_schema": "R51_A9_LIBRARY_DELTA/1.0",
+  "types": [
+    "ADDED",
+    "MODIFIED",
+    "UNCHANGED",
+    "REMOVED",
+    "SAFETY_CHANGED",
+    "AGE_CHANGED",
+    "ROUTE_CHANGED",
+    "LOCALE_CHANGED",
+    "SOURCE_CHANGED"
+  ],
+  "tombstones": true,
+  "overwrite_verified_releases": false,
+  "safety_changed_separate": true,
+  "age_changed_separate": true,
+  "no_content_change_when_all_unchanged": true
+}
