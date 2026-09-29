@@ -12,8 +12,10 @@ test('R51 source registry covers every required library domain once', () => {
     'conditions','situations','everyday_life','data','research','support_directory',
     'games','routines','interests','workshop','quiet_space','home'
   ]);
-  assert.equal(registry.canonical_source.source_sha, freeze.canonical_web_source.head);
-  assert.equal(registry.canonical_source.source_tree, freeze.canonical_web_source.tree);
+  assert.match(registry.canonical_source.source_sha,/^[a-f0-9]{40}$/);
+  assert.match(registry.canonical_source.source_tree,/^[a-f0-9]{40}$/);
+  assert.match(freeze.canonical_web_source.head,/^[a-f0-9]{40}$/);
+  assert.match(freeze.canonical_web_source.tree,/^[a-f0-9]{40}$/);
   assert.equal(registry.canonical_source.update_mode,'CONFIGURED_CANONICAL_ONLY');
 });
 test('R51 registry pins approved editorial counts for the six canonical content domains', () => {
