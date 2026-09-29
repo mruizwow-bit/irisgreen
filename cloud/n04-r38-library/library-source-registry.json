@@ -249,17 +249,20 @@
     {
       "domain": "interests",
       "content_type": "interest",
-      "authority": "A2_PLUS_APPROVED_R48",
-      "source_kind": "git",
+      "authority": "R48_DONOR_EDITORIAL_DATA_ONLY",
+      "source_kind": "pinned_git_donor_candidate",
       "source_files": [
-        "editorial/intereses/estructura-20260924.json"
+        "sources/r51-r04/interests/r40-interests.es.json",
+        "sources/r51-r04/interests/r40-interests.en.json",
+        "sources/r51-r04/interests/r40-interest-routes.json",
+        "sources/r51-r04/interests/SOURCE.json"
       ],
       "route_prefixes": [
         "/es/intereses/",
         "/en/interests/"
       ],
-      "extractor": "extract_interests_r04",
-      "safety_source": "R42_TRANSVERSAL_POLICY",
+      "extractor": "extract_interests_candidate_r04",
+      "safety_source": "PENDING_R59_CANONICAL_CLASSIFICATION",
       "locales": [
         "es",
         "en"
@@ -271,9 +274,15 @@
         "SOURCE"
       ],
       "owner": "A9",
-      "expected_records": null,
+      "expected_records": 72,
       "last_source_sha": "727808b41121bdcafb33d9bc05466460376c1521",
-      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32"
+      "last_library_version": "sabik-es-en-20260927-r03-9216eeee6a32",
+      "activation_gate": [
+        "R59_CANONICAL_AGE_CLASSIFICATION",
+        "R59_CANONICAL_SAFETY_CLASSIFICATION",
+        "R59_APPROVED_INTERESTS_SOURCE"
+      ],
+      "candidate_active": false
     },
     {
       "domain": "workshop",
