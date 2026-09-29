@@ -2217,3 +2217,29 @@ Marcador esperado:
 `R62_P03_RUTAS_LUZ_CONCEPT_READY_FOR_ASTRA_MARIA`.
 
 P04–P06, Codex #321, A2, main y producción siguen HOLD.
+
+## R65 · Taller 27 + 9 · Astra PASS · 29/09/2026
+
+Estado:
+`R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING`.
+
+Astra aprueba las 21 nuevas, la matriz 27/27 y las 9 variantes AGE_0_12.
+
+PASS:
+- KEEP 6/6 intacto;
+- 27/27 migradas;
+- 9 variantes AGE_0_12;
+- workbench/proceso visible;
+- child-safe visual 36/36 del arte;
+- launcher móvil;
+- assets first-party AVIF/WebP;
+- patch acotado al Taller.
+
+El PASS child-safe es únicamente visual/artístico R65 y NO sustituye el hard gate global R67.
+
+Integración:
+solo R67/#333 Fase 3.
+No volver a R64 fixture/main.innerHTML/base64.
+
+Gate humano:
+`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`.
