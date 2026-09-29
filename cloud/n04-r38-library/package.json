@@ -29,7 +29,8 @@
     "plan:r04:update": "node scripts/plan-r04-update.mjs",
     "publish:r04:candidate": "node scripts/publish-r04-candidate.mjs",
     "build:r04:candidate-manifest": "node scripts/build-r04-candidate-manifest.mjs",
-    "build:r04:partial-corpus": "node scripts/build-r04-partial-corpus.mjs"
+    "build:r04:partial-corpus": "node scripts/build-r04-partial-corpus.mjs",
+    "build:r04:candidate-binding": "node scripts/build-r04-candidate-binding.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
