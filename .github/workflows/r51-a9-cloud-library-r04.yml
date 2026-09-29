@@ -129,7 +129,7 @@ jobs:
         working-directory: cloud/n04-r38-library
         run: |
           npm run build:r04:partial-corpus
-          node --test tests/r51-r04-partial-corpus.test.mjs
+          node --test tests/r51-r04-partial-corpus.test.mjs tests/r51-r04-candidate-search.test.mjs
 
       - name: Build R51 R04 candidate manifest
         working-directory: cloud/n04-r38-library
