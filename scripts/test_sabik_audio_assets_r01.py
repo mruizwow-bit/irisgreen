@@ -4,7 +4,8 @@ from pathlib import Path
 import hashlib,json,struct,sys
 
 ROOT=Path(__file__).resolve().parents[1]
-MANIFEST=ROOT/'sabik/assets/audio-r01/manifest.runtime.json'
+PUBLIC=ROOT/'dist' if (ROOT/'dist/sabik/assets/audio-r01/manifest.runtime.json').is_file() else ROOT
+MANIFEST=PUBLIC/'sabik/assets/audio-r01/manifest.runtime.json'
 EXPECTED_SOURCE='96e570048c5fc44ceda28b911eb2dfa8fc608099101ccd2da7b33a109e0b1f0c'
 
 def sha256(path):
@@ -33,7 +34,7 @@ def main():
     missing=[];bad=[]
     for e in entries:
         rel=e['file'].lstrip('/')
-        path=ROOT/rel
+        path=PUBLIC/rel
         if not path.is_file():
             missing.append(rel);continue
         check_wav(path)
