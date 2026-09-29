@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import functools, threading, json, sys
+import functools, threading, json, sys, traceback
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from playwright.sync_api import sync_playwright
