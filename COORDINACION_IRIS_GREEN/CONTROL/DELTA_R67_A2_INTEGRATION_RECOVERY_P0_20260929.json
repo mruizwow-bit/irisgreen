@@ -1,0 +1,52 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R67-A2-INTEGRATION-RECOVERY-P0-20260929",
+  "issue": 333,
+  "date": "2026-09-29",
+  "priority": "P0",
+  "owner": "A2",
+  "status": "R67_A2_INTEGRATION_RECOVERY_P0_ORDERED",
+  "observed_head": "9e69bd1a8ab6b5ff2253d5565141c84ae20386f7",
+  "reproduced_failures": {
+    "global_shell": "OLD_HEADERS_STILL_VISIBLE_NOT_TRANSVERSALLY_REPLACED",
+    "workshop": "R64_QA_FIXTURE_OVER_R40_NOT_DEFINITIVE_PRODUCT",
+    "sabik": "R66_NOT_IMPLEMENTED_ONLY_RETRIEVAL_FIXED_VOICE",
+    "child_safe": "APPLY_CHILD_SAFE_R42_NOT_IN_BUILD_FULL_S2_INITIAL_PAYLOAD_RISK"
+  },
+  "phases": [
+    {
+      "id": 1,
+      "name": "GLOBAL_SHELL",
+      "marker": "R67_A2_GLOBAL_SHELL_REAL_PASS"
+    },
+    {
+      "id": 2,
+      "name": "CHILD_SAFE_HARD_PAYLOAD",
+      "marker": "R67_A2_CHILD_SAFE_HARD_PAYLOAD_PASS"
+    },
+    {
+      "id": 3,
+      "name": "TALLER_DEFINITIVE",
+      "marker": "R67_A2_TALLER_DEFINITIVE_INTEGRATION_PASS"
+    },
+    {
+      "id": 4,
+      "name": "SABIK_CONVERSATIONAL",
+      "marker": "R67_A2_SABIK_CONVERSATIONAL_REAL_PASS"
+    }
+  ],
+  "final_marker": "R67_A2_IRIS_GREEN_INTEGRATED_PREVIEW_READY_FOR_MARIA",
+  "supersedes_as_integrated_gate": [
+    "R64_A2_6_CARDS_DEPLOY_PREVIEW_READY_FOR_MARIA",
+    "PARTIAL_GLOBAL_SHELL_PASSES",
+    "AGE_PASS_WITHOUT_HARD_S2_PAYLOAD",
+    "R66_BASE_READ"
+  ],
+  "normative_change": false,
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "NO_RESET",
+    "NO_RERENDER_APPROVED_ART"
+  ]
+}
