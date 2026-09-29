@@ -1,4 +1,5 @@
 import { getDeployStore } from '@netlify/blobs';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { searchR04Candidate } from '../src/r04/candidate-search.mjs';
 
 const SITE_ID='47b06e68-ff54-4097-8ad8-336b2d71758a';
@@ -30,7 +31,8 @@ for(const [name,args] of checks){
   if((name==='es-general'||name==='en-child')&&!rows.length) throw new Error('expected_results_missing:'+name);
   results.push({name,result_count:rows.length,entity_ids:rows.map(x=>x.entity_id),sensitivities:rows.map(x=>x.sensitivity)});
 }
-console.log(JSON.stringify({
+const report={
+  schema:'R51_A9_R04_PRIVATE_RETRIEVAL_PROOF/1.0',
   status:'PASS',
   deploy_id:deployID,
   key,
@@ -40,4 +42,8 @@ console.log(JSON.stringify({
   held_entity_count:corpus.held_entity_count,
   checks:results,
   production_changed:false
-},null,2));
+};
+const out=new URL('../build/r04/',import.meta.url);
+await mkdir(out,{recursive:true});
+await writeFile(new URL('r04-private-retrieval-proof.json',out),JSON.stringify(report,null,2)+'\n');
+console.log(JSON.stringify(report,null,2));
