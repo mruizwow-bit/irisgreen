@@ -22,7 +22,8 @@
     "build:r04:workshop": "node scripts/build-r04-workshop.mjs",
     "build:r04:quiet-space": "node scripts/build-r04-quiet-space.mjs",
     "build:r04:home-gate": "node scripts/build-r04-home-gate.mjs",
-    "build:r04:delta-contract": "node scripts/build-r04-delta-contract.mjs"
+    "build:r04:delta-contract": "node scripts/build-r04-delta-contract.mjs",
+    "build:r04:impact-contract": "node scripts/build-r04-impact-contract.mjs"
   },
   "dependencies": {
     "@netlify/blobs": "11.1.0"
