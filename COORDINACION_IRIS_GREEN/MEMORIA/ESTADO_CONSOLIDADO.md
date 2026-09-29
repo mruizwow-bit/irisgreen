@@ -664,3 +664,17 @@ Marcador esperado:
 
 Memoria: `MEMORIA/R43_TALLER_DESIGN_ADAPTACION_PRECHECK_20260927.md`.  
 Control: `CONTROL/DELTA_R43_TALLER_DESIGN_ADAPTACION_20260927.json`.
+
+## R63 · Rincón · Sakura · 29/09/2026
+
+**Estado vigente: `R63_CLAUDE_RINCON_SAKURA_CANDIDATE_ORDERED`.**
+
+#328 cierra únicamente Sakura como piloto sensorial reproducible. La dirección Globos queda retirada; las cuatro salas R53 restantes quedan congeladas y la nueva tanda potencial no se desbloquea hasta HUMAN QA de Sakura.
+
+Sakura ya está construida como prototipo, pero no se localizó todavía un handoff físico de source en GitHub/Library. Claude debe recuperar/materializar el source exacto; si falta, STOP con `R63_SAKURA_SOURCE_ARTIFACT_MISSING_BLOCKED`, sin reconstruir desde capturas.
+
+El candidato debe partir del A2 vivo, consumir `ig-global-ui-tokens-2026.css`, respetar low-stimulation y taxonomía AGE_*, separar arte de chrome LIGHT/DARK NAVY, portar los dos fixes #303 que siguen sin merge, demostrar ES/EN + 1440/390 + tres estados de movimiento + fallbacks y entregar PR draft a A2.
+
+Secuencia: Claude → Astra → A2 → Deploy Preview → HUMAN QA María. R61 Pecera #325 permanece separado.
+
+Orden: `ORDENES/R63_CLAUDE_RINCON_SAKURA/01_CLAUDE.md`.
