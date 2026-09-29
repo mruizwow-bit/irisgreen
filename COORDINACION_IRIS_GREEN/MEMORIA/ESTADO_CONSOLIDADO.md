@@ -703,3 +703,22 @@ Marcador de salida:
 `R65_CLAUDE_TALLER_21_PLUS_9_READY_FOR_ASTRA`.
 
 No hay normativa transversal nueva.
+
+## R66 · Sabik conversacional · 29/09/2026
+
+Estado: `R66_A2_SABIK_CONVERSATIONAL_INTEGRATION_ORDERED`.
+
+Sabik Web queda definido como asistente conversacional opcional por voz: voz/texto comparten Core, sesión, safety, correcciones y respuesta. Cloud R04 aporta conocimiento/citas; no es la voz ni el producto de interfaz.
+
+A2 debe reconciliar el Core PRE-#144 con la UI Sabik actual, Motion R37 y R04. Los 30 WAV se conservan para sistema/fallback. La respuesta dinámica hablada usa TTS con identidad Sabik aprobada. Micrófono solo tras gesto, sin escucha permanente, con equivalente textual y sin persistencia de audio/transcripción/chat por defecto.
+
+El candidato R04 parcial puede usarse para preview privada respetando sus HOLDs; el marcador final R66 exige R04 final aceptada y STT/TTS ES/EN reales.
+
+Se adopta normativa específica:
+`ADDENDUM_R66_SABIK_CONVERSATIONAL_VOICE_20260929.md`.
+
+Marcadores:
+- `R66_A2_SABIK_CONVERSATIONAL_PRIVATE_PREVIEW_READY_FOR_ASTRA`
+- `R66_A2_SABIK_ALEXA_STYLE_ES_EN_PREVIEW_READY_FOR_MARIA`.
+
+No main. No producción.
