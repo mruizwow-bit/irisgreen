@@ -7,7 +7,8 @@ from pathlib import Path
 REQUIRED={
     '.ig-home-v4-use-grid':('display:grid','grid-template-columns'),
     '.ig-home-v4-card':('display:grid','background:var(--ig-bg-surface)'),
-    '.ig-home-v4-sabik':('display:grid','background:var(--ig-bg-surface)'),
+    '.ig-home-v4-sabik':('display:block','background:var(--ig-bg-surface)'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr))'),
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
     '.ig-home-v4-age-state':('color:var(--ig-text-muted)','font-size:.92rem'),

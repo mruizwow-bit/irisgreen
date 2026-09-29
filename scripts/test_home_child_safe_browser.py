@@ -37,7 +37,7 @@ async def main():
   need(visual['body']=='rgb(11, 26, 43)','DARK NAVY body background not rendered '+repr(visual))
   need(visual['use'] and visual['use']['display']=='grid','Entra y úsalo layout CSS not rendered '+repr(visual))
   need(visual['card'] and visual['card']['display']=='grid','Home card CSS not rendered '+repr(visual))
-  need(visual['sabik'] and visual['sabik']['display']=='grid' and visual['sabik']['bg']!='rgba(0, 0, 0, 0)','Sabik chassis CSS not rendered '+repr(visual))
+  need(visual['sabik'] and visual['sabik']['display']=='block' and visual['sabik']['bg']!='rgba(0, 0, 0, 0)','Sabik chassis CSS not rendered '+repr(visual))
   need(visual['discover'] and visual['discover']['display']=='grid','Entiende y encuentra layout CSS not rendered '+repr(visual))
   need(visual['footer'] and visual['footer']['display']=='flex','Home footer CSS not rendered '+repr(visual))
   sabik_geom=await page.evaluate("""() => {
