@@ -1,0 +1,26 @@
+{
+  "schema": "R51_A9_INCREMENTAL_EDITORIAL_FIXTURE/1.0",
+  "status": "PASS_SINGLE_CONTENT_ID_REBUILD_CONTRACT",
+  "ordinary": {
+    "content_id": "global-001",
+    "content_ids": 1,
+    "entities": 2,
+    "locales": [
+      "es",
+      "en"
+    ],
+    "sensitivity": "S0_GENERAL"
+  },
+  "s2": {
+    "content_id": "global-188",
+    "content_ids": 1,
+    "full_entities": 2,
+    "safe_variant_entities": 2,
+    "total_entities": 4,
+    "safe_variant_group": "abuse_exploitation",
+    "review": "HUMAN_REVIEWED_S2"
+  },
+  "full_rebuild_avoided": {
+    "editorial_total": 965
+  }
+}
