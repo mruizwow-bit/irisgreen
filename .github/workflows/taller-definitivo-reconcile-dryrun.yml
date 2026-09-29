@@ -48,17 +48,64 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          for name in visual pilotos r2 sync norma tokens; do
+
+          ensure_hook() {
+            hook="$1"
+            git checkout --ours scripts/build_site.py
+            HOOK="$hook" python - <<'PY'
+          import os
+          from pathlib import Path
+          p=Path('scripts/build_site.py')
+          s=p.read_text()
+          anchor="    subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)\n"
+          if anchor not in s:
+              raise SystemExit('build_taller_estudios anchor missing')
+          suite="    # R47: Taller definitivo 27/27 sobre la suite creativa.\n    subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_suite.py')],cwd=ROOT,check=True)\n"
+          sync="    # R54-SYNC-01: fuente y escenas rasterizadas deben permanecer sincronizadas.\n    subprocess.run([sys.executable,str(ROOT/'scripts/check_escenas_sync.py')],cwd=ROOT,check=True)\n"
+          if os.environ['HOOK']=='suite' and 'build_taller_suite.py' not in s:
+              s=s.replace(anchor,anchor+suite)
+          if os.environ['HOOK']=='sync':
+              if 'build_taller_suite.py' not in s:
+                  s=s.replace(anchor,anchor+suite)
+              if 'check_escenas_sync.py' not in s:
+                  mark=suite if suite in s else anchor
+                  s=s.replace(mark,mark+sync)
+          p.write_text(s)
+          PY
+            git add scripts/build_site.py
+          }
+
+          apply_patch() {
+            name="$1"; hook="${2:-}"
             echo "::group::git am $name"
-            if ! git am --3way /tmp/taller-patches/${name}.patch; then
-              echo "CONFLICTS:"
-              git status --short
-              git diff --name-only --diff-filter=U || true
-              git am --abort || true
-              exit 1
-            fi
+            set +e
+            git am --3way /tmp/taller-patches/${name}.patch
+            rc=$?
+            set -e
+            while [ "$rc" -ne 0 ]; do
+              conflicts="$(git diff --name-only --diff-filter=U)"
+              echo "CONFLICTS: $conflicts"
+              if [ "$conflicts" = "scripts/build_site.py" ] && [ -n "$hook" ]; then
+                ensure_hook "$hook"
+                set +e
+                GIT_EDITOR=true git am --continue
+                rc=$?
+                set -e
+              else
+                git status --short
+                git am --abort || true
+                exit 1
+              fi
+            done
             echo "::endgroup::"
-          done
+          }
+
+          apply_patch visual suite
+          apply_patch pilotos
+          apply_patch r2
+          apply_patch sync sync
+          apply_patch norma
+          apply_patch tokens
 
       - name: Reconcile R54 token donor to A2 canonical tokens
         shell: bash
