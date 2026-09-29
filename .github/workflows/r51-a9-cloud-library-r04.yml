@@ -43,6 +43,13 @@ jobs:
         working-directory: cloud/n04-r38-library
         run: npm ci --ignore-scripts
 
+      - name: R51 incremental source update plan
+        if: ${{ github.event_name == 'workflow_dispatch' && inputs.source_sha != '' }}
+        working-directory: cloud/n04-r38-library
+        env:
+          R51_SOURCE_SHA: ${{ inputs.source_sha }}
+        run: npm run plan:r04:update
+
       - name: R51 source and registry gates
         working-directory: cloud/n04-r38-library
         run: |
