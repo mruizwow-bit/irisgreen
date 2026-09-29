@@ -1,0 +1,37 @@
+name: W05 R1 candidate checks
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          fetch-depth: 0
+      - name: Prepare Chromium
+        run: |
+          python3 -m venv /tmp/ig-w05
+          /tmp/ig-w05/bin/pip -q install playwright==1.55.0
+          /tmp/ig-w05/bin/python -m playwright install --with-deps chromium >/tmp/ig-w05-install.log 2>&1
+      - name: Source checks
+        run: /tmp/ig-w05/bin/python scripts/test_w05_r1_candidate.py --root . --phase source
+      - name: Build public output
+        run: python3 scripts/build_site.py
+      - name: Dist checks
+        run: /tmp/ig-w05/bin/python scripts/test_w05_r1_candidate.py --dist --root dist --phase dist
+      - name: Diff check
+        run: git diff --check
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: w05-r1-candidate
+          path: reports/w05-r1-candidate
+          retention-days: 14
