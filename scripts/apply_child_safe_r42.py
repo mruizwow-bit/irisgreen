@@ -59,12 +59,38 @@ def protect_pages(root):
     return n
 def search_contracts(root):
     data=json.loads((root/'buscador.json').read_text(encoding='utf-8'))
-    by_es={r[3]:r for r in S2 if r[1]=='condition'};by_en={r[4]:r for r in S2 if r[1]=='condition'}
-    rows=[]
+    matrix_path=root/'assets/safety/age-classification-r51-global.json'
+    if not matrix_path.is_file():
+        raise FileNotFoundError('Canonical R51 age matrix is required before child-safe search build')
+    matrix=json.loads(matrix_path.read_text(encoding='utf-8'))
+    if matrix.get('schema')!='R51_A2_GLOBAL_AGE_CLASSIFICATION/1.0' or matrix.get('source_records')!=965:
+        raise ValueError('Invalid canonical R51 age matrix')
+    def key(value):
+        value=str(value or '').strip()
+        return value[:-1] if len(value)>1 and value.endswith('/') else value
+    age_by_url={}
+    age_by_id={}
+    for item in matrix.get('records',[]):
+        bands=item.get('age_bands') or []
+        if not bands:
+            raise ValueError('Unclassified canonical age record: '+str(item.get('content_id')))
+        age_by_id[item.get('content_id')]=list(bands)
+        for field in ('url_es','url_en'):
+            u=key(item.get(field))
+            if u: age_by_url[u]=list(bands)
+    by_es={key(r[3]):r for r in S2 if r[1]=='condition'};by_en={key(r[4]):r for r in S2 if r[1]=='condition'}
+    rows=[];missing=[]
     for x in data:
-        en=x.get('en') or {};eu=x.get('u','');nu=en.get('u',eu);r=by_es.get(eu) or by_en.get(nu)
+        en=x.get('en') or {};eu=x.get('u','');nu=en.get('u',eu);r=by_es.get(key(eu)) or by_en.get(key(nu))
         surf='condition' if '/condiciones/' in eu else 'situation'
-        rows.append({'id':r[0] if r else eu,'surface':surf,'title_es':x.get('t',''),'title_en':en.get('t',x.get('t','')),'url_es':eu,'url_en':nu,'area_or_type_es':x.get('tipo') or x.get('a',''),'area_or_type_en':en.get('a') or x.get('tipo') or x.get('a',''),'summary_es':x.get('d',''),'summary_en':en.get('d',x.get('d','')),'audience':['TRANSVERSAL'],'sensitivity':'S2_HIGH_SENSITIVITY' if r else 'S0_GENERAL','discovery':'SAFE_VARIANT_REQUIRED' if r else 'NORMAL','safe_variant_group':r[2] if r else None})
+        cid=r[0] if r else None
+        bands=age_by_id.get(cid) if cid else None
+        if not bands: bands=age_by_url.get(key(eu)) or age_by_url.get(key(nu))
+        if not bands:
+            missing.append(eu or nu);continue
+        rows.append({'id':cid or eu,'surface':surf,'title_es':x.get('t',''),'title_en':en.get('t',x.get('t','')),'url_es':eu,'url_en':nu,'area_or_type_es':x.get('tipo') or x.get('a',''),'area_or_type_en':en.get('a') or x.get('tipo') or x.get('a',''),'summary_es':x.get('d',''),'summary_en':en.get('d',x.get('d','')),'age_bands':bands,'sensitivity':'S2_HIGH_SENSITIVITY' if r else 'S0_GENERAL','discovery':'SAFE_VARIANT_REQUIRED' if r else 'NORMAL','safe_variant_group':r[2] if r else None})
+    if missing:
+        raise ValueError('Search rows without canonical age classification: '+', '.join(missing[:8]))
     safe=[x for x in rows if x['sensitivity']!='S2_HIGH_SENSITIVITY']
     intent=[]
     for x in rows:
@@ -77,6 +103,7 @@ def search_contracts(root):
     for name,obj in [('search-safe-default.json',safe),('search-intentional-safe.json',intent),('search-adult-full-catalog.json',rows)]:
         (out/name).write_text(json.dumps(obj,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
     return len(safe),len(intent),len(rows)
+
 def incidental(root):
     routes={urlsplit(r[3]).path.rstrip('/') for r in S2}|{urlsplit(r[4]).path.rstrip('/') for r in S2};removed=0
     for p in root.rglob('*.html'):
