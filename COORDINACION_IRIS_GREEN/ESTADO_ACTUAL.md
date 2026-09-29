@@ -2133,3 +2133,28 @@ Marcador:
 `R61_PECERA_BUBBLES_VISUAL_READY_FOR_ASTRA_MARIA`.
 
 No segunda sala/A2/main/producción.
+
+## R67 · A2 · P0 integración real · 29/09/2026
+
+Estado:
+`R67_A2_INTEGRATION_RECOVERY_P0_ORDERED`.
+
+Astra audita el HEAD vivo A2 `9e69bd1a8ab6b5ff2253d5565141c84ae20386f7` y reproduce cuatro fallos estructurales:
+
+1. **Shell:** Home/interiores conservan headers antiguos; R49/R50 no gobiernan transversalmente la interfaz visible.
+2. **Taller:** R64 es un fixture HUMAN QA inyectado sobre R40/25 estudios; botones AGE_* solo cambian copy y los assets R54 van embebidos en JS.
+3. **Sabik:** runtime vivo sigue como retrieval + mensajes fijos; R66 no está implementado.
+4. **Child-safe:** `apply_child_safe_r42.py` no se ejecuta en `build_site.py`; páginas S2 conocidas siguen con full source inicial sin safe transform.
+
+R67 obliga a ejecutar secuencialmente:
+- F1 shell global real;
+- F2 child-safe hard payload;
+- F3 Taller definitivo;
+- F4 Sabik conversacional.
+
+Marcador final:
+`R67_A2_IRIS_GREEN_INTEGRATED_PREVIEW_READY_FOR_MARIA`.
+
+Los READY parciales anteriores dejan de ser gate de producto integrado.
+
+No main. No producción.
