@@ -29,6 +29,9 @@ html[data-ig-r49-js="1"] body[data-ig-r49="1"] :is(.ig-home-header,header.hd,.ig
 html[data-ig-r49-js="1"] body[data-ig-r49="1"] :is(.ig-home-header,header.hd,.ig-uh,body>header):not([data-ig-r49-upgraded="true"])>*{display:none!important}
 
 body[data-ig-r49="1"]{min-width:0;overflow-x:clip}
+body[data-ig-r49="1"] main :where(h1,h2,h3){
+  font-family:"Newsreader",Georgia,serif!important;
+}
 body[data-ig-r49="1"]:not([data-ig-r42-family="quiet"]){
  background-color:var(--ig-page-canvas,#f6f8fb)!important;
  background-image:none!important;
