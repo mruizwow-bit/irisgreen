@@ -51,8 +51,10 @@ FAIL:
 2. `ORDENES/CM_R01_GESTION_COMUNIDAD_Y_CRECIMIENTO.md`
 3. `ESTRATEGIA/COMMUNITY_GROWTH_ES_EN_20260930.md`
 4. `CONTROL/CONTROL_SOCIAL.csv`
-5. `CONTROL/CONTACTOS_SOCIAL_TEMPLATE.csv`
-6. `MEMORIA/`
+5. `CONTROL/CONTACTOS_SOCIAL.csv` (registro vivo)
+6. `CONTROL/CONTACTOS_SOCIAL_TEMPLATE.csv` (plantilla)
+7. `MEMORIA/`
+8. `INFORMES/INFORME_CM_R01_20260930_SESION_MANANA.md`
 
 ## Separación
 
@@ -64,3 +66,7 @@ Este carril NO modifica ni gobierna:
 
 Rama:
 `social/community-manager-20260930`.
+
+## Corte de sesión de mañana · 30/09/2026
+
+Instagram y Facebook trabajados con comunidad propia, habituales y continuidad. Registro actualizado. Ciclo parcial: queda backlog antiguo y trabajo en grupos. TikTok pausado por orden del usuario a las 07:45:49 Europe/Madrid hasta que arregle el acceso. No conceder PASS diario ni afirmar gestión de todo el día. Próximas acciones y revisiones individuales en CONTACTOS_SOCIAL.csv e informe.
