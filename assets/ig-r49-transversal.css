@@ -265,3 +265,15 @@ body[data-ig-r49="1"] :where(input,select,textarea,button,a):focus-visible{
   background:#fff!important;color:#000!important
  }
 }
+
+
+/* R69 HUMAN QA · Home footer shares the exact product axis; no nested gutter. */
+body[data-ig-r49="1"].ig-home-r42 .ig-r49-footer-inner{
+  width:min(calc(100% - 2 * clamp(1rem,2.2vw,2.5rem)),var(--ig-content-wide,104rem));
+  max-width:none;
+}
+@media(max-width:760px){
+  body[data-ig-r49="1"].ig-home-r42 .ig-r49-footer-inner{
+    width:calc(100% - 2 * var(--ig-layout-gutter-small));
+  }
+}
