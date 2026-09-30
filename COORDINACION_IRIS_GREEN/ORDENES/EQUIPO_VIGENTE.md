@@ -1,5 +1,17 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R62 P03 · causalidad layout R3 · 30/09/2026
+
+Orden: `R62_ASTRA_JUEGOS_6_PILOTOS/06_AURA_P03_QA2_CAUSALITY_LAYOUT_FIX.md` · issue #326.
+
+Estado: `R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED`.
+
+No reabrir gameplay, materiales, tablero ni composición. Corregir únicamente el solapamiento de copy 3/4 en causalidad LIGHT/NAVY; limpiar anclajes offscreen móvil si se toca overlay; ejecutar test P03 y test identidad P01 cuando el árbol correspondiente esté disponible.
+
+Siguiente gate:
+`R62_P03_CAUSALITY_LAYOUT_R3_READY_FOR_ASTRA_AURA_MARIA`.
+
+
 ## Agente R59 · Fósiles R2v3 · QA/GOV final · 30/09/2026
 
 Orden: `R59_AGENTE_INTERESES/ADDENDUM_FOSSILS_R2V3_REPRO_QA_GOV_20260930.md` · issue #323.
