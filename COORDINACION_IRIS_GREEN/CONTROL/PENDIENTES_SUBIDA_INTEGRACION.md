@@ -36,7 +36,7 @@ Estados separados:
 |---|---|---:|---|---|---|---|
 | R63 | Sala sensorial Sakura | #328 | Runtime/handoff PASS Astra | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | Desbloquear R67, 0 external requests, hardware QA, Deploy Preview, HUMAN QA María |
 | R54/R47 | Taller · 6 primeros visuales R54 dentro del Taller real R47 | #318 / #329 | KEEP 6/6 + Taller R47 funcional | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | No restaurar fixture R64. Mantener arte R54 dentro de Taller real; desbloquear build R67 |
-| R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | Astra PASS · HUMAN QA pendiente | HANDOFF_IDENTIFIED | PENDING_R67_PHASE3 | HUMAN QA María → gate de integración R67 Fase 3 |
+| R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | HUMAN QA María PASS · listo para R67 Fase 3 | HANDOFF_IDENTIFIED | **READY_FOR_INTEGRATION** | Integrar en R67 Fase 3; no reabrir arte ni crear otra QA |
 | R62-P03 | Rutas de luz | #326 | HUMAN QA María PASS · P03 cerrado | BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING | PRODUCT_APPROVED_IMPORT_PENDING | Importar/verificar bundle sobre base 318a5745; no reabrir P03 |
 | R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **BLOCKED_BY_SESSION_ARTIFACT_LOCATION** | NOT_READY | Recuperar binarios desde la sesión que los contiene; luego hashes + móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
@@ -93,26 +93,17 @@ La fuente válida es Taller R47 + arte R54.
 ### R65 · Taller 27 + 9
 
 Estado:
-`R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING`.
+`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`.
 
-KEEP:
-- 27/27 escenas;
-- KEEP 6/6;
-- 21 nuevas;
-- 9 variantes AGE_0_12;
-- assets AVIF/WebP;
-- launcher y QA responsive.
+KEEP: 27/27, KEEP 6/6, 21 nuevas, 9 AGE_0_12, assets AVIF/WebP, launcher/QA responsive y child-safe visual R65.
 
-Siguiente:
-María HUMAN QA.
+HUMAN QA:
+María confirma el 30/09/2026 que el lote está OK.
 
-Si aprueba:
-`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`
+Integración:
+`READY_FOR_INTEGRATION` → R67 Fase 3.
 
-Destino:
-R67 Fase 3.
-
-No crear otra maqueta de QA.
+No crear otra maqueta de QA. No reabrir arte. No main. No producción.
 
 ## 4. Detalle · material local que corre riesgo de perderse
 

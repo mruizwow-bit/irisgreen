@@ -41,10 +41,15 @@
       "id": "R65",
       "product": "Taller 27+9",
       "issue": 330,
-      "product_status": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING",
+      "product_status": "R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION",
       "preservation": "HANDOFF_IDENTIFIED",
-      "integration": "PENDING_R67_PHASE3",
-      "next": "Maria HUMAN QA"
+      "integration": "READY_FOR_INTEGRATION",
+      "next": "integrate in R67 Phase 3; do not reopen art or create another QA",
+      "human_qa": {
+        "by": "Maria",
+        "date": "2026-09-30",
+        "result": "PASS"
+      }
     },
     {
       "id": "R62-P03",

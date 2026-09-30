@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R65-HUMAN-QA-FINAL-PASS-20260930",
+  "issue": 330,
+  "date": "2026-09-30",
+  "authority": "Maria",
+  "status": "R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION",
+  "human_qa": {
+    "result": "PASS",
+    "scope": "R65_FINAL_27_PLUS_9"
+  },
+  "preserved_astra_pass": {
+    "base_cards": 27,
+    "new_cards": 21,
+    "keep_6": true,
+    "age_0_12_variants": 9,
+    "child_safe_visual_scenes": 36,
+    "patch_sha256": "a72d9fd1e53c98d055298d5fd042be7df64c72a49ef922c5c961d18806a44ca5"
+  },
+  "integration": {
+    "state": "READY_FOR_INTEGRATION",
+    "destination": "R67_PHASE_3",
+    "requires": [
+      "REAL_AVIF_WEBP_ASSETS",
+      "IGAUDIENCE",
+      "R67_GLOBAL_SHELL"
+    ],
+    "forbids": [
+      "R64_QA_FIXTURE",
+      "MAIN_INNERHTML_HUMAN_QA",
+      "FINAL_DATA_URI_ASSETS",
+      "NON_CANONICAL_HELPER_AS_GATE"
+    ]
+  },
+  "normative_change": false,
+  "limits": [
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}

@@ -4,18 +4,14 @@ Esta corrección supersede cualquier selector/picker local que siga mostrando es
 
 ## R65 Taller
 
-NO está en “aprobar 6 para autorizar 21+9”.
-
-Los 21 + 9 YA están construidos y Astra los pasó.
+HUMAN QA María APROBADA el 30/09/2026.
 
 Estado vigente:
-`R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING`
+`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`
 
-La HUMAN QA pendiente es sobre el lote final 27/27 + 9, no sobre un gate previo de seis tarjetas.
-
-La página/fixture que diga:
-“si apruebas, se autoriza escalar las 21 restantes y las 9 variantes”
-está SUPERSEDED y no debe usarse como fuente de estado.
+R65 queda cerrado. Claude no tiene más trabajo de arte ni QA aquí.
+Siguiente: R67 Fase 3 integra el handoff aprobado.
+No crear otra maqueta/helper ni rerender.
 
 ## R61 Pecera
 

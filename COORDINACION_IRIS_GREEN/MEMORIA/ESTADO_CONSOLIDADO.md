@@ -1,3 +1,26 @@
+## R65 · Taller 27 + 9 · HUMAN QA María aprobada · 30/09/2026
+
+Estado:
+`R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION`.
+
+María confirma que ya ha revisado el lote final R65 y está OK.
+
+Cierre:
+- 27/27 tarjetas base aprobadas;
+- 21 nuevas aprobadas;
+- KEEP 6/6 intacto;
+- 9 variantes `AGE_0_12` aprobadas;
+- child-safe visual R65 36/36 se conserva como PASS de arte;
+- no más rework ni nueva HUMAN QA de tarjetas;
+- el helper opcional no canónico no es gate.
+
+Integración:
+- se desbloquea únicamente R67 Fase 3;
+- usar assets AVIF/WebP reales + `IGAudience` + shell R67;
+- no usar fixture R64, `main.innerHTML` QA ni data URI/base64 final.
+
+No main. No producción. Sin cambio normativo transversal.
+
 ## Política de trabajo en equipo R01 · 30/09/2026
 
 Estado:
@@ -887,7 +910,7 @@ Orden: `ORDENES/R63_CLAUDE_RINCON_SAKURA/01_CLAUDE.md`.
 
 No hay normativa transversal nueva en estas tres decisiones; se aplican los canónicos ya adoptados.
 
-## R65 · Taller · siguiente ola visual · 29/09/2026
+## R65 · Taller · siguiente ola visual · 29/09/2026 · HISTÓRICO SUPERSEDED
 
 Estado: `R65_WAIT_HUMAN_QA_R64`.
 
