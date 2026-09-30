@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R44-A0-AURA-REVIEW-R2-20260930",
+  "issue": 319,
+  "date": "2026-09-30",
+  "status": "R44_A0_FRAMEWORK_TECH_PASS_PILOTS_PRODUCT_REWORK_REQUIRED",
+  "artifact": {
+    "name": "R44_A0_PRODUCTO.patch.gz",
+    "bytes": 9994378,
+    "sha256": "0f7b8054145dafd102542fe1b44d9aef50a54e8192bc1bf04f9c29847f6e538a",
+    "commits": 41,
+    "isolated_a0": false
+  },
+  "pass": [
+    "R44_NAMESPACE",
+    "EIGHT_REAL_IDS",
+    "WORKSPACE_BEFORE_PANEL",
+    "NO_STORAGE",
+    "ARIA_LIVE_STATE",
+    "E22_COPY_FIX"
+  ],
+  "blockers": [
+    "ES_EN_ALTERNATIVA_EMPTY_EN_8_OF_8",
+    "ARTEFACTO_STRING_SPANISH_ONLY_IN_EN",
+    "NO_VISUAL_MINISCENE_OR_RESULT_PREVIEW",
+    "START_CTA_ONLY_CHANGES_LOCAL_STATE",
+    "PATCH_INCLUDES_R43_R54_R65_HISTORY",
+    "STALE_GLOBAL_IG_AUDIENCE_DELTA",
+    "STARTER_STAGE_AGE_0_12_UNJUSTIFIED_FOR_ALL_AGES",
+    "RAW_QA_LOGS_NOT_ATTACHED"
+  ],
+  "next": "R44_A0_FRAMEWORK_8_PILOTS_R2_READY_FOR_ASTRA_AURA_MARIA",
+  "limits": [
+    "NO_SCALE_55",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}

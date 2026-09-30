@@ -113,12 +113,12 @@
       "id": "R44-A0",
       "product": "Taller expansion 64 challenges - framework + 8 pilots",
       "issue": 319,
-      "product_status": "R44_A0_SOURCE_PRESERVED_RECONCILIATION_ACCEPTED_FRAMEWORK_8_PILOTS_IN_PROGRESS",
-      "preservation": "SOURCE_AND_RECONCILIATION_PRESERVED_GITHUB",
-      "integration": "BUILD_IN_PROGRESS",
+      "product_status": "R44_A0_FRAMEWORK_TECH_PASS_PILOTS_PRODUCT_REWORK_REQUIRED",
+      "preservation": "SOURCE_AND_RECONCILIATION_PRESERVED_GITHUB_PLUS_A0_PATCH_IN_CHAT",
+      "integration": "REWORK_BEFORE_REVIEW",
       "destination": "R67_TALLER_AFTER_R65_PHASE3",
-      "blocker": null,
-      "next": "build framework + E01/E06/E17/E22/E28/E34/E38/E44; preserve raw execution logs and final patch/hash/handoff",
+      "blocker": "ES_EN_VISUAL_CTA_PATCH_ISOLATION_LOGS",
+      "next": "R2: complete bilingual, visual previews, real workspace CTA, remove stale ig-audience delta, isolate A0 patch, attach raw logs",
       "priority": "P0-EXECUTE",
       "authorized_by": "Maria",
       "authorized_date": "2026-09-30",
@@ -131,7 +131,9 @@
         "legacy_collision": "taller-retos.json_72_USE_R44_NAMESPACE",
         "raw_logs_required_at_handoff": true,
         "challenge_accessibility_pass": false
-      }
+      },
+      "latest_patch_sha256": "0f7b8054145dafd102542fe1b44d9aef50a54e8192bc1bf04f9c29847f6e538a",
+      "latest_patch_bytes": 9994378
     },
     {
       "id": "R62-P04",

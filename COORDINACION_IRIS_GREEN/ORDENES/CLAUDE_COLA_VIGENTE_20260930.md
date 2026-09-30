@@ -1,3 +1,24 @@
+# R44-A0 · R2 ACOTADA ACTIVA · 30/09/2026
+
+Estado:
+`R44_A0_FRAMEWORK_TECH_PASS_PILOTS_PRODUCT_REWORK_REQUIRED`
+
+No rehacer framework.
+Corregir:
+1. ES/EN completo;
+2. mini-escena/preview + artefacto visible;
+3. CTA conectado al workspace;
+4. starter_stage ALL_AGES salvo variante real;
+5. retirar delta stale de ig-audience.js;
+6. patch/bundle A0 aislado;
+7. logs brutos de QA.
+
+Marcador:
+`R44_A0_FRAMEWORK_8_PILOTS_R2_READY_FOR_ASTRA_AURA_MARIA`.
+
+No escalar a 55.
+STOP después de R2.
+
 ## CLAUDE · cola reconciliada tras RESUME GATE · 30/09/2026
 
 La lectura que decía “la matriz R44 no existe” queda SUPERSEDED por avance canónico posterior.
