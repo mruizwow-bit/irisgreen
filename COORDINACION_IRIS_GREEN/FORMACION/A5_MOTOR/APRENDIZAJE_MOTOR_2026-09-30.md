@@ -393,3 +393,88 @@ Se ha hecho:
 8. solo entonces tocar runtime.
 
 No reconstruir esta formación desde el chat.
+
+
+---
+
+## Ampliación de aprendizaje · R02
+
+### Scheduling cooperativo
+
+He estudiado:
+- `scheduler.yield()`;
+- `scheduler.postTask()`;
+- Prioritized Task Scheduling;
+- `requestIdleCallback()`.
+
+Conclusión:
+ninguna de estas capacidades se convierte en baseline de Iris Green solo por ser útil. A 30/09/2026, MDN sigue marcando `scheduler.yield/postTask` y `requestIdleCallback` con disponibilidad limitada.
+
+Uso:
+- diseño de prioridades primero;
+- feature detection después;
+- fallback siempre.
+
+### Event Timing / INP
+
+He estudiado `PerformanceEventTiming` e `interactionId`.
+
+Aprendizaje:
+una interacción puede ser una secuencia de eventos y debe medirse como interacción, no solo como duración de un handler aislado.
+
+La especificación Event Timing consultada es Editor's Draft de 19/03/2026, por lo que la trato como trabajo en evolución; las APIs que MDN marca como disponibles se usan como instrumentación, no como criterio normativo de conformidad.
+
+### Long Animation Frames
+
+LoAF permite diagnosticar frames de render >50 ms y atribuir jank con más detalle.
+
+Las interfaces siguen siendo experimentales/de disponibilidad limitada:
+instrumentación progresiva, no dependencia.
+
+### bfcache
+
+Cambio importante de modelo mental:
+
+`pagehide != destroy`.
+
+Una página puede congelarse y volver mediante bfcache.
+Debo:
+- pausar/cerrar recursos adecuados;
+- no depender de `unload`;
+- restaurar en `pageshow/resume`;
+- evitar duplicar conexiones/listeners.
+
+### WebGL context loss
+
+La pérdida de contexto no es un caso “imposible”.
+Puede ocurrir por presión o reset de GPU.
+
+Tras `webglcontextrestored`, los recursos antiguos ya no son válidos.
+Para declarar resiliencia real hay que inyectar loss/restore y recrear recursos.
+
+### Ownership con AbortSignal
+
+Un controller puede ser lifecycle owner de múltiples listeners y operaciones.
+
+Nueva preferencia de diseño:
+`component lifecycle → AbortController → listeners/async work → abort on destroy`.
+
+No usarlo de forma que signals/listeners de larga vida queden retenidos innecesariamente.
+
+### Práctica asíncrona ejecutada
+
+Resultado:
+```text
+PASS abortable old work stopped and cannot overwrite new intent
+PASS non-abortable stale work discarded by ownership revision
+RESULT 2/2 async ownership checks passed
+```
+
+Esto fija una regla:
+**Abort detiene trabajo; revision/ticket protege ownership del resultado.**
+
+### Marcador R02
+
+`MOTOR_RUNTIME_SCHEDULING_LIFECYCLE_RESILIENCE_STUDIED_R02`
+
+Sigo sin declarar certificación externa ni modificación de producto.
