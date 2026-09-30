@@ -16,6 +16,7 @@ GOOGLE_LINK_RE=re.compile(
     re.I,
 )
 HEAD_CLOSE_RE=re.compile(r'</head\s*>',re.I)
+R69_UI_LINK_RE=re.compile(r'<link\b(?=[^>]*href=["\']/assets/ig-r69-unified-ui\.css(?:\?[^"\']*)?["\'])[^>]*>\s*',re.I)
 RESOURCE_STAGE_RE=re.compile(
     r'<section\s+class=["\']ri-stage-section["\'][^>]*>.*?</section>',
     re.I|re.S,
@@ -23,15 +24,17 @@ RESOURCE_STAGE_RE=re.compile(
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
+    # Remove any earlier copy, regardless of attribute order/version, then append
+    # one canonical copy immediately before </head>. This makes cascade order
+    # deterministic instead of merely relying on the file being present.
+    text=R69_UI_LINK_RE.sub('',text)
     additions=[]
     if '/assets/ig-fonts.css' not in text:
         additions.append('<link rel="stylesheet" href="/assets/ig-fonts.css">')
-    if '/assets/ig-r69-unified-ui.css' not in text:
-        additions.append('<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">')
-    if additions:
-        text,n=HEAD_CLOSE_RE.subn(''.join(additions)+'</head>',text,count=1)
-        if n!=1:
-            raise AssertionError('HTML without </head>')
+    additions.append('<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">')
+    text,n=HEAD_CLOSE_RE.subn(''.join(additions)+'</head>',text,count=1)
+    if n!=1:
+        raise AssertionError('HTML without </head>')
     return text
 
 def main()->None:
