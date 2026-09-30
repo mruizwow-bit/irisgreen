@@ -41,3 +41,23 @@ Fecha: 30/09/2026
 ## Frase de control
 
 **No afirmar más que la evidencia y no confundir el banco de pruebas con el producto.**
+
+
+## Slack interno
+
+Canal:
+`#general-sabik-ia-technology`
+
+Channel ID:
+`C0C590Y8PHD`
+
+Membership:
+confirmada el 30/09/2026 (`is_member=true`; Slack indicó `already_in_channel` al ejecutar join).
+
+Presentación Eco:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790794445970849
+
+Criterio:
+- Slack = conversación y coordinación rápida;
+- GitHub = decisiones, formación, estados y evidencia canónica;
+- Claude y agentes externos no entran en este Slack interno por defecto.
