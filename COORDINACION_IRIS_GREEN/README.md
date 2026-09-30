@@ -25,6 +25,19 @@ Fuente canónica:
 
 Usar esta cola antes de abrir nuevos builds para separar preservación, integración A2, preview y producción.
 
+## Política transversal de trabajo en equipo
+
+Fuente:
+`NORMATIVA/POLITICA_TRABAJO_EQUIPO_R01_20260930.md`
+
+Registro:
+`CONTROL/INCIDENCIAS_COLABORACION_EQUIPO.csv`
+
+Regla:
+`READ → SOLVE → DOCUMENT → HANDOFF → HELP_NEXT`.
+
+El registro documenta bloqueos y recuperaciones operativas con evidencia, sin juicios personales.
+
 ## Reparto vigente R06 · 25/09/2026 · Codex → Agente 3
 
 **María comunica que Codex está inoperativo y ordena pasar sus pendientes al agente 3.** A3 asume sus cinco comprobaciones reales y toda la continuidad técnica de Codex en Sabik/Cloud: correlación HTTP, correcciones, integración y entrega verificable. No esperar a Codex. Esta disposición sustituye las atribuciones incompatibles anteriores, incluidas las que figuran en el estado/CSV históricos y en la entrega R05.
