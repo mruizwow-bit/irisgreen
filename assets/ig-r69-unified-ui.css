@@ -1,22 +1,7 @@
-/* Iris Green R69 · final compatibility layer for legacy route skins.
-   UI surfaces consume the global semantic tokens. Pictograms, art, printable
-   sheets and immersive scene media keep their own colors. */
-body[data-ig-r49="1"]{
-  /* Compatibility aliases for the historical site-v23/R40 route skins.
-     One semantic palette owns the final page; old selectors may keep using
-     their variable names without introducing a second visual system. */
-  --tinta:var(--ig-text);
-  --azul:var(--ig-link);
-  --lila:var(--ig-accent);
-  --turq:var(--ig-accent-secondary);
-  --papel:var(--ig-bg-surface);
-  --niebla:var(--ig-bg-page);
-  --linea:var(--ig-separator);
-  --suave:var(--ig-text-muted);
-  color:var(--ig-text);
-  background:var(--ig-bg-page);
-  font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
-}
+/* Iris Green R69 · route-family compatibility only.
+   Global shell/theme ownership lives in R49. This file bridges remaining legacy
+   product skins while pictograms, art, printable sheets and immersive media keep
+   their intentional colors. */
 body[data-ig-r49="1"][data-ig-r42-family="quiet"]{
   /* Quiet Space keeps its immersive scene runtime, but the outer document is
      still a low-stimulation Iris Green surface: never a white page in dark mode. */
@@ -104,30 +89,6 @@ body[data-ig-r49="1"] .rv-page :where(.rv-btn[aria-pressed="true"],.rv-chip[aria
 }
 body[data-ig-r49="1"] .rv-page :where(.rv-input,.rv-textarea,.rv-select){
   background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control);
-}
-
-/* Shell and dialogs must follow the chosen global theme on every route. */
-body[data-ig-r49="1"] :where(.ig-r49-global-header,.ig-r49-global-footer,.ig-r49-dialog){
-  color:var(--ig-text);
-}
-body[data-ig-r49="1"] .ig-r49-dialog{
-  background:var(--ig-bg-surface);
-}
-body[data-ig-r49="1"] .ig-r49-dialog-head{
-  background:var(--ig-bg-surface);
-  border-color:var(--ig-separator);
-}
-body[data-ig-r49="1"] .ig-r49-tool{
-  background:var(--ig-bg-surface-soft);
-  border-color:var(--ig-border-control);
-  color:var(--ig-text)!important;
-}
-body[data-ig-r49="1"] .ig-r49-primary a[aria-current="page"],
-body[data-ig-r49="1"] .ig-r49-search-form button,
-body[data-ig-r49="1"] .ig-r49-stage-picker button[aria-pressed="true"],
-body[data-ig-r49="1"] .ig-r49-settings-toggle[aria-pressed="true"]{
-  background:var(--ig-button-primary-bg);
-  color:var(--ig-button-primary-fg)!important;
 }
 
 /* Print/exports may intentionally use white paper. */

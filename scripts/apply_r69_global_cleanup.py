@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""R69 · cross-route cleanup after the final product passes.
+"""R69 · final cross-route compatibility pass.
 
 - self-host the approved Iris Green fonts on every public HTML page;
-- remove the obsolete Resources life-stage chooser so AGE_* has one global UI;
-- load the final compatibility stylesheet last and unlayered. Legacy route CSS is
-  mostly unlayered, so a named @layer would lose to it even when loaded later;
+- remove obsolete local age choosers where the global AGE_* lens owns state;
+- load route-family compatibility last and unlayered so older unlayered product
+  skins cannot override it;
+- leave global shell/theme ownership in R49;
 - leave content, product engines and immersive art untouched.
 """
 from __future__ import annotations

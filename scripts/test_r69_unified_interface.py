@@ -47,6 +47,7 @@ def main()->None:
     need(not static_age,"Static local age picker remains outside the global shell: "+", ".join(static_age[:12]))
 
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
+    shell_css=(root/"assets/ig-r49-transversal.css").read_text(encoding="utf-8")
     need("@layer ig-r69-unified" not in unified,
          "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
     for legacy,semantic in {
@@ -54,8 +55,12 @@ def main()->None:
         "--turq":"--ig-accent-secondary","--papel":"--ig-bg-surface",
         "--niebla":"--ig-bg-page","--linea":"--ig-separator","--suave":"--ig-text-muted"
     }.items():
-        need(f"{legacy}:var({semantic})" in unified,
-             f"Legacy palette alias {legacy} is not bound to {semantic}")
+        need(f"{legacy}:var({semantic}" in shell_css,
+             f"R49 does not own legacy palette alias {legacy} -> {semantic}")
+        need(f"{legacy}:var({semantic})" not in unified,
+             f"R69 duplicates transversal palette alias {legacy}")
+    need(".ig-r49-global-header" not in unified and ".ig-r49-global-footer" not in unified,
+         "R69 still duplicates global shell ownership")
     final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
     for p in pages:
         s=p.read_text(encoding="utf-8")
