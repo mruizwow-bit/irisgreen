@@ -158,7 +158,12 @@
   }
   function autoMount(){
     function go(){ensureCss();enhanceLauncher();enhanceStudy();refreshAudience();}
-    if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',go,{once:true});else root.setTimeout(go,0);
+    /* Parser-inserted defer scripts already run after HTML parsing. If the
+       document is interactive, mounting through setTimeout creates one full
+       event-loop turn where the legacy study can exist before the R42 shell.
+       Mount synchronously instead; only genuinely loading documents wait for
+       DOMContentLoaded. */
+    if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',go,{once:true});else go();
     if(root.addEventListener&&!root.__ig42AudienceBound){root.__ig42AudienceBound=true;root.addEventListener('ig:audience-change',refreshAudience);}
   }
   return {autoMount:autoMount,enhanceStudy:enhanceStudy,enhanceLauncher:enhanceLauncher,directManipulation:directManipulation};
