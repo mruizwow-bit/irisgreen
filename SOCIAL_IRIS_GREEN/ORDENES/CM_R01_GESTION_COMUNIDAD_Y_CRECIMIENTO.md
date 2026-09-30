@@ -624,3 +624,10 @@ Buscar, seguir y comentar 20 cuentas nuevas en Instagram y otras 20 en Facebook 
 ## Corrección de María · 30/09/2026 16:20 Europe/Madrid · amplitud neurodiversa
 
 Iris Green no es solo de autismo. Diversificar las 20 altas diarias por red entre TDAH, dislexia, discalculia, dispraxia, Tourette/tics, TOC, comunicación/CAA, accesibilidad, salud mental relacionada y experiencias neurodivergentes, además de autismo. Registrar tema e idioma y evitar que autismo monopolice el descubrimiento. En la tanda en curso, conservar acciones verificadas y dedicar las restantes a ampliar temas.
+
+
+### Mapa editorial comprobado · catálogo Condiciones de preview #342
+
+Fuente: es/neurodiversidad/condiciones/index.html en 6b780eccf447cbfeaa877ede54f3928800c5c546, rama de preview #342. Contiene 185 fichas: 48 contexto, 37 experiencia, 31 diagnóstico, 26 identidad, 15 desarrollo, 11 proceso, 6 emergente, 5 apoyo, 4 salud física, 1 salud mental y 1 controvertido. La lectura directa del enlace de preview falló; análisis realizado sobre fuente del despliegue, no auditoría visual.
+
+El descubrimiento social debe cubrir también identidad/LGTBI+, relaciones y pertenencia, educación y empleo, vida diaria, creatividad, ocio, derechos, apoyos y salud física relacionada. No etiquetar identidades o circunstancias sociales como diagnósticos. Buscar tanto voces en primera persona como asociaciones y proyectos útiles. Usar el catálogo como mapa de temas, no como lista de 185 diagnósticos ni como validación clínica automática.
