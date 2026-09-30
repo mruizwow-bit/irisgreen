@@ -50,7 +50,9 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
 .sabik-layered-avatar[data-web-state="CONFIRMAR"]{--sabik-orbit-speed-back:22s;--sabik-orbit-speed-front:28s;--sabik-presence-speed:2.4s}
 .sabik-layered-avatar[data-voice-active="true"]{--sabik-presence-speed:1.55s}
 .sabik-layered-avatar[data-motion-level="REDUCIDO"]{--sabik-orbit-speed-back:84s;--sabik-orbit-speed-front:108s;--sabik-presence-speed:7.5s}
-.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"] *,.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::before,.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::after,.sabik-layered-avatar[data-render-active="false"] *,.sabik-layered-avatar[data-render-active="false"]::before,.sabik-layered-avatar[data-render-active="false"]::after,html[data-ig-motion="off"] .sabik-layered-avatar *,html[data-ig-motion="off"] .sabik-layered-avatar::before,html[data-ig-motion="off"] .sabik-layered-avatar::after{animation-play-state:paused!important}
+.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"] .sabik-orbit-layer{animation:none!important;transform:none!important}
+.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::before,.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::after{animation:none!important;transform:none!important}
+.sabik-layered-avatar[data-render-active="false"] *,.sabik-layered-avatar[data-render-active="false"]::before,.sabik-layered-avatar[data-render-active="false"]::after,html[data-ig-motion="off"] .sabik-layered-avatar *,html[data-ig-motion="off"] .sabik-layered-avatar::before,html[data-ig-motion="off"] .sabik-layered-avatar::after{animation-play-state:paused!important}
 @keyframes sabikR69OrbitBack{to{transform:rotate(360deg)}}@keyframes sabikR69OrbitFront{to{transform:rotate(360deg)}}
 @keyframes sabikR69CoreWave{0%,100%{transform:scale(.86);opacity:.25}50%{transform:scale(1.18);opacity:.72}}
 @keyframes sabikR69PresenceWave{0%,100%{transform:scale(.94) rotate(-2deg);opacity:.28}50%{transform:scale(1.05) rotate(2deg);opacity:.62}}
