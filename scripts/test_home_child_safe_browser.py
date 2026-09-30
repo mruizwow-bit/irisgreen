@@ -21,7 +21,7 @@ async def main():
     await capture(page,path,name,w,h);report['screenshots'].append(f'{name}-{w}x{h}.png')
   await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/',wait_until='networkidle')
-  need(await page.get_by_role('heading',name='Empieza por tu parte',exact=True).count()==1,'v4 hero missing')
+  need(await page.get_by_role('heading',name='Encuentra lo que necesitas',exact=True).count()==1,'v4 hero missing')
   need(await page.get_by_role('heading',name='Entra y úsalo',exact=True).count()==1,'v4 use section missing')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).count()==1,'v4 Sabik section missing')
   need(await page.get_by_role('heading',name='Entiende y encuentra',exact=True).count()==1,'v4 discover section missing')
@@ -48,7 +48,7 @@ async def main():
     const r=img.getBoundingClientRect(), c=getComputedStyle(widget);
     return {width:r.width,height:r.height,columns:c.gridTemplateColumns,widgetWidth:widget.getBoundingClientRect().width};
   }""")
-  need(185<=sabik_geom['width']<=255,'Sabik visual is not large enough inside compact Home block '+repr(sabik_geom))
+  need(220<=sabik_geom['width']<=305,'Sabik visual is outside the current Home product range '+repr(sabik_geom))
   need(len([x for x in sabik_geom['columns'].split(' ') if x])>=2,'Sabik desktop donor must render as two columns '+repr(sabik_geom))
   need(await page.locator('#sabik-settings-toggle').count()==0,'Sabik controls must not be hidden behind settings')
   voice_ctl=page.get_by_role('button',name='Voz de Sabik: Desactivada',exact=False)
@@ -73,8 +73,18 @@ async def main():
   await page.get_by_role('button',name='Claro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='light','LIGHT alternative did not apply')
   await page.get_by_role('button',name='Navy oscuro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='dark','DARK NAVY did not restore')
   await page.keyboard.press('Escape')
-  # Canonical age remains session-only and is not a permanent header control.
-  await page.evaluate("IGAudience.set('AGE_0_12')");need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
+  # Canonical age is visible on Home and remains session-only across the rest of the site.
+  need(await page.locator('[data-ig-audience-picker]').count()==1,'Home age picker missing')
+  need(await page.locator('[data-ig-audience-stage]').count()==4,'Home age buttons missing')
+  await page.get_by_role('button',name='0–12 años',exact=True).click()
+  need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
+  need(await page.locator('[data-ig-home-safe]').is_visible(),'child-safe state not visible')
+  need(await page.locator('[data-ig-home-adult]').is_hidden(),'adult state leaked into child view')
+  need(await page.get_by_text('Tus intereses',exact=True).is_hidden(),'unclassified Interests remains visible in child view')
+  need(await page.get_by_text('Libros de Iris Green',exact=True).is_hidden(),'unclassified Books remains visible in child view')
+  await page.get_by_role('button',name='18 años o más',exact=True).click()
+  need(await page.locator('[data-ig-home-safe]').is_hidden(),'child-safe state leaked into adult view')
+  need(await page.locator('[data-ig-home-adult]').is_visible(),'adult explicit state missing')
   await page.evaluate("IGAudience.clear()");need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL not restored')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
   req=[];page.on('request',lambda r:req.append(r.url));q=page.locator('#ig-home-q');await q.fill('anorexia');await page.wait_for_timeout(500)
@@ -99,6 +109,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','sabik-donor-proportion','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','canonical-age-runtime','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','sabik-donor-proportion','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','canonical-age-visible-fail-closed','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
