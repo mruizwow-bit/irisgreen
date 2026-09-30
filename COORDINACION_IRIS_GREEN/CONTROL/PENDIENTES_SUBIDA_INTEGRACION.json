@@ -81,10 +81,21 @@
       "id": "R59",
       "product": "Fosiles",
       "issue": 323,
-      "product_status": "R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED",
-      "preservation": "PACKAGE_IN_CHAT",
+      "product_status": "R59_FOSSILS_INTEGRATION_FINDINGS_PRESERVED_QA_GOV_MISSION_UNCHANGED",
+      "preservation": "PACKAGE_IN_CHAT_NOT_FINAL",
       "integration": "FIX_BEFORE_INTEGRATION",
-      "next": "nominal QA + GOV-01"
+      "next": "close nominal QA 4/4 + governance + GOV-01 + final package; keep integration findings for future A2 handoff",
+      "blocker": "QA_NOMINAL_GOV_FINAL",
+      "integration_findings": {
+        "es_en_routes": true,
+        "canonical_hreflang_metadata": true,
+        "use_real_shell": true,
+        "repo_paths_for_assets": true,
+        "index_and_sitemap_when_applicable": true,
+        "copyable_para_irisgreen_package": true,
+        "global_tokens_exist_on_live_a2": true,
+        "fossils_minerals_merge_not_authorized": true
+      }
     },
     {
       "id": "R68",

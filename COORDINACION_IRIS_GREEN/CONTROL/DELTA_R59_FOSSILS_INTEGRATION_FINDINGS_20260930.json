@@ -1,0 +1,34 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R59-FOSSILS-INTEGRATION-FINDINGS-20260930",
+  "issue": 323,
+  "date": "2026-09-30",
+  "status": "R59_FOSSILS_INTEGRATION_FINDINGS_PRESERVED_QA_GOV_MISSION_UNCHANGED",
+  "product_pass_preserved": true,
+  "current_mission": [
+    "QA_NOMINAL_4_OF_4",
+    "GOVERNANCE_EXECUTABLE",
+    "GOV_01",
+    "FINAL_PACKAGE"
+  ],
+  "future_integration_requirements": [
+    "SEPARATE_ES_EN_ROUTES",
+    "REAL_IRIS_GREEN_SHELL",
+    "CANONICAL_HREFLANG_METADATA",
+    "REPO_ASSET_PATHS",
+    "INDEX_AND_SITEMAP_WHEN_APPLICABLE",
+    "COPYABLE_PARA_IRISGREEN_OVERLAY"
+  ],
+  "corrections": {
+    "global_tokens_exists_on_live_a2": true,
+    "observed_a2_head": "8ea50128b490207b4dd5508c3c46692f5be69c87",
+    "fossils_minerals_merge_authorized": false
+  },
+  "limits": [
+    "NO_PRODUCT_REOPEN",
+    "NO_A2_INTEGRATION_NOW",
+    "NO_MINERALS",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}
