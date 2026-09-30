@@ -29,7 +29,9 @@ jobs:
       - name: Build unified artifact
         run: python scripts/build_site.py
       - name: Static R69 gate
-        run: python scripts/test_r69_unified_interface.py --root dist
+        run: |
+          python scripts/test_r69_unified_interface.py --root dist
+          node tools/test-sabik-motion-r37.js
       - name: Install browser
         run: |
           python -m venv /tmp/ig-r69
