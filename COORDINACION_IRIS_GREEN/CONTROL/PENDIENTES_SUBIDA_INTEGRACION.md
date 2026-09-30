@@ -1,8 +1,43 @@
+## R44-A0 · fuente preservada + reconciliación aceptada · 30/09/2026
+
+Estado:
+`R44_A0_SOURCE_PRESERVED_RECONCILIATION_ACCEPTED_FRAMEWORK_8_PILOTS_IN_PROGRESS`.
+
+Aura verifica los adjuntos entregados por Claude:
+
+- matriz fuente: SHA-256 `f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e`, 88 581 bytes;
+- reconciliación: SHA-256 `f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44`, 11 852 bytes;
+- el patch serie recibido aplica limpio y reproduce ambos documentos byte a byte en verificación local de coordinación.
+
+§2 queda CERRADO:
+la matriz exacta se recuperó y queda preservada canónicamente.
+
+§3 queda ACEPTADO como reconciliación de trabajo:
+- 55 Ola A / 9 Ola B;
+- 27 hosts con motor;
+- único hueco de exportación documentado: X08 requiere STL desde Modelado 3D;
+- colisión `taller-retos.json` 72 legacy detectada; R44 usa namespace propio;
+- correcciones E09/E18/X03/E35/E41 + E22 registradas;
+- 8 pilotos reales fijados: E01, E06, E17, E22, E28, E34, E38, E44.
+
+Trazabilidad pendiente, NO bloqueo de construcción:
+los logs brutos de axe/exportadores/teclado/foco deben preservarse con el handoff A0. El resultado recibido sobre los hosts no equivale a PASS de accesibilidad de los retos todavía no construidos.
+
+Precedencia de metadata:
+la matriz fuente es evidencia histórica. El producto R44 NO usa el valor legacy `TRANSVERSAL`; consume la reconciliación con `ALL_AGES` y `recommended_stage/starter_stage` separados de safety/discovery.
+
+Copy pendiente antes de liberar Ola A:
+E09 no debe publicarse con el título bruto “Paleta que funciona para daltonismo”; debe reformularse hacia no depender solo del color, sin garantía de daltonismo.
+
+Claude continúa directamente con §4 framework + §5 ocho pilotos.
+R65 no se reabre.
+No main. No producción.
+
 ## R44-A0 · ampliación Taller · pendiente de construir/preservar/subir · 30/09/2026
 
 | ID | Producto | Issue | Estado producto | Preservación | Integración | Destino | Bloqueo / siguiente acción |
 |---|---|---:|---|---|---|---|---|
-| R44-A0 | Taller · ampliación 64 retos · framework + 8 pilotos | #319 | R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED | SOURCE_MATRIX_RECOVERY_REQUIRED · BUILD_PENDING | NOT_READY | R67_TALLER_AFTER_R65_PHASE3 | Recuperar matriz exacta, reconciliar 55/55, construir 8 pilotos, preservar branch/patch/hash y handoff |
+| R44-A0 | Taller · ampliación 64 retos · framework + 8 pilotos | #319 | R44_A0_SOURCE_PRESERVED_RECONCILIATION_ACCEPTED_FRAMEWORK_8_PILOTS_IN_PROGRESS | SOURCE_AND_RECONCILIATION_PRESERVED_GITHUB | BUILD_IN_PROGRESS | R67_TALLER_AFTER_R65_PHASE3 | §4 framework + §5 8 pilotos; preservar logs brutos y handoff al entregar |
 
 Regla: puede construirse ya en carril propio, pero no entra en A2/R67 hasta que el R65 aprobado esté integrado y el A0 pase revisión.
 

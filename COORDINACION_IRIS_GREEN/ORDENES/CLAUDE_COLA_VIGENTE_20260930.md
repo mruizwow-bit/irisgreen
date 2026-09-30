@@ -1,3 +1,25 @@
+# ACTUALIZACIÓN R44-A0 · §2/§3 CERRADOS · CONTINUAR §4/§5 · 30/09/2026
+
+Estado:
+`R44_A0_SOURCE_PRESERVED_RECONCILIATION_ACCEPTED_FRAMEWORK_8_PILOTS_IN_PROGRESS`
+
+CERRADO:
+1. fuente exacta recuperada/preservada;
+2. reconciliación 55/9 contra Taller documentada;
+3. 8 pilotos reales fijados: E01 E06 E17 E22 E28 E34 E38 E44.
+
+CONTINUAR SIN STOP:
+4. framework R44 sobre núcleo existente, namespace propio;
+5. ocho pilotos completos.
+
+Condición de handoff:
+preservar logs brutos de axe/exportadores/teclado/foco junto con código, capturas, branch/HEAD/tree, patch o bundle y hashes.
+
+No usar `TRANSVERSAL` legacy en producto: usar `ALL_AGES` + recommended_stage/starter_stage.
+E09 copy pendiente de reformulación antes de release.
+X08 sigue fuera de A0 hasta `CROSS_STUDIO_IO_VERIFIED`.
+No reabrir R65.
+
 # ACTUALIZACIÓN · R44-A0 ASIGNADO · 30/09/2026
 
 Estado:

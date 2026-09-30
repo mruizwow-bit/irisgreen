@@ -1,0 +1,59 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R44-A0-SOURCE-RECONCILIATION-AURA-REVIEW-20260930",
+  "issue": 319,
+  "date": "2026-09-30",
+  "status": "R44_A0_SOURCE_PRESERVED_RECONCILIATION_ACCEPTED_FRAMEWORK_8_PILOTS_IN_PROGRESS",
+  "source": {
+    "path": "COORDINACION_IRIS_GREEN/MEMORIA/R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md",
+    "sha256": "f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e",
+    "bytes": 88581,
+    "preserved": true
+  },
+  "reconciliation": {
+    "path": "COORDINACION_IRIS_GREEN/MEMORIA/R44_MATRIZ_RECONCILIADA_OLA_A_CLAUDE_20260930.md",
+    "sha256": "f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44",
+    "bytes": 11852,
+    "accepted_for_a0": true,
+    "wave_a": 55,
+    "wave_b": 9,
+    "pilots": [
+      "E01",
+      "E06",
+      "E17",
+      "E22",
+      "E28",
+      "E34",
+      "E38",
+      "E44"
+    ],
+    "x08": "CROSS_STUDIO_IO_VERIFIED_REQUIRED_FOR_STL"
+  },
+  "evidence": {
+    "patch_applied_in_temp_repo": true,
+    "source_byte_identical": true,
+    "reconciliation_byte_identical": true,
+    "raw_execution_logs_received": false,
+    "raw_execution_logs_required_with_a0_handoff": true,
+    "challenge_accessibility_pass": false
+  },
+  "implementation_precedence": {
+    "legacy_transversal_forbidden": true,
+    "canonical_age": [
+      "AGE_0_12",
+      "AGE_13_17",
+      "AGE_18_PLUS",
+      "ALL_AGES"
+    ],
+    "recommended_stage_separate": true,
+    "e09_title_copy_correction_before_release": true
+  },
+  "next": "BUILD_R44_FRAMEWORK_AND_8_PILOTS",
+  "normative_change": false,
+  "limits": [
+    "NO_BULK_64",
+    "NO_MAIN",
+    "NO_PRODUCTION",
+    "R65_DO_NOT_REOPEN"
+  ]
+}
