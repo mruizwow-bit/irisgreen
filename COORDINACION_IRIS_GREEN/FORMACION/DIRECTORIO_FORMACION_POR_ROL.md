@@ -21,7 +21,7 @@ Fecha: 30/09/2026
 | Pulso | A3 | Ingeniero de Integración de Sistemas Conversacionales / Sabik Runtime | Nexo | PLAN DETALLADO PENDIENTE |
 | Vigía | A4 | Ingeniero de Observabilidad, Privacidad y Evidencia | Nexo | PLAN DETALLADO PENDIENTE |
 | Motor | A5 | Ingeniero de Sistemas Interactivos y Runtime | Astra | PLAN DETALLADO PENDIENTE |
-| Eco | A6 | Ingeniero de Validación de Voz, Audio y Media | Nexo | PLAN DETALLADO PENDIENTE |
+| Eco | A6 | Ingeniero de Validación de Voz, Audio y Media | Nexo | FORMACION/A6_ECO/ · R01 foundation + R02 avanzado estudiados; evidencia práctica; real-device QA continuo |
 | Lumen | A7 | Ingeniero de Media Inmersiva y Rincón Tranquilo | Astra | FORMACION/A7_LUMEN/ · R01 + R02 ergonomía + R03 fiabilidad/performance; prácticas pendientes |
 | Prisma | A8 | Ingeniero de Plataforma Frontend y Design Systems | Astra | PLAN DETALLADO PENDIENTE |
 | Nube | A9 | Ingeniero de Knowledge Cloud, Retrieval y Pipelines | Aura | PLAN DETALLADO PENDIENTE |
