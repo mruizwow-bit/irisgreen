@@ -23,3 +23,7 @@ Altas y comentarios previamente verificados: Instagram9, Facebook11. Objetivo20 
 ## Instagram · adhd_love_ · EN
 
 Perfil muestra Desbloquear: cuenta bloqueada desde Iris Green. Excluida sin modificar bloqueo y sin interacciones. No continuar criba ni incorporar a futuras candidaturas mientras persista ese estado.
+
+## Instagram · espaciotdah · ES · TDAH adulto
+
+209.475 seguidores. Tres publicaciones examinadas: DduO-4IB1tL (26/09,303 likes,15 comentarios principales cargados con INFO123), DdZbtw5lJci (17/09,310 likes,12 comentarios cargados pidiendo DESPEGUE), DdPYN8NhOOk (13/09,886 likes,407 comentarios indicados,15 principales cargados pidiendo ORBITA;10 republicaciones indicadas, no confundir con envíos/compartidos totales). Las muestras de comentarios son parciales y ordenadas Para ti, no muestreo aleatorio. Mediana de likes de3posts:310. Actividad reciente y respuesta comercial observable, pero conversación sustantiva no acreditada en esta muestra. Decisión: pendiente/no priorizada; sin follow ni comentario. No se califica como audiencia falsa. Fuente URLs bajo https://www.instagram.com/espaciotdah/reel/ para primer y tercer ID y /p/ para segundo.
