@@ -5,6 +5,9 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
+concurrency:
+  group: r69-unified-interface-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   r69:
     runs-on: ubuntu-latest
