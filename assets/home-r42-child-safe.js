@@ -12,6 +12,25 @@ function start(){
   form.addEventListener('submit',function(e){e.preventDefault();var q=input.value.trim();if(!q)return;var ticket=++seq;results.replaceChildren();status.textContent=lang()==='en'?'Searching…':'Buscando…';window.IGSearch.search(q,{intentional:true,lang:lang()}).then(function(hits){if(ticket!==seq)return;var list=hits.slice(0,12);if(!list.length){status.textContent=text().no;return;}status.textContent=list.length+' '+text().found;list.forEach(function(x){results.appendChild(resultNode(window.IGSearch.localize(x,lang())));});});});
   window.addEventListener('ig:audience-change',function(){suggestions.replaceChildren();results.replaceChildren();status.textContent='';if(input.value.trim())showSuggestions();});
  }
+ function syncHomeAgeCards(){
+  if(!window.IGAudience)return;
+  var stage=window.IGAudience.get(),strict=stage!=='GENERAL'&&stage!=='AGE_18_PLUS';
+  document.querySelectorAll('.ig-home-v4-card').forEach(function(card){
+   var bands=card.getAttribute('data-ig-age-bands');
+   var visible=bands?window.IGAudience.allowedAgeBands(bands):!strict;
+   card.hidden=!visible;
+   if(visible)card.removeAttribute('aria-hidden');else card.setAttribute('aria-hidden','true');
+  });
+ }
+ function syncSafetyState(){
+  if(!window.IGAudience)return;
+  var adult=window.IGAudience.isAdult();
+  document.querySelectorAll('[data-ig-home-safe]').forEach(function(n){n.hidden=adult;});
+  document.querySelectorAll('[data-ig-home-adult]').forEach(function(n){n.hidden=!adult;});
+ }
+ function syncAgeSafety(){syncHomeAgeCards();syncSafetyState();}
+ window.addEventListener('ig:audience-change',syncAgeSafety);
+ syncAgeSafety();
  var dialog=document.getElementById('ig-home-settings'),openButtons=document.querySelectorAll('[data-ig-home-settings-open]'),close=dialog&&dialog.querySelector('[data-ig-home-settings-close]');
  function pref(){return window.IGPreferences;}
  function syncPrefs(){

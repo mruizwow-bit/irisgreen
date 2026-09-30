@@ -433,3 +433,6 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .sabik-icon-button{border-radius:999px;padding:.55rem .85rem}
 @media(max-width:1050px){.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:max-content max-content}.ig-home-v4 .sabik-motion-control{grid-column:1/-1;max-width:15rem}}
 @media(max-width:760px){.ig-home-v4-wrap{width:100%;padding-inline:1rem}.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:1fr}.ig-home-v4 .sabik-motion-control{grid-column:auto;max-width:none}}
+
+.ig-home-v4-safety-state [hidden],
+.ig-home-v4-card[hidden]{display:none!important}
