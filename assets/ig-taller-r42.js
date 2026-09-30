@@ -10,8 +10,11 @@
   'use strict';
   var D=root.document;
   var WORK_SELECTOR='.igt-r40-canvas,.igt-r40-pixel,.igt-r40-floor,.igt-r40-game,.igt-r40-world,.igt-r40-sim,.igt-r40-board,.igt-r40-sequencer,.igt-r40-piano,.igt-r40-comic,.igt-r40-writing,.igt-r40-photo,.igt-canvas-box,canvas,.igt-arena';
-  // Life-stage is a temporary view for this page only: never persisted or profiled.
-  var currentStage='all';
+  // The Workshop consumes the single global AGE_* lens. It must not create a second age picker.
+  function currentStage(){
+    var v=root.IGAudience?root.IGAudience.get():(D&&D.documentElement&&D.documentElement.dataset.igAudience)||'GENERAL';
+    return ({AGE_0_12:'child',AGE_13_17:'teen',AGE_18_PLUS:'adult',ALL_AGES:'all',GENERAL:'all'})[v]||'all';
+  }
   function lang(){return D&&String(D.documentElement.lang||'es').slice(0,2)==='en'?'en':'es';}
   function T(es,en){return lang()==='en'?en:es;}
   function el(tag,cls,text){var n=D.createElement(tag);if(cls)n.className=cls;if(text!==undefined)n.textContent=text;return n;}
@@ -33,14 +36,6 @@
   function showDialog(d,trigger){if(!d)return;d.__trigger=trigger||D.activeElement;if(typeof d.showModal==='function')d.showModal();else d.setAttribute('open','');}
   function wireDialogClose(d){d.addEventListener('close',function(){if(d.__trigger&&typeof d.__trigger.focus==='function')d.__trigger.focus();});}
 
-  function stageSelector(study){
-    var wrap=el('div','ig42-stage-choice'),label=el('span','ig42-stage-label',T('Ruta de entrada','Entry path'));wrap.appendChild(label);
-    var group=el('div','ig42-segmented');group.setAttribute('role','group');group.setAttribute('aria-label',label.textContent);
-    var stages=[['all',T('Cualquier edad','Any age')],['child',T('Infancia','Childhood')],['teen',T('Adolescencia','Teens')],['adult',T('Adultez','Adults')]];
-    var current=currentStage;
-    stages.forEach(function(s){var b=btn(s[1],'ig42-segment');b.dataset.stage=s[0];b.setAttribute('aria-pressed',String(current===s[0]));b.addEventListener('click',function(){current=s[0];currentStage=current;qa('button',group).forEach(function(x){x.setAttribute('aria-pressed',String(x===b));});updateStageBrief(study,current);});group.appendChild(b);});
-    wrap.appendChild(group);return wrap;
-  }
   function updateStageBrief(study,stage){
     var out=q('#ig42-stage-brief');if(!out||!study)return;var pd=pathData(study.id);var item=pd&&pd[stage];
     if(!item&&pd)item=pd.all;if(!item){out.textContent=T('Crea libremente o abre el panel Reto cuando quieras.','Create freely or open the Challenge panel whenever you want.');return;}
@@ -52,7 +47,7 @@
     var left=el('div','ig42-topbar-left'),back=D.createElement('a');back.className='ig42-back';back.href=lang()==='en'?'/en/workshop/':'/es/taller/';back.textContent='← '+T('Taller','Workshop');left.appendChild(back);
     var title=el('div','ig42-titleblock'),name=el('h1','ig42-study-name',study?study.title[lang()]:(q('#igt-title')?q('#igt-title').textContent:T('Estudio','Studio'))),state=el('span','ig42-save-state',T('Cambios locales','Local changes'));title.appendChild(name);title.appendChild(state);left.appendChild(title);top.appendChild(left);
     var center=el('div','ig42-topbar-center'),mode=el('div','ig42-mode');mode.setAttribute('role','group');mode.setAttribute('aria-label',T('Modo de trabajo','Working mode'));
-    var free=btn(T('Libre','Free'),'ig42-mode-btn'),challenge=btn(T('Reto','Challenge'),'ig42-mode-btn');free.setAttribute('aria-pressed','true');challenge.setAttribute('aria-pressed','false');mode.appendChild(free);mode.appendChild(challenge);center.appendChild(mode);center.appendChild(stageSelector(study));top.appendChild(center);
+    var free=btn(T('Libre','Free'),'ig42-mode-btn'),challenge=btn(T('Reto','Challenge'),'ig42-mode-btn');free.setAttribute('aria-pressed','true');challenge.setAttribute('aria-pressed','false');mode.appendChild(free);mode.appendChild(challenge);center.appendChild(mode);top.appendChild(center);
     var actions=el('div','ig42-topbar-actions');
     var undo=btn('↶','ig42-icon-btn');undo.setAttribute('aria-label',T('Deshacer','Undo'));undo.title=T('Deshacer · Ctrl+Z','Undo · Ctrl+Z');
     var redo=btn('↷','ig42-icon-btn');redo.setAttribute('aria-label',T('Rehacer','Redo'));redo.title=T('Rehacer · Ctrl+Y','Redo · Ctrl+Y');
@@ -98,7 +93,7 @@
   function extractChallenges(app,body,top,study){
     var c=q('.igt-retos',app);if(c&&!body.contains(c)){body.appendChild(c);c.classList.add('ig42-challenge-content');}
     if(!q('#ig42-stage-brief',body)){var stage=el('section','ig42-stage-brief-wrap');stage.appendChild(el('h3','',T('Sugerencia para esta etapa','Suggestion for this stage')));var p=el('p','');p.id='ig42-stage-brief';stage.appendChild(p);body.insertBefore(stage,body.firstChild);}
-    updateStageBrief(study,currentStage);
+    updateStageBrief(study,currentStage());
   }
   function makeManagementButton(main){
     var b=btn(T('Mi colección y proyectos','My collection and projects'),'ig42-manage-btn');var dlg=createDialog('ig42-manage',T('Mi colección y proyectos','My collection and projects'));wireDialogClose(dlg);b.addEventListener('click',function(){var body=q('.ig42-dialog-body',dlg);if(!body.dataset.loaded){var old=q('#igt-local-summary');if(old){body.appendChild(old);old.hidden=false;old.classList.add('ig42-local-summary');}else{var app=q('#igt-app'),found=0;qa('.igt-bar button',app).forEach(function(source){var txt=(source.textContent||'').trim();if(!/colecci|collection|progreso|progress|Guardados|Saved projects/i.test(txt))return;var proxy=btn(txt,'ig42-menu-action');proxy.addEventListener('click',function(){safeClick(source);});body.appendChild(proxy);found++;});if(!found)body.appendChild(el('p','ig42-empty',T('Todavía no hay datos locales que gestionar.','There is no local data to manage yet.')));}body.dataset.loaded='true';}showDialog(dlg,b);});
@@ -151,13 +146,20 @@
   }
   function enhanceLauncher(){
     var old=q('#igt-taller-index'),main=q('main#main');if(!old||!main||main.dataset.ig42Launcher)return false;main.dataset.ig42Launcher='true';main.classList.add('ig42-launcher-page');ensureCss();old.hidden=true;
-    var rootNode=el('section','ig42-launcher'),toolbar=el('div','ig42-launcher-toolbar'),search=D.createElement('input');search.type='search';search.placeholder=T('Buscar estudio o herramienta','Search studios or tools');search.className='ig42-search';search.setAttribute('aria-label',search.placeholder);toolbar.appendChild(search);var manage=btn(T('Mi colección / Proyectos','My collection / Projects'),'ig42-manage-btn');toolbar.appendChild(manage);rootNode.appendChild(toolbar);rootNode.appendChild(stageSelector(null));
+    var rootNode=el('section','ig42-launcher'),toolbar=el('div','ig42-launcher-toolbar'),search=D.createElement('input');search.type='search';search.placeholder=T('Buscar estudio o herramienta','Search studios or tools');search.className='ig42-search';search.setAttribute('aria-label',search.placeholder);toolbar.appendChild(search);var manage=btn(T('Mi colección / Proyectos','My collection / Projects'),'ig42-manage-btn');toolbar.appendChild(manage);rootNode.appendChild(toolbar);
     var areas=[];catalogue().forEach(function(s){var name=s.area[lang()];var a=areas.find?areas.find(function(x){return x.name===name;}):null;if(!a){a={name:name,items:[]};areas.push(a);}a.items.push(s);});
     var grid=el('div','ig42-area-grid');areas.forEach(function(area){var card=el('section','ig42-area-card'),head=el('div','ig42-area-head'),title=el('h2','',area.name);head.appendChild(title);head.appendChild(microPreview(area.items[0]));card.appendChild(head);var links=el('div','ig42-featured');area.items.slice(0,4).forEach(function(s){var a=D.createElement('a');a.href=lang()==='en'?'/en/workshop/'+s.slugs.en+'/':'/es/taller/'+s.slugs.es+'/';a.dataset.search=(s.title.es+' '+s.title.en+' '+s.tool.es+' '+s.tool.en).toLowerCase();a.textContent=s.title[lang()];links.appendChild(a);});card.appendChild(links);var more=btn(T('Ver todos','View all'),'ig42-view-all');more.addEventListener('click',function(){var list=card.querySelector('.ig42-all-studios');list.hidden=!list.hidden;more.setAttribute('aria-expanded',String(!list.hidden));});more.setAttribute('aria-expanded','false');card.appendChild(more);var list=el('div','ig42-all-studios');list.hidden=true;area.items.slice(4).forEach(function(s){var a=D.createElement('a');a.href=lang()==='en'?'/en/workshop/'+s.slugs.en+'/':'/es/taller/'+s.slugs.es+'/';a.dataset.search=(s.title.es+' '+s.title.en+' '+s.tool.es+' '+s.tool.en).toLowerCase();a.textContent=s.title[lang()];list.appendChild(a);});card.appendChild(list);grid.appendChild(card);});rootNode.appendChild(grid);main.insertBefore(rootNode,old);
     search.addEventListener('input',function(){var needle=search.value.trim().toLowerCase();qa('.ig42-area-card',grid).forEach(function(card){var links=qa('a',card),visible=0;links.forEach(function(a){var ok=!needle||String(a.dataset.search||a.textContent).indexOf(needle)>=0;a.hidden=!ok;if(ok)visible++;});card.hidden=visible===0;});});
     var dlg=createDialog('ig42-launcher-manage',T('Mi colección y proyectos','My collection and projects'));wireDialogClose(dlg);manage.addEventListener('click',function(){var body=q('.ig42-dialog-body',dlg);if(!body.dataset.loaded){var oldSummary=q('#igt-local-summary');if(oldSummary){body.appendChild(oldSummary);oldSummary.hidden=false;oldSummary.classList.add('ig42-local-summary');}else body.appendChild(el('p','ig42-empty',T('Todavía no hay proyectos guardados.','There are no saved projects yet.')));body.dataset.loaded='true';}showDialog(dlg,manage);});recentProjects(rootNode);return true;
   }
 
-  function autoMount(){function go(){ensureCss();enhanceLauncher();enhanceStudy();}if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',go,{once:true});else root.setTimeout(go,0);}
+  function refreshAudience(){
+    var app=q('#igt-app'),study=studyFromApp(app);if(study)updateStageBrief(study,currentStage());
+  }
+  function autoMount(){
+    function go(){ensureCss();enhanceLauncher();enhanceStudy();refreshAudience();}
+    if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',go,{once:true});else root.setTimeout(go,0);
+    if(root.addEventListener&&!root.__ig42AudienceBound){root.__ig42AudienceBound=true;root.addEventListener('ig:audience-change',refreshAudience);}
+  }
   return {autoMount:autoMount,enhanceStudy:enhanceStudy,enhanceLauncher:enhanceLauncher,directManipulation:directManipulation};
 });
