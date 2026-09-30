@@ -1,5 +1,17 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R61 Pecera · final QA / transfer · 30/09/2026
+
+Orden: `R61_CLAUDE_RINCON_PECERA/05_AURA_FINAL_QA_TRANSFER_PENDING.md` · issue #325.
+
+Estado: `R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING`.
+
+KEEP del máster de 10 min. No rerender visual. Claude debe transferir binarios/build y completar 390/320, NORMAL/REDUCIDO/SIN_MOVIMIENTO, controles, performance o PENDING_HARDWARE_QA, benchmark E4 y decisión de peso basada en medición.
+
+Siguiente gate:
+`R61_PECERA_FINAL_PACKAGE_MOBILE_BENCHMARK_QA_READY_FOR_ASTRA_MARIA`.
+
+
 ## Claude · R68 Faroles · direction rework · 30/09/2026
 
 Orden vigente: `R68_CLAUDE_FAROLES/02_AURA_DIRECTION_REWORK.md` · issue #335.
