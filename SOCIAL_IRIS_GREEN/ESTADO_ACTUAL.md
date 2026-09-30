@@ -63,8 +63,8 @@ Facebook:
 - presencia sostenida en comunidad.
 
 TikTok:
-- reactivación de una cuenta dormida;
-- comentarios propios + conversaciones + contenido nativo + búsqueda temática.
+- **RETIRADO / NO SE USA**;
+- fuera de publicación, comentarios, follows, descubrimiento, seguimiento y métricas operativas.
 
 ## ES/EN
 
@@ -108,11 +108,11 @@ Regla:
 ## Reorientación IG + FB · 30/09/2026
 
 TikTok queda:
-`CM_TIKTOK_PAUSED_USER_ACCESS_ISSUE`.
+`CM_TIKTOK_RETIRED_DO_NOT_USE`.
 
-No participa en el gate diario hasta nueva orden.
+No participa en el gate diario ni en ninguna rutina operativa.
 
-Se redistribuye su tiempo a Instagram y Facebook.
+Todo su tiempo se redistribuye a Instagram y Facebook.
 
 Corrección de intensidad:
 **3 respuestas no constituyen una tanda suficiente.**
@@ -214,7 +214,7 @@ Facebook: biblioteca propia cargó a las 09:14, tres piezas más historia, cero 
 
 Pendientes: verificar destino real Facebook tras 10:00 e Instagram tras 17:00, guardar URL, atender ventana posterior, evaluar grupo pertinente y continuar backlog/rotación. Último estado de programador observado: PENDING. No duplicar ni modificar piezas aprobadas.
 
-El ciclo diario sigue parcial. No conceder PASS de jornada antes de las verificaciones pendientes. TikTok pausado NO es impedimento del gate vigente. No afirmar funcionamiento continuo fuera de sesión.
+El ciclo diario sigue parcial. No conceder PASS de jornada antes de las verificaciones pendientes. TikTok está retirado y no forma parte del gate vigente. No afirmar funcionamiento continuo fuera de sesión.
 
 
 ## Continuación mediodía · fidelización en publicaciones ajenas · 30/09
@@ -226,3 +226,50 @@ Cinco comentarios externos nuevos y verificados: ashleychang22, pictea.caa (cola
 Instagram: likes de ambitiousaboutautism y nationalautisticsociety a comentarios de Iris, reciprocidad inicial observada; no son respuestas textuales. No reabrir cierres Kati/Talia. Seguir otras novedades de fieles.
 
 Facebook: el registro de continuidad de 11:27 y la comprobación en este hilo confirman publicación directa https://www.facebook.com/photo/?fbid=122140119279386473&set=a.122102247273386473 ; última revisión sin comentarios. El ERROR de Metricool no equivale a ausencia de publicación. No duplicar. Instagram de hoy pendiente de verificar tras 17:00 Europe/Madrid. No declarar PASS diario ni funcionamiento continuo fuera de sesión.
+
+
+## Auditoría de continuidad · 30/09/2026 · 14:58 Europe/Madrid
+
+Se revisaron los controles reales de la rama social.
+
+### Instagram · puesta al día de fieles
+
+Archivo: `CONTROL/PUESTA_AL_DIA_114_20260930.json`
+
+- entradas registradas: **96**;
+- `COMENTADA`: **75**;
+- `COMENTADA_TANDA_ANTERIOR`: **5**;
+- `YA_COMENTADA`: **8**;
+- `YA_COMENTADA_HOY`: **6**;
+- `COMENTARIOS_NO_DISPONIBLES`: **1** — `fdezfdezmariangeles`;
+- `IDENTIDAD_PENDIENTE`: **1** — `autismsupermom`.
+
+Lectura correcta:
+- **94/96** entradas tienen revisión/interacción saliente ya comprobada o comentario previo confirmado;
+- **2/96** permanecen bloqueadas y NO deben contarse como comentadas;
+- esto **NO equivale a 114/114**.
+
+La fuente `CONTROL/FIELES_INSTAGRAM_114.csv` continúa materializando **108/114** filas. Faltan 6 entradas de la fuente original y no se inventarán handles para completarlas.
+
+Marcador:
+`IG_FAITHFUL_SWEEP_96_REGISTERED_2_BLOCKED_SOURCE_108_OF_114`.
+
+### Nuevas cuentas seguidas
+
+Archivo: `CONTROL/SEGUIDOS_SOCIAL.csv`
+
+Hay **12 altas registradas el 30/09**:
+- Instagram: **5**;
+- Facebook: **7**.
+
+Todas conservan próxima revisión el **01/10/2026** y revisión estructurada alrededor de 7 días cuando proceda.
+
+Regla vigente:
+`FOLLOW → RETURN → PARTICIPATE → OBSERVE_RECIPROCITY`.
+
+### TikTok
+
+Estado definitivo:
+`CM_TIKTOK_RETIRED_DO_NOT_USE`.
+
+Cualquier mención histórica anterior a “pausado” queda supersedida y no genera tareas futuras.
