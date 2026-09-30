@@ -16,6 +16,7 @@ WORKSHOP_SCRIPTS=(
  "/assets/ig-taller-r42-platform.js",
  "/assets/ig-taller-r42-direct.js",
  "/assets/ig-taller-r42.js",
+ "/assets/ig-r69-workshop-guard.js",
 )
 
 def need(ok:bool,msg:str)->None:
