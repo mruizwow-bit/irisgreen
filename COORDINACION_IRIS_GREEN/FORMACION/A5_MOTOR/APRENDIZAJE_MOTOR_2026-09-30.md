@@ -478,3 +478,85 @@ Esto fija una regla:
 `MOTOR_RUNTIME_SCHEDULING_LIFECYCLE_RESILIENCE_STUDIED_R02`
 
 Sigo sin declarar certificación externa ni modificación de producto.
+
+
+---
+
+## Ampliación de aprendizaje · R03 · memoria, seguridad y ownership
+
+### Memoria
+
+El GC no sustituye un lifecycle explícito.
+
+`WeakRef` y `FinalizationRegistry` no se usarán para cleanup crítico.
+Workers, audio, GPU, observers, listeners y canales necesitan owner y cierre determinista.
+
+### Resource management
+
+`DisposableStack` / `Symbol.dispose` expresan un modelo útil de ownership, pero a 30/09/2026 siguen sin ser Baseline.
+
+Aplicaré el patrón de adquisición/registro/dispose sin convertir esas APIs en requisito público.
+
+### AbortSignal
+
+Práctica ejecutada:
+
+```text
+PASS listener lifecycle via AbortSignal
+PASS combined cancellation via AbortSignal.any
+RESULT 2/2 cleanup checks passed
+```
+
+Nueva preferencia:
+un controller por lifecycle/operación cuando simplifique cleanup y cancelación.
+
+`AbortSignal.timeout()` cuenta active time y se pausa en bfcache/suspensión; no es reloj civil.
+
+### Storage
+
+Storage de navegador es best-effort por defecto y puede ser expulsado.
+
+Consecuencia:
+IndexedDB/OPFS nunca deben presentarse como permanencia garantizada.
+
+### Cross-origin isolation
+
+Estado de `_headers` leído:
+- COOP same-origin;
+- sin COEP.
+
+Por tanto no asumir cross-origin isolation.
+No añadir COEP solo para acceder a métricas/memoria: puede bloquear recursos externos y exige revisión de arquitectura.
+
+### Lifecycle audit
+
+`tools/escenas-3d/src/index.js` es buen patrón de stop/dispose.
+
+`assets/ig-taller-r42-direct.js` no expone destroy explícito. Es aceptable mientras su lifecycle sea el documento; sería deuda si pasa a montaje/desmontaje dinámico.
+
+### Runtime security
+
+En `assets/runtime/8fe7df74405f3c55.js` observé:
+- 2 `new Function`;
+- sinks `innerHTML`;
+- DOMParser HTML.
+
+La CSP actual mantiene `unsafe-eval`.
+
+No afirmo vulnerabilidad explotable solo por esos patrones.
+Sí existe una superficie dinámica que una futura hardening debe reducir y probar.
+
+### Trusted Types
+
+Trusted Types aparece como Baseline 2026.
+
+El Sanitizer API seguro todavía no es Baseline.
+
+Ruta profesional:
+inventario → provenance → precompilación/eliminación de dynamic code → política TT → pruebas → posible retirada de unsafe-eval.
+
+### Marcador
+
+`MOTOR_RUNTIME_MEMORY_SECURITY_RESOURCE_OWNERSHIP_STUDIED_R03`
+
+Sin cambios funcionales ni headers.
