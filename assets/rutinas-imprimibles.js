@@ -127,7 +127,7 @@ function etapaAplicaPack(p,id){
 }
 function audienceEtapa(){
  var a=window.IGAudience?window.IGAudience.get():(document.documentElement.dataset.igAudience||'default');
- return ({children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||'';
+ return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'adu',ALL_AGES:'todas',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||'';
 }
 function etapaPackCount(id){return D.packs.filter(function(p){return etapaAplicaPack(p,id);}).length;}
 function etapaPackPreview(id){
@@ -153,6 +153,7 @@ function etapaLanding(){
   '<p class="im-stage-all">'+chip('stage:all',false,esc(U.verTodas),'im-btn pri')+'</p></section>';
 }
 function etapaRail(){
+ if(window.IGAudience)return '';
  var locked=audienceEtapa();
  if(locked){
   var et=ETAPAS[locked];
@@ -164,7 +165,7 @@ function etapaRail(){
   etapasOrdenadas().map(function(et){return chip('stage:'+et.id,S.stageChosen&&S.etapa===et.id,esc(L(et.l)),'im-chip');}).join('')+'</div>';
 }
 function catalogo(){
- if(S.tipo==='rutinas'&&!S.stageChosen)return etapaLanding();
+ if(S.tipo==='rutinas'&&!window.IGAudience&&!S.stageChosen)return etapaLanding();
  var counts={rutinas:S.etapa?etapaPackCount(S.etapa):D.packs.length,tarjetas:(D.cats||[]).filter(function(c){return c.id!=='todos'&&temaItems(c.id).length;}).length,tableros:BOARDS.length,packs:(D.megapacks||[]).length};
  var w={rutinas:U.wR,tarjetas:U.wT,tableros:U.wB,packs:U.wP};
  var h='<div class="im-tabs" role="group" aria-label="'+esc(U.fmtL)+'">';Object.keys(U.tipos).forEach(function(t){h+=chip('tipo:'+t,S.tipo===t,esc(U.tipos[t])+' <small>'+esc(U.n(counts[t],w[t]))+'</small>','im-tab');});h+='</div>';if(S.tipo==='rutinas')h+=etapaRail();
@@ -299,13 +300,14 @@ function syncAudienceEtapa(){
  return true;
 }
 var lockedStage=syncAudienceEtapa();
-if(!lockedStage){
+if(!lockedStage&&window.IGAudience){S.stageChosen=true;S.etapa='';}
+if(!lockedStage&&!window.IGAudience){
  var initialStage=(location.hash||'').match(/^#etapa-(inf|ado|adu|todas|all)$/);
  if(initialStage){
   S.stageChosen=true;S.etapa=initialStage[1]==='all'?'':initialStage[1];
   try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
  }
 }
-window.addEventListener('ig:audience-change',function(){var locked=audienceEtapa();if(locked){syncAudienceEtapa();}else{S.stageChosen=false;S.etapa='';S.cat='todos';S.q='';}render();});
+window.addEventListener('ig:audience-change',function(){var locked=audienceEtapa();if(locked){syncAudienceEtapa();}else{S.stageChosen=!!window.IGAudience;S.etapa='';S.cat='todos';S.q='';}render();});
 leer();render();
 })();
