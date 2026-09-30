@@ -1,3 +1,22 @@
+## Claude · corrección de cola tras bloqueo R61 · 30/09/2026
+
+R61:
+`R61_BINARY_LOCATION_OTHER_SESSION_REQUIRED`.
+El contenedor actual de Claude no contiene los binarios; no rerenderizar.
+
+R65:
+sigue en `R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING`.
+El helper HUMAN QA creado sin orden es opcional/no canónico y debe preservarse o descartarse, no seguir desarrollándose.
+
+Incidencias:
+- R61 recovery good;
+- R65 scope drift;
+- R65 handoff gap.
+
+Si una sesión no tiene ningún trabajo asignado accesible:
+`NO_EXECUTABLE_ASSIGNED_WORK_IN_THIS_SESSION`
+y STOP, no inventar un carril nuevo.
+
 ## R42 Recursos · corrección documental · 30/09/2026
 
 Estado:
