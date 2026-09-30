@@ -560,3 +560,92 @@ inventario → provenance → precompilación/eliminación de dynamic code → p
 `MOTOR_RUNTIME_MEMORY_SECURITY_RESOURCE_OWNERSHIP_STUDIED_R03`
 
 Sin cambios funcionales ni headers.
+
+
+---
+
+## Ampliación de aprendizaje · R04 · input humano
+
+### Keyboard / IME
+
+Regla:
+- `key` para semántica de carácter/layout;
+- `code` solo cuando la posición física sea parte de la tarea;
+- `keyCode` no se usa en código nuevo.
+
+Atajos que no deben intervenir durante composición deben respetar `isComposing`.
+
+### beforeinput
+
+No garantiza interceptar toda edición ni que todo evento sea cancelable.
+IME, autocomplete, spellcheck y password managers requieren `input`/reconciliación adicional según componente.
+
+### Pointer
+
+`pointercancel` forma parte del contrato normal.
+`touch-action:none` solo debe vivir en superficies que realmente necesitan apropiarse del gesto.
+
+### Hallazgos QA futuros
+
+1. Sabik Ctrl/Cmd+Enter sin `isComposing`.
+2. Undo global del Taller no contempla composición si aparecen editores custom.
+3. Juego R40 escucha flechas en `document` mientras play está activo: comprobar foco/scroll/tecnología de apoyo.
+
+No se han declarado bugs sin ejecutar QA de entorno.
+
+Marcador:
+`MOTOR_HUMAN_INPUT_IME_PREFERENCES_STUDIED_R04`.
+
+---
+
+## Ampliación de aprendizaje · R05 · compatibilidad y failure injection
+
+### Baseline
+
+Baseline = señal de interoperabilidad, no PASS de producto.
+
+No sustituye:
+- a11y;
+- performance;
+- security;
+- webviews;
+- dispositivos antiguos;
+- assistive technology.
+
+### Storage
+
+`ig-taller-local-data.js`:
+- IndexedDB → MemoryBackend cuando no está disponible;
+- persistent=false;
+- QuotaExceededError → STORAGE_QUOTA.
+
+Patrón positivo:
+degradar sin fingir permanencia.
+
+### Workers
+
+`ig-taller-r42-platform.js`:
+- rechaza pending en worker error;
+- termina worker;
+- permite fallback local para Life.
+
+### WebGL
+
+El runtime 3D tiene cleanup fuerte en stop, pero no se observaron listeners explícitos para pérdida/restauración espontánea de contexto.
+
+Práctica futura:
+inyectar `WEBGL_lose_context` antes de declarar resiliencia GPU completa.
+
+### bfcache / resize
+
+Test obligatorio futuro:
+- restore sin duplicar listeners/workers/audio;
+- resize storm sin loop de ResizeObserver.
+
+### Reporting
+
+Reporting API entra en Baseline 2026.
+Motor puede hacer runtime reportable; Vigía conserva observabilidad/privacidad/evidencia.
+
+Marcador:
+`MOTOR_COMPATIBILITY_FAILURE_INJECTION_STUDIED_R05`.
