@@ -45,6 +45,24 @@ PASS:
 FAIL:
 `CM_DAILY_FAIL_RANDOM_OUTREACH_ONLY`
 
+## Corrección de sobre-respuesta · 30/09/2026
+
+Se detecta un segundo patrón incorrecto:
+
+`RESPUESTA RECIBIDA → RESPONDER OTRA VEZ → OTRA VEZ → MISMO HILO DURANTE DÍAS`.
+
+Queda prohibido como estrategia.
+
+Regla vigente:
+`RESPONDER → CERRAR → CAMBIAR DE CONTEXTO`.
+
+Un agradecimiento o cierre social se reconoce con reacción/like, no con otra pregunta automática.
+
+La continuidad se demuestra volviendo a la persona en otra publicación futura cuando haya contenido pertinente, no alargando el mismo hilo.
+
+Marcador:
+`THREAD_SATURATED_MOVE_ON`.
+
 ## Fuente de verdad de este carril
 
 1. `ESTADO_ACTUAL.md`
