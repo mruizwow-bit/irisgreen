@@ -1,3 +1,36 @@
+## Investigación editorial · ronda 2 · 30/09/2026
+
+Issue: #344
+
+Estado:
+`INVESTIGACION_EDITORIAL_R2_VERIFIED_WITH_3_COPY_CORRECTIONS`.
+
+Cerrado/verificado:
+- CVI: al menos ~3% primaria; 41,7% en alumnado con apoyo SEN en estudio inglés;
+- hiperlexia/interés por letras: separar hiperlexia hasta ~20% de interés intenso/exclusivo 22–37%;
+- 47,XXY: dato 2/19 = 11% ASD en muestra pequeña, no prevalencia general;
+- Turner 2024: evaluación neuropsicológica/cribados a lo largo de la vida, sin atribuirle frecuencias de ASD/TDAH que no cuantifica;
+- misoquinesia: ~1/3, separada de misofonía;
+- diagnostic overshadowing: 25 estudios, 44% completo / 32% ninguno / 24% mixto, evidencia baja;
+- España: enclaves laborales y capacidad intelectual límite 20–<33%;
+- Chile: ENDIDE/III ENDISC 2022 distingue discapacidad y dependencia;
+- Argentina: 3,46% CUD 2023 / 10,2% dificultad 2018 / 12,9% limitación 2010, indicadores no equivalentes.
+
+Correcciones editoriales obligatorias:
+1. no decir “más de mil menores únicos” en el estudio 2024 de letras;
+2. 11% XXY siempre con n=19 y como dato de esa muestra;
+3. stimming ↔ misoquinesia solo como conexión editorial posible, no frecuencia demostrada.
+
+Pendiente:
+- catatonia 2025;
+- eje autonómico;
+- Colombia;
+- Perú;
+- perfil cuantificado de Turner con fuente secundaria adecuada.
+
+Esta ronda NO publica directamente.
+No mezclar todavía con R42-CONTENT ni con Cloud.
+
 ## R59 · Fósiles · hallazgos de integración preservados / misión vigente sin cambio · 30/09/2026
 
 Estado:
