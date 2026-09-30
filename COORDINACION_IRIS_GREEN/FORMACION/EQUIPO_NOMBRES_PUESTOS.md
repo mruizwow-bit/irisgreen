@@ -23,10 +23,10 @@ Jefe de Equipo · Operaciones & Conocimiento.
 
 ### Astra
 Jefe de Equipo · Calidad de Producto & Arquitectura.
-- Claude
 - Motor · A5
 - Prisma · A8
 - Lumen · A7
+- 1 vacante interna
 
 ### Nexo · previsto
 Jefe de Equipo · Continuidad Técnica & Sistemas.
@@ -46,6 +46,16 @@ Jefatura 4 si escala.
 - **Brújula** · Marketing, Growth & Product Communications Lead
   - **Ágora** · Community Manager
 - **Cifra** · Finance & Business Planning Lead
+
+## Proveedores externos
+
+**Claude + agentes/sesiones de Claude** · equipo externo / subcontrata técnica operativa.
+
+- fuera de plantilla interna;
+- fuera de Slack interno por defecto;
+- entrega por orden + handoff + revisión;
+- no consume cap de jefatura;
+- clasificación contractual real pendiente de Lex cuando corresponda.
 
 ## Design
 

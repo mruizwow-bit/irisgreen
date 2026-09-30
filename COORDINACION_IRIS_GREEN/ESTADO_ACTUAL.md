@@ -1,3 +1,23 @@
+## Claude · clasificación como proveedor externo · 30/09/2026
+
+Decisión de María:
+
+Claude y los agentes/sesiones creados dentro de Claude se consideran operativamente:
+`CLAUDE_EXTERNAL_PROVIDER_TEAM`.
+
+Consecuencias:
+- fuera de plantilla interna;
+- no consumen plazas de jefatura;
+- no entran al Slack interno por defecto;
+- trabajan por orden/alcance/handoff/revisión;
+- clasificación jurídica contractual pendiente de Lex si llega a formalizarse.
+
+Astra pasa a 3/4 internos.
+Nexo permanece 3/4 previsto.
+
+Fuente:
+`FORMACION/PROVEEDORES_EXTERNOS/CLAUDE_EQUIPO_EXTERNO.md`.
+
 ## Organigrama empresa R01 · jornada de estructura/formación · 30/09/2026
 
 Issue #346.

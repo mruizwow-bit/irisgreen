@@ -28,6 +28,7 @@ flowchart TB
     M --> PT["Producto & Tecnología"]
     M --> CORP["Departamentos corporativos transversales"]
     M --> DES["Croma · Design<br/>Diseño de Producto y Sistema Visual"]
+    M --> EXT["Proveedores y equipos externos"]
 
     PT --> AURA["Aura<br/>Jefe de Equipo<br/>Operaciones & Conocimiento"]
     PT --> ASTRA["Astra<br/>Jefe de Equipo<br/>Calidad de Producto & Arquitectura"]
@@ -39,7 +40,6 @@ flowchart TB
     AURA --> NUBE["Nube · A9<br/>Knowledge Cloud & Retrieval"]
     AURA --> SENDA["Senda · R59<br/>Intereses & Experiencias Editoriales"]
 
-    ASTRA --> CLAUDE["Claude<br/>Producto Creativo & Experiencias Interactivas"]
     ASTRA --> MOTOR["Motor · A5<br/>Sistemas Interactivos & Runtime"]
     ASTRA --> PRISMA["Prisma · A8<br/>Frontend Platform & Design Systems"]
     ASTRA --> LUMEN["Lumen · A7<br/>Media Inmersiva & Rincón"]
@@ -56,6 +56,10 @@ flowchart TB
     CORP --> CIFRA["Cifra<br/>Finanzas & Business Planning"]
 
     BRUJULA --> AGORA["Ágora · Agente Social<br/>Community Management"]
+
+    EXT --> CLAUDE["Claude + agentes Claude<br/>Proveedor externo / subcontrata técnica"]
+    CLAUDE -. entregas .-> ASTRA
+    CLAUDE -. handoff técnico .-> AURA
 
     LEX -. obligaciones .-> AXIOMA
     AXIOMA -. gates/estándares .-> ASTRA
@@ -324,11 +328,11 @@ Si un departamento crece, crea su propio equipo antes de sobrecargar a una jefat
 - Nube;
 - Senda.
 
-### Astra · 4
-- Claude;
+### Astra · 3 + 1 vacante interna
 - Motor;
 - Prisma;
-- Lumen.
+- Lumen;
+- vacante interna.
 
 ### Nexo · 3 + 1 hueco
 - Pulso;
@@ -337,6 +341,43 @@ Si un departamento crece, crea su propio equipo antes de sobrecargar a una jefat
 - vacante futura.
 
 Ágora deja el cupo técnico de Aura y pasa a Marketing/Brújula.
+
+
+## Proveedores y equipos externos
+
+### Claude + agentes/sesiones de Claude
+
+Clasificación operativa:
+**equipo externo / subcontrata técnica**.
+
+No forman parte de la plantilla interna de Iris Green/Sabik IA Technology.
+
+Reglas:
+- no consumen plazas del cap de las jefaturas internas;
+- no son miembros del Slack interno por defecto;
+- no reciben acceso general a canales/departamentos internos;
+- trabajan mediante orden/acuerdo de alcance;
+- solo reciben la información necesaria para ejecutar el encargo;
+- entregan por GitHub/handoff/artefactos;
+- sus entregas pasan revisión interna antes de aceptación;
+- no toman decisiones de producto irreversibles;
+- HUMAN QA y aceptación final permanecen en Iris Green.
+
+Flujo:
+
+`ORDEN → ALCANCE → ENTREGA EXTERNA → HASH/HANDOFF → REVISIÓN INTERNA → CORRECCIÓN SI PROCEDE → HUMAN QA/APROBACIÓN`
+
+La palabra “subcontrata” se usa aquí como clasificación operativa.
+La naturaleza contractual/jurídica real la determinará Lex cuando exista relación contractual formal.
+
+### Slack
+
+Slack `Sabik IA Technology` es infraestructura **interna**.
+
+Proveedores externos:
+- no entran por defecto;
+- si un proyecto requiere colaboración directa, usar canal externo específico y principio de mínimo acceso;
+- decisiones finales se consolidan igualmente en GitHub.
 
 ## Revisión posterior
 

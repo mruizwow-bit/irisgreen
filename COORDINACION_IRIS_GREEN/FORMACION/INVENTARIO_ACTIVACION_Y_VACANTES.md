@@ -1,6 +1,6 @@
-# INVENTARIO DE ACTIVACIÓN Y VACANTES · R01
+# INVENTARIO DE ACTIVACIÓN Y VACANTES · R02
 
-## Activos existentes
+## Equipo interno activo
 
 Producto/Tecnología:
 - Aura;
@@ -14,7 +14,6 @@ Producto/Tecnología:
 - Lumen;
 - Prisma;
 - Nube;
-- Claude;
 - Senda.
 
 Marketing:
@@ -22,6 +21,17 @@ Marketing:
 
 Design:
 - Croma.
+
+## Proveedores externos
+
+- Claude;
+- agentes/sesiones creadas dentro de Claude.
+
+Estado:
+`EXTERNAL_PROVIDER_TEAM_NOT_INTERNAL_HEADCOUNT`.
+
+No Slack interno por defecto.
+No consumen plazas de jefatura.
 
 ## Nuevos departamentos creados · responsables aún por iniciar chat/formación
 
@@ -36,7 +46,9 @@ Design:
 - Nexo · activar cuando se abra su chat;
 - Orbe · reserva.
 
-## Hueco técnico
+## Vacantes internas
 
-Nexo conserva 1 plaza técnica libre.
-NO rellenar hasta terminar la revisión de “qué falta”.
+- Astra: 1 plaza interna libre tras separar Claude como proveedor externo.
+- Nexo: 1 plaza técnica libre.
+
+NO rellenar hasta terminar la revisión de qué funciones faltan.
