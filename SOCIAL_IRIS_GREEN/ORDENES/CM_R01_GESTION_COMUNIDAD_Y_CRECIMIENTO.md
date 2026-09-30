@@ -639,3 +639,6 @@ Iris Green tiene aproximadamente 13.000 seguidores en Instagram según María. E
 
 
 Aclaración de María 16:41: los comentarios con una palabra clave solicitan recursos que el creador envía. Reconocerlos como interés real, sin penalizar automáticamente esa estrategia ni confundirlos con conversación sostenida. Comparar también publicaciones sin llamada a recurso. Preguntar a María las dudas que afecten decisiones de selección o interacción.
+
+
+Decisión de María 16:44: priorizar cuentas cuyos creadores interactúan personalmente con otras personas de forma habitual. No aceptar una cuenta solo por visibilidad, seguidores o likes cuando no se verifica conversación del creador. Comprobar respuestas personales en varios hilos/publicaciones. Las entregas de recursos por palabra clave no sustituyen esta evidencia.
