@@ -1,3 +1,18 @@
+## DECISIÓN VIGENTE · 30/09/2026 · TIKTOK RETIRADO
+
+Por instrucción expresa de María, desde este corte la gestión social operativa queda limitada a **Instagram y Facebook**.
+
+- **INSTAGRAM = ACTIVA**
+- **FACEBOOK = ACTIVA**
+- **TIKTOK = RETIRADA / NO SE USA**
+
+TikTok queda fuera de publicación, comentarios, follows, descubrimiento, seguimiento, métricas operativas, gates diarios y rutinas futuras. No intentar reactivar acceso ni mantener una cola pendiente de TikTok.
+
+Esta decisión **sustituye** cualquier mención anterior en este documento a TikTok como “pausado”, “pendiente de reactivación” o plataforma a retomar.
+
+Regla vigente:
+`SOCIAL_ACTIVE_PLATFORMS = INSTAGRAM + FACEBOOK`
+
 # CM R01 · COMMUNITY MANAGER · GESTIÓN REAL DE COMUNIDAD Y CRECIMIENTO
 
 Fecha: 30/09/2026  
