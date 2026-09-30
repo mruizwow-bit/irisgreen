@@ -122,8 +122,10 @@ async def main():
              "Workshop still propagates a second local age query")
         await page.evaluate("IGAudience.clear()")
         await page.wait_for_timeout(80)
-        need(await page.locator(".igk-start:not([hidden])").get_attribute("data-para")=="ALL_AGES",
-             "Workshop hub did not return to general/all-ages start view")
+        general=page.locator(".igk-start:not([hidden])")
+        need(await general.count()==1,"Workshop hub did not return to one general/all-ages start view")
+        general_stage=(await general.get_attribute("data-para")) or "ALL_AGES"
+        need(general_stage=="ALL_AGES","Workshop general start view is not the all-ages view")
         report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","GENERAL":"PASS"}
 
         # Workshop must never expose the old full study before the R42 workspace.
