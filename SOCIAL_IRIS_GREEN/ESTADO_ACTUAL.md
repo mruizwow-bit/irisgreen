@@ -300,3 +300,14 @@ Este corte sustituye el bloqueo de Mari Ángeles del cierre anterior: comentario
 Cinco comentarios nuevos verificados en esta continuación: cuatro IG (Mari Ángeles, Autismo Madrid, NAS, Autismo España) y uno FB (ConecTEA). Autistica respondió y recibió like de cierre. NAS y AlfaSAAC muestran reciprocidad por reacción en FB. Miradas resuelta: Fundacion.Miradas.TEA. Sin follows nuevos ni bajas.
 
 Detalle y límites: `INFORMES/INFORME_ORDEN343_CONTINUACION_20260930.md`. Próxima visita 01/10 y revisión de reciprocidad lunes 05/10; clasificación inversa pendiente de verificación. Automatización diaria IG+FB existente activa. TikTok fuera. No dar cierre 114/114 ni PASS de toda la jornada.
+
+
+## Corte de descubrimiento y criba de calidad · 30/09/2026
+
+Estado vigente: **10 altas Instagram y11 Facebook**, con follow y comentario verificados en SEGUIDOS_SOCIAL.csv. Faltan10IG y9FB para el objetivo20porred. No conceder PASS ni afirmar cuota completada. Altas anteriores a la criba estricta no implican superarla retrospectivamente.
+
+Regla nueva de María: ampliar a toda la neurodiversidad en ES/EN, evaluar varias publicaciones recientes, conversación real y respuestas personales habituales del creador. El tamaño solo no basta. Solicitudes de recursos por palabra clave son interés legítimo, no penalización automática.
+
+Sandra Kelly/mypureocdawakening aceptada tras5posts y respuestas en2hilos, seguida/comentada17934618135393399. Revisar01/10 y lunes05/10. Otras candidaturas y límites en CONTROL/CRIBA_ACTIVIDAD_20260930.md. No desbloquear adhd_love_. Neurodivergent Rebel requiere>24h de seguimiento para comentar, todavía sin alta. No inventar compartidos ocultos ni alcance.
+
+La automatización existente conserva horario y aplica estos criterios. La actividad fuera de sesión no se presume ejecutada.
