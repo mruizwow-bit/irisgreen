@@ -98,6 +98,11 @@ Un marcador interno significa únicamente:
 
 - **Aura** · Technical Program Manager & Knowledge Operations Lead · foundation R01 estudiada 30/09/2026.
 
+## Departamentos transversales en formación
+
+- **Cifra** · Finance & Business Planning Lead · especialidad profesional **FP&A / Strategic Finance & Business Planning** · foundation R01 estudiada 30/09/2026.  
+  Fuente canónica: `FORMACION/CIFRA/`.
+
 ## Especialistas añadidos
 
 3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.
