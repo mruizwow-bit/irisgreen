@@ -1,5 +1,6 @@
-/* Iris Green · R42 Taller · workspace-first product layer */
-@layer ig42-taller {
+/* Iris Green · R42 Taller · workspace-first product layer.
+   R69: intentionally unlayered because the historical Workshop styles are
+   unlayered; normal rules inside a named cascade layer would lose to them. */
 :root{--ig42-navy:var(--ig-text);--ig42-blue:var(--ig-accent-secondary);--ig42-violet:var(--ig-accent);--ig42-ink:var(--ig-text);--ig42-muted:var(--ig-text-muted);--ig42-line:var(--ig-separator);--ig42-surface:var(--ig-bg-surface);--ig42-soft:var(--ig-bg-surface-soft);--ig42-focus:var(--ig-focus);--ig42-radius:18px}
 html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"]:not([data-ig-r69-workshop-fallback="1"]) main#main:not(.ig42-active){
  opacity:0;visibility:hidden;min-height:calc(100dvh - var(--ig-r49-header-h,64px))
@@ -43,8 +44,6 @@ html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"][data-ig-r69-workshop-fal
 @media(prefers-reduced-motion:reduce){.ig42-active *, .ig42-launcher-page *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 @media(forced-colors:active){.ig42-topbar,.ig42-toolrail,.ig42-workspace-center,.ig42-inspector,.ig42-area-card,.ig42-dialog{border:1px solid CanvasText}.ig42-tool-shortcut[aria-pressed=true],.ig42-segment[aria-pressed=true]{forced-color-adjust:auto;outline:2px solid Highlight}}
 .ig42-active :focus-visible,.ig42-launcher-page :focus-visible,.ig42-dialog :focus-visible{outline:3px solid var(--ig42-focus)!important;outline-offset:3px!important}
-}
-
 
 /* R42 direct-manipulation surfaces */
 .ig42-direct-wrap{display:grid;grid-template-rows:minmax(280px,1fr) auto auto;min-height:0;width:100%;gap:.55rem}
