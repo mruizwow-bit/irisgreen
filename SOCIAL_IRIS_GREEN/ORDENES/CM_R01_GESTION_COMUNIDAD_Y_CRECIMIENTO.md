@@ -99,14 +99,41 @@ Reglas:
 1. NO pedir a la usuaria que la vuelva a enviar.
 2. NO reconstruirla desde memoria parcial.
 3. NO sustituirla por `CONTROL/CONTACTOS_SOCIAL.csv`, que ahora solo contiene una parte.
-4. MATERIALIZAR la lista existente, tal cual, en:
-   `CONTROL/FIELES_INSTAGRAM_114.csv`.
+4. Fuente ya materializada por coordinación:
+   - `CONTROL/FIELES_INSTAGRAM_114_SOURCE.md`
+   - `CONTROL/FIELES_INSTAGRAM_114.csv`
+
+   La transcripción adjunta contiene 108 filas, no 114. Debes reconciliarla con la lista completa de 114 que ya recibiste el 29/09 y completar únicamente las filas ausentes desde tu propio contexto/registro previo.
+
+   Estado hasta reconciliar:
+   `PENDING_RECONCILE_TO_114_FROM_AGENT_PRIOR_LIST`.
 5. Mantener:
    - cuenta/handle;
    - nombre si ya constaba;
    - categoría/tema si ya constaba;
    - relación/seguimiento si ya constaba.
 6. Si un dato no estaba en la lista original, dejarlo pendiente; no inventarlo.
+
+## GATE DE RECONCILIACIÓN 114/114
+
+Antes de declarar cobertura completa de fieles:
+
+1. comparar la fuente preservada de 108 filas con la lista de 114 que ya tenías;
+2. identificar exactamente las entradas ausentes;
+3. añadirlas sin modificar las 108 conservadas;
+4. resolver aliases sin duplicar personas;
+5. NO expandir handles truncados por intuición;
+6. registrar:
+   - 114 entradas de fuente;
+   - número de personas únicas;
+   - aliases conocidos;
+   - handles aún truncados/no resueltos.
+
+Gate:
+`IG_114_FAITHFUL_SOURCE_RECONCILED`.
+
+Hasta entonces, informar:
+`X/114 revisados · fuente 108/114 materializada · reconciliación pendiente`.
 
 ## Rotación obligatoria
 
