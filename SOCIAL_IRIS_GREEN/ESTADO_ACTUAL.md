@@ -1,3 +1,24 @@
+## Fidelización saliente + hoja de seguidos · 30/09/2026
+
+Reglas vigentes:
+
+`FIDELITY_REQUIRES_OUTBOUND_ENGAGEMENT`
+
+Los 114 fieles se visitan en sus propias cuentas y se comentan sus publicaciones nuevas cuando haya contenido pertinente. No basta con responderles únicamente cuando comentan en Iris Green.
+
+`FOLLOW → RETURN → PARTICIPATE → OBSERVE_RECIPROCITY`
+
+Toda cuenta nueva seguida debe:
+- registrarse en `CONTROL/SEGUIDOS_SOCIAL.csv`;
+- recibir próxima revisión;
+- volver a ser visitada;
+- tener continuidad cuando publique algo pertinente.
+
+Seguir y abandonar:
+`FAIL_FOLLOW_WITHOUT_CONTINUITY`.
+
+La hoja de seguidos ya contiene las altas verificadas del 30/09 de Instagram y Facebook.
+
 # ESTADO ACTUAL · SOCIAL IRIS GREEN
 
 Fecha: 30/09/2026
