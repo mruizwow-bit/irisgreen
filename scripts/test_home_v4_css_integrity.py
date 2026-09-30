@@ -5,14 +5,14 @@ import argparse,re
 from pathlib import Path
 
 REQUIRED={
-    '.ig-home-v4-hero':('display:flex','background:var(--ig-bg-surface)'),
+    '.ig-home-v4-hero,.ig-home-v4-sabik':('display:block','background:var(--ig-bg-surface)','border:1px solid var(--ig-separator)'),
+    '.ig-home-v4-hero':('display:flex','padding:clamp(1.25rem,3vw,2.25rem)'),
     '.ig-home-v4-search-row':('display:flex','gap:.6rem'),
     '.ig-home-v4-use-grid':('display:grid','grid-template-columns:repeat(2,minmax(0,1fr))'),
     '.ig-home-v4-use-pair':('display:grid','grid-template-columns:repeat(2,minmax(0,1fr))'),
     '.ig-home-v4-card':('display:grid','background:var(--ig-bg-surface)'),
     '.ig-home-v4-media':('display:grid','min-height:112px'),
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))'),
-    '.ig-home-v4-sabik':('display:block','background:var(--ig-bg-surface)'),
     '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:minmax(250px,.8fr)minmax(320px,1.2fr)'),
     '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:250px','aspect-ratio:auto','margin:0'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
