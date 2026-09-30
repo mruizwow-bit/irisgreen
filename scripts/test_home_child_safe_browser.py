@@ -25,9 +25,12 @@ async def main():
   need(await page.get_by_role('heading',name='Entra y úsalo',exact=True).count()==1,'v4 use section missing')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).count()==1,'v4 Sabik section missing')
   need(await page.get_by_role('heading',name='Entiende y encuentra',exact=True).count()==1,'v4 discover section missing')
-  need(await page.locator('[data-ig-audience-stage]').count()==4,'four canonical age controls missing')
+  need(await page.locator('[data-ig-r49-stage]').count()==1,'single global age trigger missing')
+  await page.locator('[data-ig-r49-stage]').click()
+  need(await page.locator('#ig-r49-audience[open]').count()==1,'global age dialog did not open')
   for label in ['0–12 años','13–17 años','18 años o más','Todas las edades']:
-   need(await page.get_by_role('button',name=label,exact=True).count()==1,'age control missing '+label)
+   need(await page.locator('#ig-r49-audience').get_by_role('button',name=label,exact=True).count()==1,'age control missing '+label)
+  await page.keyboard.press('Escape')
   need(await page.locator('html').get_attribute('data-ig-theme')=='dark','Home does not start DARK NAVY')
   need(await page.locator('body').get_attribute('data-ig-home-version')=='v4','v4 body marker missing')
   need(await page.locator('[data-ig-media-status="pending"]').count()==13,'unapproved media slots were invented/removed')
@@ -75,9 +78,12 @@ async def main():
   await page.get_by_role('button',name='Claro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='light','LIGHT alternative did not apply')
   await page.get_by_role('button',name='Navy oscuro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='dark','DARK NAVY did not restore')
   await page.keyboard.press('Escape')
-  # Canonical age state is emitted internally.
-  await page.get_by_role('button',name='0–12 años',exact=True).click();need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
-  await page.get_by_role('button',name='0–12 años',exact=True).click();need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','same button must return to GENERAL')
+  # Canonical age state is emitted internally from the single global picker.
+  await page.locator('[data-ig-r49-stage]').click()
+  age0=page.locator('#ig-r49-audience').get_by_role('button',name='0–12 años',exact=True)
+  await age0.click();need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
+  await age0.click();need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','same button must return to GENERAL')
+  await page.keyboard.press('Escape')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
   req=[];page.on('request',lambda r:req.append(r.url));q=page.locator('#ig-home-q');await q.fill('anorexia');await page.wait_for_timeout(500)
   need(await page.locator('[data-ig-home-suggestions]').get_by_text('Anorexia nerviosa',exact=False).count()==0,'S2 leaked into autocomplete')
