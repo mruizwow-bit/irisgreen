@@ -12,7 +12,7 @@ CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
 def check_r05_ui(page,lang):
  """Native activated form only; no query, mocked response or auth probe."""
- expected='Source search is available.' if lang=='en' else 'La búsqueda en fuentes está disponible.'
+ expected='Sabik is available.' if lang=='en' else 'Sabik está disponible.'
  page.wait_for_function('(s)=>document.querySelector(".sabik-state").textContent===s',arg=expected)
  field=page.get_by_role('textbox',name='What do you need?' if lang=='en' else '¿Qué necesitas?',exact=True)
  assert field.count()==1 and field.get_attribute('id')=='sabik-input'
@@ -22,7 +22,7 @@ def check_r05_ui(page,lang):
  assert set(field.get_attribute('aria-describedby').split())=={'sabik-input-help','sabik-availability'}
  assert page.locator('#sabik-announcement').get_attribute('role')=='status'
  assert page.locator('#sabik-announcement').get_attribute('aria-live')=='polite'
- if lang=='en':assert 'The original quotations are in Spanish.' in page.locator('#sabik-availability').inner_text()
+ if lang=='en':assert 'Some original sources are in Spanish.' in page.locator('#sabik-availability').inner_text()
  submit=page.get_by_role('button',name='Send' if lang=='en' else 'Enviar',exact=True)
  assert submit.is_disabled()
  field.fill('x'*299);field.press('End');field.press('y');field.press('z')
