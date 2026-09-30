@@ -18,6 +18,10 @@ async def shell_ready(page,path):
     )
     need(await page.locator(".ig-r49-global-header").count()==1,"global header count !=1 "+path)
     need(await page.locator(".ig-r49-global-footer").count()==1,"global footer count !=1 "+path)
+    need(await page.locator(".ig-r49-global-header.hd,.ig-r49-global-header.ig-home-header,.ig-r49-global-header.ig-uh").count()==0,
+         "legacy header class still owns canonical shell "+path)
+    need(await page.locator(".ig-r49-global-footer.ft,.ig-r49-global-footer.ig-home-footer").count()==0,
+         "legacy footer class still owns canonical shell "+path)
     need(await page.locator("[data-ig-r49-stage]").count()==1,"global age control count !=1 "+path)
     need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
