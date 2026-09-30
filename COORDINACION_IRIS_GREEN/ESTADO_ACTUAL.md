@@ -1,3 +1,33 @@
+## Aura · Formación profesional R01 · 30/09/2026
+
+Issue #348.
+
+Puesto profesional:
+**Technical Program Manager & Knowledge Operations Lead**.
+
+Estado:
+`AURA_TECHNICAL_PROGRAM_KNOWLEDGE_OPERATIONS_FOUNDATION_STUDIED_R01`.
+
+Aura estudia y documenta foundation en:
+- Program Management;
+- Knowledge Management;
+- Records;
+- Risk;
+- Continuity;
+- Kanban/WIP;
+- Team Topologies;
+- blameless postmortems;
+- people engagement;
+- multi-agent orchestration/evals;
+- continuous improvement.
+
+Carpeta:
+`FORMACION/AURA/`.
+
+No equivale a certificación externa.
+No modifica producto.
+Jornada de Formación continúa activa.
+
 ## Lex · primer expediente corporativo · Sabik IA Technology · 30/09/2026
 
 María fija como primera gestión de Lex tras completar Formación:

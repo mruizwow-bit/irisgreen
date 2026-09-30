@@ -94,6 +94,10 @@ Un marcador interno significa únicamente:
 - produjo evidencia;
 - puede ejecutar ese alcance bajo las reglas de Iris Green.
 
+## Jefaturas en formación
+
+- **Aura** · Technical Program Manager & Knowledge Operations Lead · foundation R01 estudiada 30/09/2026.
+
 ## Especialistas añadidos
 
 3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.

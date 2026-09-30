@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "AURA-FORMACION-R01-20260930",
+  "issue": 348,
+  "date": "2026-09-30",
+  "alias": "Aura",
+  "organizational_role": "TEAM_LEAD_OPERATIONS_KNOWLEDGE",
+  "professional_role": "TECHNICAL_PROGRAM_MANAGER_AND_KNOWLEDGE_OPERATIONS_LEAD",
+  "status": "AURA_TECHNICAL_PROGRAM_KNOWLEDGE_OPERATIONS_FOUNDATION_STUDIED_R01",
+  "studied_domains": [
+    "PROGRAM_MANAGEMENT",
+    "FLOW_WIP_KANBAN",
+    "TEAM_TOPOLOGIES",
+    "KNOWLEDGE_MANAGEMENT",
+    "RECORDS_MANAGEMENT",
+    "RISK_MANAGEMENT",
+    "BUSINESS_CONTINUITY",
+    "BLAMELESS_POSTMORTEMS",
+    "PEOPLE_ENGAGEMENT",
+    "MULTI_AGENT_ORCHESTRATION",
+    "AGENT_EVALS_TRACING",
+    "CONTINUOUS_IMPROVEMENT"
+  ],
+  "external_certification": false,
+  "product_change": false,
+  "training_day_only": true,
+  "next_training": [
+    "FACILITATION_NEGOTIATION",
+    "VENDOR_MANAGEMENT",
+    "PORTFOLIO_MANAGEMENT",
+    "SYSTEMS_THINKING",
+    "DECISION_THEORY",
+    "ORGANIZATIONAL_PSYCHOLOGY",
+    "AI_GOVERNANCE"
+  ]
+}

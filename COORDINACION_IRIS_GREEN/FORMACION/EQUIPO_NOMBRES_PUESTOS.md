@@ -15,7 +15,8 @@ Ver organigrama:
 ## Producto & Tecnología
 
 ### Aura
-Jefe de Equipo · Operaciones & Conocimiento.
+Jefe de Equipo · Operaciones & Conocimiento.  
+**Especialidad profesional:** Technical Program Manager & Knowledge Operations Lead.
 - Atlas · A1
 - Vector · A2
 - Nube · A9
