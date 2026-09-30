@@ -1,3 +1,29 @@
+## R62 · P03 Rutas de luz · QA2 gameplay PASS / causalidad layout fix · 30/09/2026
+
+**Estado: `R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED` · #326.**
+
+Los dos bloqueos principales del rework anterior quedan resueltos a nivel de gameplay:
+- tablero/anclajes relevantes legibles;
+- destino del divisor y pantalla sur visibles;
+- separación material perceptiva mejorada;
+- desktop y móvil mantienen dirección propia.
+
+Aura mide banda derecha ≈0,352 × luminancia del centro, coherente con la mejora declarada.
+
+Bloqueo restante:
+la lámina de causalidad LIGHT/NAVY tiene solapamiento de texto entre los pasos 3 y 4. No requiere rerender de escena; solo corregir layout/copy del SVG.
+
+La afirmación de P01 byte-identical tras limpieza del motor queda pendiente de ejecución contra el árbol GitHub correcto antes de integración.
+
+Siguiente marcador:
+`R62_P03_CAUSALITY_LAYOUT_R3_READY_FOR_ASTRA_AURA_MARIA`.
+
+P04–P06, Codex #321, A2, main y producción: HOLD.
+
+Orden: `ORDENES/R62_ASTRA_JUEGOS_6_PILOTOS/06_AURA_P03_QA2_CAUSALITY_LAYOUT_FIX.md`.
+
+Normativa: sin cambio transversal.
+
 ## R59 · Fósiles R2v3 · contrato repro aceptado / QA nominal + GOV bloqueados · 30/09/2026
 
 **Estado: `R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED` · #323.**
