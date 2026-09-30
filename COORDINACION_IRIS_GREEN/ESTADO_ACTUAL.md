@@ -1,3 +1,23 @@
+## Claude · R61/R65 · recovery aplicado · 30/09/2026
+
+R65 helper:
+`ATTACHMENT_PRESERVED_NON_CANONICAL`.
+SHA-256: `87b3b13e078190affc335ed29e6f0c4f21c4274b0958834683058768da484443`.
+No es gate y no sustituye HUMAN QA María.
+
+R61:
+`BLOCKED_BY_SESSION_ARTIFACT_LOCATION`.
+Los binarios están en otra sesión; no rerenderizar.
+
+Sesión actual:
+`NO_EXECUTABLE_ASSIGNED_WORK_IN_THIS_SESSION`.
+STOP sin abrir carril nuevo.
+
+Incidencias R65:
+SCOPE_DRIFT → RESOLVED.
+HANDOFF_GAP → RESOLVED.
+Recovery → GOOD.
+
 ## R62 Juegos · P03 HUMAN QA aprobada · 30/09/2026
 
 Estado:
