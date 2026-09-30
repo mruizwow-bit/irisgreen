@@ -1,5 +1,32 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Agente R59 · cierre Fósiles R2v4 · 30/09/2026
+
+Orden vigente:
+`R59_AGENTE_INTERESES/02_FOSSILS_R2V4_FINAL_QA_GOV.md`.
+
+Estado:
+`R59_FOSSILS_R2V4_GOVERNANCE_SUMMARY_RECEIVED_ARTIFACT_VERIFICATION_REQUIRED`.
+
+Única misión:
+- cerrar QA nominal;
+- cerrar gobernanza verificable;
+- resolver GOV-01 del ejecutor;
+- STOP.
+
+No rework visual.
+No Minerales.
+No A2.
+No main.
+No producción.
+
+Siguiente marcador:
+`R59_FOSSILS_PILOT_R2V4_FINAL_QA_GOV_READY_FOR_ASTRA_MARIA`.
+
+Aplica:
+`TEAM_WORK_POLICY_R01`.
+
+
 ## Claude · cola prioritaria corregida · 30/09/2026
 
 Fuente: `CLAUDE_COLA_VIGENTE_20260930.md`.
