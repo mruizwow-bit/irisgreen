@@ -22,6 +22,11 @@ async def main():
   await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/',wait_until='networkidle')
   need(await page.get_by_role('heading',name='Encuentra lo que necesitas',exact=True).count()==1,'v4 hero missing')
+  hero_geom=await page.evaluate("""() => {const h=document.querySelector('.ig-home-v4-hero'),t=document.querySelector('#ig-home-v4-title'),s=document.querySelector('.ig-home-v4-search'),tc=getComputedStyle(t),tr=t.getBoundingClientRect(),sr=s.getBoundingClientRect();return {display:getComputedStyle(h).display,h:tr.height,line:parseFloat(tc.lineHeight),right:tr.right,searchLeft:sr.left};}""")
+  need(hero_geom['display']=='grid' and hero_geom['h']<=hero_geom['line']*1.25 and hero_geom['right']<hero_geom['searchLeft'],'desktop Home hero placement/wrap wrong '+repr(hero_geom))
+  live=page.locator('#ig-home-q');await live.fill('ruido');await page.wait_for_timeout(350)
+  need(await page.locator('[data-ig-home-suggestions] .ig-home-result').count()>0,'Home search suggestions do not work')
+  await live.fill('')
   need(await page.get_by_role('heading',name='Entra y úsalo',exact=True).count()==1,'v4 use section missing')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).count()==1,'v4 Sabik section missing')
   need(await page.get_by_role('heading',name='Entiende y encuentra',exact=True).count()==1,'v4 discover section missing')
@@ -109,6 +114,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','sabik-donor-proportion','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','canonical-age-visible-fail-closed','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-two-column-search-live','sabik-donor-proportion','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','canonical-age-visible-fail-closed','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())

@@ -103,7 +103,20 @@ async def main():
         need(home_layout["wrap"]["w"]>=1500,"Home still uses reading-width/product-too-narrow layout "+repr(home_layout))
         need(max(abs(r["l"]-home_layout["rects"][0]["l"]) for r in home_layout["rects"])<3,"Home sections do not share left axis "+repr(home_layout))
         need(max(abs(r["r"]-home_layout["rects"][0]["r"]) for r in home_layout["rects"])<3,"Home sections do not share right axis "+repr(home_layout))
-        await page.locator("#sabik-input").focus()
+        hero=await page.evaluate("""() => {
+          const h=document.querySelector('.ig-home-v4-hero'),t=document.querySelector('#ig-home-v4-title'),s=document.querySelector('.ig-home-v4-search'),hc=getComputedStyle(h),tc=getComputedStyle(t),tr=t.getBoundingClientRect(),sr=s.getBoundingClientRect();
+          return {display:hc.display,cols:hc.gridTemplateColumns,titleH:tr.height,lineH:parseFloat(tc.lineHeight),titleRight:tr.right,searchLeft:sr.left};
+        }""")
+        need(hero["display"]=="grid" and hero["cols"]!="none","Home hero is not using desktop two-column layout "+repr(hero))
+        need(hero["titleH"]<=hero["lineH"]*1.25,"Home title still wraps on desktop "+repr(hero))
+        need(hero["titleRight"]<hero["searchLeft"],"Home title/search columns overlap "+repr(hero))
+        # Search must actually return content.
+        q=page.locator("#ig-home-q");await q.fill("ruido");await page.wait_for_timeout(350)
+        need(await page.locator("[data-ig-home-suggestions] .ig-home-result").count()>0,"Home search suggestions do not work")
+        await page.locator("[data-ig-home-search] button[type=submit]").click();await page.wait_for_timeout(450)
+        need(await page.locator("[data-ig-home-results] .ig-home-result").count()>0,"Home search submit does not return results")
+        await q.fill("")
+                await page.locator("#sabik-input").focus()
         sabik_field=await page.locator("#sabik-input").evaluate("(e)=>({bg:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color})")
         need(sabik_field["bg"]!="rgb(255, 255, 255)","Sabik textarea becomes glare-white on focus "+repr(sabik_field))
         need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Encuentra lo que necesitas","Home heading is still abstract")
@@ -123,7 +136,7 @@ async def main():
         need(await page.locator("html").get_attribute("lang")=="en","EN did not open English Home")
         need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Find what you need","English Home heading missing")
         await page.goto(BASE+"/",wait_until="networkidle")
-        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS","age_picker":4,"child_safe":"PASS","language_same_origin":"PASS","footer_axis":"PASS"}
+        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS","age_picker":4,"child_safe":"PASS","language_same_origin":"PASS","footer_axis":"PASS","hero_two_column":"PASS","search_live":"PASS"}
 
         await page.goto(BASE+"/es/investigacion/",wait_until="networkidle")
         need(await page.locator("body").get_attribute("data-ig-profile")=="browse","Research still classified as content")
