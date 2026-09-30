@@ -17,7 +17,9 @@
     "FORMACION/A6_ECO/03_RUNBOOK_VALIDACION.md",
     "FORMACION/A6_ECO/04_ESTUDIO_AVANZADO_R02.md",
     "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-09-30.md",
-    "FORMACION/A6_ECO/05_CONTINUIDAD_ENTRE_CHATS.md"
+    "FORMACION/A6_ECO/05_CONTINUIDAD_ENTRE_CHATS.md",
+    "FORMACION/A6_ECO/06_VIGILANCIA_ESTANDARES_Y_COMPATIBILIDAD.md",
+    "FORMACION/A6_ECO/07_MATRIZ_VALIDACION_SABIK_R66.md"
   ],
   "project_evidence_reviewed": [
     {
@@ -55,5 +57,11 @@
   "build_product": false,
   "merge": false,
   "deploy": false,
-  "external_certification": false
+  "external_certification": false,
+  "product_alignment": {
+    "normative_source": "COORDINACION_IRIS_GREEN/NORMATIVA/ADDENDUM_R66_SABIK_CONVERSATIONAL_VOICE_20260929.md",
+    "observed_state": "R66_SABIK_CONVERSATIONAL_VOICE_CONTRACT_ADOPTED",
+    "prepared_matrix": "FORMACION/A6_ECO/07_MATRIZ_VALIDACION_SABIK_R66.md"
+  },
+  "standards_watchlist": "FORMACION/A6_ECO/06_VIGILANCIA_ESTANDARES_Y_COMPATIBILIDAD.md"
 }
