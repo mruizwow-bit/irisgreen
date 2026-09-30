@@ -8,10 +8,11 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'reports/iris-r09';OUT.mkdir(p
 
 
 def check_inner_header(page,route,width):
- """Verify the current R49 global header contract.
+ """Verify the current R49/R69 global header contract.
 
- The current header intentionally contains only brand + Accessibility + Music +
- language. The thematic navigation lives elsewhere and must not be required here.
+ The permanent chrome is brand + Search + Music + Accessibility + global age +
+ language + Explore, in that keyboard order. The thematic route list lives in
+ Explore and must not return as a second permanent navigation bar.
  """
  header=page.locator('.ig-r49-global-header[data-ig-r49-upgraded="true"]')
  if not header.count():return None
@@ -20,15 +21,21 @@ def check_inner_header(page,route,width):
   const visible=e=>{if(!e)return false;const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)!==0&&r.width>0&&r.height>0};
   const inner=h.querySelector('.ig-r49-header-inner');
   const brand=h.querySelector('.ig-r49-brand');
-  const settings=h.querySelector('[data-ig-r49-settings]');
+  const search=h.querySelector('[data-ig-r49-search]');
   const music=h.querySelector('[data-ig-music]');
+  const settings=h.querySelector('[data-ig-r49-settings]');
+  const audience=h.querySelector('[data-ig-r49-stage]');
   const lang=h.querySelector('.ig-r49-lang');
+  const more=h.querySelector('[data-ig-r49-more]');
   return {
     header:rect(h),inner:inner?rect(inner):null,
     brand:brand&&visible(brand)?rect(brand):null,
-    settings:settings&&visible(settings)?rect(settings):null,
+    search:search&&visible(search)?rect(search):null,
     music:music&&visible(music)?rect(music):null,
+    settings:settings&&visible(settings)?rect(settings):null,
+    audience:audience&&visible(audience)?rect(audience):null,
     lang:lang&&visible(lang)?rect(lang):null,
+    more:more&&visible(more)?rect(more):null,
     permanentNav:[...h.querySelectorAll('.nav,.ig-r49-primary')].filter(visible).length
   };
  }''')
@@ -36,13 +43,13 @@ def check_inner_header(page,route,width):
  assert inner,(route,width,'missing R49 header inner',geometry)
  assert inner['x']>=outer['x']-1 and inner['right']<=outer['right']+1,(route,width,'header inner outside shell',geometry)
  assert geometry['brand'],(route,width,'missing brand',geometry)
- for key in ('settings','music','lang'):
+ for key in ('search','music','settings','audience','lang','more'):
   item=geometry[key];assert item,(route,width,'missing header control',key,geometry)
   assert item['height']>=44,(route,width,'short header control',key,item)
   assert item['x']>=outer['x']-1 and item['right']<=outer['right']+1,(route,width,'header control clipped',key,item)
  assert geometry['permanentNav']==0,(route,width,'retired permanent thematic nav visible',geometry)
- controls=header.locator('.ig-r49-brand,[data-ig-r49-settings],[data-ig-music],.ig-r49-lang')
- assert controls.count()==4,(route,width,'unexpected header control count',controls.count())
+ controls=header.locator('.ig-r49-brand,[data-ig-r49-search],[data-ig-music],[data-ig-r49-settings],[data-ig-r49-stage],.ig-r49-lang,[data-ig-r49-more]')
+ assert controls.count()==7,(route,width,'unexpected header control count',controls.count())
  controls.first.focus()
  for index in range(controls.count()):
   assert controls.nth(index).evaluate('(e)=>document.activeElement===e'),(route,width,'keyboard skipped header control',index)
