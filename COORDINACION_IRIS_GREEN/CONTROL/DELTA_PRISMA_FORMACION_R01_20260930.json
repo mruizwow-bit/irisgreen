@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-FORMACION-R01-20260930",
+  "issue_reference": 348,
+  "date": "2026-09-30",
+  "alias": "Prisma",
+  "agent": "A8",
+  "role": "Frontend Platform & Design Systems Engineer",
+  "manager": "Astra",
+  "status": "PRISMA_FRONTEND_PLATFORM_DESIGN_SYSTEMS_FOUNDATION_STUDIED_R01",
+  "base_commit": "41a01a5534161da5e4b412dd0c6af424e836a53c",
+  "observed_main_head": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
+  "studied_domains": [
+    "WEB_PLATFORM",
+    "WEB_COMPONENTS",
+    "CSS_ARCHITECTURE",
+    "CASCADE_LAYERS",
+    "CONTAINER_QUERIES",
+    "DESIGN_TOKENS",
+    "DESIGN_SYSTEM_GOVERNANCE",
+    "ARIA_IMPLEMENTATION",
+    "COMPONENT_TESTING",
+    "VISUAL_REGRESSION",
+    "CORE_WEB_VITALS",
+    "TRUSTED_TYPES"
+  ],
+  "boundaries": [
+    "CROMA_DESIGN",
+    "ASTRA_ARCHITECTURE_GATES",
+    "AXIOMA_STANDARDS_CONFORMANCE",
+    "MOTOR_INTERACTIVE_RUNTIME",
+    "VECTOR_RELEASE_INTEGRATION"
+  ],
+  "external_certification": false,
+  "product_change": false,
+  "build": false,
+  "merge": false,
+  "deploy": false
+}
