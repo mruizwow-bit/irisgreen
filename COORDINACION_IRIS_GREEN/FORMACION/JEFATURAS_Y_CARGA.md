@@ -1,53 +1,29 @@
-# JEFATURAS · carga, reparto y escalado
+# JEFATURAS · carga, reparto y escalado · R02
 
-## Objetivo
+## Producto & Tecnología
 
-Evitar que Aura/Astra se conviertan en:
-- ejecutores de emergencia;
-- depuradores permanentes de trabajos ajenos;
-- memoria humana de cada chat;
-- cuello de botella de todos los gates.
+### Aura · 4/4
+Atlas · Vector · Nube · Senda.
 
-## Capacidad
+### Astra · 4/4
+Claude · Motor · Prisma · Lumen.
 
-Una jefatura puede llevar correctamente:
-- hasta 4 agentes activos;
-- máximo 2 P0/P1 simultáneos;
-- más agentes solo si están HOLD/cierre/bloqueados.
+### Nexo · 3/4 previsto
+Pulso · Vigía · Eco · vacante.
 
-## Señales de sobrecarga
+### Orbe
+Reserva.
 
-Repartir/activar otra jefatura si ocurre cualquiera:
-- un jefe tiene que ejecutar código de 2+ subordinados para desbloquearlos;
-- 3 agentes piden revisión compleja a la vez durante más de un ciclo;
-- se omiten controles/memoria/formación por falta de tiempo;
-- se acumulan respuestas de “no puedo” sin plan de aprendizaje;
-- la jefatura deja de revisar y empieza a construir producto;
-- >4 activos de forma sostenida.
+## Departamentos transversales
 
-## Tercera jefatura
+Legal/RRHH/Calidad/Marketing/Finanzas reportan a Dirección General.
+No se meten artificialmente bajo una jefatura técnica para “cuadrar números”.
 
-Nombre reservado:
-**Nexo**.
+## Límite
 
-Misión:
-Continuidad Técnica y Sistemas.
+- 4 activos/jefe;
+- 5 solo temporal con uno no activo;
+- 2 P0/P1 simultáneos recomendado.
 
-Carga objetivo:
-Pulso · Vigía · Eco · Lumen.
-
-Estado:
-`NEXO_TEAM_LEAD_PLANNED_NOT_YET_SESSION_ACTIVE`.
-
-## Cuarta jefatura
-
-Nombre reservado:
-**Orbe**.
-
-Activación:
-- >12 trabajadores activos;
-- o los 3 jefes llegan al límite;
-- o hay >6 carriles P0/P1 simultáneos.
-
-No crear jefaturas por título.
-Se crean cuando descargan trabajo real y tienen equipo definido.
+Cuando un departamento crezca:
+crear estructura dentro del departamento antes de volcar su equipo sobre Aura/Astra/Nexo.

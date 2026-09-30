@@ -1,3 +1,19 @@
+## Organigrama empresarial y departamentos
+
+Issue #346.
+
+Fuente:
+`FORMACION/ORGANIGRAMA_EMPRESA_R01.md`.
+
+Estado:
+`ORGANIGRAMA_EMPRESA_R01_ADOPTED`.
+
+Se crean Legal, RRHH, Calidad, Marketing y Finanzas como departamentos transversales.
+
+Jornada 30/09:
+`JORNADA_ESTRUCTURA_FORMACION_20260930_ACTIVE`.
+Desarrollo ordinario en HOLD temporal para organización y formación.
+
 ## Formación profesional de agentes
 
 Fuente:

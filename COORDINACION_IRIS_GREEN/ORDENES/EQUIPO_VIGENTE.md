@@ -1,3 +1,16 @@
+# PAUSA TEMPORAL · ESTRUCTURA Y FORMACIÓN · 30/09/2026
+
+Estado:
+`JORNADA_ESTRUCTURA_FORMACION_20260930_ACTIVE`.
+
+No iniciar el siguiente trabajo de producto durante esta jornada.
+Preservar estado y estudiar.
+
+Organigrama:
+`../FORMACION/ORGANIGRAMA_EMPRESA_R01.md`.
+
+Esta pausa NO cancela órdenes anteriores: las congela temporalmente.
+
 # Formación y estructura de equipo · 30/09/2026
 
 Estado:

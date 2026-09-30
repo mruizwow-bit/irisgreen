@@ -1,3 +1,33 @@
+## Organigrama empresa R01 · jornada de estructura/formación · 30/09/2026
+
+Issue #346.
+
+Estado:
+`ORGANIGRAMA_EMPRESA_R01_ADOPTED`.
+
+Jornada:
+`JORNADA_ESTRUCTURA_FORMACION_20260930_ACTIVE`.
+
+María pausa hoy el desarrollo ordinario para crear estructura y estudiar.
+
+Organigrama:
+`FORMACION/ORGANIGRAMA_EMPRESA_R01.md`.
+
+Nuevos departamentos:
+- Lex · Legal & Compliance;
+- Raíz · RRHH / People & Organization;
+- Axioma · Calidad, Accesibilidad & Standards;
+- Brújula · Marketing & Growth;
+- Cifra · Finanzas & Business Planning.
+
+Ágora pasa funcionalmente a Marketing.
+
+Reparto técnico:
+Aura 4 · Astra 4 · Nexo 3+1 vacante · Orbe reserva.
+
+Durante la jornada:
+preservar/estudiar/documentar sí; nuevos builds/renders/merges/deploys no, salvo orden expresa.
+
 ## Formación profesional de agentes · 30/09/2026
 
 Issue #345.

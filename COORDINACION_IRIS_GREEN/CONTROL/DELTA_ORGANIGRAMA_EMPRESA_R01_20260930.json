@@ -1,0 +1,64 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "ORGANIGRAMA-EMPRESA-R01-20260930",
+  "issue": 346,
+  "date": "2026-09-30",
+  "status": "ORGANIGRAMA_EMPRESA_R01_ADOPTED",
+  "training_day": "JORNADA_ESTRUCTURA_FORMACION_20260930_ACTIVE",
+  "executive": {
+    "Maria": [
+      "General Direction",
+      "Founder",
+      "Product Owner"
+    ]
+  },
+  "product_technology": {
+    "Aura": [
+      "Atlas",
+      "Vector",
+      "Nube",
+      "Senda"
+    ],
+    "Astra": [
+      "Claude",
+      "Motor",
+      "Prisma",
+      "Lumen"
+    ],
+    "Nexo": [
+      "Pulso",
+      "Vigia",
+      "Eco",
+      "VACANT_1"
+    ],
+    "Orbe": "RESERVE"
+  },
+  "corporate_departments": {
+    "Legal": "Lex",
+    "People": "Raiz",
+    "Quality": "Axioma",
+    "Marketing": {
+      "lead": "Brujula",
+      "team": [
+        "Agora"
+      ]
+    },
+    "Finance": "Cifra"
+  },
+  "design": "Croma",
+  "team_lead_cap": {
+    "normal": 4,
+    "temporary": 5,
+    "recommended_p0_p1": 2
+  },
+  "product_work_hold": {
+    "new_builds": false,
+    "new_renders": false,
+    "merges": false,
+    "deploys": false,
+    "preservation": true,
+    "training": true,
+    "read_only_audit": true,
+    "resume_requires": "MARIA_EXPLICIT"
+  }
+}
