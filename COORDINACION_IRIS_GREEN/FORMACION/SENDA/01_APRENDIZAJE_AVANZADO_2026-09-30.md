@@ -872,3 +872,150 @@ Nunca degradar:
 
 Estado:
 `SENDA_PROFILING_PERFORMANCE_GATES_STUDIED_R06`
+
+
+## 35. Reproducibilidad de assets y evidencia visual R07
+
+Fuentes estudiadas:
+- Playwright visual comparisons;
+- reproducible-builds.org;
+- SOURCE_DATE_EPOCH;
+- GitHub artifact attestations / SLSA provenance.
+
+### 35.1 Cuatro niveles que no deben confundirse
+
+1. **Byte reproducibility**
+   - mismo input + entorno produce mismos bytes.
+
+2. **Decoded/pixel equivalence**
+   - bytes pueden diferir, pero imagen decodificada cumple igualdad/tolerancia definida.
+
+3. **Perceptual visual regression**
+   - apariencia dentro de umbral aceptado para una baseline controlada.
+
+4. **Nominal evidence correctness**
+   - la captura muestra exactamente el estado/objeto que su nombre y test afirman.
+
+Un PASS en uno no implica PASS en los otros.
+
+### 35.2 Visual baselines
+
+Playwright advierte que screenshots pueden variar por:
+- OS;
+- versión;
+- settings;
+- hardware;
+- power state;
+- headless/entorno.
+
+Reglas:
+- baseline y comparación en entorno controlado;
+- fijar browser/toolchain cuando el gate dependa de pixel diff;
+- revisar cambios de golden;
+- no actualizar snapshots automáticamente para “poner verde” CI;
+- desactivar/estabilizar animaciones cuando no formen parte de la prueba;
+- documentar tolerancias.
+
+### 35.3 Tolerancias
+
+Playwright permite:
+- maxDiffPixels;
+- maxDiffPixelRatio;
+- threshold perceptivo de pixelmatch.
+
+Regla:
+tolerancia debe justificarse.
+
+No usar una tolerancia grande para ocultar:
+- arte roto;
+- layout drift;
+- fuente faltante;
+- render distinto.
+
+### 35.4 Build reproducible
+
+Fuentes de variabilidad:
+- timestamps;
+- timezone;
+- locale;
+- orden de inputs;
+- randomness;
+- build path;
+- toolchain/codec version;
+- metadata de archivos.
+
+SOURCE_DATE_EPOCH permite sustituir tiempo de build volátil por un timestamp reproducible derivado de fuente cuando las herramientas lo soportan.
+
+Aplicación Senda:
+- seeds explícitos para procedural;
+- orden estable;
+- versiones de encoder/generador;
+- entorno registrado;
+- timestamps no volátiles;
+- inputs hashados.
+
+### 35.5 Codec variability
+
+Lección R59:
+si bytes de un asset codificado pueden variar entre toolchains:
+- o se fija exactamente el entorno/codec para exigir byte identity;
+- o se define un contrato explícito de equivalencia decodificada/perceptiva.
+
+Nunca:
+documentar pixel fallback y entregar un verificador que solo compare SHA.
+
+`DOCUMENTED_CONTRACT == EXECUTED_CONTRACT`.
+
+### 35.6 Provenance/attestation
+
+GitHub artifact attestations pueden vincular:
+- repo;
+- workflow;
+- commit SHA;
+- evento;
+- build provenance.
+
+Pero:
+- una attestation no garantiza seguridad;
+- no garantiza corrección visual;
+- no garantiza accesibilidad;
+- no sustituye QA.
+
+Frontera:
+Senda debe producir inputs/manifests reproducibles.
+Vigía/Vector/infra correspondiente conserva ownership de provenance/release cuando aplique.
+
+### 35.7 Manifest
+
+Un manifest útil debe:
+- incluir alcance declarado;
+- excluir resultados volátiles deliberadamente cuando corresponda;
+- identificar algoritmo;
+- fallar si inputs cambian;
+- estar enlazado con resultados de QA por digest.
+
+No basta:
+“74/74 hashes correctos”.
+
+También hay que comprobar:
+- que sean los 74 correctos;
+- que el arnés correcto los usó;
+- que la evidencia prueba la afirmación.
+
+### 35.8 Gate sugerido para asset generado
+
+1. source inputs hash;
+2. generator hash/version;
+3. toolchain/codec versions;
+4. seed;
+5. SOURCE_DATE_EPOCH si aplica;
+6. output hash;
+7. decode validation;
+8. dimensions/colorspace;
+9. visual regression;
+10. accessibility/provenance metadata;
+11. nominal assertion;
+12. negative test.
+
+Estado:
+`SENDA_ASSET_REPRO_VISUAL_EVIDENCE_STUDIED_R07`
