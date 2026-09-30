@@ -614,3 +614,8 @@ La fidelización exige visitar las cuentas de los 114 fieles y comentar SUS publ
 ## Orden expresa de puesta al día · María · 30/09/2026 12:19 Europe/Madrid
 
 Recorrer los 114 fieles y revisar la última publicación de cada uno, incluidas las de ayer y anteriores. Comentar las últimas publicaciones pendientes, sin descartar por no ser de hoy. El rango diario orientativo no limita esta puesta al día expresamente solicitada. No duplicar una aportación de Iris ya presente. Resolver identidades truncadas con evidencia, no inventar. Registrar por cuenta la última URL y resultado: comentada nueva / ya comentada / sin publicaciones / identidad o acceso pendiente. No afirmar 114 completados con una tanda parcial.
+
+
+## Orden vigente de María · 30/09/2026 · 20 nuevas cuentas por red y día
+
+Buscar, seguir y comentar 20 cuentas nuevas en Instagram y otras 20 en Facebook cada día, combinando español e inglés. Reparto orientativo 10 ES + 10 EN por red. Esta instrucción sustituye los anteriores rangos de 3–5/4–6 follows. Contar las altas verificadas del mismo día y no duplicarlas. Leer cada perfil y publicación antes de comentar; personalizar, verificar el follow y el comentario, registrar evidencia y mantener seguimiento. Próxima revisión al día siguiente; revisión de relación los lunes, sin bajas automáticas. Mantener atención de respuestas y habituales. Si un bloqueo impide llegar a 20, informar cifras reales y déficit, nunca rellenar con acciones ficticias. TikTok sigue retirado.
