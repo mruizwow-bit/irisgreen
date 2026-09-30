@@ -11,23 +11,18 @@ R42_PILOT_ROUTES={'/es/recursos/juegos/','/en/resources/games/','/es/intereses/'
 CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
 def check_r05_ui(page,lang):
- """Native activated form only; no query, mocked response or auth probe."""
- expected='Sabik is available.' if lang=='en' else 'Sabik está disponible.'
- page.wait_for_function('(s)=>document.querySelector(".sabik-state").textContent===s',arg=expected)
+ """Compact Sabik form: input, send, reset and live region; no redundant explainer blocks."""
  field=page.get_by_role('textbox',name='What do you need?' if lang=='en' else '¿Qué necesitas?',exact=True)
  assert field.count()==1 and field.get_attribute('id')=='sabik-input'
  assert field.get_attribute('maxlength')=='300'
- help_text=page.locator('#sabik-input-help').inner_text()
- assert help_text==('Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.' if lang=='en' else 'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.')
- assert set(field.get_attribute('aria-describedby').split())=={'sabik-input-help','sabik-availability'}
+ assert page.locator('.sabik-state,#sabik-availability,#sabik-input-help').count()==0,'redundant Sabik explainer returned'
  assert page.locator('#sabik-announcement').get_attribute('role')=='status'
  assert page.locator('#sabik-announcement').get_attribute('aria-live')=='polite'
- if lang=='en':assert 'Some original sources are in Spanish.' in page.locator('#sabik-availability').inner_text()
  submit=page.get_by_role('button',name='Send' if lang=='en' else 'Enviar',exact=True)
  assert submit.is_disabled()
  field.fill('x'*299);field.press('End');field.press('y');field.press('z')
  assert len(field.input_value())==300,'native maxlength did not limit typing'
- assert submit.is_enabled(),'nonempty query still disabled after authorized activation'
+ assert submit.is_enabled(),'nonempty query still disabled after activation'
  field.press('Tab');assert submit.evaluate('(e)=>document.activeElement===e'),'submit skipped in keyboard order'
  settings=page.locator('#sabik-settings')
  if settings.count() and not settings.is_visible():
@@ -35,7 +30,7 @@ def check_r05_ui(page,lang):
  page.locator('#sabik-reset').focus();page.locator('#sabik-reset').press('Enter')
  assert field.input_value()=='' and submit.is_disabled()
  assert field.evaluate('(e)=>document.activeElement===e')
- return {'available_label':expected,'maxlength':300,'help':help_text,'native_length_enforced':True,'send_enabled_for_nonempty_input':True,'reset_keyboard_focus':True,'query_submitted':False,'http_retrieval_verified':False}
+ return {'compact':True,'maxlength':300,'native_length_enforced':True,'send_enabled_for_nonempty_input':True,'reset_keyboard_focus':True,'query_submitted':False,'http_retrieval_verified':False}
 
 def static():
  rows=[]
