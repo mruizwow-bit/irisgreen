@@ -82,5 +82,12 @@
     "observed_state": "R66_SABIK_CONVERSATIONAL_VOICE_CONTRACT_ADOPTED",
     "prepared_matrix": "FORMACION/A6_ECO/07_MATRIZ_VALIDACION_SABIK_R66.md"
   },
-  "standards_watchlist": "FORMACION/A6_ECO/06_VIGILANCIA_ESTANDARES_Y_COMPATIBILIDAD.md"
+  "standards_watchlist": "FORMACION/A6_ECO/06_VIGILANCIA_ESTANDARES_Y_COMPATIBILIDAD.md",
+  "slack": {
+    "channel": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD",
+    "membership_confirmed": true,
+    "intro_message": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790794445970849",
+    "criterion": "Slack quick coordination; GitHub canonical decisions/training/state/evidence; external Claude agents excluded by default"
+  }
 }
