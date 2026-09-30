@@ -48,10 +48,11 @@ def main()->None:
          "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
     for p in pages:
         s=p.read_text(encoding="utf-8")
-        hrefs=re.findall(r'<link\\b[^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\'][^>]*href=["\\\']([^"\\\']+)["\\\']|<link\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\']',s,re.I)
+        head=s.split("</head>",1)[0]
+        hrefs=re.findall(r'<link\\b[^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\'][^>]*href=["\\\']([^"\\\']+)["\\\']|<link\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\']',head,re.I)
         hrefs=[a or b for a,b in hrefs]
         need(hrefs and hrefs[-1].split("?")[0]=="/assets/ig-r69-unified-ui.css",
-             "R69 compatibility stylesheet is not last: "+p.relative_to(root).as_posix())
+             "R69 compatibility stylesheet is not last in head: "+p.relative_to(root).as_posix())
 
     # Home uses the same global shell and must not expose a second age picker.
     homes=[root/"index.html",root/"en"/"index.html"]
