@@ -1,3 +1,22 @@
+## Agente Social · Instagram + Facebook · ejecución sin bucle · 30/09/2026
+
+Issue #343.
+
+Estado:
+`SOCIAL_IG_FB_EXECUTION_ORDERED_NO_LOOP`.
+
+María ordena:
+- comentar fieles pendientes y nuevos de ayer/hoy en Instagram/Facebook;
+- actualizar Excel/seguimiento;
+- TikTok fuera;
+- usar vía de escritura real si está disponible;
+- si la sesión carece de ella, registrar el bloqueo UNA sola vez y continuar todo el trabajo ejecutable;
+- no repetir durante horas “abre Work/no puedo entrar”;
+- no marcar comentario como enviado sin verificación.
+
+Orden:
+`COORDINACION_IRIS_GREEN/ORDENES/AGENTE_SOCIAL_20260930/01_EJECUCION_IG_FB_SIN_BUCLE.md`.
+
 ## CLAUDE · cola reconciliada tras RESUME GATE · 30/09/2026
 
 La lectura que decía “la matriz R44 no existe” queda SUPERSEDED por avance canónico posterior.

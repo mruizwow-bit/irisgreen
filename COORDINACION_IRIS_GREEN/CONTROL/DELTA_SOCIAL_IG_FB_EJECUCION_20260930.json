@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "SOCIAL-IG-FB-EXECUTION-20260930",
+  "issue": 343,
+  "date": "2026-09-30",
+  "authority": "Maria",
+  "status": "SOCIAL_IG_FB_EXECUTION_ORDERED_NO_LOOP",
+  "scope": [
+    "INSTAGRAM",
+    "FACEBOOK"
+  ],
+  "excluded": [
+    "TIKTOK"
+  ],
+  "state_in": {
+    "faithful_total": 114,
+    "faithful_verified": 94,
+    "faithful_unclosed": 20,
+    "faithful_blocked": 2,
+    "faithful_no_final_state": 18,
+    "new_registered": 12,
+    "new_instagram": 5,
+    "new_facebook": 7,
+    "workbook": "SEGUIMIENTO_SOCIAL_IRIS_GREEN_FINAL_20260930.xlsx"
+  },
+  "rules": {
+    "direct_write_if_available": true,
+    "no_false_completion": true,
+    "tool_blocker_report_once": true,
+    "continue_executable_work_after_blocker": true,
+    "no_repeat_context_request": true
+  },
+  "gates": [
+    "SOCIAL_IG_FB_DAILY_ROUND_EXECUTED_WITH_VERIFIED_COMMENTS",
+    "SOCIAL_IG_FB_QUEUE_READY_WRITE_CAPABILITY_BLOCKED_ONCE"
+  ]
+}
