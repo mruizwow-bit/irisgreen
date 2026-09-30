@@ -63,10 +63,12 @@ def main():
         # Home v4 is the canonical donor-backed Home.
         assert page.locator('body[data-ig-home-version="v4"]').count()==1,(route,width,'missing Home v4 marker')
         home=page.locator('.ig-home-v4-wrap').bounding_box();assert home,(width,'missing Home v4 wrap')
-        expected=1240
+        gutter=min(40,max(16,width*.022))
+        expected=min(width-2*gutter,1664)
         assert abs(home['width']-expected)<4,(width,home,expected)
         sabik=page.locator('#sabik-web-master').bounding_box();assert sabik,(route,width,'missing Sabik master')
-        assert 185<=sabik['width']<=255,(route,width,'Sabik Home size outside compact range',sabik)
+        expected_sabik=min(300,max(220,width*.18))
+        assert abs(sabik['width']-expected_sabik)<4,(route,width,'Sabik Home size outside product range',sabik,expected_sabik)
       if width==1920 or width==320:page.screenshot(path=str(OUT/f'{len(rows):02d}-{width}.png'))
       rows.append({**current,'font':family,'passed':True})
       (OUT/'progress.json').write_text(json.dumps(rows,indent=2))
