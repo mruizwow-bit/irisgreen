@@ -40,7 +40,7 @@ def main()->None:
         rel=p.relative_to(root).as_posix()
         if any(x in s for x in GOOGLE): google.append(rel)
         if 'id="ig-page-finder"' in s: finder.append(rel)
-        if 'data-ig-audience-picker' in s or 'data-ig-audience-stage' in s: static_age.append(rel)
+        if ('data-ig-audience-picker' in s or 'data-ig-audience-stage' in s) and rel not in ('index.html','en/index.html'): static_age.append(rel)
         need('/assets/ig-fonts.css' in s,'Local fonts missing: '+rel)
     need(not google,"External Google Fonts remain: "+", ".join(google[:12]))
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
@@ -63,13 +63,15 @@ def main()->None:
         need(head.endswith(final_ui),"R69 compatibility stylesheet is not final in head: "+rel)
         need(head.count('/assets/ig-r69-unified-ui.css')==1,"R69 compatibility stylesheet count != 1: "+rel)
 
-    # Home uses the same global shell and must not expose a second age picker.
+    # Home exposes the one canonical visible AGE picker; other products consume that session state without duplicating it.
     homes=[root/"index.html",root/"en"/"index.html"]
     for p in homes:
         need(p.is_file(),"Missing Home "+str(p))
         s=p.read_text(encoding="utf-8")
         need('data-ig-r49="1"' in s,"Home not enrolled in global shell: "+p.as_posix())
-        need('ig-home-v4-age' not in s,"Duplicate Home age picker remains: "+p.as_posix())
+        need(s.count('data-ig-audience-picker')==1,"Home canonical age picker count !=1: "+p.as_posix())
+        need(s.count('data-ig-audience-stage=')==4,"Home canonical age buttons count !=4: "+p.as_posix())
+        need('ig-home-v4-safety-state' in s,"Home child-safe state is not visible: "+p.as_posix())
         need('/assets/ig-r49-lang-bootstrap.js' in s,"Home lacks first-paint R49 bootstrap: "+p.as_posix())
         need('/assets/ig-fonts.css' in s,"Home lacks local fonts: "+p.as_posix())
 
@@ -153,6 +155,7 @@ def main()->None:
       "legacy_page_finder":0,
       "duplicate_resource_age_ui":0,
       "home_duplicate_age_ui":0,
+      "home_age_picker":"VISIBLE_CANONICAL",
       "workshop_static_shell":"PASS",
       "global_footer_replacement":"PASS",
       "canonical_age_runtime":"PASS",

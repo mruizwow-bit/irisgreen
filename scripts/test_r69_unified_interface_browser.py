@@ -26,8 +26,12 @@ async def shell_ready(page,path):
          "extra controls remain in global header "+path)
     need(await page.locator("[data-ig-music]").count()==1 and await page.locator("[data-ig-r49-settings]").count()==1 and await page.locator(".ig-r49-lang").count()==1,
          "compact global header controls missing "+path)
-    need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
-         "local age picker exists outside runtime "+path)
+    if path in ("/","/en/"):
+        need(await page.locator("[data-ig-audience-picker]").count()==1 and await page.locator("[data-ig-audience-stage]").count()==4,
+             "Home canonical age picker missing "+path)
+    else:
+        need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
+             "local age picker exists outside Home "+path)
     need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
     need(await page.locator(".igk-para").count()==0,"Workshop hub local «Para ti» age UI "+path)
@@ -102,7 +106,24 @@ async def main():
         await page.locator("#sabik-input").focus()
         sabik_field=await page.locator("#sabik-input").evaluate("(e)=>({bg:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color})")
         need(sabik_field["bg"]!="rgb(255, 255, 255)","Sabik textarea becomes glare-white on focus "+repr(sabik_field))
-        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS"}
+        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Encuentra lo que necesitas","Home heading is still abstract")
+        need(await page.locator("[data-ig-audience-stage]").count()==4,"Home age buttons disappeared")
+        need(await page.locator("html").get_attribute("data-ig-safety-mode")=="safe-by-default","Home did not start child-safe")
+        need(await page.locator("[data-ig-home-safe]").is_visible(),"Home child-safe status is not visible")
+        await page.locator('[data-ig-audience-stage="AGE_18_PLUS"]').click()
+        need(await page.locator("html").get_attribute("data-ig-safety-mode")=="adult-explicit","Explicit adult choice did not change safety mode")
+        need(await page.locator("[data-ig-home-adult]").is_visible(),"Explicit adult status is not visible")
+        await page.evaluate("IGAudience.clear()")
+        footer_box=await page.locator(".ig-r49-global-footer .ig-r49-footer-inner").bounding_box()
+        need(footer_box is not None and abs(footer_box["x"]-home_layout["wrap"]["l"])<3,"Home footer is not aligned to product axis "+repr(footer_box))
+        lang_origin=await page.locator(".ig-r49-lang").evaluate("(a)=>new URL(a.href,location.href).origin===location.origin")
+        need(lang_origin,"Language link leaves the current preview origin")
+        await page.locator(".ig-r49-lang").click()
+        await page.wait_for_load_state("networkidle")
+        need(await page.locator("html").get_attribute("lang")=="en","EN did not open English Home")
+        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Find what you need","English Home heading missing")
+        await page.goto(BASE+"/",wait_until="networkidle")
+        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS","age_picker":4,"child_safe":"PASS","language_same_origin":"PASS","footer_axis":"PASS"}
 
         await page.goto(BASE+"/es/investigacion/",wait_until="networkidle")
         need(await page.locator("body").get_attribute("data-ig-profile")=="browse","Research still classified as content")
@@ -174,6 +195,7 @@ async def main():
         need(all(x=="grid" for x in home["useDisplays"]+home["discoverDisplays"]),"Home anchors collapsed to inline text "+repr(home))
         need(all(r["w"]>150 and r["h"]>110 for r in home["useRects"]),"Home use cards have collapsed boxes "+repr(home))
         need(all(r["w"]>150 and r["h"]>100 for r in home["discoverRects"]),"Home discover cards have collapsed boxes "+repr(home))
+        need(max(r["w"] for r in home["discoverRects"])<450,"Home discover cards are too wide for a three-card row "+repr(home["discoverRects"]))
         await page.screenshot(path=str(OUT/"home-cards-1440.png"),full_page=False)
         report["home_cards"]={"use":4,"discover":9,"media":13,"layout":"GRID_PASS"}
 
@@ -253,6 +275,15 @@ async def main():
 
         need(await page.locator("#sabik-hologram .sabik-orbit-layer").count()==2,"Sabik measured front/back layers missing")
         need(await page.locator("#sabik-hologram").get_attribute("data-render-active")=="true","Sabik layered render not active")
+        sabik_visible=await page.evaluate("""() => {
+          const v=document.querySelector('#sabik-hologram'),m=document.querySelector('#sabik-web-master'),r=v.getBoundingClientRect(),mr=m.getBoundingClientRect(),c=getComputedStyle(m);
+          const controls=[document.querySelector('#sabik-voice'),document.querySelector('#sabik-reset'),document.querySelector('#sabik-motion-level')].map(e=>{const x=e.getBoundingClientRect();return {top:x.top,bottom:x.bottom,left:x.left};});
+          return {vw:r.width,vh:r.height,mw:mr.width,mh:mr.height,clip:c.clipPath,natural:m.naturalWidth,controls};
+        }""")
+        need(sabik_visible["vw"]>=220 and sabik_visible["vh"]>=220 and sabik_visible["mw"]>=220 and sabik_visible["mh"]>=220,"Sabik visual collapsed or invisible "+repr(sabik_visible))
+        need(sabik_visible["clip"] in ("none",""),"Sabik current master is incorrectly clipped "+repr(sabik_visible))
+        need(sabik_visible["natural"]>0,"Sabik current master did not load")
+        need(max(x["top"] for x in sabik_visible["controls"])-min(x["top"] for x in sabik_visible["controls"])<40,"Sabik controls are scattered vertically "+repr(sabik_visible["controls"]))
         await page.locator("#sabik-motion-level").select_option("NORMAL")
         before_layer=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
         await page.wait_for_timeout(300)
@@ -277,7 +308,7 @@ async def main():
         still_after=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
         need(still_before==still_after,"Sabik layered motion continues in SIN_MOVIMIENTO")
         await page.screenshot(path=str(OUT/"home-sabik-pausa-no-motion-1440.png"),full_page=False)
-        report["sabik"]={"masters":"PASS","layers":2,"continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
+        report["sabik"]={"masters":"PASS","visible":"PASS","layers":2,"controls":"COMPACT_ROW","continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
 
         # Theme tokens should drive the same shell on both themes.
         await page.evaluate("IGTheme.set('light')")

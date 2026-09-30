@@ -165,11 +165,15 @@ html[data-ig-contrast="on"] .ig-home-header{
   font-size:.92rem;
 }
 .ig-home-v4-age-state strong{color:var(--ig-text)}
+.ig-home-v4-safety-state{margin:.15rem 0 0;color:var(--ig-text-muted);font-size:.92rem;font-weight:700}
+.ig-home-v4-safety-state [data-ig-home-adult]{display:none}
+html[data-ig-safety-mode="adult-explicit"] .ig-home-v4-safety-state [data-ig-home-safe]{display:none}
+html[data-ig-safety-mode="adult-explicit"] .ig-home-v4-safety-state [data-ig-home-adult]{display:inline}
 
 .ig-home-v4-section{display:grid;gap:.85rem;width:100%;align-self:stretch}
 .ig-home-v4-use-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
 .ig-home-v4-use-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
-.ig-home-v4-discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
+.ig-home-v4-discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;width:100%;max-width:78rem}
 .ig-home-v4-card{
   min-width:0;
   min-height:100%;
@@ -216,7 +220,7 @@ html[data-ig-contrast="on"] .ig-home-header{
   display:grid;
   grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr);
   gap:1.1rem;
-  align-items:center;
+  align-items:start;
   padding:0;
   border:0;
   border-radius:0;
@@ -229,7 +233,7 @@ html[data-ig-contrast="on"] .ig-home-header{
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{
   width:clamp(220px,18vw,300px);
   max-width:300px;
-  aspect-ratio:auto;
+  aspect-ratio:1;
   margin:0;
   overflow:visible;
 }
@@ -251,9 +255,9 @@ html[data-ig-contrast="on"] .ig-home-header{
 
 
 .ig-home-v4-footer{
-  width:min(100%,1240px);
+  width:min(calc(100% - 2 * clamp(1rem,2.2vw,2.5rem)),var(--ig-content-wide,104rem));
   margin:0 auto;
-  padding:.8rem clamp(1rem,3vw,2rem) 1rem;
+  padding:.8rem 0 1rem;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -417,10 +421,15 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .sabik-actions{align-items:center;gap:.55rem}
 .ig-home-v4 .sabik-actions button{flex:0 0 auto!important;min-height:44px;padding:.62rem 1rem;border-radius:999px;font-weight:700}
 .ig-home-v4 #sabik-submit{min-width:7.25rem}
-.ig-home-v4 .sabik-voice-control{display:flex;align-items:center;margin:.45rem 0}
+.ig-home-v4 .ig-home-v4-sabik-controls{display:grid;grid-template-columns:max-content max-content minmax(11rem,15rem);gap:.65rem;align-items:end;justify-content:start;margin-top:.25rem}
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-actions,
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-voice-control,
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-motion-control{margin:0!important;padding:0!important}
+.ig-home-v4 .sabik-voice-control{display:flex;align-items:center}
 .ig-home-v4 .sabik-voice-toggle{width:auto!important;min-width:0;padding:.62rem 1rem;border-radius:999px;background:var(--ig-bg-surface-soft)!important}
-.ig-home-v4 .sabik-motion-control{display:grid;grid-template-columns:auto minmax(10rem,13rem);align-items:center;gap:.55rem .8rem;margin:.45rem 0}
-.ig-home-v4 .sabik-motion-control label{margin:0}
+.ig-home-v4 .sabik-motion-control{display:grid;grid-template-columns:1fr;gap:.25rem}
+.ig-home-v4 .sabik-motion-control label{margin:0;font-size:.92rem}
 .ig-home-v4 .sabik-motion-control select{width:100%;min-height:44px;padding:.55rem 2.2rem .55rem .8rem;border-radius:12px}
-.ig-home-v4 .sabik-motion-control small{grid-column:1/-1;margin:0;color:var(--ig-text-muted)}
-@media(max-width:760px){.ig-home-v4-wrap{width:100%;padding-inline:1rem}.ig-home-v4 .sabik-motion-control{grid-template-columns:1fr}.ig-home-v4 .sabik-motion-control small{grid-column:auto}}
+.ig-home-v4 .sabik-icon-button{border-radius:999px;padding:.55rem .85rem}
+@media(max-width:1050px){.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:max-content max-content}.ig-home-v4 .sabik-motion-control{grid-column:1/-1;max-width:15rem}}
+@media(max-width:760px){.ig-home-v4-wrap{width:100%;padding-inline:1rem}.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:1fr}.ig-home-v4 .sabik-motion-control{grid-column:auto;max-width:none}}

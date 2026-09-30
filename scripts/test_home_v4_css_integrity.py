@@ -13,10 +13,10 @@ REQUIRED={
     '.ig-home-v4-use-pair':('display:grid','grid-template-columns:repeat(2,minmax(0,1fr))'),
     '.ig-home-v4-card':('display:grid','background:var(--ig-bg-surface)'),
     '.ig-home-v4-media':('display:grid','min-height:112px'),
-    '.ig-home-v4-discover-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))'),
+    '.ig-home-v4-discover-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))','max-width:78rem'),
     '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:minmax(250px,.8fr)minmax(320px,1.2fr)'),
-    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:300px','aspect-ratio:auto','margin:0'),
-    '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:300px','aspect-ratio:1','margin:0'),
+    '.ig-home-v4-footer':('display:flex','justify-content:space-between','var(--ig-content-wide,104rem)'),
 }
 CONTROL_ALLOWED={9,10,13}
 

@@ -55,7 +55,7 @@ function langHref(){
   return path+'?lang='+target;
  }
  var alt=D.querySelector('link[rel~="alternate"][hreflang="'+target+'"]');
- if(alt&&alt.href)return alt.href;
+ if(alt&&alt.href){try{var u=new URL(alt.href,W.location.href);return u.pathname+u.search+u.hash;}catch(_){}}
  if(target==='en')return '/en/';
  return '/';
 }
