@@ -43,6 +43,16 @@ def main()->None:
     need(not google,"External Google Fonts remain: "+", ".join(google[:12]))
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
 
+    unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
+    need("@layer ig-r69-unified" not in unified,
+         "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
+    for p in pages:
+        s=p.read_text(encoding="utf-8")
+        hrefs=re.findall(r'<link\\b[^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\'][^>]*href=["\\\']([^"\\\']+)["\\\']|<link\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\']',s,re.I)
+        hrefs=[a or b for a,b in hrefs]
+        need(hrefs and hrefs[-1].split("?")[0]=="/assets/ig-r69-unified-ui.css",
+             "R69 compatibility stylesheet is not last: "+p.relative_to(root).as_posix())
+
     # Home uses the same global shell and must not expose a second age picker.
     homes=[root/"index.html",root/"en"/"index.html"]
     for p in homes:
