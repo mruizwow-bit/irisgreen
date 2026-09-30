@@ -1,3 +1,17 @@
+# CORRECCIÓN DE TRAZABILIDAD · 30/09/2026
+
+La afirmación histórica de este documento de que las copias canónicas eran byte-identical a los adjuntos queda RETRACTADA.
+
+- adjunto matriz: 88 581 bytes · f059d566...
+- GitHub matriz: 88 579 bytes · d86a931e...
+- adjunto reconciliación: 11 852 bytes · f1c1d709...
+- GitHub reconciliación: 11 851 bytes · 6d26ad95...
+
+El contenido de trabajo es equivalente, pero no es byte-identical. La diferencia procede de la importación de texto realizada por coordinación.
+
+Fuente vigente de estado:
+`MEMORIA/R44_A0_RECONCILIACION_V2_ADOPT_3_BUILD_5_20260930.md`.
+
 # R44-A0 · fuente + reconciliación preservadas
 
 Fecha: 30/09/2026

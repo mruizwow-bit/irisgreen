@@ -1,3 +1,44 @@
+# R44-A0 · RECONCILIACIÓN V2 · ADOPTAR 3 / CONSTRUIR 5 · 30/09/2026
+
+Estado:
+`R44_A0_RECONCILIATION_V2_ADOPT_3_BUILD_5_AUTHORIZED`
+
+NO reconstruir E01/E17/E22.
+
+ADOPTAR:
+- E01 → d1 Dibujo;
+- E17 → e6 Estructuras;
+- E22 → l6 Circuitos.
+
+CONSTRUIR NUEVOS:
+- E06 Pixel art;
+- E28 Escritura;
+- E34 Juegos de mesa;
+- E38 Ritmo;
+- E44 Videojuegos.
+
+Para adoptados:
+- panel R44 apunta al reto real;
+- hereda comprobación del estudio;
+- añade ID/metadata/preview/acceso;
+- no segundo estado ni segundo verificador.
+
+Mantener R2 anterior:
+ES/EN completo · visual E4 · artefacto visible · CTA real · ALL_AGES · sin delta global ig-audience · logs brutos · patch final aislado.
+
+Bundle framework R1 ya preservado en GitHub:
+`9622daf6be256f74f86111e2926e9f6c407bdde1389570dcfb30196dca1bd8ad` · HEAD `18c15f65557b595dca8477d7d398066c29f6a16f`.
+
+Hashes canónicos actuales:
+matriz `d86a931e…`, reconciliación `6d26ad95…`.
+Los `f059…/f1c1…` son hashes de adjuntos originales, no del contenido GitHub.
+
+Marcador esperado:
+`R44_A0_ADOPT3_BUILD5_R2_READY_FOR_ASTRA_AURA_MARIA`
+
+No escalar a 55.
+STOP después de R2 final.
+
 # R44-A0 · R2 ACOTADA ACTIVA · 30/09/2026
 
 Estado:

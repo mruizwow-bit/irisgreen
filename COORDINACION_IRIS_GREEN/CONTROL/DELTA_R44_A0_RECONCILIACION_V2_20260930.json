@@ -1,0 +1,56 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R44-A0-RECONCILIACION-V2-20260930",
+  "issue": 319,
+  "date": "2026-09-30",
+  "status": "R44_A0_RECONCILIATION_V2_ADOPT_3_BUILD_5_AUTHORIZED",
+  "hashes": {
+    "matrix_original_attachment": {
+      "bytes": 88581,
+      "sha256": "f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e"
+    },
+    "matrix_canonical_github": {
+      "bytes": 88579,
+      "sha256": "d86a931edfe8f4c2a1038490670c9aa8df8b5dd73cdb9840b8be47300b39a147"
+    },
+    "reconciliation_original_attachment": {
+      "bytes": 11852,
+      "sha256": "f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44"
+    },
+    "reconciliation_canonical_github": {
+      "bytes": 11851,
+      "sha256": "6d26ad955e601e3aa23545be3be3975976ca195569ede82e312f14d09493391c"
+    }
+  },
+  "coverage": {
+    "adopt_existing": {
+      "E01": "d1",
+      "E17": "e6",
+      "E22": "l6"
+    },
+    "build_new": [
+      "E06",
+      "E28",
+      "E34",
+      "E38",
+      "E44"
+    ]
+  },
+  "bundle": {
+    "path": "COORDINACION_IRIS_GREEN/HANDOFFS/R44_A0_FRAMEWORK_R1/r44-a0-framework.bundle",
+    "bytes": 17773,
+    "sha256": "9622daf6be256f74f86111e2926e9f6c407bdde1389570dcfb30196dca1bd8ad",
+    "prerequisite": "2e559991762aca18b7c62f65f4df83ecfbee519b",
+    "head": "18c15f65557b595dca8477d7d398066c29f6a16f",
+    "prior_chain_base": "318a5745789922b82e96bfaebd1536cac240a43e",
+    "prior_bundle_head": "2e559991762aca18b7c62f65f4df83ecfbee519b",
+    "preserved_in_github": true
+  },
+  "next": "R44_A0_ADOPT3_BUILD5_R2_READY_FOR_ASTRA_AURA_MARIA",
+  "limits": [
+    "NO_DUPLICATE_EXISTING_CHALLENGES",
+    "NO_SCALE_55",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}

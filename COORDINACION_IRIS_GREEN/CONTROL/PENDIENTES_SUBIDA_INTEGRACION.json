@@ -113,17 +113,17 @@
       "id": "R44-A0",
       "product": "Taller expansion 64 challenges - framework + 8 pilots",
       "issue": 319,
-      "product_status": "R44_A0_FRAMEWORK_TECH_PASS_PILOTS_PRODUCT_REWORK_REQUIRED",
-      "preservation": "SOURCE_AND_RECONCILIATION_PRESERVED_GITHUB_PLUS_A0_PATCH_IN_CHAT",
-      "integration": "REWORK_BEFORE_REVIEW",
+      "product_status": "R44_A0_RECONCILIATION_V2_ADOPT_3_BUILD_5_AUTHORIZED",
+      "preservation": "FRAMEWORK_BUNDLE_PRESERVED_GITHUB",
+      "integration": "R2_BUILD_IN_PROGRESS",
       "destination": "R67_TALLER_AFTER_R65_PHASE3",
-      "blocker": "ES_EN_VISUAL_CTA_PATCH_ISOLATION_LOGS",
-      "next": "R2: complete bilingual, visual previews, real workspace CTA, remove stale ig-audience delta, isolate A0 patch, attach raw logs",
+      "blocker": null,
+      "next": "build E06/E28/E34/E38/E44; adopt E01/E17/E22 without duplicating logic; finish prior R2 gates",
       "priority": "P0-EXECUTE",
       "authorized_by": "Maria",
       "authorized_date": "2026-09-30",
-      "source_matrix_sha256": "f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e",
-      "reconciliation_sha256": "f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44",
+      "source_matrix_sha256": "d86a931edfe8f4c2a1038490670c9aa8df8b5dd73cdb9840b8be47300b39a147",
+      "reconciliation_sha256": "6d26ad955e601e3aa23545be3be3975976ca195569ede82e312f14d09493391c",
       "reconciliation_notes": {
         "wave_a": 55,
         "wave_b": 9,
@@ -133,7 +133,30 @@
         "challenge_accessibility_pass": false
       },
       "latest_patch_sha256": "0f7b8054145dafd102542fe1b44d9aef50a54e8192bc1bf04f9c29847f6e538a",
-      "latest_patch_bytes": 9994378
+      "latest_patch_bytes": 9994378,
+      "source_matrix_sha256_original_attachment": "f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e",
+      "reconciliation_sha256_original_attachment": "f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44",
+      "a0_coverage": {
+        "adopt_existing": {
+          "E01": "d1",
+          "E17": "e6",
+          "E22": "l6"
+        },
+        "build_new": [
+          "E06",
+          "E28",
+          "E34",
+          "E38",
+          "E44"
+        ]
+      },
+      "framework_bundle": {
+        "sha256": "9622daf6be256f74f86111e2926e9f6c407bdde1389570dcfb30196dca1bd8ad",
+        "bytes": 17773,
+        "prerequisite": "2e559991762aca18b7c62f65f4df83ecfbee519b",
+        "head": "18c15f65557b595dca8477d7d398066c29f6a16f",
+        "preserved_path": "COORDINACION_IRIS_GREEN/HANDOFFS/R44_A0_FRAMEWORK_R1/r44-a0-framework.bundle"
+      }
     },
     {
       "id": "R62-P04",

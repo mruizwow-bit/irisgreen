@@ -1,3 +1,63 @@
+## R44-A0 · reconciliación V2 · adoptar 3 / construir 5 · 30/09/2026
+
+Estado:
+`R44_A0_RECONCILIATION_V2_ADOPT_3_BUILD_5_AUTHORIZED`.
+
+Hallazgo confirmado contra el Taller vivo:
+- `E01` ya existe como `d1 · Una sola línea` en Dibujo, con `maxStrokes:1` y `noErase:true`;
+- `E17` ya existe como `e6 · Pasa un camión` en Estructuras, con prueba de carga;
+- `E22` ya existe como `l6 · Semáforo` en Circuitos, con lógica V→A→R.
+
+Decisión de arquitectura:
+- **ADOPTAR** E01/E17/E22: R44 no duplica lógica, estado ni comprobación. Añade ID R44, metadata canónica, presentación/preview y acceso al reto existente.
+- **CONSTRUIR NUEVOS** E06/E28/E34/E38/E44: no existen retos internos equivalentes en esos cinco estudios y R44 sí aporta la capa completa.
+
+A0 sigue cubriendo los ocho ámbitos del gate, pero deja de significar “ocho motores de reto nuevos”.
+
+### Corrección de hashes
+
+Los hashes de adjunto y los hashes del contenido preservado en GitHub son distintos y deben separarse.
+
+Matriz fuente:
+- adjunto original: 88 581 bytes · SHA-256 `f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e`;
+- contenido actualmente preservado en GitHub: 88 579 bytes · SHA-256 `d86a931edfe8f4c2a1038490670c9aa8df8b5dd73cdb9840b8be47300b39a147`.
+
+Reconciliación anterior:
+- adjunto original: 11 852 bytes · SHA-256 `f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44`;
+- contenido actualmente preservado en GitHub: 11 851 bytes · SHA-256 `6d26ad955e601e3aa23545be3be3975976ca195569ede82e312f14d09493391c`.
+
+La afirmación anterior “byte-identical” queda RETRACTADA. La diferencia se introdujo al importar texto desde el adjunto; no es deriva de Claude entre commits.
+
+### Framework R1 preservado
+
+Bundle:
+- `r44-a0-framework.bundle`;
+- 17 773 bytes;
+- SHA-256 `9622daf6be256f74f86111e2926e9f6c407bdde1389570dcfb30196dca1bd8ad`;
+- prerequisite `2e559991762aca18b7c62f65f4df83ecfbee519b`;
+- HEAD `18c15f65557b595dca8477d7d398066c29f6a16f`.
+
+Cadena:
+`318a5745789922b82e96bfaebd1536cac240a43e` (existe en remoto) → bundle R62/P04 → `2e559991762aca18b7c62f65f4df83ecfbee519b` → bundle R44 → `18c15f65557b595dca8477d7d398066c29f6a16f`.
+
+El bundle R44 queda preservado en GitHub bajo el handoff A0. Ya no depende solo del chat.
+
+### Qué sigue
+
+Claude continúa SIN STOP:
+1. construir los cinco nuevos: E06, E28, E34, E38, E44;
+2. después añadir adopción/integración de E01, E17, E22 sobre los retos existentes;
+3. mantener la R2 previa: ES/EN completo, preview visual/artefacto visible, CTA real al workspace/reto, metadata ALL_AGES, sin delta stale de `ig-audience.js`, logs brutos y evidencia responsive.
+
+Para los 3 adoptados:
+- CTA = activar/navegar al reto existente real;
+- criterio automático = heredar el del estudio;
+- no crear segundo estado ni segunda comprobación R44.
+
+No escalar a 55.
+No main.
+No producción.
+
 ## R44-A0 · revisión Aura · framework técnico PASS / pilotos R2 requerida · 30/09/2026
 
 Estado:
