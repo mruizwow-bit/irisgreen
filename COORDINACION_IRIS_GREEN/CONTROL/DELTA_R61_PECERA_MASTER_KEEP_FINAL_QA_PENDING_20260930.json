@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R61-PECERA-MASTER-KEEP-FINAL-QA-PENDING-20260930",
+  "issue": 325,
+  "date": "2026-09-30",
+  "status": "R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING",
+  "keep": [
+    "MASTER_10MIN",
+    "BUBBLES",
+    "RIGHT_COLUMN",
+    "CURRENT_DENSITY",
+    "CURRENT_SATURATION",
+    "ROCK",
+    "COMPOSITION",
+    "AUDIO",
+    "FAUNA",
+    "VEGETATION",
+    "CAMERA"
+  ],
+  "pending": [
+    "TRANSFER_REAL_PACKAGE",
+    "VERIFY_HASHES",
+    "MOBILE_390_320",
+    "NORMAL_REDUCED_NO_MOTION",
+    "CONTROL_QA",
+    "PERFORMANCE_OR_PENDING_HARDWARE_QA",
+    "EXTERNAL_BENCHMARK_E4",
+    "WEIGHT_DECISION"
+  ],
+  "web_mp4_claimed_mb": 151.2,
+  "master_claimed_mb": 321.4,
+  "expected_marker": "R61_PECERA_FINAL_PACKAGE_MOBILE_BENCHMARK_QA_READY_FOR_ASTRA_MARIA",
+  "holds": [
+    "SECOND_ROOM",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
