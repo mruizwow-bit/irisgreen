@@ -19,7 +19,8 @@ def main():
  need('name="ig-r50-section" content="conditions"' not in (root/'es/situaciones/index.html').read_text(encoding='utf-8'),'R50 Conditions leaked into Situations')
  js=(root/'assets/ig-r49-transversal.js').read_text(encoding='utf-8')
  hs=js[js.index('function upgradeHeader(){'):js.index('function upgradeFooter(){')]
- for token in ["data-ig-r49-search","data-ig-r49-stage","data-ig-r49-more","data-ig-r49-settings","data-ig-music","ig-r49-lang"]:need(token in hs,'missing R50 top-bar control '+token)
+ for token in ["data-ig-r49-settings","data-ig-music","ig-r49-lang"]:need(token in hs,'missing R50 top-bar control '+token)
+ for token in ["data-ig-r49-search","data-ig-r49-stage","data-ig-r49-more"]:need(token not in hs,'extra R50 top-bar control '+token)
  need("ig-r49-primary" not in hs,'legacy primary nav returned to R50 top bar')
  for token in ["Accesibilidad","Accessibility","Explorar","Explore","Buscar","Search","Contenido","Content"]:need(token in js,'missing R50 copy '+token)
  print(json.dumps({'section':'conditions','routes':data['total_routes'],'static':'PASS'},ensure_ascii=False))
