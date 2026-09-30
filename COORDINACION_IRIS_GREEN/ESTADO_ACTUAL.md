@@ -1,3 +1,27 @@
+## R62 Juegos · P03 HUMAN QA aprobada · 30/09/2026
+
+Estado:
+`R62_P03_R3_HUMAN_APPROVED_UNLOCK_P04_CONCEPT`.
+
+María aprueba el gate pendiente de P03 · Rutas de luz.
+
+P03:
+- visual/funcional cerrado;
+- no R4;
+- bundle sigue pendiente de importación GitHub, sin reabrir producto.
+
+Se desbloquea únicamente:
+**P04 · Ritmo de colores · concepto**.
+
+P05–P06 HOLD.
+Codex #321 HOLD.
+A2 HOLD.
+No main.
+No producción.
+
+Orden:
+`ORDENES/R62_ASTRA_JUEGOS_6_PILOTOS/07_P04_RITMO_CONCEPTO_AUTORIZADO.md`.
+
 ## R62 P03 · Rutas de luz · R3 · 30/09/2026
 
 Estado:
