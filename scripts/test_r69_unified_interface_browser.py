@@ -24,6 +24,20 @@ async def shell_ready(page,path):
     need(await page.locator(".ri-stage-section").count()==0,"Resources duplicate age UI "+path)
     need(await page.locator(".jg-stage-entry").count()==0,"Games duplicate age UI "+path)
     need(await page.locator(".im-stage-entry").count()==0,"Printable routines duplicate age UI "+path)
+    need(await page.evaluate("Boolean(window.IGR49&&window.IGAudience&&window.IGPreferences&&window.IGTheme)"),
+         "global runtime dependency missing "+path)
+    for trigger,dialog in [
+        ("[data-ig-r49-search]","#ig-r49-search"),
+        ("[data-ig-r49-settings]","#ig-r49-settings"),
+        ("[data-ig-r49-stage]","#ig-r49-audience"),
+    ]:
+        await page.locator(trigger).click()
+        need(await page.locator(dialog+"[open]").count()==1,"global control did not open "+trigger+" "+path)
+        await page.keyboard.press("Escape")
+    await page.locator("[data-ig-music]").click()
+    need(await page.locator("#ig-music-panel").count()==1 and not await page.locator("#ig-music-panel").is_hidden(),
+         "music control did not open "+path)
+    await page.keyboard.press("Escape")
     # No external Google Fonts requests in the built product.
     urls=await page.evaluate("performance.getEntriesByType('resource').map(x=>x.name)")
     need(not any("fonts.googleapis.com" in u or "fonts.gstatic.com" in u for u in urls),
