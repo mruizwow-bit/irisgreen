@@ -42,6 +42,18 @@ async def shell_ready(page,path):
     need("Atkinson" in visual["bodyFont"],"route body is not Atkinson "+path+" "+repr(visual))
     if visual["h1Font"]:
         need("Newsreader" in visual["h1Font"],"route heading is not Newsreader "+path+" "+repr(visual))
+    large_white=await page.evaluate("""() => {
+      const limit=innerWidth*innerHeight*.18, out=[];
+      for(const e of document.querySelectorAll('body *')){
+        if(e.matches('img,svg,canvas,.im-sheet,.rv-sheet,.rv-print-document,[hidden]')) continue;
+        const r=e.getBoundingClientRect(),c=getComputedStyle(e);
+        if(r.width*r.height<limit || r.bottom<=0 || r.top>=innerHeight) continue;
+        if(c.display==='none'||c.visibility==='hidden'||Number(c.opacity)===0) continue;
+        if(c.backgroundColor==='rgb(255, 255, 255)') out.push({tag:e.tagName,cls:e.className||'',w:Math.round(r.width),h:Math.round(r.height)});
+      }
+      return out.slice(0,8);
+    }""")
+    need(not large_white,"large pure-white surface in dark mode "+path+" "+repr(large_white))
     for trigger,dialog in [
         ("[data-ig-r49-search]","#ig-r49-search"),
         ("[data-ig-r49-settings]","#ig-r49-settings"),
