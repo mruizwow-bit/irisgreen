@@ -19,3 +19,7 @@ Mediana de likes de esta muestra:54. Actividad desigual; los dos más recientes 
 ## Estado de jornada
 
 Altas y comentarios previamente verificados: Instagram9, Facebook11. Objetivo20 por red; pendientes11 y9 respectivamente. Acciones previas no implican superar esta nueva criba. No se han añadido altas en esta fase de análisis.
+
+## Instagram · adhd_love_ · EN
+
+Perfil muestra Desbloquear: cuenta bloqueada desde Iris Green. Excluida sin modificar bloqueo y sin interacciones. No continuar criba ni incorporar a futuras candidaturas mientras persista ese estado.
