@@ -21,6 +21,7 @@ SCRIPTS=(
     '/assets/ig-taller-r42-platform.js?v=r69-stable-1',
     '/assets/ig-taller-r42-direct.js?v=r69-stable-1',
     '/assets/ig-taller-r42.js?v=r69-stable-1',
+    '/assets/ig-r69-workshop-guard.js?v=r69-stable-1',
 )
 
 def set_body_marker(text:str)->str:
