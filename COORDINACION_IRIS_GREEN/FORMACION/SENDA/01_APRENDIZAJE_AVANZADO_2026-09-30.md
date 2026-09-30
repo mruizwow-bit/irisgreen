@@ -500,3 +500,152 @@ Estado:
 No certificación externa.
 No cambio de producto.
 No build/merge/deploy durante Formación.
+
+
+## 26. Formación por dominio R04 · contratos de fuente de los seis pilotos
+
+### Mar y peces
+
+Fuentes estudiadas:
+- WoRMS;
+- OBIS;
+- GEBCO 2026.
+
+Aprendizajes:
+- OBIS recomienda API/R para subconjuntos pequeños y GeoParquet/AWS para subconjuntos grandes; no paralelizar descargas masivas innecesariamente;
+- GEBCO 2026 es un modelo global derivado/interpolado de fuentes heterogéneas;
+- GEBCO aporta un TID grid para indicar tipo de fuente subyacente;
+- GEBCO no debe tratarse como medición exacta de cada punto ni usarse para navegación;
+- la atribución de GEBCO debe conservarse;
+- para un mundo marino, profundidad/relieve pueden ser contexto científico, no obligación de mostrar un mapa global.
+
+Regla:
+`MODELLED_BATHYMETRY != RAW_MEASUREMENT`.
+
+### Aves
+
+Fuentes estudiadas:
+- eBird;
+- Macaulay Library.
+
+Aprendizaje central:
+los datos de observación y los medios audiovisuales tienen contratos distintos.
+
+- quien aporta foto/sonido/vídeo conserva copyright;
+- Macaulay no es un repositorio abierto para reutilización arbitraria de terceros;
+- usar un registro de especie no concede automáticamente derecho a usar su foto/canto.
+
+Regla:
+`OBSERVATION_LICENSE != MEDIA_LICENSE`.
+
+### Fósiles
+
+Fuentes estudiadas:
+- Paleobiology Database;
+- International Commission on Stratigraphy.
+
+ICS:
+- Chart vigente estudiado: 2026/06;
+- varias edades numéricas cambiaron en esa revisión;
+- la Chart dispone de datos RDF/SKOS y versiones archivables.
+
+Lección:
+- nunca copiar edades geológicas sin versión;
+- precisión numérica debe conservar la incertidumbre publicada cuando sea relevante.
+
+PBDB:
+- se ha detectado historial/documentación de licencia no completamente uniforme entre fuentes/épocas;
+- por tanto Senda no fija de memoria la licencia: debe pinchar la licencia vigente del dataset/API usado y, cuando haya duda jurídica, escalar a Lex.
+
+Regla:
+`PIN_VERSION + PIN_LICENSE + PIN_QUERY`.
+
+### Minerales
+
+Fuentes estudiadas:
+- IMA-CNMNC;
+- RRUFF/IMA Database of Mineral Properties.
+
+Estado factual:
+- IMA-CNMNC publica lista maestra actualizada de minerales aprobados en septiembre de 2026;
+- RRUFF mantiene propiedades mineralógicas en colaboración con IMA;
+- RRUFF está en transición de interfaz/infraestructura, por lo que URLs/endpoints no se asumen eternos.
+
+Reglas:
+- nombre/estado de mineral se valida contra IMA-CNMNC vigente;
+- propiedades y medios tienen procedencia independiente;
+- snapshot versionado cuando el contenido no necesita live.
+
+### Trenes / metro
+
+Fuentes estudiadas:
+- GTFS Schedule;
+- GTFS Realtime;
+- GTFS Pathways;
+- validator canónico mantenido por MobilityData.
+
+Aprendizajes:
+- Pathways modela interior de estación: pasillos, escaleras, ascensores, niveles, direccionalidad, longitud, pendiente, tiempo y señalización;
+- GTFS puede codificar accesibilidad de parada/viaje y text-to-speech;
+- campo vacío de accesibilidad significa información ausente, no necesariamente “no accesible”;
+- validar el feed antes de consumirlo;
+- feeds pueden actualizarse con frecuencia variable.
+
+Regla:
+`UNKNOWN_ACCESSIBILITY != INACCESSIBLE`.
+
+Para el piloto:
+una estación puede ser una experiencia espacial/wayfinding más rica que un mapa de líneas.
+
+### Espacio
+
+Fuentes estudiadas:
+- JPL Horizons;
+- NASA media/brand guidance.
+
+Horizons:
+- versión estudiada 4.98e, 25/08/2026;
+- gran catálogo no implica cargarlo;
+- query debe estar acotada por objetivo.
+
+NASA:
+- muchos medios pueden reutilizarse para fines informativos/educativos bajo sus guías;
+- logos/insignias/identificadores tienen reglas separadas;
+- material de terceros alojado por NASA puede conservar copyright de terceros;
+- evitar cualquier apariencia de endorsement.
+
+Regla:
+`NASA_SOURCE != NASA_BRANDING_RIGHTS`.
+
+### Contrato común de fuente
+
+Antes de integrar una fuente:
+1. autoridad;
+2. recurso exacto;
+3. versión/fecha;
+4. query/subset;
+5. licencia de datos;
+6. licencia de medios;
+7. atribución;
+8. incertidumbre/limitaciones;
+9. live/snapshot;
+10. fallback;
+11. cambio esperado;
+12. responsable de revisión.
+
+## 27. Fuente no es permiso único
+
+Nunca asumir:
+- API abierta = medios abiertos;
+- datos públicos = logos utilizables;
+- mapa abierto = tile service ilimitado;
+- fuente científica = precisión infinita;
+- campo vacío = “no”;
+- versión actual = permanente.
+
+## 28. Estado de ampliación R04
+
+`SENDA_DOMAIN_SOURCE_CONTRACTS_STUDIED_R04`
+
+No certificación externa.
+No build/merge/deploy de producto.
