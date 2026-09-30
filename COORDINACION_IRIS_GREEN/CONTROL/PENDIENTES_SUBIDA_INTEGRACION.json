@@ -1,0 +1,99 @@
+{
+  "schema": "iris-green-upload-integration-queue-v1",
+  "date": "2026-09-30",
+  "rule": "PRESERVE_INTEGRATE_ACTIVATE_NEW_WORK",
+  "a2": {
+    "branch": "agent2/sabik-iris-r08-20260924",
+    "head_observed": "8ea50128b490207b4dd5508c3c46692f5be69c87"
+  },
+  "statuses": [
+    "LOCAL_AT_RISK",
+    "PRESERVED_IN_GITHUB",
+    "READY_FOR_INTEGRATION",
+    "INTEGRATED_A2",
+    "ACTIVATION_PREVIEW_PENDING",
+    "FIX_BEFORE_INTEGRATION",
+    "PRODUCTION_HOLD"
+  ],
+  "items": [
+    {
+      "id": "R63",
+      "product": "Sakura",
+      "issue": 328,
+      "product_status": "R63_ASTRA_SAKURA_RUNTIME_HANDOFF_PASS_READY_FOR_A2",
+      "preservation": "PRESERVED_IN_GITHUB",
+      "integration": "INTEGRATED_A2",
+      "next": "R67 unblock + preview + human QA"
+    },
+    {
+      "id": "R54-R47",
+      "product": "Taller KEEP6 in real R47",
+      "issues": [
+        318,
+        329
+      ],
+      "product_status": "TALLER_R47_KEEP6_FUNCTIONAL_PASS",
+      "preservation": "PRESERVED_IN_GITHUB",
+      "integration": "INTEGRATED_A2",
+      "next": "repair R67 Taller build; never restore R64 fixture"
+    },
+    {
+      "id": "R65",
+      "product": "Taller 27+9",
+      "issue": 330,
+      "product_status": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING",
+      "preservation": "HANDOFF_IDENTIFIED",
+      "integration": "PENDING_R67_PHASE3",
+      "next": "Maria HUMAN QA"
+    },
+    {
+      "id": "R62-P03",
+      "product": "Rutas de luz",
+      "issue": 326,
+      "product_status": "R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED",
+      "preservation": "LOCAL_AT_RISK",
+      "integration": "FIX_BEFORE_INTEGRATION",
+      "artifact_sha256": "c19c828099482a7ad2cecb9d90f7f8f01855304ee22ee51bea04f4f62761133b",
+      "local_commit": "5648a8d5d36056c950d592bf66dd3d0e162b10c6",
+      "next": "full bundle/source-chain + causalidad layout R3"
+    },
+    {
+      "id": "R61",
+      "product": "Pecera 10min",
+      "issue": 325,
+      "product_status": "R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING",
+      "preservation": "LOCAL_BINARY_AT_RISK",
+      "integration": "NOT_READY",
+      "next": "transfer binaries + final QA"
+    },
+    {
+      "id": "R59",
+      "product": "Fosiles",
+      "issue": 323,
+      "product_status": "R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED",
+      "preservation": "PACKAGE_IN_CHAT",
+      "integration": "FIX_BEFORE_INTEGRATION",
+      "next": "nominal QA + GOV-01"
+    },
+    {
+      "id": "R68",
+      "product": "Faroles",
+      "issue": 335,
+      "product_status": "R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED",
+      "preservation": "LOCAL_AT_RISK",
+      "integration": "NOT_READY",
+      "next": "R2 then preserve handoff"
+    },
+    {
+      "id": "R42-CONTENT",
+      "product": "Contenido R02",
+      "issue": 302,
+      "product_status": "R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED",
+      "preservation": "PACKAGE_PRESERVED_STALE_BASE",
+      "integration": "REBASE_REQUIRED",
+      "artifact_sha256": "aa3649a821da1226dd84bda70f35ee8c8e286cb81c1bd5711af97e71761e8961",
+      "next": "rebase current A2"
+    }
+  ],
+  "production_gate": "NO_MAIN_NO_PRODUCTION_UNTIL_R67_INTEGRATED_PREVIEW_AND_HUMAN_QA"
+}
