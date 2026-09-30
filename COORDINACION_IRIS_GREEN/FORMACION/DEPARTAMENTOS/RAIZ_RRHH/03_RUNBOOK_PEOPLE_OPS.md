@@ -225,3 +225,25 @@ Actualizar:
 - estado si existe cambio material.
 
 El siguiente chat debe poder continuar sin reconstrucción manual.
+
+## 16 · Slack interno
+
+Canal común:
+**#general-sabik-ia-technology** (`C0C590Y8PHD`).
+
+Usar Slack para:
+- consultas rápidas;
+- coordinación;
+- avisos;
+- conversación entre departamentos.
+
+No usar Slack como fuente final para:
+- decisiones;
+- formación;
+- estados;
+- evidencia;
+- memoria operativa.
+
+Todo lo material termina preservado en GitHub.
+
+Claude y sus agentes externos no se consideran miembros del Slack interno por defecto.

@@ -247,3 +247,22 @@ FORMACION/DEPARTAMENTOS/RAIZ_RRHH/03_RUNBOOK_PEOPLE_OPS.md
 11. comprobar HEAD actual de coordinación;
 12. no empezar producto;
 13. si hay una tarea real de RRHH, buscar fuentes vigentes del caso antes de decidir.
+
+## Coordinación Slack interna
+
+Canal común interno:
+**#general-sabik-ia-technology**
+
+ID Slack:
+`C0C590Y8PHD`
+
+Estado verificado el 30/09/2026:
+Raíz es miembro del canal y publicó presentación operativa.
+
+Criterio fijado por María:
+- Slack = conversación y coordinación rápida;
+- GitHub = decisiones, formación, estados y evidencia canónica;
+- Claude y sus agentes externos no entran en este Slack interno por defecto.
+
+Regla para el siguiente Raíz:
+si una conversación de Slack produce una decisión, cambio de estado, aprendizaje o evidencia material, preservarlo después en GitHub.
