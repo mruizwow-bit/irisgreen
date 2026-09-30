@@ -9,6 +9,28 @@ Territorios prioritarios: España / UK
 Estado:
 `CM_R01_ACTIVE_RELATIONSHIP_FIRST`
 
+# 0 BIS. PLATAFORMAS ACTIVAS
+
+Desde 30/09/2026:
+
+- **INSTAGRAM = ACTIVA**
+- **FACEBOOK = ACTIVA**
+- **TIKTOK = PAUSADA POR USUARIO / PROBLEMAS DE ACCESO**
+
+TikTok queda fuera del gate diario.
+
+No intentar:
+- iniciar sesión repetidamente;
+- resolver contraseñas;
+- sortear verificaciones;
+- hacer comentarios/follows;
+- contabilizar TikTok como trabajo pendiente del día.
+
+El tiempo operativo de TikTok se redistribuye entre Instagram y Facebook.
+
+Estado:
+`CM_TIKTOK_PAUSED_USER_ACCESS_ISSUE`.
+
 ## OBJETIVO
 
 Dejar de trabajar por acciones aisladas.
@@ -195,6 +217,36 @@ Recuperar comunidad dormida es tan importante como captar gente nueva.
 
 ---
 
+# 4 BIS. INTENSIDAD MÍNIMA DE UNA SESIÓN
+
+Tres respuestas NO constituyen una sesión completa.
+
+Una tanda solo puede cerrarse cuando:
+- se ha revisado la comunidad propia disponible;
+- se han atendido varios habituales distintos;
+- se han trabajado relaciones cálidas;
+- se ha hecho descubrimiento nuevo;
+- se ha rotado de personas y publicaciones;
+- no quedan respuestas sustantivas inmediatas sin revisar.
+
+Objetivo operativo diario de Instagram:
+- 100 % de comentarios sustantivos nuevos revisados;
+- 5–10 comentarios antiguos/backlog trabajados hasta vaciarlo progresivamente;
+- 15–25 cuentas únicas de comunidad/habituales/cálidas atendidas;
+- 10–15 conversaciones externas pertinentes en cuentas distintas;
+- 5–8 cuentas nuevas investigadas;
+- seguir solo 3–5 cuando realmente merezca la pena.
+
+No contar dos veces a la misma persona por responderle 4 veces.
+La métrica principal es **cuentas únicas y relaciones distintas**, no número bruto de textos.
+
+Dos pasadas recomendadas:
+- mañana/mediodía;
+- después de la publicación o franja fuerte de tarde.
+
+Marcador de tanda demasiado corta:
+`CM_SESSION_TOO_SHALLOW_CONTINUE_WORKING`.
+
 # 5. FACEBOOK
 
 Situación:
@@ -205,8 +257,12 @@ dos follows + dos comentarios.
 
 Trabajo diario orientativo:
 - responder 100 % de interacciones propias;
-- 8–12 conversaciones externas pertinentes;
-- 4–6 nuevas páginas/cuentas/grupos relevantes.
+- 12–18 conversaciones externas pertinentes en cuentas/páginas/grupos distintos;
+- 6–10 nuevas páginas/cuentas/grupos investigados;
+- seguir 4–6 cuando sean realmente pertinentes;
+- 3–6 relaciones cálidas o contactos anteriores revisitados en publicaciones distintas.
+
+Facebook parte casi de cero: necesita más intensidad sostenida que Instagram en descubrimiento y red profesional.
 
 Buscar:
 - asociaciones;
@@ -227,41 +283,13 @@ Participar primero como miembro útil.
 
 ---
 
-# 6. TIKTOK
+# 6. TIKTOK · PAUSADO
 
-Situación:
-cuenta dormida, no cuenta nueva.
+TikTok queda fuera de operación por instrucción expresa del usuario debido a problemas recurrentes de acceso/clave.
 
-Hay historial de audiencia y vídeos con cientos de visualizaciones.
+No dedicar tiempo operativo hasta nueva orden.
 
-Trabajo diario:
-- revisar TODOS los comentarios propios;
-- volver a vídeos antiguos donde siga habiendo conversación útil;
-- responder;
-- identificar preguntas candidatas a vídeo-respuesta;
-- buscar contenido ES/EN relevante;
-- 8–15 conversaciones externas;
-- 4–6 cuentas nuevas buenas.
-
-Búsquedas ejemplo:
-ES:
-- autismo vida diaria;
-- TOC pensamientos intrusivos;
-- ansiedad síntomas;
-- sobrecarga sensorial;
-- neurodivergencia;
-- accesibilidad.
-
-EN:
-- autistic adults;
-- autism everyday life;
-- OCD intrusive thoughts;
-- sensory overload;
-- anxiety lived experience;
-- neurodivergent adults;
-- inclusive education.
-
-No copiar el comportamiento de Instagram.
+No bloquea el gate diario de Instagram/Facebook.
 
 ---
 
@@ -434,14 +462,17 @@ No improvisar en esos casos.
 
 # GATE DIARIO
 
-Una jornada solo se considera completa si hubo:
+Una jornada solo se considera completa si hubo en INSTAGRAM y FACEBOOK:
 
 - atención de comunidad propia;
 - atención de habituales;
-- continuidad de conversaciones;
+- continuidad de conversaciones sin saturar hilos;
+- volumen suficiente de cuentas únicas trabajadas;
 - descubrimiento de calidad;
 - registro;
 - siguiente acción.
+
+TikTok no forma parte del gate mientras esté pausado.
 
 Marcador:
 
