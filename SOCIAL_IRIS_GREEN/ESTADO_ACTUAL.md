@@ -63,6 +63,12 @@ La continuidad se demuestra volviendo a la persona en otra publicación futura c
 Marcador:
 `THREAD_SATURATED_MOVE_ON`.
 
+Después del marcador, la secuencia obligatoria es:
+`comentario propio pendiente → habitual no visitado → relación cálida → descubrimiento nuevo → rotar plataforma`.
+
+Regla:
+`ONE_THREAD_CLOSED → NEXT_RELATION`.
+
 ## Fuente de verdad de este carril
 
 1. `ESTADO_ACTUAL.md`
