@@ -291,3 +291,12 @@ Este corte sustituye las cifras parciales de96cuentas anteriores.
 Control individual: `CONTROL/PUESTA_AL_DIA_114_20260930.json`. Fuente normalizada: `CONTROL/FIELES_INSTAGRAM_114.csv` (112filas preservadas,111cuentas y1placeholder). Informe: `INFORMES/INFORME_CM_R01_20260930_CIERRE_111_CUENTAS.md`.
 
 No reabrir hilos comentados. Continuar ante publicación nueva, comentarios habilitados de Mari Ángeles o recuperación de las tres identidades. TikTok retirado. Las verificaciones de campaña/publicación propia pendientes de cortes anteriores no se consideran realizadas por esta ronda.
+
+
+## Continuación orden #343 · 30/09/2026
+
+Este corte sustituye el bloqueo de Mari Ángeles del cierre anterior: comentario 18196224100352492 enviado y visible en DdyHO1oI0OI. **111 fieles atendidos, 0 bloqueos de comentarios entre los identificados, 3 identidades sin recuperar**. Respetar su descanso de redes.
+
+Cinco comentarios nuevos verificados en esta continuación: cuatro IG (Mari Ángeles, Autismo Madrid, NAS, Autismo España) y uno FB (ConecTEA). Autistica respondió y recibió like de cierre. NAS y AlfaSAAC muestran reciprocidad por reacción en FB. Miradas resuelta: Fundacion.Miradas.TEA. Sin follows nuevos ni bajas.
+
+Detalle y límites: `INFORMES/INFORME_ORDEN343_CONTINUACION_20260930.md`. Próxima visita 01/10 y revisión de reciprocidad lunes 05/10; clasificación inversa pendiente de verificación. Automatización diaria IG+FB existente activa. TikTok fuera. No dar cierre 114/114 ni PASS de toda la jornada.
