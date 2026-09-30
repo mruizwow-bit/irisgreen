@@ -21,9 +21,12 @@
     },
     {
       "account": "fdezfdezmariangeles",
-      "status": "COMENTARIOS_NO_DISPONIBLES",
-      "note": "Última publicación no fijada 27/9. No hay caja ni botón Comentar; perfil anuncia descanso hasta jueves. No se envió comentario.",
-      "source_order": 27
+      "status": "COMENTADA",
+      "note": "30/09: bloqueo previo resuelto en reel propio con comentarios disponibles. Autor Iris y comentario visibles. Respetar descanso de redes.",
+      "source_order": 27,
+      "url": "https://www.instagram.com/p/DdyHO1oI0OI/",
+      "id": "18196224100352492",
+      "text": "Un abrazo grande, Mari Ángeles ❤️ Gracias por dejarnos esta poesía antes de tu descanso. Que estos días fuera de redes te sienten bien."
     },
     {
       "account": "inclucialpt",
@@ -959,18 +962,13 @@
     "source_placeholder_rows": 1,
     "source_real_accounts": 107,
     "additional_accounts_from_original_screenshots": 4,
-    "new_comments_current_sweep": 88,
+    "new_comments_current_sweep": 89,
     "new_comments_previous_batch": 5,
     "previous_comments_verified": 17,
-    "comments_unavailable": 1,
+    "comments_unavailable": 0,
     "missing_identities": 3
   },
   "pending": [
-    {
-      "account": "fdezfdezmariangeles",
-      "reason": "Última publicación no ofrece comentarios; no forzar.",
-      "next": "Revisar próxima publicación o habilitación de comentarios."
-    },
     {
       "account": null,
       "count": 3,
