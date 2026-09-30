@@ -46,7 +46,8 @@ Jefatura 4 si escala.
 - **Axioma** · Quality, Accessibility & Standards Lead
 - **Brújula** · Marketing, Growth & Product Communications Lead
   - **Ágora** · Community Manager
-- **Cifra** · Finance & Business Planning Lead
+- **Cifra** · Finance & Business Planning Lead  
+  **Especialidad profesional:** FP&A / Strategic Finance & Business Planning.
 
 ## Proveedores externos
 
