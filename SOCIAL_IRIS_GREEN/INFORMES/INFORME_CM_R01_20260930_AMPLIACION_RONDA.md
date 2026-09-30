@@ -1,5 +1,30 @@
 # Iris Green · Ampliación de ronda · 30/09/2026
 
+## CORRECCIÓN DE LECTURA DEL INFORME
+
+Este informe NO debe interpretarse como que la nueva orden produjo por sí sola los acumulados 21 / 14 / 5.
+
+Comparación con el corte anterior (~09:00):
+
+### Instagram · delta real aproximado de esta ampliación
+- comunidad/habituales/cálidas atendidas: **+4** respecto al acumulado anterior;
+- comentarios externos: **+5**;
+- follows: **+2**;
+- respuestas propias acumuladas: **+1** respecto al corte anterior.
+
+Los valores 21 relaciones / 14 comentarios / 5 follows son **acumulados de toda la mañana**, incluyendo trabajo previo a la nueva orden.
+
+Además, la usuaria confirma que existe una lista completa de **114 fieles de Instagram**, entregada al agente el 29/09.
+
+Por tanto:
+- 21/114 no equivale a comunidad cubierta;
+- el registro CSV actual es parcial;
+- la siguiente operación debe continuar la rotación por los fieles NO visitados;
+- el agente debe materializar la lista existente en `CONTROL/FIELES_INSTAGRAM_114.csv`.
+
+No pedir a la usuaria que vuelva a proporcionar la lista.
+
+
 Corte: 09:36 aproximadamente, Europe/Madrid. Registro parcial de mañana. Complementa SESION_MANANA y CONTINUACION_MANANA; no sustituye las evidencias de esas tandas.
 
 ## Orden nueva aplicada
