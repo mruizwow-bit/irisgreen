@@ -292,8 +292,9 @@ async def main():
         snap0=await page.evaluate("SabikWebPresentation.snapshot()")
         need(snap0.get("state")=="presente","Sabik did not start in PRESENTE")
 
-        need(await page.locator("#sabik-hologram .sabik-orbit-layer").count()==2,"Sabik measured front/back layers missing")
-        need(await page.locator("#sabik-hologram").get_attribute("data-render-active")=="true","Sabik layered render not active")
+        need(await page.locator("#sabik-hologram .sabik-orbit-layer").count()==0,"Legacy Sabik orbit donor returned")
+        need(await page.locator("#sabik-hologram .sabik-presence-motion").count()==1,"Current Sabik self-motion wrapper missing")
+        need(await page.locator("#sabik-hologram").get_attribute("data-render-active")=="true","Sabik self-motion render not active")
         sabik_visible=await page.evaluate("""() => {
           const v=document.querySelector('#sabik-hologram'),m=document.querySelector('#sabik-web-master'),r=v.getBoundingClientRect(),mr=m.getBoundingClientRect(),c=getComputedStyle(m);
           const controls=[document.querySelector('#sabik-voice'),document.querySelector('#sabik-reset'),document.querySelector('#sabik-motion-level')].map(e=>{const x=e.getBoundingClientRect();return {top:x.top,bottom:x.bottom,left:x.left};});
@@ -304,10 +305,10 @@ async def main():
         need(sabik_visible["natural"]>0,"Sabik current master did not load")
         need(max(x["top"] for x in sabik_visible["controls"])-min(x["top"] for x in sabik_visible["controls"])<40,"Sabik controls are scattered vertically "+repr(sabik_visible["controls"]))
         await page.locator("#sabik-motion-level").select_option("NORMAL")
-        before_layer=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        before_presence=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
         await page.wait_for_timeout(300)
-        after_layer=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
-        need(before_layer!=after_layer,"Sabik layers do not move continuously in NORMAL")
+        after_presence=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
+        need(before_presence!=after_presence,"Sabik itself does not move continuously in NORMAL")
         await page.evaluate("void SabikWebPresentation.setSabikState('orientar',{force:true,hold:true})")
         await page.wait_for_timeout(80)
         state=await page.locator("#sabik-hologram").get_attribute("data-web-state")
@@ -322,12 +323,12 @@ async def main():
         need(await page.locator("#sabik-hologram").get_attribute("data-motion-level")=="SIN_MOVIMIENTO","Sabik no-motion level not applied")
         need(await page.locator("#sabik-hologram").get_attribute("data-motion-active")=="false","Sabik moved in SIN_MOVIMIENTO")
 
-        still_before=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        still_before=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
         await page.wait_for_timeout(300)
-        still_after=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
-        need(still_before==still_after,"Sabik layered motion continues in SIN_MOVIMIENTO")
+        still_after=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
+        need(still_before==still_after,"Sabik self-motion continues in SIN_MOVIMIENTO")
         await page.screenshot(path=str(OUT/"home-sabik-pausa-no-motion-1440.png"),full_page=False)
-        report["sabik"]={"masters":"PASS","visible":"PASS","layers":2,"controls":"COMPACT_ROW","continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
+        report["sabik"]={"masters":"PASS","visible":"PASS","legacy_orbits":0,"self_motion":"PASS","controls":"COMPACT_ROW","continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
 
         # Theme tokens should drive the same shell on both themes.
         await page.evaluate("IGTheme.set('light')")

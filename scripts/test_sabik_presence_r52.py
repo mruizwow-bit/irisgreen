@@ -30,22 +30,17 @@ for name, expected_blob in expected.items():
 
 require('<img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png?v=r69-20260930-3"' in panel,
         "Current Sabik PRESENTE master is not mounted with cache-safe version")
-for forbidden in ("sabik-base-640.webp", 'class="sabik-back"', 'class="sabik-front"'):
-    require(forbidden not in panel + css + js, f"Old Sabik visual donor leaked back in: {forbidden}")
-for required in (
-    "sabik-layered-avatar", "sabik-orbits-back.svg?v=r69-20260930-3", "sabik-orbits-front.svg?v=r69-20260930-3",
-    "sabikR69OrbitBack", "sabikR69OrbitFront", "dataset.renderActive"
-):
-    require(required in css + js, f"Measured layered motion marker missing: {required}")
-for asset in ("sabik/assets/sabik-orbits-back.svg", "sabik/assets/sabik-orbits-front.svg"):
-    require((ROOT / asset).is_file(), f"Measured Sabik layer missing: {asset}")
+for forbidden in ("sabik-base-640.webp","sabik-orbits-back.svg","sabik-orbits-front.svg","sabik-orbit-layer","sabik-layered-avatar","sabikR69OrbitBack","sabikR69OrbitFront"):
+    require(forbidden not in panel + css + js, f"Legacy Sabik donor leaked back in: {forbidden}")
+for required in ("sabik-current-presence","sabik-presence-motion","sabikR69SelfMotion","sabikR69SelfMotionReduced","dataset.renderActive"):
+    require(required in css + js, f"Current Sabik self-motion marker missing: {required}")
 require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
         "Old donor WebP must not remain in the correction branch")
 
 # R37 is the motion system that must be preserved.
 for marker in ("SabikMotionR37", "TOKENS", "iterations: 1", "duration: 0"):
     require(marker in motion + js, f"Missing R37 marker: {marker}")
-for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "newImage()", "/sabik/assets/web-r01/web_", "ASSET_VERSION"):
+for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "newImage()", "/sabik/assets/web-r01/web_", "ASSET_VERSION","sabik-presence-motion"):
     require(marker in js.replace(" ", ""), f"Missing current-master runtime marker: {marker}")
 require("requestAnimationFrame" not in motion + js, "R37 must not become continuous RAF motion")
 require("setInterval" not in motion + js, "R37 must not become loop motion")
@@ -65,4 +60,4 @@ require("Movimiento suave y continuo." in panel + mount,
 require("Gentle continuous motion." in mount,
         "EN continuous-motion copy missing")
 
-print("R52_A3_NEW_SABIK_LAYERED_MOTION_STATIC_PASS")
+print("R52_A3_NEW_SABIK_SELF_MOTION_STATIC_PASS")

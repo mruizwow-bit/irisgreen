@@ -35,25 +35,39 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
 @media(max-width:850px){#home-view{display:block}.sabik-web-visual{max-width:260px}}
 
 
-/* R69 HUMAN QA · current Sabik identity with measured front/back moving layers. */
-.sabik-web-visual.sabik-layered-avatar{--sabik-orbit-speed-back:28s;--sabik-orbit-speed-front:36s;--sabik-presence-speed:3.4s;position:relative;isolation:isolate;overflow:visible;aspect-ratio:1;background:transparent}
-.sabik-layered-avatar .sabik-orbit-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transform-origin:50% 50%;background-position:center;background-repeat:no-repeat;background-size:contain}
-.sabik-layered-avatar .sabik-back-layer{z-index:1;background-image:url('/sabik/assets/sabik-orbits-back.svg?v=r69-20260930-3');animation:sabikR69OrbitBack var(--sabik-orbit-speed-back) linear infinite}
-.sabik-layered-avatar #sabik-web-master.sabik-avatar-base{position:relative;z-index:2;display:block;width:100%;height:auto;object-fit:contain;clip-path:none;opacity:1;visibility:visible}
-.sabik-layered-avatar .sabik-front-layer{z-index:3;background-image:url('/sabik/assets/sabik-orbits-front.svg?v=r69-20260930-3');animation:sabikR69OrbitFront var(--sabik-orbit-speed-front) linear infinite reverse}
-.sabik-layered-avatar::before,.sabik-layered-avatar::after{content:"";position:absolute;pointer-events:none;border-radius:50%;transform-origin:50% 50%}
-.sabik-layered-avatar::before{z-index:4;inset:30%;border:1px solid color-mix(in srgb,var(--ig-accent-secondary) 62%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--ig-accent-secondary) 30%,transparent);animation:sabikR69CoreWave var(--sabik-presence-speed) ease-in-out infinite}
-.sabik-layered-avatar::after{z-index:0;inset:6%;border:1px solid color-mix(in srgb,var(--ig-accent) 40%,transparent);box-shadow:0 0 30px color-mix(in srgb,var(--ig-accent) 18%,transparent);animation:sabikR69PresenceWave calc(var(--sabik-presence-speed) * 1.35) ease-in-out infinite}
-.sabik-layered-avatar[data-web-state="ORIENTAR"]{--sabik-orbit-speed-back:23s;--sabik-orbit-speed-front:30s;--sabik-presence-speed:2.8s}
-.sabik-layered-avatar[data-web-state="TRANSICION"]{--sabik-orbit-speed-back:19s;--sabik-orbit-speed-front:25s;--sabik-presence-speed:2.3s}
-.sabik-layered-avatar[data-web-state="PAUSA"]{--sabik-orbit-speed-back:52s;--sabik-orbit-speed-front:64s;--sabik-presence-speed:5.8s}
-.sabik-layered-avatar[data-web-state="CONFIRMAR"]{--sabik-orbit-speed-back:22s;--sabik-orbit-speed-front:28s;--sabik-presence-speed:2.4s}
-.sabik-layered-avatar[data-voice-active="true"]{--sabik-presence-speed:1.55s}
-.sabik-layered-avatar[data-motion-level="REDUCIDO"]{--sabik-orbit-speed-back:84s;--sabik-orbit-speed-front:108s;--sabik-presence-speed:7.5s}
-.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"] .sabik-orbit-layer{animation:none!important;transform:none!important}
-.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::before,.sabik-layered-avatar[data-motion-level="SIN_MOVIMIENTO"]::after{animation:none!important;transform:none!important}
-.sabik-layered-avatar[data-render-active="false"] *,.sabik-layered-avatar[data-render-active="false"]::before,.sabik-layered-avatar[data-render-active="false"]::after,html[data-ig-motion="off"] .sabik-layered-avatar *,html[data-ig-motion="off"] .sabik-layered-avatar::before,html[data-ig-motion="off"] .sabik-layered-avatar::after{animation-play-state:paused!important}
-@keyframes sabikR69OrbitBack{to{transform:rotate(360deg)}}@keyframes sabikR69OrbitFront{to{transform:rotate(360deg)}}
-@keyframes sabikR69CoreWave{0%,100%{transform:scale(.86);opacity:.25}50%{transform:scale(1.18);opacity:.72}}
-@keyframes sabikR69PresenceWave{0%,100%{transform:scale(.94) rotate(-2deg);opacity:.28}50%{transform:scale(1.05) rotate(2deg);opacity:.62}}
-@media(prefers-reduced-motion:reduce){.sabik-layered-avatar{--sabik-orbit-speed-back:84s;--sabik-orbit-speed-front:108s;--sabik-presence-speed:7.5s}}
+/* R69 HUMAN QA · current Sabik moves itself. No legacy orbit donor. */
+.sabik-web-visual.sabik-current-presence{
+ --sabik-self-speed:5.6s;
+ position:relative;isolation:isolate;overflow:visible;aspect-ratio:1;background:transparent
+}
+.sabik-current-presence .sabik-presence-motion{
+ display:grid;place-items:center;width:100%;height:100%;transform-origin:50% 56%;
+ animation:sabikR69SelfMotion var(--sabik-self-speed) ease-in-out infinite
+}
+.sabik-current-presence #sabik-web-master.sabik-avatar-base{
+ display:block;width:100%;height:auto;max-width:none;object-fit:contain;clip-path:none;opacity:1;visibility:visible
+}
+.sabik-current-presence[data-web-state="ORIENTAR"]{--sabik-self-speed:4.6s}
+.sabik-current-presence[data-web-state="TRANSICION"]{--sabik-self-speed:3.8s}
+.sabik-current-presence[data-web-state="PAUSA"]{--sabik-self-speed:7.8s}
+.sabik-current-presence[data-web-state="CONFIRMAR"]{--sabik-self-speed:3.2s}
+.sabik-current-presence[data-voice-active="true"]{--sabik-self-speed:2.7s}
+.sabik-current-presence[data-motion-level="REDUCIDO"] .sabik-presence-motion{
+ animation-name:sabikR69SelfMotionReduced;animation-duration:10s
+}
+.sabik-current-presence[data-motion-level="SIN_MOVIMIENTO"] .sabik-presence-motion,
+html[data-ig-motion="off"] .sabik-current-presence .sabik-presence-motion{
+ animation:none!important;transform:none!important
+}
+.sabik-current-presence[data-render-active="false"] .sabik-presence-motion{animation-play-state:paused!important}
+@keyframes sabikR69SelfMotion{
+ 0%,100%{transform:translate3d(-1.6%,1.15%,0) rotate(-1.15deg) scale(.99)}
+ 50%{transform:translate3d(1.8%,-1.45%,0) rotate(1.25deg) scale(1.018)}
+}
+@keyframes sabikR69SelfMotionReduced{
+ 0%,100%{transform:translate3d(-.35%,.3%,0) scale(.998)}
+ 50%{transform:translate3d(.4%,-.35%,0) scale(1.003)}
+}
+@media(prefers-reduced-motion:reduce){
+ .sabik-current-presence .sabik-presence-motion{animation-name:sabikR69SelfMotionReduced;animation-duration:10s}
+}
