@@ -1,0 +1,30 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R59-FOSSILS-R2V3-REPRO-QA-GOV-20260930",
+  "issue": 323,
+  "date": "2026-09-30",
+  "status": "R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED",
+  "product_visual_status": "PASS_KEEP",
+  "repro_contract": {
+    "manifest_entries": 74,
+    "manifest_verify": "PASS_74_74",
+    "preverify_inputs": true,
+    "temporary_regeneration": true,
+    "pixel_fallback": true,
+    "self_test_present": true,
+    "negative_input_test_by_aura": "PASS_EXIT_2_NAMES_fuente/piezas.py"
+  },
+  "blockers": [
+    "QA_NOMINAL_IDX_UNUSED",
+    "QA_TREX_CAPTURE_SHOWS_IGUANODON",
+    "GOV_EXECUTOR_BRANCH_UNRECONCILED"
+  ],
+  "expected_marker": "R59_FOSSILS_PILOT_R2V4_NOMINAL_QA_GOV_FIXED_READY_FOR_ASTRA_MARIA",
+  "holds": [
+    "MINERALES",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
