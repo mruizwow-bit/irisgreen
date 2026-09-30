@@ -788,6 +788,13 @@ def huecos_libres(ocupados, tramos):
             continue
         cx, cy = po((x, Y_PLANO, z))
         r = abs(po((x + 0.115, Y_PLANO, z))[0] - cx)
+        # Fuera del encuadre no se marca nada, y un anillo cortado por el borde
+        # tampoco: en móvil la ventana recorta la sala, y media marca pegada al
+        # canto no dice «aquí cabe una pieza», dice que algo se ha roto.
+        m = 10
+        if not (m <= cx - r and cx + r <= OUT_W - m
+                and TOP_OUT + m <= cy - r and cy + r <= OUT_H - BOT_OUT - m):
+            continue
         o.append(f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="none" '
                  f'stroke="#0B1A2B" stroke-width="3.4" opacity="0.55"/>'
                  f'<circle cx="{cx:.1f}" cy="{cy:.1f}" r="{r:.1f}" fill="none" '
@@ -891,6 +898,55 @@ def overlay_movil(uri):
             + ''.join(o) + '</svg>')
 
 
+# Anchos de Georgia por unidad de font-size, medidos en Chromium con
+# getComputedTextLength (el ancho escala lineal con el tamaño: comprobado).
+# Están aquí porque la banda 1→4 de la lámina de causalidad se salía de su
+# columna: el paso 3 invadía la 4 y el 4 se salía del margen. Sin medir el
+# texto no hay forma de partirlo donde toca.
+ANCHOS_GEORGIA = {
+    ' ': 0.25, 'a': 0.44386, 'b': 0.5, 'c': 0.44386, 'd': 0.5, 'e': 0.44386, 'f': 0.31675,
+    'g': 0.5, 'h': 0.5, 'i': 0.27784, 'j': 0.27784, 'k': 0.5, 'l': 0.27784, 'm': 0.77784,
+    'n': 0.5, 'o': 0.5, 'p': 0.5, 'q': 0.5, 'r': 0.33302, 's': 0.38917, 't': 0.27784, 'u': 0.5,
+    'v': 0.5, 'w': 0.72217, 'x': 0.5, 'y': 0.5, 'z': 0.44386, 'á': 0.44386, 'é': 0.44386,
+    'í': 0.27784, 'ó': 0.5, 'ú': 0.5, 'ñ': 0.5, 'ü': 0.5, 'A': 0.72217, 'B': 0.667, 'C': 0.667,
+    'D': 0.72217, 'E': 0.61084, 'F': 0.55616, 'G': 0.72217, 'H': 0.72217, 'I': 0.33302,
+    'J': 0.38917, 'K': 0.72217, 'L': 0.61084, 'M': 0.88917, 'N': 0.72217, 'O': 0.72217,
+    'P': 0.55616, 'Q': 0.72217, 'R': 0.667, 'S': 0.55616, 'T': 0.61084, 'U': 0.72217,
+    'V': 0.72217, 'W': 0.94386, 'X': 0.72217, 'Y': 0.72217, 'Z': 0.61084, 'Á': 0.72217,
+    'É': 0.61084, 'Í': 0.33302, 'Ó': 0.72217, 'Ú': 0.72217, 'Ñ': 0.72217, '.': 0.25, ',': 0.25,
+    ';': 0.27784, ':': 0.27784, '«': 0.5, '»': 0.5, '(': 0.33302, ')': 0.33302, '0': 0.5,
+    '1': 0.46661, '2': 0.5, '3': 0.5, '4': 0.5, '5': 0.5, '6': 0.5, '7': 0.5, '8': 0.5,
+    '9': 0.5, '—': 1.0, '·': 0.33302, '-': 0.33302
+}
+
+
+def _ancho_texto(s, tam):
+    d = ANCHOS_GEORGIA
+    return sum(d.get(c, d['x']) for c in s) * tam
+
+
+def _envolver(texto, tam, ancho_max):
+    """Parte el texto en líneas que caben en `ancho_max`."""
+    lineas, actual = [], ''
+    for palabra in texto.split(' '):
+        prueba = palabra if not actual else actual + ' ' + palabra
+        if _ancho_texto(prueba, tam) <= ancho_max or not actual:
+            actual = prueba
+        else:
+            lineas.append(actual); actual = palabra
+    if actual:
+        lineas.append(actual)
+    return lineas
+
+
+def _bloque(x, y, lineas, tam, alto_linea, fill, extra=''):
+    tspans = ''.join(
+        f'<tspan x="{x:.0f}"' + (f' dy="{alto_linea}"' if i else '') + f'>{t}</tspan>'
+        for i, t in enumerate(lineas))
+    return (f'<text x="{x:.0f}" y="{y:.0f}" font-family="Georgia, serif" '
+            f'font-size="{tam}" fill="{fill}"{extra}>{tspans}</text>')
+
+
 def lamina_causalidad(panel, ancho=1180, alto=900):
     """Díptico del mismo encuadre, antes y después de poner el divisor.
 
@@ -915,14 +971,20 @@ def lamina_causalidad(panel, ancho=1180, alto=900):
     paso = (ancho - 88) / 4.0
     for i, (n, fuerte, resto) in enumerate(CADENA):
         x = 44 + i * paso
+        # Ancho real de la columna, el mismo para las cuatro: el paso menos el
+        # hueco de la flecha. Antes el texto iba en una sola línea y no había
+        # medianil — el paso 3 llegaba a tocar la flecha y la columna 4, y el 4
+        # se pegaba al margen derecho. Dándole a la cuarta el ancho de las
+        # otras, en vez del hueco hasta el borde, la banda queda pareja.
+        ancho_col = paso - 42
+        lf = _envolver(fuerte, 14.5, ancho_col)
+        lr = _envolver(resto, 13, ancho_col)
         o.append(f'<circle cx="{x + 13:.0f}" cy="{cad + 13}" r="13" fill="none" '
                  f'stroke="{T("accent")}" stroke-width="1.6"/>')
         o.append(f'<text x="{x + 13:.0f}" y="{cad + 18}" font-family="Georgia, serif" '
                  f'font-size="14" fill="{T("accent")}" text-anchor="middle">{n}</text>')
-        o.append(f'<text x="{x:.0f}" y="{cad + 48}" font-family="Georgia, serif" font-size="14.5" '
-                 f'fill="{T("text")}">{fuerte}</text>')
-        o.append(f'<text x="{x:.0f}" y="{cad + 69}" font-family="Georgia, serif" font-size="13" '
-                 f'fill="{T("text-muted")}">{resto}</text>')
+        o.append(_bloque(x, cad + 48, lf, 14.5, 18, T('text')))
+        o.append(_bloque(x, cad + 48 + 18 * (len(lf) - 1) + 21, lr, 13, 16.5, T('text-muted')))
         if i < 3:
             o.append(f'<path d="M{x + paso - 34:.0f} {cad + 13} h16 m-5 -5 l5 5 l-5 5" '
                      f'fill="none" stroke="{T("text-muted")}" stroke-width="1.6" '

@@ -410,3 +410,45 @@ La prueba mide ahora esta separación y falla por debajo de 0,045.
 dos copias, la segunda tapando a la primera. Venía de un empalme mío mal
 cortado. Borrada la copia muerta, de 1.178 líneas a 774, con P01 idéntico byte
 a byte antes y después.
+
+---
+
+## QA 2 · layout de la banda de causalidad (R3)
+
+El bloqueo era la banda explicativa 1→4, no la escena. Medido sobre el render
+real del navegador: el texto del paso 3 acababa en x = 832,2 y la flecha que
+lleva al paso 4 empieza en x = 829. **Se salía de su columna 7,2 px** y entraba
+en el medianil, que es lo que se lee como «invade la columna 4» y como que el
+paso 4 queda solapado por el anterior.
+
+La causa era que cada paso se escribía en un `<text>` de una sola línea, sin
+ancho de columna: el texto medía lo que midiera.
+
+Ahora hay una tabla de anchos de Georgia por unidad de `font-size`, medida en
+Chromium con `getComputedTextLength` —el ancho escala lineal con el tamaño, y
+está comprobado—, y con ella se parte cada línea en `tspan` dentro del ancho
+real de su columna. Las cuatro columnas usan la misma medida, el paso menos el
+hueco de la flecha: dándole a la cuarta el hueco hasta el borde, como estaba,
+el texto se pegaba al margen y la banda quedaba desigual.
+
+No se ha tocado la escena. Los dos paneles ya renderizados viven dentro del
+propio SVG como `data:image/webp;base64`, así que `r62_p03_overlay_causalidad.py`
+los recupera de ahí y vuelve a montar solo la capa vectorial: los cuatro URI de
+panel salen **idénticos** a los de antes de la corrección, y cuesta segundos en
+vez de cinco minutos y medio.
+
+La prueba de P03 mide ahora esa banda sobre el render del navegador, en los dos
+temas: ninguna caja de texto puede pasar del tope de su columna —que es donde
+empieza su flecha, no donde empieza la columna siguiente— ni solaparse con el
+bloque de al lado. Contra la lámina anterior, la prueba falla y dice por cuánto.
+
+### Móvil
+
+Los anillos de anclaje que caen fuera del encuadre, o a menos de 10 px del
+borde, ya no se dibujan. En 390 quedaban tres, y el de la izquierda era un
+anclaje que en realidad está fuera de la ventana y solo entraba en pantalla por
+el sesgo lateral de la cámara: media marca pegada al canto no dice «aquí cabe
+una pieza». Quedan dos, las dos enteras y dentro.
+
+La lámina de escritorio no cambia: con el filtro puesto, sus cinco anillos
+salen exactamente donde ya estaban.

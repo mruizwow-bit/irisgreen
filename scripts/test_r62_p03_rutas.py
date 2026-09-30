@@ -47,6 +47,62 @@ def ruta(tramos):
                         for a, b, c, d, _ in tramos))
 
 
+def _banda_causalidad():
+    """Cajas reales de la banda 1→4: nada se sale de su columna ni se solapa."""
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError:
+        return {'fallos': ['banda de causalidad: falta playwright para medirla'],
+                'medido': False}
+    import tempfile
+    ancho, alto = 1180, 900
+    paso = (ancho - 88) / 4.0
+    cols = [44 + i * paso for i in range(4)]
+    # El límite de cada columna es donde empieza su flecha, no donde empieza la
+    # columna siguiente: entre las dos hay un medianil que el texto tampoco
+    # puede invadir.
+    topes = [cols[i] + paso - 38 for i in range(3)] + [ancho - 44]
+    fallos, cajas_por_lamina = [], {}
+    with sync_playwright() as pw:
+        navegador = pw.chromium.launch()
+        for tema in ('navy', 'claro'):
+            ruta = REPO / f'editorial/r62/p03-rutas-de-luz/causalidad-{tema}.svg'
+            if not ruta.exists():
+                fallos.append(f'falta {ruta.name}')
+                continue
+            with tempfile.NamedTemporaryFile('w', suffix='.html', delete=False,
+                                             encoding='utf-8') as fh:
+                fh.write('<body style="margin:0">'
+                         + ruta.read_text(encoding='utf-8') + '</body>')
+                tmp = Path(fh.name)
+            pagina = navegador.new_page(viewport={'width': ancho, 'height': alto})
+            pagina.goto(tmp.as_uri())
+            pagina.wait_for_timeout(250)
+            cajas = pagina.evaluate("""()=>[...document.querySelectorAll('svg text')]
+                .map(t=>{const b=t.getBBox();
+                  return {t:t.textContent.slice(0,30),x:b.x,y:b.y,w:b.width,h:b.height};})""")
+            pagina.close()
+            tmp.unlink()
+            # la banda: por debajo del díptico y por encima del pie
+            banda = [c for c in cajas if 660 < c['y'] < 860]
+            cajas_por_lamina[tema] = len(banda)
+            for c in banda:
+                i = max(j for j in range(4) if c['x'] >= cols[j] - 16)
+                if c['x'] + c['w'] > topes[i] + 0.5:
+                    fallos.append(f'{tema}: el paso {i+1} se sale de su columna '
+                                  f'{c["x"]+c["w"]-topes[i]:.1f} px ({c["t"]!r})')
+            for i in range(4):
+                dela = sorted((c for c in banda
+                               if max(j for j in range(4) if c['x'] >= cols[j] - 16) == i),
+                              key=lambda c: c['y'])
+                for arriba, abajo in zip(dela, dela[1:]):
+                    if abajo['y'] < arriba['y'] + arriba['h'] - 0.5:
+                        fallos.append(f'{tema}: el paso {i+1} se solapa consigo mismo '
+                                      f'({arriba["t"]!r} / {abajo["t"]!r})')
+        navegador.close()
+    return {'medido': True, 'cajas': cajas_por_lamina, 'fallos': fallos}
+
+
 def _materias():
     """Color medio de cada familia de material sobre la imagen compuesta."""
     import numpy as np
@@ -198,6 +254,13 @@ def main():
     # que el hierro salía *más claro* que la piedra: bajarle el albedo no lo
     # oscurecía porque el especular de este motor no va multiplicado por el
     # albedo. Lo que no se mide, se afirma.
+    # Banda 1→4 de la lámina de causalidad, medida sobre el render real del
+    # navegador. La vuelta anterior la dio por buena mirándola: el paso 3
+    # llegaba a tocar la flecha y la columna 4, y el 4 se pegaba al margen.
+    # Un texto sin medir es un texto que se sale.
+    r['banda_causalidad'] = banda = _banda_causalidad()
+    fallos.extend(banda['fallos'])
+
     r['separacion_de_materias'] = sep = _materias()
     if sep['peor_par'][0] < 0.045:
         fallos.append('materias indistinguibles: {} y {} a {}'.format(
