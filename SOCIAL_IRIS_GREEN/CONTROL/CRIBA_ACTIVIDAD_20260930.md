@@ -53,3 +53,11 @@ mx.micaringo: perfil inspeccionado,3740seguidores; criba de publicaciones no rea
 
 - tdah_space: página no disponible, sin acciones.
 - mujeresalbordedeltdah:10.640 seguidores. Cuatro posts: Dd4WHpgDA-p(29/09,187likes,9comentarios,16republicaciones), Dd0wL2pjA0g(28/09,40likes,8comentarios,4republicaciones), Dc1HcueDIfR(03/09,60likes,0comentarios explícitos,3republicaciones), Dc_7VBRsyU-(07/09,30likes,8comentarios,1republicación). Mediana likes50; comentarios8 (incluyen respuestas). Se verifican respuestas personales en3publicaciones:17889336204614702,18119092570982682,17905744482330619. Sí cumple conversación, pero volumen habitual modesto y audiencia inferior a Iris. Reserva, no prioridad de crecimiento todavía; sin follow/comentario. Los posts antiguos tuvieron más tiempo para acumular interacción. URLs bajo https://www.instagram.com/mujeresalbordedeltdah/p/ salvo Dc_7VBRsyU- bajo /reel/. Sin compartidos totales ni alcance verificables.
+
+## Aceptada · mypureocdawakening · EN · TOC/experiencia personal
+
+81.195 seguidores. Cinco posts sin fijados: Dd6LK5cMBBb(3h,223likes,13comentarios,16republicaciones); Dd4tHYusdww(17h,573,2,43); Dd2BWvUjHfV(1día,781,16,95); Dds0qrDs9Ay(5días,839,16,54); Ddo7lK-jKlv(6días,1181,39,16). Medianas781likes y16comentarios. Cifras previas al comentario de Iris y con antigüedades diferentes; no equivalen a alcance único. Respuestas personales verificadas en2posts:17946150378345869(explicación a un matiz) y18129535522741492(respuesta a experiencia compartida). Participación repetida, testimonios y preguntas de personas distintas. Compartidos totales no visibles; republicaciones sí.
+
+Follow Siguiendo y comentario17934618135393399 verificados en https://www.instagram.com/mypureocdawakening/p/Dd6LK5cMBBb/ . Texto: Thank you for talking so openly about the hours spent trying to piece everything together, Sandra 💚 There’s so much more to OCD than the stereotypes people hear.
+
+Revisar01/10 y lunes05/10. Reciprocidad con Iris todavía no observada. Totales verificados hasta este corte:10Instagram y11Facebook; faltan10y9 para20porred. Criba no cerrada.
