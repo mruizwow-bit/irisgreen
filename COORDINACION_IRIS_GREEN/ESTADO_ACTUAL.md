@@ -1,3 +1,17 @@
+## Corrección picker Claude · 30/09/2026
+
+Se detecta que el entorno local de Claude ofrece tres órdenes con estados superados y muestra un gate R65 antiguo.
+
+Fuente vigente:
+`ORDENES/CLAUDE_COLA_VIGENTE_20260930.md`.
+
+R65: 27+9 ya construido/Astra PASS → HUMAN QA María.
+R61: render 10 min ya hecho → transfer/final QA.
+R62 P03: gameplay PASS → solo causalidad layout R3.
+R68: direction rework R2.
+
+No usar picker antiguo.
+
 ## Cola canónica de subida / integración · 30/09/2026
 
 Se crea:
