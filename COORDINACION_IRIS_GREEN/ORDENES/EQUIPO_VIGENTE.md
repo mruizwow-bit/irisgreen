@@ -1,5 +1,17 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Agente R59 · Fósiles R2v3 · QA/GOV final · 30/09/2026
+
+Orden: `R59_AGENTE_INTERESES/ADDENDUM_FOSSILS_R2V3_REPRO_QA_GOV_20260930.md` · issue #323.
+
+Estado: `R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED`.
+
+No tocar producto ni arte. Corregir únicamente selección/assert de las cuatro capturas nominales y reconciliar ejecutor real vs rama `codex/`. El contrato de reproducibilidad R2v3 se conserva.
+
+Siguiente gate:
+`R59_FOSSILS_PILOT_R2V4_NOMINAL_QA_GOV_FIXED_READY_FOR_ASTRA_MARIA`.
+
+
 ## Claude · R61 Pecera · final QA / transfer · 30/09/2026
 
 Orden: `R61_CLAUDE_RINCON_PECERA/05_AURA_FINAL_QA_TRANSFER_PENDING.md` · issue #325.
