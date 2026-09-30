@@ -1,0 +1,125 @@
+{
+  "schema": "eco-media-lab-v1",
+  "date": "2026-09-30",
+  "scope": "isolated training lab; no Iris Green product files modified",
+  "toolchain": {
+    "ffmpeg": "7.1.5-0+deb13u1",
+    "ffprobe": "7.1.5-0+deb13u1",
+    "python": "3.13.5",
+    "chromium_binary": "/usr/bin/chromium",
+    "chromium_version": "144.0.7559.96",
+    "ua": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/144.0.0.0 Safari/537.36"
+  },
+  "signal": {
+    "type": "sine",
+    "frequency_hz": 1000,
+    "sample_rate_hz": 48000,
+    "duration_s": 3,
+    "channels": 1
+  },
+  "encoded": [
+    {
+      "name": "reference.wav",
+      "container": "wav",
+      "codec": "pcm_s16le",
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "duration_s": 3
+    },
+    {
+      "name": "reference.mp3",
+      "container": "mp3",
+      "codec": "mp3",
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "duration_s": 3.024
+    },
+    {
+      "name": "reference.m4a",
+      "container": "mov/mp4/m4a",
+      "codec": "aac",
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "duration_s": 3
+    },
+    {
+      "name": "reference.ogg",
+      "container": "ogg",
+      "codec": "opus",
+      "sample_rate_hz": 48000,
+      "channels": 1,
+      "duration_s": 3.0065
+    }
+  ],
+  "negative_control": {
+    "name": "truncated.m4a",
+    "operation": "reference.m4a truncated to 1200 bytes",
+    "ffprobe_exit": 1,
+    "ffprobe_error": "moov atom not found; Invalid data found when processing input"
+  },
+  "loudnorm_analysis": {
+    "input_i_lufs": -39.15,
+    "input_tp_db": -36.12,
+    "input_lra_lu": 0,
+    "note": "measurement exercise only; not a product loudness target"
+  },
+  "navigation_harness_attempt": {
+    "http_loopback": "BLOCKED_BY_ADMINISTRATOR",
+    "file_url": "BLOCKED_BY_ADMINISTRATOR",
+    "classification": "HARNESS_ENVIRONMENT_RESTRICTION; not a media/product failure"
+  },
+  "data_url_browser_lab": {
+    "canPlayType": {
+      "wav": "maybe",
+      "mp3": "probably",
+      "aac": "probably",
+      "opus": "probably"
+    },
+    "healthy_playback": {
+      "wav": {
+        "playResolved": true,
+        "readyState": 4,
+        "networkState": 1,
+        "error": null
+      },
+      "mp3": {
+        "playResolved": true,
+        "readyState": 4,
+        "networkState": 1,
+        "error": null
+      },
+      "aac_m4a": {
+        "playResolved": true,
+        "readyState": 4,
+        "networkState": 1,
+        "error": null
+      },
+      "opus_ogg": {
+        "playResolved": true,
+        "readyState": 4,
+        "networkState": 1,
+        "error": null
+      }
+    },
+    "truncated_aac": {
+      "playResolved": false,
+      "promiseError": {
+        "name": "NotSupportedError",
+        "message": "Failed to load because no supported source was found."
+      },
+      "readyState": 0,
+      "networkState": 3,
+      "mediaError": {
+        "code": 4,
+        "message": "PipelineStatus::DEMUXER_ERROR_COULD_NOT_OPEN: FFmpegDemuxer: open context failed"
+      }
+    }
+  },
+  "interpretation": [
+    "Exact browser build must be recorded; codec support can differ across Chromium/Chrome builds and versions.",
+    "Data URL lab isolates decode/playback from HTTP delivery.",
+    "A negative control demonstrates the harness detects invalid media.",
+    "canPlayType is evidence, but actual play plus states/errors is stronger.",
+    "Historical project Chromium 140 AAC failure and current Debian Chromium 144 AAC success are not contradictory; they describe different binaries/environments."
+  ]
+}
