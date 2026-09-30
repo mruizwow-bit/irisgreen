@@ -1,0 +1,76 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "NUBE-A9-FORMACION-R01-20260930",
+  "date": "2026-09-30",
+  "issue_general": 348,
+  "historical_a9_issue": 314,
+  "alias": "Nube",
+  "agent": "A9",
+  "role": "Knowledge Systems & Information Retrieval Engineer",
+  "specialization": [
+    "Knowledge Governance",
+    "Digital Curation",
+    "Information Retrieval",
+    "Provenance"
+  ],
+  "base_commit": "41a01a5534161da5e4b412dd0c6af424e836a53c",
+  "branch": "nube/a9-knowledge-cloud-retrieval-foundation-r01-20260930",
+  "status": "FOUNDATION_PROFESSIONAL_STUDIED_AND_DOCUMENTED",
+  "studied_domains": [
+    "INFORMATION_RETRIEVAL",
+    "BM25_DENSE_HYBRID_RETRIEVAL",
+    "RETRIEVAL_EVALUATION",
+    "METADATA_AND_CATALOG",
+    "PROVENANCE",
+    "KNOWLEDGE_GOVERNANCE",
+    "RECORDS_AND_DIGITAL_PRESERVATION",
+    "DATA_QUALITY",
+    "CHUNKING_AND_STRUCTURE_AWARE_REPRESENTATION",
+    "CITATION_ENGINEERING",
+    "CORPUS_SECURITY",
+    "INCREMENTAL_SYNCHRONIZATION"
+  ],
+  "canonical_boundaries": {
+    "Nube_A9": "library_corpus_sources_citations_safety_updater_retrieval",
+    "Cortex_A10": "model_provider_agents_rag_consumption_context_evals_llmops",
+    "Pulso_A3": "conversational_runtime_operational_integration",
+    "Vector_A2": "web_integration_release"
+  },
+  "historical_a9_evidence_read": {
+    "branch": "agent9/r51-cloud-library-r04-20260927",
+    "delta": "COORDINACION_IRIS_GREEN/CONTROL/DELTA_R51_A9_BIBLIOTECA_CLOUD_R04_20260929.json",
+    "entities": 2718,
+    "active_entities": 2366,
+    "held_entities": 352,
+    "citation_invalid_urls": 0,
+    "citation_missing_routes": 0,
+    "exact_duplicate_groups": 0,
+    "cross_content_duplicate_groups": 0,
+    "safety_before_ranking": true,
+    "age_before_ranking": true,
+    "production_changed": false,
+    "user_data_in_corpus": false
+  },
+  "artifacts": [
+    "COORDINACION_IRIS_GREEN/FORMACION/A9_NUBE/00_IDENTIDAD_Y_PUESTO.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A9_NUBE/01_PLAN_FORMACION.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A9_NUBE/02_PRACTICAS_Y_EVIDENCIA.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A9_NUBE/03_RUNBOOK_CONTINUIDAD.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A9_NUBE/APRENDIZAJE_NUBE_2026-09-30.md"
+  ],
+  "not_verified_today": [
+    "BM25_VS_DENSE_VS_HYBRID_BENCHMARK_ON_R04",
+    "EMBEDDINGS",
+    "LLM_RERANKER",
+    "UPDATER_MODIFICATION",
+    "EXECUTED_POISONING_FIXTURES",
+    "AUTHENTICATED_HUMAN_QA",
+    "HISTORICAL_ISSUE_314_BLOCKER_RESOLUTION",
+    "ISO_CERTIFICATION_OR_CONFORMITY"
+  ],
+  "product_changed": false,
+  "cloud_changed": false,
+  "production_changed": false,
+  "external_certification": false,
+  "continuity_rule": "GitHub is canonical for decisions, training, state and evidence; Slack is for rapid conversation and coordination."
+}
