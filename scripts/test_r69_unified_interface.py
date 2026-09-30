@@ -47,13 +47,14 @@ def main()->None:
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
     need("@layer ig-r69-unified" not in unified,
          "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
+    final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
     for p in pages:
         s=p.read_text(encoding="utf-8")
-        head=s.split("</head>",1)[0]
-        hrefs=re.findall(r'<link\\b[^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\'][^>]*href=["\\\']([^"\\\']+)["\\\']|<link\\b[^>]*href=["\\\']([^"\\\']+)["\\\'][^>]*rel=["\\\'][^"\\\']*stylesheet[^"\\\']*["\\\']',head,re.I)
-        hrefs=[a or b for a,b in hrefs]
-        need(hrefs and hrefs[-1].split("?")[0]=="/assets/ig-r69-unified-ui.css",
-             "R69 compatibility stylesheet is not last in head: "+p.relative_to(root).as_posix())
+        head=s.split("</head>",1)[0].rstrip()
+        need(head.endswith(final_ui),
+             "R69 compatibility stylesheet is not final in head: "+p.relative_to(root).as_posix())
+        need(head.count('/assets/ig-r69-unified-ui.css')==1,
+             "R69 compatibility stylesheet count != 1: "+p.relative_to(root).as_posix())
 
     # Home uses the same global shell and must not expose a second age picker.
     homes=[root/"index.html",root/"en"/"index.html"]
