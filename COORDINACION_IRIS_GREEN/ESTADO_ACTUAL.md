@@ -1,3 +1,25 @@
+## R68 Faroles · R2 review · 30/09/2026
+
+Estado:
+`R68_FAROLES_R2_SPATIAL_PASS_PROJECTION_MOBILE_LIGHT_REWORK_REQUIRED`.
+
+PASS/KEEP:
+- nave/arquería/bóveda;
+- profundidad;
+- zonas de reposo;
+- sistema de faroles como objetos.
+
+R3 acotada:
+- proyección más localizada;
+- composición móvil 390;
+- LIGHT con mejor separación de valores.
+
+Deuda runtime separada:
+`R68_RUNTIME_MOTION_LEVELS_NOT_DISTINCT`.
+
+Orden:
+`ORDENES/R68_CLAUDE_FAROLES/03_AURA_R3_PROJECTION_MOBILE_LIGHT.md`.
+
 ## R68 Faroles · R2 · Aura PASS · 30/09/2026
 
 Estado:
