@@ -136,3 +136,17 @@ Facebook: Leeds continuada en otra publicación, Fundación Miradas seguida/come
 Pieza 30/09 «¿Qué significa información clara?»: Facebook Metricool ID 384232832 PENDING a las 10:00 e Instagram ID 384232732 PENDING a las 17:00 Europe/Madrid. Aún no hay URL pública verificada de la pieza de hoy. No crear duplicados. Campaña 2 del 01/10 y 3 del 04/10 conservan programación aprobada. TikTok sin nueva pieza pendiente hoy y continúa pausado por acceso.
 
 Pendiente: verificar publicación real en cada ventana, guardar URL pública y atender comentarios posteriores. Visitas contextuales a nuevas relaciones 01/10 y revisión de follows 07/10. Ciclo diario parcial, sin PASS.
+
+## Ampliación tras orden nueva · corte 09:36 del 30/09
+
+Informe: `INFORMES/INFORME_CM_R01_20260930_AMPLIACION_RONDA.md`. Consultarlo junto a los dos previos: los CSV conservan el primer corte, pendiente consolidación.
+
+Nueva orden ejecutada: más relaciones distintas, TikTok excluido del gate. No se volvió a escribir a Lea porque ya había comentario pertinente; agradecimiento de Sugey reconocido con like. Shelly atendida en comentario antiguo propio de Luma; AuthentiKids y Lucero en publicaciones externas distintas.
+
+Instagram acumulado de mañana: 12 textos propios (11 resoluciones/continuaciones justificadas, 1 redundante de primera tanda), 14 comentarios externos en cuentas distintas, 21 relaciones existentes/habituales/cálidas atendidas con texto o reacción y 3 revisadas sin texto nuevo. 5 follows nuevos confirmados. Últimas altas: Autismo España y Autistica. AGN ya seguida, no contar follow nuevo. Ninguna transición adicional ni follow-back demostrado en esta tanda.
+
+Facebook: biblioteca propia cargó a las 09:14, tres piezas más historia, cero comentarios; administrador “¡Estás al día!”. Corrige la limitación de carga del corte anterior. La pieza de hoy todavía no aparecía antes de su hora prevista. 12 comentarios externos acumulados en cuentas distintas, 6 follows nuevos confirmados. Continuación AGN en post distinto; nueva Plena Inclusión Madrid seguida/comentada; Autismo España y Ambitious comentadas, ambas ya seguidas. Scope investigada sin contacto. ARASAAC y Autistica revisadas sin respuesta nueva. Notificaciones finales sin nueva respuesta escrita.
+
+Pendientes: verificar destino real Facebook tras 10:00 e Instagram tras 17:00, guardar URL, atender ventana posterior, evaluar grupo pertinente y continuar backlog/rotación. Último estado de programador observado: PENDING. No duplicar ni modificar piezas aprobadas.
+
+El ciclo diario sigue parcial. No conceder PASS de jornada antes de las verificaciones pendientes. TikTok pausado NO es impedimento del gate vigente. No afirmar funcionamiento continuo fuera de sesión.
