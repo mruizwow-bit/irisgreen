@@ -114,6 +114,8 @@ def main()->None:
 
     # Workshop visual layer consumes global semantic surfaces, not a white parallel palette.
     taller_css=(root/"assets/ig-taller-r42.css").read_text(encoding="utf-8")
+    need("@layer ig42-taller" not in taller_css,
+         "Workshop final CSS must be unlayered so legacy unlayered rules cannot override it")
     need("--ig42-surface:var(--ig-bg-surface)" in taller_css,"Workshop does not consume global surface token")
     need("#fff" not in taller_css.lower(),"Workshop retains pure-white interface surface")
 
