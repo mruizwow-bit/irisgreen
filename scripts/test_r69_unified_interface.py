@@ -39,6 +39,7 @@ def main()->None:
         rel=p.relative_to(root).as_posix()
         if any(x in s for x in GOOGLE): google.append(rel)
         if 'id="ig-page-finder"' in s: finder.append(rel)
+        need('/assets/ig-r69-unified-ui.css' in s,'R69 visual layer missing: '+rel)
     need(not google,"External Google Fonts remain: "+", ".join(google[:12]))
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
 
@@ -107,8 +108,8 @@ def main()->None:
     # Current Sabik artwork and R37 five-state motion remain present.
     motion=(root/"sabik/sabik-motion-r37.js").read_text(encoding="utf-8")
     web=(root/"sabik/sabik-web-r01.js").read_text(encoding="utf-8")
-    for state in ("PRESENTE","ORIENTAR","TRANSICION","PAUSA","CONFIRMAR"):
-        need(state in motion or ("TRANSICIÓN" in motion if state=="TRANSICION" else False),"Sabik R37 state missing: "+state)
+    for state in ("presente","orientar","transicion","pausa","confirmar"):
+        need(state in motion,"Sabik R37 state missing: "+state)
     need("sabik-motion-r37" in web.lower() or "SabikMotionR37" in web,"Sabik Web does not load/use R37 motion")
 
     print(json.dumps({
