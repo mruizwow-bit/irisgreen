@@ -105,6 +105,10 @@ def main()->None:
     need("!window.IGAudience&&!S.stageChosen" in games,"Games still expose local age landing")
 
     taller=(root/"assets/ig-taller-r42.js").read_text(encoding="utf-8")
+    need("root.setTimeout(go,0)" not in taller,
+         "Workshop shell still defers its mount by an event-loop turn")
+    need("else go();" in taller,
+         "Workshop shell does not mount synchronously when defer parsing is complete")
     for old in ("Cualquier edad","Infancia","Adolescencia","Adultez","Any age","Childhood","Teens","Adults"):
         need(old not in taller,"Workshop emits legacy age UI: "+old)
 
