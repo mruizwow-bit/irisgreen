@@ -1,7 +1,6 @@
 /* Iris Green R69 · final compatibility layer for legacy route skins.
    UI surfaces consume the global semantic tokens. Pictograms, art, printable
    sheets and immersive scene media keep their own colors. */
-@layer ig-r69-unified {
 body[data-ig-r49="1"]{
   color:var(--ig-text);
   background:var(--ig-bg-page);
@@ -116,5 +115,4 @@ body[data-ig-r49="1"] .ig-r49-settings-toggle[aria-pressed="true"]{
 /* Print/exports may intentionally use white paper. */
 @media print{
  body[data-ig-r49="1"]{background:#fff!important;color:#000!important}
-}
 }
