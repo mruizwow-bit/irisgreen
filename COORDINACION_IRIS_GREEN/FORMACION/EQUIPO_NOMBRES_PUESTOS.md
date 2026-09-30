@@ -25,7 +25,8 @@ Jefe de Equipo · Operaciones & Conocimiento.
 ### Astra
 Jefe de Equipo · Calidad de Producto & Arquitectura.
 - Motor · A5
-- Prisma · A8
+- Prisma · A8  
+  **Especialidad profesional:** Frontend Platform & Design Systems Engineer.
 - Lumen · A7
 - 1 vacante interna
 
