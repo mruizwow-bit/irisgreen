@@ -1,3 +1,32 @@
+## R59 · Fósiles R2v3 · contrato repro aceptado / QA nominal + GOV bloqueados · 30/09/2026
+
+**Estado: `R59_FOSSILS_R2V3_REPRO_CONTRACT_ACCEPTED_QA_NOMINAL_GOV_STILL_BLOCKED` · #323.**
+
+Producto visual/técnico R2: PASS KEEP. No rerender.
+
+R2v3 cierra materialmente el contrato de reproducibilidad:
+- 74 entradas selladas;
+- web/fuente/qa/doc;
+- verificación de entradas antes de regenerar;
+- regeneración en carpeta temporal;
+- comparación byte/pixel;
+- self-test del contrato;
+- sellos QA ligados al digest del manifiesto.
+
+Aura verifica manifest 74/74 y fail-closed real: alterar `fuente/piezas.py` produce exit 2 y nombra el archivo.
+
+Bloqueos restantes:
+1. `qa/shots.py` sigue declarando `idx` sin usarlo antes de capturar;
+2. `18-hallazgo-trex-diente.png` muestra Iguanodon;
+3. GOV-01: informe sigue declarando rama `codex/r59-intereses-fase1` sin reconciliar ejecutor real con Agente R59 activo / Codex HOLD.
+
+Siguiente marcador:
+`R59_FOSSILS_PILOT_R2V4_NOMINAL_QA_GOV_FIXED_READY_FOR_ASTRA_MARIA`.
+
+Minerales, A2, main y producción: HOLD.
+
+Normativa: sin cambio transversal.
+
 ## R61 · Pecera · máster 10 min KEEP / final QA y transferencia pendientes · 30/09/2026
 
 **Estado: `R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING` · #325.**
