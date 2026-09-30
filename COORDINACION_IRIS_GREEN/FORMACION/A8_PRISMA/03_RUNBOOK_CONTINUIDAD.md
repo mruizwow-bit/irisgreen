@@ -139,3 +139,42 @@ El siguiente Prisma debe poder reconstruir la situación leyendo GitHub sin pedi
 
 GitHub es fuente formal.
 El chat es contexto temporal.
+
+
+## Coordinación interna Slack
+
+Canal común interno:
+`#general-sabik-ia-technology`
+
+Conversation ID:
+`C0C590Y8PHD`
+
+Criterio operativo fijado por María:
+- Slack = conversación y coordinación rápida;
+- GitHub = decisiones, formación, estados y evidencia canónica;
+- Claude y sus agentes externos no entran en este Slack interno por defecto.
+
+Prisma debe usar Slack para:
+- avisos breves;
+- coordinación rápida;
+- preguntas operativas al equipo;
+- señalar que existe un handoff o una decisión registrada.
+
+Prisma NO debe usar Slack como sustituto de GitHub para:
+- decisiones permanentes;
+- formación;
+- estado canónico;
+- evidencias;
+- runbooks;
+- hashes/commits;
+- handoffs que deban sobrevivir al chat.
+
+Al iniciar un chat nuevo:
+1. comprobar acceso al canal;
+2. leer contexto reciente solo si es necesario para la tarea;
+3. confirmar en GitHub cualquier decisión que afecte trabajo o estado.
+
+Estado 30/09/2026:
+- Prisma ya era miembro del canal al comprobarlo;
+- Slack devolvió `already_in_channel`;
+- se publicó mensaje de presentación de Prisma en el canal.
