@@ -179,3 +179,14 @@ Facebook: biblioteca propia cargó a las 09:14, tres piezas más historia, cero 
 Pendientes: verificar destino real Facebook tras 10:00 e Instagram tras 17:00, guardar URL, atender ventana posterior, evaluar grupo pertinente y continuar backlog/rotación. Último estado de programador observado: PENDING. No duplicar ni modificar piezas aprobadas.
 
 El ciclo diario sigue parcial. No conceder PASS de jornada antes de las verificaciones pendientes. TikTok pausado NO es impedimento del gate vigente. No afirmar funcionamiento continuo fuera de sesión.
+
+
+## Continuación mediodía · fidelización en publicaciones ajenas · 30/09
+
+Aclaración de María incorporada en CM R01: visitar y comentar publicaciones nuevas de los 114 fieles, no limitarse a comentarios propios. Informe: `INFORMES/INFORME_CM_R01_20260930_FIDELIZACION_PUBLICACIONES_AJENAS.md`.
+
+Cinco comentarios externos nuevos y verificados: ashleychang22, pictea.caa (colaboración con diverteacor), semillas.de.brillo, nickycooper.life y roge_lector. Otras cuatro cuentas revisadas sin duplicar/forzar: studio__zoomies, lifeseekers.world, playfullystories y littletale_land. CSV de fieles actualizado con nueve revisiones y cinco interacciones externas. Ashley resuelta desde enlace real en comentarios propios; raw conservado. Dos perfiles adicionales autiharriet/autismsupermom con disponibilidad/identidad pendiente: no suman cobertura confirmada. Acumulado provisional 37/114 revisados; fuente 108/114 materializada, reconciliación pendiente.
+
+Instagram: likes de ambitiousaboutautism y nationalautisticsociety a comentarios de Iris, reciprocidad inicial observada; no son respuestas textuales. No reabrir cierres Kati/Talia. Seguir otras novedades de fieles.
+
+Facebook: el registro de continuidad de 11:27 y la comprobación en este hilo confirman publicación directa https://www.facebook.com/photo/?fbid=122140119279386473&set=a.122102247273386473 ; última revisión sin comentarios. El ERROR de Metricool no equivale a ausencia de publicación. No duplicar. Instagram de hoy pendiente de verificar tras 17:00 Europe/Madrid. No declarar PASS diario ni funcionamiento continuo fuera de sesión.
