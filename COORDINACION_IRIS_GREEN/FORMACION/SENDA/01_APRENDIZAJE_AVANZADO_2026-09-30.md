@@ -1166,3 +1166,133 @@ Comprobar:
 
 Estado:
 `SENDA_GRAPHICS_OPTIMIZATION_PIPELINE_STUDIED_R08`
+
+
+## 37. Evaluación humana, accesibilidad y usabilidad R09
+
+Fuentes estudiadas:
+- W3C WAI · Involving Users in Evaluating Web Accessibility;
+- W3C WAI · Involving Users in Web Projects;
+- W3C COGA · Making Content Usable;
+- COGA usability testing guidance.
+
+### 37.1 Tres preguntas distintas
+
+**Conformance**
+¿Cumple criterios/estándares aplicables?
+
+**Usability**
+¿La persona puede completar la tarea con eficacia, eficiencia y comprensión razonables?
+
+**Product acceptance**
+¿La experiencia cumple la intención de producto y calidad esperada?
+
+No colapsarlas en un único PASS.
+
+### 37.2 Usuarios no sustituyen estándares
+
+Una prueba con personas:
+- descubre barreras reales;
+- descubre problemas de comprensión;
+- descubre fricción no detectable automáticamente.
+
+Pero:
+- una persona no representa a un colectivo;
+- una muestra pequeña no demuestra conformidad;
+- experiencia individual no generaliza a todas las discapacidades.
+
+Regla:
+`USER_EVALUATION + CONFORMANCE + EXPERT_REVIEW`.
+
+### 37.3 Estándares no sustituyen usuarios
+
+Una interfaz puede:
+- tener roles correctos;
+- teclado correcto;
+- contraste correcto;
+
+y aun:
+- ser confusa;
+- exigir demasiada memoria;
+- ocultar el objetivo;
+- usar lenguaje difícil;
+- crear demasiadas decisiones.
+
+Especialmente importante en COGA.
+
+### 37.4 Momento de involucrar usuarios
+
+No esperar al final.
+
+Según W3C:
+- ideas tempranas;
+- prototipos;
+- problemas concretos;
+- diseño casi final.
+
+Evaluación informal temprana puede evitar rework costoso.
+
+### 37.5 Pruebas con personas con discapacidad cognitiva/del aprendizaje
+
+Principios:
+- el participante no puede “hacerlo mal”;
+- puede parar en cualquier momento;
+- comprobar que comprende tarea/pregunta;
+- observar dónde duda, se ralentiza o se equivoca;
+- pedir feedback sobre apoyos útiles;
+- evitar presión/vergüenza;
+- ética y consentimiento especialmente cuidados.
+
+### 37.6 Qué observar en mundos de Senda
+
+Además de “terminó/no terminó”:
+- descubre qué hacer sin explicación extensa;
+- puede volver a orientarse;
+- recuerda dónde estaba;
+- entiende qué cambió;
+- diferencia dato real/simulación;
+- encuentra información sin sobrecarga;
+- puede corregir error;
+- usa alternativa al gesto;
+- entiende vocabulario;
+- sabe cómo salir/volver;
+- no se pierde por movimiento/sonido.
+
+### 37.7 Métricas de usability
+
+Posibles:
+- task completion;
+- errores;
+- tiempo con contexto;
+- puntos de bloqueo;
+- ayuda solicitada;
+- backtracking;
+- abandono;
+- comprensión posterior;
+- preferencia cualitativa.
+
+No usar tiempo como ranking de persona.
+
+### 37.8 Human QA de María
+
+HUMAN QA de María:
+- aceptación de producto;
+- dirección/resultado;
+- percepción general;
+- gate final según gobernanza Iris Green.
+
+No sustituye:
+- test con usuarios representativos;
+- revisión Axioma;
+- Lex;
+- QA técnico.
+
+### 37.9 COGA como guidance
+
+COGA Content Usable:
+- guidance suplementaria;
+- no requisito adicional automático de conformidad WCAG;
+- se usa porque Iris Green busca accesibilidad cognitiva real.
+
+Estado:
+`SENDA_HUMAN_EVALUATION_USABILITY_STUDIED_R09`
