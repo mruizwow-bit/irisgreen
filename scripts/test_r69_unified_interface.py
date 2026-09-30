@@ -41,11 +41,18 @@ def main()->None:
         if any(x in s for x in GOOGLE): google.append(rel)
         if 'id="ig-page-finder"' in s: finder.append(rel)
         if 'data-ig-audience-picker' in s or 'data-ig-audience-stage' in s: static_age.append(rel)
-        need('/assets/ig-r69-unified-ui.css' in s,'R69 visual layer missing: '+rel)
+        need('/assets/ig-fonts.css' in s,'Local fonts missing: '+rel)
     need(not google,"External Google Fonts remain: "+", ".join(google[:12]))
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
     need(not static_age,"Static local age picker remains outside the global shell: "+", ".join(static_age[:12]))
 
+    compat_routes={
+      'es/recursos/index.html','en/resources/index.html',
+      'es/recursos/juegos/index.html','en/resources/games/index.html',
+      'es/recursos/rutinas-imprimibles/index.html','en/resources/printable-routines/index.html',
+      'es/recursos/rutinas-visuales/index.html','en/resources/visual-routines/index.html',
+      'es/sitio-tranquilo/index.html','en/quiet-space/index.html',
+    }
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
     shell_css=(root/"assets/ig-r49-transversal.css").read_text(encoding="utf-8")
     need("@layer ig-r69-unified" not in unified,
@@ -61,14 +68,21 @@ def main()->None:
              f"R69 duplicates transversal palette alias {legacy}")
     need(".ig-r49-global-header" not in unified and ".ig-r49-global-footer" not in unified,
          "R69 still duplicates global shell ownership")
+    need(':where(h1,h2,h3' not in unified and '@media print' not in unified,
+         "R69 still owns transversal typography/focus/print rules")
+    need(':where(h1,h2,h3' in shell_css and '@media print' in shell_css,
+         "R49 is missing consolidated transversal typography/print rules")
     final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
     for p in pages:
         s=p.read_text(encoding="utf-8")
+        rel=p.relative_to(root).as_posix()
         head=s.split("</head>",1)[0].rstrip()
-        need(head.endswith(final_ui),
-             "R69 compatibility stylesheet is not final in head: "+p.relative_to(root).as_posix())
-        need(head.count('/assets/ig-r69-unified-ui.css')==1,
-             "R69 compatibility stylesheet count != 1: "+p.relative_to(root).as_posix())
+        count=head.count('/assets/ig-r69-unified-ui.css')
+        if rel in compat_routes:
+            need(head.endswith(final_ui),"R69 compatibility stylesheet is not final in head: "+rel)
+            need(count==1,"R69 compatibility stylesheet count != 1: "+rel)
+        else:
+            need(count==0,"R69 compatibility leaked onto non-compat route: "+rel)
 
     # Home uses the same global shell and must not expose a second age picker.
     homes=[root/"index.html",root/"en"/"index.html"]

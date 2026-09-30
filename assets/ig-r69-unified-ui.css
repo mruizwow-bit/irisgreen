@@ -9,20 +9,6 @@ body[data-ig-r49="1"][data-ig-r42-family="quiet"]{
   background-image:none!important;
   color:var(--ig-text)!important;
 }
-body[data-ig-r49="1"] :where(h1,h2,h3,.ig-r49-brand,.ig-r49-footer-brand){
-  color:var(--ig-text);
-}
-body[data-ig-r49="1"] :where(a){color:var(--ig-link)}
-body[data-ig-r49="1"] :where(input,select,textarea){
-  color:var(--ig-text);
-  background:var(--ig-bg-surface-soft);
-  border-color:var(--ig-border-control);
-}
-body[data-ig-r49="1"] :where(input,select,textarea,button,a):focus-visible{
-  outline:3px solid var(--ig-focus);
-  outline-offset:3px;
-}
-
 /* Resources hub: interface chassis only. */
 body[data-ig-r49="1"] .ri-main{color:var(--ig-text)}
 body[data-ig-r49="1"] .ri-main :where(.ri-card,.ri-card:hover,.ri-grid-explore .ri-card,.ri-card-soon,.ri-card-soon:hover){
@@ -91,11 +77,3 @@ body[data-ig-r49="1"] .rv-page :where(.rv-input,.rv-textarea,.rv-select){
   background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control);
 }
 
-/* Print/exports may intentionally use white paper. */
-@media print{
- body[data-ig-r49="1"]{
-  --tinta:#000;--azul:#000;--lila:#000;--turq:#000;
-  --papel:#fff;--niebla:#fff;--linea:#666;--suave:#333;
-  background:#fff!important;color:#000!important
- }
-}
