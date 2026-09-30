@@ -1296,3 +1296,105 @@ COGA Content Usable:
 
 Estado:
 `SENDA_HUMAN_EVALUATION_USABILITY_STUDIED_R09`
+
+
+## 38. Capacidades modernas del navegador R10
+
+Fuentes estudiadas:
+- HTML Popover API;
+- CSS Anchor Positioning;
+- View Transition API.
+
+### 38.1 Popover API
+
+Ventajas:
+- top layer;
+- light dismiss;
+- Escape;
+- relación declarativa invoker/popover;
+- integración con orden de foco;
+- retorno de foco;
+- relaciones implícitas aria-details/aria-expanded.
+
+Aplicación Senda:
+- fichas contextuales;
+- ayudas;
+- información breve asociada a un objeto/control;
+- paneles no modales.
+
+Preferir API nativa a:
+- z-index wars;
+- focus management manual;
+- listeners globales innecesarios.
+
+Cautelas:
+- popover no sustituye dialog modal;
+- contenido largo/flujo crítico puede necesitar otra arquitectura;
+- probar lector de pantalla/foco real.
+
+### 38.2 CSS Anchor Positioning
+
+Baseline 2026 para piezas relevantes.
+
+Permite:
+- anclar panel a elemento;
+- position-area;
+- anchor();
+- fallbacks/position tries según soporte.
+
+Aplicación:
+ficha de especie/mineral/estación asociada a un elemento DOM visible.
+
+Regla:
+no anclar accesibilidad crítica exclusivamente a soporte nuevo.
+Mantener layout fallback.
+
+### 38.3 Canvas/WebGL y anchors
+
+Un píxel/objeto GPU no es un anchor DOM por sí solo.
+
+Si un objeto visual necesita:
+- foco;
+- popover;
+- etiqueta;
+- control;
+
+crear representación/overlay DOM correspondiente o mecanismo accesible equivalente.
+
+No usar CSS Anchor Positioning como excusa para convertir todos los objetos 3D en nodos DOM.
+
+### 38.4 View Transitions
+
+View Transition API puede:
+- ayudar a mantener contexto;
+- reducir percepción de ruptura entre vistas.
+
+Pero puede introducir:
+- movimiento;
+- confusión de foco;
+- reading-position issues;
+- live-region behavior extraño si se implementa mal.
+
+Reglas Senda:
+- enhancement;
+- reduced motion;
+- foco explícito cuando cambie contexto;
+- no animar por animar;
+- skip/fallback funcional.
+
+### 38.5 Native-first
+
+Nueva regla:
+antes de implementar un patrón de UI complejo en JS:
+1. HTML nativo;
+2. CSS moderno con fallback;
+3. JS solo para comportamiento no cubierto.
+
+Objetivo:
+menos código;
+mejor semántica;
+menos bugs;
+mejor compatibilidad futura.
+
+Estado:
+`SENDA_MODERN_BROWSER_NATIVE_UI_STUDIED_R10`
