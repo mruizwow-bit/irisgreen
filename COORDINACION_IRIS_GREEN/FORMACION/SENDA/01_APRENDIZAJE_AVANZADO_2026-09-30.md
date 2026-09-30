@@ -1019,3 +1019,150 @@ También hay que comprobar:
 
 Estado:
 `SENDA_ASSET_REPRO_VISUAL_EVIDENCE_STUDIED_R07`
+
+
+## 36. Optimización gráfica profunda R08
+
+Fuentes estudiadas:
+- Three.js InstancedMesh;
+- Three.js LOD;
+- Three.js compileAsync;
+- Three.js color management;
+- Three.js KTX2Loader;
+- Khronos glTF/KTX2.
+
+### 36.1 Instancing
+
+Usar instancing cuando:
+- muchos objetos comparten geometría/material;
+- solo cambian transformaciones/atributos compatibles.
+
+Beneficio:
+- reducir draw calls;
+- mejorar throughput del renderer.
+
+No usar por dogma:
+- si cada objeto necesita material/semántica/render muy diferente;
+- si complica selección/accesibilidad sin beneficio real.
+
+### 36.2 LOD
+
+LOD permite cambiar geometría según distancia.
+
+Reglas:
+- nivel de detalle sirve a percepción, no solo a conteo de polígonos;
+- usar hysteresis para evitar flicker de cambio;
+- probar móviles y zoom;
+- no degradar información significativa.
+
+### 36.3 Shader compilation
+
+`compileAsync()` puede precompilar materiales para evitar stutter cuando aparecen por primera vez.
+
+Aplicación:
+- precalentar solo escenas/materiales que realmente se usarán pronto;
+- no convertir precompilación en descarga masiva de mundos ocultos.
+
+### 36.4 KTX2 / Basis Universal
+
+Ventajas:
+- una textura universal;
+- transcodificación al formato comprimido soportado por GPU;
+- menor transferencia/memoria frente a texturas sin compresión adecuada;
+- ETC1S prioriza tamaño;
+- UASTC prioriza calidad, útil en normal maps y materiales donde compresión agresiva degrada.
+
+Costes:
+- transcoder WASM;
+- workers;
+- tiempo de transcodificación;
+- pipeline de authoring.
+
+Regla:
+`COMPRESSED_FOR_GPU != FREE`.
+
+Medir:
+- bytes;
+- decode/transcode;
+- upload;
+- memoria;
+- calidad.
+
+### 36.5 Color management
+
+Three.js trabaja en Linear-sRGB para iluminación.
+Salida de display típicamente sRGB.
+
+Color textures:
+- etiquetar sRGB cuando corresponda.
+
+Data textures:
+- normal/roughness/etc. no son color y no deben recibir conversión sRGB.
+
+Errores de color-space pueden parecer:
+- iluminación incorrecta;
+- materiales lavados/oscuros;
+- contraste alterado.
+
+Regla:
+no “arreglar” un error de color-space subiendo luces.
+
+### 36.6 PBR y extensiones de material
+
+glTF soporta:
+- metallic/roughness;
+- normal;
+- AO;
+- emissive;
+- clearcoat;
+- transmission;
+- volume;
+- anisotropy;
+- iridescence;
+- specular;
+- sheen;
+- IOR;
+- etc.
+
+Senda:
+usar solo propiedades perceptivamente justificadas.
+
+Ejemplos:
+- mineral: anisotropy/IOR/iridescence solo si material real lo requiere;
+- agua/cristal: transmission/volume solo si ayuda;
+- no apilar efectos para “parecer premium”.
+
+### 36.7 Degradación gráfica
+
+Orden de degradación preferido:
+1. DPR/resolución interna;
+2. LOD;
+3. sombras secundarias;
+4. reflections/postFX;
+5. densidad decorativa;
+6. precision/quality de ciertos materiales;
+7. fallback renderer.
+
+No degradar:
+- selección;
+- significado;
+- datos;
+- controles;
+- foco;
+- accesibilidad;
+- identificación de estados.
+
+### 36.8 First-interaction readiness
+
+Gate:
+una escena no está “lista” solo porque ya se ve.
+
+Comprobar:
+- shaders/materiales críticos preparados;
+- texturas críticas decodificadas/subidas;
+- primera acción sin hitch;
+- datos mínimos listos;
+- controles activos.
+
+Estado:
+`SENDA_GRAPHICS_OPTIMIZATION_PIPELINE_STUDIED_R08`
