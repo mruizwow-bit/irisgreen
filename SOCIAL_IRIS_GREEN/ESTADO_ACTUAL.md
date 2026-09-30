@@ -247,12 +247,14 @@ Archivo: `CONTROL/PUESTA_AL_DIA_114_20260930.json`
 Lectura correcta:
 - **94/96** entradas tienen revisión/interacción saliente ya comprobada o comentario previo confirmado;
 - **2/96** permanecen bloqueadas y NO deben contarse como comentadas;
+- quedan **18/114 sin estado en PUESTA_AL_DIA**;
+- por tanto, el pendiente real de cierre es **20/114**: 18 sin estado + 2 bloqueadas;
 - esto **NO equivale a 114/114**.
 
 La fuente `CONTROL/FIELES_INSTAGRAM_114.csv` continúa materializando **108/114** filas. Faltan 6 entradas de la fuente original y no se inventarán handles para completarlas.
 
 Marcador:
-`IG_FAITHFUL_SWEEP_96_REGISTERED_2_BLOCKED_SOURCE_108_OF_114`.
+`IG_FAITHFUL_SWEEP_94_CLOSED_2_BLOCKED_18_WITHOUT_STATUS_SOURCE_108_OF_114`.
 
 ### Nuevas cuentas seguidas
 
