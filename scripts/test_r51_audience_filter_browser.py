@@ -61,7 +61,7 @@ async def main():
   structure=await page.evaluate("""() => Object.fromEntries(['.ig-home-v4-use-grid','.ig-home-v4-card','.ig-home-v4-sabik','.ig-home-v4-discover-grid','.ig-home-v4-footer'].map(s=>{const e=document.querySelector(s);return [s,e?getComputedStyle(e).display:null]}))""")
   need(structure['.ig-home-v4-use-grid']=='grid','Home v4 use grid CSS missing')
   need(structure['.ig-home-v4-card']=='grid','Home v4 card CSS missing')
-  need(structure['.ig-home-v4-sabik']=='grid','Home v4 Sabik CSS missing')
+  need(structure['.ig-home-v4-sabik']=='block','Home v4 Sabik chassis CSS missing')
   need(structure['.ig-home-v4-discover-grid']=='grid','Home v4 discover CSS missing')
   need(structure['.ig-home-v4-footer']=='flex','Home v4 footer CSS missing')
   report['checks'].append('home-v4-css-render-integrity')
