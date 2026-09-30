@@ -1,3 +1,37 @@
+## R68 · Faroles flotantes · dirección KEEP / rework visual · 30/09/2026
+
+**Estado: `R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED` · #335.**
+
+El primer prototipo demuestra una identidad propia y un mecanismo válido de faroles + calados + proyección, diferenciado de Sakura. NO pasa todavía HUMAN QA visual.
+
+KEEP:
+- atlas de pantallas/calados;
+- patrón propio por farol;
+- instalación interior;
+- luz cálida contenida;
+- DARK/LIGHT como climas de chrome.
+
+REWORK:
+- volumen arquitectónico;
+- faroles como objetos translúcidos con espesor;
+- proyección local en charcos/manchas, no papel pintado;
+- menos densidad/repetición;
+- zonas de penumbra y descanso visual;
+- LIGHT menos expuesto.
+
+Precedencia:
+NO hacer `agua primero`. Agua/reflejo puede ser apoyo secundario, nunca identidad principal de R68.
+
+Siguiente marcador:
+`R68_CLAUDE_FAROLES_DIRECTION_R2_READY_FOR_ASTRA_AURA_MARIA`.
+
+No runtime final, no handoff A2, no main, no producción.
+Lluvia de luz / Agua y reflejos / Bosque bioluminiscente siguen HOLD.
+
+Orden: `ORDENES/R68_CLAUDE_FAROLES/02_AURA_DIRECTION_REWORK.md`.
+
+Normativa: sin cambio transversal.
+
 ## R42 · Contenido R02 · rebase final sobre A2 vivo requerido · 29/09/2026
 
 **Estado: `R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED` · #302.**
