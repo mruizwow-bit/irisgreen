@@ -14,16 +14,15 @@
   function fmt(s, v) { return String(s || '').replace(/\{(\w+)\}/g, function (_, k) { return v[k] == null ? '' : v[k]; }); }
 
   /* ---------- Etapa (solo en la dirección) ---------- */
-  var ALIAS = { infancia:1, adolescencia:1, adultez:1, childhood:1, adolescence:1, adulthood:1, age_0_12:1, age_13_17:1, age_18_plus:1, all_ages:1 };
-  var TO_EN = { infancia: 'childhood', adolescencia: 'adolescence', adultez: 'adulthood' };
-  var TO_ES = { childhood: 'infancia', adolescence: 'adolescencia', adulthood: 'adultez' };
+  var CANON = { age_0_12:'AGE_0_12', age_13_17:'AGE_13_17', age_18_plus:'AGE_18_PLUS', all_ages:'ALL_AGES' };
+  var LEGACY = { infancia:'AGE_0_12', adolescencia:'AGE_13_17', adultez:'AGE_18_PLUS', childhood:'AGE_0_12', adolescence:'AGE_13_17', adulthood:'AGE_18_PLUS', any:'ALL_AGES' };
   var q = new URLSearchParams(location.search), raw = fold(q.get(key) || q.get(en ? 'para' : 'for') || '');
-  var stage = ALIAS[raw] ? ((raw.indexOf('age_')===0 || raw==='all_ages') ? raw.toUpperCase() : (en ? (TO_EN[raw] || raw) : (TO_ES[raw] || raw))) : '';
+  var stage = CANON[raw] || LEGACY[raw] || 'ALL_AGES';
   main.querySelectorAll('.igk-seg').forEach(function (a) {
     if (a.getAttribute('data-para') === stage) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
   });
   main.querySelectorAll('.igk-start').forEach(function (ul) { ul.hidden = ul.getAttribute('data-para') !== stage; });
-  function withStage(href) { return stage ? href.split('?')[0] + '?' + key + '=' + encodeURIComponent(stage) : href.split('?')[0]; }
+  function withStage(href) { return stage && stage!=='ALL_AGES' ? href.split('?')[0] + '?' + key + '=' + encodeURIComponent(stage) : href.split('?')[0]; }
   if (stage) main.querySelectorAll('a.igk-tile').forEach(function (a) { a.setAttribute('href', withStage(a.getAttribute('href'))); });
 
   /* ---------- Protección infantil: filtrar antes de mostrar ---------- */

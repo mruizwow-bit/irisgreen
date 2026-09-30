@@ -12,7 +12,7 @@ ROUTES=(
     ("es/taller/index.html","workspace","R67_TALLER"),
     ("en/workshop/index.html","workspace","R67_TALLER"),
 )
-BODY_RE=re.compile(r"<body\\b([^>]*)>",re.I)
+BODY_RE=re.compile(r"<body\b([^>]*)>",re.I)
 
 CSS=(
     "/assets/ig-global-ui-tokens-2026.css",
@@ -26,7 +26,7 @@ JS=(
 )
 
 def set_attr(attrs:str,name:str,value:str)->str:
-    pat=re.compile(r'(\\s'+re.escape(name)+r'=)(["\\\']).*?\\2',re.I|re.S)
+    pat=re.compile(r'(\s'+re.escape(name)+r'=)(["\']).*?\2',re.I|re.S)
     if pat.search(attrs):
         return pat.sub(lambda m:m.group(1)+'"'+value+'"',attrs,count=1)
     return attrs.rstrip()+f' {name}="{value}"'
@@ -34,7 +34,7 @@ def set_attr(attrs:str,name:str,value:str)->str:
 def add_head_asset(text:str,html:str,bare:str)->str:
     if bare in text:
         return text
-    out,n=re.subn(r"</head\\s*>",html+"</head>",text,count=1,flags=re.I)
+    out,n=re.subn(r"</head\s*>",html+"</head>",text,count=1,flags=re.I)
     if n!=1:
         raise AssertionError("Workshop hub has no </head>")
     return out

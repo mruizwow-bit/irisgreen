@@ -59,14 +59,15 @@ body[data-ig-taller-launcher] main.igk { --igk-ink:#172b42; --igk-soft:#44586c; 
   .igk-tools { justify-items:stretch; }
   .igk-para { text-align:left; }
   .igk-search input { width:100%; }
-  .igk-start.igk-grid { grid-auto-flow:column; grid-template-columns:none; grid-auto-columns:minmax(240px,78%); overflow-x:auto; scroll-snap-type:x mandatory; padding-bottom:6px; }
-  .igk-start .igk-item { scroll-snap-align:start; }
+  .igk-start.igk-grid { grid-template-columns:repeat(2,minmax(0,1fr)); overflow:visible; padding-bottom:0; }
+  .igk-start .igk-item { scroll-snap-align:none; }
   .igk-chips { flex-wrap:nowrap; overflow-x:auto; width:100%; padding-bottom:4px; }
   .igk-chip { flex:none; }
 }
 @media (max-width: 560px) {
   body[data-ig-taller-launcher] main.igk { --igk-gutter:12px; padding-top:10px; }
   .igk-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+  .igk-start.igk-grid { grid-template-columns:minmax(0,1fr); }
   .igk-text { padding:8px 10px 10px; }
   .igk-name { font-size:.95rem; }
   .igk-desc { font-size:.82rem; }
@@ -169,4 +170,39 @@ html[data-ig-motion="off"] .igk-tile { transition:none; transform:none; }
   body[data-ig-taller-launcher] .igk-start .igk-art { max-height:19rem; }
   body[data-ig-taller-launcher] .igk-start .igk-art-svg { height:100%; object-fit:cover; }
   body[data-ig-taller-launcher] .igk-start { grid-template-columns:repeat(3,minmax(0,1fr)); max-width:120rem; }
+}
+
+/* R67 Aura · Workshop chrome consumes the same global UI tokens as Iris Green.
+   Artwork keeps its own palette; cards/controls/sheets do not. */
+body[data-ig-r49="1"][data-ig-taller-launcher] main.igk{
+  --igk-ink:var(--ig-text,#172b42);
+  --igk-soft:var(--ig-text-muted,#44586c);
+  --igk-navy:var(--ig-button-primary-bg,#17395c);
+  --igk-on-navy:var(--ig-button-primary-fg,#eef4f8);
+  --igk-line:var(--ig-separator,#d3dce6);
+  --igk-focus:var(--ig-focus,#5a49a8);
+  --igk-card:var(--ig-bg-surface,#f4f7fa);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-search input,.igk-segs,.igk-chip,.igk-collection,.igk-collection button,.igk-p-btn,.igk-all-btn,.igk-dialog,.igk-dialog-head,.igk-dialog-close){
+  background:var(--ig-bg-surface,#f4f7fa);
+  color:var(--ig-text,#17395c);
+  border-color:var(--ig-border-control,#7a869d);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-seg[aria-current="true"],.igk-chip[aria-pressed="true"],.igk-cont-link){
+  background:var(--ig-button-primary-bg,#17395c);
+  color:var(--ig-button-primary-fg,#eef4f8);
+  border-color:var(--ig-button-primary-bg,#17395c);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-cta{
+  background:var(--ig-button-primary-bg,#17395c);
+  color:var(--ig-button-primary-fg,#eef4f8);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-lede,.igk-para-help,.igk-desc,.igk-status,.igk-group-head p,.igk-note,.igk-p-desc,.igk-p-n){
+  color:var(--ig-text-muted,#435268);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-seg,.igk-chip,.igk-collection button,.igk-all-btn,.igk-dialog-close){
+  color:var(--ig-text,#17395c);
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-tile,.igk-p-btn,.igk-collection){
+  box-shadow:none;
 }

@@ -248,6 +248,11 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_living_abroad_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_living_abroad_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # R67 Aura: guarantee the new global shell on every remaining public route.
+    # Product-specific R50/R67 adapters run first; this pass only fills legacy gaps.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_global_shell_all.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_global_shell_all.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     # R51 A2: audience/discovery filtering from the approved 965-record safety snapshot.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)

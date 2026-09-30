@@ -10,7 +10,7 @@
  --ig-r49-header-h:64px;
  --ig-r49-radius:16px;
  --ig-r49-shadow:0 18px 54px -42px rgba(23,57,92,.52);
- --ig-page-canvas:#f6f8fb;
+ --ig-page-canvas:var(--ig-bg-page,#f6f8fb);
 }
 }
 @layer ig-r49-chrome{
@@ -135,5 +135,108 @@ html[data-ig-contrast="on"] body[data-ig-r49="1"] :where(.ig-r49-global-header,.
   body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>article.ficha{grid-column:1!important;grid-row:2!important;width:100%!important;max-width:none!important}
   body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>.iris-mini-card{grid-column:1!important;grid-row:3!important;position:static!important;top:auto!important;width:100%!important;max-width:none!important;max-height:none!important;overflow:visible!important;margin:.75rem 0 0!important}
   body[data-ig-r49="1"][data-ig-profile="content"] main:has(>article.ficha)>.ig-back{grid-column:1!important;grid-row:4!important}
+ }
+}
+
+
+/* R67 Aura · global-theme bridge for legacy content surfaces.
+   The old variables remain only as aliases; LIGHT/DARK NAVY comes from the
+   canonical global token sheet, not from each section. */
+body[data-ig-r49="1"]{
+  --tinta:var(--ig-text,#17395c);
+  --azul:var(--ig-link,#1f5f8b);
+  --lila:var(--ig-accent,#5a49a8);
+  --turq:var(--ig-accent-secondary,#197991);
+  --papel:var(--ig-bg-surface,#f4f7fa);
+  --niebla:var(--ig-bg-page,#f6f8fb);
+  --linea:var(--ig-separator,#d5e1ec);
+  --suave:var(--ig-text-muted,#435268);
+  --ig-control-ink:var(--ig-text,#17395c);
+  --ig-control-line:var(--ig-separator,#d5e1ec);
+  --ig-field-line:var(--ig-border-control,#7a869d);
+  --ig-control-active:var(--ig-button-primary-bg,#17395c);
+  color:var(--ig-text,#17395c)!important;
+}
+body[data-ig-r49="1"]:not([data-ig-r42-family="quiet"]){
+  background:var(--ig-bg-page,#f6f8fb)!important;
+}
+body[data-ig-r49="1"] .ig-r49-global-header{
+  background:color-mix(in srgb,var(--ig-bg-surface,#f4f7fa) 94%,transparent)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-bottom-color:var(--ig-separator,#d5e1ec)!important;
+}
+body[data-ig-r49="1"] .ig-r49-tool,
+body[data-ig-r49="1"] .ig-r49-lang{
+  background:var(--ig-button-secondary-bg,#e6f1f8)!important;
+  color:var(--ig-button-secondary-fg,#17395c)!important;
+  border-color:var(--ig-border-control,#7a869d)!important;
+}
+body[data-ig-r49="1"] .ig-r49-primary a[aria-current="page"],
+body[data-ig-r49="1"] .ig-r49-stage-picker button[aria-pressed="true"],
+body[data-ig-r49="1"] .ig-r49-settings-toggle[aria-pressed="true"],
+body[data-ig-r49="1"] .ig-r49-search-form button{
+  background:var(--ig-button-primary-bg,#17395c)!important;
+  color:var(--ig-button-primary-fg,#eef4f8)!important;
+  border-color:var(--ig-button-primary-bg,#17395c)!important;
+}
+body[data-ig-r49="1"] .ig-r49-tool[data-ig-r49-stage]{gap:.35rem}
+body[data-ig-r49="1"] .ig-r49-dialog,
+body[data-ig-r49="1"] .ig-r49-dialog-head,
+body[data-ig-r49="1"] .ig-r49-dialog input[type="search"],
+body[data-ig-r49="1"] .ig-r49-search-results a,
+body[data-ig-r49="1"] .ig-r49-more-nav a,
+body[data-ig-r49="1"] .ig-r49-close{
+  background:var(--ig-bg-surface,#f4f7fa)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-color:var(--ig-border-control,#7a869d)!important;
+}
+body[data-ig-r49="1"] .ig-r49-note,
+body[data-ig-r49="1"] .ig-r49-search-results span{
+  color:var(--ig-text-muted,#435268)!important;
+}
+
+/* Legacy catalog/search controls are loaded before R49 and used !important.
+   Re-state their semantics here so the global theme wins without rebuilding
+   every catalogue. */
+body[data-ig-r49="1"] :is(.ig-filter-button,.secfind button[data-type],.secfind button[data-letter],.situation-filter,#temaFilters .filter,.catbuttons button,.vd-filters button){
+  background:var(--ig-bg-surface,#f4f7fa)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-color:var(--ig-border-control,#7a869d)!important;
+}
+body[data-ig-r49="1"] :is(.ig-filter-button,.secfind button[data-type],.secfind button[data-letter],.situation-filter,#temaFilters .filter,.catbuttons button,.vd-filters button):is([aria-pressed=true],[aria-current=page],.is-active){
+  background:var(--ig-button-primary-bg,#17395c)!important;
+  color:var(--ig-button-primary-fg,#eef4f8)!important;
+  border-color:var(--ig-button-primary-bg,#17395c)!important;
+}
+body[data-ig-r49="1"] :is(.ig-search-input,.secfind input[type=search],#situationsSearch,#vd-search,#q[type=search]),
+body[data-ig-r49="1"] .ig-search-shell{
+  background:var(--ig-bg-surface,#f4f7fa)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-color:var(--ig-border-control,#7a869d)!important;
+}
+body[data-ig-r49="1"] :is(.secfind,.situations-filter),
+body[data-ig-r49="1"] :is(.conditions-collection,.situations-collection) .card,
+body[data-ig-r49="1"] .ig-empty,
+body[data-ig-r49="1"] .ig-support{
+  background:var(--ig-bg-surface,#f4f7fa)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-color:var(--ig-separator,#d5e1ec)!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important;
+}
+body[data-ig-r49="1"] .notice,
+body[data-ig-r49="1"] .situations-empty{
+  background:var(--ig-bg-surface-soft,#eef2f6)!important;
+  color:var(--ig-text,#17395c)!important;
+  border-color:var(--ig-border-control,#7a869d)!important;
+}
+body[data-ig-r49="1"] :is(.conditions-collection,.situations-collection) :is(.lede,.card>span:last-child,.situations-count),
+body[data-ig-r49="1"] #cuenta,
+body[data-ig-r49="1"] .ig-catalog-message{
+  color:var(--ig-text-muted,#435268)!important;
+}
+@media(max-width:760px){
+ body[data-ig-r49="1"] .ig-r49-global-header{
+   background:var(--ig-bg-surface,#f4f7fa)!important;
  }
 }
