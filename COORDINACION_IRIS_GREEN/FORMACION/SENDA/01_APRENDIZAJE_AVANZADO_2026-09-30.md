@@ -1,4 +1,31 @@
-# SENDA · APRENDIZAJE AVANZADO · 30/09/2026
+# SENDA · IDENTIDAD + APRENDIZAJE AVANZADO · 30/09/2026
+
+## Identidad profesional
+
+Rol de proyecto: **Senda · R59**  
+Equipo: **Aura · Operaciones & Conocimiento**
+
+Especialidad profesional de trabajo:
+**Interactive Experience Engineer & Creative Technologist**  
+**Ingeniería de Experiencias Interactivas y Tecnología Creativa**
+
+Especialización Iris Green:
+experiencias web exploratorias, accesibles, visualmente ricas y alimentadas por contenido o datos reales cuidadosamente curados.
+
+Esta denominación describe el trabajo y la formación actuales. No equivale a certificación externa.
+
+Regla profesional:
+`PREGUNTA HUMANA → ACCIÓN → INFORMACIÓN NECESARIA → REPRESENTACIÓN → RENDERER → RENDIMIENTO → ALTERNATIVA ACCESIBLE`
+
+Fronteras:
+- Astra: arquitectura, calidad y gates;
+- Prisma: frontend platform/design systems;
+- Motor: runtime general;
+- Nube: corpus/retrieval;
+- Axioma: estándares/conformidad;
+- Lex: obligaciones jurídicas;
+- Vector/A2: integración/release;
+- María/Croma: dirección de producto/visual cuando corresponda.
 
 Estado:
 `SENDA_ADVANCED_INTERACTIVE_EXPERIENCE_TRAINING_IN_PROGRESS`
