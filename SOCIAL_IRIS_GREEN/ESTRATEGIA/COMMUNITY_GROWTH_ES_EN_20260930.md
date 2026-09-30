@@ -161,6 +161,29 @@ Revisión de nuevos follows:
 No mass-follow.
 No mass-unfollow.
 
+## 9 BIS. Saturación de conversación
+
+La recurrencia se construye entre publicaciones y días distintos.
+
+NO se considera buena fidelización:
+- responder muchas veces al mismo comentario;
+- convertir un agradecimiento en otra pregunta;
+- mantener un intercambio durante días sin contenido nuevo;
+- volver al mismo post únicamente para sumar interacción.
+
+Cierre natural:
+- pregunta nueva real → una respuesta;
+- agradecimiento/corazón/cierre social → reacción y STOP textual;
+- hilo ya cerrado → mover la atención a otra cuenta o publicación.
+
+Límite orientativo:
+- 1 respuesta de Iris por nueva intervención sustantiva;
+- máximo 2 respuestas textuales de Iris en un mismo hilo durante 24 h salvo aclaración necesaria;
+- no reabrir al día siguiente sin tema nuevo.
+
+Después:
+`MOVE_TO_NEW_PERSON_OR_NEW_POST`.
+
 ## 10. Publicaciones propias
 
 Alrededor de una publicación:
