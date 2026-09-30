@@ -361,3 +361,142 @@ Estado actual:
 
 No se declara “todo estudiado”.
 La formación profesional es continua.
+
+
+## 17. Máquinas de estado, invariantes y pruebas generativas
+
+Estudiado:
+- W3C SCXML 1.0 como referencia formal de state machines/statecharts;
+- legal state configurations;
+- state entry/exit;
+- history;
+- parallel states;
+- deterministic/run-to-completion semantics;
+- property-based testing;
+- model-based testing.
+
+Aplicación Senda:
+- el estado funcional de cada experiencia se define independientemente del renderer;
+- cada transición debe tener precondiciones;
+- declarar invariantes que nunca deben romperse;
+- distinguir estado lógico de estado visual;
+- un resize, cambio de tema, locale, reduced motion o pérdida de GPU no altera la verdad funcional;
+- tests generativos recorren secuencias de acciones y buscan estados imposibles;
+- tests de invariancia comprueban que donor/renderers no contaminan decisiones de producto.
+
+Ejemplos de invariantes:
+- Fósiles: no mostrar ficha nominal sin fósil activo correspondiente;
+- colección: no duplicar un hallazgo único salvo que el modelo lo permita explícitamente;
+- Trenes: una ruta mostrada como conectada debe tener continuidad real en el modelo;
+- Espacio: cambiar renderer no cambia selección ni clasificación REAL_DATA/SIMULATION;
+- undo/redo debe restaurar estado funcional, no solo apariencia.
+
+## 18. GPU/renderer como recurso reemplazable
+
+WebGL:
+- los contextos pueden perderse;
+- WEBGL_lose_context permite probar pérdida/restauración;
+- tras restauración hay que recrear recursos gráficos.
+
+WebGPU:
+- GPUDevice.lost debe gestionarse;
+- un nuevo device exige recrear buffers/texturas;
+- WebGPU sigue sin ser Baseline universal.
+
+Regla:
+`STATE_SURVIVES_RENDERER`.
+
+El renderer es una proyección del estado, no la fuente canónica.
+
+Gate sugerido:
+1. iniciar actividad;
+2. modificar estado;
+3. perder contexto/device;
+4. reconstruir;
+5. comprobar que selección/progreso/colección siguen idénticos.
+
+## 19. High-DPI y resolución adaptativa
+
+Estudiado:
+- devicePixelRatio no debe usarse de forma ingenua;
+- ResizeObserver + device-pixel-content-box permite conocer tamaño físico real cuando está disponible;
+- presupuesto de framebuffer/VRAM debe depender del tamaño visible;
+- se puede reducir resolución interna para estabilidad manteniendo controles/texto nativos nítidos.
+
+Regla:
+no renderizar a resolución máxima solo porque el dispositivo tenga DPR alto.
+
+## 20. Wide gamut / HDR
+
+Canvas 2D puede solicitar:
+- sRGB;
+- Display P3;
+- en algunos contextos float16.
+
+Pero varias piezas de este soporte siguen sin ser Baseline universal.
+
+Uso:
+- mejora progresiva;
+- nunca depender de P3/HDR para distinguir información;
+- siempre mantener representación correcta en sRGB;
+- QA de contraste y estados en la ruta base.
+
+## 21. Incertidumbre científica y falsa precisión
+
+Estudiado:
+- NIST sobre incertidumbre de medición;
+- NIST sobre visualización como objeto susceptible de cuantificación/error.
+
+Reglas:
+- dato medido, estimación, intervalo, modelo y simulación no se presentan igual;
+- no redondear/mostrar más precisión de la que permite la fuente;
+- si la incertidumbre cambia la interpretación, debe aparecer en la interfaz o descripción;
+- visualización no debe transformar incertidumbre en falsa certeza;
+- las decisiones de escala/color/agrupación pueden introducir interpretación y deben documentarse.
+
+## 22. Model-based / property-based QA
+
+Estudiado:
+- fast-check property-based testing;
+- model-based testing basado en comandos + precondiciones + assertions.
+
+Aplicación:
+en vez de probar solo secuencias escogidas a mano:
+- generar muchas secuencias válidas;
+- comparar sistema con un modelo simplificado;
+- reducir el caso que falla hasta una secuencia mínima reproducible.
+
+Especialmente útil para:
+- seleccionar/descubrir/guardar/quitar;
+- filtros + locale + theme;
+- resize durante interacción;
+- offline/online;
+- undo/redo;
+- pérdida/restauración GPU;
+- cambio de etapa;
+- fuente live → fallback.
+
+## 23. Complejidad visual accesible
+
+Para gráficos, mapas, diagramas y escenas informativas:
+- identificación corta;
+- explicación extensa de información esencial;
+- estructura real cuando existan relaciones/tablas;
+- aria-describedby no sustituye una estructura compleja: se lee como texto continuo;
+- alternativas complejas deben ser utilizables también por personas con dificultades cognitivas o poco conocimiento del dominio.
+
+## 24. Movimiento e interacción
+
+- reduced motion se aplica a animación activada por interacción cuando no sea esencial;
+- una transición instantánea o cambio de opacidad puede reemplazar viajes de cámara;
+- dragging necesita alternativa single-pointer;
+- teclado y alternativa single-pointer se evalúan por separado.
+
+## 25. Estado de esta ampliación
+
+Estado:
+`SENDA_STATE_MODEL_RESILIENCE_UNCERTAINTY_QA_ADVANCED_STUDIED_R03`
+
+No certificación externa.
+No cambio de producto.
+No build/merge/deploy durante Formación.
