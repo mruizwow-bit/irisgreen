@@ -65,22 +65,17 @@ def sabik_home(en):
     <div class="sabik-identity">
       <img class="sabik-wordmark" src="/sabik/assets/web-r01/SABIK_WORDMARK_T1_MASTER_R2.svg" width="198" height="38" alt="Sabik">
       <p data-sabik-text="subtitle">{t['subtitle']}</p>
-      <p class="sabik-state" data-sabik-text="unavailable">{t['unavailable']}</p>
     </div>
   </div>
-  <p class="sabik-capability" id="sabik-availability" data-sabik-text="explanation">{t['capability']}</p>
-  <p class="sabik-memory-note" data-sabik-text="memory">{t['memory']}</p>
-  <p class="sabik-limits" data-sabik-text="limits">{t['limits']}</p>
 </div>
 <div class="ig-home-v4-sabik-right">
   <div class="ig-home-v4-sabik-form-head"><label for="sabik-input" data-sabik-text="label">{t['label']}</label><button type="button" class="sabik-icon-button" id="sabik-toggle" aria-controls="sabik-widget-body" aria-expanded="true" data-sabik-text="hide">{t['hide']}</button></div>
   <div class="sabik-widget-body" id="sabik-widget-body">
-    <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" aria-describedby="sabik-input-help sabik-availability" placeholder="{t['placeholder']}"></textarea><p id="sabik-input-help" data-sabik-text="help">{t['help']}</p><div class="sabik-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
+    <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" placeholder="{t['placeholder']}"></textarea><div class="sabik-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
     <div id="sabik-results"></div>
-      <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false" aria-describedby="sabik-voice-help"><span data-sabik-text="voice">{t['voice']}</span>: <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button><small id="sabik-voice-help" data-sabik-text="voiceHelp">{t['voice_help']}</small></div>
-      <div class="sabik-actions"><button class="sabik-button" id="sabik-low" type="button" aria-pressed="false" data-sabik-text="low">{t['low']}</button><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
-      <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level" aria-describedby="sabik-motion-help"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select><small id="sabik-motion-help" data-sabik-text="motionHelp">{t['motion_help']}</small></div>
-    <a href="{'/en/resources/' if en else '/es/recursos/'}" id="sabik-browse" data-sabik-text="browse">{t['browse']}</a>
+      <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false"><span data-sabik-text="voice">{t['voice']}</span>: <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button></div>
+      <div class="sabik-actions"><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
+      <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select></div>
   </div>
 </div>
 </section></aside>'''

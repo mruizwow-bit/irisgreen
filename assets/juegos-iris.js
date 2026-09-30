@@ -421,4 +421,5 @@ if(globalStage){
 }
 window.addEventListener('ig:audience-change',function(){syncAudienceEtapa(true);render();});
 if(!leerHash())render();
+document.body.dataset.igGamesReady='1';
 })();

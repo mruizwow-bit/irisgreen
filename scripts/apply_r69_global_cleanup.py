@@ -18,13 +18,6 @@ GOOGLE_LINK_RE=re.compile(
 )
 HEAD_CLOSE_RE=re.compile(r'</head\s*>',re.I)
 R69_UI_LINK_RE=re.compile(r'<link\b(?=[^>]*href=["\']/assets/ig-r69-unified-ui\.css(?:\?[^"\']*)?["\'])[^>]*>\s*',re.I)
-COMPAT_ROUTES={
-    'es/recursos/index.html','en/resources/index.html',
-    'es/recursos/juegos/index.html','en/resources/games/index.html',
-    'es/recursos/rutinas-imprimibles/index.html','en/resources/printable-routines/index.html',
-    'es/recursos/rutinas-visuales/index.html','en/resources/visual-routines/index.html',
-    'es/sitio-tranquilo/index.html','en/quiet-space/index.html',
-}
 RESOURCE_STAGE_RE=re.compile(
     r'<section\s+class=["\']ri-stage-section["\'][^>]*>.*?</section>',
     re.I|re.S,
@@ -34,15 +27,14 @@ WORKSHOP_LOCAL_AGE_RE=re.compile(
     re.I|re.S,
 )
 
-def local_fonts(text:str,*,compat:bool)->str:
+def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
-    # R69 is route-family compatibility, not a second global theme layer.
+    # One final unlayered compatibility sheet until all legacy skins migrate.
     text=R69_UI_LINK_RE.sub('',text)
     additions=[]
     if '/assets/ig-fonts.css' not in text:
         additions.append('<link rel="stylesheet" href="/assets/ig-fonts.css">')
-    if compat:
-        additions.append('<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">')
+    additions.append('<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">')
     text,n=HEAD_CLOSE_RE.subn(''.join(additions)+'</head>',text,count=1)
     if n!=1:
         raise AssertionError('HTML without </head>')
@@ -60,7 +52,7 @@ def main()->None:
     for p in sorted(set(htmls)):
         before=p.read_text(encoding='utf-8')
         rel=p.relative_to(root).as_posix()
-        after=local_fonts(before,compat=rel in COMPAT_ROUTES)
+        after=local_fonts(before)
         if rel in ('es/recursos/index.html','en/resources/index.html'):
             after,n=RESOURCE_STAGE_RE.subn('',after,count=1)
             resource_removed+=n

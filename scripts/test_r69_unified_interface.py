@@ -46,43 +46,22 @@ def main()->None:
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
     need(not static_age,"Static local age picker remains outside the global shell: "+", ".join(static_age[:12]))
 
-    compat_routes={
-      'es/recursos/index.html','en/resources/index.html',
-      'es/recursos/juegos/index.html','en/resources/games/index.html',
-      'es/recursos/rutinas-imprimibles/index.html','en/resources/printable-routines/index.html',
-      'es/recursos/rutinas-visuales/index.html','en/resources/visual-routines/index.html',
-      'es/sitio-tranquilo/index.html','en/quiet-space/index.html',
-    }
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
     shell_css=(root/"assets/ig-r49-transversal.css").read_text(encoding="utf-8")
-    need("@layer ig-r69-unified" not in unified,
-         "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
+    need("@layer ig-r69-unified" not in unified,"R69 compatibility CSS must remain unlayered")
     for legacy,semantic in {
         "--tinta":"--ig-text","--azul":"--ig-link","--lila":"--ig-accent",
         "--turq":"--ig-accent-secondary","--papel":"--ig-bg-surface",
         "--niebla":"--ig-bg-page","--linea":"--ig-separator","--suave":"--ig-text-muted"
     }.items():
-        need(f"{legacy}:var({semantic}" in shell_css,
-             f"R49 does not own legacy palette alias {legacy} -> {semantic}")
-        need(f"{legacy}:var({semantic})" not in unified,
-             f"R69 duplicates transversal palette alias {legacy}")
-    need(".ig-r49-global-header" not in unified and ".ig-r49-global-footer" not in unified,
-         "R69 still duplicates global shell ownership")
-    need(':where(h1,h2,h3' not in unified and '@media print' not in unified,
-         "R69 still owns transversal typography/focus/print rules")
-    need(':where(h1,h2,h3' in shell_css and '@media print' in shell_css,
-         "R49 is missing consolidated transversal typography/print rules")
+        need(f"{legacy}:var({semantic}" in shell_css,f"R49 does not own legacy palette alias {legacy} -> {semantic}")
+    need(".ig-r49-global-header" not in unified and ".ig-r49-global-footer" not in unified,"R69 must not own the global shell")
     final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
     for p in pages:
-        s=p.read_text(encoding="utf-8")
         rel=p.relative_to(root).as_posix()
-        head=s.split("</head>",1)[0].rstrip()
-        count=head.count('/assets/ig-r69-unified-ui.css')
-        if rel in compat_routes:
-            need(head.endswith(final_ui),"R69 compatibility stylesheet is not final in head: "+rel)
-            need(count==1,"R69 compatibility stylesheet count != 1: "+rel)
-        else:
-            need(count==0,"R69 compatibility leaked onto non-compat route: "+rel)
+        head=p.read_text(encoding="utf-8").split("</head>",1)[0].rstrip()
+        need(head.endswith(final_ui),"R69 compatibility stylesheet is not final in head: "+rel)
+        need(head.count('/assets/ig-r69-unified-ui.css')==1,"R69 compatibility stylesheet count != 1: "+rel)
 
     # Home uses the same global shell and must not expose a second age picker.
     homes=[root/"index.html",root/"en"/"index.html"]

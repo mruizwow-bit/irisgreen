@@ -1,7 +1,32 @@
-/* Iris Green R69 · route-family compatibility only.
-   Global shell/theme ownership lives in R49. This file bridges remaining legacy
-   product skins while pictograms, art, printable sheets and immersive media keep
-   their intentional colors. */
+html[data-ig-theme="dark"]{background:var(--ig-bg-page)!important;color-scheme:dark}
+body[data-ig-r49="1"] main{color:var(--ig-text)!important}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,.study-card,.data-card,.stat-card,.support-card,.book-card,.book-tile,.result-card,.search-block,.filters,.filter-tools,.toolbar,.table-wrap,[class*="-card"],[class*="-panel"],[class*="-box"]):not(.im-sheet):not(.rv-sheet):not(.ig-flip-page){
+  background:var(--ig-bg-surface)!important;background-image:none!important;color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;box-shadow:none!important
+}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,[class*="-card"],[class*="-panel"],[class*="-box"])
+ :where(h1,h2,h3,h4,strong,b,label,legend,summary){color:var(--ig-text)!important}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,[class*="-card"],[class*="-panel"],[class*="-box"])
+ :where(p,small,.muted,.meta,.desc,.lede){color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] main :where(.chip,.pill,.badge,.tag,[class*="-chip"],[class*="-badge"]){
+  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] main :where(input,select,textarea){
+  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important
+}
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-games-ready="1"]) :is(#jg-hero,#jg-app),
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-printables-ready="1"]) :is(#im-hero,#im-app),
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk{visibility:hidden!important}
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-games-ready="1"]) #jg-app,
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-printables-ready="1"]) #im-app,
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk{min-height:24rem}
+/* Iris Green R69 · compatibility for legacy route skins during migration.
+   R49 owns shell/theme tokens. R69 normalises legacy surfaces across all public
+   routes until those skins are retired; printable sheets and artwork keep their
+   intentional colours. */
 body[data-ig-r49="1"][data-ig-r42-family="quiet"]{
   /* Quiet Space keeps its immersive scene runtime, but the outer document is
      still a low-stimulation Iris Green surface: never a white page in dark mode. */

@@ -71,25 +71,14 @@ function upgradeHeader(){
  if(header&&header.closest('x-dc'))header=null;
  if(!header){header=h('header',{});var skip=Array.from(D.querySelectorAll('body > a.skip,body > a.ig-r49-skip,body > a.ig-home-skip')).find(function(a){return !a.closest('x-dc');});if(skip)skip.insertAdjacentElement('afterend',header);else D.body.insertBefore(header,D.body.firstChild);}
  if(header.dataset.igR49Upgraded==='true')return header;
- /* The canonical shell owns this element. Remove legacy shell classes so old
-    unlayered CSS/JS cannot keep competing with the R49/R69 interface. */
  header.classList.remove('hd','ig-home-header','ig-uh');
  header.classList.add('ig-r49-global-header');header.dataset.igR49Upgraded='true';
- var inner=h('div',{class:'ig-r49-header-inner'});
- var brand=h('a',{class:'ig-r49-brand',href:en()?'/en/':'/',text:'Iris Green'});
- var tools=h('div',{class:'ig-r49-tools'});
- var search=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-search':'','aria-label':tr().search},h('span',{text:tr().search}));
+ var inner=h('div',{class:'ig-r49-header-inner'}),brand=h('a',{class:'ig-r49-brand',href:en()?'/en/':'/',text:'Iris Green'}),tools=h('div',{class:'ig-r49-tools'});
  var music=h('button',{type:'button',class:'ig-r49-tool','data-ig-music':'','aria-expanded':'false','aria-label':tr().music},h('span',{text:tr().music}));
  var settings=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-settings':'','aria-label':tr().settings},h('span',{text:tr().settings}));
- var audience=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-stage':'','aria-label':tr().stageTitle+': '+stageLabel()},h('span',{text:tr().content}),h('span',{class:'ig-r49-stage-state',text:stageLabel()}));
  var lang=h('a',{class:'ig-r49-lang',href:langHref(),lang:en()?'es':'en',text:tr().language});
- var more=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-more':'','aria-label':tr().more},h('span',{text:tr().more}));
- tools.append(search,music,settings,audience,lang,more);inner.append(brand,tools);header.replaceChildren(inner);
- search.addEventListener('click',function(){openSearch(search);});
+ tools.append(music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
  settings.addEventListener('click',function(){openSettings(settings);});
- audience.addEventListener('click',function(){openAudience(audience);});
- more.addEventListener('click',function(){openMore(more);});
- W.addEventListener('ig:audience-change',updateStage);
  return header;
 }
 function upgradeFooter(){

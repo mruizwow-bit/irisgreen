@@ -310,4 +310,5 @@ if(!lockedStage&&!window.IGAudience){
 }
 window.addEventListener('ig:audience-change',function(){var locked=audienceEtapa();if(locked){syncAudienceEtapa();}else{S.stageChosen=!!window.IGAudience;S.etapa='';S.cat='todos';S.q='';}render();});
 leer();render();
+document.body.dataset.igPrintablesReady='1';
 })();

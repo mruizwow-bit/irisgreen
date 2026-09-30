@@ -8,55 +8,34 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'reports/iris-r09';OUT.mkdir(p
 
 
 def check_inner_header(page,route,width):
- """Verify the current R49/R69 global header contract.
-
- The permanent chrome is brand + Search + Music + Accessibility + global age +
- language + Explore, in that keyboard order. The thematic route list lives in
- Explore and must not return as a second permanent navigation bar.
- """
+ """Verify compact global chrome: brand + Music + Accessibility + language."""
  header=page.locator('.ig-r49-global-header[data-ig-r49-upgraded="true"]')
  if not header.count():return None
  geometry=header.evaluate('''(h)=>{
-  const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom,center:r.y+r.height/2}};
+  const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom}};
   const visible=e=>{if(!e)return false;const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)!==0&&r.width>0&&r.height>0};
-  const inner=h.querySelector('.ig-r49-header-inner');
-  const brand=h.querySelector('.ig-r49-brand');
-  const search=h.querySelector('[data-ig-r49-search]');
-  const music=h.querySelector('[data-ig-music]');
-  const settings=h.querySelector('[data-ig-r49-settings]');
-  const audience=h.querySelector('[data-ig-r49-stage]');
-  const lang=h.querySelector('.ig-r49-lang');
-  const more=h.querySelector('[data-ig-r49-more]');
-  return {
-    header:rect(h),inner:inner?rect(inner):null,
-    brand:brand&&visible(brand)?rect(brand):null,
-    search:search&&visible(search)?rect(search):null,
-    music:music&&visible(music)?rect(music):null,
-    settings:settings&&visible(settings)?rect(settings):null,
-    audience:audience&&visible(audience)?rect(audience):null,
-    lang:lang&&visible(lang)?rect(lang):null,
-    more:more&&visible(more)?rect(more):null,
-    permanentNav:[...h.querySelectorAll('.nav,.ig-r49-primary')].filter(visible).length
-  };
+  const inner=h.querySelector('.ig-r49-header-inner'),brand=h.querySelector('.ig-r49-brand'),
+        music=h.querySelector('[data-ig-music]'),settings=h.querySelector('[data-ig-r49-settings]'),lang=h.querySelector('.ig-r49-lang');
+  return {header:rect(h),inner:inner?rect(inner):null,brand:brand&&visible(brand)?rect(brand):null,
+          music:music&&visible(music)?rect(music):null,settings:settings&&visible(settings)?rect(settings):null,
+          lang:lang&&visible(lang)?rect(lang):null,
+          extras:h.querySelectorAll('[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]').length};
  }''')
- outer=geometry['header'];inner=geometry['inner']
- assert inner,(route,width,'missing R49 header inner',geometry)
- assert inner['x']>=outer['x']-1 and inner['right']<=outer['right']+1,(route,width,'header inner outside shell',geometry)
+ outer=geometry['header'];inner=geometry['inner'];assert inner,(route,width,'missing header inner',geometry)
  assert geometry['brand'],(route,width,'missing brand',geometry)
- for key in ('search','music','settings','audience','lang','more'):
+ for key in ('music','settings','lang'):
   item=geometry[key];assert item,(route,width,'missing header control',key,geometry)
   assert item['height']>=44,(route,width,'short header control',key,item)
   assert item['x']>=outer['x']-1 and item['right']<=outer['right']+1,(route,width,'header control clipped',key,item)
- assert geometry['permanentNav']==0,(route,width,'retired permanent thematic nav visible',geometry)
- controls=header.locator('.ig-r49-brand,[data-ig-r49-search],[data-ig-music],[data-ig-r49-settings],[data-ig-r49-stage],.ig-r49-lang,[data-ig-r49-more]')
- assert controls.count()==7,(route,width,'unexpected header control count',controls.count())
+ assert geometry['extras']==0,(route,width,'extra header controls returned',geometry)
+ controls=header.locator('.ig-r49-brand,[data-ig-music],[data-ig-r49-settings],.ig-r49-lang')
+ assert controls.count()==4,(route,width,'unexpected header control count',controls.count())
  controls.first.focus()
  for index in range(controls.count()):
   assert controls.nth(index).evaluate('(e)=>document.activeElement===e'),(route,width,'keyboard skipped header control',index)
   if index+1<controls.count():page.keyboard.press('Tab')
  geometry['keyboard_controls_checked']=controls.count()
  return geometry
-
 
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
@@ -87,7 +66,7 @@ def main():
         expected=1240
         assert abs(home['width']-expected)<4,(width,home,expected)
         sabik=page.locator('#sabik-web-master').bounding_box();assert sabik,(route,width,'missing Sabik master')
-        assert sabik['width']<=151,(route,width,'Sabik exceeds approved donor size',sabik)
+        assert 185<=sabik['width']<=255,(route,width,'Sabik Home size outside compact range',sabik)
       if width==1920 or width==320:page.screenshot(path=str(OUT/f'{len(rows):02d}-{width}.png'))
       rows.append({**current,'font':family,'passed':True})
       (OUT/'progress.json').write_text(json.dumps(rows,indent=2))

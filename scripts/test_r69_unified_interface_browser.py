@@ -22,9 +22,12 @@ async def shell_ready(page,path):
          "legacy header class still owns canonical shell "+path)
     need(await page.locator(".ig-r49-global-footer.ft,.ig-r49-global-footer.ig-home-footer").count()==0,
          "legacy footer class still owns canonical shell "+path)
-    need(await page.locator("[data-ig-r49-stage]").count()==1,"global age control count !=1 "+path)
+    need(await page.locator("[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]").count()==0,
+         "extra controls remain in global header "+path)
+    need(await page.locator("[data-ig-music]").count()==1 and await page.locator("[data-ig-r49-settings]").count()==1 and await page.locator(".ig-r49-lang").count()==1,
+         "compact global header controls missing "+path)
     need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
-         "local age picker exists outside global dialog "+path)
+         "local age picker exists outside runtime "+path)
     need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
     need(await page.locator(".igk-para").count()==0,"Workshop hub local «Para ti» age UI "+path)
@@ -55,14 +58,9 @@ async def shell_ready(page,path):
       return out.slice(0,8);
     }""")
     need(not large_white,"large pure-white surface in dark mode "+path+" "+repr(large_white))
-    for trigger,dialog in [
-        ("[data-ig-r49-search]","#ig-r49-search"),
-        ("[data-ig-r49-settings]","#ig-r49-settings"),
-        ("[data-ig-r49-stage]","#ig-r49-audience"),
-    ]:
-        await page.locator(trigger).click()
-        need(await page.locator(dialog+"[open]").count()==1,"global control did not open "+trigger+" "+path)
-        await page.keyboard.press("Escape")
+    await page.locator("[data-ig-r49-settings]").click()
+    need(await page.locator("#ig-r49-settings[open]").count()==1,"accessibility/settings did not open "+path)
+    await page.keyboard.press("Escape")
     await page.locator("[data-ig-music]").click()
     need(await page.locator("#ig-music-panel").count()==1 and not await page.locator("#ig-music-panel").is_hidden(),
          "music control did not open "+path)
@@ -89,26 +87,20 @@ async def main():
             await shell_ready(page,path)
         report["shell"]={"routes":len(routes),"single_header_footer":"PASS","single_age_ui":"PASS","legacy_page_finder":0,"google_fonts_requests":0}
 
-        # Global controls must be real controls, not decoration.
+        # Header has only Music, Accessibility and language. AGE is an internal session runtime.
         await page.goto(BASE+"/es/recursos/",wait_until="networkidle")
         await page.wait_for_function("window.IGR49 && window.IGAudience")
-        await page.locator("[data-ig-r49-search]").click()
-        need(await page.locator("#ig-r49-search[open]").count()==1,"global search did not open")
-        await page.keyboard.press("Escape")
+        need(await page.locator("[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]").count()==0,"extra header controls returned")
         await page.locator("[data-ig-r49-settings]").click()
         need(await page.locator("#ig-r49-settings[open]").count()==1,"accessibility/settings did not open")
         await page.keyboard.press("Escape")
         await page.locator("[data-ig-music]").click()
-        need(await page.locator("#ig-music-panel").count()==1,"music panel was not created")
-        need(not await page.locator("#ig-music-panel").is_hidden(),"music panel did not open")
+        need(await page.locator("#ig-music-panel").count()==1 and not await page.locator("#ig-music-panel").is_hidden(),"music panel did not open")
         await page.keyboard.press("Escape")
-        await page.locator("[data-ig-r49-stage]").click()
-        age=page.get_by_role("button",name="0–12 años",exact=True)
-        need(await age.count()==1,"canonical age option missing")
-        await age.click()
-        need(await page.locator("html").get_attribute("data-ig-audience")=="AGE_0_12","AGE_0_12 not emitted")
-        await page.keyboard.press("Escape")
-        report["controls"]={"search":"PASS","accessibility":"PASS","music":"PASS","age":"PASS"}
+        await page.evaluate("IGAudience.set('AGE_0_12')")
+        need(await page.locator("html").get_attribute("data-ig-audience")=="AGE_0_12","AGE_0_12 runtime not emitted")
+        await page.evaluate("IGAudience.clear()")
+        report["controls"]={"accessibility":"PASS","music":"PASS","language":"PASS","age_runtime":"PASS"}
 
         # Workshop hub consumes the same global AGE state; there is no second selector.
         await page.goto(BASE+"/es/taller/",wait_until="networkidle")
@@ -127,6 +119,23 @@ async def main():
         general_stage=(await general.get_attribute("data-para")) or "ALL_AGES"
         need(general_stage=="ALL_AGES","Workshop general start view is not the all-ages view")
         report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","GENERAL":"PASS"}
+
+        # Dynamic hubs must not expose their long legacy fallback before initial render.
+        for path,marker in [
+            ("/es/recursos/juegos/","igGamesReady"),
+            ("/es/recursos/rutinas-imprimibles/","igPrintablesReady"),
+            ("/es/taller/","igWorkshopHubReady"),
+        ]:
+            await page.goto(BASE+path,wait_until="domcontentloaded")
+            ready=await page.evaluate("(m)=>document.body.dataset[m]==='1'",marker)
+            if not ready:
+                hidden=await page.evaluate("""() => {
+                  const nodes=[document.querySelector('#jg-app'),document.querySelector('#im-app'),document.querySelector('main.igk')].filter(Boolean);
+                  return nodes.every(e=>{const c=getComputedStyle(e);return c.visibility==='hidden'||c.display==='none'||Number(c.opacity)===0});
+                }""")
+                need(hidden,"legacy first paint visible "+path)
+            await page.wait_for_function("(m)=>document.body.dataset[m]==='1'",marker)
+        report["first_paint"]={"games":"PASS","printables":"PASS","workshop_hub":"PASS"}
 
         # Workshop must never expose the old full study before the R42 workspace.
         await page.goto(BASE+"/es/taller/programacion/",wait_until="domcontentloaded")

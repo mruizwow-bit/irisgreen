@@ -166,4 +166,6 @@
   });
   apply(false);
   main.dataset.igChildsafeBlocked = String(blocked.length);
+main.dataset.igUiReady='1';
+document.body.dataset.igWorkshopHubReady='1';
 })();

@@ -12,7 +12,7 @@ REQUIRED={
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
     '.ig-home-v4-age-state':('color:var(--ig-text-muted)','font-size:.92rem'),
-    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:150px','aspect-ratio:auto','margin:0'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:250px','aspect-ratio:auto','margin:0'),
 }
 CONTROL_ALLOWED={9,10,13}
 

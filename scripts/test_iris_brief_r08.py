@@ -107,8 +107,8 @@ def run():
       row['r05_connection_ui']=check_r05_ui(page,row['lang'])
       assert not cloud_requests,'Cloud contacted before an explicit query'
       row['r05_connection_ui']['automatic_cloud_requests']=0
-      page.locator('#sabik-low').click();assert page.locator('#sabik-low').get_attribute('aria-pressed')=='true';page.locator('#sabik-low').click()
-      assert page.locator('#sabik-hologram').get_attribute('data-motion-level')!='NORMAL'
+      page.locator('#sabik-motion-level').select_option('REDUCIDO');page.locator('#sabik-motion-level').dispatch_event('change')
+      assert page.locator('#sabik-hologram').get_attribute('data-motion-level')=='REDUCIDO'
       use=page.locator('#ig-home-use').bounding_box();panel=page.locator('.ig-home-v4-sabik').bounding_box();discover=page.locator('#ig-home-discover').bounding_box()
       assert use and panel and discover and use['y'] < panel['y'] < discover['y'],(route,width,'Home v4 section order')
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')

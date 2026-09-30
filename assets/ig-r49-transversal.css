@@ -7,7 +7,7 @@
  --ig-reading-measure-wide:82ch;
  --ig-content-wide:104rem;
  --ig-workspace-gutter:clamp(.5rem,1.4vw,1.5rem);
- --ig-r49-header-h:64px;
+ --ig-r49-header-h:56px;
  --ig-r49-radius:16px;
  --ig-r49-shadow:0 18px 54px -42px rgba(23,57,92,.52);
  --ig-page-canvas:var(--ig-bg-page,#f6f8fb);
@@ -42,13 +42,13 @@ body[data-ig-r49="1"] .ig-r49-global-header{
  box-shadow:none!important;color:var(--ig-text)!important;font:16px/1.35 'Atkinson Hyperlegible',system-ui,sans-serif!important;
 }
 body[data-ig-r49="1"] .ig-r49-global-header[data-ig-r49-upgraded="true"]>:not(.ig-r49-header-inner){display:none!important}
-.ig-r49-header-inner{width:100%;min-width:0;min-height:var(--ig-r49-header-h);display:flex;align-items:center;gap:.55rem;padding:.55rem var(--ig-layout-gutter);box-sizing:border-box}.ig-r49-header-inner *{box-sizing:border-box}
+.ig-r49-header-inner{width:100%;min-width:0;min-height:var(--ig-r49-header-h);display:flex;align-items:center;gap:.55rem;padding:.35rem var(--ig-layout-gutter);box-sizing:border-box}.ig-r49-header-inner *{box-sizing:border-box}
 .ig-r49-brand{flex:0 0 auto;font:500 1.45rem/1 'Newsreader',Georgia,serif!important;color:inherit!important;text-decoration:none!important;white-space:nowrap}
 .ig-r49-primary{display:flex;align-items:center;gap:.15rem;min-width:0;margin-left:.5rem}
 .ig-r49-primary a,.ig-r49-tool,.ig-r49-lang{min-height:44px;display:inline-flex;align-items:center;justify-content:center;padding:.55rem .72rem;border-radius:999px;border:1px solid transparent;background:transparent;color:inherit!important;text-decoration:none!important;font:inherit;white-space:nowrap}
 .ig-r49-primary a:hover,.ig-r49-tool:hover,.ig-r49-lang:hover{background:var(--ig-state-hover,rgba(23,57,92,.07))}
 .ig-r49-primary a[aria-current="page"]{background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg)!important}
-.ig-r49-tools{margin-left:auto;display:flex;align-items:center;gap:.35rem;min-width:0}
+.ig-r49-tools{margin-left:auto;display:flex;align-items:center;gap:.25rem;min-width:0}
 .ig-r49-tool{cursor:pointer;border-color:var(--ig-control-border,rgba(23,57,92,.2));background:var(--ig-bg-surface-soft)}
 .ig-r49-stage-state{max-width:12rem;overflow:hidden;text-overflow:ellipsis}
 body[data-ig-r42-family="quiet"] .ig-r49-global-header{background:var(--ig-bg-surface)!important;color:var(--ig-text)!important;border-bottom-color:var(--ig-separator)!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}
