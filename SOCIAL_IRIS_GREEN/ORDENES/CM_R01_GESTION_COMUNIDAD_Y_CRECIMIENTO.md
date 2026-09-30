@@ -162,6 +162,53 @@ La cobertura diaria se informa como:
 `X/114 fieles revisados hoy`,
 no como un número aislado sin denominador.
 
+# 2 TER. FIDELIDAD = RECIPROCIDAD ACTIVA
+
+La fidelización de los 114 NO se limita a recibir comentarios en Iris Green.
+
+Regla:
+`FIDELITY_REQUIRES_OUTBOUND_ENGAGEMENT`.
+
+Para cada fiel, de forma rotativa:
+- visitar su cuenta;
+- revisar publicaciones nuevas;
+- comentar cuando exista contenido pertinente;
+- mencionar detalles concretos de lo que ha publicado;
+- usar el tono de relación guardado;
+- registrar URL, fecha de revisión y fecha de interacción externa.
+
+No:
+`ELLOS_COMENTAN_IRIS_GREEN → NOSOTROS_SOLO_RESPONDEMOS`.
+
+Sí:
+`ELLOS_PARTICIPAN_EN_IRIS_GREEN ↔ IRIS_GREEN_PARTICIPA_EN_SUS_CUENTAS`.
+
+No forzar comentario si no hay publicación nueva/pertinente.
+No duplicar un comentario ya existente.
+
+# 3 TER. CONTINUIDAD OBLIGATORIA DE CUENTAS SEGUIDAS
+
+Un follow NO es una acción terminada.
+
+Regla:
+`FOLLOW → RETURN → PARTICIPATE → OBSERVE_RECIPROCITY`.
+
+Después de seguir una cuenta nueva:
+1. registrarla inmediatamente en `CONTROL/SEGUIDOS_SOCIAL.csv`;
+2. dejar fecha y motivo del follow;
+3. registrar la publicación/primer comentario que justificó el contacto;
+4. volver a revisar la cuenta cuando publique contenido pertinente;
+5. participar de nuevo en otra publicación si existe algo concreto que aportar;
+6. registrar respuestas, likes, follow-back u otra reciprocidad;
+7. revisión estructurada alrededor de 7 días.
+
+No:
+`NUEVA → FOLLOW → ABANDONO`.
+
+Seguir cuentas sin volver a participar NO cuenta como construcción de comunidad.
+
+La hoja de seguidos es obligatoria y se actualiza EN EL MISMO TURNO en que se ejecuta un follow.
+
 # 3. NUEVAS CUENTAS
 
 Encontrar una cuenta nueva NO completa el trabajo.
