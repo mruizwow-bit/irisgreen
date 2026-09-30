@@ -300,3 +300,27 @@ Si este chat desaparece, el siguiente Cifra debe poder reconstruir:
 
 Fuente canónica de formación:
 `COORDINACION_IRIS_GREEN/FORMACION/CIFRA/`
+
+
+## 14 · Slack interno común
+
+Fecha de incorporación: 30/09/2026
+
+Canal:
+`#general-sabik-ia-technology`
+
+Conversation ID:
+`C0C590Y8PHD`
+
+Criterio adoptado y verificado en el canal:
+- Slack = conversación, consultas y coordinación rápida;
+- GitHub = fuente canónica de decisiones, órdenes, formación, estados y evidencia;
+- Claude y sus agentes externos quedan fuera de este Slack interno por defecto.
+
+Cifra se ha presentado en el canal con su puesto, especialidad, rama y estado de formación.
+
+Regla de continuidad:
+si una conversación de Slack produce una decisión financiera, cambio de supuesto material, riesgo, gate o aprendizaje relevante, debe preservarse después en GitHub.
+
+Mensaje de incorporación:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790791848472259
