@@ -47,3 +47,9 @@ María explica que las palabras clave solicitan recursos. No penalizar esta prá
 URLs: https://www.instagram.com/the_mini_adhd_coach/p/ seguido de ID y /. Mediana likes449 y comentarios7. Comparación limitada por diferente antigüedad, especialmente el post de4horas. Comentarios mezclan solicitudes GUIDE/VOLCANO y experiencias relacionadas con contenido. Respuestas personales del creador a experiencias no verificadas; no confundir respuesta de entrega de recurso con relación. Republicaciones no equivalen a todos los compartidos/envíos. Cuenta publica activamente pero no aceptada todavía: falta justificar oportunidad de reciprocidad frente a tamaño642k. Sin follow/comentario.
 
 mx.micaringo: perfil inspeccionado,3740seguidores; criba de publicaciones no realizada, no aceptar ni descartar por métricas inexistentes. Sin acciones.
+
+
+## Criba desde16:44: interacción personal del creador obligatoria
+
+- tdah_space: página no disponible, sin acciones.
+- mujeresalbordedeltdah:10.640 seguidores. Cuatro posts: Dd4WHpgDA-p(29/09,187likes,9comentarios,16republicaciones), Dd0wL2pjA0g(28/09,40likes,8comentarios,4republicaciones), Dc1HcueDIfR(03/09,60likes,0comentarios explícitos,3republicaciones), Dc_7VBRsyU-(07/09,30likes,8comentarios,1republicación). Mediana likes50; comentarios8 (incluyen respuestas). Se verifican respuestas personales en3publicaciones:17889336204614702,18119092570982682,17905744482330619. Sí cumple conversación, pero volumen habitual modesto y audiencia inferior a Iris. Reserva, no prioridad de crecimiento todavía; sin follow/comentario. Los posts antiguos tuvieron más tiempo para acumular interacción. URLs bajo https://www.instagram.com/mujeresalbordedeltdah/p/ salvo Dc_7VBRsyU- bajo /reel/. Sin compartidos totales ni alcance verificables.
