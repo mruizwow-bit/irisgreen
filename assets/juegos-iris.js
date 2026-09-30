@@ -240,6 +240,9 @@ function audienceEtapa(){
 }
 function audienceEtapaActiva(){return !!audienceEtapa();}
 function etapaRail(){
+ /* R69: age belongs to the single global AGE_* control in the Iris Green shell.
+    Keep the legacy local rail only as a no-shell fallback. */
+ if(window.IGAudience)return '';
  var u=U(),locked=audienceEtapa();
  if(locked){
   var by={};(D.etapas||[]).forEach(function(e){by[e.id]=e;});
@@ -291,7 +294,7 @@ function catalogo(){
  var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});
  var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j;
   return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!S.skill||habilidad(j)===S.skill)&&(!S.dur||duracionGrupo(j)===S.dur)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
- if(!S.stageChosen&&!q&&S.cat==='todos')return etapaLanding();
+ if(!window.IGAudience&&!S.stageChosen&&!q&&S.cat==='todos')return etapaLanding();
  var stageNav=etapaRail();
  var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
  if(S.cat==='todos'&&!q){
@@ -402,13 +405,14 @@ document.addEventListener('ig:idioma',function(e){var l=e.detail&&e.detail.lang;
 function syncAudienceEtapa(resetDefault){
  var st=audienceEtapa();
  if(st){S.stageChosen=true;S.etapa=st;S.cat='todos';S.q='';}
- else if(resetDefault){S.stageChosen=false;S.etapa=null;S.cat='todos';S.q='';}
+ else if(resetDefault){S.stageChosen=!!window.IGAudience;S.etapa=null;S.cat='todos';S.q='';}
  if(st&&S.gi!==null&&!etapaAplica(D.juegos[S.gi],st)){S.vista='lista';S.gi=null;S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
 }
 var globalStage=audienceEtapa();
 if(globalStage){
  syncAudienceEtapa(false);
 }else{
+ if(window.IGAudience){S.stageChosen=true;S.etapa=null;}
  var initialStage=(location.hash||'').match(/^#etapa-(inf|ado|adu|todas|all)$/);
  if(initialStage){
   S.stageChosen=true;S.etapa=initialStage[1]==='all'?null:initialStage[1];S.cat='todos';
