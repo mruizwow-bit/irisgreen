@@ -18,6 +18,13 @@ P03 Rutas de luz pasa a `R62_P03_HUMAN_QA_REWORK_REQUIRED` en #326. La autorizac
 
 #335 pasa a `R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED`. KEEP de concepto, atlas y proyección por farol; prototipo visual aún no aprobado. Rework: nave más espacial, faroles con material/volumen, proyección local y menos repetición, LIGHT menos expuesto. No agua primero: agua/reflejo no es la identidad principal de R68. Sin cambio normativo transversal.
 
+## Registro de pendientes de subida / integración
+
+Fuente canónica:
+`CONTROL/PENDIENTES_SUBIDA_INTEGRACION.md`
+
+Usar esta cola antes de abrir nuevos builds para separar preservación, integración A2, preview y producción.
+
 ## Reparto vigente R06 · 25/09/2026 · Codex → Agente 3
 
 **María comunica que Codex está inoperativo y ordena pasar sus pendientes al agente 3.** A3 asume sus cinco comprobaciones reales y toda la continuidad técnica de Codex en Sabik/Cloud: correlación HTTP, correcciones, integración y entrega verificable. No esperar a Codex. Esta disposición sustituye las atribuciones incompatibles anteriores, incluidas las que figuran en el estado/CSV históricos y en la entrega R05.
