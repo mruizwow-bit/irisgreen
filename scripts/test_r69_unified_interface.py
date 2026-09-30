@@ -47,6 +47,13 @@ def main()->None:
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
     need("@layer ig-r69-unified" not in unified,
          "R69 compatibility CSS must be unlayered so it can override unlayered legacy route CSS")
+    for legacy,semantic in {
+        "--tinta":"--ig-text","--azul":"--ig-link","--lila":"--ig-accent",
+        "--turq":"--ig-accent-secondary","--papel":"--ig-bg-surface",
+        "--niebla":"--ig-bg-page","--linea":"--ig-separator","--suave":"--ig-text-muted"
+    }.items():
+        need(f"{legacy}:var({semantic})" in unified,
+             f"Legacy palette alias {legacy} is not bound to {semantic}")
     final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
     for p in pages:
         s=p.read_text(encoding="utf-8")
