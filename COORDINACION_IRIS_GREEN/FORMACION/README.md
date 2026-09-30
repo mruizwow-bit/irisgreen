@@ -100,7 +100,8 @@ Un marcador interno significa únicamente:
 
 ## Especialistas añadidos
 
-3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.
+- **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.
+- **Prisma / A8** · Frontend Platform & Design Systems Engineer · foundation R01 estudiada 30/09/2026. Ver `A8_PRISMA/`.
 
 ## Primera ola
 
