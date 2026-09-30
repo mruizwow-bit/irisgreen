@@ -82,3 +82,10 @@ Se mide por:
 Regla:
 
 `RELATIONSHIPS_OVER_RANDOM_ACTIONS`
+
+## Controles vivos
+
+- `CONTROL/FIELES_INSTAGRAM_114.csv`: rotación de los 114 fieles.
+- `CONTROL/SEGUIDOS_SOCIAL.csv`: todas las cuentas nuevas seguidas, con continuidad y revisión.
+- `CONTROL/CONTACTOS_SOCIAL.csv`: relaciones y estados generales.
+
