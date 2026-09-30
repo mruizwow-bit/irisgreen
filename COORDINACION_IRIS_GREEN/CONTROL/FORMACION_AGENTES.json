@@ -1,0 +1,227 @@
+{
+  "schema": "iris-green-training-registry-v1",
+  "updated": "2026-09-30",
+  "source": "COORDINACION_IRIS_GREEN/FORMACION/00_EMPIEZA_AQUI.md",
+  "items": [
+    {
+      "Alias": "Aura",
+      "Agente": "Jefe de Equipo",
+      "Puesto": "Technical Program Manager & Knowledge Operations Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/AURA",
+      "Estado_formacion": "ACTIVE_CONTINUOUS_LEARNING",
+      "Ultimo_aprendizaje": "APRENDIZAJE_AURA_2026-09-30.md",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Practicas/examen + estudio continuo"
+    },
+    {
+      "Alias": "Astra",
+      "Agente": "Jefe de Equipo",
+      "Puesto": "Calidad de Producto & Arquitectura",
+      "Jefatura": "Direccion",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir profesion exacta y formacion"
+    },
+    {
+      "Alias": "Atlas",
+      "Agente": "A1",
+      "Puesto": "Ingeniero de Sistemas de Contenido y Recursos",
+      "Jefatura": "Aura",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Vector",
+      "Agente": "A2",
+      "Puesto": "Web Release & Integration Engineer",
+      "Jefatura": "Aura",
+      "Carpeta": "FORMACION/A2_VECTOR",
+      "Estado_formacion": "TRAINING_IN_PROGRESS",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Entregar APRENDIZAJE_VECTOR"
+    },
+    {
+      "Alias": "Pulso",
+      "Agente": "A3",
+      "Puesto": "Ingeniero de Integracion de Sistemas Conversacionales",
+      "Jefatura": "Nexo",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Vigia",
+      "Agente": "A4",
+      "Puesto": "Ingeniero de Observabilidad Privacidad y Evidencia",
+      "Jefatura": "Nexo",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Motor",
+      "Agente": "A5",
+      "Puesto": "Ingeniero de Sistemas Interactivos y Runtime",
+      "Jefatura": "Astra",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Eco",
+      "Agente": "A6",
+      "Puesto": "Ingeniero de Validacion de Voz Audio y Media",
+      "Jefatura": "Nexo",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Lumen",
+      "Agente": "A7",
+      "Puesto": "Ingeniero de Media Inmersiva y Rincon Tranquilo",
+      "Jefatura": "Astra",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Prisma",
+      "Agente": "A8",
+      "Puesto": "Ingeniero de Plataforma Frontend y Design Systems",
+      "Jefatura": "Astra",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Nube",
+      "Agente": "A9",
+      "Puesto": "Ingeniero de Knowledge Cloud Retrieval y Pipelines",
+      "Jefatura": "Aura",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Cortex",
+      "Agente": "A10",
+      "Puesto": "LLM / Generative AI Systems Engineer",
+      "Jefatura": "Nexo",
+      "Carpeta": "FORMACION/A10_CORTEX",
+      "Estado_formacion": "TRAINING_IN_PROGRESS",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Entregar APRENDIZAJE_CORTEX"
+    },
+    {
+      "Alias": "Senda",
+      "Agente": "R59",
+      "Puesto": "Ingeniero de Experiencias Editoriales e Intereses",
+      "Jefatura": "Aura",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    },
+    {
+      "Alias": "Agora",
+      "Agente": "Social",
+      "Puesto": "Community Manager",
+      "Jefatura": "Brujula",
+      "Carpeta": "FORMACION/AGORA_SOCIAL",
+      "Estado_formacion": "TRAINING_IN_PROGRESS",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Entregar APRENDIZAJE_AGORA"
+    },
+    {
+      "Alias": "Lex",
+      "Agente": "Departamento",
+      "Puesto": "Legal & Regulatory Compliance Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/DEPARTAMENTOS/LEX_LEGAL",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Crear plan completo y formarse"
+    },
+    {
+      "Alias": "Raiz",
+      "Agente": "Departamento",
+      "Puesto": "People Operations & Organizational Development Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/DEPARTAMENTOS/RAIZ_RRHH",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Crear plan completo y formarse"
+    },
+    {
+      "Alias": "Axioma",
+      "Agente": "Departamento",
+      "Puesto": "Quality Accessibility & Standards Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/DEPARTAMENTOS/AXIOMA_CALIDAD",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Crear plan completo y formarse"
+    },
+    {
+      "Alias": "Brujula",
+      "Agente": "Departamento",
+      "Puesto": "Marketing Growth & Product Communications Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/DEPARTAMENTOS/BRUJULA_MARKETING",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Crear plan completo y formarse"
+    },
+    {
+      "Alias": "Cifra",
+      "Agente": "Departamento",
+      "Puesto": "Finance & Business Planning Lead",
+      "Jefatura": "Direccion",
+      "Carpeta": "FORMACION/DEPARTAMENTOS/CIFRA_FINANZAS",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Crear plan completo y formarse"
+    },
+    {
+      "Alias": "Croma",
+      "Agente": "Design",
+      "Puesto": "Especialista de Diseno de Producto y Sistema Visual",
+      "Jefatura": "Maria",
+      "Carpeta": "PENDIENTE",
+      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
+      "Ultimo_aprendizaje": "",
+      "Fecha": "2026-09-30",
+      "Pendiente_principal": "Definir formacion profesional"
+    }
+  ]
+}

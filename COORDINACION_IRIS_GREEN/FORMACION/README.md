@@ -1,3 +1,22 @@
+# PUNTO DE ENTRADA OBLIGATORIO
+
+Todo chat/agente nuevo empieza aquí:
+FORMACION/00_EMPIEZA_AQUI.md
+
+Directorio de roles:
+DIRECTORIO_FORMACION_POR_ROL.md
+
+Registro de aprendizaje:
+REGISTRO_APRENDIZAJE_GITHUB.md
+
+Plantilla para María:
+PLANTILLA_MENSAJE_NUEVO_CHAT.md
+
+Control:
+../CONTROL/FORMACION_AGENTES.csv
+
+---
+
 # FORMACIÓN · Iris Green
 
 Estado:

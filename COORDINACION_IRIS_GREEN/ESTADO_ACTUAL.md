@@ -1,3 +1,24 @@
+## Formación · punto único de entrada para todos los chats · 30/09/2026
+
+Estado:
+FORMATION_SINGLE_ENTRYPOINT_ACTIVE.
+
+Todo agente/chat nuevo debe empezar en:
+FORMACION/00_EMPIEZA_AQUI.md.
+
+Desde ahí consulta:
+- DIRECTORIO_FORMACION_POR_ROL.md → puesto/jefatura/carpeta;
+- carpeta propia → profesión y plan;
+- último APRENDIZAJE_*.md;
+- REGISTRO_APRENDIZAJE_GITHUB.md → cómo preservar lo aprendido;
+- CONTROL/FORMACION_AGENTES.csv/.json → estado común.
+
+María dispone de:
+FORMACION/PLANTILLA_MENSAJE_NUEVO_CHAT.md.
+
+Regla:
+un nuevo chat no empieza por trabajo de producto; empieza por identidad + Formación + conocimiento transferido.
+
 ## Aura · Formación profesional R01 · 30/09/2026
 
 Issue #348.
