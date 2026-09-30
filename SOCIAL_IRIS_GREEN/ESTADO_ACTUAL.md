@@ -103,16 +103,20 @@ El agente no puede cerrar una sesión tras 3 respuestas si todavía hay comunida
 
 La usuaria confirma que el agente social ya recibió el 29/09 una lista completa de **114 fieles/habituales**.
 
-El CSV actual de contactos es PARCIAL y no define el universo de comunidad.
+Coordinación ha preservado ahora la lista adjunta en:
+- `CONTROL/FIELES_INSTAGRAM_114_SOURCE.md`;
+- `CONTROL/FIELES_INSTAGRAM_114.csv`.
 
-Estado:
-`IG_114_FAITHFUL_ROTATION_ACTIVE`.
-
-Acción obligatoria del agente:
-materializar su lista existente en:
-`CONTROL/FIELES_INSTAGRAM_114.csv`.
+La transcripción recibida contiene **108 filas de datos**. Como el universo declarado es 114, el agente debe reconciliar las entradas faltantes contra su lista previa del 29/09.
 
 No pedir de nuevo la lista a la usuaria.
+No inventar handles.
+No sustituir la fuente por CONTACTOS_SOCIAL.csv.
+
+Estado:
+`IG_114_FAITHFUL_ROTATION_ACTIVE`
++
+`PENDING_RECONCILE_TO_114_FROM_AGENT_PRIOR_LIST`.
 
 Rotación:
 - 15–25 fieles distintos por jornada;
