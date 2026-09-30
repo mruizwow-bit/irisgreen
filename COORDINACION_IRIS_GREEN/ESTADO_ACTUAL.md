@@ -1,3 +1,22 @@
+## R62 P03 · Rutas de luz · R3 · 30/09/2026
+
+Estado:
+`R62_P03_CAUSALITY_LAYOUT_R3_AURA_PASS_HUMAN_QA_PENDING`.
+
+Aura verifica:
+- causalidad LIGHT/NAVY sin solapamiento;
+- step 3 termina antes de x=829;
+- paneles WebP old/new idénticos;
+- móvil pasa de 3 a 2 anclajes, eliminando el cortado.
+
+Preservación:
+`BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING`.
+
+HUMAN QA María pendiente.
+
+Handoff:
+`HANDOFFS/R62_P03_R3/README.md`.
+
 ## R68 · corrección de producto · 30/09/2026
 
 Estado: `R68_NO_VISIBLE_HANGING_WIRES_FLOATING_LANTERNS`.
