@@ -32,6 +32,16 @@ async def shell_ready(page,path):
     need(await page.locator(".im-stage-entry").count()==0,"Printable routines duplicate age UI "+path)
     need(await page.evaluate("Boolean(window.IGR49&&window.IGAudience&&window.IGPreferences&&window.IGTheme)"),
          "global runtime dependency missing "+path)
+    visual=await page.evaluate("""() => {
+      const body=getComputedStyle(document.body),h=document.querySelector('main h1'),hs=h?getComputedStyle(h):null;
+      return {theme:document.documentElement.dataset.igTheme||'',bg:body.backgroundColor,
+              bodyFont:body.fontFamily,h1Font:hs?hs.fontFamily:''};
+    }""")
+    need(visual["theme"]=="dark","route did not start in canonical dark theme "+path)
+    need(visual["bg"]=="rgb(11, 26, 43)","route canvas is not canonical DARK NAVY "+path+" "+repr(visual))
+    need("Atkinson" in visual["bodyFont"],"route body is not Atkinson "+path+" "+repr(visual))
+    if visual["h1Font"]:
+        need("Newsreader" in visual["h1Font"],"route heading is not Newsreader "+path+" "+repr(visual))
     for trigger,dialog in [
         ("[data-ig-r49-search]","#ig-r49-search"),
         ("[data-ig-r49-settings]","#ig-r49-settings"),
