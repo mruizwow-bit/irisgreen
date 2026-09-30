@@ -94,3 +94,15 @@ Rama:
 ## Corte de sesión de mañana · 30/09/2026
 
 Instagram y Facebook trabajados con comunidad propia, habituales y continuidad. Registro actualizado. Ciclo parcial: queda backlog antiguo y trabajo en grupos. TikTok pausado por orden del usuario a las 07:45:49 Europe/Madrid hasta que arregle el acceso. No conceder PASS diario ni afirmar gestión de todo el día. Próximas acciones y revisiones individuales en CONTACTOS_SOCIAL.csv e informe.
+
+## Continuación y calendario · corte 09:00 del 30/09
+
+Informe complementario: `INFORMES/INFORME_CM_R01_20260930_CONTINUACION_MANANA.md`. Contiene las nuevas relaciones, evidencias y próximas revisiones que aún no están consolidadas en los CSV del primer corte. Consultar ambos informes antes de actuar para evitar repeticiones.
+
+Instagram: tres respuestas propias nuevas verificadas, Ana y Brie atendidas en publicaciones distintas, Danielle revisada sin duplicar, Autism West Midlands seguida y comentada. Euskal Kultura respondió con agradecimiento: reconocido con like, hilo cerrado. No volver a escribir allí.
+
+Facebook: Leeds continuada en otra publicación, Fundación Miradas seguida/comentada, OCD-UK comentada pero follow rechazado por revisión automática. No reintentar el seguimiento bloqueado. Feed reciente propio quedó en carga tras una recarga: verificación incompleta, no asumir publicación ni ausencia.
+
+Pieza 30/09 «¿Qué significa información clara?»: Facebook Metricool ID 384232832 PENDING a las 10:00 e Instagram ID 384232732 PENDING a las 17:00 Europe/Madrid. Aún no hay URL pública verificada de la pieza de hoy. No crear duplicados. Campaña 2 del 01/10 y 3 del 04/10 conservan programación aprobada. TikTok sin nueva pieza pendiente hoy y continúa pausado por acceso.
+
+Pendiente: verificar publicación real en cada ventana, guardar URL pública y atender comentarios posteriores. Visitas contextuales a nuevas relaciones 01/10 y revisión de follows 07/10. Ciclo diario parcial, sin PASS.
