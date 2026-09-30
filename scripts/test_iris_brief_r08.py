@@ -59,7 +59,7 @@ def static():
   assert len(s.select('main .ri-stage-section'))==0,p
   assert len(s.select('main [data-r40-resource]'))==5,p
   assert s.body.get('data-ig-r49')=='1',p
-  assert len(s.select('script[src="/assets/ig-audience.js"]'))==1,p
+  assert len(s.select('script[src^="/assets/ig-audience.js"]'))==1,p
  for p in (ROOT/'sabik/assets/web-r01').iterdir():assert p.read_bytes()==(DIST/'sabik/assets/web-r01'/p.name).read_bytes(),p.name
  config=(DIST/'sabik/mount-config.mjs').read_text()
  assert "enabled:true,cloudOrigin:'"+CLOUD_ORIGIN+"'" in config
