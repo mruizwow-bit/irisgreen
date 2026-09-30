@@ -1,5 +1,24 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## R62 Juegos · P04 Ritmo autorizado · 30/09/2026
+
+P03 · Rutas de luz:
+`R62_P03_R3_HUMAN_APPROVED_UNLOCK_P04_CONCEPT`.
+
+P03 cerrado por HUMAN QA María.
+No R4.
+
+P04 autorizado:
+**Ritmo de colores · concepto únicamente**.
+
+Orden:
+`R62_ASTRA_JUEGOS_6_PILOTOS/07_P04_RITMO_CONCEPTO_AUTORIZADO.md`.
+
+P05–P06 HOLD.
+Codex #321 HOLD.
+No A2/main/producción.
+
+
 ## Agente R59 · cierre Fósiles R2v4 · 30/09/2026
 
 Orden vigente:
