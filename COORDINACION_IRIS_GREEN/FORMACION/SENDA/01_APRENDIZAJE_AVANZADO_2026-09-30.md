@@ -649,3 +649,57 @@ Nunca asumir:
 
 No certificación externa.
 No build/merge/deploy de producto.
+
+
+## 29. Foco, overlays y paneles de escena
+
+Estudiado:
+- WCAG 2.2 2.4.11 Focus Not Obscured (Minimum), AA;
+- 2.4.13 Focus Appearance, AAA como objetivo de calidad;
+- Focus Visible;
+- Content on Hover or Focus.
+
+Reglas:
+- ningún HUD, ficha, sticky control o panel puede ocultar completamente el foco;
+- preferir foco completamente visible aunque AA permita visibilidad parcial;
+- indicador de foco debe conservar contraste real sobre escenas cambiantes;
+- overlays abiertos por hover/focus deben ser dismissible, hoverable y persistent;
+- Escape puede servir como dismiss cuando corresponda;
+- hover no será único mecanismo.
+
+## 30. Descripciones complejas y estructura
+
+Para mundos, mapas, diagramas y gráficos:
+- short identification;
+- descripción larga accesible;
+- relaciones/tablas/jerarquías necesitan estructura semántica real;
+- no meter una tabla o jerarquía completa dentro de aria-describedby porque se lineariza;
+- cuando una descripción compleja ayuda también a personas con dificultades cognitivas, puede mostrarse como contenido visible para todos.
+
+## 31. Reflow y escenas bidimensionales
+
+WCAG permite excepción 2D para partes cuyo significado/uso exige layout bidimensional.
+
+Interpretación Senda:
+- un mapa o escena puede mantener viewport 2D;
+- la página completa no queda exenta;
+- controles, fichas, texto, fuentes, acciones y alternativas deben seguir funcionando/reflowing;
+- no usar la excepción 2D para justificar desktop miniaturizado.
+
+## 32. Speech input y nombres accesibles
+
+Regla:
+el nombre accesible contiene la etiqueta visible y preferiblemente empieza por ella.
+
+Aplicación:
+si un control muestra “Guardar”, no nombrarlo solo “Añadir observación al cuaderno”.
+
+Objetivo:
+compatibilidad con control por voz además de lectores de pantalla.
+
+## 33. Estado R05
+
+`SENDA_FOCUS_OVERLAYS_COMPLEX_DESCRIPTIONS_STUDIED_R05`
+
+No certificación externa.
+No producto modificado.
