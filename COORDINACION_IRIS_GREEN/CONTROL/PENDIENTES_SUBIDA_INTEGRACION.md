@@ -37,7 +37,7 @@ Estados separados:
 | R63 | Sala sensorial Sakura | #328 | Runtime/handoff PASS Astra | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | Desbloquear R67, 0 external requests, hardware QA, Deploy Preview, HUMAN QA María |
 | R54/R47 | Taller · 6 primeros visuales R54 dentro del Taller real R47 | #318 / #329 | KEEP 6/6 + Taller R47 funcional | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | No restaurar fixture R64. Mantener arte R54 dentro de Taller real; desbloquear build R67 |
 | R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | Astra PASS · HUMAN QA pendiente | HANDOFF_IDENTIFIED | PENDING_R67_PHASE3 | HUMAN QA María → gate de integración R67 Fase 3 |
-| R62-P03 | Rutas de luz | #326 | Gameplay/material PASS; layout causalidad R3 pendiente | **LOCAL_AT_RISK** | FIX_BEFORE_INTEGRATION | Corregir solo layout causalidad + entregar cadena/bundle completo para preservar |
+| R62-P03 | Rutas de luz | #326 | R3 causalidad Aura PASS; HUMAN QA María pendiente | BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING | HOLD_HUMAN_QA_AND_GITHUB_IMPORT | HUMAN QA María + importar bundle en repo con base 318a5745 |
 | R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **LOCAL_BINARY_AT_RISK** | NOT_READY | Transferir MP4/master/build; cerrar móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
 | R68 | Faroles flotantes | #335 | R2 spatial PASS; projection/mobile/LIGHT R3 pending | **LOCAL_AT_RISK** | NOT_READY | Ejecutar R3 acotada; preservar fuente/patch; movimiento runtime separado |
@@ -118,27 +118,34 @@ No crear otra maqueta de QA.
 
 ### R62 P03 · Rutas de luz
 
-Patch conocido:
-`r62-p03-rework-qa-2.patch`
-
-SHA-256:
-`c19c828099482a7ad2cecb9d90f7f8f01855304ee22ee51bea04f4f62761133b`
-
-Commit local declarado:
-`5648a8d5d36056c950d592bf66dd3d0e162b10c6`.
-
-Claude declara 51 commits locales.
-
 Estado producto:
-`R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED`.
+`R62_P03_CAUSALITY_LAYOUT_R3_AURA_PASS_HUMAN_QA_PENDING`.
 
-Riesgo:
-el patch actual NO contiene necesariamente toda la cadena fuente anterior.
+R3 recibido:
+- patch SHA-256 `a72251f496f3f607a7963a5778b473e346d1edd36d78ea79448499cf4a17632c`;
+- bundle SHA-256 `bc4579db5680e9719348e817d1fdbcafcfff2aa3478bffb62fc1f253a0e2de60`;
+- prerequisite bundle `318a5745789922b82e96bfaebd1536cac240a43e`;
+- HEAD bundle `706a9a671e9f2c6729fa977b4cb9c860c3f5b2c5`.
 
-Acción de preservación:
-- obtener bundle completo o patch acumulado desde una base GitHub conocida;
-- guardar en handoff versionado;
-- después integrar cuando pase causalidad R3.
+Aura verifica:
+- causalidad layout cerrada;
+- paneles WebP no rerenderizados;
+- móvil limpia anclaje cortado.
+
+Preservación:
+`BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING`.
+
+No declarar todavía:
+`PRESERVED_IN_GITHUB`.
+
+Siguiente:
+1. HUMAN QA María;
+2. importar bundle en un repo con prerequisite;
+3. repetir tests de cadena;
+4. preservar rama remota.
+
+Handoff:
+`HANDOFFS/R62_P03_R3/README.md`.
 
 ### R61 · Pecera
 
