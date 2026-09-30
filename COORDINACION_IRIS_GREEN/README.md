@@ -1,3 +1,17 @@
+## Formación profesional de agentes
+
+Fuente:
+`FORMACION/README.md`.
+
+Estado:
+`FORMACION_PROFESIONAL_AGENTES_R01_ACTIVE`.
+
+Desde 30/09/2026, un chat nuevo no empieza únicamente leyendo Estado/Memoria/Control.
+Debe leer Formación, su profesión y el aprendizaje del chat anterior, estudiar lagunas, ejecutar Resume Gate y demostrar competencia con práctica.
+
+Mapa:
+`FORMACION/EQUIPO_NOMBRES_PUESTOS.md`.
+
 # Coordinación compartida de Iris Green y Sabik
 
 Esta carpeta reúne la documentación operativa del proyecto. No forma parte de la web publicada. La documentación no autoriza por sí sola cambios de producto, publicación ni activación de servicios.

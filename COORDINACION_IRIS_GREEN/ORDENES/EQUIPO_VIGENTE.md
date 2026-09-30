@@ -1,3 +1,23 @@
+# Formación y estructura de equipo · 30/09/2026
+
+Estado:
+`FORMACION_PROFESIONAL_AGENTES_R01_ACTIVE`.
+
+Mapa de alias/puestos/jefaturas:
+`../FORMACION/EQUIPO_NOMBRES_PUESTOS.md`.
+
+Cap:
+4 trabajadores activos por Jefe de Equipo.
+
+Primeros agentes en formación:
+- Vector/A2;
+- Ágora/Social.
+
+Nexo:
+tercera jefatura prevista para reparto 4+4+4.
+Orbe:
+reserva de escala.
+
 ## R61 · Pecera · paquete transferido / QA final activa · 30/09/2026
 
 Estado:

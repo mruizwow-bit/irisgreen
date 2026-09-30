@@ -1,3 +1,28 @@
+## Formación profesional de agentes · 30/09/2026
+
+Issue #345.
+
+Estado:
+`FORMACION_PROFESIONAL_AGENTES_R01_ACTIVE`.
+
+María establece que leer GitHub no basta para empezar otro chat.
+Cada agente tendrá alias, puesto profesional, Formación, prácticas y un MD de aprendizaje transferible.
+
+Carpeta:
+`COORDINACION_IRIS_GREEN/FORMACION/`.
+
+Primeros:
+- Vector/A2 · Web Release & Integration Engineer;
+- Ágora/Social · Community Manager.
+
+Cap de jefatura:
+4 agentes activos.
+Estructura objetivo:
+Aura 4 · Astra 4 · Nexo 4.
+Orbe reservado para escala.
+
+Alias sin género obligatorio.
+
 ## R61 · Pecera · transferencia cerrada / QA final pendiente · 30/09/2026
 
 Issue: #325

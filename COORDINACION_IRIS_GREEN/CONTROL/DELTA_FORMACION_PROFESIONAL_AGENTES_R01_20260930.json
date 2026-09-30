@@ -1,0 +1,44 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "FORMACION-PROFESIONAL-AGENTES-R01-20260930",
+  "issue": 345,
+  "date": "2026-09-30",
+  "status": "FORMACION_PROFESIONAL_AGENTES_R01_ACTIVE",
+  "structure_status": "TEAM_STRUCTURE_NAMES_ROLES_3_LEADS_TARGET_R01",
+  "rule": "IDENTITY_TRAINING_PROJECT_PRACTICE_EVIDENCE_EXECUTION_TEACH_NEXT",
+  "team_lead_capacity": {
+    "active_reports_max": 4,
+    "temporary_max": 5,
+    "condition_for_5": "at least one HOLD/BLOCKED/CLOSING",
+    "recommended_p0_p1_max": 2,
+    "third_lead": "NEXO_PLANNED",
+    "fourth_lead": "ORBE_RESERVED"
+  },
+  "aliases": {
+    "Aura": "Team Lead - Operations & Knowledge",
+    "Astra": "Team Lead - Product QA & Architecture",
+    "Atlas": "Agent 1 - Content Systems & Resources Engineer",
+    "Vector": "Agent 2 - Web Release & Integration Engineer",
+    "Pulso": "Agent 3 - Conversational Systems Integration Engineer",
+    "Vigia": "Agent 4 - Observability Privacy & Evidence Engineer",
+    "Motor": "Agent 5 - Interactive Systems & Runtime Engineer",
+    "Eco": "Agent 6 - Voice & Audio Validation Engineer",
+    "Lumen": "Agent 7 - Immersive Media Engineer",
+    "Prisma": "Agent 8 - Frontend Platform & Design Systems Engineer",
+    "Nube": "Agent 9 - Knowledge Cloud & Retrieval Engineer",
+    "Claude": "Creative Interactive Product Engineer",
+    "Senda": "R59 Interests & Editorial Experience Engineer",
+    "Agora": "Social - Community Manager"
+  },
+  "first_training": [
+    "A2_VECTOR",
+    "AGORA_SOCIAL"
+  ],
+  "social_catalog_observed": {
+    "a2_head": "8ea50128b490207b4dd5508c3c46692f5be69c87",
+    "es_conditions": 185,
+    "en_conditions": 185
+  },
+  "external_certification_claimed": false,
+  "production_authority_changed": false
+}
