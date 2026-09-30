@@ -1,9 +1,8 @@
-/* Iris Green · El taller · Lanzador (R47).
-   Primer viewport: título, «Contenido para…», seguir, tres propuestas y los cinco perfiles.
-   «Todos los estudios» es secundario: con JS se abre como hoja/diálogo; sin JS es una sección normal.
-   La etapa llega solo por la dirección (?para= / ?for=) y nunca se guarda.
-   Protección infantil: cada tarjeta se clasifica y se filtra ANTES de pintarla (IGChildSafe).
-   Sin almacenamiento del navegador y sin red. */
+/* Iris Green · El taller · Lanzador (R47/R69).
+   R69 gives age ownership to the single global IGAudience lens. Historical
+   ?para=/ ?for= remains only as no-global-shell fallback for direct old links.
+   «Todos los estudios» is secondary and the child-safe classifier remains local,
+   without identity, storage or network. */
 (function () {
   'use strict';
   var D = document, main = D.querySelector('main.igk'); if (!main) return;
@@ -13,17 +12,32 @@
   function fold(s) { return String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, ''); }
   function fmt(s, v) { return String(s || '').replace(/\{(\w+)\}/g, function (_, k) { return v[k] == null ? '' : v[k]; }); }
 
-  /* ---------- Etapa (solo en la dirección) ---------- */
+  /* ---------- Etapa: una sola fuente global ---------- */
   var CANON = { age_0_12:'AGE_0_12', age_13_17:'AGE_13_17', age_18_plus:'AGE_18_PLUS', all_ages:'ALL_AGES' };
   var LEGACY = { infancia:'AGE_0_12', adolescencia:'AGE_13_17', adultez:'AGE_18_PLUS', childhood:'AGE_0_12', adolescence:'AGE_13_17', adulthood:'AGE_18_PLUS', any:'ALL_AGES' };
   var q = new URLSearchParams(location.search), raw = fold(q.get(key) || q.get(en ? 'para' : 'for') || '');
-  var stage = CANON[raw] || LEGACY[raw] || 'ALL_AGES';
-  main.querySelectorAll('.igk-seg').forEach(function (a) {
-    if (a.getAttribute('data-para') === stage) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+  var fallbackStage = CANON[raw] || LEGACY[raw] || 'ALL_AGES';
+  function globalStage(){return window.IGAudience&&window.IGAudience.get?window.IGAudience.get():null;}
+  function startStage(value){return value==='AGE_0_12'||value==='AGE_13_17'||value==='AGE_18_PLUS'?value:'ALL_AGES';}
+  var stage = startStage(globalStage()||fallbackStage);
+  function syncStage(value){
+    stage=startStage(value||fallbackStage);
+    main.querySelectorAll('.igk-start').forEach(function (ul) { ul.hidden = ul.getAttribute('data-para') !== stage; });
+  }
+  syncStage(stage);
+  function withStage(href) {
+    var base=href.split('?')[0];
+    if(globalStage())return base;
+    return stage && stage!=='ALL_AGES' ? base + '?' + key + '=' + encodeURIComponent(stage) : base;
+  }
+  main.querySelectorAll('a.igk-tile').forEach(function (a) {
+    if(!a.dataset.igkBaseHref)a.dataset.igkBaseHref=a.getAttribute('href').split('?')[0];
+    a.setAttribute('href',withStage(a.dataset.igkBaseHref));
   });
-  main.querySelectorAll('.igk-start').forEach(function (ul) { ul.hidden = ul.getAttribute('data-para') !== stage; });
-  function withStage(href) { return stage && stage!=='ALL_AGES' ? href.split('?')[0] + '?' + key + '=' + encodeURIComponent(stage) : href.split('?')[0]; }
-  if (stage) main.querySelectorAll('a.igk-tile').forEach(function (a) { a.setAttribute('href', withStage(a.getAttribute('href'))); });
+  window.addEventListener('ig:audience-change',function(){
+    syncStage(globalStage()||'GENERAL');
+    main.querySelectorAll('a.igk-tile').forEach(function(a){a.setAttribute('href',withStage(a.dataset.igkBaseHref||a.getAttribute('href')));});
+  });
 
   /* ---------- Protección infantil: filtrar antes de mostrar ---------- */
   var items = Array.prototype.slice.call(main.querySelectorAll('.igk-all .igk-item'));
@@ -36,7 +50,7 @@
   var blocked = [];
   items.forEach(function (li) {
     var m = meta(li);
-    var ok = CS ? CS.allow(m, stage, 'browse') : (m.sensitivity === 'S0_GENERAL' && m.discovery === 'NORMAL');
+    var ok = CS ? CS.allow(m, globalStage()||stage, 'browse') : (m.sensitivity === 'S0_GENERAL' && m.discovery === 'NORMAL');
     li.dataset.igSafe = ok ? 'yes' : 'no';
     if (!ok) { blocked.push(li); li.remove(); }
   });
@@ -45,7 +59,7 @@
   items = items.filter(function (li) { return li.dataset.igSafe === 'yes'; });
   items.forEach(function (li) { var p = li.getAttribute('data-profile'); visibleBy[p] = (visibleBy[p] || 0) + 1; });
   main.querySelectorAll('.igk-start .igk-item').forEach(function (li) {
-    var m = meta(li); if (CS && !CS.allow(m, stage, 'browse')) li.remove();
+    var m = meta(li); if (CS && !CS.allow(m, globalStage()||stage, 'browse')) li.remove();
   });
   main.querySelectorAll('.igk-p').forEach(function (card) {
     var p = card.getAttribute('data-profile'), n = visibleBy[p] || 0;
