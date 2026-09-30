@@ -1550,3 +1550,173 @@ GTFS Pathways + representación espacial/diagrama puede ser más pertinente que 
 
 Estado:
 `SENDA_ACCESSIBLE_INTERACTIVE_MAPS_STUDIED_R11`
+
+
+## 40. Workers y render off-main-thread R12
+
+Fuentes estudiadas:
+- Web Workers;
+- OffscreenCanvas;
+- transferControlToOffscreen;
+- structured clone;
+- transferable objects;
+- createImageBitmap en workers.
+
+### 40.1 Qué mover a Worker
+
+Buenos candidatos:
+- render Canvas/Offscreen;
+- simulación;
+- geometría/procedural;
+- parsing grande;
+- transformaciones de datos;
+- image preprocessing;
+- cálculos que bloquean main thread.
+
+No mover conceptualmente:
+- DOM;
+- focus management;
+- accessible names;
+- live regions;
+- navegación semántica.
+
+Main thread conserva interfaz accesible.
+
+### 40.2 OffscreenCanvas
+
+`transferControlToOffscreen()`:
+- transfiere control del canvas;
+- ampliamente disponible desde 2023;
+- permite render fuera del main thread.
+
+Cautela:
+el canvas debe transferirse antes de crear un contexto incompatible en main.
+
+### 40.3 Structured clone
+
+Puede clonar:
+- arrays;
+- maps/sets;
+- typed arrays;
+- blobs;
+- ImageData;
+- ImageBitmap;
+- objetos simples;
+- etc.
+
+No:
+- functions;
+- DOM nodes;
+- prototipos/clases completas como comportamiento.
+
+Regla:
+mensajes Worker deben usar contratos de datos explícitos.
+
+### 40.4 Transferables
+
+ArrayBuffer:
+puede transferirse en vez de copiarse.
+
+Después:
+el origen queda detached/no utilizable.
+
+Uso:
+- grandes buffers;
+- geometría;
+- imagen;
+- datos binarios.
+
+Regla:
+`TRANSFER_MEANS_OWNERSHIP_CHANGE`.
+
+Documentar:
+quién posee el buffer en cada estado.
+
+### 40.5 ImageBitmap
+
+Puede crearse en Worker y servir como recurso de imagen eficiente.
+
+Aplicación potencial:
+- decode/preprocess;
+- sprites;
+- composiciones;
+- raster generado.
+
+No confundir:
+ImageBitmap pipeline con semántica de imagen.
+Alt/descripción sigue en DOM.
+
+### 40.6 Worker protocol
+
+Mensajes recomendados:
+- type;
+- requestId;
+- version;
+- payload;
+- transferable ownership;
+- error shape.
+
+Evitar:
+objetos implícitos sin schema.
+
+### 40.7 Backpressure
+
+No enviar:
+60 mensajes/segundo de estado completo si no hace falta.
+
+Opciones:
+- coalescing;
+- latest-wins;
+- transferable buffers;
+- batches;
+- event thresholds.
+
+Objetivo:
+mover trabajo fuera del main sin saturar message queue.
+
+### 40.8 Error/fallback
+
+Si Worker:
+- falla;
+- tarda;
+- no soporta feature;
+
+fallback:
+- ruta main-thread reducida;
+- representación estática;
+- menor calidad;
+- estado preservado.
+
+No:
+pantalla vacía.
+
+### 40.9 Accesibilidad
+
+Worker nunca es excusa para:
+- ocultar estado;
+- perder foco;
+- retrasar announcements indefinidamente;
+- dibujar texto esencial como píxel.
+
+Patrón:
+Worker produce visual/calculation result →
+main actualiza state/DOM semántico.
+
+### 40.10 Performance proof
+
+Mover a Worker solo si medición demuestra beneficio.
+
+Medir:
+- main-thread time;
+- INP;
+- messaging overhead;
+- transfer/copy;
+- Worker CPU;
+- first interaction;
+- memory.
+
+No:
+“Workers son más rápidos” como supuesto universal.
+
+Estado:
+`SENDA_WORKERS_OFFMAIN_RENDER_STUDIED_R12`
