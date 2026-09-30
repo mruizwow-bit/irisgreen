@@ -123,6 +123,52 @@ Una relación se fideliza a través de distintos momentos y publicaciones, no me
 Marcador de saturación:
 `THREAD_SATURATED_MOVE_ON`.
 
+## QUÉ HACER INMEDIATAMENTE DESPUÉS DE CERRAR UN HILO
+
+Cuando marques:
+
+`THREAD_SATURATED_MOVE_ON`
+
+NO vuelvas a ese hilo durante esa sesión.
+
+Sigue exactamente este orden:
+
+1. **Siguiente comentario propio pendiente**
+   - revisar la siguiente persona que comentó en una publicación de Iris Green;
+   - responder solo si hay contenido sustantivo pendiente.
+
+2. **Habitual no visitado hoy**
+   - elegir una persona habitual distinta de las ya atendidas;
+   - revisar si tiene una publicación reciente pertinente;
+   - interactuar solo si hay algo concreto que decir.
+
+3. **Relación cálida pendiente**
+   - revisar una cuenta NUEVA/CALIDA con respuesta o señal previa;
+   - preferir una publicación distinta del hilo anterior.
+
+4. **Descubrimiento nuevo**
+   - buscar una cuenta nueva pertinente ES o EN;
+   - revisar perfil antes de comentar/seguir;
+   - registrar primer contacto.
+
+5. **Rotar plataforma**
+   - si Instagram ya concentra demasiada atención, pasar a Facebook;
+   - si Facebook ya tuvo una ronda suficiente, pasar a TikTok cuando esté activo;
+   - no permanecer toda la sesión en una sola persona o un solo post.
+
+Regla:
+`ONE_THREAD_CLOSED → NEXT_RELATION`.
+
+No se considera continuidad:
+- escribir otra frase en el mismo hilo porque la otra persona puso un corazón;
+- volver a preguntar algo sin necesidad;
+- encadenar cortesías.
+
+Sí se considera continuidad:
+- volver otro día a esa persona en otra publicación pertinente;
+- responder una nueva pregunta real;
+- reconocer una relación en un contexto distinto.
+
 # 4. INSTAGRAM
 
 Situación:
