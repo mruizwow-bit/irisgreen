@@ -1,3 +1,11 @@
+## R68 · corrección de producto · 30/09/2026
+
+Estado: `R68_NO_VISIBLE_HANGING_WIRES_FLOATING_LANTERNS`.
+
+María fija que la sala es sensorial y que los faroles deben parecer flotar. Los hilos/cables visibles no forman parte de la identidad final y deben eliminarse u ocultarse. R3 queda acotada a proyección, móvil, LIGHT y soportes visibles.
+
+Orden: `ORDENES/R68_CLAUDE_FAROLES/04_MARIA_FLOATING_NO_VISIBLE_WIRES.md`.
+
 ## R68 Faroles · R2 review · 30/09/2026
 
 Estado:
