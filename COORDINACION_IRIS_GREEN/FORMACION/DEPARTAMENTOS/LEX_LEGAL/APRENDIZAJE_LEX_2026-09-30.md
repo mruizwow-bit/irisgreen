@@ -231,3 +231,25 @@ La foundation no permite afirmar cumplimiento global.
 
 No certificación externa.
 Aprendizaje continuo obligatorio.
+
+
+## Coordinación interna y continuidad
+
+Canal común interno:
+`#general-sabik-ia-technology`
+
+Slack channel ID verificado:
+`C0C590Y8PHD`
+
+Criterio fijado por María:
+- Slack = conversación y coordinación rápida;
+- GitHub = decisiones, formación, estados y evidencia canónica;
+- Claude y sus agentes externos no entran en este Slack interno por defecto.
+
+Regla de Lex:
+cualquier criterio jurídico material comunicado por Slack debe quedar preservado después en GitHub si afecta decisión, obligación, gate, evidencia, riesgo o estado.
+
+Estado de Formación tras cerrar R01:
+`ACTIVE_CONTINUOUS_LEARNING`.
+
+La foundation está aprobada internamente; el estudio regulatorio no se considera terminado.
