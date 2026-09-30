@@ -17,6 +17,13 @@ body[data-ig-r49="1"]{
   background:var(--ig-bg-page);
   font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
 }
+body[data-ig-r49="1"][data-ig-r42-family="quiet"]{
+  /* Quiet Space keeps its immersive scene runtime, but the outer document is
+     still a low-stimulation Iris Green surface: never a white page in dark mode. */
+  background-color:var(--ig-bg-page)!important;
+  background-image:none!important;
+  color:var(--ig-text)!important;
+}
 body[data-ig-r49="1"] :where(h1,h2,h3,.ig-r49-brand,.ig-r49-footer-brand){
   color:var(--ig-text);
 }
