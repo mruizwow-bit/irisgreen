@@ -16,7 +16,7 @@ Fecha: 30/09/2026
 
 | Alias | Nº | Puesto | Jefatura | Formación |
 |---|---:|---|---|---|
-| Atlas | A1 | Ingeniero de Sistemas de Contenido y Recursos | Aura | PLAN DETALLADO PENDIENTE |
+| Atlas | A1 | Content Systems, Digital Assets & Publishing Engineer · Ingeniero de Sistemas de Contenido, Activos Digitales y Publicación | Aura | FORMACION/A1_ATLAS/ · foundation R01 estudiada; prácticas pendientes |
 | Vector | A2 | Web Release & Integration Engineer | Aura | FORMACION/A2_VECTOR/ |
 | Pulso | A3 | Ingeniero de Integración de Sistemas Conversacionales / Sabik Runtime | Nexo | PLAN DETALLADO PENDIENTE |
 | Vigía | A4 | Ingeniero de Observabilidad, Privacidad y Evidencia | Nexo | PLAN DETALLADO PENDIENTE |
