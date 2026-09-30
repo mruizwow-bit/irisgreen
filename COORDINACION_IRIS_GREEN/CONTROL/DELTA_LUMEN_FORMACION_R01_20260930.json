@@ -1,0 +1,21 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "LUMEN-A7-FORMACION-R01-20260930",
+  "date": "2026-09-30",
+  "alias": "Lumen",
+  "agent": "A7",
+  "supervisor": "Astra",
+  "professional_role": "IMMERSIVE_MEDIA_AND_INTERACTIVE_AUDIOVISUAL_ENGINEER",
+  "status": "LUMEN_IMMERSIVE_MEDIA_FOUNDATION_STUDIED_R01",
+  "practical_status": "PRACTICE_PENDING_PERCEPTUAL_AND_DEVICE_QA",
+  "product_change": false,
+  "training_day_only": true,
+  "external_certification": false,
+  "observed_product_head": "8ea50128b490207b4dd5508c3c46692f5be69c87",
+  "observed_current_room_tiers": [
+    "WEBGL2",
+    "CANVAS2D",
+    "STATIC"
+  ],
+  "target_architecture_mentions_webgpu": true
+}

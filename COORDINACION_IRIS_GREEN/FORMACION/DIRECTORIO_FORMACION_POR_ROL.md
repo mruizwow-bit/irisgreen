@@ -22,7 +22,7 @@ Fecha: 30/09/2026
 | Vigía | A4 | Ingeniero de Observabilidad, Privacidad y Evidencia | Nexo | PLAN DETALLADO PENDIENTE |
 | Motor | A5 | Ingeniero de Sistemas Interactivos y Runtime | Astra | PLAN DETALLADO PENDIENTE |
 | Eco | A6 | Ingeniero de Validación de Voz, Audio y Media | Nexo | PLAN DETALLADO PENDIENTE |
-| Lumen | A7 | Ingeniero de Media Inmersiva y Rincón Tranquilo | Astra | PLAN DETALLADO PENDIENTE |
+| Lumen | A7 | Ingeniero de Media Inmersiva y Rincón Tranquilo | Astra | FORMACION/A7_LUMEN/ · foundation R01 estudiada; prácticas pendientes |
 | Prisma | A8 | Ingeniero de Plataforma Frontend y Design Systems | Astra | PLAN DETALLADO PENDIENTE |
 | Nube | A9 | Ingeniero de Knowledge Cloud, Retrieval y Pipelines | Aura | PLAN DETALLADO PENDIENTE |
 | Córtex | A10 | LLM / Generative AI Systems Engineer | Nexo | FORMACION/A10_CORTEX/ |
@@ -61,7 +61,7 @@ Tu primera misión es:
 3. estudiar en internet con fuentes serias;
 4. crear 00_IDENTIDAD_Y_PUESTO.md, 01_PLAN_FORMACION.md y 02_PRACTICAS_Y_EXAMEN.md;
 5. estudiar realmente el plan;
-6. crear tu primer APRENDIZAJE_<ALIAS>_<FECHA>.md;
+6. crear tu primer APRENDIZAJE_<ALIAS>_<AAAA-MM-DD>.md;
 7. actualizar CONTROL/FORMACION_AGENTES.csv.
 
 No empezar producto mientras la jornada de Formación siga activa.
