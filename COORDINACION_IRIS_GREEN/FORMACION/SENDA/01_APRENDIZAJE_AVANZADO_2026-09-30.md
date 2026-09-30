@@ -703,3 +703,172 @@ compatibilidad con control por voz además de lectores de pantalla.
 
 No certificación externa.
 No producto modificado.
+
+
+## 34. Profiling real y gates de rendimiento R06
+
+Fuentes estudiadas:
+- Chrome DevTools Performance/Rendering/Performance Monitor;
+- MDN Event Timing / PerformanceEventTiming;
+- MDN Long Animation Frames;
+- User Timing API;
+- Three.js renderer.info / cleanup/disposal;
+- Lighthouse CI assertions y budgets.
+
+### 34.1 Medir interacción real
+
+PerformanceEventTiming permite observar latencia de eventos e investigar interacciones lentas.
+
+INP:
+- no se sustituye por “FPS”;
+- una escena puede animar bien y responder mal a un click/tap;
+- medir inicio de interacción, processing y siguiente paint.
+
+Regla:
+`SMOOTH_ANIMATION != RESPONSIVE_INTERACTION`.
+
+### 34.2 Long Animation Frames
+
+Una frame larga >50 ms es señal diagnóstica útil.
+Para ~60 fps, el presupuesto teórico por frame ronda 16 ms.
+
+Uso Senda:
+- detectar scripts/render/layout que bloquean;
+- no convertir 16 ms en dogma universal;
+- priorizar estabilidad perceptiva y respuesta de interacción.
+
+### 34.3 User Timing
+
+Instrumentar acciones propias con:
+- performance.mark();
+- performance.measure();
+- nombres semánticos.
+
+Ejemplos de entrenamiento:
+- scene-ready;
+- first-interaction-ready;
+- select-to-visible-feedback;
+- open-info-panel;
+- switch-locale;
+- restore-after-context-loss.
+
+La instrumentación debe medir experiencia, no solo funciones internas.
+
+### 34.4 GPU/render metrics
+
+Three.js WebGLRenderer.info:
+- geometries;
+- textures;
+- programs;
+- render calls;
+- triangles;
+- points;
+- lines.
+
+En renderer moderno, Info puede aportar tamaños de memoria rastreados.
+
+Cautela:
+- no presentar un contador de engine como medida universal exacta de VRAM del sistema;
+- Chrome Rendering stats puede aportar observación específica de GPU/memoria en ese entorno.
+
+### 34.5 Gestión explícita de memoria
+
+Three.js no libera automáticamente todos los recursos GPU al retirar objetos.
+
+Obligatorio cuando corresponda:
+- geometry.dispose();
+- material.dispose();
+- texture.dispose();
+- render target/pass disposal;
+- limpiar referencias y listeners.
+
+Prueba de fuga:
+1. entrar en mundo;
+2. cargar recursos;
+3. salir/liberar;
+4. repetir N veces;
+5. renderer.info/memory no debe crecer indefinidamente.
+
+### 34.6 Texturas
+
+Una textura comprimida pequeña en red se expande en memoria.
+El manual Three.js ejemplifica que 1024×1024 puede requerir varios MB.
+
+Regla:
+`TRANSFER_SIZE != GPU_MEMORY_COST`.
+
+### 34.7 DevTools y móvil
+
+Chrome permite:
+- flame chart;
+- GPU track;
+- FPS/render stats;
+- memoria;
+- CPU/network throttling.
+
+Pero el throttling de CPU es relativo al equipo anfitrión y NO reproduce fielmente arquitectura móvil.
+
+Gate:
+- laboratorio para detectar/regresar;
+- dispositivo/navegador real para validar riesgo material.
+
+### 34.8 Performance budgets en CI
+
+Lighthouse CI permite:
+- assertions con exit nonzero;
+- budgets por tamaño/conteo de recursos;
+- múltiples ejecuciones;
+- assertions sobre User Timings.
+
+Uso:
+- proteger regresiones;
+- no sustituir profiling runtime de escenas;
+- no declarar experiencia “rápida” por una puntuación agregada única.
+
+### 34.9 Matriz mínima de profiling Senda
+
+Por piloto visual:
+1. carga inicial total;
+2. LCP;
+3. CLS;
+4. INP/interacción crítica;
+5. User Timing de primera acción;
+6. long frames/tasks;
+7. draw calls;
+8. geometrías/texturas activas;
+9. memoria observable disponible;
+10. estabilidad tras entrar/salir repetidamente;
+11. pérdida/restauración GPU;
+12. 390 móvil;
+13. 320;
+14. desktop;
+15. reduced motion;
+16. fallback.
+
+### 34.10 Gate de degradación adaptativa
+
+No seleccionar calidad solo por user-agent o deviceMemory.
+
+Preferencia:
+- ruta base conservadora;
+- medir tamaño/DPR/capacidad;
+- escalar calidad;
+- degradar si frame/interaction budget se incumple.
+
+Orden de degradación orientativo:
+1. resolución interna;
+2. detalle secundario;
+3. sombras/reflections costosas;
+4. post-processing;
+5. densidad de objetos;
+6. técnica alternativa.
+
+Nunca degradar:
+- contenido factual;
+- controles;
+- foco;
+- semántica;
+- alternativa accesible.
+
+Estado:
+`SENDA_PROFILING_PERFORMANCE_GATES_STUDIED_R06`
