@@ -3,6 +3,8 @@
 
 - self-host the approved Iris Green fonts on every public HTML page;
 - remove the obsolete Resources life-stage chooser so AGE_* has one global UI;
+- load the final compatibility stylesheet last and unlayered. Legacy route CSS is
+  mostly unlayered, so a named @layer would lose to it even when loaded later;
 - leave content, product engines and immersive art untouched.
 """
 from __future__ import annotations
