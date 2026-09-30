@@ -19,7 +19,7 @@ jobs:
           python-version: '3.12'
       - name: Syntax
         run: |
-          python -m py_compile             scripts/build_site.py             scripts/apply_home_r42.py             scripts/apply_r69_workshop_stable.py             scripts/apply_r69_global_cleanup.py             scripts/test_r69_unified_interface.py             scripts/test_r69_unified_interface_browser.py             scripts/test_home_v4_css_integrity.py
+          python -m py_compile             scripts/build_site.py             scripts/apply_home_r42.py             scripts/apply_r69_workshop_stable.py             scripts/apply_r69_global_cleanup.py             scripts/test_r69_unified_interface.py             scripts/test_r69_unified_interface_browser.py             scripts/test_home_v4_css_integrity.py             scripts/test_r51_audience_filter_browser.py
           node --check assets/ig-r49-transversal.js
           node --check assets/ig-taller-r42.js
           node --check assets/ig-taller-estudio.js
@@ -52,6 +52,7 @@ jobs:
           /tmp/ig-r69/bin/python scripts/test_r69_unified_interface_browser.py
           /tmp/ig-r69/bin/python scripts/test_r67_aura_recovery_browser.py
           /tmp/ig-r69/bin/python scripts/test_r51_home_age_browser.py
+          /tmp/ig-r69/bin/python scripts/test_r51_audience_filter_browser.py
       - name: Upload R69 evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
@@ -61,5 +62,6 @@ jobs:
             reports/r69-unified-interface
             reports/r67-aura-recovery
             reports/r51-home-age
+            reports/r51-audience-filter
             reports/routes/build.json
           retention-days: 14

@@ -77,7 +77,7 @@ async def main():
   need(await page.locator('[data-ig-home-safe]').is_hidden(),'safe status leaked into adult view')
   need(await page.locator('[data-ig-home-adult]').is_visible(),'adult explicit status missing')
   report['checks'].append('home-safety-state-exclusive')
-    report['checks'].append('home-canonical-surface-gates')
+  report['checks'].append('home-canonical-surface-gates')
   adult_path='/es/neurodiversidad/condiciones/menopausia/'
   await gate(page,adult_path,False,'GENERAL')
   await gate(page,adult_path,True,'AGE_0_12')
@@ -86,7 +86,17 @@ async def main():
   await gate(page,adult_path,True,'ALL_AGES')
   await gate(page,'/es/tramites/directorio/',True,'AGE_13_17')
   await gate(page,'/es/tramites/directorio/',False,'AGE_18_PLUS')
+  # Unclassified discovery/product pages are fail-closed in child/teen/all-ages views.
+  await gate(page,'/es/intereses/',True,'AGE_0_12')
+  await gate(page,'/es/libros/',True,'AGE_0_12')
+  await gate(page,'/es/intereses/',True,'AGE_13_17')
+  await gate(page,'/es/libros/',True,'ALL_AGES')
+  # Explicit safe tool surfaces remain usable and apply their own internal age filters.
+  await gate(page,'/es/recursos/juegos/',False,'AGE_0_12')
+  await gate(page,'/es/taller/',False,'AGE_0_12')
+  await gate(page,'/es/recursos/rutinas-visuales/',False,'AGE_0_12')
   report['checks'].append('deep-link-pre-render-gates')
+  report['checks'].append('unclassified-direct-route-fail-closed')
   menopause='/es/neurodiversidad/condiciones/menopausia'
   need(not await search_has(page,'AGE_0_12',menopause),'child search leaked adult-only condition')
   need(not await search_has(page,'AGE_13_17',menopause),'teen search leaked adult-only condition')
