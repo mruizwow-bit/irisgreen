@@ -1,3 +1,53 @@
+## CLAUDE · cola reconciliada tras RESUME GATE · 30/09/2026
+
+La lectura que decía “la matriz R44 no existe” queda SUPERSEDED por avance canónico posterior.
+
+HEAD coordinación vigente al emitir esta corrección:
+`4da40f27ea7cf8b8816f8a0c785dc69d31defe7a`.
+
+La matriz exacta YA está preservada en:
+`MEMORIA/R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md`
+SHA-256:
+`f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e`.
+
+La reconciliación YA está preservada en:
+`MEMORIA/R44_MATRIZ_RECONCILIADA_OLA_A_CLAUDE_20260930.md`
+SHA-256:
+`f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44`.
+
+Por tanto §2 y §3 de R44-A0 están cerrados y el bloqueo de fuente NO existe.
+
+### Cola ejecutable de ESTA sesión
+
+1. **R44-A0 · ACTIVO AHORA**
+   - continuar §4 framework;
+   - construir §5: E01, E06, E17, E22, E28, E34, E38, E44;
+   - puede preservar por tandas/bundles si el push directo sigue bloqueado;
+   - no necesita esperar aprobación entre tandas; STOP solo al completar A0 o ante bloqueo real nuevo.
+
+2. **R62-P04 · AUTORIZADO PARA E4, DESPUÉS DE R44-A0**
+   - concepto caja de música de taller PASS;
+   - no está esperando HUMAN QA de concepto;
+   - no iniciar mientras R44-A0 sea el carril activo salvo nueva orden de María.
+
+3. **R62-P03 · PRODUCTO CERRADO**
+   - no trabajo visual;
+   - preservación/importación del bundle queda en cola de coordinación;
+   - último bundle recibido en chat: SHA-256 `2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e`, HEAD `2e559991762aca18b7c62f65f4df83ecfbee519b`, prerequisite `318a5745789922b82e96bfaebd1536cac240a43e`;
+   - este bundle incluye la continuación P04 declarada por Claude y sustituye al bundle previo como cadena más reciente de esa sesión;
+   - no bloquea R44-A0 por decisión explícita de María.
+
+4. **R61 / R68**
+   - no ejecutables en esta sesión si sus artefactos siguen en otros contenedores;
+   - no rerenderizar ni reconstruir.
+
+R65 permanece HUMAN QA PASS y no se reabre.
+
+Regla operativa específica:
+la autorización explícita de María de R44-A0 fija este carril como trabajo actual pese a que existan preservaciones pendientes gestionadas por coordinación.
+
+No main. No producción.
+
 ## R44-A0 · fuente preservada + reconciliación aceptada · 30/09/2026
 
 Estado:
@@ -80,7 +130,8 @@ Estados separados:
 | R63 | Sala sensorial Sakura | #328 | Runtime/handoff PASS Astra | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | Desbloquear R67, 0 external requests, hardware QA, Deploy Preview, HUMAN QA María |
 | R54/R47 | Taller · 6 primeros visuales R54 dentro del Taller real R47 | #318 / #329 | KEEP 6/6 + Taller R47 funcional | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | No restaurar fixture R64. Mantener arte R54 dentro de Taller real; desbloquear build R67 |
 | R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | HUMAN QA María PASS · listo para R67 Fase 3 | HANDOFF_IDENTIFIED | **READY_FOR_INTEGRATION** | Integrar en R67 Fase 3; no reabrir arte ni crear otra QA |
-| R62-P03 | Rutas de luz | #326 | HUMAN QA María PASS · P03 cerrado | BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING | PRODUCT_APPROVED_IMPORT_PENDING | Importar/verificar bundle sobre base 318a5745; no reabrir P03 |
+| R62-P03 | Rutas de luz | #326 | HUMAN QA María PASS · P03 cerrado | BUNDLE_LATEST_IN_CHAT_IMPORT_PENDING | PRODUCT_APPROVED_IMPORT_PENDING | Coordinación importa/verifica bundle; no reabrir P03; no bloquea R44-A0 |
+| R62-P04 | Ritmo de colores · caja de música de taller | #326 | R62_P04_RITMO_DE_COLORES_CONCEPT_PASS_E4_AUTHORIZED | BUNDLE_LATEST_IN_CHAT_NOT_IMPORTED | E4_AUTHORIZED_WAIT_R44_A0 | R62/E4 | Ejecutar acabado E4 después de R44-A0; no reabrir concepto |
 | R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **BLOCKED_BY_SESSION_ARTIFACT_LOCATION** | NOT_READY | Recuperar binarios desde la sesión que los contiene; luego hashes + móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
 | R68 | Faroles flotantes | #335 | R2 spatial PASS; projection/mobile/LIGHT R3 pending | **LOCAL_AT_RISK** | NOT_READY | Ejecutar R3 acotada; preservar fuente/patch; movimiento runtime separado |

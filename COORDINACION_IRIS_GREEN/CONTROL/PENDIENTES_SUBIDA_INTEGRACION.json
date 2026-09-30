@@ -56,15 +56,17 @@
       "product": "Rutas de luz",
       "issue": 326,
       "product_status": "R62_P03_R3_HUMAN_APPROVED_UNLOCK_P04_CONCEPT",
-      "preservation": "BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING",
+      "preservation": "BUNDLE_LATEST_IN_CHAT_IMPORT_PENDING",
       "integration": "PRODUCT_APPROVED_IMPORT_PENDING",
       "artifact_sha256": "c19c828099482a7ad2cecb9d90f7f8f01855304ee22ee51bea04f4f62761133b",
       "local_commit": "5648a8d5d36056c950d592bf66dd3d0e162b10c6",
-      "next": "import bundle into repo with prerequisite + rerun chain tests; do not reopen P03",
+      "next": "coordination import/verify latest bundle; do not reopen P03; does not block R44-A0",
       "bundle_sha256": "bc4579db5680e9719348e817d1fdbcafcfff2aa3478bffb62fc1f253a0e2de60",
       "bundle_prerequisite": "318a5745789922b82e96bfaebd1536cac240a43e",
       "bundle_head": "706a9a671e9f2c6729fa977b4cb9c860c3f5b2c5",
-      "patch_sha256": "a72251f496f3f607a7963a5778b473e346d1edd36d78ea79448499cf4a17632c"
+      "patch_sha256": "a72251f496f3f607a7963a5778b473e346d1edd36d78ea79448499cf4a17632c",
+      "latest_bundle_sha256": "2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e",
+      "latest_bundle_head": "2e559991762aca18b7c62f65f4df83ecfbee519b"
     },
     {
       "id": "R61",
@@ -130,6 +132,20 @@
         "raw_logs_required_at_handoff": true,
         "challenge_accessibility_pass": false
       }
+    },
+    {
+      "id": "R62-P04",
+      "product": "Ritmo de colores - caja de musica de taller",
+      "issue": 326,
+      "product_status": "R62_P04_RITMO_DE_COLORES_CONCEPT_PASS_E4_AUTHORIZED",
+      "preservation": "BUNDLE_LATEST_IN_CHAT_NOT_IMPORTED",
+      "integration": "E4_AUTHORIZED_WAIT_R44_A0",
+      "destination": "R62/E4",
+      "blocker": "R44_A0_ACTIVE_FIRST_BY_SESSION_PRIORITY",
+      "next": "build E4 after R44-A0; preserve patch/bundle/hash/handoff",
+      "priority": "P1-NEXT",
+      "latest_bundle_sha256": "2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e",
+      "latest_bundle_head": "2e559991762aca18b7c62f65f4df83ecfbee519b"
     }
   ],
   "production_gate": "NO_MAIN_NO_PRODUCTION_UNTIL_R67_INTEGRATED_PREVIEW_AND_HUMAN_QA"

@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P04-RITMO-CONCEPT-PASS-20260930",
+  "issue": 326,
+  "date": "2026-09-30",
+  "authority": "Maria",
+  "status": "R62_P04_RITMO_DE_COLORES_CONCEPT_PASS_E4_AUTHORIZED",
+  "concept": "CAJA_DE_MUSICA_DE_TALLER",
+  "keep": [
+    "BARRILETE",
+    "PIEDRAS",
+    "LAMINAS_LATON",
+    "VISIBLE_CAUSALITY",
+    "NOTE_BY_LAMELLA_LENGTH",
+    "TIME_BY_ANGLE",
+    "NO_SCORE",
+    "NO_EXAM"
+  ],
+  "next": "R62_P04_RITMO_DE_COLORES_E4_READY_FOR_ASTRA_MARIA",
+  "session_priority": "R44_A0_FIRST_P04_AFTER",
+  "latest_session_bundle": {
+    "sha256": "2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e",
+    "head": "2e559991762aca18b7c62f65f4df83ecfbee519b",
+    "prerequisite": "318a5745789922b82e96bfaebd1536cac240a43e",
+    "preservation": "BUNDLE_IN_CHAT_NOT_IMPORTED"
+  },
+  "limits": [
+    "P03_DO_NOT_REOPEN",
+    "P05_P06_HOLD",
+    "NO_A2",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ],
+  "normative_change": false
+}

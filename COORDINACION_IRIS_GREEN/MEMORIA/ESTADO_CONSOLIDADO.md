@@ -1,3 +1,53 @@
+## CLAUDE · cola reconciliada tras RESUME GATE · 30/09/2026
+
+La lectura que decía “la matriz R44 no existe” queda SUPERSEDED por avance canónico posterior.
+
+HEAD coordinación vigente al emitir esta corrección:
+`4da40f27ea7cf8b8816f8a0c785dc69d31defe7a`.
+
+La matriz exacta YA está preservada en:
+`MEMORIA/R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md`
+SHA-256:
+`f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e`.
+
+La reconciliación YA está preservada en:
+`MEMORIA/R44_MATRIZ_RECONCILIADA_OLA_A_CLAUDE_20260930.md`
+SHA-256:
+`f1c1d709a4e37e87c4436cd47cd3d9718dfc69feae72318b110ea7aec6eafc44`.
+
+Por tanto §2 y §3 de R44-A0 están cerrados y el bloqueo de fuente NO existe.
+
+### Cola ejecutable de ESTA sesión
+
+1. **R44-A0 · ACTIVO AHORA**
+   - continuar §4 framework;
+   - construir §5: E01, E06, E17, E22, E28, E34, E38, E44;
+   - puede preservar por tandas/bundles si el push directo sigue bloqueado;
+   - no necesita esperar aprobación entre tandas; STOP solo al completar A0 o ante bloqueo real nuevo.
+
+2. **R62-P04 · AUTORIZADO PARA E4, DESPUÉS DE R44-A0**
+   - concepto caja de música de taller PASS;
+   - no está esperando HUMAN QA de concepto;
+   - no iniciar mientras R44-A0 sea el carril activo salvo nueva orden de María.
+
+3. **R62-P03 · PRODUCTO CERRADO**
+   - no trabajo visual;
+   - preservación/importación del bundle queda en cola de coordinación;
+   - último bundle recibido en chat: SHA-256 `2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e`, HEAD `2e559991762aca18b7c62f65f4df83ecfbee519b`, prerequisite `318a5745789922b82e96bfaebd1536cac240a43e`;
+   - este bundle incluye la continuación P04 declarada por Claude y sustituye al bundle previo como cadena más reciente de esa sesión;
+   - no bloquea R44-A0 por decisión explícita de María.
+
+4. **R61 / R68**
+   - no ejecutables en esta sesión si sus artefactos siguen en otros contenedores;
+   - no rerenderizar ni reconstruir.
+
+R65 permanece HUMAN QA PASS y no se reabre.
+
+Regla operativa específica:
+la autorización explícita de María de R44-A0 fija este carril como trabajo actual pese a que existan preservaciones pendientes gestionadas por coordinación.
+
+No main. No producción.
+
 ## R44 · ampliación Taller · 64 retos · A0 autorizado · 30/09/2026
 
 Estado:
