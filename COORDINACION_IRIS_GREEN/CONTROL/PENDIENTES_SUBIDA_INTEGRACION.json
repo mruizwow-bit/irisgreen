@@ -88,11 +88,14 @@
       "id": "R42-CONTENT",
       "product": "Contenido R02",
       "issue": 302,
-      "product_status": "R42_CONTENT_R02_AUDITED_CURRENT_A2_REBASE_REQUIRED",
-      "preservation": "PACKAGE_PRESERVED_STALE_BASE",
+      "product_status": "R42_CONTENT_R02_VERIFIED_SAME_PACKAGE_CURRENT_A2_REBASE_REQUIRED",
+      "preservation": "PACKAGE_VERIFIED_ATTACHMENT_STALE_BASE",
       "integration": "REBASE_REQUIRED",
       "artifact_sha256": "aa3649a821da1226dd84bda70f35ee8c8e286cb81c1bd5711af97e71761e8961",
-      "next": "rebase current A2"
+      "next": "rebase current A2; preserve R67/R63 build chain; reconcile sources and 465 URL anomaly count",
+      "package_base": "9c721a793060979903e77c31b69c8c01cac49c92",
+      "a2_head_revalidated": "8ea50128b490207b4dd5508c3c46692f5be69c87",
+      "a2_commits_ahead": 51
     }
   ],
   "production_gate": "NO_MAIN_NO_PRODUCTION_UNTIL_R67_INTEGRATED_PREVIEW_AND_HUMAN_QA"
