@@ -102,7 +102,7 @@ function upgradeFooter(){
  var access=en()?'/es/lectura-accesible/?lang=en':'/es/lectura-accesible/';
  var privacy=en()?'/en/privacy/':'/es/privacidad/';
  [[about,tr().about],[access,tr().accessibility],[privacy,tr().privacy]].forEach(function(x){nav.appendChild(h('a',{href:x[0],text:x[1]}));});
- inner.append(brand,nav);footer.appendChild(inner);return footer;
+ inner.append(brand,nav);footer.replaceChildren(inner);return footer;
 }
 function ensureSearch(){
  if(W.IGSearch)return Promise.resolve(W.IGSearch);
@@ -176,7 +176,20 @@ function ensureSkip(){
  var existing=Array.from(D.querySelectorAll('a.skip,a.ig-home-skip,a.ig-r49-skip')).find(function(a){return !a.closest('x-dc');});
  if(existing)return;var main=Array.from(D.querySelectorAll('main')).find(function(m){return !m.closest('x-dc');})||D.querySelector('main');if(!main)return;if(!main.id)main.id='main';var a=h('a',{class:'ig-r49-skip',href:'#'+main.id,text:en()?'Skip to content':'Ir al contenido'});D.body.insertBefore(a,D.body.firstChild);
 }
-function start(){ensureSkip();upgradeHeader();upgradeFooter();D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});}
-if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',start,{once:true});else start();
+function retireLegacyChrome(){
+ if(!D.body)return;
+ D.querySelectorAll('#a11y.panel,#pl.panel').forEach(function(n){if(!n.closest('main')&&!n.closest('x-dc'))n.remove();});
+}
+function start(){
+ if(!D.body)return;
+ if(!D.body.hasAttribute('data-ig-r49'))D.body.setAttribute('data-ig-r49','1');
+ if(!D.body.hasAttribute('data-ig-profile'))D.body.setAttribute('data-ig-profile','content');
+ retireLegacyChrome();ensureSkip();upgradeHeader();upgradeFooter();
+ D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});
+}
+/* This file is loaded with defer by the canonical shell. Run as soon as the parsed
+   body exists instead of waiting one more turn for DOMContentLoaded: the legacy
+   header/footer must never be the first painted interface. */
+if(D.body)start();else D.addEventListener('DOMContentLoaded',start,{once:true});
 W.IGR49=Object.freeze({version:'R49-1',refreshStage:updateStage});
 })();
