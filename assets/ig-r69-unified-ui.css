@@ -2,6 +2,17 @@
    UI surfaces consume the global semantic tokens. Pictograms, art, printable
    sheets and immersive scene media keep their own colors. */
 body[data-ig-r49="1"]{
+  /* Compatibility aliases for the historical site-v23/R40 route skins.
+     One semantic palette owns the final page; old selectors may keep using
+     their variable names without introducing a second visual system. */
+  --tinta:var(--ig-text);
+  --azul:var(--ig-link);
+  --lila:var(--ig-accent);
+  --turq:var(--ig-accent-secondary);
+  --papel:var(--ig-bg-surface);
+  --niebla:var(--ig-bg-page);
+  --linea:var(--ig-separator);
+  --suave:var(--ig-text-muted);
   color:var(--ig-text);
   background:var(--ig-bg-page);
   font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;
