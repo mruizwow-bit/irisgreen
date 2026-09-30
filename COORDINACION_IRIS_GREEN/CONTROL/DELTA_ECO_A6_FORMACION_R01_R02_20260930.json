@@ -19,7 +19,8 @@
     "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-09-30.md",
     "FORMACION/A6_ECO/05_CONTINUIDAD_ENTRE_CHATS.md",
     "FORMACION/A6_ECO/06_VIGILANCIA_ESTANDARES_Y_COMPATIBILIDAD.md",
-    "FORMACION/A6_ECO/07_MATRIZ_VALIDACION_SABIK_R66.md"
+    "FORMACION/A6_ECO/07_MATRIZ_VALIDACION_SABIK_R66.md",
+    "FORMACION/A6_ECO/EVIDENCIA/ECO_MEDIA_LAB_20260930.json"
   ],
   "project_evidence_reviewed": [
     {
@@ -41,8 +42,7 @@
     "sample_rate_hz": 48000,
     "channels": 1,
     "negative_control": "Truncated M4A -> ffprobe exit 1, moov atom not found, invalid data",
-    "loudness_probe": "FFmpeg loudnorm analysis executed",
-    "browser_lab": "BLOCKED_BY_ENVIRONMENT: net::ERR_BLOCKED_BY_ADMINISTRATOR; not classified as product/media failure"
+    "loudness_probe": "FFmpeg loudnorm analysis executed"
   },
   "key_findings": [
     "HTTP 200 is not playback evidence",
