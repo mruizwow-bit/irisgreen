@@ -1,3 +1,17 @@
+## R42 Recursos · corrección documental · 30/09/2026
+
+Estado:
+`R42_RECURSOS_DOCUMENT_CORRECTION_RECOVERY_GOOD_LOCAL_ARTIFACT_PENDING`.
+
+Claude corrige bien la metodología: verifica A2 canónico, reconoce errores anteriores, corrige estados/referencias y no toca producto.
+
+Registro equipo:
+- `RECOVERY_GOOD` cerrado;
+- `HANDOFF_GAP` abierto porque el documento corregido sigue local.
+
+Siguiente:
+`R42_RECURSOS_CORRECTED_DOCUMENT_ARTIFACT_READY_FOR_COORDINATION`.
+
 ## Política de trabajo en equipo R01 · 30/09/2026
 
 Estado:
