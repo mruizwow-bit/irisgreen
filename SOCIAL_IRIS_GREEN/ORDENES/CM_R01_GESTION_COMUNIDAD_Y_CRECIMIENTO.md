@@ -554,3 +554,8 @@ Marcador:
 
 Una jornada con solo descubrimiento nuevo:
 `CM_DAILY_FAIL_RANDOM_OUTREACH_ONLY`.
+
+
+## Aclaración expresa de María · 30/09/2026 12:09 Europe/Madrid
+
+La fidelización exige visitar las cuentas de los 114 fieles y comentar SUS publicaciones nuevas con una aportación concreta y cercana. Responder únicamente en las publicaciones de Iris Green no cumple esta tarea. Recorrer el universo de forma rotativa, priorizar novedades aún no comentadas y registrar URL, última revisión y última interacción externa. No repetir comentarios en una publicación ya atendida ni confundir ausencia de publicaciones, perfil no disponible o identidad pendiente con una interacción realizada.
