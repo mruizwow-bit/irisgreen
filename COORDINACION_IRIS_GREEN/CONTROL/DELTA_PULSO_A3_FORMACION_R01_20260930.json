@@ -1,0 +1,53 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PULSO-A3-FORMACION-R01-20260930",
+  "date": "2026-09-30",
+  "issue": 348,
+  "agent": "A3",
+  "alias": "Pulso",
+  "role": "Conversational Systems Integration & Runtime Engineer",
+  "status": "PULSO_A3_CONVERSATIONAL_SYSTEMS_RUNTIME_FOUNDATION_R01_STUDIED",
+  "base_commit": "41a01a5534161da5e4b412dd0c6af424e836a53c",
+  "branch": "pulso/a3-conversational-systems-runtime-foundation-r01-20260930",
+  "studied_runtime_repository": "mruizwow-bit/nea-web-irisgreen",
+  "studied_runtime_commit": "35387c6926ac50882d1137a2f936ffd108f6073c",
+  "domains": [
+    "CONVERSATIONAL_RUNTIME_ARCHITECTURE",
+    "SESSION_AND_TURN_STATE",
+    "STATE_MACHINES",
+    "HTTP_STREAMING",
+    "SERVER_SENT_EVENTS",
+    "WEBSOCKETS",
+    "PROVIDER_ADAPTERS",
+    "CANCELLATION",
+    "RECONNECTION",
+    "CONCURRENCY",
+    "IDEMPOTENCY",
+    "RETRIES_BACKOFF_JITTER",
+    "EVENT_CONTRACTS",
+    "JSON_SCHEMA",
+    "ASYNCAPI",
+    "TOOL_LIFECYCLE",
+    "CHANNEL_SECURITY",
+    "RUNTIME_OBSERVABILITY",
+    "CONVERSATIONAL_ACCESSIBILITY",
+    "LOCAL_FIRST_PRIVACY",
+    "FAILURE_TESTING"
+  ],
+  "artifacts": [
+    "COORDINACION_IRIS_GREEN/FORMACION/A3_PULSO/00_IDENTIDAD_Y_PUESTO.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A3_PULSO/01_PLAN_FORMACION.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A3_PULSO/02_PRACTICAS_Y_EVIDENCIA.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A3_PULSO/03_RUNBOOK_CONTINUIDAD.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A3_PULSO/APRENDIZAJE_PULSO_2026-09-30.md"
+  ],
+  "canonical_rules": {
+    "github": "durable decisions, training, state and evidence",
+    "slack": "fast conversation and coordination",
+    "external_claude_agents_in_internal_slack_by_default": false
+  },
+  "product_change": false,
+  "production_change": false,
+  "external_certification": false,
+  "provider_integration_performed": false
+}
