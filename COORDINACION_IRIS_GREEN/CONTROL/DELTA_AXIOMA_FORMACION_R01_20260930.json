@@ -1,0 +1,32 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "AXIOMA-FORMACION-R01-20260930",
+  "issue": 345,
+  "date": "2026-09-30",
+  "alias": "Axioma",
+  "organizational_role": "QUALITY_ACCESSIBILITY_STANDARDS_LEAD",
+  "professional_role": "ICT_ACCESSIBILITY_QUALITY_STANDARDS_ENGINEER_LEAD",
+  "status": "FOUNDATION_STUDIED_PRACTICE_PENDING",
+  "studied_domains": [
+    "WCAG_2_2",
+    "WCAG_EM_2_0",
+    "ACT_RULES",
+    "WAI_ARIA_1_2_APG",
+    "COGA",
+    "WCAG2ICT",
+    "EN_301_549_V4_1_1",
+    "ISO_IEC_30071_1_2019",
+    "ISO_9241_210_2019",
+    "ISO_IEC_25010_2023",
+    "ISO_IEC_25040_2024",
+    "ISO_IEC_IEEE_29119_2_2021",
+    "PDF_UA",
+    "EPUB_ACCESSIBILITY",
+    "ASSISTIVE_TECHNOLOGY_TESTING_FOUNDATION",
+    "BRAILLE_GOVERNANCE_FOUNDATION"
+  ],
+  "product_change": false,
+  "external_certification": false,
+  "practice_real_at_pending": true,
+  "next_gate": "Complete practices/exam with evidence before AXIOMA_FOUNDATION_PASS_INTERNAL"
+}
