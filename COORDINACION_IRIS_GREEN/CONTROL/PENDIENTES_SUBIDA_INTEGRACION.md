@@ -38,7 +38,7 @@ Estados separados:
 | R54/R47 | Taller · 6 primeros visuales R54 dentro del Taller real R47 | #318 / #329 | KEEP 6/6 + Taller R47 funcional | PRESERVED_IN_GITHUB | **INTEGRATED_A2** | No restaurar fixture R64. Mantener arte R54 dentro de Taller real; desbloquear build R67 |
 | R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | Astra PASS · HUMAN QA pendiente | HANDOFF_IDENTIFIED | PENDING_R67_PHASE3 | HUMAN QA María → gate de integración R67 Fase 3 |
 | R62-P03 | Rutas de luz | #326 | HUMAN QA María PASS · P03 cerrado | BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING | PRODUCT_APPROVED_IMPORT_PENDING | Importar/verificar bundle sobre base 318a5745; no reabrir P03 |
-| R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **LOCAL_BINARY_AT_RISK** | NOT_READY | Transferir MP4/master/build; cerrar móvil/motion/benchmark/performance |
+| R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **BLOCKED_BY_SESSION_ARTIFACT_LOCATION** | NOT_READY | Recuperar binarios desde la sesión que los contiene; luego hashes + móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
 | R68 | Faroles flotantes | #335 | R2 spatial PASS; projection/mobile/LIGHT R3 pending | **LOCAL_AT_RISK** | NOT_READY | Ejecutar R3 acotada; preservar fuente/patch; movimiento runtime separado |
 | R42-CONTENT | Contenido R02 | #302 | Mismo ZIP aa3649a8 verificado; base 9c721a79 ya 51 commits atrás | PACKAGE_VERIFIED_ATTACHMENT / STALE_BASE | REBASE_REQUIRED | Rebase sobre HEAD A2 vivo 8ea50128… o posterior; no aplicar ZIP actual |
@@ -161,7 +161,7 @@ Artefactos declarados:
 - build.
 
 Riesgo:
-los binarios finales siguen en el entorno local/puente de Claude.
+los binarios finales están en otra sesión/contenedor y no son accesibles desde la sesión actual de Claude.
 
 Prioridad:
 **TRANSFERIR/PRESERVAR antes de cualquier nueva iteración.**
