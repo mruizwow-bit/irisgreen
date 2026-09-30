@@ -41,7 +41,7 @@ def check(root:Path):
     need(len(css)>9000,'Home v4 CSS unexpectedly short/truncated')
     for selector,props in REQUIRED.items():
         b=blocks(css,selector)
-        for prop in props: need(re.sub(r'\\s+','',prop) in b,f'{selector} missing required rule {prop}')
+        for prop in props: need(re.sub(r'\s+','',prop) in b,f'{selector} missing required rule {prop}')
     for legacy in ['#ffffff','#fff;','background:white','background: white']:
         need(legacy not in css.lower(),'Pure white UI hardcode in Home v4 CSS: '+legacy)
     need('.ig-home-v4 .sabik-widget' in css,'Sabik Home chassis rule missing')
