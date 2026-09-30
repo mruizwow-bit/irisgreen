@@ -1,3 +1,28 @@
+## Cola canónica de subida / integración · 30/09/2026
+
+Se crea:
+`CONTROL/PENDIENTES_SUBIDA_INTEGRACION.md`
+
+Regla operativa:
+`PRESERVE → INTEGRATE → ACTIVATE → NEW_WORK`.
+
+Estados se separan entre:
+- local en riesgo;
+- preservado;
+- listo para integrar;
+- integrado en A2;
+- pendiente de preview/activación;
+- fix antes de integración;
+- producción HOLD.
+
+Hallazgo:
+- Sakura R63 ya está integrada en A2;
+- Taller R47 real ya contiene los 6 visuales R54 KEEP;
+- el bloqueo visible actual pertenece a R67/global build, no a ausencia de esos artefactos.
+
+Prioridad de preservación:
+R62 P03, R61 Pecera y R68 Faroles por material local.
+
 ## R62 · P03 Rutas de luz · QA2 gameplay PASS / causalidad layout fix · 30/09/2026
 
 **Estado: `R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED` · #326.**
