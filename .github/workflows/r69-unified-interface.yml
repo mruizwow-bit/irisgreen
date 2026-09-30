@@ -19,7 +19,7 @@ jobs:
           python-version: '3.12'
       - name: Syntax
         run: |
-          python -m py_compile             scripts/build_site.py             scripts/apply_home_r42.py             scripts/apply_r69_workshop_stable.py             scripts/apply_r69_global_cleanup.py             scripts/test_r69_unified_interface.py             scripts/test_r69_unified_interface_browser.py
+          python -m py_compile             scripts/build_site.py             scripts/apply_home_r42.py             scripts/apply_r69_workshop_stable.py             scripts/apply_r69_global_cleanup.py             scripts/test_r69_unified_interface.py             scripts/test_r69_unified_interface_browser.py             scripts/test_home_v4_css_integrity.py
           node --check assets/ig-r49-transversal.js
           node --check assets/ig-taller-r42.js
           node --check assets/ig-taller-estudio.js
@@ -29,8 +29,11 @@ jobs:
           node --check assets/musica.js
           node --check sabik/sabik-motion-r37.js
           node --check sabik/sabik-web-r01.js
+          python scripts/test_home_v4_css_integrity.py --root .
       - name: Build unified artifact
         run: python scripts/build_site.py
+      - name: Built Home v4 CSS integrity
+        run: python scripts/test_home_v4_css_integrity.py --root dist
       - name: Static R69 gate
         run: |
           python scripts/test_r69_unified_interface.py --root dist

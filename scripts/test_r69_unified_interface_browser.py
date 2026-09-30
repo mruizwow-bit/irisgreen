@@ -87,6 +87,36 @@ async def main():
             await shell_ready(page,path)
         report["shell"]={"routes":len(routes),"single_header_footer":"PASS","single_age_ui":"PASS","legacy_page_finder":0,"google_fonts_requests":0}
 
+        # Home must render its navigation as real cards, never as inline link text.
+        await page.goto(BASE+"/",wait_until="networkidle")
+        await page.wait_for_function("document.querySelector('.ig-home-v4-use-grid') && document.querySelector('.ig-home-v4-discover-grid')")
+        home=await page.evaluate("""() => {
+          const use=[...document.querySelectorAll('.ig-home-v4-use-card')];
+          const discover=[...document.querySelectorAll('.ig-home-v4-discover-grid .ig-home-v4-card')];
+          const media=[...document.querySelectorAll('.ig-home-v4-card .ig-home-v4-media')];
+          const rect=e=>{const r=e.getBoundingClientRect();return {w:r.width,h:r.height};};
+          const shown=e=>{const r=e.getBoundingClientRect(),c=getComputedStyle(e);return r.width>0&&r.height>0&&c.display!=='none'&&c.visibility!=='hidden';};
+          return {
+            useCount:use.length,discoverCount:discover.length,mediaCount:media.length,
+            useGrid:getComputedStyle(document.querySelector('.ig-home-v4-use-grid')).display,
+            discoverGrid:getComputedStyle(document.querySelector('.ig-home-v4-discover-grid')).display,
+            useDisplays:use.map(e=>getComputedStyle(e).display),
+            discoverDisplays:discover.map(e=>getComputedStyle(e).display),
+            useRects:use.map(rect),discoverRects:discover.map(rect),
+            visibleMedia:media.filter(shown).length
+          };
+        }""")
+        need(home["useCount"]==4,"Home use cards count !=4 "+repr(home))
+        need(home["discoverCount"]==9,"Home discover cards count !=9 "+repr(home))
+        need(home["mediaCount"]==13 and home["visibleMedia"]==13,"Home card media not rendered "+repr(home))
+        need(home["useGrid"]=="grid" and home["discoverGrid"]=="grid","Home card containers are not grids "+repr(home))
+        need(all(x=="grid" for x in home["useDisplays"]+home["discoverDisplays"]),"Home anchors collapsed to inline text "+repr(home))
+        need(all(r["w"]>150 and r["h"]>110 for r in home["useRects"]),"Home use cards have collapsed boxes "+repr(home))
+        need(all(r["w"]>150 and r["h"]>100 for r in home["discoverRects"]),"Home discover cards have collapsed boxes "+repr(home))
+        await page.screenshot(path=str(OUT/"home-cards-1440.png"),full_page=False)
+        report["home_cards"]={"use":4,"discover":9,"media":13,"layout":"GRID_PASS"}
+
+
         # Header has only Music, Accessibility and language. AGE is an internal session runtime.
         await page.goto(BASE+"/es/recursos/",wait_until="networkidle")
         await page.wait_for_function("window.IGR49 && window.IGAudience")
