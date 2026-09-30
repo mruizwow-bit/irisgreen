@@ -69,6 +69,36 @@ Después del marcador, la secuencia obligatoria es:
 Regla:
 `ONE_THREAD_CLOSED → NEXT_RELATION`.
 
+## Reorientación IG + FB · 30/09/2026
+
+TikTok queda:
+`CM_TIKTOK_PAUSED_USER_ACCESS_ISSUE`.
+
+No participa en el gate diario hasta nueva orden.
+
+Se redistribuye su tiempo a Instagram y Facebook.
+
+Corrección de intensidad:
+**3 respuestas no constituyen una tanda suficiente.**
+
+Instagram:
+- 15–25 cuentas únicas comunidad/habituales/cálidas;
+- 10–15 conversaciones externas;
+- 5–8 cuentas nuevas investigadas;
+- 3–5 follows solo si proceden;
+- backlog propio progresivo 5–10 por jornada además de comentarios nuevos.
+
+Facebook:
+- 12–18 conversaciones externas;
+- 6–10 nuevas páginas/cuentas/grupos investigados;
+- 4–6 follows pertinentes;
+- 3–6 relaciones cálidas revisitadas.
+
+Marcador:
+`CM_SESSION_TOO_SHALLOW_CONTINUE_WORKING`.
+
+El agente no puede cerrar una sesión tras 3 respuestas si todavía hay comunidad, habituales, cálidas o descubrimiento pertinente por trabajar.
+
 ## Fuente de verdad de este carril
 
 1. `ESTADO_ACTUAL.md`
