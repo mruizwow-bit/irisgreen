@@ -1,0 +1,42 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "VIGIA-A4-FORMACION-R01-20260930",
+  "issue": 348,
+  "date": "2026-09-30",
+  "agent": "Vigia",
+  "agent_id": "A4",
+  "role": "Observability & Reliability Engineer",
+  "specialization": [
+    "Privacy Engineering",
+    "Incident Evidence",
+    "Digital Provenance"
+  ],
+  "manager": "Nexo",
+  "branch": "formacion/a4-vigia-r01-20260930",
+  "base_commit": "41a01a5534161da5e4b412dd0c6af424e836a53c",
+  "status": "VIGIA_OBSERVABILITY_PRIVACY_EVIDENCE_FOUNDATION_R01_PASS",
+  "training_commits": [
+    "612dc31687eec6bcb0f809ed775422ff68f37814",
+    "a9c7135aef5b87d9d2fdc2e11c81b6a7dfca6146",
+    "1a45825de6f6595d1db8014c60eae2ac0b65e520",
+    "1e3e5021f81b1e5f492858cca407198d11ec5d1f",
+    "6953baa1de9bcdd1231ce41923d24997472a572e"
+  ],
+  "documents": [
+    "COORDINACION_IRIS_GREEN/FORMACION/A4_VIGIA/00_IDENTIDAD_Y_PUESTO.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A4_VIGIA/01_PLAN_FORMACION.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A4_VIGIA/02_RUNBOOK_OPERATIVO.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A4_VIGIA/03_PRACTICAS_Y_EXAMEN.md",
+    "COORDINACION_IRIS_GREEN/FORMACION/A4_VIGIA/APRENDIZAJE_VIGIA_2026-09-30.md"
+  ],
+  "core_principle": "No afirmar mas de lo que demuestra la evidencia.",
+  "canonical_policy": {
+    "slack": "conversacion y coordinacion rapida",
+    "github": "decisiones, formacion, estados y evidencia canonica",
+    "external_claude_agents_in_internal_slack_by_default": false
+  },
+  "external_certification": false,
+  "product_change": false,
+  "build": false,
+  "deploy": false
+}
