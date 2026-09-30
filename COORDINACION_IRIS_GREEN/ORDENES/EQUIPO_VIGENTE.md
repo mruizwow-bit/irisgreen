@@ -1,5 +1,17 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · R68 Faroles · direction rework · 30/09/2026
+
+Orden vigente: `R68_CLAUDE_FAROLES/02_AURA_DIRECTION_REWORK.md` · issue #335.
+
+Estado: `R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED`.
+
+Claude conserva atlas + mecanismo de proyección, pero rehace volumen de nave, material de faroles, caída/localización de luz y densidad visual. No agua primero. Entregar únicamente evidencia R2 acotada y STOP.
+
+Siguiente gate:
+`R68_CLAUDE_FAROLES_DIRECTION_R2_READY_FOR_ASTRA_AURA_MARIA`.
+
+
 ## Claude · R42 Contenido R02 · rebase final sobre A2 vivo · 29/09/2026
 
 Orden: `R42_CONTENT_R02_REBASE_CURRENT_A2/01_CLAUDE.md` · issue #302.
