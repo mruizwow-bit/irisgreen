@@ -110,6 +110,22 @@ async def main():
         await page.keyboard.press("Escape")
         report["controls"]={"search":"PASS","accessibility":"PASS","music":"PASS","age":"PASS"}
 
+        # Workshop hub consumes the same global AGE state; there is no second selector.
+        await page.goto(BASE+"/es/taller/",wait_until="networkidle")
+        await page.wait_for_function("window.IGAudience && document.querySelector('.ig-r49-global-header')")
+        await page.evaluate("IGAudience.set('AGE_0_12')")
+        await page.wait_for_timeout(80)
+        visible_stage=await page.locator(".igk-start:not([hidden])").get_attribute("data-para")
+        need(visible_stage=="AGE_0_12","Workshop hub did not follow global AGE_0_12")
+        hrefs=await page.locator(".igk-start:not([hidden]) a.igk-tile").evaluate_all("els=>els.map(e=>e.getAttribute('href'))")
+        need(all("para=AGE_" not in h and "for=AGE_" not in h for h in hrefs),
+             "Workshop still propagates a second local age query")
+        await page.evaluate("IGAudience.clear()")
+        await page.wait_for_timeout(80)
+        need(await page.locator(".igk-start:not([hidden])").get_attribute("data-para")=="ALL_AGES",
+             "Workshop hub did not return to general/all-ages start view")
+        report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","GENERAL":"PASS"}
+
         # Workshop must never expose the old full study before the R42 workspace.
         await page.goto(BASE+"/es/taller/programacion/",wait_until="domcontentloaded")
         await page.wait_for_function("document.querySelector('main#main')")
