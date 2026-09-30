@@ -34,7 +34,7 @@ for forbidden in ("sabik-base-640.webp", 'class="sabik-back"', 'class="sabik-fro
     require(forbidden not in panel + css + js, f"Old Sabik visual donor leaked back in: {forbidden}")
 for required in (
     "sabik-layered-avatar", "sabik-orbits-back.svg", "sabik-orbits-front.svg",
-    "sabikR69OrbitBack", "sabikR69OrbitFront", "data.renderActive"
+    "sabikR69OrbitBack", "sabikR69OrbitFront", "dataset.renderActive"
 ):
     require(required in css + js, f"Measured layered motion marker missing: {required}")
 for asset in ("sabik/assets/sabik-orbits-back.svg", "sabik/assets/sabik-orbits-front.svg"):
