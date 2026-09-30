@@ -17,12 +17,12 @@ body[data-ig-r49="1"] main :where(.chip,.pill,.badge,.tag,[class*="-chip"],[clas
 body[data-ig-r49="1"] main :where(input,select,textarea){
   background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important
 }
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-games-ready="1"]) :is(#jg-hero,#jg-app),
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-printables-ready="1"]) :is(#im-hero,#im-app),
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk{visibility:hidden!important}
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-games-ready="1"]) #jg-app,
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-printables-ready="1"]) #im-app,
-html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk{min-height:24rem}
+/* Prevent legacy fallback flashes without ever hiding a whole page. */
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] #jg-app>.jg-nojs,
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] #im-app>.jg-nojs{display:none!important}
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk>.igk-all{
+  display:none!important
+}
 /* Iris Green R69 · compatibility for legacy route skins during migration.
    R49 owns shell/theme tokens. R69 normalises legacy surfaces across all public
    routes until those skins are retired; printable sheets and artwork keep their

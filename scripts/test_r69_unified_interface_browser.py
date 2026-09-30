@@ -120,22 +120,19 @@ async def main():
         need(general_stage=="ALL_AGES","Workshop general start view is not the all-ages view")
         report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","GENERAL":"PASS"}
 
-        # Dynamic hubs must not expose their long legacy fallback before initial render.
-        for path,marker in [
-            ("/es/recursos/juegos/","igGamesReady"),
-            ("/es/recursos/rutinas-imprimibles/","igPrintablesReady"),
-            ("/es/taller/","igWorkshopHubReady"),
+        # Dynamic hubs stay navigable while only their long legacy fallback is suppressed.
+        for path,marker,fallback in [
+            ("/es/recursos/juegos/","igGamesReady","#jg-app>.jg-nojs"),
+            ("/es/recursos/rutinas-imprimibles/","igPrintablesReady","#im-app>.jg-nojs"),
+            ("/es/taller/","igWorkshopHubReady","main.igk>.igk-all"),
         ]:
             await page.goto(BASE+path,wait_until="domcontentloaded")
+            need(await page.locator("main").is_visible(),"main hidden during first paint "+path)
             ready=await page.evaluate("(m)=>document.body.dataset[m]==='1'",marker)
-            if not ready:
-                hidden=await page.evaluate("""() => {
-                  const nodes=[document.querySelector('#jg-app'),document.querySelector('#im-app'),document.querySelector('main.igk')].filter(Boolean);
-                  return nodes.every(e=>{const c=getComputedStyle(e);return c.visibility==='hidden'||c.display==='none'||Number(c.opacity)===0});
-                }""")
-                need(hidden,"legacy first paint visible "+path)
+            if not ready and await page.locator(fallback).count():
+                need(await page.locator(fallback).is_hidden(),"legacy fallback visible before enhancement "+path)
             await page.wait_for_function("(m)=>document.body.dataset[m]==='1'",arg=marker)
-        report["first_paint"]={"games":"PASS","printables":"PASS","workshop_hub":"PASS"}
+        report["first_paint"]={"games":"PASS","printables":"PASS","workshop_hub":"PASS","page_never_hidden":"PASS"}
 
         # Workshop must never expose the old full study before the R42 workspace.
         await page.goto(BASE+"/es/taller/programacion/",wait_until="domcontentloaded")
