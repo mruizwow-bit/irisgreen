@@ -6,7 +6,7 @@ const nodes=()=>({visual:document.querySelector('#sabik-hologram'),master:docume
 function readyMaster(state){if(!masters.has(state)){const i=new Image();i.src='/sabik/assets/web-r01/web_'+state+'.png?v='+ASSET_VERSION;const d=i.decode().then(()=>i.src).catch(e=>{masters.delete(state);throw e});masters.set(state,d)}return masters.get(state)}
 function ensurePresence(){
  const {visual,master}=nodes();if(!visual||!master)return null;
- visual.classList.remove('sabik-layered-avatar');visual.classList.add('sabik-current-presence');master.classList.add('sabik-avatar-base');
+ visual.classList.add('sabik-current-presence');master.classList.add('sabik-avatar-base');
  let holder=visual.querySelector('.sabik-presence-motion');
  if(!holder){holder=document.createElement('span');holder.className='sabik-presence-motion';master.parentNode.insertBefore(holder,master);holder.appendChild(master);}
  return visual;
