@@ -1,0 +1,48 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R61-TRANSFER-COMPLETE-FINAL-QA-20260930",
+  "issue": 325,
+  "date": "2026-09-30",
+  "status": "R61_PECERA_PACKAGE_TRANSFERRED_AGENT_HASH_VERIFIED_FINAL_QA_PENDING",
+  "transfer": {
+    "destination": "C:\\Users\\mruiz\\Downloads\\iris-pecera-burbujas\\",
+    "agent_verified_byte_identical": true,
+    "package_chunks_verified": 10,
+    "media_sets_verified": 5,
+    "master_verified": true,
+    "c2pa_mutation_attempt": {
+      "affected_chunk": "ms_aa",
+      "injected_bytes": 5875,
+      "resolution": "gzip_transport_then_reconstruct"
+    }
+  },
+  "keep": [
+    "MASTER_10MIN",
+    "COMPOSITION",
+    "ROCK",
+    "BUBBLES",
+    "DENSITY",
+    "SATURATION",
+    "AUDIO",
+    "CAMERA",
+    "FAUNA",
+    "VEGETATION"
+  ],
+  "pending": [
+    "MOBILE_390",
+    "MOBILE_320",
+    "MOTION_3_STATES",
+    "CONTROLS",
+    "PERFORMANCE_OR_PENDING_HARDWARE_QA",
+    "EXTERNAL_E4_BENCHMARK",
+    "MEASURED_WEB_WEIGHT_STREAMING_DECISION"
+  ],
+  "next": "R61_PECERA_FINAL_PACKAGE_MOBILE_BENCHMARK_QA_READY_FOR_ASTRA_MARIA",
+  "limits": [
+    "NO_RERENDER",
+    "NO_SECOND_ROOM",
+    "NO_A2",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ]
+}

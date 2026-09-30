@@ -1,3 +1,18 @@
+## R61 · Pecera · paquete transferido / QA final activa · 30/09/2026
+
+Estado:
+`R61_PECERA_PACKAGE_TRANSFERRED_AGENT_HASH_VERIFIED_FINAL_QA_PENDING`.
+
+El bloqueo por otra sesión queda cerrado.
+Paquete transferido al equipo y verificado por el agente.
+
+Siguiente:
+`ORDENES/R61_CLAUDE_RINCON_PECERA/06_POST_TRANSFER_FINAL_QA.md`.
+
+No rerender.
+Completar QA 390/320 + motion3 + controles + rendimiento/benchmark + decisión de streaming.
+No segunda sala/A2/main/producción.
+
 ## Claude · nuevo carril ejecutable R44-A0 · 30/09/2026
 
 Orden: `R44_CLAUDE_TALLER_AMPLIACION/01_A0_FRAMEWORK_8_PILOTOS.md`.

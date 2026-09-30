@@ -1,3 +1,82 @@
+## R61 · Pecera · transferencia cerrada / QA final pendiente · 30/09/2026
+
+Issue: #325
+
+Estado:
+`R61_PECERA_PACKAGE_TRANSFERRED_AGENT_HASH_VERIFIED_FINAL_QA_PENDING`.
+
+El bloqueo por localización de binarios queda CERRADO.
+
+El Agente R61 declara transferencia completada al equipo en:
+`C:\Users\mruiz\Downloads\iris-pecera-burbujas\`.
+
+Paquete presente según entrega:
+- máster `pecera_bu.mp4` ≈321,4 MB;
+- `web/pecera_10min.mp4` ≈151,2 MB;
+- audio M4A/Opus;
+- póster;
+- reproductor/HTML;
+- capturas QA;
+- `build/` con código, incluido `burbujas.py`;
+- documento de entrega.
+
+Verificación declarada por el agente:
+- diez trozos del paquete: huellas coincidentes;
+- cinco medios: huellas coincidentes;
+- máster reconstruido: huella coincidente byte a byte.
+
+Coordinación NO inventa hashes no recibidos en este turno; el cierre de transferencia se basa en la verificación local declarada por el agente y deberá conservar los hashes exactos en el documento final de entrega.
+
+### Incidencia de transporte C2PA
+
+Primer intento del máster:
+- primer chunk MP4 `ms_aa` recibió +5.875 bytes por inyección automática de procedencia C2PA;
+- los demás chunks llegaron exactos;
+- reenvío del primer chunk comprimido con gzip evitó la detección como MP4;
+- máster reconstruido final coincidió con la huella esperada.
+
+Regla operativa local:
+para MP4 que atraviesen ese canal y sufran mutación de procedencia, transportar encapsulados/comprimidos y verificar SHA-256 tras reconstrucción.
+Esto NO es una norma transversal del producto web.
+
+### KEEP
+
+No tocar:
+- composición;
+- roca;
+- burbujas;
+- densidad actual;
+- saturación actual;
+- audio;
+- cámara;
+- fauna;
+- vegetación;
+- máster 10 min.
+
+### Pendiente antes de PASS final
+
+1. 390×844;
+2. 320×800;
+3. NORMAL / REDUCIDO / SIN_MOVIMIENTO con evidencia;
+4. controles: play, mute/unmute, volumen, stop, fullscreen, teclado, touch, foco, Escape cuando aplique;
+5. startup/buffering/memoria/CPU/GPU o `PENDING_HARDWARE_QA`;
+6. benchmark externo E4;
+7. decisión de peso/streaming basada en medición real del MP4 web de 151,2 MB.
+
+La pérdida localizada de contraste sobre roca clara, densidad 7,8 frente a ~9 del donor y saturación -12% permanecen aceptadas como decisiones de baja estimulación y NO autorizan rerender.
+
+Siguiente marcador:
+`R61_PECERA_FINAL_PACKAGE_MOBILE_BENCHMARK_QA_READY_FOR_ASTRA_MARIA`.
+
+STOP:
+- arte nuevo;
+- salas 2–6;
+- A2;
+- main;
+- producción.
+
+No STOP de QA: esta sesión, si conserva acceso al paquete transferido, puede completar ahora la QA final.
+
 ## R59 · Fósiles · hallazgos de integración preservados / misión vigente sin cambio · 30/09/2026
 
 Estado:
@@ -338,7 +417,7 @@ Estados separados:
 | R65 | Taller · 27 visuales + 9 variantes AGE_0_12 | #330 | HUMAN QA María PASS · listo para R67 Fase 3 | HANDOFF_IDENTIFIED | **READY_FOR_INTEGRATION** | Integrar en R67 Fase 3; no reabrir arte ni crear otra QA |
 | R62-P03 | Rutas de luz | #326 | HUMAN QA María PASS · P03 cerrado | BUNDLE_LATEST_IN_CHAT_IMPORT_PENDING | PRODUCT_APPROVED_IMPORT_PENDING | Coordinación importa/verifica bundle; no reabrir P03; no bloquea R44-A0 |
 | R62-P04 | Ritmo de colores · caja de música de taller | #326 | R62_P04_RITMO_DE_COLORES_CONCEPT_PASS_E4_AUTHORIZED | BUNDLE_LATEST_IN_CHAT_NOT_IMPORTED | E4_AUTHORIZED_WAIT_R44_A0 | R62/E4 | Ejecutar acabado E4 después de R44-A0; no reabrir concepto |
-| R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **BLOCKED_BY_SESSION_ARTIFACT_LOCATION** | NOT_READY | Recuperar binarios desde la sesión que los contiene; luego hashes + móvil/motion/benchmark/performance |
+| R61 | Pecera audiovisual 10 min | #325 | R61_PECERA_PACKAGE_TRANSFERRED_AGENT_HASH_VERIFIED_FINAL_QA_PENDING | TEAM_LOCAL_TRANSFERRED_AGENT_HASH_VERIFIED | FINAL_QA_PENDING | Ejecutar móvil/motion/controles/performance/benchmark y decidir peso/streaming; no rerender |
 | R59 | Fósiles piloto | #323 | Producto PASS; integración web futura documentada; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Cerrar QA nominal + GOV-01 + paquete final; NO reabrir producto ni adaptar a A2 todavía |
 | R68 | Faroles flotantes | #335 | R2 spatial PASS; projection/mobile/LIGHT R3 pending | **LOCAL_AT_RISK** | NOT_READY | Ejecutar R3 acotada; preservar fuente/patch; movimiento runtime separado |
 | R42-CONTENT | Contenido R02 | #302 | Mismo ZIP aa3649a8 verificado; base 9c721a79 ya 51 commits atrás | PACKAGE_VERIFIED_ATTACHMENT / STALE_BASE | REBASE_REQUIRED | Rebase sobre HEAD A2 vivo 8ea50128… o posterior; no aplicar ZIP actual |

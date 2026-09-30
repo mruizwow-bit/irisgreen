@@ -72,10 +72,17 @@
       "id": "R61",
       "product": "Pecera 10min",
       "issue": 325,
-      "product_status": "R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING",
-      "preservation": "LOCAL_BINARY_AT_RISK",
-      "integration": "NOT_READY",
-      "next": "transfer binaries + final QA"
+      "product_status": "R61_PECERA_PACKAGE_TRANSFERRED_AGENT_HASH_VERIFIED_FINAL_QA_PENDING",
+      "preservation": "TEAM_LOCAL_TRANSFERRED_AGENT_HASH_VERIFIED",
+      "integration": "FINAL_QA_PENDING",
+      "next": "mobile 390/320 + motion3 + controls + performance/hardware + external E4 benchmark + measured streaming decision",
+      "transfer": {
+        "destination": "C:\\Users\\mruiz\\Downloads\\iris-pecera-burbujas\\",
+        "agent_verified_hash_match": true,
+        "exact_hashes_not_repeated_in_current_report": true,
+        "c2pa_transport_mutation_bytes": 5875,
+        "recovery": "gzip first MP4 chunk then reconstruct and verify"
+      }
     },
     {
       "id": "R59",
