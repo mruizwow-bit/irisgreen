@@ -88,6 +88,53 @@ Nunca usar comentario genérico.
 
 ---
 
+# 2 BIS. FUENTE CANÓNICA · 114 FIELES DE INSTAGRAM
+
+La usuaria entregó al agente social, el 29/09/2026, una lista completa de **114 fieles/habituales de Instagram**.
+
+Esa lista YA EXISTE en el contexto operativo del agente.
+
+Reglas:
+
+1. NO pedir a la usuaria que la vuelva a enviar.
+2. NO reconstruirla desde memoria parcial.
+3. NO sustituirla por `CONTROL/CONTACTOS_SOCIAL.csv`, que ahora solo contiene una parte.
+4. MATERIALIZAR la lista existente, tal cual, en:
+   `CONTROL/FIELES_INSTAGRAM_114.csv`.
+5. Mantener:
+   - cuenta/handle;
+   - nombre si ya constaba;
+   - categoría/tema si ya constaba;
+   - relación/seguimiento si ya constaba.
+6. Si un dato no estaba en la lista original, dejarlo pendiente; no inventarlo.
+
+## Rotación obligatoria
+
+Los 114 se trabajan de forma rotativa.
+
+No:
+- volver siempre a las mismas 15–20 cuentas;
+- considerar “comunidad atendida” después de revisar solo una fracción pequeña;
+- comentar por obligación si no hay contenido pertinente.
+
+Sí:
+- revisar **15–25 fieles distintos por jornada**;
+- priorizar quienes no hayan sido visitados recientemente;
+- registrar `ultima_revision` y `ultima_interaccion`;
+- comentar solo cuando exista una publicación concreta y pertinente;
+- reconocer con like/reacción cuando no haga falta texto;
+- pasar a la siguiente persona al cerrar el hilo.
+
+Objetivo:
+recorrer los 114 aproximadamente en un ciclo de 5–8 días, sin spam y sin concentrarse siempre en los mismos.
+
+Marcador:
+`IG_114_FAITHFUL_ROTATION_ACTIVE`.
+
+La cobertura diaria se informa como:
+`X/114 fieles revisados hoy`,
+no como un número aislado sin denominador.
+
 # 3. NUEVAS CUENTAS
 
 Encontrar una cuenta nueva NO completa el trabajo.
