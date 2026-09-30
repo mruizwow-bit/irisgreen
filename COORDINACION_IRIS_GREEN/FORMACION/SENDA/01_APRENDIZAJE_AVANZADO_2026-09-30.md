@@ -1398,3 +1398,155 @@ mejor compatibilidad futura.
 
 Estado:
 `SENDA_MODERN_BROWSER_NATIVE_UI_STUDIED_R10`
+
+
+## 39. Mapas interactivos accesibles R11
+
+Fuente principal estudiada:
+- MapLibre GL JS API/documentación.
+
+### 39.1 Mapa como componente, no página completa
+
+El mapa nunca será la única vía para:
+- encontrar una estación;
+- elegir una especie;
+- leer un dato;
+- comparar resultados;
+- completar una tarea.
+
+Debe existir representación estructurada equivalente:
+- lista;
+- resultados;
+- tabla;
+- controles;
+- descripción.
+
+### 39.2 Cooperative gestures
+
+MapLibre permite `cooperativeGestures`.
+
+Comportamiento:
+- desktop: modificador para scroll zoom;
+- móvil: dos dedos;
+- gesto normal puede mostrar instrucción.
+
+Ventaja:
+evita secuestrar scroll de página accidentalmente.
+
+Uso:
+evaluar como default cuando el mapa está embebido dentro de una página larga.
+
+### 39.3 Interacciones configurables
+
+Handlers separados:
+- scroll zoom;
+- drag pan;
+- drag rotate;
+- keyboard;
+- double click zoom;
+- touch zoom/rotate.
+
+Regla:
+activar solo las interacciones que aportan.
+
+Ejemplo:
+mapa contextual LIGHT:
+- puede no necesitar rotación/pitch;
+- puede no necesitar scroll zoom.
+
+Menos grados de libertad = menor carga cognitiva.
+
+### 39.4 Teclado
+
+MapLibre incluye navegación de mapa por teclado:
+- +/- zoom;
+- flechas pan;
+- Shift + flechas para rotación/pitch.
+
+Senda debe decidir:
+- si rotación/pitch tiene sentido;
+- si shortcuts interfieren con la página;
+- cómo entra/sale foco del mapa;
+- cómo se ofrece la misma información fuera del mapa.
+
+### 39.5 Marcadores
+
+Marcador default:
+MapLibre gestiona roles/focusability según interactividad.
+
+Custom marker:
+la app posee el árbol accesible.
+
+Obligatorio:
+- role apropiado;
+- nombre;
+- tabindex si corresponde;
+- activación teclado;
+- drag alternative;
+- popup/ficha accesible.
+
+### 39.6 Draggable markers
+
+Si un marcador se arrastra:
+- pointer drag puede existir;
+- debe existir single-pointer alternative;
+- teclado cuando corresponda.
+
+MapLibre tiene ejemplos de movimiento de marcador por flechas, pero Senda debe mantener patrón coherente con WCAG y UX Iris.
+
+### 39.7 Attribution
+
+La atribución no es decoración.
+Debe conservar:
+- fuente de tiles/datos;
+- licencias requeridas;
+- custom attribution si aplica.
+
+Responsive:
+compactar solo cuando el espacio lo requiera;
+no eliminar atribución.
+
+### 39.8 Performance de mapa
+
+MapLibre puede exponer Resource Timing de workers si se habilita.
+
+Medir:
+- tiles;
+- GeoJSON/vector;
+- workers;
+- fuentes;
+- imágenes;
+- memoria;
+- zoom/pan interaction.
+
+No cargar mapa en portada/tema si no se usa.
+
+### 39.9 Accesibilidad cognitiva
+
+Mapa CENTRAL:
+- acción clara;
+- instrucciones breves;
+- reset/recentrar;
+- “volver a vista inicial”;
+- evitar pitch/rotación si no aportan;
+- leyenda simple;
+- selección visible;
+- estado fuera del canvas.
+
+Mapa LIGHT:
+- preferir estático/limitado si interacción completa no aporta.
+
+### 39.10 Trenes
+
+Para Trenes/metro:
+mapa de red no debe absorber:
+- señalización;
+- conexión espacial;
+- wayfinding;
+- accesibilidad de estación.
+
+Si la experiencia es “cómo llego/cómo conecto”:
+GTFS Pathways + representación espacial/diagrama puede ser más pertinente que mapa geográfico.
+
+Estado:
+`SENDA_ACCESSIBLE_INTERACTIVE_MAPS_STUDIED_R11`
