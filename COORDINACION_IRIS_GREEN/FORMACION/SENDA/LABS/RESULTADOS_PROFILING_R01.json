@@ -1,0 +1,91 @@
+{
+  "lab": "Senda non-product performance lab",
+  "date": "2026-09-30",
+  "environment": {
+    "browser": "Chromium 144.0.7559.96",
+    "mode": "headless",
+    "note": "Lab numbers are relative diagnostics, not a substitute for physical-device profiling."
+  },
+  "cases": [
+    {
+      "case": "mobile_ondemand_6k",
+      "viewport": "390x844",
+      "objects": 6000,
+      "mode": "ondemand",
+      "frames": 8,
+      "render_avg_ms": 1.66,
+      "render_max_ms": 5.5,
+      "action_avg_ms": 13.72,
+      "action_max_ms": 14.5,
+      "long_frames_count": 1,
+      "long_frame_max_ms": 73.3
+    },
+    {
+      "case": "mobile_continuous_6k",
+      "viewport": "390x844",
+      "objects": 6000,
+      "mode": "continuous",
+      "frames": 205,
+      "render_avg_ms": 6.42,
+      "render_max_ms": 9.1,
+      "action_avg_ms": 22.52,
+      "action_max_ms": 23.1,
+      "long_frames_count": 0
+    },
+    {
+      "case": "desktop_ondemand_6k",
+      "viewport": "1440x900",
+      "objects": 6000,
+      "mode": "ondemand",
+      "frames": 7,
+      "render_avg_ms": 1.67,
+      "render_max_ms": 4.7,
+      "action_avg_ms": 14.12,
+      "action_max_ms": 15,
+      "long_frames_count": 0
+    },
+    {
+      "case": "desktop_continuous_6k",
+      "viewport": "1440x900",
+      "objects": 6000,
+      "mode": "continuous",
+      "frames": 189,
+      "render_avg_ms": 6.2,
+      "render_max_ms": 8.4,
+      "action_avg_ms": 16.57,
+      "action_max_ms": 24.1,
+      "long_frames_count": 0
+    },
+    {
+      "case": "mobile_ondemand_30k",
+      "viewport": "390x844",
+      "objects": 30000,
+      "mode": "ondemand",
+      "frames": 6,
+      "render_avg_ms": 6.28,
+      "render_max_ms": 8.9,
+      "action_avg_ms": 52.43,
+      "action_max_ms": 55.7,
+      "long_frames_count": 4,
+      "long_frame_max_ms": 95
+    },
+    {
+      "case": "mobile_continuous_30k",
+      "viewport": "390x844",
+      "objects": 30000,
+      "mode": "continuous",
+      "frames": 82,
+      "render_avg_ms": 11.21,
+      "render_max_ms": 16.4,
+      "action_avg_ms": 76.3,
+      "action_max_ms": 82.8,
+      "long_frames_count": 0
+    }
+  ],
+  "gpu_context_loss": {
+    "status": "NOT_EXECUTABLE_IN_CURRENT_LAB",
+    "reason": "Chromium headless environment exposed neither WebGL context nor WEBGL_lose_context.",
+    "mock_state_separation_test": "PASS",
+    "caveat": "Mock state test validates architecture only; it is not evidence of real GPU-loss recovery."
+  }
+}
