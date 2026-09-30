@@ -87,6 +87,67 @@ async def main():
             await shell_ready(page,path)
         report["shell"]={"routes":len(routes),"single_header_footer":"PASS","single_age_ui":"PASS","legacy_page_finder":0,"google_fonts_requests":0}
 
+        # HUMAN QA regressions reported by María: product width, theme and alignment.
+        await page.set_viewport_size({"width":1920,"height":1080})
+        await page.goto(BASE+"/",wait_until="networkidle")
+        home_layout=await page.evaluate("""() => {
+          const R=e=>{const r=e.getBoundingClientRect();return {l:r.left,r:r.right,w:r.width};};
+          const sels=['.ig-home-v4-hero','.ig-home-v4-section[aria-labelledby="ig-home-use"]','.ig-home-v4-sabik','.ig-home-v4-section[aria-labelledby="ig-home-discover"]'];
+          const nodes=sels.map(s=>document.querySelector(s));
+          return {wrap:R(document.querySelector('.ig-home-v4-wrap')),rects:nodes.map(R)};
+        }""")
+        need(home_layout["wrap"]["w"]>=1500,"Home still uses reading-width/product-too-narrow layout "+repr(home_layout))
+        need(max(abs(r["l"]-home_layout["rects"][0]["l"]) for r in home_layout["rects"])<3,"Home sections do not share left axis "+repr(home_layout))
+        need(max(abs(r["r"]-home_layout["rects"][0]["r"]) for r in home_layout["rects"])<3,"Home sections do not share right axis "+repr(home_layout))
+        await page.locator("#sabik-input").focus()
+        sabik_field=await page.locator("#sabik-input").evaluate("(e)=>({bg:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color})")
+        need(sabik_field["bg"]!="rgb(255, 255, 255)","Sabik textarea becomes glare-white on focus "+repr(sabik_field))
+        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS"}
+
+        await page.goto(BASE+"/es/investigacion/",wait_until="networkidle")
+        need(await page.locator("body").get_attribute("data-ig-profile")=="browse","Research still classified as content")
+        research=await page.evaluate("""() => {
+          const m=document.querySelector('main'),a=m&&m.querySelector('article'),p=a&&a.querySelector('p');
+          const r=m.getBoundingClientRect(),ac=a?getComputedStyle(a):null,pc=p?getComputedStyle(p):null;
+          return {w:r.width,bg:ac&&ac.backgroundColor,color:pc&&pc.color};
+        }""")
+        need(research["w"]>=1350,"Research still too narrow "+repr(research))
+        need(research["bg"]!="rgb(255, 255, 255)","Research card still white "+repr(research))
+        need(research["color"] in ("rgb(238, 244, 248)","rgb(201, 213, 221)"),"Research text still low-contrast legacy color "+repr(research))
+        report["research_hqa"]={"profile":"browse","width":round(research["w"]),"dark_cards":"PASS","text":"PASS"}
+
+        await page.goto(BASE+"/es/libros/",wait_until="networkidle")
+        await page.wait_for_selector(".ig-book-card",timeout=10000)
+        await page.wait_for_selector(".ig-flipbook",timeout=10000)
+        books=await page.evaluate("""() => {
+          const m=document.querySelector('main'),c=document.querySelector('.ig-book-card'),f=document.querySelector('.ig-flipbook'),h=document.querySelector('.ig-flipbook-head h3');
+          return {w:m.getBoundingClientRect().width,card:getComputedStyle(c).backgroundColor,flip:getComputedStyle(f).backgroundColor,title:getComputedStyle(h).color};
+        }""")
+        need(books["w"]>=1500,"Books still too narrow "+repr(books))
+        need(books["card"]!="rgb(255, 255, 255)" and books["flip"]!="rgb(255, 255, 255)","Books reader/card still glare-white "+repr(books))
+        need(books["title"]=="rgb(238, 244, 248)","Books reader heading still legacy dark ink "+repr(books))
+        report["books_hqa"]={"width":round(books["w"]),"cards":"PASS","reader":"PASS"}
+
+        await page.goto(BASE+"/es/tramites/directorio/",wait_until="networkidle")
+        support=await page.evaluate("""() => {
+          const m=document.querySelector('main'),s=document.querySelector('.ig-search-shell'),i=document.querySelector('.ig-search-input');
+          return {w:m.getBoundingClientRect().width,bg:s&&getComputedStyle(s).backgroundColor,input:i&&getComputedStyle(i).backgroundColor};
+        }""")
+        need(support["w"]>=1500,"Support/directorio still too narrow "+repr(support))
+        need(support["bg"]!="rgb(255, 255, 255)","Support search shell still white "+repr(support))
+        report["support_hqa"]={"width":round(support["w"]),"search_surface":"PASS"}
+
+        await page.goto(BASE+"/es/intereses/exoplanetas/",wait_until="networkidle")
+        exo=await page.evaluate("""() => {
+          const b=document.body,m=document.querySelector('main.igx'),card=document.querySelector('.topic-card');
+          return {profile:b.dataset.igProfile||'',w:m?m.getBoundingClientRect().width:0,bg:card?getComputedStyle(card).backgroundColor:''};
+        }""")
+        need(exo["profile"]=="workspace","Exoplanets still classified as content "+repr(exo))
+        need(exo["w"]>=1750,"Exoplanets interior still reading-width "+repr(exo))
+        if exo["bg"]: need(exo["bg"]!="rgb(255, 255, 255)","Exoplanets topic card still legacy white "+repr(exo))
+        report["interests_hqa"]={"profile":"workspace","width":round(exo["w"]),"theme":"PASS"}
+
+
         # Home must render its navigation as real cards, never as inline link text.
         await page.goto(BASE+"/",wait_until="networkidle")
         await page.wait_for_function("document.querySelector('.ig-home-v4-use-grid') && document.querySelector('.ig-home-v4-discover-grid')")
@@ -189,6 +250,14 @@ async def main():
         await page.wait_for_function("window.SabikWebPresentation && window.SabikMotionR37")
         snap0=await page.evaluate("SabikWebPresentation.snapshot()")
         need(snap0.get("state")=="presente","Sabik did not start in PRESENTE")
+
+        need(await page.locator("#sabik-hologram .sabik-orbit-layer").count()==2,"Sabik measured front/back layers missing")
+        need(await page.locator("#sabik-hologram").get_attribute("data-render-active")=="true","Sabik layered render not active")
+        await page.locator("#sabik-motion-level").select_option("NORMAL")
+        before_layer=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        await page.wait_for_timeout(300)
+        after_layer=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        need(before_layer!=after_layer,"Sabik layers do not move continuously in NORMAL")
         await page.evaluate("void SabikWebPresentation.setSabikState('orientar',{force:true,hold:true})")
         await page.wait_for_timeout(80)
         state=await page.locator("#sabik-hologram").get_attribute("data-web-state")
@@ -202,8 +271,13 @@ async def main():
         await page.wait_for_timeout(80)
         need(await page.locator("#sabik-hologram").get_attribute("data-motion-level")=="SIN_MOVIMIENTO","Sabik no-motion level not applied")
         need(await page.locator("#sabik-hologram").get_attribute("data-motion-active")=="false","Sabik moved in SIN_MOVIMIENTO")
+
+        still_before=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        await page.wait_for_timeout(300)
+        still_after=await page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
+        need(still_before==still_after,"Sabik layered motion continues in SIN_MOVIMIENTO")
         await page.screenshot(path=str(OUT/"home-sabik-pausa-no-motion-1440.png"),full_page=False)
-        report["sabik"]={"masters":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
+        report["sabik"]={"masters":"PASS","layers":2,"continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
 
         # Theme tokens should drive the same shell on both themes.
         await page.evaluate("IGTheme.set('light')")

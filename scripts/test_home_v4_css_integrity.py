@@ -5,6 +5,7 @@ import argparse,re
 from pathlib import Path
 
 REQUIRED={
+    '.ig-home-v4-wrap':('var(--ig-content-wide,104rem)','margin:0 auto'),
     '.ig-home-v4-hero,.ig-home-v4-sabik':('display:block','background:var(--ig-bg-surface)','border:1px solid var(--ig-separator)'),
     '.ig-home-v4-hero':('display:flex','padding:clamp(1.25rem,3vw,2.25rem)'),
     '.ig-home-v4-search-row':('display:flex','gap:.6rem'),
