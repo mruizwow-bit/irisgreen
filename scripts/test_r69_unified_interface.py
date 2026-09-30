@@ -79,6 +79,12 @@ def main()->None:
         s=p.read_text(encoding="utf-8")
         need('ri-stage-section' not in s,"Legacy Resources age section remains: "+rel)
 
+    # Workshop uses only the global Content/AGE lens, never the old «Para ti» row.
+    for rel in ("es/taller/index.html","en/workshop/index.html"):
+        p=root/rel; need(p.is_file(),"Missing Workshop hub "+rel)
+        s=p.read_text(encoding="utf-8")
+        need('class="igk-para"' not in s,"Legacy Workshop local age nav remains: "+rel)
+
     # Every generated study has a deterministic R42 layer in normal defer order.
     studies=[]
     for base in (root/"es"/"taller",root/"en"/"workshop"):
