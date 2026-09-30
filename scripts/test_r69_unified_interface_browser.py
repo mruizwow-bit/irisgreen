@@ -27,6 +27,7 @@ async def shell_ready(page,path):
          "local age picker exists outside global dialog "+path)
     need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
+    need(await page.locator(".igk-para").count()==0,"Workshop hub local «Para ti» age UI "+path)
     need(await page.locator(".ri-stage-section").count()==0,"Resources duplicate age UI "+path)
     need(await page.locator(".jg-stage-entry").count()==0,"Games duplicate age UI "+path)
     need(await page.locator(".im-stage-entry").count()==0,"Printable routines duplicate age UI "+path)
