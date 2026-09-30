@@ -123,6 +123,8 @@ async def main():
         need(await page.locator("[data-ig-audience-stage]").count()==4,"Home age buttons disappeared")
         need(await page.locator("html").get_attribute("data-ig-safety-mode")=="safe-by-default","Home did not start child-safe")
         need(await page.locator("[data-ig-home-safe]").is_visible(),"Home child-safe status is not visible")
+        await page.locator('[data-ig-audience-stage="AGE_0_12"]').click()
+        need(await page.locator("html").get_attribute("data-ig-audience")=="AGE_0_12","Home 0–12 selection did not become canonical")
         await page.goto(BASE+"/es/intereses/",wait_until="domcontentloaded")
         await page.wait_for_selector("[data-ig-audience-blocked-message]",state="attached",timeout=5000)
         need(await page.locator("main").first.is_hidden(),"AGE_0_12 direct Interests route is not blocked")
