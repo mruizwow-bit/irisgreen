@@ -23,6 +23,8 @@ async def shell_ready(page,path):
     need(await page.locator(".ig-r49-global-footer.ft,.ig-r49-global-footer.ig-home-footer").count()==0,
          "legacy footer class still owns canonical shell "+path)
     need(await page.locator("[data-ig-r49-stage]").count()==1,"global age control count !=1 "+path)
+    need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
+         "local age picker exists outside global dialog "+path)
     need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
     need(await page.locator(".ri-stage-section").count()==0,"Resources duplicate age UI "+path)
