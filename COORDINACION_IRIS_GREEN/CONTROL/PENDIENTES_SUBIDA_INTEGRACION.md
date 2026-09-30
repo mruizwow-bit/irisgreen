@@ -1,3 +1,11 @@
+## R44-A0 · ampliación Taller · pendiente de construir/preservar/subir · 30/09/2026
+
+| ID | Producto | Issue | Estado producto | Preservación | Integración | Destino | Bloqueo / siguiente acción |
+|---|---|---:|---|---|---|---|---|
+| R44-A0 | Taller · ampliación 64 retos · framework + 8 pilotos | #319 | R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED | SOURCE_MATRIX_RECOVERY_REQUIRED · BUILD_PENDING | NOT_READY | R67_TALLER_AFTER_R65_PHASE3 | Recuperar matriz exacta, reconciliar 55/55, construir 8 pilotos, preservar branch/patch/hash y handoff |
+
+Regla: puede construirse ya en carril propio, pero no entra en A2/R67 hasta que el R65 aprobado esté integrado y el A0 pase revisión.
+
 # REGISTRO CANÓNICO · PENDIENTE DE SUBIR / INTEGRAR / ACTIVAR
 
 Fecha de creación: 30/09/2026  

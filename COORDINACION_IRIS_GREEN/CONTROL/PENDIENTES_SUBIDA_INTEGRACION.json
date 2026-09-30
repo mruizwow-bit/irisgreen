@@ -106,6 +106,20 @@
       "package_base": "9c721a793060979903e77c31b69c8c01cac49c92",
       "a2_head_revalidated": "8ea50128b490207b4dd5508c3c46692f5be69c87",
       "a2_commits_ahead": 51
+    },
+    {
+      "id": "R44-A0",
+      "product": "Taller expansion 64 challenges - framework + 8 pilots",
+      "issue": 319,
+      "product_status": "R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED",
+      "preservation": "SOURCE_MATRIX_RECOVERY_REQUIRED_BUILD_PENDING",
+      "integration": "NOT_READY",
+      "destination": "R67_TALLER_AFTER_R65_PHASE3",
+      "blocker": "recover exact reviewed 64-row matrix and complete A0",
+      "next": "recover/preserve matrix; reconcile Wave A 55/55; build framework + 8 pilots; preserve branch/patch/hash/handoff",
+      "priority": "P0-EXECUTE",
+      "authorized_by": "Maria",
+      "authorized_date": "2026-09-30"
     }
   ],
   "production_gate": "NO_MAIN_NO_PRODUCTION_UNTIL_R67_INTEGRATED_PREVIEW_AND_HUMAN_QA"

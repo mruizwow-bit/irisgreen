@@ -1,0 +1,52 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R44-A0-AUTORIZACION-MARIA-20260930",
+  "issue": 319,
+  "date": "2026-09-30",
+  "authority": "Maria",
+  "status": "R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED",
+  "scope": {
+    "total_matrix": 64,
+    "study": 48,
+    "cross": 8,
+    "calendar": 8,
+    "authorized_now": [
+      "RECOVER_PRESERVE_EXACT_MATRIX",
+      "RECONCILE_WAVE_A_55",
+      "BUILD_CHALLENGE_FRAMEWORK",
+      "BUILD_8_A0_PILOTS"
+    ]
+  },
+  "pilots": [
+    "DIBUJO",
+    "PIXEL_ART",
+    "ESTRUCTURAS",
+    "CIRCUITOS",
+    "ESCRITURA",
+    "JUEGO_DE_MESA",
+    "MUSICA",
+    "VIDEOJUEGOS"
+  ],
+  "source_matrix": {
+    "name": "R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md",
+    "canonical_copy_present": false,
+    "rule": "RECOVER_EXACT_COPY_AND_HASH_DO_NOT_RECONSTRUCT"
+  },
+  "dependency": {
+    "r65": "R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION",
+    "integration": "R44_A0_MAY_BUILD_NOW_BUT_A2_INTEGRATION_AFTER_R67_PHASE3"
+  },
+  "pending_upload_queue": {
+    "id": "R44-A0",
+    "preservation": "SOURCE_MATRIX_RECOVERY_REQUIRED_BUILD_PENDING",
+    "integration": "NOT_READY",
+    "destination": "R67_TALLER_AFTER_R65_PHASE3"
+  },
+  "limits": [
+    "NO_BULK_64_BUILD",
+    "NO_INVENTED_ROWS",
+    "NO_MAIN",
+    "NO_PRODUCTION"
+  ],
+  "normative_change": false
+}

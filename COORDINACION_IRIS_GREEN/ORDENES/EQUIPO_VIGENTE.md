@@ -1,3 +1,15 @@
+## Claude · nuevo carril ejecutable R44-A0 · 30/09/2026
+
+Orden: `R44_CLAUDE_TALLER_AMPLIACION/01_A0_FRAMEWORK_8_PILOTOS.md`.
+
+Estado:
+`R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED`.
+
+La sesión de Claude con Taller accesible deja de estar sin trabajo ejecutable.
+Prioridad en esa sesión: R44-A0.
+R61 sigue bloqueado por localización de binarios y no se rerenderiza.
+R65 queda cerrado; no se reabre.
+
 ## R65 · Taller 27 + 9 · HUMAN QA María aprobada · 30/09/2026
 
 Estado:

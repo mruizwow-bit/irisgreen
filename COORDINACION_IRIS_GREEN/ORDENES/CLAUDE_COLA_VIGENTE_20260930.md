@@ -1,3 +1,24 @@
+# ACTUALIZACIÓN · R44-A0 ASIGNADO · 30/09/2026
+
+Estado:
+`R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED`
+
+Claude tiene trabajo ejecutable en esta sesión porque Taller está accesible.
+
+Orden:
+`R44_CLAUDE_TALLER_AMPLIACION/01_A0_FRAMEWORK_8_PILOTOS.md`
+
+Secuencia:
+1. recuperar/preservar matriz R44 exacta;
+2. reconciliar 55/55 Ola A contra Taller final;
+3. construir framework;
+4. construir 8 pilotos A0 reales de la matriz;
+5. preservar branch/patch/hash/handoff.
+
+No reabrir R65.
+No construir 64 en bloque.
+No inventar retos ausentes de la matriz.
+
 # CLAUDE · COLA VIGENTE CORREGIDA · 30/09/2026
 
 Esta corrección supersede cualquier selector/picker local que siga mostrando estados antiguos.

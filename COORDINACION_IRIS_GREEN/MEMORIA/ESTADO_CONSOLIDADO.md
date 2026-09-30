@@ -1,3 +1,27 @@
+## R44 · ampliación Taller · 64 retos · A0 autorizado · 30/09/2026
+
+Estado:
+`R44_TALLER_64_EXPANSION_A0_FRAMEWORK_8_PILOTS_AUTHORIZED`.
+
+María autoriza que Claude empiece a construir la ampliación R44 del Taller.
+
+Alcance autorizado ahora:
+- recuperar y preservar la matriz exacta `R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md`;
+- reconciliar los 55 de Ola A contra el Taller final aprobado;
+- framework común de retos;
+- 8 pilotos A0: Dibujo, Pixel Art, Estructuras, Circuitos, Escritura, Juego de mesa, Música y Videojuegos.
+
+No se autoriza construir los 64 en bloque.
+No inventar filas si la matriz fuente no está disponible.
+R65 27+9 permanece cerrado y no se reabre.
+
+Integración futura:
+R67/Taller después de la integración del R65 aprobado.
+Construcción puede avanzar en carril propio desde ya.
+
+No main. No producción.
+Sin cambio normativo transversal.
+
 ## R65 · Taller 27 + 9 · HUMAN QA María aprobada · 30/09/2026
 
 Estado:
