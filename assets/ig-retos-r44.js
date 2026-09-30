@@ -22,10 +22,20 @@
   var ESTADOS = ['sin-empezar', 'en-curso', 'listo-para-exportar', 'terminado'];
   R44.ESTADOS = ESTADOS;
 
+  /* Constructor propio para cuando el núcleo del Taller no está cargado. La
+     primera versión pasaba `on` a setAttribute, así que sin `IGT` el panel se
+     pintaba entero y no respondía a nada: inerte y con buena pinta, que es la
+     peor forma de estar roto. Una prueba sin el núcleo lo destapó. */
   function h(tag, attrs) {
     if (IGT.h) return IGT.h.apply(null, arguments);
     var n = document.createElement(tag);
-    if (attrs) Object.keys(attrs).forEach(function (k) { n.setAttribute(k, attrs[k]); });
+    if (attrs) Object.keys(attrs).forEach(function (k) {
+      var v = attrs[k];
+      if (v === null || v === undefined || v === false) return;
+      if (k === 'on') Object.keys(v).forEach(function (ev) { n.addEventListener(ev, v[ev]); });
+      else if (k === 'text') n.textContent = v;
+      else n.setAttribute(k, v === true ? '' : String(v));
+    });
     for (var i = 2; i < arguments.length; i++) {
       var c = arguments[i];
       if (c) n.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
@@ -98,7 +108,7 @@
 
     var cta = h('button', {
       type: 'button', 'class': 'igr44-cta', 'aria-label': t.cta_nombre,
-      on: { click: function () { reto.ir(reto.estado === 'sin-empezar' ? 'en-curso' : reto.estado); } }
+      on: { click: function () { R44.entrar(reto); } }
     }, t.cta);
 
     var nota = h('p', { 'class': 'igr44-nota' }, t.alternativa_arrastre);
@@ -124,6 +134,41 @@
     return reto;
   };
 
+  /* Empezar un reto tiene que producir una entrada observable en el taller,
+     no un contador que sube. Hay dos casos, y los dos acaban con el foco
+     dentro del sitio donde se trabaja:
+
+       - **adopción**: el estudio ya trae ese reto construido y con su
+         comprobación, así que R44 lo selecciona en el propio selector del
+         estudio y deja el foco en su resumen. No se duplica nada.
+       - **entrada propia**: el estudio no trae retos, y entonces el framework
+         lleva el foco al taller y anuncia el reto empezado.
+
+     En los dos casos sin puntuación y sin bloquear nada. */
+  R44.entrar = function (reto) {
+    var d = reto.datos, t = reto.txt, movido = false;
+    if (d.adopta) {
+      var sel = document.querySelector(d.adopta.selector);
+      if (sel) {
+        sel.value = d.adopta.reto_estudio;
+        sel.dispatchEvent(new Event('change', { bubbles: true }));
+        var destino = document.querySelector(d.adopta.foco);
+        if (destino) { destino.focus(); movido = true; }
+      }
+    }
+    if (!movido) {
+      var taller = document.querySelector((d.entrada && d.entrada.foco) || '#igt-app');
+      if (taller) {
+        if (!taller.hasAttribute('tabindex')) taller.setAttribute('tabindex', '-1');
+        taller.focus();
+        movido = true;
+      }
+    }
+    reto.ir('en-curso');
+    reto.entrada = { adoptado: !!(d.adopta && movido), foco_movido: movido };
+    return reto.entrada;
+  };
+
   /* Los cuatro flags del §3 de la orden. Se comprueban sobre lo que hay en la
      página, no se declaran: un flag que se afirma sin mirar es el defecto que
      esta tanda viene a evitar. */
@@ -135,6 +180,10 @@
     out.EXPORT_VERIFIED = !!(d.artefacto && d.artefacto.formatos && d.artefacto.formatos.length
                              && d.artefacto.descarga_local === true);
     out.INPUT_VERIFIED = !!(reto.txt.alternativa_arrastre && reto.txt.cta_nombre);
+    /* Empezar tiene que llevar a alguna parte: o selecciona el reto que el
+       estudio ya trae, o mete el foco en el taller. Un botón que solo cambia
+       un contador no es una entrada. */
+    out.ENTRADA_OBSERVABLE = !!(reto.entrada && reto.entrada.foco_movido);
     var nodo = reto.nodo;
     out.ACCESSIBILITY_VERIFIED = !!(nodo
       && nodo.getAttribute('aria-labelledby')

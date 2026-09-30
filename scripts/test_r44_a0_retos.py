@@ -15,6 +15,10 @@ sí, montado en un navegador de verdad:
   5. **Sin almacenamiento ni red.** Ni localStorage, ni sessionStorage, ni
      fetch, ni XHR durante el montaje y el recorrido de estados.
   6. **Reflujo a 320** sin desplazamiento lateral.
+  7. **Empezar lleva a alguna parte.** Donde el estudio ya trae el reto, el
+     botón lo selecciona en el selector del propio estudio y deja el foco en su
+     resumen; donde no lo trae, el foco entra en el taller. Un botón que sólo
+     sube un contador no cuenta como entrada.
 
 Uso:  python3 scripts/test_r44_a0_retos.py
 """
@@ -48,6 +52,13 @@ def pagina(datos, reto_id):
         '--ig-border-control:#42607e;--ig-focus:#9db8ff;}'
         'body{margin:0;padding:12px;background:#0B1A2B;font-family:Georgia,serif}</style>'
         '</head><body><p id="igt-status" role="status" aria-live="polite"></p>'
+        # Un taller de mentira, con lo justo para comprobar la entrada: el
+        # selector de retos que trae el estudio real y su resumen, más el
+        # contenedor del taller para los cinco que no traen retos.
+        '<div id="igt-app"><select id="igt-reto-sel">'
+        '<option value=""></option><option value="d1">d1</option>'
+        '<option value="e6">e6</option><option value="l6">l6</option></select>'
+        '<div id="igt-brief" tabindex="-1"></div></div>'
         f'<div id="igr44-destino" data-reto="{reto_id}"></div>'
         f'<script type="application/json" id="igr44-datos">{json.dumps(datos, ensure_ascii=False)}</script>'
         f'<script>{JS.read_text(encoding="utf-8")}</script>'
@@ -113,6 +124,7 @@ def medir(datos, reto_id, fallos):
             const est = panel.querySelector('.igr44-estado');
             const txt = panel.querySelector('.igr44-estado-texto');
             const marca = panel.querySelector('.igr44-marca');
+            const previo = est.getAttribute('data-estado');
             for (const e of estados) {
                 est.setAttribute('data-estado', e);
                 const cs = getComputedStyle(marca);
@@ -120,6 +132,7 @@ def medir(datos, reto_id, fallos):
                           forma: [cs.backgroundImage, cs.backgroundColor, cs.borderRadius,
                                   cs.boxShadow].join('|')});
             }
+            est.setAttribute('data-estado', previo);
             return out;
         }""", ['sin-empezar', 'en-curso', 'listo-para-exportar', 'terminado'])
         formas = [f['forma'] for f in firmas]
@@ -136,6 +149,37 @@ def medir(datos, reto_id, fallos):
             if len(set(textos)) < 4:
                 fallos.append(f'{reto_id}/{lang}: los cuatro estados no tienen '
                               'cuatro nombres distintos')
+
+        # La entrada: pulsar tiene que seleccionar el reto que el estudio ya
+        # trae, o meter el foco en el taller. Un botón que sube un contador no
+        # es una entrada, y eso es lo que se mide aquí.
+        entrada = pg.evaluate("""() => {
+            const antes = document.activeElement;
+            document.querySelector('.igr44-cta').click();
+            return {
+              seleccionado: document.getElementById('igt-reto-sel').value,
+              foco: document.activeElement ? document.activeElement.id : '',
+              cambio_foco: document.activeElement !== antes,
+              estado: document.querySelector('.igr44-estado').getAttribute('data-estado')
+            };
+        }""")
+        salida['entrada'] = entrada
+        reto_dato = next(x for x in datos['retos'] if x['id'] == reto_id)
+        adopta = (reto_dato.get('adopta') or {}).get('reto_estudio')
+        if adopta:
+            if entrada['seleccionado'] != adopta:
+                fallos.append(f'{reto_id}: al empezar no selecciona el reto '
+                              f'{adopta} que el estudio ya trae '
+                              f'(quedó en {entrada["seleccionado"]!r})')
+            if entrada['foco'] != 'igt-brief':
+                fallos.append(f'{reto_id}: al adoptar, el foco no va al resumen '
+                              f'del reto (fue a {entrada["foco"]!r})')
+        else:
+            if entrada['foco'] != 'igt-app':
+                fallos.append(f'{reto_id}: al empezar, el foco no entra en el '
+                              f'taller (fue a {entrada["foco"]!r})')
+        if entrada['estado'] != 'en-curso':
+            fallos.append(f'{reto_id}: al empezar, el estado no pasa a en-curso')
 
         usos = pg.evaluate("() => window.__usos || []")
         salida['almacenamiento_o_red'] = usos

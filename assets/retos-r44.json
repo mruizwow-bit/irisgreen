@@ -8,19 +8,35 @@
     "bytes": 88579,
     "nota": "SHA-256 y tamaño medidos sobre el archivo tal y como está en la punta canónica. La matriz reconciliada y la cola anotan f059d566... y 88 581 bytes: ese hash corresponde a una versión dos bytes anterior del mismo archivo. Aquí no se copia un hash, se mide el que hay."
   },
-  "estados": ["sin-empezar", "en-curso", "listo-para-exportar", "terminado"],
+  "estados": [
+    "sin-empezar",
+    "en-curso",
+    "listo-para-exportar",
+    "terminado"
+  ],
   "retos": [
     {
       "id": "E01",
       "ambito": "dibujo",
-      "estudio": { "es": "es/taller/dibujo/", "en": "en/workshop/drawing/" },
-      "estudios_secundarios": ["diseno-grafico"],
+      "estudio": {
+        "es": "es/taller/dibujo/",
+        "en": "en/workshop/drawing/"
+      },
+      "estudios_secundarios": [
+        "diseno-grafico"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "PixiJS (ya en el estudio)",
-      "artefacto": { "formatos": ["png", "proyecto"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "png",
+          "proyecto"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -64,19 +80,37 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": {
+        "reto_estudio": "d1",
+        "titulo_estudio": "Una sola línea",
+        "selector": "#igt-reto-sel",
+        "foco": "#igt-brief",
+        "nota": "El estudio ya trae este reto construido y con su comprobación. R44 no lo duplica: lo selecciona."
       }
     },
     {
       "id": "E06",
       "ambito": "pixel-art",
-      "estudio": { "es": "es/taller/pixel-art/", "en": "en/workshop/pixel-art/" },
-      "estudios_secundarios": ["videojuegos", "patrones"],
+      "estudio": {
+        "es": "es/taller/pixel-art/",
+        "en": "en/workshop/pixel-art/"
+      },
+      "estudios_secundarios": [
+        "videojuegos",
+        "patrones"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "PixiJS; vista en mosaico del estudio",
-      "artefacto": { "formatos": ["png"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "png"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -120,19 +154,35 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": null,
+      "entrada": {
+        "foco": "#igt-app",
+        "nota": "Este estudio no trae retos: el framework R44 aporta la capa entera y la entrada lleva el foco al taller."
       }
     },
     {
       "id": "E17",
       "ambito": "estructuras",
-      "estudio": { "es": "es/taller/estructuras/", "en": "en/workshop/structures/" },
-      "estudios_secundarios": ["maquinas"],
+      "estudio": {
+        "es": "es/taller/estructuras/",
+        "en": "en/workshop/structures/"
+      },
+      "estudios_secundarios": [
+        "maquinas"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Planck.js",
-      "artefacto": { "formatos": ["png", "csv"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "png",
+          "csv"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -176,19 +226,37 @@
           "listo-para-exportar": "Ready to test",
           "terminado": "Finished"
         }
+      },
+      "adopta": {
+        "reto_estudio": "e6",
+        "titulo_estudio": "Pasa un camión",
+        "selector": "#igt-reto-sel",
+        "foco": "#igt-brief",
+        "nota": "El estudio ya trae este reto construido y con su comprobación. R44 no lo duplica: lo selecciona."
       }
     },
     {
       "id": "E22",
       "ambito": "circuitos",
-      "estudio": { "es": "es/taller/circuitos/", "en": "en/workshop/circuits/" },
-      "estudios_secundarios": ["programacion"],
+      "estudio": {
+        "es": "es/taller/circuitos/",
+        "en": "en/workshop/circuits/"
+      },
+      "estudios_secundarios": [
+        "programacion"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Solver de Kirchhoff y Ohm del estudio",
-      "artefacto": { "formatos": ["svg", "csv"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "svg",
+          "csv"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -232,19 +300,38 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": {
+        "reto_estudio": "l6",
+        "titulo_estudio": "Semáforo",
+        "selector": "#igt-reto-sel",
+        "foco": "#igt-brief",
+        "nota": "El estudio ya trae este reto construido y con su comprobación. R44 no lo duplica: lo selecciona."
       }
     },
     {
       "id": "E28",
       "ambito": "escritura",
-      "estudio": { "es": "es/taller/escritura-restricciones/", "en": "en/workshop/constraint-writing/" },
-      "estudios_secundarios": ["comic"],
+      "estudio": {
+        "es": "es/taller/escritura-restricciones/",
+        "en": "en/workshop/constraint-writing/"
+      },
+      "estudios_secundarios": [
+        "comic"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Comprobador de reglas del estudio",
-      "artefacto": { "formatos": ["txt", "md", "html"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "txt",
+          "md",
+          "html"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -288,19 +375,35 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": null,
+      "entrada": {
+        "foco": "#igt-app",
+        "nota": "Este estudio no trae retos: el framework R44 aporta la capa entera y la entrada lleva el foco al taller."
       }
     },
     {
       "id": "E34",
       "ambito": "juego-de-mesa",
-      "estudio": { "es": "es/taller/juegos-de-mesa/", "en": "en/workshop/board-games/" },
-      "estudios_secundarios": ["ideas"],
+      "estudio": {
+        "es": "es/taller/juegos-de-mesa/",
+        "en": "en/workshop/board-games/"
+      },
+      "estudios_secundarios": [
+        "ideas"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Tablero y mazo del estudio",
-      "artefacto": { "formatos": ["pdf", "png"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "pdf",
+          "png"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -344,19 +447,35 @@
           "listo-para-exportar": "Ready to print",
           "terminado": "Finished"
         }
+      },
+      "adopta": null,
+      "entrada": {
+        "foco": "#igt-app",
+        "nota": "Este estudio no trae retos: el framework R44 aporta la capa entera y la entrada lleva el foco al taller."
       }
     },
     {
       "id": "E38",
       "ambito": "musica",
-      "estudio": { "es": "es/taller/ritmo/", "en": "en/workshop/rhythm-sequencer/" },
-      "estudios_secundarios": ["composicion"],
+      "estudio": {
+        "es": "es/taller/ritmo/",
+        "en": "en/workshop/rhythm-sequencer/"
+      },
+      "estudios_secundarios": [
+        "composicion"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Tone.js con Transport",
-      "artefacto": { "formatos": ["wav", "mid"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "wav",
+          "mid"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -400,19 +519,34 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": null,
+      "entrada": {
+        "foco": "#igt-app",
+        "nota": "Este estudio no trae retos: el framework R44 aporta la capa entera y la entrada lleva el foco al taller."
       }
     },
     {
       "id": "E44",
       "ambito": "videojuegos",
-      "estudio": { "es": "es/taller/videojuegos/", "en": "en/workshop/video-game-design/" },
-      "estudios_secundarios": ["estructuras"],
+      "estudio": {
+        "es": "es/taller/videojuegos/",
+        "en": "en/workshop/video-game-design/"
+      },
+      "estudios_secundarios": [
+        "estructuras"
+      ],
       "recommended_stage": "ALL_AGES",
       "starter_stage": "ALL_AGES",
       "audience": "ALL_AGES",
       "ola": "A",
       "motor": "Planck.js y runtime propio",
-      "artefacto": { "formatos": ["html"], "descarga_local": true },
+      "artefacto": {
+        "formatos": [
+          "html"
+        ],
+        "descarga_local": true
+      },
       "permisos": [],
       "hardware": false,
       "es": {
@@ -456,6 +590,11 @@
           "listo-para-exportar": "Ready to export",
           "terminado": "Finished"
         }
+      },
+      "adopta": null,
+      "entrada": {
+        "foco": "#igt-app",
+        "nota": "Este estudio no trae retos: el framework R44 aporta la capa entera y la entrada lleva el foco al taller."
       }
     }
   ]
