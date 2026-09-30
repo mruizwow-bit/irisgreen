@@ -22,7 +22,10 @@
   var stage = startStage(globalStage()||fallbackStage);
   function syncStage(value){
     stage=startStage(value||fallbackStage);
-    main.querySelectorAll('.igk-start').forEach(function (ul) { ul.hidden = ul.getAttribute('data-para') !== stage; });
+    main.querySelectorAll('.igk-start').forEach(function (ul) {
+      var own=ul.getAttribute('data-para')||'ALL_AGES';
+      ul.hidden = own !== stage;
+    });
   }
   syncStage(stage);
   function withStage(href) {

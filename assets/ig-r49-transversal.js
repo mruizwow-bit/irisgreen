@@ -180,15 +180,11 @@ function ensureSkip(){
  var existing=Array.from(D.querySelectorAll('a.skip,a.ig-home-skip,a.ig-r49-skip')).find(function(a){return !a.closest('x-dc');});
  if(existing)return;var main=Array.from(D.querySelectorAll('main')).find(function(m){return !m.closest('x-dc');})||D.querySelector('main');if(!main)return;if(!main.id)main.id='main';var a=h('a',{class:'ig-r49-skip',href:'#'+main.id,text:en()?'Skip to content':'Ir al contenido'});D.body.insertBefore(a,D.body.firstChild);
 }
-function retireLegacyChrome(){
- if(!D.body)return;
- D.querySelectorAll('#a11y.panel,#pl.panel').forEach(function(n){if(!n.closest('main')&&!n.closest('x-dc'))n.remove();});
-}
 function start(){
  if(!D.body)return;
  if(!D.body.hasAttribute('data-ig-r49'))D.body.setAttribute('data-ig-r49','1');
  if(!D.body.hasAttribute('data-ig-profile'))D.body.setAttribute('data-ig-profile','content');
- retireLegacyChrome();ensureSkip();upgradeHeader();upgradeFooter();
+ ensureSkip();upgradeHeader();upgradeFooter();
  D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});
 }
 /* This file is loaded with defer by the canonical shell. Run as soon as the parsed

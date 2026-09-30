@@ -130,7 +130,8 @@ def main()->None:
     shell=(root/"assets/ig-r49-transversal.js").read_text(encoding="utf-8")
     need("footer.replaceChildren(inner)" in shell,"Global footer does not replace legacy footer")
     need("if(D.body)start()" in shell,"Global shell still waits for a later DOMContentLoaded paint")
-    need("retireLegacyChrome()" in shell,"Legacy chrome cleanup missing")
+    need("retireLegacyChrome" not in shell,
+         "Legacy panels must not be deleted at runtime; cleanup belongs to the build layer")
 
     # Workshop visual layer consumes global semantic surfaces, not a white parallel palette.
     taller_css=(root/"assets/ig-taller-r42.css").read_text(encoding="utf-8")
