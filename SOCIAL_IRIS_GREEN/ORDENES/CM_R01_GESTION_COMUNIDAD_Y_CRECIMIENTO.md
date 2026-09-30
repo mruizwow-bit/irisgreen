@@ -90,6 +90,39 @@ No:
 
 ---
 
+# 3 BIS. LÍMITE DE HILO Y CIERRE NATURAL
+
+Continuidad NO significa mantener vivo el mismo hilo indefinidamente.
+
+Regla obligatoria:
+
+`RESPONDER → CERRAR → CAMBIAR DE CONTEXTO`
+
+Cuando alguien responde a Iris Green:
+
+- si aporta una pregunta, dato o contenido nuevo: responder UNA vez de forma útil;
+- si solo agradece, manda corazones, dice “qué bonito”, “gracias”, “me encanta” o equivalente: reaccionar/like cuando proceda y NO abrir otra respuesta textual;
+- si Iris Green ya cerró con abrazo, agradecimiento o despedida: NO volver a escribir en ese mismo hilo salvo que la otra persona abra un tema nuevo real;
+- no añadir una segunda pregunta solo para mantener conversación;
+- no encadenar cumplidos para alargar el intercambio;
+- no volver al mismo hilo al día siguiente solo para “seguir presente”.
+
+Límite operativo:
+- máximo 1 respuesta textual de Iris Green por nueva intervención sustantiva de la otra persona;
+- máximo 2 respuestas textuales de Iris Green en el mismo hilo durante 24 h, salvo una pregunta directa que requiera aclaración;
+- si el hilo ya está socialmente cerrado, las nuevas señales débiles se reconocen con reacción, no con texto.
+
+Después del cierre:
+- mover el trabajo a otra persona;
+- visitar otra publicación;
+- buscar una relación nueva;
+- o volver a esa misma cuenta en OTRA publicación futura si existe contenido pertinente.
+
+Una relación se fideliza a través de distintos momentos y publicaciones, no mediante 20 respuestas en el mismo post.
+
+Marcador de saturación:
+`THREAD_SATURATED_MOVE_ON`.
+
 # 4. INSTAGRAM
 
 Situación:
