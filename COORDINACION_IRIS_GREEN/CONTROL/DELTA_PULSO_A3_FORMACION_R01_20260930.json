@@ -49,5 +49,18 @@
   "product_change": false,
   "production_change": false,
   "external_certification": false,
-  "provider_integration_performed": false
+  "provider_integration_performed": false,
+  "slack": {
+    "workspace": "Sabik IA Technology",
+    "channel": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD",
+    "membership_confirmed": true,
+    "message_ts": "1790790719.765299",
+    "message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790790719765299",
+    "criterion_confirmed": {
+      "slack": "fast conversation and coordination",
+      "github": "canonical decisions, training, state and evidence",
+      "external_claude_agents_internal_slack_by_default": false
+    }
+  }
 }
