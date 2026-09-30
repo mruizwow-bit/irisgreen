@@ -99,6 +99,31 @@ Marcador:
 
 El agente no puede cerrar una sesión tras 3 respuestas si todavía hay comunidad, habituales, cálidas o descubrimiento pertinente por trabajar.
 
+## Instagram · universo real de 114 fieles · 30/09/2026
+
+La usuaria confirma que el agente social ya recibió el 29/09 una lista completa de **114 fieles/habituales**.
+
+El CSV actual de contactos es PARCIAL y no define el universo de comunidad.
+
+Estado:
+`IG_114_FAITHFUL_ROTATION_ACTIVE`.
+
+Acción obligatoria del agente:
+materializar su lista existente en:
+`CONTROL/FIELES_INSTAGRAM_114.csv`.
+
+No pedir de nuevo la lista a la usuaria.
+
+Rotación:
+- 15–25 fieles distintos por jornada;
+- full sweep aproximado 5–8 días;
+- no repetir siempre el mismo núcleo;
+- interacción solo cuando el contenido sea pertinente;
+- registrar última revisión/interacción.
+
+Los informes deben decir:
+`X/114 fieles revisados hoy`.
+
 ## Fuente de verdad de este carril
 
 1. `ESTADO_ACTUAL.md`
