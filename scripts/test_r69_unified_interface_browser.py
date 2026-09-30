@@ -134,7 +134,7 @@ async def main():
                   return nodes.every(e=>{const c=getComputedStyle(e);return c.visibility==='hidden'||c.display==='none'||Number(c.opacity)===0});
                 }""")
                 need(hidden,"legacy first paint visible "+path)
-            await page.wait_for_function("(m)=>document.body.dataset[m]==='1'",marker)
+            await page.wait_for_function("(m)=>document.body.dataset[m]==='1'",arg=marker)
         report["first_paint"]={"games":"PASS","printables":"PASS","workshop_hub":"PASS"}
 
         # Workshop must never expose the old full study before the R42 workspace.
