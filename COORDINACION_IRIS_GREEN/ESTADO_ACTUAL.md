@@ -1,3 +1,29 @@
+## R61 · Pecera · máster 10 min KEEP / final QA y transferencia pendientes · 30/09/2026
+
+**Estado: `R61_PECERA_10MIN_MASTER_KEEP_FINAL_QA_TRANSFER_PENDING` · #325.**
+
+Claude entrega informe y hoja QA del vídeo final de 10 min con burbujas. Se conserva el máster: no se reabren roca, composición, burbujas, densidad, saturación, audio, fauna, vegetación ni cámara.
+
+No hay PASS final todavía. Faltan:
+- transferencia real del MP4/master/build y verificación de hashes;
+- QA móvil 390×844 / 320×800;
+- demostrar NORMAL / REDUCIDO / SIN_MOVIMIENTO;
+- QA completa de controles;
+- performance o `PENDING_HARDWARE_QA`;
+- benchmark externo E4;
+- decisión de peso basada en medición real de carga/móvil.
+
+El MP4 web declarado pesa 151,2 MB. No degradar el master por defecto; medir y, si hace falta, generar variante web más ligera desde el master.
+
+Siguiente marcador:
+`R61_PECERA_FINAL_PACKAGE_MOBILE_BENCHMARK_QA_READY_FOR_ASTRA_MARIA`.
+
+Segunda sala, A2, main y producción: HOLD.
+
+Orden: `ORDENES/R61_CLAUDE_RINCON_PECERA/05_AURA_FINAL_QA_TRANSFER_PENDING.md`.
+
+Normativa: sin cambio transversal.
+
 ## R68 · Faroles flotantes · dirección KEEP / rework visual · 30/09/2026
 
 **Estado: `R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED` · #335.**
