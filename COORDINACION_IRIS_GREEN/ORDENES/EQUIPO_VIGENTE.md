@@ -1,5 +1,21 @@
 # Órdenes del equipo · continuidad vigente R06
 
+## Claude · cola prioritaria corregida · 30/09/2026
+
+Fuente: `CLAUDE_COLA_VIGENTE_20260930.md`.
+
+No usar selectores/pickers locales con estados anteriores.
+
+Prioridad:
+1. R61 Pecera: **preservar/transferir**, no rerender.
+2. R62 P03: solo causalidad layout R3 + preservar cadena.
+3. R68 Faroles: R2 espacial.
+4. R65: sin trabajo de arte; espera HUMAN QA María de 27+9.
+
+Regla:
+`PRESERVE → INTEGRATE → ACTIVATE → NEW_WORK`.
+
+
 ## Claude · R62 P03 · causalidad layout R3 · 30/09/2026
 
 Orden: `R62_ASTRA_JUEGOS_6_PILOTOS/06_AURA_P03_QA2_CAUSALITY_LAYOUT_FIX.md` · issue #326.
