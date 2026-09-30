@@ -30,11 +30,15 @@ for name, expected_blob in expected.items():
 
 require('<img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png"' in panel,
         "Current Sabik PRESENTE master is not mounted")
-for forbidden in (
-    "sabik-layered-avatar", 'class="sabik-back"', 'class="sabik-front"',
-    "sabik-base-640.webp", "rings-back", "rings-front"
+for forbidden in ("sabik-base-640.webp", 'class="sabik-back"', 'class="sabik-front"'):
+    require(forbidden not in panel + css + js, f"Old Sabik visual donor leaked back in: {forbidden}")
+for required in (
+    "sabik-layered-avatar", "sabik-orbits-back.svg", "sabik-orbits-front.svg",
+    "sabikR69OrbitBack", "sabikR69OrbitFront", "data.renderActive"
 ):
-    require(forbidden not in panel + css + js, f"Old Sabik donor leaked back in: {forbidden}")
+    require(required in css + js, f"Measured layered motion marker missing: {required}")
+for asset in ("sabik/assets/sabik-orbits-back.svg", "sabik/assets/sabik-orbits-front.svg"):
+    require((ROOT / asset).is_file(), f"Measured Sabik layer missing: {asset}")
 require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
         "Old donor WebP must not remain in the correction branch")
 
@@ -47,9 +51,9 @@ for marker in (
     require(marker in motion + js, f"Missing R37/current-master marker: {marker}")
 require("requestAnimationFrame" not in motion + js, "R37 must not become continuous RAF motion")
 require("setInterval" not in motion + js, "R37 must not become loop motion")
-require("sabikMeasuredPrecession" not in css, "Old donor orbit motion returned")
-require("sabikPresenceWave" not in css, "Old donor presence wave returned")
-require("sabikVoiceRipple" not in css, "Old donor voice ripple returned")
+require("sabikMeasuredPrecession" not in css, "Historical donor keyframe name returned")
+require("sabikPresenceWave" not in css, "Historical donor presence keyframe name returned")
+require("sabikVoiceRipple" not in css, "Historical donor voice keyframe name returned")
 require("'.webp'" not in publisher, "R08 publisher still carries the old donor WebP")
 
 # Voice integration may signal activity, but it must not replace the current visual identity.
@@ -57,10 +61,10 @@ require("setVoiceActive" in js, "A2 voice compatibility hook is missing")
 require("dataset.voiceActive" in js, "Voice hook must stay presentation-neutral")
 require("setVoiceActive(playing)" in mount, "A2 voice runtime is no longer wired to the presentation hook")
 
-# R37 copy/semantics remain finite, state-change motion.
-require("Movimiento breve cuando cambia el estado." in panel + mount,
-        "Approved ES R37 motion copy changed")
-require("Brief motion when the state changes." in mount,
-        "Approved EN R37 motion copy changed")
+# B3 transitions remain finite, while the measured orbit layers provide living presence.
+require("Movimiento suave y continuo." in panel + mount,
+        "ES continuous-motion copy missing")
+require("Gentle continuous motion." in mount,
+        "EN continuous-motion copy missing")
 
-print("R52_A3_NEW_SABIK_R37_STATIC_PASS")
+print("R52_A3_NEW_SABIK_LAYERED_MOTION_STATIC_PASS")

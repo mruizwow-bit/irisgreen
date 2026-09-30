@@ -15,7 +15,7 @@ REQUIRED={
     '.ig-home-v4-media':('display:grid','min-height:112px'),
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))'),
     '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:minmax(250px,.8fr)minmax(320px,1.2fr)'),
-    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:250px','aspect-ratio:auto','margin:0'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:300px','aspect-ratio:auto','margin:0'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between'),
 }
 CONTROL_ALLOWED={9,10,13}

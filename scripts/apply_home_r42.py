@@ -51,7 +51,7 @@ def sabik_home(en):
       'normal':'Normal',
       'reduced':'Reduced' if en else 'Reducido',
       'still':'No motion' if en else 'Sin movimiento',
-      'motion_help':'Brief motion when the state changes.' if en else 'Movimiento breve cuando cambia el estado.',
+      'motion_help':'Gentle continuous motion.' if en else 'Movimiento suave y continuo.',
       'browse':'Explore resources' if en else 'Explorar los recursos',
       'placeholder':'For example: noise drains me' if en else 'Por ejemplo: el ruido me agota',
     }
