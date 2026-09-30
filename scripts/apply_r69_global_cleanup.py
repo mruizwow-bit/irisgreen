@@ -21,8 +21,13 @@ RESOURCE_STAGE_RE=re.compile(
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
+    additions=[]
     if '/assets/ig-fonts.css' not in text:
-        text,n=HEAD_CLOSE_RE.subn('<link rel="stylesheet" href="/assets/ig-fonts.css"></head>',text,count=1)
+        additions.append('<link rel="stylesheet" href="/assets/ig-fonts.css">')
+    if '/assets/ig-r69-unified-ui.css' not in text:
+        additions.append('<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">')
+    if additions:
+        text,n=HEAD_CLOSE_RE.subn(''.join(additions)+'</head>',text,count=1)
         if n!=1:
             raise AssertionError('HTML without </head>')
     return text
