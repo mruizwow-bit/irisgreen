@@ -64,7 +64,7 @@ def sabik_home(en):
 <div class="ig-home-v4-sabik-left">
   <h2 id="sabik-widget-title">{t['title']}</h2>
   <div class="ig-home-v4-sabik-identity-row">
-    <div class="sabik-web-presentation"><div class="sabik-hologram sabik-web-visual" id="sabik-hologram" aria-hidden="true" data-web-state="PRESENTE"><img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png" width="150" height="150" alt=""></div></div>
+    <div class="sabik-web-presentation"><div class="sabik-hologram sabik-web-visual" id="sabik-hologram" aria-hidden="true" data-web-state="PRESENTE"><img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png?v=r69-20260930-3" width="150" height="150" alt=""></div></div>
     <div class="sabik-identity">
       <img class="sabik-wordmark" src="/sabik/assets/web-r01/SABIK_WORDMARK_T1_MASTER_R2.svg" width="198" height="38" alt="Sabik">
       <p data-sabik-text="subtitle">{t['subtitle']}</p>

@@ -42,7 +42,7 @@ try:
 
         # PRESENTE keeps the current Web master, with two independent measured orbit layers.
         src = page.locator("#sabik-web-master").get_attribute("src")
-        assert src.endswith("/sabik/assets/web-r01/web_presente.png"), src
+        assert "/sabik/assets/web-r01/web_presente.png?v=r69-20260930-3" in src, src
         page.wait_for_function("document.querySelectorAll('#sabik-hologram .sabik-orbit-layer').length === 2")
         idle = page.evaluate("""() => ({
           state: document.querySelector('#sabik-hologram').dataset.webState,
@@ -55,6 +55,13 @@ try:
         assert idle["state"] == "PRESENTE", idle
         assert idle["active"] is False, idle
         assert idle["layers"] == 2 and idle["renderActive"] is True, idle
+        painted = page.evaluate("""() => {
+          const m=document.querySelector('#sabik-web-master'),b=document.querySelector('.sabik-back-layer'),f=document.querySelector('.sabik-front-layer'),c=getComputedStyle(m),r=m.getBoundingClientRect();
+          return {tagBack:b.tagName,tagFront:f.tagName,display:c.display,visibility:c.visibility,opacity:Number(c.opacity),w:r.width,h:r.height,natural:m.naturalWidth,complete:m.complete};
+        }""")
+        assert painted["tagBack"]=="SPAN" and painted["tagFront"]=="SPAN", painted
+        assert painted["display"]!="none" and painted["visibility"]=="visible" and painted["opacity"]>.99, painted
+        assert painted["w"]>=220 and painted["h"]>=220 and painted["natural"]>0 and painted["complete"], painted
         before = idle["backTransform"]
         page.wait_for_timeout(300)
         after = page.locator(".sabik-back-layer").evaluate("(e)=>getComputedStyle(e).transform")
@@ -74,7 +81,7 @@ try:
           };
         }""")
         assert normal["state"] == "ORIENTAR", normal
-        assert normal["src"].endswith("/sabik/assets/web-r01/web_orientar.png"), normal
+        assert "/sabik/assets/web-r01/web_orientar.png?v=r69-20260930-3" in normal["src"], normal
         assert normal["duration"] == 380, normal
         assert normal["iterations"] == 1, normal
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
@@ -89,7 +96,7 @@ try:
         }""")
         assert transition["duration"] == 500, transition
         assert transition["iterations"] == 1, transition
-        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false && document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_presente.png')")
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false && document.querySelector('#sabik-web-master').getAttribute('src').includes('web_presente.png?v=r69-20260930-3')")
         evidence["motion"]["transition"] = transition
 
         # REDUCIDO shortens the same R37 movement.
@@ -115,7 +122,7 @@ try:
         page.select_option("#sabik-motion-level", "SIN_MOVIMIENTO")
         page.dispatch_event("#sabik-motion-level", "change")
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true}); }")
-        page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_pausa.png')")
+        page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').includes('web_pausa.png?v=r69-20260930-3')")
         stopped = page.evaluate("""() => ({
           active: window.SabikWebPresentation.snapshot().active,
           animations: document.querySelector('#sabik-web-master').getAnimations().length,
@@ -138,7 +145,7 @@ try:
           layered: document.querySelector('.sabik-layered-avatar') !== null
         })""")
         assert voice["voice"] == "true", voice
-        assert voice["src"].endswith("/sabik/assets/web-r01/web_pausa.png"), voice
+        assert "/sabik/assets/web-r01/web_pausa.png?v=r69-20260930-3" in voice["src"], voice
         assert voice["layered"] is True, voice
         page.evaluate("window.SabikWebPresentation.setVoiceActive(false)")
         evidence["motion"]["voice_hook"] = voice

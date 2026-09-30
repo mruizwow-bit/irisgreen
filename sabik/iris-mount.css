@@ -37,10 +37,10 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
 
 /* R69 HUMAN QA · current Sabik identity with measured front/back moving layers. */
 .sabik-web-visual.sabik-layered-avatar{--sabik-orbit-speed-back:28s;--sabik-orbit-speed-front:36s;--sabik-presence-speed:3.4s;position:relative;isolation:isolate;overflow:visible;aspect-ratio:1;background:transparent}
-.sabik-layered-avatar .sabik-orbit-layer,.sabik-layered-avatar #sabik-web-master.sabik-avatar-base{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;transform-origin:50% 50%}
-.sabik-layered-avatar .sabik-back-layer{z-index:1;animation:sabikR69OrbitBack var(--sabik-orbit-speed-back) linear infinite}
-.sabik-layered-avatar #sabik-web-master.sabik-avatar-base{z-index:2;clip-path:none}
-.sabik-layered-avatar .sabik-front-layer{z-index:3;animation:sabikR69OrbitFront var(--sabik-orbit-speed-front) linear infinite reverse}
+.sabik-layered-avatar .sabik-orbit-layer{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;transform-origin:50% 50%;background-position:center;background-repeat:no-repeat;background-size:contain}
+.sabik-layered-avatar .sabik-back-layer{z-index:1;background-image:url('/sabik/assets/sabik-orbits-back.svg?v=r69-20260930-3');animation:sabikR69OrbitBack var(--sabik-orbit-speed-back) linear infinite}
+.sabik-layered-avatar #sabik-web-master.sabik-avatar-base{position:relative;z-index:2;display:block;width:100%;height:auto;object-fit:contain;clip-path:none;opacity:1;visibility:visible}
+.sabik-layered-avatar .sabik-front-layer{z-index:3;background-image:url('/sabik/assets/sabik-orbits-front.svg?v=r69-20260930-3');animation:sabikR69OrbitFront var(--sabik-orbit-speed-front) linear infinite reverse}
 .sabik-layered-avatar::before,.sabik-layered-avatar::after{content:"";position:absolute;pointer-events:none;border-radius:50%;transform-origin:50% 50%}
 .sabik-layered-avatar::before{z-index:4;inset:30%;border:1px solid color-mix(in srgb,var(--ig-accent-secondary) 62%,transparent);box-shadow:0 0 22px color-mix(in srgb,var(--ig-accent-secondary) 30%,transparent);animation:sabikR69CoreWave var(--sabik-presence-speed) ease-in-out infinite}
 .sabik-layered-avatar::after{z-index:0;inset:6%;border:1px solid color-mix(in srgb,var(--ig-accent) 40%,transparent);box-shadow:0 0 30px color-mix(in srgb,var(--ig-accent) 18%,transparent);animation:sabikR69PresenceWave calc(var(--sabik-presence-speed) * 1.35) ease-in-out infinite}

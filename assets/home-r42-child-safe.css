@@ -237,7 +237,7 @@ html[data-ig-safety-mode="adult-explicit"] .ig-home-v4-safety-state [data-ig-hom
   margin:0;
   overflow:visible;
 }
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{width:100%;max-width:none;height:100%;transform-origin:50% 50%}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{width:100%;max-width:none;height:auto;transform-origin:50% 50%;opacity:1;visibility:visible}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{display:block;height:28px;width:auto}
 .ig-home-v4-sabik-form-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
 .ig-home-v4-sabik-form-head label{font-weight:700}
