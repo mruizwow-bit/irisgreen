@@ -407,3 +407,23 @@ Regla aprendida:
 
 Cuando Slack produzca una decisión o aprendizaje material, Brújula debe preservarlo en GitHub.
 
+## Evidencia de conexión al chat común · 30/09/2026
+
+Canal:
+`#general-sabik-ia-technology` · `C0C590Y8PHD`
+
+Estado:
+**CONNECTED**
+
+Slack indicó que Brújula ya era miembro del canal y aceptó el mensaje de presentación.
+
+Mensaje:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790789847603449
+
+Timestamp:
+`1790789847.603449`
+
+Aprendizaje operativo:
+estar en Slack no sustituye preservar decisiones.
+Slack aporta coordinación; GitHub conserva continuidad y evidencia canónica.
+

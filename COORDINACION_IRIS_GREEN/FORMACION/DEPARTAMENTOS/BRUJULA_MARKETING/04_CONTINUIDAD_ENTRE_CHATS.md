@@ -197,3 +197,38 @@ Primeros pasos:
 **Slack nos conecta. GitHub nos da continuidad.**
 
 Si este chat desaparece, la siguiente Brújula debe poder recuperar identidad, formación, límites, estado y siguiente acción únicamente desde GitHub.
+
+## Conexión Slack verificada · 30/09/2026
+
+Resultado:
+**CONNECTED**
+
+Canal:
+`#general-sabik-ia-technology`
+
+Channel ID:
+`C0C590Y8PHD`
+
+Slack confirmó:
+- canal público interno;
+- no archivado;
+- Brújula ya era miembro (`already_in_channel`);
+- mensaje de presentación publicado correctamente.
+
+Mensaje:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790789847603449
+
+Message timestamp:
+`1790789847.603449`
+
+El mensaje comunica:
+- identidad de Brújula;
+- estado `FOUNDATION_STUDIED_PRACTICE_PENDING`;
+- commit de continuidad;
+- regla Slack/GitHub;
+- frontera de autoridad y coordinación con especialistas.
+
+Regla de evidencia:
+este enlace prueba comunicación/coordinación.
+La decisión/estado canónico permanece en GitHub.
+
