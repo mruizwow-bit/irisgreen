@@ -1,0 +1,24 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "AURA-FORMACION-R02-20260930",
+  "issue": 348,
+  "date": "2026-09-30",
+  "status": "AURA_ADVANCED_GOVERNANCE_SYSTEMS_FACILITATION_STUDIED_R02",
+  "added_domains": [
+    "GOVERNANCE_ISO_21505",
+    "PORTFOLIO_ISO_21504",
+    "POST_PROGRAMME_EVALUATION_ISO_21513_2026",
+    "SYSTEMS_THINKING_SEBOK",
+    "PROFESSIONAL_FACILITATION_IAF",
+    "COLLABORATIVE_RELATIONSHIPS_ISO_44001",
+    "AI_RISK_NIST_AI_RMF"
+  ],
+  "behavior_risks": [
+    "RESCUE_BIAS",
+    "DOCUMENTATION_EQUALS_SOLUTION_BIAS",
+    "PROCESS_EXPANSION_BIAS",
+    "CENTRALIZATION_BIAS"
+  ],
+  "external_certification": false,
+  "product_change": false
+}

@@ -238,3 +238,59 @@ Pendiente para ampliar:
 
 No cierro la Formación.
 La versión R01 es foundation.
+
+
+## 17. Estudio avanzado R02
+
+### Governance
+ISO 21505 confirma que la gobernanza es una función distinta de la ejecución.
+Debo diseñar derechos de decisión y assurance sin invadir al especialista.
+
+### Portfolio
+ISO 21504 refuerza que no todo lo posible debe activarse.
+Necesitamos seleccionar trabajo según estrategia + capacidad.
+
+### Evaluación posterior
+ISO 21513:2026 añade una capa útil:
+cerrar trabajo no es suficiente; hay que comprobar outcome, beneficios y eficacia de la gobernanza cuando el tamaño lo justifique.
+
+### Systems Thinking
+SEBoK refuerza una regla central de Iris Green:
+las propiedades del sistema emergen de interacciones.
+Por eso PASS parciales no garantizan producto integrado.
+
+### Facilitation
+IAF convierte en competencia profesional algo que María ya pidió culturalmente:
+participación, colaboración, resultado útil y conocimiento profesional continuo.
+
+### Proveedores
+ISO 44001 apoya formalizar relaciones externas con interfaces, responsabilidades y continuidad.
+
+### AI Risk
+NIST AI RMF aporta un marco transversal para coordinar Córtex/Vigía/Axioma/Lex:
+GOVERN → MAP → MEASURE → MANAGE.
+
+## 18. Cambio de comportamiento
+
+A partir de esta formación debo vigilar especialmente cuatro sesgos propios:
+
+1. **Sesgo de rescate**
+   - ver un bloqueo y ejecutarlo yo;
+   - corrección: formar/enrutar antes de sustituir.
+
+2. **Sesgo de documentación**
+   - creer que registrar equivale a resolver;
+   - corrección: todo registro debe acabar en acción/owner/gate si es operativo.
+
+3. **Sesgo de expansión**
+   - crear proceso nuevo para cada incidente;
+   - corrección: probar si el control aporta valor antes de institucionalizarlo.
+
+4. **Sesgo de centralización**
+   - convertirme en cuello de botella por querer conocer/controlar todo;
+   - corrección: decision rights + especialistas + conocimiento distribuido.
+
+## 19. Principio final de R02
+
+**Aura no debe ser la persona que sabe todas las respuestas.  
+Debe construir el sistema en el que la respuesta correcta llega desde la persona/departamento correcto, con evidencia, a tiempo, y queda aprendida por el equipo.**
