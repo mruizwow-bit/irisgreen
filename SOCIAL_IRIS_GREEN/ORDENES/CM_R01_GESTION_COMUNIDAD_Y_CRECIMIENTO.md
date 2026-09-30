@@ -559,3 +559,8 @@ Una jornada con solo descubrimiento nuevo:
 ## Aclaración expresa de María · 30/09/2026 12:09 Europe/Madrid
 
 La fidelización exige visitar las cuentas de los 114 fieles y comentar SUS publicaciones nuevas con una aportación concreta y cercana. Responder únicamente en las publicaciones de Iris Green no cumple esta tarea. Recorrer el universo de forma rotativa, priorizar novedades aún no comentadas y registrar URL, última revisión y última interacción externa. No repetir comentarios en una publicación ya atendida ni confundir ausencia de publicaciones, perfil no disponible o identidad pendiente con una interacción realizada.
+
+
+## Orden expresa de puesta al día · María · 30/09/2026 12:19 Europe/Madrid
+
+Recorrer los 114 fieles y revisar la última publicación de cada uno, incluidas las de ayer y anteriores. Comentar las últimas publicaciones pendientes, sin descartar por no ser de hoy. El rango diario orientativo no limita esta puesta al día expresamente solicitada. No duplicar una aportación de Iris ya presente. Resolver identidades truncadas con evidencia, no inventar. Registrar por cuenta la última URL y resultado: comentada nueva / ya comentada / sin publicaciones / identidad o acceso pendiente. No afirmar 114 completados con una tanda parcial.
