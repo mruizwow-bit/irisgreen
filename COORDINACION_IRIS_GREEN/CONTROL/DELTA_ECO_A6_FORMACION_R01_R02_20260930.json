@@ -42,7 +42,26 @@
     "sample_rate_hz": 48000,
     "channels": 1,
     "negative_control": "Truncated M4A -> ffprobe exit 1, moov atom not found, invalid data",
-    "loudness_probe": "FFmpeg loudnorm analysis executed"
+    "loudness_probe": "FFmpeg loudnorm analysis executed",
+    "browser_lab": {
+      "status": "PASS_DECODE_PLAYBACK_DATA_URL_WITH_NEGATIVE_CONTROL",
+      "chromium_version": "144.0.7559.96",
+      "canPlayType": {
+        "WAV": "maybe",
+        "MP3": "probably",
+        "AAC": "probably",
+        "Opus": "probably"
+      },
+      "healthy": [
+        "WAV",
+        "MP3",
+        "M4A/AAC",
+        "Ogg/Opus"
+      ],
+      "negative": "truncated M4A -> NotSupportedError + MediaError 4 + DEMUXER_ERROR_COULD_NOT_OPEN",
+      "navigation_restriction": "127.0.0.1 and file:// blocked by administrator; classified as harness restriction, not media failure",
+      "evidence": "FORMACION/A6_ECO/EVIDENCIA/ECO_MEDIA_LAB_20260930.json"
+    }
   },
   "key_findings": [
     "HTTP 200 is not playback evidence",
