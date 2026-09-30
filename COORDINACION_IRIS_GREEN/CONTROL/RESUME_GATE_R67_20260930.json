@@ -1,0 +1,30 @@
+{
+  "schema": "COORD_RESUME_GATE/1.0",
+  "fecha": "2026-09-30",
+  "id": "RESUME_GATE_CURRENT_R67",
+  "estado": "REBASE_REQUIRED",
+  "target_branch": "agent2/sabik-iris-r08-20260924",
+  "live_sha": "e07a45b354ed393699186eca03980626e2046440",
+  "coordination_sha": "d7b750b7b553470dc1944260e2e20c19dd5d02af",
+  "concurrent_work": [
+    {
+      "pr": 336,
+      "head": "043db466ce22fe01729975d5df414be806563fd2",
+      "owner": "Aura",
+      "purpose": "R67 integrated recovery"
+    },
+    {
+      "pr": 337,
+      "head": "7697b5aad85d458814ac5bfeb777d4c094d8c5f0",
+      "owner": "Aura",
+      "purpose": "preview only"
+    },
+    {
+      "pr": 244,
+      "head": "e07a45b354ed393699186eca03980626e2046440",
+      "owner": "A2",
+      "purpose": "live integration branch"
+    }
+  ],
+  "decision": "Reconcile Aura recovery onto current A2 including Sakura; never overwrite from stale base."
+}
