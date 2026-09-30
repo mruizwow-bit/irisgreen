@@ -1,0 +1,21 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "BRUJULA-CONTINUIDAD-SLACK-R01-20260930",
+  "date": "2026-09-30",
+  "alias": "Brujula",
+  "status": "CONTINUIDAD_ACTIVA",
+  "canonical_source": "GitHub",
+  "coordination_channel": {
+    "system": "Slack",
+    "workspace": "Sabik IA Technology",
+    "channel": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD",
+    "purpose": "conversacion_y_coordinacion_rapida"
+  },
+  "rules": [
+    "SLACK_NOT_CANONICAL",
+    "GITHUB_DECISIONS_TRAINING_STATE_EVIDENCE",
+    "EXTERNAL_CLAUDE_NOT_INTERNAL_SLACK_BY_DEFAULT"
+  ],
+  "product_change": false
+}

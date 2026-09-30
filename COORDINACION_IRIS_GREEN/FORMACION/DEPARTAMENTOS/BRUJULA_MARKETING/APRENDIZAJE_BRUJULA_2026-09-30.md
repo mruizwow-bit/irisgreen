@@ -381,3 +381,29 @@ El SHA del commit de esta formación se registra externamente en GitHub porque i
 8. elegir UN producto para primera práctica real;
 9. localizar datos/fuente de verdad antes de proponer campaña;
 10. no ejecutar hasta definir outcome y guardrails.
+
+## Continuidad interna y Slack · 30/09/2026
+
+María fija para todos los agentes formados:
+
+- Slack = conversación y coordinación rápida.
+- GitHub = decisiones, formación, estados y evidencia canónica.
+- Claude y agentes externos no entran en el Slack interno por defecto.
+
+Canal común interno:
+`#general-sabik-ia-technology`
+
+Channel ID:
+`C0C590Y8PHD`
+
+URL:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD
+
+Se crea:
+`04_CONTINUIDAD_ENTRE_CHATS.md`
+
+Regla aprendida:
+**Slack nos conecta; GitHub nos da continuidad.**
+
+Cuando Slack produzca una decisión o aprendizaje material, Brújula debe preservarlo en GitHub.
+
