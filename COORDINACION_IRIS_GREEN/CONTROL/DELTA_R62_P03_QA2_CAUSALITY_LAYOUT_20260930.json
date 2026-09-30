@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P03-QA2-CAUSALITY-LAYOUT-20260930",
+  "issue": 326,
+  "date": "2026-09-30",
+  "status": "R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED",
+  "patch_sha256": "c19c828099482a7ad2cecb9d90f7f8f01855304ee22ee51bea04f4f62761133b",
+  "local_commit_claimed": "5648a8d5d36056c950d592bf66dd3d0e162b10c6",
+  "pass": [
+    "BOARD_READABILITY",
+    "RELEVANT_ANCHORS",
+    "DIVISOR_TARGET",
+    "SOUTH_SCREEN_VISIBILITY",
+    "MATERIAL_SEPARATION",
+    "DESKTOP_GAMEPLAY",
+    "MOBILE_DIRECTION"
+  ],
+  "independent_measurement": {
+    "right_band_to_center_luminance_ratio": 0.352
+  },
+  "blocker": [
+    "CAUSALITY_STEP_3_4_TEXT_OVERLAP"
+  ],
+  "pending_before_integration": [
+    "P01_BYTE_IDENTITY_REPO_EXECUTION"
+  ],
+  "expected_marker": "R62_P03_CAUSALITY_LAYOUT_R3_READY_FOR_ASTRA_AURA_MARIA",
+  "holds": [
+    "P04",
+    "P05",
+    "P06",
+    "CODEX_321",
+    "A2",
+    "MAIN",
+    "PRODUCTION"
+  ],
+  "normative_change": false
+}
