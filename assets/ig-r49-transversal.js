@@ -55,7 +55,7 @@ function langHref(){
   return path+'?lang='+target;
  }
  var alt=D.querySelector('link[rel~="alternate"][hreflang="'+target+'"]');
- if(alt&&alt.href)return alt.href;
+ if(alt&&alt.href){try{var u=new URL(alt.href,W.location.href);return u.pathname+u.search+u.hash;}catch(_){}}
  if(target==='en')return '/en/';
  return '/';
 }
@@ -71,22 +71,14 @@ function upgradeHeader(){
  if(header&&header.closest('x-dc'))header=null;
  if(!header){header=h('header',{});var skip=Array.from(D.querySelectorAll('body > a.skip,body > a.ig-r49-skip,body > a.ig-home-skip')).find(function(a){return !a.closest('x-dc');});if(skip)skip.insertAdjacentElement('afterend',header);else D.body.insertBefore(header,D.body.firstChild);}
  if(header.dataset.igR49Upgraded==='true')return header;
+ header.classList.remove('hd','ig-home-header','ig-uh');
  header.classList.add('ig-r49-global-header');header.dataset.igR49Upgraded='true';
- var inner=h('div',{class:'ig-r49-header-inner'});
- var brand=h('a',{class:'ig-r49-brand',href:en()?'/en/':'/',text:'Iris Green'});
- var tools=h('div',{class:'ig-r49-tools'});
- var search=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-search':'','aria-label':tr().search},h('span',{text:tr().search}));
+ var inner=h('div',{class:'ig-r49-header-inner'}),brand=h('a',{class:'ig-r49-brand',href:en()?'/en/':'/',text:'Iris Green'}),tools=h('div',{class:'ig-r49-tools'});
  var music=h('button',{type:'button',class:'ig-r49-tool','data-ig-music':'','aria-expanded':'false','aria-label':tr().music},h('span',{text:tr().music}));
  var settings=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-settings':'','aria-label':tr().settings},h('span',{text:tr().settings}));
- var audience=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-stage':'','aria-label':tr().stageTitle+': '+stageLabel()},h('span',{text:tr().content}),h('span',{class:'ig-r49-stage-state',text:stageLabel()}));
  var lang=h('a',{class:'ig-r49-lang',href:langHref(),lang:en()?'es':'en',text:tr().language});
- var more=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-more':'','aria-label':tr().more},h('span',{text:tr().more}));
- tools.append(search,music,settings,audience,lang,more);inner.append(brand,tools);header.replaceChildren(inner);
- search.addEventListener('click',function(){openSearch(search);});
+ tools.append(music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
  settings.addEventListener('click',function(){openSettings(settings);});
- audience.addEventListener('click',function(){openAudience(audience);});
- more.addEventListener('click',function(){openMore(more);});
- W.addEventListener('ig:audience-change',updateStage);
  return header;
 }
 function upgradeFooter(){
@@ -94,6 +86,7 @@ function upgradeFooter(){
  if(footer&&footer.closest('x-dc'))footer=null;
  if(!footer){footer=h('footer',{});D.body.appendChild(footer);}
  if(footer.dataset.igR49Upgraded==='true')return footer;
+ footer.classList.remove('ft','ig-home-footer');
  footer.classList.add('ig-r49-global-footer');footer.dataset.igR49Upgraded='true';
  var inner=h('div',{class:'ig-r49-footer-inner'});
  var brand=h('div',{class:'ig-r49-footer-brand',text:'Iris Green'});
@@ -102,7 +95,7 @@ function upgradeFooter(){
  var access=en()?'/es/lectura-accesible/?lang=en':'/es/lectura-accesible/';
  var privacy=en()?'/en/privacy/':'/es/privacidad/';
  [[about,tr().about],[access,tr().accessibility],[privacy,tr().privacy]].forEach(function(x){nav.appendChild(h('a',{href:x[0],text:x[1]}));});
- inner.append(brand,nav);footer.appendChild(inner);return footer;
+ inner.append(brand,nav);footer.replaceChildren(inner);return footer;
 }
 function ensureSearch(){
  if(W.IGSearch)return Promise.resolve(W.IGSearch);
@@ -176,7 +169,16 @@ function ensureSkip(){
  var existing=Array.from(D.querySelectorAll('a.skip,a.ig-home-skip,a.ig-r49-skip')).find(function(a){return !a.closest('x-dc');});
  if(existing)return;var main=Array.from(D.querySelectorAll('main')).find(function(m){return !m.closest('x-dc');})||D.querySelector('main');if(!main)return;if(!main.id)main.id='main';var a=h('a',{class:'ig-r49-skip',href:'#'+main.id,text:en()?'Skip to content':'Ir al contenido'});D.body.insertBefore(a,D.body.firstChild);
 }
-function start(){ensureSkip();upgradeHeader();upgradeFooter();D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});}
-if(D.readyState==='loading')D.addEventListener('DOMContentLoaded',start,{once:true});else start();
+function start(){
+ if(!D.body)return;
+ if(!D.body.hasAttribute('data-ig-r49'))D.body.setAttribute('data-ig-r49','1');
+ if(!D.body.hasAttribute('data-ig-profile'))D.body.setAttribute('data-ig-profile','content');
+ ensureSkip();upgradeHeader();upgradeFooter();
+ D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});
+}
+/* This file is loaded with defer by the canonical shell. Run as soon as the parsed
+   body exists instead of waiting one more turn for DOMContentLoaded: the legacy
+   header/footer must never be the first painted interface. */
+if(D.body)start();else D.addEventListener('DOMContentLoaded',start,{once:true});
 W.IGR49=Object.freeze({version:'R49-1',refreshStage:updateStage});
 })();

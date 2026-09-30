@@ -61,9 +61,9 @@ html[data-ig-contrast="on"] .ig-home-header{
 .ig-home-lang{background:transparent;border-color:transparent}
 
 .ig-home-v4-wrap{
-  width:min(100%,1240px);
+  width:min(calc(100% - 2 * clamp(1rem,2.2vw,2.5rem)),var(--ig-content-wide,104rem));
   margin:0 auto;
-  padding:clamp(1rem,2.5vw,1.7rem) clamp(1rem,3vw,2rem) 3rem;
+  padding:clamp(1rem,2.5vw,1.7rem) 0 3rem;
 }
 .ig-home-v4-main{
   min-width:0;
@@ -72,6 +72,10 @@ html[data-ig-contrast="on"] .ig-home-header{
   gap:clamp(1.45rem,2.7vw,2.35rem);
 }
 .ig-home-v4-hero,.ig-home-v4-sabik{
+  width:100%;
+  align-self:stretch;
+  display:block;
+  padding:1rem 1.1rem;
   border:1px solid var(--ig-separator);
   border-radius:18px;
   background:var(--ig-bg-surface);
@@ -79,9 +83,10 @@ html[data-ig-contrast="on"] .ig-home-header{
 .ig-home-v4-hero{
   position:relative;
   overflow:hidden;
-  display:flex;
-  flex-direction:column;
-  gap:1.15rem;
+  display:grid;
+  grid-template-columns:minmax(24rem,.46fr) minmax(0,1fr);
+  align-items:end;
+  gap:1.2rem clamp(1.5rem,3vw,3rem);
   padding:clamp(1.25rem,3vw,2.25rem);
 }
 .ig-home-v4 h1,.ig-home-v4 h2,.ig-home-v4-card strong{
@@ -90,12 +95,13 @@ html[data-ig-contrast="on"] .ig-home-header{
 }
 .ig-home-v4 h1{
   margin:0;
-  max-width:17ch;
+  max-width:none;
+  align-self:center;
   font-size:clamp(2rem,1.3rem + 2.6vw,3.25rem);
   font-weight:600;
   line-height:1.05;
   letter-spacing:-.015em;
-  text-wrap:balance;
+  white-space:nowrap;
 }
 .ig-home-v4 h2{
   margin:0;
@@ -104,7 +110,7 @@ html[data-ig-contrast="on"] .ig-home-header{
   line-height:1.15;
 }
 
-.ig-home-v4-search{display:flex;flex-direction:column;gap:.45rem}
+.ig-home-v4-search{display:flex;flex-direction:column;gap:.45rem;min-width:0}
 .ig-home-v4-search label,.ig-home-v4-age-title{margin:0;font-weight:700}
 .ig-home-v4-search-row{display:flex;flex-wrap:wrap;gap:.6rem}
 .ig-home-v4-search input{
@@ -146,7 +152,7 @@ html[data-ig-contrast="on"] .ig-home-header{
 .ig-home-result span{color:var(--ig-text-muted)}
 .ig-home-search-status{min-height:1.4em;margin:.35rem 0 0;color:var(--ig-text-muted)}
 
-.ig-home-v4-age{display:flex;flex-direction:column;gap:.5rem}
+.ig-home-v4-age{grid-column:1/-1;display:flex;flex-direction:column;gap:.5rem}
 .ig-home-v4-age .ig-audience-options button{
   display:inline-flex;
   align-items:center;
@@ -161,11 +167,15 @@ html[data-ig-contrast="on"] .ig-home-header{
   font-size:.92rem;
 }
 .ig-home-v4-age-state strong{color:var(--ig-text)}
+.ig-home-v4-safety-state{margin:.15rem 0 0;color:var(--ig-text-muted);font-size:.92rem;font-weight:700}
+.ig-home-v4-safety-state [data-ig-home-adult]{display:none}
+html[data-ig-safety-mode="adult-explicit"] .ig-home-v4-safety-state [data-ig-home-safe]{display:none}
+html[data-ig-safety-mode="adult-explicit"] .ig-home-v4-safety-state [data-ig-home-adult]{display:inline}
 
-.ig-home-v4-section{display:grid;gap:.85rem}
+.ig-home-v4-section{display:grid;gap:.85rem;width:100%;align-self:stretch}
 .ig-home-v4-use-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
 .ig-home-v4-use-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.85rem}
-.ig-home-v4-discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem}
+.ig-home-v4-discover-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.85rem;width:100%;max-width:78rem}
 .ig-home-v4-card{
   min-width:0;
   min-height:100%;
@@ -207,21 +217,11 @@ html[data-ig-contrast="on"] .ig-home-header{
 }
 .ig-home-v4-use-card .ig-home-v4-media{min-height:132px}
 
-.ig-home-v4-sabik{
-  display:block;
-  padding:clamp(1.2rem,3vw,2rem);
-}
-.ig-home-v4-sabik>.sabik-panel{
-  width:100%;
-  max-width:none;
-  margin:0;
-  padding:0;
-  grid-column:auto;
-}
+.ig-home-v4-sabik>.sabik-panel{width:100%;max-width:none;margin:0;padding:0;grid-column:auto}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));
-  gap:clamp(1rem,3vw,2.2rem);
+  grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr);
+  gap:1.1rem;
   align-items:start;
   padding:0;
   border:0;
@@ -229,36 +229,37 @@ html[data-ig-contrast="on"] .ig-home-header{
   background:transparent;
   box-shadow:none;
 }
-.ig-home-v4-sabik-left,.ig-home-v4-sabik-right{min-width:0;display:flex;flex-direction:column;gap:.8rem}
-.ig-home-v4-sabik-right{gap:.7rem}
-.ig-home-v4-sabik-identity-row{display:flex;align-items:center;gap:1rem}
+.ig-home-v4-sabik-left,.ig-home-v4-sabik-right{min-width:0;display:flex;flex-direction:column;gap:.45rem}
+.ig-home-v4-sabik-identity-row{display:flex;align-items:center;gap:.8rem}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:none}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{
-  width:clamp(96px,14vw,150px);
-  max-width:150px;
-  aspect-ratio:auto;
+  width:clamp(220px,18vw,300px);
+  max-width:300px;
+  aspect-ratio:1;
   margin:0;
+  overflow:visible;
 }
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{
-  width:100%;
-  max-width:150px;
-  height:auto;
-}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{display:block;height:30px;width:auto}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{width:100%;max-width:none;height:auto;transform-origin:50% 50%;opacity:1;visibility:visible}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{display:block;height:28px;width:auto}
 .ig-home-v4-sabik-form-head{display:flex;justify-content:space-between;align-items:center;gap:.6rem}
 .ig-home-v4-sabik-form-head label{font-weight:700}
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-input{min-height:0;height:auto;resize:vertical}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget-body{display:flex;flex-direction:column;gap:.7rem}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-capability,
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-memory-note,
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-limits{margin:0}
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-settings{margin-top:0}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-input{min-height:88px;height:88px;resize:vertical}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget-body{display:flex;flex-direction:column;gap:.45rem}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-actions{margin:.35rem 0}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-voice-control,
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-motion-control{margin:.35rem 0;padding:0;border:0;background:transparent}
+@media(max-width:760px){
+  .ig-home-v4-sabik{width:100%}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
+  .ig-home-v4-sabik-identity-row{justify-content:center}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:min(62vw,280px)}
+}
 
 
 .ig-home-v4-footer{
-  width:min(100%,1240px);
+  width:min(calc(100% - 2 * clamp(1rem,2.2vw,2.5rem)),var(--ig-content-wide,104rem));
   margin:0 auto;
-  padding:0 clamp(1rem,3vw,2rem) 2.5rem;
+  padding:.8rem 0 1rem;
   display:flex;
   align-items:center;
   justify-content:space-between;
@@ -372,6 +373,8 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
   .ig-home-v4-discover-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:900px){
+  .ig-home-v4-hero{display:flex;flex-direction:column;align-items:stretch}
+  .ig-home-v4 h1{white-space:normal}
   .ig-home-v4-use-grid{grid-template-columns:1fr}
   .ig-home-v4-use-pair{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
@@ -406,3 +409,34 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
   .ig-home-v4 .sabik-wordmark{filter:none}
   .ig-home-v4 button,.ig-home-v4 a{forced-color-adjust:auto}
 }
+
+
+/* R69 HUMAN QA · product width and low-glare interaction controls. */
+.ig-home-v4 :where(.ig-home-v4-search input,#sabik-input),
+.ig-home-v4 :where(.ig-home-v4-search input,#sabik-input):focus,
+.ig-home-v4 :where(.ig-home-v4-search input,#sabik-input):focus-visible,
+.ig-home-v4 :where(.ig-home-v4-search input,#sabik-input):active{
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
+ border-color:var(--ig-border-control)!important;caret-color:var(--ig-text)!important
+}
+.ig-home-v4 :where(.ig-home-v4-search input,#sabik-input):-webkit-autofill{
+ -webkit-text-fill-color:var(--ig-text)!important;box-shadow:0 0 0 1000px var(--ig-bg-surface-soft) inset!important
+}
+.ig-home-v4 .sabik-actions{align-items:center;gap:.55rem}
+.ig-home-v4 .sabik-actions button{flex:0 0 auto!important;min-height:44px;padding:.62rem 1rem;border-radius:999px;font-weight:700}
+.ig-home-v4 #sabik-submit{min-width:7.25rem}
+.ig-home-v4 .ig-home-v4-sabik-controls{display:grid;grid-template-columns:max-content max-content minmax(11rem,15rem);gap:.65rem;align-items:end;justify-content:start;margin-top:.25rem}
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-actions,
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-voice-control,
+.ig-home-v4 .ig-home-v4-sabik-controls>.sabik-motion-control{margin:0!important;padding:0!important}
+.ig-home-v4 .sabik-voice-control{display:flex;align-items:center}
+.ig-home-v4 .sabik-voice-toggle{width:auto!important;min-width:0;padding:.62rem 1rem;border-radius:999px;background:var(--ig-bg-surface-soft)!important}
+.ig-home-v4 .sabik-motion-control{display:grid;grid-template-columns:1fr;gap:.25rem}
+.ig-home-v4 .sabik-motion-control label{margin:0;font-size:.92rem}
+.ig-home-v4 .sabik-motion-control select{width:100%;min-height:44px;padding:.55rem 2.2rem .55rem .8rem;border-radius:12px}
+.ig-home-v4 .sabik-icon-button{border-radius:999px;padding:.55rem .85rem}
+@media(max-width:1050px){.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:max-content max-content}.ig-home-v4 .sabik-motion-control{grid-column:1/-1;max-width:15rem}}
+@media(max-width:760px){.ig-home-v4-wrap{width:100%;padding-inline:1rem}.ig-home-v4 .ig-home-v4-sabik-controls{grid-template-columns:1fr}.ig-home-v4 .sabik-motion-control{grid-column:auto;max-width:none}}
+
+.ig-home-v4-safety-state [hidden],
+.ig-home-v4-card[hidden]{display:none!important}

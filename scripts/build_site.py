@@ -143,12 +143,9 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_iris_brief_r08.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
-
-    # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
-    # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R69: the old per-page section finder and the R42 pilot app shell are retired.
+    # Search, settings and age live in the single R49/R69 global shell. Keeping the
+    # two older adapters here caused duplicate controls and first-paint shell swaps.
 
     # R67 A2 phase 1: migrate only Interests hubs to the real global R49/R50 shell.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_interests_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
@@ -256,6 +253,12 @@ def build():
     # R51 A2: audience/discovery filtering from the approved 965-record safety snapshot.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R69: one interface, one age lens and deterministic Workshop first paint.
+    # These final passes intentionally run after all older route-specific adapters.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_workshop_stable.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_global_cleanup.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
