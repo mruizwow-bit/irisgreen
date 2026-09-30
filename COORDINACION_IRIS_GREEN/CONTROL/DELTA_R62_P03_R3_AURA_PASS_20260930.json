@@ -1,0 +1,23 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "R62-P03-R3-AURA-PASS-20260930",
+  "date": "2026-09-30",
+  "issue": 326,
+  "product_status": "R62_P03_CAUSALITY_LAYOUT_R3_AURA_PASS_HUMAN_QA_PENDING",
+  "bundle": {
+    "sha256": "bc4579db5680e9719348e817d1fdbcafcfff2aa3478bffb62fc1f253a0e2de60",
+    "prerequisite": "318a5745789922b82e96bfaebd1536cac240a43e",
+    "head": "706a9a671e9f2c6729fa977b4cb9c860c3f5b2c5",
+    "state": "BUNDLE_IN_CHAT_VERIFIED_METADATA_IMPORT_PENDING"
+  },
+  "patch_sha256": "a72251f496f3f607a7963a5778b473e346d1edd36d78ea79448499cf4a17632c",
+  "aura_checks": {
+    "step3_right": 810.92,
+    "next_arrow_x": 829,
+    "step3_margin": 18.08,
+    "embedded_panels_unchanged": true,
+    "mobile_anchor_points_before": 3,
+    "mobile_anchor_points_after": 2
+  },
+  "next": "HUMAN_QA_MARIA"
+}
