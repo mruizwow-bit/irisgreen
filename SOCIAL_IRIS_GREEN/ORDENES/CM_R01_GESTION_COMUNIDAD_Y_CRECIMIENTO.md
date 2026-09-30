@@ -17,7 +17,7 @@ Regla vigente:
 
 Fecha: 30/09/2026  
 Marca: Iris Green  
-Redes: Instagram · Facebook · TikTok  
+Redes: Instagram · Facebook  
 Idiomas: ES / EN  
 Territorios prioritarios: España / UK
 
@@ -30,21 +30,14 @@ Desde 30/09/2026:
 
 - **INSTAGRAM = ACTIVA**
 - **FACEBOOK = ACTIVA**
-- **TIKTOK = PAUSADA POR USUARIO / PROBLEMAS DE ACCESO**
+- **TIKTOK = RETIRADA / NO SE USA**
 
-TikTok queda fuera del gate diario.
+TikTok queda completamente fuera del trabajo operativo: no publicar, comentar, seguir, descubrir cuentas, revisar métricas, mantener colas ni intentar reactivar el acceso.
 
-No intentar:
-- iniciar sesión repetidamente;
-- resolver contraseñas;
-- sortear verificaciones;
-- hacer comentarios/follows;
-- contabilizar TikTok como trabajo pendiente del día.
-
-El tiempo operativo de TikTok se redistribuye entre Instagram y Facebook.
+Todo el tiempo operativo social se distribuye entre Instagram y Facebook.
 
 Estado:
-`CM_TIKTOK_PAUSED_USER_ACCESS_ISSUE`.
+`CM_TIKTOK_RETIRED_DO_NOT_USE`.
 
 ## OBJETIVO
 
@@ -311,7 +304,7 @@ Sigue exactamente este orden:
 
 5. **Rotar plataforma**
    - si Instagram ya concentra demasiada atención, pasar a Facebook;
-   - si Facebook ya tuvo una ronda suficiente, pasar a TikTok cuando esté activo;
+   - si Facebook ya tuvo una ronda suficiente, volver a Instagram con personas y publicaciones distintas;
    - no permanecer toda la sesión en una sola persona o un solo post.
 
 Regla:
@@ -419,13 +412,13 @@ Participar primero como miembro útil.
 
 ---
 
-# 6. TIKTOK · PAUSADO
+# 6. TIKTOK · RETIRADO
 
-TikTok queda fuera de operación por instrucción expresa del usuario debido a problemas recurrentes de acceso/clave.
+TikTok no se usa por instrucción expresa de María.
 
-No dedicar tiempo operativo hasta nueva orden.
+Queda fuera de publicación, comentarios, follows, descubrimiento, seguimiento, métricas, informes operativos y gates diarios.
 
-No bloquea el gate diario de Instagram/Facebook.
+No mantener tareas pendientes ni intentos de reactivación para TikTok.
 
 ---
 
@@ -529,11 +522,6 @@ Entregar:
 ## Facebook
 mismos campos.
 
-## TikTok
-mismos campos +
-- preguntas candidatas a vídeo-respuesta;
-- vídeos/hilos reactivados.
-
 ## Resumen
 - relación más prometedora del día;
 - tema que generó más conversación;
@@ -608,7 +596,7 @@ Una jornada solo se considera completa si hubo en INSTAGRAM y FACEBOOK:
 - registro;
 - siguiente acción.
 
-TikTok no forma parte del gate mientras esté pausado.
+TikTok no forma parte del gate porque está retirado y no se usa.
 
 Marcador:
 
