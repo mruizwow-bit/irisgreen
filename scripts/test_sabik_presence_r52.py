@@ -45,7 +45,7 @@ require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
 # R37 is the motion system that must be preserved.
 for marker in ("SabikMotionR37", "TOKENS", "iterations: 1", "duration: 0"):
     require(marker in motion + js, f"Missing R37 marker: {marker}")
-for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "new Image()", "/sabik/assets/web-r01/web_", "+state+'.png'"):
+for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "newImage()", "/sabik/assets/web-r01/web_", "+state+'.png'"):
     require(marker in js.replace(" ", ""), f"Missing current-master runtime marker: {marker}")
 require("requestAnimationFrame" not in motion + js, "R37 must not become continuous RAF motion")
 require("setInterval" not in motion + js, "R37 must not become loop motion")
