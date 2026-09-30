@@ -10,10 +10,10 @@
   const TOKENS = Object.freeze({
     NORMAL: Object.freeze({
       presente: {duration: 0, x: 0, y: 0, rotate: 0, scale: 1},
-      orientar: {duration: 380, x: -1.6, y: .7, rotate: 2.2, scale: .992},
-      transicion: {duration: 500, x: 1, y: -.5, rotate: -2.8, scale: .975},
-      pausa: {duration: 300, x: .3, y: -.3, rotate: .5, scale: 1.025},
-      confirmar: {duration: 320, x: 0, y: -.2, rotate: 0, scale: .975}
+      orientar: {duration: 380, x: -3.2, y: 1.4, rotate: 4, scale: .985},
+      transicion: {duration: 500, x: 2.5, y: -1.2, rotate: -5, scale: .96},
+      pausa: {duration: 300, x: .8, y: -.8, rotate: 1, scale: 1.04},
+      confirmar: {duration: 320, x: 0, y: -.7, rotate: 0, scale: .96}
     }),
     REDUCIDO: Object.freeze({
       presente: {duration: 0, x: 0, y: 0, rotate: 0, scale: 1},
