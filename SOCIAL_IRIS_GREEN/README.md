@@ -57,7 +57,13 @@ Control:
 `CONTROL/CONTROL_SOCIAL.csv`.
 
 Registro de relaciones:
+`CONTROL/CONTACTOS_SOCIAL.csv` (registro vivo).
+
+Plantilla sin datos:
 `CONTROL/CONTACTOS_SOCIAL_TEMPLATE.csv`.
+
+Informe de sesión:
+`INFORMES/INFORME_CM_R01_20260930_SESION_MANANA.md`.
 
 ## Principio central
 
