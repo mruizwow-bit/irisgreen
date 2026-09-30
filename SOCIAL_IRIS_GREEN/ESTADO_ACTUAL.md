@@ -273,3 +273,19 @@ Estado definitivo:
 `CM_TIKTOK_RETIRED_DO_NOT_USE`.
 
 Cualquier mención histórica anterior a “pausado” queda supersedida y no genera tareas futuras.
+
+
+## Puesta al día de últimas publicaciones · cierre comprobado 30/09/2026
+
+Este corte sustituye las cifras parciales de96cuentas anteriores.
+
+- **111 cuentas identificadas y revisadas**:107cuentas reales de la tabla original (108filas menos1placeholder) y4recuperadas de capturas originales: rochesterzucconi, esteeeeeefi_, solosipsandsoftness y miriamhiguerasart.
+- **110 atendidas**:88comentarios nuevos de esta puesta al día,5de la tanda inmediatamente anterior y17comentarios previos comprobados sin duplicar.
+- **1 sin comentarios habilitados**: fdezfdezmariangeles. No contar como comentada.
+- **3 identidades por recuperar** para reconciliar114. No afirmar114/114 ni completar con cuentas arbitrarias.
+- Todos los nombres incompletos de la tabla han quedado resueltos; talia_alisa y susialisa son cuentas distintas de la misma persona, ambas comprobadas.
+- La orden concreta de María era revisar la última de cada uno, incluidas ayer y anteriores; no aplicar el límite habitual15–25 a esta puesta al día.
+
+Control individual: `CONTROL/PUESTA_AL_DIA_114_20260930.json`. Fuente normalizada: `CONTROL/FIELES_INSTAGRAM_114.csv` (112filas preservadas,111cuentas y1placeholder). Informe: `INFORMES/INFORME_CM_R01_20260930_CIERRE_111_CUENTAS.md`.
+
+No reabrir hilos comentados. Continuar ante publicación nueva, comentarios habilitados de Mari Ángeles o recuperación de las tres identidades. TikTok retirado. Las verificaciones de campaña/publicación propia pendientes de cortes anteriores no se consideran realizadas por esta ronda.
