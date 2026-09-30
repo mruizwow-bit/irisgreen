@@ -1,0 +1,23 @@
+{
+  "schema": "iris-green-team-work-policy-v1",
+  "id": "TEAM-WORK-POLICY-R01-20260930",
+  "date": "2026-09-30",
+  "status": "TEAM_WORK_POLICY_R01_ADOPTED",
+  "rule": "READ_SOLVE_DOCUMENT_HANDOFF_HELP_NEXT",
+  "preservation_rule": "PRESERVE_INTEGRATE_ACTIVATE_NEW_WORK",
+  "incident_categories": [
+    "STATE_DRIFT",
+    "DUPLICATED_WORK",
+    "DECISION_DUMP",
+    "HANDOFF_GAP",
+    "SCOPE_DRIFT",
+    "PASS_REOPENED_WITHOUT_EVIDENCE",
+    "STATUS_INFLATION",
+    "TEAM_BLOCKER",
+    "TONE_CORRECTION_REQUIRED",
+    "RECOVERY_GOOD"
+  ],
+  "incident_register": "CONTROL/INCIDENCIAS_COLABORACION_EQUIPO.csv",
+  "normative_file": "NORMATIVA/POLITICA_TRABAJO_EQUIPO_R01_20260930.md",
+  "purpose": "Record observable collaboration failures and recoveries so coordination can prevent repeated blockers without personality judgments."
+}
