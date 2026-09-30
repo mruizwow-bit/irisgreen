@@ -79,10 +79,11 @@
       "id": "R68",
       "product": "Faroles",
       "issue": 335,
-      "product_status": "R68_FAROLES_DIRECTION_KEEP_SPATIAL_LIGHTING_REWORK_REQUIRED",
+      "product_status": "R68_FAROLES_R2_SPATIAL_PASS_PROJECTION_MOBILE_LIGHT_REWORK_REQUIRED",
       "preservation": "LOCAL_AT_RISK",
       "integration": "NOT_READY",
-      "next": "R2 then preserve handoff"
+      "next": "R3 projection + mobile + LIGHT; preserve source/patch; STOP",
+      "runtime_blocker": "R68_RUNTIME_MOTION_LEVELS_NOT_DISTINCT"
     },
     {
       "id": "R42-CONTENT",
