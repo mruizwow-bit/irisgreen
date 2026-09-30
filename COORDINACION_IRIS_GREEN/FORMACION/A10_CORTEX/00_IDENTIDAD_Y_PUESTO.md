@@ -43,3 +43,19 @@ Nube = biblioteca.
 Córtex = cerebro/model layer.
 Pulso = runtime/nervous system.
 Vector = release/integration.
+
+
+## Contexto histórico del proveedor
+
+Sabik procede de NEA.
+
+María documenta que Claude fue elegido como proveedor porque, en el momento de aquella integración, OpenAI no ofrecía para NEA/Sabik la API/capacidades que el proyecto necesitaba.
+
+Por tanto:
+- no tratar la arquitectura Claude como un error;
+- entenderla antes de migrar;
+- comparar capacidades actuales con el mismo contrato de producto;
+- migrar solo si los evals y la arquitectura lo justifican.
+
+Memoria:
+`MEMORIA/SABIK_PROVIDER_HISTORY_CLAUDE_TO_OPENAI_CONTEXT_20260930.md`.

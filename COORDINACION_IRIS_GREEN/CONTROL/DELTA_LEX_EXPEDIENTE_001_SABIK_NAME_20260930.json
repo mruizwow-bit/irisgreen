@@ -1,0 +1,26 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "LEX-EXPEDIENTE-001-SABIK-NAME-20260930",
+  "date": "2026-09-30",
+  "authority": "Maria",
+  "status": "LEGAL_EXPEDIENTE_001_TRAINING_BLOCKED",
+  "subject": "Sabik IA Technology",
+  "task": "RESERVE_COMPANY_NAME",
+  "country_context": "Spain",
+  "prerequisites": [
+    "LEX_LEGAL_FOUNDATION_PASS"
+  ],
+  "legal_research_required": true,
+  "filing_authorized_after_training": true,
+  "maria_only_when_required": [
+    "IDENTITY",
+    "SIGNATURE",
+    "PAYMENT",
+    "IRREVERSIBLE_CORPORATE_DECISION"
+  ],
+  "sabik_provider_history": {
+    "original_provider": "Claude",
+    "context": "Chosen for NEA/Sabik based on project API/capability availability at the time",
+    "current_action": "Evaluate OpenAI with Cortex before any provider migration"
+  }
+}

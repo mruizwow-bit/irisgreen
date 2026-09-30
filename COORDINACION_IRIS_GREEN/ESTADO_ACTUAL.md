@@ -1,3 +1,20 @@
+## Lex · primer expediente corporativo · Sabik IA Technology · 30/09/2026
+
+María fija como primera gestión de Lex tras completar Formación:
+
+`LEGAL_EXPEDIENTE_001_TRAINING_BLOCKED`
+
+Objetivo:
+tramitar la reserva de denominación empresarial **Sabik IA Technology**.
+
+Lex investiga/prepara/gestiona y solo escala a María firma, identificación, pago o decisiones societarias personales inevitables.
+
+Expediente:
+`FORMACION/DEPARTAMENTOS/LEX_LEGAL/01_EXPEDIENTE_RESERVA_SABIK_IA_TECHNOLOGY.md`.
+
+También se registra el contexto histórico de proveedor Sabik:
+Claude fue elegido para NEA/Sabik por las capacidades/API disponibles para el proyecto en aquel momento; la evaluación OpenAI actual es evolución técnica, no corrección retrospectiva.
+
 ## Córtex · Agente 10 · nuevo especialista IA · 30/09/2026
 
 Issue #347.
