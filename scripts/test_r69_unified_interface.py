@@ -34,15 +34,17 @@ def main()->None:
     pages=sorted(set(pages))
     need(pages,"No public HTML")
 
-    google=[];finder=[]
+    google=[];finder=[];static_age=[]
     for p in pages:
         s=p.read_text(encoding="utf-8")
         rel=p.relative_to(root).as_posix()
         if any(x in s for x in GOOGLE): google.append(rel)
         if 'id="ig-page-finder"' in s: finder.append(rel)
+        if 'data-ig-audience-picker' in s or 'data-ig-audience-stage' in s: static_age.append(rel)
         need('/assets/ig-r69-unified-ui.css' in s,'R69 visual layer missing: '+rel)
     need(not google,"External Google Fonts remain: "+", ".join(google[:12]))
     need(not finder,"Legacy page finder remains: "+", ".join(finder[:12]))
+    need(not static_age,"Static local age picker remains outside the global shell: "+", ".join(static_age[:12]))
 
     unified=(root/"assets/ig-r69-unified-ui.css").read_text(encoding="utf-8")
     need("@layer ig-r69-unified" not in unified,
