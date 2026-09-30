@@ -200,3 +200,34 @@ FORMACION/A7_LUMEN/05_ERGONOMIA_AUDIOVISUAL_INMERSIVA_R02.md
 
 Estado actualizado:
 ADVANCED_STUDY_R02_PRACTICE_PENDING
+
+
+## Ampliación R03 · fiabilidad, rendimiento y recuperación
+Estudié:
+- WebGPU device loss, error scopes, uncaptured errors y shader compilation info;
+- WebGL context loss/restore y simulación con WEBGL_lose_context;
+- Page Visibility y background lifecycle;
+- AudioContext suspend/resume/interrupted;
+- Long Animation Frames y Event Timing;
+- requestVideoFrameCallback;
+- Media Capabilities;
+- OffscreenCanvas/Workers;
+- limitaciones reales de Save-Data / Network Information;
+- powerPreference como hint y no garantía;
+- métodos SSQ/VRSQ como investigación de cybersickness, sin trasladarlos automáticamente a una experiencia web 2D.
+
+Hallazgos sobre el código vivo:
+1. Respirar sí implementa WebGPU Tier A.
+2. El Tier A escucha device.lost, pero no observé una transición dinámica a B/C/D después de una pérdida en sesión.
+3. Los runtimes WebGL revisados liberan contexto al destruir, pero no observé listeners contextlost/restored.
+4. Page Visibility sí se usa para pausar trabajo gráfico.
+5. El AudioContext se reutiliza y reanuda; no observé suspensión global cuando queda idle.
+6. Save-Data se respeta donde existe, pero su ausencia no puede interpretarse como permiso para alto consumo.
+
+Estos puntos quedan como candidatos de prueba/deuda técnica, no como bugs declarados sin reproducción.
+
+Documento:
+FORMACION/A7_LUMEN/06_FIABILIDAD_RENDIMIENTO_RECUPERACION_R03.md
+
+Estado:
+ADVANCED_STUDY_R03_RELIABILITY_PERFORMANCE_PRACTICE_PENDING
