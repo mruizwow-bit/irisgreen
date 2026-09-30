@@ -67,23 +67,53 @@ se ejecutó `loudnorm` en modo de análisis sobre el WAV de referencia y se obtu
 Resultado P2:
 `PASS_SYNTHETIC_MEDIA_PROBE_AND_NEGATIVE_CONTROL`
 
-## P3 · Intento de browser lab en entorno aislado
+## P3 · Browser lab aislado
 
-Se intentó Playwright + Chromium 144 contra servidor local y, como segundo intento, `file://`.
+Primer intento:
+- Playwright + Chromium 144 contra servidor local;
+- segundo intento con `file://`.
 
 Ambos fueron bloqueados por política del entorno:
 `net::ERR_BLOCKED_BY_ADMINISTRATOR`.
 
-Clasificación correcta:
-`HARNESS_ENVIRONMENT_BLOCKED`
+Clasificación:
+`HARNESS_NAVIGATION_RESTRICTED`.
 
-No se registra como:
-- fallo del producto;
-- fallo del codec;
-- fallo del navegador objetivo.
+Se rediseñó el laboratorio para eliminar red/filesystem:
+- página cargada con `page.set_content()`;
+- medios suministrados como data URLs;
+- mismo gesto explícito de play;
+- estados/eventos/errores capturados.
+
+Binario:
+`Chromium 144.0.7559.96`.
+
+`canPlayType()`:
+- WAV: `maybe`;
+- MP3: `probably`;
+- AAC: `probably`;
+- Opus: `probably`.
+
+Reproducción saludable:
+- WAV: PASS;
+- MP3: PASS;
+- M4A/AAC: PASS;
+- Ogg/Opus: PASS;
+- todos alcanzaron `readyState=4`, `networkState=1`, sin MediaError.
+
+Control negativo M4A truncado:
+- `play()` reject;
+- `NotSupportedError`;
+- `readyState=0`;
+- `networkState=3`;
+- MediaError code 4;
+- `DEMUXER_ERROR_COULD_NOT_OPEN`.
+
+Resultado P3:
+`PASS_BROWSER_DECODE_PLAYBACK_WITH_NEGATIVE_CONTROL`
 
 Lección:
-un buen ingeniero de media diagnostica primero el banco de pruebas.
+el Chromium 140 histórico del proyecto y el Chromium 144 actual no tienen que compartir la misma matriz AAC. Registrar binario/build exacto es obligatorio.
 
 ## P4 · Matriz cross-browser real
 
@@ -263,7 +293,7 @@ A 30/09/2026:
 - estudio avanzado R02: STUDIED;
 - P1 análisis de evidencia real: PASS;
 - P2 práctica sintética: PASS;
-- P3 browser lab: BLOCKED_BY_ENVIRONMENT, correctamente clasificado;
+- P3 browser decode/playback: PASS mediante data URLs; navegación local quedó clasificada aparte como restricción del harness;
 - P4–P8: diseñadas, pendientes cuando exista hardware/entorno/proveedor real.
 
 Estado honesto:
