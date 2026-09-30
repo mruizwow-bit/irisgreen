@@ -1,0 +1,32 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "LEX-LEGAL-FORMACION-R01-20260930",
+  "date": "2026-09-30",
+  "status": "LEX_LEGAL_FOUNDATION_PASS_INTERNAL",
+  "role": "LEGAL_AND_REGULATORY_COMPLIANCE_LEAD",
+  "base": "cc568291355bdf94881995e36832d8b360678bab",
+  "branch": "lex/legal-compliance-foundation-r01-20260930",
+  "studied_domains": [
+    "LEGAL_APPLICABILITY_METHOD",
+    "GDPR_LOPDGDD",
+    "MINORS",
+    "SPECIAL_CATEGORY_HEALTH_DATA",
+    "VOICE_BIOMETRICS_EPRIVACY_LSSI",
+    "EU_AI_ACT",
+    "AGENTIC_AI_PRIVACY",
+    "PROCESSORS_TRANSFERS",
+    "BREACH_RESPONSE",
+    "ACCESSIBILITY_LAW",
+    "CONSUMER_ECOMMERCE",
+    "IP_TRADEMARKS_LICENSING",
+    "CORPORATE_NAME_RMC",
+    "MEDICAL_DEVICE_BOUNDARY",
+    "REGULATORY_CHANGE_MANAGEMENT"
+  ],
+  "practices_passed": 10,
+  "external_certification": false,
+  "product_change": false,
+  "deploy": false,
+  "filing": false,
+  "next": "LEGAL_EXPEDIENTE_001_PHASE_0_RESEARCH_READY"
+}

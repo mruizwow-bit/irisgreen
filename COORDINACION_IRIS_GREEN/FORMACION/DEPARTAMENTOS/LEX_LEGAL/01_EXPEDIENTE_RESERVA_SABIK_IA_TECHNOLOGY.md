@@ -3,11 +3,11 @@
 Fecha de apertura documental: 30/09/2026
 Autoridad: María
 Estado:
-`LEGAL_EXPEDIENTE_001_TRAINING_BLOCKED`
+`LEGAL_EXPEDIENTE_001_PHASE_0_RESEARCH_READY`
 
 ## Encargo
 
-Cuando Lex complete su Formación profesional inicial:
+Con la Formación profesional inicial de Lex completada internamente:
 
 **tramitar la reserva del nombre de la empresa `Sabik IA Technology`.**
 
@@ -65,10 +65,37 @@ Guardar:
 
 ## Gate
 
-No iniciar la presentación oficial hasta:
-`LEX_LEGAL_FOUNDATION_PASS`.
+Formación:
+`LEX_LEGAL_FOUNDATION_PASS_INTERNAL`.
 
-Después:
+Situación:
+fase 0 de investigación/preparación permitida.
+
+No presentar solicitud oficial hasta verificar con María:
+- forma social;
+- beneficiario/fundador-promotor exacto;
+- orden de hasta cinco denominaciones;
+- datos identificativos necesarios;
+- coste/pago;
+- aceptación de la presentación.
+
+Siguiente marcador:
 `LEGAL_EXPEDIENTE_001_READY_TO_FILE`
+→ autorización personal imprescindible
 → trámite
 → `LEGAL_SABIK_IA_TECHNOLOGY_NAME_RESERVATION_RESULT_RECORDED`.
+
+### Investigación oficial ya incorporada en Formación · 30/09/2026
+
+RMC vigente consultado:
+- beneficiario: uno de los fundadores/promotores;
+- hasta cinco denominaciones por orden de preferencia;
+- debe indicarse forma social;
+- consulta previa: meramente informativa y no vinculante;
+- certificación favorable: reserva seis meses;
+- certificación: vigencia tres meses para escritura, con renovación en los términos del RMC.
+
+OEPM:
+denominación social, nombre comercial, marca y dominio se tratan como capas distintas.
+
+Esto NO equivale a comprobación de disponibilidad ni a solicitud presentada.
