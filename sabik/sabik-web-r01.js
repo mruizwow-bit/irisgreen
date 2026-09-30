@@ -1,75 +1,25 @@
-/* R37 projects explicit functional actions onto the exact current Web PNGs. */
-(() => {
-  'use strict';
-  const motion = window.SabikMotionR37;
-  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const masters = new Map();
-  let current = {interaction: 'espera', protection: 'normal', lowIntensity: false};
-  let controller;
-  function readyMaster(state) {
-    if (!masters.has(state)) {
-      const image = new Image();
-      image.src = '/sabik/assets/web-r01/web_' + state + '.png';
-      const decoded = image.decode().then(() => image.src).catch(error => { masters.delete(state); throw error; });
-      masters.set(state, decoded);
-    }
-    return masters.get(state);
-  }
-  function preferences() {
-    const userMotionOff=Boolean(window.IGPreferences?.get?.().motion);
-    return {motionLevel: document.querySelector('#sabik-motion-level')?.value || 'NORMAL',
-      systemReduced: media.matches, globalOff: userMotionOff, lowIntensity: current.lowIntensity};
-  }
-  function ensureController() {
-    if (controller) return controller;
-    const visual = document.querySelector('#sabik-hologram');
-    const master = document.querySelector('#sabik-web-master');
-    if (!visual || !master || !motion) return null;
-    controller = motion.createController({element: master, load: readyMaster, preferences,
-      apply(src, state) { master.src = src; visual.dataset.webAsset = state.toUpperCase(); },
-      describe(state, level, active) {
-        visual.dataset.webState = state.toUpperCase();
-        visual.dataset.motionLevel = level;
-        visual.dataset.motionActive = String(active);
-        const help = document.querySelector('#sabik-motion-help');
-        const en = document.documentElement.lang.startsWith('en');
-        if (help) help.textContent = ({NORMAL: en ? 'Brief motion when the state changes.' : 'Movimiento breve cuando cambia el estado.',
-          REDUCIDO: en ? 'Reduced motion is active.' : 'Movimiento reducido activado.',
-          SIN_MOVIMIENTO: en ? 'Motion is off.' : 'Movimiento desactivado.'})[level];
-      }});
-    controller.setSabikState('presente', {force: true, static: true});
-    return controller;
-  }
-  function render(next) {
-    if (next) current = next;
-    const c = ensureController();
-    if (c) return c.setSabikState(motion.project(current), {reason: 'functional-projection'});
-  }
-  function contextChange() {
-    const c = ensureController();
-    if (!c) return;
-    const to = motion.project({...current, interaction: 'espera'});
-    if (to === 'pausa' || ['error', 'retrieving', 'composing'].includes(current.operation) || current.protection === 'riesgo' || (current.safety && current.safety !== 'normal')) return render();
-    return c.setSabikState('transicion', {to, reason: 'explicit-context-change', force: true});
-  }
-  function setVoiceActive(active) {
-    const visual = document.querySelector('#sabik-hologram');
-    if (visual) visual.dataset.voiceActive = String(Boolean(active));
-    return Boolean(active);
-  }
-  window.SabikWebPresentation = Object.freeze({render, contextChange,
-    setSabikState(state, options) { return ensureController()?.setSabikState(state, options); },
-    setVoiceActive,
-    snapshot() { return {...(ensureController()?.snapshot() || {}), voiceActive: document.querySelector('#sabik-hologram')?.dataset.voiceActive === 'true'}; }});
-  window.setSabikState = (state, options) => window.SabikWebPresentation.setSabikState(state, options);
-  function refresh() { return ensureController()?.refresh(); }
-  function syncVisibility(){const visual=document.querySelector('#sabik-hologram');if(visual)visual.dataset.documentHidden=String(document.hidden);}
-  document.addEventListener('DOMContentLoaded', () => {
-    ensureController();syncVisibility();
-    for (const state of motion.STATES) readyMaster(state).catch(() => {});
-    document.querySelector('#sabik-motion-level')?.addEventListener('change', refresh);
-  }, {once: true});
-  document.addEventListener('visibilitychange',syncVisibility);
-  media.addEventListener('change', refresh);
-  new MutationObserver(refresh).observe(document.documentElement, {attributes: true, attributeFilter: ['data-ig-motion']});
+/* R69 · current Sabik masters + measured layered motion. */
+(()=>{'use strict';
+const motion=window.SabikMotionR37,media=window.matchMedia('(prefers-reduced-motion: reduce)'),masters=new Map();
+let current={interaction:'espera',protection:'normal',lowIntensity:false},controller,bodyObserver,panelObserver;
+const nodes=()=>({visual:document.querySelector('#sabik-hologram'),master:document.querySelector('#sabik-web-master'),body:document.querySelector('#sabik-widget-body'),panel:document.querySelector('.sabik-panel')});
+function readyMaster(state){if(!masters.has(state)){const i=new Image();i.src='/sabik/assets/web-r01/web_'+state+'.png';const d=i.decode().then(()=>i.src).catch(e=>{masters.delete(state);throw e});masters.set(state,d)}return masters.get(state)}
+function ensureLayers(){const {visual,master}=nodes();if(!visual||!master)return null;visual.classList.add('sabik-layered-avatar');master.classList.add('sabik-avatar-base');
+if(!visual.querySelector('.sabik-back-layer')){const i=new Image();i.className='sabik-orbit-layer sabik-back-layer';i.alt='';i.setAttribute('aria-hidden','true');i.decoding='async';i.src='/sabik/assets/sabik-orbits-back.svg';visual.insertBefore(i,master)}
+if(!visual.querySelector('.sabik-front-layer')){const i=new Image();i.className='sabik-orbit-layer sabik-front-layer';i.alt='';i.setAttribute('aria-hidden','true');i.decoding='async';i.src='/sabik/assets/sabik-orbits-front.svg';master.insertAdjacentElement('afterend',i)}return visual}
+function preferences(){return{motionLevel:document.querySelector('#sabik-motion-level')?.value||'NORMAL',systemReduced:media.matches,globalOff:Boolean(window.IGPreferences?.get?.().motion),lowIntensity:current.lowIntensity}}
+function syncRenderActivity(){const {visual,body,panel}=nodes();if(!visual)return false;const inactive=document.hidden||Boolean(body?.hidden)||Boolean(panel?.hidden)||Boolean(panel?.classList.contains('is-collapsed'));visual.dataset.renderActive=String(!inactive);return!inactive}
+function observeActivity(){const {body,panel}=nodes();if(body&&!bodyObserver){bodyObserver=new MutationObserver(syncRenderActivity);bodyObserver.observe(body,{attributes:true,attributeFilter:['hidden']})}if(panel&&!panelObserver){panelObserver=new MutationObserver(syncRenderActivity);panelObserver.observe(panel,{attributes:true,attributeFilter:['hidden','class']})}}
+function ensureController(){if(controller)return controller;const visual=ensureLayers(),{master}=nodes();if(!visual||!master||!motion)return null;
+controller=motion.createController({element:master,load:readyMaster,preferences,apply(src,state){master.src=src;visual.dataset.webAsset=state.toUpperCase()},describe(state,level,active){visual.dataset.webState=state.toUpperCase();visual.dataset.motionLevel=level;visual.dataset.motionActive=String(active);const h=document.querySelector('#sabik-motion-help'),en=document.documentElement.lang.startsWith('en');if(h)h.textContent=({NORMAL:en?'Gentle continuous motion.':'Movimiento suave y continuo.',REDUCIDO:en?'Reduced motion is active.':'Movimiento reducido activado.',SIN_MOVIMIENTO:en?'Motion is off.':'Movimiento desactivado.'})[level]}});
+controller.setSabikState('presente',{force:true,static:true});syncRenderActivity();observeActivity();return controller}
+function render(next){if(next)current=next;const c=ensureController();if(c)return c.setSabikState(motion.project(current),{reason:'functional-projection'})}
+function contextChange(){const c=ensureController();if(!c)return;const to=motion.project({...current,interaction:'espera'});if(to==='pausa'||['error','retrieving','composing'].includes(current.operation)||current.protection==='riesgo'||(current.safety&&current.safety!=='normal'))return render();return c.setSabikState('transicion',{to,reason:'explicit-context-change',force:true})}
+function setVoiceActive(active){const v=ensureLayers();if(v)v.dataset.voiceActive=String(Boolean(active));return Boolean(active)}
+function refresh(){syncRenderActivity();return ensureController()?.refresh()}
+window.SabikWebPresentation=Object.freeze({render,contextChange,setSabikState(state,options){return ensureController()?.setSabikState(state,options)},setVoiceActive,refresh,snapshot(){const v=ensureLayers();return{...(ensureController()?.snapshot()||{}),voiceActive:v?.dataset.voiceActive==='true',renderActive:v?.dataset.renderActive==='true',layers:v?.querySelectorAll('.sabik-orbit-layer').length||0}}});
+window.setSabikState=(state,options)=>window.SabikWebPresentation.setSabikState(state,options);
+function boot(){ensureController();for(const s of motion.STATES)readyMaster(s).catch(()=>{});document.querySelector('#sabik-motion-level')?.addEventListener('change',refresh)}
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
+document.addEventListener('visibilitychange',syncRenderActivity);window.addEventListener('pagehide',()=>{const {visual}=nodes();if(visual)visual.dataset.renderActive='false'});media.addEventListener('change',refresh);new MutationObserver(refresh).observe(document.documentElement,{attributes:true,attributeFilter:['data-ig-motion']});
 })();
