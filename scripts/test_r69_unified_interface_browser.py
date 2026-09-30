@@ -91,13 +91,16 @@ async def main():
         await page.goto(BASE+"/es/taller/programacion/",wait_until="domcontentloaded")
         await page.wait_for_function("document.querySelector('main#main')")
         first=await page.evaluate("""() => {
-          const m=document.querySelector('main#main');
-          return {active:m.classList.contains('ig42-active'),opacity:getComputedStyle(m).opacity,
-                  marker:document.body.dataset.igR69Workshop||''};
+          const m=document.querySelector('main#main'),c=getComputedStyle(m);
+          return {active:m.classList.contains('ig42-active'),opacity:c.opacity,visibility:c.visibility,
+                  marker:document.body.dataset.igR69Workshop||'',fallback:document.body.dataset.igR69WorkshopFallback||''};
         }""")
         need(first["marker"]=="1","Workshop R69 marker missing in browser")
-        need(first["active"] or first["opacity"]=="0","legacy Workshop first paint can become visible")
+        need(first["active"] or (first["opacity"]=="0" and first["visibility"]=="hidden"),
+             "legacy Workshop first paint can become visible")
         await page.wait_for_function("document.querySelector('main#main')?.classList.contains('ig42-active')")
+        need(await page.locator("body").get_attribute("data-ig-r69-workshop-fallback") is None,
+             "Workshop fell back instead of mounting enhanced workspace")
         need(await page.locator(".ig42-workspace").count()==1,"Workshop workspace count !=1")
         need(await page.locator(".ig42-topbar").count()==1,"Workshop topbar count !=1")
         need(await page.locator(".ig42-stage-choice").count()==0,"Workshop local age selector returned")
