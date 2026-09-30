@@ -244,3 +244,30 @@ Marcador:
 6. Inventariar componentes y CSS ya existentes antes de crear.
 7. Hacer una comprobación segura mínima.
 8. Actualizar este aprendizaje al terminar trabajo material.
+
+
+## Incorporación al Slack interno
+
+Fecha: 30/09/2026
+
+Canal:
+`#general-sabik-ia-technology`
+
+Conversation ID:
+`C0C590Y8PHD`
+
+Comprobación:
+la operación de unión devolvió `already_in_channel`, por lo que Prisma ya constaba como miembro.
+
+Acción:
+se publicó un mensaje de presentación como **Prisma · A8 — Frontend Platform & Design Systems**, indicando:
+- jefatura Astra;
+- Slack para coordinación rápida;
+- GitHub como fuente canónica;
+- exclusión por defecto de Claude/agentes externos del Slack interno.
+
+Mensaje:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790791618231199
+
+Aprendizaje operativo:
+Slack aporta velocidad, pero no sustituye la persistencia y trazabilidad de GitHub. Toda decisión, formación, estado o evidencia material debe quedar registrada en GitHub aunque se haya discutido primero en Slack.
