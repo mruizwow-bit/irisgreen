@@ -1,3 +1,25 @@
+## Política de trabajo en equipo R01 · 30/09/2026
+
+Estado:
+`TEAM_WORK_POLICY_R01_ADOPTED`.
+
+Regla:
+`READ → SOLVE → DOCUMENT → HANDOFF → HELP_NEXT`.
+
+Preservación:
+`PRESERVE → INTEGRATE → ACTIVATE → NEW_WORK`.
+
+Desde ahora coordinación registra incidencias operativas observables en:
+`CONTROL/INCIDENCIAS_COLABORACION_EQUIPO.csv`.
+
+Categorías:
+STATE_DRIFT · DUPLICATED_WORK · DECISION_DUMP · HANDOFF_GAP · SCOPE_DRIFT · PASS_REOPENED_WITHOUT_EVIDENCE · STATUS_INFLATION · TEAM_BLOCKER · TONE_CORRECTION_REQUIRED · RECOVERY_GOOD.
+
+No se registran juicios personales. Cada entrada debe incluir hecho, impacto, corrección, estado, evidencia y aprendizaje.
+
+Norma:
+`NORMATIVA/POLITICA_TRABAJO_EQUIPO_R01_20260930.md`.
+
 ## R62 · P03 Rutas de luz · QA2 gameplay PASS / causalidad layout fix · 30/09/2026
 
 **Estado: `R62_P03_QA_REWORK_2_GAMEPLAY_PASS_CAUSALITY_LAYOUT_FIX_REQUIRED` · #326.**
