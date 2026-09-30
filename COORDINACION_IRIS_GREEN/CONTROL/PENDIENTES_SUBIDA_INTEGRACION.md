@@ -40,7 +40,7 @@ Estados separados:
 | R62-P03 | Rutas de luz | #326 | Gameplay/material PASS; layout causalidad R3 pendiente | **LOCAL_AT_RISK** | FIX_BEFORE_INTEGRATION | Corregir solo layout causalidad + entregar cadena/bundle completo para preservar |
 | R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **LOCAL_BINARY_AT_RISK** | NOT_READY | Transferir MP4/master/build; cerrar móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
-| R68 | Faroles flotantes | #335 | Dirección KEEP; rework espacial pendiente | **LOCAL_AT_RISK** | NOT_READY | Preservar fuente local cuando haya R2; no integración aún |
+| R68 | Faroles flotantes | #335 | R2 spatial PASS; projection/mobile/LIGHT R3 pending | **LOCAL_AT_RISK** | NOT_READY | Ejecutar R3 acotada; preservar fuente/patch; movimiento runtime separado |
 | R42-CONTENT | Contenido R02 | #302 | Mismo ZIP aa3649a8 verificado; base 9c721a79 ya 51 commits atrás | PACKAGE_VERIFIED_ATTACHMENT / STALE_BASE | REBASE_REQUIRED | Rebase sobre HEAD A2 vivo 8ea50128… o posterior; no aplicar ZIP actual |
 
 ## 2. Detalle · ya integrados pero no activados como producto final
