@@ -33,7 +33,7 @@ Fecha: 30/09/2026
 | Alias | Departamento/Puesto | Reporta a | Formación |
 |---|---|---|---|
 | Lex | Legal & Regulatory Compliance Lead | María | FORMACION/DEPARTAMENTOS/LEX_LEGAL/ · plan completo pendiente |
-| Raíz | People Operations & Organizational Development Lead | María | FORMACION/DEPARTAMENTOS/RAIZ_RRHH/ · plan completo pendiente |
+| Raíz | People Operations & Organizational Development Lead | María | FORMACION/DEPARTAMENTOS/RAIZ_RRHH/ · foundation R01 estudiada; prácticas pendientes |
 | Axioma | Quality, Accessibility & Standards Lead | María | FORMACION/DEPARTAMENTOS/AXIOMA_CALIDAD/ · plan completo pendiente |
 | Brújula | Marketing, Growth & Product Communications Lead | María | FORMACION/DEPARTAMENTOS/BRUJULA_MARKETING/ · plan completo pendiente |
 | Cifra | Finance & Business Planning Lead | María | FORMACION/DEPARTAMENTOS/CIFRA_FINANZAS/ · plan completo pendiente |

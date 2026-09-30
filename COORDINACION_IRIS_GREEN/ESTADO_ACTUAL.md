@@ -1,3 +1,34 @@
+## Raíz · People Operations foundation R01 · 30/09/2026
+
+Estado:
+RAIZ_PEOPLE_OPS_OD_FOUNDATION_STUDIED_R01.
+
+Puesto:
+People Operations & Organizational Development Lead.
+
+Formación preservada en:
+FORMACION/DEPARTAMENTOS/RAIZ_RRHH/.
+
+Estudiado:
+- People profession y evidence-based practice;
+- workforce planning y diseño organizativo;
+- recruitment y onboarding;
+- desempeño/feedback;
+- learning & development;
+- people analytics;
+- diversidad, inclusión y neuroinclusión;
+- riesgos psicosociales;
+- privacidad laboral;
+- IA aplicada a RRHH;
+- desconexión digital y trabajo a distancia.
+
+Estado de control:
+FOUNDATION_STUDIED_PRACTICE_PENDING.
+
+No equivale a certificación externa.
+No modifica producto.
+Prácticas/examen interno pendientes.
+
 ## Formación · punto único de entrada para todos los chats · 30/09/2026
 
 Estado:
