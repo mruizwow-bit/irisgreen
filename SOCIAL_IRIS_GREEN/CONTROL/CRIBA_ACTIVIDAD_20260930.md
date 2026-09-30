@@ -61,3 +61,9 @@ mx.micaringo: perfil inspeccionado,3740seguidores; criba de publicaciones no rea
 Follow Siguiendo y comentario17934618135393399 verificados en https://www.instagram.com/mypureocdawakening/p/Dd6LK5cMBBb/ . Texto: Thank you for talking so openly about the hours spent trying to piece everything together, Sandra 💚 There’s so much more to OCD than the stereotypes people hear.
 
 Revisar01/10 y lunes05/10. Reciprocidad con Iris todavía no observada. Totales verificados hasta este corte:10Instagram y11Facebook; faltan10y9 para20porred. Criba no cerrada.
+
+## Candidaturas adicionales en revisión
+
+- drjacobsanthouse (EN, dislexia):78.786 seguidores. Dd6bpFyO1nH(1h,114 likes,2 comentarios indicados procedentes de Facebook,2 republicaciones), Dd43yH8P9Z1(16h,178 likes,4 comentarios indicados;3 de Facebook y comentarios ocultos no inspeccionados,9 republicaciones), Dd18UWOSp4V(1día,49 likes,5 comentarios indicados;4 de Facebook,único comentario Instagram mostrado promocional). Respuestas personales no acreditadas en esta muestra parcial. Pendiente, sin follow/comentario.
+- dyslexia_in_adults (EN, dislexia adulta):66.137 seguidores. Dd1j0CfgF2n(1día,119 likes,3 comentarios), DdWinvagF8P(16/09,144 likes,10 comentarios), DdExPBBgLog(09/09,39 likes,6 comentarios). En el segundo post se verifican respuestas personales17927117379409159 y18136289959625026 al mismo interlocutor. Volumen modesto y falta verificar conversación repetida en otros hilos. Pendiente, sin follow/comentario.
+- Facebook Neurodivergent Rebel:272.000 seguidores. Último post inspeccionado de2h,46 reacciones,2 compartidos y testimonios personales. No se han acreditado aún respuestas personales repetidas del autor. La página exige seguirla más de24h para comentar. Sin follow/comentario, no contabilizar como incorporación completada. URL: https://www.facebook.com/NeurodivergentRebel/posts/pfbid02X9eEa8oJ7nuMvdtEQPvTvAsb1R2xK4Js3YjNhquqrsg6m3YuAAzXaCT4DMdSCHCfl
