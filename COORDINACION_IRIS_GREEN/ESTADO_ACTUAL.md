@@ -1,3 +1,28 @@
+## R68 Faroles · R2 · Aura PASS · 30/09/2026
+
+Estado:
+`R68_FAROLES_DIRECTION_R2_AURA_PASS_HUMAN_QA_PENDING_RUNTIME_MOTION_BLOCKED`.
+
+PASS de dirección:
+- nave/arquitectura;
+- faroles como objetos;
+- proyección localizada;
+- LIGHT recupera jerarquía;
+- composición móvil 390.
+
+Pendiente:
+- HUMAN QA María;
+- preservar ZIP/fuente R2 con hash.
+
+Bloqueo del siguiente runtime:
+NORMAL / REDUCIDO / SIN_MOVIMIENTO no pueden ser la misma escena a distinta velocidad.
+Claude declara hoy 58.494 vértices en los tres estados.
+
+Hasta HUMAN QA:
+STOP.
+No A2/main/producción.
+No siguiente sala.
+
 ## Claude · corrección de cola tras bloqueo R61 · 30/09/2026
 
 R61:
