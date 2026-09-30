@@ -116,7 +116,7 @@ async def main():
         await page.locator("[data-ig-home-search] button[type=submit]").click();await page.wait_for_timeout(450)
         need(await page.locator("[data-ig-home-results] .ig-home-result").count()>0,"Home search submit does not return results")
         await q.fill("")
-                await page.locator("#sabik-input").focus()
+        await page.locator("#sabik-input").focus()
         sabik_field=await page.locator("#sabik-input").evaluate("(e)=>({bg:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color})")
         need(sabik_field["bg"]!="rgb(255, 255, 255)","Sabik textarea becomes glare-white on focus "+repr(sabik_field))
         need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Encuentra lo que necesitas","Home heading is still abstract")
