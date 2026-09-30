@@ -1,0 +1,59 @@
+{
+  "schema": "iris-green-training-delta-v1",
+  "date": "2026-09-30",
+  "alias": "Eco",
+  "agent": "A6",
+  "role": "Voice, Audio & Media Quality Engineer",
+  "leader": "Nexo",
+  "branch": "eco/a6-voice-audio-media-validation-foundation-r01-20260930",
+  "base_coordination_head": "cc0989f53210f8fe5def88cbba51cf9a0305526e",
+  "aura_foundation_r01": "652400d81c13f86383164ca6d434421ed84cab5d",
+  "aura_advanced_r02": "41a01a5534161da5e4b412dd0c6af424e836a53c",
+  "status": "FOUNDATION_ADVANCED_STUDIED_PRACTICE_EVIDENCE_PRESENT",
+  "files": [
+    "FORMACION/A6_ECO/00_IDENTIDAD_Y_PUESTO.md",
+    "FORMACION/A6_ECO/01_PLAN_FORMACION.md",
+    "FORMACION/A6_ECO/02_PRACTICAS_Y_EXAMEN.md",
+    "FORMACION/A6_ECO/03_RUNBOOK_VALIDACION.md",
+    "FORMACION/A6_ECO/04_ESTUDIO_AVANZADO_R02.md",
+    "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-09-30.md",
+    "FORMACION/A6_ECO/05_CONTINUIDAD_ENTRE_CHATS.md"
+  ],
+  "project_evidence_reviewed": [
+    {
+      "path": "reports/audio-diagnostic.json",
+      "sha": "ed3748eeadf73be607f6b00026564b555ff1da6b"
+    },
+    {
+      "path": "scripts/diagnose_audio.py",
+      "sha": "9d49d330a115d8b8c3f04cca74e1c1d86f40d503"
+    }
+  ],
+  "practice": {
+    "synthetic_formats": [
+      "WAV/PCM",
+      "MP3",
+      "M4A/AAC",
+      "Ogg/Opus"
+    ],
+    "sample_rate_hz": 48000,
+    "channels": 1,
+    "negative_control": "Truncated M4A -> ffprobe exit 1, moov atom not found, invalid data",
+    "loudness_probe": "FFmpeg loudnorm analysis executed",
+    "browser_lab": "BLOCKED_BY_ENVIRONMENT: net::ERR_BLOCKED_BY_ADMINISTRATOR; not classified as product/media failure"
+  },
+  "key_findings": [
+    "HTTP 200 is not playback evidence",
+    "container, codec and MIME are distinct",
+    "canPlayType is not a playback guarantee",
+    "Chromium and branded Chrome can differ in proprietary codec support",
+    "P.862/PESQ is withdrawn; do not use as default current speech-quality reference",
+    "broadcast loudness targets are not universal web/TTS targets",
+    "voice QA must preserve text/control/accessibility and privacy"
+  ],
+  "product_modified": false,
+  "build_product": false,
+  "merge": false,
+  "deploy": false,
+  "external_certification": false
+}
