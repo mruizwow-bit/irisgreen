@@ -619,3 +619,8 @@ Recorrer los 114 fieles y revisar la última publicación de cada uno, incluidas
 ## Orden vigente de María · 30/09/2026 · 20 nuevas cuentas por red y día
 
 Buscar, seguir y comentar 20 cuentas nuevas en Instagram y otras 20 en Facebook cada día, combinando español e inglés. Reparto orientativo 10 ES + 10 EN por red. Esta instrucción sustituye los anteriores rangos de 3–5/4–6 follows. Contar las altas verificadas del mismo día y no duplicarlas. Leer cada perfil y publicación antes de comentar; personalizar, verificar el follow y el comentario, registrar evidencia y mantener seguimiento. Próxima revisión al día siguiente; revisión de relación los lunes, sin bajas automáticas. Mantener atención de respuestas y habituales. Si un bloqueo impide llegar a 20, informar cifras reales y déficit, nunca rellenar con acciones ficticias. TikTok sigue retirado.
+
+
+## Corrección de María · 30/09/2026 16:20 Europe/Madrid · amplitud neurodiversa
+
+Iris Green no es solo de autismo. Diversificar las 20 altas diarias por red entre TDAH, dislexia, discalculia, dispraxia, Tourette/tics, TOC, comunicación/CAA, accesibilidad, salud mental relacionada y experiencias neurodivergentes, además de autismo. Registrar tema e idioma y evitar que autismo monopolice el descubrimiento. En la tanda en curso, conservar acciones verificadas y dedicar las restantes a ampliar temas.
