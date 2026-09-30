@@ -1,0 +1,462 @@
+{
+  "esquema": "r44-retos-1",
+  "fuente": {
+    "archivo": "COORDINACION_IRIS_GREEN/MEMORIA/R44_MATRIZ_64_RETOS_TALLER_CLAUDE_20260928.md",
+    "rama": "coordinacion/iris-green-canonica-20260924",
+    "punta": "7580abbba408f55399ea6e525559699fc9a2959f",
+    "sha256": "d86a931edfe8f4c2a1038490670c9aa8df8b5dd73cdb9840b8be47300b39a147",
+    "bytes": 88579,
+    "nota": "SHA-256 y tamaño medidos sobre el archivo tal y como está en la punta canónica. La matriz reconciliada y la cola anotan f059d566... y 88 581 bytes: ese hash corresponde a una versión dos bytes anterior del mismo archivo. Aquí no se copia un hash, se mide el que hay."
+  },
+  "estados": ["sin-empezar", "en-curso", "listo-para-exportar", "terminado"],
+  "retos": [
+    {
+      "id": "E01",
+      "ambito": "dibujo",
+      "estudio": { "es": "es/taller/dibujo/", "en": "en/workshop/drawing/" },
+      "estudios_secundarios": ["diseno-grafico"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "PixiJS (ya en el estudio)",
+      "artefacto": { "formatos": ["png", "proyecto"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Una línea sin levantar el lápiz",
+        "idea": "Economía del trazo y síntesis de la forma: decidir qué se dibuja y qué se sugiere.",
+        "instrucciones": [
+          "Elige algo que tengas delante y míralo un momento antes de empezar.",
+          "Dibújalo con un solo trazo continuo, sin levantar la pluma del lienzo.",
+          "Cuando la forma se reconozca, para: lo que sobra quita más de lo que añade.",
+          "Exporta el dibujo como PNG y guarda también el proyecto."
+        ],
+        "cta": "Empezar el trazo",
+        "cta_nombre": "Empezar el reto de la línea continua en el estudio de Dibujo",
+        "criterio": "Un dibujo reconocible hecho con un único trazo continuo, exportado.",
+        "alternativa": "Sin lápiz digital el grosor es constante y el reto no cambia.",
+        "alternativa_arrastre": "Trazo con teclado: las flechas mueven el cursor e Intro baja y sube la pluma.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Trazo en curso",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "One line, never lifting the pen",
+        "idea": "Economy of line and synthesis of form: deciding what to draw and what to suggest.",
+        "instrucciones": [
+          "Pick something in front of you and look at it for a moment before you start.",
+          "Draw it in one continuous stroke, without lifting the pen off the canvas.",
+          "Stop as soon as the shape reads: past that point, more line takes away.",
+          "Export the drawing as PNG and save the project too."
+        ],
+        "cta": "Start the stroke",
+        "cta_nombre": "Start the continuous-line challenge in the Drawing studio",
+        "criterio": "A recognisable drawing made in a single continuous stroke, exported.",
+        "alternativa": "Without a digital pen the width stays constant and the challenge is unchanged.",
+        "alternativa_arrastre": "Draw with the keyboard: arrows move the cursor, Enter lowers and lifts the pen.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Stroke in progress",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E06",
+      "ambito": "pixel-art",
+      "estudio": { "es": "es/taller/pixel-art/", "en": "en/workshop/pixel-art/" },
+      "estudios_secundarios": ["videojuegos", "patrones"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "PixiJS; vista en mosaico del estudio",
+      "artefacto": { "formatos": ["png"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Baldosa que no se nota",
+        "idea": "Continuidad en los bordes: lo que sale por un lado entra por el otro.",
+        "instrucciones": [
+          "Dibuja dentro de la baldosa sin preocuparte todavía de los bordes.",
+          "Comprueba el mosaico: ahí se ven las costuras que desde dentro no se notan.",
+          "Arregla los bordes hasta que la repetición no diga dónde empieza cada baldosa.",
+          "Exporta el PNG repetible."
+        ],
+        "cta": "Abrir la baldosa",
+        "cta_nombre": "Empezar el reto de la baldosa sin costura en el estudio de Pixel art",
+        "criterio": "El mosaico 3×3 no deja ver dónde empieza la baldosa.",
+        "alternativa": "La vista en mosaico marca las costuras.",
+        "alternativa_arrastre": "Campos numéricos en Propiedades y dos toques en el lienzo.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Baldosa en curso",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A tile with no visible seam",
+        "idea": "Continuity at the edges: what leaves one side comes back in on the other.",
+        "instrucciones": [
+          "Draw inside the tile without worrying about the edges yet.",
+          "Check the mosaic view: the seams show there, not from inside the tile.",
+          "Fix the edges until the repeat stops telling you where each tile begins.",
+          "Export the repeatable PNG."
+        ],
+        "cta": "Open the tile",
+        "cta_nombre": "Start the seamless-tile challenge in the Pixel art studio",
+        "criterio": "The 3×3 mosaic gives no clue where the tile starts.",
+        "alternativa": "The mosaic view marks the seams.",
+        "alternativa_arrastre": "Numeric fields in Properties and two taps on the canvas.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Tile in progress",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E17",
+      "ambito": "estructuras",
+      "estudio": { "es": "es/taller/estructuras/", "en": "en/workshop/structures/" },
+      "estudios_secundarios": ["maquinas"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Planck.js",
+      "artefacto": { "formatos": ["png", "csv"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Un puente que aguanta el camión",
+        "idea": "Triangulación: dónde va la compresión y dónde la tracción.",
+        "instrucciones": [
+          "Monta un tablero entre los dos apoyos y ponle un camión encima.",
+          "Añade barras hasta que deje de ceder: los triángulos aguantan, los cuadrados no.",
+          "Lanza la prueba de carga y mira qué barras se comprimen y cuáles se estiran.",
+          "Guarda la imagen del montaje y su cálculo."
+        ],
+        "cta": "Montar el puente",
+        "cta_nombre": "Empezar el reto del puente en el estudio de Estructuras",
+        "criterio": "El puente pasa la prueba de carga y la persona señala una barra a compresión y otra a tracción.",
+        "alternativa": "La prueba avanza por pasos con movimiento reducido.",
+        "alternativa_arrastre": "Campos numéricos en Propiedades y dos toques en el lienzo.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Montaje en curso",
+          "listo-para-exportar": "Listo para la prueba",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A bridge that holds the lorry",
+        "idea": "Triangulation: where the compression goes and where the tension goes.",
+        "instrucciones": [
+          "Lay a deck between the two supports and put a lorry on it.",
+          "Add bars until it stops sagging: triangles hold, squares don't.",
+          "Run the load test and watch which bars squeeze and which ones stretch.",
+          "Save the image of the build and its working."
+        ],
+        "cta": "Build the bridge",
+        "cta_nombre": "Start the bridge challenge in the Structures studio",
+        "criterio": "The bridge passes the load test and the person points at one bar in compression and one in tension.",
+        "alternativa": "The test advances step by step under reduced motion.",
+        "alternativa_arrastre": "Numeric fields in Properties and two taps on the canvas.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Build in progress",
+          "listo-para-exportar": "Ready to test",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E22",
+      "ambito": "circuitos",
+      "estudio": { "es": "es/taller/circuitos/", "en": "en/workshop/circuits/" },
+      "estudios_secundarios": ["programacion"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Solver de Kirchhoff y Ohm del estudio",
+      "artefacto": { "formatos": ["svg", "csv"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Un semáforo que no se equivoca",
+        "idea": "Estados y secuencia con lógica sencilla.",
+        "instrucciones": [
+          "Monta los tres LED con su resistencia y comprueba que ninguno se funde.",
+          "Escribe la secuencia: qué luz está encendida en cada estado y cuál sigue.",
+          "Recorre los estados uno a uno y busca el que no debería existir.",
+          "Exporta el esquema y la tabla de verdad."
+        ],
+        "cta": "Montar el semáforo",
+        "cta_nombre": "Empezar el reto del semáforo en el estudio de Circuitos",
+        "criterio": "La secuencia completa sin estados imposibles y sin ningún LED fundido.",
+        "alternativa": "El reloj lo inicia la persona y nunca pasa de 1 Hz.",
+        "alternativa_arrastre": "Cables por dos clics o desde dos listas del inspector.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Montaje en curso",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A traffic light that never gets it wrong",
+        "idea": "States and sequence with simple logic.",
+        "instrucciones": [
+          "Wire the three LEDs with their resistor and check that none of them burns out.",
+          "Write the sequence: which light is on in each state, and which state follows.",
+          "Step through the states one by one and find the one that shouldn't exist.",
+          "Export the schematic and the truth table."
+        ],
+        "cta": "Wire the traffic light",
+        "cta_nombre": "Start the traffic-light challenge in the Circuits studio",
+        "criterio": "The full sequence with no impossible states and no burnt-out LED.",
+        "alternativa": "The clock is started by the person and never goes above 1 Hz.",
+        "alternativa_arrastre": "Wires by two clicks, or from two lists in the inspector.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Wiring in progress",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E28",
+      "ambito": "escritura",
+      "estudio": { "es": "es/taller/escritura-restricciones/", "en": "en/workshop/constraint-writing/" },
+      "estudios_secundarios": ["comic"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Comprobador de reglas del estudio",
+      "artefacto": { "formatos": ["txt", "md", "html"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Cincuenta palabras exactas",
+        "idea": "Una historia completa cabe en cincuenta palabras si sobra todo lo demás.",
+        "instrucciones": [
+          "Escribe la historia entera sin contar palabras todavía.",
+          "Mira el contador y quita: lo primero que sobra suele ser la explicación.",
+          "Ajusta hasta cincuenta exactas, sin perder ni el principio ni el final.",
+          "Exporta el texto."
+        ],
+        "cta": "Escribir las cincuenta",
+        "cta_nombre": "Empezar el reto de las cincuenta palabras en el estudio de Escritura con restricciones",
+        "criterio": "Cincuenta palabras exactas y un relato con principio y final.",
+        "alternativa": "El contador avisa en vivo y no hay tiempo límite.",
+        "alternativa_arrastre": "No aplica: es texto.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Escribiendo",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "Exactly fifty words",
+        "idea": "A whole story fits in fifty words once everything else is gone.",
+        "instrucciones": [
+          "Write the whole story without counting words yet.",
+          "Look at the counter and cut: the first thing to go is usually the explaining.",
+          "Trim to exactly fifty, keeping both the opening and the ending.",
+          "Export the text."
+        ],
+        "cta": "Write the fifty",
+        "cta_nombre": "Start the fifty-word challenge in the Constraint writing studio",
+        "criterio": "Exactly fifty words, and a story with a beginning and an end.",
+        "alternativa": "The counter updates live and there is no time limit.",
+        "alternativa_arrastre": "Not applicable: this is text.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Writing",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E34",
+      "ambito": "juego-de-mesa",
+      "estudio": { "es": "es/taller/juegos-de-mesa/", "en": "en/workshop/board-games/" },
+      "estudios_secundarios": ["ideas"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Tablero y mazo del estudio",
+      "artefacto": { "formatos": ["pdf", "png"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Un juego para dos con cinco reglas",
+        "idea": "Menos reglas y más decisiones: la economía del diseño de juego.",
+        "instrucciones": [
+          "Escribe las cinco reglas antes de tocar el tablero. Cinco, no seis.",
+          "Monta el tablero y las cartas que esas cinco reglas necesitan, y nada más.",
+          "Juega una partida entera contra ti misma y tacha la regla que no decida nada.",
+          "Exporta el tablero, las cartas y las reglas para imprimir."
+        ],
+        "cta": "Escribir las cinco reglas",
+        "cta_nombre": "Empezar el reto del juego de cinco reglas en el estudio de Juegos de mesa",
+        "criterio": "Cinco reglas contadas, dos jugadores y una partida completa jugada en el propio estudio.",
+        "alternativa": "El tablero de recorrido ya viene montado como punto de partida.",
+        "alternativa_arrastre": "Campos numéricos en Propiedades y dos toques en el lienzo.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Reglas en curso",
+          "listo-para-exportar": "Listo para imprimir",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A two-player game with five rules",
+        "idea": "Fewer rules and more decisions: economy in game design.",
+        "instrucciones": [
+          "Write the five rules before you touch the board. Five, not six.",
+          "Build only the board and cards those five rules need, and nothing else.",
+          "Play a whole game against yourself and cross out the rule that decides nothing.",
+          "Export the board, the cards and the rules to print."
+        ],
+        "cta": "Write the five rules",
+        "cta_nombre": "Start the five-rule game challenge in the Board games studio",
+        "criterio": "Five rules counted, two players, and a full game played in the studio itself.",
+        "alternativa": "The race-track board comes ready-made as a starting point.",
+        "alternativa_arrastre": "Numeric fields in Properties and two taps on the canvas.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Rules in progress",
+          "listo-para-exportar": "Ready to print",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E38",
+      "ambito": "musica",
+      "estudio": { "es": "es/taller/ritmo/", "en": "en/workshop/rhythm-sequencer/" },
+      "estudios_secundarios": ["composicion"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Tone.js con Transport",
+      "artefacto": { "formatos": ["wav", "mid"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Un ritmo que se reconoce",
+        "idea": "El acento y el silencio hacen el ritmo tanto como el golpe.",
+        "instrucciones": [
+          "Pon los golpes que quieras en cuatro compases y escúchalo.",
+          "Quita la mitad. Lo que queda suele reconocerse mejor que lo que había.",
+          "Mueve un acento de sitio y vuelve a escuchar: eso es el ritmo cambiando.",
+          "Exporta el patrón en WAV y en MIDI."
+        ],
+        "cta": "Poner el primer golpe",
+        "cta_nombre": "Empezar el reto del ritmo reconocible en el estudio de Ritmo y secuenciador",
+        "criterio": "Un patrón de cuatro compases exportado en WAV y en MIDI.",
+        "alternativa": "El sonido solo empieza cuando la persona lo pide.",
+        "alternativa_arrastre": "Notas por campos de inicio, duración y altura.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Patrón en curso",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A rhythm you can recognise",
+        "idea": "The accent and the silence make the rhythm as much as the hit does.",
+        "instrucciones": [
+          "Put as many hits as you like into four bars and listen to it.",
+          "Take half of them out. What's left is usually easier to recognise.",
+          "Move one accent and listen again: that is the rhythm changing.",
+          "Export the pattern as WAV and as MIDI."
+        ],
+        "cta": "Place the first hit",
+        "cta_nombre": "Start the recognisable-rhythm challenge in the Rhythm and sequencer studio",
+        "criterio": "A four-bar pattern exported as WAV and as MIDI.",
+        "alternativa": "Sound only starts when the person asks for it.",
+        "alternativa_arrastre": "Notes through start, length and pitch fields.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Pattern in progress",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    },
+    {
+      "id": "E44",
+      "ambito": "videojuegos",
+      "estudio": { "es": "es/taller/videojuegos/", "en": "en/workshop/video-game-design/" },
+      "estudios_secundarios": ["estructuras"],
+      "recommended_stage": "ALL_AGES",
+      "starter_stage": "ALL_AGES",
+      "audience": "ALL_AGES",
+      "ola": "A",
+      "motor": "Planck.js y runtime propio",
+      "artefacto": { "formatos": ["html"], "descarga_local": true },
+      "permisos": [],
+      "hardware": false,
+      "es": {
+        "titulo": "Un nivel que se puede ganar",
+        "idea": "Dificultad: un nivel debe ser posible y no evidente.",
+        "instrucciones": [
+          "Monta un nivel corto con una sola idea dentro.",
+          "Juégalo hasta terminarlo tú. Si no puedes, es imposible, no difícil.",
+          "Quítale una ayuda y vuelve a jugarlo: ahí está la dificultad que buscas.",
+          "Expórtalo como HTML y ábrelo sin conexión."
+        ],
+        "cta": "Montar el nivel",
+        "cta_nombre": "Empezar el reto del nivel jugable en el estudio de Videojuegos",
+        "criterio": "Un nivel completado por su autor y exportado como HTML que abre sin conexión.",
+        "alternativa": "El juego exportado se juega también solo con teclado.",
+        "alternativa_arrastre": "Campos numéricos en Propiedades y dos toques en el lienzo.",
+        "estados": {
+          "sin-empezar": "Sin empezar",
+          "en-curso": "Nivel en curso",
+          "listo-para-exportar": "Listo para exportar",
+          "terminado": "Terminado"
+        }
+      },
+      "en": {
+        "titulo": "A level you can actually win",
+        "idea": "Difficulty: a level should be possible without being obvious.",
+        "instrucciones": [
+          "Build a short level with a single idea in it.",
+          "Play it through yourself. If you can't, it's impossible, not hard.",
+          "Take one help away and play it again: that's the difficulty you were after.",
+          "Export it as HTML and open it with no connection."
+        ],
+        "cta": "Build the level",
+        "cta_nombre": "Start the winnable-level challenge in the Video game design studio",
+        "criterio": "A level completed by its author and exported as HTML that opens offline.",
+        "alternativa": "The exported game can also be played with the keyboard alone.",
+        "alternativa_arrastre": "Numeric fields in Properties and two taps on the canvas.",
+        "estados": {
+          "sin-empezar": "Not started",
+          "en-curso": "Level in progress",
+          "listo-para-exportar": "Ready to export",
+          "terminado": "Finished"
+        }
+      }
+    }
+  ]
+}
