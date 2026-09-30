@@ -71,6 +71,9 @@ function upgradeHeader(){
  if(header&&header.closest('x-dc'))header=null;
  if(!header){header=h('header',{});var skip=Array.from(D.querySelectorAll('body > a.skip,body > a.ig-r49-skip,body > a.ig-home-skip')).find(function(a){return !a.closest('x-dc');});if(skip)skip.insertAdjacentElement('afterend',header);else D.body.insertBefore(header,D.body.firstChild);}
  if(header.dataset.igR49Upgraded==='true')return header;
+ /* The canonical shell owns this element. Remove legacy shell classes so old
+    unlayered CSS/JS cannot keep competing with the R49/R69 interface. */
+ header.classList.remove('hd','ig-home-header','ig-uh');
  header.classList.add('ig-r49-global-header');header.dataset.igR49Upgraded='true';
  var inner=h('div',{class:'ig-r49-header-inner'});
  var brand=h('a',{class:'ig-r49-brand',href:en()?'/en/':'/',text:'Iris Green'});
@@ -94,6 +97,7 @@ function upgradeFooter(){
  if(footer&&footer.closest('x-dc'))footer=null;
  if(!footer){footer=h('footer',{});D.body.appendChild(footer);}
  if(footer.dataset.igR49Upgraded==='true')return footer;
+ footer.classList.remove('ft','ig-home-footer');
  footer.classList.add('ig-r49-global-footer');footer.dataset.igR49Upgraded='true';
  var inner=h('div',{class:'ig-r49-footer-inner'});
  var brand=h('div',{class:'ig-r49-footer-brand',text:'Iris Green'});
