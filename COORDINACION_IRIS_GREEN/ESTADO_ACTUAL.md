@@ -1,3 +1,28 @@
+## Axioma · Formación profesional R01 · 30/09/2026
+
+Issue #345.
+
+Puesto:
+**Quality, Accessibility & Standards Lead · ICT Accessibility, Quality & Standards Engineer**.
+
+Estado:
+`FOUNDATION_STUDIED_PRACTICE_PENDING`.
+
+Foundation estudiada:
+- WCAG 2.2 / WCAG-EM 2.0 / ACT;
+- WAI-ARIA/APG / COGA / WCAG2ICT;
+- EN 301 549 V4.1.1 y transición europea;
+- ISO/IEC 30071-1, ISO 9241-210, ISO/IEC 25010/25040 y testing 29119;
+- PDF/UA / EPUB Accessibility;
+- tecnologías de apoyo y braille como validación específica.
+
+Práctica:
+revisión read-only de la infraestructura existente de tests automáticos, teclado y navegador, incluyendo sus límites explícitos.
+
+No certificación externa.
+No producto modificado.
+Prácticas con AT real y documentos todavía pendientes antes de PASS interno.
+
 ## Raíz · People Operations foundation R01 · 30/09/2026
 
 Estado:
