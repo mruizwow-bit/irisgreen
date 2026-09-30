@@ -198,17 +198,32 @@ Se ejecutó además análisis `loudnorm` para practicar lectura de integrated lo
 
 ## Práctica de navegador
 
-Intentos:
-- servidor local 127.0.0.1;
-- file URL.
+### Intento 1 · navegación local
 
-Resultado:
+Servidor `127.0.0.1` y `file://` fueron bloqueados por:
 `net::ERR_BLOCKED_BY_ADMINISTRATOR`.
 
-Estado:
-`HARNESS_ENVIRONMENT_BLOCKED`.
+Se clasificó correctamente como restricción del harness.
 
-No confundir con fallo multimedia.
+### Intento 2 · laboratorio sin red
+
+Se usó Playwright con `page.set_content()` y audio embebido en data URLs.
+
+Binario:
+`Chromium 144.0.7559.96`.
+
+Resultado:
+- WAV: PASS;
+- MP3: PASS;
+- M4A/AAC: PASS;
+- Ogg/Opus: PASS;
+- M4A truncado: FAIL esperado con `NotSupportedError`, MediaError 4 y `DEMUXER_ERROR_COULD_NOT_OPEN`.
+
+Evidencia durable:
+`FORMACION/A6_ECO/EVIDENCIA/ECO_MEDIA_LAB_20260930.json`.
+
+Hallazgo adicional:
+el Chromium 140 histórico de `reports/audio-diagnostic.json` no decodificaba AAC, mientras este Chromium 144 sí. Esto refuerza que la compatibilidad debe atribuirse al binario/build exacto, no al nombre genérico “Chromium”.
 
 ## Aplicación a Sabik
 
