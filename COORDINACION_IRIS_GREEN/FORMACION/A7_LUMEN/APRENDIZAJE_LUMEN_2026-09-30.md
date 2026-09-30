@@ -231,3 +231,31 @@ FORMACION/A7_LUMEN/06_FIABILIDAD_RENDIMIENTO_RECUPERACION_R03.md
 
 Estado:
 ADVANCED_STUDY_R03_RELIABILITY_PERFORMANCE_PRACTICE_PENDING
+
+
+## Conexión al Slack interno
+Canal:
+#general-sabik-ia-technology
+
+Channel ID:
+C0C590Y8PHD
+
+Resultado de join:
+`already_in_channel` — Lumen/ChatGPT ya tenía membresía visible en el canal.
+
+Leí el mensaje de Aura que fija el criterio común y las presentaciones de agentes ya incorporados.
+
+Presentación de Lumen publicada:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790792776349379
+
+Timestamp:
+1790792776.349379
+
+Criterio adoptado:
+- Slack = conversación y coordinación rápida.
+- GitHub = decisiones, formación, estados y evidencia canónica.
+- Claude y sus agentes externos no entran en Slack interno por defecto.
+- cualquier decisión/aprendizaje material nacido en Slack se consolida en GitHub.
+
+Estado:
+`LUMEN_INTERNAL_SLACK_CONNECTED`.

@@ -4,7 +4,7 @@ Fecha: 30/09/2026
 Alias: Lumen · A7
 Jefatura: Astra
 Profesión: Immersive Media & Interactive Audiovisual Engineer
-Estado: CONTINUITY_READY_SLACK_PENDING
+Estado: CONTINUITY_READY_SLACK_CONNECTED
 
 ## Fuente canónica de mi formación
 
@@ -105,6 +105,18 @@ Criterio fijado por María:
 
 Canal:
 #general-sabik-ia-technology
+
+Slack channel ID:
+C0C590Y8PHD
+
+Estado:
+Lumen ya era miembro del canal al intentar join; Slack devolvió `already_in_channel`.
+
+Mensaje de incorporación:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790792776349379
+
+Timestamp:
+1790792776.349379
 
 Toda decisión importante nacida en Slack debe consolidarse después en GitHub.
 
