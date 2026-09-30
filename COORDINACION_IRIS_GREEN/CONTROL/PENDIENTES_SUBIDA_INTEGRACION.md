@@ -41,7 +41,7 @@ Estados separados:
 | R61 | Pecera audiovisual 10 min | #325 | Máster KEEP; QA/transfer pendiente | **LOCAL_BINARY_AT_RISK** | NOT_READY | Transferir MP4/master/build; cerrar móvil/motion/benchmark/performance |
 | R59 | Fósiles piloto | #323 | Producto PASS; contrato repro aceptado; QA nominal/GOV pendientes | PACKAGE_IN_CHAT / NOT_FINAL | FIX_BEFORE_INTEGRATION | Corregir 4 capturas nominales + GOV-01; después preservar paquete final |
 | R68 | Faroles flotantes | #335 | Dirección KEEP; rework espacial pendiente | **LOCAL_AT_RISK** | NOT_READY | Preservar fuente local cuando haya R2; no integración aún |
-| R42-CONTENT | Contenido R02 | #302 | Dirección válida; base A2 obsoleta | PACKAGE_PRESERVED / STALE_BASE | REBASE_REQUIRED | Rebase sobre HEAD A2 vivo; no aplicar ZIP actual |
+| R42-CONTENT | Contenido R02 | #302 | Mismo ZIP aa3649a8 verificado; base 9c721a79 ya 51 commits atrás | PACKAGE_VERIFIED_ATTACHMENT / STALE_BASE | REBASE_REQUIRED | Rebase sobre HEAD A2 vivo 8ea50128… o posterior; no aplicar ZIP actual |
 
 ## 2. Detalle · ya integrados pero no activados como producto final
 
@@ -176,16 +176,34 @@ Preservar cuando entregue R2 o si el entorno local corre riesgo.
 
 ### R42 Contenido R02
 
-ZIP:
-`iris-green-contenido-R42-20260929.zip`
+ZIP verificado nuevamente:
+`iris-green-contenido-R42-20260929(2).zip`
 
 SHA-256:
 `aa3649a821da1226dd84bda70f35ee8c8e286cb81c1bd5711af97e71761e8961`.
 
+Es byte-identical al paquete ya auditado. No es una revisión nueva.
+
+Base paquete:
+`9c721a79`.
+
+A2 vivo revalidado:
+`8ea50128b490207b4dd5508c3c46692f5be69c87`.
+
+Diferencia:
+**51 commits por delante**.
+
 No aplicar directamente.
 
-Motivo:
-base A2 obsoleta y solapamiento `scripts/build_site.py`.
+Motivos:
+- base A2 obsoleta;
+- solapamiento `scripts/build_site.py`;
+- R67/R63/child-safe/tokens han avanzado;
+- deuda de clasificación corregida a 465 campos URL anómalos, no 405;
+- trazabilidad de fuentes aún requiere reconciliación.
+
+Handoff de preservación:
+`HANDOFFS/R42_CONTENT_R02_STALE_BASE/README.md`.
 
 Conservar como fuente editorial/rebase.
 
