@@ -1,0 +1,20 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "LUMEN-A7-FORMACION-R02-20260930",
+  "date": "2026-09-30",
+  "alias": "Lumen",
+  "agent": "A7",
+  "supervisor": "Astra",
+  "status": "ADVANCED_STUDY_R02_PRACTICE_PENDING",
+  "product_change": false,
+  "studied": [
+    "ISO_9241_820_2024_IMMERSIVE_INTERACTION",
+    "ISO_9241_394_2020_VIMS",
+    "ISO_9241_391_2016_PHOTOSENSITIVE_SEIZURES",
+    "ISO_CD_9241_391_ED2_WATCH_ONLY_NOT_CURRENT",
+    "ISO_9241_392_2015_STEREOSCOPIC_VISUAL_FATIGUE",
+    "ISO_TS_9241_620_2023_SOUND",
+    "ISO_TR_9241_610_2022_LIGHTING"
+  ],
+  "practical_status": "PENDING_PERCEPTUAL_DEVICE_AND_VIMS_QA"
+}

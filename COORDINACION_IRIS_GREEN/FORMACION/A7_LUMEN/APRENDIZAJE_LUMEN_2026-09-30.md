@@ -181,3 +181,22 @@ No invento esos resultados.
 7. comprobar HEAD coordinación y A2;
 8. comprobar último HUMAN QA;
 9. ejecutar primero prácticas pendientes, no reconstruir la teoría.
+
+
+## Ampliación R02 · ergonomía audiovisual e inmersiva
+Estudié además:
+- ISO 9241-820:2024 · interacción en entornos inmersivos;
+- ISO 9241-394:2020 · reducción de visually induced motion sickness;
+- ISO 9241-391:2016 · fotosensibilidad, distinguiendo la edición publicada de la edición 2 todavía en Committee Draft;
+- ISO 9241-392:2015 · fatiga visual estereoscópica si entra HMD/3D estereoscópico;
+- ISO/TS 9241-620:2023 · influencia y control de ruido/sonido en sistemas interactivos;
+- ISO/TR 9241-610:2022 · efectos de luz/iluminación, sin atribuir usos terapéuticos.
+
+Aprendizaje:
+reduced motion no agota la ergonomía visual. Lumen necesita vigilar también mareo inducido por imagen, flashes/patrones, fatiga visual, ruido ambiental y cambios de iluminación.
+
+Documento:
+FORMACION/A7_LUMEN/05_ERGONOMIA_AUDIOVISUAL_INMERSIVA_R02.md
+
+Estado actualizado:
+ADVANCED_STUDY_R02_PRACTICE_PENDING

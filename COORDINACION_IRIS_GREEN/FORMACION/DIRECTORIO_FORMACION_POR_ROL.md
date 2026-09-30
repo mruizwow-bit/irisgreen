@@ -22,7 +22,7 @@ Fecha: 30/09/2026
 | Vigía | A4 | Ingeniero de Observabilidad, Privacidad y Evidencia | Nexo | PLAN DETALLADO PENDIENTE |
 | Motor | A5 | Ingeniero de Sistemas Interactivos y Runtime | Astra | PLAN DETALLADO PENDIENTE |
 | Eco | A6 | Ingeniero de Validación de Voz, Audio y Media | Nexo | PLAN DETALLADO PENDIENTE |
-| Lumen | A7 | Ingeniero de Media Inmersiva y Rincón Tranquilo | Astra | FORMACION/A7_LUMEN/ · foundation R01 estudiada; prácticas pendientes |
+| Lumen | A7 | Ingeniero de Media Inmersiva y Rincón Tranquilo | Astra | FORMACION/A7_LUMEN/ · R01 + estudio avanzado R02; prácticas pendientes |
 | Prisma | A8 | Ingeniero de Plataforma Frontend y Design Systems | Astra | PLAN DETALLADO PENDIENTE |
 | Nube | A9 | Ingeniero de Knowledge Cloud, Retrieval y Pipelines | Aura | PLAN DETALLADO PENDIENTE |
 | Córtex | A10 | LLM / Generative AI Systems Engineer | Nexo | FORMACION/A10_CORTEX/ |
