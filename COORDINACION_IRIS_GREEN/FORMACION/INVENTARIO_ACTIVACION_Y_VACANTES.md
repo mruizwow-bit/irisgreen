@@ -1,6 +1,6 @@
-# INVENTARIO DE ACTIVACIÓN Y VACANTES · R02
+# INVENTARIO DE ACTIVACIÓN Y VACANTES · R03
 
-## Equipo interno activo
+## Equipo interno activo / definido
 
 Producto/Tecnología:
 - Aura;
@@ -14,7 +14,8 @@ Producto/Tecnología:
 - Lumen;
 - Prisma;
 - Nube;
-- Senda.
+- Senda;
+- **Córtex · A10** (nuevo · formación obligatoria antes de ejecución).
 
 Marketing:
 - Ágora.
@@ -30,9 +31,6 @@ Design:
 Estado:
 `EXTERNAL_PROVIDER_TEAM_NOT_INTERNAL_HEADCOUNT`.
 
-No Slack interno por defecto.
-No consumen plazas de jefatura.
-
 ## Nuevos departamentos creados · responsables aún por iniciar chat/formación
 
 - Lex · Legal & Compliance;
@@ -46,9 +44,9 @@ No consumen plazas de jefatura.
 - Nexo · activar cuando se abra su chat;
 - Orbe · reserva.
 
-## Vacantes internas
+## Capacidad
 
-- Astra: 1 plaza interna libre tras separar Claude como proveedor externo.
-- Nexo: 1 plaza técnica libre.
+- Astra conserva 1 plaza interna libre.
+- Nexo queda 4/4 con Pulso · Vigía · Eco · Córtex.
 
-NO rellenar hasta terminar la revisión de qué funciones faltan.
+No abrir más plazas técnicas hasta revisar de nuevo el organigrama.

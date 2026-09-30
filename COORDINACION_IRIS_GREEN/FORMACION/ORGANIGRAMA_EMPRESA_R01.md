@@ -47,7 +47,7 @@ flowchart TB
     NEXO --> PULSO["Pulso · A3<br/>Integración Sistemas Conversacionales"]
     NEXO --> VIGIA["Vigía · A4<br/>Observabilidad, Privacidad & Evidencia"]
     NEXO --> ECO["Eco · A6<br/>Voz, Audio & Media Validation"]
-    NEXO --> VAC["Vacante técnica futura"]
+    NEXO --> CORTEX["Córtex · A10<br/>Sistemas IA Generativa · RAG · LLMOps"]
 
     CORP --> LEX["Lex<br/>Legal & Compliance"]
     CORP --> RAIZ["Raíz<br/>People Operations / RR. HH."]
@@ -128,6 +128,45 @@ Solo se activa cuando:
 - >12 trabajadores activos;
 - las 3 jefaturas llegan al límite;
 - o la carga P0/P1 hace inviable la revisión correcta.
+
+
+### Córtex · Agente 10
+
+Puesto:
+**LLM / Generative AI Systems Engineer**.
+
+En español:
+**Ingeniero de Sistemas de IA Generativa y Conocimiento**.
+
+Especialización:
+- AI Agent Engineering;
+- RAG;
+- Knowledge Engineering;
+- LLMOps;
+- model/provider integration;
+- context engineering;
+- tool orchestration;
+- evals;
+- safety-aware generation.
+
+Misión Sabik:
+- estudiar la integración actual con Claude API;
+- diseñar migración controlada a OpenAI;
+- decidir arquitectura de modelo/API con evidencia;
+- consumir la biblioteca de Nube sin duplicarla;
+- diseñar instrucciones, contexto, tools y evaluaciones;
+- gobernar qué conocimiento puede llegar al modelo;
+- medir calidad, latencia, coste y fallos;
+- mantener provider/model como componente versionado, no hardcode opaco.
+
+Fronteras:
+- Nube/A9 = biblioteca, corpus, fuentes, citas, safety, updater;
+- Córtex/A10 = modelo, provider, agentes, RAG consumption, context, evals, LLMOps;
+- Pulso/A3 = runtime conversacional y conexión operativa;
+- Vector/A2 = integración/release web.
+
+No migra Sabik durante la jornada de Formación.
+
 
 ## Departamentos corporativos transversales
 
@@ -334,11 +373,11 @@ Si un departamento crece, crea su propio equipo antes de sobrecargar a una jefat
 - Lumen;
 - vacante interna.
 
-### Nexo · 3 + 1 hueco
+### Nexo · 4/4 previsto
 - Pulso;
 - Vigía;
 - Eco;
-- vacante futura.
+- Córtex.
 
 Ágora deja el cupo técnico de Aura y pasa a Marketing/Brújula.
 

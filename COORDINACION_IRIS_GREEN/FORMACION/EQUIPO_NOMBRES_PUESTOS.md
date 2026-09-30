@@ -33,7 +33,7 @@ Jefe de Equipo · Continuidad Técnica & Sistemas.
 - Pulso · A3
 - Vigía · A4
 - Eco · A6
-- 1 vacante
+- Córtex · A10
 
 ### Orbe · reserva
 Jefatura 4 si escala.

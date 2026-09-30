@@ -1,3 +1,24 @@
+## Córtex · Agente 10 · nuevo especialista IA · 30/09/2026
+
+Issue #347.
+
+Estado:
+`A10_CORTEX_TRAINING_ORDERED_NO_PROVIDER_MIGRATION_YET`.
+
+Puesto:
+LLM / Generative AI Systems Engineer.
+
+Misión futura:
+migración controlada Sabik Claude API → OpenAI + arquitectura de aprendizaje/RAG/evals/LLMOps.
+
+Nexo queda 4/4:
+Pulso · Vigía · Eco · Córtex.
+
+Hoy:
+FORMACIÓN únicamente.
+No cambio de provider.
+No producción.
+
 ## Claude · clasificación como proveedor externo · 30/09/2026
 
 Decisión de María:

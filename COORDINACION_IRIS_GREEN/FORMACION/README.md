@@ -94,6 +94,10 @@ Un marcador interno significa únicamente:
 - produjo evidencia;
 - puede ejecutar ese alcance bajo las reglas de Iris Green.
 
+## Especialistas añadidos
+
+3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.
+
 ## Primera ola
 
 1. **Vector / Agente 2** · Web Release & Integration Engineer.

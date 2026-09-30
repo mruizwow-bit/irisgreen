@@ -1,0 +1,28 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "A10-CORTEX-LLM-SYSTEMS-20260930",
+  "issue": 347,
+  "date": "2026-09-30",
+  "alias": "Cortex",
+  "role": "LLM_GENERATIVE_AI_SYSTEMS_ENGINEER",
+  "manager": "Nexo",
+  "status": "A10_CORTEX_TRAINING_ORDERED_NO_PROVIDER_MIGRATION_YET",
+  "mission": [
+    "CLAUDE_TO_OPENAI_PROVIDER_MIGRATION",
+    "RAG_CONSUMPTION",
+    "CONTEXT_ENGINEERING",
+    "AGENT_ENGINEERING",
+    "EVALS",
+    "LLMOPS",
+    "KNOWLEDGE_GOVERNANCE_TECHNICAL"
+  ],
+  "boundaries": {
+    "A9_NUBE": "LIBRARY_CORPUS_CITATIONS_SAFETY_UPDATER",
+    "A10_CORTEX": "MODEL_PROVIDER_CONTEXT_TOOLS_EVALS_LLMOPS",
+    "A3_PULSO": "CONVERSATIONAL_RUNTIME_TRANSPORT_SESSION",
+    "A2_VECTOR": "WEB_RELEASE_INTEGRATION"
+  },
+  "execution_today": "TRAINING_ONLY",
+  "provider_change_authorized": false,
+  "production_authorized": false
+}
