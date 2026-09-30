@@ -83,13 +83,13 @@
     {
       "Alias": "Eco",
       "Agente": "A6",
-      "Puesto": "Ingeniero de Validacion de Voz Audio y Media",
+      "Puesto": "Voice Audio & Media Quality Engineer",
       "Jefatura": "Nexo",
-      "Carpeta": "PENDIENTE",
-      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
-      "Ultimo_aprendizaje": "",
+      "Carpeta": "FORMACION/A6_ECO",
+      "Estado_formacion": "FOUNDATION_ADVANCED_STUDIED_PRACTICE_EVIDENCE_PRESENT",
+      "Ultimo_aprendizaje": "APRENDIZAJE_ECO_2026-09-30.md",
       "Fecha": "2026-09-30",
-      "Pendiente_principal": "Definir formacion profesional"
+      "Pendiente_principal": "Completar real-device cross-browser mic WebRTC STT TTS y soak QA"
     },
     {
       "Alias": "Lumen",
