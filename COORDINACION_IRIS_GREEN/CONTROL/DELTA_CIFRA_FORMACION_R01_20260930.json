@@ -12,6 +12,14 @@
     "aura_advanced_r02": "41a01a5534161da5e4b412dd0c6af424e836a53c"
   },
   "branch": "cifra/finance-business-planning-foundation-r01-20260930",
+  "slack": {
+    "channel_name": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD",
+    "joined": true,
+    "message_ts": "1790791848.472259",
+    "message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790791848472259",
+    "rule": "SLACK_FAST_COORDINATION_GITHUB_CANONICAL_EXTERNAL_CLAUDE_EXCLUDED_BY_DEFAULT"
+  },
   "studied_domains": [
     "FP&A",
     "BUDGETING",
@@ -35,39 +43,7 @@
     "BUSINESS_PARTNERING",
     "FINANCIAL_ETHICS"
   ],
-  "training_files": [
-    "COORDINACION_IRIS_GREEN/FORMACION/CIFRA/00_IDENTIDAD_Y_PUESTO.md",
-    "COORDINACION_IRIS_GREEN/FORMACION/CIFRA/01_PLAN_FORMACION.md",
-    "COORDINACION_IRIS_GREEN/FORMACION/CIFRA/02_PRACTICAS_Y_EXAMEN.md",
-    "COORDINACION_IRIS_GREEN/FORMACION/CIFRA/03_RUNBOOK_FINANZAS.md",
-    "COORDINACION_IRIS_GREEN/FORMACION/CIFRA/APRENDIZAJE_CIFRA_2026-09-30.md",
-    "COORDINACION_IRIS_GREEN/MEMORIA/CIFRA_FORMACION_R01_20260930.md"
-  ],
-  "registration_commits": [
-    "d124298d7bb16dcd77519f24cd53dfbf8bdbc71b",
-    "85412be58ff21e780c1c44a6bf50cbc96c3c2946",
-    "7054b026782a289a70643c27a314f40f4db5c258",
-    "8743e09e0d8eb31e0cd121c092b3452077a8c302",
-    "7564f6aa064bd65eacab3c1e4353667adfafa604",
-    "74beb14ba5083d7185d8401fe89a9f94bfca8fc2",
-    "6317bd1c6ca09eb4c718b04941477fb7b0b8cd9b",
-    "9159e1b54bd91bc11cfcb16a710cf6d0fabbc8de"
-  ],
-  "previous_control_commit": "b53ce94e9d2c97f0cbd12622e3441a830fcd5106",
   "external_certification": false,
   "product_change": false,
-  "training_day_only": true,
-  "next_training": [
-    "TREASURY",
-    "FUNDRAISING",
-    "DEBT_EQUITY_FINANCING",
-    "ADVANCED_VALUATION",
-    "DUE_DILIGENCE",
-    "SPANISH_TAX_WITH_LEX_ADVISOR",
-    "CONSOLIDATION",
-    "PROBABILISTIC_FORECASTING",
-    "MONTE_CARLO",
-    "ADVANCED_COHORT_MODELLING",
-    "FINOPS_AI_COST_GOVERNANCE"
-  ]
+  "training_day_only": true
 }
