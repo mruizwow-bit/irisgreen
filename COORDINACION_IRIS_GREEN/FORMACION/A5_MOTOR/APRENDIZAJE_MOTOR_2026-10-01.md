@@ -142,3 +142,62 @@ Candidatos inmediatos de especialización:
 5. leer solo el bloque siguiente que vaya a ampliar;
 6. no repetir R01–R29;
 7. mantener 0 producto mientras siga la Jornada de Formación.
+
+## Formación añadida después de R29
+
+### R30 · Media capabilities, decoding y frame pipelines
+
+Estudiado:
+- MediaCapabilities;
+- `decodingInfo()` / `encodingInfo()`;
+- `supported / smooth / powerEfficient`;
+- WebCodecs como capa de bajo nivel;
+- `VideoFrame` lifecycle;
+- `encodeQueueSize / decodeQueueSize`;
+- frame drop policy;
+- backpressure de media.
+
+Aprendizaje central:
+**soportado no significa fluido ni eficiente**.
+
+Para playback normal:
+HTMLMediaElement primero.
+WebCodecs solo cuando se necesita control frame-level.
+
+Marcador:
+`MOTOR_MEDIA_CAPABILITIES_FRAME_PIPELINES_STUDIED_R30`.
+
+### R31 · Editores, IME y teclado virtual
+
+Estudiado:
+- contenteditable;
+- `beforeinput`;
+- `getTargetRanges()`;
+- `inputType`;
+- selección/caret;
+- IME;
+- EditContext API;
+- VirtualKeyboard API;
+- autosave bajo carga;
+- undo ownership.
+
+Estado:
+- EditContext: experimental / limited;
+- VirtualKeyboard: experimental / limited.
+
+Regla:
+**textarea/input/contenteditable siguen siendo la base preferida salvo necesidad real de editor custom.**
+
+Marcador:
+`MOTOR_EDITOR_IME_VIRTUAL_KEYBOARD_STUDIED_R31`.
+
+## Continuidad actualizada
+
+Último bloque completado:
+**R31**.
+
+Siguiente Motor:
+1. continuar desde R31;
+2. no repetir R01–R31;
+3. revisar GitHub por state drift antes de crear R32;
+4. mantener jornada de Formación sin producto.
