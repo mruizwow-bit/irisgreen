@@ -7,13 +7,16 @@
     "transform_origin": {"x": 530, "y": 359}
   },
   "body_mount": {
+    "file": "../assets/web-r01/web_presente.png",
+    "source_sha": "c18d8f2aae53c281e02baeeac0ccd832acca4ecb",
     "target_bbox": {"x": 176, "y": 8, "width": 690, "height": 642},
-    "fit": "contain"
+    "fit": "contain",
+    "note": "Existing canonical transparent Sabik Web body reused as the body layer. New visual identity comes from the central core/orbit system."
   },
   "layers": [
     {"id":"halo-back","z":10,"type":"css-radial-gradient"},
     {"id":"orbits-back","z":20,"type":"svg","file":"03_orbits_back.svg"},
-    {"id":"body","z":30,"type":"image","file":"02_body_master_q96.webp","x":176,"y":8,"w":690,"h":642},
+    {"id":"body","z":30,"type":"image","file":"../assets/web-r01/web_presente.png","x":176,"y":8,"w":690,"h":642},
     {"id":"core-rings","z":40,"type":"svg","file":"04_core_rings.svg"},
     {"id":"core-light","z":50,"type":"svg","file":"05_core_light.svg"},
     {"id":"particles-front","z":60,"type":"svg","file":"06_particles_front.svg"}
