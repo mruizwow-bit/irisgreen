@@ -1,0 +1,10 @@
+Bloqueo;Estado;Hecho observable;Correccion y evidencia;Propietario
+1 ES/EN;CORREGIDO;8 en.alternativa vacios y artefacto solo en espanol;artefacto_es/en y alternativa bilingue - verificado en 16 paginas;Claude
+2 Contrato visual;CORREGIDO;eran paneles de texto sin preview;mini-escena por piloto con el artefacto dibujado - E01 rehecha por contradecir su criterio;Claude
+3 CTA;CORREGIDO;solo cambiaba el estado local;foco al sitio de trabajo y evento ig:r44-reto - 16/16 entran al taller;Claude
+4 Patch aislado;CORREGIDO;el revisado tenia 41 commits;2 commits y 4 ficheros sobre a8bd0e2a - patch y bundle;Claude
+5 Age gate global;RETIRADO;mi delta iba sobre una version anterior;ig-audience.js fuera del patch;Claude
+6 Starter;CORREGIDO;AGE_0_12 fijado en los ocho sin variante aprobada;ALL_AGES;Claude
+7 Logs brutos;ADJUNTOS;no viajaban con la entrega;tar con axe reflow teclado foco y verificacion;Claude
+Rebase base vigente;NO POSIBLE;el remoto alcanzable no tiene rama R67 ni la A2 viva;evidencia movil sobre base anterior al shell actual - header no tocado;coordinacion
+R67_GLOBAL_SHELL_BLOCKER;NO REGISTRADO;no puedo medir si la colision persiste en la base vigente;registrarlo sin medirlo seria afirmar verificacion no ejecutada;coordinacion

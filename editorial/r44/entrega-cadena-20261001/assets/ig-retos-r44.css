@@ -1,0 +1,106 @@
+/* Iris Green · R44 · el panel de reto dentro de un estudio.
+
+   Todo el color sale de la hoja única de tokens: ningún valor de interfaz se
+   escribe aquí. Ninguna superficie extensa en blanco puro, ni en claro ni en
+   oscuro. El estado se dice con palabra y con forma; el color acompaña y nunca
+   es el único canal. */
+
+.igr44-panel {
+  background: var(--ig-bg-surface);
+  color: var(--ig-text);
+  border: 1px solid var(--ig-separator);
+  border-radius: 10px;
+  padding: 1rem 1.05rem 1.15rem;
+  max-width: 34rem;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.igr44-titulo { font-size: 1.12rem; line-height: 1.3; margin: 0; }
+.igr44-idea { margin: 0; color: var(--ig-text-muted); }
+
+.igr44-pasos { margin: 0; padding-left: 1.3rem; display: grid; gap: 0.34rem; }
+.igr44-pasos li { line-height: 1.45; }
+
+/* El estado. La marca de la izquierda cambia de forma, no sólo de color:
+   vacía, media, llena y con marco. Así se distingue en monocromo y con los
+   colores forzados del sistema. */
+.igr44-estado {
+  margin: 0.15rem 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+.igr44-marca {
+  inline-size: 0.86rem;
+  block-size: 0.86rem;
+  border: 2px solid currentColor;
+  border-radius: 50%;
+  flex: none;
+}
+.igr44-estado[data-estado="en-curso"] .igr44-marca {
+  background: linear-gradient(to right, currentColor 50%, transparent 50%);
+}
+.igr44-estado[data-estado="listo-para-exportar"] .igr44-marca {
+  background: currentColor;
+  border-radius: 2px;
+}
+.igr44-estado[data-estado="terminado"] .igr44-marca {
+  background: currentColor;
+  box-shadow: 0 0 0 3px var(--ig-bg-surface), 0 0 0 5px currentColor;
+}
+.igr44-estado[data-estado="listo-para-exportar"],
+.igr44-estado[data-estado="terminado"] { color: var(--ig-success); }
+
+.igr44-cta {
+  justify-self: start;
+  background: var(--ig-button-primary-bg);
+  color: var(--ig-button-primary-fg);
+  border: 1px solid var(--ig-border-control);
+  border-radius: 8px;
+  padding: 0.55rem 1rem;
+  font: inherit;
+  font-weight: 600;
+  min-block-size: 44px;
+  min-inline-size: 44px;
+  cursor: pointer;
+}
+.igr44-cta:focus-visible {
+  outline: 3px solid var(--ig-focus);
+  outline-offset: 2px;
+}
+
+.igr44-criterio {
+  margin: 0;
+  padding-top: 0.55rem;
+  border-top: 1px solid var(--ig-separator);
+  color: var(--ig-text);
+}
+.igr44-nota { margin: 0; color: var(--ig-text-muted); font-size: 0.92rem; }
+
+/* Reflujo: a 320 el panel ocupa el ancho y no obliga a desplazamiento lateral. */
+@media (max-width: 26rem) {
+  .igr44-panel { padding: 0.85rem; border-radius: 8px; }
+  .igr44-titulo { font-size: 1.05rem; }
+}
+
+/* Colores forzados: el borde y la marca tienen que seguir existiendo cuando el
+   sistema sustituye la paleta entera. */
+@media (forced-colors: active) {
+  .igr44-panel { border: 1px solid CanvasText; }
+  .igr44-marca { border-color: CanvasText; }
+  .igr44-estado[data-estado="en-curso"] .igr44-marca,
+  .igr44-estado[data-estado="listo-para-exportar"] .igr44-marca,
+  .igr44-estado[data-estado="terminado"] .igr44-marca { background: CanvasText; }
+  .igr44-cta { border: 1px solid ButtonText; }
+}
+
+/* Movimiento reducido: aquí no hay animación que quitar, y queda escrito para
+   que no se añada sin pensarlo. */
+@media (prefers-reduced-motion: reduce) {
+  .igr44-panel *, .igr44-panel *::before, .igr44-panel *::after {
+    animation-duration: 0.001ms !important;
+    transition-duration: 0.001ms !important;
+  }
+}

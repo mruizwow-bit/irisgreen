@@ -77,10 +77,12 @@ def sabik_home(en):
     <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" placeholder="{t['placeholder']}"></textarea><div class="sabik-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
     <div id="sabik-results"></div>
       <div class="ig-home-v4-sabik-controls">
+        <button class="sabik-button" id="sabik-expand" type="button" aria-pressed="false">{'Expand' if en else 'Ampliar'}</button>
         <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false"><span data-sabik-text="voice">{t['voice']}</span>: <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button></div>
         <div class="sabik-actions sabik-reset-actions"><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
         <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select></div>
       </div>
+      <a class="sabik-button" id="sabik-browse" href="{'/en/resources/' if en else '/es/recursos/'}" data-sabik-text="browse">{t['browse']}</a>
   </div>
 </div>
 </section></aside>'''
@@ -104,7 +106,7 @@ def render(root,lang):
     use_cards=[
       card('/en/resources/games/' if en else '/es/recursos/juegos/','Games' if en else 'Juegos','Think, observe and try ideas.' if en else 'Para pensar, observar y probar ideas.','View games →' if en else 'Ver juegos →',True,'ALL_AGES'),
       card('/en/workshop/' if en else '/es/taller/','The workshop' if en else 'El taller','Draw, build and create your projects.' if en else 'Dibuja, construye y crea tus proyectos.','Go to the workshop →' if en else 'Ir al taller →',True,'ALL_AGES'),
-      card('/en/resources/visual-routines/' if en else '/es/recursos/rutinas-visuales/','Visual routines' if en else 'Rutinas visuales','Organise the day step by step with visual supports.' if en else 'Ordena el día paso a paso con apoyos visuales.','Create a routine →' if en else 'Crear una rutina →',True,'ALL_AGES'),
+      card('/en/resources/' if en else '/es/recursos/','Pictograms and visual supports' if en else 'Pictogramas y apoyos visuales','Communicate, prepare routines and print visual supports.' if en else 'Comunica, prepara rutinas e imprime apoyos visuales.','See visual supports →' if en else 'Ver apoyos visuales →',True,'ALL_AGES'),
       card('/en/quiet-space/' if en else '/es/sitio-tranquilo/','Quiet space' if en else 'Rincón tranquilo','Breathe, look at landscapes or rest for a while.' if en else 'Respira, mira paisajes o descansa un rato.','Enter the quiet space →' if en else 'Entrar al rincón →',True,'ALL_AGES'),
     ]
     lower=[

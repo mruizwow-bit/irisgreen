@@ -454,3 +454,24 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
   .ig-home-v4-hero{display:flex;flex-direction:column;align-items:stretch}
   .ig-home-v4 h1{white-space:normal}
 }
+
+/* Keep the search usable at every width and remove empty artwork placeholders. */
+.ig-home-v4-hero{display:flex;flex-direction:column;align-items:stretch;gap:1rem;padding:clamp(1rem,2vw,1.75rem)}
+.ig-home-v4 h1{white-space:normal;align-self:start;font-size:clamp(1.8rem,2.5vw,2.6rem)}
+.ig-home-v4-search{width:100%;max-width:none}
+.ig-home-v4-age{margin:0!important;padding:0!important}
+.ig-home-v4-age p{margin:.35rem 0}
+.ig-home-v4-media[data-ig-media-status="pending"]{display:none}
+.ig-home-v4-card{min-height:0}
+.ig-home-v4-discover-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+.ig-home-search-status:empty{display:none}
+
+.ig-home-v4 .ig-home-v4-age{gap:.4rem}
+.ig-home-v4 .ig-home-v4-age p{margin:0!important}
+.ig-home-v4-search:has(.ig-home-suggestions:empty) .ig-home-suggestions,.ig-home-v4-search .ig-home-results:empty{display:none}
+.ig-home-v4 .ig-home-v4-sabik-controls{display:flex;flex-wrap:wrap;align-items:end}
+.ig-home-v4 #sabik-browse{display:inline-flex;margin-top:.75rem}
+.ig-home-v4 .sabik-panel.is-expanded .sabik-widget{grid-template-columns:1fr}
+.ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-left{max-width:36rem;margin-inline:auto;width:100%}
+.ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-right{width:100%}
+.ig-home-v4 .sabik-panel.is-expanded #sabik-input{min-height:10rem}

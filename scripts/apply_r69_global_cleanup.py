@@ -38,6 +38,9 @@ def local_fonts(text:str)->str:
     text,n=HEAD_CLOSE_RE.subn(''.join(additions)+'</head>',text,count=1)
     if n!=1:
         raise AssertionError('HTML without </head>')
+    # Invalidate stale per-product palettes and controls in existing browsers.
+    text=text.replace('/assets/ig-tokens.css', '/assets/ig-global-ui-tokens-2026.css')
+    text=re.sub(r"(/assets/(?:ig-global-ui-tokens-2026\.css|ig-r69-unified-ui\.css|ig-r42-shell\.(?:css|js)|ig-suite-launcher\.(?:css|js)|juegos-iris\.js|ig-r49-transversal\.js))(?:\?[^\"\']*)?", r"\1?v=20261001-controls", text)
     return text
 
 def main()->None:
@@ -65,8 +68,9 @@ def main()->None:
             google_left.append(rel)
     if google_left:
         raise AssertionError('External Google Fonts remain: '+', '.join(google_left[:12]))
-    if resource_removed!=2:
-        raise AssertionError(f'Expected 2 redundant Resource age blocks removed, got {resource_removed}')
+    for rel in ('es/recursos/index.html','en/resources/index.html'):
+        if RESOURCE_STAGE_RE.search((root/rel).read_text(encoding='utf-8')):
+            raise AssertionError('Redundant resource age block remains: '+rel)
     if workshop_age_removed!=2:
         raise AssertionError(f'Expected 2 redundant Workshop age navs removed, got {workshop_age_removed}')
     print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed})

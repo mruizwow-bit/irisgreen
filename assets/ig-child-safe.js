@@ -17,7 +17,9 @@ function enhancePage(){
 function enhanceResearch(){
  document.querySelectorAll('article[data-ig-research-s2]').forEach(function(article){
   var id=article.getAttribute('data-ig-research-s2');if(!id)return;if(!researchSafe.has(id))researchSafe.set(id,article.innerHTML);
-  var holder=article.querySelector('[data-ig-research-s2-actions]');if(!holder)return;holder.replaceChildren();
+  var holder=article.querySelector('[data-ig-research-s2-actions]');if(!holder)return;
+  var key=lang()+':'+Boolean(window.IGAudience&&window.IGAudience.isAdult());
+  if(holder.dataset.igActionsKey===key)return;holder.dataset.igActionsKey=key;holder.replaceChildren();
   if(!window.IGAudience||!window.IGAudience.isAdult())return;
   var b=document.createElement('button');b.type='button';b.className='ig-s2-full-button';b.textContent=labels().full;
   b.addEventListener('click',function(){b.disabled=true;b.textContent=labels().loading;fetch('/assets/safety/full/'+id+'-'+lang()+'.html',{credentials:'same-origin',cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(String(r.status));return r.text();}).then(function(html){article.innerHTML=html;article.dataset.igResearchFull='true';var h=article.querySelector('h2');if(h){h.tabIndex=-1;h.focus();}}).catch(function(){b.disabled=false;b.textContent=labels().full;});});

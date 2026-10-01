@@ -277,7 +277,9 @@
 
   var helpFrame = dialogFrame(T.help);
   var helpSource = CONFIG.hero ? document.querySelector(CONFIG.hero) : null;
-  if (helpSource && helpSource !== shell && !helpSource.contains(shell)) {
+  if (family === 'quiet') {
+    if (helpSource) helpSource.hidden = true;
+  } else if (helpSource && helpSource !== shell && !helpSource.contains(shell)) {
     helpSource.classList.add('ig-r42-help-source');
     var sourceH1 = helpSource.querySelector('h1');
     if (sourceH1) sourceH1.hidden = true;
@@ -416,7 +418,83 @@
   }
 
   function openHelp(trigger) {
+    if (family === 'quiet') renderQuietHelp();
     openDialog(helpFrame.dialog, trigger);
+  }
+
+  function renderQuietHelp() {
+    var selected = document.querySelector('[data-r46-mode][aria-selected="true"]');
+    var mode = selected ? selected.getAttribute('data-r46-mode') : 'breathe';
+    var english = lang === 'en';
+    var content = english ? {
+      aquarium: ['How to use the aquarium', 'You control the picture and sound separately.', [
+        'Watch and listen starts the scene. Stop returns to the still picture.',
+        'Mute turns off the sound while the fish keep moving. Sound on brings it back; Volume adjusts its level.',
+        'Gentle mode slows the fish without changing the sound.',
+        'Still image stops both motion and sound. Turn it off, then choose Watch and listen to start again.',
+        'Full screen enlarges the scene and its controls. Press Escape to leave full screen.',
+        'Changing to another scene stops the aquarium.'
+      ]],
+      room: ['How to use Sakura and the rooms', 'Choose a room, then decide how much it moves.', [
+        'Start begins the movement. Stop leaves the room still.',
+        'How much it moves offers Normal, Reduced and No movement. You can change it at any time.',
+        'Intensity changes the strength of the visual effect.',
+        'Send a slow ripple adds a gentle interaction to the room.',
+        'Clean screen hides the controls. Use Leave clean screen or Escape to bring them back.',
+        'Sound is only available in rooms that have their own sound. Sakura is silent.'
+      ]],
+      land: ['How to use landscapes', 'Choose a place before starting.', [
+        'Start plays the landscape. Stop ends the session.',
+        'Choose a session length, or Continuous to stop it yourself.',
+        'The video is silent. Add Iris Green sound enables a separate soundtrack; Volume adjusts it.',
+        'Clean screen hides the controls. Use Leave clean screen or Escape to restore them.',
+        'Changing to another scene stops the landscape.'
+      ]],
+      breathe: ['How to use Breathe', 'You can watch the ball without following a breathing exercise.', [
+        'Just watch has no breathing instructions. The other options indicate seconds breathing in and out.',
+        'Choose the duration, intensity and movement before or during the session.',
+        'Start begins the session. Pause holds it, Resume continues and Stop ends it.',
+        'No movement keeps a still image.',
+        'Clean screen hides the controls. Use Leave clean screen or Escape to restore them.'
+      ]]
+    } : {
+      aquarium: ['Cómo usar la pecera', 'Puedes controlar la imagen y el sonido por separado.', [
+        'Ver y escuchar inicia la escena. Parar vuelve a la imagen inicial.',
+        'Silenciar quita el sonido mientras los peces siguen moviéndose. Activar sonido lo recupera; Volumen ajusta su intensidad.',
+        'Modo suave ralentiza los peces sin cambiar el sonido.',
+        'Imagen fija detiene el movimiento y el sonido. Desactívala y pulsa Ver y escuchar para empezar de nuevo.',
+        'Pantalla completa amplía la escena y sus controles. Pulsa Escape para salir.',
+        'Al cambiar a otra escena, la pecera se detiene.'
+      ]],
+      room: ['Cómo usar Sakura y las salas', 'Elige una sala y decide cuánto se mueve.', [
+        'Empezar activa el movimiento. Parar deja la sala quieta.',
+        'Cuánto se mueve permite elegir Normal, Reducido o Sin movimiento. Puedes cambiarlo en cualquier momento.',
+        'Intensidad cambia la fuerza del efecto visual.',
+        'Enviar una onda lenta añade una interacción suave a la sala.',
+        'Pantalla limpia oculta los controles. Usa Salir de pantalla limpia o Escape para recuperarlos.',
+        'El sonido solo está disponible en las salas que tienen uno propio. Sakura es silenciosa.'
+      ]],
+      land: ['Cómo usar los paisajes', 'Elige un sitio antes de empezar.', [
+        'Empezar reproduce el paisaje. Parar termina la sesión.',
+        'Elige una duración o Continuo para pararlo cuando quieras.',
+        'El vídeo es silencioso. Añadir sonido de Iris Green activa una pista independiente; Volumen ajusta su intensidad.',
+        'Pantalla limpia oculta los controles. Usa Salir de pantalla limpia o Escape para recuperarlos.',
+        'Al cambiar a otra escena, el paisaje se detiene.'
+      ]],
+      breathe: ['Cómo usar Respirar', 'Puedes mirar la bola sin seguir un ejercicio de respiración.', [
+        'Solo mirar no da instrucciones para respirar. Las otras opciones indican segundos al tomar y soltar aire.',
+        'Elige la duración, la intensidad y el movimiento antes o durante la sesión.',
+        'Empezar inicia la sesión. Pausar la detiene temporalmente, Reanudar continúa y Parar la termina.',
+        'Sin movimiento mantiene una imagen quieta.',
+        'Pantalla limpia oculta los controles. Usa Salir de pantalla limpia o Escape para recuperarlos.'
+      ]]
+    };
+    var copy = content[mode] || content.breathe;
+    helpFrame.heading.textContent = copy[0];
+    helpFrame.body.replaceChildren(h('p', { text:copy[1] }));
+    var steps = h('ul', { class:'ig-r42-quiet-help' });
+    copy[2].forEach(function (line) { steps.appendChild(h('li', { text:line })); });
+    helpFrame.body.appendChild(steps);
   }
 
   actionButton.addEventListener('click', function () { openCommands(actionButton); });

@@ -1,0 +1,689 @@
+{
+  "schema": "R65_MATRIZ_TALLER/1.0",
+  "fecha": "2026-09-29",
+  "issue": 330,
+  "estudios": 27,
+  "migradas": 27,
+  "variantes_age_0_12": 9,
+  "escenas_en_manifiesto": 36,
+  "keep_6_intacto": true,
+  "matriz_27": [
+    {
+      "slug": "dibujo",
+      "nombre_es": "Dibujo",
+      "nombre_en": "Drawing",
+      "familia": "lienzo",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "mesa de dibujo con la lámina a medias y la jarra real delante",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "bcd919257319f9f2",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 20590,
+        "webp_2x": 31356,
+        "avif_1x": 11977,
+        "avif_2x": 20893
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "diseno-grafico",
+      "nombre_es": "Diseño gráfico",
+      "nombre_en": "Graphic design",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "mesa de montaje: cartel con la retícula a la vista, prueba de imprenta y lupa",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "416ed3434c602c8f",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 25954,
+        "webp_2x": 45684,
+        "avif_1x": 13958,
+        "avif_2x": 27510
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "pixel-art",
+      "nombre_es": "Pixel art",
+      "nombre_en": "Pixel art",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tableta con el lienzo ampliado, damero de transparencia y sprite a medio sombrear",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "3e5cfbf4e3f7ac53",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 20328,
+        "webp_2x": 31086,
+        "avif_1x": 13080,
+        "avif_2x": 21422
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "comic",
+      "nombre_es": "Cómic y guion gráfico",
+      "nombre_en": "Comics and storyboards",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tablero de entintar: una viñeta entintada, otra a lápiz y un bocadillo vacío",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "4ea32561d20d5b49",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 24872,
+        "webp_2x": 41622,
+        "avif_1x": 13627,
+        "avif_2x": 23228
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "color",
+      "nombre_es": "Color",
+      "nombre_en": "Colour",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "pocillo con dos colores sin mezclar del todo y el estudio de la misma forma tres veces",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "1441f8a0be8bdcbf",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 23158,
+        "webp_2x": 34976,
+        "avif_1x": 12874,
+        "avif_2x": 22359
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "color-age-0-12"
+    },
+    {
+      "slug": "patrones",
+      "nombre_es": "Patrones y arte generativo",
+      "nombre_en": "Patterns and generative art",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "plancha tallada, rodillo y pliego con el motivo repetido, una fila a medias",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "53c8323366d2fad4",
+      "render_config_sha256": "844c85e5e784befe",
+      "bytes": {
+        "webp_1x": 23004,
+        "webp_2x": 50738,
+        "avif_1x": 17057,
+        "avif_2x": 31063
+      },
+      "quality_1x": 82,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "fotografia",
+      "nombre_es": "Fotografía y composición",
+      "nombre_en": "Photography and composition",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "mesa de luz con negativos, uno rodeado y dos tachados, y escuadras de recorte",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "2e887b539a41e06c",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 23058,
+        "webp_2x": 35920,
+        "avif_1x": 13180,
+        "avif_2x": 21592
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "fotografia-age-0-12"
+    },
+    {
+      "slug": "moda-textil",
+      "nombre_es": "Moda y textil",
+      "nombre_en": "Fashion and textiles",
+      "familia": "lienzo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tela con patrón alfilerado, jaboncillo trazado a medias y tijeras a medio corte",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "758f8f959134536e",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 26336,
+        "webp_2x": 41586,
+        "avif_1x": 14865,
+        "avif_2x": 29010
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "estructuras",
+      "nombre_es": "Estructuras y puentes",
+      "nombre_en": "Structures and bridges",
+      "familia": "construir",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "puente con su celosía y el camión cruzando",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "a83e09f11e95139f",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 25820,
+        "webp_2x": 38030,
+        "avif_1x": 14330,
+        "avif_2x": 24700
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "arquitectura",
+      "nombre_es": "Arquitectura y planos",
+      "nombre_en": "Architecture and plans",
+      "familia": "construir",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "planta con muros, puerta y cotas, y la maqueta del mismo edificio al lado",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "94ecb6b7660d0574",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 23920,
+        "webp_2x": 40420,
+        "avif_1x": 13790,
+        "avif_2x": 24904
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "arquitectura-age-0-12"
+    },
+    {
+      "slug": "modelado-3d",
+      "nombre_es": "Modelado 3D",
+      "nombre_en": "3D modelling",
+      "familia": "construir",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "sólido con sus huecos y las vistas de trabajo",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "513ea40acc8ee096",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 17720,
+        "webp_2x": 26068,
+        "avif_1x": 10764,
+        "avif_2x": 18404
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "maquinas",
+      "nombre_es": "Máquinas e inventos",
+      "nombre_en": "Machines and inventions",
+      "familia": "construir",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tren de engranajes que engranan, piñón y cremallera, y polea con el peso subiendo",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "dafd28988237b7b1",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 21662,
+        "webp_2x": 30236,
+        "avif_1x": 13899,
+        "avif_2x": 24145
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "circuitos",
+      "nombre_es": "Circuitos",
+      "nombre_en": "Circuits",
+      "familia": "construir",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "una rama encendida y otra a medias con el cable suelto",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "8b6867e80d7c5e5c",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 17704,
+        "webp_2x": 27122,
+        "avif_1x": 10967,
+        "avif_2x": 19403
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "circuitos-age-0-12"
+    },
+    {
+      "slug": "papiroflexia",
+      "nombre_es": "Papiroflexia y poliedros",
+      "nombre_en": "Origami and polyhedra",
+      "familia": "construir",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "hoja con montes y valles, una esquina levantada, y el icosaedro armado",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "8f7cc1b88afa4dc4",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 18858,
+        "webp_2x": 28410,
+        "avif_1x": 11211,
+        "avif_2x": 19338
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "simulaciones",
+      "nombre_es": "Simulaciones",
+      "nombre_en": "Simulations",
+      "familia": "construir",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tablero con fichas, la regla en su tarjeta y tres generaciones clavadas",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "0a4c350c63afc1c5",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 21580,
+        "webp_2x": 35086,
+        "avif_1x": 13018,
+        "avif_2x": 22683
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "ritmo",
+      "nombre_es": "Ritmo y secuenciador",
+      "nombre_en": "Rhythm and sequencer",
+      "familia": "tiempo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "secuenciador con los pasos encendidos y la rejilla del patrón en papel",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "65bc2d9d489c1c06",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 21958,
+        "webp_2x": 33026,
+        "avif_1x": 13342,
+        "avif_2x": 22786
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "composicion",
+      "nombre_es": "Composición",
+      "nombre_en": "Composition",
+      "familia": "tiempo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "teclado con el acorde hundido, rollo perforado y pautado escrito a mano",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "c7bead9a08875edd",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 18738,
+        "webp_2x": 29488,
+        "avif_1x": 10747,
+        "avif_2x": 18792
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "composicion-age-0-12"
+    },
+    {
+      "slug": "sintesis-sonido",
+      "nombre_es": "Síntesis y paisajes sonoros",
+      "nombre_en": "Synthesis and soundscapes",
+      "familia": "tiempo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "modular parcheado con la onda en el osciloscopio y un cable sin conectar",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "63cc83525eaeb62f",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 19542,
+        "webp_2x": 29582,
+        "avif_1x": 11306,
+        "avif_2x": 20051
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "sintesis-sonido-age-0-12"
+    },
+    {
+      "slug": "videomapping",
+      "nombre_es": "Videomapping",
+      "nombre_en": "Projection mapping",
+      "familia": "tiempo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "proyector, cubo real y retícula encajada en dos caras y salida en la tercera",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "1af86e9f629fabd7",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 12992,
+        "webp_2x": 21216,
+        "avif_1x": 8448,
+        "avif_2x": 14834
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": "videomapping-age-0-12"
+    },
+    {
+      "slug": "programacion",
+      "nombre_es": "Programación",
+      "nombre_en": "Coding",
+      "familia": "codigo",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "bloques y consola con el programa a medio montar",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "ad42057f6c3c73eb",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 25108,
+        "webp_2x": 40428,
+        "avif_1x": 13579,
+        "avif_2x": 23834
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "robotica",
+      "nombre_es": "Robótica",
+      "nombre_en": "Robotics",
+      "familia": "codigo",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "robot a medio montar y la pista con el recorrido real en rojo",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "df1b1ada33de7f55",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 18350,
+        "webp_2x": 28180,
+        "avif_1x": 10926,
+        "avif_2x": 18829
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "videojuegos",
+      "nombre_es": "Diseño de videojuegos",
+      "nombre_en": "Video game design",
+      "familia": "codigo",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "nivel en el editor con física y piezas colocándose",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "94ddcf98ee1c1575",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 19940,
+        "webp_2x": 30654,
+        "avif_1x": 12568,
+        "avif_2x": 21752
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "escritura-restricciones",
+      "nombre_es": "Escritura con restricciones",
+      "nombre_en": "Constraint writing",
+      "familia": "documento",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "máquina con la tecla tapada y la letra prohibida tachada",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "9a8b2740e27aeed1",
+      "render_config_sha256": "844c85e5e784befe",
+      "bytes": {
+        "webp_1x": 21478,
+        "webp_2x": 42260,
+        "avif_1x": 15251,
+        "avif_2x": 25353
+      },
+      "quality_1x": 82,
+      "variante_age_0_12": "escritura-restricciones-age-0-12"
+    },
+    {
+      "slug": "mundos",
+      "nombre_es": "Mundos",
+      "nombre_en": "Worlds",
+      "familia": "documento",
+      "keep_r54": true,
+      "migrada": true,
+      "identificada_sin_titulo": "mapa del mundo con sus especies y su historia",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "4c7829fa74dd4ce6",
+      "render_config_sha256": "34ed036b136b26b6",
+      "bytes": {
+        "webp_1x": 25926,
+        "webp_2x": 48452,
+        "avif_1x": 16272,
+        "avif_2x": 29298
+      },
+      "quality_1x": 84,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "lenguas-inventadas",
+      "nombre_es": "Lenguas inventadas",
+      "nombre_en": "Invented languages",
+      "familia": "documento",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "signos inventados de la misma familia, con los últimos a lápiz",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "6787e0eaa150fb57",
+      "render_config_sha256": "34ed036b136b26b6",
+      "bytes": {
+        "webp_1x": 22236,
+        "webp_2x": 43168,
+        "avif_1x": 15173,
+        "avif_2x": 25467
+      },
+      "quality_1x": 84,
+      "variante_age_0_12": "lenguas-inventadas-age-0-12"
+    },
+    {
+      "slug": "juegos-de-mesa",
+      "nombre_es": "Juegos de mesa",
+      "nombre_en": "Board games",
+      "familia": "documento",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "tablero de prueba con la partida a medias y casillas tachadas",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "67a802dcad86acad",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 24792,
+        "webp_2x": 38786,
+        "avif_1x": 13989,
+        "avif_2x": 24093
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    },
+    {
+      "slug": "ideas",
+      "nombre_es": "Ideas e inventos",
+      "nombre_en": "Ideas and inventions",
+      "familia": "documento",
+      "keep_r54": false,
+      "migrada": true,
+      "identificada_sin_titulo": "mapa de ideas con ramas tachadas y el prototipo de cartón",
+      "ICON_ONLY": false,
+      "actividad_visible": true,
+      "svg_sha256": "99ff61d9b81a3978",
+      "render_config_sha256": "f3f974af437ed2a0",
+      "bytes": {
+        "webp_1x": 26210,
+        "webp_2x": 41812,
+        "avif_1x": 15176,
+        "avif_2x": 26810
+      },
+      "quality_1x": 88,
+      "variante_age_0_12": ""
+    }
+  ],
+  "matriz_age_0_12": [
+    {
+      "estudio": "circuitos",
+      "slug_fichero": "circuitos-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "81135efbb50279fa",
+      "bytes": {
+        "webp_1x": 13876,
+        "webp_2x": 20578,
+        "avif_1x": 8769,
+        "avif_2x": 15322
+      }
+    },
+    {
+      "estudio": "arquitectura",
+      "slug_fichero": "arquitectura-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "f1590ec16374376b",
+      "bytes": {
+        "webp_1x": 15264,
+        "webp_2x": 24006,
+        "avif_1x": 9096,
+        "avif_2x": 15719
+      }
+    },
+    {
+      "estudio": "color",
+      "slug_fichero": "color-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "601d389e0c6cb291",
+      "bytes": {
+        "webp_1x": 18714,
+        "webp_2x": 28510,
+        "avif_1x": 10826,
+        "avif_2x": 19090
+      }
+    },
+    {
+      "estudio": "composicion",
+      "slug_fichero": "composicion-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "93ee827b724b8735",
+      "bytes": {
+        "webp_1x": 14040,
+        "webp_2x": 20558,
+        "avif_1x": 8321,
+        "avif_2x": 14901
+      }
+    },
+    {
+      "estudio": "sintesis-sonido",
+      "slug_fichero": "sintesis-sonido-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "865c234fc7ef0234",
+      "bytes": {
+        "webp_1x": 13278,
+        "webp_2x": 20350,
+        "avif_1x": 8596,
+        "avif_2x": 15403
+      }
+    },
+    {
+      "estudio": "videomapping",
+      "slug_fichero": "videomapping-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "282e01daa48591a3",
+      "bytes": {
+        "webp_1x": 12326,
+        "webp_2x": 19566,
+        "avif_1x": 7958,
+        "avif_2x": 13798
+      }
+    },
+    {
+      "estudio": "fotografia",
+      "slug_fichero": "fotografia-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "3dbc6ee750266207",
+      "bytes": {
+        "webp_1x": 18876,
+        "webp_2x": 29208,
+        "avif_1x": 11040,
+        "avif_2x": 18150
+      }
+    },
+    {
+      "estudio": "lenguas-inventadas",
+      "slug_fichero": "lenguas-inventadas-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "c7ab216559a81f9c",
+      "bytes": {
+        "webp_1x": 17954,
+        "webp_2x": 26044,
+        "avif_1x": 9476,
+        "avif_2x": 16873
+      }
+    },
+    {
+      "estudio": "escritura-restricciones",
+      "slug_fichero": "escritura-restricciones-age-0-12",
+      "banda": "AGE_0_12",
+      "svg_sha256": "0355edf03f996b8e",
+      "bytes": {
+        "webp_1x": 24488,
+        "webp_2x": 36364,
+        "avif_1x": 13536,
+        "avif_2x": 22403
+      }
+    }
+  ]
+}

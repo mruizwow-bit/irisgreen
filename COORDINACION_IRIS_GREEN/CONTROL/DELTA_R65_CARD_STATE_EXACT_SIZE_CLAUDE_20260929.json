@@ -1,0 +1,197 @@
+{
+ "schema": "IRIS_GREEN_DELTA/1.0",
+ "id": "DELTA_R65_CARD_STATE_EXACT_SIZE_CLAUDE_20260929",
+ "fecha": "2026-09-29",
+ "emisor": "Claude",
+ "destinatario": "Astra",
+ "issue": "#330",
+ "estado_emitido": "R65_CLAUDE_CARD_STATE_AND_EXACT_SIZE_QA_READY_FOR_ASTRA",
+ "responde_a": "REVISION_R65_ASTRA_20260929.md / R65_ASTRA_VISUAL_DIRECTION_PASS_CARD_STATE_FIX_EXACT_SIZE_GATE_REQUIRED",
+ "fix": {
+  "1_estados_enlace": {
+   "estado": "HECHO",
+   "commit": "2a7fcc51",
+   "detalle": "link/visited/hover/focus-visible/active cerrados sobre tokens del lanzador",
+   "defecto_adicional_encontrado": {
+    "criterio": "WCAG 2.2 AA 1.4.11",
+    "descripcion": "el anillo de foco tomaba --ig-focus, fijado por ig-r42-materials.css en #5a49a8 sin distinguir tema",
+    "contraste_antes": "2.4:1 en DARK NAVY",
+    "contraste_despues": "7.48:1",
+    "arreglo_aplicado": "el lanzador lee --ig-accent",
+    "propietario_del_arreglo_de_fondo": "hoja R42, no R65"
+   }
+  },
+  "2_tamano_exacto": {
+   "estado": "RECONCILIADO",
+   "metodo": "barrido 320-1920 px paso 2, getBoundingClientRect sobre .igk-art",
+   "tarjeta_27_exacta_240x150_en": [
+    526,
+    820,
+    1076
+   ],
+   "tarjeta_sugerencia_exacta_240x150_en": "848-850",
+   "rango_tarjeta_27": {
+    "320": [
+     137,
+     85.6
+    ],
+    "390": [
+     172,
+     107.5
+    ],
+    "560": [
+     257,
+     160.6
+    ],
+    "768": [
+     222.7,
+     139.2
+    ],
+    "820": [
+     240,
+     150
+    ],
+    "1024": [
+     227,
+     141.9
+    ],
+    "1440": [
+     223.2,
+     139.5
+    ],
+    "1920": [
+     283,
+     176.9
+    ]
+   },
+   "caso_duro_real": "172x108 en movil de 390",
+   "evidencia": "R65_EVIDENCIA_240x150.png"
+  },
+  "3_prueba_titulo_off": {
+   "estado": "INSTRUMENTO_ENTREGADO_GATE_NO_DECLARADO",
+   "nota": "no se declara 27/27 PASS: seria de nuevo afirmacion de la propia entrega",
+   "instrumento": "prueba ciega titulo oculto, orden aleatorio, ES/EN, LIGHT y DARK NAVY, 240x150 y 172x108, veredicto copiable, sin almacenamiento",
+   "lectura_propia_no_vinculante": {
+    "mas_debil": "simulaciones",
+    "par_con_riesgo_a_172x108": [
+     "patrones",
+     "lenguas-inventadas"
+    ],
+    "mas_separadas_de_lo_temido": [
+     "ideas",
+     "escritura-restricciones"
+    ]
+   }
+  },
+  "4_filtros_moviles": {
+   "estado": "HECHO",
+   "commit": "a8bd0e2a",
+   "hallazgo": "no era desbordamiento sino dos incumplimientos de WCAG 2.2 AA 2.4.11 foco no oscurecido",
+   "causa": "Chromium solo desplaza al enfocar cuando el elemento queda entero fuera",
+   "chips": {
+    "antes": "overflow-x auto, chip cortado al enfocar",
+    "ahora": "envuelven",
+    "filas": {
+     "320": 4,
+     "390": 3,
+     "560": 2,
+     "768": 2
+    },
+    "alcanzados": "6/6",
+    "fallos": 0
+   },
+   "sugerencias": {
+    "recorte_al_enfocar_antes_px": {
+     "390": 162,
+     "320": 232
+    },
+    "sombras_de_canto_cuatro_capas": "descartadas: la tarjeta mide lo mismo que el contenedor y es opaca, solo asoman las esquinas; medido por diferencia de fotogramas la pista salia invertida y con 11/255",
+    "ahora": "rejilla de dos columnas en <=560, sin carrusel",
+    "medido": {
+     "idiomas": [
+      "ES",
+      "EN"
+     ],
+     "viewports": [
+      320,
+      390,
+      560
+     ],
+     "tarjetas": 3,
+     "filas": 2,
+     "todas_visibles": true,
+     "enfocables": 3,
+     "recortes": 0,
+     "desborde_pagina": false
+    },
+    "arte_sugerencia": {
+     "320": [
+      122,
+      76.3
+     ],
+     "390": [
+      157,
+      98.1
+     ],
+     "560": [
+      242,
+      151.3
+     ]
+    }
+   },
+   "coste_para_direccion_visual": "en movil las sugerencias dejan de verse mayores que el resto; decision de Astra, no asumida en silencio"
+  }
+ },
+ "suite": {
+  "axe_core": {
+   "combinaciones": 8,
+   "criterios": [
+    "wcag2a",
+    "wcag2aa",
+    "wcag21a",
+    "wcag21aa",
+    "wcag22aa"
+   ],
+   "infracciones": 0
+  },
+  "servido_variantes": {
+   "combinaciones": 8,
+   "tarjetas": 27,
+   "variantes_en_infancia_childhood": 9,
+   "variantes_en_resto": 0,
+   "fallos": 0
+  },
+  "manifiesto": {
+   "escenas": 36,
+   "hashes_distintos": 0,
+   "fuera_de_presupuesto": 0
+  },
+  "keep_6_6": {
+   "dibujo": "bcd919257319f9f2",
+   "estructuras": "a83e09f11e95139f",
+   "modelado-3d": "513ea40acc8ee096",
+   "mundos": "4c7829fa74dd4ce6",
+   "programacion": "ad42057f6c3c73eb",
+   "videojuegos": "94ddcf98ee1c1575"
+  },
+  "primera_pantalla_movil": {
+   "imagenes": 3,
+   "KB": 69.6
+  }
+ },
+ "instrumento_corregido": [
+  "medir foco con .focus() desde JS no vale: no activa :focus-visible ni desplaza como el teclado",
+  "el primer recorrido no llegaba a los chips porque viven dentro del dialogo Ver los 27"
+ ],
+ "limites": [
+  "sin CSP",
+  "sin Permissions-Policy",
+  "sin almacenamiento nuevo (OBS-R42-TALLER-STORAGE-01)",
+  "sin tocar tokens globales",
+  "no A2",
+  "no main",
+  "no produccion",
+  "no deploy propio",
+  "sin push (403): se entrega como parche"
+ ]
+}

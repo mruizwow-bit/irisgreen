@@ -1,0 +1,62 @@
+/* Iris Green · El taller · Papiroflexia y poliedros (R43). Solo para este estudio. */
+body[data-ig-suite="papiroflexia"] .igp-tabs { border:1px solid var(--igs-line); border-radius:var(--igs-radius); padding:.3rem .3rem 0; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; }
+body[data-ig-suite="papiroflexia"] .igp-tabs [role=tab] { flex:none; white-space:nowrap; }
+body[data-ig-suite="papiroflexia"] .igp-viewport { background:var(--ig-bg-surface); }
+body[data-ig-suite="papiroflexia"] .igp-3d, body[data-ig-suite="papiroflexia"] .igp-svg, body[data-ig-suite="papiroflexia"] .igp-diag { position:absolute; inset:0; }
+body[data-ig-suite="papiroflexia"] .igp-3d { background:#f1f5f9; }
+body[data-ig-suite="papiroflexia"] .igp-3d canvas { display:block; width:100%; height:100%; touch-action:none; }
+body[data-ig-suite="papiroflexia"] .igp-svg { width:100%; height:100%; touch-action:none; }
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="3d"] .igp-svg,
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="3d"] .igp-diag,
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="2d"] .igp-3d,
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="2d"] .igp-diag,
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="diagram"] .igp-svg { display:none; }
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="diagram"] .igp-3d { display:none; }
+/* Sonobe en 3D: se ve el 3D y encima solo el pie con el texto del paso */
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-mode="sonobe"][data-view="3d"] .igp-diag { display:flex; pointer-events:none; background:transparent; }
+body[data-ig-suite="papiroflexia"] .igp-diag { display:flex; flex-direction:column; background:var(--ig-bg-surface); }
+body[data-ig-suite="papiroflexia"] .igp-diag-svg { flex:1 1 auto; min-height:0; width:100%; height:100%; padding:.6rem; box-sizing:border-box; }
+body[data-ig-suite="papiroflexia"] .igp-diag[data-three="true"] { justify-content:flex-end; }
+body[data-ig-suite="papiroflexia"] .igp-caption { flex:none; margin:0; padding:.55rem .8rem; background:var(--ig-bg-surface); border-top:1px solid var(--igs-line); color:var(--igs-ink); font:500 .98rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="papiroflexia"] .igp-caption strong { font-weight:700; }
+body[data-ig-suite="papiroflexia"] .igp-hud { left:.6rem; top:.6rem; bottom:auto; }
+body[data-ig-suite="papiroflexia"] .igp-viewport[data-view="diagram"] .igp-hud:empty,
+body[data-ig-suite="papiroflexia"] .igp-hud:empty { display:none; }
+body[data-ig-suite="papiroflexia"] .igp-no3d { margin:1rem; color:var(--igs-ink); }
+/* control «Plegado %» en la barra */
+body[data-ig-suite="papiroflexia"] .igp-foldctl { display:inline-flex; align-items:center; gap:.45rem; min-height:44px; padding:0 .3rem; font:700 .88rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="papiroflexia"] .igp-foldctl input[type=range] { width:9rem; min-height:32px; accent-color:var(--igs-blue); }
+body[data-ig-suite="papiroflexia"] .igp-foldctl input[type=range]:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="papiroflexia"] .igp-foldctl .igs-out { min-width:3.2rem; }
+body[data-ig-suite="papiroflexia"] .igp-stepcount { min-width:3.5rem; text-align:center; font:700 .95rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+/* capa de puntos y líneas del papel (en píxeles de pantalla) */
+body[data-ig-suite="papiroflexia"] .igp-mark { fill:#fff; stroke:#172b42; stroke-width:1.6; }
+body[data-ig-suite="papiroflexia"] .igp-mark-mid { fill:#ffd400; }
+body[data-ig-suite="papiroflexia"] .igp-picked { fill:none; stroke:#5a49a8; stroke-width:3; }
+body[data-ig-suite="papiroflexia"] .igp-picklabel { font:800 13px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#5a49a8; paint-order:stroke; stroke:#fff; stroke-width:3px; }
+body[data-ig-suite="papiroflexia"] .igp-cursor { fill:none; stroke:#b3261e; stroke-width:2.5; stroke-dasharray:4 3; }
+body[data-ig-suite="papiroflexia"] .igp-hint { stroke:#5a49a8; stroke-width:3; stroke-dasharray:2 5; stroke-linecap:round; opacity:.9; }
+body[data-ig-suite="papiroflexia"] .igp-valley { stroke:#1f5f8b; stroke-width:3; stroke-dasharray:10 6; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="papiroflexia"] .igp-mountain { stroke:#a1283c; stroke-width:3; stroke-dasharray:11 4 2 4 2 4; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="papiroflexia"] .igp-crease-sel { stroke-width:6; }
+body[data-ig-suite="papiroflexia"] .igp-arrow { fill:none; stroke:#172b42; stroke-width:2; }
+body[data-ig-suite="papiroflexia"] .igp-vcursor { stroke:#5a49a8; stroke-width:2; stroke-dasharray:3 4; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="papiroflexia"] .igp-sector { font:700 9px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#172b42; }
+body[data-ig-suite="papiroflexia"] .igp-sector-bad { fill:#a1283c; }
+body[data-ig-suite="papiroflexia"] .igp-creaselabel { font:700 7.5px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#172b42; paint-order:stroke; stroke:#fff; stroke-width:2px; }
+body[data-ig-suite="papiroflexia"] .igp-selface { stroke:#5a49a8 !important; stroke-width:1.6; stroke-dasharray:none; filter:brightness(1.08); }
+body[data-ig-suite="papiroflexia"] .igp-cp { display:block; width:100%; max-width:15rem; height:auto; margin:.2rem auto; background:var(--ig-bg-surface); border:1px solid var(--igs-line); border-radius:8px; }
+@media (max-width:700px) {
+  body[data-ig-suite="papiroflexia"] .igp-foldctl input[type=range] { width:7rem; }
+  body[data-ig-suite="papiroflexia"] .igp-caption { font-size:.9rem; padding:.4rem .6rem; }
+  body[data-ig-suite="papiroflexia"] .igp-tabs [role=tab] { padding:.4rem .6rem; font-size:.86rem; }
+}
+@media (forced-colors: active) {
+  body[data-ig-suite="papiroflexia"] .igp-mark, body[data-ig-suite="papiroflexia"] .igp-picked, body[data-ig-suite="papiroflexia"] .igp-cursor { stroke:CanvasText; }
+  body[data-ig-suite="papiroflexia"] .igp-valley, body[data-ig-suite="papiroflexia"] .igp-mountain { stroke:CanvasText; }
+}
+@media print { @page { size:A4 portrait; margin:8mm; } }
+@media (max-width:700px) {
+  body[data-ig-suite="papiroflexia"] .igp-caption { order:-1; border-top:0; border-bottom:1px solid var(--igs-line); }
+  body[data-ig-suite="papiroflexia"] .igp-diag[data-three="true"] { justify-content:flex-start; }
+}

@@ -101,7 +101,7 @@ function mount(){
   });
  }
  async function retrieve(request,{signal}={}){
-  if(connection){
+  if(connection && !['AGE_0_12','AGE_13_17'].includes(window.IGAudience?.get?.())){
    try{
     await Promise.race([connection.connect(lang),timeout(1500,signal)]);
     const envelope=await cloudQuery({query:request.query,limit:6},{signal});
@@ -115,6 +115,7 @@ function mount(){
  }
 
  function renderAnswer(answer){
+  announcement.textContent=lang==='en'?'Answer ready.':'Respuesta lista.';
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
@@ -158,6 +159,8 @@ function mount(){
  }
 
  $('#sabik-form').addEventListener('submit',submit);
+ const expand=$('#sabik-expand');
+ if(expand)expand.addEventListener('click',()=>{const on=aside.classList.toggle('is-expanded');expand.setAttribute('aria-pressed',String(on));expand.textContent=lang==='en'?(on?'Reduce':'Expand'):(on?'Reducir':'Ampliar');});
  input.addEventListener('focus',()=>{void visual('orientar',{force:true});});
  input.addEventListener('blur',()=>{if(!busy)void present();});
  input.addEventListener('input',()=>{controls();if(input.value.trim())void visual('orientar',{force:true});});

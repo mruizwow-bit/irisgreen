@@ -144,7 +144,12 @@ def enrich_research(root,by_id):
   needle='    const rows = all.filter((s) => {'
   if needle not in text:raise AssertionError('Research renderer hook not found')
   text=text.replace(needle,needle+'\n'+hook,1)
-  htmlp.write_text(text,encoding='utf-8')
+ # Re-render on a session-age change; age filtering must not wait for typing.
+ if '_igAudienceChanged' not in text:
+  text=text.replace('  componentDidMount() {', '  componentDidMount() {\n    this._igAudienceChanged = () => this.setState({ igAudienceRevision: Date.now() });\n    window.addEventListener("ig:audience-change", this._igAudienceChanged);',1)
+  text=text.replace('  componentWillUnmount() {', '  componentWillUnmount() {\n    window.removeEventListener("ig:audience-change", this._igAudienceChanged);',1)
+ text=text.replace('s.ig_intentional_only && !words.length', 's.ig_intentional_only && !(window.IGAudience && window.IGAudience.isAdult()) && !words.length')
+ htmlp.write_text(text,encoding='utf-8')
  return {'published':len(seen),'matrix':matrix_total,'classified_not_materialized':matrix_total-len(seen)}
 
 def write_runtime(root,g,by_url,surface):

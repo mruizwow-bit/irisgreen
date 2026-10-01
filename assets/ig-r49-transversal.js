@@ -4,8 +4,8 @@ if(window.IGR49)return;
 var D=document,W=window,returnFocus=null,searchPromise=null;
 function en(){return String(D.documentElement.lang||'').toLowerCase().indexOf('en')===0;}
 var T={
- es:{home:'Inicio',conditions:'Condiciones',situations:'Situaciones',daily:'Vida diaria',research:'Investigación',resources:'Recursos',support:'Ayudas',data:'Datos',videos:'Vídeos',books:'Libros',workshop:'El taller',interests:'Tus intereses',quiet:'Rincón tranquilo',search:'Buscar',content:'Contenido',settings:'Accesibilidad',music:'Música',more:'Explorar',language:'EN',searchTitle:'Buscar en Iris Green',searchPh:'Escribe lo que necesitas',noResults:'No hay resultados. Prueba con otras palabras.',results:'resultados',safe:'Versión segura para esta vista',stageTitle:'Contenido para…',children:'0–12 años',teenagers:'13–17 años',adults:'18 años o más',any:'Todas las edades',defaultStage:'General',stageNote:'No pedimos fecha de nacimiento, identidad, diagnóstico ni cuenta. La elección dura solo esta sesión.',settingsTitle:'Accesibilidad y lectura',theme:'Tema',dark:'Navy oscuro',light:'Claro',size:'Tamaño del texto',spacing:'Más espaciado',controls:'Controles más grandes',contrast:'Más contraste',guide:'Guía de lectura',motion:'Reducir movimiento',speak:'Leer esta página',stopSpeak:'Detener lectura',reset:'Restablecer',close:'Cerrar',about:'Sobre Iris Green',accessibility:'Accesibilidad y lectura',privacy:'Privacidad',allNav:'Explorar Iris Green'},
- en:{home:'Home',conditions:'Conditions',situations:'Situations',daily:'Everyday life',research:'Research',resources:'Resources',support:'Support',data:'Data',videos:'Videos',books:'Books',workshop:'The workshop',interests:'Your interests',quiet:'Quiet space',search:'Search',content:'Content',settings:'Accessibility',music:'Music',more:'Explore',language:'ES',searchTitle:'Search Iris Green',searchPh:'Write what you need',noResults:'No results. Try different words.',results:'results',safe:'Safer version for this view',stageTitle:'Content for…',children:'Ages 0–12',teenagers:'Ages 13–17',adults:'Ages 18+',any:'All ages',defaultStage:'General',stageNote:'We do not ask for date of birth, identity, diagnosis or an account. Your choice lasts only for this session.',settingsTitle:'Accessibility and reading',theme:'Theme',dark:'Dark navy',light:'Light',size:'Text size',spacing:'More spacing',controls:'Bigger controls',contrast:'More contrast',guide:'Reading guide',motion:'Reduce motion',speak:'Read this page',stopSpeak:'Stop reading',reset:'Reset',close:'Close',about:'About Iris Green',accessibility:'Accessibility and reading',privacy:'Privacy',allNav:'Explore Iris Green'}
+ es:{home:'Inicio',conditions:'Condiciones',situations:'Situaciones',daily:'Vida diaria',research:'Investigación',resources:'Pictogramas y apoyos visuales',support:'Ayudas',data:'Datos',videos:'Vídeos',books:'Libros',workshop:'El taller',interests:'Tus intereses',quiet:'Rincón tranquilo',search:'Buscar',content:'Contenido',settings:'Accesibilidad',music:'Música',more:'Explorar',language:'EN',searchTitle:'Buscar en Iris Green',searchPh:'Escribe lo que necesitas',noResults:'No hay resultados. Prueba con otras palabras.',results:'resultados',safe:'Versión segura para esta vista',stageTitle:'Contenido para…',children:'0–12 años',teenagers:'13–17 años',adults:'18 años o más',any:'Todas las edades',defaultStage:'General',stageNote:'No pedimos fecha de nacimiento, identidad, diagnóstico ni cuenta. La elección dura solo esta sesión.',settingsTitle:'Accesibilidad y lectura',theme:'Tema',dark:'Navy oscuro',light:'Claro',size:'Tamaño del texto',spacing:'Más espaciado',controls:'Controles más grandes',contrast:'Más contraste',guide:'Guía de lectura',motion:'Reducir movimiento',speak:'Leer esta página',stopSpeak:'Detener lectura',reset:'Restablecer',close:'Cerrar',about:'Sobre Iris Green',accessibility:'Accesibilidad y lectura',privacy:'Privacidad',allNav:'Explorar Iris Green'},
+ en:{home:'Home',conditions:'Conditions',situations:'Situations',daily:'Everyday life',research:'Research',resources:'Pictograms and visual supports',support:'Support',data:'Data',videos:'Videos',books:'Books',workshop:'The workshop',interests:'Your interests',quiet:'Quiet space',search:'Search',content:'Content',settings:'Accessibility',music:'Music',more:'Explore',language:'ES',searchTitle:'Search Iris Green',searchPh:'Write what you need',noResults:'No results. Try different words.',results:'results',safe:'Safer version for this view',stageTitle:'Content for…',children:'Ages 0–12',teenagers:'Ages 13–17',adults:'Ages 18+',any:'All ages',defaultStage:'General',stageNote:'We do not ask for date of birth, identity, diagnosis or an account. Your choice lasts only for this session.',settingsTitle:'Accessibility and reading',theme:'Theme',dark:'Dark navy',light:'Light',size:'Text size',spacing:'More spacing',controls:'Bigger controls',contrast:'More contrast',guide:'Reading guide',motion:'Reduce motion',speak:'Read this page',stopSpeak:'Stop reading',reset:'Reset',close:'Close',about:'About Iris Green',accessibility:'Accessibility and reading',privacy:'Privacy',allNav:'Explore Iris Green'}
 };
 function tr(){return en()?T.en:T.es;}
 function h(tag,attrs){
@@ -77,7 +77,9 @@ function upgradeHeader(){
  var music=h('button',{type:'button',class:'ig-r49-tool','data-ig-music':'','aria-expanded':'false','aria-label':tr().music},h('span',{text:tr().music}));
  var settings=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-settings':'','aria-label':tr().settings},h('span',{text:tr().settings}));
  var lang=h('a',{class:'ig-r49-lang',href:langHref(),lang:en()?'es':'en',text:tr().language});
- tools.append(music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
+ var age=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-stage':'','aria-label':tr().stageTitle},h('span',{class:'ig-r49-stage-state',text:stageLabel()}));
+ tools.append(age,music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
+ age.addEventListener('click',function(){openAudience(age);});
  settings.addEventListener('click',function(){openSettings(settings);});
  return header;
 }
@@ -158,7 +160,7 @@ function openSettings(trigger){
 }
 function openMore(trigger){
  var d=dialog('ig-r49-more',tr().allNav),body=d.querySelector('.ig-r49-dialog-body');body.replaceChildren();var nav=h('nav',{class:'ig-r49-more-nav','aria-label':tr().allNav});
- routeData().forEach(function(x){nav.appendChild(navLink(x));});body.appendChild(nav);openDialog(d,trigger);
+ routeData().forEach(function(x){if(!W.IGAudience||!W.IGAudience.childRouteBlocked(x.href))nav.appendChild(navLink(x));});body.appendChild(nav);openDialog(d,trigger);
 }
 function updateStage(){
  var label=stageLabel();
@@ -169,11 +171,36 @@ function ensureSkip(){
  var existing=Array.from(D.querySelectorAll('a.skip,a.ig-home-skip,a.ig-r49-skip')).find(function(a){return !a.closest('x-dc');});
  if(existing)return;var main=Array.from(D.querySelectorAll('main')).find(function(m){return !m.closest('x-dc');})||D.querySelector('main');if(!main)return;if(!main.id)main.id='main';var a=h('a',{class:'ig-r49-skip',href:'#'+main.id,text:en()?'Skip to content':'Ir al contenido'});D.body.insertBefore(a,D.body.firstChild);
 }
+function ensurePageTools(){
+ if(D.body.hasAttribute('data-ig-home-version'))return;
+ var main=D.querySelector('main');if(!main)return;
+ if(!main.querySelector(':scope > .crumb')){
+  main.prepend(h('nav',{class:'crumb','aria-label':en()?'Breadcrumb':'Ruta'},h('a',{href:en()?'/en/':'/',text:tr().home})));
+ }
+ if(D.body.getAttribute('data-ig-r49-owner')!=='R50_DATA'||D.body.getAttribute('data-ig-profile')!=='browse'||main.querySelector('[data-ig-data-search]'))return;
+ var first=main.querySelector('.cards'),heading=main.querySelector('h1');if(!first||!heading)return;
+ var groupHeading=first.previousElementSibling;
+ var notes=h('details',{class:'ig-data-notes'},h('summary',{text:en()?'About these figures':'Cómo leer estas cifras'}));
+ while(heading.nextElementSibling&&heading.nextElementSibling!==groupHeading){notes.appendChild(heading.nextElementSibling);}
+ if(notes.children.length>1)main.appendChild(notes);
+ heading.textContent=tr().data;
+ var label=h('label',{for:'ig-data-query',text:en()?'Search data by topic or country':'Buscar datos por tema o país'});
+ var q=h('input',{id:'ig-data-query',type:'search',autocomplete:'off'}),status=h('p',{role:'status','aria-live':'polite'});
+ var finder=h('section',{class:'secfind','data-ig-data-search':''},label,q,status);heading.insertAdjacentElement('afterend',finder);
+ function filter(){var term=q.value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().trim(),count=0;
+  main.querySelectorAll('.cards').forEach(function(group){var visible=0;group.querySelectorAll('a.card').forEach(function(card){var match=card.textContent.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().includes(term);var age=!W.IGAudience||W.IGAudience.allowedAgeBands(card.getAttribute('data-ig-age-bands')||[]);card.hidden=!(match&&age);if(!card.hidden)visible++;});group.hidden=!visible;var title=group.previousElementSibling;if(title&&title.tagName==='H2')title.hidden=!visible;count+=visible;});
+  status.textContent=count+(en()?' results':' resultados');
+ }
+ q.addEventListener('input',filter);W.addEventListener('ig:audience-change',filter);filter();
+}
 function start(){
  if(!D.body)return;
  if(!D.body.hasAttribute('data-ig-r49'))D.body.setAttribute('data-ig-r49','1');
  if(!D.body.hasAttribute('data-ig-profile'))D.body.setAttribute('data-ig-profile','content');
- ensureSkip();upgradeHeader();upgradeFooter();
+ ensureSkip();upgradeHeader();upgradeFooter();updateStage();
+ W.addEventListener('ig:audience-change',updateStage);
+ ensurePageTools();
+ var toolsQueued=false;new MutationObserver(function(){if(toolsQueued)return;toolsQueued=true;requestAnimationFrame(function(){toolsQueued=false;ensurePageTools();});}).observe(D.body,{childList:true,subtree:true});
  D.addEventListener('ig:panel-opening',function(e){if(e.detail==='music'){var d=D.getElementById('ig-r49-settings');if(d&&d.open)d.close();}});
 }
 /* This file is loaded with defer by the canonical shell. Run as soon as the parsed

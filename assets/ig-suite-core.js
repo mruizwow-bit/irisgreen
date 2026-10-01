@@ -101,6 +101,7 @@
     todas: 'any', any: 'any', 'cualquier-edad': 'any', 'any-age': 'any'
   };
   function readPara() {
+    if (root.IGAudience && root.IGAudience.get) return ({AGE_0_12:'child',AGE_13_17:'teen',AGE_18_PLUS:'adult'})[root.IGAudience.get()] || 'any';
     var q;
     try { q = new URLSearchParams(root.location.search); } catch (_) { return 'any'; }
     var v = String(q.get('para') || q.get('for') || '').toLowerCase();
@@ -537,7 +538,12 @@
 
   /* ---------- Estudio ---------- */
   var ENGINES = {};
-  function defineEngine(id, def) { ENGINES[id] = def; }
+  function defineEngine(id, def) {
+    ENGINES[id] = def;
+    // Deferred scripts may still be arriving while readyState is interactive.
+    // Retry when the actual engine registers; mountStudio is idempotent.
+    if (D.readyState !== 'loading') root.setTimeout(mountStudio, 0);
+  }
 
   function mountStudio() {
     var app = D.getElementById('igt-app');
@@ -554,6 +560,7 @@
       View2D: View2D, attachViewGestures: attachViewGestures, dialog: dialog, load: load, studio: engineId, studioName: studioName,
       reducedMotion: function () { return D.documentElement.dataset.igMotion === 'off' || (root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches); },
       tech: { renderer: null, physics: null, audio: null } };
+    root.addEventListener('ig:audience-change', function () { PARA=readPara();ctx.para=PARA;root.IGSuite.para=PARA; });
 
     /* Barra de proyecto: las dos primeras van a la barra de contexto del shell; el resto, al menú Archivo. */
     var projectBar = h('div', { class: 'igt-bar', role: 'toolbar', 'aria-label': t('fileMenu') });
@@ -828,6 +835,6 @@
   root.IGSuite = { version: VERSION, lang: LANG, para: PARA, t: t, fmt: fmt, num: num, h: h, icon: icon, button: button, fields: fields,
     load: load, defineEngine: defineEngine, mount: mountStudio, History: History, View2D: View2D, download: download, announce: announce, rng: rng, svgText: svgText, printPages: printPages, svgToPng: svgToPng, parseSVG: parseSVG, keepFocus: keepFocus };
 
-  if (D.readyState === 'loading') D.addEventListener('DOMContentLoaded', function () { root.setTimeout(mountStudio, 0); }, { once: true });
+  if (D.readyState !== 'complete') D.addEventListener('DOMContentLoaded', mountStudio, { once: true });
   else root.setTimeout(mountStudio, 0);
 })(window, document);

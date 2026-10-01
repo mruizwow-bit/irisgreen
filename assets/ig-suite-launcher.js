@@ -1,7 +1,7 @@
 /* Iris Green · El taller · Lanzador (R47/R69).
    R69 gives age ownership to the single global IGAudience lens. Historical
    ?para=/ ?for= remains only as no-global-shell fallback for direct old links.
-   «Todos los estudios» is secondary and the child-safe classifier remains local,
+   The full catalogue remains visible and the child-safe classifier stays local,
    without identity, storage or network. */
 (function () {
   'use strict';
@@ -21,7 +21,7 @@
   function startStage(value){return value==='AGE_0_12'||value==='AGE_13_17'||value==='AGE_18_PLUS'?value:'ALL_AGES';}
   var stage = startStage(globalStage()||fallbackStage);
   function syncStage(value){
-    stage=startStage(value||fallbackStage);
+    stage=startStage(value||fallbackStage);main.dataset.stage=stage;
     main.querySelectorAll('.igk-start').forEach(function (ul) {
       var own=ul.getAttribute('data-para')||'ALL_AGES';
       ul.hidden = own !== stage;
@@ -94,45 +94,19 @@
   var search = main.querySelector('.igk-search'), input = D.getElementById('igk-q'), clear = main.querySelector('.igk-clear');
   var chipsBox = main.querySelector('.igk-chips'), status = D.getElementById('igk-status');
   var groups = main.querySelectorAll('.igk-group');
-  var filter = '', timer = 0, opener = null, dlg = null;
+  var filter = '', timer = 0;
   var searchHome = search ? search.parentNode : null;
   if (search) search.hidden = false;
   if (chipsBox) chipsBox.hidden = false;
-  if (allBtn) allBtn.hidden = false;
-
-  if (all && typeof HTMLDialogElement === 'function' && all.showModal !== undefined === false) { /* noop */ }
-  if (all && D.createElement('dialog').showModal) {
-    dlg = D.createElement('dialog');
-    dlg.className = 'igk-dialog';
-    dlg.setAttribute('aria-labelledby', 'igk-all-t');
-    var head = D.createElement('div'); head.className = 'igk-dialog-head';
-    var close = D.createElement('button');
-    close.type = 'button'; close.className = 'igk-dialog-close'; close.textContent = '×';
-    close.setAttribute('aria-label', I.close || (en ? 'Close' : 'Cerrar'));
-    head.appendChild(close);
-    all.parentNode.insertBefore(dlg, all);
-    dlg.appendChild(head); dlg.appendChild(all);
-    all.classList.add('igk-all-in-dialog');
-    close.addEventListener('click', function () { dlg.close(); });
-    /* El buscador viaja a la hoja mientras está abierta: fuera quedaría inerte. */
-    dlg.addEventListener('close', function () {
-      if (search && searchHome && search.parentNode !== searchHome) searchHome.insertBefore(search, searchHome.firstChild);
-      if (opener && opener.isConnected) opener.focus();
-    });
-    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
-  }
+  if (allBtn) allBtn.hidden = true;
 
   function openAll(profile, trigger) {
-    opener = trigger || null;
     filter = profile || '';
     if (chipsBox) chipsBox.querySelectorAll('.igk-chip').forEach(function (x) {
       x.setAttribute('aria-pressed', String((x.getAttribute('data-filter') || '') === filter));
     });
     apply(false);
-    if (dlg) {
-      if (search) dlg.querySelector('.igk-dialog-head').insertBefore(search, dlg.querySelector('.igk-dialog-close'));
-      if (!dlg.open) dlg.showModal();
-    } else { all.scrollIntoView({ block: 'start' }); }
+    all.scrollIntoView({ block: 'start' });
     if (input) input.focus(); else all.focus();
     apply(true);
   }
@@ -154,7 +128,7 @@
     status.textContent = shown ? fmt(I.count, { n: shown }) : fmt(I.none, { q: input ? input.value.trim() : '' });
   }
   if (input) {
-    input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(function () { if (dlg && !dlg.open) openAll(filter, input); else apply(true); }, 250); });
+    input.addEventListener('input', function () { clearTimeout(timer); timer = setTimeout(function () { apply(true); }, 250); });
     input.addEventListener('keydown', function (e) { if (e.key === 'Escape' && input.value) { e.stopPropagation(); input.value = ''; apply(true); } });
   }
   if (clear) clear.addEventListener('click', function () { input.value = ''; apply(true); input.focus(); });
@@ -164,7 +138,7 @@
     chipsBox.querySelectorAll('.igk-chip').forEach(function (x) { x.setAttribute('aria-pressed', String(x === b)); });
     apply(true);
   });
-  apply(false);
+  apply(true);
   main.dataset.igChildsafeBlocked = String(blocked.length);
 main.dataset.igUiReady='1';
 document.body.dataset.igWorkshopHubReady='1';

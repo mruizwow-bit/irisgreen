@@ -5,8 +5,8 @@ var D=window.IG_JUEGOS_DATA;if(!D)return;
 var root=document.getElementById('jg-app');if(!root)return;
 var BASE=root.getAttribute('data-base')||'/assets/pictogramas/';
 var UI={
- es:{h1:'Juegos',lede:'297 juegos prácticos para situaciones cotidianas. Sin tiempo, sin puntos y sin prisa. Nada suena ni se mueve hasta que tú lo decides.',crumb:'Recursos',crumbHref:'/es/recursos/',
-  buscar:'Buscar un juego',buscarPh:'Por ejemplo: mochila, ducha, autobús',practica:'¿Qué quieres practicar?',eligeEtapa:'Elige una etapa de vida',etapaAyuda:'Puedes elegir una etapa o ver todo. Puedes cambiarla en cualquier momento.',verTodo:'Ver todo',cambiarEtapa:'Cambiar etapa',moreOptions:'Más opciones',hideOptions:'Ocultar opciones',clearContext:'Quitar filtro de contexto',temas:'Temas',n:function(n){return n===1?'1 juego':n+' juegos';},sinRes:'No hay juegos con esa palabra. Prueba con otra o elige «Todos».',
+ es:{h1:'Juegos',lede:'Juega con monedas y billetes o elige una actividad con pictogramas para practicar situaciones cotidianas.',crumb:'Inicio',crumbHref:'/',
+  buscar:'Buscar en juegos con pictogramas',buscarPh:'Por ejemplo: mochila, ducha, autobús',practica:'¿Qué quieres practicar?',eligeEtapa:'Elige una etapa de vida',etapaAyuda:'Puedes elegir una etapa o ver todo. Puedes cambiarla en cualquier momento.',verTodo:'Ver todo',cambiarEtapa:'Cambiar etapa',moreOptions:'Más opciones',hideOptions:'Ocultar opciones',clearContext:'Quitar filtro de contexto',temas:'Temas',n:function(n){return n===1?'1 juego':n+' juegos';},sinRes:'No hay juegos con esa palabra. Prueba con otra o elige «Todos».',
   jugar:'Jugar',todos:'Todos los juegos',menos:'Menos opciones',ayuda:'Ayúdame',otraVez:'Empezar otra vez',imprimir:'Imprimir',
   parte:function(a,b){return 'Parte '+a+' de '+b;},vacio:'Todavía está vacío.',listo:'Ya está',seguir:'Seguir',otroJuego:'Elegir otro juego',
   minutos:'Minutos',parar:'Parar',empezar:'Empezar',pausar:'Pausar',seguirReloj:'Seguir',
@@ -21,8 +21,8 @@ var UI={
   mitad:'Queda la mitad.',poco:'Queda poco.',finReloj:'Se acabó el tiempo.',relojListo:'Preparado cuando tú quieras.',
   hojaOrden:'Pasos en orden.',hojaLista:'Marca cada casilla cuando lo hayas hecho.',hojaPlan:'Mi plan.',elige:'Buena elección. Sigue cuando quieras.',
   objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',habilidad:'Habilidad o necesidad',duracionFiltro:'Duración',todasHabilidades:'Todas',todasDuraciones:'Todas',skills:{secuenciar:'Secuenciar',decision:'Elegir y decidir',clasificar:'Clasificar',planificar:'Planificar y organizar',memoria:'Memoria visual'},duraciones:{breve:'Hasta 2 min aprox.',media:'3–5 min aprox.',flexible:'Sin duración fija'},dur:function(m){return m?'Unos '+m+' minutos':'Sin duración fija';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
- en:{h1:'Games',lede:'297 practical games for everyday situations. No timer, no points and no rush. Nothing plays or moves until you decide.',crumb:'Resources',crumbHref:'/en/resources/',
-  buscar:'Search for a game',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',eligeEtapa:'Choose a stage of life',etapaAyuda:'Choose a stage or view everything. You can change it at any time.',verTodo:'View all',cambiarEtapa:'Change stage',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
+ en:{h1:'Games',lede:'Play with coins and notes or choose a pictogram activity to practise everyday situations.',crumb:'Home',crumbHref:'/en/',
+  buscar:'Search pictogram games',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',eligeEtapa:'Choose a stage of life',etapaAyuda:'Choose a stage or view everything. You can change it at any time.',verTodo:'View all',cambiarEtapa:'Change stage',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
   jugar:'Play',todos:'All games',menos:'Fewer options',ayuda:'Help me',otraVez:'Start again',imprimir:'Print',
   parte:function(a,b){return 'Part '+a+' of '+b;},vacio:'It is still empty.',listo:'Done',seguir:'Continue',otroJuego:'Choose another game',
   minutos:'Minutes',parar:'Stop',empezar:'Start',pausar:'Pause',seguirReloj:'Resume',
@@ -236,7 +236,7 @@ function etapaCard(et){
 }
 function audienceEtapa(){
  var a=window.IGAudience?window.IGAudience.get():(document.documentElement.dataset.igAudience||'default');
- return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'adu',ALL_AGES:'todas',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||null;
+ return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'',ALL_AGES:'',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||null;
 }
 function audienceEtapaActiva(){return !!audienceEtapa();}
 function etapaRail(){
@@ -297,7 +297,7 @@ function catalogo(){
  if(!window.IGAudience&&!S.stageChosen&&!q&&S.cat==='todos')return etapaLanding();
  var stageNav=etapaRail();
  var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
- if(S.cat==='todos'&&!q){
+ if(S.cat==='todos'&&!q&&!S.tipo&&!S.skill&&!S.dur){
   return '<section class="jg-r41-hub" aria-labelledby="jg-practice-title">'+stageNav+'<div class="jg-r41-actions"><div><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-practice-title">'+esc(u.practica)+'</h2></div><div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
    '<div class="jg-context-grid">'+D.cats.filter(function(c){return c.id!=='todos';}).map(contextoCard).join('')+'</div>'+
    '<p class="jg-hub-note">'+esc(u.n(S.etapa?etapaCount(S.etapa):D.juegos.length))+'</p></section>';
@@ -357,6 +357,7 @@ function textos(){var u=U(),set=function(id,t){var e=document.getElementById(id)
 function render(){
  A=[];textos();
  if(hero)hero.hidden=S.vista!=='lista';
+ document.querySelectorAll('.ig-activity-overview').forEach(function(e){e.hidden=S.vista!=='lista';});
  root.innerHTML=S.vista==='lista'?catalogo():pantallaJuego();
  var lv=S.vista==='juego'?(S.hecha?(S.fi>=fases().length-1?U().hechoT+' '+U().hechoFin:U().hechoParte):(S.msg?S.msg.t:'')):'';if(lv!==lastLive){live.textContent=lv;lastLive=lv;}
  var j0=juego();document.title=S.vista==='juego'&&j0?L(j0.t)+' · '+U().h1+' · Iris Green':U().h1+' · Iris Green';

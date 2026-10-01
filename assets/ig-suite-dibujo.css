@@ -1,0 +1,80 @@
+/* Iris Green · El taller · Estudio de dibujo (R43). Solo para body[data-ig-suite="dibujo"].
+   Superficies de trabajo opacas; el cristal se queda en el chrome del app shell. */
+
+/* Lienzo: el dibujo (PixiJS) y la capa de guías van superpuestos y ocupan todo el visor. */
+body[data-ig-suite="dibujo"] .igs-viewport { background:var(--ig-bg-surface-soft); }
+body[data-ig-suite="dibujo"] .igs-viewport > canvas.igd-art,
+body[data-ig-suite="dibujo"] .igs-viewport > canvas.igd-over {
+  position:absolute; inset:0; display:block;
+}
+body[data-ig-suite="dibujo"] .igs-viewport > canvas.igd-over { pointer-events:none; z-index:2; }
+body[data-ig-suite="dibujo"] .igs-viewport > canvas.igd-art { z-index:1; touch-action:none; }
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="pencil"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="soft"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="marker"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="water"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="chalk"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="air"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="eraser"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="line"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="rect"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="ellipse"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="text"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="fill"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="picker"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="vp"],
+body[data-ig-suite="dibujo"] .igs-viewport[data-tool="select"] { cursor:crosshair; }
+
+/* Lista de capas de Estructura: un punto que recuerda si la capa se ve. */
+body[data-ig-suite="dibujo"] .igd-dot {
+  flex:none; width:.85rem; height:.85rem; border-radius:50%;
+  background:#1f5f8b; border:1px solid #17395c;
+}
+
+/* Paleta de color del inspector. */
+body[data-ig-suite="dibujo"] .igd-palette {
+  display:grid; grid-template-columns:repeat(auto-fill,minmax(2.1rem,1fr)); gap:.3rem;
+}
+body[data-ig-suite="dibujo"] .igd-sw {
+  min-width:2.1rem; min-height:2.1rem; border-radius:8px;
+  border:1px solid rgba(23,43,66,.45); cursor:pointer; padding:0;
+}
+body[data-ig-suite="dibujo"] .igd-sw[aria-checked="true"] {
+  outline:3px solid #5a49a8; outline-offset:2px; border-color:#17202a;
+}
+body[data-ig-suite="dibujo"] .igd-sw:focus-visible { outline:3px solid #5a49a8; outline-offset:2px; }
+body[data-ig-suite="dibujo"] .igd-chip {
+  display:inline-block; flex:none; width:1.1rem; height:1.1rem; border-radius:5px;
+  border:1px solid rgba(23,43,66,.5); vertical-align:-.15rem;
+}
+body[data-ig-suite="dibujo"] .igd-mix {
+  display:flex; align-items:center; gap:.45rem; margin:.1rem 0;
+  font:500 .88rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--ig-text-muted);
+}
+body[data-ig-suite="dibujo"] .igd-value-btn { width:100%; justify-content:flex-start; gap:.5rem; }
+
+/* Reto: cabecera, límites y resultado de la comprobación. */
+body[data-ig-suite="dibujo"] .igd-ch-head {
+  margin:.1rem 0 .25rem; font:500 .95rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--ig-text);
+}
+body[data-ig-suite="dibujo"] .igd-limits {
+  margin:.2rem 0 .4rem; padding-left:1.1rem; color:var(--ig-text-muted);
+  font:500 .88rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="dibujo"] .igd-gen {
+  margin:.3rem 0; padding:.5rem .6rem; border-radius:10px; background:var(--ig-bg-surface-soft);
+  border:1px solid #c9d8e6; color:var(--ig-text);
+  font:600 .95rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="dibujo"] .igd-check {
+  margin-top:.4rem; padding:.55rem .65rem; border-radius:10px; background:var(--ig-bg-surface-soft); border:1px solid #c9d8e6;
+}
+body[data-ig-suite="dibujo"] .igd-check p { margin:0 0 .3rem; font:700 .9rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="dibujo"] .igd-ok { color:var(--ig-text); }
+body[data-ig-suite="dibujo"] .igd-partial { color:var(--ig-text); }
+
+@media (forced-colors: active) {
+  body[data-ig-suite="dibujo"] .igd-sw,
+  body[data-ig-suite="dibujo"] .igd-chip,
+  body[data-ig-suite="dibujo"] .igd-dot { border:1px solid CanvasText; forced-color-adjust:none; }
+}

@@ -10,7 +10,7 @@ function render(){
  section.hidden=false;if(loaded)return;
  fetch('/assets/safety/library-adult-s2.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error(String(r.status));return r.json();}).then(function(rows){
   if(!window.IGAudience.isAdult())return;list.replaceChildren();rows.forEach(function(x){
-   var a=document.createElement('a');a.className='card vd-card';a.href=lang()==='en'?x.url_en:x.url_es;
+   var a=document.createElement('a');a.className='card vd-card';a.dataset.igAgeBands='AGE_18_PLUS';a.dataset.cat=lang()==='en'?'Relationships and safety':'Relaciones y seguridad';a.href=lang()==='en'?x.url_en:x.url_es;
    var chip=document.createElement('span');chip.className='chip';chip.textContent=lang()==='en'?'High sensitivity':'Alta sensibilidad';
    var strong=document.createElement('strong');strong.textContent=lang()==='en'?x.title_en:x.title_es;
    var summary=document.createElement('span');summary.textContent=lang()==='en'?x.summary_en:x.summary_es;

@@ -799,3 +799,7 @@ body[data-ig-r42-pilot="true"][data-ig-r42-family="workshop"] .ig-r42-inspector-
   background:transparent;
   box-shadow:none;
 }
+
+.ig-r42-quiet-help{padding-left:1.4rem;margin:.75rem 0;line-height:1.65}
+.ig-r42-quiet-help li+li{margin-top:.65rem}
+body.r46-page .ig-r42-dialog-body{color:var(--ig-text);padding:1.25rem;max-height:65vh;overflow:auto}

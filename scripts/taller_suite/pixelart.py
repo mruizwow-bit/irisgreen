@@ -1,0 +1,106 @@
+"""Estudio de pixel art (R43): píxeles, paletas, animación por fotogramas, GIF. Textos ES/EN."""
+
+ENGINE = 'pixelart'
+SLUG = {'es': 'pixel-art', 'en': 'pixel-art'}
+SCRIPTS = ['ig-suite-pixelart.js']
+LIBRARIES = 'PixiJS (MIT) y un codificador GIF propio'
+LIBRARIES_EN = 'PixiJS (MIT) and Iris Green’s own GIF encoder'
+
+PAGE = {
+    'es': {
+        'title': 'Pixel art',
+        'description': 'Dibuja píxel a píxel con paletas limitadas, anima por fotogramas con papel cebolla y exporta PNG nítido, hojas de sprites y GIF animado.',
+        'lede': 'El pixel art se dibuja cuadradito a cuadradito, con pocos colores, como en los videojuegos clásicos. Aquí puedes hacer personajes, objetos, fondos que se repiten y pequeñas animaciones.',
+        'make': ['Iconos y personajes', 'Objetos para un videojuego', 'Baldosas que se repiten sin que se note la unión', 'Animaciones cortas en GIF', 'Hojas de sprites para usarlas en El taller de videojuegos o en otros motores'],
+        'steps': [
+            'Elige un color en la paleta y pinta con el lápiz. El primer cuadro de la paleta es transparente.',
+            'Usa el cubo para rellenar zonas, y la línea o el rectángulo para formas rectas. Con Simetría, lo que pintas se repite al otro lado.',
+            'Para animar, añade o duplica fotogramas en Estructura. El papel cebolla muestra el fotograma anterior en transparencia.',
+            'Pulsa Animación para ver el movimiento. Cambia la velocidad en Propiedades.',
+            'Exporta en Archivo: PNG ampliado y nítido, PNG al tamaño real, hoja de sprites o GIF animado.',
+        ],
+        'sections': [
+            {'h': 'Pocos colores, más estilo', 'p': 'Las paletas limitadas obligan a elegir: con 15 colores hay que pensar dónde va la luz y dónde la sombra. Puedes cambiar cualquier color de la paleta y todo el dibujo se actualiza.'},
+            {'h': 'Animación por fotogramas', 'p': 'Una animación es una serie de dibujos que se muestran uno tras otro. Con 6 a 8 fotogramas por segundo ya se nota el movimiento. La vista previa no se pone en marcha sola: la inicias tú con el botón Animación.'},
+            {'h': 'Baldosas que se repiten', 'p': 'Activa «Ver en mosaico» para ver tu dibujo repetido alrededor. Si los bordes encajan, sirve de suelo o de fondo en un videojuego sin que se note la unión.'},
+            {'h': 'Exportar sin perder nitidez', 'p': 'Al ampliar un pixel art hay que hacerlo sin suavizar, para que cada píxel siga siendo un cuadrado. Las exportaciones del estudio ya lo hacen así. El GIF guarda la transparencia y se repite en bucle.'},
+        ],
+        'links': [('Todo el taller', '/es/taller/'), ('Videojuegos', '/es/taller/videojuegos/'), ('Cómic', '/es/taller/comic/')],
+    },
+    'en': {
+        'title': 'Pixel art',
+        'description': 'Draw pixel by pixel with limited palettes, animate frame by frame with onion skin and export crisp PNGs, sprite sheets and animated GIFs.',
+        'lede': 'Pixel art is drawn square by square, with few colours, like in classic video games. Here you can make characters, objects, repeating backgrounds and small animations.',
+        'make': ['Icons and characters', 'Objects for a video game', 'Tiles that repeat without a visible seam', 'Short animated GIFs', 'Sprite sheets to use in the video game studio or in other engines'],
+        'steps': [
+            'Choose a colour in the palette and paint with the pencil. The first square in the palette is transparent.',
+            'Use the bucket to fill areas, and the line or rectangle for straight shapes. With Mirror, what you paint is repeated on the other side.',
+            'To animate, add or duplicate frames in Structure. Onion skin shows the previous frame faintly.',
+            'Press Animation to see the movement. Change the speed in Properties.',
+            'Export from File: a crisp enlarged PNG, a PNG at actual size, a sprite sheet or an animated GIF.',
+        ],
+        'sections': [
+            {'h': 'Fewer colours, more style', 'p': 'Limited palettes make you choose: with 15 colours you have to think about where the light and the shadow go. You can change any colour in the palette and the whole drawing updates.'},
+            {'h': 'Frame-by-frame animation', 'p': 'An animation is a series of drawings shown one after another. With 6 to 8 frames per second you can already see the movement. The preview never starts by itself: you start it with the Animation button.'},
+            {'h': 'Repeating tiles', 'p': 'Turn on “Show as tiles” to see your drawing repeated around it. If the edges match, it works as a floor or background in a video game with no visible seam.'},
+            {'h': 'Export without losing sharpness', 'p': 'When you enlarge pixel art it must be done without smoothing, so each pixel stays a square. The studio’s exports already do that. The GIF keeps transparency and loops.'},
+        ],
+        'links': [('The whole workshop', '/en/workshop/'), ('Video game design', '/en/workshop/video-game-design/'), ('Comics', '/en/workshop/comics-storyboarding/')],
+    },
+}
+
+STRINGS = {
+    'es': {
+        'canvasLabel': 'Lienzo de píxeles',
+        'canvasHelp': 'Las flechas mueven el cursor un píxel (cuatro con Mayús) y leen su color. Intro o Espacio pintan con la herramienta elegida; con Línea y Rectángulo, el primer Intro marca el inicio y el segundo el final. [ y ] cambian de color, M activa la simetría y coma y punto cambian de fotograma.',
+        'kPixCursor': 'En el lienzo: flechas para el cursor; Intro o Espacio para pintar; M simetría',
+        'kPixColour': '[ y ] para cambiar de color; coma y punto para cambiar de fotograma',
+        'stHeart': 'Corazón', 'stHeartD': 'Un corazón de 16 × 16 con brillo y sombra.',
+        'stBall': 'Pelota que bota', 'stBallD': 'Seis fotogramas de una pelota que cae, se aplasta y rebota.',
+        'stSword': 'Espada de videojuego', 'stSwordD': 'Un objeto en diagonal con empuñadura, listo para un inventario.',
+        'stTile': 'Baldosa de hierba', 'stTileD': 'Una baldosa que se repite sin cortes, vista en mosaico.',
+        'toolPencil': 'Lápiz', 'toolEraser': 'Goma', 'toolFill': 'Relleno', 'toolLine': 'Línea', 'toolRect': 'Rectángulo', 'toolRectFill': 'Rectángulo lleno',
+        'toolEllipse': 'Elipse', 'toolPicker': 'Cuentagotas', 'toolPan': 'Mover la vista', 'mirrorBtn': 'Simetría', 'playBtn': 'Animación',
+        'mirrorOn': 'Simetría activada', 'mirrorOff': 'Simetría desactivada',
+        'transparent': 'transparente', 'colourN': 'color {n} ({hex})', 'colourNow': 'Color: {c}', 'picked': 'Color tomado: {c}',
+        'cursorAt': 'Columna {x}, fila {y}: {c}', 'pendingShape': 'forma empezada', 'shapeStart': 'Inicio marcado. Mueve el cursor y pulsa Intro para terminar.',
+        'painted': 'Pintado de {c}', 'drawn': 'Dibujo cambiado', 'cancelled': 'Cancelado',
+        'frames': 'Fotogramas', 'frameN': 'Fotograma {n} de {total}', 'addFrame': 'Nuevo', 'dupFrame': 'Duplicar', 'frameLeft': 'Antes', 'frameRight': 'Después', 'delFrame': 'Borrar',
+        'frameAdded': 'Fotograma añadido', 'frameDeleted': 'Fotograma borrado', 'frameMoved': 'Fotograma movido', 'lastFrame': 'Tiene que quedar al menos un fotograma.',
+        'needFrames': 'Añade al menos dos fotogramas para animar.', 'flashSlowed': 'Hay cambios fuertes de brillo: la animación va a {fps} fotogramas por segundo para no pasar de 3 destellos por segundo.', 'playingAnim': 'Animación a {fps} fotogramas por segundo', 'stopped': 'Animación parada',
+        'palette': 'Paleta', 'editColour': 'Cambiar el color {n}', 'colourChanged': 'Color de la paleta cambiado', 'palettePreset': 'Cambiar de paleta', 'choosePalette': 'Elige una paleta…',
+        'pal_iris': 'Iris (15 colores)', 'pal_earth': 'Tierra', 'pal_sea': 'Mar', 'pal_grey': 'Grises', 'paletteChanged': 'Paleta cambiada',
+        'canvasSettings': 'Lienzo', 'size': 'Tamaño en píxeles', 'resized': 'Tamaño cambiado', 'fps': 'Velocidad', 'fpsUnit': 'fotogramas/s', 'fpsChanged': 'Velocidad cambiada',
+        'onion': 'Papel cebolla', 'tiled': 'Ver en mosaico', 'gridLabel': 'Cuadrícula',
+        'fpsNote': 'La animación solo se mueve cuando pulsas Animación. Si tu animación tiene cambios fuertes de brillo, la vista previa y el GIF van más despacio para no pasar de 3 destellos por segundo (WCAG 2.3.1).',
+        'summary': 'Lienzo de {w} × {h} píxeles. Fotograma {n} de {frames}, con {colours} colores usados. Velocidad: {fps} fotogramas por segundo.',
+        'exportPng': 'Exportar imagen ampliada (PNG)', 'exportPng1': 'Exportar a tamaño real (PNG)', 'exportSheet': 'Exportar hoja de sprites (PNG)', 'exportGif': 'Exportar animación (GIF)',
+    },
+    'en': {
+        'canvasLabel': 'Pixel canvas',
+        'canvasHelp': 'The arrow keys move the cursor one pixel (four with Shift) and read its colour. Enter or Space paint with the chosen tool; with Line and Rectangle, the first Enter marks the start and the second the end. [ and ] change colour, M turns mirror on and off, and comma and full stop change frame.',
+        'kPixCursor': 'On the canvas: arrow keys for the cursor; Enter or Space to paint; M mirror',
+        'kPixColour': '[ and ] to change colour; comma and full stop to change frame',
+        'stHeart': 'Heart', 'stHeartD': 'A 16 × 16 heart with highlight and shadow.',
+        'stBall': 'Bouncing ball', 'stBallD': 'Six frames of a ball that falls, squashes and bounces.',
+        'stSword': 'Video game sword', 'stSwordD': 'A diagonal item with a hilt, ready for an inventory.',
+        'stTile': 'Grass tile', 'stTileD': 'A tile that repeats without seams, shown as tiles.',
+        'toolPencil': 'Pencil', 'toolEraser': 'Eraser', 'toolFill': 'Fill', 'toolLine': 'Line', 'toolRect': 'Rectangle', 'toolRectFill': 'Filled rectangle',
+        'toolEllipse': 'Ellipse', 'toolPicker': 'Colour picker', 'toolPan': 'Move the view', 'mirrorBtn': 'Mirror', 'playBtn': 'Animation',
+        'mirrorOn': 'Mirror on', 'mirrorOff': 'Mirror off',
+        'transparent': 'transparent', 'colourN': 'colour {n} ({hex})', 'colourNow': 'Colour: {c}', 'picked': 'Colour picked: {c}',
+        'cursorAt': 'Column {x}, row {y}: {c}', 'pendingShape': 'shape started', 'shapeStart': 'Start marked. Move the cursor and press Enter to finish.',
+        'painted': 'Painted {c}', 'drawn': 'Drawing changed', 'cancelled': 'Cancelled',
+        'frames': 'Frames', 'frameN': 'Frame {n} of {total}', 'addFrame': 'New', 'dupFrame': 'Duplicate', 'frameLeft': 'Earlier', 'frameRight': 'Later', 'delFrame': 'Delete',
+        'frameAdded': 'Frame added', 'frameDeleted': 'Frame deleted', 'frameMoved': 'Frame moved', 'lastFrame': 'At least one frame must remain.',
+        'needFrames': 'Add at least two frames to animate.', 'flashSlowed': 'There are strong brightness changes: the animation runs at {fps} frames per second so it never goes above 3 flashes per second.', 'playingAnim': 'Animation at {fps} frames per second', 'stopped': 'Animation stopped',
+        'palette': 'Palette', 'editColour': 'Change colour {n}', 'colourChanged': 'Palette colour changed', 'palettePreset': 'Change palette', 'choosePalette': 'Choose a palette…',
+        'pal_iris': 'Iris (15 colours)', 'pal_earth': 'Earth', 'pal_sea': 'Sea', 'pal_grey': 'Greys', 'paletteChanged': 'Palette changed',
+        'canvasSettings': 'Canvas', 'size': 'Size in pixels', 'resized': 'Size changed', 'fps': 'Speed', 'fpsUnit': 'frames/s', 'fpsChanged': 'Speed changed',
+        'onion': 'Onion skin', 'tiled': 'Show as tiles', 'gridLabel': 'Grid',
+        'fpsNote': 'The animation only moves when you press Animation. If your animation has strong brightness changes, the preview and the GIF slow down so they never go above 3 flashes per second (WCAG 2.3.1).',
+        'summary': 'Canvas of {w} × {h} pixels. Frame {n} of {frames}, with {colours} colours used. Speed: {fps} frames per second.',
+        'exportPng': 'Export enlarged image (PNG)', 'exportPng1': 'Export at actual size (PNG)', 'exportSheet': 'Export sprite sheet (PNG)', 'exportGif': 'Export animation (GIF)',
+    },
+}
+assert set(STRINGS['es']) == set(STRINGS['en'])

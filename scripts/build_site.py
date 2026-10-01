@@ -69,7 +69,9 @@ def build():
     # se solicitan únicamente cuando la persona los elige.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/materialize_rincon_pecera.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_suite.py')],cwd=ROOT,check=True)
     # Sabik Audio R01 se reconstruye byte-exacto únicamente dentro del staging del build.
     subprocess.run([sys.executable,str(ROOT/'scripts/materialize_sabik_audio_r01.py')],cwd=ROOT,check=True)
 
@@ -257,6 +259,7 @@ def build():
     # R69: one interface, one age lens and deterministic Workshop first paint.
     # These final passes intentionally run after all older route-specific adapters.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_workshop_stable.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/reorganize_activity_hubs.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_global_cleanup.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 

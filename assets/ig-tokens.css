@@ -1,0 +1,3 @@
+/* Compatibility entry point: the canonical palette is the single source. */
+@import url("/assets/ig-global-ui-tokens-2026.css?v=20261001-hover");
+body{background:var(--ig-bg-page);color:var(--ig-text)}

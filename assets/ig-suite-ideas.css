@@ -1,0 +1,64 @@
+/* Iris Green · El taller · Estudio de ideas e inventos (R43). Solo lo propio; lo común está en ig-suite.css. */
+body[data-ig-suite="ideas"] .igi-stage { position:absolute; inset:0; }
+body[data-ig-suite="ideas"] .igi-canvas { position:absolute; inset:0; display:block; width:100%; height:100%; touch-action:none; cursor:crosshair; }
+body[data-ig-suite="ideas"] .igi-stage[data-canvas="false"] .igi-canvas { display:none; }
+body[data-ig-suite="ideas"] .igi-stage[data-canvas="true"] .igi-pane { display:none; }
+body[data-ig-suite="ideas"] .igs-viewport[data-tool="bselect"] .igi-canvas { cursor:default; }
+body[data-ig-suite="ideas"] .igi-pane { position:absolute; inset:0; overflow:auto; padding:clamp(.6rem,1.4vw,1.2rem); background:var(--ig-bg-surface); }
+body[data-ig-suite="ideas"] .igi-view { display:grid; gap:.7rem; max-width:62rem; margin:0 auto; }
+body[data-ig-suite="ideas"] .igi-head { display:grid; gap:.2rem; }
+body[data-ig-suite="ideas"] .igi-h { margin:0; font:800 1.15rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="ideas"] .igi-h3 { margin:.6rem 0 0; font:700 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="ideas"] .igi-row { display:flex; flex-wrap:wrap; gap:.5rem; align-items:flex-end; }
+body[data-ig-suite="ideas"] .igi-row-input { align-items:flex-end; }
+body[data-ig-suite="ideas"] .igi-row-input input[type=text] { min-width:12rem; min-height:44px; box-sizing:border-box; padding:.35rem .5rem; border:1px solid var(--igs-control); border-radius:10px; font:500 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="ideas"] .igi-grow { flex:1 1 14rem; }
+body[data-ig-suite="ideas"] .igi-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(13rem,1fr)); gap:.6rem; }
+body[data-ig-suite="ideas"] .igi-card { display:grid; gap:.35rem; align-content:start; padding:.7rem .8rem; border:1px solid var(--igs-line); border-radius:14px; background:var(--igs-soft); }
+body[data-ig-suite="ideas"] .igi-tag { margin:0; font:700 .74rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; letter-spacing:.06em; text-transform:uppercase; color:var(--igs-ink-soft); }
+body[data-ig-suite="ideas"] .igi-val { margin:0; font:700 1.02rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="ideas"] .igi-count { margin:0; font-weight:700; color:var(--igs-ink); }
+body[data-ig-suite="ideas"] .igi-items { list-style:none; margin:.2rem 0; padding:0; display:grid; gap:.3rem; counter-reset:igi; }
+body[data-ig-suite="ideas"] ol.igi-items li::before { counter-increment:igi; content:counter(igi) ". "; font-weight:700; color:var(--igs-ink-soft); }
+body[data-ig-suite="ideas"] .igi-items li { display:flex; gap:.4rem; align-items:center; padding:.35rem .5rem; border:1px solid var(--igs-line); border-radius:10px; background:var(--ig-bg-surface); line-height:1.45; }
+body[data-ig-suite="ideas"] .igi-item-text { flex:1 1 auto; min-width:0; }
+body[data-ig-suite="ideas"] .igi-icon-btn { min-width:44px; padding:.3rem .5rem; }
+body[data-ig-suite="ideas"] .igi-hints { margin:.1rem 0; padding-left:1.2rem; line-height:1.5; }
+body[data-ig-suite="ideas"] .igi-tabs { display:flex; flex-wrap:wrap; gap:.3rem; }
+body[data-ig-suite="ideas"] .igi-tabs [role=tab][aria-selected=true] { background:var(--igs-navy); border-color:var(--igs-navy); color:#fff; }
+body[data-ig-suite="ideas"] .igi-tabpanel { padding:.2rem 0; }
+body[data-ig-suite="ideas"] .igi-sc-item { display:grid; gap:.25rem; padding:.5rem .6rem; border-left:4px solid var(--igs-violet); background:#f7f6fd; border-radius:0 10px 10px 0; }
+body[data-ig-suite="ideas"] .igi-letter { display:inline-grid; place-items:center; width:1.5rem; height:1.5rem; margin-right:.4rem; border-radius:50%; background:var(--igs-violet); color:#fff; font:800 .85rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="ideas"] .igi-clock-row { align-items:center; }
+body[data-ig-suite="ideas"] .igi-clock { margin:0; min-width:4.5rem; font:800 1.9rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; font-variant-numeric:tabular-nums; color:var(--igs-ink); }
+body[data-ig-suite="ideas"] .igi-grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(16rem,1fr)); gap:.6rem; }
+body[data-ig-suite="ideas"] .igi-fieldset { display:grid; gap:.25rem; margin:0; border:1px solid var(--igs-line); border-radius:12px; padding:.5rem .7rem; }
+body[data-ig-suite="ideas"] .igi-fieldset legend { padding:0 .3rem; font:700 .88rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="ideas"] .igi-brief { padding:.6rem .8rem; border-left:4px solid var(--igs-violet); background:var(--ig-bg-surface-soft); border-radius:0 12px 12px 0; }
+body[data-ig-suite="ideas"] .igi-brief p { margin:.15rem 0; }
+body[data-ig-suite="ideas"] .igi-limits { margin:.3rem 0 0; padding-left:1.1rem; line-height:1.5; }
+body[data-ig-suite="ideas"] .igi-checklist { list-style:none; margin:.4rem 0; padding:0; display:grid; gap:.3rem; }
+body[data-ig-suite="ideas"] .igi-checklist li { display:flex; gap:.45rem; align-items:flex-start; }
+body[data-ig-suite="ideas"] .igi-mark { flex:none; display:grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%; font-weight:800; font-size:.8rem; color:#fff; background:#2e7d32; }
+body[data-ig-suite="ideas"] .igi-checklist li[data-ok="false"] .igi-mark { background:#8a4b00; }
+body[data-ig-suite="ideas"] .igi-challenge { display:grid; gap:.3rem; }
+body[data-ig-suite="ideas"] .igi-challenge p { margin:0; }
+body[data-ig-suite="ideas"] .igi-chstatus { font-weight:700; }
+body[data-ig-suite="ideas"] .igi-sketch-block { display:grid; gap:.4rem; }
+body[data-ig-suite="ideas"] .igi-sketch-wrap { max-width:40rem; }
+body[data-ig-suite="ideas"] .igi-sketch { width:100%; height:auto; aspect-ratio:64 / 44; border:1px solid var(--igs-line); border-radius:10px; background:var(--ig-bg-surface); touch-action:none; cursor:crosshair; }
+body[data-ig-suite="ideas"] .igi-sketch:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="ideas"] .igi-quad td { vertical-align:top; }
+body[data-ig-suite="ideas"] .igi-quad-cell ul { list-style:none; margin:0; padding:0; display:grid; gap:.2rem; font-size:.82rem; }
+body[data-ig-suite="ideas"] .igi-quad-cell li { padding:.15rem .3rem; border-radius:6px; background:var(--ig-bg-surface-soft); }
+body[data-ig-suite="ideas"] .igi-pane :is(input,select,textarea,button):focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="ideas"] .igi-pane .igs-table th select { min-height:40px; }
+body[data-ig-suite="ideas"] .igi-pane .igs-table td input { width:100%; min-width:4.5rem; min-height:40px; box-sizing:border-box; padding:.3rem .4rem; border:1px solid var(--igs-control); border-radius:8px; font:500 .92rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+@media (max-width:700px) {
+  body[data-ig-suite="ideas"] .igs-viewport.igi-viewport { height:clamp(24rem,72svh,40rem); }
+  body[data-ig-suite="ideas"] .igi-clock { font-size:1.5rem; }
+}
+@media (forced-colors:active) {
+  body[data-ig-suite="ideas"] .igi-mark { forced-color-adjust:none; }
+  body[data-ig-suite="ideas"] .igi-tabs [role=tab][aria-selected=true] { background:Highlight; color:HighlightText; }
+}

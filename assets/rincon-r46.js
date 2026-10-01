@@ -78,7 +78,8 @@
   var panels = {
     breathe: $('#r46Breathe'),
     land: $('#r46Landscapes'),
-    room: $('#r46Rooms')
+    room: $('#r46Rooms'),
+    aquarium: $('#r46Aquarium')
   };
   var stages = {
     breathe: $('#r46BreatheStage'),
@@ -238,6 +239,7 @@
     });
     if (select && select.value !== next) select.value = next;
     releaseAll(next);
+    document.dispatchEvent(new CustomEvent('ig:quiet-mode', { detail: next }));
     if (next === 'breathe') ensureBreath();
     if (next === 'land') ensureLand();
     if (next === 'room') { ensureRooms(); if (rooms) rooms.resize(); }
@@ -413,7 +415,13 @@
     stopRoomSound(0.3);
   });
 
+  function openFragment() {
+    if (location.hash === '#sakura') setMode('room');
+    else if (location.hash === '#pecera') setMode('aquarium');
+  }
   setMode('breathe');
+  openFragment();
+  window.addEventListener('hashchange', openFragment);
   say('breathe', T.ready);
   syncBreathButtons(false, false);
   syncLandButtons(false);

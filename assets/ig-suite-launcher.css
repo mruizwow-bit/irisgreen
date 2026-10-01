@@ -1,5 +1,23 @@
 /* Iris Green · El taller · Lanzador visual (R43, interfaz R42): estudios en el primer viewport, contenido opaco. */
-body[data-ig-taller-launcher] main.igk { --igk-ink:#172b42; --igk-soft:#44586c; --igk-navy:#17395c; --igk-line:#d3dce6; --igk-focus:#5a49a8; --igk-card:#ffffff;
+/* El lanzador no tiene paleta propia (norma de tokens globales 2026, §5):
+   estos nombres son punteros al sistema global, no colores. Se conservan para
+   no reescribir cada regla, y desaparecen cuando el resto de la suite migre. */
+body[data-ig-taller-launcher] { background:var(--ig-bg-page); color:var(--ig-text); }
+body[data-ig-taller-launcher] main.igk {
+  --igk-ink:var(--ig-text); --igk-soft:var(--ig-text-muted);
+  --igk-navy:var(--ig-button-primary-bg); --igk-navy-fg:var(--ig-button-primary-fg);
+  --igk-line:var(--ig-separator);
+  /* El anillo de foco NO se toma de --ig-focus. Medido: `ig-r42-materials.css`
+     se carga después de los tokens y fija `--ig-focus:#5a49a8` sin distinguir
+     tema, así que en DARK NAVY el anillo salía morado claro sobre la superficie
+     navy: 2,4:1, por debajo del 3:1 que WCAG 2.2 pide a un indicador de foco
+     (1.4.11). `--ig-accent` sí cambia con el tema y su valor es el mismo que la
+     norma da a --ig-focus -#C3B8FF en DARK NAVY y #5A49A8 en LIGHT-, así que el
+     lanzador lee el color normativo por ahí. El arreglo de fondo va en la hoja
+     de R42, no aquí. */
+  --igk-focus:var(--ig-accent,#5a49a8);
+  --igk-card:var(--ig-bg-surface); --igk-soft-bg:var(--ig-bg-surface-soft);
+  --igk-control:var(--ig-border-control); --igk-link:var(--ig-link);
   /* R49 · medida de lectura != anchura de producto: el lanzador usa el viewport.
      max-width explícito para ganar al main{max-width:1120px} heredado del CSS del sitio. */
   --igk-gutter:clamp(16px,2.6vw,56px);
@@ -10,38 +28,62 @@ body[data-ig-taller-launcher] main.igk { --igk-ink:#172b42; --igk-soft:#44586c; 
 .igk-tools { display:grid; gap:10px; justify-items:end; }
 .igk-search label, .igk-para-t { display:block; margin:0 0 4px; font-weight:700; font-size:.9rem; }
 .igk-search-row { position:relative; }
-.igk-search input { width:min(26rem, 100%); min-height:44px; padding:.45rem 2.6rem .45rem .8rem; border:1px solid #8a9cae; border-radius:12px; background:#fff; color:var(--igk-ink); font:inherit; }
+.igk-search input { width:min(26rem, 100%); min-height:44px; padding:.45rem 2.6rem .45rem .8rem; border:1px solid var(--igk-control); border-radius:12px; background:var(--igk-card); color:var(--igk-ink); font:inherit; }
 .igk-clear { position:absolute; right:4px; top:50%; transform:translateY(-50%); width:36px; height:36px; border:0; border-radius:8px; background:transparent; font-size:1.3rem; color:var(--igk-soft); cursor:pointer; }
 .igk-para { text-align:right; }
-.igk-segs { list-style:none; margin:0; padding:3px; display:inline-flex; flex-wrap:wrap; gap:2px; border:1px solid var(--igk-line); border-radius:999px; background:#fff; }
+.igk-segs { list-style:none; margin:0; padding:3px; display:inline-flex; flex-wrap:wrap; gap:2px; border:1px solid var(--igk-line); border-radius:999px; background:var(--igk-card); }
 .igk-seg { display:inline-flex; align-items:center; min-height:40px; padding:.3rem .85rem; border-radius:999px; color:var(--igk-navy); font-weight:700; font-size:.92rem; text-decoration:none; }
-.igk-seg:hover { background:#eef3f8; text-decoration:underline; }
-.igk-seg[aria-current="true"] { background:var(--igk-navy); color:#fff; }
+.igk-seg:hover { background:var(--igk-soft-bg); text-decoration:underline; }
+.igk-seg[aria-current="true"] { background:var(--igk-navy); color:var(--igk-navy-fg); }
 .igk-para-help { margin:4px 0 0; font-size:.82rem; color:var(--igk-soft); }
 .igk-skip { position:absolute; left:-9999px; }
-.igk-skip:focus { position:static; display:inline-block; margin:0 0 8px; padding:.4rem .7rem; background:#fff; border-radius:8px; }
+.igk-skip:focus { position:static; display:inline-block; margin:0 0 8px; padding:.4rem .7rem; background:var(--igk-card); border-radius:8px; }
 .igk-h2 { margin:0 0 10px; font:700 1.05rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igk-ink); letter-spacing:.01em; }
 .igk-start-sec { margin:0 0 26px; }
 .igk-grid { list-style:none; margin:0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
 .igk-start.igk-grid { grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
 .igk-grid[hidden], .igk-item[hidden], .igk-group[hidden] { display:none; }
 .igk-tile { position:relative; display:flex; flex-direction:column; height:100%; border:1px solid var(--igk-line); border-radius:18px; background:var(--igk-card); color:var(--igk-ink); text-decoration:none; overflow:hidden; box-shadow:0 1px 2px rgba(23,43,66,.06); transition:transform .15s ease, box-shadow .15s ease, border-color .15s ease; }
-.igk-tile:hover { border-color:#8fb0cc; box-shadow:0 8px 22px -12px rgba(23,43,66,.35); transform:translateY(-2px); }
+.igk-tile:hover { border-color:var(--igk-control); box-shadow:var(--ig-shadow-lifted); transform:translateY(-2px); }
+/* Una tarjeta es una superficie, no un enlace de texto: su color lo decide el
+   lanzador, no el a:hover del shell global. Sin esto, al pasar el ratón el
+   nombre del estudio pasaba a #5a49a8 sobre la superficie navy: 1,9:1, muy por
+   debajo del 4,5:1 que pide WCAG 2.2 AA. Medido con axe sobre el lanzador. */
+/* Los cinco estados del enlace, cerrados. Una tarjeta es una superficie, no un
+   enlace de texto: ni su color ni su subrayado los decide el chrome global.
+   Sin esto el `a:hover` del sitio teñía el nombre del estudio de #5a49a8 sobre
+   la superficie navy -1,9:1- y `:visited` quedaba a merced de la hoja que
+   llegara después. El subrayado se reserva para hover y foco, que es donde
+   informa de que aquello se puede activar; en reposo la tarjeta entera ya es
+   claramente pulsable. */
+.igk-tile:link, .igk-tile:visited,
+.igk-tile:hover, .igk-tile:focus-visible, .igk-tile:active { color:var(--igk-ink); }
+.igk-tile:link .igk-name, .igk-tile:visited .igk-name { color:var(--igk-ink); }
+.igk-tile:link .igk-desc, .igk-tile:visited .igk-desc { color:var(--igk-soft); }
+.igk-tile, .igk-tile:link, .igk-tile:visited { text-decoration:none; }
+.igk-tile:visited .igk-name, .igk-tile:visited .igk-desc { text-decoration:none; }
 .igk-tile:focus-visible { outline:3px solid var(--igk-focus); outline-offset:3px; }
-.igk-art { position:relative; display:block; aspect-ratio:16/10; background:var(--igk-bg,#eef3f8); }
+.igk-art { position:relative; display:block; aspect-ratio:16/10; background:var(--igk-bg,var(--ig-bg-surface-soft)); }
 .igk-art-svg { display:block; width:100%; height:100%; }
-.igk-badge { position:absolute; top:10px; left:10px; padding:.15rem .55rem; border-radius:999px; background:#17395c; color:#fff; font-size:.78rem; font-weight:700; }
+.igk-badge { position:absolute; top:10px; left:10px; padding:.15rem .55rem; border-radius:999px; background:var(--igk-navy); color:var(--igk-navy-fg); font-size:.78rem; font-weight:700; }
 .igk-text { display:grid; gap:3px; padding:12px 14px 14px; }
 .igk-name { font-weight:700; font-size:1.02rem; line-height:1.25; }
 .igk-desc { font-size:.9rem; line-height:1.4; color:var(--igk-soft); }
 .igk-tile-big .igk-name { font-size:1.18rem; }
-.igk-cta { margin:auto 14px 14px; align-self:flex-start; padding:.45rem .9rem; border-radius:12px; background:var(--igk-navy); color:#fff; font-weight:700; font-size:.95rem; }
+.igk-cta { margin:auto 14px 14px; align-self:flex-start; padding:.45rem .9rem; border-radius:12px; background:var(--igk-navy); color:var(--igk-navy-fg); font-weight:700; font-size:.95rem; }
 .igk-all { scroll-margin-top:6rem; }
+/* Las 27 tarjetas de la lista completa quedan fuera de la primera pantalla. Sin
+   esto el navegador se adelanta y descarga casi todas nada más cargar, porque el
+   margen de `loading=lazy` es generoso: medido, 328 KB en móvil frente a los 66
+   que hacen falta para lo que se ve. `content-visibility` deja de renderizarlas
+   hasta que se acercan, y con ellas sus imágenes. El tamaño reservado evita que
+   la barra de desplazamiento pegue saltos. */
+.igk-all .igk-item { content-visibility:auto; contain-intrinsic-size:auto 266px; }
 .igk-all-head { display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px 16px; margin:0 0 6px; }
 .igk-all-head .igk-h2 { margin:0; }
 .igk-chips { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:6px; }
-.igk-chip { min-height:40px; padding:.3rem .8rem; border:1px solid #8a9cae; border-radius:999px; background:#fff; color:var(--igk-navy); font:700 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
-.igk-chip[aria-pressed="true"] { background:var(--igk-navy); border-color:var(--igk-navy); color:#fff; }
+.igk-chip { min-height:40px; padding:.3rem .8rem; border:1px solid var(--igk-control); border-radius:999px; background:var(--igk-card); color:var(--igk-ink); font:700 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
+.igk-chip[aria-pressed="true"] { background:var(--igk-navy); border-color:var(--igk-navy); color:var(--igk-navy-fg); }
 .igk-chip:focus-visible, .igk-seg:focus-visible, .igk-search input:focus-visible, .igk-clear:focus-visible { outline:3px solid var(--igk-focus); outline-offset:2px; }
 .igk-status { min-height:1.2em; margin:4px 0 8px; font-size:.9rem; color:var(--igk-soft); }
 .igk-group { margin:0 0 24px; }
@@ -49,25 +91,75 @@ body[data-ig-taller-launcher] main.igk { --igk-ink:#172b42; --igk-soft:#44586c; 
 .igk-group-head h3 { margin:0; font:400 1.45rem/1.2 'Newsreader',Georgia,serif; }
 .igk-group-head p { margin:0; color:var(--igk-soft); font-size:.92rem; }
 .igk-note { margin:8px 0 14px; color:var(--igk-soft); font-size:.92rem; }
-.igk-collection { border:1px solid var(--igk-line); border-radius:14px; background:#fff; }
+.igk-collection { border:1px solid var(--igk-line); border-radius:14px; background:var(--igk-card); }
 .igk-collection summary { min-height:44px; display:flex; align-items:center; padding:.4rem 1rem; cursor:pointer; font-weight:700; }
 .igk-collection summary:focus-visible { outline:3px solid var(--igk-focus); outline-offset:2px; }
 .igk-collection .igt-sec { margin:0; padding:0 1rem 1rem; border:0; background:none; box-shadow:none; }
-.igk-collection button { min-height:44px; margin:4px 6px 0 0; padding:.3rem .8rem; border:1px solid #8a9cae; border-radius:10px; background:#fff; color:var(--igk-navy); font:600 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
+.igk-collection button { min-height:44px; margin:4px 6px 0 0; padding:.3rem .8rem; border:1px solid var(--igk-control); border-radius:10px; background:var(--igk-card); color:var(--igk-ink); font:600 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
 @media (max-width: 900px) {
   .igk-head { grid-template-columns:minmax(0,1fr); align-items:start; }
   .igk-tools { justify-items:stretch; }
   .igk-para { text-align:left; }
   .igk-search input { width:100%; }
-  .igk-start.igk-grid { grid-template-columns:repeat(2,minmax(0,1fr)); overflow:visible; padding-bottom:0; }
-  .igk-start .igk-item { scroll-snap-align:none; }
-  .igk-chips { flex-wrap:nowrap; overflow-x:auto; width:100%; padding-bottom:4px; }
-  .igk-chip { flex:none; }
+  .igk-start.igk-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+  /* Los filtros de familia dejan de ser un carrusel y pasan a envolverse.
+     Probado en navegador, que es lo que pedía Astra: con `overflow-x:auto` los
+     seis chips eran alcanzables con el teclado, pero al enfocar «Código y
+     bloques» el navegador NO desplazaba la fila —Chromium solo desplaza cuando
+     el elemento queda entero fuera, y ese quedaba a medias— y el chip se veía
+     cortado a 50 px del borde. Eso es un fallo de WCAG 2.2 AA 2.4.11, foco no
+     oscurecido, y no hay forma de arreglarlo solo con CSS manteniendo el
+     carrusel: `scroll-padding` no llega, y el ajuste por `scroll-snap` no se
+     dispara al enfocar.
+
+     Envolviéndolos se acaba el problema y de paso la pregunta de la affordance:
+     no hay nada oculto que anunciar. Cuesta una segunda fila en el móvil, que
+     es barato al lado de un control que se ve a medias. Los segmentos de edad ya
+     se envolvían así desde antes. */
+  .igk-chips { flex-wrap:wrap; overflow:visible; width:100%; }
 }
 @media (max-width: 560px) {
   body[data-ig-taller-launcher] main.igk { --igk-gutter:12px; padding-top:10px; }
+  /* Las tres sugerencias siguen en carrusel, pero cada tarjeta pasa a ocupar el
+     ancho entero. El 78 % de antes dejaba asomar la siguiente —buena pista de
+     que hay más— al precio de un fallo real: al enfocar la tarjeta del medio con
+     el teclado, el navegador no desplazaba, porque solo desplaza cuando el
+     elemento queda entero fuera, y se quedaba cortada 162 px a 390 y 232 a 320.
+     Es WCAG 2.2 AA 2.4.11, foco no oscurecido, y encima en el elemento más
+     visible de la primera pantalla. Con el ancho completo, una tarjeta o está
+     dentro o está fuera, así que al enfocarla entra entera y el ajuste la deja
+     cuadrada.
+
+     La pista de que hay más la dan ahora las sombras de los cantos, que
+     aparecen solo cuando queda contenido a ese lado. */
+  /* Las tres sugerencias dejan de ser carrusel en el móvil y pasan a la misma
+     rejilla de dos columnas que usa el resto del lanzador: dos arriba, una
+     debajo, las tres a la vista.
+
+     Por qué, con lo medido. El carrusel con asomo -la tarjeta al 78 %- deja ver
+     que hay más, pero al enfocar con el teclado la tarjeta del medio Chromium
+     no desplaza -solo desplaza cuando el elemento queda entero fuera, y esa
+     queda a medias-, así que se enfoca una tarjeta cortada 162 px a 390 y 232 a
+     320. Eso incumple WCAG 2.2 AA 2.4.11, foco no oscurecido, en el elemento
+     más visible de la primera pantalla.
+
+     Con la tarjeta al 100 % el foco sí queda entero -medido, sin fallos a 320,
+     390 y 560-, pero entonces no queda ni un pixel que indique que hay dos
+     tarjetas más. Intenté resolverlo con sombras de canto en cuatro capas y no
+     se sostiene: la tarjeta mide exactamente lo mismo que el contenedor y es
+     opaca, así que del fondo solo asoman las esquinas redondeadas. Medido
+     diferenciando fotogramas con y sin las capas: la pista salía en la primera
+     y en la última tarjeta -donde no sigue nada- y desaparecía en la del medio
+     -donde sí-, justo al revés, y con 11 de 255 de diferencia solo en las
+     esquinas. Contenido escondido sin indicación es además un problema de
+     W3C COGA, no solo de gusto.
+
+     La rejilla no tiene ninguno de los dos problemas porque no esconde nada.
+     Cuesta que las sugerencias dejen de verse más grandes que el resto en el
+     móvil, y eso es dirección visual, que no es mía: queda anotado para Astra
+     con la medida al lado. */
+  .igk-start.igk-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
   .igk-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
-  .igk-start.igk-grid { grid-template-columns:minmax(0,1fr); }
   .igk-text { padding:8px 10px 10px; }
   .igk-name { font-size:.95rem; }
   .igk-desc { font-size:.82rem; }
@@ -101,54 +193,54 @@ html[data-ig-motion="off"] .igk-tile { transition:none; transform:none; }
 .igk-p { display:flex; }
 .igk-p-btn {
   display:grid; grid-template-rows:auto 1fr auto; gap:.55rem; width:100%; padding:0 0 .8rem;
-  border:1px solid #c4d3e2; border-radius:16px; background:#fff; color:#17395c; cursor:pointer; text-align:left;
+  border:1px solid var(--igk-line); border-radius:16px; background:var(--igk-card); color:var(--igk-ink); cursor:pointer; text-align:left;
   overflow:hidden; transition:border-color .12s, box-shadow .12s, transform .12s;
 }
-.igk-p-btn:hover { border-color:#17395c; box-shadow:0 6px 18px rgba(23,57,92,.13); }
-.igk-p-btn:focus-visible { outline:3px solid #5a49a8; outline-offset:3px; }
-.igk-p-art { display:block; background:var(--igk-bg,#eef3f8); }
+.igk-p-btn:hover { border-color:var(--igk-control); box-shadow:var(--ig-shadow-lifted); }
+.igk-p-btn:focus-visible { outline:3px solid var(--ig-focus); outline-offset:3px; }
+.igk-p-art { display:block; background:var(--igk-bg,var(--ig-bg-surface-soft)); }
 .igk-p-svg { display:block; width:100%; height:auto; aspect-ratio:200/120; }
 .igk-p-text { display:grid; gap:.2rem; padding:0 .95rem; }
 .igk-p-name { font:700 1.12rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif; }
-.igk-p-desc { font:400 .94rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif; color:#3c4c60; }
-.igk-p-n { font:600 .84rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:#4a5b70; }
+.igk-p-desc { font:400 .94rem/1.45 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igk-soft); }
+.igk-p-n { font:600 .84rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igk-soft); }
 .igk-p-btn .igk-cta { display:inline-block; align-self:start; margin:0 .95rem; padding:0; background:none; border:0; border-radius:0;
-  font:700 .92rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; color:#155078; }
+  font:700 .92rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igk-link); }
 
 /* Seguir donde estabas */
 .igk-continue { margin:1.2rem 0 0; }
 .igk-cont-slot { margin:.4rem 0 0; }
 .igk-cont-link {
   display:inline-flex; align-items:center; min-height:44px; padding:.45rem .9rem; gap:.4rem;
-  border:1px solid #17395c; border-radius:12px; background:#17395c; color:#fff; text-decoration:none;
+  border:1px solid var(--igk-navy); border-radius:12px; background:var(--igk-navy); color:var(--igk-navy-fg); text-decoration:none;
   font:700 .95rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;
 }
-.igk-cont-link:hover { background:#0f2a45; }
-.igk-cont-link:focus-visible { outline:3px solid #5a49a8; outline-offset:3px; }
+.igk-cont-link:hover { background:var(--igk-navy); filter:brightness(.88); }
+.igk-cont-link:focus-visible { outline:3px solid var(--ig-focus); outline-offset:3px; }
 
 /* Acciones de cabecera */
 .igk-actions { display:flex; flex-wrap:wrap; gap:.6rem; align-items:end; margin-top:.5rem; }
 .igk-all-btn {
-  min-height:44px; padding:.45rem .9rem; border:1px solid #17395c; border-radius:12px; background:#fff; color:#17395c;
+  min-height:44px; padding:.45rem .9rem; border:1px solid var(--igk-navy); border-radius:12px; background:var(--igk-card); color:var(--igk-ink);
   font:700 .95rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer;
 }
-.igk-all-btn:hover { background:#eaf1f8; }
-.igk-all-btn:focus-visible { outline:3px solid #5a49a8; outline-offset:3px; }
+.igk-all-btn:hover { background:var(--ig-button-secondary-bg); }
+.igk-all-btn:focus-visible { outline:3px solid var(--ig-focus); outline-offset:3px; }
 
 /* «Todos los estudios» como hoja/diálogo */
 .igk-dialog {
   width:min(76rem,calc(100vw - 2rem)); max-width:none; max-height:calc(100svh - 2rem); padding:0;
-  border:1px solid #c4d3e2; border-radius:18px; background:#fff; color:#17395c; overflow:auto;
+  border:1px solid var(--igk-line); border-radius:18px; background:var(--igk-card); color:var(--igk-ink); overflow:auto;
 }
 .igk-dialog::backdrop { background:rgb(14 29 53 / .45); }
-.igk-dialog-head { position:sticky; top:0; z-index:2; display:flex; gap:.7rem; align-items:end; justify-content:space-between; padding:.6rem .8rem .5rem; background:#fff; border-bottom:1px solid #e2eaf2; }
+.igk-dialog-head { position:sticky; top:0; z-index:2; display:flex; gap:.7rem; align-items:end; justify-content:space-between; padding:.6rem .8rem .5rem; background:var(--igk-card); border-bottom:1px solid var(--igk-line); }
 .igk-dialog-head .igk-search { flex:1 1 20rem; min-width:0; }
 .igk-dialog-close {
-  min-width:44px; min-height:44px; border:1px solid #c4d3e2; border-radius:12px; background:#fff; color:#17395c;
+  min-width:44px; min-height:44px; border:1px solid var(--igk-line); border-radius:12px; background:var(--igk-card); color:var(--igk-ink);
   font-size:1.4rem; line-height:1; cursor:pointer;
 }
-.igk-dialog-close:hover { background:#eaf1f8; }
-.igk-dialog-close:focus-visible { outline:3px solid #5a49a8; outline-offset:3px; }
+.igk-dialog-close:hover { background:var(--ig-button-secondary-bg); }
+.igk-dialog-close:focus-visible { outline:3px solid var(--ig-focus); outline-offset:3px; }
 .igk-all.igk-all-in-dialog { padding:0 1rem 1.2rem; }
 @media (max-width:700px) {
   .igk-dialog { width:100vw; max-width:100vw; height:100svh; max-height:100svh; margin:0; border-radius:0; border:0; }
@@ -171,6 +263,16 @@ html[data-ig-motion="off"] .igk-tile { transition:none; transform:none; }
   body[data-ig-taller-launcher] .igk-start .igk-art-svg { height:100%; object-fit:cover; }
   body[data-ig-taller-launcher] .igk-start { grid-template-columns:repeat(3,minmax(0,1fr)); max-width:120rem; }
 }
+
+/* ---------- R54 · escenas y variante de infancia ---------- */
+.igk-art-child { display:none; }
+main.igk[data-stage="infancia"] .igk-art-2 .igk-art-svg:not(.igk-art-child),
+main.igk[data-stage="childhood"] .igk-art-2 .igk-art-svg:not(.igk-art-child) { display:none; }
+main.igk[data-stage="infancia"] .igk-art-2 .igk-art-child,
+main.igk[data-stage="childhood"] .igk-art-2 .igk-art-child { display:block; }
+
+/* Escenas rasterizadas (R54): ocupan la tarjeta sin deformarse. */
+.igk-art-rica { object-fit:cover; background:var(--igk-bg,var(--ig-bg-surface-soft)); }
 
 /* R67 Aura · Workshop chrome consumes the same global UI tokens as Iris Green.
    Artwork keeps its own palette; cards/controls/sheets do not. */
@@ -206,3 +308,11 @@ body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-seg,.igk-chip,.igk-colle
 body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-tile,.igk-p-btn,.igk-collection){
   box-shadow:none;
 }
+
+main.igk[data-stage="AGE_0_12"] .igk-art-2 .igk-art-svg:not(.igk-art-child){display:none}
+main.igk[data-stage="AGE_0_12"] .igk-art-2 .igk-art-child{display:block}
+
+/* Keep card text readable in every interaction state; artwork is unchanged. */
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important;box-shadow:none!important}
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) :is(.igk-name,.igk-cta){color:var(--ig-text)!important}
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) .igk-desc{color:var(--ig-text-muted)!important}
