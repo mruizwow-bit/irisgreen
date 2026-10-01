@@ -323,3 +323,16 @@ Acumulado verificado: 21 textos (17 en publicaciones propias IG, 3 externos IG, 
 Programación Metricool de hoy comprobada: FB385546537 a10:00 e IG383972701 a17:00 Europe/Madrid; ambas PENDING, automáticas, no borrador, dos imágenes y textos alternativos. Pendiente verificar publicación real tras hora prevista. No duplicar.
 
 Los informes contienen enlaces por comentario y revisiones individuales más recientes que SEGUIDOS_SOCIAL.csv. Consultarlos antes de volver a contactar. Autismo España/Itinera, AlfaSAAC/formación y ADHD UK/congreso ya tienen comentarios: no repetir. Sandra sin nueva publicación posterior al último post atendido. Nuevos comentarios en BDA, Autism West Midlands, Mencap y Dan. ConecTEA nueva reacción, Autismo Madrid respuesta recibida atendida con reacción. Ciclo diario parcial; sin PASS ni funcionamiento continuo fuera de sesión.
+
+
+## Continuidad · 01/10/2026 · tanda 3
+
+Informe: `INFORMES/AGORA_CONTINUIDAD_20261001_TANDA3.md`.
+
+14 cuentas revisadas en esta tanda (11 recientes + Danielle, Caty y Lea). Tres textos nuevos verificados: Autistica/Rachel y Autismo Sevilla/museo en IG, Plena Inclusión Madrid/feminismo en FB. Dos likes FB confirmados: Fundación Miradas/libro y Autismo Sevilla/museo. Lea ya comentada ayer; no duplicar.
+
+Acumulado de recuperación y continuidad: **24 textos (17 propios IG, 5 externos IG, 2 externos FB), 12 reacciones (8 IG, 4 FB)**. Sin follows ni bajas nuevas.
+
+**21/21 relaciones nuevas del 30/09 revisadas el 01/10 (10 IG + 11 FB)** entre las tres tandas. No equivale a 21 comentarios nuevos ni reciprocidad general. NAS Facebook sí muestra reacción del autor al comentario previo. Informe contiene registro individual y supera la fecha de revisión del CSV aún sin consolidar. Próxima revisión de novedades 02/10 y estratégica 05/10, sin bajas automáticas.
+
+Rotación de fieles parcial; tres identidades históricas siguen pendientes. Verificar publicación real de campaña tras las ventanas de 10:00 FB y 17:00 IG Europe/Madrid. Ciclo diario parcial, sin PASS ni actividad fuera de sesión presumida.
