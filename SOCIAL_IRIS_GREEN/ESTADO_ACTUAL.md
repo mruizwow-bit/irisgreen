@@ -372,3 +372,14 @@ Consolidación posterior:24fechas de revisión actualizadas en FIELES_INSTAGRAM_
 
 ## Continuación · 01/10/2026 · primeros contactos
 Acumulado vigente42textos (19propiosIG+17externosIG+6externosFB),16reacciones confirmadas,1altaIG. Cobertura24/114 y Comcare adicional, pendientes29IG+29FB altas. Nuevos comentarios a Jacob, Natalie y Dyspraxia Ireland registrados con próxima revisión02/10. Sin follow: criba recurrente aún insuficiente. Motheroo, AuthentiKids y Shelly respondieron con cierres amables; no añadir texto. Intentos de like sin cambio confirmado no cuentan; cierres pendientes de reacción comprobada. Jorge dio like al comentario externo. Facebook campaña sin comentarios en nueva revisión, sin duplicar; IG17:00 pendiente. Detalle en informe de tarde. SinPASS ni ejecución futura presumida.
+
+
+## Formación entregada y campaña comprobada · 01/10/2026 · después de17:00 Europe/Madrid
+
+Instagram campaña publicada y verificada públicamente: https://www.instagram.com/p/Dd9MA-HlF_5/?img_index=2 . Comprobados texto aprobado ES/EN, ambas imágenes en orden y ambos textos alternativos. Primera revisión alrededor de17:05 sin comentarios ni likes visibles. No duplicar. Facebook ya recuperada; error de token Metricool no resuelto.
+
+Formación consolidada en MEMORIA/APRENDIZAJE_AGORA_20261001.md (commit b1f932324090fb61ca53fb1d0f6374f4365eb68f), Word editable de7páginas y ZIP con8fuentes originales. Identidad y dependencia funcional de Brújula contrastadas con organigrama vigente; menciones históricas a Aura distinguidas. No afirmar certificación externa ni prácticas/examen completos sin evidencia.
+
+Criba adicional sin altas: Espacio TDAH, varias piezas de perfil y DdMT7PjjtQn: solicitudes legítimas ORBITA, conversación contextual recurrente aún no verificada. DyspraxichelpFB acceso parcial con carga demorada, no inferir inactividad. Tourette Association of AmericaFB tres piezas recientes: comentarios escasos en muestra, no respuestas personales recurrentes comprobadas; mantener pendiente. Tourette AllianceFB varias piezas observadas, fechas e hilos aún incompletos, sin alta. GlenCooney/this.tourettes.guyIG perfil y DdHP7xJhEsz del10septiembre:45likes y sin comentarios visibles en hilo abierto; otras piezas vistas en perfil, criba no completada. Sin nuevos follows, comentarios ni reacciones en este corte.
+
+Contadores conservados:42textos (19propiosIG+17externosIG+6externosFB),16reacciones,1altaIG;24/114fieles revisados másComcare. Pendientes29IG+29FB altas. Campaña IG deja de estar pendiente. Ciclo diario parcial, sinPASS ni trabajo fuera de sesión presumido.
