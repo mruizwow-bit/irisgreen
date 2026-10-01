@@ -649,3 +649,164 @@ Motor puede hacer runtime reportable; Vigía conserva observabilidad/privacidad/
 
 Marcador:
 `MOTOR_COMPATIBILITY_FAILURE_INJECTION_STUDIED_R05`.
+
+
+---
+
+## Ampliación de aprendizaje · R06 · determinismo, replay y relojes
+
+### Tiempo
+
+`performance.now()` es el reloj monotónico de referencia para medición/simulación en navegador.
+
+No usar `Date.now()` para física/frame timing.
+
+### Simulación
+
+Separar:
+- lógica;
+- render;
+- efectos;
+- reloj.
+
+Fixed timestep cuando importa reproducibilidad.
+Variable timestep cuando basta animación visual.
+
+Proteger contra spiral of death con:
+- max delta;
+- max catch-up steps;
+- background policy.
+
+### Determinismo/replay
+
+Para reproducir:
+```
+engineVersion
+initialState
+seed
+inputs
+ticks/timestamps
+capabilities
+locale
+```
+
+No registrar más datos de los necesarios.
+
+### Undo
+
+Elegir snapshots vs commands/diffs según tamaño y semántica.
+
+No guardar un snapshot enorme por cada `pointermove`.
+
+### Transferables
+
+Transferir un recurso cambia ownership.
+El sender puede quedar con buffer detached.
+
+### Media clocks
+
+- vídeo: `requestVideoFrameCallback()`;
+- audio: `AudioContext.currentTime` + `getOutputTimestamp()`;
+- UI: rAF / performance clock.
+
+No forzar un reloj único para todos.
+
+Marcador:
+`MOTOR_DETERMINISM_REPLAY_MEDIA_CLOCKS_STUDIED_R06`.
+
+---
+
+## Ampliación de aprendizaje · R07 · main thread y soak
+
+### Background
+
+rAF y timers pueden pausarse/throttlearse ocultos.
+
+Cada motor define:
+- pause;
+- logical continue;
+- suspend resource;
+- reconcile on return.
+
+### Scheduling
+
+`navigator.scheduling.isInputPending()` figura deprecated.
+
+No se añade a código nuevo.
+
+Scheduler moderno:
+- útil;
+- todavía limitado;
+- necesita fallback.
+
+### Presupuesto
+
+No asumir 16.67 ms universal.
+
+120/144 Hz dejan menos tiempo de frame.
+
+### Worker pool
+
+`hardwareConcurrency` es heurística, no orden de crear N workers.
+
+### Audio
+
+AudioContext debe iniciar/resumir desde user activation cuando la política lo exige.
+
+### Soak
+
+Pruebas prolongadas deben detectar:
+- listeners;
+- memory drift;
+- timers;
+- workers;
+- GPU;
+- audio;
+- pending work.
+
+Marcador:
+`MOTOR_MAIN_THREAD_SOAK_ADAPTIVE_RUNTIME_STUDIED_R07`.
+
+---
+
+## Ampliación de aprendizaje · R08 · componentes y foco
+
+### Custom Elements
+
+Lifecycle:
+- connected;
+- disconnected;
+- adopted;
+- attribute changed;
+- state-preserving move cuando aplica.
+
+Mount/unmount debe ser idempotente.
+
+### Shadow DOM
+
+Encapsula, pero añade complejidad de:
+- focus;
+- event retargeting;
+- testing;
+- styling/a11y.
+
+No usar por estética arquitectónica.
+
+### ElementInternals
+
+Permite que controles custom participen mejor en formularios y accesibilidad.
+
+### Dialog / inert / Popover
+
+Preferir primitivas nativas:
+- modal → `<dialog>.showModal()`;
+- contenido realmente desactivado → `inert`;
+- overlay ligero → Popover API cuando encaja.
+
+Popover API = Baseline 2025 newly available.
+
+Regla:
+**runtime sofisticado no justifica reinventar comportamiento que HTML ya resuelve.**
+
+Marcador:
+`MOTOR_COMPONENT_LIFECYCLE_FOCUS_TOP_LAYER_STUDIED_R08`.
