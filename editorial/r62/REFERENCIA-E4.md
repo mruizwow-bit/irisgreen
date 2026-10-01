@@ -1,0 +1,229 @@
+# Referencia E4 de Juegos · medida sobre P01
+
+**Estado:** `R62_P01_HABITACION_E4_HUMAN_APPROVED`
+**Fecha:** 28/09/2026
+**Ámbito:** los pilotos de Juegos y cualquier superficie que la norma visual de
+septiembre de 2026 obligue a rebenchmarkear.
+
+Pregunté tres veces contra qué referencia medíamos. La aprobación de P01 la
+contesta: **la referencia es P01**. Este documento la hace medible, porque una
+referencia que sólo existe como «mira la lámina» se interpreta distinto cada
+vez y no converge.
+
+Fuente: `scripts/r62_p01_render.py`, rama
+`claude/r62-p01-render-premium-20260928`. Los números de abajo están sacados
+del script, no de memoria.
+
+---
+
+## Lo que E4 significa en concreto
+
+### Luz
+
+| Rasgo | En P01 |
+| --- | --- |
+| Clave direccional | una sola, normalizada `(-0.46, -0.30, 0.84)` |
+| Especular | Blinn-Phong con exponente derivado de la rugosidad por material |
+| Ambiente | hemisférico: cielo frío arriba, rebote cálido abajo, modulado por oclusión |
+| Sombra | marcha de rayo en espacio de pantalla, **4 direcciones promediadas** para penumbra que se abre con la distancia; 58 pasos crecientes; media resolución |
+| Oclusión | por horizonte, 12 direcciones, 5 radios |
+| Fuente secundaria | derrame desde el vano, caída `1/(1+(d/3,2)²)`, tono más cálido que la clave |
+| Rebote | término cálido del suelo hacia las caras que miran abajo |
+
+**El listón:** una fuente comprensible, sombra con penumbra, contacto, oclusión
+y al menos un rebote o derrame. Una direccional dura y sola **no llega a E4**:
+así era P01 en la vuelta que se rechazó.
+
+### Material
+
+| Rasgo | En P01 |
+| --- | --- |
+| Textura | fBm procedural propio, dos escalas, proyección triplanar por coordenadas de mundo |
+| Estratos | función del eje vertical deformada por el ruido |
+| Despiece | por material: muro a soga 0,98 × 0,44 m; suelo a losa 1,00 m a junta corrida |
+| Junta | 28 mm, rehundida: oscurece el albedo **y gira la normal** a cada lado |
+| Variación por pieza | hash determinista del índice de sillar, ±10 % de tono |
+| Desgaste de canto | 85 mm **multiplicado por ruido**, así unos cantos están rotos y otros no |
+| Bisel | la normal se inclina hacia fuera cerca de la arista |
+| Manchas | humedad que sube hasta 2,1 m, más veladura general |
+
+**El listón:** ninguna superficie que represente materia puede quedar resuelta
+con color plano, y ninguna imperfección puede ser uniforme. Si el desgaste es
+igual en todas las piezas, se lee como patrón y no como uso.
+
+### Arte y chrome dentro de la misma lámina
+
+Una lámina representa una pantalla entera, y una pantalla tiene dos regiones
+que no obedecen a la misma regla:
+
+| | De dónde sale el color |
+| --- | --- |
+| **Stage** · la sala, su piedra, su luz, su vacío | de la escena. La §2 lo permite y la §6 dice que el arte no cambia con el tema |
+| **Chrome** · título, entradilla, teclas, selector, crédito | de los tokens, y cambia con el tema |
+
+En P01 el chrome ocupa dos bandas —104 px arriba y 120 abajo en escritorio,
+62 y 150 en móvil— pintadas con `--ig-bg-page` y separadas del stage por una
+línea de `--ig-separator`. Consecuencia buscada: **en tema claro la lámina
+sigue siendo oscura**, igual que ya hace Rincón por la §8.
+
+Dos errores que cometí aquí y que el siguiente piloto no necesita repetir:
+
+1. **Atar el vacío de la escena al fondo de página.** No funciona ni cuando
+   quieres que funcione: la exposición y el tonemap se aplican también al
+   fondo, así que `#0B1A2B` salía convertido en un gris azulado que no
+   coincidía con el fondo real y dejaba costura en el borde.
+2. **Dejar texto de interfaz cayendo dentro del stage.** El rótulo del
+   selector quedaba sobre la piedra. Si el texto es chrome, va en la banda; si
+   tiene que ir encima de la obra —los rótulos de los vanos, la cota— lleva
+   placa.
+
+La regla corta: **un token garantiza contraste contra el fondo de SU tema,
+nunca contra la obra que haya debajo.**
+
+Medido en esta lámina:
+
+| | Claro | Navy |
+| --- | --- | --- |
+| Título sobre su banda | 11,11:1 | 15,82:1 |
+| Secundario sobre su banda | 7,46:1 | 11,74:1 |
+| Rótulo con placa sobre la piedra | 6,61:1 | 7,48:1 |
+| El mismo rótulo sin placa | **1,17:1** | **2,82:1** |
+| Cubo del selector, sin seleccionar | 3,45:1 | 5,67:1 |
+| Cubo del selector, seleccionado | 6,68:1 | 9,71:1 |
+
+El anillo de latón que marcaba el seleccionado daba 1,48:1 sobre la banda
+clara. El latón es el material del suelo dentro de la escena; el selector es un
+control, así que pasa a acento. Es el mismo criterio de la tabla, aplicado a un
+color que parecía obra y era interfaz.
+
+### Composición y móvil
+
+**Dos composiciones, no una escalada.** Es la parte que fallé y que más conviene
+que quede escrita.
+
+| | Escritorio | Móvil |
+| --- | --- | --- |
+| Lienzo | 1180 × 880 | 390 × 730, vertical |
+| Encuadre | bandas de 104 arriba y 120 abajo | bandas de 62 y 150; margen casi nulo |
+| Interfaz | miniaturas de 19 px, teclas dibujadas | objetivos de **60 px**, texto táctil |
+| Detalle secundario | crédito de lámina | se oculta |
+
+El §12 permite simplificar, ocultar detalle y cambiar disposición. Lo que
+prohíbe —y es el error concreto que cometí— es servir la composición de
+escritorio encogida.
+
+### Entrega
+
+- Raster con la materia y la luz; **texto e interfaz en vector encima**, para
+  que escale y lo lea un lector de pantalla.
+- SVG autocontenido con el raster incrustado como WebP en base64.
+- Pesos de referencia, y conviene dar los dos porque base64 infla un tercio:
+  el raster WebP pesa **46 KB** en escritorio y **26 KB** en móvil; el SVG ya
+  autocontenido, **112 KB** y **65 KB**. Escribí aquí sólo la primera cifra al
+  redactar la referencia, junto a la frase del SVG, y así leída daba a entender
+  que una lámina de 112 KB se pasaba del presupuesto. No se pasa: es la misma
+  lámina contada de otra manera.
+- Determinista: semilla fija, sin reloj. El mismo escenario da el mismo píxel,
+  así que una lámina se puede regenerar y comparar.
+
+---
+
+## Lo que NO forma parte de la referencia
+
+El §10 de la norma dice que los productos comparten **calidad, no plantilla**,
+y esto importa para no convertir Iris Green en un renderizador con pieles.
+
+No son referencia: la paleta cálida de caliza, la proyección axonométrica, la
+arquitectura de sillería, el latón como acento, ni el vacío oscuro de fondo.
+Todo eso es el lenguaje de P01. El Terrario será húmedo y frontal; el Rincón,
+sensorial; Intereses, mundos temáticos.
+
+Lo que se hereda es el **nivel de exigencia** de las tres tablas de arriba.
+
+---
+
+## Cómo medir un piloto contra esta referencia
+
+Las diez preguntas del §15 siguen mandando y siguen exigiendo revisión humana.
+Estas cinco son las que en P01 marcaron la diferencia entre rechazo y
+aprobación, y por eso conviene mirarlas primero:
+
+1. ¿La sombra tiene penumbra, o es un canto duro?
+2. ¿Hay alguna imperfección **desigual** —desgaste, mancha, variación pieza a
+   pieza—, o toda la irregularidad es uniforme?
+3. ¿Alguna superficie grande queda resuelta con color plano?
+4. ¿Existe una segunda fuente —derrame, rebote— o sólo la clave?
+5. A 390 px, ¿es una composición propia o la de escritorio encogida?
+
+Un «no» en cualquiera de las cinco fue, en P01, motivo de rework.
+
+---
+
+## La deuda del motor, saldada por P02
+
+Aquí decía que el motor seguía dentro del script de P01 y que **el reparto
+correcto lo diría el segundo piloto que lo usara**. P02 ya lo ha usado, así que
+esto es lo que dijo.
+
+**Motor** (`scripts/ig_render_e4.py`): rasterizado diferido, muestreo de
+textura, sombra, oclusión, atmósfera, composición y capa de chrome.
+**Escena** (cada piloto): cámara, tabla de materiales, geometría, luz y vacío.
+
+El reparto se decide en la **cámara**, que era justo lo que no se veía con un
+solo piloto. P01 es axonométrico: la profundidad de un punto es `x+y+z` y un
+rectángulo alineado se proyecta como paralelogramo. P02 mira de frente a través
+del cristal y su profundidad es la coordenada que se aleja. Las dos cumplen el
+mismo contrato —proyectar, ordenar en profundidad y decir hacia dónde corre la
+luz en pantalla—, así que el rasterizador no necesita saber cuál tiene delante.
+
+Tres cosas se añadieron al motor porque P02 las necesitaba, no por diseño
+previo:
+
+1. **Rasterizado de relieve.** Una celda de terreno con las cuatro esquinas a
+   distinta altura no es plana, así que la bilineal deja de invertirse con un
+   2×2. Con cámara frontal ortográfica sale más corto marchar en profundidad.
+2. **Recorte y dibujo por pieza** (`alpha` y `modula`). Con eso una hoja es un
+   cuadrilátero recortado por su perfil y con su nervio dibujado, sin teselar.
+3. **Curva de contraste** en la composición. El tonemap que sirve a una sala de
+   piedra con una entrada de luz fuerte deja una escena de sombra entera en una
+   banda estrecha de medios.
+
+**Condición que se respetó:** P01 está `HUMAN_APPROVED`, así que la extracción
+sólo valía si sus cuatro láminas salían idénticas byte a byte. Lo comprueba
+`scripts/test_e4_motor_identico.py`, que compara contra los archivos de la rama
+y no contra hashes escritos en el test.
+
+## Lo que P02 añade a la lista de medir
+
+Dos preguntas más, las dos por errores concretos que costaron vueltas:
+
+6. ¿La textura se estira en las superficies inclinadas? Muestrear un terreno
+   por (x, y) funciona mientras sea tendido; en una falda salen chorreones.
+7. ¿El vector de vista es el que de verdad tiene la cámara? En P02 tomarlo por
+   «de frente» a secas puso el Fresnel del agua a 1 en toda la lámina.
+
+## Lo que P03 añade al motor
+
+**La cámara `Frontal` acepta un sesgo lateral (`skew`).** Sin él, la proyección
+es `x → ox + x·u` y la profundidad no toca la horizontal; la consecuencia es
+que **cualquier plano de x constante proyecta sobre una recta**. Un testero, un
+costado, el canto de cualquier cosa orientada en profundidad: dibujados y
+matemáticamente invisibles. Una sala con esa cámara se lee como alzado por
+geometría, y no hay iluminación que lo arregle.
+
+Con `skew = 0.26` los testeros se abren y la sala tiene retorno. Por defecto
+vale `0`, que es lo que P01 y P02 aprobados tienen dibujado, y
+`test_e4_motor_identico.py` sigue devolviendo las cuatro láminas de P01
+idénticas byte a byte. Entra también en el vector de vista, que pasa a ser
+`normalizar(skew, -1, rise)`: es la misma corrección que ya hubo que hacer al
+dar por bueno `(0,-1,0)`.
+
+**Regla que deja P03:** antes de acusar a la luz de no dar volumen, comprobar
+si la geometría que debería dar ese volumen es visible con la cámara que hay.
+Aquí se perdieron dos intentos iluminando una sala cuyos testeros no podían
+verse.
+
+**Alcance de la marcha de sombras.** Las sombras en espacio de pantalla tienen
+alcance finito en el mundo, del orden de 3,5 unidades. Si el emisor y el
+receptor están más lejos que eso, no hay sombra y no hay aviso: sale una imagen
+plausible y muda. En P03 costó un muro entero a 4,2 de profundidad.

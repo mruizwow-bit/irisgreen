@@ -1,0 +1,18 @@
+.pecera{max-width:1000px;margin-inline:auto;color:var(--ig-text)}
+.pecera h2{margin:.5rem 0;font-size:1.6rem}
+.pecera p{color:var(--ig-text-muted)}
+.pecera-frame{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:var(--ig-bg-surface);border:1px solid var(--ig-separator)}
+.pecera-frame img,.pecera-frame video{display:block;width:100%;height:100%;object-fit:cover}
+.pecera-frame video{position:absolute;inset:0}
+.pecera-frame [hidden]{display:none!important}
+.pecera-controls{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin-top:14px}
+.pecera-controls button,.pecera-volume{min-height:44px;border-radius:24px;padding:.65rem 1rem;border:1px solid var(--ig-border-control);background:var(--ig-bg-surface);color:var(--ig-text);font:inherit}
+.pecera-volume{display:flex;gap:.6rem;align-items:center}
+.pecera-volume input{width:110px;accent-color:var(--ig-accent)}
+.pecera-controls button[aria-pressed=true]{background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg)}
+.pecera-controls button:disabled{opacity:.6;cursor:default}
+.pecera-status{min-height:1.6em;text-align:center;font-size:.9rem}
+.pecera:fullscreen{overflow:auto;padding:1rem;background:var(--ig-bg-page);max-width:none}
+.pecera:fullscreen .pecera-frame{max-height:70vh;width:auto;margin:auto}
+@media(max-width:520px){.pecera-frame{aspect-ratio:4/5}.pecera-controls{gap:8px}.pecera-controls [data-pecera=start]{width:100%}}
+@media(max-width:380px){.pecera-controls>*{flex:1 1 auto}.pecera-volume{justify-content:center}}
