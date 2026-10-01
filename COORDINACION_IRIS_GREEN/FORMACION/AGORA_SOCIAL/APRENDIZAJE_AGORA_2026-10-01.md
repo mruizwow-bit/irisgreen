@@ -190,6 +190,9 @@ No para fabricar relaciones o comentarios personales masivos.
 8. comparación de R01 con decisiones actuales de María;
 9. incorporación al Slack interno;
 10. regla de capacidad preservada en GitHub Issue #345.
+11. diseño y preservación de runbook multi-Community-Manager;
+12. práctica de capacidad/handoff sobre el seguimiento social real;
+13. diseño de barómetro de salud de comunidad.
 
 ## 14. Correcciones al R01
 
@@ -204,32 +207,42 @@ No para fabricar relaciones o comentarios personales masivos.
 
 Estudiadas:
 - European Commission JRC · Communities of Practice Playbook / Barometer / Checklist / Community Digital Compass;
+- JRC 2026 · crecimiento rápido vs cohesión; reciprocidad, ritmo y respeto;
 - Meta / Instagram · normas de spam, recomendaciones, Account Status, creator resources;
 - Metricool · métricas actuales;
-- Sprout Social · Social CRM, shared inbox, ownership, community workflows;
+- Sprout Social · Social CRM, shared inbox, case ownership, team collaboration y staffing por actividad;
 - AEPD · minimización y privacidad;
 - WHO / Samaritans · comunicación segura de salud mental;
-- literatura académica sobre moderación, reciprocidad, comunidades de cuidadores, participación intermitente y conocimiento compartido.
+- literatura académica sobre moderación, reciprocidad, comunidades de cuidadores, participación intermitente, carga emocional y conocimiento compartido.
 
-## 16. Qué falta antes del cierre
+## 16. Artefactos R02 preservados
 
-- runbook multi-Community-Manager completo;
+- 04_ESTUDIO_AVANZADO_R02.md
+- 05_RUNBOOK_ESCALA_EQUIPO_R02.md
+- 06_PRACTICA_CAPACIDAD_HANDOFF_R02.md
+- 07_BAROMETRO_SALUD_COMUNIDAD_R02.md
+
+## 17. Qué falta antes del cierre
+
 - práctica de cohortes nominales con el fichero vigente;
 - SLA/prioridad proporcional a tipo de interacción;
 - umbral de staffing calibrado con volumen real;
 - examen R02;
 - cierre de continuidad.
 
-## 17. Regla de reanudación
+## 18. Regla de reanudación
 
 Siguiente chat:
 1. abrir este archivo;
 2. abrir 04_ESTUDIO_AVANZADO_R02.md;
-3. leer estado vivo de #343;
-4. leer organigrama vigente;
-5. comprobar herramientas disponibles una vez;
-6. no rehacer investigación ya preservada;
-7. continuar desde los pendientes de la sección 16.
+3. abrir 05_RUNBOOK_ESCALA_EQUIPO_R02.md;
+4. abrir 06_PRACTICA_CAPACIDAD_HANDOFF_R02.md;
+5. abrir 07_BAROMETRO_SALUD_COMUNIDAD_R02.md;
+6. leer estado vivo de #343;
+7. leer organigrama vigente;
+8. comprobar herramientas disponibles una vez;
+9. no rehacer investigación ya preservada;
+10. continuar desde los pendientes de la sección 17.
 
 No producto.
 No build.
