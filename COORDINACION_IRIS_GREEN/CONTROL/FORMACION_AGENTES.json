@@ -1,6 +1,6 @@
 {
   "schema": "iris-green-training-registry-v1",
-  "updated": "2026-09-30",
+  "updated": "2026-10-01",
   "source": "COORDINACION_IRIS_GREEN/FORMACION/00_EMPIEZA_AQUI.md",
   "items": [
     {
@@ -86,10 +86,10 @@
       "Puesto": "Voice Audio & Media Quality Engineer",
       "Jefatura": "Nexo",
       "Carpeta": "FORMACION/A6_ECO",
-      "Estado_formacion": "FOUNDATION_ADVANCED_STUDIED_PRACTICE_EVIDENCE_PRESENT",
-      "Ultimo_aprendizaje": "APRENDIZAJE_ECO_2026-09-30.md",
-      "Fecha": "2026-09-30",
-      "Pendiente_principal": "Completar real-device cross-browser mic WebRTC STT TTS y soak QA"
+      "Estado_formacion": "ADVANCED_R03_DSP_REALTIME_MOBILE_EVAL_STUDIED_PRACTICED",
+      "Ultimo_aprendizaje": "APRENDIZAJE_ECO_2026-10-01_R03.md",
+      "Fecha": "2026-10-01",
+      "Pendiente_principal": "Ejecutar real-device mic Bluetooth iOS Android WebRTC impairment STT TTS Sabik y soak QA"
     },
     {
       "Alias": "Lumen",
