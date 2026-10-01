@@ -40,7 +40,7 @@ Facebook AutisticAngle: perfil abierto para criba; evaluación aún en curso. No
 30textos verificados (18propiosIG,10externosIG,2externosFB),16reacciones(12IG,4FB),1altaIG y1publicaciónFB recuperada. Tres identidades de fieles pendientes. Instagram campaña17:00 sigue pendiente de verificación tras hora prevista. Error tokenMetricoolFB continúa; no reintentar la pieza ya recuperada.
 
 
-## Ampliación de continuidad · 01/10 · hasta 15:55 Europe/Madrid
+## Ampliación de continuidad · 01/10 · continuación
 
 Ocho textos nuevos verificados tras el corte anterior (uno propio IG, cinco externos IG y dos FB). Acumulado: **38 textos (19 propios IG, 15 externos IG, 4 externos FB), 16 reacciones y 1 follow nuevo IG**. No sumar intentos de like en el hilo de Shelly: la interfaz no confirmó el cambio.
 
@@ -55,7 +55,7 @@ Ocho textos nuevos verificados tras el corte anterior (uno propio IG, cinco exte
 - Autistic Girls Network: https://www.facebook.com/AutisticGirlsNetwork/posts/pfbid02hRvwZAvxhGKfUaK1dZcWSUjko7swxBLS1mS22N1BHE74FKAN29Uqndes2KwU1hAtl — “Thank you for spelling out the time needed and that no name or email is required 💛 Those details are helpful to know before opening a survey.” Facebook confirmó envío y texto persistente.
 
 ### Rotación
-**25/114 fieles revisados hoy**. Diez añadidos al corte de15: journey.withjenn, nickycooper.life, motheroohq, masalladelacajitaazul, weepywillowworks, amyd_mom_author, softly_heals1, addwingstoyoursoul, comcare_support_center y usha.nagavarapu. Nicky, Cajita Azul, Malou y Usha sin publicación posterior a la revisión anterior; no repetir. Amy tenía además reel nuevo Dd9ALwMRlE3, observado en perfil sin segundo comentario para no concentrar la ronda en la misma persona.
+**24/114 fieles revisados hoy, más Comcare fuera de la lista fuente**. Diez añadidos al corte de15: journey.withjenn, nickycooper.life, motheroohq, masalladelacajitaazul, weepywillowworks, amyd_mom_author, softly_heals1, addwingstoyoursoul, comcare_support_center y usha.nagavarapu. Nicky, Cajita Azul, Malou y Usha sin publicación posterior a la revisión anterior; no repetir. Amy tenía además reel nuevo Dd9ALwMRlE3, observado en perfil sin segundo comentario para no concentrar la ronda en la misma persona.
 
 Facebook: ARASAAC y AGN revisitadas y comentadas en novedades. Autistica revisada: maratón y homenaje/fondo de Steve Shirley; sin texto nuevo. Comentario previo de29/09 sobre esperas diagnósticas visible: no duplicado.
 
@@ -65,3 +65,16 @@ Facebook: ARASAAC y AGN revisitadas y comentadas en novedades. Autistica revisad
 - mx.micaringo: perfil reabierto para continuar evaluación; no contar alta ni criba terminada.
 
 Los objetivos de descubrimiento siguen pendientes:29IG+29FB. Campaña IG17:00 aún no verificada; sin PASS diario. Las tres identidades históricas pendientes siguen sin recuperarse.
+
+
+## Consolidación final de este corte
+El cruce exacto con FIELES_INSTAGRAM_114.csv da **24/114**, no25: Comcare fue visitada y comentada, pero no pertenece a la lista original de114. Se mantienen todas las interacciones y se corrige solamente la cobertura del universo. Las24fechas de revisión y las interacciones comprobadas están consolidadas en el CSV (commit7031ac2c8afbf240972e0fac5e6f431d34425a25).
+
+Mikey's Wish (facebook.com/mikeyswish), descubierto mediante búsqueda de páginas por dispraxia: varias publicaciones visibles, dos hilos abiertos íntegramente. Una respuesta personal del autor en presentación, ninguna en el segundo hilo. Sin follow hasta demostrar participación recurrente. Primer contacto registrado en CONTACTOS_SOCIAL.csv con revisión02/10:
+https://www.facebook.com/mikeyswish/posts/pfbid033EVbws7pCUwoLvPzUhBk1C2aiNA5utXmHX4rxXJSK7Xbwm2DXBiyQE46MYVkJMNEl
+“Mikey, I’m glad you included the football, your friends and your new home alongside your advocacy 💙 Congratulations to you and Katie on the house, and thank you for letting us get to know the person behind the page.”
+Facebook confirmó «Se ha enviado tu comentario» y texto persistente. No contar reciprocidad al comentario de Iris.
+
+Mica Ringo: cinco piezas recientes centradas en conflicto/acusaciones personales, sin participación ni follow. No seleccionada para esta ronda.
+
+**Acumulado actualizado:39textos (19propiosIG+15externosIG+5externosFB),16reacciones,1altaIG;24/114fieles revisados y Comcare adicional.** Objetivos de nuevas altas pendientes29IG+29FB. Campaña IG17:00 aún no comprobada públicamente. SinPASS diario.
