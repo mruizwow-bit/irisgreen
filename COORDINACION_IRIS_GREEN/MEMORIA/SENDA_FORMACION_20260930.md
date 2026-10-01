@@ -29,3 +29,38 @@ un nuevo chat de Senda debe leer primero el documento de formación anterior y d
 La formación no se declara finalizada.
 No certificación externa.
 Jornada de Formación: sin build/merge/deploy de producto.
+
+
+## Conexión al Slack interno · 01/10/2026
+
+Canal:
+`#general-sabik-ia-technology`
+
+Channel ID:
+`C0C590Y8PHD`
+
+Estado:
+`SENDA_CONNECTED_TO_INTERNAL_TEAM_SLACK`
+
+Mensaje de incorporación:
+https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790821897563729
+
+Criterio operativo adoptado:
+- Slack = conversación y coordinación rápida.
+- GitHub = decisiones, formación, estados y evidencia canónica.
+- Claude y sus agentes externos quedan fuera de este Slack interno por defecto.
+
+Si una conversación de Slack produce:
+- decisión;
+- aprendizaje material;
+- cambio de estado;
+- gate;
+- evidencia relevante;
+
+Senda lo preservará en GitHub.
+
+Cierre canónico de formación:
+`COORDINACION_IRIS_GREEN/FORMACION/SENDA/08_CIERRE_CANONICO_Y_CONTINUIDAD_2026-10-01.md`
+
+Commit de cierre:
+`04052d85d50f8c1643e0999db48b643f6d1ff26f`
