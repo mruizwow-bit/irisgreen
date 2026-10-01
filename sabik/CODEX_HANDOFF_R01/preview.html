@@ -1,0 +1,35 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Sabik layered handoff R01</title>
+<link rel="stylesheet" href="sabik-layered.css">
+<style>
+body{margin:0;background:#102f4b;color:#fff;font:16px system-ui;padding:24px}
+.wrap{max-width:1065px;margin:auto}
+.controls{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+button{padding:9px 12px;border-radius:999px;border:1px solid #7cdfff;background:#153d60;color:white}
+</style>
+<div class="wrap">
+ <div class="controls">
+  <button data-s="idle">Reposo</button>
+  <button data-s="listening">Escuchando</button>
+  <button data-s="processing">Procesando</button>
+  <button data-s="speaking">Hablando</button>
+  <button data-s="degraded">Limitado</button>
+ </div>
+ <div class="sabik-visual" data-state="idle" aria-label="Sabik: reposo">
+  <div class="halo layer"></div>
+  <img class="orbits layer" src="03_orbits_back.svg" alt="">
+  <img class="body" src="../assets/web-r01/web_presente.png" alt="">
+  <img class="core layer" src="04_core_rings.svg" alt="">
+  <img class="core layer" src="05_core_light.svg" alt="">
+  <img class="layer" src="06_particles_front.svg" alt="">
+ </div>
+</div>
+<script type="module">
+import {mountSabikVisual} from "./sabik-layered.js";
+const root=document.querySelector(".sabik-visual");
+const visual=mountSabikVisual(root);
+document.querySelectorAll("[data-s]").forEach(button=>{
+  button.addEventListener("click",()=>visual.setState(button.dataset.s));
+});
+</script>
