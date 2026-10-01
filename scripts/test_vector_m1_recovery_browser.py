@@ -133,6 +133,19 @@ async def main():
   need(mh["sw"]<=mh["cw"]+2 and mh["white"]!="nowrap",f"Home mobile title broken {mh}")
   report["home_mobile"]=mh
 
+  # Child-safe deep links: age discovery may hide the route, but the direct URL
+  # must keep the safe variant usable and must never request the full S2 body.
+  full_requests=[]
+  p.on("request",lambda req: full_requests.append(req.url) if "/assets/safety/full/" in req.url else None)
+  await p.goto(BASE+"/",wait_until="networkidle")
+  await p.evaluate("IGAudience.set('AGE_0_12')")
+  await p.goto(BASE+"/es/neurodiversidad/condiciones/anorexia-nerviosa/",wait_until="networkidle")
+  need(await p.locator("article[data-ig-s2-safe]").is_visible(),"AGE_0_12 direct S2 URL hid the safe variant")
+  need(await p.locator("body").get_attribute("data-ig-audience-blocked") is None,"AGE_0_12 direct S2 URL was page-blocked")
+  need(await p.locator("article[data-ig-s2-full]").count()==0,"Full S2 body leaked into AGE_0_12 direct URL")
+  need(len(full_requests)==0,"Full S2 asset requested in AGE_0_12 direct URL")
+  report["child_safe_deep_link"]={"safe_visible":True,"full_dom":0,"full_requests":0}
+
   await b.close()
  (OUT/"m1.json").write_text(json.dumps(report,ensure_ascii=False,indent=2)+"\n",encoding="utf-8")
  print(json.dumps({"vector_m1":"PASS","checks":len(report)},ensure_ascii=False))
