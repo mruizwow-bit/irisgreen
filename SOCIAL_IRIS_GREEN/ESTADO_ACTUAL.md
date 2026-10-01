@@ -368,3 +368,7 @@ Facebook campaña ya publicada: NO reintentarFB385546537. Integración Metricool
 
 
 Consolidación posterior:24fechas de revisión actualizadas en FIELES_INSTAGRAM_114.csv. Comcare es comunidad adicional, no fila del universo114. CONTACTOS_SOCIAL.csv actualizado para ARASAAC, AGN y nuevo contacto Mikey's Wish, este último comentado sin follow por criba aún incompleta. Próxima revisión02/10. No confundir primer comentario con alta ni respuesta del autor a otras personas con reciprocidad hacia Iris.
+
+
+## Continuación · 01/10/2026 · primeros contactos
+Acumulado vigente42textos (19propiosIG+17externosIG+6externosFB),16reacciones confirmadas,1altaIG. Cobertura24/114 y Comcare adicional, pendientes29IG+29FB altas. Nuevos comentarios a Jacob, Natalie y Dyspraxia Ireland registrados con próxima revisión02/10. Sin follow: criba recurrente aún insuficiente. Motheroo, AuthentiKids y Shelly respondieron con cierres amables; no añadir texto. Intentos de like sin cambio confirmado no cuentan; cierres pendientes de reacción comprobada. Jorge dio like al comentario externo. Facebook campaña sin comentarios en nueva revisión, sin duplicar; IG17:00 pendiente. Detalle en informe de tarde. SinPASS ni ejecución futura presumida.
