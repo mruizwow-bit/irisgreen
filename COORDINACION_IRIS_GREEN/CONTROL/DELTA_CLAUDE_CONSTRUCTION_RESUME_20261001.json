@@ -1,0 +1,23 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "CLAUDE-CONSTRUCTION-RESUME-20261001",
+  "date": "2026-10-01",
+  "issue": 355,
+  "status": "CLAUDE_CONSTRUCTION_RESUME_20261001_ACTIVE",
+  "active": [
+    "R44_A0",
+    "R68_R3_if_isolated"
+  ],
+  "queued": [
+    "R62_P04_E4"
+  ],
+  "qa_only": [
+    "R61_PECERA"
+  ],
+  "excluded": [
+    "SABIK_WEB_354"
+  ],
+  "max_parallel_construction_lanes": 2,
+  "main": false,
+  "production": false
+}
