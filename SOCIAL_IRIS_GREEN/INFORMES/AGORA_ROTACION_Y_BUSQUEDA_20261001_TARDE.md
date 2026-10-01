@@ -104,3 +104,14 @@ Reciprocidad nueva observada en notificaciones y/o hilos: Motheroo respondió180
 Facebook campaña recuperada revisada de nuevo: aún sin comentarios. No reintentar publicación Metricool con error de token. Campaña IG17:00 aún no vencida en esta revisión, pendiente verificación posterior.
 
 **Acumulado vigente:42 textos (19 propiosIG +17 externosIG +6 externosFB),16 reacciones confirmadas,1 altaIG. Cobertura24/114 fieles y Comcare adicional. Pendientes29IG+29FB altas, tres identidades históricas y verificación pública IG17:00. Ciclo parcial, sinPASS.**
+
+
+## Formación entregada y campaña comprobada · 01/10/2026 · después de17:00 Europe/Madrid
+
+Instagram campaña publicada y verificada públicamente: https://www.instagram.com/p/Dd9MA-HlF_5/?img_index=2 . Comprobados texto aprobado ES/EN, ambas imágenes en orden y ambos textos alternativos. Primera revisión alrededor de17:05 sin comentarios ni likes visibles. No duplicar. Facebook ya recuperada; error de token Metricool no resuelto.
+
+Formación consolidada en MEMORIA/APRENDIZAJE_AGORA_20261001.md (commit b1f932324090fb61ca53fb1d0f6374f4365eb68f), Word editable de7páginas y ZIP con8fuentes originales. Identidad y dependencia funcional de Brújula contrastadas con organigrama vigente; menciones históricas a Aura distinguidas. No afirmar certificación externa ni prácticas/examen completos sin evidencia.
+
+Criba adicional sin altas: Espacio TDAH, varias piezas de perfil y DdMT7PjjtQn: solicitudes legítimas ORBITA, conversación contextual recurrente aún no verificada. DyspraxichelpFB acceso parcial con carga demorada, no inferir inactividad. Tourette Association of AmericaFB tres piezas recientes: comentarios escasos en muestra, no respuestas personales recurrentes comprobadas; mantener pendiente. Tourette AllianceFB varias piezas observadas, fechas e hilos aún incompletos, sin alta. GlenCooney/this.tourettes.guyIG perfil y DdHP7xJhEsz del10septiembre:45likes y sin comentarios visibles en hilo abierto; otras piezas vistas en perfil, criba no completada. Sin nuevos follows, comentarios ni reacciones en este corte.
+
+Contadores conservados:42textos (19propiosIG+17externosIG+6externosFB),16reacciones,1altaIG;24/114fieles revisados másComcare. Pendientes29IG+29FB altas. Campaña IG deja de estar pendiente. Ciclo diario parcial, sinPASS ni trabajo fuera de sesión presumido.
