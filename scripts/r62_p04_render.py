@@ -113,6 +113,7 @@ MATS = {
     'muro':    ((0.150, 0.138, 0.122), 0.92, 1.05, 1.60),
     'tablero': ((0.215, 0.112, 0.046), 0.66, 0.95, 1.10),
     'canto-mesa': ((0.160, 0.082, 0.034), 0.70, 1.10, 1.70),
+    'suelo':   ((0.105, 0.092, 0.080), 0.90, 1.35, 0.85),
     # Escala de textura grande y relieve bajo: con 0,95 y 0,80 el barrilete
     # salía rayado como una persiana, y lo que tiene que parecer es madera
     # torneada.
@@ -166,13 +167,49 @@ def _normal_dentro(ang):
 
 
 def mesa(buf):
-    """Muro, tablero y canto. La mesa es lo que da escala al instrumento."""
+    """La sala: muro, repisa, suelo, tablero y canto.
+
+    El primer encuadre era un muro liso ocupando media lámina con el
+    instrumento abajo. Un taller tiene sitio donde dejar cosas: una repisa
+    arriba, un testero que gira, y el suelo bajo la mesa. Con eso el barrilete
+    deja de flotar sobre un fondo y pasa a estar en una habitación.
+    """
     blit_quad(buf, [(-0.4, Y_MURO, 0.0), (TW + 0.4, Y_MURO, 0.0),
                     (TW + 0.4, Y_MURO, 2.60), (-0.4, Y_MURO, 2.60)], 'muro')
+    # testero de la izquierda: con el sesgo lateral de la cámara sí se ve
+    blit_quad(buf, [(-0.26, 0.0, 0.0), (-0.26, Y_MURO, 0.0),
+                    (-0.26, Y_MURO, 2.60), (-0.26, 0.0, 2.60)], 'muro', 0.74)
+    # suelo bajo la mesa
+    blit_quad(buf, [(-0.26, 0.0, 0.0), (TW + 0.4, 0.0, 0.0),
+                    (TW + 0.4, Y_MURO, 0.0), (-0.26, Y_MURO, 0.0)], 'suelo')
+    # repisa alta, con su sombra sobre el muro
+    repisa(buf)
     blit_quad(buf, [(0.0, 0.0, Z_MESA), (TW, 0.0, Z_MESA),
                     (TW, TD, Z_MESA), (0.0, TD, Z_MESA)], 'tablero')
     blit_quad(buf, [(0.0, 0.0, Z_MESA - 0.075), (TW, 0.0, Z_MESA - 0.075),
                     (TW, 0.0, Z_MESA), (0.0, 0.0, Z_MESA)], 'canto-mesa', 0.88)
+
+
+def repisa(buf):
+    """Una balda con piezas de repuesto. Sirve para dos cosas: dice que esto es
+    un taller y no un escenario, y tira una sombra sobre el muro que da aire
+    entre el fondo y el instrumento."""
+    z = 2.02
+    blit_quad(buf, [(0.22, Y_MURO - 0.30, z), (2.40, Y_MURO - 0.30, z),
+                    (2.40, Y_MURO, z), (0.22, Y_MURO, z)], 'canto-mesa')
+    blit_quad(buf, [(0.22, Y_MURO - 0.30, z), (2.40, Y_MURO - 0.30, z),
+                    (2.40, Y_MURO - 0.30, z - 0.035), (0.22, Y_MURO - 0.30, z - 0.035)],
+              'canto-mesa', 0.70)
+    for x in (0.34, 2.22):
+        box(buf, x, Y_MURO - 0.26, z - 0.20, 0.055, 0.22, 0.20, 'hierro')
+    # piedras de repuesto, en su caja
+    box(buf, 0.62, Y_MURO - 0.24, z, 0.44, 0.18, 0.055, 'canto-mesa')
+    for i, fam in enumerate(('canto', 'cuna', 'varilla', 'canto', 'cuna')):
+        bx = 0.66 + i * 0.082
+        box(buf, bx, Y_MURO - 0.21, z + 0.055, 0.052, 0.052, 0.030,
+            COLOR_FAMILIA[fam])
+    # una barra suelta, de las largas
+    box(buf, 1.45, Y_MURO - 0.20, z + 0.012, 0.52, 0.055, 0.022, 'laton')
 
 
 def barrilete(buf, facetas=104):
@@ -253,7 +290,7 @@ def peine(buf):
         mat = 'laton-viva' if viva else 'laton'
         # una barra golpeada se aparta: el desplazamiento es lo que se ve de
         # un golpe, y no hace falta ningún destello para contarlo
-        dy = -0.030 if viva else 0.0
+        dy = -0.052 if viva else 0.0
         blit_quad(buf, [(x - LAM_ANCHO / 2, Y_BARRAS + dy, z0),
                         (x + LAM_ANCHO / 2, Y_BARRAS + dy, z0),
                         (x + LAM_ANCHO / 2, Y_BARRAS + dy, z1),
@@ -267,6 +304,19 @@ def peine(buf):
                             (x + lado * LAM_ANCHO * 0.30, Y_BARRAS + dy + 0.040, z0),
                             (x + lado * LAM_ANCHO * 0.30, Y_BARRAS + dy + 0.040, z1),
                             (x + lado * LAM_ANCHO / 2, Y_BARRAS + dy, z1)], mat, t)
+        if viva:
+            # El contacto. Un punto corto y cálido donde la piedra toca la
+            # barra: ni destello ni animación, que la norma pide baja
+            # estimulación. Lo que cuenta el golpe es que la barra se ha
+            # apartado; esto sólo dice dónde.
+            yc, zc = _superficie(0)
+            blit_quad(buf, [(x - 0.052, yc - 0.012, zc + 0.030),
+                            (x + 0.052, yc - 0.012, zc + 0.030),
+                            (x + 0.052, yc - 0.012, zc - 0.030),
+                            (x - 0.052, yc - 0.012, zc - 0.030)],
+                      'laton-viva', 1.0,
+                      emissive=(0.95, 0.76, 0.42),
+                      alpha=lambda u, v: ((2 * u - 1) ** 2 + (2 * v - 1) ** 2) < 1.0)
         # el cordón del que cuelga
         blit_quad(buf, [(x - 0.006, Y_BARRAS + dy, Z_COLGADO),
                         (x + 0.006, Y_BARRAS + dy, Z_COLGADO),
@@ -314,10 +364,13 @@ def configure(out_w, out_h, top=0.0, bot=0.0, margen=0.02, rise=0.40,
     OUT_W, OUT_H = out_w, out_h
     TOP_OUT, BOT_OUT = top, bot
     W, H = out_w * SS, out_h * SS
-    x0, x1 = ventana if ventana else (-0.05, TW + 0.05)
+    # Encuadre ceñido al instrumento. Con la ventana abierta a toda la mesa
+    # sobraban 129 px de muro vacío arriba: el aparato quedaba pequeño en su
+    # propia lámina.
+    x0, x1 = ventana if ventana else (0.14, 3.14)
     u = W * (1 - 2 * margen) / (x1 - x0 + TD * skew)
     ox = W * margen - x0 * u
-    z_lo, z_hi = z_rango or (Z_MESA - 0.12, EJE_Z + RADIO + 0.16)
+    z_lo, z_hi = z_rango or (0.74, 2.17)
     pie = H - bot * SS
     oy = pie + z_lo * u
     e4.setup(e4.Frontal(u, ox, oy, depth_rise=rise, skew=skew), MATS, out_w, out_h,
