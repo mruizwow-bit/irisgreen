@@ -1,0 +1,56 @@
+{
+  "schema": "eco-jitter-buffer-sim-v1",
+  "date": "2026-10-01",
+  "purpose": "teaching simulation of playout-buffer latency/late-packet tradeoff; not a production WebRTC predictor",
+  "packet_frame_ms": 20,
+  "base_one_way_delay_ms": 40,
+  "packet_count": 5000,
+  "loss_probability": 0.02,
+  "jitter_model": "normal sigma 15ms clipped at -30ms + 5% positive spikes 40-100ms",
+  "rows": [
+    {
+      "jitter_buffer_target_ms": 20,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 13.44,
+      "concealment_needed_pct": 15.54,
+      "nominal_playout_delay_ms": 60
+    },
+    {
+      "jitter_buffer_target_ms": 40,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 4.98,
+      "concealment_needed_pct": 7.08,
+      "nominal_playout_delay_ms": 80
+    },
+    {
+      "jitter_buffer_target_ms": 60,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 3.58,
+      "concealment_needed_pct": 5.68,
+      "nominal_playout_delay_ms": 100
+    },
+    {
+      "jitter_buffer_target_ms": 80,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 1.8,
+      "concealment_needed_pct": 3.9,
+      "nominal_playout_delay_ms": 120
+    },
+    {
+      "jitter_buffer_target_ms": 100,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 0.56,
+      "concealment_needed_pct": 2.66,
+      "nominal_playout_delay_ms": 140
+    },
+    {
+      "jitter_buffer_target_ms": 140,
+      "network_loss_pct": 2.1,
+      "late_packet_pct": 0,
+      "concealment_needed_pct": 2.1,
+      "nominal_playout_delay_ms": 180
+    }
+  ],
+  "lesson": "Increasing the jitter/playout buffer can reduce late-packet concealment at the cost of higher playout delay. Irrecoverable network loss remains. Real WebRTC jitter buffers adapt dynamically.",
+  "product_modified": false
+}
