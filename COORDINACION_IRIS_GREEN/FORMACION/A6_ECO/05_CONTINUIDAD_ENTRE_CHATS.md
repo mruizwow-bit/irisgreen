@@ -76,3 +76,14 @@ Estado:
 `ECO_ADVANCED_R03_DSP_REALTIME_MOBILE_EVAL_STUDIED_PRACTICED`
 
 No repetir R01/R02/R03 desde cero: comprobar primero qué cambió en estándares, navegadores, OS, hardware y provider.
+
+
+## Cierre de continuidad preservado · 01/10/2026
+
+Archivo de cierre:
+`11_CIERRE_CONTINUIDAD_20261001.md`
+
+Commit de creación:
+`fde758b692e55a496811f01034b79832eb884046`
+
+Este archivo resume R01–R03, evidencia, pendientes honestos, orden de lectura y criterio GitHub/Slack para reconstruir a Eco en un chat futuro.
