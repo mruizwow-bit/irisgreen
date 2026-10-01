@@ -61,3 +61,18 @@ Criterio:
 - Slack = conversación y coordinación rápida;
 - GitHub = decisiones, formación, estados y evidencia canónica;
 - Claude y agentes externos no entran en este Slack interno por defecto.
+
+
+## Especialización R03 · 01/10/2026
+
+Leer además:
+- `08_ESPECIALIZACION_R03_DSP_REALTIME_MOBILE.md`
+- `09_METODOLOGIA_EVAL_STT_TTS_VOICE_R03.md`
+- `10_RUNBOOK_DEGRADACION_REALTIME_Y_HARDWARE.md`
+- `EVIDENCIA/ECO_DSP_LAB_20261001.json`
+- `APRENDIZAJE_ECO_2026-10-01_R03.md`
+
+Estado:
+`ECO_ADVANCED_R03_DSP_REALTIME_MOBILE_EVAL_STUDIED_PRACTICED`
+
+No repetir R01/R02/R03 desde cero: comprobar primero qué cambió en estándares, navegadores, OS, hardware y provider.
