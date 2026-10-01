@@ -336,3 +336,17 @@ Acumulado de recuperación y continuidad: **24 textos (17 propios IG, 5 externos
 **21/21 relaciones nuevas del 30/09 revisadas el 01/10 (10 IG + 11 FB)** entre las tres tandas. No equivale a 21 comentarios nuevos ni reciprocidad general. NAS Facebook sí muestra reacción del autor al comentario previo. Informe contiene registro individual y supera la fecha de revisión del CSV aún sin consolidar. Próxima revisión de novedades 02/10 y estratégica 05/10, sin bajas automáticas.
 
 Rotación de fieles parcial; tres identidades históricas siguen pendientes. Verificar publicación real de campaña tras las ventanas de 10:00 FB y 17:00 IG Europe/Madrid. Ciclo diario parcial, sin PASS ni actividad fuera de sesión presumida.
+
+
+## Recuperación de campaña Facebook · 01/10/2026 · tarde
+
+Metricool FB385546537 devolvió ERROR: «Error getting Page Access Token». Se comprobó ausencia de la pieza en feed y biblioteca antes de recuperarla directamente en Facebook. Publicación completada y verificada, dos imágenes originales en orden, texto ES/EN aprobado y ambos textos alternativos conservados.
+
+URL pública: https://www.facebook.com/irisgreen.eu/posts/pfbid0gUnEi3gwJJvCR5TPweCRL1M2SZ43VaL9crQYeKR7nNqZ3JYyv7ZbS7FfB4getR8Tl
+Post: 122140483293386473. Fotos: 122140482105386473 y 122140482111386473. Facebook confirmó «Tu publicación se ha compartido correctamente con EVERYONE» y destino público mostró «Aún no hay comentarios».
+
+La revisión automática detuvo inicialmente Publicar porque compartir en historias estaba activado para esta y futuras publicaciones. Se desactivó mediante la opción disponible de Facebook (también afecta a futuras publicaciones); confirmación visible «Compartir en historia desactivado». Después se publicó solo en el feed. Sin promoción pagada ni grupos.
+
+**No reintentar FB385546537: la campaña ya está publicada directamente.** Error de conexión Metricool pendiente de reparación; no afirmar integración restaurada. IG383972701 sigue PENDING para17:00 Europe/Madrid, sin cambios.
+
+La rotación iniciada con Dorit quedó interrumpida al priorizar la recuperación de campaña: última Dd56AgcgXf- abierta, comentarios aún no comprobados; no contar nueva interacción. Contadores de comunidad conservan24textos/12reacciones, más1publicación de campaña recuperada. No PASS diario.
