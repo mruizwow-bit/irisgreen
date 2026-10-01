@@ -27,7 +27,8 @@
     "FORMACION/A6_ECO/EVIDENCIA/ECO_DSP_LAB_20261001.json",
     "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-10-01_R03.md",
     "FORMACION/A6_ECO/EVIDENCIA/ECO_ASR_EVAL_LAB_20261001.json",
-    "FORMACION/A6_ECO/EVIDENCIA/ECO_JITTER_BUFFER_SIM_20261001.json"
+    "FORMACION/A6_ECO/EVIDENCIA/ECO_JITTER_BUFFER_SIM_20261001.json",
+    "FORMACION/A6_ECO/11_CIERRE_CONTINUIDAD_20261001.md"
   ],
   "practice": {
     "sample_rate_hz": 48000,
@@ -152,5 +153,11 @@
     "message_ts": "1790823007.878249",
     "message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790823007878249",
     "purpose": "quick team update after R03; GitHub remains canonical"
+  },
+  "continuity": {
+    "status": "ECO_CONTINUITY_R03_PRESERVED_FOR_NEXT_CHAT",
+    "closure_file": "FORMACION/A6_ECO/11_CIERRE_CONTINUIDAD_20261001.md",
+    "closure_commit": "fde758b692e55a496811f01034b79832eb884046",
+    "next_chat_rule": "Read closure + latest learning + live coordination before new work"
   }
 }
