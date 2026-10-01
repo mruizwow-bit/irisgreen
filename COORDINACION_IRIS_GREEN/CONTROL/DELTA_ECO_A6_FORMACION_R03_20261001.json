@@ -25,7 +25,9 @@
     "FORMACION/A6_ECO/09_METODOLOGIA_EVAL_STT_TTS_VOICE_R03.md",
     "FORMACION/A6_ECO/10_RUNBOOK_DEGRADACION_REALTIME_Y_HARDWARE.md",
     "FORMACION/A6_ECO/EVIDENCIA/ECO_DSP_LAB_20261001.json",
-    "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-10-01_R03.md"
+    "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-10-01_R03.md",
+    "FORMACION/A6_ECO/EVIDENCIA/ECO_ASR_EVAL_LAB_20261001.json",
+    "FORMACION/A6_ECO/EVIDENCIA/ECO_JITTER_BUFFER_SIM_20261001.json"
   ],
   "practice": {
     "sample_rate_hz": 48000,
@@ -69,6 +71,43 @@
           3,
           4
         ]
+      ]
+    },
+    "asr_eval": {
+      "clean_wer": 0,
+      "negation_case_wer": 0.1111111111111111,
+      "number_case_wer": 0.14285714285714285,
+      "proper_name_case_wer": 0.2,
+      "lesson": "Aggregate WER can hide task-critical semantic/entity failures."
+    },
+    "jitter_buffer_sim": {
+      "disclaimer": "teaching model; real WebRTC jitter buffers are adaptive",
+      "network_loss_pct": 2.1,
+      "rows": [
+        {
+          "buffer_ms": 20,
+          "late_pct": 13.44,
+          "concealment_pct": 15.54,
+          "playout_ms": 60
+        },
+        {
+          "buffer_ms": 60,
+          "late_pct": 3.58,
+          "concealment_pct": 5.68,
+          "playout_ms": 100
+        },
+        {
+          "buffer_ms": 100,
+          "late_pct": 0.56,
+          "concealment_pct": 2.66,
+          "playout_ms": 140
+        },
+        {
+          "buffer_ms": 140,
+          "late_pct": 0,
+          "concealment_pct": 2.1,
+          "playout_ms": 180
+        }
       ]
     }
   },
