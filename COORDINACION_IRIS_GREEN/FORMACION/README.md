@@ -119,7 +119,7 @@ Un marcador interno significa únicamente:
 
 ## Especialistas añadidos
 
-3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.\n4. **Eco / Agente 6** · Voice, Audio & Media Quality Engineer · R01 + R02 estudiados 30/09/2026; evidencia práctica y runbook en `FORMACION/A6_ECO/`.
+3. **Córtex / Agente 10** · LLM / Generative AI Systems Engineer · formación antes de migrar Sabik Claude → OpenAI.\n4. **Eco / Agente 6** · Voice, Audio & Media Quality Engineer · R01 + R02 estudiados 30/09/2026; R03 DSP/realtime/mobile/evals estudiado y practicado 01/10/2026; evidencia y runbooks en `FORMACION/A6_ECO/`.
 
 ## Primera ola
 
