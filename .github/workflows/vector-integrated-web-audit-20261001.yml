@@ -24,20 +24,20 @@ jobs:
           python -m venv /tmp/ig-vector-audit
           /tmp/ig-vector-audit/bin/pip -q install playwright==1.55.0
           /tmp/ig-vector-audit/bin/python -m playwright install --with-deps chromium >/tmp/ig-vector-playwright.log 2>&1
-      - name: Run integrated audit
+      - name: Run integrated audit R2
         run: |
           python -m http.server 4173 --directory dist >/tmp/ig-vector-http.log 2>&1 &
           server=$!
           trap 'kill $server || true' EXIT
           sleep 1
-          /tmp/ig-vector-audit/bin/python scripts/audit_vector_integrated_web_20261001.py
+          /tmp/ig-vector-audit/bin/python scripts/audit_vector_integrated_web_20261001_r2.py
       - name: Upload evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: vector-integrated-web-audit-20261001
+          name: vector-integrated-web-audit-r2-20261001
           path: |
-            reports/vector-integrated-web-audit-20261001
+            reports/vector-integrated-web-audit-r2-20261001
             reports/routes/build.json
             /tmp/ig-vector-http.log
           retention-days: 14
