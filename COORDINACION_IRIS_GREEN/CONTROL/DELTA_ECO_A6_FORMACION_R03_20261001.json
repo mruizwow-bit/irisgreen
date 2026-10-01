@@ -1,0 +1,110 @@
+{
+  "schema": "iris-green-training-delta-v1",
+  "date": "2026-10-01",
+  "alias": "Eco",
+  "agent": "A6",
+  "role": "Voice, Audio & Media Quality Engineer",
+  "leader": "Nexo",
+  "branch": "eco/a6-advanced-r03-dsp-realtime-20261001",
+  "base_training_head": "d9b6f46f1005db990102c05f18c40709bca6ea8b",
+  "status": "ADVANCED_R03_DSP_REALTIME_MOBILE_EVAL_STUDIED_PRACTICED",
+  "studied_domains": [
+    "DSP measurement: peak/RMS/crest factor/clipping/SNR/FFT/PSD/resampling/Nyquist/filtering/phase/silence",
+    "microphone processing: AEC/NS/AGC constraints and actual settings",
+    "RTP/WebRTC audio levels, Opus DTX/PLC/FEC, jitter buffers and stats",
+    "full-duplex turn-taking, VAD/endpointing and barge-in",
+    "Android AAudio/Oboe latency and xrun concepts",
+    "Apple AVAudioSession interruptions, route changes, voiceChat and Bluetooth HFP",
+    "HLS, LL-HLS, CMAF, MSE and WebCodecs",
+    "NIST SCTK/sclite and layered STT metrics",
+    "TTS subjective evaluation and voice-agent Crawl/Walk/Run methodology",
+    "media-capture privacy, deviceId fingerprinting and WebRTC security"
+  ],
+  "files": [
+    "FORMACION/A6_ECO/08_ESPECIALIZACION_R03_DSP_REALTIME_MOBILE.md",
+    "FORMACION/A6_ECO/09_METODOLOGIA_EVAL_STT_TTS_VOICE_R03.md",
+    "FORMACION/A6_ECO/10_RUNBOOK_DEGRADACION_REALTIME_Y_HARDWARE.md",
+    "FORMACION/A6_ECO/EVIDENCIA/ECO_DSP_LAB_20261001.json",
+    "FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-10-01_R03.md"
+  ],
+  "practice": {
+    "sample_rate_hz": 48000,
+    "clean_sine": {
+      "peak_dbfs": -6.0206,
+      "rms_dbfs": -9.0309,
+      "crest_db": 3.0103
+    },
+    "clipping": {
+      "post_peak_dbfs": 0,
+      "rms_dbfs": -1.7815,
+      "thd_harmonics_ratio": 0.1169137
+    },
+    "snr": {
+      "target_db": 20,
+      "measured_db": 19.9761
+    },
+    "phase": {
+      "anti_phase_correlation": -1,
+      "mono_fold_rms": 0,
+      "ffmpeg_peak_db": "-inf"
+    },
+    "resampling": {
+      "from_hz": 48000,
+      "to_hz": 16000,
+      "back_to_hz": 48000,
+      "ten_khz_attenuation_db": -114.6361
+    },
+    "voice_band_filter": {
+      "type": "Butterworth order 6 SOS 300-3400 Hz",
+      "ten_to_one_db": -70.1602
+    },
+    "silence": {
+      "fixture": "1s silence + 2s tone + 1s silence",
+      "ffmpeg_detected": [
+        [
+          0,
+          1.000021
+        ],
+        [
+          3,
+          4
+        ]
+      ]
+    }
+  },
+  "current_sources_verified": [
+    "W3C Media Capture and Streams",
+    "W3C WebRTC Stats",
+    "W3C WebCodecs Working Draft 2026-09-21",
+    "WebRTC Audio Processing Module",
+    "RFC 6464, 6716, 7587, 7874, 8834, 8854, 8826, 8828",
+    "Android AAudio / Low latency audio",
+    "Apple AVAudioSession / voiceChat / interruptions / route changes",
+    "Apple HLS Authoring / Low-Latency HLS / CMAF",
+    "NIST SCTK / sclite",
+    "ITU-T P.85, P.835 (07/2026), P.863",
+    "ITU-R BS.1770-5 / EBU R128 v5",
+    "OpenAI current Audio/Voice, Realtime, VAD, transcription, TTS and voice-agent eval documentation"
+  ],
+  "current_facts_noted": [
+    "ITU-T P.835 (07/2026) is in force and evaluates SIG/BAK/OVRL for noise-suppression speech conditions.",
+    "W3C WebCodecs 2026-09-21 is a Working Draft and requires no particular codec support.",
+    "Opus in-band FEC can recover information for an immediately preceding lost frame but does not solve arbitrary burst loss.",
+    "WebRTC FEC can trade bandwidth and playout delay for robustness.",
+    "OpenAI current voice guidance separates GPT-Live full-duplex, Realtime sessions, and chained voice pipelines and recommends evaluating task success and audible timing independently."
+  ],
+  "pending_real_world": [
+    "real microphone and acoustic echo",
+    "Bluetooth HFP",
+    "iOS/Safari physical device",
+    "Android physical devices",
+    "WebRTC network impairment/TURN",
+    "Sabik STT/TTS real runtime",
+    "30-60 minute soak and OS interruptions"
+  ],
+  "product_modified": false,
+  "build_product": false,
+  "merge": false,
+  "deploy": false,
+  "external_certification": false
+}
