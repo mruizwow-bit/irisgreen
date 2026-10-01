@@ -236,7 +236,7 @@ function etapaCard(et){
 }
 function audienceEtapa(){
  var a=window.IGAudience?window.IGAudience.get():(document.documentElement.dataset.igAudience||'default');
- return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'adu',ALL_AGES:'todas',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||null;
+ return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'',ALL_AGES:'',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||null;
 }
 function audienceEtapaActiva(){return !!audienceEtapa();}
 function etapaRail(){

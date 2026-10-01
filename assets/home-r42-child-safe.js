@@ -14,10 +14,10 @@ function start(){
  }
  function syncHomeAgeCards(){
   if(!window.IGAudience)return;
-  var stage=window.IGAudience.get(),strict=stage!=='GENERAL'&&stage!=='AGE_18_PLUS';
+  var stage=window.IGAudience.get(),strict=stage==='AGE_0_12'||stage==='AGE_13_17';
   document.querySelectorAll('.ig-home-v4-card').forEach(function(card){
    var bands=card.getAttribute('data-ig-age-bands');
-   var visible=bands?window.IGAudience.allowedAgeBands(bands):!strict;
+   var visible=!window.IGAudience.childRouteBlocked(card.href)&&(bands?window.IGAudience.allowedAgeBands(bands):!strict);
    card.hidden=!visible;
    if(visible)card.removeAttribute('aria-hidden');else card.setAttribute('aria-hidden','true');
   });

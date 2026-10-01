@@ -273,3 +273,18 @@ body[data-ig-r49="1"].ig-home-r42 .ig-r49-footer-inner{
   max-width:none;
   margin-inline:0;
 }
+
+/* Responsive shared header and compact footer. */
+body[data-ig-r49="1"] .ig-r49-global-footer{position:static!important;clear:both;min-height:0!important;height:auto!important;padding:0!important;box-sizing:border-box}
+body[data-ig-r49="1"] .ig-r49-footer-inner{box-sizing:border-box;max-width:80rem;align-items:center;padding:1rem 0;min-height:0}
+body[data-ig-r49="1"] .ig-r49-global-footer nav{min-width:0;max-width:100%}
+@media(max-width:760px){
+ body[data-ig-r49="1"] .ig-r49-header-inner{display:flex;flex-wrap:wrap;height:auto;gap:.3rem;padding:.5rem}
+ body[data-ig-r49="1"] .ig-r49-tools{flex:1 1 100%;flex-wrap:wrap;justify-content:flex-start;gap:.25rem}
+ body[data-ig-r49="1"] .ig-r49-global-header{position:relative!important;height:auto!important}
+ body[data-ig-r49="1"] .ig-r49-tool[data-ig-r49-stage]{width:auto;max-width:none;padding-inline:.6rem}
+ body[data-ig-r49="1"] .ig-r49-tool[data-ig-r49-stage]>.ig-r49-stage-state{display:block;max-width:none;font-size:.78rem}
+ body[data-ig-r49="1"] .ig-r49-tool[data-ig-r49-stage]::after{content:none}
+ body[data-ig-r49="1"] .ig-r49-footer-inner{width:calc(100% - 2rem);display:flex;flex-direction:column;align-items:flex-start}
+ body[data-ig-r49="1"] .ig-r49-footer-nav{margin:0}
+}

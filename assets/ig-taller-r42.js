@@ -13,7 +13,7 @@
   // The Workshop consumes the single global AGE_* lens. It must not create a second age picker.
   function currentStage(){
     var v=root.IGAudience?root.IGAudience.get():(D&&D.documentElement&&D.documentElement.dataset.igAudience)||'GENERAL';
-    return ({AGE_0_12:'child',AGE_13_17:'teen',AGE_18_PLUS:'adult',ALL_AGES:'all',GENERAL:'all'})[v]||'all';
+    return ({AGE_0_12:'child',AGE_13_17:'teen',AGE_18_PLUS:'all',ALL_AGES:'all',GENERAL:'all'})[v]||'all';
   }
   function lang(){return D&&String(D.documentElement.lang||'es').slice(0,2)==='en'?'en':'es';}
   function T(es,en){return lang()==='en'?en:es;}
