@@ -738,3 +738,129 @@ Antes de R54:
 4. mantener límites de evidencia;
 5. Slack para coordinación; GitHub para canon;
 6. 0 producto/build/merge/deploy durante Formación.
+
+
+### R54 · Canvas2D state/readback
+
+Laboratorio Chromium:
+- context attributes quedan fijados en primera adquisición;
+- default willReadFrequently=false;
+- configured willReadFrequently=true;
+- alpha=false verificado;
+- reset() restauró globalAlpha=1 y limpió buffer;
+- Path2D disponible.
+
+Regla:
+**willReadFrequently es workload-specific; no una optimización universal.**
+
+Marcador:
+`MOTOR_CANVAS2D_STATE_READBACK_LAB_PASS_R54`.
+
+### R55 · Input latency bajo carga
+
+Laboratorio Chromium:
+- 80 ms sync work dentro de input → next paint median ~80.3 ms;
+- ~80 ms CPU en Worker → main next-paint median ~0.4 ms;
+- Worker CPU siguió costando ~80 ms.
+
+Regla:
+**off-thread no hace compute más barato; lo saca del camino crítico del main thread.**
+
+Marcador:
+`MOTOR_INPUT_LATENCY_OFFTHREAD_LAB_PASS_R55`.
+
+### R56 · Maturity/scope gap review
+
+Conclusión:
+R01–R55 cubren foundation horizontal avanzada.
+
+Nueva fase:
+`SCENARIO → DECISION → PRACTICE → EVIDENCE → REVIEW`.
+
+Remaining gaps reales:
+- engine matrix;
+- real IME/mobile;
+- hardware GPU;
+- integrated context recovery;
+- AT;
+- product soak/field evidence.
+
+Marcador:
+`MOTOR_ADVANCED_FOUNDATION_GAP_REVIEW_R56`.
+
+### R57 · Architecture decision drills
+
+10 escenarios resueltos:
+- mapa;
+- pixel editor;
+- simulation;
+- aquarium;
+- Sabik;
+- sequencer;
+- resource page;
+- file projects;
+- architecture 2D/3D;
+- heavy live preview.
+
+Resultado:
+**10/10 decision drills PASS**.
+
+Marcador:
+`MOTOR_ARCHITECTURE_DECISION_DRILLS_PASS_R57`.
+
+### R58 · Incident diagnosis drills
+
+12 incidentes:
+- editor lag;
+- black 3D restore;
+- stale Sabik response;
+- bad file import;
+- mobile keyboard;
+- audio drift;
+- multitab conflict;
+- battery;
+- focus after modal;
+- progressive canvas slowdown;
+- layout jump;
+- Chrome/Safari mismatch.
+
+Cada uno:
+- evidence;
+- hypotheses;
+- discriminating test;
+- containment;
+- owner.
+
+Resultado:
+**12/12 diagnosis drills PASS**.
+
+Marcador:
+`MOTOR_INCIDENT_DIAGNOSIS_DRILLS_PASS_R58`.
+
+## Continuidad actualizada
+
+Último bloque:
+**R58**.
+
+Estado:
+`ADVANCED_FOUNDATION_ACTIVE_CONTINUOUS_LEARNING`.
+
+Siguiente fase:
+- continuar prácticas/escenarios;
+- no ampliar APIs horizontalmente salvo laguna material;
+- elevar niveles de evidencia cuando entorno lo permita.
+
+Límites aún abiertos:
+- Firefox/WebKit;
+- real IME;
+- mobile hardware;
+- assistive technology;
+- integrated product QA;
+- HUMAN QA.
+
+Slack:
+Motor conectado al canal general.
+GitHub:
+fuente canónica.
+
+No product/build/merge/deploy durante Formación.
