@@ -32,6 +32,11 @@ NOSCRIPT=re.compile(r'<noscript\b[^>]*>.*?</noscript>',re.S|re.I)
 def page(root,url):
     return root/urlsplit(url).path.strip('/')/'index.html'
 def inject(text,library=False):
+    # Safe-variant pages remain directly readable in every age lens. Discovery
+    # can still exclude their route, but the static pre-render age CSS must not
+    # hide the already-sanitised body on a direct deep link.
+    if 'data-ig-s2-safe' in text and 'data-ig-s2-safe-page' not in text:
+        text=re.sub(r'<body\\b','<body data-ig-s2-safe-page',text,count=1,flags=re.I)
     if '/assets/ig-audience.css' not in text:
         text=text.replace('</head>','<link rel="stylesheet" href="/assets/ig-audience.css"><script src="/assets/ig-audience.js"></script></head>',1)
     if '/assets/ig-child-safe.js' not in text:
