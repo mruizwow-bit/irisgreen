@@ -390,3 +390,46 @@ Antes del siguiente bloque:
 3. no repetir R01–R38;
 4. abrir solo hueco material;
 5. mantener 0 producto/build/merge/deploy.
+
+
+### R39 · Sensores y Motion Actuation
+
+Estudiado:
+- DeviceOrientationEvent;
+- DeviceMotionEvent;
+- requestPermission;
+- Generic Sensor;
+- deadzone/hysteresis;
+- sensor lifecycle;
+- privacy;
+- screen orientation vs device orientation;
+- WCAG 2.5.4 Motion Actuation.
+
+Auditoría A5:
+no se encontraron usos actuales de DeviceOrientation, DeviceMotion, Accelerometer ni Gyroscope.
+
+Regla:
+**sensor data no es intención humana hasta pasar por un contrato de interacción; toda función por movimiento necesita alternativa UI y capacidad de desactivarse cuando aplique.**
+
+Marcador:
+`MOTOR_SENSOR_MOTION_ACTUATION_STUDIED_R39`.
+
+## Continuidad actualizada tras conexión Slack
+
+Último bloque completado:
+**R39**.
+
+Estado:
+`ACTIVE_CONTINUOUS_LEARNING`.
+
+Motor ya está conectado a:
+`#general-sabik-ia-technology`.
+
+Aura fue informada de que la formación sigue activa y que el HEAD no debe tratarse como cierre final hasta nueva decisión de María.
+
+Antes de R40:
+1. comprobar state drift;
+2. no repetir R01–R39;
+3. abrir solo hueco material;
+4. mantener Slack para coordinación y GitHub para evidencia;
+5. mantener 0 producto/build/merge/deploy.
