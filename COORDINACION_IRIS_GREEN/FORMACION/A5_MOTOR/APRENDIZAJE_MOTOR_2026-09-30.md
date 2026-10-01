@@ -810,3 +810,51 @@ Regla:
 
 Marcador:
 `MOTOR_COMPONENT_LIFECYCLE_FOCUS_TOP_LAYER_STUDIED_R08`.
+
+
+---
+
+## Ampliación de aprendizaje · R09 · streaming y backpressure
+
+### Backpressure
+
+Un runtime puede degradarse por producir más rápido de lo que consume.
+
+Streams API aporta control de flujo; WebSocket clásico no aporta backpressure automática de recepción.
+
+### Queues
+
+Toda cola de alta frecuencia necesita política:
+- latest-wins;
+- coalesce;
+- drop-oldest;
+- block producer;
+- reject.
+
+La política depende de semántica.
+
+### Streaming UI
+
+No renderizar cada chunk/tokén individual si eso satura DOM/main thread.
+Agrupar actualizaciones conservando orden y semántica.
+
+### cancel vs close
+
+- cancel = consumidor ya no quiere más;
+- close = productor terminó limpiamente.
+
+### WebSocket
+
+Vigilar `readyState` y `bufferedAmount`; no enviar ilimitadamente.
+
+### WebSocketStream
+
+Tiene backpressure mediante Streams, pero a 01/10/2026 sigue experimental/no estándar y no es baseline para Iris Green.
+
+### Frontera
+
+Pulso conserva transporte conversacional.
+Motor estudia scheduling, render y control de flujo.
+
+Marcador:
+`MOTOR_STREAMING_BACKPRESSURE_INCREMENTAL_RUNTIME_STUDIED_R09`.
