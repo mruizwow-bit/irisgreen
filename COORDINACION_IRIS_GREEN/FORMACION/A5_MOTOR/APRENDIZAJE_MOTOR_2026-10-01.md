@@ -344,3 +344,49 @@ Antes de R38:
 4. no repetir R01–R37;
 5. abrir solo un hueco material;
 6. mantener 0 producto mientras continúe Formación.
+
+
+### R38 · File I/O, Drag & Drop y Clipboard
+
+Estudiado:
+- File / Blob;
+- Blob.text() vs FileReader;
+- límites de tamaño;
+- validación de esquema;
+- object URLs;
+- HTML Drag & Drop;
+- DataTransfer;
+- getAsFile / getAsFileSystemHandle;
+- Clipboard API;
+- import atómico;
+- alternativa accesible al drag.
+
+Auditoría A5:
+- Taller ya limita tamaño antes de leer;
+- valida JSON/formato/estudio;
+- File System Access es mejora progresiva;
+- AbortError del picker se trata como cancelación;
+- no hay dropzone actual que mantener.
+
+Regla:
+**archivo local = input no confiable hasta validar contenido y esquema; accept solo orienta el selector.**
+
+Marcador:
+`MOTOR_FILE_IO_DRAG_DROP_CLIPBOARD_STUDIED_R38`.
+
+## Continuidad actualizada
+
+Último bloque completado:
+**R38**.
+
+Estado:
+`ACTIVE_CONTINUOUS_LEARNING`.
+
+La formación NO está cerrada mientras María siga indicando continuar.
+
+Antes del siguiente bloque:
+1. comprobar state drift;
+2. leer aprendizaje 2026-10-01;
+3. no repetir R01–R38;
+4. abrir solo hueco material;
+5. mantener 0 producto/build/merge/deploy.
