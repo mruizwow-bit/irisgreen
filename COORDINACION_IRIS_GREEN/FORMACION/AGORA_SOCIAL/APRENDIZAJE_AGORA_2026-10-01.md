@@ -310,3 +310,61 @@ No producto.
 No build.
 No merge.
 No deploy.
+
+
+---
+
+# AMPLIACIÓN R03 · 01/10/2026
+
+Estado:
+AGORA_COMMUNITY_MANAGEMENT_EXPERT_R03_PASS_CONTINUOUS_LEARNING
+
+Rama:
+agora/community-management-training-r03-20261001
+
+## Qué se añade a R02
+
+R03 incorpora formación avanzada en:
+- gobernanza de comunidad;
+- incidentes y reparación;
+- moderación escalada;
+- bienestar de moderadores;
+- accesibilidad social;
+- ES/EN sensible;
+- IA con revisión humana;
+- prevención de memoria falsa/inferencia sensible;
+- monitoring vs listening;
+- sesgo de participación;
+- salud comunitaria multidimensional.
+
+Artefactos:
+- 14_ESTUDIO_EXPERTO_R03_GOBERNANZA_SAFETY_20261001.md
+- 15_RUNBOOK_R03_INCIDENTES_GOBERNANZA_20261001.md
+- 16_ACCESIBILIDAD_MULTILINGUE_IA_R03_20261001.md
+- 17_EXAMEN_APLICADO_R03_20261001.md
+- 18_CIERRE_R03_CONTINUIDAD_20261001.md
+
+Examen aplicado:
+20/20 casos.
+
+## Principios R03
+
+- DESACUERDO != INCIVILIDAD.
+- AUTOMATIZAR_OPERACION != AUTOMATIZAR_VINCULO.
+- IA no decide sola safety complejo.
+- IA no puede inventar memoria relacional.
+- accesibilidad también se revisa en la conversación social.
+- bienestar del moderador forma parte de capacity planning.
+- quienes más comentan no representan automáticamente a toda la comunidad.
+- cambios de distribución/algoritmo no equivalen a pérdida relacional.
+- incidentes: detectar → contener → owner → evidencia mínima → actuar/escalar → revisar → aprender.
+
+## Pendientes longitudinales
+
+Siguen vigentes:
+- D7/D30 cohorte 30/09;
+- demand / throughput / backlog age;
+- pérdida de contexto/rework;
+- momento real para pedir otro Community Manager.
+
+No requieren repetir teoría.
