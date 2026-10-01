@@ -27,7 +27,7 @@ def main():
  before=p.read_text(encoding='utf-8');m=BODY_RE.search(before)
  if not m:raise AssertionError('Research page without body')
  attrs=m.group(1)
- for k,v in [('data-ig-r49','1'),('data-ig-profile','content'),('data-ig-materials','r42'),('data-ig-r49-owner','R50_RESEARCH')]:attrs=set_attr(attrs,k,v)
+ for k,v in [('data-ig-r49','1'),('data-ig-profile','browse'),('data-ig-materials','r42'),('data-ig-r49-owner','R50_RESEARCH')]:attrs=set_attr(attrs,k,v)
  after=before[:m.start()]+'<body'+attrs+'>'+before[m.end():]
  mm=MAIN_RE.search(after)
  if mm and not re.search(r'\bid=["\']',mm.group(1),re.I):
@@ -44,7 +44,7 @@ def main():
  if 'name="ig-r50-section"' not in after:inject.insert(0,'<meta name="ig-r50-section" content="research">')
  if inject:after=re.sub(r'</head>',''.join(inject)+'</head>',after,count=1,flags=re.I)
  if after!=before:p.write_text(after,encoding='utf-8')
- payload={'version':'R50-RESEARCH-1','section':'research','total_routes':1,'profiles':{'content':1},'routes':[{'route':'/es/investigacion/','file':'es/investigacion/index.html','profile':'content','locales':['es','en']}]}
+ payload={'version':'R50-RESEARCH-1','section':'research','total_routes':1,'profiles':{'browse':1},'routes':[{'route':'/es/investigacion/','file':'es/investigacion/index.html','profile':'browse','locales':['es','en']}]}
  (root/'assets/r50-research-route-profiles.json').write_text(json.dumps(payload,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
  print(json.dumps({'section':'research','routes':1,'locales':['es','en']},ensure_ascii=False))
 if __name__=='__main__':main()

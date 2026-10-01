@@ -11,23 +11,18 @@ R42_PILOT_ROUTES={'/es/recursos/juegos/','/en/resources/games/','/es/intereses/'
 CLOUD_ORIGIN='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 
 def check_r05_ui(page,lang):
- """Native activated form only; no query, mocked response or auth probe."""
- expected='Source search is available.' if lang=='en' else 'La búsqueda en fuentes está disponible.'
- page.wait_for_function('(s)=>document.querySelector(".sabik-state").textContent===s',arg=expected)
+ """Compact Sabik form: input, send, reset and live region; no redundant explainer blocks."""
  field=page.get_by_role('textbox',name='What do you need?' if lang=='en' else '¿Qué necesitas?',exact=True)
  assert field.count()==1 and field.get_attribute('id')=='sabik-input'
  assert field.get_attribute('maxlength')=='300'
- help_text=page.locator('#sabik-input-help').inner_text()
- assert help_text==('Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.' if lang=='en' else 'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.')
- assert set(field.get_attribute('aria-describedby').split())=={'sabik-input-help','sabik-availability'}
+ assert page.locator('.sabik-state,#sabik-availability,#sabik-input-help').count()==0,'redundant Sabik explainer returned'
  assert page.locator('#sabik-announcement').get_attribute('role')=='status'
  assert page.locator('#sabik-announcement').get_attribute('aria-live')=='polite'
- if lang=='en':assert 'The original quotations are in Spanish.' in page.locator('#sabik-availability').inner_text()
  submit=page.get_by_role('button',name='Send' if lang=='en' else 'Enviar',exact=True)
  assert submit.is_disabled()
  field.fill('x'*299);field.press('End');field.press('y');field.press('z')
  assert len(field.input_value())==300,'native maxlength did not limit typing'
- assert submit.is_enabled(),'nonempty query still disabled after authorized activation'
+ assert submit.is_enabled(),'nonempty query still disabled after activation'
  field.press('Tab');assert submit.evaluate('(e)=>document.activeElement===e'),'submit skipped in keyboard order'
  settings=page.locator('#sabik-settings')
  if settings.count() and not settings.is_visible():
@@ -35,7 +30,7 @@ def check_r05_ui(page,lang):
  page.locator('#sabik-reset').focus();page.locator('#sabik-reset').press('Enter')
  assert field.input_value()=='' and submit.is_disabled()
  assert field.evaluate('(e)=>document.activeElement===e')
- return {'available_label':expected,'maxlength':300,'help':help_text,'native_length_enforced':True,'send_enabled_for_nonempty_input':True,'reset_keyboard_focus':True,'query_submitted':False,'http_retrieval_verified':False}
+ return {'compact':True,'maxlength':300,'native_length_enforced':True,'send_enabled_for_nonempty_input':True,'reset_keyboard_focus':True,'query_submitted':False,'http_retrieval_verified':False}
 
 def static():
  rows=[]
@@ -53,13 +48,13 @@ def static():
   rows.append({'path':rel,'language':s.html.get('lang'),'brief':True,'flower':False})
  for p in ['es/recursos/index.html','en/resources/index.html']:
   s=BeautifulSoup((DIST/p).read_text(),'html.parser')
-  # R42 A1 sustituye el conteo histórico R08 por una estructura explícita:
-  # cuatro etapas orientativas + cinco recursos primarios, en ES y EN.
-  assert len(s.select('main .ri-stage-card'))==4,p
+  # R69 supersedes the old R42 local life-stage cards. Age is now a single
+  # global AGE_* lens in the R49/R69 shell; Resources keeps its five primary tools.
+  assert len(s.select('main .ri-stage-card'))==0,p
+  assert len(s.select('main .ri-stage-section'))==0,p
   assert len(s.select('main [data-r40-resource]'))==5,p
-  labels=[x.get_text(' ',strip=True) for x in s.select('main .ri-stage-card h3')]
-  expected=(['Infancia','Adolescencia','Adultez','Cualquier edad'] if p.startswith('es') else ['Childhood','Adolescence','Adulthood','Any age'])
-  assert labels==expected,(p,labels)
+  assert s.body.get('data-ig-r49')=='1',p
+  assert len(s.select('script[src^="/assets/ig-audience.js"]'))==1,p
  for p in (ROOT/'sabik/assets/web-r01').iterdir():assert p.read_bytes()==(DIST/'sabik/assets/web-r01'/p.name).read_bytes(),p.name
  config=(DIST/'sabik/mount-config.mjs').read_text()
  assert "enabled:true,cloudOrigin:'"+CLOUD_ORIGIN+"'" in config
@@ -107,8 +102,8 @@ def run():
       row['r05_connection_ui']=check_r05_ui(page,row['lang'])
       assert not cloud_requests,'Cloud contacted before an explicit query'
       row['r05_connection_ui']['automatic_cloud_requests']=0
-      page.locator('#sabik-low').click();assert page.locator('#sabik-low').get_attribute('aria-pressed')=='true';page.locator('#sabik-low').click()
-      assert page.locator('#sabik-hologram').get_attribute('data-motion-level')!='NORMAL'
+      page.locator('#sabik-motion-level').select_option('REDUCIDO');page.locator('#sabik-motion-level').dispatch_event('change')
+      assert page.locator('#sabik-hologram').get_attribute('data-motion-level')=='REDUCIDO'
       use=page.locator('#ig-home-use').bounding_box();panel=page.locator('.ig-home-v4-sabik').bounding_box();discover=page.locator('#ig-home-discover').bounding_box()
       assert use and panel and discover and use['y'] < panel['y'] < discover['y'],(route,width,'Home v4 section order')
       page.locator('#sabik-motion-level').select_option('SIN_MOVIMIENTO')

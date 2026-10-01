@@ -8,7 +8,7 @@ def need(v,m):
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);root=ap.parse_args().root.resolve()
  txt=(root/'es/investigacion/index.html').read_text(encoding='utf-8')
- need('data-ig-r49="1"' in txt and 'data-ig-profile="content"' in txt and 'data-ig-r49-owner="R50_RESEARCH"' in txt,'Research R50 contract missing')
+ need('data-ig-r49="1"' in txt and 'data-ig-profile="browse"' in txt and 'data-ig-r49-owner="R50_RESEARCH"' in txt,'Research R50 contract missing')
  for asset in REQ:need(txt.count(asset)==1,f'{asset} count != 1')
  need('data-ig-research-s2' in txt,'Research child-safe renderer lost')
  need('window.IGAudience && window.IGAudience.isAdult()' in txt,'Research adult gate lost')

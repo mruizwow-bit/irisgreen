@@ -1,23 +1,23 @@
 /* Embedded in the current home. No replacement page or second reading panel. */
 #home-view{display:grid;grid-template-columns:minmax(0,1fr) minmax(320px,390px);gap:32px;align-items:start}
 #home-view>.iris-home-content{grid-column:1;min-width:0}
-.sabik-panel{grid-column:2;min-width:0;width:100%;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c;padding-top:42px}
-.sabik-widget{border:1px solid #c8d8e5;border-radius:20px;padding:22px;background:rgba(255,255,255,.66);box-shadow:0 12px 35px -28px rgba(31,95,139,.35)}
+.sabik-panel{grid-column:2;min-width:0;width:100%;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:var(--ig-text);padding-top:42px}
+.sabik-widget{border:1px solid var(--ig-separator);border-radius:20px;padding:22px;background:color-mix(in srgb,var(--ig-bg-surface) 92%,transparent);box-shadow:0 12px 35px -28px rgba(31,95,139,.35)}
 .sabik-widget-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .sabik-wordmark{width:154px;max-width:100%;height:auto}.sabik-identity{min-width:0}.sabik-identity p{margin:5px 0;font-size:1rem}.sabik-panel h2{margin:0}.sabik-panel .sabik-wordmark{display:block}
-.sabik-state{display:flex;align-items:center;gap:7px;color:#435268}.sabik-state::before{content:'';width:7px;height:7px;border-radius:50%;background:#5a49a8;flex:none}
+.sabik-state{display:flex;align-items:center;gap:7px;color:var(--ig-text-muted)}.sabik-state::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--ig-accent);flex:none}
 .sabik-panel [hidden]{display:none!important}.sabik-widget-body{overflow:visible}
 .sabik-web-visual{display:grid;place-items:center;aspect-ratio:1;max-width:350px;margin:12px auto 0}
 #sabik-web-master{display:block;width:100%;height:auto;object-fit:contain;filter:none;mix-blend-mode:normal}
-.sabik-status{margin:8px 0 12px}.sabik-capability,.sabik-memory-note,.sabik-limits,#sabik-input-help{font-size:.94rem;line-height:1.5;color:#435268}
+.sabik-status{margin:8px 0 12px}.sabik-capability,.sabik-memory-note,.sabik-limits,#sabik-input-help{font-size:.94rem;line-height:1.5;color:var(--ig-text-muted)}
 .sabik-widget-form label{display:block;font-weight:700;margin-bottom:8px}
-#sabik-input{display:block;width:100%;max-width:100%;min-height:120px;resize:vertical;padding:12px;border:1px solid #8492a5;border-radius:14px;font:inherit;background:#fff;color:#17395c;box-sizing:border-box}
-#sabik-input:focus-visible,.sabik-panel select:focus-visible,.sabik-panel button:focus-visible{outline:3px solid #5a49a8;outline-offset:3px}
+#sabik-input{display:block;width:100%;max-width:100%;min-height:120px;resize:vertical;padding:12px;border:1px solid var(--ig-border-control);border-radius:14px;font:inherit;background:var(--ig-bg-surface-soft);color:var(--ig-text);box-sizing:border-box}
+#sabik-input:focus-visible,.sabik-panel select:focus-visible,.sabik-panel button:focus-visible{outline:3px solid var(--ig-focus);outline-offset:3px}
 .sabik-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.sabik-actions button{flex:1 1 auto;min-height:44px}.sabik-icon-button{min-height:44px}
-.sabik-voice-control{margin:16px 0;padding:12px;border:1px solid #c8d8e5;border-radius:14px;background:#fff}
-.sabik-voice-toggle{width:100%;min-height:44px}.sabik-voice-control small{display:block;margin-top:7px;color:#435268;line-height:1.45}
-.sabik-motion-control{margin:18px 0}.sabik-motion-control label{display:block;font-weight:700;margin-bottom:6px}.sabik-motion-control select{width:100%;font:inherit;padding:10px;min-height:44px;border:1px solid #8492a5;border-radius:12px;background:#fff;color:#17395c}.sabik-motion-control small{display:block;margin-top:6px}
-.sabik-notes{border-top:1px solid #c8d8e5;margin-top:18px;padding-top:12px}.sabik-retrieval-list{list-style:none;margin:0;padding:0}.sabik-retrieval-result{margin:14px 0;padding:14px;border:1px solid #c8d8e5;border-radius:14px;background:#fff}.sabik-retrieval-link{font-weight:700}.sabik-retrieval-snippet{font-size:1rem;line-height:1.6}.sabik-retrieval-citation{margin-block:12px}.sabik-panel a{color:#1f5f8b;text-underline-offset:3px}.sabik-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.sabik-voice-control{margin:16px 0;padding:12px;border:1px solid var(--ig-separator);border-radius:14px;background:var(--ig-bg-surface-soft)}
+.sabik-voice-toggle{width:100%;min-height:44px}.sabik-voice-control small{display:block;margin-top:7px;color:var(--ig-text-muted);line-height:1.45}
+.sabik-motion-control{margin:18px 0}.sabik-motion-control label{display:block;font-weight:700;margin-bottom:6px}.sabik-motion-control select{width:100%;font:inherit;padding:10px;min-height:44px;border:1px solid var(--ig-border-control);border-radius:12px;background:var(--ig-bg-surface-soft);color:var(--ig-text)}.sabik-motion-control small{display:block;margin-top:6px}
+.sabik-notes{border-top:1px solid var(--ig-separator);margin-top:18px;padding-top:12px}.sabik-retrieval-list{list-style:none;margin:0;padding:0}.sabik-retrieval-result{margin:14px 0;padding:14px;border:1px solid var(--ig-separator);border-radius:14px;background:var(--ig-bg-surface-soft)}.sabik-retrieval-link{font-weight:700}.sabik-retrieval-snippet{font-size:1rem;line-height:1.6}.sabik-retrieval-citation{margin-block:12px}.sabik-panel a{color:var(--ig-link);text-underline-offset:3px}.sabik-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1100px){#home-view{grid-template-columns:minmax(0,1fr) minmax(290px,340px);gap:22px}.sabik-widget{padding:18px}#home-view .featured-grid,#home-view .small-grid{grid-template-columns:1fr 1fr}}
 @media(max-width:850px){#home-view{display:block}.sabik-panel{max-width:42rem;margin:0 auto;padding:0 0 32px}.sabik-web-visual{max-width:260px}#home-view .featured-grid{grid-template-columns:1fr}.sabik-widget{padding:18px}}
 @media(max-width:365px){.sabik-widget{padding:14px}.sabik-wordmark{width:125px}.sabik-widget-head{gap:8px}.sabik-icon-button{padding:8px 10px!important}}
@@ -33,3 +33,41 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
 #home-view .search-block{max-width:none}
 .sabik-web-visual{max-width:440px}
 @media(max-width:850px){#home-view{display:block}.sabik-web-visual{max-width:260px}}
+
+
+/* R69 HUMAN QA · current Sabik moves itself. No legacy orbit donor. */
+.sabik-web-visual.sabik-current-presence{
+ --sabik-self-speed:5.6s;
+ position:relative;isolation:isolate;overflow:visible;aspect-ratio:1;background:transparent
+}
+.sabik-current-presence .sabik-presence-motion{
+ display:grid;place-items:center;width:100%;height:100%;transform-origin:50% 56%;
+ animation:sabikR69SelfMotion var(--sabik-self-speed) ease-in-out infinite
+}
+.sabik-current-presence #sabik-web-master.sabik-avatar-base{
+ display:block;width:100%;height:auto;max-width:none;object-fit:contain;clip-path:none;opacity:1;visibility:visible
+}
+.sabik-current-presence[data-web-state="ORIENTAR"]{--sabik-self-speed:4.6s}
+.sabik-current-presence[data-web-state="TRANSICION"]{--sabik-self-speed:3.8s}
+.sabik-current-presence[data-web-state="PAUSA"]{--sabik-self-speed:7.8s}
+.sabik-current-presence[data-web-state="CONFIRMAR"]{--sabik-self-speed:3.2s}
+.sabik-current-presence[data-voice-active="true"]{--sabik-self-speed:2.7s}
+.sabik-current-presence[data-motion-level="REDUCIDO"] .sabik-presence-motion{
+ animation-name:sabikR69SelfMotionReduced;animation-duration:10s
+}
+.sabik-current-presence[data-motion-level="SIN_MOVIMIENTO"] .sabik-presence-motion,
+html[data-ig-motion="off"] .sabik-current-presence .sabik-presence-motion{
+ animation:none!important;transform:none!important
+}
+.sabik-current-presence[data-render-active="false"] .sabik-presence-motion{animation-play-state:paused!important}
+@keyframes sabikR69SelfMotion{
+ 0%,100%{transform:translate3d(-1.6%,1.15%,0) rotate(-1.15deg) scale(.99)}
+ 50%{transform:translate3d(1.8%,-1.45%,0) rotate(1.25deg) scale(1.018)}
+}
+@keyframes sabikR69SelfMotionReduced{
+ 0%,100%{transform:translate3d(-.35%,.3%,0) scale(.998)}
+ 50%{transform:translate3d(.4%,-.35%,0) scale(1.003)}
+}
+@media(prefers-reduced-motion:reduce){
+ .sabik-current-presence .sabik-presence-motion{animation-name:sabikR69SelfMotionReduced;animation-duration:10s}
+}

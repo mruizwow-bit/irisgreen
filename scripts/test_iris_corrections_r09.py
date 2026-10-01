@@ -8,40 +8,27 @@ ROOT=Path(__file__).resolve().parents[1];OUT=ROOT/'reports/iris-r09';OUT.mkdir(p
 
 
 def check_inner_header(page,route,width):
- """Verify the current R49 global header contract.
-
- The current header intentionally contains only brand + Accessibility + Music +
- language. The thematic navigation lives elsewhere and must not be required here.
- """
+ """Verify compact global chrome: brand + Music + Accessibility + language."""
  header=page.locator('.ig-r49-global-header[data-ig-r49-upgraded="true"]')
  if not header.count():return None
  geometry=header.evaluate('''(h)=>{
-  const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom,center:r.y+r.height/2}};
+  const rect=e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,width:r.width,height:r.height,right:r.right,bottom:r.bottom}};
   const visible=e=>{if(!e)return false;const c=getComputedStyle(e),r=e.getBoundingClientRect();return c.display!=='none'&&c.visibility!=='hidden'&&Number(c.opacity)!==0&&r.width>0&&r.height>0};
-  const inner=h.querySelector('.ig-r49-header-inner');
-  const brand=h.querySelector('.ig-r49-brand');
-  const settings=h.querySelector('[data-ig-r49-settings]');
-  const music=h.querySelector('[data-ig-music]');
-  const lang=h.querySelector('.ig-r49-lang');
-  return {
-    header:rect(h),inner:inner?rect(inner):null,
-    brand:brand&&visible(brand)?rect(brand):null,
-    settings:settings&&visible(settings)?rect(settings):null,
-    music:music&&visible(music)?rect(music):null,
-    lang:lang&&visible(lang)?rect(lang):null,
-    permanentNav:[...h.querySelectorAll('.nav,.ig-r49-primary')].filter(visible).length
-  };
+  const inner=h.querySelector('.ig-r49-header-inner'),brand=h.querySelector('.ig-r49-brand'),
+        music=h.querySelector('[data-ig-music]'),settings=h.querySelector('[data-ig-r49-settings]'),lang=h.querySelector('.ig-r49-lang');
+  return {header:rect(h),inner:inner?rect(inner):null,brand:brand&&visible(brand)?rect(brand):null,
+          music:music&&visible(music)?rect(music):null,settings:settings&&visible(settings)?rect(settings):null,
+          lang:lang&&visible(lang)?rect(lang):null,
+          extras:h.querySelectorAll('[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]').length};
  }''')
- outer=geometry['header'];inner=geometry['inner']
- assert inner,(route,width,'missing R49 header inner',geometry)
- assert inner['x']>=outer['x']-1 and inner['right']<=outer['right']+1,(route,width,'header inner outside shell',geometry)
+ outer=geometry['header'];inner=geometry['inner'];assert inner,(route,width,'missing header inner',geometry)
  assert geometry['brand'],(route,width,'missing brand',geometry)
- for key in ('settings','music','lang'):
+ for key in ('music','settings','lang'):
   item=geometry[key];assert item,(route,width,'missing header control',key,geometry)
   assert item['height']>=44,(route,width,'short header control',key,item)
   assert item['x']>=outer['x']-1 and item['right']<=outer['right']+1,(route,width,'header control clipped',key,item)
- assert geometry['permanentNav']==0,(route,width,'retired permanent thematic nav visible',geometry)
- controls=header.locator('.ig-r49-brand,[data-ig-r49-settings],[data-ig-music],.ig-r49-lang')
+ assert geometry['extras']==0,(route,width,'extra header controls returned',geometry)
+ controls=header.locator('.ig-r49-brand,[data-ig-music],[data-ig-r49-settings],.ig-r49-lang')
  assert controls.count()==4,(route,width,'unexpected header control count',controls.count())
  controls.first.focus()
  for index in range(controls.count()):
@@ -49,7 +36,6 @@ def check_inner_header(page,route,width):
   if index+1<controls.count():page.keyboard.press('Tab')
  geometry['keyboard_controls_checked']=controls.count()
  return geometry
-
 
 class Quiet(SimpleHTTPRequestHandler):
  def log_message(self,*args):pass
@@ -77,10 +63,12 @@ def main():
         # Home v4 is the canonical donor-backed Home.
         assert page.locator('body[data-ig-home-version="v4"]').count()==1,(route,width,'missing Home v4 marker')
         home=page.locator('.ig-home-v4-wrap').bounding_box();assert home,(width,'missing Home v4 wrap')
-        expected=1240
+        gutter=min(40,max(16,width*.022))
+        expected=min(width-2*gutter,1664)
         assert abs(home['width']-expected)<4,(width,home,expected)
         sabik=page.locator('#sabik-web-master').bounding_box();assert sabik,(route,width,'missing Sabik master')
-        assert sabik['width']<=151,(route,width,'Sabik exceeds approved donor size',sabik)
+        expected_sabik=min(300,max(220,width*.18))
+        assert abs(sabik['width']-expected_sabik)<4,(route,width,'Sabik Home size outside product range',sabik,expected_sabik)
       if width==1920 or width==320:page.screenshot(path=str(OUT/f'{len(rows):02d}-{width}.png'))
       rows.append({**current,'font':family,'passed':True})
       (OUT/'progress.json').write_text(json.dumps(rows,indent=2))

@@ -41,12 +41,15 @@ def route_for(path,root):
 def profile(route):
  work=("/taller/","/workshop/","/sitio-tranquilo/","/quiet-space/","/recursos/juegos/","/resources/games/","/tarjeta-iris/","/iris-card/")
  if any(x in route for x in work): return "workspace"
+ if (route.startswith("/es/intereses/") and route!="/es/intereses/") or (route.startswith("/en/interests/") and route!="/en/interests/"):
+  return "workspace"
  browse=(
   "/es/neurodiversidad/condiciones/","/en/neurodiversity/conditions/",
   "/es/situaciones/","/en/situations/","/es/biblioteca/","/en/everyday-life/",
   "/es/datos/","/en/data/","/es/recursos/","/en/resources/",
   "/es/intereses/","/en/interests/","/es/videos/","/en/videos/",
-  "/es/libros/","/en/books/","/es/tramites/directorio/","/en/support-directory/"
+  "/es/libros/","/en/books/","/es/tramites/directorio/","/en/support-directory/",
+  "/es/investigacion/","/en/research/"
  )
  if route in browse: return "browse"
  return "content"

@@ -40,18 +40,33 @@ try:
         page.goto(url, wait_until="networkidle")
         page.wait_for_function("window.SabikWebPresentation && document.querySelector('#sabik-hologram')?.dataset.motionLevel")
 
-        # PRESENTE is the current master and intentionally idle until a finite R37 state change.
+        # PRESENTE keeps the current Web master, with continuous movement on Sabik itself.
         src = page.locator("#sabik-web-master").get_attribute("src")
-        assert src.endswith("/sabik/assets/web-r01/web_presente.png"), src
+        assert "/sabik/assets/web-r01/web_presente.png?v=r69-20260930-4" in src, src
+        page.wait_for_function("document.querySelector('#sabik-hologram .sabik-presence-motion')")
         idle = page.evaluate("""() => ({
           state: document.querySelector('#sabik-hologram').dataset.webState,
           active: window.SabikWebPresentation.snapshot().active,
-          animations: document.querySelector('#sabik-web-master').getAnimations().length
+          presenceLayer: window.SabikWebPresentation.snapshot().presenceLayer,
+          renderActive: window.SabikWebPresentation.snapshot().renderActive,
+          masterAnimations: document.querySelector('#sabik-web-master').getAnimations().length,
+          presenceTransform: getComputedStyle(document.querySelector('.sabik-presence-motion')).transform
         })""")
         assert idle["state"] == "PRESENTE", idle
         assert idle["active"] is False, idle
-        assert idle["animations"] == 0, idle
-        evidence["motion"]["present_idle"] = idle
+        assert idle["presenceLayer"] is True and idle["renderActive"] is True, idle
+        painted = page.evaluate("""() => {
+          const m=document.querySelector('#sabik-web-master'),p=document.querySelector('.sabik-presence-motion'),c=getComputedStyle(m),r=m.getBoundingClientRect();
+          return {presenceTag:p.tagName,display:c.display,visibility:c.visibility,opacity:Number(c.opacity),w:r.width,h:r.height,natural:m.naturalWidth,complete:m.complete,legacyOrbits:document.querySelectorAll('.sabik-orbit-layer').length};
+        }""")
+        assert painted["presenceTag"]=="SPAN" and painted["legacyOrbits"]==0, painted
+        assert painted["display"]!="none" and painted["visibility"]=="visible" and painted["opacity"]>.99, painted
+        assert painted["w"]>=220 and painted["h"]>=220 and painted["natural"]>0 and painted["complete"], painted
+        before = idle["presenceTransform"]
+        page.wait_for_timeout(300)
+        after = page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
+        assert before != after, (before, after)
+        evidence["motion"]["present_continuous"] = {**idle, "afterTransform": after}
 
         # NORMAL: R37 finite transition over the current ORIENTAR master.
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true}); }")
@@ -66,7 +81,7 @@ try:
           };
         }""")
         assert normal["state"] == "ORIENTAR", normal
-        assert normal["src"].endswith("/sabik/assets/web-r01/web_orientar.png"), normal
+        assert "/sabik/assets/web-r01/web_orientar.png?v=r69-20260930-4" in normal["src"], normal
         assert normal["duration"] == 380, normal
         assert normal["iterations"] == 1, normal
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
@@ -81,7 +96,7 @@ try:
         }""")
         assert transition["duration"] == 500, transition
         assert transition["iterations"] == 1, transition
-        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false && document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_presente.png')")
+        page.wait_for_function("window.SabikWebPresentation.snapshot().active === false && document.querySelector('#sabik-web-master').getAttribute('src').includes('web_presente.png?v=r69-20260930-4')")
         evidence["motion"]["transition"] = transition
 
         # REDUCIDO shortens the same R37 movement.
@@ -103,31 +118,36 @@ try:
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
         evidence["motion"]["reduced"] = reduced
 
-        # SIN_MOVIMIENTO swaps only to the correct state master, without animation.
+        # SIN_MOVIMIENTO swaps state master but freezes both the finite B3 transition and living layers.
         page.select_option("#sabik-motion-level", "SIN_MOVIMIENTO")
         page.dispatch_event("#sabik-motion-level", "change")
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true}); }")
-        page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').endsWith('web_pausa.png')")
+        page.wait_for_function("document.querySelector('#sabik-web-master').getAttribute('src').includes('web_pausa.png?v=r69-20260930-4')")
         stopped = page.evaluate("""() => ({
           active: window.SabikWebPresentation.snapshot().active,
           animations: document.querySelector('#sabik-web-master').getAnimations().length,
-          level: window.SabikWebPresentation.snapshot().level
+          level: window.SabikWebPresentation.snapshot().level,
+          presenceTransform: getComputedStyle(document.querySelector('.sabik-presence-motion')).transform
         })""")
         assert stopped["active"] is False, stopped
         assert stopped["animations"] == 0, stopped
         assert stopped["level"] == "SIN_MOVIMIENTO", stopped
-        evidence["motion"]["no_motion"] = stopped
+        page.wait_for_timeout(300)
+        stopped_after = page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
+        assert stopped["presenceTransform"] == stopped_after, (stopped, stopped_after)
+        evidence["motion"]["no_motion"] = {**stopped, "afterTransform": stopped_after}
 
-        # Voice hook is compatible but does not replace the visual with the historical donor.
+        # Voice hook modulates the layered presence without replacing the current Web master.
         page.evaluate("window.SabikWebPresentation.setVoiceActive(true)")
         voice = page.evaluate("""() => ({
           voice: document.querySelector('#sabik-hologram').dataset.voiceActive,
           src: document.querySelector('#sabik-web-master').getAttribute('src'),
-          layered: document.querySelector('.sabik-layered-avatar') !== null
+          currentPresence: document.querySelector('.sabik-current-presence') !== null,
+          legacyOrbits: document.querySelectorAll('.sabik-orbit-layer').length
         })""")
         assert voice["voice"] == "true", voice
-        assert voice["src"].endswith("/sabik/assets/web-r01/web_pausa.png"), voice
-        assert voice["layered"] is False, voice
+        assert "/sabik/assets/web-r01/web_pausa.png?v=r69-20260930-4" in voice["src"], voice
+        assert voice["currentPresence"] is True and voice["legacyOrbits"] == 0, voice
         page.evaluate("window.SabikWebPresentation.setVoiceActive(false)")
         evidence["motion"]["voice_hook"] = voice
 
@@ -151,4 +171,4 @@ finally:
 (REPORT / "temporal-evidence.json").write_text(
     json.dumps(evidence, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
 )
-print("R52_A3_NEW_SABIK_R37_BROWSER_PASS")
+print("R52_A3_NEW_SABIK_SELF_MOTION_BROWSER_PASS")

@@ -129,7 +129,9 @@ def browser_checks(root,out):
                 if button.count()==0:
                     button=page.locator('header.ig-r49-global-header a.ig-r49-lang[lang="'+target_lang+'"]')
                 assert button.count()==1,(path,'language control',target_lang)
-                button.click();page.wait_for_url('https://irisgreen.eu'+pair[1 if lang=='es' else 0]+'**',wait_until='commit')
+                origin=page.evaluate('location.origin');target_path=pair[1 if lang=='es' else 0]
+                button.click();page.wait_for_url(origin+target_path+'**',wait_until='commit')
+                assert page.evaluate('location.origin')==origin,(path,'language control left current origin',page.url)
                 row['language_target']=page.url
                 row['passed']=True;results.append(row)
                 (out/'browser-progress.json').write_text(json.dumps(results,indent=2))

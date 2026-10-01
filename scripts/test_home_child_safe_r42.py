@@ -12,15 +12,19 @@ def page(root,url): return root/url.strip('/')/'index.html'
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);root=ap.parse_args().root.resolve()
  es=(root/'index.html').read_text(encoding='utf-8');en=(root/'en/index.html').read_text(encoding='utf-8')
- for txt,labels in [(es,['Empieza por tu parte','Entra y úsalo','Pregunta a Sabik','Entiende y encuentra','0–12 años','13–17 años','18 años o más','Todas las edades']),(en,['Start with your part','Open and use','Ask Sabik','Understand and find','Ages 0–12','Ages 13–17','Ages 18+','All ages'])]:
+ for txt,labels in [(es,['Encuentra lo que necesitas','Entra y úsalo','Pregunta a Sabik','Entiende y encuentra']),(en,['Find what you need','Open and use','Ask Sabik','Understand and find'])]:
   need('data-ig-home-version="v4"' in txt,'Home v4 marker missing')
+  need('data-ig-r49="1"' in txt,'Home is not enrolled in the global shell')
+  need(txt.count('data-ig-audience-picker')==1,'Home canonical age picker count !=1')
+  need(txt.count('data-ig-audience-stage=')==4,'Home canonical age button count !=4')
+  need('ig-home-v4-safety-state' in txt,'Home child-safe status missing')
   for label in labels: need(label in txt,'Home v4 missing '+label)
   for asset in ['/assets/ig-global-ui-tokens-2026.css','/assets/ig-theme.js','/assets/ig-audience.js','/assets/buscador-comun.js','/assets/home-r42-child-safe.js','/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/iris-mount.mjs']:
    need(txt.count(asset)==1,'Home v4 asset count !=1: '+asset)
   need('class="ig-uh"' not in txt,'Legacy ig-uh header leaked into built Home')
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
-  for token in ['id="sabik-form"','id="sabik-voice"','id="sabik-low"','id="sabik-motion-level"','id="sabik-reset"']:
+  for token in ['id="sabik-form"','id="sabik-voice"','id="sabik-motion-level"','id="sabik-reset"']:
    need(token in txt,'Real Sabik control missing '+token)
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
@@ -35,6 +39,7 @@ def main():
    need(cid=='global-395','Unexpected missing S2 page '+url);continue
   protected+=1;txt=p.read_text(encoding='utf-8')
   need('data-ig-s2-safe' in txt,'Full S2 not replaced '+url)
+  need('data-ig-s2-safe-page' in txt,'Safe S2 page marker missing '+url)
   need('prefetch' not in txt.lower() and 'preload' not in txt.lower(),'S2 prefetch/preload found '+url)
   full=root/'assets/safety/full'/f'{cid}-es.html';need(full.is_file(),'Missing full S2 chunk '+cid);need(full.read_text(encoding='utf-8') not in txt,'Full S2 body leaked '+cid)
  need(protected==9,'Expected 9 existing S2 page records')

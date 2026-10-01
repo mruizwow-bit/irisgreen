@@ -13,7 +13,7 @@ joined='\n'.join(files.values())
 fixed_expected=[
  'Puedo ayudarte a buscar información.','I can help you find information.',
  'Desactivar movimiento','Turn off motion',
- 'Movimiento breve cuando cambia el estado.','Brief motion when the state changes.',
+ 'Movimiento suave y continuo.','Gentle continuous motion.',
  'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
  "Could not connect. You can try again or use Iris Green's search.",
  'Algunas fuentes originales están en español.','Some original sources are in Spanish.',

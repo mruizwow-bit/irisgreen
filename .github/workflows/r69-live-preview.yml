@@ -1,0 +1,42 @@
+name: R69 manual Deploy Preview QA
+on:
+  workflow_dispatch:
+    inputs:
+      base_url:
+        description: 'URL exacta de la Deploy Preview que se va a revisar'
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      IG_BASE_URL: ${{ inputs.base_url }}
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Preparar Chromium
+        run: |
+          python -m venv /tmp/ig-r69-live
+          /tmp/ig-r69-live/bin/pip -q install playwright==1.55.0
+          /tmp/ig-r69-live/bin/python -m playwright install --with-deps chromium >/tmp/ig-r69-live-install.log 2>&1
+      - name: Comprobar preview una vez
+        run: curl -fsS "$IG_BASE_URL/" >/dev/null
+      - name: QA navegador sobre la preview indicada
+        run: |
+          /tmp/ig-r69-live/bin/python scripts/test_r69_unified_interface_browser.py
+          /tmp/ig-r69-live/bin/python scripts/test_r67_aura_recovery_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r69-live-preview-qa
+          path: |
+            reports/r69-unified-interface
+            reports/r67-aura-recovery
+          retention-days: 14

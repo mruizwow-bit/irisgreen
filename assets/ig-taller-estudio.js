@@ -303,6 +303,9 @@
 
   /* R42 Taller product layer: loaded progressively after the existing studio runtime. */
   IGT.loadR42 = function () {
+    /* R69 build injects the R42 layer statically after each studio engine. That keeps
+       load order deterministic and prevents the old study from painting first. */
+    if (document.querySelector('meta[name="ig-r69-taller-static-shell"]')) return;
     if (window.__ig42WorkshopLoading) return;
     window.__ig42WorkshopLoading = true;
     if (!document.querySelector('link[data-ig42-taller]')) {

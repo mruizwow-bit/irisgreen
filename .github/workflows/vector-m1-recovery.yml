@@ -1,0 +1,55 @@
+name: Vector M1 recovery gate
+on:
+  push:
+    branches: ['vector/full-recovery-all-intake-20261001']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: vector-m1-recovery-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  m1:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile scripts/build_site.py scripts/test_vector_m1_recovery_browser.py
+      - name: Build exact recovery
+        run: python scripts/build_site.py
+      - name: Static gates
+        run: |
+          python scripts/test_r69_unified_interface.py --root dist
+          python scripts/test_home_child_safe_r42.py --root dist
+      - name: Install Chromium
+        run: |
+          python -m venv /tmp/ig-vector-m1
+          /tmp/ig-vector-m1/bin/pip -q install playwright==1.55.0
+          /tmp/ig-vector-m1/bin/python -m playwright install --with-deps chromium >/tmp/ig-vector-m1-install.log 2>&1
+      - name: Browser gates
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-vector-m1-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-vector-m1/bin/python scripts/test_vector_m1_recovery_browser.py
+          /tmp/ig-vector-m1/bin/python scripts/test_r69_unified_interface_browser.py
+          /tmp/ig-vector-m1/bin/python scripts/test_r51_home_age_browser.py
+          /tmp/ig-vector-m1/bin/python scripts/test_r51_audience_filter_browser.py
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: vector-m1-recovery
+          path: |
+            reports/vector-m1-recovery
+            reports/r69-unified-interface
+            reports/r51-home-age
+            reports/r51-audience-filter
+            reports/routes/build.json
+          retention-days: 14

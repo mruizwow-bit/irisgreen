@@ -23,15 +23,16 @@ async def main():
    await page.goto(BASE+path,wait_until='networkidle')
    await page.wait_for_function("document.querySelector('.ig-r49-global-header')?.dataset.igR49Upgraded==='true'")
    need(await page.locator('.ig-r49-global-header').is_visible(),'global shell not visible '+path)
-   need(await page.get_by_role('button',name='Contenido',exact=False).count()==1,'Content control missing '+path)
-   await page.get_by_role('button',name='Contenido',exact=False).click()
-   b=page.get_by_role('button',name='0–12 años',exact=True)
-   need(await b.count()==1,'canonical 0–12 label missing '+path)
-   await b.click()
-   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','AGE_0_12 not emitted '+path)
-   await page.keyboard.press('Escape')
+   need(await page.locator('[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]').count()==0,
+        'extra global header controls returned '+path)
+   need(await page.locator('[data-ig-music]').count()==1,'Music control missing '+path)
+   need(await page.locator('[data-ig-r49-settings]').count()==1,'Accessibility control missing '+path)
+   need(await page.locator('.ig-r49-lang').count()==1,'Language control missing '+path)
+   await page.evaluate("IGAudience.set('AGE_0_12')")
+   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','AGE_0_12 runtime not emitted '+path)
    await page.evaluate("IGAudience.clear()")
-  report['shell']={'routes':len(samples),'canonical_age':'PASS','visible':'PASS'}
+   need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL runtime not restored '+path)
+  report['shell']={'routes':len(samples),'compact_header':'PASS','canonical_age_runtime':'PASS','visible':'PASS'}
   # Visual evidence from the served artifact / Deploy Preview.
   await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/es/neurodiversidad/condiciones/',wait_until='networkidle')

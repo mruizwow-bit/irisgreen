@@ -15,7 +15,7 @@ const TEXT={
   connected:'Puedo responder con las fuentes de Iris Green. No hago diagnósticos.',
   label:'¿Qué necesitas?',help:'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.',send:'Enviar',
   cancel:'Cancelar respuesta',low:'Desactivar movimiento',reset:'Empezar de nuevo',
-  motion:'Movimiento de Sabik',normal:'Normal',reduced:'Reducido',still:'Sin movimiento',motionHelp:'Movimiento breve cuando cambia el estado.',
+  motion:'Movimiento de Sabik',normal:'Normal',reduced:'Reducido',still:'Sin movimiento',motionHelp:'Movimiento suave y continuo.',
   memory:'No se guarda el historial entre sesiones.',limits:'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
   browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La consulta y los resultados se han borrado.',
   busy:'Buscando en las fuentes de Iris Green.',error:'No se pudo conectar. Puedes intentarlo de nuevo o usar el buscador de Iris Green.',
@@ -31,7 +31,7 @@ const TEXT={
   explanation:'If the Cloud library is unavailable, I use Iris Green’s safe local index. I do not invent an answer when there is not enough information.',
   connected:"I can answer using Iris Green's sources. I don't make diagnoses.",
   label:'What do you need?',help:'Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.',send:'Send',
-  cancel:'Cancel response',low:'Turn off motion',reset:'Start again',motion:'Sabik motion',normal:'Normal',reduced:'Reduced',still:'No motion',motionHelp:'Brief motion when the state changes.',
+  cancel:'Cancel response',low:'Turn off motion',reset:'Start again',motion:'Sabik motion',normal:'Normal',reduced:'Reduced',still:'No motion',motionHelp:'Gentle continuous motion.',
   memory:'No history is saved between sessions.',limits:'Check important information against the sources. Sabik does not make diagnoses.',
   browse:'Explore resources',placeholder:'For example: noise drains me',cleared:'Your query and results have been cleared.',
   busy:'Searching Iris Green sources.',error:"Could not connect. You can try again or use Iris Green's search.",
@@ -141,8 +141,9 @@ function mount(){
   lang=document.documentElement.lang.startsWith('en')?'en':'es';voice.setLanguage(lang);aside.lang=lang;announcement.lang=lang;
   aside.querySelectorAll('[data-sabik-text]').forEach(el=>{if(strings()[el.dataset.sabikText]!=null)el.textContent=strings()[el.dataset.sabikText];});
   $('#sabik-toggle').textContent=$('#sabik-widget-body').hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;
-  $('#sabik-browse').href=lang==='en'?'/en/resources/':'/es/recursos/';
-  aside.querySelector('.sabik-state').textContent=strings().available;$('#sabik-availability').textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');
+  const browse=$('#sabik-browse');if(browse)browse.href=lang==='en'?'/en/resources/':'/es/recursos/';
+  const stateNode=aside.querySelector('.sabik-state');if(stateNode)stateNode.textContent=strings().available;
+  const availability=$('#sabik-availability');if(availability)availability.textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');
   syncVoice();controls();
  }
  async function submit(event){
@@ -164,8 +165,8 @@ function mount(){
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();voice.cancel();busy=false;controls();void visual('pausa',{force:true});input.focus();});
  $('#sabik-toggle').addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);$('#sabik-toggle').setAttribute('aria-expanded',String(!body.hidden));$('#sabik-toggle').textContent=body.hidden?strings().show:strings().hide;if(!body.hidden)visual('transicion');});
  voiceButton.addEventListener('click',async()=>{voiceButton.disabled=true;try{if(voiceEnabled())await voice.setEnabled(false);else{await voice.setEnabled(true);const result=await speakFixed('sabik.welcome',strings().welcome);if(result.status!=='playing'&&result.status!=='disabled')throw new Error('VOICE_PLAYBACK_'+result.status);}}catch{await voice.setEnabled(false);announcement.textContent=strings().voiceError;void visual('pausa',{force:true});}finally{voiceButton.disabled=false;syncVoice();}});
- $('#sabik-low').addEventListener('click',()=>{const motion=$('#sabik-motion-level');motion.value='SIN_MOVIMIENTO';$('#sabik-low').setAttribute('aria-pressed','true');motion.dispatchEvent(new Event('change',{bubbles:true}));});
- $('#sabik-motion-level').addEventListener('change',()=>{$('#sabik-low').setAttribute('aria-pressed',String($('#sabik-motion-level').value==='SIN_MOVIMIENTO'));});
+ const low=$('#sabik-low');if(low)low.addEventListener('click',()=>{const motion=$('#sabik-motion-level');motion.value='SIN_MOVIMIENTO';low.setAttribute('aria-pressed','true');motion.dispatchEvent(new Event('change',{bubbles:true}));});
+ $('#sabik-motion-level').addEventListener('change',()=>{if(low)low.setAttribute('aria-pressed',String($('#sabik-motion-level').value==='SIN_MOVIMIENTO'));});
  $('#sabik-reset').addEventListener('click',()=>{conversation.reset();connection?.disconnect();voice.cancel();input.value='';root.replaceChildren();delete root.dataset.retrievalState;busy=false;controls();say(strings().cleared,{voiceId:'sabik.reset.confirmation'});visual('transicion');input.focus();});
  window.addEventListener('ig:audience-change',()=>{conversation.reset();connection?.disconnect();voice.cancel();busy=false;root.replaceChildren();controls();});
  window.addEventListener('pagehide',()=>{conversation.cancel('pagehide');connection?.disconnect();voice.cancel();});
