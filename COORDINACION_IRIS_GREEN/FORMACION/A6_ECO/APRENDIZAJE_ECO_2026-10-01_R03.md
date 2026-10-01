@@ -199,3 +199,41 @@ Empieza por:
 - qué runtime Sabik existe;
 - qué navegador/provider cambió;
 - qué fallo real merece convertirse en fixture.
+
+
+## Práctica adicional · WER vs error crítico
+
+Se implementó una alineación Levenshtein de palabras compatible con el esquema S/D/I de NIST sclite para casos didácticos.
+
+Casos:
+- control limpio: WER 0 %;
+- pérdida de negación `no`: WER 11,11 %, pero fallo semántico crítico;
+- último dígito 4→5: WER 14,29 %, pero entidad crítica incorrecta;
+- Lily→Lili: WER 20 %, nombre propio crítico incorrecto.
+
+Evidencia:
+`EVIDENCIA/ECO_ASR_EVAL_LAB_20261001.json`.
+
+Lección:
+**WER agregado no puede ser el único gate de STT.**
+
+## Práctica adicional · trade-off jitter buffer
+
+Simulación didáctica reproducible:
+- 5000 frames;
+- frame 20 ms;
+- base one-way 40 ms;
+- loss ≈2,1 %;
+- jitter aleatorio + spikes.
+
+Resultados:
+- buffer 20 ms → late ≈13,44 %, concealment needed ≈15,54 %, playout nominal 60 ms;
+- buffer 60 ms → late ≈3,58 %, concealment ≈5,68 %, playout 100 ms;
+- buffer 100 ms → late ≈0,56 %, concealment ≈2,66 %, playout 140 ms;
+- buffer 140 ms → late 0 %, queda loss ≈2,1 %, playout 180 ms.
+
+Evidencia:
+`EVIDENCIA/ECO_JITTER_BUFFER_SIM_20261001.json`.
+
+Esto NO predice un jitter buffer WebRTC real. Enseña el principio:
+más espera puede convertir paquetes tardíos en útiles, a cambio de latencia; pérdida real sigue necesitando concealment/FEC/redundancia.
