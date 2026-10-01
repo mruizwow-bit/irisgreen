@@ -78,3 +78,29 @@ Facebook confirmó «Se ha enviado tu comentario» y texto persistente. No conta
 Mica Ringo: cinco piezas recientes centradas en conflicto/acusaciones personales, sin participación ni follow. No seleccionada para esta ronda.
 
 **Acumulado actualizado:39textos (19propiosIG+15externosIG+5externosFB),16reacciones,1altaIG;24/114fieles revisados y Comcare adicional.** Objetivos de nuevas altas pendientes29IG+29FB. Campaña IG17:00 aún no comprobada públicamente. SinPASS diario.
+
+## Continuación de descubrimiento y respuestas · 01/10/2026 · alrededor de16:20 Europe/Madrid
+
+Tres nuevos primeros contactos publicados y verificados:
+- Jacob: https://www.instagram.com/p/Dd87wYjOYHL/c/18083350820330074/
+  “Jacob, I like that you mention the things you enjoy, too 💛 Needing a break doesn’t mean you’ve stopped liking what you’re doing.”
+- Natalie: https://www.instagram.com/p/Dd1j0CfgF2n/c/18115141772586124/
+  “Hope your first in-person event goes beautifully, Natalie 💙 It will be lovely to take these conversations beyond the comments.”
+- Dyspraxia Ireland: https://www.facebook.com/DyspraxiaIRL/posts/pfbid029X39nMgagmbPPYnXuPLro7yPLzRDBVMor8QPmPxSqM6KegDdgaFF8CdJxeLR7ptWl
+  “Sorry it won’t be going ahead in October 💙 I hope you get to bring everyone together in the spring. It’s good to know the refunds are being handled automatically.”
+  Facebook confirmó envío y texto persistente. Conferencia aplazada a primavera2027; no prometer fecha concreta.
+
+Criba sin altas:
+- drjacobsanthouse: tres publicaciones recientes. Una respuesta personal del autor comprobada en Dd87wYjOYHL, no recurrente en las otras dos. Primer contacto, sin follow.
+- dyslexia_in_adults: ampliación a unas cinco publicaciones entre rondas. Respuestas previas al mismo interlocutor en un solo hilo, sin habitualidad entre publicaciones verificada. Primer contacto, sin follow.
+- DyspraxiaIRL: tres recientes, un comentario lector en aplazamiento; sin respuestas personales recurrentes comprobadas. Primer contacto, sin follow.
+- DyspraxiaMagazine: tres recientes revisadas; no conversación personal comprobada. Sin intervención.
+- dyspraxiadylexia: tres recientes; comentarios de la propia página invitando al grupo, sin conversación con lectores verificada. No solicitar acceso al grupo ni seguir.
+- Mikey’s Wish: varias publicaciones adicionales y segundo hilo revisado. Continúa una sola respuesta personal del autor comprobada, insuficiente para recurrente. No repetir nuestro comentario ni seguir.
+- omgdyslexia: contenido del perfil no pertinente a esta ronda; sin intervención.
+
+Reciprocidad nueva observada en notificaciones y/o hilos: Motheroo respondió18043890563827918 y dio like a nuestro comentario; AuthentiKids respondió18146296339565567 y dio like; Shelly respondió agradeciendo y dio like; Jorge dio like al comentario externo. No equivalen a follow-back. Los tres textos recibidos son cierres, sin respuesta escrita adicional. Intentos de like en Motheroo y AuthentiKids no mostraron cambio confirmado: NO sumarlos; reacción de Shelly aún pendiente. Control de navegador recuperado tras fallo temporal.
+
+Facebook campaña recuperada revisada de nuevo: aún sin comentarios. No reintentar publicación Metricool con error de token. Campaña IG17:00 aún no vencida en esta revisión, pendiente verificación posterior.
+
+**Acumulado vigente:42 textos (19 propiosIG +17 externosIG +6 externosFB),16 reacciones confirmadas,1 altaIG. Cobertura24/114 fieles y Comcare adicional. Pendientes29IG+29FB altas, tres identidades históricas y verificación pública IG17:00. Ciclo parcial, sinPASS.**
