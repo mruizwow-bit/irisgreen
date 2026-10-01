@@ -311,3 +311,15 @@ Regla nueva de María: ampliar a toda la neurodiversidad en ES/EN, evaluar varia
 Sandra Kelly/mypureocdawakening aceptada tras5posts y respuestas en2hilos, seguida/comentada17934618135393399. Revisar01/10 y lunes05/10. Otras candidaturas y límites en CONTROL/CRIBA_ACTIVIDAD_20260930.md. No desbloquear adhd_love_. Neurodivergent Rebel requiere>24h de seguimiento para comentar, todavía sin alta. No inventar compartidos ocultos ni alcance.
 
 La automatización existente conserva horario y aplica estos criterios. La actividad fuera de sesión no se presume ejecutada.
+
+
+## Recuperación y continuidad · 01/10/2026 · mañana
+
+Rama operativa de esta sesión: `social/community-manager-20261001`.
+Informes nuevos: `INFORMES/AGORA_RECUPERACION_COMENTARIOS_20261001_MANANA.md` y `INFORMES/AGORA_CONTINUIDAD_20261001_TANDA2.md`.
+
+Acumulado verificado: 21 textos (17 en publicaciones propias IG, 3 externos IG, 1 externo FB) y 10 reacciones (8 IG, 2 FB). Diez cuentas externas revisitadas en la segunda tanda, distinguiendo relaciones recientes de fieles. No se hicieron follows ni bajas. No se han recuperado las tres identidades pendientes.
+
+Programación Metricool de hoy comprobada: FB385546537 a10:00 e IG383972701 a17:00 Europe/Madrid; ambas PENDING, automáticas, no borrador, dos imágenes y textos alternativos. Pendiente verificar publicación real tras hora prevista. No duplicar.
+
+Los informes contienen enlaces por comentario y revisiones individuales más recientes que SEGUIDOS_SOCIAL.csv. Consultarlos antes de volver a contactar. Autismo España/Itinera, AlfaSAAC/formación y ADHD UK/congreso ya tienen comentarios: no repetir. Sandra sin nueva publicación posterior al último post atendido. Nuevos comentarios en BDA, Autism West Midlands, Mencap y Dan. ConecTEA nueva reacción, Autismo Madrid respuesta recibida atendida con reacción. Ciclo diario parcial; sin PASS ni funcionamiento continuo fuera de sesión.
