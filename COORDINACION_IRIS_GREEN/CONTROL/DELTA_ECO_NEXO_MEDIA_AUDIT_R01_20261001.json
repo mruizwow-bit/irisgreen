@@ -1,0 +1,134 @@
+{
+  "schema": "iris-green-nexo-team-audit-delta-v1",
+  "date": "2026-10-01",
+  "issue": 353,
+  "alias": "Eco",
+  "agent": "A6",
+  "role": "Voice, Audio & Media Quality / Validation Engineer",
+  "lead": "Nexo",
+  "mode": "READ_ONLY_RESEARCH_ANALYSIS",
+  "branch": "eco/a6-nexo-media-audit-r01-20261001",
+  "base_nexo_head": "b753746dccaba59d5968cfa1c65567a85f907ec6",
+  "inspected_refs": {
+    "main": "ad7ea66254be7be44d7e97b4ca19ae8ac42ba6b5",
+    "a2_integrated": "8ea50128b490207b4dd5508c3c46692f5be69c87",
+    "sabik_as_is_motion": "9c34acf4736acaecc7b4d532572d7e67ea358d2f",
+    "r69_candidate": "6f6392f833a4d1d6716ecabec4e192b70d180b0b"
+  },
+  "report": "COORDINACION_IRIS_GREEN/CONTROL/ECO_NEXO_MEDIA_AUDIT_R01_20261001.md",
+  "findings": [
+    {
+      "id": "ECO-C01",
+      "class": "MEDIA_GAP",
+      "title": "Sabik Web remains text-first; dynamic voice input/output not integrated",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C02",
+      "class": "VOICE_RISK",
+      "title": "30 fixed WAVs have integrity/control evidence but not real audible E2E evidence",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C03",
+      "class": "REALTIME_RISK",
+      "title": "No current endpointing, barge-in or WebRTC spoken-conversation evidence",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C04",
+      "class": "REALTIME_RISK",
+      "title": "No observable jitter/packet-loss contract yet because no Sabik voice WebRTC session exists",
+      "priority": "NEXT"
+    },
+    {
+      "id": "ECO-C05",
+      "class": "MEDIA_GAP",
+      "title": "Quiet Space sea ambience keeps an AAC/M4A dependency without codec-specific fallback",
+      "priority": "NEXT"
+    },
+    {
+      "id": "ECO-C06",
+      "class": "PERCEPTUAL_QUALITY",
+      "title": "Current R37 does not express listening/processing/speaking semantic voice states",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C07",
+      "class": "PERCEPTUAL_QUALITY",
+      "title": "R69 continuous whole-emblem motion conflicts with new stable-core semantic-motion direction",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C08",
+      "class": "ACCESSIBILITY",
+      "title": "Current text/opt-in/no-autoplay/no-motion fallbacks should become non-regression invariants",
+      "priority": "NOW"
+    },
+    {
+      "id": "ECO-C09",
+      "class": "ACCESSIBILITY",
+      "title": "Sabik lacks optional visual/AAC communication input despite an existing pictogram corpus",
+      "priority": "NEXT"
+    },
+    {
+      "id": "ECO-C10",
+      "class": "MEDIA_GAP",
+      "title": "Global music AAC mitigation exists but no dedicated regression test was located",
+      "priority": "NEXT"
+    },
+    {
+      "id": "ECO-C11",
+      "class": "PERCEPTUAL_QUALITY",
+      "title": "No cross-surface loudness/comfort evidence gate located",
+      "priority": "NEXT"
+    },
+    {
+      "id": "ECO-C12",
+      "class": "HARDWARE_PENDING",
+      "title": "No sufficient physical iOS/Android/Bluetooth/device-route evidence",
+      "priority": "GATE_NOW_EXECUTE_LATER"
+    }
+  ],
+  "keep": [
+    "text as common fallback/reference path",
+    "single R66 core with inputMode",
+    "fixed Sabik voice OFF by default with preload none and hash-bound copy",
+    "global music AAC capability mitigation",
+    "Quiet Space explicit opt-in sound and reduced/no-motion controls",
+    "no always-listening and no audio/transcript persistence by default"
+  ],
+  "pending_evidence": [
+    "real Sabik microphone",
+    "real Sabik STT",
+    "real dynamic Sabik TTS",
+    "voice WebRTC",
+    "barge-in",
+    "real jitter/loss/TURN",
+    "iOS/Safari physical device",
+    "Android physical devices",
+    "Bluetooth HFP/routes",
+    "cross-surface loudness measurements",
+    "human perceptual QA dynamic voice"
+  ],
+  "external_sources": [
+    "https://www.w3.org/TR/mediacapture-streams/",
+    "https://www.w3.org/TR/webrtc-stats/",
+    "https://www.w3.org/TR/webrtc/",
+    "https://www.w3.org/TR/coga-usable/",
+    "https://www.w3.org/WAI/adapt/",
+    "https://www.w3.org/TR/adapt-symbols/",
+    "https://webkit.org/blog/17333/webkit-features-in-safari-26-0/",
+    "https://developers.openai.com/api/docs/guides/voice-agents",
+    "https://developers.openai.com/api/docs/guides/live",
+    "https://developers.openai.com/api/docs/guides/realtime",
+    "https://developers.openai.com/api/docs/guides/realtime-vad",
+    "https://developers.openai.com/cookbook/examples/realtime_eval_guide"
+  ],
+  "product_modified": false,
+  "build": false,
+  "merge": false,
+  "deploy": false,
+  "provider_selected": false,
+  "system_pass": false
+}
