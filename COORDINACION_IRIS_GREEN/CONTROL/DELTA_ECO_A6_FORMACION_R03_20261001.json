@@ -145,5 +145,12 @@
   "build_product": false,
   "merge": false,
   "deploy": false,
-  "external_certification": false
+  "external_certification": false,
+  "slack": {
+    "channel": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD",
+    "message_ts": "1790823007.878249",
+    "message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790823007878249",
+    "purpose": "quick team update after R03; GitHub remains canonical"
+  }
 }
