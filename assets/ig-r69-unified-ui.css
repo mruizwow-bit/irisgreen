@@ -150,3 +150,156 @@ body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.topic-card,.
 }
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.pill,.badge){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important}
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.xhero .lede,.topic-card small,.archive-items,.cromo .valor,.vacio){color:var(--ig-text-muted)!important}
+
+
+/* Vector M1 recovery · systemic LIGHT→DARK integration bridge.
+   This remains an integration shim: product art/paper keeps its intentional
+   light surface while interface chrome consumes the canonical semantic tokens. */
+
+/* Common editorial/navigation text that still ships literal LIGHT-palette ink. */
+body[data-ig-r49="1"] main :where(.crumb,.lede,.about-lede,.jg-hub-note,.ig-catalog-message){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] main .crumb a{color:var(--ig-text-muted)!important}
+
+/* Secondary section navigation is interface, not artwork. */
+body[data-ig-r49="1"] .ig-subtabs{
+  background:var(--ig-bg-surface)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] .ig-subtabs a{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important;
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49="1"] .ig-subtabs a[aria-current="page"]{
+  background:var(--ig-button-primary-bg)!important;
+  color:var(--ig-button-primary-fg)!important;
+  border-color:var(--ig-button-primary-bg)!important
+}
+
+/* R50 browse families generate some containers dynamically. Match structure
+   instead of brittle hexadecimal style strings, which runtime may serialise as rgb(). */
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"])
+ main>div:has(>.ig-search-shell){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_ABOUT"])
+ main>p{
+  color:var(--ig-text-muted)!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_ABOUT"])
+ main :where([style*="text-transform: uppercase"],[style*="text-transform:uppercase"]){
+  color:var(--ig-accent-secondary)!important
+}
+
+/* Support directory result cards are runtime-generated legacy LIGHT surfaces. */
+body[data-ig-r49-owner="R50_SUPPORT"] main article{
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body[data-ig-r49-owner="R50_SUPPORT"] main article :where(p,span){color:var(--ig-text-muted)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main article :where(h2,h3,strong,p[style*="font-weight: 700"],p[style*="font-weight:700"]){color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main :where(label,select){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_SUPPORT"] main select{
+  background:var(--ig-bg-surface-soft)!important;
+  border-color:var(--ig-border-control)!important
+}
+
+/* Videoteca: filter/card chassis follows DARK/LIGHT; the thumbnail itself remains art. */
+body[data-ig-r49-owner="R50_VIDEOS"] main div:has(>div>.ig-video-poster){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main :where(.ig-search-shell,.ig-filter-button){
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main .ig-filter-button{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main .ig-filter-button[aria-pressed="true"]{
+  background:var(--ig-button-primary-bg)!important;
+  color:var(--ig-button-primary-fg)!important;
+  border-color:var(--ig-button-primary-bg)!important
+}
+
+/* About is editorial content but its cards are UI surfaces, not paper artwork. */
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a) :where(h2,h3,strong){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a) :where(p,span){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main .about-principles{
+  background:var(--ig-bg-surface-soft)!important
+}
+
+/* Tarjeta Iris must not become a half-DARK/half-LIGHT hybrid inside content pages. */
+body[data-ig-r49="1"] main .iris-mini-card{
+  --iris-accent:var(--ig-accent);
+  --iris-soft:var(--ig-bg-surface-soft);
+  --iris-line:var(--ig-separator);
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important
+}
+body[data-ig-r49="1"] main .iris-mini-card :where(.iris-mini-brand,.iris-mini-title,.iris-mini-block h3){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card :where(.iris-mini-block p,.iris-mini-foot,.iris-mini-action-status){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-type{color:var(--ig-accent)!important}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-need{
+  background:var(--ig-bg-surface-soft)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-action{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important;
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-own{color:var(--ig-link)!important}
+
+/* Games and Interests retain literal LIGHT-palette metadata/link colours. */
+body[data-ig-r49="1"] .jg-main :where(.jg-context-copy span,.jg-hub-note,.jg-card-type){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] .jg-main .jg-context-arrow{color:var(--ig-link)!important}
+body[data-ig-r49="1"] .ig-afondo-card{
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] .ig-afondo-txt>span{color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .ig-afondo-txt .ig-afondo-go{color:var(--ig-link)!important}
+
+/* Intentional printable/paper surfaces stay light and must keep dark ink.
+   Global DARK typography must never recolour their headings white-on-white. */
+body[data-ig-r49="1"] .im-sheet{color:#17395c!important}
+body[data-ig-r49="1"] .im-sheet :where(h1,h2,h3,h4){color:#17395c!important}
+body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet){color:#000!important}
+body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet) :where(h1,h2,h3,h4){color:#000!important}
