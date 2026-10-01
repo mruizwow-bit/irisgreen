@@ -1,4 +1,4 @@
-# INVENTARIO DE ACTIVACIÓN Y VACANTES · R03
+# INVENTARIO DE ACTIVACIÓN Y VACANTES · R04
 
 ## Equipo interno activo / definido
 
@@ -46,7 +46,26 @@ Estado:
 
 ## Capacidad
 
-- Astra conserva 1 plaza interna libre.
-- Nexo queda 4/4 con Pulso · Vigía · Eco · Córtex.
+### Astra
+3/4 ocupadas:
+- Motor;
+- Prisma;
+- Lumen.
 
-No abrir más plazas técnicas hasta revisar de nuevo el organigrama.
+Plaza 4:
+**perfil funcional reservado: Test Architecture & Product Quality Engineer**.
+
+Estado:
+`PROFILE_DEFINED_NOT_ACTIVATED`.
+
+No alias.
+No número.
+No activación hasta autorización organizativa de María/Raíz.
+
+Motivo:
+cubrir estrategia/infraestructura de pruebas y evitar que Astra se convierta en ejecutor recurrente de QA.
+
+### Nexo
+4/4 con Pulso · Vigía · Eco · Córtex.
+
+No abrir más plazas técnicas fuera de las capacidades ya aprobadas sin nueva revisión del organigrama.

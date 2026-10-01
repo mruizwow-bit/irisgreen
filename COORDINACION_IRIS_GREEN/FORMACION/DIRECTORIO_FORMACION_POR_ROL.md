@@ -8,7 +8,7 @@ Fecha: 30/09/2026
 |---|---|---|---|
 | María | Dirección General · Fundadora · Product Owner | Dirección | Dirección; no requiere carpeta de agente |
 | Aura | Technical Program Manager & Knowledge Operations Lead | Jefatura | FORMACION/AURA/ |
-| Astra | Jefe de Equipo · Calidad de Producto & Arquitectura | Dirección | PLAN DETALLADO PENDIENTE |
+| Astra | Jefe de Equipo · Calidad de Producto & Arquitectura | Dirección | FORMACION/ASTRA/ · identidad + plan R01 + equipo R01; prácticas/examen pendientes |
 | Nexo | Jefe de Equipo · Continuidad Técnica & Sistemas | Dirección | PLAN DETALLADO PENDIENTE |
 | Orbe | Jefatura 4 de reserva | Dirección | no activar todavía |
 
@@ -61,7 +61,7 @@ Tu primera misión es:
 3. estudiar en internet con fuentes serias;
 4. crear 00_IDENTIDAD_Y_PUESTO.md, 01_PLAN_FORMACION.md y 02_PRACTICAS_Y_EXAMEN.md;
 5. estudiar realmente el plan;
-6. crear tu primer APRENDIZAJE_<ALIAS>_<AAAA-MM-DD>.md;
+6. crear tu primer APRENDIZAJE_<ALIAS>_<FECHA>.md;
 7. actualizar CONTROL/FORMACION_AGENTES.csv.
 
 No empezar producto mientras la jornada de Formación siga activa.
