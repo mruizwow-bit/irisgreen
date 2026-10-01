@@ -604,3 +604,137 @@ Antes de R47:
 3. abrir solo hueco material;
 4. Slack para coordinación; GitHub para evidencia;
 5. 0 producto/build/merge/deploy mientras siga Formación.
+
+
+### R47 · CSS containment y content-visibility
+
+Estudiado:
+- CSS Containment;
+- content-visibility:auto;
+- contain-intrinsic-size;
+- focus/AT implications;
+- virtualization boundary.
+
+Práctica Chromium:
+contenido offscreen bajo content-visibility:auto siguió siendo focalizable y el navegador lo llevó a vista.
+
+Marcador:
+`MOTOR_CSS_CONTAINMENT_CONTENT_VISIBILITY_STUDIED_R47`.
+
+### R48 · Runtime review profesional
+
+Revisión real sobre 7 archivos A5.
+
+Clasificación:
+- strengths;
+- QA candidates;
+- architectural conditions;
+- no convertir observación en bug.
+
+Resultado:
+fortalezas confirmadas y próximos tests definidos.
+
+Marcador:
+`MOTOR_RUNTIME_REVIEW_EVIDENCE_CLASSIFICATION_R48`.
+
+### R49 · WebGL context loss lab
+
+Laboratorio WebGL2 Chromium/SwiftShader:
+- lost;
+- restored;
+- old resource invalid;
+- fresh resource valid;
+- API healthy after restore.
+
+Resultado:
+**6/6 PASS**.
+
+Marcador:
+`MOTOR_WEBGL_CONTEXT_LOSS_RECOVERY_LAB_PASS_R49`.
+
+### R50 · Synthetic input contracts
+
+Laboratorio aislado Chromium:
+
+Sabik-like handler:
+- `isComposing=true`;
+- Ctrl+Enter;
+- requestSubmit ejecutado.
+
+Game-like global arrow handler:
+- focus fuera;
+- ArrowDown;
+- movement logic ejecutada;
+- no se demostró scroll conflict.
+
+Resultado:
+evidencia sintética, no bug integrado.
+
+Marcador:
+`MOTOR_SYNTHETIC_INPUT_CONTRACT_LAB_PASS_R50`.
+
+### R51 · WebGL recovery repetido
+
+Cinco ciclos consecutivos:
+- lost/restored 5/5;
+- old buffer invalid 5/5;
+- fresh buffer valid 5/5;
+- getError=0 5/5.
+
+Marcador:
+`MOTOR_WEBGL_REPEATED_CONTEXT_RECOVERY_LAB_PASS_R51`.
+
+### R52 · Observer/listener lifecycle
+
+Laboratorio Chromium:
+- MutationObserver siguió tras detach mientras node seguía vivo;
+- listener siguió tras detach;
+- reattach siguió activo;
+- disconnect/AbortSignal detuvieron callbacks.
+
+Resultado:
+**4/4 PASS**.
+
+No se afirma memory leak current.
+
+Marcador:
+`MOTOR_OBSERVER_LISTENER_LIFECYCLE_LAB_PASS_R52`.
+
+### R53 · Cross-browser evidence boundary
+
+Inventario del entorno:
+- Chromium disponible;
+- Firefox no;
+- WebKit no;
+- Playwright browser cache vacío.
+
+Regla:
+**Chromium lab PASS != cross-browser PASS.**
+
+Marcador:
+`MOTOR_CROSS_BROWSER_EVIDENCE_BOUNDARY_REVIEWED_R53`.
+
+## Continuidad actualizada
+
+Último bloque completado:
+**R53**.
+
+Estado:
+`ACTIVE_CONTINUOUS_LEARNING`.
+
+Evidencia reciente debe etiquetarse por nivel:
+- UNIT_PASS;
+- SYNTHETIC_BROWSER_PASS;
+- CHROMIUM_LAB_PASS;
+- ENGINE_MATRIX_PASS;
+- REAL_DEVICE_PASS;
+- INTEGRATION_PASS;
+- HUMAN_QA_PASS.
+
+Antes de R54:
+1. comprobar state drift;
+2. no repetir R01–R53;
+3. abrir solo hueco material;
+4. mantener límites de evidencia;
+5. Slack para coordinación; GitHub para canon;
+6. 0 producto/build/merge/deploy durante Formación.
