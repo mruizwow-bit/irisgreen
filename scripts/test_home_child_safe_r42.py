@@ -39,6 +39,7 @@ def main():
    need(cid=='global-395','Unexpected missing S2 page '+url);continue
   protected+=1;txt=p.read_text(encoding='utf-8')
   need('data-ig-s2-safe' in txt,'Full S2 not replaced '+url)
+  need('data-ig-s2-safe-page' in txt,'Safe S2 page marker missing '+url)
   need('prefetch' not in txt.lower() and 'preload' not in txt.lower(),'S2 prefetch/preload found '+url)
   full=root/'assets/safety/full'/f'{cid}-es.html';need(full.is_file(),'Missing full S2 chunk '+cid);need(full.read_text(encoding='utf-8') not in txt,'Full S2 body leaked '+cid)
  need(protected==9,'Expected 9 existing S2 page records')
