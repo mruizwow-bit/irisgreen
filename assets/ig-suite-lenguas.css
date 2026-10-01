@@ -1,0 +1,181 @@
+/* Iris Green · El taller · Lenguas inventadas (R43). El lienzo es el documento de la lengua. */
+body[data-ig-suite="lenguas"] .igs-viewport.igl-viewport {
+  user-select:text; -webkit-user-select:text; touch-action:auto; overflow:auto; background:var(--ig-bg-surface);
+  height:clamp(24rem,calc(100svh - 21rem),60rem);
+}
+body[data-ig-suite="lenguas"] .igl-doc {
+  /* Ancho cómodo aunque el espacio de trabajo llegue a 2560 px. */
+  width:min(100%,74rem); margin:0 auto; padding:clamp(.7rem,2vw,1.6rem) clamp(.7rem,2.2vw,2rem) 2.5rem;
+  box-sizing:border-box; display:grid; gap:.85rem; align-content:start;
+}
+body[data-ig-suite="lenguas"] .igl-doc > * { min-width:0; }
+body[data-ig-suite="lenguas"] .igl-h2 {
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:.3rem .7rem; margin:0; padding-bottom:.35rem;
+  border-bottom:2px solid var(--igs-line); font:800 clamp(1.15rem,1.1rem + .4vw,1.5rem)/1.25 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-navy);
+}
+body[data-ig-suite="lenguas"] .igl-h2:focus-visible { outline:3px solid var(--igs-focus); outline-offset:3px; }
+body[data-ig-suite="lenguas"] .igl-h2-meta { font:600 .85rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink-soft); }
+body[data-ig-suite="lenguas"] .igl-doc h3 { margin:.5rem 0 0; font:700 1.02rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="lenguas"] .igl-doc h4 { margin:.2rem 0 0; font:700 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="lenguas"] .igl-lede, body[data-ig-suite="lenguas"] .igl-doc .igs-muted { max-width:62ch; line-height:1.55; }
+body[data-ig-suite="lenguas"] .igl-lede { margin:0; color:var(--igs-ink); font-size:1rem; }
+body[data-ig-suite="lenguas"] .igl-doc .igs-field { max-width:34rem; }
+body[data-ig-suite="lenguas"] .igs-field input[type=search] {
+  width:100%; min-width:0; min-height:40px; box-sizing:border-box; padding:.35rem .5rem; border:1px solid var(--igs-control);
+  border-radius:10px; background:var(--ig-bg-surface); color:var(--igs-ink); font:500 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+/* Las direcciones largas de la sección Fuentes no deben ensanchar la página en pantallas de 320 px. */
+body[data-ig-suite="lenguas"] .igs-sec p, body[data-ig-suite="lenguas"] .igs-sec li { overflow-wrap:break-word; }
+
+/* Tablas del AFI */
+body[data-ig-suite="lenguas"] .igl-ipa { min-width:36rem; }
+body[data-ig-suite="lenguas"] .igl-ipa th { font-size:.78rem; line-height:1.15; font-weight:700; color:var(--igs-ink-soft); vertical-align:bottom; }
+body[data-ig-suite="lenguas"] .igl-ipa td { padding:.15rem; white-space:nowrap; }
+body[data-ig-suite="lenguas"] .igl-none { display:inline-block; min-width:2rem; text-align:center; color:#9fb0c0; }
+body[data-ig-suite="lenguas"] .igl-sound {
+  min-width:40px; min-height:40px; margin:1px; padding:.1rem .3rem; border:1px solid var(--igs-control); border-radius:9px;
+  background:var(--ig-bg-surface); color:var(--igs-ink); font:600 1.05rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer;
+}
+body[data-ig-suite="lenguas"] .igl-sound:hover { background:var(--igs-hover); border-color:var(--igs-blue); }
+body[data-ig-suite="lenguas"] .igl-sound[aria-pressed="true"] { background:var(--igs-navy); border-color:var(--igs-navy); color:#fff; }
+body[data-ig-suite="lenguas"] .igl-sound:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="lenguas"] .igl-chips { list-style:none; margin:.25rem 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.3rem; }
+body[data-ig-suite="lenguas"] .igl-chip {
+  display:inline-flex; align-items:baseline; gap:.35rem; min-height:40px; padding:.25rem .6rem; border:1px solid var(--igs-control);
+  border-radius:999px; background:var(--ig-bg-surface); color:var(--igs-ink); cursor:pointer; font:600 .95rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="lenguas"] .igl-chip:hover { background:var(--igs-hover); border-color:var(--igs-blue); }
+body[data-ig-suite="lenguas"] .igl-chip:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="lenguas"] .igl-chip-sym { font-size:1.1rem; font-weight:700; }
+body[data-ig-suite="lenguas"] .igl-chip-rom { color:var(--igs-ink-soft); font-size:.85rem; }
+body[data-ig-suite="lenguas"] .igl-inv, body[data-ig-suite="lenguas"] .igl-other { display:grid; gap:.3rem; }
+
+/* Progreso de los retos */
+body[data-ig-suite="lenguas"] .igl-progress { display:grid; gap:.3rem; max-width:34rem; }
+body[data-ig-suite="lenguas"] .igl-progress-t { margin:0; font-size:.95rem; }
+body[data-ig-suite="lenguas"] .igl-bar { height:12px; border:1px solid var(--igs-control); border-radius:999px; background:var(--ig-bg-surface-soft); overflow:hidden; }
+body[data-ig-suite="lenguas"] .igl-bar span { display:block; height:100%; background:var(--igs-blue); }
+
+/* Sílabas y generador */
+body[data-ig-suite="lenguas"] .igl-patterns { list-style:none; margin:0; padding:0; display:grid; gap:.5rem; }
+body[data-ig-suite="lenguas"] .igl-pattern {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(9rem,1fr)); gap:.4rem; align-items:end;
+  padding:.5rem .6rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface);
+}
+body[data-ig-suite="lenguas"] .igl-gen { list-style:none; margin:.3rem 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(15rem,1fr)); gap:.4rem; }
+body[data-ig-suite="lenguas"] .igl-gen li { display:flex; align-items:center; gap:.5rem; padding:.35rem .5rem; border:1px solid var(--igs-line); border-radius:10px; background:var(--ig-bg-surface); }
+body[data-ig-suite="lenguas"] .igl-gen-w { font:700 1.05rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="lenguas"] .igl-gen-ipa { color:var(--igs-ink-soft); font-size:.85rem; }
+body[data-ig-suite="lenguas"] .igl-gen li .igs-btn { margin-left:auto; min-height:36px; padding:.25rem .55rem; font-size:.82rem; }
+
+/* Escritura: diseñador de signos */
+body[data-ig-suite="lenguas"] .igl-designer { display:grid; gap:.6rem; justify-items:start; }
+body[data-ig-suite="lenguas"] .igl-canvas-wrap { position:relative; width:min(15rem,70vw); }
+body[data-ig-suite="lenguas"] .igl-canvas { display:block; width:100%; height:auto; border:1px solid var(--igs-line); border-radius:12px; background:#fdfdff; }
+body[data-ig-suite="lenguas"] .igl-canvas line { stroke:#101820; stroke-width:5; stroke-linecap:round; }
+body[data-ig-suite="lenguas"] .igl-grid { position:absolute; inset:0; }
+body[data-ig-suite="lenguas"] .igl-point {
+  position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px; padding:0; border:0; background:transparent; cursor:pointer;
+}
+body[data-ig-suite="lenguas"] .igl-point::after {
+  content:""; position:absolute; left:15px; top:15px; width:14px; height:14px; border-radius:50%;
+  background:var(--ig-bg-surface); border:2px solid var(--igs-control);
+}
+body[data-ig-suite="lenguas"] .igl-point:hover::after { border-color:var(--igs-blue); background:var(--igs-hover); }
+body[data-ig-suite="lenguas"] .igl-point-on::after { background:#ffd400; border-color:#101820; }
+body[data-ig-suite="lenguas"] .igl-point:focus-visible { outline:none; }
+body[data-ig-suite="lenguas"] .igl-point:focus-visible::after { box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--igs-focus); }
+body[data-ig-suite="lenguas"] .igl-glyph { display:block; }
+body[data-ig-suite="lenguas"] .igl-glyph line { stroke:#101820; stroke-width:5; stroke-linecap:round; }
+body[data-ig-suite="lenguas"] .igl-glyph-empty { fill:none; stroke:#a8b6c4; stroke-width:2; stroke-dasharray:4 3; }
+body[data-ig-suite="lenguas"] .igl-alphabet { list-style:none; margin:.3rem 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(5rem,1fr)); gap:.4rem; }
+body[data-ig-suite="lenguas"] .igl-sign {
+  width:100%; display:grid; justify-items:center; gap:.2rem; padding:.4rem .2rem; border:1px solid var(--igs-line);
+  border-radius:12px; background:var(--ig-bg-surface); cursor:pointer; color:var(--igs-ink);
+}
+body[data-ig-suite="lenguas"] .igl-sign:hover { border-color:var(--igs-blue); background:var(--igs-hover); }
+body[data-ig-suite="lenguas"] .igl-sign[aria-current="true"] { border-color:var(--igs-violet); box-shadow:inset 0 0 0 2px var(--igs-violet); }
+body[data-ig-suite="lenguas"] .igl-sign:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="lenguas"] .igl-sign-rom { font:700 .85rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="lenguas"] .igl-sign-prev { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem; }
+body[data-ig-suite="lenguas"] .igl-sound-big { margin:0; font:700 2.4rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-navy); }
+
+/* Gramática */
+body[data-ig-suite="lenguas"] .igl-affix { display:grid; gap:.35rem; padding:.5rem .6rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); max-width:34rem; }
+body[data-ig-suite="lenguas"] .igl-demo { margin:0; font:600 .95rem/1.4 ui-monospace,Consolas,monospace; color:var(--igs-ink-soft); }
+
+/* Diccionario */
+body[data-ig-suite="lenguas"] .igl-dict { min-width:34rem; }
+body[data-ig-suite="lenguas"] .igl-dict tr[data-sel="true"] { background:#eef4fb; }
+body[data-ig-suite="lenguas"] .igl-word-btn {
+  min-height:36px; padding:.2rem .5rem; border:1px solid transparent; border-radius:8px; background:transparent;
+  color:var(--igs-navy); font:700 1rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; text-align:left;
+}
+body[data-ig-suite="lenguas"] .igl-word-btn:hover { background:var(--igs-hover); border-color:var(--igs-blue); }
+body[data-ig-suite="lenguas"] .igl-word-btn[aria-current="true"] { background:var(--igs-navy); color:#fff; }
+body[data-ig-suite="lenguas"] .igl-word-btn:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="lenguas"] .igl-concepts { list-style:none; margin:.2rem 0 0; padding:0; display:flex; flex-wrap:wrap; gap:.3rem; }
+body[data-ig-suite="lenguas"] .igl-concept {
+  display:inline-flex; align-items:baseline; gap:.35rem; min-height:40px; padding:.25rem .6rem; border:1px dashed var(--igs-control);
+  border-radius:10px; background:var(--ig-bg-surface); cursor:pointer; color:var(--igs-ink); font:600 .92rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="lenguas"] .igl-concept small { color:var(--igs-ink-soft); }
+body[data-ig-suite="lenguas"] .igl-concept:hover { border-style:solid; border-color:var(--igs-blue); background:var(--igs-hover); }
+body[data-ig-suite="lenguas"] .igl-concept:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+
+/* Texto y glosa */
+body[data-ig-suite="lenguas"] .igl-slots { list-style:none; margin:0; padding:0; display:grid; gap:.5rem; }
+body[data-ig-suite="lenguas"] .igl-slot {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(10rem,1fr)); gap:.4rem; align-items:end;
+  padding:.5rem .6rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface);
+}
+body[data-ig-suite="lenguas"] .igl-slot .igs-field { max-width:none; }
+body[data-ig-suite="lenguas"] .igl-slot .igs-actions, body[data-ig-suite="lenguas"] .igl-pattern .igs-btn, body[data-ig-suite="lenguas"] .igl-rule .igs-actions { grid-column:1 / -1; justify-self:start; }
+body[data-ig-suite="lenguas"] .igl-gloss { padding:.7rem .8rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); overflow-x:auto; }
+body[data-ig-suite="lenguas"] .igl-gloss-row { list-style:none; margin:0; padding:0; display:flex; flex-wrap:wrap; gap:.3rem 1.1rem; }
+body[data-ig-suite="lenguas"] .igl-gloss-row li { display:grid; gap:.1rem; }
+body[data-ig-suite="lenguas"] .igl-form { font:700 1.05rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="lenguas"] .igl-gl { font:600 .82rem/1.3 ui-monospace,Consolas,monospace; color:var(--igs-ink-soft); }
+body[data-ig-suite="lenguas"] .igl-abbr { font-variant-caps:all-small-caps; letter-spacing:.04em; text-decoration:none; border-bottom:1px dotted var(--igs-control); }
+body[data-ig-suite="lenguas"] .igl-free { margin:.6rem 0 0; font-style:italic; color:var(--igs-ink); }
+body[data-ig-suite="lenguas"] .igl-script { display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; padding:.7rem .8rem; border:1px solid var(--igs-line); border-radius:12px; background:#fdfdff; }
+body[data-ig-suite="lenguas"] .igl-script-w { display:inline-flex; gap:.25rem; }
+
+/* Cambios de sonido */
+body[data-ig-suite="lenguas"] .igl-rule {
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(11rem,1fr)); gap:.4rem; align-items:end;
+  padding:.55rem .65rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface);
+}
+body[data-ig-suite="lenguas"] .igl-rule[data-on="true"] { border-color:var(--igs-blue); box-shadow:inset 3px 0 0 var(--igs-blue); background:#f7fafd; }
+body[data-ig-suite="lenguas"] .igl-rule h3 { grid-column:1 / -1; margin:0; }
+body[data-ig-suite="lenguas"] .igl-rule-text { font:700 1rem/1.3 ui-monospace,Consolas,monospace; color:var(--igs-violet); }
+body[data-ig-suite="lenguas"] .igl-sec-n { flex:none; min-width:1.4rem; height:1.4rem; display:grid; place-items:center; border-radius:6px; background:var(--ig-bg-surface-soft); font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+
+@media (max-width:700px) {
+  body[data-ig-suite="lenguas"] .igs-viewport.igl-viewport { height:clamp(20rem,62svh,36rem); }
+  body[data-ig-suite="lenguas"] .igl-doc { padding:.6rem .55rem 1.6rem; gap:.7rem; }
+  body[data-ig-suite="lenguas"] .igl-canvas-wrap { width:min(13rem,72vw); }
+}
+@media (forced-colors:active) {
+  body[data-ig-suite="lenguas"] .igl-sound[aria-pressed="true"], body[data-ig-suite="lenguas"] .igl-word-btn[aria-current="true"] { background:Highlight; color:HighlightText; }
+  body[data-ig-suite="lenguas"] .igl-bar span { background:Highlight; }
+  body[data-ig-suite="lenguas"] .igl-point::after { forced-color-adjust:none; background:Canvas; border-color:CanvasText; }
+  body[data-ig-suite="lenguas"] .igl-point-on::after { background:Highlight; }
+  body[data-ig-suite="lenguas"] .igl-glyph line, body[data-ig-suite="lenguas"] .igl-canvas line { stroke:CanvasText; }
+}
+
+/* Impresión de la gramática (IGSuite.printPages): texto real, tablas y signos vectoriales. */
+body[data-ig-suite="lenguas"] .igl-print { font:11pt/1.5 "Atkinson Hyperlegible",Verdana,sans-serif; color:#000; max-width:17cm; margin:0 auto; }
+body[data-ig-suite="lenguas"] .igl-print h1 { font-size:20pt; margin:0 0 4pt; }
+body[data-ig-suite="lenguas"] .igl-print h2 { font-size:13pt; margin:14pt 0 4pt; border-bottom:1px solid #999; }
+body[data-ig-suite="lenguas"] .igl-print-sub { margin:0 0 8pt; color:#333; }
+body[data-ig-suite="lenguas"] .igl-print ul { margin:0 0 6pt; padding-left:14pt; }
+body[data-ig-suite="lenguas"] .igl-print-alpha { display:flex; flex-wrap:wrap; gap:6pt 10pt; }
+body[data-ig-suite="lenguas"] .igl-print-sign { display:grid; justify-items:center; gap:2pt; font-size:9pt; }
+body[data-ig-suite="lenguas"] .igl-print-table { width:100%; border-collapse:collapse; font-size:9.5pt; }
+body[data-ig-suite="lenguas"] .igl-print-table :is(th,td) { border-bottom:1px solid #bbb; padding:2pt 4pt; text-align:left; }
+body[data-ig-suite="lenguas"] .igl-print-line { margin:8pt 0 0; font-weight:700; }
+body[data-ig-suite="lenguas"] .igl-print-gloss { margin:0; font-family:ui-monospace,Consolas,monospace; font-size:9pt; }
+body[data-ig-suite="lenguas"] .igl-print-free { margin:0 0 4pt; font-style:italic; }
+body[data-ig-suite="lenguas"] .igl-print-note { font-size:8.5pt; color:#333; }
+body[data-ig-suite="lenguas"] .igl-print-credit { margin-top:12pt; padding-top:4pt; border-top:1px solid #999; text-align:right; font-size:8.5pt; color:#333; }

@@ -1,0 +1,38 @@
+/* Iris Green · El taller · Estudio de máquinas e inventos (R43). Solo lo propio del estudio. */
+body[data-ig-suite="maquinas"] .igq-viewport { background:var(--ig-bg-surface); }
+body[data-ig-suite="maquinas"] .igq-svg { position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; }
+body[data-ig-suite="maquinas"] .igs-viewport[data-tool="select"] .igq-svg { cursor:default; }
+body[data-ig-suite="maquinas"] .igs-viewport[data-tool="pan"] .igq-svg { cursor:grab; }
+body[data-ig-suite="maquinas"] .igq-results { list-style:none; margin:0; padding:.55rem .7rem; display:grid; gap:.25rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--igs-soft); font-size:.92rem; line-height:1.4; }
+body[data-ig-suite="maquinas"] .igq-results strong { font-variant-numeric:tabular-nums; }
+body[data-ig-suite="maquinas"] .igq-challenge, body[data-ig-suite="maquinas"] .igq-play { display:grid; gap:.5rem; padding-top:.6rem; border-top:1px solid var(--igs-line); }
+body[data-ig-suite="maquinas"] .igq-challenge select { width:100%; min-height:40px; padding:.35rem .5rem; border:1px solid var(--igs-control); border-radius:10px; background:var(--ig-bg-surface); color:var(--igs-ink); font:500 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="maquinas"] .igq-challenge select:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="maquinas"] .igq-goal { margin:0; font-weight:600; line-height:1.45; }
+body[data-ig-suite="maquinas"] .igq-checks { list-style:none; margin:0; padding:0; display:grid; gap:.3rem; font-size:.9rem; }
+body[data-ig-suite="maquinas"] .igq-checks li { display:flex; gap:.45rem; align-items:flex-start; line-height:1.4; }
+body[data-ig-suite="maquinas"] .igq-mark { flex:none; display:grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%; font-weight:800; font-size:.8rem; color:#fff; background:#5d6877; }
+body[data-ig-suite="maquinas"] .igq-checks li[data-ok="true"] .igq-mark { background:#1d6b3a; }
+body[data-ig-suite="maquinas"] .igq-how summary { cursor:pointer; min-height:32px; display:flex; align-items:center; font-weight:700; color:var(--igs-ink); }
+body[data-ig-suite="maquinas"] .igq-how summary:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="maquinas"] .igq-how p { margin:.3rem 0 0; }
+body[data-ig-suite="maquinas"] .igq-steps { counter-reset:none; padding-left:0; }
+@media (forced-colors:active) {
+  body[data-ig-suite="maquinas"] .igq-mark { forced-color-adjust:none; background:CanvasText; color:Canvas; }
+}
+
+/* Ficha técnica impresa (IGSuite.printPages) */
+.igq-sheet { font:11pt/1.45 "Atkinson Hyperlegible",Arial,sans-serif; color:var(--ig-text); }
+.igq-sheet h1 { font-size:18pt; margin:0 0 2mm; }
+.igq-sheet h2 { font-size:13pt; margin:5mm 0 2mm; }
+.igq-sheet figure { margin:3mm 0; }
+.igq-sheet figure svg { display:block; max-width:180mm; height:auto; border:1px solid #c9d8e6; }
+.igq-sheet figcaption { font-size:9pt; color:var(--ig-text-muted); margin-top:1mm; }
+.igq-sheet table { border-collapse:collapse; width:100%; font-size:10pt; }
+.igq-sheet th, .igq-sheet td { text-align:left; vertical-align:top; padding:1.2mm 2mm; border-bottom:1px solid #c9d8e6; }
+.igq-sheet th { width:45%; }
+.igq-sheet .igq-sheet-meta { font-size:9pt; color:var(--ig-text-muted); }
+.igq-sheet .igq-sheet-credit { font-size:8pt; color:var(--ig-text-muted); text-align:right; margin-top:6mm; }
+body[data-ig-suite="maquinas"] .igq-note { display:block; color:var(--igs-ink-soft); font-size:.82rem; }
+body[data-ig-suite="maquinas"] .igs-sec p { overflow-wrap:anywhere; }
+body[data-ig-suite="maquinas"] .igs-table-wrap:focus-visible, body[data-ig-suite="circuitos"] .igs-table-wrap:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }

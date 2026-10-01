@@ -1,0 +1,35 @@
+/* Iris Green · El taller · Estudio de moda y textil (R43). Solo lo propio; lo común está en ig-suite.css. */
+body[data-ig-suite="moda"] .igmo-viewport { background:#f4f1ea; }
+body[data-ig-suite="moda"] .igmo-host { position:absolute; inset:0; }
+body[data-ig-suite="moda"] .igmo-host > svg { display:block; width:100%; height:100%; touch-action:none; }
+body[data-ig-suite="moda"] .igmo-host [data-shape], body[data-ig-suite="moda"] .igmo-host [data-zone],
+body[data-ig-suite="moda"] .igmo-host [data-look], body[data-ig-suite="moda"] .igmo-host [data-cw], body[data-ig-suite="moda"] .igmo-host [data-piece] { cursor:pointer; }
+body[data-ig-suite="moda"] .igs-viewport[data-tool="motif"] .igmo-host [data-shape] { cursor:move; }
+body[data-ig-suite="moda"] .igs-viewport[data-pen="true"] .igmo-host { cursor:crosshair; }
+body[data-ig-suite="moda"] .igmo-host [data-zone]:hover { filter:brightness(1.06); }
+body[data-ig-suite="moda"] .igmo-selpiece > g > rect:first-child { stroke:#5a49a8; stroke-width:2; }
+body[data-ig-suite="moda"] .igmo-status { margin:0 .3rem; }
+body[data-ig-suite="moda"] .igmo-wide { display:flex; width:100%; }
+body[data-ig-suite="moda"] .igmo-wide select { width:100%; min-width:0; }
+body[data-ig-suite="moda"] .igmo-grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.5rem; }
+body[data-ig-suite="moda"] .igmo-colour-label { display:block; font:700 .88rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="moda"] .igmo-swatches { display:flex; flex-wrap:wrap; gap:.3rem; }
+body[data-ig-suite="moda"] .igmo-sw { width:28px; height:28px; padding:0; border-radius:8px; border:1px solid #44586c; cursor:pointer; }
+body[data-ig-suite="moda"] .igmo-sw[aria-pressed="true"] { box-shadow:0 0 0 2px #fff, 0 0 0 4px var(--igs-violet); }
+body[data-ig-suite="moda"] .igmo-sw:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+@media (pointer:coarse) { body[data-ig-suite="moda"] .igmo-sw { width:36px; height:36px; } }
+body[data-ig-suite="moda"] .igmo-challenges { list-style:none; margin:.2rem 0; padding:0; display:grid; gap:.35rem; line-height:1.4; }
+body[data-ig-suite="moda"] .igmo-challenges li { display:flex; gap:.45rem; align-items:baseline; flex-wrap:wrap; }
+body[data-ig-suite="moda"] .igmo-mark {
+  flex:none; display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%;
+  background:var(--igs-ink-soft); color:#fff; font:700 .8rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="moda"] .igmo-challenges li[data-ok="true"] .igmo-mark { background:var(--igs-ok); }
+body[data-ig-suite="moda"] .igmo-steps { margin:0; padding-left:1.2rem; line-height:1.5; }
+@media (forced-colors:active) {
+  body[data-ig-suite="moda"] .igmo-sw { forced-color-adjust:none; }
+  body[data-ig-suite="moda"] .igmo-sw[aria-pressed="true"] { outline:3px solid Highlight; }
+  body[data-ig-suite="moda"] .igmo-mark { forced-color-adjust:none; border:1px solid CanvasText; }
+}
+/* Hojas del patrón: A4 vertical, márgenes de 8 mm (zona útil 194 × 281 mm; las hojas miden 190 × 277 mm) */
+@media print { @page { size:A4 portrait; margin:8mm; } }

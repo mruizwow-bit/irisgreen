@@ -1,0 +1,37 @@
+/* Iris Green · El taller · Estudio de simulaciones (R43). Solo lo propio del estudio; lo común está en ig-suite.css. */
+body[data-ig-suite="simulaciones"] .igsim-split { position:absolute; inset:0; display:grid; grid-template-columns:minmax(0,1.15fr) minmax(0,1fr); gap:2px; background:var(--igs-line); }
+body[data-ig-suite="simulaciones"] .igsim-split[data-show="sim"], body[data-ig-suite="simulaciones"] .igsim-split[data-show="chart"] { grid-template-columns:minmax(0,1fr); }
+body[data-ig-suite="simulaciones"] .igsim-split[data-show="sim"] .igsim-chart, body[data-ig-suite="simulaciones"] .igsim-split[data-show="chart"] .igsim-sim { display:none; }
+body[data-ig-suite="simulaciones"] .igsim-pane { position:relative; min-width:0; min-height:0; overflow:hidden; background:var(--ig-bg-surface); }
+body[data-ig-suite="simulaciones"] .igsim-canvas { position:absolute; inset:0; display:block; width:100%; height:100%; touch-action:none; }
+body[data-ig-suite="simulaciones"] .igsim-sim .igsim-canvas { cursor:crosshair; }
+body[data-ig-suite="simulaciones"] .igs-viewport:is([data-tool="tselect"],[data-tool="nselect"],[data-tool="eselect"],[data-tool="lvpoint"]) .igsim-sim .igsim-canvas { cursor:default; }
+body[data-ig-suite="simulaciones"] .igsim-badge { position:absolute; right:.5rem; bottom:.5rem; margin:0; padding:.2rem .55rem; border-radius:999px; background:var(--ig-bg-surface); border:1px solid var(--igs-line); color:var(--igs-ink); font:700 .8rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; pointer-events:none; }
+body[data-ig-suite="simulaciones"] .igsim-live p { margin:0; }
+body[data-ig-suite="simulaciones"] .igsim-challenge span { display:block; }
+body[data-ig-suite="simulaciones"] .igsim-chstatus { margin-top:.3rem; font-weight:700; }
+body[data-ig-suite="simulaciones"] .igsim-bits-label { font:700 .88rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="simulaciones"] .igsim-bits { display:grid; grid-template-columns:repeat(9,minmax(0,1fr)); gap:.2rem; }
+body[data-ig-suite="simulaciones"] .igsim-bit { min-width:28px; min-height:36px; padding:0; border:1px solid var(--igs-control); border-radius:8px; background:var(--ig-bg-surface); color:var(--igs-ink); font:700 .9rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
+body[data-ig-suite="simulaciones"] .igsim-bit[aria-pressed="true"] { background:var(--igs-navy); border-color:var(--igs-navy); color:#fff; }
+body[data-ig-suite="simulaciones"] .igsim-wbits { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:.3rem; }
+body[data-ig-suite="simulaciones"] .igsim-wbit { display:grid; justify-items:center; gap:.2rem; min-height:64px; padding:.3rem .1rem; border:1px solid var(--igs-control); border-radius:10px; background:var(--ig-bg-surface); color:var(--igs-ink); cursor:pointer; }
+body[data-ig-suite="simulaciones"] .igsim-wbit small { font:600 .72rem/1.1 ui-monospace,Consolas,monospace; color:var(--igs-ink-soft); }
+body[data-ig-suite="simulaciones"] .igsim-trio { display:flex; gap:1px; }
+body[data-ig-suite="simulaciones"] .igsim-trio i, body[data-ig-suite="simulaciones"] .igsim-out { display:block; width:12px; height:12px; border:1px solid var(--igs-ink); background:var(--ig-bg-surface); }
+body[data-ig-suite="simulaciones"] .igsim-trio i[data-on="1"], body[data-ig-suite="simulaciones"] .igsim-out[data-on="1"] { background:var(--igs-navy); }
+body[data-ig-suite="simulaciones"] .igsim-wbit[aria-pressed="true"] { border-color:var(--igs-navy); box-shadow:inset 0 0 0 2px var(--igs-navy); }
+body[data-ig-suite="simulaciones"] :is(.igsim-bit,.igsim-wbit):focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="simulaciones"] .igsim-tablewrap { max-height:60vh; overflow:auto; }
+body[data-ig-suite="simulaciones"] .igsim-tablewrap:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="simulaciones"] .igsim-tablewrap thead th { position:sticky; top:0; background:var(--ig-bg-surface); }
+@media (max-width:900px) {
+  body[data-ig-suite="simulaciones"] .igsim-split[data-show="both"] { grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1.2fr) minmax(0,1fr); }
+}
+@media (max-width:700px) {
+  body[data-ig-suite="simulaciones"] .igs-viewport.igsim-viewport { height:clamp(22rem,70svh,36rem); }
+}
+@media (forced-colors:active) {
+  body[data-ig-suite="simulaciones"] .igsim-bit[aria-pressed="true"], body[data-ig-suite="simulaciones"] .igsim-wbit[aria-pressed="true"] { forced-color-adjust:none; background:Highlight; color:HighlightText; }
+  body[data-ig-suite="simulaciones"] .igsim-trio i, body[data-ig-suite="simulaciones"] .igsim-out { forced-color-adjust:none; }
+}

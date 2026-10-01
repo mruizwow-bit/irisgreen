@@ -1,0 +1,70 @@
+{
+ "schema": "IRIS_GREEN_DELTA/1.0",
+ "id": "DELTA_R61_BLOQUEO_R65_HELPER_CLAUDE_20260930",
+ "fecha": "2026-09-30",
+ "emisor": "Claude",
+ "responde_a": "ESTADO_ACTUAL 30/09 correccion de cola tras bloqueo R61 + INCIDENCIAS_COLABORACION_EQUIPO",
+ "politica": "TEAM_WORK_POLICY_R01_ACTIVE",
+ "r61": {
+  "issue": 325,
+  "estado": "R61_BINARY_LOCATION_OTHER_SESSION_REQUIRED",
+  "marcador_bloqueo": "BLOCKED_BY_SESSION_ARTIFACT_LOCATION",
+  "comprobado_no_supuesto": [
+   "ningun fichero de video en el contenedor",
+   "solo acuario antiguo del Rincon: assets/rincon-acuario.js, tools/escenas-3d/src/aquarium.js, un webp",
+   "sin rama R61 ni motor ilustrado",
+   "/mnt/user-data/outputs sin nada de R61",
+   "puente a irisgreen responde con connectedFolders vacio"
+  ],
+  "confirmado_por_maria": "pecera_10min.mp4 (151,2 MB) y pecera_bu.mp4 existen solo en el contenedor de otra sesion",
+  "no_rerender": true,
+  "desbloqueo_requerido": [
+   "sha256 y bytes de los dos ficheros",
+   "copiar a /mnt/user-data/outputs y entregar de uno en uno",
+   "si esa sesion tiene carpeta conectada de irisgreen, escribirlos ahi",
+   "build/codigo como git format-patch comprimido con base y sha256"
+  ],
+  "riesgo": "contenedor efimero; si se recicla antes del traspaso el master se pierde y habria que reabrir la decision porque rerenderizar esta prohibido"
+ },
+ "r65": {
+  "issue": 330,
+  "estado": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING",
+  "incidencia": "SCOPE_DRIFT aceptada",
+  "correccion_aplicada": [
+   "STOP de desarrollo",
+   "artefacto opcional NO canonico",
+   "no es puerta ni sustituye la HUMAN QA de Maria",
+   "preservado con hash, no local"
+  ],
+  "artefacto": {
+   "nombre": "R65_HELPER_HUMANQA_lote_27_9_NO_CANONICO.html",
+   "sha256": "87b3b13e078190affc335ed29e6f0c4f21c4274b0958834683058768da484443",
+   "bytes": 1056379,
+   "contenido": "27 escenas + 9 variantes AGE_0_12 a 172/223/240 px, ES/EN, superficies LIGHT y DARK NAVY reales medidas, titulos ocultables, orden al azar, voto por tarjeta, veredicto copiable, sin almacenamiento"
+  }
+ },
+ "handoff_gap": {
+  "incidencia": "aceptada",
+  "correccion_aplicada": "documentado y preservado en el mismo turno, sin esperar a que se resuelva R61"
+ },
+ "sesion": {
+  "accesible_aqui": [
+   "Taller R65"
+  ],
+  "no_alcanzable_desde_aqui": [
+   "R61 Pecera",
+   "R62 P03 Rutas de luz",
+   "R68 Faroles"
+  ],
+  "declaracion": "NO_EXECUTABLE_ASSIGNED_WORK_IN_THIS_SESSION",
+  "accion": "STOP, no abrir carril nuevo"
+ },
+ "limites": [
+  "no rerender",
+  "no A2",
+  "no main",
+  "no produccion",
+  "no deploy propio",
+  "sin push (403): se entrega como parche"
+ ]
+}

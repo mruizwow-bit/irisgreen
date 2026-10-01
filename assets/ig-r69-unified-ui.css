@@ -333,3 +333,13 @@ body[data-ig-r49="1"] main :is([style*="background: #fff"],[style*="background:#
 body[data-ig-r49="1"] main a[style*="border-radius"]{box-shadow:none!important;transform:none!important}
 body[data-ig-r49="1"] main .filter-tools input{width:100%}
 body[data-ig-r49="1"] main .ig-data-notes{margin:1.5rem 0;padding:1rem;border:1px solid var(--ig-separator);border-radius:12px}
+
+/* The imported studio suite uses the shared palette for interface surfaces.
+   Canvas artwork and exported projects keep their chosen colours. */
+body[data-ig-suite] #igt-app {background:var(--ig-bg-surface);color:var(--ig-text)}
+body[data-ig-suite] .ig-r42-workspace {background:var(--ig-bg-surface)}
+body[data-ig-suite] .ig-r42-shell {--r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);--r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft)}
+body[data-ig-suite] :is(.ig-r42-command-search input,.ig-r42-command-list button) {background:var(--ig-bg-surface-soft);color:var(--ig-text)}
+body[data-ig-suite] .igs-field > :is(label,span),
+body[data-ig-suite] .igs-inspector :is(h3,h4,p,label) {color:var(--ig-text)}
+body[data-ig-suite] main > .crumb {display:none}

@@ -68,15 +68,19 @@ def main()->None:
     for base in (root/'es'/'taller',root/'en'/'workshop'):
         if base.is_dir():
             pages.extend(p for p in base.rglob('index.html') if p.parent!=base)
-    eligible=0;changed=0
+    eligible=0;changed=0;suite=0
     for p in sorted(set(pages)):
         text=p.read_text(encoding='utf-8')
+        if 'data-igs-engine=' in text and '/assets/ig-suite-core.js' in text:
+            # The suite already ships its own deferred R42 shell. Adding the
+            # legacy study layer would mount a second, incompatible interface.
+            suite+=1
         if 'id="igt-app"' in text and '/assets/ig-taller-estudio.js' in text:
             eligible+=1
             changed+=int(apply_page(p))
-    if eligible==0:
+    if eligible+suite==0:
         raise AssertionError('R69 found no Workshop study pages')
-    print({'eligible':eligible,'changed':changed,'mode':'STATIC_DEFERRED_R42'})
+    print({'eligible':eligible,'suite':suite,'changed':changed,'mode':'STATIC_DEFERRED_R42'})
 
 if __name__=='__main__':
     main()

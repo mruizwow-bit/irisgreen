@@ -1,0 +1,360 @@
+{
+ "schema": "R44_RETOS/1.0",
+ "ola": "A",
+ "fuente_sha256": "f059d56607c97336612ac6112592264d7b34d3bbfa3d358aed400a8b4166695e",
+ "retos": [
+  {
+   "id": "E01",
+   "estudio": "dibujo",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "PixiJS (ya en el estudio)",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Una línea sin levantar el lápiz",
+    "entradilla": "Economía del trazo y síntesis de la forma: decidir qué se dibuja y qué se sugiere.",
+    "pasos": [
+     "Elige algo que conozcas bien: una mano, una silla, una cara.",
+     "Dibújalo sin levantar el lápiz. En Propiedades puedes meter los puntos como números en vez de arrastrar.",
+     "Quita lo que la línea no necesita. Vale más reconocible que completo.",
+     "Exporta el PNG y guarda el proyecto."
+    ],
+    "alternativa": "Sin lápiz digital, el grosor es constante y el reto no cambia",
+    "criterio": "Un dibujo reconocible hecho con un único trazo continuo, exportado.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "One line, never lifting the pen",
+    "entradilla": "Economy of line and synthesis of form: deciding what to draw and what to suggest.",
+    "pasos": [
+     "Choose something you know well: a hand, a chair, a face.",
+     "Draw it without lifting the pen. In Properties you can enter the points as numbers instead of dragging.",
+     "Cut whatever the line does not need. A recognisable shape beats a complete one.",
+     "Export the PNG and save the project."
+    ],
+    "alternativa": "Without a digital pen the stroke keeps one width and the challenge is the same",
+    "criterio": "A recognisable drawing made with one continuous stroke, exported.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "PNG y proyecto",
+   "artefacto_en": "PNG and project file",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"><path d=\"M50 80 L44 36 L104 36 L104 46 C126 44 128 68 102 66 L98 80 Z\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" opacity=\".5\"><path d=\"M38 88 h84\"/></g><circle cx=\"50\" cy=\"80\" r=\"3\" fill=\"currentColor\"/></svg>"
+  },
+  {
+   "id": "E06",
+   "estudio": "pixel-art",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "PixiJS; vista en mosaico del estudio",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Baldosa que no se nota",
+    "entradilla": "Continuidad en los bordes: lo que sale por un lado entra por el otro.",
+    "pasos": [
+     "Trabaja en una rejilla pequeña: con 16×16 o 32×32 sobra.",
+     "Lo que dibujes junto a un borde, repítelo en el borde opuesto.",
+     "Enciende la vista en mosaico: ella te marca las costuras.",
+     "Exporta el PNG repetible."
+    ],
+    "alternativa": "La vista en mosaico marca las costuras",
+    "criterio": "El mosaico 3×3 no deja ver dónde empieza la baldosa.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A tile with no visible seam",
+    "entradilla": "Continuity at the edges: whatever leaves one side comes back in on the other.",
+    "pasos": [
+     "Work on a small grid: 16×16 or 32×32 is plenty.",
+     "Whatever you draw near an edge, repeat it on the opposite edge.",
+     "Turn on the mosaic view: it marks the seams for you.",
+     "Export the repeatable PNG."
+    ],
+    "alternativa": "The mosaic view marks the seams for you",
+    "criterio": "The 3×3 mosaic gives no clue where the tile begins.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "PNG repetible y vista en mosaico",
+   "artefacto_en": "Repeatable PNG and mosaic view",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g transform=\"translate(8 4)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(56 4)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(104 4)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(8 34)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(56 34)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(104 34)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(8 64)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(56 64)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g><g transform=\"translate(104 64)\"><rect x=\"0\" y=\"0\" width=\"48\" height=\"30\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".3\"/><path d=\"M0 15 h12 M36 15 h12 M24 0 v8 M24 22 v8\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><circle cx=\"24\" cy=\"15\" r=\"6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/></g></svg>"
+  },
+  {
+   "id": "E17",
+   "estudio": "estructuras",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Planck.js",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Un puente que aguanta el camión",
+    "entradilla": "Triangulación: dónde va la compresión y dónde la tracción.",
+    "pasos": [
+     "Cruza el vano con barras. Los triángulos aguantan; los cuadrados se doblan.",
+     "Si prefieres no arrastrar, mete las posiciones de los nudos como números.",
+     "Lanza la prueba de carga. Avanza por pasos y con movimiento reducido.",
+     "Exporta la imagen del montaje y el cálculo educativo."
+    ],
+    "alternativa": "La prueba avanza por pasos con movimiento reducido",
+    "criterio": "El puente pasa la prueba de carga y la persona señala una barra a compresión y otra a tracción.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A bridge that holds the lorry",
+    "entradilla": "Triangulation: where the compression goes and where the tension goes.",
+    "pasos": [
+     "Span the gap with bars. Triangles hold; squares fold.",
+     "Enter node positions as numbers if you would rather not drag.",
+     "Run the load test. It advances step by step with reduced motion.",
+     "Export the image of the assembly and the educational calculation."
+    ],
+    "alternativa": "The load test advances step by step, with reduced motion",
+    "criterio": "The bridge passes the load test and you can point to one bar in compression and one in tension.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "Imagen del montaje y cálculo educativo",
+   "artefacto_en": "Image of the assembly and the educational calculation",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.2\"><path d=\"M14 74 h132 M22 74 l24 -34 24 34 24 -34 24 34\"/><path d=\"M22 74 h124 M46 40 h48\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" opacity=\".75\"><path d=\"M58 50 v10 M58 60 l-3 -4 M58 60 l3 -4\"/><path d=\"M100 60 v-10 M100 50 l-3 4 M100 50 l3 -4\"/></g><rect x=\"60\" y=\"20\" width=\"40\" height=\"16\" rx=\"3\" fill=\"currentColor\" opacity=\".8\"/><circle cx=\"70\" cy=\"38\" r=\"4\" fill=\"currentColor\"/><circle cx=\"92\" cy=\"38\" r=\"4\" fill=\"currentColor\"/></svg>"
+  },
+  {
+   "id": "E22",
+   "estudio": "circuitos",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Solver de Kirchhoff y Ohm del estudio",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Un semáforo que no se equivoca",
+    "entradilla": "Estados y secuencia con lógica sencilla.",
+    "pasos": [
+     "Coloca las tres luces y dale a cada una su resistencia.",
+     "Escribe la tabla de estados: qué luz está encendida en cada paso.",
+     "Arranca tú el reloj. Nunca pasa de 1 Hz.",
+     "Exporta el esquema SVG y la tabla de verdad en CSV."
+    ],
+    "alternativa": "El reloj lo inicia la persona y nunca pasa de 1 Hz",
+    "criterio": "La secuencia se completa sin estados imposibles y la simulación no informa de ningún LED fuera de su rango de corriente.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A traffic light that never gets it wrong",
+    "entradilla": "States and sequence with simple logic.",
+    "pasos": [
+     "Lay out the three lights and give each one its resistor.",
+     "Write the state table: which light is on in each step.",
+     "Start the clock yourself. It never goes above 1 Hz.",
+     "Export the SVG schematic and the truth table as CSV."
+    ],
+    "alternativa": "You start the clock yourself, and it never goes above 1 Hz",
+    "criterio": "The sequence completes with no impossible states and the simulation reports no LED outside its current range.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "Esquema SVG y tabla de verdad CSV",
+   "artefacto_en": "SVG schematic and truth table as CSV",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><rect x=\"16\" y=\"12\" width=\"34\" height=\"72\" rx=\"6\"/><circle cx=\"33\" cy=\"30\" r=\"8\"/><circle cx=\"33\" cy=\"48\" r=\"8\"/><circle cx=\"33\" cy=\"66\" r=\"8\"/></g><circle cx=\"33\" cy=\"30\" r=\"8\" fill=\"currentColor\"/><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><path d=\"M50 30 h16 M50 48 h16 M50 66 h16\"/><rect x=\"66\" y=\"25\" width=\"16\" height=\"10\"/><rect x=\"66\" y=\"43\" width=\"16\" height=\"10\"/><rect x=\"66\" y=\"61\" width=\"16\" height=\"10\"/><path d=\"M82 30 h10 v36 M82 48 h10 M82 66 h10\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1\" opacity=\".5\"><rect x=\"104\" y=\"18\" width=\"44\" height=\"64\"/><path d=\"M104 34 h44 M104 50 h44 M104 66 h44 M126 18 v64\"/></g></svg>"
+  },
+  {
+   "id": "E28",
+   "estudio": "escritura-restricciones",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Comprobador de reglas del estudio",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Cincuenta palabras exactas",
+    "entradilla": "Una historia completa cabe en cincuenta palabras si sobra todo lo demás.",
+    "pasos": [
+     "Escribe la historia sin contar palabras. Llega a un final.",
+     "Ahora recorta hasta cincuenta exactas. El contador te avisa en vivo y no hay tiempo límite.",
+     "Léela en voz alta. Si una palabra puede irse, se va.",
+     "Exporta TXT, MD y HTML accesible."
+    ],
+    "alternativa": "El contador avisa en vivo; no hay tiempo límite",
+    "criterio": "Cincuenta palabras exactas y un relato con principio y final.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "Exactly fifty words",
+    "entradilla": "A whole story fits in fifty words if everything else goes.",
+    "pasos": [
+     "Write the story without counting. Get to an end.",
+     "Now cut to exactly fifty. The counter tells you live; there is no time limit.",
+     "Read it aloud. If a word can go, it goes.",
+     "Export TXT, MD and accessible HTML."
+    ],
+    "alternativa": "The counter warns you live; there is no time limit",
+    "criterio": "Exactly fifty words and a story with a beginning and an end.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "TXT, MD y HTML accesible",
+   "artefacto_en": "TXT, MD and accessible HTML",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\"><rect x=\"18\" y=\"10\" width=\"124\" height=\"80\" rx=\"6\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.6\" opacity=\".8\"><path d=\"M30 28 h72 M30 40 h96 M30 52 h84 M30 64 h60\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\" opacity=\".5\"><rect x=\"104\" y=\"68\" width=\"34\" height=\"16\" rx=\"8\"/></g><text x=\"121\" y=\"80\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"11\" font-weight=\"700\" fill=\"currentColor\">50</text></svg>"
+  },
+  {
+   "id": "E34",
+   "estudio": "juegos-de-mesa",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Tablero y mazo del estudio",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Un juego para dos con cinco reglas",
+    "entradilla": "Menos reglas y más decisiones: la economía del diseño de juego.",
+    "pasos": [
+     "Empieza por el tablero de recorrido, que ya viene montado.",
+     "Escribe exactamente cinco reglas. Cinco, no seis.",
+     "Juega una partida entera en el estudio contra ti misma.",
+     "Exporta el tablero, las cartas y las reglas imprimibles."
+    ],
+    "alternativa": "El tablero de recorrido ya viene montado como punto de partida",
+    "criterio": "Cinco reglas contadas, dos jugadores y una partida completa jugada en el propio estudio.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A two-player game with five rules",
+    "entradilla": "Fewer rules and more decisions: economy in game design.",
+    "pasos": [
+     "Start from the ready-made track board.",
+     "Write exactly five rules. Five, not six.",
+     "Play a whole game in the studio against yourself.",
+     "Export the board, the cards and the printable rules."
+    ],
+    "alternativa": "The track board comes ready-made as a starting point",
+    "criterio": "Five rules written down, two players, and a full game played in the studio itself.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "Tablero, cartas y reglas imprimibles",
+   "artefacto_en": "Printable board, cards and rules",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><rect x=\"12\" y=\"14\" width=\"88\" height=\"72\" rx=\"6\"/><path d=\"M26 72 h20 v-16 h20 v-16 h20 v-16\"/></g><g fill=\"currentColor\"><circle cx=\"26\" cy=\"72\" r=\"4\"/><circle cx=\"46\" cy=\"56\" r=\"4\" opacity=\".6\"/><circle cx=\"66\" cy=\"40\" r=\"4\" opacity=\".6\"/><circle cx=\"86\" cy=\"24\" r=\"4\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.8\"><rect x=\"108\" y=\"22\" width=\"30\" height=\"42\" rx=\"4\"/><rect x=\"114\" y=\"32\" width=\"30\" height=\"42\" rx=\"4\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\" opacity=\".6\"><path d=\"M120 46 h18 M120 54 h12\"/></g></svg>"
+  },
+  {
+   "id": "E38",
+   "estudio": "ritmo",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Tone.js con Transport",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Un ritmo que se reconoce",
+    "entradilla": "El acento y el silencio hacen el ritmo tanto como el golpe.",
+    "pasos": [
+     "Cuatro compases, ni uno más. El sonido solo empieza cuando tú lo pides.",
+     "Coloca los golpes. Después quita alguno: el silencio es parte del ritmo.",
+     "Mueve el acento y escucha cómo cambia el mismo patrón.",
+     "Exporta WAV y MIDI."
+    ],
+    "alternativa": "El sonido solo empieza cuando la persona lo pide",
+    "criterio": "Un patrón de cuatro compases exportado en WAV y en MIDI.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A rhythm you can recognise",
+    "entradilla": "The accent and the rest make the rhythm as much as the hit does.",
+    "pasos": [
+     "Four bars, no more. Sound only starts when you ask for it.",
+     "Place the hits. Then take some away: the rest is part of the rhythm.",
+     "Move the accent and listen to how the same pattern changes.",
+     "Export WAV and MIDI."
+    ],
+    "alternativa": "Sound only starts when you ask for it",
+    "criterio": "A four-bar pattern exported as WAV and as MIDI.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "WAV y MIDI",
+   "artefacto_en": "WAV and MIDI",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><rect x=\"14\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><rect x=\"32\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"50\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"68\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"86\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><rect x=\"104\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"122\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"140\" y=\"16\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"14\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"32\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"50\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><rect x=\"68\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"86\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"104\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"122\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><rect x=\"140\" y=\"34\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"14\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"32\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"50\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"68\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><rect x=\"86\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"104\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"122\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\" opacity=\".14\"/><rect x=\"140\" y=\"52\" width=\"14\" height=\"14\" rx=\"3\" fill=\"currentColor\"/><path d=\"M14 76 h132\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.4\" opacity=\".55\"/><path d=\"M14 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><path d=\"M32 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/><path d=\"M50 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/><path d=\"M68 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/><path d=\"M86 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2.4\"/><path d=\"M104 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/><path d=\"M122 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/><path d=\"M140 76 v6\" stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.2\"/></svg>"
+  },
+  {
+   "id": "E44",
+   "estudio": "videojuegos",
+   "ola": "A",
+   "recommended_stage": "ALL_AGES",
+   "starter_stage": "ALL_AGES",
+   "audience": "ALL_AGES",
+   "sensitivity": "S0_GENERAL",
+   "discovery": "NORMAL",
+   "motor": "Planck.js y runtime propio",
+   "permisos": "ninguno",
+   "hardware": "no",
+   "es": {
+    "titulo": "Un nivel que se puede ganar",
+    "entradilla": "Dificultad: un nivel debe ser posible y no evidente.",
+    "pasos": [
+     "Monta un nivel con una sola idea clara.",
+     "Termínalo tú. Si tú no puedes, nadie puede.",
+     "Comprueba que se juega solo con teclado.",
+     "Exporta el HTML autocontenido."
+    ],
+    "alternativa": "El juego exportado se juega también solo con teclado",
+    "criterio": "Un nivel completado por su autor y exportado como HTML que abre sin conexión.",
+    "cta": "Empezar el reto",
+    "cta_fin": "Marcar como terminado"
+   },
+   "en": {
+    "titulo": "A level you can actually win",
+    "entradilla": "Difficulty: a level should be possible and not obvious.",
+    "pasos": [
+     "Build a level with one clear idea.",
+     "Finish it yourself. If you cannot, nobody can.",
+     "Check it plays with the keyboard alone.",
+     "Export the self-contained HTML."
+    ],
+    "alternativa": "The exported game can also be played with the keyboard alone",
+    "criterio": "A level completed by its own author and exported as HTML that opens offline.",
+    "cta": "Start the challenge",
+    "cta_fin": "Mark as done"
+   },
+   "artefacto_es": "Juego HTML autocontenido",
+   "artefacto_en": "Self-contained HTML game",
+   "escena": "<svg viewBox=\"0 0 160 100\" role=\"img\" aria-hidden=\"true\" focusable=\"false\"><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M8 88 h144\"/><path d=\"M26 68 h26 M68 52 h24 M106 36 h26\"/></g><g fill=\"currentColor\"><rect x=\"30\" y=\"56\" width=\"10\" height=\"12\" rx=\"2\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"1.6\" opacity=\".6\"><path d=\"M44 62 q12 -14 24 -10 M84 46 q12 -14 22 -10\"/></g><g stroke=\"currentColor\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"><path d=\"M128 36 v-18 M128 18 l14 5 -14 5\"/></g></svg>"
+  }
+ ],
+ "nota": "starter_stage ALL_AGES: no se fija AGE_0_12 sin una variante infantil aprobada."
+}

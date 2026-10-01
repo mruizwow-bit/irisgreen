@@ -88,14 +88,27 @@ def main()->None:
         need('class="igk-para"' not in s,"Legacy Workshop local age nav remains: "+rel)
 
     # Every generated study has a deterministic R42 layer in normal defer order.
-    studies=[]
+    studies=[];suite=[]
     for base in (root/"es"/"taller",root/"en"/"workshop"):
         if not base.is_dir(): continue
         for p in base.rglob("index.html"):
             s=p.read_text(encoding="utf-8")
+            if 'data-igs-engine=' in s and '/assets/ig-suite-core.js' in s:
+                suite.append((p,s))
             if 'id="igt-app"' in s and '/assets/ig-taller-estudio.js' in s:
                 studies.append((p,s))
-    need(studies,"No Workshop study pages found")
+    need(studies or suite,"No Workshop study pages found")
+    if suite:
+        need(len(suite)==54,"Expected all 27 suite studios in ES and EN")
+    for p,s in suite:
+        rel=p.relative_to(root).as_posix()
+        need('/assets/ig-taller-estudio.js' not in s,"Legacy and suite engines collide: "+rel)
+        assets=re.findall(r'<script\s+defer\s+src="([^"?]+)',s)
+        for asset in ('/assets/ig-r42-shell.js','/assets/ig-suite-core.js'):
+            need(assets.count(asset)==1,"Suite deferred shell/core missing or duplicated: "+rel)
+        need(assets.index('/assets/ig-r42-shell.js')<assets.index('/assets/ig-suite-core.js'),"Suite shell must precede core: "+rel)
+        for asset in assets:
+            need((root/asset.lstrip('/')).is_file(),"Missing suite dependency "+asset+": "+rel)
     for p,s in studies:
         rel=p.relative_to(root).as_posix()
         need('data-ig-r69-workshop="1"' in s,"Workshop R69 marker missing: "+rel)
@@ -150,7 +163,7 @@ def main()->None:
     print(json.dumps({
       "r69_unified_interface":"PASS",
       "html_pages":len(pages),
-      "workshop_studies":len(studies),
+      "workshop_studies":len(studies)+len(suite),
       "external_google_fonts":0,
       "legacy_page_finder":0,
       "duplicate_resource_age_ui":0,

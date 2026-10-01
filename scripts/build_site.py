@@ -70,6 +70,7 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_suite.py')],cwd=ROOT,check=True)
     # Sabik Audio R01 se reconstruye byte-exacto únicamente dentro del staging del build.
     subprocess.run([sys.executable,str(ROOT/'scripts/materialize_sabik_audio_r01.py')],cwd=ROOT,check=True)
 

@@ -21,7 +21,7 @@
   function startStage(value){return value==='AGE_0_12'||value==='AGE_13_17'||value==='AGE_18_PLUS'?value:'ALL_AGES';}
   var stage = startStage(globalStage()||fallbackStage);
   function syncStage(value){
-    stage=startStage(value||fallbackStage);
+    stage=startStage(value||fallbackStage);main.dataset.stage=stage;
     main.querySelectorAll('.igk-start').forEach(function (ul) {
       var own=ul.getAttribute('data-para')||'ALL_AGES';
       ul.hidden = own !== stage;
