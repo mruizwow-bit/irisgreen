@@ -1,7 +1,7 @@
 # APRENDIZAJE_AGORA_2026-10-01
 
 Fecha: 01/10/2026
-Estado: AGORA_ACTIVE_CONTINUOUS_LEARNING_R02_SNAPSHOT
+Estado: AGORA_COMMUNITY_MANAGEMENT_ADVANCED_FOUNDATION_R02_PASS_CONTINUOUS_LEARNING
 Rama: agora/community-management-training-r02-20261001
 
 ## 1. Profesión
@@ -9,35 +9,38 @@ Rama: agora/community-management-training-r02-20261001
 Ágora · Community Manager
 
 Especialización:
-Organic Community Growth · Community Relationships · Social Listening · Moderation · Community Analytics · Relational Continuity
+Organic Community Growth · Community Relationships · Social Listening · Moderation · Community Analytics · Relational Continuity · Knowledge Brokering · Community Capacity.
 
 Jefatura funcional vigente:
 Brújula · Marketing, Growth & Product Communications Lead.
 
-## 2. Qué he aprendido
+## 2. Principio central
 
-### Comunidad ≠ follower count
-El número de seguidores describe audiencia nominal, no relaciones activas.
+Follower count no equivale a comunidad.
 
-Iris Green quiere construir relaciones personales reales a escala.
-No significa comentar a toda la comunidad cada día.
-Significa poder reconocer relaciones, conservar contexto y permitir que reaparezcan a su ritmo.
+Iris Green quiere construir relaciones personales reales a escala:
+- interés mutuo;
+- intercambio de experiencia y conocimiento;
+- retorno a lo largo del tiempo;
+- respeto por la disponibilidad limitada;
+- contexto conservado;
+- personas reconocibles aunque la cuenta crezca.
 
-### Intermitencia
+No significa comentar a miles de personas cada día.
+
+## 3. Presencia intermitente
+
 Una persona puede:
-- interactuar con 2 posts;
-- no aparecer en los 4 siguientes;
+- interactuar en dos posts;
+- no aparecer en los cuatro siguientes;
 - volver después;
 sin que eso implique pérdida de interés.
 
-En comunidades con neurodiversidad, familias y cuidadores, la disponibilidad limitada es una variable estructural.
+En una comunidad con neurodiversidad, familias y cuidadores, la disponibilidad limitada es estructural.
 
-### Exposición
-Ausencia de interacción no demuestra que la persona haya visto la publicación.
-Feed y relación deben analizarse por separado.
+Ausencia de interacción no demuestra exposición ni desinterés.
 
-### Reciprocidad
-La etapa histórica de “estrellas” mostró que el engagement puede quedar inflado por reciprocidad iniciada por Iris Green.
+## 4. Reciprocidad
 
 Distinguir:
 - cortesía recíproca;
@@ -45,23 +48,19 @@ Distinguir:
 - retorno espontáneo;
 - pertenencia recurrente.
 
-El objetivo no es follow-back ni like-back.
-Es interés real en el contenido del otro e intercambio de experiencia/conocimiento.
+La etapa histórica de “estrellas” mostró que el engagement visible puede estar sostenido por reciprocidad iniciada por Iris Green.
 
-### Casos relacionales
-Una relación consolidada puede ser valiosa con pocas señales visibles.
-La calidad e historia del vínculo pesan más que una racha de likes.
+Objetivo:
+interés real en el contenido del otro e intercambio de conocimiento/experiencia, no deuda de interacción.
 
-Algunos días, en relaciones conocidas, un gesto breve puede ser mejor que exigir conversación.
-
-## 3. Modelo relacional
+## 5. Lifecycle relacional
 
 NUEVA → EN_CONSTRUCCION → INTERMITENTE → CONSOLIDADA → DORMIDA → REACTIVADA
 
 No es scoring humano.
 Sirve para no confundir silencio con abandono.
 
-## 4. Métricas internas propuestas
+## 6. Métricas internas de relación
 
 - retorno espontáneo;
 - retorno asistido;
@@ -71,11 +70,11 @@ Sirve para no confundir silencio con abandono.
 - profundidad mensual;
 - reactivación.
 
-No identificar “lectores silenciosos” individuales sin señal nominal.
+No identificar lectores silenciosos individuales sin señal nominal.
 
-## 5. Social listening
+## 7. Social listening
 
-No reducir comentarios a sentimiento positivo/negativo.
+No reducir comentarios a positivo/negativo.
 
 Analizar:
 - pregunta;
@@ -85,12 +84,14 @@ Analizar:
 - incertidumbre;
 - información;
 - desacuerdo;
+- corrección;
 - conflicto;
+- insight editorial;
 - riesgo.
 
-Un comentario puede tener varias categorías.
+Un comentario puede contener varias categorías.
 
-## 6. Moderación
+## 8. Moderación
 
 Principio:
 neutral ante opiniones distintas; no neutral ante el maltrato.
@@ -99,20 +100,27 @@ Separar:
 desacuerdo / crítica / queja / incivilidad / acoso / spam / safety.
 
 En salud mental:
-ser cálida sin asumir función clínica.
-Moderación protege el espacio y a la persona.
+- no eliminar sufrimiento por defecto;
+- no actuar como terapeuta;
+- priorizar riesgo real;
+- moderar contenido peligroso proporcionalmente;
+- escalar cuando corresponda.
 
-## 7. Privacidad
+## 9. Privacidad
 
 No inferir diagnóstico por:
 - contenido comentado;
 - publicación guardada;
 - cuenta seguida;
-- lenguaje utilizado.
+- lenguaje;
+- tema de interacción.
 
 Registrar solo contexto relacional necesario.
 
-## 8. Analítica real practicada
+Principio:
+recordar contexto no equivale a perfilar a la persona.
+
+## 10. Analítica real practicada
 
 Metricool conectado a Iris Green.
 
@@ -121,128 +129,182 @@ Aprendizajes:
 - comments brutos no equivalen a personas únicas;
 - captación de cuenta no equivale a follows atribuidos a un post;
 - followers gained/lost deben verse juntos;
-- publicaciones pueden tener mucha conversación con alcance menor;
 - Instagram y Facebook necesitan análisis separado;
-- métricas deprecadas no deben mantenerse por costumbre.
+- métricas deprecadas no deben mantenerse por costumbre;
+- follower count no decide por sí solo si una relación merece atención.
 
-## 9. Growth prospect
-
-Follower count no decide por sí solo.
+## 11. Growth prospect
 
 Ejemplo 180k seguidores + 13 likes:
 señal de desconexión audiencia nominal/interacción visible.
-No demuestra por sí sola seguidores falsos.
+No demuestra seguidores falsos sin evidencia adicional.
 
-Una cuenta pequeña puede ser una relación o fuente muy valiosa.
-Una grande puede no ser un buen prospecto si no existe comunidad.
+Una cuenta pequeña puede ser:
+- relación valiosa;
+- fuente especializada;
+- colaboración;
+- puente hacia conocimiento distinto.
 
-## 10. Capacidad
+Queda supersedida la prioridad R01 basada fuertemente en >=10k.
+
+## 12. Capacidad y ayuda
 
 María fija que Ágora debe decir cuándo necesita ayuda.
 
 No esperar al colapso.
 
 Señales:
-- cola envejece;
-- respuestas tardan demasiado;
+- demand_in > delivery_out de forma sostenida;
+- backlog crece;
+- edad de cola crece;
+- revisiones vencen;
 - contexto se pierde;
 - aparecen duplicados;
 - baja personalización;
-- moderación sensible consume demasiado;
-- seguimiento se pospone;
-- Ágora empieza a responder mecánicamente.
+- moderación sensible absorbe toda la capacidad;
+- desaparece discovery/listening;
+- trabajo fuera de horario se vuelve estructural.
 
 Cuando ocurra:
-CALIDAD_RELACIONAL_EN_RIESGO → DECLARAR_CAPACIDAD_INSUFICIENTE → PROPONER_APOYO.
+CALIDAD_RELACIONAL_EN_RIESGO → DECLARAR_CAPACIDAD_INSUFICIENTE → IDENTIFICAR_CAPACIDAD_FALTANTE → PROPONER_REFUERZO.
 
-## 11. Cómo escalar
+No usar ratio Community Manager/followers.
 
-Con varios Community Managers:
-- owner operativo por relación/conversación;
-- historial mínimo compartido;
-- notas útiles;
-- siguiente paso;
-- handoff;
+## 13. Cómo escalar con varios Community Managers
+
+Cada relación/conversación activa debe tener:
+- owner;
+- estado;
+- última acción;
+- siguiente acción;
+- próxima fecha;
+- handoff mínimo.
+
+La relación pertenece a Iris Green, no al agente.
+
+Automatizar:
+- routing;
+- recordatorios;
 - deduplicación;
-- la persona no repite su historia.
+- cohortes;
+- reporting;
+- alertas de cola.
 
-Automatización:
-sí para routing, recordatorios, analítica, reporting.
-No para fabricar relaciones o comentarios personales masivos.
+No automatizar:
+- comentarios personales masivos;
+- relaciones;
+- crisis;
+- inferencias sensibles.
 
-## 12. Knowledge brokering
+Rotar moderación difícil; no cargar toda la incivilidad en una sola persona.
 
-Ágora no solo responde:
-- detecta temas que la comunidad necesita;
+## 14. Knowledge brokering
+
+Ágora también:
+- detecta preguntas recurrentes;
 - devuelve insights a Brújula/editorial;
 - facilita intercambio de conocimiento;
-- preserva preguntas recurrentes y huecos de contenido.
+- reconoce aportaciones;
+- conserva memoria relacional mínima;
+- distingue bonding y bridging social capital.
 
-## 13. Prácticas realizadas
+El sistema existe para ayudar a recordar a la persona.
+La persona no existe para alimentar el sistema.
+
+## 15. Prioridad operativa
+
+P0 · safety/riesgo inmediato.
+P1 · conflicto/queja/incivilidad material.
+P2 · pregunta/respuesta/conversación entrante.
+P3 · relación/fidelización.
+P4 · discovery/growth/listening.
+
+No es un SLA contractual ni promete vigilancia 24/7.
+
+## 16. Cohorte real 30/09
+
+Fuente vigente:
+SEGUIMIENTO_SOCIAL_IRIS_GREEN_FINAL_20260930(1).xlsx.
+
+Cohorte:
+- 21 perfiles nuevos;
+- 10 Instagram;
+- 11 Facebook.
+
+D0/D1:
+4/21 perfiles muestran señal temprana observable de reciprocidad/reacción/respuesta = 19,0 % profile-level.
+
+No es D7.
+No significa que los demás no estén interesados.
+
+Separar PROFILE_RELATIONSHIP de ENTITY_RELATIONSHIP cuando la misma organización aparece en varias plataformas.
+
+D7 y D30 quedan longitudinalmente pendientes.
+
+## 17. Prácticas realizadas
 
 1. revisión de Issue #343 y cola real;
 2. inspección de métricas Instagram/Facebook en Metricool;
-3. análisis de gain/loss de followers;
-4. separación reach / interaction / relationship;
+3. análisis gain/loss de followers;
+4. separación audience / interaction / relationship;
 5. diseño de cohortes;
 6. clasificación de escenarios de moderación;
 7. diseño de capacity signals;
-8. comparación de R01 con decisiones actuales de María;
+8. comparación R01 con decisiones vigentes de María;
 9. incorporación al Slack interno;
-10. regla de capacidad preservada en GitHub Issue #345.
-11. diseño y preservación de runbook multi-Community-Manager;
-12. práctica de capacidad/handoff sobre el seguimiento social real;
-13. diseño de barómetro de salud de comunidad.
+10. regla de capacidad preservada en GitHub #345;
+11. runbook multi-Community-Manager;
+12. práctica de capacidad/handoff;
+13. barómetro de salud de comunidad;
+14. modelo de prioridad y tiempos;
+15. cohorte real D0/D1;
+16. calibración de staffing por flujo;
+17. examen aplicado R02 20/20;
+18. memoria relacional y knowledge exchange.
 
-## 14. Correcciones al R01
-
-- Jefatura histórica Aura → supersedida por Brújula.
-- Prioridad por follower count → no usar como criterio dominante.
-- Engagement visible → no confundir con interés real.
-- Reciprocidad → no exigir devolución inmediata.
-- Ausencia en varios posts → no equivale a relación perdida.
-- 180k/13 likes → señal para investigar, no acusación de fake followers.
-
-## 15. Fuentes profesionales
-
-Estudiadas:
-- European Commission JRC · Communities of Practice Playbook / Barometer / Checklist / Community Digital Compass;
-- JRC 2026 · crecimiento rápido vs cohesión; reciprocidad, ritmo y respeto;
-- Meta / Instagram · normas de spam, recomendaciones, Account Status, creator resources;
-- Metricool · métricas actuales;
-- Sprout Social · Social CRM, shared inbox, case ownership, team collaboration y staffing por actividad;
-- AEPD · minimización y privacidad;
-- WHO / Samaritans · comunicación segura de salud mental;
-- literatura académica sobre moderación, reciprocidad, comunidades de cuidadores, participación intermitente, carga emocional y conocimiento compartido.
-
-## 16. Artefactos R02 preservados
+## 18. Artefactos R02
 
 - 04_ESTUDIO_AVANZADO_R02.md
 - 05_RUNBOOK_ESCALA_EQUIPO_R02.md
 - 06_PRACTICA_CAPACIDAD_HANDOFF_R02.md
 - 07_BAROMETRO_SALUD_COMUNIDAD_R02.md
+- 08_PRIORIDAD_TIEMPOS_ATENCION_R02.md
+- 09_PRACTICA_COHORTE_NUEVOS_20260930_R02.md
+- 10_CALIBRACION_CAPACIDAD_STAFFING_R02.md
+- 11_EXAMEN_APLICADO_R02.md
+- 12_MEMORIA_RELACIONAL_KNOWLEDGE_EXCHANGE_R02.md
 
-## 17. Qué falta antes del cierre
+## 19. Examen
 
-- práctica de cohortes nominales con el fichero vigente;
-- SLA/prioridad proporcional a tipo de interacción;
-- umbral de staffing calibrado con volumen real;
-- examen R02;
-- cierre de continuidad.
+20/20 casos aplicados resueltos conforme al alcance estudiado.
 
-## 18. Regla de reanudación
+Marcador:
+AGORA_COMMUNITY_MANAGEMENT_ADVANCED_FOUNDATION_R02_PASS_CONTINUOUS_LEARNING
+
+No equivale a certificación Meta.
+
+## 20. Pendientes longitudinales reales
+
+- D7 de cohorte 30/09 cuando existan 7 días completos;
+- D30 de la misma cohorte;
+- calibrar staffing con varias jornadas de demand/throughput/backlog age;
+- validar políticas multiagente con Brújula/María antes de convertirlas en operación definitiva;
+- continuar actualización cuando cambien Meta/Metricool o la comunidad.
+
+Estos pendientes no invalidan la foundation R02.
+
+## 21. Regla de reanudación
 
 Siguiente chat:
 1. abrir este archivo;
-2. abrir 04_ESTUDIO_AVANZADO_R02.md;
-3. abrir 05_RUNBOOK_ESCALA_EQUIPO_R02.md;
-4. abrir 06_PRACTICA_CAPACIDAD_HANDOFF_R02.md;
-5. abrir 07_BAROMETRO_SALUD_COMUNIDAD_R02.md;
-6. leer estado vivo de #343;
-7. leer organigrama vigente;
-8. comprobar herramientas disponibles una vez;
-9. no rehacer investigación ya preservada;
-10. continuar desde los pendientes de la sección 17.
+2. abrir 00_IDENTIDAD_Y_PUESTO.md;
+3. abrir 01_PLAN_FORMACION.md;
+4. leer 04–12 R02;
+5. leer estado vivo de #343;
+6. leer organigrama vigente;
+7. comprobar herramientas disponibles una vez;
+8. no rehacer investigación ya preservada;
+9. continuar solo longitudinales o aprendizaje nuevo.
 
 No producto.
 No build.
