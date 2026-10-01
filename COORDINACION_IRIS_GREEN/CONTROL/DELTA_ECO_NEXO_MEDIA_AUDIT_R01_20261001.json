@@ -130,5 +130,11 @@
   "merge": false,
   "deploy": false,
   "provider_selected": false,
-  "system_pass": false
+  "system_pass": false,
+  "training_provenance": {
+    "branch": "eco/a6-advanced-r03-dsp-realtime-20261001",
+    "head": "bcf68ad512aed95521fae0fe95c794afb0f68a34",
+    "closure": "COORDINACION_IRIS_GREEN/FORMACION/A6_ECO/11_CIERRE_CONTINUIDAD_20261001.md"
+  },
+  "audit_learning": "COORDINACION_IRIS_GREEN/FORMACION/A6_ECO/APRENDIZAJE_ECO_2026-10-01_AUDIT_NEXO_R04.md"
 }
