@@ -433,3 +433,174 @@ Antes de R40:
 3. abrir solo hueco material;
 4. mantener Slack para coordinación y GitHub para evidencia;
 5. mantener 0 producto/build/merge/deploy.
+
+
+### R40 · High-fidelity pointer input
+
+Estudiado:
+- Pointer Events Level 3 Recommendation 30/06/2026;
+- boundary con Level 4 Working Draft;
+- pointerrawupdate;
+- getCoalescedEvents;
+- getPredictedEvents;
+- pen geometry;
+- speculative rendering;
+- input backpressure.
+
+Práctica:
+240 Hz input vs 60 Hz paint → modelo de batching 4:1.
+
+Regla:
+**predicted events sirven para preview especulativa, nunca como estado definitivo sin reconciliación.**
+
+Marcador:
+`MOTOR_HIGH_FIDELITY_POINTER_LATENCY_STUDIED_R40`.
+
+### R41 · Canvas text y font loading
+
+Estudiado:
+- CSS Font Loading API;
+- FontFaceSet;
+- document.fonts;
+- FontFaceSet.load/ready;
+- measureText;
+- TextMetrics;
+- baselines;
+- font failure;
+- worker font loading.
+
+Práctica aislada:
+misma cadena a 48 px:
+- font A ~635.94 px;
+- font B ~509.38 px;
+- diferencia ~19.9 %.
+
+Regla:
+**medir Canvas antes de la font real puede dejar geometría/hitboxes incorrectos.**
+
+Marcador:
+`MOTOR_CANVAS_TEXT_FONT_LOADING_STUDIED_R41`.
+
+### R42 · SVG interactivo
+
+Estudiado:
+- SVG coordinate systems;
+- getScreenCTM/getCTM;
+- DOMMatrix inverse;
+- getBBox;
+- SVG pointer-events;
+- focus;
+- event delegation;
+- zoom/pan;
+- accessibility boundary.
+
+Práctica:
+matriz scale(2,1.5)+translate(100,50):
+screen (300,200) → SVG (100,100) PASS.
+
+Regla:
+**convertir pointer mediante CTM inversa, no con ratio rect/viewBox simplista cuando hay transforms.**
+
+Marcador:
+`MOTOR_INTERACTIVE_SVG_COORDINATES_STUDIED_R42`.
+
+### R43 · Image decode y bitmap ownership
+
+Estudiado:
+- HTMLImageElement.decode;
+- decoding hint;
+- createImageBitmap;
+- Worker image preparation;
+- ImageBitmap.close;
+- bitmaprenderer ownership;
+- decoded memory budget;
+- tainted canvas;
+- cache/backpressure.
+
+Práctica:
+- 4096×4096 RGBA8 ≈ 64 MiB;
+- 10×1024×1024 RGBA8 ≈ 40 MiB.
+
+Auditoría:
+Worker R42 transfiere ImageBitmap y receiver lo cierra tras drawImage: patrón positivo.
+
+Marcador:
+`MOTOR_IMAGE_DECODE_BITMAP_OWNERSHIP_STUDIED_R43`.
+
+### R44 · Scroll-driven runtime
+
+Estudiado:
+- Scroll-driven Animations;
+- ScrollTimeline/ViewTimeline;
+- CSS timeline syntax;
+- reduced motion;
+- rAF scroll fallback;
+- layout thrash;
+- sensory safety.
+
+Práctica:
+rango 100→500:
+scroll 250 → progress 0.375 PASS.
+
+Estado:
+ScrollTimeline/ViewTimeline siguen Limited availability.
+
+Marcador:
+`MOTOR_SCROLL_DRIVEN_RUNTIME_STUDIED_R44`.
+
+### R45 · Visual stability
+
+Estudiado:
+- CLS;
+- session windows;
+- LayoutShift API;
+- attribution;
+- font/image causes;
+- focus/pointer stability;
+- async UI geometry.
+
+Práctica:
+impact .25 × distance .10 → layout shift .025 PASS.
+
+Regla:
+**“no cuenta en CLS” no equivale a “buena UX”; foco y puntero también deben permanecer estables.**
+
+Marcador:
+`MOTOR_VISUAL_STABILITY_LAYOUT_SHIFT_STUDIED_R45`.
+
+### R46 · Gestos multipunto y wheel
+
+Estudiado:
+- WCAG 2.5.1 Pointer Gestures;
+- pinch;
+- multi-pointer lifecycle;
+- center-preserving zoom;
+- WheelEvent;
+- deltaMode;
+- trackpad/browser zoom boundary;
+- inertia.
+
+Práctica:
+- distancia 100→150 = scale 1.5;
+- center (150,100)→(165,90) = pan (+15,-10).
+
+Regla:
+**pinch/rotate/swipe requieren alternativa de simple pointer cuando el gesto no es esencial.**
+
+Marcador:
+`MOTOR_MULTIPOINT_GESTURES_WHEEL_STUDIED_R46`.
+
+## Continuidad actualizada
+
+Último bloque completado:
+**R46**.
+
+Estado:
+`ACTIVE_CONTINUOUS_LEARNING`.
+
+Antes de R47:
+1. comprobar state drift;
+2. no repetir R01–R46;
+3. abrir solo hueco material;
+4. Slack para coordinación; GitHub para evidencia;
+5. 0 producto/build/merge/deploy mientras siga Formación.
