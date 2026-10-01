@@ -38,3 +38,30 @@ Facebook AutisticAngle: perfil abierto para criba; evaluación aún en curso. No
 
 ## Acumulado hasta este corte
 30textos verificados (18propiosIG,10externosIG,2externosFB),16reacciones(12IG,4FB),1altaIG y1publicaciónFB recuperada. Tres identidades de fieles pendientes. Instagram campaña17:00 sigue pendiente de verificación tras hora prevista. Error tokenMetricoolFB continúa; no reintentar la pieza ya recuperada.
+
+
+## Ampliación de continuidad · 01/10 · hasta 15:55 Europe/Madrid
+
+Ocho textos nuevos verificados tras el corte anterior (uno propio IG, cinco externos IG y dos FB). Acumulado: **38 textos (19 propios IG, 15 externos IG, 4 externos FB), 16 reacciones y 1 follow nuevo IG**. No sumar intentos de like en el hilo de Shelly: la interfaz no confirmó el cambio.
+
+### Evidencias de textos
+- Shelly, continuación sustantiva sobre reuniones con familias, no agradecimiento de cierre: https://www.instagram.com/p/Dd6ni_ZFAEb/c/18201891808326625/ — “Yes, Shelly 💙 Leaving a parent meeting knowing what was discussed and what comes next can make such a difference. Thank you for bringing that into the conversation.”
+- Jenn, reel nuevo: https://www.instagram.com/p/Dd89YHXIoWy/c/17930148798164857/ — “Jenn, I like that little opening at the end for a good ‘what if’ 💖 Sending you a hug and wishing you a lovely Thursday.”
+- Motheroo: https://www.instagram.com/p/Dd6f_AlBm1G/c/17931622269405387/ — “The blank doll to colour in is such a lovely detail 💛 And your Velcro-dot idea makes changing those tiny outfits much easier!”
+- Amy y Georgi, una sola publicación colaborativa y un solo comentario: https://www.instagram.com/p/Dd66WxlEXFJ/c/18119489095740371/ — “Amy, keeping that Magic Tree House collection together was such a thoughtful choice ❤️ Imagine finishing one adventure and finding the next waiting on the classroom shelf. Georgi, how lovely that you’ve sent another donation too! 💚”
+- Softly Heals: https://www.instagram.com/p/Dd62pvZo37v/c/18077088410412701/ — “I love that the old chapters are still there beside the new picture 💛 Changing direction doesn’t have to mean throwing away everything that came before.”
+- Comcare: https://www.instagram.com/p/Dd7CZgsCJ_v/c/18373159516215704/ — “That moment when a child finds words for what upset them deserves room to be heard 💙 Even if the rest of the day has been difficult.”
+- ARASAAC: https://www.facebook.com/arasaac/posts/pfbid02sUZrFe5hPUaPHudHAxJk7rFDZdwxTFeP32FkeidqBgBwaRde9p6vxag2N6hox2rfl — “Gracias, Alba, por compartir los cuatro cuadernillos 💚 ¿Se pueden descargar por separado para elegir las sílabas que se quieren trabajar?” Facebook confirmó envío y texto persistente.
+- Autistic Girls Network: https://www.facebook.com/AutisticGirlsNetwork/posts/pfbid02hRvwZAvxhGKfUaK1dZcWSUjko7swxBLS1mS22N1BHE74FKAN29Uqndes2KwU1hAtl — “Thank you for spelling out the time needed and that no name or email is required 💛 Those details are helpful to know before opening a survey.” Facebook confirmó envío y texto persistente.
+
+### Rotación
+**25/114 fieles revisados hoy**. Diez añadidos al corte de15: journey.withjenn, nickycooper.life, motheroohq, masalladelacajitaazul, weepywillowworks, amyd_mom_author, softly_heals1, addwingstoyoursoul, comcare_support_center y usha.nagavarapu. Nicky, Cajita Azul, Malou y Usha sin publicación posterior a la revisión anterior; no repetir. Amy tenía además reel nuevo Dd9ALwMRlE3, observado en perfil sin segundo comentario para no concentrar la ronda en la misma persona.
+
+Facebook: ARASAAC y AGN revisitadas y comentadas en novedades. Autistica revisada: maratón y homenaje/fondo de Steve Shirley; sin texto nuevo. Comentario previo de29/09 sobre esperas diagnósticas visible: no duplicado.
+
+### Criba adicional
+- AutisticAngle: reel1833103671292450, conversación activa y reacción del autor; respuestas desplegadas de terceros (Paul Alfano, John Steve Lacosta), no respuesta personal de creadora comprobada. Sigue pendiente de varios posts, sin follow ni comentario.
+- espaciotdah: reelDduO-4IB1tL con solicitudes INFO123; respuesta18129358066773019/r/18076130294415602 confirma envío de información. Es interés legítimo, pero esta muestra no demuestra conversación personal habitual. No penalizar CTA ni dar alta sin completar criba.
+- mx.micaringo: perfil reabierto para continuar evaluación; no contar alta ni criba terminada.
+
+Los objetivos de descubrimiento siguen pendientes:29IG+29FB. Campaña IG17:00 aún no verificada; sin PASS diario. Las tres identidades históricas pendientes siguen sin recuperarse.
