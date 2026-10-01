@@ -354,9 +354,9 @@ La rotación iniciada con Dorit quedó interrumpida al priorizar la recuperació
 
 ## Rotación y búsqueda · 01/10/2026 · tarde
 
-Informe vigente: `INFORMES/AGORA_ROTACION_Y_BUSQUEDA_20261001_TARDE.md` (consultar antes de volver a comentar). **25/114 fieles revisados hoy**, además de las21/21altas deayer revisadas en tandas anteriores. Tres identidades históricas pendientes.
+Informe vigente: `INFORMES/AGORA_ROTACION_Y_BUSQUEDA_20261001_TARDE.md` (consultar antes de volver a comentar). **24/114 fieles revisados hoy, más Comcare fuera de la lista fuente**, además de las21/21altas deayer revisadas en tandas anteriores. Tres identidades históricas pendientes.
 
-Acumulado verificado de comunidad: **38 textos:19 propiosIG,15 externosIG,4 externosFB;16 reacciones:12IG+4FB;1 follow nuevoIG**. Más1publicación de campaña FB recuperada. No contar intentos de reacción sin cambio confirmado.
+Acumulado verificado de comunidad: **39 textos:19 propiosIG,15 externosIG,5 externosFB;16 reacciones:12IG+4FB;1 follow nuevoIG**. Más1publicación de campaña FB recuperada. No contar intentos de reacción sin cambio confirmado.
 
 Alta mujeresalbordedeltdah registrada en SEGUIDOS_SOCIAL.csv con comentario18107686237919586, Siguiendo confirmado y próxima revisión02/10, estratégica05/10. Criba de varias publicaciones y respuestas personales recurrentes; tamaño modesto aceptado por conversación, no por cuota. No hay nuevas bajas.
 
@@ -365,3 +365,6 @@ Objetivo acumulado reconciliado desde control real: faltaban10IG+9FB deayer, má
 Últimas conversaciones atendidas: Shelly en publicación propia; Jenn, Motheroo, colaboración Amy/Georgi (un solo texto), Softly Heals y Comcare enIG; ARASAAC y Autistic Girls Network enFB. Agradecimientos de Dorit, Aida y EverythingHygge cerrados conlike, sin nuevo texto. AutisticaFB revisada sin duplicar su hilo previo. Informe contiene textos, enlaces y revisiones sin novedad.
 
 Facebook campaña ya publicada: NO reintentarFB385546537. Integración Metricool sigue conerror de token. Instagram383972701 a17:00Europe/Madrid aún pendiente de verificación pública. Ciclo parcial, sinPASS ni ejecución fuera de sesión presumida.
+
+
+Consolidación posterior:24fechas de revisión actualizadas en FIELES_INSTAGRAM_114.csv. Comcare es comunidad adicional, no fila del universo114. CONTACTOS_SOCIAL.csv actualizado para ARASAAC, AGN y nuevo contacto Mikey's Wish, este último comentado sin follow por criba aún incompleta. Próxima revisión02/10. No confundir primer comentario con alta ni respuesta del autor a otras personas con reciprocidad hacia Iris.
