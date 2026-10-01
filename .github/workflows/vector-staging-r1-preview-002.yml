@@ -1,0 +1,30 @@
+name: Vector staging R1 preview 002
+on:
+  push:
+    branches: ['vector/deploy-staging-r1-002']
+permissions:
+  contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: dde524c49c1376842d2d82627be4a9f49dd2dda8
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Build staging
+        run: python scripts/build_site.py
+      - name: Deploy staging preview
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+        run: |
+          npx --yes netlify-cli@23.9.3 deploy --dir=dist --site=40042464-343c-4587-b6b7-f6159836e291 --auth="$NETLIFY_AUTH_TOKEN" --json | tee /tmp/netlify-deploy.json
+          cat /tmp/netlify-deploy.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: vector-staging-r1-preview-002-receipt
+          path: /tmp/netlify-deploy.json
+          retention-days: 14
