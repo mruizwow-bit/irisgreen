@@ -357,3 +357,61 @@ No:
 - build;
 - merge;
 - deploy.
+
+
+## 23 · Extensión · duración automática hereda el mismo lifecycle defect
+
+`rincon-calma.js`:
+
+```js
+var endTimer = null;
+
+startBreath.addEventListener('click', function () {
+  clearTimeout(endTimer);
+
+  var min = parseFloat(pdur.value);
+
+  if (min > 0) {
+    endTimer = setTimeout(function () {
+      if (stopB) stopB.click();
+      label.textContent = T.stopped;
+    }, min * 60000);
+  }
+});
+
+stopBreath.addEventListener('click', function () {
+  clearTimeout(endTimer);
+});
+```
+
+Opciones públicas:
+- 30 segundos;
+- 1 minuto;
+- 3 minutos;
+- 5 minutos;
+- sin final.
+
+El timer termina invocando:
+`stopB.click()`.
+
+Como se demostró en R70:
+`stopB`
+no llama:
+- `pause3d.stop()`;
+- `pause3d=null`;
+- remove qpause3d;
+- restore porb.
+
+Por tanto:
+
+`AUTO_DURATION_EXPIRES → LOGICAL_GUIDE_STOPS → PAUSE3D_REMAINS`.
+
+Clasificación adicional:
+
+`RINCON_PAUSE_AUTO_DURATION_INHERITS_3D_STOP_DEFECT`.
+
+Esto amplía reachability:
+el problema no depende solo de que la persona pulse Parar;
+también afecta al apagado automático configurado de la pausa.
+
+No se asigna severidad ni se modifica producto.
