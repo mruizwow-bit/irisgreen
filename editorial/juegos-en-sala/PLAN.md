@@ -96,8 +96,9 @@ sirve es nuestro contenido doméstico: un museo no quiere las cartas del baño.
   piezas: imagen, nombre en dos idiomas, y nada más—;
 - un **modo sala** del motor de juegos: sin estado, con reinicio automático,
   con los ajustes a la vista;
-- una **hoja de montaje** para el sitio: qué pantalla, a qué altura, qué pasa
-  si se cae la red, cómo se apaga.
+- una **hoja para el sitio**: a qué altura poner la pantalla, qué hacer si se
+  cae la red, y cómo dejarla lista antes de abrir. Ya no es una hoja de montaje
+  de aparato, porque no hay aparato nuestro.
 
 ## 6 · Primera tanda propuesta
 
@@ -115,26 +116,58 @@ tres con contenido del sitio:
 No propongo más de tres para la primera tanda: con un sitio real delante se
 aprende más que añadiendo moldes.
 
-## 7 · Lo que no puedo decidir yo
+## 7 · Decidido: esto se queda todo en la web
 
-- **El hardware.** Si es tótem del sitio, tableta nuestra o navegador en su
-  pantalla, cambia el montaje entero. Hace falta decidirlo antes de construir.
-- **De quién es el contenido.** Las imágenes de una colección tienen derechos y
-  no son nuestros. Hay que acordar con cada sitio qué se puede usar y cómo se
-  acredita.
-- **Si esto se ofrece como producto o como acompañamiento.** No es lo mismo
-  entregar un archivo que mantener una instalación.
-- **Quién lo monta y quién lo arregla** cuando falle un martes por la mañana.
+**María, 01/10/2026.** No hay instalación, no hay tótem nuestro, no hay archivo
+que se entregue. Es una página de irisgreen.eu que el sitio abre en la pantalla
+que tenga.
+
+Lo que esa decisión resuelve, y es la mitad del plan: desaparece el
+mantenimiento de una instalación. Ni dispositivo que se actualiza solo de
+madrugada, ni modo kiosco que alguien cierra, ni táctil que se descalibra, ni
+batería, ni versión antigua corriendo en una sala que nadie visita. El software
+se mantiene como el resto de la web: se despliega una vez y está desplegado en
+todas partes.
+
+Lo que esa decisión **crea**, y hay que mirarlo de frente:
+
+1. **La red deja de ser opcional.** Hoy no hay *service worker* en el sitio:
+   comprobado, no existe ninguno. Si la página no carga, no hay juego. La
+   página de juegos pesa 38 KB, su motor 42 KB y su hoja 25 KB, pero el
+   catálogo de datos son 176 KB: 282 KB para arrancar. En un museo con wifi
+   mala eso es la diferencia entre jugar y no jugar. Un juego de sala tiene que
+   cargar solo lo suyo, no el catálogo entero, y conviene decidir si merece la
+   pena un *service worker* para que la segunda visita del día no dependa de la
+   red.
+2. **Queda abierto de quién es el contenido.** Si las cartas son piezas de la
+   colección del sitio, o las alojamos nosotros —y entonces hay derechos,
+   revisión editorial y una página por sitio—, o las abre el propio sitio desde
+   su equipo con el selector de archivos, sin subida, como ya hace el Taller
+   con los proyectos. La segunda vía encaja con la norma que ya tenemos
+   («archivos del usuario locales y sin upload por defecto») y no obliga a
+   hospedar nada ajeno. La CSP actual es `connect-src 'self'`, así que abrir un
+   archivo local funciona y descargarlo de fuera no.
+3. **La pantalla sigue siendo compartida.** Que sea web no quita ninguna de las
+   ocho reglas del §3: sin cuenta, sin memoria, sin reloj, sin marcador, vuelta
+   al inicio sola. Un navegador en una sala es tan de nadie como un tótem.
+
+Lo que sigue sin decidir, y ahora es más pequeño:
+
+- **De quién es el contenido** (punto 2 de arriba), que es la única decisión
+  que cambia lo que se construye.
+- **Si se ofrece como acompañamiento** —ayudar a un sitio a preparar su
+  contenido— o sólo como página pública que cualquiera puede abrir.
 
 ## 8 · Secuencia que propongo
 
 | Paso | Qué sale | Qué lo cierra |
 |---|---|---|
+| S0 | Decidir de quién es el contenido, y carga del juego sin el catálogo entero | María |
 | S1 | Formato de contenido de sala + un ejemplo relleno a mano | Que alguien del equipo lo rellene sin ayuda |
 | S2 | Modo sala del motor: sin estado, reinicio, ajustes a la vista | QA en una pantalla de pie, no en un portátil |
 | S3 | Parejas con contenido de ejemplo | HUMAN QA María |
 | S4 | Los otros dos moldes | HUMAN QA María |
-| S5 | Hoja de montaje y prueba en un sitio real | El sitio lo usa un día entero sin nosotros |
+| S5 | Hoja para el sitio y prueba en un sitio real | El sitio lo usa un día entero sin nosotros |
 
 Nada de esto toca producción ni el catálogo actual de juegos: es un carril
 aparte, como R44 lo es del Taller.
