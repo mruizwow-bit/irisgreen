@@ -383,3 +383,15 @@ PASS exige:
 ## Resultado
 
 `ECO_VOICE_EVAL_METHOD_R03_DEFINED`
+
+
+## 16 · Evidencia práctica R03
+
+`EVIDENCIA/ECO_ASR_EVAL_LAB_20261001.json`
+
+Demuestra con casos controlados que:
+- WER 11,11 % puede perder una negación;
+- WER 14,29 % puede alterar un número crítico;
+- un sistema puede mejorar WER medio y empeorar una clase de error decisiva.
+
+Por eso los reportes Eco deben incluir slices y critical-entity scoring.
