@@ -201,3 +201,146 @@ Siguiente Motor:
 2. no repetir R01–R31;
 3. revisar GitHub por state drift antes de crear R32;
 4. mantener jornada de Formación sin producto.
+
+
+## Formación añadida después de R31
+
+### R32 · Mobile lifecycle, suspensión y restauración
+
+Estudiado:
+- visibilitychange;
+- pagehide/pageshow;
+- beforeunload/unload;
+- bfcache;
+- VisualViewport;
+- deviceMemory;
+- Network Information;
+- Save-Data;
+- Wake Lock;
+- app-kill móvil.
+
+Hallazgo:
+`pagehide` no es garantía final en móvil.
+`visibilitychange → hidden` es una señal más fiable para checkpoint/suspensión.
+
+Auditoría:
+- Sabik usa pagehide para cancelar/disconnect;
+- Taller usa beforeunload para dirty warning;
+- 3D evita update cuando document.hidden y clampa dt al volver.
+
+Marcador:
+`MOTOR_MOBILE_LIFECYCLE_SUSPEND_RESTORE_STUDIED_R32`.
+
+### R33 · Capability matrix y degradación
+
+Estudiado:
+- @supports/CSS.supports;
+- HTMLScriptElement.supports;
+- static vs operational capability;
+- Playwright projects;
+- browser/device emulation;
+- addInitScript browser API mocks;
+- absent/failure injection.
+
+Regla:
+**feature detection sin test del fallback no basta.**
+
+Observación:
+R22 evidence estudiada usa Chromium explícitamente; no se extrapola a Firefox/WebKit.
+
+Marcador:
+`MOTOR_CAPABILITY_MATRIX_DEGRADATION_TESTING_STUDIED_R33`.
+
+### R34 · Network recovery y Service Workers
+
+Estudiado:
+- navigator.onLine limitations;
+- online/offline events;
+- fetch error taxonomy;
+- retry/backoff;
+- offline queues;
+- Service Worker install/wait/activate;
+- skipWaiting/clients.claim;
+- cache versioning/strategies.
+
+Auditoría:
+- no serviceWorker actual en repo;
+- no navigator.onLine actual.
+
+Regla:
+**onLine es hint, no prueba de Internet.**
+
+Marcador:
+`MOTOR_NETWORK_RECOVERY_SERVICE_WORKER_STUDIED_R34`.
+
+### R35 · Navigation y View Transitions
+
+Estudiado:
+- Document.startViewTransition Baseline 2025;
+- ready/finished;
+- types Baseline 2026;
+- Navigation API pieces Baseline 2026;
+- intercept/canIntercept;
+- focus/scroll/history;
+- bfcache interaction.
+
+Auditoría:
+A5 transition actual conserva update funcional cuando API falta o reduced motion está activo.
+
+Marcador:
+`MOTOR_NAVIGATION_VIEW_TRANSITIONS_STUDIED_R35`.
+
+### R36 · Prerender y startup seguro
+
+Estudiado:
+- Speculation Rules;
+- prefetch vs prerender;
+- document.prerendering;
+- prerenderingchange;
+- activationStart;
+- startup tiers;
+- speculative side effects;
+- CSP.
+
+Regla:
+**script executing ≠ user viewing.**
+
+No iniciar efectos sensibles solo por mount/DOMContentLoaded si la arquitectura puede prerenderizar.
+
+Marcador:
+`MOTOR_PRERENDER_SPECULATIVE_STARTUP_STUDIED_R36`.
+
+### R37 · Cross-origin messaging y sandbox
+
+Estudiado:
+- Window.postMessage;
+- targetOrigin;
+- origin/source validation;
+- protocol schemas;
+- MessageChannel/MessagePort;
+- transfer ownership;
+- iframe sandbox;
+- opaque origins;
+- confused deputy.
+
+Auditoría:
+no se encontraron usos actuales de postMessage en repo.
+
+Regla:
+**cross-origin message = untrusted input hasta validar origin/source/schema/state.**
+
+Marcador:
+`MOTOR_CROSS_ORIGIN_MESSAGING_SANDBOX_STUDIED_R37`.
+
+## Continuidad actualizada · 01/10/2026
+
+Último bloque:
+**R37**.
+
+Antes de R38:
+1. leer este aprendizaje;
+2. listar carpeta A5_MOTOR;
+3. comprobar state drift;
+4. no repetir R01–R37;
+5. abrir solo un hueco material;
+6. mantener 0 producto mientras continúe Formación.
