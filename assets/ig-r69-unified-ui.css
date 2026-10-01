@@ -343,3 +343,45 @@ body[data-ig-suite] :is(.ig-r42-command-search input,.ig-r42-command-list button
 body[data-ig-suite] .igs-field > :is(label,span),
 body[data-ig-suite] .igs-inspector :is(h3,h4,p,label) {color:var(--ig-text)}
 body[data-ig-suite] main > .crumb {display:none}
+
+/* Dialogs are mounted under body, outside main: theme their controls too. */
+body[data-ig-r49="1"] .ig-r42-dialog {
+ --r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);
+ --r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft);
+ --r42-line:var(--ig-separator);--r42-line-strong:var(--ig-border-control);
+ background:var(--ig-bg-surface);color:var(--ig-text)
+}
+body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
+body[data-ig-r49="1"] .igt-btn,
+body[data-ig-r49="1"] .igs-touch button {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
+ border-color:var(--ig-border-control)!important;box-shadow:none!important
+}
+body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] .igt-btn:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] .igs-touch button:is(:hover,:active) {
+ background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
+ transform:none!important
+}
+/* Game choices keep a visible selection without a flash of white. */
+body[data-ig-r49="1"] .jg-main :is(.jg-tile,.jg-row,.jg-op,.jg-btn).is-on {
+ background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
+ border-color:var(--ig-accent)!important
+}
+body[data-ig-r49="1"] .jg-main .jg-card:is(:hover,:focus-visible,:active) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
+ transform:none!important;box-shadow:none!important
+}
+body[data-ig-r49="1"] .jg-main :is(.jg-tile-e,.jg-op>span:last-child,.jg-slot-tag,.jg-card-d) {color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .jg-main :is(.jg-slot-card,.jg-slot-empty.is-focus,.jg-chip) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important
+}
+body[data-ig-r49="1"] .jg-main :is(button,.jg-card):focus-visible,
+body[data-ig-r49="1"] .ig-r42-dialog :is(button,input,select,textarea):focus-visible {
+ outline:2px solid var(--ig-focus-global)!important;outline-offset:3px
+}
+/* Profile buttons contain their own text styles; keep the pair in both themes. */
+body[data-ig-taller-launcher] main .igk-p-btn:is(:hover,:focus-visible,:active) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important
+}
+body[data-ig-taller-launcher] main .igk-p-btn :is(.igk-p-name,.igk-p-desc,.igk-p-n,.igk-cta) {color:inherit!important}

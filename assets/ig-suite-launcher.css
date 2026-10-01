@@ -311,3 +311,8 @@ body[data-ig-r49="1"][data-ig-taller-launcher] :is(.igk-tile,.igk-p-btn,.igk-col
 
 main.igk[data-stage="AGE_0_12"] .igk-art-2 .igk-art-svg:not(.igk-art-child){display:none}
 main.igk[data-stage="AGE_0_12"] .igk-art-2 .igk-art-child{display:block}
+
+/* Keep card text readable in every interaction state; artwork is unchanged. */
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important;box-shadow:none!important}
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) :is(.igk-name,.igk-cta){color:var(--ig-text)!important}
+body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) .igk-desc{color:var(--ig-text-muted)!important}

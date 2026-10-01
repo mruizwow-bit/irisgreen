@@ -56,11 +56,11 @@ def main()->None:
     }.items():
         need(f"{legacy}:var({semantic}" in shell_css,f"R49 does not own legacy palette alias {legacy} -> {semantic}")
     need(".ig-r49-global-header" not in unified and ".ig-r49-global-footer" not in unified,"R69 must not own the global shell")
-    final_ui='<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css">'
+    final_ui=re.compile(r'<link rel="stylesheet" href="/assets/ig-r69-unified-ui\.css(?:\?[^"]*)?">$')
     for p in pages:
         rel=p.relative_to(root).as_posix()
         head=p.read_text(encoding="utf-8").split("</head>",1)[0].rstrip()
-        need(head.endswith(final_ui),"R69 compatibility stylesheet is not final in head: "+rel)
+        need(final_ui.search(head) is not None,"R69 compatibility stylesheet is not final in head: "+rel)
         need(head.count('/assets/ig-r69-unified-ui.css')==1,"R69 compatibility stylesheet count != 1: "+rel)
 
     # Home exposes the one canonical visible AGE picker; other products consume that session state without duplicating it.
@@ -80,6 +80,22 @@ def main()->None:
         p=root/rel; need(p.is_file(),"Missing Resources hub "+rel)
         s=p.read_text(encoding="utf-8")
         need('ri-stage-section' not in s,"Legacy Resources age section remains: "+rel)
+
+    # The three destinations have distinct inventories and working links in both locales.
+    for lang,base,workshop,money in (("es","es/recursos/","es/taller/","contar-y-pagar/"),("en","en/resources/","en/workshop/","count-and-pay/")):
+        visual=(root/base/"index.html").read_text(encoding="utf-8")
+        games=(root/base/("juegos" if lang=="es" else "games")/"index.html").read_text(encoding="utf-8")
+        hub=(root/workshop/"index.html").read_text(encoding="utf-8")
+        need(visual.count('class="ig-activity-card"')==3,"Expected three visual support tools")
+        need('/'+base+money not in visual,"Money is still in visual supports")
+        need('href="/'+base+money+'"' in games,"Money missing from Games")
+        need('igk-start-sec' not in hub and 'igk-prof-sec' not in hub,"Duplicate studio launchers remain")
+        need(len(re.findall(r'data-studio="',hub))==27,"Each studio must appear exactly once")
+        for text in (visual,games,hub):
+            need('class="ig-activity-nav"' in text,"Missing the three-section navigation")
+            for href in re.findall(r'href="(/[^"?#]+/)"',text):
+                need((root/href.strip('/')/'index.html').is_file(),"Broken activity link: "+href)
+    need("dlg.showModal()" not in (root/'assets/ig-suite-launcher.js').read_text(encoding="utf-8"),"Workshop catalogue must remain inline")
 
     # Workshop uses only the global Content/AGE lens, never the old «Para ti» row.
     for rel in ("es/taller/index.html","en/workshop/index.html"):

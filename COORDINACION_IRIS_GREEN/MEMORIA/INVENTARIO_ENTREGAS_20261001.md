@@ -9,10 +9,10 @@ Este inventario distingue código integrado, disponibilidad en vista previa, dis
 | R44 cadena, HEAD 45fc0a5e | Otro framework para los mismos ocho IDs, sobre el Taller anterior | Conservado en editorial/r44/entrega-cadena-20261001. No se carga como segundo sistema ni se cuenta como ocho retos adicionales |
 | R63 Sakura | Sala 3D y texturas | El runtime y ocho imágenes coinciden byte a byte con la entrega. Disponible en Rincón tranquilo, Sakura y salas |
 | R61 Pecera final | Vídeo escritorio y móvil, sonido, carteles | Integrado en Rincón tranquilo. Seis medios originales verificados; reproducción manual, silencio, modo suave e imagen fija |
-| R62 P01 Habitación imposible | Concepto, renders y generador Python | Diseño conservado; no hay página jugable entregada |
-| R62 P02 Terrario vivo | Concepto, renders y generador Python | Diseño conservado; no hay página jugable entregada |
-| R62 P03 Rutas de luz | Concepto, renders y simulación/generador Python | Diseño conservado; no hay página jugable entregada |
-| R62 P04 Ritmo de colores | Imagen del mecanismo y generador | Propuesta visual; no hay página jugable entregada |
+| R62 P01 Habitación imposible | Entrega visual terminada, referencia E4 aprobada: 4 láminas vigentes | Diseño conservado; integración jugable pendiente |
+| R62 P02 Terrario vivo | Entrega visual terminada: 6 láminas, con díptico de causalidad | Diseño conservado; integración jugable pendiente |
+| R62 P03 Rutas de luz | Entrega visual terminada: 6 láminas, con banda 1→4 corregida | Diseño conservado; integración jugable pendiente |
+| R62 P04 Ritmo de colores | Concepto aprobado y mecanismo resuelto; imagen de trabajo | No terminado: el golpe todavía no se lee. Fuera de las 16 láminas |
 | Sabik nuevo de Nexo | No identificado en estos paquetes | Pendiente de localizar e integrar la entrega exacta. La imagen anterior y voz grabada no equivalen al nuevo Sabik |
 
 ## Límites que no se deben ocultar
@@ -28,3 +28,7 @@ R44 cadena: 45fc0a5ea18b57f11e23b8c677cae9ab14aeed4d; bundle SHA256 ff0f98e63ebc
 Los once paquetes R44/R65 repetidos en Descargas tienen las mismas huellas que los ya recibidos e integrados.
 El manifiesto tools/rincon-pecera/manifest.json verifica cada fragmento y cada medio reconstruido. Los originales se publican sin recompresión.
 No se aplican las antiguas modificaciones de Home y tokens de la cadena R62 sobre las reparaciones actuales.
+
+## Referencia vigente de P01–P03
+
+La usuaria confirma el 1 de octubre las 16 láminas PNG renderizadas desde los SVG entregados: P01 (4), P02 (6) y P03 (6), escritorio/móvil, claro/navy. Se registra su huella en editorial/r62/laminas-vigentes-20261001.json. Los cuatro SVG antiguos de P01 —gameplay.svg, gameplay-movil.svg, gameplay-compuesta.svg y cambio-de-suelo.svg— no son entregables vigentes; se conservan únicamente como historial. P04 queda fuera. Este registro no equivale a comprobar una implementación web jugable.

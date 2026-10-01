@@ -66,7 +66,7 @@ SUGGEST = {'': ['programacion', 'estructuras', 'ritmo'], 'infancia': ['pixel-art
 T = {
     'es': {
         'title': 'El taller', 'meta': 'El taller de Iris Green: 27 estudios para crear en el navegador, sin puntuaciones y sin subir nada. Dibujo, 3D, música, código, robótica, videojuegos, escritura y más.',
-        'lede': 'Elige un estudio y empieza a crear. Cada uno abre con un ejemplo que puedes cambiar.',
+        'lede': 'Crea imágenes, música, construcciones, código e historias. Aquí están los 27 estudios, agrupados por lo que quieres hacer.',
         'note': 'Sin puntuaciones ni rankings. Lo que haces no sale de tu dispositivo: lo guardas tú como archivo.',
         'para': 'Para ti', 'paraOpts': [('', 'Cualquier edad'), ('infancia', 'Infancia'), ('adolescencia', 'Adolescencia'), ('adultez', 'Adultez')], 'paraKey': 'para',
         'paraHelp': 'Cambia los ejemplos de partida. No se guarda y no quita herramientas.',
@@ -82,7 +82,7 @@ T = {
     },
     'en': {
         'title': 'The workshop', 'meta': 'Iris Green’s workshop: 27 studios to create in the browser, with no scores and nothing uploaded. Drawing, 3D, music, code, robotics, video games, writing and more.',
-        'lede': 'Choose a studio and start creating. Each one opens with an example you can change.',
+        'lede': 'Create images, music, structures, code and stories. Browse all 27 studios, grouped by what you want to make.',
         'note': 'No scores or rankings. What you make never leaves your device: you keep it as a file.',
         'para': 'For you', 'paraOpts': [('', 'Any age'), ('childhood', 'Childhood'), ('adolescence', 'Adolescence'), ('adulthood', 'Adulthood')], 'paraKey': 'for',
         'paraHelp': 'Changes the starting examples. Nothing is saved and no tools are taken away.',
@@ -322,7 +322,7 @@ def page(lang: str) -> str:
         f'<link rel="canonical" href="{SITE}{url}"><link rel="alternate" hreflang="{lang}" href="{SITE}{url}"><link rel="alternate" hreflang="{other}" href="{SITE}{other_url}"><link rel="alternate" hreflang="x-default" href="{SITE}{BASE["es"]}">'
         f'<meta property="og:type" content="website"><meta property="og:site_name" content="Iris Green"><meta property="og:title" content="{e(t["title"])}"><meta property="og:description" content="{e(t["meta"])}"><meta property="og:url" content="{SITE}{url}"><meta property="og:image" content="https://irisgreen.eu/img/og-condiciones.png">'
         '<link href="/assets/site-v23.css" rel="stylesheet"><link rel="stylesheet" href="/assets/ajustes-interfaz.css"/><link rel="stylesheet" href="/assets/controles-comunes.css"/><link rel="stylesheet" href="/assets/preferencias-lectura.css">'
-        f'<link rel="stylesheet" href="/assets/ig-tokens.css?v={V}">'
+        f'<link rel="stylesheet" href="/assets/ig-global-ui-tokens-2026.css?v={V}">'
         f'<link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r42-r02-1">'
         f'<link rel="stylesheet" href="/assets/ig-suite-launcher.css?v={V}"></head>'
     )
@@ -338,13 +338,10 @@ def page(lang: str) -> str:
         + f'<div class="igk-search-row"><input id="igk-q" type="search" autocomplete="off" placeholder="{e(t["searchPh"])}" aria-describedby="igk-status" aria-controls="igk-all">'
         + f'<button type="button" class="igk-clear" hidden aria-label="{e(t["clear"])}">×</button></div></div>'
         + f'<button type="button" class="igk-all-btn" data-open-profile="" hidden>{e(t["allOpen"])}</button></div></header>'
-        + f'<a class="igk-skip" href="#igk-all">{e(t["skip"])}</a>'
         # 3 · seguir donde estabas (solo en esta sesión: se resuelve con el referente, sin guardar nada)
         + f'<section class="igk-continue" aria-labelledby="igk-cont-t" hidden><h2 id="igk-cont-t" class="igk-h2">{e(t["continueT"])}</h2><p class="igk-cont-slot"></p></section>'
         # 4 · tres propuestas para empezar
-        + f'<section class="igk-start-sec" aria-labelledby="igk-start-t"><h2 id="igk-start-t" class="igk-h2">{e(t["start"])}</h2>{starts}</section>'
         # 5 · los cinco perfiles como lanzador visual
-        + f'<section class="igk-prof-sec" aria-labelledby="igk-prof-t"><h2 id="igk-prof-t" class="igk-h2">{e(t["profiles"])}</h2>{profiles_html}</section>'
         # 7 · todos los estudios: secundario (hoja/diálogo con JS; sección normal sin JS)
         + f'<section id="igk-all" class="igk-all" aria-labelledby="igk-all-t" tabindex="-1"><div class="igk-all-head"><h2 id="igk-all-t" class="igk-h2">{e(t["all"])}</h2>'
         + f'<ul class="igk-chips" aria-label="{e(t["filters"])}" hidden>{chips}</ul></div>'

@@ -259,6 +259,7 @@ def build():
     # R69: one interface, one age lens and deterministic Workshop first paint.
     # These final passes intentionally run after all older route-specific adapters.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_workshop_stable.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/reorganize_activity_hubs.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_global_cleanup.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
