@@ -1,0 +1,28 @@
+{
+  "schema": "sabik-layer-manifest/v1",
+  "canvas": {
+    "width": 1065,
+    "height": 760,
+    "origin": "top-left",
+    "transform_origin": {"x": 530, "y": 359}
+  },
+  "body_mount": {
+    "target_bbox": {"x": 176, "y": 8, "width": 690, "height": 642},
+    "fit": "contain"
+  },
+  "layers": [
+    {"id":"halo-back","z":10,"type":"css-radial-gradient"},
+    {"id":"orbits-back","z":20,"type":"svg","file":"03_orbits_back.svg"},
+    {"id":"body","z":30,"type":"image","file":"02_body_master_q96.webp","x":176,"y":8,"w":690,"h":642},
+    {"id":"core-rings","z":40,"type":"svg","file":"04_core_rings.svg"},
+    {"id":"core-light","z":50,"type":"svg","file":"05_core_light.svg"},
+    {"id":"particles-front","z":60,"type":"svg","file":"06_particles_front.svg"}
+  ],
+  "states": {
+    "idle":{"label":"Reposo","flow":"stable"},
+    "listening":{"label":"Escuchando","flow":"outside-in"},
+    "processing":{"label":"Procesando","flow":"around-core"},
+    "speaking":{"label":"Hablando","flow":"inside-out"},
+    "degraded":{"label":"Limitado","flow":"reduced"}
+  }
+}
