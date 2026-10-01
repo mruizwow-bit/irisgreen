@@ -184,3 +184,16 @@ Cambiar una variable, repetir, comparar baseline.
 ## Resultado
 
 `ECO_REALTIME_DEGRADATION_RUNBOOK_R01_READY`
+
+
+## L · Evidencia didáctica de jitter buffer
+
+`EVIDENCIA/ECO_JITTER_BUFFER_SIM_20261001.json`
+
+La simulación no reemplaza `getStats()` ni NetEq real. Se conserva para enseñar y comprobar el razonamiento:
+
+- buffer corto → más paquetes llegan tarde;
+- buffer largo → menos late loss pero más playout latency;
+- network loss no desaparece al ampliar el buffer.
+
+En producción, medir el jitter buffer adaptativo real y correlacionarlo con concealment y audio audible.
