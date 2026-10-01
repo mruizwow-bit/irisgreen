@@ -1,0 +1,56 @@
+{
+  "schema": "eco-asr-eval-lab-v1",
+  "date": "2026-10-01",
+  "method": "Levenshtein alignment implementing NIST-style S/D/I word-error accounting for training examples",
+  "cases": [
+    {
+      "id": "clean",
+      "reference": "quiero cambiar mi cita al martes",
+      "hypothesis": "quiero cambiar mi cita al martes",
+      "N_ref": 6,
+      "S": 0,
+      "D": 0,
+      "I": 0,
+      "WER": 0,
+      "critical_fail": false
+    },
+    {
+      "id": "negation",
+      "reference": "no reserves la cita para el quince de octubre",
+      "hypothesis": "reserves la cita para el quince de octubre",
+      "N_ref": 9,
+      "S": 0,
+      "D": 1,
+      "I": 0,
+      "WER": 0.1111111111111111,
+      "critical": "no",
+      "critical_fail": true
+    },
+    {
+      "id": "number",
+      "reference": "mi codigo es seis dos nueve cuatro",
+      "hypothesis": "mi codigo es seis dos nueve cinco",
+      "N_ref": 7,
+      "S": 1,
+      "D": 0,
+      "I": 0,
+      "WER": 0.14285714285714285,
+      "critical": "seis dos nueve cuatro",
+      "critical_fail": true
+    },
+    {
+      "id": "proper_name",
+      "reference": "busca informacion sobre lily green",
+      "hypothesis": "busca informacion sobre lili green",
+      "N_ref": 5,
+      "S": 1,
+      "D": 0,
+      "I": 0,
+      "WER": 0.2,
+      "critical": "lily green",
+      "critical_fail": true
+    }
+  ],
+  "lesson": "Low WER can hide a task-critical semantic/entity failure. Score critical negations, numbers, names and entities separately from aggregate WER.",
+  "product_modified": false
+}
