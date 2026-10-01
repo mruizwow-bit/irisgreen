@@ -303,3 +303,11 @@ body[data-ig-r49="1"] .im-sheet{color:#17395c!important}
 body[data-ig-r49="1"] .im-sheet :where(h1,h2,h3,h4){color:#17395c!important}
 body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet){color:#000!important}
 body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet) :where(h1,h2,h3,h4){color:#000!important}
+
+
+/* Vector M1 · printable title classes are not guaranteed to be h1/h2/h3.
+   Pin their ink explicitly so the global DARK heading rule cannot produce
+   white-on-white inside intentional paper surfaces. */
+body[data-ig-r49="1"] .im-sheet .sh-t{color:#17395c!important}
+body[data-ig-r49="1"] .rv-sheet .rv-sheet-title,
+body[data-ig-r49="1"] .rv-print-document .rv-sheet-title{color:#000!important}
