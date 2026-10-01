@@ -150,9 +150,11 @@
   "slack": {
     "channel": "#general-sabik-ia-technology",
     "channel_id": "C0C590Y8PHD",
-    "message_ts": "1790823007.878249",
-    "message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790823007878249",
-    "purpose": "quick team update after R03; GitHub remains canonical"
+    "membership_confirmed": true,
+    "join_status": "already_in_channel",
+    "final_continuity_message_ts": "1790823254.554729",
+    "final_continuity_message_link": "https://sabikiatechnology.slack.com/archives/C0C590Y8PHD/p1790823254554729",
+    "criterion": "Slack quick coordination; GitHub canonical decisions/training/state/evidence; Claude/external agents excluded by default"
   },
   "continuity": {
     "status": "ECO_CONTINUITY_R03_PRESERVED_FOR_NEXT_CHAT",
