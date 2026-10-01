@@ -1,0 +1,99 @@
+{
+  "schema": "eco-dsp-realtime-training-evidence-v1",
+  "date": "2026-10-01",
+  "scope": "isolated training laboratory; no Iris Green product files modified",
+  "toolchain": {
+    "numpy": "2.3.5",
+    "scipy": "1.17.0",
+    "ffmpeg": "7.1.5-0+deb13u1",
+    "ffprobe": "7.1.5-0+deb13u1",
+    "sample_rate_hz": 48000
+  },
+  "clean_sine": {
+    "frequency_hz": 1000,
+    "amplitude_peak": 0.5,
+    "rms": 0.35355339059327384,
+    "rms_dbfs": -9.030899869919434,
+    "peak_dbfs": -6.020599913279624,
+    "crest_factor_db": 3.01029995663981,
+    "thd_harmonics_ratio": 8.008841270453739e-12,
+    "ffmpeg_astats": {
+      "peak_db": -6.020865,
+      "rms_db": -9.031267,
+      "crest_factor_linear": 1.41423
+    }
+  },
+  "hard_clipping": {
+    "preclip_peak": 1.35,
+    "postclip_peak": 1,
+    "clipped_sample_fraction": 0.4583333333333333,
+    "rms": 0.8145709265409615,
+    "crest_factor_db": 1.781421894039398,
+    "thd_harmonics_ratio": 0.11691370314137933,
+    "ffmpeg_astats": {
+      "peak_db": 0,
+      "rms_db": -1.781487,
+      "crest_factor_linear": 1.227649
+    }
+  },
+  "noise": {
+    "target_snr_db": 20,
+    "measured_snr_db": 19.976137837676383
+  },
+  "stereo_phase": {
+    "in_phase_lr_correlation": 1,
+    "anti_phase_lr_correlation": -1,
+    "mono_fold_rms_in_phase": 0.35355339059327384,
+    "mono_fold_rms_anti_phase": 0,
+    "ffmpeg_mono_fold": {
+      "peak_db": "-inf",
+      "rms_db": "-inf"
+    }
+  },
+  "resampling_48k_16k_48k": {
+    "method": "scipy.signal.resample_poly polyphase FIR",
+    "one_khz_amp_before": 0.2960411292872866,
+    "one_khz_amp_after": 0.2966238633691336,
+    "ten_khz_amp_before": 0.2302542115906646,
+    "ten_khz_amp_after": 4.26974417782067e-7,
+    "ten_khz_attenuation_db": -114.63611453242262,
+    "interpretation": "10 kHz exceeds the 8 kHz Nyquist limit of the 16 kHz intermediate rate and is strongly rejected by anti-alias filtering"
+  },
+  "voice_band_filter": {
+    "design": "6th-order Butterworth bandpass, second-order sections, 300-3400 Hz",
+    "one_khz_amp": 0.2960411272656832,
+    "ten_khz_amp": 0.00009190596515807473,
+    "ten_to_one_db": -70.16016698103624
+  },
+  "silence_fixture": {
+    "layout": "1 s silence + 2 s 440 Hz tone + 1 s silence",
+    "threshold_dbfs": -50,
+    "python_active_start_s": 1.0000208333333334,
+    "python_active_end_s": 3,
+    "ffmpeg_silencedetect": [
+      {
+        "silence_start_s": 0,
+        "silence_end_s": 1.000021,
+        "duration_s": 1.000021
+      },
+      {
+        "silence_start_s": 3,
+        "silence_end_s": 4,
+        "duration_s": 1
+      }
+    ]
+  },
+  "principles_demonstrated": [
+    "Peak, RMS, crest factor and loudness are distinct measurements.",
+    "Hard clipping creates harmonic distortion and changes crest factor.",
+    "SNR requires a defined reference and measurement context.",
+    "Anti-phase stereo may collapse completely under mono fold-down.",
+    "Downsampling requires anti-alias filtering and obeys the new Nyquist limit.",
+    "Higher-order IIR QA should favor SOS representations and response inspection.",
+    "Silence thresholding is a deterministic fixture, not equivalent to semantic VAD."
+  ],
+  "product_modified": false,
+  "build_product": false,
+  "merge": false,
+  "deploy": false
+}
