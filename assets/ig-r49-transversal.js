@@ -77,12 +77,8 @@ function upgradeHeader(){
  var music=h('button',{type:'button',class:'ig-r49-tool','data-ig-music':'','aria-expanded':'false','aria-label':tr().music},h('span',{text:tr().music}));
  var settings=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-settings':'','aria-label':tr().settings},h('span',{text:tr().settings}));
  var lang=h('a',{class:'ig-r49-lang',href:langHref(),lang:en()?'es':'en',text:tr().language});
- var search=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-search':'','aria-label':tr().searchTitle},h('span',{text:tr().search}));
- var more=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-more':'','aria-label':tr().allNav,text:tr().more});
  var age=h('button',{type:'button',class:'ig-r49-tool','data-ig-r49-stage':'','aria-label':tr().stageTitle},h('span',{class:'ig-r49-stage-state',text:stageLabel()}));
- tools.append(search,more,age,music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
- search.addEventListener('click',function(){openSearch(search);});
- more.addEventListener('click',function(){openMore(more);});
+ tools.append(age,music,settings,lang);inner.append(brand,tools);header.replaceChildren(inner);
  age.addEventListener('click',function(){openAudience(age);});
  settings.addEventListener('click',function(){openSettings(settings);});
  return header;
