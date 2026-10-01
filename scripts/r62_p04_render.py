@@ -278,9 +278,15 @@ def _sonando():
 
 
 def peine(buf):
-    """Las barras de latón, colgadas. La longitud es el tono, y por eso se ve."""
+    """Las barras de latón, colgadas. La longitud es el tono, y por eso se ve.
+
+    La barra golpeada **se va de lado**, girando sobre su cordón. Antes se
+    apartaba 5,2 cm en profundidad, y eso en esta cámara son 4 px en
+    horizontal y 7 en vertical: invisible. La misma distancia en x son 18 px.
+    El golpe no se veía porque el movimiento iba por el eje que la cámara
+    aplasta, no porque faltara brillo.
+    """
     vivas = _sonando()
-    # la percha
     box(buf, LAM_X0 - 0.16, Y_BARRAS - 0.022, Z_COLGADO,
         LAM_PASO * (LAMINAS - 1) + 0.32, 0.044, 0.030, 'aro')
     for i in range(LAMINAS):
@@ -288,40 +294,24 @@ def peine(buf):
         viva = i in vivas
         z0, z1 = Z_COLGADO - 0.016, Z_COLGADO - 0.016 - LAM_LARGO[i]
         mat = 'laton-viva' if viva else 'laton'
-        # una barra golpeada se aparta: el desplazamiento es lo que se ve de
-        # un golpe, y no hace falta ningún destello para contarlo
-        dy = -0.052 if viva else 0.0
-        blit_quad(buf, [(x - LAM_ANCHO / 2, Y_BARRAS + dy, z0),
-                        (x + LAM_ANCHO / 2, Y_BARRAS + dy, z0),
-                        (x + LAM_ANCHO / 2, Y_BARRAS + dy, z1),
-                        (x - LAM_ANCHO / 2, Y_BARRAS + dy, z1)], mat,
-                  1.16 if viva else 1.0)
-        # Prisma de tres caras en vez de una plancha: una cara coge la luz,
-        # otra se va en sombra, y con eso la barra deja de ser un recorte
-        # plano y se lee como metal con volumen.
+        # el pie de la barra se va de lado; el cordón la sujeta arriba
+        sx = 0.075 if viva else 0.0
+        a = LAM_ANCHO / 2
+        blit_quad(buf, [(x - a, Y_BARRAS, z0), (x + a, Y_BARRAS, z0),
+                        (x + a + sx, Y_BARRAS, z1), (x - a + sx, Y_BARRAS, z1)],
+                  mat, 1.16 if viva else 1.0)
+        # Prisma de tres caras: una coge la luz, otra se va en sombra, y la
+        # barra deja de ser un recorte plano.
         for lado, t in ((-1, 0.62), (1, 0.42)):
-            blit_quad(buf, [(x + lado * LAM_ANCHO / 2, Y_BARRAS + dy, z0),
-                            (x + lado * LAM_ANCHO * 0.30, Y_BARRAS + dy + 0.040, z0),
-                            (x + lado * LAM_ANCHO * 0.30, Y_BARRAS + dy + 0.040, z1),
-                            (x + lado * LAM_ANCHO / 2, Y_BARRAS + dy, z1)], mat, t)
-        if viva:
-            # El contacto. Un punto corto y cálido donde la piedra toca la
-            # barra: ni destello ni animación, que la norma pide baja
-            # estimulación. Lo que cuenta el golpe es que la barra se ha
-            # apartado; esto sólo dice dónde.
-            yc, zc = _superficie(0)
-            blit_quad(buf, [(x - 0.052, yc - 0.012, zc + 0.030),
-                            (x + 0.052, yc - 0.012, zc + 0.030),
-                            (x + 0.052, yc - 0.012, zc - 0.030),
-                            (x - 0.052, yc - 0.012, zc - 0.030)],
-                      'laton-viva', 1.0,
-                      emissive=(0.95, 0.76, 0.42),
-                      alpha=lambda u, v: ((2 * u - 1) ** 2 + (2 * v - 1) ** 2) < 1.0)
-        # el cordón del que cuelga
-        blit_quad(buf, [(x - 0.006, Y_BARRAS + dy, Z_COLGADO),
-                        (x + 0.006, Y_BARRAS + dy, Z_COLGADO),
-                        (x + 0.006, Y_BARRAS + dy, z0),
-                        (x - 0.006, Y_BARRAS + dy, z0)], 'hierro', 1.4)
+            blit_quad(buf, [(x + lado * a, Y_BARRAS, z0),
+                            (x + lado * LAM_ANCHO * 0.30, Y_BARRAS + 0.040, z0),
+                            (x + lado * LAM_ANCHO * 0.30 + sx, Y_BARRAS + 0.040, z1),
+                            (x + lado * a + sx, Y_BARRAS, z1)], mat, t)
+        # el cordón, que es lo que dice que la barra cuelga y puede irse
+        blit_quad(buf, [(x - 0.006, Y_BARRAS, Z_COLGADO),
+                        (x + 0.006, Y_BARRAS, Z_COLGADO),
+                        (x + 0.006, Y_BARRAS, z0), (x - 0.006, Y_BARRAS, z0)],
+                  'hierro', 1.4)
 
 
 def bastidor(buf):
