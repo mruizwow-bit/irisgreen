@@ -9,7 +9,7 @@ Original: Genera las páginas ES/EN de la suite creativa del Taller (R43) desde 
 
 Cada estudio vive en scripts/taller_suite/<estudio>.py con sus textos en los dos idiomas.
 Las páginas usan el app shell común R42 (A3) y el núcleo IGSuite; no cargan la capa
-antigua de estudios. Uso: python3 scripts/build_taller_suite5.py
+antigua de estudios. Uso: python3 scripts/build_taller_suite.py
 """
 from __future__ import annotations
 
@@ -24,7 +24,13 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 
 from build_taller_estudios import HEADER, FOOTER  # noqa: E402
 from taller_suite import comun  # noqa: E402
+# R44 SUITE5: NO se importa `hub`. Regenerar la portada del Taller esta fuera
+# de este porte, y no importarlo lo hace imposible por construccion.
 
+# R44 SUITE5 · porte minimo: SOLO estos cinco estudios.
+# El SUITE original de main listaba trece, entre ellos `estructuras`. Como los
+# dos generadores escriben en la misma ruta y este corre despues, incluir
+# `estructuras` habria regenerado su pagina y perdido sus retos e1..e11.
 SUITE = ['pixelart', 'escritura', 'juegos_mesa', 'ritmo', 'videojuegos']
 STUDIOS = [importlib.import_module('taller_suite.' + n) for n in SUITE]
 BASE = {'es': '/es/taller/', 'en': '/en/workshop/'}
@@ -63,7 +69,6 @@ def page(mod, lang: str) -> str:
     mode_attr = f' data-igs-mode="{mod.MODE}"' if getattr(mod, 'MODE', None) else ''
     lic = f'<a href="/assets/vendor/taller/LICENCIAS.txt">{e(t["licencesLink"])}</a>'
     libs_text = e(t['librariesText']).replace('{licences}', e(libs) + ' · ' + lic)
-    styles = ''.join(f'<link rel="stylesheet" href="/assets/{s}?v={ASSET_V}">' for s in getattr(mod, 'STYLES', []))
     scripts = ''.join(f'<script defer src="/assets/{s}?v={ASSET_V}"></script>' for s in ['ig-suite-core.js'] + mod.SCRIPTS)
     head = (
         f'<!DOCTYPE html><html lang="{lang}"><head><script src="/assets/preferencias-lectura.js"></script>'
@@ -79,7 +84,7 @@ def page(mod, lang: str) -> str:
         '<link href="/assets/site-v23.css" rel="stylesheet"><link rel="stylesheet" href="/assets/ajustes-interfaz.css"/>'
         '<link rel="stylesheet" href="/assets/controles-comunes.css"/><link rel="stylesheet" href="/assets/preferencias-lectura.css">'
         f'<link rel="stylesheet" href="{MATERIALS_CSS}"><link rel="stylesheet" href="{SHELL_CSS}"><link rel="stylesheet" href="/assets/ig-suite.css?v={ASSET_V}">'
-        + styles + '</head>'
+        '</head>'
     )
     body = (
         f'<body data-ig-r42-pilot="true" data-ig-r42-family="workshop" data-ig-materials="r42" data-ig-suite="{mod.ENGINE}">' + HEADER[lang].replace('{other}', other)
@@ -111,6 +116,11 @@ def main() -> None:
             out.parent.mkdir(parents=True, exist_ok=True)
             out.write_text(page(mod, lang), encoding='utf-8')
             written.append(out.relative_to(ROOT).as_posix())
+    # R44 SUITE5: la portada del Taller NO se regenera aqui.
+    # En main la genera `build_taller_estudios.py`, que corre antes y queda intacto.
+    # (en el original de main aqui se anadian las dos portadas a la lista, porque
+    #  las acababa de escribir `hub.main()`. Aqui no se escriben, asi que tampoco
+    #  se anuncian: el informe tiene que decir exactamente lo que se ha escrito.)
     print('\n'.join(written))
 
 
