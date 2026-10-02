@@ -1,0 +1,55 @@
+{
+  "schema": "fossils_r2v4_independent_library_audit_v1",
+  "date": "2026-10-02",
+  "verdict": "FOSSILS_ART_PRODUCT_KEEP__R2V4_PACKAGE_REWORK_QA_INTEGRATION_REQUIRED",
+  "package": {
+    "file": "FOSILES_PILOTO_R2v4_PARA_SUBIR_3.zip",
+    "sha256": "e321b32d4d2a9d16c4df6a99da7e956543ceba5b0666919e6b8e48adac7a4ff1",
+    "bytes": 2132654,
+    "manifest_sha256": "26c2c621bf7be16135ca692a8c90eef9b05554ac3bbf1e5910ad5df744addfdc",
+    "manifest_entries_ok": "78/78"
+  },
+  "captures": {
+    "file": "FOSILES_R2v4_CAPTURAS_3.zip",
+    "sha256": "38e274848e0e8b3d75b5a2083b9ff1bdb90237071df9194fbe7dfbb45ea71688",
+    "bytes": 19381902,
+    "manifest_ok": "20/20"
+  },
+  "keep": [
+    "ART",
+    "PRODUCT_DIRECTION",
+    "INTERACTION_MODEL",
+    "DATA_STRUCTURE",
+    "14_SPECIES_SPECIFIC_PIECES",
+    "RESPONSIVE_LIGHT_NAVY_ES_EN"
+  ],
+  "blockers": [
+    {
+      "id": "NOMINAL_QA",
+      "status": "FAIL",
+      "evidence": "18-hallazgo-trex-diente.png shows active Iguanodon card; qa/shots.py declares idx but does not use it to select/assert nominal fossil"
+    },
+    {
+      "id": "AGE_CONTRACT",
+      "status": "STALE",
+      "evidence": "package exposes ALL_AGES as local selectable profile; main uses GENERAL + AGE_* with ALL_AGES metadata only"
+    },
+    {
+      "id": "REPRO_PORTABILITY",
+      "status": "PIN_ENV_REQUIRED",
+      "declared_env": "Python 3.11.15 / numpy 2.4.4 / scipy 1.17.1 / Pillow 12.2.0",
+      "current_test_env": "Python 3.13.5 / numpy 2.3.5 / scipy 1.17.0 / Pillow 12.3.0",
+      "current_result": "29/59 byte identical; 30 different; do not regenerate release assets in current env"
+    }
+  ],
+  "human_pending": [
+    "EDI-01",
+    "EDI-02",
+    "A11Y-04",
+    "PUB-01"
+  ],
+  "integration_pending": "R48_THEME_09_EXCAVACION",
+  "rebuild_required": false,
+  "asset_regeneration_required": false,
+  "next_gate": "R59_FOSSILS_R2V4_KEEP_REPAIR_QA_INTEGRATION_READY_FOR_HUMAN_REVIEW"
+}
