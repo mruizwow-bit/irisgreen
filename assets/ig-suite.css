@@ -2,13 +2,10 @@
    Vive dentro del app shell R42: el shell pone barra superior, raíl, contexto y panel;
    esta hoja ordena lienzo, herramientas y estructura. Contenido estable y opaco. */
 
-/* R42 · los tokens de la suite leen el sistema material (assets/ig-r42-materials.css) y
-   conservan su valor como fallback. --igs-control pasa a --ig-control-border: el antiguo
-   #7d93a8 daba 2,95:1 sobre #f4f7fa en campos que dependen de su contorno. */
 body[data-ig-suite] {
-  --igs-ink:var(--ig-ink,#172b42); --igs-ink-soft:var(--ig-ink-muted,#44586c); --igs-navy:var(--ig-state-selected,#17395c); --igs-blue:#1f5f8b; --igs-violet:#5a49a8;
-  --igs-line:var(--ig-separator,#c9d8e6); --igs-control:var(--ig-control-border,#7a869d); --igs-canvas:#fbfcfe; --igs-soft:var(--ig-surface-content-soft,#f4f7fa); --igs-hover:var(--ig-state-hover,#e8f1f8);
-  --igs-ok:var(--ig-state-success,#1d6b3a); --igs-warn:#8a4b00; --igs-bad:var(--ig-state-error,#a1283c); --igs-focus:var(--ig-focus,#5a49a8);
+  --igs-ink:var(--ig-text); --igs-ink-soft:var(--ig-text-muted); --igs-navy:#17395c; --igs-blue:#1f5f8b; --igs-violet:var(--ig-accent);
+  --igs-line:var(--ig-separator); --igs-control:var(--ig-border-control); --igs-canvas:var(--ig-bg-surface-soft); --igs-soft:var(--ig-bg-surface-soft); --igs-hover:var(--ig-bg-surface-soft);
+  --igs-ok:var(--ig-text); --igs-warn:var(--ig-text); --igs-bad:var(--ig-text); --igs-focus:var(--ig-accent);
   --igs-radius:14px;
 }
 
@@ -19,7 +16,7 @@ body[data-ig-suite] #igt-app.igs-app > .igt-work.igs-work {
 }
 body[data-ig-suite] .igs-structure {
   display:flex; flex-direction:column; gap:.4rem; min-width:0; width:13.5rem;
-  border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:#fff; padding:.4rem;
+  border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:var(--ig-bg-surface); padding:.4rem;
   max-height:clamp(22rem,calc(100svh - 14rem),52rem); overflow:auto;
 }
 body[data-ig-suite] .igs-structure[data-open="false"] { width:auto; }
@@ -40,7 +37,7 @@ body[data-ig-suite] .igs-list button {
   font:500 .9rem/1.25 "Atkinson Hyperlegible",system-ui,sans-serif; text-align:left; cursor:pointer;
 }
 body[data-ig-suite] .igs-list button:hover { background:var(--igs-hover); }
-body[data-ig-suite] .igs-list button[aria-current="true"] { background:#e2ecf6; border-color:var(--igs-blue); font-weight:700; }
+body[data-ig-suite] .igs-list button[aria-current="true"] { background:var(--ig-bg-surface-soft); border-color:var(--igs-blue); font-weight:700; }
 body[data-ig-suite] .igs-list .igs-swatch { flex:none; width:.9rem; height:.9rem; border-radius:4px; border:1px solid rgba(0,0,0,.35); }
 body[data-ig-suite] .igs-list small { margin-left:auto; color:var(--igs-ink-soft); font-size:.8rem; }
 
@@ -63,7 +60,7 @@ body[data-ig-suite] .igs-hud {
   display:flex; flex-wrap:wrap; gap:.35rem; align-items:center;
 }
 body[data-ig-suite] .igs-hud > * {
-  pointer-events:auto; padding:.3rem .6rem; border-radius:999px; background:#fff; border:1px solid var(--igs-line);
+  pointer-events:auto; padding:.3rem .6rem; border-radius:999px; background:var(--ig-bg-surface); border:1px solid var(--igs-line);
   color:var(--igs-ink); font:600 .85rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
 }
 body[data-ig-suite] .igs-zoom { position:absolute; right:.6rem; bottom:.6rem; display:flex; gap:.3rem; }
@@ -73,12 +70,12 @@ body[data-ig-suite] .igs-zoom .igs-btn .igs-btn-label { position:absolute; width
 /* ---------- Barra de herramientas inferior ---------- */
 body[data-ig-suite] .igs-toolbar {
   display:flex; flex-wrap:wrap; align-items:center; justify-content:center; gap:.35rem; min-width:0;
-  padding:.4rem; border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:#fff;
+  padding:.4rem; border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:var(--ig-bg-surface);
 }
 body[data-ig-suite] .igs-sep { width:1px; align-self:stretch; min-height:28px; background:var(--igs-line); margin:0 .15rem; }
 body[data-ig-suite] .igs-btn {
   display:inline-flex; align-items:center; justify-content:center; gap:.4rem; min-width:44px; min-height:44px;
-  padding:.4rem .7rem; border:1px solid var(--igs-control); border-radius:12px; background:#fff; color:var(--igs-ink);
+  padding:.4rem .7rem; border:1px solid var(--igs-control); border-radius:12px; background:var(--ig-bg-surface); color:var(--igs-ink);
   font:700 .9rem/1.15 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; text-decoration:none;
   transition:background-color .12s ease, border-color .12s ease;
 }
@@ -90,9 +87,8 @@ body[data-ig-suite] .igs-btn.igs-primary[aria-pressed="true"] { background:#8a29
 /* Pulsado y con el ratón encima: se mantiene oscuro para no perder contraste con el texto blanco. */
 body[data-ig-suite] .igs-btn[aria-pressed="true"]:hover:not(:disabled) { background:#0e2740; border-color:#0e2740; color:#fff; }
 body[data-ig-suite] .igs-btn.igs-primary[aria-pressed="true"]:hover:not(:disabled) { background:#6f2035; border-color:#6f2035; color:#fff; }
-/* R42 · deshabilitado con tokens (antes opacity:.55 → texto 3,49:1). */
-body[data-ig-suite] .igs-btn:disabled { cursor:not-allowed; color:var(--ig-state-disabled-ink,#5f6b80); background:var(--ig-state-disabled-surface,#eef2f6); border-color:var(--ig-separator,#c9d8e6); }
-body[data-ig-suite] .igs-btn.igs-danger { color:#8a2942; border-color:#b56a7c; }
+body[data-ig-suite] .igs-btn:disabled { opacity:.55; cursor:not-allowed; }
+body[data-ig-suite] .igs-btn.igs-danger { color:var(--ig-text); border-color:#b56a7c; }
 body[data-ig-suite] .igs-icon { width:20px; height:20px; flex:none; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
 body[data-ig-suite] [data-igs-tools="essential"] [data-level="more"] { display:none !important; }
 body[data-ig-suite] :is(.igs-btn,.igs-list button,.igs-structure-toggle,.igs-start):focus-visible,
@@ -111,10 +107,10 @@ body[data-ig-suite] .igs-field-head { display:flex; justify-content:space-betwee
 body[data-ig-suite] .igs-field-row { display:flex; align-items:center; gap:.4rem; }
 body[data-ig-suite] .igs-field :is(input[type=number],input[type=text],select,textarea) {
   width:100%; min-width:0; min-height:40px; box-sizing:border-box; padding:.35rem .5rem; border:1px solid var(--igs-control);
-  border-radius:10px; background:#fff; color:var(--igs-ink); font:500 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
+  border-radius:10px; background:var(--ig-bg-surface); color:var(--igs-ink); font:500 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
 }
 body[data-ig-suite] .igs-field input[type=range] { width:100%; min-height:32px; accent-color:var(--igs-blue); }
-body[data-ig-suite] .igs-field input[type=color] { width:3rem; height:2.3rem; border:1px solid var(--igs-control); border-radius:8px; padding:2px; background:#fff; }
+body[data-ig-suite] .igs-field input[type=color] { width:3rem; height:2.3rem; border:1px solid var(--igs-control); border-radius:8px; padding:2px; background:var(--ig-bg-surface); }
 body[data-ig-suite] .igs-field-inline { display:flex; align-items:center; justify-content:space-between; gap:.5rem; }
 body[data-ig-suite] .igs-check { display:flex; align-items:center; gap:.5rem; }
 body[data-ig-suite] .igs-check input { width:22px; height:22px; accent-color:var(--igs-blue); }
@@ -124,16 +120,16 @@ body[data-ig-suite] .igs-choice-item { position:relative; }
 body[data-ig-suite] .igs-choice-item input { position:absolute; opacity:0; inset:0; margin:0; cursor:pointer; }
 body[data-ig-suite] .igs-choice-item label {
   display:inline-flex; align-items:center; min-height:40px; padding:.3rem .65rem; border:1px solid var(--igs-control);
-  border-radius:10px; background:#fff; font-weight:600 !important; cursor:pointer;
+  border-radius:10px; background:var(--ig-bg-surface); font-weight:600 !important; cursor:pointer;
 }
 body[data-ig-suite] .igs-choice-item input:checked + label { background:var(--igs-navy); border-color:var(--igs-navy); color:#fff; }
 body[data-ig-suite] .igs-choice-item input:focus-visible + label { outline:3px solid var(--igs-focus); outline-offset:2px; }
 body[data-ig-suite] .igs-actions { display:flex; flex-wrap:wrap; gap:.35rem; }
 body[data-ig-suite] .igs-muted { margin:0; color:var(--igs-ink-soft); font-size:.94rem; line-height:1.45; }
-body[data-ig-suite] .igs-note { margin:0; padding:.55rem .7rem; border-left:4px solid var(--igs-violet); background:#f3f1fb; border-radius:0 10px 10px 0; color:var(--igs-ink); line-height:1.45; }
-body[data-ig-suite] .igs-result { margin:0; padding:.6rem .75rem; border-radius:12px; border:1px solid var(--igs-line); background:#fff; line-height:1.45; }
-body[data-ig-suite] .igs-result[data-kind="ok"] { border-color:#7fb08f; background:#f1f8f3; }
-body[data-ig-suite] .igs-result[data-kind="bad"] { border-color:#c98a97; background:#fbf1f3; }
+body[data-ig-suite] .igs-note { margin:0; padding:.55rem .7rem; border-left:4px solid var(--igs-violet); background:var(--ig-bg-surface-soft); border-radius:0 10px 10px 0; color:var(--igs-ink); line-height:1.45; }
+body[data-ig-suite] .igs-result { margin:0; padding:.6rem .75rem; border-radius:12px; border:1px solid var(--igs-line); background:var(--ig-bg-surface); line-height:1.45; }
+body[data-ig-suite] .igs-result[data-kind="ok"] { border-color:#7fb08f; background:var(--ig-bg-surface-soft); }
+body[data-ig-suite] .igs-result[data-kind="bad"] { border-color:#c98a97; background:var(--ig-bg-surface-soft); }
 body[data-ig-suite] .igs-result strong { display:block; margin-bottom:.15rem; }
 body[data-ig-suite] .igs-table-wrap { overflow-x:auto; max-width:100%; }
 body[data-ig-suite] .igs-table { width:100%; border-collapse:collapse; font-size:.86rem; }
@@ -147,14 +143,14 @@ body[data-ig-suite] .igs-dialog-wide { width:min(760px,calc(100vw - 24px)); }
 body[data-ig-suite] .igs-starts { list-style:none; margin:.6rem 0 0; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(14rem,1fr)); gap:.5rem; }
 body[data-ig-suite] .igs-start {
   width:100%; height:100%; min-height:5rem; display:grid; gap:.25rem; align-content:start; text-align:left; padding:.7rem .8rem;
-  border:1px solid var(--igs-control); border-radius:12px; background:#fff; color:var(--igs-ink); cursor:pointer;
+  border:1px solid var(--igs-control); border-radius:12px; background:var(--ig-bg-surface); color:var(--igs-ink); cursor:pointer;
   font:500 .92rem/1.4 "Atkinson Hyperlegible",system-ui,sans-serif;
 }
 body[data-ig-suite] .igs-start strong { font-size:1rem; }
 body[data-ig-suite] .igs-start span { color:var(--igs-ink-soft); }
 body[data-ig-suite] .igs-start:hover { border-color:var(--igs-blue); background:var(--igs-hover); }
 body[data-ig-suite] .igs-keys, body[data-ig-suite] .igs-tech { margin:.3rem 0 .8rem; padding-left:1.2rem; line-height:1.5; }
-body[data-ig-suite] .igs-para-note { margin:.6rem 0; padding:.5rem .7rem; background:#f4f7fa; border-radius:10px; }
+body[data-ig-suite] .igs-para-note { margin:.6rem 0; padding:.5rem .7rem; background:var(--ig-bg-surface-soft); border-radius:10px; }
 
 /* ---------- Utilidades ---------- */
 body[data-ig-suite] .igs-sr { position:absolute !important; width:1px; height:1px; margin:-1px; padding:0; overflow:hidden; clip-path:inset(50%); white-space:nowrap; border:0; }
@@ -187,7 +183,7 @@ body[data-ig-suite] .igs-kbd { display:inline-block; padding:0 .3rem; border:1px
   body[data-ig-suite] .igs-btn { transition:none; }
 }
 html[data-ig-motion="off"] body[data-ig-suite] .igs-btn { transition:none; }
-html[data-ig-contrast="on"] body[data-ig-suite] { --igs-line:#7189a0; --igs-control:#17395c; --igs-ink-soft:#17395c; }
+html[data-ig-contrast="on"] body[data-ig-suite] { --igs-line:#7189a0; --igs-control:#40566d; --igs-ink-soft:#2c3f52; }
 @media (forced-colors:active) {
   body[data-ig-suite] :is(.igs-btn,.igs-list button,.igs-start,.igs-structure-toggle,.igs-choice-item label) { forced-color-adjust:auto; border:1px solid ButtonText; background:ButtonFace; color:ButtonText; }
   body[data-ig-suite] .igs-btn[aria-pressed="true"], body[data-ig-suite] .igs-list button[aria-current="true"], body[data-ig-suite] .igs-choice-item input:checked + label { background:Highlight; color:HighlightText; border-color:Highlight; }
@@ -200,26 +196,37 @@ html[data-ig-contrast="on"] body[data-ig-suite] { --igs-line:#7189a0; --igs-cont
 }
 
 /* ---------- Página: contenido de lectura bajo el estudio (opaco, estable) ---------- */
-body[data-ig-suite] main.igs-page { width:min(100%,100rem); max-width:100rem; margin:0 auto; padding:clamp(.6rem,1.6vw,1.5rem) clamp(.5rem,1.6vw,1.5rem) 4rem; box-sizing:border-box; }
-body[data-ig-suite] main.igs-page > .igs-sec { max-width:62rem; margin-inline:auto; }
-body[data-ig-suite] .igs-sec { margin:1rem 0; padding:1.1rem 1.25rem; border:1px solid var(--igs-line); border-radius:18px; background:#fff; color:var(--igs-ink); }
+/* R49 · medida de lectura != anchura de producto.
+   El espacio de trabajo usa el viewport útil; solo el texto continuo se limita. */
+body[data-ig-suite] {
+  --ig-workspace-gutter:clamp(.5rem,1.4vw,1.75rem);
+  --ig-reading-measure:70ch;
+  --ig-content-wide:min(100%,72rem);
+}
+body[data-ig-suite] main.igs-page { width:100%; max-width:none; margin:0; padding:clamp(.5rem,1.2vw,1rem) var(--ig-workspace-gutter) 4rem; box-sizing:border-box; }
+body[data-ig-suite] main.igs-page > .igs-sec,
+body[data-ig-suite] main.igs-page > #igs-guide > .igs-sec { width:var(--ig-content-wide); margin-inline:auto; }
+body[data-ig-suite] main.igs-page > .igs-hero { width:var(--ig-content-wide); margin-inline:auto; }
+/* Dentro del diálogo Ayuda la guía ocupa el ancho del diálogo. */
+body[data-ig-suite] .ig-r42-dialog-body .igs-sec { width:auto; margin-inline:0; }
+body[data-ig-suite] .igs-sec { margin:1rem 0; padding:1.1rem 1.25rem; border:1px solid var(--igs-line); border-radius:18px; background:var(--ig-bg-surface); color:var(--igs-ink); }
 body[data-ig-suite] .igs-sec h2 { margin:0 0 .5rem; }
-body[data-ig-suite] .igs-sec p { max-width:70ch; line-height:1.6; }
+body[data-ig-suite] .igs-sec p { max-width:var(--ig-reading-measure); line-height:1.6; }
 body[data-ig-suite] .igs-sec ul, body[data-ig-suite] .igs-sec ol { line-height:1.6; padding-left:1.3rem; }
 body[data-ig-suite] .igs-hero .igs-make-title { font-size:1.05rem; margin:.8rem 0 .3rem; }
 body[data-ig-suite] .igs-make { margin:0; padding-left:1.2rem; line-height:1.55; }
 body[data-ig-suite] .igs-inline-select { display:inline-flex; align-items:center; gap:.35rem; font:700 .88rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
-body[data-ig-suite] .igs-inline-select select { min-height:44px; padding:.3rem .5rem; border:1px solid var(--igs-control); border-radius:10px; background:#fff; color:var(--igs-ink); font:600 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite] .igs-inline-select select { min-height:44px; padding:.3rem .5rem; border:1px solid var(--igs-control); border-radius:10px; background:var(--ig-bg-surface); color:var(--igs-ink); font:600 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; }
 body[data-ig-suite] .igs-inline-select select:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
 
 /* ---------- Estudios de código: bloques/código + escenario ---------- */
 body[data-ig-suite] .igs-center.igs-split { grid-template-columns:minmax(0,1fr) minmax(0,1fr); grid-template-rows:auto auto; align-items:stretch; }
 body[data-ig-suite] .igs-center.igs-split > .igs-toolbar { grid-column:1 / -1; }
-body[data-ig-suite] .igs-center.igs-split > .igs-viewport.igs-stage { width:100%; height:auto; aspect-ratio:4 / 3; align-self:start; background:#f4f7fa; }
-body[data-ig-suite] .igs-code { display:grid; grid-template-rows:auto 1fr; min-width:0; border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:#fff; overflow:hidden; }
+body[data-ig-suite] .igs-center.igs-split > .igs-viewport.igs-stage { width:100%; height:auto; aspect-ratio:4 / 3; align-self:start; background:var(--ig-bg-surface-soft); }
+body[data-ig-suite] .igs-code { display:grid; grid-template-rows:auto 1fr; min-width:0; border:1px solid var(--igs-line); border-radius:var(--igs-radius); background:var(--ig-bg-surface); overflow:hidden; }
 body[data-ig-suite] .igs-tabs { display:flex; gap:.2rem; padding:.3rem .3rem 0; border-bottom:1px solid var(--igs-line); background:var(--igs-soft); }
 body[data-ig-suite] .igs-tabs [role=tab] { min-height:44px; padding:.4rem .9rem; border:1px solid transparent; border-bottom:0; border-radius:10px 10px 0 0; background:transparent; color:var(--igs-ink); font:700 .92rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
-body[data-ig-suite] .igs-tabs [role=tab][aria-selected=true] { background:#fff; border-color:var(--igs-line); box-shadow:inset 0 3px 0 var(--igs-navy); }
+body[data-ig-suite] .igs-tabs [role=tab][aria-selected=true] { background:var(--ig-bg-surface); border-color:var(--igs-line); box-shadow:inset 0 3px 0 var(--igs-navy); }
 body[data-ig-suite] .igs-tabs [role=tab]:focus-visible { outline:3px solid var(--igs-focus); outline-offset:-3px; }
 body[data-ig-suite] .igs-tabpanel { min-height:0; }
 body[data-ig-suite] .igs-blockly { width:100%; height:clamp(20rem,calc(100svh - 25rem),46rem); }
@@ -252,7 +259,7 @@ body[data-ig-suite] .igs-viewport.igs-music { height:clamp(22rem,calc(100svh - 2
 body[data-ig-suite] .igs-track-row { display:flex; align-items:center; gap:.25rem; }
 body[data-ig-suite] .igs-track-row > button { flex:1 1 auto; min-width:0; }
 body[data-ig-suite] .igs-mini-row { display:inline-flex; gap:.2rem; flex:none; }
-body[data-ig-suite] .igs-mini { min-width:32px; min-height:32px; border:1px solid var(--igs-control); border-radius:8px; background:#fff; color:var(--igs-ink); font:700 .8rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
+body[data-ig-suite] .igs-mini { min-width:32px; min-height:32px; border:1px solid var(--igs-control); border-radius:8px; background:var(--ig-bg-surface); color:var(--igs-ink); font:700 .8rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; }
 body[data-ig-suite] .igs-mini[aria-pressed="true"] { background:#8a4b00; border-color:#8a4b00; color:#fff; }
 body[data-ig-suite] .igs-mini:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
 body[data-ig-suite] .igs-add-track { align-items:stretch; flex-direction:column; }
@@ -265,10 +272,10 @@ body[data-ig-suite] .igs-env-fields { display:grid; grid-template-columns:1fr 1f
 body[data-ig-suite] .igs-notes-details summary { cursor:pointer; font-weight:700; min-height:32px; }
 
 /* ---------- Videojuegos: modo de prueba ---------- */
-body[data-ig-suite] .igs-game-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:5; background:#fff; outline:none; touch-action:none; }
+body[data-ig-suite] .igs-game-canvas { position:absolute; inset:0; width:100%; height:100%; z-index:5; background:var(--ig-bg-surface); outline:none; touch-action:none; }
 body[data-ig-suite] .igs-game-canvas:focus-visible { box-shadow:inset 0 0 0 4px var(--igs-focus); }
 body[data-ig-suite] .igs-touch { position:absolute; left:0; right:0; bottom:8px; z-index:6; display:flex; justify-content:space-between; gap:8px; padding:0 8px; pointer-events:none; }
-body[data-ig-suite] .igs-touch button { pointer-events:auto; min-width:60px; min-height:60px; border-radius:14px; border:2px solid var(--igs-ink); background:var(--ig-surface-content,#fff); color:var(--igs-ink); font:700 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; touch-action:none; }
+body[data-ig-suite] .igs-touch button { pointer-events:auto; min-width:60px; min-height:60px; border-radius:14px; border:2px solid #172b42; background:rgba(255,255,255,.92); color:var(--ig-text); font:700 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; touch-action:none; }
 @media (hover:hover) and (pointer:fine) { body[data-ig-suite] .igs-touch { display:none; } }
 
 /* Modelado 3D */
@@ -305,8 +312,8 @@ body[data-ig-suite] .iga-split[data-show="plan"] { grid-template-columns:minmax(
 body[data-ig-suite] .iga-split[data-show="plan"] .iga-3d { display:none; }
 body[data-ig-suite] .iga-split[data-show="3d"] { grid-template-columns:minmax(0,1fr); }
 body[data-ig-suite] .iga-split[data-show="3d"] .iga-plan { display:none; }
-body[data-ig-suite] .iga-plan, body[data-ig-suite] .iga-3d { position:relative; min-width:0; min-height:0; overflow:hidden; background:#fff; }
-body[data-ig-suite] .iga-3d { background:#eef3f8; }
+body[data-ig-suite] .iga-plan, body[data-ig-suite] .iga-3d { position:relative; min-width:0; min-height:0; overflow:hidden; background:var(--ig-bg-surface); }
+body[data-ig-suite] .iga-3d { background:var(--ig-bg-surface-soft); }
 body[data-ig-suite] .iga-3d:focus-visible { outline:3px solid var(--igs-focus); outline-offset:-3px; }
 body[data-ig-suite] .iga-svg { position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; }
 body[data-ig-suite] .iga-plan[data-tool="select"] .iga-svg { cursor:default; }
@@ -355,7 +362,7 @@ body[data-ig-suite] .iga-review li[data-ok="false"] .iga-mark { background:#8a29
 body[data-ig-suite] .igp-frames { list-style:none; margin:0 0 .5rem; padding:0; display:grid; grid-template-columns:repeat(auto-fill,minmax(4.2rem,1fr)); gap:.35rem; }
 body[data-ig-suite] .igp-frame { position:relative; display:grid; place-items:center; width:100%; aspect-ratio:1; padding:.25rem; border:2px solid var(--igs-line); border-radius:10px; background:repeating-conic-gradient(#e6ebf1 0 25%, #fff 0 50%) 0 0/12px 12px; cursor:pointer; }
 body[data-ig-suite] .igp-frame img { width:100%; height:100%; object-fit:contain; image-rendering:pixelated; }
-body[data-ig-suite] .igp-frame span { position:absolute; left:.2rem; bottom:.1rem; font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; color:#172b42; background:#fff; border-radius:4px; padding:.1rem .25rem; }
+body[data-ig-suite] .igp-frame span { position:absolute; left:.2rem; bottom:.1rem; font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--ig-text); background:var(--ig-bg-surface); border-radius:4px; padding:.1rem .25rem; }
 body[data-ig-suite] .igp-frame[aria-current="true"] { border-color:var(--igs-violet); box-shadow:0 0 0 2px var(--igs-violet); }
 body[data-ig-suite] .igp-frame:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
 body[data-ig-suite] .igp-palette { display:grid; grid-template-columns:repeat(4,44px); gap:.3rem; margin:.3rem 0 .6rem; }
@@ -370,7 +377,7 @@ body[data-ig-suite] .igl-overlay { position:absolute; inset:0; pointer-events:no
 body[data-ig-suite] .igl-selbox { position:absolute; transform-origin:0 0; border:2px dashed #5a49a8; box-shadow:0 0 0 1px #fff; }
 body[data-ig-suite] .igl-selbox-line { border:0; box-shadow:none; }
 body[data-ig-suite] .igl-handle { position:absolute; width:44px; height:44px; margin:-22px 0 0 -22px; padding:0; border:0; background:transparent; pointer-events:auto; cursor:nwse-resize; touch-action:none; }
-body[data-ig-suite] .igl-handle::after { content:""; position:absolute; left:14px; top:14px; width:16px; height:16px; border-radius:4px; background:#fff; border:2px solid #5a49a8; }
+body[data-ig-suite] .igl-handle::after { content:""; position:absolute; left:14px; top:14px; width:16px; height:16px; border-radius:4px; background:var(--ig-bg-surface); border:2px solid #5a49a8; }
 body[data-ig-suite] .igl-h-tail::after, body[data-ig-suite] .igl-h-start::after, body[data-ig-suite] .igl-h-end::after { border-radius:50%; background:#ffd400; border-color:#101820; }
 body[data-ig-suite] .igl-handle:focus-visible { outline:none; }
 body[data-ig-suite] .igl-handle:focus-visible::after { box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--igs-focus); }
@@ -387,6 +394,46 @@ body[data-ig-suite] .igl-colour-label { display:block; font-weight:700; font-siz
 body[data-ig-suite] .igm-corner-row { display:grid; grid-template-columns:1fr 1fr; gap:0 .5rem; }
 body[data-ig-suite] .igm-corner-name { grid-column:1 / -1; margin:.4rem 0 0; font-weight:700; font-size:.88rem; }
 
-/* R42 · la barra de herramientas fija en móvil es chrome opaco sobre el lienzo (sin cristal:
-   el lienzo necesita estabilidad y la barra lleva controles pequeños). */
-body[data-ig-materials="r42"][data-ig-suite] .igs-toolbar { background:var(--ig-chrome-solid-light,#fff); border-color:var(--ig-separator,#c9d8e6); -webkit-backdrop-filter:none; backdrop-filter:none; }
+/* ---------- Impresión a escala real (IGSuite.printPages) ---------- */
+.igs-print-root { display:none; }
+@media print {
+  html.igs-printing body > *:not(.igs-print-root) { display:none !important; }
+  html.igs-printing .igs-print-root { display:block; }
+  html.igs-printing .igs-print-page { break-after:page; page-break-after:always; }
+  html.igs-printing .igs-print-page:last-child { break-after:auto; page-break-after:auto; }
+  html.igs-printing .igs-print-page > svg { display:block; }
+  @page { margin:8mm; }
+}
+
+/* ---------- R49 · el banco de trabajo aprovecha el ancho ---------- */
+body[data-ig-suite] .ig-r42-shell, body[data-ig-suite] .ig-r42-workspace { max-width:none; }
+body[data-ig-suite] #igt-app.igs-app { width:100%; max-width:none; }
+/* Estructura e inspector crecen con la pantalla: los laterales tienen función. */
+@media (min-width:1600px) {
+  body[data-ig-suite] .igs-structure { width:16rem; }
+  body[data-ig-suite] { --ig-workspace-gutter:1.75rem; }
+}
+@media (min-width:1900px) {
+  body[data-ig-suite] .igs-structure { width:18rem; }
+}
+@media (min-width:2400px) {
+  body[data-ig-suite] .igs-structure { width:20rem; }
+}
+/* El lienzo crece con la altura disponible en pantallas grandes. */
+@media (min-width:1200px) and (min-height:800px) {
+  body[data-ig-suite] .igs-viewport { min-height:clamp(28rem,calc(100svh - 17rem),58rem); }
+}
+/* Línea de estado del estudio (ctx.setStatus). */
+body[data-ig-suite] .igs-status-line { margin:0; padding:.2rem .5rem; min-height:1.2rem; color:var(--igs-ink-soft); font:500 .88rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite] .igs-status-line[hidden] { display:none; }
+/* Herramientas ocultas por modo: no deben ocupar hueco ni recibir foco. */
+body[data-ig-suite] .igs-toolbar [hidden] { display:none !important; }
+
+/* Móvil: la barra de proyecto del estudio se compacta para que el lienzo suba. */
+@media (max-width:700px) {
+  body[data-ig-suite] .igt-topbar { padding:0; }
+  body[data-ig-suite] .igt-topbar .igt-bar { gap:.3rem; padding:.15rem .25rem; }
+  body[data-ig-suite] .igt-topbar .igs-btn { min-height:44px; padding:.3rem .5rem; }
+  body[data-ig-suite] .igt-topbar .igs-btn .igs-btn-label { position:absolute; width:1px; height:1px; overflow:hidden; clip-path:inset(50%); white-space:nowrap; }
+  body[data-ig-suite] .igt-topbar .igs-btn:not(:has(.igs-icon)) .igs-btn-label { position:static; width:auto; height:auto; clip-path:none; }
+}
