@@ -1,0 +1,38 @@
+<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Memoria de la cocina · Iris Green</title>
+<link rel="stylesheet" href="/assets/ig-tokens-2026.css">
+<link rel="stylesheet" href="/assets/juegos-iris.css">
+<style>
+/* Pantalla de sala: sin cabecera, sin menú, sin pie. Lo único que hay es el
+   juego y el botón de volver al principio. */
+body{margin:0;background:var(--ig-bg-page);color:var(--ig-text);
+ font-family:Georgia,serif;min-height:100vh}
+.sala-barra{display:flex;align-items:center;justify-content:space-between;
+ gap:1rem;padding:0.9rem 1.2rem;border-bottom:1px solid var(--ig-separator)}
+.sala-barra h1{font-size:1.15rem;margin:0;font-weight:600}
+.sala-volver{min-block-size:60px;min-inline-size:60px;padding:0.7rem 1.3rem;
+ font:inherit;font-weight:600;border-radius:10px;cursor:pointer;
+ background:var(--ig-button-secondary-bg);color:var(--ig-button-secondary-fg);
+ border:1px solid var(--ig-border-control)}
+.sala-volver:focus-visible{outline:3px solid var(--ig-focus);outline-offset:2px}
+main{padding:1rem}
+/* Aquí había una regla que escondía `.jg-back` creyendo que era la flecha de
+   volver. No lo es: `.jg-back` es el «?» del dorso de cada carta, y la regla
+   dejaba el tablero con doce rectángulos vacíos. La flecha del motor se
+   queda; en una sala de verdad habrá que quitarla desde el propio motor, no
+   adivinando clases desde fuera. */
+</style></head><body>
+<div class="sala-barra">
+  <h1>Memoria de la cocina</h1>
+  <button type="button" class="sala-volver" onclick="location.reload()"
+     aria-label="Volver al principio del juego">Volver al principio</button>
+</div>
+<main><div id="jg-app" data-juego-sala="memoria-de-la-cocina"></div></main>
+<p id="jg-live" role="status" aria-live="polite" class="sr-only"></p>
+<script defer src="/assets/data/pictogramas-iris.js"></script>
+<script defer src="/assets/data/juegos-taxonomias.js"></script>
+<script defer src="/assets/data/juegos/memoria-de-la-cocina.js"></script>
+<script defer src="/assets/juegos-sala.js"></script>
+<script defer src="/assets/juegos-iris.js"></script>
+</body></html>

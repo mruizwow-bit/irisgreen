@@ -32,6 +32,7 @@ from pathlib import Path
 REPO = Path(__file__).resolve().parent.parent
 FUENTE = REPO / 'assets/data/juegos-iris-data.js'
 INDICE = REPO / 'assets/data/juegos-iris-index.js'
+TAXO = REPO / 'assets/data/juegos-taxonomias.js'
 CARPETA = REPO / 'assets/data/juegos'
 
 CABECERA_INDICE = ('/* Iris Green · Juegos · índice: 297 juegos sin su contenido.\n'
@@ -63,7 +64,16 @@ def partir(datos):
     return indice, contenido
 
 
+CABECERA_TAXO = ('/* Iris Green · Juegos · taxonomías sueltas: categorías, etapas,\n'
+                 '   tipos, atribución y marca. 1,6 KB. Es lo único del catálogo que\n'
+                 '   necesita una pantalla de sala que abre un juego concreto. */\n')
+
+
 def escribir(indice, contenido):
+    TAXO.write_text(
+        CABECERA_TAXO + '(function(){window.IG_JUEGOS_TAXO='
+        + _js({k: indice[k] for k in ('cats', 'etapas', 'tipos', 'atrib', 'marca')})
+        + ';})();\n', encoding='utf-8')
     INDICE.write_text(
         CABECERA_INDICE + '(function(){window.IG_JUEGOS_INDEX=' + _js(indice) + ';})();\n',
         encoding='utf-8')
@@ -115,6 +125,7 @@ def main():
     if not args.verificar:
         escribir(indice, contenido)
         informe['indice_escrito'] = str(INDICE.relative_to(REPO))
+        informe['bytes_taxonomias'] = TAXO.stat().st_size
         informe['fichas_escritas'] = len(list(CARPETA.glob('*.js')))
         informe['bytes_indice_en_disco'] = INDICE.stat().st_size
     print(json.dumps(informe, ensure_ascii=False, indent=1))

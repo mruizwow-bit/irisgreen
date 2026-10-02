@@ -162,7 +162,7 @@ Lo que sigue sin decidir, y ahora es más pequeño:
 
 | Paso | Qué sale | Qué lo cierra |
 |---|---|---|
-| S0 | Decidir de quién es el contenido, y carga del juego sin el catálogo entero | María |
+| S0 | Decidir de quién es el contenido, y carga del juego sin el catálogo entero | María · **la mitad técnica está hecha y medida**, ver §10 |
 | S1 | Formato de contenido de sala + un ejemplo relleno a mano | Que alguien del equipo lo rellene sin ayuda |
 | S2 | Modo sala del motor: sin estado, reinicio, ajustes a la vista | QA en una pantalla de pie, no en un portátil |
 | S3 | Parejas con contenido de ejemplo | HUMAN QA María |
@@ -178,3 +178,41 @@ Lo que la publicación destaca no es el juego: es que **había un equipo
 dispuesto a escuchar y adaptar**. El software no sustituye eso. Si construimos
 esto, se construye para que el personal del sitio tenga algo que ofrecer y
 pueda ajustarlo, no para que la pantalla haga su trabajo.
+
+## 10 · Hecho de S0: la carga sin el catálogo
+
+**02/10/2026, medido, no en producción.** El punto 1 del §7 —«un juego de sala
+tiene que cargar solo lo suyo»— está construido y medido:
+
+| | Hoy, la página del catálogo | Una pantalla de sala |
+|---|---|---|
+| Datos descargados | 176 082 B | **2 476 B** (taxonomías 1 850 B + el juego 626 B) |
+
+Son **71 veces menos datos**. El motor, la hoja y los pictogramas siguen
+pesando lo mismo: lo que se ha quitado son los 296 juegos que esa pantalla no
+va a abrir.
+
+Cómo está hecho: `scripts/split_juegos_data.py` parte el fichero de datos en un
+índice, unas taxonomías sueltas y 297 fichas autosuficientes, y `--verificar`
+lo vuelve a juntar para comprobar que sale el mismo objeto.
+`assets/juegos-sala.js` monta `IG_JUEGOS_DATA` con una sola ficha y pone el
+hash, para que la pantalla arranque **en el juego** y no en el catálogo.
+`scripts/test_juegos_sala.py` lo mide sobre la página servida, y mide también
+las reglas del §3 que se pueden medir: que no se toque almacenamiento ni red,
+que el juego responda, y que el control de sala llegue a los 60 px del §4.
+
+Lo que **no** está resuelto, y conviene no darlo por hecho:
+
+- **la segunda carga del día sigue dependiendo de la red.** La vuelta al
+  principio es una recarga de página; sin *service worker* —el sitio no tiene—
+  esa recarga necesita que el navegador pueda revalidar. En una sala sin red,
+  la primera carga funciona y la vuelta automática puede no funcionar. Esto es
+  lo que decide si hace falta un *service worker*;
+- **la flecha de volver del motor sigue ahí.** Quitarla es trabajo del modo
+  sala (S2), desde el motor, no adivinando clases desde la página: intenté
+  esconderla desde fuera y lo que escondí fue el «?» del dorso de las cartas,
+  dejando el tablero con doce rectángulos vacíos;
+- **nada de producción consume esto todavía.** Los ficheros nuevos son
+  aditivos y la página de demostración vive en `editorial/`, que no se publica.
+  El catálogo actual sigue leyendo el fichero original sin cambios;
+- **de quién es el contenido sigue sin decidir**, y es la mitad que importa.
