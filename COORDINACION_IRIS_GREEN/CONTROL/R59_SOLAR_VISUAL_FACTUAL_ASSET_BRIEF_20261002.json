@@ -1,0 +1,308 @@
+{
+  "schema": "iris-green.r59.solar-visual-factual-asset-brief.v1",
+  "date": "2026-10-02",
+  "owner": "SENDA_R59",
+  "destination_owner": "LUMEN_A7",
+  "gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+  "batch": "B01_SOLAR_FOUNDATION",
+  "precedence": {
+    "issue_370_comment": 5959068827,
+    "issue_323_comment": 5959074521,
+    "visual_memory_commit": "afcaeee969569083b8e6565e02d79bb75462bff8",
+    "visual_control_commit": "46fc60902b39a2a01d4d7aa9a24d77f81ae71a04",
+    "master_backlog_commit": "0acd768cbbfb668ecaf4eefb9d64b194c8518a06"
+  },
+  "scope": [
+    "SUN",
+    "MERCURY",
+    "VENUS",
+    "EARTH"
+  ],
+  "exclusions": [
+    "IMAGE_GENERATION_BY_SENDA",
+    "RUNTIME",
+    "MAIN",
+    "B02",
+    "B03",
+    "INTEREST_05"
+  ],
+  "shared_contract": {
+    "final_asset_class": "REPRESENTATION",
+    "public_label_es": "Imagen hecha por ordenador",
+    "public_label_en": "Computer-made image",
+    "one_body_per_master": true,
+    "full_disk": true,
+    "transparent_background": true,
+    "no_text": true,
+    "no_logos": true,
+    "no_space_background": true,
+    "no_relative_scale_baked": true,
+    "runtime_owns": [
+      "relative_scale",
+      "position",
+      "motion",
+      "context"
+    ],
+    "donor_policy": "REFERENCE_VALIDATION_ONLY",
+    "source_verification_date": "2026-10-02"
+  },
+  "bodies": [
+    {
+      "id": "sol",
+      "purpose": "stellar anchor and size-comparison master",
+      "classification": {
+        "REAL_DATA": [
+          "photosphere is visible layer",
+          "emits white visible light",
+          "not a solid surface",
+          "sunspots are transient magnetic features"
+        ],
+        "CALCULATION": [],
+        "REPRESENTATION": [
+          "generated full-disk photospheric appearance"
+        ]
+      },
+      "factual_descriptors": [
+        "self-luminous sphere",
+        "white to very pale warm-white",
+        "subtle photospheric texture/granulation",
+        "optional tiny non-dominant sunspots",
+        "no planetary terminator"
+      ],
+      "non_inferable": [
+        "current solar activity",
+        "specific current sunspot layout",
+        "permanent flares/prominences",
+        "visible-light corona as permanent halo",
+        "solid surface",
+        "orange flame texture"
+      ],
+      "states": [
+        "BASE_NEUTRAL_VISIBLE_LIGHT"
+      ],
+      "priority": "P0",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER",
+      "donor_reference": [
+        "img/intereses/sistema-solar/tex/sol.webp",
+        "img/intereses/sistema-solar/sol.webp"
+      ],
+      "sources": [
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/sun/facts/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/reference/the-heliopedia/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/sun/sunspots/",
+          "verified": "2026-10-02"
+        }
+      ],
+      "representation_limits": [
+        "not an observation",
+        "not date-specific",
+        "not UV/EUV/X-ray",
+        "no eclipse corona"
+      ]
+    },
+    {
+      "id": "mercurio",
+      "purpose": "rocky airless-looking planet master",
+      "classification": {
+        "REAL_DATA": [
+          "greyish-brown surface",
+          "heavily cratered terrain",
+          "bright crater rays",
+          "smooth plains",
+          "very thin exosphere"
+        ],
+        "CALCULATION": [],
+        "REPRESENTATION": [
+          "generated crater distribution and global disk"
+        ]
+      },
+      "factual_descriptors": [
+        "low-saturation grey-brown",
+        "varied impact craters",
+        "some bright ejecta rays",
+        "some smoother plains",
+        "no visible thick atmosphere"
+      ],
+      "non_inferable": [
+        "exact named feature geography from generated texture",
+        "visible polar ice cap",
+        "red/orange lava",
+        "clouds",
+        "thick haze"
+      ],
+      "states": [
+        "BASE_NEUTRAL"
+      ],
+      "priority": "P0",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER",
+      "donor_reference": [
+        "img/intereses/sistema-solar/tex/mercurio.webp",
+        "img/intereses/sistema-solar/mercurio.webp"
+      ],
+      "sources": [
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/mercury/facts/",
+          "verified": "2026-10-02"
+        }
+      ],
+      "representation_limits": [
+        "not a scientific map",
+        "generated crater layout cannot be described as exact cartography"
+      ]
+    },
+    {
+      "id": "venus",
+      "purpose": "cloud-obscured rocky planet master",
+      "classification": {
+        "REAL_DATA": [
+          "dense CO2 atmosphere",
+          "sulfuric-acid clouds",
+          "persistent global cloud cover hides surface in visible light",
+          "creamy/cloudy appearance"
+        ],
+        "CALCULATION": [],
+        "REPRESENTATION": [
+          "generated cloud-top pattern"
+        ]
+      },
+      "factual_descriptors": [
+        "cream/ivory/pale-yellow cloud-covered globe",
+        "opaque surface",
+        "subtle low-contrast cloud bands/swirl",
+        "soft atmospheric edge"
+      ],
+      "non_inferable": [
+        "visible terrain",
+        "radar topography as natural color",
+        "UV blue false-color as natural appearance",
+        "erupting volcanoes",
+        "dramatic lightning",
+        "life"
+      ],
+      "states": [
+        "BASE_CLOUD_TOPS_NEUTRAL"
+      ],
+      "priority": "P0",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER",
+      "donor_reference": [
+        "img/intereses/sistema-solar/tex/venus.webp",
+        "img/intereses/sistema-solar/venus.webp"
+      ],
+      "sources": [
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/venus/venus-facts/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/venus/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA/JPL-Caltech",
+          "url": "https://science.nasa.gov/resource/newly-processed-views-of-venus-from-mariner-10/",
+          "verified": "2026-10-02"
+        }
+      ],
+      "representation_limits": [
+        "cloud pattern is not dated weather",
+        "surface is not represented optically"
+      ]
+    },
+    {
+      "id": "tierra",
+      "purpose": "human reference planet and size-comparison master",
+      "classification": {
+        "REAL_DATA": [
+          "about 71% ocean coverage",
+          "blue appearance from space",
+          "white clouds",
+          "recognizable land and ice",
+          "thin bluish atmospheric limb"
+        ],
+        "CALCULATION": [],
+        "REPRESENTATION": [
+          "canonical hemisphere choice",
+          "generated non-dated cloud pattern"
+        ]
+      },
+      "factual_descriptors": [
+        "deep/medium blue oceans",
+        "recognizable Africa-Europe-Atlantic composition",
+        "green/brown/tan land",
+        "white clouds",
+        "white ice/snow where appropriate",
+        "very thin blue atmospheric limb",
+        "day view"
+      ],
+      "non_inferable": [
+        "current weather",
+        "specific hurricane without date/source",
+        "political borders",
+        "city lights in day master",
+        "aurora",
+        "exaggerated atmosphere",
+        "invented geography"
+      ],
+      "states": [
+        "BASE_DAY_NEUTRAL"
+      ],
+      "priority": "P0",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER",
+      "donor_reference": [
+        "img/intereses/sistema-solar/tex/tierra-dia.webp",
+        "img/intereses/sistema-solar/tex/tierra-noche.webp",
+        "img/intereses/sistema-solar/tex/tierra-relieve-nubes.webp",
+        "img/intereses/sistema-solar/tierra.webp"
+      ],
+      "sources": [
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/earth/facts/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/mission/webb/science-overview/science-explainers/what-would-earths-atmosphere-look-like-from-the-james-webb-space-telescope/",
+          "verified": "2026-10-02"
+        },
+        {
+          "authority": "NASA Science",
+          "url": "https://science.nasa.gov/resource/twin-blue-marbles/",
+          "verified": "2026-10-02"
+        }
+      ],
+      "representation_limits": [
+        "clouds are generic representation, not current meteorology",
+        "geography must remain recognizable",
+        "not a NASA photograph"
+      ]
+    }
+  ],
+  "lumento": {
+    "status_after_pass": "AUTHORIZED_TO_GENERATE",
+    "allowed_assets": [
+      "sol",
+      "mercurio",
+      "venus",
+      "tierra"
+    ],
+    "next_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+    "stop_after_batch": true,
+    "b02_b03": "HOLD"
+  },
+  "interest_05": "QUEUED_NOT_IMMEDIATE",
+  "status": "PASS_AND_STOP"
+}
