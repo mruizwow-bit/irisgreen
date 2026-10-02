@@ -120,7 +120,20 @@
           "status": "NOT_BUILT_OR_NOT_INTEGRATED"
         }
       ]
+    },
+    "existing_domestic_catalog": {
+      "family_count": 19,
+      "note": "Families, not unique individual games. Variants exist; memory family alone had 12 variants in recovered plan.",
+      "relation_to_room_games": "ROOM_GAMES_REUSES_OR_ADAPTS_EXISTING_MECHANICS_WHEN_APPROPRIATE"
     }
   },
-  "more_packages_expected": true
+  "more_packages_expected": true,
+  "counting_rule": "DO_NOT_SUM_19_FAMILIES_PLUS_6_R62_PLUS_3_ROOM_AS_28_UNIQUE_GAMES",
+  "missing_detection_rule": [
+    "COMPARE_MAIN_ROUTES_RUNTIME",
+    "COMPARE_6_R62_PRODUCTS",
+    "COMPARE_3_ROOM_FIRST_BATCH",
+    "KEEP_19_FAMILY_DOMESTIC_CATALOG_SEPARATE",
+    "DISTINGUISH_PRESERVED_NOT_IN_MAIN_FROM_MISSING_ARTIFACT"
+  ]
 }
