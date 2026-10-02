@@ -190,3 +190,45 @@ Lumen → Eco → Lumen final 5 min → Eco QA final → Motor → Axioma → As
 Si cambia el chat o la sesión:
 **leer primero GitHub + esta memoria + issue del carril + main vivo.**
 No reconstruir el estado desde conversación ni asumir que una rama antigua sigue siendo la base actual.
+
+### Cielo V2 · HUMAN QA visual
+
+María rechaza el nivel visual del first viewport actual.
+
+Estado:
+`INTEREST_01_CIELO_V2_HUMAN_QA_FAIL_VISUAL_QUALITY`
+
+El PASS técnico previo se conserva solo como evidencia funcional. No equivale a PASS de producto.
+
+KEEP:
+- datos HYG/IAU/JPL;
+- targets/interacción;
+- teclado/touch;
+- Motion3;
+- forced-colors;
+- depth lazy;
+- no auto-geolocalización.
+
+FAIL visual:
+- dashboard/panel de datos;
+- sidebar dominante;
+- estrellas como burbujas;
+- labels como pills;
+- horizonte ausente perceptivamente;
+- falta atmósfera/profundidad;
+- WORLD_SCENE_FIRST no se cumple perceptivamente.
+
+Owner inmediato:
+**Prisma A8** para rework de presentación/DOM/CSS/responsive.
+Motor no se interrumpe mientras cubre Nexo/Suite5.
+
+Gate:
+`INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA`
+
+No merge main antes de HUMAN QA María/Astra.
+
+Memoria específica:
+`COORDINACION_IRIS_GREEN/MEMORIA/CIELO_V2_HUMAN_QA_VISUAL_REWORK_20261002.md`
+
+Control:
+`COORDINACION_IRIS_GREEN/CONTROL/CIELO_V2_HUMAN_QA_VISUAL_REWORK_20261002.json`
