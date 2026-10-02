@@ -1,0 +1,115 @@
+/* Iris Green · El taller · Estudio de juegos de mesa (R43). Solo selectores de este estudio. */
+body[data-ig-suite="juegosmesa"] .igj-viewport { background:#eef3f8; }
+body[data-ig-suite="juegosmesa"] .igj-stage { position:absolute; inset:0; }
+body[data-ig-suite="juegosmesa"] .igj-stage[hidden], body[data-ig-suite="juegosmesa"] .igj-zoom[hidden], body[data-ig-suite="juegosmesa"] .igj-doc[hidden], body[data-ig-suite="juegosmesa"] .igj-turnbar[hidden] { display:none !important; }
+body[data-ig-suite="juegosmesa"] .igj-svg { position:absolute; inset:0; width:100%; height:100%; touch-action:none; cursor:crosshair; }
+body[data-ig-suite="juegosmesa"] .igj-stage[data-tool="select"] .igj-svg { cursor:default; }
+body[data-ig-suite="juegosmesa"] .igj-cell { stroke-width:.8; }
+body[data-ig-suite="juegosmesa"] .igj-t-normal { fill:#ffffff; stroke:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-t-start { fill:#cfe7d2; stroke:#17532c; }
+body[data-ig-suite="juegosmesa"] .igj-t-goal { fill:#f6e0a8; stroke:#7a5300; }
+body[data-ig-suite="juegosmesa"] .igj-t-advance { fill:#d3e7f6; stroke:#134b73; }
+body[data-ig-suite="juegosmesa"] .igj-t-back { fill:#f4d9d9; stroke:#8a2942; }
+body[data-ig-suite="juegosmesa"] .igj-t-skip { fill:#e6e2ef; stroke:#3d2d86; }
+body[data-ig-suite="juegosmesa"] .igj-t-card { fill:#e8e0d2; stroke:#6b4f1f; }
+body[data-ig-suite="juegosmesa"] .igj-t-blocked { fill:#c8cdd3; stroke:#2b333a; }
+body[data-ig-suite="juegosmesa"] .igj-sym { fill:none; stroke-width:1.6; stroke-linejoin:round; stroke-linecap:round; }
+body[data-ig-suite="juegosmesa"] .igj-sym-start { stroke:#17532c; }
+body[data-ig-suite="juegosmesa"] .igj-sym-goal { stroke:#7a5300; }
+body[data-ig-suite="juegosmesa"] .igj-sym-advance { stroke:#134b73; }
+body[data-ig-suite="juegosmesa"] .igj-sym-back { stroke:#8a2942; }
+body[data-ig-suite="juegosmesa"] .igj-sym-skip { stroke:#3d2d86; }
+body[data-ig-suite="juegosmesa"] .igj-sym-card { stroke:#6b4f1f; }
+body[data-ig-suite="juegosmesa"] .igj-sym-blocked { stroke:#2b333a; }
+body[data-ig-suite="juegosmesa"] .igj-cellnum { font:600 5.6px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-steps { font-weight:800; fill:#172b42; text-anchor:middle; }
+body[data-ig-suite="juegosmesa"] .igj-track-line { fill:none; stroke:#c9d8e6; stroke-width:3; stroke-linejoin:round; stroke-linecap:round; }
+body[data-ig-suite="juegosmesa"] .igj-piecelab { font:800 8px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#ffffff; text-anchor:middle; }
+body[data-ig-suite="juegosmesa"] .igj-piece.igj-sel circle { stroke:#5a49a8; stroke-width:3; }
+body[data-ig-suite="juegosmesa"] .igj-cursor { fill:none; stroke:#b3261e; stroke-width:2.5; }
+body[data-ig-suite="juegosmesa"] .igj-cursor-dim { opacity:.4; }
+body[data-ig-suite="juegosmesa"] .igj-reach { fill:rgba(90,73,168,.22); stroke:#5a49a8; stroke-width:1.5; }
+body[data-ig-suite="juegosmesa"] .igj-turnbar { position:absolute; left:.5rem; top:.5rem; z-index:3; margin:0; max-width:calc(100% - 1rem); padding:.35rem .7rem; border:1px solid #17395c; border-radius:999px; background:#fff; color:#172b42; font:700 .88rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+
+/* Vistas de documento */
+body[data-ig-suite="juegosmesa"] .igj-doc { position:absolute; inset:0; overflow:auto; padding:1rem 1.1rem 1.5rem; background:#fff; color:#172b42; user-select:text; -webkit-user-select:text; touch-action:auto; font:500 .95rem/1.55 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="juegosmesa"] .igj-doc h3 { margin:0 0 .3rem; font-size:1.2rem; }
+body[data-ig-suite="juegosmesa"] .igj-doc h4 { margin:1.1rem 0 .3rem; font-size:1rem; }
+body[data-ig-suite="juegosmesa"] .igj-lede { margin:0 0 .6rem; color:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-empty { margin:.3rem 0 .7rem; color:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-rulelist { margin:.2rem 0 .6rem; padding-left:1.3rem; }
+body[data-ig-suite="juegosmesa"] .igj-rulelist li { margin-bottom:.2rem; }
+body[data-ig-suite="juegosmesa"] .igj-warn { margin:.3rem 0 0; padding-left:1.1rem; font-size:.9rem; }
+
+/* Cartas */
+body[data-ig-suite="juegosmesa"] .igj-cardgrid { display:grid; grid-template-columns:repeat(auto-fill,minmax(10.5rem,1fr)); gap:.6rem; margin:.4rem 0 .8rem; }
+body[data-ig-suite="juegosmesa"] .igj-cardbtn { padding:0; border:2px solid transparent; border-radius:12px; background:none; cursor:pointer; }
+body[data-ig-suite="juegosmesa"] .igj-cardbtn[aria-current="true"] { border-color:#5a49a8; box-shadow:0 0 0 2px #5a49a8; }
+body[data-ig-suite="juegosmesa"] .igj-cardbtn:focus-visible { outline:3px solid #5a49a8; outline-offset:2px; }
+body[data-ig-suite="juegosmesa"] .igj-card { position:relative; display:grid; gap:.25rem; align-content:start; width:100%; box-sizing:border-box; min-height:9.5rem; padding:2.1rem .6rem .6rem; border:1px solid #c9d8e6; border-top:2.1rem solid var(--igj-card,#1f5f8b); border-radius:10px; background:#fff; text-align:left; }
+body[data-ig-suite="juegosmesa"] .igj-card-value { position:absolute; top:-1.85rem; right:.5rem; color:#fff; font:800 1rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="juegosmesa"] .igj-card-icon { position:absolute; top:-1.9rem; left:.5rem; width:1.4rem; height:1.4rem; fill:none; stroke:#fff; stroke-width:1.8; stroke-linejoin:round; stroke-linecap:round; }
+body[data-ig-suite="juegosmesa"] .igj-card-title { font-size:.98rem; color:#172b42; }
+body[data-ig-suite="juegosmesa"] .igj-card-text { color:#44586c; font-size:.88rem; }
+body[data-ig-suite="juegosmesa"] .igj-card-copies { justify-self:start; margin-top:auto; padding:.05rem .4rem; border-radius:999px; background:#f4f7fa; color:#44586c; font-size:.78rem; font-weight:700; }
+body[data-ig-suite="juegosmesa"] .igj-preview { max-width:12rem; margin:.3rem 0 .6rem; }
+
+/* Gráfico de probabilidad */
+body[data-ig-suite="juegosmesa"] .igj-chartwrap { max-width:34rem; margin:.3rem 0 .6rem; }
+body[data-ig-suite="juegosmesa"] .igj-chart { display:block; width:100%; height:auto; }
+body[data-ig-suite="juegosmesa"] .igj-bar { fill:#1f5f8b; }
+body[data-ig-suite="juegosmesa"] .igj-grid { stroke:#dbe4ec; stroke-width:1; }
+body[data-ig-suite="juegosmesa"] .igj-axisline { stroke:#8a97a5; stroke-width:1; }
+body[data-ig-suite="juegosmesa"] .igj-axis { font:600 10px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-barlab { font:700 11px/1 "Atkinson Hyperlegible",system-ui,sans-serif; fill:#172b42; }
+
+/* Panel de propiedades */
+body[data-ig-suite="juegosmesa"] .igj-two { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+body[data-ig-suite="juegosmesa"] .igj-flabel { display:block; margin-bottom:.25rem; font:700 .88rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:#172b42; }
+body[data-ig-suite="juegosmesa"] .igj-palette { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:.3rem; }
+body[data-ig-suite="juegosmesa"] .igj-palette button { display:flex; align-items:center; gap:.4rem; min-height:40px; padding:.3rem .45rem; border:1px solid #7d93a8; border-radius:10px; background:#fff; color:#172b42; font:600 .86rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif; cursor:pointer; text-align:left; }
+body[data-ig-suite="juegosmesa"] .igj-palette button[aria-checked="true"] { border-color:#17395c; box-shadow:inset 0 0 0 2px #17395c; background:#e2ecf6; font-weight:800; }
+body[data-ig-suite="juegosmesa"] .igj-palette button:focus-visible, body[data-ig-suite="juegosmesa"] .igj-icons button:focus-visible, body[data-ig-suite="juegosmesa"] .igj-colours button:focus-visible { outline:3px solid #5a49a8; outline-offset:2px; }
+body[data-ig-suite="juegosmesa"] .igj-icons { display:flex; flex-wrap:wrap; gap:.3rem; }
+body[data-ig-suite="juegosmesa"] .igj-icons button { display:grid; place-items:center; width:44px; height:44px; padding:0; border:1px solid #7d93a8; border-radius:10px; background:#fff; cursor:pointer; }
+body[data-ig-suite="juegosmesa"] .igj-icons button[aria-checked="true"] { border-color:#17395c; box-shadow:inset 0 0 0 2px #17395c; background:#e2ecf6; }
+body[data-ig-suite="juegosmesa"] .igj-iconsw { fill:none; stroke:#172b42; stroke-width:1.8; stroke-linejoin:round; stroke-linecap:round; }
+body[data-ig-suite="juegosmesa"] .igj-colours { display:flex; flex-wrap:wrap; gap:.35rem; }
+body[data-ig-suite="juegosmesa"] .igj-colours button { width:44px; height:44px; padding:0; border:2px solid rgba(0,0,0,.4); border-radius:10px; cursor:pointer; }
+body[data-ig-suite="juegosmesa"] .igj-colours button[aria-checked="true"] { box-shadow:0 0 0 2px #fff, 0 0 0 5px #5a49a8; }
+body[data-ig-suite="juegosmesa"] .igj-checks { list-style:none; margin:0; padding:0; display:grid; gap:.45rem; font-size:.9rem; }
+body[data-ig-suite="juegosmesa"] .igj-checks > li { display:flex; gap:.45rem; align-items:flex-start; }
+body[data-ig-suite="juegosmesa"] .igj-mark { flex:none; display:grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%; font-weight:800; font-size:.8rem; color:#fff; background:#7d8b99; }
+body[data-ig-suite="juegosmesa"] .igj-checks > li[data-ok="true"] > .igj-mark { background:#1d6b3a; }
+body[data-ig-suite="juegosmesa"] .igj-sub { display:block; color:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-subchecks { list-style:none; margin:.2rem 0 0; padding:0; color:#44586c; }
+body[data-ig-suite="juegosmesa"] .igj-subchecks li[data-ok="true"] { color:#1d6b3a; }
+body[data-ig-suite="juegosmesa"] .igj-rows { display:grid; gap:.35rem; }
+body[data-ig-suite="juegosmesa"] .igj-row { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:.3rem; align-items:center; }
+body[data-ig-suite="juegosmesa"] .igj-row input { width:100%; min-width:0; min-height:40px; box-sizing:border-box; padding:.3rem .45rem; border:1px solid #7d93a8; border-radius:10px; background:#fff; color:#172b42; font:500 .9rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="juegosmesa"] .igj-row input:focus-visible { outline:3px solid #5a49a8; outline-offset:1px; }
+body[data-ig-suite="juegosmesa"] .igj-rowdel { min-width:40px; min-height:40px; padding:.3rem; color:#8a2942; border-color:#b56a7c; }
+body[data-ig-suite="juegosmesa"] .igs-list .igj-sw-game { background:#17395c; border-radius:4px; }
+body[data-ig-suite="juegosmesa"] .igs-list .igj-sw-rules { background:#fff; border:2px solid #44586c; border-radius:2px; }
+body[data-ig-suite="juegosmesa"] .igs-list .igj-sw-die { background:#f6e0a8; border:2px solid #7a5300; border-radius:4px; }
+body[data-ig-suite="juegosmesa"] .igs-structure .igj-add { justify-self:start; min-height:40px; font-size:.84rem; padding:.3rem .6rem; }
+
+/* Hojas impresas */
+body[data-ig-suite="juegosmesa"] .igj-print { font-family:"Atkinson Hyperlegible",Arial,sans-serif; color:#172b42; font-size:10.5pt; line-height:1.5; }
+body[data-ig-suite="juegosmesa"] .igj-print h1 { font-size:18pt; margin:0 0 4mm; }
+body[data-ig-suite="juegosmesa"] .igj-print h2 { font-size:13pt; margin:5mm 0 1.5mm; border-bottom:1px solid #999; }
+body[data-ig-suite="juegosmesa"] .igj-print :is(ol,ul) { margin:1mm 0 2mm; padding-left:6mm; }
+body[data-ig-suite="juegosmesa"] .igj-print-credit { margin:5mm 0 0; color:#44586c; font-size:8pt; text-align:right; }
+
+@media (max-width:700px) {
+  body[data-ig-suite="juegosmesa"] .igj-doc { padding:.7rem .7rem 1.2rem; }
+  body[data-ig-suite="juegosmesa"] .igj-cardgrid { grid-template-columns:repeat(auto-fill,minmax(8.5rem,1fr)); }
+  body[data-ig-suite="juegosmesa"] .igj-turnbar { font-size:.8rem; padding:.3rem .55rem; }
+}
+@media (forced-colors:active) {
+  body[data-ig-suite="juegosmesa"] .igj-cursor { stroke:Highlight; }
+  body[data-ig-suite="juegosmesa"] .igj-palette button[aria-checked="true"], body[data-ig-suite="juegosmesa"] .igj-icons button[aria-checked="true"], body[data-ig-suite="juegosmesa"] .igj-colours button[aria-checked="true"] { outline:3px solid Highlight; }
+  body[data-ig-suite="juegosmesa"] .igj-bar { fill:CanvasText; }
+}
+/* Las herramientas de partida sustituyen a las de edición sin rehacer la barra. */
+body[data-ig-suite="juegosmesa"] .igs-toolbar [hidden] { display:none !important; }
