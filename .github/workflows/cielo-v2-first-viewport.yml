@@ -1,0 +1,43 @@
+name: Motor · Cielo V2 first viewport
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/data/cielo-v2-first-view.json'
+      - 'assets/ig-cielo-v2-first.js'
+      - 'assets/ig-cielo-v2-first.css'
+      - 'es/intereses/cielo/index.html'
+      - 'en/interests/night-sky/index.html'
+      - 'scripts/build_cielo_v2_first_view.py'
+      - 'scripts/test_cielo_v2_first_viewport.py'
+      - '.github/workflows/cielo-v2-first-viewport.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  first-viewport:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Donor subset reproducible
+        run: python scripts/build_cielo_v2_first_view.py --check
+      - name: Syntax
+        run: |
+          node --check assets/ig-cielo-v2-first.js
+          python -m py_compile scripts/build_cielo_v2_first_view.py scripts/test_cielo_v2_first_viewport.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA first viewport
+        run: python scripts/test_cielo_v2_first_viewport.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: cielo-v2-first-viewport
+          path: reports/cielo-v2-first-viewport/qa.json
+          retention-days: 14

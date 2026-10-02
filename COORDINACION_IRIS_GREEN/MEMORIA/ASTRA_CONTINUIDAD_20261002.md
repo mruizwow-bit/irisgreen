@@ -93,6 +93,66 @@ Estado pendiente:
 
 Debe reconciliarse contra el main vivo antes de integración.
 
+### Nuevo Rincón · duración final corregida y reafirmada
+
+María reafirma la decisión final:
+`TARGET_DURATION = 5 MINUTES`.
+
+Esto prevalece sobre cualquier mención posterior de 10 minutos como duración de producto.
+
+Aplicación:
+- **Pecera**: el master/entrega larga de 10 min puede conservarse como donor/master, pero la pieza de producto final debe ser de ~5 min; no rerenderizar arte aprobado solo para cambiar duración.
+- **Mar**: prototipo 30 s → si pasa gate visual/audio, derivar/renderizar versión final de ~5 min.
+- **Discos líquidos**: prototipo 30 s → si pasa gate visual/audio, derivar/renderizar versión final de ~5 min.
+- audio first-party propio;
+- empieza en silencio;
+- control accesible propio Activar/Quitar audio;
+- quitar audio no detiene la imagen.
+
+Regla:
+`10MIN = MASTER/DONOR ONLY WHEN IT EXISTS`
+`5MIN = FINAL PRODUCT TARGET`
+
+
+### Nuevo Rincón · reparto de owners audiovisuales
+
+Owner primario de vídeo/audiovisual:
+**Lumen · A7 — Immersive Media & Interactive Audiovisual Engineer**.
+
+Responsabilidades Lumen:
+- revisión visual de prototipos;
+- KEEP/REWORK visual;
+- derivación/render final de piezas aprobadas a ~5 min;
+- preservar composición, ritmo visual, cámara y low-stimulation;
+- Pecera: derivar desde master/donor sin rerender del arte aprobado.
+
+Owner de audio + media QA:
+**Eco · A6 — Voz, Audio & Media Validation**.
+
+Responsabilidades Eco:
+- audio first-party;
+- normalización/loudness/true peak;
+- codec/container/bitrate/sample rate/channels;
+- A/V sync;
+- faststart/moov;
+- range/seek/playback/performance cuando aplique;
+- QA binaria final.
+
+Player común:
+**Motor · A5**, solo después de media PASS:
+- muted inicial;
+- control Activar/Quitar audio;
+- teclado/touch/foco/Escape;
+- NORMAL/REDUCED/NONE;
+- lifecycle/cleanup e integración web.
+
+Axioma = accesibilidad/estándares.
+Astra = gate de producto/arquitectura.
+María = HUMAN QA final.
+
+Orden:
+Lumen → Eco → Lumen final 5 min → Eco QA final → Motor → Axioma → Astra/María.
+
 ## Principio de continuidad
 
 Si cambia el chat o la sesión:

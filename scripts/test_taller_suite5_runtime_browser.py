@@ -56,7 +56,7 @@ async def inspect(page,palette):
       ".igs-toolbar",
       ".igs-structure",
       ".igs-sec",
-      ".igs-btn:not(.igs-primary)"
+      ".igs-btn:not(.igs-primary):not([aria-pressed=\"true\"])"
     ]
     optional=[
       ".igs-field input:not([type=color]),.igs-field select,.igs-inline-select select"
@@ -96,7 +96,7 @@ async def inspect(page,palette):
             errors.append(f"{x['sel']} contrast {contrast(bg,fg):.2f}")
 
     selected=await page.evaluate("""()=>{
-      const e=document.querySelector('.igs-btn:not(.igs-primary)');
+      const e=document.querySelector('.igs-btn:not(.igs-primary):not([aria-pressed="true"])');
       if(!e) return null;
       const old=e.getAttribute('aria-pressed');
       e.setAttribute('aria-pressed','true');
@@ -173,7 +173,7 @@ async def main():
             continue
         la={x["sel"]:x.get("bg") for x in v["light"].get("surfaces",[])}
         na={x["sel"]:x.get("bg") for x in v["navy"].get("surfaces",[])}
-        for sel in (".igs-toolbar",".igs-structure",".igs-sec",".igs-btn:not(.igs-primary)"):
+        for sel in (".igs-toolbar",".igs-structure",".igs-sec",".igs-btn:not(.igs-primary):not([aria-pressed=\"true\"])"):
             if la.get(sel)==na.get(sel):
                 delta_errors.append(f"{k} {sel} did not change: {la.get(sel)}")
 
