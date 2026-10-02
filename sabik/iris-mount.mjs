@@ -10,7 +10,7 @@ const TEXT={
   unavailable:'Sabik está disponible con las fuentes seguras locales de Iris Green.',
   available:'Sabik está disponible.',
   hide:'Ocultar',show:'Mostrar',
-  welcome:'Puedo ayudarte a buscar información.',conversationWelcome:'Puedes preguntarme por escrito. Respondo con información de Iris Green y te enseño las fuentes.',
+  welcome:'Puedo ayudarte a buscar información.',conversationWelcome:'Puedes preguntarme por escrito o activar la voz. Respondo con información de Iris Green y te enseño las fuentes.',
   explanation:'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green. No invento una respuesta cuando no encuentro información suficiente.',
   connected:'Puedo responder con las fuentes de Iris Green. No hago diagnósticos.',
   label:'¿Qué necesitas?',help:'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.',send:'Enviar',
@@ -30,7 +30,7 @@ const TEXT={
  en:{
   subtitle:'Iris Green assistant',
   unavailable:'Sabik is available with Iris Green’s safe local sources.',available:'Sabik is available.',hide:'Hide',show:'Show',
-  welcome:'I can help you find information.',conversationWelcome:'You can ask me in writing. I answer with Iris Green information and show the sources.',
+  welcome:'I can help you find information.',conversationWelcome:'You can ask me in writing or enable voice. I answer with Iris Green information and show the sources.',
   explanation:'If the Cloud library is unavailable, I use Iris Green’s safe local index. I do not invent an answer when there is not enough information.',
   connected:"I can answer using Iris Green's sources. I don't make diagnoses.",
   label:'What do you need?',help:'Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.',send:'Send',
@@ -64,7 +64,7 @@ function mount(){
  }
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),speaking=Boolean(state?.speaking);
-  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:on?strings().voiceOn:strings().voiceOff;
+  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:busy?strings().processing:speaking?strings().speaking:on?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);
   if(micButton)micButton.disabled=!on||!state?.sttAvailable||busy;
   if(voiceStop)voiceStop.disabled=!(listening||speaking||busy);
@@ -166,6 +166,7 @@ function mount(){
   let semantic='idle';
   if(next==='TRANSICION'&&meta.phase==='retrieval')semantic='processing';
   else if(next==='PAUSA'&&meta.phase==='error')semantic='degraded';
+  if(next==='CONFIRMAR'&&voiceEnabled()&&voice.getState().ttsAvailable)return;
   void visual(v,{force:true,to:'presente',semantic,reason:meta.phase||'conversation-state'});
  }
  const conversation=createSabikConversation({retrieve,onState:state,onAnswer:renderAnswer,onSources:renderSources});
