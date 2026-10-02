@@ -59,7 +59,7 @@ function mount(){
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
  function voiceMessage(code){
-  const key={microphone-denied:'micDenied','no-speech':'noSpeech','stt-unavailable':'sttUnavailable','tts-unavailable':'ttsUnavailable','voice-unavailable':'voiceError','tts-error':'voiceError','stt-start-error':'voiceError'}[code]||'voiceError';
+  const key={'microphone-denied':'micDenied','no-speech':'noSpeech','stt-unavailable':'sttUnavailable','tts-unavailable':'ttsUnavailable','voice-unavailable':'voiceError','tts-error':'voiceError','stt-start-error':'voiceError'}[code]||'voiceError';
   announcement.textContent=strings()[key];
  }
  function syncVoice(state,meta={}){
