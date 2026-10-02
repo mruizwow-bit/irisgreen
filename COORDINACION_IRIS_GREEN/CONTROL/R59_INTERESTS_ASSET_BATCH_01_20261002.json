@@ -1,0 +1,137 @@
+{
+  "schema": "iris-green-interests-asset-batch-v1",
+  "id": "R59_INTERESTS_ASSET_BATCH_01_20261002",
+  "date": "2026-10-02",
+  "owner": "Senda · R59",
+  "production_owner": "Atlas · A1",
+  "status": "INTERESTS_ASSET_BATCH_01_DEFINED",
+  "max_new_assets": 3,
+  "notes": [
+    "Cielo V2 is deliberately asset-light: stars, constellation lines, Moon phase and planet positions remain data/procedural.",
+    "Do not generate star sprites, constellation artwork, Moon phases or planet icons for Cielo V2.",
+    "This batch defines production needs only. Senda does not generate the images in this block."
+  ],
+  "assets": [
+    {
+      "interest_id": "01",
+      "asset_id": "01-cielo-horizonte-observacion-r01",
+      "represents": "Horizonte nocturno terrestre neutro para la escena de observación de Cielo V2; sin landmark identificable.",
+      "type": "raster",
+      "quantity": 1,
+      "states": [
+        "master"
+      ],
+      "canvas": {
+        "width_px": 2560,
+        "height_px": 768,
+        "framing": "Panorama horizontal. Horizonte bajo/medio; zona superior transparente para dejar ver el cielo procedural.",
+        "safe_crop": "Debe admitir recorte central a 16:9, 3:4 y móvil sin perder la lectura de horizonte."
+      },
+      "transparency": "RGBA real; cielo/parte superior transparente.",
+      "light_dark": "Una sola toma nocturna neutral. No crear variantes LIGHT/DARK de la escena; el tema afecta UI, no la astronomía.",
+      "reuse_new": "NEW_SHARED",
+      "reuse_targets": [
+        "04-eclipses",
+        "05-lluvias-de-estrellas",
+        "07-iss-satelites"
+      ],
+      "priority": "P0",
+      "runtime_dependency": "Cielo V2 world-scene foreground. Fallback permitido: horizonte procedural simple si el asset aún no está.",
+      "hard_constraints": [
+        "sin estrellas",
+        "sin Luna",
+        "sin planetas",
+        "sin nubes",
+        "sin personas",
+        "sin texto",
+        "sin logos",
+        "sin monumentos/landmarks",
+        "sRGB",
+        "aspecto premium E4 sin competir con el cielo"
+      ]
+    },
+    {
+      "interest_id": "06",
+      "asset_id": "06-exploracion-voyager-master-r01",
+      "represents": "Sonda Voyager, vista 3/4 aislada y factualmente reconocible, para hitos de exploración espacial.",
+      "type": "raster",
+      "quantity": 1,
+      "states": [
+        "master"
+      ],
+      "canvas": {
+        "width_px": 1600,
+        "height_px": 1600,
+        "framing": "Sonda completa, antena y booms visibles, centro estable, margen 8–10%."
+      },
+      "transparency": "RGBA real.",
+      "light_dark": "Una master neutral; iluminación/contraste contextual se deriva en runtime, no se regenera la geometría.",
+      "reuse_new": "NEW",
+      "reuse_targets": [],
+      "priority": "P1",
+      "runtime_dependency": "Interés 06 · mundo/timeline espacial curado. No bloquea Cielo V2.",
+      "hard_constraints": [
+        "sin fondo espacial",
+        "sin planeta",
+        "sin estela",
+        "sin texto",
+        "sin composición tipo póster",
+        "sin logo añadido",
+        "geometría reconocible y consistente con referencias documentadas",
+        "sRGB"
+      ]
+    },
+    {
+      "interest_id": "07",
+      "asset_id": "07-iss-master-r01",
+      "represents": "Estación Espacial Internacional completa, vista oblicua lateral, paneles solares legibles.",
+      "type": "raster",
+      "quantity": 1,
+      "states": [
+        "master"
+      ],
+      "canvas": {
+        "width_px": 1800,
+        "height_px": 1200,
+        "framing": "ISS completa, paneles sin corte, centro estable, margen 8–10%."
+      },
+      "transparency": "RGBA real.",
+      "light_dark": "Una master neutral; estados de iluminación se producen en runtime.",
+      "reuse_new": "NEW_SHARED",
+      "reuse_targets": [
+        "06-exploracion-espacial"
+      ],
+      "priority": "P1",
+      "runtime_dependency": "Interés 07 · paso/órbita ISS. No bloquea Cielo V2.",
+      "hard_constraints": [
+        "sin Tierra",
+        "sin estrellas",
+        "sin texto",
+        "sin logo añadido",
+        "sin motion blur",
+        "paneles y estructura principal identificables",
+        "sRGB"
+      ]
+    }
+  ],
+  "explicitly_not_requested": [
+    {
+      "item": "star sprites",
+      "reason": "Procedural/data-driven is more accurate and cheaper."
+    },
+    {
+      "item": "constellation illustrations",
+      "reason": "Lines/relations come from donor data; no invented mythological art in Cielo V2 minimum."
+    },
+    {
+      "item": "Moon phase images",
+      "reason": "Phase is calculated and masked in runtime; separate images would duplicate state."
+    },
+    {
+      "item": "planet icons for Cielo",
+      "reason": "Cielo needs schematic/contextual points, not decorative planet art."
+    }
+  ],
+  "next_gate": "Atlas packages only these 3 assets after its current authorized block and then STOP.",
+  "marker": "INTERESTS_ASSET_BATCH_01_DEFINED"
+}
