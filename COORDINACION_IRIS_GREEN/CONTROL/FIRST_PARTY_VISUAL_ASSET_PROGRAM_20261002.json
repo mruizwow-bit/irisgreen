@@ -30,14 +30,28 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "AUTHORIZED",
+      "status": "AUTHORIZED_WAIT_FACTUAL_BRIEF",
       "assets": [
         "sol",
         "mercurio",
         "venus",
         "tierra"
       ],
-      "gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW"
+      "gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+      "precondition_owner": "SENDA_R59",
+      "precondition_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+      "lumen_may_generate": false,
+      "factual_brief_fields": [
+        "PRODUCT_PURPOSE",
+        "REAL_DATA_CALCULATION_REPRESENTATION",
+        "FACTUAL_VISUAL_DESCRIPTORS",
+        "NON_INFERABLE_OR_PROHIBITED_CLAIMS",
+        "STATES",
+        "PRIORITY",
+        "REUSE_NEW",
+        "SOURCE_DATE_WHEN_APPLICABLE",
+        "REPRESENTATION_LIMITS"
+      ]
     },
     {
       "id": "B02",
@@ -69,5 +83,20 @@
     "DO_NOT_INVENT_UNKNOWN_SURFACE_FEATURES",
     "FACTUAL_DESCRIPTORS_BEFORE_GENERATION",
     "KEEP_REAL_DATA_CALCULATION_REPRESENTATION_SEPARATE"
-  ]
+  ],
+  "senda_immediate": {
+    "status": "ACTIVE",
+    "task": "SOLAR_BATCH_01_FACTUAL_ASSET_BRIEF",
+    "assets": [
+      "sol",
+      "mercurio",
+      "venus",
+      "tierra"
+    ],
+    "gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS"
+  },
+  "senda_queued_after": {
+    "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF_PASS",
+    "status": "QUEUED_NOT_IMMEDIATE"
+  }
 }
