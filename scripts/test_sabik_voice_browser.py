@@ -88,7 +88,8 @@ def run_language(browser,base,lang,path,query):
 
     def voice_route(route):
         req=route.request
-        pathname=urlsplit(req.url).path\n        route_hits.append(pathname)
+        pathname=urlsplit(req.url).path
+        route_hits.append(pathname)
         if pathname.endswith("/capabilities"):
             route.fulfill(status=200,content_type="application/json",body=json.dumps(CAPABILITIES))
             return
