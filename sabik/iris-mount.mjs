@@ -63,19 +63,21 @@ function mount(){
   announcement.textContent=strings()[key];
  }
  function syncVoice(state,meta={}){
-  const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),speaking=Boolean(state?.speaking);
-  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:busy?strings().processing:on?strings().voiceOn:strings().voiceOff;
+  const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing),speaking=Boolean(state?.speaking);
+  const semantic=meta.semantic==='degraded'?'degraded':speaking?'speaking':listening?'listening':transcribing||busy?'processing':meta.semantic||'idle';
+  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:on?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);
-  if(micButton)micButton.disabled=busy;
-  if(voiceStop)voiceStop.disabled=!(listening||speaking||busy);
+  if(micButton)micButton.disabled=busy||transcribing;
+  if(voiceStop)voiceStop.disabled=!(listening||transcribing||speaking||busy);
   if(voiceRepeat)voiceRepeat.disabled=!on||!state?.ttsAvailable||!state?.canRepeat;
   if(voiceVolume)voiceVolume.disabled=!on||!state?.ttsAvailable;
   if(voiceRate)voiceRate.disabled=!on||!state?.ttsAvailable;
   window.SabikWebPresentation?.setVoiceActive(speaking);
-  if(meta.semantic==='listening')void visual('orientar',{force:true,semantic:'listening',reason:meta.reason||'voice-listening'});
-  else if(meta.semantic==='speaking')void visual('confirmar',{force:true,semantic:'speaking',reason:meta.reason||'voice-speaking'});
-  else if(meta.semantic==='degraded')void visual('pausa',{force:true,semantic:'degraded',reason:meta.error||'voice-degraded'});
-  else if(!busy)void visual('presente',{force:true,semantic:'idle',reason:meta.reason||'voice-idle'});
+  if(semantic==='listening')void visual('orientar',{force:true,semantic:'listening',reason:meta.reason||'voice-listening'});
+  else if(semantic==='processing')void visual('transicion',{force:true,semantic:'processing',reason:meta.reason||'voice-processing'});
+  else if(semantic==='speaking')void visual('confirmar',{force:true,semantic:'speaking',reason:meta.reason||'voice-speaking'});
+  else if(semantic==='degraded')void visual('pausa',{force:true,semantic:'degraded',reason:meta.error||'voice-degraded'});
+  else void visual('presente',{force:true,semantic:'idle',reason:meta.reason||'voice-idle'});
  }
  async function voiceTranscript(text){
   input.value=text;controls();
