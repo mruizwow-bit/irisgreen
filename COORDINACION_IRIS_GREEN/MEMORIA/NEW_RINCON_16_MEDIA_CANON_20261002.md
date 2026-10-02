@@ -107,3 +107,20 @@ A3, B2, A2, A4, A5, A6, A7, A8, B1, B3, B4, B5, B6, B7, B8.
 `ONE ACTIVE MEDIA ITEM ONLY`
 
 Nadie empieza la pieza siguiente por adelantado.
+
+
+## Restricción temporal de Motor
+
+María confirma que Motor está cerrando temporalmente el carril de Nexo porque Nexo se ha bloqueado.
+
+Mientras siga esa cobertura:
+
+- Motor = ocupado con R44/Suite5;
+- Rincón no debe interrumpirlo;
+- la etapa de player de A1 queda `WAIT_MOTOR_RELEASE`;
+- Lumen/Eco/Lumen pueden avanzar A1 hasta el handoff previo al player;
+- Axioma espera al player;
+- A3 no se activa hasta `RINCON_A1_FINAL_PASS`.
+
+Regla:
+`DO_NOT_INTERRUPT_MOTOR_FOR_RINCON`
