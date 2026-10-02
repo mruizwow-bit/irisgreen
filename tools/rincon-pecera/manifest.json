@@ -1,0 +1,87 @@
+{
+  "source": "R61 final 2026-09-29, entrega con burbujas",
+  "files": [
+    {
+      "name": "pecera_10min.mp4",
+      "bytes": 151214424,
+      "sha256": "70e11f73d2d5b9b8a2783d32464a71552d6ba908c5527a7e8de3802f4e28bc17",
+      "parts": [
+        {
+          "name": "pecera_10min.mp4.part0",
+          "sha256": "d13139952d78be39825095a005e44d97b42dff1ad0c1e959ededf01c338f3d64"
+        },
+        {
+          "name": "pecera_10min.mp4.part1",
+          "sha256": "702fa9c83f5eae5d2645ab6609efd6167a7a928476cd990713f08d4fd3021b00"
+        },
+        {
+          "name": "pecera_10min.mp4.part2",
+          "sha256": "c715316ca1f966072e4a1fd7a6bb2609cfc4dd517212212a2970fac78266c13a"
+        },
+        {
+          "name": "pecera_10min.mp4.part3",
+          "sha256": "d239de48613103f701629fac069521fd8629aeb07a149f281200ec5c89767c34"
+        }
+      ]
+    },
+    {
+      "name": "pecera_10min_movil.mp4",
+      "bytes": 53998605,
+      "sha256": "9651e67b4f8c61885fffa9e85dcaa1f41f9ac8003d2f5b530e166dbde2a8a5f3",
+      "parts": [
+        {
+          "name": "pecera_10min_movil.mp4.part0",
+          "sha256": "fbc5b82dfc0bcf639f1df3a4e6f67116aecdda14c7eefb82fc5728cff4ad13e2"
+        },
+        {
+          "name": "pecera_10min_movil.mp4.part1",
+          "sha256": "22059702539524b7579bcaf5663cfef74aa435c3ca92a6c40a7813826e51ed79"
+        }
+      ]
+    },
+    {
+      "name": "pecera_audio_10min.m4a",
+      "bytes": 9752377,
+      "sha256": "a96d9248aa3d4dab2471e5aa5565531f84961a825b0698227fbaa6ee86999fcd",
+      "parts": [
+        {
+          "name": "pecera_audio_10min.m4a.part0",
+          "sha256": "a96d9248aa3d4dab2471e5aa5565531f84961a825b0698227fbaa6ee86999fcd"
+        }
+      ]
+    },
+    {
+      "name": "pecera_audio_10min.opus",
+      "bytes": 6467334,
+      "sha256": "1ec4c04597464da2ae79c79d81f9a4c2591e153407e92cec396a840cabc3ba9e",
+      "parts": [
+        {
+          "name": "pecera_audio_10min.opus.part0",
+          "sha256": "1ec4c04597464da2ae79c79d81f9a4c2591e153407e92cec396a840cabc3ba9e"
+        }
+      ]
+    },
+    {
+      "name": "pecera_poster.jpg",
+      "bytes": 172823,
+      "sha256": "98f50e59932ec3fbd1218ce30a9c57419b11d1542766ac92d0061d5749c25250",
+      "parts": [
+        {
+          "name": "pecera_poster.jpg.part0",
+          "sha256": "98f50e59932ec3fbd1218ce30a9c57419b11d1542766ac92d0061d5749c25250"
+        }
+      ]
+    },
+    {
+      "name": "pecera_poster_movil.jpg",
+      "bytes": 37453,
+      "sha256": "8e721ab40feebee551218225bc9193181f15c9004192a0c9e4c40c5a30895186",
+      "parts": [
+        {
+          "name": "pecera_poster_movil.jpg.part0",
+          "sha256": "8e721ab40feebee551218225bc9193181f15c9004192a0c9e4c40c5a30895186"
+        }
+      ]
+    }
+  ]
+}
