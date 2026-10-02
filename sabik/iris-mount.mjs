@@ -64,7 +64,7 @@ function mount(){
  }
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),speaking=Boolean(state?.speaking);
-  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:busy?strings().processing:speaking?strings().speaking:on?strings().voiceOn:strings().voiceOff;
+  voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:busy?strings().processing:on?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);
   if(micButton)micButton.disabled=!on||!state?.sttAvailable||busy;
   if(voiceStop)voiceStop.disabled=!(listening||speaking||busy);
