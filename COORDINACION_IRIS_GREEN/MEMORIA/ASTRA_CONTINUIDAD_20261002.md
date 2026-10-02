@@ -114,6 +114,45 @@ Regla:
 `5MIN = FINAL PRODUCT TARGET`
 
 
+### Nuevo Rincón · reparto de owners audiovisuales
+
+Owner primario de vídeo/audiovisual:
+**Lumen · A7 — Immersive Media & Interactive Audiovisual Engineer**.
+
+Responsabilidades Lumen:
+- revisión visual de prototipos;
+- KEEP/REWORK visual;
+- derivación/render final de piezas aprobadas a ~5 min;
+- preservar composición, ritmo visual, cámara y low-stimulation;
+- Pecera: derivar desde master/donor sin rerender del arte aprobado.
+
+Owner de audio + media QA:
+**Eco · A6 — Voz, Audio & Media Validation**.
+
+Responsabilidades Eco:
+- audio first-party;
+- normalización/loudness/true peak;
+- codec/container/bitrate/sample rate/channels;
+- A/V sync;
+- faststart/moov;
+- range/seek/playback/performance cuando aplique;
+- QA binaria final.
+
+Player común:
+**Motor · A5**, solo después de media PASS:
+- muted inicial;
+- control Activar/Quitar audio;
+- teclado/touch/foco/Escape;
+- NORMAL/REDUCED/NONE;
+- lifecycle/cleanup e integración web.
+
+Axioma = accesibilidad/estándares.
+Astra = gate de producto/arquitectura.
+María = HUMAN QA final.
+
+Orden:
+Lumen → Eco → Lumen final 5 min → Eco QA final → Motor → Axioma → Astra/María.
+
 ## Principio de continuidad
 
 Si cambia el chat o la sesión:
