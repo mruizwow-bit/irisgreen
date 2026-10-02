@@ -1,0 +1,316 @@
+/* R46-CLAUDE · Rincon tranquilo · perfil WORKSPACE de R49.
+   El stage manda: sin max-width heredado, sin dos bandas laterales vacias.
+   Cristal solo en el chrome; la superficie de la experiencia va opaca. */
+
+/* TOKENS · IRIS_GREEN_GLOBAL_UI_TOKENS_2026
+   El Rincon no tiene tokens de color propios. El punto 5 de la norma prohibe
+   crear equivalentes por seccion de una funcion que ya existe en el sistema,
+   asi que aqui solo quedan las medidas, que no son color.
+
+   Antes habia una paleta inventada (#0d141a, #121b22, #eaf1f6, #7fb3cf) que
+   ni era el navy global ni cambiaba con el tema: el sitio podia estar en claro
+   y el Rincon seguia oscuro. */
+.r46 {
+  --r46-gutter: clamp(10px, 1.4vw, 22px);
+  --r46-rail: clamp(232px, 21vw, 320px);
+  --r46-stage-min: clamp(320px, 62vh, 760px);
+  --r46-radius: 16px;
+}
+
+/* ---- ancho de producto, no de lectura ---- */
+body.r46-page main#main.igx,
+body.r46-page main.igx,
+body.r46-page .igx {
+  width: auto;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: var(--r46-gutter);
+  padding-block: clamp(14px, 2vw, 26px) clamp(24px, 4vw, 56px);
+}
+
+/* ---- navegacion de modos: chrome, aqui si cabe el cristal ---- */
+body.r46-page .r40-mode-nav { margin-block: clamp(10px, 1.6vw, 20px); }
+body.r46-page .r40-tabs {
+  display: flex; flex-wrap: wrap; gap: .4rem;
+  padding: .3rem;
+  border: 1px solid var(--ig-border-control);
+  border-radius: 999px;
+  background: var(--ig-bg-surface);
+  width: max-content; max-width: 100%;
+}
+@supports (backdrop-filter: blur(1px)) {
+  body.r46-page .r40-tabs { backdrop-filter: blur(var(--ig-glass-blur, 12px)); }
+}
+body.r46-page .r40-tabs button {
+  min-height: 46px; padding: .5rem 1.05rem;
+  border: 0; border-radius: 999px;
+  background: transparent; color: var(--ig-text);
+  font: inherit; cursor: pointer;
+}
+body.r46-page .r40-tabs button:hover { background: var(--ig-bg-surface-soft); }
+body.r46-page .r40-tabs button[aria-selected="true"] {
+  background: var(--ig-button-primary-bg); color: var(--ig-button-primary-fg); font-weight: 600;
+}
+body.r46-page .r40-mobile-mode { display: none; }
+@media (max-width: 640px) {
+  body.r46-page .r40-tabs { display: none; }
+  body.r46-page .r40-mobile-mode { display: grid; gap: .35rem; font-size: .95rem; }
+  body.r46-page .r40-mobile-mode select {
+    min-height: 48px; padding: .5rem .7rem; font: inherit;
+    border: 1px solid var(--ig-border-control); border-radius: 12px;
+  }
+}
+@media (prefers-reduced-transparency: reduce) {
+  body.r46-page .r40-tabs { backdrop-filter: none; background: var(--ig-bg-surface); }
+}
+body.r46-page .xhero { max-width: 72rem; }
+body.r46-page .xhero .lede { max-width: 46rem; }
+
+.r46-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--r46-rail);
+  gap: var(--r46-gutter);
+  align-items: start;
+  margin-block: var(--r46-gutter);
+}
+@media (max-width: 1100px) {
+  .r46-workspace { grid-template-columns: minmax(0, 1fr); }
+}
+
+/* ---- stage: opaco, grande, sin tarjeta estrecha alrededor ---- */
+/* La escena conserva su atmosfera oscura en los dos temas (decision de Maria,
+   29/09/2026). Todo lo que se dibuja ENCIMA de ella lleva la utilidad
+   ig-sobre-oscuro del sistema, que aplica la familia DARK NAVY canonica aunque
+   el tema global sea claro: sin ella, en LIGHT el texto de la nota saldria
+   oscuro sobre una escena oscura. Los colores no se repiten aqui. */
+.r46-stage {
+  position: relative;
+  min-height: var(--r46-stage-min);
+  border-radius: var(--r46-radius);
+  overflow: hidden;
+  background: var(--ig-bg-surface);
+  border: 1px solid var(--ig-separator);
+  isolation: isolate;
+}
+.r46-stage > canvas,
+.r46-stage > .r46-land-frame,
+.r46-stage > .r46-land-poster {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  display: block; border: 0;
+}
+.r46-land-poster {
+  background-size: cover;
+  background-position: center;
+}
+.r46-breath-static {
+  position: absolute; inset: 0;
+  display: grid; place-items: center;
+  background: radial-gradient(circle at 34% 30%, var(--ig-bg-surface-soft), var(--ig-bg-surface) 68%);
+}
+.r46-breath-static::after {
+  content: "";
+  width: min(42vmin, 280px); aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle at 36% 32%, var(--ig-text) 0%, var(--ig-link) 34%, var(--ig-link) 70%, var(--ig-text) 100%);
+  box-shadow: 0 24px 60px color-mix(in srgb, var(--ig-text) 46%, transparent);
+}
+
+/* ---- capa de lectura sobre el stage: texto, nunca cristal sobre canvas ---- */
+.r46-stage-note {
+  position: absolute; left: 0; right: 0; bottom: 0;
+  margin: 0; padding: .7rem clamp(12px, 2vw, 22px);
+  color: var(--ig-text);
+  font-size: .95rem;
+  background: linear-gradient(to top, color-mix(in srgb, var(--ig-bg-surface) 88%, transparent), transparent);
+  pointer-events: none;
+}
+
+/* ---- rail de controles ---- */
+.r46-rail {
+  display: grid; gap: var(--r46-gutter);
+  color: var(--ig-text);
+}
+.r46-group {
+  background: var(--ig-bg-surface);
+  border: 1px solid var(--ig-separator);
+  border-radius: var(--r46-radius);
+  padding: clamp(12px, 1.5vw, 18px);
+  margin: 0;
+}
+.r46-group > legend {
+  padding: 0 .35rem; margin-inline-start: -.35rem;
+  font-weight: 600; font-size: .95rem; color: var(--ig-text);
+}
+.r46-hint { margin: .45rem 0 0; color: var(--ig-text-muted); font-size: .88rem; line-height: 1.5; }
+
+.r46-choices { display: grid; gap: .4rem; margin-top: .6rem; }
+.r46-choice {
+  display: grid; grid-template-columns: 2.6rem 1fr; gap: .7rem;
+  align-items: center; width: 100%;
+  min-height: 48px; padding: .5rem .6rem;
+  border: 1px solid var(--ig-separator); border-radius: 12px;
+  background: var(--ig-bg-surface-soft); color: var(--ig-text);
+  font: inherit; text-align: start; cursor: pointer;
+}
+.r46-choice:hover { background: var(--ig-bg-surface-soft); }
+.r46-choice[aria-pressed="true"] { border-color: var(--ig-link); background: var(--ig-button-secondary-bg); }
+.r46-choice small { display: block; color: var(--ig-text-muted); font-size: .82rem; }
+.r46-swatch { width: 2.6rem; height: 1.7rem; border-radius: 7px; border: 1px solid var(--ig-separator); }
+
+.r46-seg { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .55rem; }
+.r46-seg label {
+  display: inline-flex; align-items: center; gap: .4rem;
+  min-height: 44px; padding: .4rem .7rem;
+  border: 1px solid var(--ig-separator); border-radius: 999px;
+  background: var(--ig-bg-surface-soft); color: var(--ig-text); cursor: pointer;
+}
+.r46-seg input { accent-color: var(--ig-link); }
+
+.r46-select, .r46-range { width: 100%; margin-top: .45rem; min-height: 44px; }
+.r46-select {
+  background: var(--ig-bg-surface-soft); color: var(--ig-text);
+  border: 1px solid var(--ig-separator); border-radius: 10px; padding: .5rem .6rem; font: inherit;
+}
+.r46-range { accent-color: var(--ig-link); }
+
+.r46-actions { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .7rem; }
+.r46-actions button {
+  min-height: 46px; padding: .55rem .9rem;
+  border: 1px solid var(--ig-separator); border-radius: 999px;
+  background: var(--ig-bg-surface-soft); color: var(--ig-text);
+  font: inherit; cursor: pointer;
+}
+.r46-actions button:hover { background: var(--ig-bg-surface-soft); }
+.r46-actions .r46-primary { background: var(--ig-button-primary-bg); color: var(--ig-button-primary-fg); border-color: var(--ig-border-control); }
+.r46-actions button[disabled] { opacity: .5; cursor: default; }
+.r46-actions [hidden] { display: none !important; }
+
+.r46-status { margin: .6rem 0 0; color: var(--ig-text-muted); font-size: .9rem; min-height: 1.4em; }
+
+/* ---- paneles de modo ---- */
+.r46-panel[hidden] { display: none !important; }
+
+/* ---- pantalla limpia: el viewport completo, sin recortes ---- */
+body.r46-clean .hd,
+body.r46-clean .ft,
+body.r46-clean .xhero,
+body.r46-clean .r40-mode-nav,
+body.r46-clean .r46-rail,
+body.r46-clean .ig-r42-topbar { display: none !important; }
+body.r46-clean main#main.igx,
+body.r46-clean main.igx,
+body.r46-clean .igx { width: auto; max-width: none; padding: 0; margin: 0; }
+body.r46-clean .r46-workspace { grid-template-columns: minmax(0, 1fr); gap: 0; margin: 0; }
+body.r46-clean .r46-stage {
+  border: 0; border-radius: 0;
+  min-height: 100vh; min-height: 100dvh;
+}
+.r46-exit-clean {
+  position: fixed; inset-block-start: 14px; inset-inline-end: 14px;
+  z-index: 60; display: none;
+  min-height: 46px; padding: .55rem .9rem;
+  border: 1px solid var(--ig-separator); border-radius: 999px;
+  background: color-mix(in srgb, var(--ig-bg-surface) 86%, transparent); color: var(--ig-text);
+  font: inherit; cursor: pointer;
+}
+body.r46-clean .r46-exit-clean { display: block; }
+@supports (backdrop-filter: blur(1px)) {
+  .r46-exit-clean { backdrop-filter: blur(var(--ig-glass-blur, 12px)); }
+}
+
+/* ---- preferencias del sistema y de la persona ---- */
+@media (prefers-reduced-transparency: reduce) {
+  .r46-exit-clean { backdrop-filter: none; background: var(--ig-bg-surface); }
+}
+body[data-ig-transparency="opaque"] .r46-exit-clean,
+body.ig-opaque .r46-exit-clean { backdrop-filter: none; background: var(--ig-bg-surface); }
+
+@media (prefers-contrast: more) {
+  .r46 { --ig-separator: var(--ig-text-muted); --ig-text-muted: var(--ig-text); }
+}
+@media (forced-colors: active) {
+  .r46-choice, .r46-actions button, .r46-select, .r46-exit-clean {
+    border: 1px solid CanvasText; background: Canvas; color: CanvasText;
+  }
+  .r46-choice[aria-pressed="true"] { outline: 2px solid Highlight; }
+  .r46-stage { border: 1px solid CanvasText; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .r46-stage, .r46-choice, .r46-actions button { transition: none !important; }
+}
+
+:where(.r46) :focus-visible {
+  outline: 3px solid var(--ig-focus);
+  outline-offset: 2px;
+}
+
+/* #303 · un control oculto no puede reaparecer como hueco vacio */
+.r46 .r46-actions [hidden],
+.r42-rincon .r40-scene-actions [hidden] { display: none !important; }
+
+
+/* ================= adaptador del shell R42 para la familia `quiet` ==========
+   No se copia el CSS del chrome comun: solo se ajusta lo que R49 pide para el
+   Rincon, que el stage se sienta grande y que la experiencia no quede dentro
+   de una tarjeta estrecha. */
+body.r46-page .ig-r42-shell {
+  margin: 0;
+  border-radius: var(--r46-radius);
+}
+body.r46-page .ig-r42-workspace {
+  padding: clamp(6px, .6vw, 12px);
+  background: var(--ig-bg-surface);
+}
+body.r46-page .ig-r42-stage {
+  background: var(--ig-bg-surface);
+  border-color: var(--ig-separator);
+  border-radius: calc(var(--r46-radius) - 4px);
+  padding: 0;
+}
+body.r46-page .ig-r42-stage > #r40Workspace { padding: 0; }
+body.r46-page .r46-panels { min-width: 0; }
+
+/* los modos viven en el contexto del shell: una fila, no una columna */
+body.r46-page .ig-r42-context { background: var(--ig-bg-surface); border-bottom-color: var(--ig-separator); }
+body.r46-page .ig-r42-context .r40-tabs {
+  display: flex; flex-wrap: wrap; width: max-content; max-width: 100%;
+  background: color-mix(in srgb, var(--ig-text) 6%, transparent);
+  border-color: var(--ig-separator);
+}
+body.r46-page .ig-r42-context .r40-tabs button {
+  width: auto; flex: none; color: var(--ig-text);
+}
+body.r46-page .ig-r42-context .r40-tabs button[aria-selected="true"] {
+  background: var(--ig-button-primary-bg); color: var(--ig-button-primary-fg);
+}
+body.r46-page .ig-r42-context .r40-mobile-mode { color: var(--ig-text); }
+@media (max-width: 640px) {
+  body.r46-page .ig-r42-context .r40-tabs { display: none; }
+}
+
+/* dentro del stage el rail de controles no necesita tarjeta propia */
+body.r46-page .ig-r42-stage .r46-workspace { margin: 0; }
+
+/* ---- pantalla limpia dentro del shell: el viewport entero, sin recortes ---- */
+/* el sitio reserva hueco de barra de desplazamiento en html; en pantalla
+   limpia no hay scroll y ese hueco seria una franja lateral sin funcion */
+html:has(body.r46-clean) { overflow: hidden; scrollbar-gutter: auto; }
+body.r46-clean { overflow: hidden; }
+@supports not selector(html:has(body)) { body.r46-clean { position: fixed; inset: 0; width: 100%; } }
+body.r46-clean .ig-r42-topbar,
+body.r46-clean .ig-r42-context,
+body.r46-clean .ig-r42-rail,
+body.r46-clean .ig-r42-inspector { display: none !important; }
+body.r46-clean .ig-r42-shell {
+  margin: 0; border: 0; border-radius: 0; box-shadow: none;
+  width: 100%; max-width: none;
+}
+body.r46-clean .ig-r42-body { display: block; }
+body.r46-clean .ig-r42-workspace {
+  padding: 0; border: 0; border-radius: 0; min-height: 0; overflow: visible; background: var(--ig-bg-surface);
+}
+body.r46-clean .ig-r42-stage {
+  padding: 0; border: 0; border-radius: 0; box-shadow: none; min-height: 0; overflow: visible;
+}
+body.r46-clean .ig-r42-stage > #r40Workspace { padding: 0; }

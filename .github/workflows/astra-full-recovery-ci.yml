@@ -1,0 +1,40 @@
+name: Astra full recovery CI
+on:
+  push:
+    branches: ['astra/full-recovery-main-20261002']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Prepare browser QA
+        run: |
+          python -m venv /tmp/ig-recovery
+          /tmp/ig-recovery/bin/pip -q install beautifulsoup4 pillow playwright==1.55.0
+          /tmp/ig-recovery/bin/python -m playwright install --with-deps chromium >/tmp/ig-recovery-install.log 2>&1
+      - name: Build twice
+        run: |
+          python scripts/build_site.py
+          python scripts/build_site.py
+      - name: Static recovery gates
+        run: |
+          python scripts/test_r67_global_shell_all.py --root dist
+          python scripts/test_r67_aura_recovery.py --root dist
+          python scripts/test_home_child_safe_r42.py --root dist
+          if [ -f scripts/test_r51_age_965.py ]; then python scripts/test_r51_age_965.py; fi
+      - name: Browser recovery gates
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-recovery-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-recovery/bin/python scripts/test_r67_aura_recovery_browser.py
+          /tmp/ig-recovery/bin/python scripts/test_home_child_safe_browser.py
+          if [ -f scripts/test_r51_home_age_browser.py ]; then /tmp/ig-recovery/bin/python scripts/test_r51_home_age_browser.py; fi

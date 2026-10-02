@@ -7,6 +7,7 @@ modificar la fuente real.
 import json
 import os
 import shutil
+import stat
 import subprocess
 import sys
 import tempfile
@@ -14,6 +15,16 @@ from pathlib import Path
 from repair_routes import ROOT,PUBLIC_DIRS,PUBLIC_ROOT
 
 STAGING_ENV='IRISGREEN_BUILD_STAGING'
+
+
+def _rmtree_onerror(func, path, exc_info):
+    """Windows: copytree may preserve ReadOnly; clear it and retry removal."""
+    os.chmod(path, stat.S_IWRITE)
+    func(path)
+
+
+def _rmtree(path: Path) -> None:
+    shutil.rmtree(path, onerror=_rmtree_onerror)
 
 
 def _copy_repo_to_staging(stage: Path) -> None:
@@ -41,7 +52,7 @@ def _build_in_staging():
         if not staged_dist.is_dir():raise FileNotFoundError(staged_dist)
         dst=ROOT/'dist'
         if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
-        if dst.exists():shutil.rmtree(dst)
+        if dst.exists():_rmtree(dst)
         shutil.copytree(staged_dist,dst)
     after=_git_state(ROOT)
     if after!=before:
@@ -69,20 +80,25 @@ def build():
     # se solicitan únicamente cuando la persona los elige.
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_directorio_lazy.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/assemble_rincon_3d.py')],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/materialize_rincon_pecera.py')],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_estudios.py')],cwd=ROOT,check=True)
-    # R43/Design: aplicar el sistema material a portada + todas las rutas públicas
-    # existentes del Taller, sin modificar motores ni contenido.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_taller_materials_r43.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(ROOT)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/build_taller_suite.py')],cwd=ROOT,check=True)
+    # Sabik Audio R01 se reconstruye byte-exacto únicamente dentro del staging del build.
+    subprocess.run([sys.executable,str(ROOT/'scripts/materialize_sabik_audio_r01.py')],cwd=ROOT,check=True)
 
     dst=ROOT/'dist'
     if dst.is_symlink():raise ValueError('dist no puede ser un enlace simbólico')
-    if dst.exists():shutil.rmtree(dst)
+    if dst.exists():_rmtree(dst)
     dst.mkdir()
     for name in PUBLIC_DIRS:
         p=ROOT/name
         if not p.is_dir():raise FileNotFoundError(p)
-        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns('__pycache__','*.py','*.md','*.dc.html'))
+        ignored=['__pycache__','*.py','*.md','*.dc.html']
+        # Sabik's iris-panel.html is a source fragment embedded into Home, not a
+        # standalone public document. Publishing it would make release audits
+        # treat a headless fragment as a page.
+        if name=='sabik': ignored.append('iris-panel.html')
+        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns(*ignored))
     for name in PUBLIC_ROOT:
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
@@ -145,40 +161,123 @@ def build():
 
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_iris_brief_r08.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_page_finder.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R69: the old per-page section finder and the R42 pilot app shell are retired.
+    # Search, settings and age live in the single R49/R69 global shell. Keeping the
+    # two older adapters here caused duplicate controls and first-paint shell swaps.
 
-    # R02 documentación general: cuatro correcciones jurídicas auditadas, aplicadas
-    # como delta exacto sobre las dos copias públicas del dataset.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_normalized_legal_r02.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R67 A2 phase 1: migrate only Interests hubs to the real global R49/R50 shell.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_interests_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_interests_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    # R02 Investigación: incorporar los 12 estudios normalizados nuevos y verificar
-    # el hash del delta antes de aplicar la separación Child Safety.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_research_r02_delta.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R67 A2 phase 1: migrate only the Quiet Space outer shell; preserve its immersive runtime.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_quiet_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_quiet_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    # R42 Child Safety: construir el índice seguro ANTES de que el buscador del navegador lo consuma.
-    # DEFAULT/INFANCIA/ADOLESCENCIA nunca descargan el catálogo adulto completo.
-    subprocess.run([sys.executable,str(ROOT/'scripts/build_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safety_search.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # S2 con ruta propia: el cuerpo completo sale del HTML inicial y queda en un fragmento
-    # separado. Solo ADULTEZ + acción explícita lo solicita desde el navegador.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_pages.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Investigación agregada: retirar seis S2 del dataset/fallback inicial y
-    # publicar sus cuerpos solo como fragmentos lazy de carga explícita adulta.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_research.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    # Discovery transversal: retirar tarjetas/enlaces S2 incidentales antes del render.
-    # Adultez recupera únicamente metadatos seguros tras selección explícita.
-    subprocess.run([sys.executable,str(ROOT/'scripts/filter_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_child_safe_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R67 A2 phase 1: migrate only the Workshop hubs to the real global R49/R50 shell.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_taller_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_taller_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
-    # R42 A3: piloto del app shell interactivo en cuatro familias ES/EN (gate técnico final R42).
-    # Se mantiene deliberadamente acotado hasta HUMAN QA; no es propagación global.
-    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_r42_app_shell.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_taller_material_coverage.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # R42 A8: Home final ES/EN + child safety before public evidence is computed.
+    # S2 full bodies are extracted from initial HTML/JSON and never prefetched.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_child_safe_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_home_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_home_child_safe_r42.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Conditions only. Other R49 sections remain untouched.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_conditions_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_conditions_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Situations only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_situations_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_situations_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Everyday life only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_everyday_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_everyday_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Research single-route ES/EN app.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_research_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_research_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Data only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_data_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_data_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Support and procedures only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_support_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_support_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Resources hub only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_resources_hub_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_resources_hub_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Games ES/EN only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_games_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_games_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Visual routines ES/EN only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_visual_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_visual_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Printable routines ES/EN only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_printable_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_printable_routines_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Count and pay ES/EN workspace only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_count_pay_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_count_pay_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Iris Card ES/EN workspace only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_iris_card_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_iris_card_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Videos bilingual catalogue only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_videos_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_videos_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Books bilingual catalogue only.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_books_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_books_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: adult-only Questionnaires workspace.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_questionnaires_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_questionnaires_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Accessible reading documentation.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_accessible_reading_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_accessible_reading_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Methodology ES/EN-by-query content.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_methodology_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_methodology_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Privacy ES/EN content.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_privacy_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_privacy_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: About Iris Green ES/EN-by-query content.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_about_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_about_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R50 A2 incremental rollout: Living abroad ES/EN-by-query browse.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r50_living_abroad_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r50_living_abroad_ui.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R67 Aura: guarantee the new global shell on every remaining public route.
+    # Product-specific R50/R67 adapters run first; this pass only fills legacy gaps.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r67_global_shell_all.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r67_global_shell_all.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R51 A2: audience/discovery filtering from the approved 965-record safety snapshot.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r51_audience_discovery.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
+    # R69: one interface, one age lens and deterministic Workshop first paint.
+    # These final passes intentionally run after all older route-specific adapters.
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_workshop_stable.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/reorganize_activity_hubs.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_global_cleanup.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)

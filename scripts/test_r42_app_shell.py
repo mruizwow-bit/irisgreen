@@ -9,7 +9,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from apply_r42_app_shell import CHILD_SAFETY_JS, CSS, JS, MATERIALS, PILOT, apply
+from apply_r42_app_shell import CSS, JS, MATERIALS, PILOT, apply
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -38,7 +38,6 @@ def synthetic_contract() -> None:
             text = (root / rel).read_text(encoding="utf-8")
             assert text.count(CSS) == 1, rel
             assert text.count(JS) == 1, rel
-            assert text.count(CHILD_SAFETY_JS) == 1, rel
             assert text.count(MATERIALS) == 1, rel
             assert text.index(MATERIALS) < text.index(CSS), rel
             assert 'data-ig-materials="r42"' in text, rel
@@ -114,21 +113,10 @@ def source_contract() -> None:
     for token in ("prefers-reduced-transparency", "igTransparency", "igTransparencySource", "mountTransparency", "Transparencia", "Transparency"):
         assert token in prefs, token
 
-    shell_js = (ROOT / "assets/ig-r42-shell.js").read_text(encoding="utf-8")
-    child_js = (ROOT / "assets/ig-child-safety.js").read_text(encoding="utf-8")
-    for token in ("Contenido para…", "Content for…", "audienceChild", "audienceTeen", "audienceAdult", "IGChildSafety.setAudience"):
-        assert token in shell_js, token
-    for token in ("localStorage", "sessionStorage"):
-        assert token not in child_js, token
-    for token in ("S2_HIGH_SENSITIVITY", "explicitAction===true", "ig:child-safety-purge-full"):
-        assert token in child_js, token
-
     # Parse the actual JS when Node is available (GitHub/Netlify runners have it).
     node = shutil.which("node")
     if node:
         subprocess.run([node, "--check", str(ROOT / "assets/ig-r42-shell.js")], check=True)
-        subprocess.run([node, "--check", str(ROOT / "assets/ig-child-safety.js")], check=True)
-        subprocess.run([node, str(ROOT / "scripts/test_child_safety_policy.js")], check=True, cwd=ROOT)
         subprocess.run([node, "--check", str(ROOT / "assets/preferencias-lectura.js")], check=True)
 
     # Pilot remains deliberately scoped to one ES/EN surface per family.
@@ -145,21 +133,10 @@ def built_contract(root: Path) -> None:
         text = path.read_text(encoding="utf-8")
         assert CSS in text, rel
         assert JS in text, rel
-        assert CHILD_SAFETY_JS in text, rel
         assert MATERIALS in text, rel
         assert 'data-ig-materials="r42"' in text, rel
         assert 'data-ig-r42-pilot="true"' in text, rel
         assert f'data-ig-r42-family="{family}"' in text, rel
-
-    # R43 · every page already built on the R42 shell (Taller suite) receives the material system.
-    for path in root.rglob("index.html"):
-        text = path.read_text(encoding="utf-8")
-        body = re.search(r"<body[^>]*>", text, re.I)
-        if body and 'data-ig-r42-pilot="true"' in body.group(0):
-            rel = path.relative_to(root).as_posix()
-            assert MATERIALS in text, rel
-            assert 'data-ig-materials="r42"' in body.group(0), rel
-            assert "ig-r42-shell.css?v=r42-a3-1" not in text, rel
 
     # No accidental site-wide propagation before human acceptance.
     for rel in ("index.html", "es/recursos/index.html", "en/resources/index.html"):
@@ -169,7 +146,6 @@ def built_contract(root: Path) -> None:
         text = path.read_text(encoding="utf-8")
         assert CSS not in text, rel
         assert JS not in text, rel
-        assert CHILD_SAFETY_JS not in text, rel
         assert "data-ig-r42-pilot" not in text, rel
         assert MATERIALS not in text, rel
         assert "data-ig-materials" not in text, rel

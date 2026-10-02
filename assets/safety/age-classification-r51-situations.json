@@ -1,0 +1,3433 @@
+{
+  "schema": "R51_A2_AGE_CLASSIFICATION/1.0",
+  "domain": "situation",
+  "generated": "2026-09-28",
+  "source_manifest": "content-safety-manifest.json",
+  "source_manifest_sha256": "51bba62b23c520f43b73630501432a8f4e2a94940f8459c7848149f77b202d5e",
+  "source_records": 965,
+  "taxonomy": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS",
+    "ALL_AGES"
+  ],
+  "general_state": "GENERAL",
+  "policy": {
+    "no_fallback_to_all_ages": true,
+    "age_is_independent_from_sensitivity": true,
+    "s2_all_ages_forbidden": true,
+    "compatibility_legacy_only_during_migration": true
+  },
+  "totals": {
+    "records": 223,
+    "unclassified": 0,
+    "band_assignments": {
+      "AGE_0_12": 1,
+      "AGE_13_17": 49,
+      "AGE_18_PLUS": 74,
+      "ALL_AGES": 148
+    },
+    "visible_by_filter": {
+      "AGE_0_12": 149,
+      "AGE_13_17": 197,
+      "AGE_18_PLUS": 222,
+      "ALL_AGES": 148
+    }
+  },
+  "records": [
+    {
+      "content_id": "global-001",
+      "surface": "situation",
+      "title_es": "No aguanto las etiquetas ni las costuras de la ropa",
+      "title_en": "“I can't stand clothing tags or seams”",
+      "url_es": "/es/situaciones/la-ropa-me-molesta/",
+      "url_en": "/en/situations/clothes-feel-unbearable/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-002",
+      "surface": "situation",
+      "title_es": "Salgo del supermercado sin energía y no sé por qué",
+      "title_en": "“I leave the supermarket exhausted and I don't know why”",
+      "url_es": "/es/situaciones/la-luz-del-supermercado-me-agota/",
+      "url_en": "/en/situations/supermarket-lights-drain-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-003",
+      "surface": "situation",
+      "title_es": "Me despierto de madrugada y ya no vuelvo a dormirme",
+      "title_en": "“I wake in the early hours and can't get back to sleep”",
+      "url_es": "/es/situaciones/me-despierto-de-madrugada/",
+      "url_en": "/en/situations/i-wake-up-at-3am/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-004",
+      "surface": "situation",
+      "title_es": "«Me lo explican y a los dos minutos no sé qué tenía que hacer»",
+      "title_en": "“They explain it to me and two minutes later I don't know what I was meant to do”",
+      "url_es": "/es/situaciones/necesito-que-me-repitan-las-instrucciones/",
+      "url_en": "/en/situations/i-need-instructions-repeated/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-005",
+      "surface": "situation",
+      "title_es": "«Se me olvida comer y luego me da un bajón»",
+      "title_en": "“I forget to eat and then I crash”",
+      "url_es": "/es/situaciones/se-me-olvida-comer/",
+      "url_en": "/en/situations/i-forget-to-eat/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-006",
+      "surface": "situation",
+      "title_es": "«Al acostarme repaso todo lo que hice mal»",
+      "title_en": "“When I go to bed I replay everything I did wrong”",
+      "url_es": "/es/situaciones/repaso-en-la-cama-todo-lo-que-hice-mal/",
+      "url_en": "/en/situations/i-replay-everything-i-did-wrong/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-007",
+      "surface": "situation",
+      "title_es": "«Me agoto después de estar con gente, aunque lo haya pasado bien»",
+      "title_en": "“I feel exhausted after being with people, even when I enjoyed it”",
+      "url_es": "/es/situaciones/me-agoto-despues-de-estar-con-gente/",
+      "url_en": "/en/situations/drained-after-seeing-people/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-008",
+      "surface": "situation",
+      "title_es": "«A media reunión desconecto y ya no sé por dónde van»",
+      "title_en": "“Halfway through a meeting I zone out and lose the thread”",
+      "url_es": "/es/situaciones/pierdo-el-hilo-en-las-reuniones/",
+      "url_en": "/en/situations/i-lose-the-thread-in-meetings/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-009",
+      "surface": "situation",
+      "title_es": "«Se me acumula la ropa y no sé por dónde empezar»",
+      "title_en": "“The laundry piles up and I don't know where to start”",
+      "url_es": "/es/situaciones/se-me-acumula-la-ropa/",
+      "url_en": "/en/situations/laundry-piles-up/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-010",
+      "surface": "situation",
+      "title_es": "«Pierdo las llaves y el móvil varias veces al día»",
+      "title_en": "“I lose my keys and phone several times a day”",
+      "url_es": "/es/situaciones/pierdo-las-llaves-y-el-movil/",
+      "url_en": "/en/situations/i-lose-my-keys-and-phone/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-011",
+      "surface": "situation",
+      "title_es": "Me acuesto después de un día agotador y no consigo dormir",
+      "title_en": "“I go to bed tired and sleep doesn't come”",
+      "url_es": "/es/situaciones/me-acuesto-y-el-sueno-no-llega/",
+      "url_en": "/en/situations/sleep-doesnt-come/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-012",
+      "surface": "situation",
+      "title_es": "Me despierto varias veces cada noche",
+      "title_en": "“I wake up several times every night”",
+      "url_es": "/es/situaciones/me-despierto-varias-veces-cada-noche/",
+      "url_en": "/en/situations/i-wake-up-several-times-a-night/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-013",
+      "surface": "situation",
+      "title_es": "Si cambia algo de mi rutina de noche, no me duermo",
+      "title_en": "“If anything changes in my night-time routine, I can't sleep”",
+      "url_es": "/es/situaciones/si-cambia-mi-rutina-no-me-duermo/",
+      "url_en": "/en/situations/any-change-to-my-night-routine/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-014",
+      "surface": "situation",
+      "title_es": "Por la noche siento más ansiedad",
+      "title_en": "“At night my anxiety gets bigger”",
+      "url_es": "/es/situaciones/por-la-noche-la-ansiedad-se-hace-mas-grande/",
+      "url_en": "/en/situations/at-night-the-anxiety-gets-bigger/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-015",
+      "surface": "situation",
+      "title_es": "No me duermo si no sé cómo será mañana",
+      "title_en": "“I can't sleep if I don't know what tomorrow will be like”",
+      "url_es": "/es/situaciones/no-me-duermo-si-no-se-como-sera-manana/",
+      "url_en": "/en/situations/i-cant-sleep-until-i-know-about-tomorrow/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-016",
+      "surface": "situation",
+      "title_es": "«Hay sitios en los que no me sale hablar»",
+      "title_en": "“There are places where I can't get speech out”",
+      "url_es": "/es/situaciones/no-me-sale-hablar-en-algunos-sitios/",
+      "url_en": "/en/situations/speech-doesnt-come-out/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-017",
+      "surface": "situation",
+      "title_es": "«Después de varias horas dejo de responder»",
+      "title_en": "“After several hours I stop responding”",
+      "url_es": "/es/situaciones/dejo-de-responder-despues-de-varias-horas/",
+      "url_en": "/en/situations/after-a-few-hours-i-stop-answering/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-018",
+      "surface": "situation",
+      "title_es": "«Tardo mucho en contestar y alguien contesta por mí»",
+      "title_en": "“I take a long time to answer and someone answers for me”",
+      "url_es": "/es/situaciones/tardo-mucho-en-contestar/",
+      "url_en": "/en/situations/i-take-a-long-time-to-answer/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-019",
+      "surface": "situation",
+      "title_es": "«Repito palabras y frases»",
+      "title_en": "“I repeat words and phrases”",
+      "url_es": "/es/situaciones/repito-palabras-y-frases/",
+      "url_en": "/en/situations/i-repeat-words-and-phrases/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-020",
+      "surface": "situation",
+      "title_es": "«Me dan una instrucción y no sé si la he entendido»",
+      "title_en": "“I'm given an instruction and I don't know whether I understood it”",
+      "url_es": "/es/situaciones/no-se-si-he-entendido-la-instruccion/",
+      "url_en": "/en/situations/i-dont-know-if-i-understood/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-021",
+      "surface": "situation",
+      "title_es": "«Necesito una adaptación en clase»",
+      "title_en": "“I need an adjustment in class”",
+      "url_es": "/es/situaciones/necesito-una-adaptacion-en-clase/",
+      "url_en": "/en/situations/i-need-an-adjustment-in-class/",
+      "age_bands": [
+        "AGE_0_12",
+        "AGE_13_17"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "School/classroom context for children and teenagers.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-022",
+      "surface": "situation",
+      "title_es": "«Necesito ajustes en el trabajo»",
+      "title_en": "“I need adjustments at work”",
+      "url_es": "/es/situaciones/necesito-ajustes-en-el-trabajo/",
+      "url_en": "/en/situations/i-need-adjustments-at-work/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-023",
+      "surface": "situation",
+      "title_es": "«Necesito un ajuste en clase o en el trabajo, pero no sé cómo pedirlo»",
+      "title_en": "“I need an adjustment in class or at work, but I don't know how to ask for it”",
+      "url_es": "/es/situaciones/necesito-un-ajuste-y-no-se-como-pedirlo/",
+      "url_en": "/en/situations/i-need-an-adjustment-and-dont-know-how-to-ask/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-024",
+      "surface": "situation",
+      "title_es": "«Quiero hacerlo, pero no consigo empezar»",
+      "title_en": "“I want to do it, but I can't get started”",
+      "url_es": "/es/situaciones/quiero-hacerlo-pero-no-consigo-empezar/",
+      "url_en": "/en/situations/i-want-to-do-it-but-i-cant-get-started/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-025",
+      "surface": "situation",
+      "title_es": "«Solo consigo arrancar cuando algo me interesa mucho»",
+      "title_en": "“I can only get started when something interests me a lot”",
+      "url_es": "/es/situaciones/solo-consigo-arrancar-cuando-algo-me-interesa-mucho/",
+      "url_en": "/en/situations/i-can-only-get-started-when-something-interests-me-a-lot/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-026",
+      "surface": "situation",
+      "title_es": "«Una tarea grande me bloquea antes de empezar»",
+      "title_en": "“A large task blocks me before I even start”",
+      "url_es": "/es/situaciones/una-tarea-grande-me-bloquea-antes-de-empezar/",
+      "url_en": "/en/situations/a-large-task-blocks-me-before-i-even-start/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-027",
+      "surface": "situation",
+      "title_es": "«Pospongo incluso cosas que sí quiero hacer»",
+      "title_en": "“I put off even things I genuinely want to do”",
+      "url_es": "/es/situaciones/pospongo-incluso-cosas-que-si-quiero-hacer/",
+      "url_en": "/en/situations/i-put-off-even-things-i-genuinely-want-to-do/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-028",
+      "surface": "situation",
+      "title_es": "«Un cambio pequeño altera todo el día»",
+      "title_en": "“A small change disrupts my whole day”",
+      "url_es": "/es/situaciones/un-cambio-pequeno-altera-todo-el-dia/",
+      "url_en": "/en/situations/a-small-change-disrupts-my-whole-day/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-029",
+      "surface": "situation",
+      "title_es": "«Cambiar de una tarea a otra me bloquea»",
+      "title_en": "“Switching from one task to another blocks me”",
+      "url_es": "/es/situaciones/cambiar-de-una-tarea-a-otra-me-bloquea/",
+      "url_en": "/en/situations/switching-from-one-task-to-another-blocks-me/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-030",
+      "surface": "situation",
+      "title_es": "«Necesito ayuda para una cita médica»",
+      "title_en": "“I need help with a medical appointment”",
+      "url_es": "/es/situaciones/necesito-ayuda-para-una-cita-medica/",
+      "url_en": "/en/situations/i-need-help-with-a-medical-appointment/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-031",
+      "surface": "situation",
+      "title_es": "«No consigo explicar mis síntomas al médico»",
+      "title_en": "“I can't explain my symptoms to the doctor”",
+      "url_es": "/es/situaciones/no-consigo-explicar-mis-sintomas-al-medico/",
+      "url_en": "/en/situations/i-cant-explain-my-symptoms-to-the-doctor/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-032",
+      "surface": "situation",
+      "title_es": "«El hospital me sobrecarga»",
+      "title_en": "“The hospital overwhelms me”",
+      "url_es": "/es/situaciones/el-hospital-me-sobrecarga/",
+      "url_en": "/en/situations/the-hospital-overwhelms-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-033",
+      "surface": "situation",
+      "title_es": "«Comer fuera de casa es muy difícil»",
+      "title_en": "“Eating away from home is very difficult”",
+      "url_es": "/es/situaciones/comer-fuera-de-casa-es-muy-dificil/",
+      "url_en": "/en/situations/eating-away-from-home-is-very-difficult/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-034",
+      "surface": "situation",
+      "title_es": "«Comer en un restaurante me resulta demasiado»",
+      "title_en": "“Eating in a restaurant is too much for me”",
+      "url_es": "/es/situaciones/comer-en-un-restaurante-me-resulta-demasiado/",
+      "url_en": "/en/situations/eating-in-a-restaurant-is-too-much-for-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-035",
+      "surface": "situation",
+      "title_es": "«Comer fuera es demasiado impredecible»",
+      "title_en": "“Eating out is too unpredictable”",
+      "url_es": "/es/situaciones/comer-fuera-es-demasiado-impredecible/",
+      "url_en": "/en/situations/eating-out-is-too-unpredictable/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-036",
+      "surface": "situation",
+      "title_es": "No noto hambre ni sed",
+      "title_en": "“They don't notice hunger or thirst”",
+      "url_es": "/es/situaciones/no-nota-hambre-o-sed/",
+      "url_en": "/en/situations/they-dont-notice-hunger-or-thirst/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-037",
+      "surface": "situation",
+      "title_es": "No sé si necesito descansar, comer o alejarme del ruido",
+      "title_en": "“I don't know whether I'm tired, overloaded or hungry”",
+      "url_es": "/es/situaciones/no-se-si-estoy-cansada-saturada-o-tengo-hambre/",
+      "url_en": "/en/situations/i-dont-know-whether-im-tired-overloaded-or-hungry/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-038",
+      "surface": "situation",
+      "title_es": "El hambre aparece de golpe y ya me encuentro mal",
+      "title_en": "“Hunger hits suddenly and by then I feel awful”",
+      "url_es": "/es/situaciones/el-hambre-aparece-de-golpe-y-ya-estoy-fatal/",
+      "url_en": "/en/situations/hunger-hits-suddenly-and-by-then-i-feel-awful/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-039",
+      "surface": "situation",
+      "title_es": "«Estoy explorando mi género»",
+      "title_en": "“I'm exploring my gender”",
+      "url_es": "/es/situaciones/estoy-explorando-mi-genero/",
+      "url_en": "/en/situations/im-exploring-my-gender/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-040",
+      "surface": "situation",
+      "title_es": "«Estoy explorando mi género y todavía no tengo una palabra»",
+      "title_en": "“I'm exploring my gender and I don't have a word for it yet”",
+      "url_es": "/es/situaciones/estoy-explorando-mi-genero-y-todavia-no-tengo-una-palabra/",
+      "url_en": "/en/situations/im-exploring-my-gender-without-a-word-yet/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-041",
+      "surface": "situation",
+      "title_es": "«Soy autista y también trans o no binario»",
+      "title_en": "“I'm autistic and I'm also trans or non-binary”",
+      "url_es": "/es/situaciones/soy-autista-y-tambien-trans-o-no-binario/",
+      "url_en": "/en/situations/im-autistic-and-im-also-trans-or-non-binary/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-042",
+      "surface": "situation",
+      "title_es": "«Mi forma de vestir no coincide con lo que esperan de mi género»",
+      "title_en": "“The way I dress doesn't match what people expect of my gender”",
+      "url_es": "/es/situaciones/mi-forma-de-vestir-no-coincide-con-lo-que-esperan-de-mi/",
+      "url_en": "/en/situations/the-way-i-dress-and-my-gender/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-043",
+      "surface": "situation",
+      "title_es": "«Mi experiencia de género cambia con el tiempo»",
+      "title_en": "“My experience of gender changes over time”",
+      "url_es": "/es/situaciones/mi-experiencia-de-genero-cambia-con-el-tiempo/",
+      "url_en": "/en/situations/my-experience-of-gender-changes-over-time/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-044",
+      "surface": "situation",
+      "title_es": "«Siguen usando un nombre que ya no utilizo»",
+      "title_en": "“People keep using a name I no longer use”",
+      "url_es": "/es/situaciones/siguen-usando-un-nombre-que-ya-no-utilizo/",
+      "url_en": "/en/situations/people-keep-using-a-name-i-no-longer-use/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-045",
+      "surface": "situation",
+      "title_es": "«No quiero que mi nombre anterior aparezca delante de otras personas»",
+      "title_en": "“I don't want my previous name to appear in front of other people”",
+      "url_es": "/es/situaciones/no-quiero-que-aparezca-mi-nombre-anterior/",
+      "url_en": "/en/situations/i-dont-want-my-previous-name-shown/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-046",
+      "surface": "situation",
+      "title_es": "«No sé qué pronombre usar para una persona»",
+      "title_en": "“I don't know which pronoun to use for someone”",
+      "url_es": "/es/situaciones/no-se-que-pronombre-usar-para-una-persona/",
+      "url_en": "/en/situations/i-dont-know-which-pronoun-to-use-for-someone/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Identity/social context presented for teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-047",
+      "surface": "situation",
+      "title_es": "«Usar otro nombre me hace sentir más cómoda»",
+      "title_en": "“Using another name makes me feel more comfortable”",
+      "url_es": "/es/situaciones/usar-otro-nombre-me-hace-sentir-mas-comoda/",
+      "url_en": "/en/situations/using-another-name-makes-me-feel-more-comfortable/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-048",
+      "surface": "situation",
+      "title_es": "«Siento que tengo que parecer normal para encajar»",
+      "title_en": "“I feel I have to look normal to fit in”",
+      "url_es": "/es/situaciones/siento-que-tengo-que-parecer-normal-para-encajar/",
+      "url_en": "/en/situations/i-feel-i-have-to-look-normal-to-fit-in/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-049",
+      "surface": "situation",
+      "title_es": "«Siento que actúo todo el día para parecer normal»",
+      "title_en": "“I feel as though I'm acting all day to look normal”",
+      "url_es": "/es/situaciones/siento-que-actuo-todo-el-dia-para-parecer-normal/",
+      "url_en": "/en/situations/i-feel-as-though-im-acting-all-day-to-look-normal/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-050",
+      "surface": "situation",
+      "title_es": "«Siento que tengo que ocultar partes de mí para encajar»",
+      "title_en": "“I feel I have to hide parts of myself to fit in”",
+      "url_es": "/es/situaciones/siento-que-tengo-que-ocultar-partes-de-mi-para-encajar/",
+      "url_en": "/en/situations/i-feel-i-have-to-hide-parts-of-myself-to-fit-in/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-051",
+      "surface": "situation",
+      "title_es": "«En el trabajo gasto toda mi energía en parecer que estoy bien»",
+      "title_en": "“At work I use all my energy trying to look as though I'm fine”",
+      "url_es": "/es/situaciones/en-el-trabajo-gasto-la-energia-en-parecer-que-estoy-bien/",
+      "url_en": "/en/situations/at-work-i-spend-my-energy-looking-fine/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult household/administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-052",
+      "surface": "situation",
+      "title_es": "«No sé qué información es privada»",
+      "title_en": "“I don't know what information is private”",
+      "url_es": "/es/situaciones/no-se-que-informacion-es-privada/",
+      "url_en": "/en/situations/i-dont-know-what-information-is-private/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-053",
+      "surface": "situation",
+      "title_es": "«Comparto información y después pienso que era demasiado privada»",
+      "title_en": "“I share information and afterwards think it was too private”",
+      "url_es": "/es/situaciones/comparto-informacion-y-despues-me-arrepiento/",
+      "url_en": "/en/situations/i-share-information-and-regret-it-afterwards/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-054",
+      "surface": "situation",
+      "title_es": "El ruido me resulta insoportable",
+      "title_en": "“Noise is unbearable for them”",
+      "url_es": "/es/situaciones/el-ruido-le-resulta-insoportable/",
+      "url_en": "/en/situations/noise-is-unbearable-for-them/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-055",
+      "surface": "situation",
+      "title_es": "Los exámenes en un aula ruidosa son insoportables",
+      "title_en": "“Exams in a noisy classroom are unbearable”",
+      "url_es": "/es/situaciones/los-examenes-en-un-aula-ruidosa-son-insoportables/",
+      "url_en": "/en/situations/exams-in-a-noisy-classroom-are-unbearable/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-056",
+      "surface": "situation",
+      "title_es": "Los sonidos normales me resultan dolorosos",
+      "title_en": "“Ordinary sounds are painful for me”",
+      "url_es": "/es/situaciones/los-sonidos-normales-me-resultan-dolorosos/",
+      "url_en": "/en/situations/ordinary-sounds-are-painful-for-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-057",
+      "surface": "situation",
+      "title_es": "Hay sonidos concretos que me hacen reaccionar de inmediato",
+      "title_en": "“Specific sounds trigger an immediate reaction in me”",
+      "url_es": "/es/situaciones/hay-sonidos-concretos-que-me-provocan-una-reaccion/",
+      "url_en": "/en/situations/specific-sounds-trigger-an-immediate-reaction-in-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-058",
+      "surface": "situation",
+      "title_es": "«El transporte público me sobrecarga»",
+      "title_en": "“Public transport overwhelms me”",
+      "url_es": "/es/situaciones/el-transporte-publico-me-sobrecarga/",
+      "url_en": "/en/situations/public-transport-overwhelms-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-059",
+      "surface": "situation",
+      "title_es": "«Me cuesta el transporte o los espacios porque también tengo una discapacidad física»",
+      "title_en": "“Transport or public spaces are difficult because I also have a physical disability”",
+      "url_es": "/es/situaciones/me-cuesta-el-transporte-por-discapacidad-fisica/",
+      "url_en": "/en/situations/transport-is-difficult-with-a-physical-disability/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-060",
+      "surface": "situation",
+      "title_es": "Las luces blancas me cansan muy rápido",
+      "title_en": "“White lights tire me out very quickly”",
+      "url_es": "/es/situaciones/las-luces-blancas-me-cansan-muy-rapido/",
+      "url_en": "/en/situations/white-lights-tire-me-out-very-quickly/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-061",
+      "surface": "situation",
+      "title_es": "El olor de algunas tiendas me obliga a salir",
+      "title_en": "“The smell in some shops makes me leave”",
+      "url_es": "/es/situaciones/el-olor-de-algunas-tiendas-me-obliga-a-salir/",
+      "url_en": "/en/situations/the-smell-in-some-shops-makes-me-leave/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-062",
+      "surface": "situation",
+      "title_es": "No noto que tengo frío hasta que estoy temblando",
+      "title_en": "“I do not notice I am cold until I am shivering”",
+      "url_es": "/es/situaciones/no-noto-que-tengo-frio-hasta-que-estoy-temblando/",
+      "url_en": "/en/situations/i-do-not-notice-i-am-cold-until-i-am-shivering/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-063",
+      "surface": "situation",
+      "title_es": "El calor me agota antes que a otras personas",
+      "title_en": "“Heat overwhelms me sooner than it seems to overwhelm other people”",
+      "url_es": "/es/situaciones/el-calor-me-satura-antes-que-a-otras-personas/",
+      "url_en": "/en/situations/heat-overwhelms-me-sooner-than-it-seems-to-overwhelm-other-people/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-064",
+      "surface": "situation",
+      "title_es": "Necesito moverme para poder concentrarme",
+      "title_en": "“I need to move in order to concentrate”",
+      "url_es": "/es/situaciones/necesito-moverme-para-poder-concentrarme/",
+      "url_en": "/en/situations/i-need-to-move-in-order-to-concentrate/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-065",
+      "surface": "situation",
+      "title_es": "Me mareo con ciertos movimientos o escaleras mecánicas",
+      "title_en": "“Certain movements or escalators make me dizzy”",
+      "url_es": "/es/situaciones/me-mareo-con-ciertos-movimientos-o-escaleras-mecanicas/",
+      "url_en": "/en/situations/certain-movements-or-escalators-make-me-dizzy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-066",
+      "surface": "situation",
+      "title_es": "Las multitudes me desorientan aunque no haya mucho ruido",
+      "title_en": "“Crowds disorient me even when they are not very noisy”",
+      "url_es": "/es/situaciones/las-multitudes-me-desorientan-aunque-no-haya-mucho-ruido/",
+      "url_en": "/en/situations/crowds-disorient-me-even-when-they-are-not-very-noisy/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-067",
+      "surface": "situation",
+      "title_es": "El contacto inesperado me sobresalta muchísimo",
+      "title_en": "“Unexpected touch startles me intensely”",
+      "url_es": "/es/situaciones/el-contacto-inesperado-me-sobresalta-muchisimo/",
+      "url_en": "/en/situations/unexpected-touch-startles-me-intensely/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-068",
+      "surface": "situation",
+      "title_es": "Me cuesta saber cuánta fuerza estoy usando",
+      "title_en": "“I find it hard to judge how much force I am using”",
+      "url_es": "/es/situaciones/me-cuesta-saber-cuanta-fuerza-estoy-usando/",
+      "url_en": "/en/situations/i-find-it-hard-to-judge-how-much-force-i-am-using/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-069",
+      "surface": "situation",
+      "title_es": "Necesito tocar o apretar cosas para calmarme",
+      "title_en": "“I need to touch or squeeze things to regulate myself”",
+      "url_es": "/es/situaciones/necesito-tocar-o-apretar-cosas-para-regularme/",
+      "url_en": "/en/situations/i-need-to-touch-or-squeeze-things-to-regulate-myself/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-070",
+      "surface": "situation",
+      "title_es": "Algunos sabores me resultan demasiado intensos",
+      "title_en": "“Some flavours feel far too intense”",
+      "url_es": "/es/situaciones/algunos-sabores-me-resultan-demasiado-intensos/",
+      "url_en": "/en/situations/some-flavours-feel-far-too-intense/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-071",
+      "surface": "situation",
+      "title_es": "El agua de la ducha me molesta en la piel",
+      "title_en": "“Shower water feels uncomfortable on my skin”",
+      "url_es": "/es/situaciones/el-agua-de-la-ducha-me-molesta-en-la-piel/",
+      "url_en": "/en/situations/shower-water-feels-uncomfortable-on-my-skin/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-072",
+      "surface": "situation",
+      "title_es": "Los cambios de temperatura me dejan sin energía",
+      "title_en": "“Temperature changes leave me exhausted”",
+      "url_es": "/es/situaciones/los-cambios-de-temperatura-me-dejan-agotada/",
+      "url_en": "/en/situations/temperature-changes-leave-me-exhausted/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-073",
+      "surface": "situation",
+      "title_es": "Me cuesta encontrar una postura que no me moleste",
+      "title_en": "“I struggle to find a comfortable sitting position”",
+      "url_es": "/es/situaciones/me-cuesta-encontrar-una-postura-comoda-para-sentarme/",
+      "url_en": "/en/situations/i-struggle-to-find-a-comfortable-sitting-position/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-074",
+      "surface": "situation",
+      "title_es": "La ropa que tolero un día me molesta otro",
+      "title_en": "“Clothes I can tolerate one day bother me another day”",
+      "url_es": "/es/situaciones/la-ropa-que-tolero-un-dia-me-molesta-otro/",
+      "url_en": "/en/situations/clothes-i-can-tolerate-one-day-bother-me-another-day/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-075",
+      "surface": "situation",
+      "title_es": "Me entra sueño muy tarde aunque me levante temprano",
+      "title_en": "“I only feel sleepy very late even when I get up early”",
+      "url_es": "/es/situaciones/me-entra-sueno-muy-tarde-aunque-me-levante-temprano/",
+      "url_en": "/en/situations/i-only-feel-sleepy-very-late-even-when-i-get-up-early/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-076",
+      "surface": "situation",
+      "title_es": "Aunque duerma muchas horas, tardo mucho en despertarme",
+      "title_en": "“I struggle to wake up even after many hours of sleep”",
+      "url_es": "/es/situaciones/me-cuesta-despertarme-aunque-haya-dormido-muchas-horas/",
+      "url_en": "/en/situations/i-struggle-to-wake-up-even-after-many-hours-of-sleep/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-077",
+      "surface": "situation",
+      "title_es": "Los fines de semana mi horario de sueño cambia por completo",
+      "title_en": "“My sleep schedule shifts completely at weekends”",
+      "url_es": "/es/situaciones/los-fines-de-semana-se-me-cambia-todo-el-horario/",
+      "url_en": "/en/situations/my-sleep-schedule-shifts-completely-at-weekends/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-078",
+      "surface": "situation",
+      "title_es": "Hago la misma rutina antes de dormir",
+      "title_en": "“I need the same routine to be able to fall asleep”",
+      "url_es": "/es/situaciones/necesito-la-misma-rutina-para-poder-dormirme/",
+      "url_en": "/en/situations/i-need-the-same-routine-to-be-able-to-fall-asleep/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-079",
+      "surface": "situation",
+      "title_es": "Cualquier ruido me despierta, aunque sea bajo",
+      "title_en": "“Any small noise wakes me up”",
+      "url_es": "/es/situaciones/cualquier-ruido-pequeno-me-despierta/",
+      "url_en": "/en/situations/any-small-noise-wakes-me-up/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-080",
+      "surface": "situation",
+      "title_es": "La luz de la mañana me despierta demasiado pronto",
+      "title_en": "“Morning light wakes me too early”",
+      "url_es": "/es/situaciones/la-luz-de-la-manana-me-despierta-demasiado-pronto/",
+      "url_en": "/en/situations/morning-light-wakes-me-too-early/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-081",
+      "surface": "situation",
+      "title_es": "Me duermo durante el día y luego no puedo dormir de noche",
+      "title_en": "“I fall asleep during the day and then cannot sleep at night”",
+      "url_es": "/es/situaciones/me-duermo-durante-el-dia-y-luego-no-puedo-dormir-de-noche/",
+      "url_en": "/en/situations/i-fall-asleep-during-the-day-and-then-cannot-sleep-at-night/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-082",
+      "surface": "situation",
+      "title_es": "Al acostarme sigo pensando en muchas cosas",
+      "title_en": "“My mind becomes active as soon as I go to bed”",
+      "url_es": "/es/situaciones/tengo-la-cabeza-activa-justo-cuando-me-acuesto/",
+      "url_en": "/en/situations/my-mind-becomes-active-as-soon-as-i-go-to-bed/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-083",
+      "surface": "situation",
+      "title_es": "Me preocupa no dormir y tardo aún más en dormirme",
+      "title_en": "“Worrying about not sleeping keeps me awake”",
+      "url_es": "/es/situaciones/me-preocupa-no-dormir-y-eso-me-mantiene-despierta/",
+      "url_en": "/en/situations/worrying-about-not-sleeping-keeps-me-awake/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-084",
+      "surface": "situation",
+      "title_es": "Después de un día intenso sigo con el cuerpo tenso al acostarme",
+      "title_en": "“After an intense day I am still wired at night”",
+      "url_es": "/es/situaciones/despues-de-un-dia-intenso-sigo-acelerada-por-la-noche/",
+      "url_en": "/en/situations/after-an-intense-day-i-am-still-wired-at-night/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-085",
+      "surface": "situation",
+      "title_es": "Si termino una actividad y me acuesto enseguida, no me duermo",
+      "title_en": "“I need a long time to wind down before sleep”",
+      "url_es": "/es/situaciones/necesito-mucho-tiempo-para-bajar-el-ritmo-antes-de-dormir/",
+      "url_en": "/en/situations/i-need-a-long-time-to-wind-down-before-sleep/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-086",
+      "surface": "situation",
+      "title_es": "Duermo mejor cuando no tengo que levantarme a una hora fija",
+      "title_en": "“I sleep better when I do not have to get up at a fixed time”",
+      "url_es": "/es/situaciones/duermo-mejor-cuando-no-tengo-que-levantarme-a-una-hora-fija/",
+      "url_en": "/en/situations/i-sleep-better-when-i-do-not-have-to-get-up-at-a-fixed-time/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-087",
+      "surface": "situation",
+      "title_es": "Me despierto con el cuerpo tenso",
+      "title_en": "“I wake up with my body tense”",
+      "url_es": "/es/situaciones/me-despierto-con-el-cuerpo-tenso/",
+      "url_en": "/en/situations/i-wake-up-with-my-body-tense/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-088",
+      "surface": "situation",
+      "title_es": "Tengo sueños muy intensos y después tardo en volver a dormirme",
+      "title_en": "“I have very intense dreams and struggle to fall asleep again”",
+      "url_es": "/es/situaciones/tengo-suenos-muy-intensos-y-me-cuesta-volver-a-dormir/",
+      "url_en": "/en/situations/i-have-very-intense-dreams-and-struggle-to-fall-asleep-again/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-089",
+      "surface": "situation",
+      "title_es": "El cambio de hora altera mi sueño durante varios días",
+      "title_en": "“The clock change throws me off for days”",
+      "url_es": "/es/situaciones/el-cambio-de-hora-me-descoloca-durante-dias/",
+      "url_en": "/en/situations/the-clock-change-throws-me-off-for-days/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-090",
+      "surface": "situation",
+      "title_es": "Cuando viajo, mi horario de sueño cambia por completo",
+      "title_en": "“Travel completely disrupts my sleep”",
+      "url_es": "/es/situaciones/viajar-me-rompe-por-completo-el-sueno/",
+      "url_en": "/en/situations/travel-completely-disrupts-my-sleep/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-091",
+      "surface": "situation",
+      "title_es": "Me tumbo para una siesta corta y termino durmiendo varias horas",
+      "title_en": "“A short nap turns into several hours”",
+      "url_es": "/es/situaciones/una-siesta-corta-se-convierte-en-varias-horas/",
+      "url_en": "/en/situations/a-short-nap-turns-into-several-hours/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-092",
+      "surface": "situation",
+      "title_es": "«Sé lo que quiero decir pero no encuentro las palabras»",
+      "title_en": "“I know what I want to say but cannot find the words”",
+      "url_es": "/es/situaciones/se-lo-que-quiero-decir-pero-no-encuentro-las-palabras/",
+      "url_en": "/en/situations/i-know-what-i-want-to-say-but-cannot-find-the-words/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-093",
+      "surface": "situation",
+      "title_es": "«Entiendo las palabras pero no la intención»",
+      "title_en": "“I understand the words but not the intention”",
+      "url_es": "/es/situaciones/entiendo-las-palabras-pero-no-la-intencion/",
+      "url_en": "/en/situations/i-understand-the-words-but-not-the-intention/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-094",
+      "surface": "situation",
+      "title_es": "«Me cuesta saber cuándo me toca hablar»",
+      "title_en": "“I find it hard to know when it is my turn to speak”",
+      "url_es": "/es/situaciones/me-cuesta-saber-cuando-me-toca-hablar/",
+      "url_en": "/en/situations/i-find-it-hard-to-know-when-it-is-my-turn-to-speak/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-095",
+      "surface": "situation",
+      "title_es": "«Interrumpo sin querer porque temo olvidar lo que iba a decir»",
+      "title_en": "“I interrupt without meaning to because I am afraid I will forget what I wanted to say”",
+      "url_es": "/es/situaciones/interrumpo-sin-querer-porque-temo-olvidar-lo-que-iba-a-decir/",
+      "url_en": "/en/situations/i-interrupt-without-meaning-to-because-i-am-afraid-i-will-forget-what-i-wanted-to-say/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-096",
+      "surface": "situation",
+      "title_es": "«Necesito que me den las instrucciones por escrito»",
+      "title_en": "“I need instructions in writing”",
+      "url_es": "/es/situaciones/necesito-que-me-den-las-instrucciones-por-escrito/",
+      "url_en": "/en/situations/i-need-instructions-in-writing/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-097",
+      "surface": "situation",
+      "title_es": "«Las preguntas abiertas me bloquean»",
+      "title_en": "“Open-ended questions make me freeze”",
+      "url_es": "/es/situaciones/las-preguntas-abiertas-me-bloquean/",
+      "url_en": "/en/situations/open-ended-questions-make-me-freeze/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-098",
+      "surface": "situation",
+      "title_es": "«Cuando me preguntan cómo estoy no sé qué responder»",
+      "title_en": "“When someone asks how I am, I do not know what to answer”",
+      "url_es": "/es/situaciones/cuando-me-preguntan-como-estoy-no-se-que-responder/",
+      "url_en": "/en/situations/when-someone-asks-how-i-am-i-do-not-know-what-to-answer/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-099",
+      "surface": "situation",
+      "title_es": "«Me cuesta explicar algo si me miran mientras hablo»",
+      "title_en": "“I struggle to explain something when people look at me while I speak”",
+      "url_es": "/es/situaciones/me-cuesta-explicar-algo-si-me-miran-mientras-hablo/",
+      "url_en": "/en/situations/i-struggle-to-explain-something-when-people-look-at-me-while-i-speak/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-100",
+      "surface": "situation",
+      "title_es": "«En grupos grandes no consigo entrar en la conversación»",
+      "title_en": "“In large groups I cannot get into the conversation”",
+      "url_es": "/es/situaciones/en-grupos-grandes-no-consigo-entrar-en-la-conversacion/",
+      "url_en": "/en/situations/in-large-groups-i-cannot-get-into-the-conversation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-101",
+      "surface": "situation",
+      "title_es": "«Hablo demasiado de un tema y luego me doy cuenta tarde»",
+      "title_en": "“I talk too much about one topic and only realise later”",
+      "url_es": "/es/situaciones/hablo-demasiado-de-un-tema-y-luego-me-doy-cuenta-tarde/",
+      "url_en": "/en/situations/i-talk-too-much-about-one-topic-and-only-realise-later/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-102",
+      "surface": "situation",
+      "title_es": "«Me cuesta detectar si alguien está bromeando»",
+      "title_en": "“I find it hard to tell when someone is joking”",
+      "url_es": "/es/situaciones/me-cuesta-detectar-si-alguien-esta-bromeando/",
+      "url_en": "/en/situations/i-find-it-hard-to-tell-when-someone-is-joking/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-103",
+      "surface": "situation",
+      "title_es": "«Necesito más tiempo para procesar una pregunta»",
+      "title_en": "“I need more time to process a question”",
+      "url_es": "/es/situaciones/necesito-mas-tiempo-para-procesar-una-pregunta/",
+      "url_en": "/en/situations/i-need-more-time-to-process-a-question/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-104",
+      "surface": "situation",
+      "title_es": "«Cambio de tema sin darme cuenta de que la otra persona seguía hablando de lo anterior»",
+      "title_en": "“I change topic without realising the other person was still on the previous one”",
+      "url_es": "/es/situaciones/cambio-de-tema-sin-darme-cuenta-de-que-la-otra-persona-seguia-hablando-de-lo-anterior/",
+      "url_en": "/en/situations/i-change-topic-without-realising-the-other-person-was-still-on-the-previous-one/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-105",
+      "surface": "situation",
+      "title_es": "«Me cuesta pedir que repitan algo»",
+      "title_en": "“I find it hard to ask someone to repeat something”",
+      "url_es": "/es/situaciones/me-cuesta-pedir-que-repitan-algo/",
+      "url_en": "/en/situations/i-find-it-hard-to-ask-someone-to-repeat-something/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-106",
+      "surface": "situation",
+      "title_es": "«Una llamada telefónica me resulta mucho más difícil que escribir»",
+      "title_en": "“A phone call is much harder for me than writing”",
+      "url_es": "/es/situaciones/una-llamada-telefonica-me-resulta-mucho-mas-dificil-que-escribir/",
+      "url_en": "/en/situations/a-phone-call-is-much-harder-for-me-than-writing/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-107",
+      "surface": "situation",
+      "title_es": "«Entiendo mejor si me enseñan un ejemplo»",
+      "title_en": "“I understand better when I am shown an example”",
+      "url_es": "/es/situaciones/entiendo-mejor-si-me-ensenan-un-ejemplo/",
+      "url_en": "/en/situations/i-understand-better-when-i-am-shown-an-example/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-108",
+      "surface": "situation",
+      "title_es": "«Cuando estoy saturada mi forma de hablar cambia»",
+      "title_en": "“When I am overloaded, the way I speak changes”",
+      "url_es": "/es/situaciones/cuando-estoy-saturada-mi-forma-de-hablar-cambia/",
+      "url_en": "/en/situations/when-i-am-overloaded-the-way-i-speak-changes/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-109",
+      "surface": "situation",
+      "title_es": "«Solo puedo comer unas pocas marcas o preparaciones»",
+      "title_en": "“I can only eat a few brands or preparations”",
+      "url_es": "/es/situaciones/solo-puedo-comer-unas-pocas-marcas-o-preparaciones/",
+      "url_en": "/en/situations/i-can-only-eat-a-few-brands-or-preparations/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-110",
+      "surface": "situation",
+      "title_es": "«Una comida que antes toleraba de repente ya no puedo comerla»",
+      "title_en": "“A food I used to tolerate suddenly becomes impossible to eat”",
+      "url_es": "/es/situaciones/una-comida-que-antes-toleraba-de-repente-ya-no-puedo-comerla/",
+      "url_en": "/en/situations/a-food-i-used-to-tolerate-suddenly-becomes-impossible-to-eat/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-111",
+      "surface": "situation",
+      "title_es": "«Me cuesta comer si los alimentos se tocan en el plato»",
+      "title_en": "“I struggle to eat when foods touch on the plate”",
+      "url_es": "/es/situaciones/me-cuesta-comer-si-los-alimentos-se-tocan-en-el-plato/",
+      "url_en": "/en/situations/i-struggle-to-eat-when-foods-touch-on-the-plate/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-112",
+      "surface": "situation",
+      "title_es": "«Necesito que la comida tenga siempre la misma textura»",
+      "title_en": "“I need food to have the same texture every time”",
+      "url_es": "/es/situaciones/necesito-que-la-comida-tenga-siempre-la-misma-textura/",
+      "url_en": "/en/situations/i-need-food-to-have-the-same-texture-every-time/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-113",
+      "surface": "situation",
+      "title_es": "«Los olores de cocina me quitan el hambre»",
+      "title_en": "“Cooking smells take away my appetite”",
+      "url_es": "/es/situaciones/los-olores-de-cocina-me-quitan-el-hambre/",
+      "url_en": "/en/situations/cooking-smells-take-away-my-appetite/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-114",
+      "surface": "situation",
+      "title_es": "«Me cuesta saber si tengo hambre o ansiedad»",
+      "title_en": "“I find it hard to tell whether I am hungry or anxious”",
+      "url_es": "/es/situaciones/me-cuesta-saber-si-tengo-hambre-o-ansiedad/",
+      "url_en": "/en/situations/i-find-it-hard-to-tell-whether-i-am-hungry-or-anxious/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-115",
+      "surface": "situation",
+      "title_es": "«Puedo pasar horas sin acordarme de beber»",
+      "title_en": "“I can go for hours without remembering to drink”",
+      "url_es": "/es/situaciones/puedo-pasar-horas-sin-acordarme-de-beber/",
+      "url_en": "/en/situations/i-can-go-for-hours-without-remembering-to-drink/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-116",
+      "surface": "situation",
+      "title_es": "«Beber agua me resulta desagradable por la sensación»",
+      "title_en": "“Drinking water feels unpleasant because of the sensation”",
+      "url_es": "/es/situaciones/beber-agua-me-resulta-desagradable-por-la-sensacion/",
+      "url_en": "/en/situations/drinking-water-feels-unpleasant-because-of-the-sensation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-117",
+      "surface": "situation",
+      "title_es": "«Me agota decidir qué comer cada día»",
+      "title_en": "“Deciding what to eat every day exhausts me”",
+      "url_es": "/es/situaciones/me-agota-decidir-que-comer-cada-dia/",
+      "url_en": "/en/situations/deciding-what-to-eat-every-day-exhausts-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-118",
+      "surface": "situation",
+      "title_es": "«Si no está la comida que esperaba prefiero no comer»",
+      "title_en": "“If the food I expected is not there, I would rather not eat”",
+      "url_es": "/es/situaciones/si-no-esta-la-comida-que-esperaba-prefiero-no-comer/",
+      "url_en": "/en/situations/if-the-food-i-expected-is-not-there-i-would-rather-not-eat/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-119",
+      "surface": "situation",
+      "title_es": "«Me cuesta comer delante de otras personas»",
+      "title_en": "“I find it hard to eat in front of other people”",
+      "url_es": "/es/situaciones/me-cuesta-comer-delante-de-otras-personas/",
+      "url_en": "/en/situations/i-find-it-hard-to-eat-in-front-of-other-people/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-120",
+      "surface": "situation",
+      "title_es": "«Tardo muchísimo en terminar una comida»",
+      "title_en": "“It takes me a very long time to finish a meal”",
+      "url_es": "/es/situaciones/tardo-muchisimo-en-terminar-una-comida/",
+      "url_en": "/en/situations/it-takes-me-a-very-long-time-to-finish-a-meal/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-121",
+      "surface": "situation",
+      "title_es": "«Como muy deprisa y luego noto que estoy demasiado llena»",
+      "title_en": "“I eat very quickly and only afterwards notice I am too full”",
+      "url_es": "/es/situaciones/como-muy-deprisa-y-luego-noto-que-estoy-demasiado-llena/",
+      "url_en": "/en/situations/i-eat-very-quickly-and-only-afterwards-notice-i-am-too-full/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-122",
+      "surface": "situation",
+      "title_es": "«Algunas temperaturas de la comida me resultan insoportables»",
+      "title_en": "“Some food temperatures are unbearable for me”",
+      "url_es": "/es/situaciones/algunas-temperaturas-de-la-comida-me-resultan-insoportables/",
+      "url_en": "/en/situations/some-food-temperatures-are-unbearable-for-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-123",
+      "surface": "situation",
+      "title_es": "«Me cuesta probar alimentos nuevos aunque quiera»",
+      "title_en": "“I struggle to try new foods even when I want to”",
+      "url_es": "/es/situaciones/me-cuesta-probar-alimentos-nuevos-aunque-quiera/",
+      "url_en": "/en/situations/i-struggle-to-try-new-foods-even-when-i-want-to/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-124",
+      "surface": "situation",
+      "title_es": "«Necesito ver cómo está preparada la comida antes de comerla»",
+      "title_en": "“I need to see how food is prepared before I can eat it”",
+      "url_es": "/es/situaciones/necesito-ver-como-esta-preparada-la-comida-antes-de-comerla/",
+      "url_en": "/en/situations/i-need-to-see-how-food-is-prepared-before-i-can-eat-it/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-125",
+      "surface": "situation",
+      "title_es": "«Los cubiertos o platos cambian cómo siento la comida»",
+      "title_en": "“Cutlery or plates change how food feels to me”",
+      "url_es": "/es/situaciones/los-cubiertos-o-platos-cambian-como-siento-la-comida/",
+      "url_en": "/en/situations/cutlery-or-plates-change-how-food-feels-to-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-126",
+      "surface": "situation",
+      "title_es": "«Después de un día difícil me cuesta todavía más comer»",
+      "title_en": "“After a difficult day, eating becomes even harder”",
+      "url_es": "/es/situaciones/despues-de-un-dia-dificil-me-cuesta-todavia-mas-comer/",
+      "url_en": "/en/situations/after-a-difficult-day-eating-becomes-even-harder/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-127",
+      "surface": "situation",
+      "title_es": "«Organizar compra, cocinar y comer es demasiado en el mismo día»",
+      "title_en": "“Shopping, cooking and eating are too much to organise in one day”",
+      "url_es": "/es/situaciones/organizar-compra-cocinar-y-comer-es-demasiado-en-el-mismo-dia/",
+      "url_en": "/en/situations/shopping-cooking-and-eating-are-too-much-to-organise-in-one-day/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General sensory/sleep/communication/food situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-128",
+      "surface": "situation",
+      "title_es": "«Reviso varias veces si he cerrado la puerta»",
+      "title_en": "“I check several times whether I locked the door”",
+      "url_es": "/es/situaciones/reviso-varias-veces-si-he-cerrado-la-puerta/",
+      "url_en": "/en/situations/i-check-several-times-whether-i-locked-the-door/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-129",
+      "surface": "situation",
+      "title_es": "«Vuelvo atrás para comprobar si he apagado algo»",
+      "title_en": "“I go back to check whether I switched something off”",
+      "url_es": "/es/situaciones/vuelvo-atras-para-comprobar-si-he-apagado-algo/",
+      "url_en": "/en/situations/i-go-back-to-check-whether-i-switched-something-off/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-130",
+      "surface": "situation",
+      "title_es": "«Necesito repetir una acción hasta que se siente bien»",
+      "title_en": "“I need to repeat an action until it feels right”",
+      "url_es": "/es/situaciones/necesito-repetir-una-accion-hasta-que-se-siente-bien/",
+      "url_en": "/en/situations/i-need-to-repeat-an-action-until-it-feels-right/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-131",
+      "surface": "situation",
+      "title_es": "«Si aparece un pensamiento horrible temo que diga algo sobre mí»",
+      "title_en": "“When a horrible thought appears, I fear it says something about me”",
+      "url_es": "/es/situaciones/si-aparece-un-pensamiento-horrible-temo-que-diga-algo-sobre-mi/",
+      "url_en": "/en/situations/when-a-horrible-thought-appears-i-fear-it-says-something-about-me/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-132",
+      "surface": "situation",
+      "title_es": "«Me cuesta dejar una tarea si no siento que está perfecta»",
+      "title_en": "“I struggle to stop a task if it does not feel perfect”",
+      "url_es": "/es/situaciones/me-cuesta-dejar-una-tarea-si-no-siento-que-esta-perfecta/",
+      "url_en": "/en/situations/i-struggle-to-stop-a-task-if-it-does-not-feel-perfect/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-133",
+      "surface": "situation",
+      "title_es": "«Pregunto lo mismo varias veces para quedarme tranquila»",
+      "title_en": "“I ask the same thing several times to feel reassured”",
+      "url_es": "/es/situaciones/pregunto-lo-mismo-varias-veces-para-quedarme-tranquila/",
+      "url_en": "/en/situations/i-ask-the-same-thing-several-times-to-feel-reassured/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-134",
+      "surface": "situation",
+      "title_es": "«Busco en internet durante horas para asegurarme de que no pasa nada»",
+      "title_en": "“I search online for hours to make sure nothing is wrong”",
+      "url_es": "/es/situaciones/busco-en-internet-durante-horas-para-asegurarme-de-que-no-pasa-nada/",
+      "url_en": "/en/situations/i-search-online-for-hours-to-make-sure-nothing-is-wrong/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-135",
+      "surface": "situation",
+      "title_es": "«Repaso una conversación durante horas»",
+      "title_en": "“I replay a conversation for hours”",
+      "url_es": "/es/situaciones/repaso-una-conversacion-durante-horas/",
+      "url_en": "/en/situations/i-replay-a-conversation-for-hours/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-136",
+      "surface": "situation",
+      "title_es": "«Necesito saber con exactitud qué va a ocurrir»",
+      "title_en": "“I need to know exactly what is going to happen”",
+      "url_es": "/es/situaciones/necesito-saber-con-exactitud-que-va-a-ocurrir/",
+      "url_en": "/en/situations/i-need-to-know-exactly-what-is-going-to-happen/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-137",
+      "surface": "situation",
+      "title_es": "«Si no puedo comprobar algo me cuesta pensar en otra cosa»",
+      "title_en": "“If I cannot check something, I struggle to think about anything else”",
+      "url_es": "/es/situaciones/si-no-puedo-comprobar-algo-me-cuesta-pensar-en-otra-cosa/",
+      "url_en": "/en/situations/if-i-cannot-check-something-i-struggle-to-think-about-anything-else/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-138",
+      "surface": "situation",
+      "title_es": "«Me preocupa haber hecho daño sin darme cuenta»",
+      "title_en": "“I worry I may have harmed someone without realising”",
+      "url_es": "/es/situaciones/me-preocupa-haber-hecho-dano-sin-darme-cuenta/",
+      "url_en": "/en/situations/i-worry-i-may-have-harmed-someone-without-realising/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-139",
+      "surface": "situation",
+      "title_es": "«Guardo capturas o mensajes por miedo a necesitar demostrar algo»",
+      "title_en": "“I keep screenshots or messages in case I need to prove something later”",
+      "url_es": "/es/situaciones/guardo-capturas-o-mensajes-por-miedo-a-necesitar-demostrar-algo/",
+      "url_en": "/en/situations/i-keep-screenshots-or-messages-in-case-i-need-to-prove-something-later/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-140",
+      "surface": "situation",
+      "title_es": "«Me cuesta tirar objetos por si los necesito después»",
+      "title_en": "“I struggle to throw things away in case I need them later”",
+      "url_es": "/es/situaciones/me-cuesta-tirar-objetos-por-si-los-necesito-despues/",
+      "url_en": "/en/situations/i-struggle-to-throw-things-away-in-case-i-need-them-later/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-141",
+      "surface": "situation",
+      "title_es": "«Repito mentalmente palabras o frases para sentirme segura»",
+      "title_en": "“I repeat words or phrases in my head to feel safe”",
+      "url_es": "/es/situaciones/repito-mentalmente-palabras-o-frases-para-sentirme-segura/",
+      "url_en": "/en/situations/i-repeat-words-or-phrases-in-my-head-to-feel-safe/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-142",
+      "surface": "situation",
+      "title_es": "«Evito ciertos números, palabras o imágenes porque me generan miedo»",
+      "title_en": "“I avoid certain numbers, words or images because they frighten me”",
+      "url_es": "/es/situaciones/evito-ciertos-numeros-palabras-o-imagenes-porque-me-generan-miedo/",
+      "url_en": "/en/situations/i-avoid-certain-numbers-words-or-images-because-they-frighten-me/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-143",
+      "surface": "situation",
+      "title_es": "«Me preocupa contaminar algo o contaminarme»",
+      "title_en": "“I worry about contaminating something or becoming contaminated”",
+      "url_es": "/es/situaciones/me-preocupa-contaminar-algo-o-contaminarme/",
+      "url_en": "/en/situations/i-worry-about-contaminating-something-or-becoming-contaminated/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-144",
+      "surface": "situation",
+      "title_es": "«Lavarme o limpiar me lleva mucho más tiempo del que quiero»",
+      "title_en": "“Washing or cleaning takes much longer than I want it to”",
+      "url_es": "/es/situaciones/lavarme-o-limpiar-me-lleva-mucho-mas-tiempo-del-que-quiero/",
+      "url_en": "/en/situations/washing-or-cleaning-takes-much-longer-than-i-want-it-to/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-145",
+      "surface": "situation",
+      "title_es": "«Me cuesta distinguir una precaución razonable de una comprobación excesiva»",
+      "title_en": "“I find it hard to tell a reasonable precaution from excessive checking”",
+      "url_es": "/es/situaciones/me-cuesta-distinguir-una-precaucion-razonable-de-una-comprobacion-excesiva/",
+      "url_en": "/en/situations/i-find-it-hard-to-tell-a-reasonable-precaution-from-excessive-checking/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-146",
+      "surface": "situation",
+      "title_es": "«Una duda pequeña crece hasta ocuparme todo el día»",
+      "title_en": "“A small doubt grows until it takes over my whole day”",
+      "url_es": "/es/situaciones/una-duda-pequena-crece-hasta-ocuparme-todo-el-dia/",
+      "url_en": "/en/situations/a-small-doubt-grows-until-it-takes-over-my-whole-day/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-147",
+      "surface": "situation",
+      "title_es": "«Necesito que otra persona me confirme que no he hecho nada malo»",
+      "title_en": "“I need someone else to confirm that I have done nothing wrong”",
+      "url_es": "/es/situaciones/necesito-que-otra-persona-me-confirme-que-no-he-hecho-nada-malo/",
+      "url_en": "/en/situations/i-need-someone-else-to-confirm-that-i-have-done-nothing-wrong/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-148",
+      "surface": "situation",
+      "title_es": "«Después de decidir algo vuelvo a empezar la decisión desde cero»",
+      "title_en": "“After making a decision, I start the decision all over again”",
+      "url_es": "/es/situaciones/despues-de-decidir-algo-vuelvo-a-empezar-la-decision-desde-cero/",
+      "url_en": "/en/situations/after-making-a-decision-i-start-the-decision-all-over-again/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-149",
+      "surface": "situation",
+      "title_es": "«Me cuesta dejar una pregunta sin respuesta»",
+      "title_en": "“I struggle to leave a question unanswered”",
+      "url_es": "/es/situaciones/me-cuesta-dejar-una-pregunta-sin-respuesta/",
+      "url_en": "/en/situations/i-struggle-to-leave-a-question-unanswered/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-150",
+      "surface": "situation",
+      "title_es": "«Si algo no está colocado como esperaba no puedo dejar de mirarlo»",
+      "title_en": "“If something is not placed as I expected, I cannot stop looking at it”",
+      "url_es": "/es/situaciones/si-algo-no-esta-colocado-como-esperaba-no-puedo-dejar-de-mirarlo/",
+      "url_en": "/en/situations/if-something-is-not-placed-as-i-expected-i-cannot-stop-looking-at-it/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-151",
+      "surface": "situation",
+      "title_es": "«Necesito recuperarme después de una conversación difícil»",
+      "title_en": "“I need time to recover after a difficult conversation”",
+      "url_es": "/es/situaciones/necesito-recuperarme-despues-de-una-conversacion-dificil/",
+      "url_en": "/en/situations/i-need-time-to-recover-after-a-difficult-conversation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-152",
+      "surface": "situation",
+      "title_es": "«Me cuesta saber si una amistad sigue estando bien»",
+      "title_en": "“I find it hard to know whether a friendship is still okay”",
+      "url_es": "/es/situaciones/me-cuesta-saber-si-una-amistad-sigue-estando-bien/",
+      "url_en": "/en/situations/i-find-it-hard-to-know-whether-a-friendship-is-still-okay/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-153",
+      "surface": "situation",
+      "title_es": "«No sé cuándo alguien espera que le escriba»",
+      "title_en": "“I do not know when someone expects me to message them”",
+      "url_es": "/es/situaciones/no-se-cuando-alguien-espera-que-le-escriba/",
+      "url_en": "/en/situations/i-do-not-know-when-someone-expects-me-to-message-them/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-154",
+      "surface": "situation",
+      "title_es": "«Me cuesta poner límites hasta que ya estoy agotada»",
+      "title_en": "“I struggle to set boundaries until I am already exhausted”",
+      "url_es": "/es/situaciones/me-cuesta-poner-limites-hasta-que-ya-estoy-agotada/",
+      "url_en": "/en/situations/i-struggle-to-set-boundaries-until-i-am-already-exhausted/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-155",
+      "surface": "situation",
+      "title_es": "«Digo que sí para evitar un conflicto y luego no puedo con ello»",
+      "title_en": "“I say yes to avoid conflict and then cannot cope with it”",
+      "url_es": "/es/situaciones/digo-que-si-para-evitar-un-conflicto-y-luego-no-puedo-con-ello/",
+      "url_en": "/en/situations/i-say-yes-to-avoid-conflict-and-then-cannot-cope-with-it/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-156",
+      "surface": "situation",
+      "title_es": "«Me cuesta saber si alguien está enfadado conmigo»",
+      "title_en": "“I find it hard to know whether someone is angry with me”",
+      "url_es": "/es/situaciones/me-cuesta-saber-si-alguien-esta-enfadado-conmigo/",
+      "url_en": "/en/situations/i-find-it-hard-to-know-whether-someone-is-angry-with-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-157",
+      "surface": "situation",
+      "title_es": "«Necesito planes concretos para quedar con alguien»",
+      "title_en": "“I need concrete plans when meeting someone”",
+      "url_es": "/es/situaciones/necesito-planes-concretos-para-quedar-con-alguien/",
+      "url_en": "/en/situations/i-need-concrete-plans-when-meeting-someone/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-158",
+      "surface": "situation",
+      "title_es": "«Las visitas inesperadas me descolocan»",
+      "title_en": "“Unexpected visits throw me off”",
+      "url_es": "/es/situaciones/las-visitas-inesperadas-me-descolocan/",
+      "url_en": "/en/situations/unexpected-visits-throw-me-off/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-159",
+      "surface": "situation",
+      "title_es": "«Me cuesta mantener contacto con personas que no veo»",
+      "title_en": "“I struggle to stay in touch with people I do not see”",
+      "url_es": "/es/situaciones/me-cuesta-mantener-contacto-con-personas-que-no-veo/",
+      "url_en": "/en/situations/i-struggle-to-stay-in-touch-with-people-i-do-not-see/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-160",
+      "surface": "situation",
+      "title_es": "«Después de una discusión necesito mucho tiempo para volver a hablar»",
+      "title_en": "“After an argument I need a long time before I can talk again”",
+      "url_es": "/es/situaciones/despues-de-una-discusion-necesito-mucho-tiempo-para-volver-a-hablar/",
+      "url_en": "/en/situations/after-an-argument-i-need-a-long-time-before-i-can-talk-again/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-161",
+      "surface": "situation",
+      "title_es": "«Me cuesta saber qué información contar en una primera conversación»",
+      "title_en": "“I find it hard to know what information to share in a first conversation”",
+      "url_es": "/es/situaciones/me-cuesta-saber-que-informacion-contar-en-una-primera-conversacion/",
+      "url_en": "/en/situations/i-find-it-hard-to-know-what-information-to-share-in-a-first-conversation/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-162",
+      "surface": "situation",
+      "title_es": "«Necesito estar sola después de un evento social»",
+      "title_en": "“I need to be alone after a social event”",
+      "url_es": "/es/situaciones/necesito-estar-sola-despues-de-un-evento-social/",
+      "url_en": "/en/situations/i-need-to-be-alone-after-a-social-event/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-163",
+      "surface": "situation",
+      "title_es": "«Empiezo muchas tareas y no termino ninguna»",
+      "title_en": "“I start many tasks and finish none of them”",
+      "url_es": "/es/situaciones/empiezo-muchas-tareas-y-no-termino-ninguna/",
+      "url_en": "/en/situations/i-start-many-tasks-and-finish-none-of-them/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-164",
+      "surface": "situation",
+      "title_es": "«Me cuesta priorizar cuando todo parece urgente»",
+      "title_en": "“I struggle to prioritise when everything feels urgent”",
+      "url_es": "/es/situaciones/me-cuesta-priorizar-cuando-todo-parece-urgente/",
+      "url_en": "/en/situations/i-struggle-to-prioritise-when-everything-feels-urgent/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-165",
+      "surface": "situation",
+      "title_es": "«Una interrupción me hace perder por completo el hilo»",
+      "title_en": "“An interruption makes me lose my train of thought completely”",
+      "url_es": "/es/situaciones/una-interrupcion-me-hace-perder-por-completo-el-hilo/",
+      "url_en": "/en/situations/an-interruption-makes-me-lose-my-train-of-thought-completely/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-166",
+      "surface": "situation",
+      "title_es": "«Necesito más tiempo para cambiar de una reunión a otra»",
+      "title_en": "“I need more time to move from one meeting to another”",
+      "url_es": "/es/situaciones/necesito-mas-tiempo-para-cambiar-de-una-reunion-a-otra/",
+      "url_en": "/en/situations/i-need-more-time-to-move-from-one-meeting-to-another/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-167",
+      "surface": "situation",
+      "title_es": "«Los correos se acumulan porque no sé cuál contestar primero»",
+      "title_en": "“Emails pile up because I do not know which one to answer first”",
+      "url_es": "/es/situaciones/los-correos-se-acumulan-porque-no-se-cual-contestar-primero/",
+      "url_en": "/en/situations/emails-pile-up-because-i-do-not-know-which-one-to-answer-first/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-168",
+      "surface": "situation",
+      "title_es": "«Me cuesta empezar una tarea si las instrucciones son ambiguas»",
+      "title_en": "“I struggle to start a task when the instructions are ambiguous”",
+      "url_es": "/es/situaciones/me-cuesta-empezar-una-tarea-si-las-instrucciones-son-ambiguas/",
+      "url_en": "/en/situations/i-struggle-to-start-a-task-when-the-instructions-are-ambiguous/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-169",
+      "surface": "situation",
+      "title_es": "«Trabajo bien con una fecha límite y me bloqueo sin ella»",
+      "title_en": "“I work well with a deadline and get stuck without one”",
+      "url_es": "/es/situaciones/trabajo-bien-con-una-fecha-limite-y-me-bloqueo-sin-ella/",
+      "url_en": "/en/situations/i-work-well-with-a-deadline-and-get-stuck-without-one/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-170",
+      "surface": "situation",
+      "title_es": "«Me cuesta calcular cuánto tiempo me llevará una tarea»",
+      "title_en": "“I find it hard to estimate how long a task will take”",
+      "url_es": "/es/situaciones/me-cuesta-calcular-cuanto-tiempo-me-llevara-una-tarea/",
+      "url_en": "/en/situations/i-find-it-hard-to-estimate-how-long-a-task-will-take/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-171",
+      "surface": "situation",
+      "title_es": "«Una oficina abierta me deja sin energía»",
+      "title_en": "“An open-plan office drains my energy”",
+      "url_es": "/es/situaciones/una-oficina-abierta-me-deja-sin-energia/",
+      "url_en": "/en/situations/an-open-plan-office-drains-my-energy/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-172",
+      "surface": "situation",
+      "title_es": "«Las reuniones sin agenda me resultan muy difíciles»",
+      "title_en": "“Meetings without an agenda are very difficult for me”",
+      "url_es": "/es/situaciones/las-reuniones-sin-agenda-me-resultan-muy-dificiles/",
+      "url_en": "/en/situations/meetings-without-an-agenda-are-very-difficult-for-me/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-173",
+      "surface": "situation",
+      "title_es": "«Necesito preparar con antelación lo que voy a decir en una reunión»",
+      "title_en": "“I need to prepare in advance what I will say in a meeting”",
+      "url_es": "/es/situaciones/necesito-preparar-con-antelacion-lo-que-voy-a-decir-en-una-reunion/",
+      "url_en": "/en/situations/i-need-to-prepare-in-advance-what-i-will-say-in-a-meeting/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-174",
+      "surface": "situation",
+      "title_es": "«Me cuesta pedir ayuda antes de estar al límite»",
+      "title_en": "“I struggle to ask for help before I am at my limit”",
+      "url_es": "/es/situaciones/me-cuesta-pedir-ayuda-antes-de-estar-al-limite/",
+      "url_en": "/en/situations/i-struggle-to-ask-for-help-before-i-am-at-my-limit/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-175",
+      "surface": "situation",
+      "title_es": "«Después de estudiar o trabajar necesito horas para recuperarme»",
+      "title_en": "“After studying or working, I need hours to recover”",
+      "url_es": "/es/situaciones/despues-de-estudiar-o-trabajar-necesito-horas-para-recuperarme/",
+      "url_en": "/en/situations/after-studying-or-working-i-need-hours-to-recover/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-176",
+      "surface": "situation",
+      "title_es": "«Salir de casa me lleva mucho más tiempo de lo que calculo»",
+      "title_en": "“Leaving the house takes much longer than I expect”",
+      "url_es": "/es/situaciones/salir-de-casa-me-lleva-mucho-mas-tiempo-de-lo-que-calculo/",
+      "url_en": "/en/situations/leaving-the-house-takes-much-longer-than-i-expect/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-177",
+      "surface": "situation",
+      "title_es": "«Hacer una llamada para pedir una cita se me hace enorme»",
+      "title_en": "“Making a phone call to book an appointment feels enormous”",
+      "url_es": "/es/situaciones/hacer-una-llamada-para-pedir-una-cita-se-me-hace-enorme/",
+      "url_en": "/en/situations/making-a-phone-call-to-book-an-appointment-feels-enormous/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-178",
+      "surface": "situation",
+      "title_es": "«Se me acumulan tareas pequeñas hasta que parecen imposibles»",
+      "title_en": "“Small tasks pile up until they feel impossible”",
+      "url_es": "/es/situaciones/se-me-acumulan-tareas-pequenas-hasta-que-parecen-imposibles/",
+      "url_en": "/en/situations/small-tasks-pile-up-until-they-feel-impossible/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-179",
+      "surface": "situation",
+      "title_es": "«Me cuesta mantener una rutina de higiene cuando estoy saturada»",
+      "title_en": "“I struggle to keep up a hygiene routine when I am overloaded”",
+      "url_es": "/es/situaciones/me-cuesta-mantener-una-rutina-de-higiene-cuando-estoy-saturada/",
+      "url_en": "/en/situations/i-struggle-to-keep-up-a-hygiene-routine-when-i-am-overloaded/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-180",
+      "surface": "situation",
+      "title_es": "«Ir a comprar me consume la energía del resto del día»",
+      "title_en": "“Going shopping uses up the energy I have for the rest of the day”",
+      "url_es": "/es/situaciones/ir-a-comprar-me-consume-la-energia-del-resto-del-dia/",
+      "url_en": "/en/situations/going-shopping-uses-up-the-energy-i-have-for-the-rest-of-the-day/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-181",
+      "surface": "situation",
+      "title_es": "«Una avería o trámite inesperado me bloquea»",
+      "title_en": "“An unexpected repair or admin task makes me freeze”",
+      "url_es": "/es/situaciones/una-averia-o-tramite-inesperado-me-bloquea/",
+      "url_en": "/en/situations/an-unexpected-repair-or-admin-task-makes-me-freeze/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult household/administrative context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-182",
+      "surface": "situation",
+      "title_es": "«Me cuesta organizar medicación, citas y documentos»",
+      "title_en": "“I struggle to organise medication, appointments and documents”",
+      "url_es": "/es/situaciones/me-cuesta-organizar-medicacion-citas-y-documentos/",
+      "url_en": "/en/situations/i-struggle-to-organise-medication-appointments-and-documents/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-183",
+      "surface": "situation",
+      "title_es": "«Necesito hacer las cosas de casa siempre en el mismo orden»",
+      "title_en": "“I need to do household tasks in the same order every time”",
+      "url_es": "/es/situaciones/necesito-hacer-las-cosas-de-casa-siempre-en-el-mismo-orden/",
+      "url_en": "/en/situations/i-need-to-do-household-tasks-in-the-same-order-every-time/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-184",
+      "surface": "situation",
+      "title_es": "«Cambiar de ropa según el tiempo me resulta más difícil de lo que parece»",
+      "title_en": "“Changing clothes to match the weather is harder than it looks”",
+      "url_es": "/es/situaciones/cambiar-de-ropa-segun-el-tiempo-me-resulta-mas-dificil-de-lo-que-parece/",
+      "url_en": "/en/situations/changing-clothes-to-match-the-weather-is-harder-than-it-looks/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-185",
+      "surface": "situation",
+      "title_es": "«Preparar una maleta me desborda»",
+      "title_en": "“Packing a suitcase overwhelms me”",
+      "url_es": "/es/situaciones/preparar-una-maleta-me-desborda/",
+      "url_en": "/en/situations/packing-a-suitcase-overwhelms-me/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-186",
+      "surface": "situation",
+      "title_es": "«Después de salir necesito un rato largo sin hablar con nadie»",
+      "title_en": "“After going out, I need a long time without talking to anyone”",
+      "url_es": "/es/situaciones/despues-de-salir-necesito-un-rato-largo-sin-hablar-con-nadie/",
+      "url_en": "/en/situations/after-going-out-i-need-a-long-time-without-talking-to-anyone/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-187",
+      "surface": "situation",
+      "title_es": "«Me cuesta reconocer cuándo necesito descansar»",
+      "title_en": "“I struggle to recognise when I need to rest”",
+      "url_es": "/es/situaciones/me-cuesta-reconocer-cuando-necesito-descansar/",
+      "url_en": "/en/situations/i-struggle-to-recognise-when-i-need-to-rest/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-414",
+      "surface": "situation",
+      "title_es": "Dejo cartas y facturas sin abrir hasta que ya es tarde",
+      "title_en": "I leave letters and bills unopened until it is too late",
+      "url_es": "/es/situaciones/dejo-cartas-y-facturas-sin-abrir/",
+      "url_en": "/en/situations/i-leave-letters-and-bills-unopened/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-415",
+      "surface": "situation",
+      "title_es": "No consigo terminar un trámite por internet y lo dejo a medias",
+      "title_en": "I can't finish an online application and I leave it half done",
+      "url_es": "/es/situaciones/no-consigo-terminar-un-tramite-por-internet/",
+      "url_en": "/en/situations/i-cannot-finish-an-online-application/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-416",
+      "surface": "situation",
+      "title_es": "Me gasto el dinero en cuanto lo tengo y luego no llego a fin de mes",
+      "title_en": "I spend money as soon as I have it and then can't reach the end of the month",
+      "url_es": "/es/situaciones/me-gasto-el-dinero-en-cuanto-lo-tengo/",
+      "url_en": "/en/situations/i-spend-money-as-soon-as-i-have-it/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-417",
+      "surface": "situation",
+      "title_es": "Pedir una ayuda o un certificado me supera antes de empezar",
+      "title_en": "Applying for support or a certificate overwhelms me before I start",
+      "url_es": "/es/situaciones/pedir-una-ayuda-o-un-certificado-me-supera/",
+      "url_en": "/en/situations/applying-for-support-overwhelms-me/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-418",
+      "surface": "situation",
+      "title_es": "Hablar por teléfono con una administración me bloquea",
+      "title_en": "Phoning an official service blocks me",
+      "url_es": "/es/situaciones/hablar-por-telefono-con-una-administracion-me-bloquea/",
+      "url_en": "/en/situations/phoning-an-official-service-blocks-me/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-419",
+      "surface": "situation",
+      "title_es": "No sé qué papeles tengo que guardar y cuáles puedo tirar",
+      "title_en": "I don't know which papers to keep and which I can throw away",
+      "url_es": "/es/situaciones/no-se-que-papeles-guardar-y-cuales-tirar/",
+      "url_en": "/en/situations/i-dont-know-which-papers-to-keep/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-420",
+      "surface": "situation",
+      "title_es": "Cuando me levanto de golpe se me nubla la vista y el corazón se me acelera",
+      "title_en": "When I stand up quickly my vision blurs and my heart races",
+      "url_es": "/es/situaciones/al-levantarme-se-me-nubla-la-vista/",
+      "url_en": "/en/situations/standing-up-makes-my-vision-blur/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-421",
+      "surface": "situation",
+      "title_es": "Me duele el cuerpo casi todos los días y no sé cómo explicarlo",
+      "title_en": "My body hurts almost every day and I can't explain it",
+      "url_es": "/es/situaciones/me-duele-el-cuerpo-casi-todos-los-dias/",
+      "url_en": "/en/situations/my-body-hurts-almost-every-day/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-422",
+      "surface": "situation",
+      "title_es": "Después de un día activo me quedo varios días sin poder hacer nada",
+      "title_en": "After an active day I can't do anything for days",
+      "url_es": "/es/situaciones/despues-de-un-dia-activo-me-quedo-varios-dias-parada/",
+      "url_en": "/en/situations/after-an-active-day-i-crash-for-days/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-423",
+      "surface": "situation",
+      "title_es": "Los días antes de la regla siento que soy otra persona",
+      "title_en": "In the days before my period I feel like a different person",
+      "url_es": "/es/situaciones/los-dias-antes-de-la-regla-siento-que-soy-otra-persona/",
+      "url_en": "/en/situations/before-my-period-i-feel-like-another-person/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Puberty/adult-health context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-424",
+      "surface": "situation",
+      "title_es": "Cada molestia nueva me hace pensar que tengo algo grave",
+      "title_en": "Every new symptom makes me think something is seriously wrong",
+      "url_es": "/es/situaciones/cada-molestia-nueva-me-hace-pensar-que-tengo-algo-grave/",
+      "url_en": "/en/situations/every-new-symptom-makes-me-think-its-serious/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-425",
+      "surface": "situation",
+      "title_es": "Toso al comer y me da miedo tragar",
+      "title_en": "I cough when eating and I'm scared to swallow",
+      "url_es": "/es/situaciones/toso-al-comer-y-me-da-miedo-tragar/",
+      "url_en": "/en/situations/i-cough-when-eating-and-im-scared-to-swallow/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-426",
+      "surface": "situation",
+      "title_es": "Me despierto cansada aunque duerma muchas horas",
+      "title_en": "I wake up tired even after a long night",
+      "url_es": "/es/situaciones/me-despierto-cansada-aunque-duerma-muchas-horas/",
+      "url_en": "/en/situations/i-wake-up-tired-even-after-a-long-night/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-427",
+      "surface": "situation",
+      "title_es": "Mi criatura y yo nos saturamos a la vez y no sé a quién atender primero",
+      "title_en": "My child and I get overloaded at the same time and I don't know who to help first",
+      "url_es": "/es/situaciones/mi-criatura-y-yo-nos-saturamos-a-la-vez/",
+      "url_en": "/en/situations/my-child-and-i-get-overloaded-at-the-same-time/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-428",
+      "surface": "situation",
+      "title_es": "Las reuniones del colegio y los grupos de familias me agotan",
+      "title_en": "School meetings and parent groups exhaust me",
+      "url_es": "/es/situaciones/las-reuniones-del-colegio-me-agotan/",
+      "url_en": "/en/situations/school-meetings-exhaust-me/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-429",
+      "surface": "situation",
+      "title_es": "Las comidas familiares largas me dejan sin energía para días",
+      "title_en": "Long family meals leave me with nothing for days",
+      "url_es": "/es/situaciones/las-comidas-familiares-largas-me-dejan-sin-energia/",
+      "url_en": "/en/situations/long-family-meals-leave-me-with-nothing/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-430",
+      "surface": "situation",
+      "title_es": "Mi criatura moja la cama y no sé si es normal",
+      "title_en": "My child wets the bed and I don't know if it's normal",
+      "url_es": "/es/situaciones/mi-criatura-moja-la-cama/",
+      "url_en": "/en/situations/my-child-wets-the-bed/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-431",
+      "surface": "situation",
+      "title_es": "No sé cómo explicar a mi familia lo que necesito sin que acabe en discusión",
+      "title_en": "I don't know how to tell my family what I need without it turning into an argument",
+      "url_es": "/es/situaciones/no-se-como-explicar-a-mi-familia-lo-que-necesito/",
+      "url_en": "/en/situations/i-dont-know-how-to-tell-my-family-what-i-need/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-432",
+      "surface": "situation",
+      "title_es": "Conducir me cansa muchísimo más que a otras personas",
+      "title_en": "Driving tires me out far more than other people",
+      "url_es": "/es/situaciones/conducir-me-cansa-muchisimo/",
+      "url_en": "/en/situations/driving-tires-me-out-far-more/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Driving context is adult-facing.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-433",
+      "surface": "situation",
+      "title_es": "Si cambian la ruta o hay obras me desoriento y llego tarde",
+      "title_en": "If the route changes or there are roadworks I lose my bearings and arrive late",
+      "url_es": "/es/situaciones/si-cambian-la-ruta-me-desoriento/",
+      "url_en": "/en/situations/if-the-route-changes-i-lose-my-bearings/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General transport/orientation situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-434",
+      "surface": "situation",
+      "title_es": "Me pierdo incluso en sitios por los que paso todos los días",
+      "title_en": "I get lost even in places I walk through every day",
+      "url_es": "/es/situaciones/me-pierdo-en-sitios-conocidos/",
+      "url_en": "/en/situations/i-get-lost-in-places-i-know-well/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General transport/orientation situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-435",
+      "surface": "situation",
+      "title_es": "En el coche o el autobús me mareo enseguida",
+      "title_en": "I feel sick very quickly in the car or on the bus",
+      "url_es": "/es/situaciones/en-el-coche-o-el-autobus-me-mareo/",
+      "url_en": "/en/situations/i-get-travel-sick-quickly/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General transport/orientation situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-436",
+      "surface": "situation",
+      "title_es": "Llegar a un sitio nuevo por primera vez me cuesta más que la propia cita",
+      "title_en": "Getting somewhere new for the first time is harder than the appointment itself",
+      "url_es": "/es/situaciones/llegar-a-un-sitio-nuevo-me-cuesta-mas-que-la-cita/",
+      "url_en": "/en/situations/getting-somewhere-new-is-harder-than-the-appointment/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General transport/orientation situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-437",
+      "surface": "situation",
+      "title_es": "Después de un día con mucha luz me duele la cabeza durante horas",
+      "title_en": "After a day of bright light my head aches for hours",
+      "url_es": "/es/situaciones/despues-de-un-dia-con-mucha-luz-me-duele-la-cabeza/",
+      "url_en": "/en/situations/after-a-day-of-bright-light-my-head-aches/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-438",
+      "surface": "situation",
+      "title_es": "Leer en pantalla me deja la vista cansada y las letras se me mueven",
+      "title_en": "Reading on screen tires my eyes and the letters seem to move",
+      "url_es": "/es/situaciones/leer-en-pantalla-me-deja-la-vista-cansada/",
+      "url_en": "/en/situations/reading-on-screen-tires-my-eyes/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-439",
+      "surface": "situation",
+      "title_es": "Me han dicho que ronco y que dejo de respirar mientras duermo",
+      "title_en": "I'm told I snore and stop breathing while I sleep",
+      "url_es": "/es/situaciones/me-han-dicho-que-ronco-y-que-dejo-de-respirar/",
+      "url_en": "/en/situations/im-told-i-snore-and-stop-breathing/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-440",
+      "surface": "situation",
+      "title_es": "Cuando me acuesto tengo que mover las piernas y no puedo evitarlo",
+      "title_en": "When I lie down I have to move my legs and I can't help it",
+      "url_es": "/es/situaciones/al-acostarme-tengo-que-mover-las-piernas/",
+      "url_en": "/en/situations/at-bedtime-i-have-to-move-my-legs/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-441",
+      "surface": "situation",
+      "title_es": "Me despierto con la mandíbula dolorida de apretar los dientes",
+      "title_en": "I wake up with a sore jaw from clenching my teeth",
+      "url_es": "/es/situaciones/me-despierto-con-la-mandibula-dolorida/",
+      "url_en": "/en/situations/i-wake-with-a-sore-jaw/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "General health/appointment situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-442",
+      "surface": "situation",
+      "title_es": "Mi criatura grita dormida y por la mañana no lo recuerda",
+      "title_en": "My child screams in their sleep and doesn't remember it",
+      "url_es": "/es/situaciones/mi-criatura-grita-dormida-y-no-lo-recuerda/",
+      "url_en": "/en/situations/my-child-screams-in-their-sleep/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Adult administrative/caregiver context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-443",
+      "surface": "situation",
+      "title_es": "No reconozco caras y no saludo a gente que conozco",
+      "title_en": "I don't recognise faces and walk past people I know",
+      "url_es": "/es/situaciones/no-reconozco-caras-y-no-saludo/",
+      "url_en": "/en/situations/i-dont-recognise-faces-and-dont-say-hello/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General social/relationship situation suitable for age-neutral discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-444",
+      "surface": "situation",
+      "title_es": "Me arranco el pelo o me pellizco la piel sin darme cuenta",
+      "title_en": "I pull my hair or pick my skin without noticing",
+      "url_es": "/es/situaciones/me-toco-el-pelo-o-la-piel-sin-darme-cuenta/",
+      "url_en": "/en/situations/i-pull-my-hair-or-pick-my-skin-without-noticing/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-445",
+      "surface": "situation",
+      "title_es": "Guardo cosas por si acaso y ha llegado un punto en que no cabe nada",
+      "title_en": "I keep things just in case and now there's no room left",
+      "url_es": "/es/situaciones/guardo-cosas-y-ya-no-cabe-nada/",
+      "url_en": "/en/situations/i-keep-things-and-theres-no-room-left/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S1_SENSITIVE",
+      "discovery": "NORMAL",
+      "classification_reason": "Complex intrusive-thought/checking content; excluded from 0–12 discovery.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-446",
+      "surface": "situation",
+      "title_es": "Una entrevista de trabajo me deja sin recursos",
+      "title_en": "A job interview leaves me with nothing",
+      "url_es": "/es/situaciones/una-entrevista-de-trabajo-me-deja-sin-recursos/",
+      "url_en": "/en/situations/a-job-interview-leaves-me-with-nothing/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-447",
+      "surface": "situation",
+      "title_es": "No sé si contar en el trabajo que soy neurodivergente",
+      "title_en": "I don't know whether to tell work that I'm neurodivergent",
+      "url_es": "/es/situaciones/no-se-si-contar-en-el-trabajo-que-soy-neurodivergente/",
+      "url_en": "/en/situations/i-dont-know-whether-to-disclose-at-work/",
+      "age_bands": [
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Workplace/professional context.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-448",
+      "surface": "situation",
+      "title_es": "Me cuesta poner por escrito el ajuste que necesito",
+      "title_en": "I struggle to put the adjustment I need in writing",
+      "url_es": "/es/situaciones/me-cuesta-pedir-un-ajuste-por-escrito/",
+      "url_en": "/en/situations/i-struggle-to-put-an-adjustment-request-in-writing/",
+      "age_bands": [
+        "AGE_13_17",
+        "AGE_18_PLUS"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "Study/task context suited to teenagers and adults.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    },
+    {
+      "content_id": "global-449",
+      "surface": "situation",
+      "title_es": "Cuando la casa ya está desordenada no sé por dónde empezar",
+      "title_en": "When the house is already messy I don't know where to start",
+      "url_es": "/es/situaciones/cuando-la-casa-ya-esta-desordenada-no-se-por-donde-empezar/",
+      "url_en": "/en/situations/when-the-house-is-messy-i-dont-know-where-to-start/",
+      "age_bands": [
+        "ALL_AGES"
+      ],
+      "sensitivity": "S0_GENERAL",
+      "discovery": "NORMAL",
+      "classification_reason": "General daily-living situation suitable across ages.",
+      "review": "A2_R51_DOMAIN_RECLASSIFICATION_2026-09-28"
+    }
+  ]
+}

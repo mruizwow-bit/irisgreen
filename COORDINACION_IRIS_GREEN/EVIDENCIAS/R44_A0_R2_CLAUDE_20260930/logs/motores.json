@@ -1,0 +1,130 @@
+{
+ "arquitectura": [
+  "ig-suite-3d",
+  "ig-suite-arquitectura",
+  "ig-suite-core"
+ ],
+ "circuitos": [
+  "ig-suite-circuitos",
+  "ig-suite-core",
+  "ig-taller-circuitos-calc"
+ ],
+ "color": [
+  "ig-suite-color",
+  "ig-suite-core"
+ ],
+ "comic": [
+  "ig-suite-comic",
+  "ig-suite-core",
+  "ig-suite-lienzo"
+ ],
+ "composicion": [
+  "ig-suite-core",
+  "ig-suite-musica"
+ ],
+ "dibujo": [
+  "ig-suite-core",
+  "ig-suite-dibujo"
+ ],
+ "diseno-grafico": [
+  "ig-suite-core",
+  "ig-suite-diseno",
+  "ig-suite-lienzo"
+ ],
+ "escritura-restricciones": [
+  "ig-suite-core",
+  "ig-suite-escritura"
+ ],
+ "estructuras": [
+  "ig-suite-core",
+  "ig-suite-estructuras",
+  "ig-suite-physics",
+  "ig-taller-estructuras-calc"
+ ],
+ "fotografia": [
+  "ig-suite-core",
+  "ig-suite-fotografia"
+ ],
+ "hojas": [],
+ "ideas": [
+  "ig-suite-core",
+  "ig-suite-ideas"
+ ],
+ "juegos-de-mesa": [
+  "ig-suite-core",
+  "ig-suite-juegosmesa"
+ ],
+ "lenguas-inventadas": [
+  "ig-suite-core",
+  "ig-suite-lenguas",
+  "ig-suite-lenguas-datos"
+ ],
+ "maquinas": [
+  "ig-suite-core",
+  "ig-suite-maquinas",
+  "ig-suite-maquinas-cadena",
+  "ig-taller-maquinas-calc"
+ ],
+ "moda-textil": [
+  "ig-suite-core",
+  "ig-suite-moda"
+ ],
+ "modelado-3d": [
+  "ig-suite-3d",
+  "ig-suite-core",
+  "ig-suite-modelado3d"
+ ],
+ "mundos": [
+  "ig-suite-core",
+  "ig-suite-mundos"
+ ],
+ "papiroflexia": [
+  "ig-suite-3d",
+  "ig-suite-core",
+  "ig-suite-papiroflexia",
+  "ig-suite-papiroflexia-diagramas",
+  "ig-suite-papiroflexia-geo"
+ ],
+ "patrones": [
+  "ig-suite-core",
+  "ig-suite-patrones"
+ ],
+ "pixel-art": [
+  "ig-suite-core",
+  "ig-suite-pixelart"
+ ],
+ "programacion": [
+  "ig-suite-codigo",
+  "ig-suite-core",
+  "ig-suite-physics",
+  "ig-suite-programacion"
+ ],
+ "ritmo": [
+  "ig-suite-core",
+  "ig-suite-musica"
+ ],
+ "robotica": [
+  "ig-suite-codigo",
+  "ig-suite-core",
+  "ig-suite-physics",
+  "ig-suite-robotica"
+ ],
+ "simulaciones": [
+  "ig-suite-core",
+  "ig-suite-simulaciones"
+ ],
+ "sintesis-sonido": [
+  "ig-suite-core",
+  "ig-suite-musica"
+ ],
+ "videojuegos": [
+  "ig-suite-core",
+  "ig-suite-juego-runtime",
+  "ig-suite-videojuegos"
+ ],
+ "videomapping": [
+  "ig-suite-core",
+  "ig-suite-mapeo-runtime",
+  "ig-suite-videomapping"
+ ]
+}

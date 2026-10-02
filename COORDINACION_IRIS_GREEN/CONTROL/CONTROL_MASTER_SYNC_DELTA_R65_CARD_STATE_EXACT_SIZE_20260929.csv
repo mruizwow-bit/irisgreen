@@ -1,0 +1,12 @@
+Bloqueante;Estado;Evidencia;Medida;Propietario
+1 estados de enlace;HECHO;commit 2a7fcc51;cinco estados sobre tokens del lanzador - anillo de foco 2.4:1 -> 7.48:1 en DARK NAVY;Claude
+1b anillo --ig-focus roto en origen;ANOTADO NO PARCHEADO;ig-r42-materials.css fija #5a49a8 sin distinguir tema;WCAG 2.2 AA 1.4.11 - afecta a todo componente que lea --ig-focus;hoja R42
+2 tamano exacto 240x150;RECONCILIADO;R65_EVIDENCIA_240x150.png + barrido 320-1920 paso 2;exacto en 526 - 820 - 1076 - rango 137x85.6 a 283x176.9 - caso duro real 172x108 en 390;Claude
+3 prueba titulo-off 27/27;INSTRUMENTO ENTREGADO - GATE NO DECLARADO;artefacto de prueba ciega ES/EN LIGHT/DARK a 240x150 y 172x108;no se declara PASS: seria afirmacion de la propia entrega - mas debil simulaciones - par de riesgo patrones y lenguas-inventadas;humano / Astra
+4 filtros moviles;HECHO;commit a8bd0e2a;no era desbordamiento sino dos fallos de WCAG 2.2 AA 2.4.11 - chips envueltos 4/3/2/2 filas 6 de 6 sin fallos - sugerencias en rejilla 3 tarjetas 2 filas 0 recortes ES y EN a 320 390 560;Claude
+4b jerarquia de sugerencias en movil;ABIERTO PARA ASTRA;las sugerencias dejan de verse mayores que el resto en <=560;alternativa sin incumplir 2.4.11: una sugerencia grande y dos enlaces de texto;Astra
+suite axe-core;PASS;8 combinaciones ES/EN x DARK NAVY/LIGHT x 390/1440;0 infracciones wcag2a wcag2aa wcag21a wcag21aa wcag22aa;Claude
+suite servido de variantes;PASS;8 combinaciones de idioma y etapa;27 tarjetas siempre - 9 variantes en infancia/childhood - 0 en el resto;Claude
+suite manifiesto;PASS;dist/img/taller/escenas/manifest.json;36 escenas - 0 hashes distintos - 0 fuera de presupuesto;Claude
+suite KEEP 6/6;CONGELADO;svg_sha256 sin mover - arbol limpio tras reconstruir;dibujo bcd9 - estructuras a83e - modelado-3d 513e - mundos 4c78 - programacion ad42 - videojuegos 94dd;Claude
+suite primera pantalla movil;PASS;carga real a 390;3 imagenes - 69.6 KB;Claude

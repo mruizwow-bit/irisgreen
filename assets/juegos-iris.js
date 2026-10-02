@@ -5,8 +5,8 @@ var D=window.IG_JUEGOS_DATA;if(!D)return;
 var root=document.getElementById('jg-app');if(!root)return;
 var BASE=root.getAttribute('data-base')||'/assets/pictogramas/';
 var UI={
- es:{h1:'Juegos',lede:'297 juegos prácticos para situaciones cotidianas. Sin tiempo, sin puntos y sin prisa. Nada suena ni se mueve hasta que tú lo decides.',crumb:'Recursos',crumbHref:'/es/recursos/',
-  buscar:'Buscar un juego',buscarPh:'Por ejemplo: mochila, ducha, autobús',practica:'¿Qué quieres practicar?',eligeEtapa:'Elige una etapa de vida',etapaAyuda:'Puedes elegir una etapa o ver todo. Puedes cambiarla en cualquier momento.',verTodo:'Ver todo',cambiarEtapa:'Cambiar etapa',moreOptions:'Más opciones',hideOptions:'Ocultar opciones',clearContext:'Quitar filtro de contexto',temas:'Temas',n:function(n){return n===1?'1 juego':n+' juegos';},sinRes:'No hay juegos con esa palabra. Prueba con otra o elige «Todos».',
+ es:{h1:'Juegos',lede:'Juega con monedas y billetes o elige una actividad con pictogramas para practicar situaciones cotidianas.',crumb:'Inicio',crumbHref:'/',
+  buscar:'Buscar en juegos con pictogramas',buscarPh:'Por ejemplo: mochila, ducha, autobús',practica:'¿Qué quieres practicar?',eligeEtapa:'Elige una etapa de vida',etapaAyuda:'Puedes elegir una etapa o ver todo. Puedes cambiarla en cualquier momento.',verTodo:'Ver todo',cambiarEtapa:'Cambiar etapa',moreOptions:'Más opciones',hideOptions:'Ocultar opciones',clearContext:'Quitar filtro de contexto',temas:'Temas',n:function(n){return n===1?'1 juego':n+' juegos';},sinRes:'No hay juegos con esa palabra. Prueba con otra o elige «Todos».',
   jugar:'Jugar',todos:'Todos los juegos',menos:'Menos opciones',ayuda:'Ayúdame',otraVez:'Empezar otra vez',imprimir:'Imprimir',
   parte:function(a,b){return 'Parte '+a+' de '+b;},vacio:'Todavía está vacío.',listo:'Ya está',seguir:'Seguir',otroJuego:'Elegir otro juego',
   minutos:'Minutos',parar:'Parar',empezar:'Empezar',pausar:'Pausar',seguirReloj:'Seguir',
@@ -21,8 +21,8 @@ var UI={
   mitad:'Queda la mitad.',poco:'Queda poco.',finReloj:'Se acabó el tiempo.',relojListo:'Preparado cuando tú quieras.',
   hojaOrden:'Pasos en orden.',hojaLista:'Marca cada casilla cuando lo hayas hecho.',hojaPlan:'Mi plan.',elige:'Buena elección. Sigue cuando quieras.',
   objetos:'Objetos',conEsto:'Con esto',meLoPongo:'Lo que me pongo',juego:'Juego',etapa:'Etapa',todasEdades:'Todas las edades',contexto:'Situación',tipo:'Tipo de juego',todosTipos:'Todos',habilidad:'Habilidad o necesidad',duracionFiltro:'Duración',todasHabilidades:'Todas',todasDuraciones:'Todas',skills:{secuenciar:'Secuenciar',decision:'Elegir y decidir',clasificar:'Clasificar',planificar:'Planificar y organizar',memoria:'Memoria visual'},duraciones:{breve:'Hasta 2 min aprox.',media:'3–5 min aprox.',flexible:'Sin duración fija'},dur:function(m){return m?'Unos '+m+' minutos':'Sin duración fija';},imprimible:'Descargar el imprimible',encontrados:function(a,b){return a+' de '+b+' encontradas';},noEsta:'Eso no está en la lista. Prueba otra.',pareja:'¡Pareja!',noPareja:'No son iguales. Se vuelven a tapar.',carta:'Carta tapada',tuEleccion:'Tu elección',libreOk:'Anotado.',resumen:'Así queda tu plan.'},
- en:{h1:'Games',lede:'297 practical games for everyday situations. No timer, no points and no rush. Nothing plays or moves until you decide.',crumb:'Resources',crumbHref:'/en/resources/',
-  buscar:'Search for a game',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',eligeEtapa:'Choose a stage of life',etapaAyuda:'Choose a stage or view everything. You can change it at any time.',verTodo:'View all',cambiarEtapa:'Change stage',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
+ en:{h1:'Games',lede:'Play with coins and notes or choose a pictogram activity to practise everyday situations.',crumb:'Home',crumbHref:'/en/',
+  buscar:'Search pictogram games',buscarPh:'For example: backpack, shower, bus',practica:'What do you want to practise?',eligeEtapa:'Choose a stage of life',etapaAyuda:'Choose a stage or view everything. You can change it at any time.',verTodo:'View all',cambiarEtapa:'Change stage',moreOptions:'More options',hideOptions:'Hide options',clearContext:'Clear context filter',temas:'Topics',n:function(n){return n===1?'1 game':n+' games';},sinRes:'No games match that word. Try another or choose “All”.',
   jugar:'Play',todos:'All games',menos:'Fewer options',ayuda:'Help me',otraVez:'Start again',imprimir:'Print',
   parte:function(a,b){return 'Part '+a+' of '+b;},vacio:'It is still empty.',listo:'Done',seguir:'Continue',otroJuego:'Choose another game',
   minutos:'Minutes',parar:'Stop',empezar:'Start',pausar:'Pause',seguirReloj:'Resume',
@@ -234,8 +234,22 @@ function etapaCard(et){
   '<span class="jg-stage-art" aria-hidden="true">'+ks.map(function(k){return img(pk(k).img);}).join('')+'</span>'+
   '<span class="jg-stage-copy"><strong>'+esc(L(et.l))+'</strong><span>'+esc(u.n(etapaCount(et.id)))+'</span></span><span aria-hidden="true" class="jg-context-arrow">→</span></button>';
 }
+function audienceEtapa(){
+ var a=window.IGAudience?window.IGAudience.get():(document.documentElement.dataset.igAudience||'default');
+ return ({AGE_0_12:'inf',AGE_13_17:'ado',AGE_18_PLUS:'',ALL_AGES:'',children:'inf',teenagers:'ado',adults:'adu',any:'todas'})[a]||null;
+}
+function audienceEtapaActiva(){return !!audienceEtapa();}
 function etapaRail(){
- var u=U(),allOn=S.stageChosen&&!S.etapa;
+ /* R69: age belongs to the single global AGE_* control in the Iris Green shell.
+    Keep the legacy local rail only as a no-shell fallback. */
+ if(window.IGAudience)return '';
+ var u=U(),locked=audienceEtapa();
+ if(locked){
+  var by={};(D.etapas||[]).forEach(function(e){by[e.id]=e;});
+  var et=by[locked];
+  return '<div class="jg-stage-rail" aria-label="'+esc(u.eligeEtapa)+'"><span class="jg-btn is-on" aria-current="true">'+esc(et?L(et.l):u.todasEdades)+'</span></div>';
+ }
+ var allOn=S.stageChosen&&!S.etapa;
  return '<div class="jg-stage-rail" aria-label="'+esc(u.eligeEtapa)+'">'+
   boton(u.verTodo,function(){S.stageChosen=true;S.etapa=null;S.cat='todos';S.q='';},allOn?'is-on':'','stage-all',' aria-pressed="'+allOn+'"')+
   etapasOrdenadas().map(function(et){var on=S.stageChosen&&S.etapa===et.id;return boton(L(et.l),function(){S.stageChosen=true;S.etapa=et.id;S.cat='todos';S.q='';},on?'is-on':'','stage-'+et.id,' aria-pressed="'+on+'"');}).join('')+'</div>';
@@ -280,13 +294,13 @@ function catalogo(){
  var u=U(),q=norm(S.q),cats={};D.cats.forEach(function(c){cats[c.id]=c;});
  var vis=D.juegos.map(function(j,i){return {j:j,i:i};}).filter(function(o){var j=o.j;
   return (S.cat==='todos'||j.c===S.cat)&&(!S.etapa||(j.e||['todas']).indexOf(S.etapa)>=0||(j.e||['todas']).indexOf('todas')>=0)&&(!S.tipo||grupo(j)===S.tipo)&&(!S.skill||habilidad(j)===S.skill)&&(!S.dur||duracionGrupo(j)===S.dur)&&(!q||norm(L(j.t)+' '+L(j.d)).indexOf(q)>=0);});
- if(!S.stageChosen&&!q&&S.cat==='todos')return etapaLanding();
+ if(!window.IGAudience&&!S.stageChosen&&!q&&S.cat==='todos')return etapaLanding();
  var stageNav=etapaRail();
  var search='<label class="jg-search jg-search-inline"><span class="sr-only">'+esc(u.buscar)+'</span><input type="search" id="jg-q" value="'+esc(S.q)+'" placeholder="'+esc(u.buscarPh)+'" autocomplete="off"></label>';
- if(S.cat==='todos'&&!q){
+ if(S.cat==='todos'&&!q&&!S.tipo&&!S.skill&&!S.dur){
   return '<section class="jg-r41-hub" aria-labelledby="jg-practice-title">'+stageNav+'<div class="jg-r41-actions"><div><p class="jg-kicker">'+esc(u.temas)+'</p><h2 class="jg-practice" id="jg-practice-title">'+esc(u.practica)+'</h2></div><div class="jg-r41-tools">'+search+filtrosPopover(u)+'</div></div>'+
    '<div class="jg-context-grid">'+D.cats.filter(function(c){return c.id!=='todos';}).map(contextoCard).join('')+'</div>'+
-   '<p class="jg-hub-note">'+esc(u.n(D.juegos.length))+'</p></section>';
+   '<p class="jg-hub-note">'+esc(u.n(S.etapa?etapaCount(S.etapa):D.juegos.length))+'</p></section>';
  }
  var current=S.cat!=='todos'?cats[S.cat]:null;
  return '<section class="jg-r41-browser" aria-label="'+esc(u.practica)+'">'+stageNav+'<div class="jg-r41-browserbar">'+
@@ -343,6 +357,7 @@ function textos(){var u=U(),set=function(id,t){var e=document.getElementById(id)
 function render(){
  A=[];textos();
  if(hero)hero.hidden=S.vista!=='lista';
+ document.querySelectorAll('.ig-activity-overview').forEach(function(e){e.hidden=S.vista!=='lista';});
  root.innerHTML=S.vista==='lista'?catalogo():pantallaJuego();
  var lv=S.vista==='juego'?(S.hecha?(S.fi>=fases().length-1?U().hechoT+' '+U().hechoFin:U().hechoParte):(S.msg?S.msg.t:'')):'';if(lv!==lastLive){live.textContent=lv;lastLive=lv;}
  var j0=juego();document.title=S.vista==='juego'&&j0?L(j0.t)+' · '+U().h1+' · Iris Green':U().h1+' · Iris Green';
@@ -380,7 +395,7 @@ function abrir(i,sinHash){altHash('#juego-'+D.juegos[i].s);S.vista='juego';S.gi=
 function volver(){altHash('');var g=S.gi;S.vista='lista';S.gi=null;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;
  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}lastKey=g!==null?'g-'+D.juegos[g].s:null;setTimeout(arriba,0);}
 function reiniciar(){S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;focusHead=true;}
-function leerHash(){var m=(location.hash||'').match(/^#juego-(.+)$/);if(!m)return false;var gi=-1;D.juegos.forEach(function(j,i){if(j.s===m[1])gi=i;});if(gi<0)return false;if(gi!==S.gi){abrir(gi,true);render();}return true;}
+function leerHash(){var m=(location.hash||'').match(/^#juego-(.+)$/);if(!m)return false;var gi=-1;D.juegos.forEach(function(j,i){if(j.s===m[1])gi=i;});if(gi<0)return false;var locked=audienceEtapa();if(locked&&!etapaAplica(D.juegos[gi],locked)){S.vista='lista';S.gi=null;S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}return false;}if(gi!==S.gi){abrir(gi,true);render();}return true;}
 window.addEventListener('hashchange',function(){if(!leerHash()&&S.vista==='juego'){volver();render();}});
 setInterval(function(){var f=fase();if(!f||f.tipo!=='reloj'||S.vista!=='juego')return;var d=dd();if(!d.run||!(d.left>0))return;
  var left=d.left-1,tot=d.total,u=U(),aviso=null;if(left===Math.floor(tot/2))aviso=u.mitad;else if(left===Math.max(1,Math.round(tot*0.1)))aviso=u.poco;
@@ -388,10 +403,24 @@ setInterval(function(){var f=fase();if(!f||f.tipo!=='reloj'||S.vista!=='juego')r
  var ae=document.activeElement;lastKey=ae&&root.contains(ae)?ae.getAttribute('data-k'):null;render();},1000);
 if(window.IG_IDIOMA)window.IG_IDIOMA.on(function(l){if(l!==S.lang){S.lang=l;render();}});
 document.addEventListener('ig:idioma',function(e){var l=e.detail&&e.detail.lang;if(l&&l!==S.lang){S.lang=l;render();}});
-var initialStage=(location.hash||'').match(/^#etapa-(inf|ado|adu|todas|all)$/);
-if(initialStage){
- S.stageChosen=true;S.etapa=initialStage[1]==='all'?null:initialStage[1];S.cat='todos';
- try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+function syncAudienceEtapa(resetDefault){
+ var st=audienceEtapa();
+ if(st){S.stageChosen=true;S.etapa=st;S.cat='todos';S.q='';}
+ else if(resetDefault){S.stageChosen=!!window.IGAudience;S.etapa=null;S.cat='todos';S.q='';}
+ if(st&&S.gi!==null&&!etapaAplica(D.juegos[S.gi],st)){S.vista='lista';S.gi=null;S.fi=0;S.d={};S.msg=null;S.hecha=false;S.ayuda=false;try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}}
 }
+var globalStage=audienceEtapa();
+if(globalStage){
+ syncAudienceEtapa(false);
+}else{
+ if(window.IGAudience){S.stageChosen=true;S.etapa=null;}
+ var initialStage=(location.hash||'').match(/^#etapa-(inf|ado|adu|todas|all)$/);
+ if(initialStage){
+  S.stageChosen=true;S.etapa=initialStage[1]==='all'?null:initialStage[1];S.cat='todos';
+  try{history.replaceState(null,'',location.pathname+location.search);}catch(e){}
+ }
+}
+window.addEventListener('ig:audience-change',function(){syncAudienceEtapa(true);render();});
 if(!leerHash())render();
+document.body.dataset.igGamesReady='1';
 })();

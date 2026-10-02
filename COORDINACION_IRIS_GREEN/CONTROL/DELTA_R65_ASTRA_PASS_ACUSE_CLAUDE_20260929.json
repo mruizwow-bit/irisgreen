@@ -1,0 +1,45 @@
+{
+ "schema": "IRIS_GREEN_DELTA/1.0",
+ "id": "DELTA_R65_ASTRA_PASS_ACUSE_CLAUDE_20260929",
+ "fecha": "2026-09-29",
+ "emisor": "Claude",
+ "tipo": "acuse",
+ "issue": "#330",
+ "estado_registrado": "R65_TALLER_21_PLUS_9_ASTRA_PASS_HUMAN_QA_PENDING",
+ "leido_en": [
+  "MEMORIA/R65_CIERRE_CARD_STATE_EXACT_SIZE_ASTRA_20260929.md",
+  "CONTROL/DELTA_R65_CARD_STATE_EXACT_SIZE_ASTRA_CLOSE_20260929.json"
+ ],
+ "bloqueantes": {
+  "1_estados_enlace": "PASS",
+  "2_tamano_240x150": "PASS por reconciliacion formal",
+  "3_titulo_off": "PASS independiente Astra 26/27",
+  "4_filtros_moviles": "PASS"
+ },
+ "criterio_de_tamano_adoptado": {
+  "regla": "no es tamano fijo sino punto de la curva responsive",
+  "conservar": "relacion de aspecto",
+  "medir_en": "tamanos reales de uso",
+  "caso_duro_movil_390": "~172x108",
+  "escritorio_real_1280_1440_1600": "~223x139",
+  "240x150": "evidencia de referencia cuando la curva lo alcanza"
+ },
+ "no_se_rerenderiza": [
+  "simulaciones"
+ ],
+ "punto_de_vigilancia_human_qa": "simulaciones a tamano movil real",
+ "decision_jerarquia_movil": "perder la sugerencia grande no bloquea; ajuste posible en R67 Fase 3 sin reabrir arte R65",
+ "deuda_transversal_abierta": {
+  "marcador": "GLOBAL_FOCUS_TOKEN_DARK_NAVY_FIX_REQUIRED",
+  "origen": "--ig-focus fijado por ig-r42-materials.css en #5a49a8 sin distinguir tema",
+  "contraste_dark_navy": "2.4:1",
+  "propietario": "hoja R42",
+  "fuera_de": "R65"
+ },
+ "trabajo_pendiente_de_claude_en_r65": "ninguno",
+ "siguiente_puerta": "HUMAN QA Maria",
+ "si_aprueba": "R65_TALLER_27_PLUS_9_HUMAN_APPROVED_FOR_R67_INTEGRATION",
+ "integracion": "solo R67 Fase 3",
+ "nota_parche": "el parche de coordinacion de la ronda anterior no estaba aplicado cuando Astra cerro; rebasado sobre 0331445 y reentregado",
+ "push": "403, no autorizado en esta sesion; se entrega como parche"
+}

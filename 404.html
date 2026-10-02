@@ -1,9 +1,64 @@
-<!DOCTYPE html>
-<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Página no encontrada · Iris Green</title><meta name="robots" content="noindex,follow">
-<link rel="stylesheet" href="/assets/site-v23.css"><link rel="stylesheet" href="/assets/ajustes-interfaz.css">
-</head><body style="min-height:100vh;background-repeat:no-repeat;"><main id="main" style="max-width:48rem;margin:auto;padding:clamp(2rem,8vw,6rem) 1.5rem;">
-<a href="/" style="font:inherit">Iris Green</a>
-<h1>No encontramos esa página</h1><p>La dirección puede haber cambiado. Puedes volver al inicio o consultar el mapa de la web.</p>
-<nav aria-label="Dónde continuar" style="display:flex;flex-wrap:wrap;gap:1rem"><a href="/" style="display:inline-flex;align-items:center;min-height:44px">Volver al inicio</a><a href="/es/neurodiversidad/mapa/" style="display:inline-flex;align-items:center;min-height:44px">Ver el mapa de la web</a></nav>
-</main></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<script>
+(function(){
+  var en=location.pathname.indexOf('/en/')===0;
+  document.documentElement.lang=en?'en':'es';
+})();
+</script>
+<script src="/assets/preferencias-lectura.js"></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Página no encontrada · Iris Green</title>
+<meta name="robots" content="noindex,follow">
+<meta name="theme-color" content="#f6f8fb">
+<link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r50-404-1">
+<link rel="stylesheet" href="/assets/ig-audience.css?v=r50-404-1">
+<link rel="stylesheet" href="/assets/ig-r49-transversal.css?v=r50-404-1">
+<style>
+.ig-404-main{width:min(92%,52rem);margin:0 auto;padding:clamp(3rem,10vw,8rem) 0 6rem}
+.ig-404-card{background:#fff;border:1px solid var(--ig-separator,#d5e1ec);border-radius:24px;padding:clamp(1.35rem,4vw,2.5rem);box-shadow:0 22px 50px -42px rgba(23,57,92,.42)}
+.ig-404-card h1{margin:0 0 .8rem;font:500 clamp(2.2rem,6vw,4rem)/1 'Newsreader',Georgia,serif;color:#17395c}
+.ig-404-card p{margin:.4rem 0 1.4rem;color:#435268;font-size:1.08rem}
+.ig-404-actions{display:flex;flex-wrap:wrap;gap:.7rem}
+.ig-404-actions a{min-height:44px;display:inline-flex;align-items:center;padding:.65rem .95rem;border:1px solid #b9cbd8;border-radius:999px;text-decoration:none;color:#17395c;background:#fff;font-weight:700}
+.ig-404-actions a:first-child{background:#17395c;color:#fff;border-color:#17395c}
+@media(max-width:520px){.ig-404-actions{display:grid}.ig-404-actions a{justify-content:center}}
+</style>
+<script src="/assets/ig-r49-lang-bootstrap.js?v=r50-404-1"></script>
+<script src="/assets/ig-audience.js?v=r50-404-1"></script>
+<script defer src="/assets/ig-child-safe.js?v=r50-404-1"></script>
+<script defer src="/assets/interfaz-comun.js?v=r50-404-1"></script>
+<script defer src="/assets/musica.js?v=r50-404-1"></script>
+<script defer src="/assets/ig-r49-transversal.js?v=r50-404-1"></script>
+</head>
+<body data-ig-r49="1" data-ig-profile="content" data-ig-materials="r42" data-ig-r49-owner="R50_404">
+<a class="ig-r49-skip" href="#main" data-es="Ir al contenido" data-en="Skip to content">Ir al contenido</a>
+<main id="main" class="ig-404-main">
+  <section class="ig-404-card" aria-labelledby="ig-404-title">
+    <h1 id="ig-404-title" data-es="No encontramos esa página" data-en="We couldn't find that page">No encontramos esa página</h1>
+    <p data-es="La dirección puede haber cambiado o el enlace puede estar incompleto. Puedes volver al inicio o continuar por Recursos." data-en="The address may have changed or the link may be incomplete. You can go back home or continue through Resources.">La dirección puede haber cambiado o el enlace puede estar incompleto. Puedes volver al inicio o continuar por Recursos.</p>
+    <nav class="ig-404-actions" aria-label="Dónde continuar" data-label-es="Dónde continuar" data-label-en="Where to go next">
+      <a href="/" data-href-es="/" data-href-en="/en/" data-es="Volver al inicio" data-en="Back to home">Volver al inicio</a>
+      <a href="/es/recursos/" data-href-es="/es/recursos/" data-href-en="/en/resources/" data-es="Ver Recursos" data-en="View Resources">Ver Recursos</a>
+    </nav>
+  </section>
+</main>
+<script>
+(function(){
+  var en=document.documentElement.lang.indexOf('en')===0;
+  document.title=en?'Page not found · Iris Green':'Página no encontrada · Iris Green';
+  document.querySelectorAll('[data-es][data-en]').forEach(function(el){
+    el.textContent=en?el.dataset.en:el.dataset.es;
+  });
+  document.querySelectorAll('[data-href-es][data-href-en]').forEach(function(el){
+    el.href=en?el.dataset.hrefEn:el.dataset.hrefEs;
+  });
+  document.querySelectorAll('[data-label-es][data-label-en]').forEach(function(el){
+    el.setAttribute('aria-label',en?el.dataset.labelEn:el.dataset.labelEs);
+  });
+})();
+</script>
+</body>
+</html>

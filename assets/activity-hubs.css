@@ -1,0 +1,17 @@
+.ig-activity-nav{display:flex;flex-wrap:wrap;gap:.6rem;margin:0 0 1.5rem;padding:0 0 1rem;border-bottom:1px solid var(--ig-separator)}
+.ig-activity-nav a{display:inline-flex;align-items:center;min-height:44px;padding:.5rem .9rem;border:1px solid var(--ig-border-control);border-radius:12px;background:var(--ig-bg-surface);color:var(--ig-text);text-decoration:none;line-height:1.4}
+.ig-activity-nav a[aria-current=page]{background:var(--ig-bg-surface-soft);border-color:var(--ig-accent);text-decoration:underline;text-underline-offset:.25rem}
+.ig-activity-nav a:hover,.ig-activity-nav a:focus-visible{background:var(--ig-bg-surface-soft);color:var(--ig-text);outline:2px solid var(--ig-focus-global);outline-offset:2px}
+.ig-activity-head{margin-bottom:1.5rem}.ig-activity-head h1{font-size:clamp(1.7rem,3vw,2.4rem);line-height:1.2;margin:0 0 .75rem}.ig-activity-head p{max-width:65ch}
+.ig-activity-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,17rem),1fr));gap:1rem;margin:0 0 1.5rem;padding:0}
+.ig-activity-grid li{min-width:0;display:flex}
+.ig-activity-card{display:flex;flex:1;flex-direction:column;gap:.6rem;padding:1.2rem;border:1px solid var(--ig-separator);border-radius:16px;background:var(--ig-bg-surface);color:var(--ig-text);text-decoration:none}
+.ig-activity-card h2{font-size:1.4rem;margin:0}.ig-activity-card p{color:var(--ig-text-muted);margin:0;line-height:1.55}.ig-activity-card span{color:var(--ig-link);margin-top:auto;padding-top:.5rem;font-weight:700}
+.ig-activity-card:hover,.ig-activity-card:focus-visible{background:var(--ig-bg-surface-soft);border-color:var(--ig-border-control);transform:none;box-shadow:none}
+.ig-activity-overview{margin:1rem 0 1.5rem}.ig-activity-overview[hidden]{display:none}
+.ig-activity-overview h2{font-size:1.5rem}.ig-activity-overview>.ig-activity-grid{max-width:40rem}
+body[data-ig-taller-launcher] .igk-all{margin-top:1rem}
+body[data-ig-taller-launcher] .igk-group{scroll-margin-top:1rem}
+body[data-ig-taller-launcher] .igk-search{width:min(100%,42rem);max-width:100%}
+body[data-ig-taller-launcher] .igk-actions{display:block}
+@media(max-width:520px){.ig-activity-nav{gap:.4rem}.ig-activity-nav a{font-size:.94rem;padding:.4rem .65rem}.ig-activity-card{padding:1rem}}

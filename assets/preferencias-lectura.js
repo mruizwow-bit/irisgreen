@@ -132,11 +132,7 @@
       box.querySelectorAll('[data-ig-transparency-choice]').forEach(function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-ig-transparency-choice') === current)); });
       var forcedBy = transparencyForced(), forced = box.querySelector('[data-ig-transparency-forced-note]');
       if (forcedBy) box.setAttribute('data-ig-transparency-forced', forcedBy); else box.removeAttribute('data-ig-transparency-forced');
-      if (forced) {
-        forced.textContent = forcedBy ? (forcedBy === 'contrast' ? L.forced : L.forcedSystem) : '';
-        if (forcedBy) { forced.hidden = false; forced.removeAttribute('hidden'); forced.style.removeProperty('display'); }
-        else { forced.hidden = true; forced.setAttribute('hidden', ''); forced.style.removeProperty('display'); }
-      }
+      if (forced) { forced.hidden = !forcedBy; forced.textContent = forcedBy ? (forcedBy === 'contrast' ? L.forced : L.forcedSystem) : ''; }
       var note = box.querySelector('[data-ig-transparency-note]');
       if (note) note.textContent = L.note + (state.transparency ? '' : ' ' + L.system);
     });

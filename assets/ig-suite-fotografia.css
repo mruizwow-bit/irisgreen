@@ -1,0 +1,69 @@
+/* Iris Green · El taller · Estudio de fotografía (R43). Solo lo propio; lo común está en ig-suite.css. */
+body[data-ig-suite="fotografia"] .igph-viewport { background:#2b323b; }
+body[data-ig-suite="fotografia"] .igph-canvas { position:absolute; inset:0; }
+body[data-ig-suite="fotografia"] .igph-overlay { position:absolute; inset:0; pointer-events:none; z-index:5; overflow:hidden; }
+body[data-ig-suite="fotografia"] .igs-viewport:not([data-tool="crop"]) .igph-overlay { display:none; }
+body[data-ig-suite="fotografia"] .igph-box { position:absolute; pointer-events:auto; cursor:move; touch-action:none; }
+body[data-ig-suite="fotografia"] .igph-handle {
+  position:absolute; width:32px; height:32px; margin:-16px 0 0 -16px; padding:0; border:0; background:transparent;
+  pointer-events:auto; touch-action:none; cursor:nwse-resize;
+}
+body[data-ig-suite="fotografia"] .igph-handle::after {
+  content:""; position:absolute; left:8px; top:8px; width:16px; height:16px; border-radius:4px; background:var(--ig-bg-surface); border:2px solid #17395c;
+  box-shadow:0 0 0 1px rgba(255,255,255,.7);
+}
+body[data-ig-suite="fotografia"] .igph-h-n, body[data-ig-suite="fotografia"] .igph-h-s { cursor:ns-resize; }
+body[data-ig-suite="fotografia"] .igph-h-e, body[data-ig-suite="fotografia"] .igph-h-w { cursor:ew-resize; }
+body[data-ig-suite="fotografia"] .igph-h-ne, body[data-ig-suite="fotografia"] .igph-h-sw { cursor:nesw-resize; }
+body[data-ig-suite="fotografia"] .igph-handle:focus-visible { outline:none; }
+body[data-ig-suite="fotografia"] .igph-handle:focus-visible::after { background:#ffd23f; box-shadow:0 0 0 3px #fff, 0 0 0 6px var(--igs-focus); }
+@media (pointer:coarse) {
+  body[data-ig-suite="fotografia"] .igph-handle { width:44px; height:44px; margin:-22px 0 0 -22px; }
+  body[data-ig-suite="fotografia"] .igph-handle::after { left:13px; top:13px; }
+}
+body[data-ig-suite="fotografia"] .igph-badge {
+  position:absolute; left:.6rem; top:.6rem; margin:0; padding:.25rem .6rem; border-radius:999px; z-index:6;
+  background:#101820; color:#fff; font:700 .85rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; pointer-events:none;
+}
+body[data-ig-suite="fotografia"] .igph-badge[hidden] { display:none; }
+body[data-ig-suite="fotografia"] .igph-status { margin:0 .3rem; }
+
+/* Estructura: miniaturas */
+body[data-ig-suite="fotografia"] .igph-list button { min-height:52px; }
+body[data-ig-suite="fotografia"] .igph-thumb { flex:none; width:44px; height:44px; border-radius:6px; border:1px solid var(--igs-line); background:#dfe6ee; }
+body[data-ig-suite="fotografia"] .igph-list button span { overflow:hidden; text-overflow:ellipsis; }
+body[data-ig-suite="fotografia"] .igph-addpr { display:flex; width:100%; }
+body[data-ig-suite="fotografia"] .igph-addpr select { width:100%; min-width:0; }
+
+/* Propiedades: secciones plegables */
+body[data-ig-suite="fotografia"] .igph-sec { border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); }
+body[data-ig-suite="fotografia"] .igph-sec > summary {
+  display:flex; align-items:center; min-height:44px; padding:.3rem .7rem; cursor:pointer; list-style-position:inside;
+  font:700 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); border-radius:12px;
+}
+body[data-ig-suite="fotografia"] .igph-sec > summary:hover { background:var(--igs-hover); }
+body[data-ig-suite="fotografia"] .igph-sec > summary:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="fotografia"] .igph-sec-body { display:grid; gap:.65rem; padding:.2rem .7rem .8rem; min-width:0; }
+body[data-ig-suite="fotografia"] .igph-grid2 { display:grid; grid-template-columns:repeat(auto-fit,minmax(7.5rem,1fr)); gap:.5rem; }
+body[data-ig-suite="fotografia"] .igph-meta, body[data-ig-suite="fotografia"] .igph-challenges { list-style:none; margin:.3rem 0; padding:0; display:grid; gap:.3rem; line-height:1.4; }
+body[data-ig-suite="fotografia"] .igph-meta li, body[data-ig-suite="fotografia"] .igph-challenges li { display:flex; gap:.45rem; align-items:baseline; }
+body[data-ig-suite="fotografia"] .igph-mark {
+  flex:none; display:inline-grid; place-items:center; width:1.35rem; height:1.35rem; border-radius:50%;
+  background:var(--igs-ok); color:#fff; font:700 .8rem/1 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-suite="fotografia"] .igph-meta li[data-on="true"] .igph-mark { background:var(--igs-bad); }
+body[data-ig-suite="fotografia"] .igph-challenges li[data-ok="false"] .igph-mark { background:var(--igs-ink-soft); }
+body[data-ig-suite="fotografia"] .igph-hist { display:grid; gap:.5rem; }
+body[data-ig-suite="fotografia"] .igph-hist-svg { width:100%; height:96px; background:#1f252c; border-radius:8px; border:1px solid var(--igs-line); }
+body[data-ig-suite="fotografia"] .igph-hL { fill:#c9d2dc; opacity:.8; }
+body[data-ig-suite="fotografia"] .igph-hR { fill:none; stroke:#ff6b6b; stroke-width:1.2; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="fotografia"] .igph-hG { fill:none; stroke:#5fd38a; stroke-width:1.2; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="fotografia"] .igph-hB { fill:none; stroke:#6fb0ff; stroke-width:1.2; vector-effect:non-scaling-stroke; }
+body[data-ig-suite="fotografia"] .igph-tabledet > summary { min-height:32px; display:flex; align-items:center; cursor:pointer; font-weight:700; color:var(--igs-blue); }
+body[data-ig-suite="fotografia"] .igph-tabledet > summary:focus-visible { outline:3px solid var(--igs-focus); outline-offset:2px; }
+body[data-ig-suite="fotografia"] .igs-dialog .igph-meta { margin:.5rem 0 .8rem; }
+
+@media (forced-colors:active) {
+  body[data-ig-suite="fotografia"] .igph-handle::after { forced-color-adjust:none; background:Canvas; border-color:CanvasText; }
+  body[data-ig-suite="fotografia"] .igph-mark { forced-color-adjust:none; border:1px solid CanvasText; }
+}

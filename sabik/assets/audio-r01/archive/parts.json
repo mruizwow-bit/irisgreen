@@ -1,0 +1,82 @@
+{
+  "schema": "SABIK_AUDIO_R01_BASE64_ARCHIVE/1.0",
+  "archive": "sabik-audio-r01-wavs.tar.xz",
+  "archive_sha256": "cc5490c01fead9627200025b069d2b11d964323a4f4a3e776561c59bfb699abb",
+  "parts": [
+    {
+      "name": "part-00.b64",
+      "chars": 400000,
+      "sha256": "00ebbacddd0b1def56f25aff4c6ca9d74ea0cd1f8be59948c8f0224a43bd6756"
+    },
+    {
+      "name": "part-01.b64",
+      "chars": 400000,
+      "sha256": "4867a3fec424b1b59a24c608e43fa0c27a52347549fa1c32805cf8c2cdb553c4"
+    },
+    {
+      "name": "part-02.b64",
+      "chars": 400000,
+      "sha256": "6b93a2a33f568ff252a1c891cbd6e117878819addaf38c7360b0273e58f3bb67"
+    },
+    {
+      "name": "part-03.b64",
+      "chars": 400000,
+      "sha256": "c8802cb39476c247c9996b151510b1fb0f91536de9eb01010a18a181902685d6"
+    },
+    {
+      "name": "part-04.b64",
+      "chars": 400000,
+      "sha256": "7edd917d2c6d5c126114e53e9af28bdf5cf9ced7ee1043e4e723c00d523d5063"
+    },
+    {
+      "name": "part-05.b64",
+      "chars": 400000,
+      "sha256": "0ce0c58a32122baca4736cf6ebec40f5d018edf8ff2ec5a98849624acf7046d5"
+    },
+    {
+      "name": "part-06.b64",
+      "chars": 400000,
+      "sha256": "0149021873d235c5bf8496b0dc54bb17331653a9bca0202f353e92ad45b87162"
+    },
+    {
+      "name": "part-07.b64",
+      "chars": 400000,
+      "sha256": "99910f9bb1e545568e92f1ff9430bc1406fc16271edcf8b9f425ed3f2699c136"
+    },
+    {
+      "name": "part-08.b64",
+      "chars": 400000,
+      "sha256": "1d533de4efd2715668dfaf6cc13f60e51a4e0fdbb2f6ab5144a0e591603165d4"
+    },
+    {
+      "name": "part-09.b64",
+      "chars": 400000,
+      "sha256": "e4880770a7d38ced5942504d888310c2109f7069d7ba7558b1fc71a4917457ab"
+    },
+    {
+      "name": "part-10.b64",
+      "chars": 400000,
+      "sha256": "f5a6f43f4b0c7adb5e858c26d218f316e90a44d41c2719fec4a526d4340e7f9e"
+    },
+    {
+      "name": "part-11.b64",
+      "chars": 400000,
+      "sha256": "4fd4c14df2736f4e8a2f559786ac57183b279ce0b77efce9742f065faa1caf31"
+    },
+    {
+      "name": "part-12.b64",
+      "chars": 400000,
+      "sha256": "5aad0d73bb92fc3dd58a2f43b7214be9f64c6851d9ee65073dac83fb24f1e0e4"
+    },
+    {
+      "name": "part-13.b64",
+      "chars": 400000,
+      "sha256": "59d06725f7b82c263401e938f1a05213b29474c42e46b4e0b6671cf9d56ff85e"
+    },
+    {
+      "name": "part-14.b64",
+      "chars": 128812,
+      "sha256": "d4ec74e48da1198a56e038564f8da5ecbce95ece9d94f70a2ebb30e2ae12f46c"
+    }
+  ]
+}
