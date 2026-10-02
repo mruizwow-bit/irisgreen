@@ -30,7 +30,7 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "AUTHORIZED_WAIT_FACTUAL_BRIEF",
+      "status": "READY_FOR_VISUAL_REVIEW",
       "assets": [
         "sol",
         "mercurio",
@@ -51,7 +51,54 @@
         "REUSE_NEW",
         "SOURCE_DATE_WHEN_APPLICABLE",
         "REPRESENTATION_LIMITS"
-      ]
+      ],
+      "entry_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+      "entry_gate_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
+      "generation_complete": true,
+      "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+      "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
+      "atlas_packaging": "WAIT_VISUAL_PASS",
+      "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation",
+      "masters": [
+        {
+          "id": "sol",
+          "filename": "b01_sol_master_r03.png",
+          "sha256": "53b04c7aa84fdb42e3235f52286f2b2082d5eb96b89e2bbddc882ba22d065f63",
+          "state": "BASE_NEUTRAL_VISIBLE_LIGHT",
+          "asset_class": "REPRESENTATION"
+        },
+        {
+          "id": "mercurio",
+          "filename": "b01_mercurio_master_r03.png",
+          "sha256": "02fee8d50e74b904e1765d79a3c0a52ef5821fa49cdfcdfd264f530cd24613e8",
+          "state": "BASE_NEUTRAL",
+          "asset_class": "REPRESENTATION"
+        },
+        {
+          "id": "venus",
+          "filename": "b01_venus_master_r03.png",
+          "sha256": "898a591f2de61d53dc3ab108ba30b17af423ab69397f8f89e0ee149d72aa08b8",
+          "state": "BASE_CLOUD_TOPS_NEUTRAL",
+          "asset_class": "REPRESENTATION"
+        },
+        {
+          "id": "tierra",
+          "filename": "b01_tierra_master_r03.png",
+          "sha256": "5dc40cdabc89b44e75abd0e26d3d961c53e26a118957fd0ea1b5ba54595de25f",
+          "state": "BASE_DAY_NEUTRAL",
+          "asset_class": "REPRESENTATION"
+        }
+      ],
+      "supporting": {
+        "contact_sheet": {
+          "filename": "B01_SOLAR_FOUNDATION_CONTACT_SHEET_R01.png",
+          "sha256": "a90fbb973fd7f84b0c9c4afe341a82d67853dee7e4100d48217120f5a8031881"
+        },
+        "config": "B01_SOLAR_FOUNDATION_CONFIG_R01.json",
+        "provenance": "B01_SOLAR_FOUNDATION_PROVENANCE_R01.json",
+        "manifest": "B01_SOLAR_FOUNDATION_MANIFEST_R01.json",
+        "direction": "B01_SOLAR_FOUNDATION_DIRECTION_R01.md"
+      }
     },
     {
       "id": "B02",
@@ -85,18 +132,19 @@
     "KEEP_REAL_DATA_CALCULATION_REPRESENTATION_SEPARATE"
   ],
   "senda_immediate": {
-    "status": "ACTIVE",
+    "status": "COMPLETED_STOP",
     "task": "SOLAR_BATCH_01_FACTUAL_ASSET_BRIEF",
-    "assets": [
-      "sol",
-      "mercurio",
-      "venus",
-      "tierra"
-    ],
-    "gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS"
+    "gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+    "commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd"
   },
   "senda_queued_after": {
     "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF_PASS",
     "status": "QUEUED_NOT_IMMEDIATE"
+  },
+  "active_visual_review": {
+    "batch": "B01",
+    "owner": "ASTRA_MARIA_LUMEN",
+    "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+    "atlas_packaging_blocked_until_pass": true
   }
 }

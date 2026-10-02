@@ -1,0 +1,63 @@
+{
+  "schema": "iris-green-b01-solar-visual-evidence-v1",
+  "date": "2026-10-02",
+  "owner": "LUMEN_A7",
+  "entry_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+  "entry_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
+  "output_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+  "status": "READY_FOR_VISUAL_REVIEW",
+  "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation",
+  "contact_sheet": {
+    "filename": "B01_SOLAR_FOUNDATION_CONTACT_SHEET_R01.png",
+    "sha256": "a90fbb973fd7f84b0c9c4afe341a82d67853dee7e4100d48217120f5a8031881"
+  },
+  "masters": [
+    {
+      "id": "sol",
+      "sha256": "53b04c7aa84fdb42e3235f52286f2b2082d5eb96b89e2bbddc882ba22d065f63",
+      "filename": "b01_sol_master_r03.png",
+      "state": "BASE_NEUTRAL_VISIBLE_LIGHT"
+    },
+    {
+      "id": "mercurio",
+      "sha256": "02fee8d50e74b904e1765d79a3c0a52ef5821fa49cdfcdfd264f530cd24613e8",
+      "filename": "b01_mercurio_master_r03.png",
+      "state": "BASE_NEUTRAL"
+    },
+    {
+      "id": "venus",
+      "sha256": "898a591f2de61d53dc3ab108ba30b17af423ab69397f8f89e0ee149d72aa08b8",
+      "filename": "b01_venus_master_r03.png",
+      "state": "BASE_CLOUD_TOPS_NEUTRAL"
+    },
+    {
+      "id": "tierra",
+      "sha256": "5dc40cdabc89b44e75abd0e26d3d961c53e26a118957fd0ea1b5ba54595de25f",
+      "filename": "b01_tierra_master_r03.png",
+      "state": "BASE_DAY_NEUTRAL"
+    }
+  ],
+  "contract": {
+    "canvas": "1536x1536",
+    "format": "PNG RGBA",
+    "alpha": true,
+    "srgb_icc": true,
+    "one_body_per_file": true,
+    "full_disk": true,
+    "no_text": true,
+    "no_space_background": true,
+    "relative_scale_baked": false,
+    "asset_class": "REPRESENTATION",
+    "public_label_es": "Imagen hecha por ordenador",
+    "public_label_en": "Computer-made image"
+  },
+  "process": {
+    "final_method": "first-party procedural render",
+    "donor_pixels_copied": false,
+    "exploratory_generations_rejected": true,
+    "earth_geometry_scaffold": "Natural Earth lowres public-domain geometry",
+    "atlas_packaging": "WAIT_VISUAL_PASS"
+  },
+  "b02": "HOLD_AFTER_B01_VISUAL_PASS",
+  "b03": "HOLD_FOR_PRODUCT_SPEC"
+}

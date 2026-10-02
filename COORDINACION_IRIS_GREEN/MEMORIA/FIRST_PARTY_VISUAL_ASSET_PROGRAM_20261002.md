@@ -164,57 +164,84 @@ Lumen solo revisa si Atlas detecta que la adaptación exige reimaginar.
 
 ## BATCH 01 · SISTEMA SOLAR · FUNDACIÓN VISUAL
 
-Estado operativo:
-`AUTHORIZED_WAIT_FACTUAL_BRIEF`
-
-### Precondición obligatoria · Senda
-Antes de que Lumen genere ningún master, Senda debe cerrar para Sol, Mercurio, Venus y Tierra:
-
-- función de producto;
-- clasificación `REAL_DATA / CALCULATION / REPRESENTATION`;
-- descriptores factuales visibles permitidos;
-- qué NO puede inferirse ni representarse como hecho;
-- estados necesarios;
-- prioridad;
-- `REUSE / NEW`;
-- fuente/fecha cuando el descriptor dependa de información externa;
-- límites epistemológicos de la representación.
-
-Gate previo:
-`INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS`
-
-Hasta ese PASS:
-**Lumen NO genera los masters.**
-
-### Owner visual después del brief
-Lumen.
-
-Masters:
-1. Sol
-2. Mercurio
-3. Venus
-4. Tierra
-
-Objetivo:
-establecer el lenguaje first-party de cuerpos planetarios antes de producir los demás.
-
-Contrato:
-- 1 master por cuerpo;
-- disco completo;
-- sin estrellas/fondo espacial;
-- sin texto;
-- transparencia;
-- iluminación coherente entre los cuatro;
-- NO escala relativa horneada: runtime escala;
-- factual descriptors de Senda;
-- no añadir superficie visible donde la atmósfera la oculta;
-- no falsificar detalle no resuelto.
-
-Salida Lumen:
+Estado:
 `VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW`
 
-Después STOP visual.
-Astra/María/Lumen revisan antes de BATCH 02.
+Entrada factual:
+`INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS`
+
+Brief Senda:
+- commit `2a387fa0e1294b3a1167e4adcc800bd7419f4cfd`;
+- Sol / Mercurio / Venus / Tierra;
+- todos `NEW_FIRST_PARTY_MASTER + REPRESENTATION`;
+- donors históricos = `REFERENCE_VALIDATION_ONLY`.
+
+Owner visual:
+**Lumen A7**
+
+Masters producidos:
+1. `b01_sol_master_r03.png`
+   - SHA-256 `53b04c7aa84fdb42e3235f52286f2b2082d5eb96b89e2bbddc882ba22d065f63`
+2. `b01_mercurio_master_r03.png`
+   - SHA-256 `02fee8d50e74b904e1765d79a3c0a52ef5821fa49cdfcdfd264f530cd24613e8`
+3. `b01_venus_master_r03.png`
+   - SHA-256 `898a591f2de61d53dc3ab108ba30b17af423ab69397f8f89e0ee149d72aa08b8`
+4. `b01_tierra_master_r03.png`
+   - SHA-256 `5dc40cdabc89b44e75abd0e26d3d961c53e26a118957fd0ea1b5ba54595de25f`
+
+Contrato técnico de los cuatro:
+- 1536×1536;
+- PNG RGBA;
+- alpha real;
+- ICC sRGB embebido;
+- un cuerpo por archivo;
+- disco completo;
+- sin fondo espacial;
+- sin texto/logos;
+- sin escala relativa horneada;
+- etiqueta pública futura:
+  - ES `Imagen hecha por ordenador`;
+  - EN `Computer-made image`.
+
+Dirección factual:
+- Sol: blanco/blanco cálido pálido, autoemisivo, sin llamas/corona permanente;
+- Mercurio: gris-parduzco, craterizado, sin halo atmosférico visible;
+- Venus: crema/marfil, nubes globales opacas, superficie no visible;
+- Tierra: vista diurna África + Europa + Atlántico, océanos azules, nubes genéricas, halo azul muy fino.
+
+Proceso:
+- intentos generativos exploratorios que incumplían contrato fueron descartados;
+- masters finales = render procedural first-party con seeds/config trazables;
+- no se copiaron píxeles de los donors del Sistema Solar;
+- Tierra usa geometría pública de Natural Earth únicamente como scaffold factual de costa/geografía; el render/composición final es first-party.
+
+Library:
+`/Iris Green/First Party Visual/B01 Solar Foundation/`
+
+Incluye:
+- 4 masters;
+- `B01_SOLAR_FOUNDATION_CONTACT_SHEET_R01.png`
+  - SHA-256 `a90fbb973fd7f84b0c9c4afe341a82d67853dee7e4100d48217120f5a8031881`;
+- direction note;
+- config/seeds;
+- provenance;
+- manifest.
+
+Gate actual:
+`READY_FOR_VISUAL_REVIEW`
+
+Siguiente paso:
+**Astra + María + Lumen visual review.**
+
+NO Atlas packaging todavía.
+NO Motor.
+NO B02.
+NO B03.
+
+Después de review:
+- KEEP/PASS → Atlas packaging/provenance technical closure;
+- REWORK → solo los masters señalados;
+- no escalar hasta gate explícito.
 
 ## BATCH 02 · SISTEMA SOLAR · RESTO DE PLANETAS
 Solo después de Batch 01 visual PASS:
