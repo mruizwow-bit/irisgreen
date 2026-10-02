@@ -224,3 +224,53 @@ Los seis R62 no sustituyen a Juegos en sala.
 - 3 mecánicas iniciales de Juegos en sala;
 - además, cualquier paquete adicional que María siga entregando;
 - NO cerrar inventario hasta que María indique que ya no quedan más paquetes.
+
+
+## Catálogo previo de Juegos
+
+Documento recuperado `PLAN_4.md` indica que, antes de los nuevos carriles R62 / Juegos en sala, Iris Green ya servía:
+
+`EXISTING_GAME_FAMILIES = 19`
+
+Importante:
+- son **familias**, no 19 juegos únicos;
+- algunas tienen múltiples variantes;
+- el propio documento cita la familia de memoria con 12 variantes;
+- NO sumar mecánicamente 19 + 6 + 3 como si fueran 28 productos únicos.
+
+Inventarios separados:
+
+### Catálogo doméstico existente
+- 19 familias;
+- muchas variantes;
+- sigue siendo un producto distinto de Juegos en sala.
+
+### Nuevos R62
+- 6 juegos:
+  P01 Habitación imposible;
+  P02 Terrario vivo;
+  P03 Rutas de luz;
+  P04 Ritmo de colores;
+  P05 Pesca tranquila;
+  P06 Mi museo.
+
+### Juegos en sala · primera tanda
+- 3 mecánicas:
+  Parejas;
+  ¿Qué falta aquí?;
+  Ordena la historia.
+
+Relación:
+- Juegos en sala reutiliza/adapta mecánicas existentes cuando conviene;
+- por tanto el total de "productos nuevos" no se obtiene sumando familias + pilotos + moldes;
+- Nexo debe inventariar por ID/producto y marcar `REUSE_OF_EXISTING_MECHANIC` cuando corresponda.
+
+## Criterio de faltantes
+
+Para decidir qué "ha desaparecido" o "falta subir":
+1. comparar rutas/runtime actuales en main;
+2. comparar contra inventario de 6 R62;
+3. comparar contra las 3 mecánicas de sala;
+4. mantener separado el catálogo doméstico de 19 familias y sus variantes;
+5. no declarar perdido un juego si el producto existe como bundle/cadena en Library o rama remota;
+6. distinguir `PRESERVED_NOT_IN_MAIN` de `MISSING_ARTIFACT`.
