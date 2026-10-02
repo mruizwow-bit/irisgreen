@@ -311,3 +311,80 @@ Cada tanda deja:
 - decisión KEEP/REWORK/PASS;
 - handoff al siguiente owner.
 
+
+
+---
+
+# BATCH 00 · CIELO HORIZONTE · CIERRE ATLAS
+
+Fecha:
+02/10/2026
+
+Estado:
+`INTEREST_01_SKY_HORIZON_ASSET_PASS`
+
+Asset canónico:
+`01-cielo-horizonte-observacion-r01.png`
+
+SHA-256:
+`f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0`
+
+Library:
+`/Iris Green/Handoffs/Atlas/INTEREST_01_SKY_HORIZON_ASSET_R01/01-cielo-horizonte-observacion-r01.png`
+
+Handoff GitHub:
+`COORDINACION_IRIS_GREEN/HANDOFFS/INTEREST_01_SKY_HORIZON_ASSET_R01/`
+
+Validación:
+- 2560×768;
+- PNG RGBA;
+- sRGB ICC embebido;
+- horizonte bajo/medio;
+- top 55 % totalmente transparente;
+- 70,9357 % del canvas totalmente transparente;
+- safe-crop 16:9 PASS;
+- safe-crop 3:4 PASS;
+- safe-crop móvil 390×844 equivalente PASS;
+- 100 % de columnas de los tres crops conservan horizonte;
+- sin estrellas;
+- sin Luna;
+- sin planetas;
+- sin aurora;
+- sin nubes protagonistas;
+- sin personas;
+- sin texto;
+- sin logos;
+- sin landmarks identificables;
+- no compite con el cielo procedural.
+
+Provenance:
+- dirección de horizonte tomada como referencia artística del donor indicado por María;
+- final generado first-party mediante OpenAI image generation en ChatGPT;
+- donor no usado como final directo;
+- 0 imágenes de terceros embebidas declaradas;
+- packaging técnico de Atlas;
+- working canvas 2172×724 → escalado uniforme 2560×853 → crop superior 85 px → 2560×768;
+- 0 px de crop horizontal;
+- sin deformación;
+- limpieza de ruido alpha únicamente en valores <=2;
+- sin redraw durante packaging.
+
+Runtime:
+NO TOCADO.
+
+Main:
+NO TOCADO.
+
+Branch:
+`atlas/interest01-sky-horizon-asset-r01-20261002`
+
+Decisión:
+B00 queda **PASS / KEEP técnico**, preparado para consumo por Motor cuando el runtime sea liberado.
+
+STOP Atlas:
+- no Voyager;
+- no ISS;
+- no Batch 02;
+- no otros assets;
+- no runtime;
+- no main.
