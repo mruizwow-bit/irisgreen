@@ -23,8 +23,8 @@
       "family": "RELAXING",
       "name": "Acuario / Pecera R61",
       "status": "ACTIVE",
-      "current_owner": null,
-      "notes": "Lumen final AV PASS; art frozen; exact mux/audio hashes locked; wait Motor release; no handoff sent; no A3/B2",
+      "current_owner": "WAIT_MOTOR_RELEASE",
+      "notes": "Lumen final AV PASS; exact visual/audio preserved; no rerender; player waits because Motor is assigned to Nexo/Sabik P0",
       "binary_identity": {
         "filename": "pecera_10min_parte1_de_2.mp4",
         "sha256": "8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f",
@@ -211,21 +211,22 @@
   ],
   "tracking_issue": 368,
   "active_stage": "WAIT_MOTOR_RELEASE",
-  "active_stage_marker": "WAIT_MOTOR_RELEASE",
+  "active_stage_marker": "RINCON_COMMON_PLAYER_A1_INTEGRATION_PASS",
   "last_orchestration_comment_id": 5957669623,
   "resource_constraints": {
     "motor": {
-      "status": "BUSY_WITH_NEXO_RECOVERY",
-      "project": "R44_SUITE5",
+      "status": "BUSY_WITH_NEXO_SABIK_P0",
+      "project": "SABIK_DEFINITIVE_P0",
       "rincon_player_stage": "WAIT_MOTOR_RELEASE",
-      "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON"
+      "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_INTERESTS"
     }
   },
   "last_completed_checkpoint": {
     "item": "A1",
     "owner": "LUMEN",
     "marker": "RINCON_A1_LUMEN_FINAL_AV_PASS",
-    "evidence_path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_LUMEN_FINAL_AV_PASS.md"
+    "evidence_path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_LUMEN_FINAL_AV_PASS.md",
+    "commit": "8724cb4283b844f5bd03f562d7c530ab838c94b0"
   },
   "next_stage_after_release": "MOTOR_COMMON_PLAYER_INTEGRATION",
   "next_stage_marker_after_release": "RINCON_COMMON_PLAYER_A1_INTEGRATION_PASS",
