@@ -1,7 +1,18 @@
 # CONTROL · INVESTIGACIÓN EDITORIAL ES/EN · 02/10/2026
 
 Estado:
-`INVESTIGACION_EDITORIAL_R1_R4_ES_EN_PRESERVED_POLICY_CANONICAL`
+`INVESTIGACION_EDITORIAL_R1_R4_ES_EN_PRESERVED_EXISTING_NORM_APPLIED`
+
+## Regla de precedencia
+
+No se crea una norma bilingüe nueva.
+
+Se aplica la obligación transversal ya vigente desde R42:
+- ES + EN en el mismo entregable;
+- owner traduce su propio trabajo;
+- web y móvil comprobados en ambos idiomas;
+- Memoria + Control actualizados;
+- ninguna lengua queda “para después” sin autorización expresa.
 
 ## Artefacto
 
@@ -12,37 +23,40 @@ SHA-256:
 
 ## Cobertura
 
-- Ronda 01: ES + EN
-- Ronda 02: ES + EN
-- Ronda 03: ES + EN
-- Ronda 04: ES + EN
-- Registro bilingüe: 32 fuentes
+- R01 ES + EN
+- R02 ES + EN
+- R03 ES + EN
+- R04 ES + EN
+- Source register: 32 fuentes bilingües
 
-## Gate editorial
+## Gate editorial ES/EN
 
-KEEP:
-- títulos oficiales en idioma original;
-- convención numérica por idioma;
-- advertencias metodológicas completas;
-- incertidumbre idéntica en ambos idiomas;
-- nombres publicados de secciones;
-- reescritura pública posterior en lectura accesible ES/EN.
+PASS solo si:
+- misma fuente;
+- misma población;
+- mismo año;
+- misma jurisdicción;
+- misma cifra;
+- mismo grado de certeza;
+- mismas limitaciones;
+- convención numérica correcta por idioma;
+- título oficial no falseado por traducción;
+- estado verificado/no verificado equivalente.
 
-## No publicación directa
+## Publicación
 
 `RESEARCH_REPORT != PUBLIC_COPY`
 
-Antes de publicar un hallazgo:
-- revisión de evidencia;
-- estado de verificación;
-- destino editorial;
+Antes de publicar:
 - redacción pública ES;
 - redacción pública EN;
-- lectura accesible;
-- QA de simetría ES/EN.
+- lenguaje claro/lectura accesible;
+- QA de simetría;
+- misma evidencia y límites.
 
-## Documentación canónica
+## Referencias
 
-- Normativa: `COORDINACION_IRIS_GREEN/NORMATIVA/IRIS_GREEN_POLITICA_BILINGUE_INVESTIGACION_ES_EN_2026.md`
-- Memoria: `COORDINACION_IRIS_GREEN/MEMORIA/INVESTIGACION_EDITORIAL_ES_EN_20261002.md`
-- Issue: #344
+- Normativa transversal embebida: #283 / #289 y órdenes descendientes.
+- Anexo de aplicación de Investigación:
+  `COORDINACION_IRIS_GREEN/NORMATIVA/IRIS_GREEN_POLITICA_BILINGUE_INVESTIGACION_ES_EN_2026.md`
+- Issue editorial: #344
