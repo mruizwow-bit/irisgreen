@@ -93,7 +93,12 @@ def build():
     for name in PUBLIC_DIRS:
         p=ROOT/name
         if not p.is_dir():raise FileNotFoundError(p)
-        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns('__pycache__','*.py','*.md','*.dc.html'))
+        ignored=['__pycache__','*.py','*.md','*.dc.html']
+        # Sabik's iris-panel.html is a source fragment embedded into Home, not a
+        # standalone public document. Publishing it would make release audits
+        # treat a headless fragment as a page.
+        if name=='sabik': ignored.append('iris-panel.html')
+        shutil.copytree(p,dst/name,ignore=shutil.ignore_patterns(*ignored))
     for name in PUBLIC_ROOT:
         p=ROOT/name
         if not p.is_file():raise FileNotFoundError(p)
