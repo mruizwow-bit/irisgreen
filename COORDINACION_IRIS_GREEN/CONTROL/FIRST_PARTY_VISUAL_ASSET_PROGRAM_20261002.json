@@ -23,8 +23,45 @@
       "id": "B00",
       "name": "Cielo horizonte",
       "owner": "ATLAS",
-      "status": "ACTIVE_TECHNICAL_CLOSURE",
-      "gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS"
+      "status": "PASS_PACKAGED_KEEP_WAIT_RUNTIME",
+      "gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS",
+      "asset_id": "01-cielo-horizonte-observacion-r01",
+      "sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+      "library_path": "/Iris Green/Handoffs/Atlas/INTEREST_01_SKY_HORIZON_ASSET_R01/01-cielo-horizonte-observacion-r01.png",
+      "handoff_path": "COORDINACION_IRIS_GREEN/HANDOFFS/INTEREST_01_SKY_HORIZON_ASSET_R01",
+      "file_contract": {
+        "format": "PNG",
+        "mode": "RGBA",
+        "width": 2560,
+        "height": 768,
+        "color_space": "sRGB",
+        "icc_profile_embedded": true
+      },
+      "alpha_validation": {
+        "fully_transparent_pixel_pct": 70.9357,
+        "upper_55pct_fully_transparent": true,
+        "upper_55pct_nonzero_alpha_pixels": 0
+      },
+      "safe_crop_validation": {
+        "16:9": "PASS",
+        "3:4": "PASS",
+        "mobile_390x844": "PASS",
+        "all_columns_have_horizon": true
+      },
+      "exclusions_verified": [
+        "stars",
+        "moon",
+        "planets",
+        "aurora",
+        "prominent_clouds",
+        "people",
+        "text",
+        "logos",
+        "recognizable_landmarks"
+      ],
+      "runtime_touched": false,
+      "main_touched": false,
+      "stop_after_gate": true
     },
     {
       "id": "B01",
@@ -69,5 +106,19 @@
     "DO_NOT_INVENT_UNKNOWN_SURFACE_FEATURES",
     "FACTUAL_DESCRIPTORS_BEFORE_GENERATION",
     "KEEP_REAL_DATA_CALCULATION_REPRESENTATION_SEPARATE"
-  ]
+  ],
+  "evidence": {
+    "INTEREST_01_SKY_HORIZON_ASSET_PASS": {
+      "date": "2026-10-02",
+      "owner": "ATLAS_A1",
+      "branch": "atlas/interest01-sky-horizon-asset-r01-20261002",
+      "asset_id": "01-cielo-horizonte-observacion-r01",
+      "sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+      "library_path": "/Iris Green/Handoffs/Atlas/INTEREST_01_SKY_HORIZON_ASSET_R01/01-cielo-horizonte-observacion-r01.png",
+      "library_file_id": "libfile_bfc30f361e1c8191a936bcedaaaf4f58",
+      "handoff_path": "COORDINACION_IRIS_GREEN/HANDOFFS/INTEREST_01_SKY_HORIZON_ASSET_R01",
+      "result": "PASS",
+      "next": "STOP"
+    }
+  }
 }
