@@ -1,0 +1,401 @@
+{
+  "schema": "iris-green.r59.exoplanets-v2.product-content-reuse-evidence.v1",
+  "date": "2026-10-02",
+  "owner": "Senda · R59",
+  "marker": "INTEREST_03_EXOPLANETS_V2_PRODUCT_CONTENT_AND_REUSE_PASS",
+  "scope": [
+    "PRODUCT",
+    "CONTENT",
+    "REUSE_AUDIT"
+  ],
+  "exclusions": [
+    "RUNTIME",
+    "IMAGE_GENERATION",
+    "CIELO",
+    "SISTEMA_SOLAR",
+    "INTERESTS_04_07",
+    "MAIN"
+  ],
+  "repository": {
+    "full_name": "mruizwow-bit/irisgreen",
+    "main_observed": "28e60f0a57876c607a60fb902d3f4421b8cba7ca",
+    "coordination_base": "2639994bf88139827abc8832b8824ad1c075954d",
+    "donor_files": {
+      "exoplanets_json": {
+        "path": "es/intereses/exoplanetas/exoplanetas.json",
+        "sha": "4e50794ff82cfdc627c95f80997a94bdcfb5eba4",
+        "bytes": 910859
+      },
+      "js": {
+        "path": "assets/ig-exoplanetas.js",
+        "sha": "eaa48badc488e58d1cef4dd0fd0a4f7ed8b63653",
+        "bytes": 40333
+      },
+      "js3d": {
+        "path": "assets/ig-exoplanetas-3d.js",
+        "sha": "cb0ba32822b11086c49b5224e7186a90072477c2",
+        "bytes": 566030
+      },
+      "css": {
+        "path": "assets/ig-exoplanetas.css",
+        "sha": "52f1a2a9a53fd758bad0c7a7cf1c85dcf9e72177",
+        "bytes": 3778
+      },
+      "es_index": {
+        "path": "es/intereses/exoplanetas/index.html",
+        "sha": "afd8d0b319c938de4b5f329aa215ac56df3a66a1",
+        "bytes": 164318
+      },
+      "en_index": {
+        "path": "en/interests/exoplanets/index.html",
+        "sha": "23763ed77bbc0f065f7b4b03f8950ef02b201247",
+        "bytes": 162735
+      },
+      "es_list": {
+        "path": "es/intereses/exoplanetas/lista/index.html",
+        "sha": "fe3bf117887dbb1130bf51079dcb227ee824ec96",
+        "bytes": 1207942
+      },
+      "en_list": {
+        "path": "en/interests/exoplanets/list/index.html",
+        "sha": "850df6438389e2e43011b5cca021736d190a1dbc",
+        "bytes": 1199384
+      },
+      "card": {
+        "path": "img/intereses/exoplanetas/tarjeta.webp",
+        "sha": "40e18656657e0f7bb357b607457397e7dc20695e",
+        "bytes": 25630
+      },
+      "shared_sky_background": {
+        "path": "es/intereses/sistema-solar/cielo-fondo.json",
+        "sha": "601a61f67a34dcd8a483d4dca88cc6cd53587694",
+        "bytes": 411894
+      }
+    }
+  },
+  "local_snapshot": {
+    "date": "2026-09-24",
+    "confirmed_planets": 6366,
+    "host_stars": 4775,
+    "methods": [
+      {
+        "method": "Transit",
+        "count": 4708
+      },
+      {
+        "method": "Radial Velocity",
+        "count": 1200
+      },
+      {
+        "method": "Microlensing",
+        "count": 289
+      },
+      {
+        "method": "Imaging",
+        "count": 97
+      },
+      {
+        "method": "Transit Timing Variations",
+        "count": 29
+      },
+      {
+        "method": "Eclipse Timing Variations",
+        "count": 17
+      },
+      {
+        "method": "Orbital Brightness Modulation",
+        "count": 9
+      },
+      {
+        "method": "Pulsar Timing",
+        "count": 8
+      },
+      {
+        "method": "Astrometry",
+        "count": 6
+      },
+      {
+        "method": "Pulsation Timing Variations",
+        "count": 2
+      },
+      {
+        "method": "Disk Kinematics",
+        "count": 1
+      }
+    ],
+    "source": {
+      "organismo": "NASA Exoplanet Archive (NExScI, Caltech/IPAC)",
+      "titulo": "Planetary Systems Composite Parameters (PSCompPars)",
+      "url": "https://exoplanetarchive.ipac.caltech.edu/",
+      "version": "tabla consultada el 24/09/2026, 6.366 planetas confirmados",
+      "licencia": "Uso libre con reconocimiento: «This research has made use of the NASA Exoplanet Archive, which is operated by the California Institute of Technology, under contract with the National Aeronautics and Space Administration under the Exoplanet Exploration Program.»"
+    },
+    "query_string_preserved": false,
+    "compact_uncertainty_columns_preserved": false
+  },
+  "archive_crosscheck": {
+    "source": "NASA Exoplanet Archive official home/counts pages",
+    "observed_on": "2026-10-02",
+    "count_date": "2026-10-01",
+    "confirmed_planets": 6375,
+    "delta_vs_local": 9,
+    "interpretation": "EXPECTED_SNAPSHOT_DELTA_NOT_ERROR",
+    "urls": [
+      "https://exoplanetarchive.ipac.caltech.edu/",
+      "https://exoplanetarchive.ipac.caltech.edu/docs/counts_detail.html",
+      "https://exoplanetarchive.ipac.caltech.edu/docs/pscp_about.html",
+      "https://exoplanetarchive.ipac.caltech.edu/docs/API_TD_columns.html",
+      "https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html"
+    ]
+  },
+  "initial_subset": [
+    {
+      "planet": "51 Peg b",
+      "host": "51 Peg",
+      "method": "Radial Velocity",
+      "discovery_year": 1995,
+      "facility": "Haute-Provence Observatory",
+      "period_days": 4.2308,
+      "semi_major_axis_au": 0.052,
+      "radius_earth": 14.1,
+      "mass_earth": 193.9,
+      "eccentricity": 0.0063,
+      "equilibrium_temp_k": 1329,
+      "insolation_earth": 506.2,
+      "host_distance_pc": 15.461,
+      "host_distance_ly": 50.43,
+      "constellation": "Peg",
+      "source_date": "2026-09-24"
+    },
+    {
+      "planet": "TRAPPIST-1 e",
+      "host": "TRAPPIST-1",
+      "method": "Transit",
+      "discovery_year": 2017,
+      "facility": "Multiple Observatories",
+      "period_days": 6.10101,
+      "semi_major_axis_au": 0.02925,
+      "radius_earth": 0.92,
+      "mass_earth": 0.692,
+      "eccentricity": 0.0051,
+      "equilibrium_temp_k": 249.7,
+      "insolation_earth": 0.646,
+      "host_distance_pc": 12.43,
+      "host_distance_ly": 40.54,
+      "constellation": "Aqr",
+      "source_date": "2026-09-24"
+    },
+    {
+      "planet": "HR 8799 b",
+      "host": "HR 8799",
+      "method": "Imaging",
+      "discovery_year": 2008,
+      "facility": "Gemini Observatory",
+      "period_days": 170000,
+      "semi_major_axis_au": 68,
+      "radius_earth": 13,
+      "mass_earth": 2000,
+      "eccentricity": null,
+      "equilibrium_temp_k": 1200,
+      "insolation_earth": 0.0011,
+      "host_distance_pc": 41.244,
+      "host_distance_ly": 134.52,
+      "constellation": "Peg",
+      "source_date": "2026-09-24"
+    },
+    {
+      "planet": "PSR B1257+12 c",
+      "host": "PSR B1257+12",
+      "method": "Pulsar Timing",
+      "discovery_year": 1992,
+      "facility": "Arecibo Observatory",
+      "period_days": 66.5419,
+      "semi_major_axis_au": 0.36,
+      "radius_earth": 1.91,
+      "mass_earth": 4.3,
+      "eccentricity": 0.0186,
+      "equilibrium_temp_k": null,
+      "insolation_earth": null,
+      "host_distance_pc": 600,
+      "host_distance_ly": 1956.94,
+      "constellation": "Vir",
+      "source_date": "2026-09-24"
+    },
+    {
+      "planet": "OGLE-2003-BLG-235L b",
+      "host": "OGLE-2003-BLG-235L",
+      "method": "Microlensing",
+      "discovery_year": 2004,
+      "facility": "OGLE",
+      "period_days": null,
+      "semi_major_axis_au": 4.3,
+      "radius_earth": 13.2,
+      "mass_earth": 830,
+      "eccentricity": null,
+      "equilibrium_temp_k": null,
+      "insolation_earth": null,
+      "host_distance_pc": 5800,
+      "host_distance_ly": 18917.05,
+      "constellation": "Sgr",
+      "source_date": "2026-09-24"
+    },
+    {
+      "planet": "Proxima Cen b",
+      "host": "Proxima Cen",
+      "method": "Radial Velocity",
+      "discovery_year": 2016,
+      "facility": "European Southern Observatory",
+      "period_days": 11.1846,
+      "semi_major_axis_au": 0.04848,
+      "radius_earth": 1.02,
+      "mass_earth": 1.055,
+      "eccentricity": 0,
+      "equilibrium_temp_k": 218,
+      "insolation_earth": 0.641,
+      "host_distance_pc": 1.3012,
+      "host_distance_ly": 4.24,
+      "constellation": "Cen",
+      "source_date": "2026-09-24"
+    }
+  ],
+  "bilingual_content": {
+    "central_question": {
+      "es": "¿Cómo sabemos que existe un planeta que casi nunca podemos ver directamente?",
+      "en": "How do we know a planet exists when we can almost never see it directly?"
+    },
+    "instruction": {
+      "es": "Elige una pista y un mundo. Mira qué nos permite saber y qué sigue siendo desconocido.",
+      "en": "Choose a clue and a world. See what it lets us know and what remains unknown."
+    },
+    "depth_action": {
+      "es": "Explorar más exoplanetas",
+      "en": "Explore more exoplanets"
+    }
+  },
+  "epistemic_contract": {
+    "REAL_DATA": [
+      "snapshot fields from NASA Exoplanet Archive PSCompPars 2026-09-24"
+    ],
+    "CALCULATION": [
+      "pc_to_ly",
+      "K_to_C_if_used",
+      "relative comparisons",
+      "log distance scale",
+      "approximate temperate-zone/earth-like heuristics"
+    ],
+    "SIMULATION": [
+      "transit signal animation",
+      "radial-velocity wobble",
+      "microlensing amplification",
+      "pulsar timing diagram",
+      "orbit motion",
+      "direct-imaging separation diagram"
+    ],
+    "rules": [
+      "missing != zero",
+      "equilibrium temperature != surface temperature",
+      "earth-like heuristic != habitable",
+      "simulation != observed signal",
+      "PSCompPars composite row may combine references/calculated values",
+      "do not invent numeric uncertainty absent from compact snapshot"
+    ]
+  },
+  "eager_audit": {
+    "current_initial_fetches": [
+      {
+        "path": "es/intereses/exoplanetas/exoplanetas.json",
+        "bytes": 910859,
+        "decision": "REWORK_TO_DEPTH_OR_SMALL_SUBSET"
+      },
+      {
+        "path": "es/intereses/sistema-solar/cielo-fondo.json",
+        "bytes": 411894,
+        "decision": "DROP_FROM_ENTRY_EAGER_PATH"
+      }
+    ],
+    "current_eager_json_total_bytes": 1322753,
+    "current_3d_bundle": {
+      "path": "assets/ig-exoplanetas-3d.js",
+      "bytes": 566030,
+      "load": "ON_EXPLICIT_ACTION",
+      "decision": "KEEP_LAZY_PATTERN_REWORK_PRODUCT_ROLE"
+    }
+  },
+  "reuse_decisions": [
+    {
+      "item": "ES/EN routes",
+      "decision": "KEEP"
+    },
+    {
+      "item": "local exoplanetas.json",
+      "decision": "KEEP_DONOR"
+    },
+    {
+      "item": "HTML editorial content",
+      "decision": "KEEP_DEPTH_REWORK_HIERARCHY"
+    },
+    {
+      "item": "method explanations",
+      "decision": "KEEP_CONTENT_REWORK_VISUAL"
+    },
+    {
+      "item": "ig-exoplanetas.js",
+      "decision": "REWORK"
+    },
+    {
+      "item": "ig-exoplanetas-3d.js",
+      "decision": "KEEP_TECHNICAL_DONOR_REWORK_PRODUCT_ROLE"
+    },
+    {
+      "item": "global 3D map in first viewport",
+      "decision": "DROP"
+    },
+    {
+      "item": "cielo-fondo.json eager",
+      "decision": "DROP"
+    },
+    {
+      "item": "full local JSON eager",
+      "decision": "REWORK"
+    },
+    {
+      "item": "full list pages",
+      "decision": "KEEP_DEPTH"
+    },
+    {
+      "item": "localStorage collection",
+      "decision": "DEFER"
+    },
+    {
+      "item": "tarjeta.webp",
+      "decision": "DROP_V2_MINIMUM",
+      "rights_status": "PROVENANCE_UNKNOWN"
+    }
+  ],
+  "assets": {
+    "new_assets_required": [],
+    "result": "NO_NEW_ASSETS_REQUIRED",
+    "existing_specific_assets": [
+      {
+        "path": "img/intereses/exoplanetas/tarjeta.webp",
+        "bytes": 25630,
+        "rights_status": "PROVENANCE_UNKNOWN",
+        "v2_need": false
+      }
+    ],
+    "procedural_first_party_possible": true
+  },
+  "human_qa": [
+    "understands indirect detection",
+    "distinguishes at least transit/radial velocity/direct imaging",
+    "understands missing data is not zero",
+    "distinguishes snapshot data/calculation/simulation",
+    "understands 6366@2026-09-24 vs 6375@2026-10-01 as dated snapshots",
+    "does not interpret equilibrium temperature as climate",
+    "does not interpret earth-like as habitable",
+    "keyboard and touch usable",
+    "320/390 usable",
+    "NORMAL/REDUCED/NONE preserve information"
+  ],
+  "status": "PASS_AND_STOP"
+}
