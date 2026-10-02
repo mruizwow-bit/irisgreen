@@ -30,7 +30,7 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "READY_FOR_VISUAL_REVIEW",
+      "status": "REWORK_REQUIRED_VISUAL_QUALITY",
       "assets": [
         "sol",
         "mercurio",
@@ -40,7 +40,7 @@
       "gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
       "precondition_owner": "SENDA_R59",
       "precondition_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
-      "lumen_may_generate": false,
+      "lumen_may_generate": true,
       "factual_brief_fields": [
         "PRODUCT_PURPOSE",
         "REAL_DATA_CALCULATION_REPRESENTATION",
@@ -98,6 +98,28 @@
         "provenance": "B01_SOLAR_FOUNDATION_PROVENANCE_R01.json",
         "manifest": "B01_SOLAR_FOUNDATION_MANIFEST_R01.json",
         "direction": "B01_SOLAR_FOUNDATION_DIRECTION_R01.md"
+      },
+      "previous_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW",
+      "next_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW",
+      "visual_review": {
+        "result": "FAIL",
+        "keep": [
+          "FACTUAL_BRIEF",
+          "CANVAS",
+          "RGBA_ALPHA",
+          "INDIVIDUAL_MASTER",
+          "REPRESENTATION_CLASS",
+          "NO_BAKED_SCALE"
+        ],
+        "rework": [
+          "MATERIALITY",
+          "RELIEF",
+          "VOLUME",
+          "PREMIUM_VISUAL_EXECUTION"
+        ],
+        "reference_only": [
+          "uploaded_realistic_composites"
+        ]
       }
     },
     {
