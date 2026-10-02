@@ -7,6 +7,8 @@ on:
       - 'scripts/test_sabik_presence_r52.py'
       - 'scripts/test_sabik_voice_runtime.mjs'
       - 'scripts/test_sabik_voice_browser.py'
+      - 'scripts/apply_home_r42.py'
+      - 'scripts/test_home_child_safe_browser.py'
       - '.github/workflows/motor-sabik-voice-p0.yml'
   workflow_dispatch:
 permissions:
