@@ -1,0 +1,7 @@
+/* R51 A2 · canonical age gate, applied after section layout CSS. */
+[data-ig-age-bands][hidden]{display:none!important}
+html[data-ig-audience="AGE_0_12"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_0_12"]):not([data-ig-age-bands~="ALL_AGES"]),
+html[data-ig-audience="AGE_13_17"] [data-ig-age-bands]:not([data-ig-age-bands~="AGE_13_17"]):not([data-ig-age-bands~="ALL_AGES"]){display:none!important}
+html[data-ig-audience="AGE_0_12"] body[data-ig-page-age-bands]:not([data-ig-s2-safe-page]):not([data-ig-page-age-bands~="AGE_0_12"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience="AGE_13_17"] body[data-ig-page-age-bands]:not([data-ig-s2-safe-page]):not([data-ig-page-age-bands~="AGE_13_17"]):not([data-ig-page-age-bands~="ALL_AGES"]) main,
+html[data-ig-audience] body[data-ig-audience-blocked] main{display:none!important;visibility:hidden!important}

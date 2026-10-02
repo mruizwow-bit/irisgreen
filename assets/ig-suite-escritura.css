@@ -1,0 +1,99 @@
+/* Iris Green · El taller · Escritura con restricciones (R43). Editor de texto como lienzo. */
+@font-face { font-family:"IG Escritura Serif"; src:url(/assets/fonts/newsreader-latin-wght-normal.woff2) format("woff2"); font-weight:200 800; font-display:swap; }
+@font-face { font-family:"IG Escritura Mono"; src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); font-weight:500; font-display:swap; }
+
+body[data-ig-suite="escritura"] .igs-viewport.igw-viewport {
+  user-select:text; -webkit-user-select:text; touch-action:auto; background:var(--ig-bg-surface);
+  height:clamp(22rem,calc(100svh - 22rem),52rem);
+}
+body[data-ig-suite="escritura"] .igw-editor {
+  --igw-size:19px; --igw-measure:38rem; --igw-font:"Atkinson Hyperlegible",system-ui,sans-serif;
+  position:absolute; inset:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto; background:var(--ig-bg-surface);
+}
+body[data-ig-suite="escritura"] .igw-editor[data-font="serif"] { --igw-font:"IG Escritura Serif",Georgia,serif; }
+body[data-ig-suite="escritura"] .igw-editor[data-font="mono"] { --igw-font:"IG Escritura Mono",ui-monospace,Consolas,monospace; --igw-measure:42rem; }
+body[data-ig-suite="escritura"] .igw-head {
+  display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:.35rem .8rem;
+  padding:.55rem .9rem; border-bottom:1px solid var(--igs-line); background:var(--igs-soft);
+}
+body[data-ig-suite="escritura"] .igw-label { display:flex; flex-wrap:wrap; gap:.35rem; align-items:baseline; margin:0; font:700 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="escritura"] .igw-label-k { color:var(--igs-ink-soft); font-weight:600; }
+body[data-ig-suite="escritura"] .igw-badge { margin:0; padding:.2rem .65rem; border-radius:999px; border:1px solid var(--igs-line); background:var(--ig-bg-surface); font:700 .85rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="escritura"] .igw-badge[data-kind="ok"] { border-color:#7fb08f; background:var(--ig-bg-surface-soft); color:var(--ig-text); }
+body[data-ig-suite="escritura"] .igw-badge[data-kind="bad"] { border-color:#c98a97; background:var(--ig-bg-surface-soft); color:var(--ig-text); }
+
+/* Área de texto con capa de marcas detrás: mismas medidas y ajuste de línea. */
+body[data-ig-suite="escritura"] .igw-field { position:relative; min-height:0; background:var(--ig-bg-surface); }
+body[data-ig-suite="escritura"] .igw-backdrop, body[data-ig-suite="escritura"] .igw-ta {
+  position:absolute; inset:0; margin:0; box-sizing:border-box; width:100%; height:100%;
+  /* Medida de lectura limitada (unos 62 caracteres) aunque el espacio de trabajo sea muy ancho. */
+  padding:1rem max(clamp(.9rem,3vw,2.2rem),calc((100% - var(--igw-measure,38rem)) / 2)) 2rem; border:0; border-radius:0;
+  font-family:var(--igw-font); font-size:var(--igw-size); line-height:1.7; letter-spacing:0; tab-size:4;
+  white-space:pre-wrap; overflow-wrap:break-word; word-break:normal; overflow-y:scroll; overflow-x:hidden;
+}
+body[data-ig-suite="escritura"] .igw-backdrop { color:transparent; pointer-events:none; scrollbar-width:none; }
+body[data-ig-suite="escritura"] .igw-backdrop::-webkit-scrollbar { display:none; }
+body[data-ig-suite="escritura"] .igw-hl { position:relative; }
+body[data-ig-suite="escritura"] .igw-hl mark {
+  color:transparent; background:var(--ig-bg-surface-soft); border-radius:3px;
+  text-decoration:underline wavy #a1283c; text-decoration-thickness:2px; text-underline-offset:.28em; text-decoration-skip-ink:none;
+}
+body[data-ig-suite="escritura"] .igw-editor[data-marks="false"] .igw-hl mark { background:transparent; text-decoration:none; }
+body[data-ig-suite="escritura"] .igw-probe { display:inline-block; width:0; height:1em; }
+body[data-ig-suite="escritura"] .igw-ta { background:transparent; color:#101d2c; resize:none; outline:none; caret-color:#5a49a8; }
+body[data-ig-suite="escritura"] .igw-ta::selection { background:#c9c1f0; color:#101d2c; }
+body[data-ig-suite="escritura"] .igw-ta:focus-visible { box-shadow:inset 0 0 0 3px var(--igs-focus); }
+body[data-ig-suite="escritura"] .igw-foot {
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:.2rem 1rem; padding:.4rem .9rem;
+  border-top:1px solid var(--igs-line); background:var(--igs-soft); color:var(--igs-ink-soft);
+  font:600 .86rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; font-variant-numeric:tabular-nums;
+}
+
+body[data-ig-suite="escritura"] .igs-sec p, body[data-ig-suite="escritura"] .igs-sec li { overflow-wrap:break-word; }
+
+/* Estructura */
+body[data-ig-suite="escritura"] .igw-doc-ico { flex:none; width:1.1rem; text-align:center; color:var(--igs-violet); font-weight:800; }
+body[data-ig-suite="escritura"] .igw-part-n { flex:none; min-width:1.4rem; height:1.4rem; display:grid; place-items:center; border-radius:6px; background:var(--ig-bg-surface-soft); color:var(--igs-ink); font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="escritura"] .igw-part-t { min-width:0; overflow:hidden; text-overflow:ellipsis; }
+
+/* Propiedades */
+body[data-ig-suite="escritura"] .igw-check { display:grid; gap:.3rem; padding:.55rem .65rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); }
+body[data-ig-suite="escritura"] .igw-check[data-ok="false"] { border-color:#d7a6b0; }
+body[data-ig-suite="escritura"] .igw-check-head { display:flex; gap:.45rem; align-items:center; margin:0; }
+body[data-ig-suite="escritura"] .igw-check[data-ok="false"] .iga-mark, body[data-ig-suite="escritura"] .igw-issues li[data-ok="false"] .iga-mark,
+body[data-ig-suite="escritura"] .igw-issues li:not([data-ok]) .iga-mark { background:#8a2942; }
+body[data-ig-suite="escritura"] .igw-check-info { margin:0; color:var(--igs-ink-soft); font-size:.9rem; }
+body[data-ig-suite="escritura"] .igw-issues { list-style:none; margin:0; padding:0; display:grid; gap:.3rem; font-size:.9rem; }
+body[data-ig-suite="escritura"] .igw-issues li { display:flex; gap:.45rem; align-items:center; min-width:0; }
+body[data-ig-suite="escritura"] .igw-issue-t { flex:1 1 auto; min-width:0; overflow-wrap:anywhere; }
+body[data-ig-suite="escritura"] .igw-go { flex:none; min-height:36px; min-width:44px; padding:.2rem .6rem; font-size:.85rem; }
+body[data-ig-suite="escritura"] .igw-more { color:var(--igs-ink-soft); font-style:italic; }
+body[data-ig-suite="escritura"] .igw-rule { display:grid; gap:.35rem; padding:.45rem .55rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); }
+body[data-ig-suite="escritura"] .igw-rule[data-on="true"] { border-color:var(--igs-blue); box-shadow:inset 3px 0 0 var(--igs-blue); background:#f7fafd; }
+body[data-ig-suite="escritura"] .igw-rule-help { margin:0; color:var(--igs-ink-soft); font-size:.86rem; line-height:1.4; }
+body[data-ig-suite="escritura"] .igw-cues { margin:0; padding-left:1.3rem; font-size:.9rem; line-height:1.45; }
+body[data-ig-suite="escritura"] .igw-quote { margin:0; padding:.5rem .7rem; border-left:4px solid var(--igs-violet); background:#f7f6fd; border-radius:0 10px 10px 0; line-height:1.5; white-space:pre-wrap; }
+body[data-ig-suite="escritura"] .igw-syll { margin:0; padding:.45rem .6rem; border:1px dashed var(--igs-control); border-radius:10px; font:600 1rem/1.6 "Atkinson Hyperlegible",system-ui,sans-serif; letter-spacing:.01em; overflow-wrap:anywhere; }
+body[data-ig-suite="escritura"] .igw-tpl-cues { font-size:.84rem; font-style:italic; }
+body[data-ig-suite="escritura"] .igw-rename { display:grid; gap:.7rem; min-width:min(24rem,80vw); }
+body[data-ig-suite="escritura"] .igw-rename input { width:100%; min-height:44px; box-sizing:border-box; padding:.4rem .6rem; border:1px solid var(--igs-control); border-radius:10px; font:500 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; }
+
+@media (max-width:700px) {
+  body[data-ig-suite="escritura"] .igs-viewport.igw-viewport { height:clamp(20rem,60svh,34rem); }
+  body[data-ig-suite="escritura"] .igw-editor { --igw-size:17px; }
+  body[data-ig-suite="escritura"] .igw-head { padding:.45rem .6rem; }
+  body[data-ig-suite="escritura"] .igw-head, body[data-ig-suite="escritura"] .igw-foot { gap:.15rem .5rem; }
+  body[data-ig-suite="escritura"] .igw-foot { padding:.35rem .6rem; font-size:.8rem; }
+}
+@media (forced-colors:active) {
+  body[data-ig-suite="escritura"] .igw-hl mark { forced-color-adjust:none; background:transparent; text-decoration-color:Highlight; }
+  body[data-ig-suite="escritura"] .igw-ta { color:CanvasText; }
+}
+
+/* Impresión (IGSuite.printPages): texto real, legible y con márgenes de libro. */
+body[data-ig-suite="escritura"] .igw-print { font:12pt/1.65 "IG Escritura Serif",Georgia,serif; color:#000; max-width:16cm; margin:0 auto; }
+body[data-ig-suite="escritura"] .igw-print h1 { font:700 20pt/1.2 "IG Escritura Serif",Georgia,serif; margin:0 0 12pt; }
+body[data-ig-suite="escritura"] .igw-print p { margin:0 0 9pt; }
+body[data-ig-suite="escritura"] .igw-print aside { margin-top:18pt; padding-top:8pt; border-top:1px solid #999; font-size:10pt; }
+body[data-ig-suite="escritura"] .igw-print aside h2 { font-size:11pt; margin:0 0 4pt; }
+body[data-ig-suite="escritura"] .igw-print footer { margin-top:14pt; font-size:9pt; color:#333; }

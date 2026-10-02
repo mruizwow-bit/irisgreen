@@ -1,0 +1,387 @@
+html[data-ig-theme="dark"]{background:var(--ig-bg-page)!important;color-scheme:dark}
+/* The template runtime fixes its host to one viewport. Let content determine
+   document height so the shared footer follows asynchronous catalogues. */
+html:has(body[data-ig-r49="1"]),body[data-ig-r49="1"],body[data-ig-r49="1"] #dc-root,body[data-ig-r49="1"] #dc-root>.sc-host{height:auto!important;min-height:100%}
+body[data-ig-r49="1"] #dc-root footer{display:none!important}
+body[data-ig-r49="1"] main :where(button,[role="button"],.ig-section-actions a,.catbuttons button,.azl,.chip.lnk,.ig-book-price,.ig-book-buy a){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important;box-shadow:none!important;transform:none!important}
+body[data-ig-r49="1"] main :where(button,[role="button"],.chip.lnk,.azl):is(:hover,:active,[aria-pressed="true"]){background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important}
+body[data-ig-r49="1"] :where(button,a,input,select,textarea):focus-visible{outline:2px solid var(--ig-focus)!important;outline-offset:3px}
+body[data-ig-r49="1"] main h1{font-size:clamp(1.8rem,1.4rem + 1.4vw,2.6rem)!important;line-height:1.15!important;overflow-wrap:break-word}
+body[data-ig-r49="1"] main :where(.secfind,.filter-tools,.searchrow,.chips,.catbuttons,.situations-filter-row){min-width:0;max-width:100%!important;box-sizing:border-box;flex-wrap:wrap}
+body[data-ig-r49="1"] main :where(input,select,textarea){min-width:0;max-width:100%;box-sizing:border-box}
+body[data-ig-r49="1"] main :where(table,thead,tbody,tr,th,td){background:var(--ig-bg-surface)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important}
+body[data-ig-r49="1"] main thead th{background:var(--ig-bg-surface-soft)!important}
+body[data-ig-r49="1"] .ri-grid-primary{grid-template-columns:repeat(auto-fit,minmax(min(100%,19rem),1fr))!important;align-items:start}
+body[data-ig-r49="1"] .ri-grid-primary>li{grid-row:auto!important;grid-column:auto!important}
+body[data-ig-r49="1"] .ri-card{height:auto!important;min-height:0!important}
+body[data-ig-r49="1"] [hidden]{display:none!important}
+body[data-ig-r49="1"] main{color:var(--ig-text)!important}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,.study-card,.data-card,.stat-card,.support-card,.book-card,.book-tile,.result-card,.search-block,.filters,.filter-tools,.toolbar,.table-wrap,[class*="-card"],[class*="-panel"],[class*="-box"]):not(.im-sheet):not(.rv-sheet):not(.ig-flip-page){
+  background:var(--ig-bg-surface)!important;background-image:none!important;color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;box-shadow:none!important
+}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,[class*="-card"],[class*="-panel"],[class*="-box"])
+ :where(h1,h2,h3,h4,strong,b,label,legend,summary){color:var(--ig-text)!important}
+body[data-ig-r49="1"]:not([data-ig-home-version="v4"]) main
+ :where(.card,.glass,.panel,.box,.notice,.callout,.tile,[class*="-card"],[class*="-panel"],[class*="-box"])
+ :where(p,small,.muted,.meta,.desc,.lede){color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] main :where(.chip,.pill,.badge,.tag,[class*="-chip"],[class*="-badge"]){
+  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] main :where(input,select,textarea){
+  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important
+}
+/* Prevent legacy fallback flashes without ever hiding a whole page. */
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] #jg-app>.jg-nojs,
+html[data-ig-r49-js="1"] body[data-ig-r49="1"] #im-app>.jg-nojs{display:none!important}
+html[data-ig-r49-js="1"] body[data-ig-r49="1"]:not([data-ig-workshop-hub-ready="1"]) main.igk>.igk-all{
+  display:none!important
+}
+/* Iris Green R69 · compatibility for legacy route skins during migration.
+   R49 owns shell/theme tokens. R69 normalises legacy surfaces across all public
+   routes until those skins are retired; printable sheets and artwork keep their
+   intentional colours. */
+body[data-ig-r49="1"][data-ig-r42-family="quiet"]{
+  /* Quiet Space keeps its immersive scene runtime, but the outer document is
+     still a low-stimulation Iris Green surface: never a white page in dark mode. */
+  background-color:var(--ig-bg-page)!important;
+  background-image:none!important;
+  color:var(--ig-text)!important;
+}
+/* Resources hub: interface chassis only. */
+body[data-ig-r49="1"] .ri-main{color:var(--ig-text)}
+body[data-ig-r49="1"] .ri-main :where(.ri-card,.ri-card:hover,.ri-grid-explore .ri-card,.ri-card-soon,.ri-card-soon:hover){
+  background:var(--ig-bg-surface);
+  color:var(--ig-text);
+  border-color:var(--ig-separator);
+}
+body[data-ig-r49="1"] .ri-main :where(.ri-intro p,.ri-card p){color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .ri-grid-primary>li:first-child .ri-card{
+  background:linear-gradient(145deg,var(--ig-bg-surface),var(--ig-bg-surface-soft));
+}
+body[data-ig-r49="1"] .ri-status{
+  background:var(--ig-bg-surface-soft);color:var(--ig-text-muted)!important;border-color:var(--ig-separator);
+}
+/* White inside pictogram/art mockups is an artwork detail, not a page surface. */
+
+/* Games: catalogue, filters and workspace chrome. */
+body[data-ig-r49="1"] .jg-main{color:var(--ig-text)}
+body[data-ig-r49="1"] .jg-main :where(.jg-hero,.jg-card,.jg-card:hover,.jg-head,.jg-play,.jg-nojs,
+ .jg-context-card,.jg-stage-card,.jg-filter-pop,.jg-gamebar,.jg-workspace,.jg-inspector,
+ .jg-done,.jg-nota,.jg-msg,.jg-tile,.jg-row,.jg-op,.jg-slot-card,.jg-slot-empty.is-focus){
+  background:var(--ig-bg-surface);
+  color:var(--ig-text);
+  border-color:var(--ig-separator);
+}
+body[data-ig-r49="1"] .jg-main :where(.jg-btn,.jg-mini-btn,.jg-iconbtn,.jg-chip){
+  background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control);
+}
+body[data-ig-r49="1"] .jg-main :where(.jg-btn.is-on,.jg-btn.is-primary,.jg-card-cta){
+  background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);border-color:var(--ig-button-primary-bg);
+}
+body[data-ig-r49="1"] .jg-main :where(.jg-lede,.jg-card-d,.jg-small,.jg-op>span:last-child){color:var(--ig-text-muted)}
+body[data-ig-r49="1"] .jg-main :where(.jg-card-img,.jg-ctx,.jg-dest,.jg-strip,.jg-bar){background:var(--ig-bg-surface-soft);border-color:var(--ig-separator)}
+body[data-ig-r49="1"] .jg-search input{background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control)}
+
+/* Printable routines: screen UI only; .im-sheet stays print-white by design. */
+body[data-ig-r49="1"] .im{
+  --ink:var(--ig-text);--ink2:var(--ig-text-muted);--vio:var(--ig-accent);
+  --line:var(--ig-separator);--soft:var(--ig-bg-surface-soft);color:var(--ig-text);
+}
+body[data-ig-r49="1"] .im :where(.im-tab,.im-chip,.im-btn,.im-filters,.im-card,.im-empty,.im-box){
+  background:var(--ig-bg-surface);color:var(--ig-text);border-color:var(--ig-separator);
+}
+body[data-ig-r49="1"] .im :where(.im-tab[aria-pressed="true"],.im-chip[aria-pressed="true"],.im-btn.pri){
+  background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);border-color:var(--ig-button-primary-bg);
+}
+body[data-ig-r49="1"] .im .im-q{background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control)}
+body[data-ig-r49="1"] .im :where(.im-meta,.im-note,.im-count){color:var(--ig-text-muted)}
+
+/* Visual-routine builder: preserve printable paper, normalize only interactive cards. */
+body[data-ig-r49="1"] .rv-page{
+  --rv-ink:var(--ig-text);--rv-muted:var(--ig-text-muted);--rv-soft:var(--ig-text-muted);
+  --rv-purple:var(--ig-accent);--rv-line:var(--ig-separator);--rv-bg:var(--ig-bg-page);
+  color:var(--ig-text);
+}
+body[data-ig-r49="1"] .rv-page :where(.rv-card,.rv-screen-step,.rv-builder-step,.rv-library button){
+  background:var(--ig-bg-surface);color:var(--ig-text);border-color:var(--ig-separator);
+}
+body[data-ig-r49="1"] .rv-page :where(.rv-btn,.rv-chip,.rv-icon-btn,.rv-screen-step button.rv-done){
+  background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control);
+}
+body[data-ig-r49="1"] .rv-page :where(.rv-btn[aria-pressed="true"],.rv-chip[aria-pressed="true"],.rv-primary,.rv-screen-step button.rv-done[aria-pressed="true"]){
+  background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);border-color:var(--ig-button-primary-bg);
+}
+body[data-ig-r49="1"] .rv-page :where(.rv-input,.rv-textarea,.rv-select){
+  background:var(--ig-bg-surface-soft);color:var(--ig-text);border-color:var(--ig-border-control);
+}
+
+
+
+/* R69 HUMAN QA · product-width recovery for legacy browse families. */
+body[data-ig-r49-owner="R50_RESEARCH"]{--ig-r69-product-max:96rem}
+body[data-ig-r49-owner="R50_BOOKS"],body[data-ig-r49-owner="R50_SUPPORT"]{--ig-r69-product-max:var(--ig-content-wide,104rem)}
+body[data-ig-r49-owner="R50_RESEARCH"] main,body[data-ig-r49-owner="R50_BOOKS"] main,body[data-ig-r49-owner="R50_SUPPORT"] main{
+ width:min(calc(100% - 2 * var(--ig-layout-gutter)),var(--ig-r69-product-max))!important;max-width:var(--ig-r69-product-max)!important;
+ margin-inline:auto!important;padding:clamp(1.25rem,2.3vw,2.5rem)!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_SUPPORT"]) main
+ :where([style*="background: rgba(255,255,255"],[style*="background:rgba(255,255,255"],[style*="background: #fff"],[style*="background:#fff"]){
+ background:var(--ig-bg-surface)!important;background-image:none!important;border-color:var(--ig-separator)!important;box-shadow:none!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_SUPPORT"]) main
+ :where([style*="color: #2b3d55"],[style*="color:#2b3d55"],[style*="color: #435268"],[style*="color:#435268"],
+ [style*="color: #4d5a6b"],[style*="color:#4d5a6b"],[style*="color: #5a6675"],[style*="color:#5a6675"],
+ [style*="color: #5d6779"],[style*="color:#5d6779"],[style*="color: #7a8698"],[style*="color:#7a8698"]){color:var(--ig-text-muted)!important}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_SUPPORT"]) main :where(h1,h2,h3,h4,strong,label,summary){color:var(--ig-text)!important}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_SUPPORT"]) main a:not([class*="button"]){color:var(--ig-link)!important}
+
+body[data-ig-r49-owner="R50_RESEARCH"] main :where(article,.ig-search-shell){
+ background:var(--ig-bg-surface)!important;color:var(--ig-text)!important;border:1px solid var(--ig-separator)!important;border-radius:18px!important;box-shadow:none!important
+}
+body[data-ig-r49-owner="R50_RESEARCH"] main article{padding:1.15rem 1.25rem!important;margin:0 0 .85rem!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main article :where(p,span){color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main article p:last-child{color:var(--ig-link)!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main .ig-search-shell{background:var(--ig-bg-surface-soft)!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main .ig-search-input{background:transparent!important;color:var(--ig-text)!important;caret-color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main .ig-filter-button{background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important}
+body[data-ig-r49-owner="R50_RESEARCH"] main .ig-filter-button[aria-pressed="true"]{background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;border-color:var(--ig-button-primary-bg)!important}
+
+body[data-ig-r49-owner="R50_BOOKS"] main .ig-book-card,body[data-ig-r49-owner="R50_BOOKS"] main .ig-flipbook{background:var(--ig-bg-surface)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important;box-shadow:none!important}
+body[data-ig-r49-owner="R50_BOOKS"] main :where(.ig-flipbook-head h3,.ig-flip-counter){color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_BOOKS"] main :where(.ig-flipbook-kicker,.ig-flip-note,.ig-flipbook-badge){color:var(--ig-text-muted)!important}
+body[data-ig-r49-owner="R50_BOOKS"] main .ig-flip-stage{background:var(--ig-bg-surface-soft)!important}
+body[data-ig-r49-owner="R50_BOOKS"] main .ig-flip-controls button{background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important}
+
+body[data-ig-r49-owner="R50_SUPPORT"] main .ig-search-shell{background:var(--ig-bg-surface-soft)!important;border-color:var(--ig-border-control)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main .ig-search-input{background:transparent!important;color:var(--ig-text)!important;caret-color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main .ig-filter-button{background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main .ig-filter-button[aria-pressed="true"]{background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;border-color:var(--ig-button-primary-bg)!important}
+
+body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx{--ink:var(--ig-text);--muted:var(--ig-text-muted);--line:var(--ig-separator);--glass:var(--ig-bg-surface);color:var(--ig-text)!important}
+body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.topic-card,.media-card,.filter,.backtopics,.share-options button,.cromo,.bajar,.vacio,.finder input,.lang-switch a,.lang-switch span){
+ background:var(--ig-bg-surface)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important;box-shadow:none!important
+}
+body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.pill,.badge){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important}
+body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.xhero .lede,.topic-card small,.archive-items,.cromo .valor,.vacio){color:var(--ig-text-muted)!important}
+
+
+/* Vector M1 recovery · systemic LIGHT→DARK integration bridge.
+   This remains an integration shim: product art/paper keeps its intentional
+   light surface while interface chrome consumes the canonical semantic tokens. */
+
+/* Common editorial/navigation text that still ships literal LIGHT-palette ink. */
+body[data-ig-r49="1"] main :where(.crumb,.lede,.about-lede,.jg-hub-note,.ig-catalog-message){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] main .crumb a{color:var(--ig-text-muted)!important}
+
+/* Secondary section navigation is interface, not artwork. */
+body[data-ig-r49="1"] .ig-subtabs{
+  background:var(--ig-bg-surface)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] .ig-subtabs a{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important;
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49="1"] .ig-subtabs a[aria-current="page"]{
+  background:var(--ig-button-primary-bg)!important;
+  color:var(--ig-button-primary-fg)!important;
+  border-color:var(--ig-button-primary-bg)!important
+}
+
+/* R50 browse families generate some containers dynamically. Match structure
+   instead of brittle hexadecimal style strings, which runtime may serialise as rgb(). */
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"])
+ main>div:has(>.ig-search-shell){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_ABOUT"])
+ main>p{
+  color:var(--ig-text-muted)!important
+}
+body:is([data-ig-r49-owner="R50_RESEARCH"],[data-ig-r49-owner="R50_SUPPORT"],[data-ig-r49-owner="R50_VIDEOS"],[data-ig-r49-owner="R50_BOOKS"],[data-ig-r49-owner="R50_ABOUT"])
+ main :where([style*="text-transform: uppercase"],[style*="text-transform:uppercase"]){
+  color:var(--ig-accent-secondary)!important
+}
+
+/* Support directory result cards are runtime-generated legacy LIGHT surfaces. */
+body[data-ig-r49-owner="R50_SUPPORT"] main article{
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body[data-ig-r49-owner="R50_SUPPORT"] main article :where(p,span){color:var(--ig-text-muted)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main article :where(h2,h3,strong,p[style*="font-weight: 700"],p[style*="font-weight:700"]){color:var(--ig-text)!important}
+body[data-ig-r49-owner="R50_SUPPORT"] main :where(label,select){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_SUPPORT"] main select{
+  background:var(--ig-bg-surface-soft)!important;
+  border-color:var(--ig-border-control)!important
+}
+
+/* Videoteca: filter/card chassis follows DARK/LIGHT; the thumbnail itself remains art. */
+body[data-ig-r49-owner="R50_VIDEOS"] main div:has(>div>.ig-video-poster){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important;
+  -webkit-backdrop-filter:none!important;
+  backdrop-filter:none!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main :where(.ig-search-shell,.ig-filter-button){
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main .ig-filter-button{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important
+}
+body[data-ig-r49-owner="R50_VIDEOS"] main .ig-filter-button[aria-pressed="true"]{
+  background:var(--ig-button-primary-bg)!important;
+  color:var(--ig-button-primary-fg)!important;
+  border-color:var(--ig-button-primary-bg)!important
+}
+
+/* About is editorial content but its cards are UI surfaces, not paper artwork. */
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a){
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a) :where(h2,h3,strong){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main :where(.about-block,.about-book,.about-collections a) :where(p,span){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49-owner="R50_ABOUT"] main .about-principles{
+  background:var(--ig-bg-surface-soft)!important
+}
+
+/* Tarjeta Iris must not become a half-DARK/half-LIGHT hybrid inside content pages. */
+body[data-ig-r49="1"] main .iris-mini-card{
+  --iris-accent:var(--ig-accent);
+  --iris-soft:var(--ig-bg-surface-soft);
+  --iris-line:var(--ig-separator);
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important;
+  box-shadow:none!important
+}
+body[data-ig-r49="1"] main .iris-mini-card :where(.iris-mini-brand,.iris-mini-title,.iris-mini-block h3){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card :where(.iris-mini-block p,.iris-mini-foot,.iris-mini-action-status){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-type{color:var(--ig-accent)!important}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-need{
+  background:var(--ig-bg-surface-soft)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-action{
+  background:var(--ig-button-secondary-bg)!important;
+  color:var(--ig-button-secondary-fg)!important;
+  border-color:var(--ig-border-control)!important
+}
+body[data-ig-r49="1"] main .iris-mini-card .iris-mini-own{color:var(--ig-link)!important}
+
+/* Games and Interests retain literal LIGHT-palette metadata/link colours. */
+body[data-ig-r49="1"] .jg-main :where(.jg-context-copy span,.jg-hub-note,.jg-card-type){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49="1"] .jg-main .jg-context-arrow{color:var(--ig-link)!important}
+body[data-ig-r49="1"] .ig-afondo-card{
+  background:var(--ig-bg-surface)!important;
+  color:var(--ig-text)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49="1"] .ig-afondo-txt>span{color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .ig-afondo-txt .ig-afondo-go{color:var(--ig-link)!important}
+
+/* Intentional printable/paper surfaces stay light and must keep dark ink.
+   Global DARK typography must never recolour their headings white-on-white. */
+body[data-ig-r49="1"] .im-sheet{color:#17395c!important}
+body[data-ig-r49="1"] .im-sheet :where(h1,h2,h3,h4){color:#17395c!important}
+body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet){color:#000!important}
+body[data-ig-r49="1"] :where(.rv-sheet,.rv-print-document,.ti-sheet) :where(h1,h2,h3,h4){color:#000!important}
+
+
+/* Vector M1 · printable title classes are not guaranteed to be h1/h2/h3.
+   Pin their ink explicitly so the global DARK heading rule cannot produce
+   white-on-white inside intentional paper surfaces. */
+body[data-ig-r49="1"] .im-sheet .sh-t{color:#17395c!important}
+body[data-ig-r49="1"] .rv-sheet .rv-sheet-title,
+body[data-ig-r49="1"] .rv-print-document .rv-sheet-title{color:#000!important}
+
+/* Legacy template components still emit literal white backgrounds. */
+body[data-ig-r49="1"] main :is([style*="background: #fff"],[style*="background:#fff"],[style*="background: white"],[style*="background: rgb(255"],[style*="background: rgba(255"]):not(img):not(canvas){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-separator)!important}
+body[data-ig-r49="1"] main a[style*="border-radius"]{box-shadow:none!important;transform:none!important}
+body[data-ig-r49="1"] main .filter-tools input{width:100%}
+body[data-ig-r49="1"] main .ig-data-notes{margin:1.5rem 0;padding:1rem;border:1px solid var(--ig-separator);border-radius:12px}
+
+/* The imported studio suite uses the shared palette for interface surfaces.
+   Canvas artwork and exported projects keep their chosen colours. */
+body[data-ig-suite] #igt-app {background:var(--ig-bg-surface);color:var(--ig-text)}
+body[data-ig-suite] .ig-r42-workspace {background:var(--ig-bg-surface)}
+body[data-ig-suite] .ig-r42-shell {--r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);--r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft)}
+body[data-ig-suite] :is(.ig-r42-command-search input,.ig-r42-command-list button) {background:var(--ig-bg-surface-soft);color:var(--ig-text)}
+body[data-ig-suite] .igs-field > :is(label,span),
+body[data-ig-suite] .igs-inspector :is(h3,h4,p,label) {color:var(--ig-text)}
+body[data-ig-suite] main > .crumb {display:none}
+
+/* Dialogs are mounted under body, outside main: theme their controls too. */
+body[data-ig-r49="1"] .ig-r42-dialog {
+ --r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);
+ --r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft);
+ --r42-line:var(--ig-separator);--r42-line-strong:var(--ig-border-control);
+ background:var(--ig-bg-surface);color:var(--ig-text)
+}
+body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
+body[data-ig-r49="1"] .igt-btn,
+body[data-ig-r49="1"] .igs-touch button {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
+ border-color:var(--ig-border-control)!important;box-shadow:none!important
+}
+body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] .igt-btn:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] .igs-touch button:is(:hover,:active) {
+ background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
+ transform:none!important
+}
+/* Game choices keep a visible selection without a flash of white. */
+body[data-ig-r49="1"] .jg-main :is(.jg-tile,.jg-row,.jg-op,.jg-btn).is-on {
+ background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
+ border-color:var(--ig-accent)!important
+}
+body[data-ig-r49="1"] .jg-main .jg-card:is(:hover,:focus-visible,:active) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
+ transform:none!important;box-shadow:none!important
+}
+body[data-ig-r49="1"] .jg-main :is(.jg-tile-e,.jg-op>span:last-child,.jg-slot-tag,.jg-card-d) {color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .jg-main :is(.jg-slot-card,.jg-slot-empty.is-focus,.jg-chip) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important
+}
+body[data-ig-r49="1"] .jg-main :is(button,.jg-card):focus-visible,
+body[data-ig-r49="1"] .ig-r42-dialog :is(button,input,select,textarea):focus-visible {
+ outline:2px solid var(--ig-focus-global)!important;outline-offset:3px
+}
+/* Profile buttons contain their own text styles; keep the pair in both themes. */
+body[data-ig-taller-launcher] main .igk-p-btn:is(:hover,:focus-visible,:active) {
+ background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important
+}
+body[data-ig-taller-launcher] main .igk-p-btn :is(.igk-p-name,.igk-p-desc,.igk-p-n,.igk-cta) {color:inherit!important}
