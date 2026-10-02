@@ -177,3 +177,50 @@ Antes de main:
 No reconstruir P01/P02/P03 desde cero.
 No copiar renders como sustituto del runtime.
 No aplicar bundles históricos completos a main.
+
+
+## Inventario funcional esperado
+
+### A · Seis juegos nuevos R62
+Total canónico:
+`R62_NEW_GAMES_TOTAL = 6`
+
+1. P01 · Habitación imposible
+2. P02 · Terrario vivo
+3. P03 · Rutas de luz
+4. P04 · Ritmo de colores
+5. P05 · Pesca tranquila
+6. P06 · Mi museo
+
+Estado de recuperación conocido:
+- P01 · aprobado / montaje especial / paquete recuperable;
+- P02 · aprobado / montaje especial / paquete recuperable;
+- P03 · aprobado / montaje especial / cadena recuperable;
+- P04 · concepto aprobado, montaje especial en cadena sala → golpe/plan; no dar por final hasta cerrar su gate;
+- P05 · concepto definido, no construido todavía; debe reutilizar Mar 22/Intereses;
+- P06 · concepto definido, no construido todavía; debe consumir hallazgos/colecciones de Intereses.
+
+Regla:
+`ROOM_GAMES != R62_NEW_GAMES`
+
+### B · Juegos en sala · primera tanda
+Total inicial de mecánicas:
+`ROOM_GAMES_FIRST_BATCH_TOTAL = 3`
+
+1. Parejas
+2. ¿Qué falta aquí?
+3. Ordena la historia
+
+Estado:
+- Parejas: S0 de ruta/carga por pack ya integrado en main como infraestructura/piloto;
+- ¿Qué falta aquí?: pendiente de construcción/activación;
+- Ordena la historia: pendiente de construcción/activación.
+
+S0 no sustituye a los seis R62.
+Los seis R62 no sustituyen a Juegos en sala.
+
+### Conteo mínimo que Nexo debe reconciliar
+- 6 juegos R62;
+- 3 mecánicas iniciales de Juegos en sala;
+- además, cualquier paquete adicional que María siga entregando;
+- NO cerrar inventario hasta que María indique que ya no quedan más paquetes.
