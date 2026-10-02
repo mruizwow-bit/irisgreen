@@ -10,6 +10,7 @@ body[data-ig-suite] {
   --igs-line:var(--ig-separator,#c9d8e6); --igs-control:var(--ig-control-border,#7a869d); --igs-canvas:#fbfcfe; --igs-soft:var(--ig-surface-content-soft,#f4f7fa); --igs-surface:var(--ig-surface-content,#f4f7fa); --igs-hover:var(--ig-state-hover,#e8f1f8); --igs-selected-ink:var(--ig-state-selected-ink,#fff);
   --igs-ok:var(--ig-state-success,#1d6b3a); --igs-warn:#8a4b00; --igs-bad:var(--ig-state-error,#a1283c); --igs-focus:var(--ig-focus,#5a49a8);
   --igs-radius:14px;
+  color:var(--igs-ink);
 }
 
 /* ---------- Disposición ---------- */
