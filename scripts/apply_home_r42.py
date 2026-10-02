@@ -9,7 +9,7 @@ AGE_ICONS={
 'AGE_0_12':'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="13" r="7"></circle><path d="M9.5 15.2c1.4 1.2 3.6 1.2 5 0M10 5.6c.4-1.6 2.6-2 3.4-.6"></path><circle cx="9.6" cy="12" r=".6" fill="currentColor"></circle><circle cx="14.4" cy="12" r=".6" fill="currentColor"></circle></svg>',
 'AGE_13_17':'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M5 20c.8-3.8 3.6-5.6 7-5.6s6.2 1.8 7 5.6"></path></svg>',
 'AGE_18_PLUS':'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="9" cy="8" r="3.2"></circle><path d="M3 20c.7-3.4 3-5 6-5s5.3 1.6 6 5"></path><path d="M15.5 5.2a3 3 0 0 1 0 5.6M17.5 15.2c1.8.6 3 2.2 3.5 4.8"></path></svg>',
-'ALL_AGES':'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c-2-2.6-3.6-4-5.6-4a4 4 0 0 0 0 8c2 0 3.6-1.4 5.6-4s3.6-4 5.6-4a4 4 0 0 1 0 8c-2 0-3.6-1.4-5.6-4z"></path></svg>'}
+'GENERAL':'<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 12c-2-2.6-3.6-4-5.6-4a4 4 0 0 0 0 8c2 0 3.6-1.4 5.6-4s3.6-4 5.6-4a4 4 0 0 1 0 8c-2 0-3.6-1.4-5.6-4z"></path></svg>'}
 
 def media():
     return '<span class="ig-home-v4-media" data-ig-media-status="pending" aria-hidden="true"></span>'
@@ -21,7 +21,7 @@ def card(url,title,copy,cta=None,use=False,age_bands=None):
     return f'<a class="{cls}" href="{url}"{age_attr}>{media()}<span><strong>{html.escape(title)}</strong><span class="ig-home-v4-card-copy">{html.escape(copy)}</span>{cta_html}</span></a>'
 
 def age_picker(en):
-    labels={'AGE_0_12':'Ages 0–12','AGE_13_17':'Ages 13–17','AGE_18_PLUS':'Ages 18+','ALL_AGES':'All ages'} if en else {'AGE_0_12':'0–12 años','AGE_13_17':'13–17 años','AGE_18_PLUS':'18 años o más','ALL_AGES':'Todas las edades'}
+    labels={'GENERAL':'General','AGE_0_12':'Ages 0–12','AGE_13_17':'Ages 13–17','AGE_18_PLUS':'Ages 18+'} if en else {'GENERAL':'General','AGE_0_12':'0–12 años','AGE_13_17':'13–17 años','AGE_18_PLUS':'18 años o más'}
     buttons=''.join(f'<button type="button" data-ig-audience-stage="{k}" aria-pressed="false">{AGE_ICONS[k]}<span>{html.escape(v)}</span></button>' for k,v in labels.items())
     title='Content by age' if en else 'Contenido por edad'
     note='Choose an age range to adjust the content. If you do not choose one, you will see the general version.' if en else 'Elige una edad para ajustar el contenido. Si no eliges ninguna, verás la versión general.'
