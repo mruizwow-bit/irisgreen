@@ -1,0 +1,4545 @@
+{
+  "schema": "iris-green/cielo-v2-first-view/v1",
+  "interest_id": "01",
+  "runtime": "LOCAL_SNAPSHOT",
+  "default_place": {
+    "id": "peninsula-40n",
+    "label": {
+      "es": "Península · 40° N",
+      "en": "Mainland Spain · 40° N"
+    },
+    "lat": 40,
+    "lon": -3.7
+  },
+  "depth_url": "/es/intereses/cielo/cielo.json",
+  "target_count": 18,
+  "max_constellation_labels": 5,
+  "stars": [
+    {
+      "ra": 6.7525,
+      "dec": -16.716,
+      "mag": -1.44,
+      "ci": 0.01,
+      "con": "CMa",
+      "designation": "α CMa",
+      "name": "Sirius",
+      "ly": 9,
+      "sp": "A0m..."
+    },
+    {
+      "ra": 6.3992,
+      "dec": -52.696,
+      "mag": -0.62,
+      "ci": 0.16,
+      "con": "Car",
+      "designation": "α Car",
+      "name": "Canopus",
+      "ly": 309,
+      "sp": "F0Ib"
+    },
+    {
+      "ra": 14.261,
+      "dec": 19.182,
+      "mag": -0.05,
+      "ci": 1.24,
+      "con": "Boo",
+      "designation": "α Boo",
+      "name": "Arcturus",
+      "ly": 37,
+      "sp": "K2IIIp"
+    },
+    {
+      "ra": 14.6608,
+      "dec": -60.834,
+      "mag": -0.01,
+      "ci": 0.71,
+      "con": "Cen",
+      "designation": "α¹ Cen",
+      "name": "Rigil Kentaurus",
+      "ly": 4,
+      "sp": "G2V"
+    },
+    {
+      "ra": 18.6156,
+      "dec": 38.784,
+      "mag": 0.03,
+      "ci": 0,
+      "con": "Lyr",
+      "designation": "α Lyr",
+      "name": "Vega",
+      "ly": 25,
+      "sp": "A0Vvar"
+    },
+    {
+      "ra": 5.2782,
+      "dec": 45.998,
+      "mag": 0.08,
+      "ci": 0.8,
+      "con": "Aur",
+      "designation": "α Aur",
+      "name": "Capella",
+      "ly": 43,
+      "sp": "M1: comp"
+    },
+    {
+      "ra": 5.2423,
+      "dec": -8.202,
+      "mag": 0.18,
+      "ci": -0.03,
+      "con": "Ori",
+      "designation": "β Ori",
+      "name": "Rigel",
+      "ly": 863,
+      "sp": "B8Ia"
+    },
+    {
+      "ra": 7.655,
+      "dec": 5.225,
+      "mag": 0.4,
+      "ci": 0.43,
+      "con": "CMi",
+      "designation": "α CMi",
+      "name": "Procyon",
+      "ly": 11,
+      "sp": "F5IV-V"
+    },
+    {
+      "ra": 1.6286,
+      "dec": -57.237,
+      "mag": 0.45,
+      "ci": -0.16,
+      "con": "Eri",
+      "designation": "α Eri",
+      "name": "Achernar",
+      "ly": 139,
+      "sp": "B3Vp"
+    },
+    {
+      "ra": 5.9195,
+      "dec": 7.407,
+      "mag": 0.45,
+      "ci": 1.5,
+      "con": "Ori",
+      "designation": "α Ori",
+      "name": "Betelgeuse",
+      "ly": 498,
+      "sp": "M2Ib"
+    },
+    {
+      "ra": 14.0637,
+      "dec": -60.373,
+      "mag": 0.61,
+      "ci": -0.23,
+      "con": "Cen",
+      "designation": "β Cen",
+      "name": "Hadar",
+      "ly": 392,
+      "sp": "B1III"
+    },
+    {
+      "ra": 19.8464,
+      "dec": 8.868,
+      "mag": 0.76,
+      "ci": 0.22,
+      "con": "Aql",
+      "designation": "α Aql",
+      "name": "Altair",
+      "ly": 17,
+      "sp": "A7IV-V"
+    },
+    {
+      "ra": 12.4433,
+      "dec": -63.099,
+      "mag": 0.77,
+      "ci": -0.24,
+      "con": "Cru",
+      "designation": "α¹ Cru",
+      "name": "Acrux",
+      "ly": 322,
+      "sp": "B0.5IV"
+    },
+    {
+      "ra": 4.5987,
+      "dec": 16.509,
+      "mag": 0.87,
+      "ci": 1.54,
+      "con": "Tau",
+      "designation": "α Tau",
+      "name": "Aldebaran",
+      "ly": 67,
+      "sp": "K5III"
+    },
+    {
+      "ra": 5.2779,
+      "dec": 46.001,
+      "mag": 0.96,
+      "ci": null,
+      "con": "Aur",
+      "designation": "HR",
+      "name": "",
+      "ly": 42,
+      "sp": "G0 III"
+    },
+    {
+      "ra": 13.4199,
+      "dec": -11.161,
+      "mag": 0.98,
+      "ci": -0.23,
+      "con": "Vir",
+      "designation": "α Vir",
+      "name": "Spica",
+      "ly": 250,
+      "sp": "B1V"
+    },
+    {
+      "ra": 16.4901,
+      "dec": -26.432,
+      "mag": 1.06,
+      "ci": 1.86,
+      "con": "Sco",
+      "designation": "α Sco",
+      "name": "Antares",
+      "ly": 554,
+      "sp": "M1Ib + B2.5V"
+    },
+    {
+      "ra": 7.7553,
+      "dec": 28.026,
+      "mag": 1.16,
+      "ci": 0.99,
+      "con": "Gem",
+      "designation": "β Gem",
+      "name": "Pollux",
+      "ly": 34,
+      "sp": "K0IIIvar"
+    },
+    {
+      "ra": 22.9608,
+      "dec": -29.622,
+      "mag": 1.17,
+      "ci": 0.14,
+      "con": "PsA",
+      "designation": "α PsA",
+      "name": "Fomalhaut",
+      "ly": 25,
+      "sp": "A3V"
+    },
+    {
+      "ra": 12.7954,
+      "dec": -59.689,
+      "mag": 1.25,
+      "ci": -0.24,
+      "con": "Cru",
+      "designation": "β Cru",
+      "name": "Mimosa",
+      "ly": 279,
+      "sp": "B0.5III"
+    },
+    {
+      "ra": 20.6905,
+      "dec": 45.28,
+      "mag": 1.25,
+      "ci": 0.09,
+      "con": "Cyg",
+      "designation": "α Cyg",
+      "name": "Deneb",
+      "ly": 1412,
+      "sp": "A2Ia"
+    },
+    {
+      "ra": 14.6603,
+      "dec": -60.838,
+      "mag": 1.35,
+      "ci": 0.9,
+      "con": "Cen",
+      "designation": "α² Cen",
+      "name": "Toliman",
+      "ly": 4,
+      "sp": "K1V"
+    },
+    {
+      "ra": 10.1395,
+      "dec": 11.967,
+      "mag": 1.36,
+      "ci": -0.09,
+      "con": "Leo",
+      "designation": "α Leo",
+      "name": "Regulus",
+      "ly": 79,
+      "sp": "B7V"
+    },
+    {
+      "ra": 6.9771,
+      "dec": -28.972,
+      "mag": 1.5,
+      "ci": -0.21,
+      "con": "CMa",
+      "designation": "ε CMa",
+      "name": "Adhara",
+      "ly": 405,
+      "sp": "B2II"
+    },
+    {
+      "ra": 7.5766,
+      "dec": 31.888,
+      "mag": 1.58,
+      "ci": 0.03,
+      "con": "Gem",
+      "designation": "α Gem",
+      "name": "Castor",
+      "ly": 51,
+      "sp": "A2Vm"
+    },
+    {
+      "ra": 12.5194,
+      "dec": -57.113,
+      "mag": 1.59,
+      "ci": 1.6,
+      "con": "Cru",
+      "designation": "γ Cru",
+      "name": "Gacrux",
+      "ly": 89,
+      "sp": "M4III"
+    },
+    {
+      "ra": 17.5601,
+      "dec": -37.104,
+      "mag": 1.62,
+      "ci": -0.23,
+      "con": "Sco",
+      "designation": "λ Sco",
+      "name": "Shaula",
+      "ly": 571,
+      "sp": "B1.5IV+..."
+    },
+    {
+      "ra": 5.4189,
+      "dec": 6.35,
+      "mag": 1.64,
+      "ci": -0.22,
+      "con": "Ori",
+      "designation": "γ Ori",
+      "name": "Bellatrix",
+      "ly": 252,
+      "sp": "B2III"
+    },
+    {
+      "ra": 5.4382,
+      "dec": 28.607,
+      "mag": 1.65,
+      "ci": -0.13,
+      "con": "Tau",
+      "designation": "β Tau",
+      "name": "Elnath",
+      "ly": 134,
+      "sp": "B7III"
+    },
+    {
+      "ra": 9.22,
+      "dec": -69.717,
+      "mag": 1.67,
+      "ci": 0.07,
+      "con": "Car",
+      "designation": "β Car",
+      "name": "Miaplacidus",
+      "ly": 113,
+      "sp": "A2IV"
+    },
+    {
+      "ra": 5.6036,
+      "dec": -1.202,
+      "mag": 1.69,
+      "ci": -0.18,
+      "con": "Ori",
+      "designation": "ε Ori",
+      "name": "Alnilam",
+      "ly": 1977,
+      "sp": "B0Ia"
+    },
+    {
+      "ra": 22.1372,
+      "dec": -46.961,
+      "mag": 1.73,
+      "ci": -0.07,
+      "con": "Gru",
+      "designation": "α Gru",
+      "name": "Alnair",
+      "ly": 101,
+      "sp": "B7IV"
+    },
+    {
+      "ra": 5.6793,
+      "dec": -1.943,
+      "mag": 1.74,
+      "ci": -0.2,
+      "con": "Ori",
+      "designation": "ζ Ori",
+      "name": "Alnitak",
+      "ly": 736,
+      "sp": "O9.5Ib SB"
+    },
+    {
+      "ra": 8.1589,
+      "dec": -47.337,
+      "mag": 1.75,
+      "ci": -0.14,
+      "con": "Vel",
+      "designation": "γ² Vel",
+      "name": "",
+      "ly": 1117,
+      "sp": "WC8 + O9I"
+    },
+    {
+      "ra": 12.9005,
+      "dec": 55.96,
+      "mag": 1.76,
+      "ci": -0.02,
+      "con": "UMa",
+      "designation": "ε UMa",
+      "name": "Alioth",
+      "ly": 83,
+      "sp": "A0p"
+    },
+    {
+      "ra": 3.4054,
+      "dec": 49.861,
+      "mag": 1.79,
+      "ci": 0.48,
+      "con": "Per",
+      "designation": "α Per",
+      "name": "Mirfak",
+      "ly": 506,
+      "sp": "F5Ib"
+    },
+    {
+      "ra": 18.4029,
+      "dec": -34.385,
+      "mag": 1.79,
+      "ci": -0.03,
+      "con": "Sgr",
+      "designation": "ε Sgr",
+      "name": "Kaus Australis",
+      "ly": 143,
+      "sp": "B9.5III"
+    },
+    {
+      "ra": 11.0622,
+      "dec": 61.751,
+      "mag": 1.81,
+      "ci": 1.06,
+      "con": "UMa",
+      "designation": "α UMa",
+      "name": "Dubhe",
+      "ly": 123,
+      "sp": "F7V comp"
+    },
+    {
+      "ra": 7.1399,
+      "dec": -26.393,
+      "mag": 1.83,
+      "ci": 0.67,
+      "con": "CMa",
+      "designation": "δ CMa",
+      "name": "Wezen",
+      "ly": 1607,
+      "sp": "F8Ia"
+    },
+    {
+      "ra": 13.7924,
+      "dec": 49.313,
+      "mag": 1.85,
+      "ci": -0.1,
+      "con": "UMa",
+      "designation": "η UMa",
+      "name": "Alkaid",
+      "ly": 104,
+      "sp": "B3V SB"
+    },
+    {
+      "ra": 8.3752,
+      "dec": -59.509,
+      "mag": 1.86,
+      "ci": 1.2,
+      "con": "Car",
+      "designation": "ε Car",
+      "name": "Avior",
+      "ly": 605,
+      "sp": "K3III+B2V"
+    },
+    {
+      "ra": 17.622,
+      "dec": -42.998,
+      "mag": 1.86,
+      "ci": 0.41,
+      "con": "Sco",
+      "designation": "θ Sco",
+      "name": "Sargas",
+      "ly": 300,
+      "sp": "F1II"
+    },
+    {
+      "ra": 5.9921,
+      "dec": 44.947,
+      "mag": 1.9,
+      "ci": 0.08,
+      "con": "Aur",
+      "designation": "β Aur",
+      "name": "Menkalinan",
+      "ly": 81,
+      "sp": "A2V"
+    },
+    {
+      "ra": 16.8111,
+      "dec": -69.028,
+      "mag": 1.91,
+      "ci": 1.45,
+      "con": "TrA",
+      "designation": "α TrA",
+      "name": "Atria",
+      "ly": 391,
+      "sp": "K2IIb-IIIa"
+    },
+    {
+      "ra": 6.6285,
+      "dec": 16.399,
+      "mag": 1.93,
+      "ci": 0,
+      "con": "Gem",
+      "designation": "γ Gem",
+      "name": "Alhena",
+      "ly": 109,
+      "sp": "A0IV"
+    },
+    {
+      "ra": 8.7451,
+      "dec": -54.709,
+      "mag": 1.93,
+      "ci": 0.04,
+      "con": "Vel",
+      "designation": "δ Vel",
+      "name": "Alsephina",
+      "ly": 81,
+      "sp": "A1V"
+    },
+    {
+      "ra": 20.4275,
+      "dec": -56.735,
+      "mag": 1.94,
+      "ci": -0.12,
+      "con": "Pav",
+      "designation": "α Pav",
+      "name": "Peacock",
+      "ly": 179,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 2.5297,
+      "dec": 89.264,
+      "mag": 1.97,
+      "ci": 0.64,
+      "con": "UMi",
+      "designation": "α UMi",
+      "name": "Polaris",
+      "ly": 433,
+      "sp": "F7:Ib-IIv SB"
+    },
+    {
+      "ra": 6.3783,
+      "dec": -17.956,
+      "mag": 1.98,
+      "ci": -0.24,
+      "con": "CMa",
+      "designation": "β CMa",
+      "name": "Mirzam",
+      "ly": 493,
+      "sp": "B1II/III"
+    },
+    {
+      "ra": 9.4598,
+      "dec": -8.659,
+      "mag": 1.99,
+      "ci": 1.44,
+      "con": "Hya",
+      "designation": "α Hya",
+      "name": "Alphard",
+      "ly": 180,
+      "sp": "K3III"
+    },
+    {
+      "ra": 2.1196,
+      "dec": 23.462,
+      "mag": 2.01,
+      "ci": 1.15,
+      "con": "Ari",
+      "designation": "α Ari",
+      "name": "Hamal",
+      "ly": 66,
+      "sp": "K2III"
+    },
+    {
+      "ra": 10.3329,
+      "dec": 19.841,
+      "mag": 2.01,
+      "ci": 1.13,
+      "con": "Leo",
+      "designation": "γ¹ Leo",
+      "name": "Algieba",
+      "ly": 130,
+      "sp": "K0III"
+    },
+    {
+      "ra": 0.7265,
+      "dec": -17.987,
+      "mag": 2.04,
+      "ci": 1.02,
+      "con": "Cet",
+      "designation": "β Cet",
+      "name": "Diphda",
+      "ly": 96,
+      "sp": "K0III"
+    },
+    {
+      "ra": 18.9211,
+      "dec": -26.297,
+      "mag": 2.05,
+      "ci": -0.13,
+      "con": "Sgr",
+      "designation": "σ Sgr",
+      "name": "Nunki",
+      "ly": 228,
+      "sp": "B2.5V"
+    },
+    {
+      "ra": 14.1114,
+      "dec": -36.37,
+      "mag": 2.06,
+      "ci": 1.01,
+      "con": "Cen",
+      "designation": "θ Cen",
+      "name": "Menkent",
+      "ly": 59,
+      "sp": "K0IIIb"
+    },
+    {
+      "ra": 0.1398,
+      "dec": 29.09,
+      "mag": 2.07,
+      "ci": -0.04,
+      "con": "And",
+      "designation": "α And",
+      "name": "Alpheratz",
+      "ly": 97,
+      "sp": "B9p"
+    },
+    {
+      "ra": 1.1622,
+      "dec": 35.621,
+      "mag": 2.07,
+      "ci": 1.58,
+      "con": "And",
+      "designation": "β And",
+      "name": "Mirach",
+      "ly": 197,
+      "sp": "M0IIIvar"
+    },
+    {
+      "ra": 5.7959,
+      "dec": -9.67,
+      "mag": 2.07,
+      "ci": -0.17,
+      "con": "Ori",
+      "designation": "κ Ori",
+      "name": "Saiph",
+      "ly": 647,
+      "sp": "B0.5Iavar"
+    },
+    {
+      "ra": 14.8451,
+      "dec": 74.156,
+      "mag": 2.07,
+      "ci": 1.47,
+      "con": "UMi",
+      "designation": "β UMi",
+      "name": "Kochab",
+      "ly": 131,
+      "sp": "K4IIIvar"
+    },
+    {
+      "ra": 22.7111,
+      "dec": -46.885,
+      "mag": 2.07,
+      "ci": 1.61,
+      "con": "Gru",
+      "designation": "β Gru",
+      "name": "Tiaki",
+      "ly": 177,
+      "sp": "M5III"
+    },
+    {
+      "ra": 17.5822,
+      "dec": 12.56,
+      "mag": 2.08,
+      "ci": 0.15,
+      "con": "Oph",
+      "designation": "α Oph",
+      "name": "Rasalhague",
+      "ly": 49,
+      "sp": "A5III"
+    },
+    {
+      "ra": 3.1361,
+      "dec": 40.956,
+      "mag": 2.09,
+      "ci": 0,
+      "con": "Per",
+      "designation": "β Per",
+      "name": "Algol",
+      "ly": 90,
+      "sp": "B8V"
+    },
+    {
+      "ra": 2.065,
+      "dec": 42.33,
+      "mag": 2.1,
+      "ci": 1.37,
+      "con": "And",
+      "designation": "γ¹ And",
+      "name": "Almach",
+      "ly": 393,
+      "sp": "B8V"
+    },
+    {
+      "ra": 11.8177,
+      "dec": 14.572,
+      "mag": 2.14,
+      "ci": 0.09,
+      "con": "Leo",
+      "designation": "β Leo",
+      "name": "Denebola",
+      "ly": 36,
+      "sp": "A3Vvar"
+    },
+    {
+      "ra": 0.9451,
+      "dec": 60.717,
+      "mag": 2.15,
+      "ci": -0.05,
+      "con": "Cas",
+      "designation": "γ Cas",
+      "name": "Cih",
+      "ly": 549,
+      "sp": "B0IV:evar"
+    },
+    {
+      "ra": 12.692,
+      "dec": -48.96,
+      "mag": 2.2,
+      "ci": -0.02,
+      "con": "Cen",
+      "designation": "γ Cen",
+      "name": "",
+      "ly": 130,
+      "sp": "A1IV"
+    },
+    {
+      "ra": 8.0597,
+      "dec": -40.003,
+      "mag": 2.21,
+      "ci": -0.27,
+      "con": "Pup",
+      "designation": "ζ Pup",
+      "name": "Naos",
+      "ly": 1084,
+      "sp": "O5IAf"
+    },
+    {
+      "ra": 9.2848,
+      "dec": -59.275,
+      "mag": 2.21,
+      "ci": 0.19,
+      "con": "Car",
+      "designation": "ι Car",
+      "name": "Aspidiske",
+      "ly": 766,
+      "sp": "A8Ib"
+    },
+    {
+      "ra": 15.5781,
+      "dec": 26.715,
+      "mag": 2.22,
+      "ci": 0.03,
+      "con": "CrB",
+      "designation": "α CrB",
+      "name": "Alphecca",
+      "ly": 75,
+      "sp": "A0V"
+    },
+    {
+      "ra": 9.1333,
+      "dec": -43.433,
+      "mag": 2.23,
+      "ci": 1.67,
+      "con": "Vel",
+      "designation": "λ Vel",
+      "name": "Suhail",
+      "ly": 545,
+      "sp": "K4Ib-II"
+    },
+    {
+      "ra": 13.3987,
+      "dec": 54.925,
+      "mag": 2.23,
+      "ci": 0.06,
+      "con": "UMa",
+      "designation": "ζ UMa",
+      "name": "Mizar",
+      "ly": 86,
+      "sp": "A2V"
+    },
+    {
+      "ra": 20.3705,
+      "dec": 40.257,
+      "mag": 2.23,
+      "ci": 0.67,
+      "con": "Cyg",
+      "designation": "γ Cyg",
+      "name": "Sadr",
+      "ly": 1832,
+      "sp": "F8Ib"
+    },
+    {
+      "ra": 0.6751,
+      "dec": 56.537,
+      "mag": 2.24,
+      "ci": 1.17,
+      "con": "Cas",
+      "designation": "α Cas",
+      "name": "Schedar",
+      "ly": 228,
+      "sp": "K0II-IIIvar"
+    },
+    {
+      "ra": 17.9434,
+      "dec": 51.489,
+      "mag": 2.24,
+      "ci": 1.52,
+      "con": "Dra",
+      "designation": "γ Dra",
+      "name": "Eltanin",
+      "ly": 154,
+      "sp": "K5III"
+    },
+    {
+      "ra": 5.5334,
+      "dec": -0.299,
+      "mag": 2.25,
+      "ci": -0.17,
+      "con": "Ori",
+      "designation": "δ Ori",
+      "name": "Mintaka",
+      "ly": 692,
+      "sp": "O9.5II"
+    },
+    {
+      "ra": 0.1529,
+      "dec": 59.15,
+      "mag": 2.28,
+      "ci": 0.38,
+      "con": "Cas",
+      "designation": "β Cas",
+      "name": "Caph",
+      "ly": 55,
+      "sp": "F2III-IV"
+    },
+    {
+      "ra": 13.6648,
+      "dec": -53.466,
+      "mag": 2.29,
+      "ci": -0.17,
+      "con": "Cen",
+      "designation": "ε Cen",
+      "name": "",
+      "ly": 427,
+      "sp": "B1III"
+    },
+    {
+      "ra": 16.0056,
+      "dec": -22.622,
+      "mag": 2.29,
+      "ci": -0.12,
+      "con": "Sco",
+      "designation": "δ Sco",
+      "name": "Dschubba",
+      "ly": 491,
+      "sp": "B0.2IV"
+    },
+    {
+      "ra": 16.8361,
+      "dec": -34.293,
+      "mag": 2.29,
+      "ci": 1.14,
+      "con": "Sco",
+      "designation": "ε Sco",
+      "name": "Larawag",
+      "ly": 64,
+      "sp": "K2IIIb"
+    },
+    {
+      "ra": 14.6988,
+      "dec": -47.388,
+      "mag": 2.3,
+      "ci": -0.15,
+      "con": "Lup",
+      "designation": "α Lup",
+      "name": "",
+      "ly": 465,
+      "sp": "B1.5III"
+    },
+    {
+      "ra": 14.5918,
+      "dec": -42.158,
+      "mag": 2.33,
+      "ci": -0.16,
+      "con": "Cen",
+      "designation": "η Cen",
+      "name": "",
+      "ly": 306,
+      "sp": "B1Vn + A"
+    },
+    {
+      "ra": 11.0307,
+      "dec": 56.382,
+      "mag": 2.34,
+      "ci": 0.03,
+      "con": "UMa",
+      "designation": "β UMa",
+      "name": "Merak",
+      "ly": 80,
+      "sp": "A1V"
+    },
+    {
+      "ra": 14.7498,
+      "dec": 27.074,
+      "mag": 2.35,
+      "ci": 0.97,
+      "con": "Boo",
+      "designation": "ε Boo",
+      "name": "Izar",
+      "ly": 203,
+      "sp": "A0"
+    },
+    {
+      "ra": 21.7364,
+      "dec": 9.875,
+      "mag": 2.38,
+      "ci": 1.52,
+      "con": "Peg",
+      "designation": "ε Peg",
+      "name": "Enif",
+      "ly": 690,
+      "sp": "K2Ibvar"
+    },
+    {
+      "ra": 17.7081,
+      "dec": -39.03,
+      "mag": 2.39,
+      "ci": -0.17,
+      "con": "Sco",
+      "designation": "κ Sco",
+      "name": "",
+      "ly": 483,
+      "sp": "B1.5III"
+    },
+    {
+      "ra": 0.4381,
+      "dec": -42.306,
+      "mag": 2.4,
+      "ci": 1.08,
+      "con": "Phe",
+      "designation": "α Phe",
+      "name": "Ankaa",
+      "ly": 85,
+      "sp": "K0III..."
+    },
+    {
+      "ra": 11.8972,
+      "dec": 53.695,
+      "mag": 2.41,
+      "ci": 0.04,
+      "con": "UMa",
+      "designation": "γ UMa",
+      "name": "Phecda",
+      "ly": 83,
+      "sp": "A0V SB"
+    },
+    {
+      "ra": 17.173,
+      "dec": -15.725,
+      "mag": 2.43,
+      "ci": 0.06,
+      "con": "Oph",
+      "designation": "η Oph",
+      "name": "Sabik",
+      "ly": 88,
+      "sp": "A2.5Va"
+    },
+    {
+      "ra": 23.0629,
+      "dec": 28.083,
+      "mag": 2.44,
+      "ci": 1.66,
+      "con": "Peg",
+      "designation": "β Peg",
+      "name": "Scheat",
+      "ly": 196,
+      "sp": "M2II-IIIvar"
+    },
+    {
+      "ra": 7.4016,
+      "dec": -29.303,
+      "mag": 2.45,
+      "ci": -0.08,
+      "con": "CMa",
+      "designation": "η CMa",
+      "name": "Aludra",
+      "ly": 1989,
+      "sp": "B5Ia"
+    },
+    {
+      "ra": 21.3096,
+      "dec": 62.586,
+      "mag": 2.45,
+      "ci": 0.26,
+      "con": "Cep",
+      "designation": "α Cep",
+      "name": "Alderamin",
+      "ly": 49,
+      "sp": "A7IV-V"
+    },
+    {
+      "ra": 9.3686,
+      "dec": -55.011,
+      "mag": 2.47,
+      "ci": -0.14,
+      "con": "Vel",
+      "designation": "κ Vel",
+      "name": "Markeb",
+      "ly": 572,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 20.7702,
+      "dec": 33.97,
+      "mag": 2.48,
+      "ci": 1.02,
+      "con": "Cyg",
+      "designation": "ε Cyg",
+      "name": "Aljanah",
+      "ly": 73,
+      "sp": "K0III"
+    },
+    {
+      "ra": 23.0793,
+      "dec": 15.205,
+      "mag": 2.49,
+      "ci": 0,
+      "con": "Peg",
+      "designation": "α Peg",
+      "name": "Markab",
+      "ly": 133,
+      "sp": "B9.5III"
+    },
+    {
+      "ra": 3.038,
+      "dec": 4.09,
+      "mag": 2.54,
+      "ci": 1.63,
+      "con": "Cet",
+      "designation": "α Cet",
+      "name": "Menkar",
+      "ly": 249,
+      "sp": "M2III"
+    },
+    {
+      "ra": 16.6193,
+      "dec": -10.567,
+      "mag": 2.54,
+      "ci": 0.04,
+      "con": "Oph",
+      "designation": "ζ Oph",
+      "name": "",
+      "ly": 366,
+      "sp": "O9.5V"
+    },
+    {
+      "ra": 13.9257,
+      "dec": -47.288,
+      "mag": 2.55,
+      "ci": -0.18,
+      "con": "Cen",
+      "designation": "ζ Cen",
+      "name": "",
+      "ly": 382,
+      "sp": "B2.5IV"
+    },
+    {
+      "ra": 11.2351,
+      "dec": 20.524,
+      "mag": 2.56,
+      "ci": 0.13,
+      "con": "Leo",
+      "designation": "δ Leo",
+      "name": "Zosma",
+      "ly": 58,
+      "sp": "A4V"
+    },
+    {
+      "ra": 16.0906,
+      "dec": -19.805,
+      "mag": 2.56,
+      "ci": -0.07,
+      "con": "Sco",
+      "designation": "β¹ Sco",
+      "name": "Acrab",
+      "ly": 404,
+      "sp": "B0.5V"
+    },
+    {
+      "ra": 5.5455,
+      "dec": -17.822,
+      "mag": 2.58,
+      "ci": 0.21,
+      "con": "Lep",
+      "designation": "α Lep",
+      "name": "Arneb",
+      "ly": 2219,
+      "sp": "F0Ib"
+    },
+    {
+      "ra": 12.1393,
+      "dec": -50.722,
+      "mag": 2.58,
+      "ci": -0.13,
+      "con": "Cen",
+      "designation": "δ Cen",
+      "name": "",
+      "ly": 415,
+      "sp": "B2IVne"
+    },
+    {
+      "ra": 12.2634,
+      "dec": -17.542,
+      "mag": 2.58,
+      "ci": -0.11,
+      "con": "Crv",
+      "designation": "γ Crv",
+      "name": "Gienah",
+      "ly": 154,
+      "sp": "B8III"
+    },
+    {
+      "ra": 19.0435,
+      "dec": -29.88,
+      "mag": 2.6,
+      "ci": 0.06,
+      "con": "Sgr",
+      "designation": "ζ Sgr",
+      "name": "Ascella",
+      "ly": 88,
+      "sp": "A3IV"
+    },
+    {
+      "ra": 15.2834,
+      "dec": -9.383,
+      "mag": 2.61,
+      "ci": -0.07,
+      "con": "Lib",
+      "designation": "β Lib",
+      "name": "Zubeneschamali",
+      "ly": 185,
+      "sp": "B8V"
+    },
+    {
+      "ra": 15.7378,
+      "dec": 6.426,
+      "mag": 2.63,
+      "ci": 1.17,
+      "con": "Ser",
+      "designation": "α Ser",
+      "name": "Unukalhai",
+      "ly": 74,
+      "sp": "K2III"
+    },
+    {
+      "ra": 1.9107,
+      "dec": 20.808,
+      "mag": 2.64,
+      "ci": 0.17,
+      "con": "Ari",
+      "designation": "β Ari",
+      "name": "Sheratan",
+      "ly": 59,
+      "sp": "A5V..."
+    },
+    {
+      "ra": 5.6608,
+      "dec": -34.074,
+      "mag": 2.65,
+      "ci": -0.12,
+      "con": "Col",
+      "designation": "α Col",
+      "name": "Phact",
+      "ly": 261,
+      "sp": "B7IV"
+    },
+    {
+      "ra": 5.9954,
+      "dec": 37.213,
+      "mag": 2.65,
+      "ci": -0.08,
+      "con": "Aur",
+      "designation": "θ Aur",
+      "name": "Mahasim",
+      "ly": 166,
+      "sp": "A0p Si"
+    },
+    {
+      "ra": 12.5731,
+      "dec": -23.397,
+      "mag": 2.65,
+      "ci": 0.89,
+      "con": "Crv",
+      "designation": "β Crv",
+      "name": "Kraz",
+      "ly": 146,
+      "sp": "G5II"
+    },
+    {
+      "ra": 1.4302,
+      "dec": 60.235,
+      "mag": 2.66,
+      "ci": 0.16,
+      "con": "Cas",
+      "designation": "δ Cas",
+      "name": "Ruchbah",
+      "ly": 99,
+      "sp": "A5Vv SB"
+    },
+    {
+      "ra": 13.9114,
+      "dec": 18.398,
+      "mag": 2.68,
+      "ci": 0.58,
+      "con": "Boo",
+      "designation": "η Boo",
+      "name": "Muphrid",
+      "ly": 37,
+      "sp": "G0IV"
+    },
+    {
+      "ra": 14.9755,
+      "dec": -43.134,
+      "mag": 2.68,
+      "ci": -0.18,
+      "con": "Lup",
+      "designation": "β Lup",
+      "name": "",
+      "ly": 383,
+      "sp": "B2III"
+    },
+    {
+      "ra": 4.9499,
+      "dec": 33.166,
+      "mag": 2.69,
+      "ci": 1.49,
+      "con": "Aur",
+      "designation": "ι Aur",
+      "name": "Hassaleh",
+      "ly": 493,
+      "sp": "K3IIvar"
+    },
+    {
+      "ra": 10.7795,
+      "dec": -49.42,
+      "mag": 2.69,
+      "ci": 0.9,
+      "con": "Vel",
+      "designation": "μ Vel",
+      "name": "",
+      "ly": 117,
+      "sp": "G5III SB"
+    },
+    {
+      "ra": 12.6197,
+      "dec": -69.136,
+      "mag": 2.69,
+      "ci": -0.18,
+      "con": "Mus",
+      "designation": "α Mus",
+      "name": "",
+      "ly": 315,
+      "sp": "B2IV-V"
+    },
+    {
+      "ra": 17.5127,
+      "dec": -37.296,
+      "mag": 2.7,
+      "ci": -0.18,
+      "con": "Sco",
+      "designation": "υ Sco",
+      "name": "Lesath",
+      "ly": 576,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 7.2857,
+      "dec": -37.097,
+      "mag": 2.71,
+      "ci": 1.62,
+      "con": "Pup",
+      "designation": "π Pup",
+      "name": "",
+      "ly": 807,
+      "sp": "K3Ib"
+    },
+    {
+      "ra": 18.3499,
+      "dec": -29.828,
+      "mag": 2.72,
+      "ci": 1.38,
+      "con": "Sgr",
+      "designation": "δ Sgr",
+      "name": "Kaus Media",
+      "ly": 348,
+      "sp": "K3III"
+    },
+    {
+      "ra": 19.771,
+      "dec": 10.613,
+      "mag": 2.72,
+      "ci": 1.51,
+      "con": "Aql",
+      "designation": "γ Aql",
+      "name": "Tarazed",
+      "ly": 395,
+      "sp": "K3II"
+    },
+    {
+      "ra": 16.2391,
+      "dec": -3.694,
+      "mag": 2.73,
+      "ci": 1.58,
+      "con": "Oph",
+      "designation": "δ Oph",
+      "name": "Yed Prior",
+      "ly": 171,
+      "sp": "M1III"
+    },
+    {
+      "ra": 16.3999,
+      "dec": 61.514,
+      "mag": 2.73,
+      "ci": 0.91,
+      "con": "Dra",
+      "designation": "η Dra",
+      "name": "Athebyne",
+      "ly": 92,
+      "sp": "G8III"
+    },
+    {
+      "ra": 10.7159,
+      "dec": -64.394,
+      "mag": 2.74,
+      "ci": -0.22,
+      "con": "Car",
+      "designation": "θ Car",
+      "name": "",
+      "ly": 456,
+      "sp": "B0Vp"
+    },
+    {
+      "ra": 12.6943,
+      "dec": -1.449,
+      "mag": 2.74,
+      "ci": 0.37,
+      "con": "Vir",
+      "designation": "γ Vir",
+      "name": "Porrima",
+      "ly": 38,
+      "sp": "F0V+..."
+    },
+    {
+      "ra": 5.5906,
+      "dec": -5.91,
+      "mag": 2.75,
+      "ci": -0.21,
+      "con": "Ori",
+      "designation": "ι Ori",
+      "name": "Hatysa",
+      "ly": 2330,
+      "sp": "O9III"
+    },
+    {
+      "ra": 13.3433,
+      "dec": -36.712,
+      "mag": 2.75,
+      "ci": 0.07,
+      "con": "Cen",
+      "designation": "ι Cen",
+      "name": "",
+      "ly": 59,
+      "sp": "A2V"
+    },
+    {
+      "ra": 14.848,
+      "dec": -16.042,
+      "mag": 2.75,
+      "ci": 0.15,
+      "con": "Lib",
+      "designation": "α² Lib",
+      "name": "Zubenelgenubi",
+      "ly": 76,
+      "sp": "A3IV"
+    },
+    {
+      "ra": 17.7245,
+      "dec": 4.567,
+      "mag": 2.76,
+      "ci": 1.17,
+      "con": "Oph",
+      "designation": "β Oph",
+      "name": "Cebalrai",
+      "ly": 82,
+      "sp": "K2III"
+    },
+    {
+      "ra": 5.1308,
+      "dec": -5.086,
+      "mag": 2.78,
+      "ci": 0.16,
+      "con": "Eri",
+      "designation": "β Eri",
+      "name": "Cursa",
+      "ly": 89,
+      "sp": "A3IIIvar"
+    },
+    {
+      "ra": 16.5037,
+      "dec": 21.49,
+      "mag": 2.78,
+      "ci": 0.95,
+      "con": "Her",
+      "designation": "β Her",
+      "name": "Kornephoros",
+      "ly": 139,
+      "sp": "G8III"
+    },
+    {
+      "ra": 17.2441,
+      "dec": 14.39,
+      "mag": 2.78,
+      "ci": 1.16,
+      "con": "Her",
+      "designation": "α¹ Her",
+      "name": "Rasalgethi",
+      "ly": 360,
+      "sp": "M5IIvar"
+    },
+    {
+      "ra": 12.2524,
+      "dec": -58.749,
+      "mag": 2.79,
+      "ci": -0.19,
+      "con": "Cru",
+      "designation": "δ Cru",
+      "name": "Imai",
+      "ly": 345,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 17.5072,
+      "dec": 52.301,
+      "mag": 2.79,
+      "ci": 0.95,
+      "con": "Dra",
+      "designation": "β Dra",
+      "name": "Rastaban",
+      "ly": 380,
+      "sp": "G2II"
+    },
+    {
+      "ra": 15.5857,
+      "dec": -41.167,
+      "mag": 2.8,
+      "ci": -0.22,
+      "con": "Lup",
+      "designation": "γ Lup",
+      "name": "",
+      "ly": 421,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 5.4708,
+      "dec": -20.759,
+      "mag": 2.81,
+      "ci": 0.81,
+      "con": "Lep",
+      "designation": "β Lep",
+      "name": "Nihal",
+      "ly": 160,
+      "sp": "G5II"
+    },
+    {
+      "ra": 16.6881,
+      "dec": 31.603,
+      "mag": 2.81,
+      "ci": 0.65,
+      "con": "Her",
+      "designation": "ζ Her",
+      "name": "",
+      "ly": 35,
+      "sp": "F9IV"
+    },
+    {
+      "ra": 0.4279,
+      "dec": -77.254,
+      "mag": 2.82,
+      "ci": 0.62,
+      "con": "Hyi",
+      "designation": "β Hyi",
+      "name": "",
+      "ly": 24,
+      "sp": "G2IV"
+    },
+    {
+      "ra": 16.598,
+      "dec": -28.216,
+      "mag": 2.82,
+      "ci": -0.21,
+      "con": "Sco",
+      "designation": "τ Sco",
+      "name": "Paikauhale",
+      "ly": 474,
+      "sp": "B0V"
+    },
+    {
+      "ra": 18.4662,
+      "dec": -25.422,
+      "mag": 2.82,
+      "ci": 1.02,
+      "con": "Sgr",
+      "designation": "λ Sgr",
+      "name": "Kaus Borealis",
+      "ly": 78,
+      "sp": "K1IIIb"
+    },
+    {
+      "ra": 0.2206,
+      "dec": 15.184,
+      "mag": 2.83,
+      "ci": -0.19,
+      "con": "Peg",
+      "designation": "γ Peg",
+      "name": "Algenib",
+      "ly": 392,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 8.1257,
+      "dec": -24.304,
+      "mag": 2.83,
+      "ci": 0.46,
+      "con": "Pup",
+      "designation": "ρ Pup",
+      "name": "Tureis",
+      "ly": 64,
+      "sp": "F2mF5IIp"
+    },
+    {
+      "ra": 15.9191,
+      "dec": -63.431,
+      "mag": 2.83,
+      "ci": 0.32,
+      "con": "TrA",
+      "designation": "β TrA",
+      "name": "",
+      "ly": 40,
+      "sp": "F2III"
+    },
+    {
+      "ra": 3.9022,
+      "dec": 31.884,
+      "mag": 2.84,
+      "ci": 0.27,
+      "con": "Per",
+      "designation": "ζ Per",
+      "name": "",
+      "ly": 752,
+      "sp": "B1Ib"
+    },
+    {
+      "ra": 17.4217,
+      "dec": -55.53,
+      "mag": 2.84,
+      "ci": 1.48,
+      "con": "Ara",
+      "designation": "β Ara",
+      "name": "",
+      "ly": 646,
+      "sp": "K3Ib-II"
+    },
+    {
+      "ra": 17.5307,
+      "dec": -49.876,
+      "mag": 2.84,
+      "ci": -0.14,
+      "con": "Ara",
+      "designation": "α Ara",
+      "name": "",
+      "ly": 267,
+      "sp": "B2Vne"
+    },
+    {
+      "ra": 3.7914,
+      "dec": 24.105,
+      "mag": 2.85,
+      "ci": -0.09,
+      "con": "Tau",
+      "designation": "η Tau",
+      "name": "Alcyone",
+      "ly": 403,
+      "sp": "B7III"
+    },
+    {
+      "ra": 13.0363,
+      "dec": 10.959,
+      "mag": 2.85,
+      "ci": 0.93,
+      "con": "Vir",
+      "designation": "ε Vir",
+      "name": "Vindemiatrix",
+      "ly": 110,
+      "sp": "G8IIIvar"
+    },
+    {
+      "ra": 21.784,
+      "dec": -16.127,
+      "mag": 2.85,
+      "ci": 0.18,
+      "con": "Cap",
+      "designation": "δ Cap",
+      "name": "Deneb Algedi",
+      "ly": 39,
+      "sp": "A5mF2 (IV)"
+    },
+    {
+      "ra": 7.5768,
+      "dec": 31.891,
+      "mag": 2.85,
+      "ci": null,
+      "con": "Gem",
+      "designation": "α Gem",
+      "name": "Castor B",
+      "ly": 52,
+      "sp": "A m"
+    },
+    {
+      "ra": 1.9795,
+      "dec": -61.57,
+      "mag": 2.86,
+      "ci": 0.29,
+      "con": "Hyi",
+      "designation": "α Hyi",
+      "name": "",
+      "ly": 72,
+      "sp": "F0V"
+    },
+    {
+      "ra": 19.7496,
+      "dec": 45.131,
+      "mag": 2.86,
+      "ci": 0,
+      "con": "Cyg",
+      "designation": "δ Cyg",
+      "name": "Fawaris",
+      "ly": 165,
+      "sp": "B9.5III"
+    },
+    {
+      "ra": 6.3827,
+      "dec": 22.514,
+      "mag": 2.87,
+      "ci": 1.62,
+      "con": "Gem",
+      "designation": "μ Gem",
+      "name": "Tejat",
+      "ly": 232,
+      "sp": "M3IIIvar"
+    },
+    {
+      "ra": 15.3152,
+      "dec": -68.68,
+      "mag": 2.87,
+      "ci": 0.01,
+      "con": "TrA",
+      "designation": "γ TrA",
+      "name": "",
+      "ly": 184,
+      "sp": "A1V"
+    },
+    {
+      "ra": 22.3084,
+      "dec": -60.26,
+      "mag": 2.87,
+      "ci": 1.39,
+      "con": "Tuc",
+      "designation": "α Tuc",
+      "name": "",
+      "ly": 200,
+      "sp": "K3III"
+    },
+    {
+      "ra": 2.971,
+      "dec": -40.305,
+      "mag": 2.88,
+      "ci": 0.13,
+      "con": "Eri",
+      "designation": "θ¹ Eri",
+      "name": "Acamar",
+      "ly": 161,
+      "sp": "A4III+..."
+    },
+    {
+      "ra": 19.1627,
+      "dec": -21.024,
+      "mag": 2.88,
+      "ci": 0.38,
+      "con": "Sgr",
+      "designation": "π Sgr",
+      "name": "Albaldah",
+      "ly": 510,
+      "sp": "F2II/III"
+    },
+    {
+      "ra": 7.4525,
+      "dec": 8.289,
+      "mag": 2.89,
+      "ci": -0.1,
+      "con": "CMi",
+      "designation": "β CMi",
+      "name": "Gomeisa",
+      "ly": 162,
+      "sp": "B8Vvar"
+    },
+    {
+      "ra": 12.9338,
+      "dec": 38.318,
+      "mag": 2.89,
+      "ci": -0.12,
+      "con": "CVn",
+      "designation": "α² CVn",
+      "name": "Cor Caroli",
+      "ly": 115,
+      "sp": "A0spe..."
+    },
+    {
+      "ra": 15.9809,
+      "dec": -26.114,
+      "mag": 2.89,
+      "ci": -0.18,
+      "con": "Sco",
+      "designation": "π Sco",
+      "name": "Fang",
+      "ly": 586,
+      "sp": "B1V + B2V"
+    },
+    {
+      "ra": 3.9642,
+      "dec": 40.01,
+      "mag": 2.9,
+      "ci": -0.2,
+      "con": "Per",
+      "designation": "ε Per",
+      "name": "",
+      "ly": 638,
+      "sp": "B0.5V"
+    },
+    {
+      "ra": 16.3531,
+      "dec": -25.593,
+      "mag": 2.9,
+      "ci": 0.3,
+      "con": "Sco",
+      "designation": "σ Sco",
+      "name": "Alniyat",
+      "ly": 697,
+      "sp": "B1III"
+    },
+    {
+      "ra": 21.526,
+      "dec": -5.571,
+      "mag": 2.9,
+      "ci": 0.83,
+      "con": "Aqr",
+      "designation": "β Aqr",
+      "name": "Sadalsuud",
+      "ly": 537,
+      "sp": "G0Ib"
+    },
+    {
+      "ra": 3.0799,
+      "dec": 53.506,
+      "mag": 2.91,
+      "ci": 0.72,
+      "con": "Per",
+      "designation": "γ Per",
+      "name": "",
+      "ly": 243,
+      "sp": "G8III+..."
+    },
+    {
+      "ra": 9.785,
+      "dec": -65.072,
+      "mag": 2.92,
+      "ci": 0.27,
+      "con": "Car",
+      "designation": "υ Car",
+      "name": "",
+      "ly": 1437,
+      "sp": "A9"
+    },
+    {
+      "ra": 22.7167,
+      "dec": 30.221,
+      "mag": 2.93,
+      "ci": 0.85,
+      "con": "Peg",
+      "designation": "η Peg",
+      "name": "Matar",
+      "ly": 214,
+      "sp": "G2II-III.."
+    },
+    {
+      "ra": 6.8323,
+      "dec": -50.615,
+      "mag": 2.94,
+      "ci": 1.21,
+      "con": "Pup",
+      "designation": "τ Pup",
+      "name": "",
+      "ly": 182,
+      "sp": "K0III..."
+    },
+    {
+      "ra": 12.4977,
+      "dec": -16.515,
+      "mag": 2.94,
+      "ci": -0.01,
+      "con": "Crv",
+      "designation": "δ Crv",
+      "name": "Algorab",
+      "ly": 87,
+      "sp": "B9.5V"
+    },
+    {
+      "ra": 22.0964,
+      "dec": -0.32,
+      "mag": 2.95,
+      "ci": 0.97,
+      "con": "Aqr",
+      "designation": "α Aqr",
+      "name": "Sadalmelik",
+      "ly": 524,
+      "sp": "G2Ib"
+    },
+    {
+      "ra": 3.9672,
+      "dec": -13.509,
+      "mag": 2.97,
+      "ci": 1.59,
+      "con": "Eri",
+      "designation": "γ Eri",
+      "name": "Zaurak",
+      "ly": 203,
+      "sp": "M1IIIb Ca-1"
+    },
+    {
+      "ra": 5.6274,
+      "dec": 21.143,
+      "mag": 2.97,
+      "ci": -0.15,
+      "con": "Tau",
+      "designation": "ζ Tau",
+      "name": "Tianguan",
+      "ly": 445,
+      "sp": "B4IIIp"
+    },
+    {
+      "ra": 9.7642,
+      "dec": 23.774,
+      "mag": 2.97,
+      "ci": 0.81,
+      "con": "Leo",
+      "designation": "ε Leo",
+      "name": "Ras Elased Australis",
+      "ly": 247,
+      "sp": "G0II"
+    },
+    {
+      "ra": 18.0968,
+      "dec": -30.424,
+      "mag": 2.98,
+      "ci": 0.98,
+      "con": "Sgr",
+      "designation": "γ² Sgr",
+      "name": "Alnasl",
+      "ly": 97,
+      "sp": "K0III"
+    },
+    {
+      "ra": 13.3154,
+      "dec": -23.172,
+      "mag": 2.99,
+      "ci": 0.92,
+      "con": "Hya",
+      "designation": "γ Hya",
+      "name": "",
+      "ly": 134,
+      "sp": "G8III"
+    },
+    {
+      "ra": 17.7931,
+      "dec": -40.127,
+      "mag": 2.99,
+      "ci": 0.51,
+      "con": "Sco",
+      "designation": "ι¹ Sco",
+      "name": "",
+      "ly": 1930,
+      "sp": "F3Ia"
+    },
+    {
+      "ra": 19.0902,
+      "dec": 13.863,
+      "mag": 2.99,
+      "ci": 0.01,
+      "con": "Aql",
+      "designation": "ζ Aql",
+      "name": "Okab",
+      "ly": 83,
+      "sp": "A0Vn"
+    },
+    {
+      "ra": 2.1591,
+      "dec": 34.987,
+      "mag": 3,
+      "ci": 0.14,
+      "con": "Tri",
+      "designation": "β Tri",
+      "name": "",
+      "ly": 127,
+      "sp": "A5III"
+    },
+    {
+      "ra": 11.1611,
+      "dec": 44.498,
+      "mag": 3,
+      "ci": 1.14,
+      "con": "UMa",
+      "designation": "ψ UMa",
+      "name": "",
+      "ly": 145,
+      "sp": "K1III"
+    },
+    {
+      "ra": 15.3455,
+      "dec": 71.834,
+      "mag": 3,
+      "ci": 0.06,
+      "con": "UMi",
+      "designation": "γ UMi",
+      "name": "Pherkad",
+      "ly": 487,
+      "sp": "A3II-III"
+    },
+    {
+      "ra": 16.8645,
+      "dec": -38.047,
+      "mag": 3,
+      "ci": -0.2,
+      "con": "Sco",
+      "designation": "Mu-¹ Sco",
+      "name": "Xamidimura",
+      "ly": 501,
+      "sp": "B1.5IV + B"
+    },
+    {
+      "ra": 21.8988,
+      "dec": -37.365,
+      "mag": 3,
+      "ci": -0.08,
+      "con": "Gru",
+      "designation": "γ Gru",
+      "name": "Aldhanab",
+      "ly": 211,
+      "sp": "B8III"
+    },
+    {
+      "ra": 3.7154,
+      "dec": 47.788,
+      "mag": 3.01,
+      "ci": -0.12,
+      "con": "Per",
+      "designation": "δ Per",
+      "name": "",
+      "ly": 516,
+      "sp": "B5III SB"
+    },
+    {
+      "ra": 6.3386,
+      "dec": -30.063,
+      "mag": 3.02,
+      "ci": -0.16,
+      "con": "CMa",
+      "designation": "ζ CMa",
+      "name": "Furud",
+      "ly": 362,
+      "sp": "B2.5V"
+    },
+    {
+      "ra": 7.0504,
+      "dec": -23.833,
+      "mag": 3.02,
+      "ci": -0.08,
+      "con": "CMa",
+      "designation": "ο² CMa",
+      "name": "",
+      "ly": 2764,
+      "sp": "B3Ia"
+    },
+    {
+      "ra": 12.1687,
+      "dec": -22.62,
+      "mag": 3.02,
+      "ci": 1.33,
+      "con": "Crv",
+      "designation": "ε Crv",
+      "name": "",
+      "ly": 318,
+      "sp": "K2III"
+    },
+    {
+      "ra": 5.0328,
+      "dec": 43.823,
+      "mag": 3.03,
+      "ci": 0.54,
+      "con": "Aur",
+      "designation": "ε Aur",
+      "name": "Almaaz",
+      "ly": 2132,
+      "sp": "F0Ia"
+    },
+    {
+      "ra": 12.7713,
+      "dec": -68.108,
+      "mag": 3.04,
+      "ci": -0.18,
+      "con": "Mus",
+      "designation": "β Mus",
+      "name": "",
+      "ly": 342,
+      "sp": "B2V"
+    },
+    {
+      "ra": 14.5346,
+      "dec": 38.308,
+      "mag": 3.04,
+      "ci": 0.19,
+      "con": "Boo",
+      "designation": "γ Boo",
+      "name": "Seginus",
+      "ly": 87,
+      "sp": "A7IIIvar"
+    },
+    {
+      "ra": 19.512,
+      "dec": 27.96,
+      "mag": 3.05,
+      "ci": 1.09,
+      "con": "Cyg",
+      "designation": "β¹ Cyg",
+      "name": "Albireo",
+      "ly": 434,
+      "sp": "K3II+..."
+    },
+    {
+      "ra": 20.3502,
+      "dec": -14.781,
+      "mag": 3.05,
+      "ci": 0.79,
+      "con": "Cap",
+      "designation": "β Cap",
+      "name": "Dabih",
+      "ly": 327,
+      "sp": "A5:n"
+    },
+    {
+      "ra": 6.7322,
+      "dec": 25.131,
+      "mag": 3.06,
+      "ci": 1.38,
+      "con": "Gem",
+      "designation": "ε Gem",
+      "name": "Mebsuta",
+      "ly": 845,
+      "sp": "A3mA6-A9"
+    },
+    {
+      "ra": 10.3722,
+      "dec": 41.5,
+      "mag": 3.06,
+      "ci": 1.6,
+      "con": "UMa",
+      "designation": "μ UMa",
+      "name": "Tania Australis",
+      "ly": 230,
+      "sp": "M0III SB"
+    },
+    {
+      "ra": 19.2092,
+      "dec": 67.662,
+      "mag": 3.07,
+      "ci": 0.99,
+      "con": "Dra",
+      "designation": "δ Dra",
+      "name": "Altais",
+      "ly": 97,
+      "sp": "G9III"
+    },
+    {
+      "ra": 18.2938,
+      "dec": -36.762,
+      "mag": 3.1,
+      "ci": 1.58,
+      "con": "Sgr",
+      "designation": "η Sgr",
+      "name": "",
+      "ly": 146,
+      "sp": "M2III"
+    },
+    {
+      "ra": 8.9232,
+      "dec": 5.946,
+      "mag": 3.11,
+      "ci": 0.98,
+      "con": "Hya",
+      "designation": "ζ Hya",
+      "name": "",
+      "ly": 167,
+      "sp": "G8III-IV"
+    },
+    {
+      "ra": 10.8271,
+      "dec": -16.194,
+      "mag": 3.11,
+      "ci": 1.23,
+      "con": "Hya",
+      "designation": "ν Hya",
+      "name": "",
+      "ly": 144,
+      "sp": "K0/K1III"
+    },
+    {
+      "ra": 11.5964,
+      "dec": -63.02,
+      "mag": 3.11,
+      "ci": -0.04,
+      "con": "Cen",
+      "designation": "λ Cen",
+      "name": "",
+      "ly": 420,
+      "sp": "B9II:"
+    },
+    {
+      "ra": 20.6261,
+      "dec": -47.292,
+      "mag": 3.11,
+      "ci": 1,
+      "con": "Ind",
+      "designation": "α Ind",
+      "name": "",
+      "ly": 98,
+      "sp": "K0III"
+    },
+    {
+      "ra": 5.8493,
+      "dec": -35.768,
+      "mag": 3.12,
+      "ci": 1.15,
+      "con": "Col",
+      "designation": "β Col",
+      "name": "Wazn",
+      "ly": 87,
+      "sp": "K1.5III"
+    },
+    {
+      "ra": 8.9868,
+      "dec": 48.042,
+      "mag": 3.12,
+      "ci": 0.22,
+      "con": "UMa",
+      "designation": "ι UMa",
+      "name": "Talitha",
+      "ly": 47,
+      "sp": "A7IV"
+    },
+    {
+      "ra": 16.977,
+      "dec": -55.99,
+      "mag": 3.12,
+      "ci": 1.55,
+      "con": "Ara",
+      "designation": "ζ Ara",
+      "name": "",
+      "ly": 486,
+      "sp": "K5III"
+    },
+    {
+      "ra": 17.2505,
+      "dec": 24.839,
+      "mag": 3.12,
+      "ci": 0.08,
+      "con": "Her",
+      "designation": "δ Her",
+      "name": "Sarin",
+      "ly": 75,
+      "sp": "A3IVv SB"
+    },
+    {
+      "ra": 14.986,
+      "dec": -42.104,
+      "mag": 3.13,
+      "ci": -0.21,
+      "con": "Cen",
+      "designation": "κ Cen",
+      "name": "",
+      "ly": 383,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 9.3509,
+      "dec": 34.393,
+      "mag": 3.14,
+      "ci": 1.55,
+      "con": "Lyn",
+      "designation": "α Lyn",
+      "name": "",
+      "ly": 203,
+      "sp": "M0IIIvar"
+    },
+    {
+      "ra": 9.5204,
+      "dec": -57.034,
+      "mag": 3.16,
+      "ci": 1.54,
+      "con": "Vel",
+      "designation": "HIP 46701",
+      "name": "",
+      "ly": 239,
+      "sp": "K5III"
+    },
+    {
+      "ra": 17.2508,
+      "dec": 36.809,
+      "mag": 3.16,
+      "ci": 1.44,
+      "con": "Her",
+      "designation": "π Her",
+      "name": "",
+      "ly": 377,
+      "sp": "K3IIvar"
+    },
+    {
+      "ra": 6.6294,
+      "dec": -43.196,
+      "mag": 3.17,
+      "ci": -0.1,
+      "con": "Pup",
+      "designation": "ν Pup",
+      "name": "",
+      "ly": 371,
+      "sp": "B8III SB"
+    },
+    {
+      "ra": 9.5477,
+      "dec": 51.677,
+      "mag": 3.17,
+      "ci": 0.47,
+      "con": "UMa",
+      "designation": "θ UMa",
+      "name": "",
+      "ly": 44,
+      "sp": "F6IV"
+    },
+    {
+      "ra": 17.1464,
+      "dec": 65.715,
+      "mag": 3.17,
+      "ci": -0.12,
+      "con": "Dra",
+      "designation": "ζ Dra",
+      "name": "Aldhibah",
+      "ly": 328,
+      "sp": "B6III"
+    },
+    {
+      "ra": 18.7609,
+      "dec": -26.991,
+      "mag": 3.17,
+      "ci": -0.11,
+      "con": "Sgr",
+      "designation": "φ Sgr",
+      "name": "",
+      "ly": 239,
+      "sp": "B8.5III"
+    },
+    {
+      "ra": 5.1086,
+      "dec": 41.234,
+      "mag": 3.18,
+      "ci": -0.15,
+      "con": "Aur",
+      "designation": "η Aur",
+      "name": "Haedus",
+      "ly": 243,
+      "sp": "B3V"
+    },
+    {
+      "ra": 14.7085,
+      "dec": -64.975,
+      "mag": 3.18,
+      "ci": 0.26,
+      "con": "Cir",
+      "designation": "α Cir",
+      "name": "",
+      "ly": 54,
+      "sp": "F1Vp"
+    },
+    {
+      "ra": 4.8307,
+      "dec": 6.961,
+      "mag": 3.19,
+      "ci": 0.48,
+      "con": "Ori",
+      "designation": "Pi-³ Ori",
+      "name": "Tabit",
+      "ly": 26,
+      "sp": "F6V"
+    },
+    {
+      "ra": 5.091,
+      "dec": -22.371,
+      "mag": 3.19,
+      "ci": 1.46,
+      "con": "Lep",
+      "designation": "ε Lep",
+      "name": "",
+      "ly": 213,
+      "sp": "K4III"
+    },
+    {
+      "ra": 16.9611,
+      "dec": 9.375,
+      "mag": 3.19,
+      "ci": 1.16,
+      "con": "Oph",
+      "designation": "κ Oph",
+      "name": "",
+      "ly": 91,
+      "sp": "K2IIIvar"
+    },
+    {
+      "ra": 17.831,
+      "dec": -37.043,
+      "mag": 3.19,
+      "ci": 1.19,
+      "con": "Sco",
+      "designation": "HIP 87261",
+      "name": "Fuyue",
+      "ly": 126,
+      "sp": "K0/K1III"
+    },
+    {
+      "ra": 21.2156,
+      "dec": 30.227,
+      "mag": 3.21,
+      "ci": 0.99,
+      "con": "Cyg",
+      "designation": "ζ Cyg",
+      "name": "",
+      "ly": 143,
+      "sp": "G8II SB"
+    },
+    {
+      "ra": 23.6558,
+      "dec": 77.632,
+      "mag": 3.21,
+      "ci": 1.03,
+      "con": "Cep",
+      "designation": "γ Cep",
+      "name": "Errai",
+      "ly": 46,
+      "sp": "K1IV"
+    },
+    {
+      "ra": 15.3562,
+      "dec": -40.648,
+      "mag": 3.22,
+      "ci": -0.23,
+      "con": "Lup",
+      "designation": "δ Lup",
+      "name": "",
+      "ly": 884,
+      "sp": "B1.5IV"
+    },
+    {
+      "ra": 16.3054,
+      "dec": -4.693,
+      "mag": 3.23,
+      "ci": 0.97,
+      "con": "Oph",
+      "designation": "ε Oph",
+      "name": "Yed Posterior",
+      "ly": 106,
+      "sp": "G8III"
+    },
+    {
+      "ra": 18.3552,
+      "dec": -2.899,
+      "mag": 3.23,
+      "ci": 0.94,
+      "con": "Ser",
+      "designation": "η Ser",
+      "name": "",
+      "ly": 60,
+      "sp": "K0III-IV"
+    },
+    {
+      "ra": 21.4777,
+      "dec": 70.561,
+      "mag": 3.23,
+      "ci": -0.2,
+      "con": "Cep",
+      "designation": "β Cep",
+      "name": "Alfirk",
+      "ly": 685,
+      "sp": "B2IIIv SB"
+    },
+    {
+      "ra": 6.8032,
+      "dec": -61.941,
+      "mag": 3.24,
+      "ci": 0.23,
+      "con": "Pic",
+      "designation": "α Pic",
+      "name": "",
+      "ly": 97,
+      "sp": "A7IV"
+    },
+    {
+      "ra": 20.1884,
+      "dec": -0.821,
+      "mag": 3.24,
+      "ci": -0.07,
+      "con": "Aql",
+      "designation": "θ Aql",
+      "name": "",
+      "ly": 286,
+      "sp": "B9.5III"
+    },
+    {
+      "ra": 7.4872,
+      "dec": -43.301,
+      "mag": 3.25,
+      "ci": 1.51,
+      "con": "Pup",
+      "designation": "σ Pup",
+      "name": "",
+      "ly": 194,
+      "sp": "K5III SB"
+    },
+    {
+      "ra": 14.1062,
+      "dec": -26.682,
+      "mag": 3.25,
+      "ci": 1.09,
+      "con": "Hya",
+      "designation": "π Hya",
+      "name": "",
+      "ly": 101,
+      "sp": "K2III"
+    },
+    {
+      "ra": 15.0678,
+      "dec": -25.282,
+      "mag": 3.25,
+      "ci": 1.67,
+      "con": "Lib",
+      "designation": "σ Lib",
+      "name": "Brachium",
+      "ly": 288,
+      "sp": "M3/M4III"
+    },
+    {
+      "ra": 18.9824,
+      "dec": 32.69,
+      "mag": 3.25,
+      "ci": -0.05,
+      "con": "Lyr",
+      "designation": "γ Lyr",
+      "name": "Sulafat",
+      "ly": 620,
+      "sp": "B9III"
+    },
+    {
+      "ra": 3.7873,
+      "dec": -74.239,
+      "mag": 3.26,
+      "ci": 1.59,
+      "con": "Hyi",
+      "designation": "γ Hyi",
+      "name": "",
+      "ly": 214,
+      "sp": "M2III"
+    },
+    {
+      "ra": 0.6555,
+      "dec": 30.861,
+      "mag": 3.27,
+      "ci": 1.27,
+      "con": "And",
+      "designation": "δ And",
+      "name": "",
+      "ly": 106,
+      "sp": "K3III..."
+    },
+    {
+      "ra": 17.3668,
+      "dec": -25,
+      "mag": 3.27,
+      "ci": -0.19,
+      "con": "Oph",
+      "designation": "θ Oph",
+      "name": "",
+      "ly": 436,
+      "sp": "B2IV"
+    },
+    {
+      "ra": 22.9108,
+      "dec": -15.821,
+      "mag": 3.27,
+      "ci": 0.07,
+      "con": "Aqr",
+      "designation": "δ Aqr",
+      "name": "Skat",
+      "ly": 161,
+      "sp": "A3V"
+    },
+    {
+      "ra": 5.2155,
+      "dec": -16.205,
+      "mag": 3.29,
+      "ci": -0.11,
+      "con": "Lep",
+      "designation": "μ Lep",
+      "name": "",
+      "ly": 186,
+      "sp": "B9IV: HgMn"
+    },
+    {
+      "ra": 10.229,
+      "dec": -70.038,
+      "mag": 3.29,
+      "ci": -0.07,
+      "con": "Car",
+      "designation": "ω Car",
+      "name": "",
+      "ly": 342,
+      "sp": "B8III"
+    },
+    {
+      "ra": 15.4155,
+      "dec": 58.966,
+      "mag": 3.29,
+      "ci": 1.17,
+      "con": "Dra",
+      "designation": "ι Dra",
+      "name": "Edasich",
+      "ly": 101,
+      "sp": "K2III"
+    },
+    {
+      "ra": 4.5666,
+      "dec": -55.045,
+      "mag": 3.3,
+      "ci": -0.08,
+      "con": "Dor",
+      "designation": "α Dor",
+      "name": "",
+      "ly": 169,
+      "sp": "A0V:"
+    },
+    {
+      "ra": 10.5337,
+      "dec": -61.685,
+      "mag": 3.3,
+      "ci": -0.09,
+      "con": "Car",
+      "designation": "HIP 51576",
+      "name": "",
+      "ly": 483,
+      "sp": "B4Vne"
+    },
+    {
+      "ra": 6.248,
+      "dec": 22.507,
+      "mag": 3.31,
+      "ci": 1.6,
+      "con": "Gem",
+      "designation": "η Gem",
+      "name": "Propus",
+      "ly": 385,
+      "sp": "M3III"
+    },
+    {
+      "ra": 17.4232,
+      "dec": -56.378,
+      "mag": 3.31,
+      "ci": -0.15,
+      "con": "Ara",
+      "designation": "γ Ara",
+      "name": "",
+      "ly": 1113,
+      "sp": "B1Ib"
+    },
+    {
+      "ra": 1.1014,
+      "dec": -46.718,
+      "mag": 3.32,
+      "ci": 0.89,
+      "con": "Phe",
+      "designation": "β Phe",
+      "name": "",
+      "ly": null,
+      "sp": "G8IIIvar"
+    },
+    {
+      "ra": 3.0863,
+      "dec": 38.84,
+      "mag": 3.32,
+      "ci": 1.53,
+      "con": "Per",
+      "designation": "ρ Per",
+      "name": "",
+      "ly": 308,
+      "sp": "M3IIIvar"
+    },
+    {
+      "ra": 12.2571,
+      "dec": 57.033,
+      "mag": 3.32,
+      "ci": 0.08,
+      "con": "UMa",
+      "designation": "δ UMa",
+      "name": "Megrez",
+      "ly": 81,
+      "sp": "A3Vvar"
+    }
+  ],
+  "constellations": [
+    {
+      "abbr": "And",
+      "latin": "Andromeda",
+      "en": "Andromeda",
+      "es": "Andrómeda",
+      "label": [
+        0.05,
+        43
+      ],
+      "lines": [
+        [
+          [
+            2.065,
+            42.33
+          ],
+          [
+            1.1622,
+            35.62
+          ],
+          [
+            0.6555,
+            30.86
+          ],
+          [
+            0.1398,
+            29.09
+          ]
+        ],
+        [
+          [
+            0.9534,
+            23.42
+          ],
+          [
+            0.789,
+            24.27
+          ],
+          [
+            0.6426,
+            29.31
+          ],
+          [
+            0.6555,
+            30.86
+          ],
+          [
+            0.6147,
+            33.72
+          ],
+          [
+            23.6356,
+            43.27
+          ],
+          [
+            23.032,
+            42.33
+          ]
+        ],
+        [
+          [
+            23.6356,
+            43.27
+          ],
+          [
+            23.6735,
+            44.33
+          ],
+          [
+            23.6261,
+            46.46
+          ]
+        ],
+        [
+          [
+            1.1622,
+            35.62
+          ],
+          [
+            0.9459,
+            38.5
+          ],
+          [
+            0.8302,
+            41.08
+          ],
+          [
+            1.1584,
+            47.24
+          ],
+          [
+            1.6332,
+            48.63
+          ]
+        ],
+        [
+          [
+            23.6735,
+            44.33
+          ],
+          [
+            23.7672,
+            46.42
+          ]
+        ]
+      ],
+      "best_month": 9,
+      "meaning_es": "princesa encadenada",
+      "bright": {
+        "n": "Alpheratz",
+        "d": "α And",
+        "mag": 2.07
+      }
+    },
+    {
+      "abbr": "Cet",
+      "latin": "Cetus",
+      "en": "Whale",
+      "es": "Ballena",
+      "label": [
+        1.9,
+        -5
+      ],
+      "lines": [
+        [
+          [
+            2.7217,
+            3.24
+          ],
+          [
+            2.5979,
+            5.59
+          ],
+          [
+            2.4693,
+            8.46
+          ],
+          [
+            2.749,
+            10.11
+          ],
+          [
+            2.9953,
+            8.91
+          ],
+          [
+            3.038,
+            4.09
+          ],
+          [
+            2.7217,
+            3.24
+          ],
+          [
+            2.658,
+            0.33
+          ],
+          [
+            2.3224,
+            -2.98
+          ],
+          [
+            1.8577,
+            -10.34
+          ],
+          [
+            1.7345,
+            -15.94
+          ],
+          [
+            0.7265,
+            -17.99
+          ],
+          [
+            0.3238,
+            -8.82
+          ],
+          [
+            1.1432,
+            -10.18
+          ],
+          [
+            1.4004,
+            -8.18
+          ],
+          [
+            1.8577,
+            -10.34
+          ]
+        ]
+      ],
+      "best_month": 10,
+      "meaning_es": "monstruo marino, ballena",
+      "bright": {
+        "n": "Diphda",
+        "d": "β Cet",
+        "mag": 2.04
+      }
+    },
+    {
+      "abbr": "Eri",
+      "latin": "Eridanus",
+      "en": "Eridanus",
+      "es": "Erídano",
+      "label": [
+        3.5,
+        -18
+      ],
+      "lines": [
+        [
+          [
+            5.1308,
+            -5.09
+          ],
+          [
+            4.7584,
+            -3.25
+          ],
+          [
+            4.6053,
+            -3.35
+          ],
+          [
+            4.1978,
+            -6.84
+          ],
+          [
+            3.9672,
+            -13.51
+          ],
+          [
+            3.769,
+            -12.1
+          ],
+          [
+            3.7208,
+            -9.76
+          ],
+          [
+            3.5488,
+            -9.46
+          ],
+          [
+            2.9405,
+            -8.9
+          ],
+          [
+            2.7354,
+            -13.86
+          ],
+          [
+            2.7517,
+            -18.57
+          ],
+          [
+            3.0399,
+            -23.62
+          ],
+          [
+            3.3253,
+            -21.76
+          ],
+          [
+            3.5631,
+            -21.63
+          ],
+          [
+            3.7808,
+            -23.25
+          ],
+          [
+            4.5925,
+            -30.56
+          ],
+          [
+            4.4006,
+            -34.02
+          ],
+          [
+            4.2982,
+            -33.8
+          ],
+          [
+            3.8242,
+            -36.2
+          ],
+          [
+            3.6182,
+            -40.27
+          ],
+          [
+            3.3321,
+            -43.07
+          ],
+          [
+            2.971,
+            -40.3
+          ],
+          [
+            2.6778,
+            -39.86
+          ],
+          [
+            2.4498,
+            -47.7
+          ],
+          [
+            2.2752,
+            -51.51
+          ],
+          [
+            1.9326,
+            -51.61
+          ],
+          [
+            1.6286,
+            -57.24
+          ]
+        ]
+      ],
+      "best_month": 11,
+      "meaning_es": "río",
+      "bright": {
+        "n": "Achernar",
+        "d": "α Eri",
+        "mag": 0.45
+      }
+    },
+    {
+      "abbr": "Tau",
+      "latin": "Taurus",
+      "en": "Bull",
+      "es": "Tauro",
+      "label": [
+        3.6,
+        15
+      ],
+      "lines": [
+        [
+          [
+            5.6274,
+            21.14
+          ],
+          [
+            4.5987,
+            16.51
+          ],
+          [
+            4.4777,
+            15.87
+          ],
+          [
+            4.3299,
+            15.63
+          ],
+          [
+            4.3822,
+            17.54
+          ],
+          [
+            4.4769,
+            19.18
+          ],
+          [
+            5.4382,
+            28.61
+          ]
+        ],
+        [
+          [
+            4.3299,
+            15.63
+          ],
+          [
+            4.0113,
+            12.49
+          ],
+          [
+            3.4528,
+            9.73
+          ],
+          [
+            4.0526,
+            5.99
+          ]
+        ],
+        [
+          [
+            3.4528,
+            9.73
+          ],
+          [
+            3.4136,
+            9.03
+          ],
+          [
+            3.6146,
+            0.4
+          ]
+        ]
+      ],
+      "best_month": 11,
+      "meaning_es": "toro",
+      "bright": {
+        "n": "Aldebaran",
+        "d": "α Tau",
+        "mag": 0.87
+      }
+    },
+    {
+      "abbr": "Aur",
+      "latin": "Auriga",
+      "en": "Charioteer",
+      "es": "Auriga",
+      "label": [
+        5.5,
+        37
+      ],
+      "lines": [
+        [
+          [
+            5.9921,
+            44.95
+          ],
+          [
+            5.2782,
+            46
+          ],
+          [
+            5.1086,
+            41.23
+          ],
+          [
+            4.9499,
+            33.17
+          ],
+          [
+            5.4382,
+            28.61
+          ],
+          [
+            5.9954,
+            37.21
+          ],
+          [
+            5.9921,
+            44.95
+          ],
+          [
+            5.9921,
+            54.28
+          ],
+          [
+            5.2782,
+            46
+          ],
+          [
+            5.0328,
+            43.82
+          ],
+          [
+            5.0413,
+            41.08
+          ]
+        ]
+      ],
+      "best_month": 0,
+      "meaning_es": "cochero",
+      "bright": {
+        "n": "Capella",
+        "d": "α Aur",
+        "mag": 0.08
+      }
+    },
+    {
+      "abbr": "Ori",
+      "latin": "Orion",
+      "en": "Orion",
+      "es": "Orión",
+      "label": [
+        5.6,
+        13
+      ],
+      "lines": [
+        [
+          [
+            6.1262,
+            14.77
+          ],
+          [
+            5.9064,
+            20.28
+          ],
+          [
+            6.0653,
+            20.14
+          ],
+          [
+            6.199,
+            14.21
+          ],
+          [
+            6.0397,
+            9.65
+          ],
+          [
+            5.9195,
+            7.41
+          ],
+          [
+            5.4189,
+            6.35
+          ],
+          [
+            4.9149,
+            10.15
+          ]
+        ],
+        [
+          [
+            4.9758,
+            1.71
+          ],
+          [
+            4.9042,
+            2.44
+          ],
+          [
+            4.8534,
+            5.61
+          ],
+          [
+            4.8307,
+            6.96
+          ],
+          [
+            4.8435,
+            8.9
+          ],
+          [
+            4.9149,
+            10.15
+          ],
+          [
+            4.9395,
+            13.51
+          ],
+          [
+            5.0762,
+            15.4
+          ],
+          [
+            5.1617,
+            15.6
+          ]
+        ],
+        [
+          [
+            5.2423,
+            -8.2
+          ],
+          [
+            5.4079,
+            -2.4
+          ],
+          [
+            5.5334,
+            -0.3
+          ],
+          [
+            5.4189,
+            6.35
+          ],
+          [
+            5.5856,
+            9.93
+          ],
+          [
+            5.9195,
+            7.41
+          ],
+          [
+            5.6793,
+            -1.94
+          ],
+          [
+            5.7959,
+            -9.67
+          ]
+        ],
+        [
+          [
+            5.6793,
+            -1.94
+          ],
+          [
+            5.6036,
+            -1.2
+          ],
+          [
+            5.5334,
+            -0.3
+          ]
+        ]
+      ],
+      "best_month": 0,
+      "meaning_es": "cazador",
+      "bright": {
+        "n": "Rigel",
+        "d": "β Ori",
+        "mag": 0.18
+      }
+    },
+    {
+      "abbr": "CMa",
+      "latin": "Canis Major",
+      "en": "Great Dog",
+      "es": "Can Mayor",
+      "label": [
+        6.5,
+        -26
+      ],
+      "lines": [
+        [
+          [
+            6.3783,
+            -17.96
+          ],
+          [
+            6.7525,
+            -16.72
+          ],
+          [
+            7.0504,
+            -23.83
+          ],
+          [
+            7.1399,
+            -26.39
+          ],
+          [
+            7.0287,
+            -27.93
+          ],
+          [
+            6.9771,
+            -28.97
+          ],
+          [
+            6.3386,
+            -30.06
+          ]
+        ],
+        [
+          [
+            7.4016,
+            -29.3
+          ],
+          [
+            7.1399,
+            -26.39
+          ]
+        ],
+        [
+          [
+            6.7525,
+            -16.72
+          ],
+          [
+            6.9356,
+            -17.05
+          ],
+          [
+            7.0626,
+            -15.63
+          ],
+          [
+            6.9032,
+            -12.04
+          ],
+          [
+            6.9356,
+            -17.05
+          ]
+        ]
+      ],
+      "best_month": 0,
+      "meaning_es": "perro grande",
+      "bright": {
+        "n": "Sirius",
+        "d": "α CMa",
+        "mag": -1.44
+      }
+    },
+    {
+      "abbr": "CMi",
+      "latin": "Canis Minor",
+      "en": "Little Dog",
+      "es": "Can Menor",
+      "label": [
+        7.3,
+        5
+      ],
+      "lines": [
+        [
+          [
+            7.655,
+            5.22
+          ],
+          [
+            7.4525,
+            8.29
+          ]
+        ]
+      ],
+      "best_month": 1,
+      "meaning_es": "perro pequeño",
+      "bright": {
+        "n": "Procyon",
+        "d": "α CMi",
+        "mag": 0.4
+      }
+    },
+    {
+      "abbr": "Lyn",
+      "latin": "Lynx",
+      "en": "Lynx",
+      "es": "Lince",
+      "label": [
+        8.1,
+        49
+      ],
+      "lines": [
+        [
+          [
+            6.3271,
+            59.01
+          ],
+          [
+            6.9546,
+            58.42
+          ],
+          [
+            7.4452,
+            49.21
+          ],
+          [
+            8.3806,
+            43.19
+          ],
+          [
+            9.0107,
+            41.78
+          ],
+          [
+            9.3141,
+            36.8
+          ],
+          [
+            9.3509,
+            34.39
+          ]
+        ]
+      ],
+      "best_month": 1,
+      "meaning_es": "lince",
+      "bright": {
+        "n": "",
+        "d": "α Lyn",
+        "mag": 3.14
+      }
+    },
+    {
+      "abbr": "Leo",
+      "latin": "Leo",
+      "en": "Lion",
+      "es": "Leo",
+      "label": [
+        10.6,
+        15
+      ],
+      "lines": [
+        [
+          [
+            10.1395,
+            11.97
+          ],
+          [
+            10.1222,
+            16.76
+          ],
+          [
+            10.3329,
+            19.84
+          ],
+          [
+            11.2351,
+            20.52
+          ],
+          [
+            11.8177,
+            14.57
+          ],
+          [
+            11.2373,
+            15.43
+          ],
+          [
+            10.1395,
+            11.97
+          ]
+        ],
+        [
+          [
+            10.3329,
+            19.84
+          ],
+          [
+            10.2782,
+            23.42
+          ],
+          [
+            9.8794,
+            26.01
+          ],
+          [
+            9.7642,
+            23.77
+          ]
+        ]
+      ],
+      "best_month": 3,
+      "meaning_es": "león",
+      "bright": {
+        "n": "Regulus",
+        "d": "α Leo",
+        "mag": 1.36
+      }
+    },
+    {
+      "abbr": "UMa",
+      "latin": "Ursa Major",
+      "en": "Big Dipper",
+      "es": "Osa Mayor",
+      "label": [
+        11,
+        48
+      ],
+      "lines": [
+        [
+          [
+            12.2571,
+            57.03
+          ],
+          [
+            11.0621,
+            61.75
+          ],
+          [
+            11.0307,
+            56.38
+          ],
+          [
+            11.8972,
+            53.69
+          ],
+          [
+            12.2571,
+            57.03
+          ],
+          [
+            12.9005,
+            55.96
+          ],
+          [
+            13.3988,
+            54.93
+          ],
+          [
+            13.7923,
+            49.31
+          ]
+        ],
+        [
+          [
+            11.8972,
+            53.69
+          ],
+          [
+            11.7675,
+            47.78
+          ],
+          [
+            11.308,
+            33.09
+          ],
+          [
+            11.3031,
+            31.53
+          ]
+        ],
+        [
+          [
+            11.7675,
+            47.78
+          ],
+          [
+            11.1611,
+            44.5
+          ],
+          [
+            10.3722,
+            41.5
+          ]
+        ],
+        [
+          [
+            11.1611,
+            44.5
+          ],
+          [
+            10.2849,
+            42.91
+          ]
+        ],
+        [
+          [
+            11.0621,
+            61.75
+          ],
+          [
+            9.5255,
+            63.06
+          ],
+          [
+            8.5044,
+            60.72
+          ],
+          [
+            9.8498,
+            59.04
+          ],
+          [
+            11.0307,
+            56.38
+          ]
+        ],
+        [
+          [
+            11.0307,
+            56.38
+          ],
+          [
+            9.8684,
+            54.06
+          ],
+          [
+            9.5476,
+            51.68
+          ],
+          [
+            8.9868,
+            48.04
+          ]
+        ],
+        [
+          [
+            9.0604,
+            47.16
+          ],
+          [
+            9.5476,
+            51.68
+          ]
+        ]
+      ],
+      "best_month": 3,
+      "meaning_es": "osa grande",
+      "bright": {
+        "n": "Alioth",
+        "d": "ε UMa",
+        "mag": 1.76
+      }
+    },
+    {
+      "abbr": "Cen",
+      "latin": "Centaurus",
+      "en": "Centaur",
+      "es": "Centauro",
+      "label": [
+        13.3,
+        -40
+      ],
+      "lines": [
+        [
+          [
+            11.3501,
+            -54.49
+          ],
+          [
+            12.1393,
+            -50.72
+          ],
+          [
+            12.4673,
+            -50.23
+          ],
+          [
+            12.692,
+            -48.96
+          ],
+          [
+            13.6648,
+            -53.47
+          ],
+          [
+            13.9257,
+            -47.29
+          ],
+          [
+            13.8269,
+            -42.47
+          ],
+          [
+            13.8251,
+            -41.69
+          ],
+          [
+            14.1114,
+            -36.37
+          ],
+          [
+            14.5918,
+            -42.16
+          ],
+          [
+            14.986,
+            -42.1
+          ]
+        ],
+        [
+          [
+            13.8251,
+            -41.69
+          ],
+          [
+            13.3433,
+            -36.71
+          ]
+        ],
+        [
+          [
+            14.6597,
+            -60.84
+          ],
+          [
+            13.6648,
+            -53.47
+          ],
+          [
+            14.0637,
+            -60.37
+          ]
+        ],
+        [
+          [
+            12.4673,
+            -50.23
+          ],
+          [
+            12.1942,
+            -52.37
+          ],
+          [
+            11.5295,
+            -59.44
+          ]
+        ]
+      ],
+      "best_month": 4,
+      "meaning_es": "centauro",
+      "bright": {
+        "n": "Rigil Kentaurus",
+        "d": "α¹ Cen",
+        "mag": -0.01
+      }
+    },
+    {
+      "abbr": "Vir",
+      "latin": "Virgo",
+      "en": "Virgin",
+      "es": "Virgo",
+      "label": [
+        13.3,
+        -4
+      ],
+      "lines": [
+        [
+          [
+            11.7643,
+            6.53
+          ],
+          [
+            11.8449,
+            1.76
+          ],
+          [
+            12.3318,
+            -0.67
+          ],
+          [
+            12.6943,
+            -1.45
+          ],
+          [
+            13.1658,
+            -5.54
+          ],
+          [
+            13.4199,
+            -11.16
+          ],
+          [
+            14.2669,
+            -6
+          ],
+          [
+            14.7177,
+            -5.66
+          ]
+        ],
+        [
+          [
+            13.0363,
+            10.96
+          ],
+          [
+            12.9267,
+            3.4
+          ],
+          [
+            12.6943,
+            -1.45
+          ]
+        ],
+        [
+          [
+            13.1658,
+            -5.54
+          ],
+          [
+            13.5782,
+            -0.6
+          ],
+          [
+            14.0274,
+            1.54
+          ],
+          [
+            14.7708,
+            1.89
+          ]
+        ]
+      ],
+      "best_month": 4,
+      "meaning_es": "doncella",
+      "bright": {
+        "n": "Spica",
+        "d": "α Vir",
+        "mag": 0.98
+      }
+    },
+    {
+      "abbr": "Boo",
+      "latin": "Boötes",
+      "en": "Herdsman",
+      "es": "Boyero",
+      "label": [
+        14.9,
+        35
+      ],
+      "lines": [
+        [
+          [
+            13.7877,
+            17.46
+          ],
+          [
+            13.9114,
+            18.4
+          ],
+          [
+            14.261,
+            19.18
+          ],
+          [
+            14.5305,
+            30.37
+          ],
+          [
+            14.5346,
+            38.31
+          ],
+          [
+            15.0324,
+            40.39
+          ],
+          [
+            15.2584,
+            33.31
+          ],
+          [
+            14.7498,
+            27.07
+          ],
+          [
+            14.261,
+            19.18
+          ],
+          [
+            14.6858,
+            13.73
+          ]
+        ],
+        [
+          [
+            14.5346,
+            38.31
+          ],
+          [
+            14.2731,
+            46.09
+          ],
+          [
+            14.2244,
+            51.79
+          ],
+          [
+            14.4199,
+            51.85
+          ],
+          [
+            14.2731,
+            46.09
+          ]
+        ]
+      ],
+      "best_month": 5,
+      "meaning_es": "boyero, pastor de bueyes",
+      "bright": {
+        "n": "Arcturus",
+        "d": "α Boo",
+        "mag": -0.05
+      }
+    },
+    {
+      "abbr": "UMi",
+      "latin": "Ursa Minor",
+      "en": "Little Dipper",
+      "es": "Osa Menor",
+      "label": [
+        15.1,
+        68
+      ],
+      "lines": [
+        [
+          [
+            15.7343,
+            77.79
+          ],
+          [
+            16.2917,
+            75.76
+          ],
+          [
+            15.3455,
+            71.83
+          ],
+          [
+            14.8451,
+            74.16
+          ],
+          [
+            15.7343,
+            77.79
+          ],
+          [
+            16.7662,
+            82.04
+          ],
+          [
+            17.5369,
+            86.59
+          ],
+          [
+            2.5303,
+            89.26
+          ]
+        ]
+      ],
+      "best_month": 5,
+      "meaning_es": "osa pequeña",
+      "bright": {
+        "n": "Polaris",
+        "d": "α UMi",
+        "mag": 1.97
+      }
+    },
+    {
+      "abbr": "Sco",
+      "latin": "Scorpius",
+      "en": "Scorpion",
+      "es": "Escorpio",
+      "label": [
+        16.6,
+        -38
+      ],
+      "lines": [
+        [
+          [
+            15.9809,
+            -26.11
+          ],
+          [
+            16.0056,
+            -22.62
+          ],
+          [
+            16.0906,
+            -19.81
+          ]
+        ],
+        [
+          [
+            16.0056,
+            -22.62
+          ],
+          [
+            16.3531,
+            -25.59
+          ],
+          [
+            16.4901,
+            -26.43
+          ],
+          [
+            16.598,
+            -28.22
+          ],
+          [
+            16.8361,
+            -34.29
+          ],
+          [
+            16.8645,
+            -38.05
+          ],
+          [
+            16.9097,
+            -42.36
+          ],
+          [
+            17.2026,
+            -43.24
+          ],
+          [
+            17.622,
+            -43
+          ],
+          [
+            17.7931,
+            -40.13
+          ],
+          [
+            17.7081,
+            -39.03
+          ],
+          [
+            17.5601,
+            -37.1
+          ]
+        ]
+      ],
+      "best_month": 6,
+      "meaning_es": "escorpión",
+      "bright": {
+        "n": "Antares",
+        "d": "α Sco",
+        "mag": 1.06
+      }
+    },
+    {
+      "abbr": "Oph",
+      "latin": "Ophiuchus",
+      "en": "Ophiuchus",
+      "es": "Ofiuco",
+      "label": [
+        17.2,
+        3
+      ],
+      "lines": [
+        [
+          [
+            17.9838,
+            -9.77
+          ],
+          [
+            17.7982,
+            2.71
+          ],
+          [
+            17.7245,
+            4.57
+          ],
+          [
+            17.5822,
+            12.56
+          ],
+          [
+            16.9611,
+            9.38
+          ],
+          [
+            16.5152,
+            1.98
+          ],
+          [
+            16.2391,
+            -3.69
+          ],
+          [
+            16.3054,
+            -4.69
+          ],
+          [
+            16.6193,
+            -10.57
+          ],
+          [
+            17.173,
+            -15.72
+          ]
+        ],
+        [
+          [
+            16.9611,
+            9.38
+          ],
+          [
+            16.6193,
+            -10.57
+          ],
+          [
+            16.519,
+            -16.61
+          ],
+          [
+            16.4504,
+            -18.46
+          ],
+          [
+            16.4017,
+            -20.04
+          ],
+          [
+            16.4264,
+            -23.45
+          ]
+        ],
+        [
+          [
+            17.7245,
+            4.57
+          ],
+          [
+            17.173,
+            -15.72
+          ],
+          [
+            17.3668,
+            -25
+          ],
+          [
+            17.4559,
+            -29.87
+          ]
+        ]
+      ],
+      "best_month": 6,
+      "meaning_es": "portador de la serpiente",
+      "bright": {
+        "n": "Rasalhague",
+        "d": "α Oph",
+        "mag": 2.08
+      }
+    },
+    {
+      "abbr": "Lyr",
+      "latin": "Lyra",
+      "en": "Lyre",
+      "es": "Lira",
+      "label": [
+        18.6,
+        30
+      ],
+      "lines": [
+        [
+          [
+            18.7462,
+            37.61
+          ],
+          [
+            18.7397,
+            39.61
+          ],
+          [
+            18.6156,
+            38.78
+          ],
+          [
+            18.7462,
+            37.61
+          ],
+          [
+            18.9084,
+            36.9
+          ],
+          [
+            18.9824,
+            32.69
+          ],
+          [
+            18.8347,
+            33.36
+          ],
+          [
+            18.7462,
+            37.61
+          ]
+        ]
+      ],
+      "best_month": 6,
+      "meaning_es": "lira, instrumento de cuerda",
+      "bright": {
+        "n": "Vega",
+        "d": "α Lyr",
+        "mag": 0.03
+      }
+    },
+    {
+      "abbr": "Aql",
+      "latin": "Aquila",
+      "en": "Eagle",
+      "es": "Águila",
+      "label": [
+        19.4,
+        8
+      ],
+      "lines": [
+        [
+          [
+            19.771,
+            10.61
+          ],
+          [
+            19.8464,
+            8.87
+          ],
+          [
+            19.9219,
+            6.41
+          ],
+          [
+            20.1884,
+            -0.82
+          ],
+          [
+            19.8745,
+            1.01
+          ],
+          [
+            19.425,
+            3.11
+          ],
+          [
+            19.0902,
+            13.86
+          ],
+          [
+            19.8464,
+            8.87
+          ],
+          [
+            19.425,
+            3.11
+          ],
+          [
+            19.1041,
+            -4.88
+          ]
+        ]
+      ],
+      "best_month": 7,
+      "meaning_es": "águila",
+      "bright": {
+        "n": "Altair",
+        "d": "α Aql",
+        "mag": 0.76
+      }
+    },
+    {
+      "abbr": "Cyg",
+      "latin": "Cygnus",
+      "en": "Swan",
+      "es": "Cisne",
+      "label": [
+        20.5,
+        50
+      ],
+      "lines": [
+        [
+          [
+            21.2156,
+            30.23
+          ],
+          [
+            20.7702,
+            33.97
+          ],
+          [
+            20.3705,
+            40.26
+          ],
+          [
+            19.7496,
+            45.13
+          ],
+          [
+            19.4951,
+            51.73
+          ],
+          [
+            19.285,
+            53.37
+          ]
+        ],
+        [
+          [
+            20.6905,
+            45.28
+          ],
+          [
+            20.3705,
+            40.26
+          ],
+          [
+            19.9384,
+            35.08
+          ],
+          [
+            19.512,
+            27.96
+          ]
+        ]
+      ],
+      "best_month": 7,
+      "meaning_es": "cisne",
+      "bright": {
+        "n": "Deneb",
+        "d": "α Cyg",
+        "mag": 1.25
+      }
+    },
+    {
+      "abbr": "Cap",
+      "latin": "Capricornus",
+      "en": "Capricorn",
+      "es": "Capricornio",
+      "label": [
+        21,
+        -22
+      ],
+      "lines": [
+        [
+          [
+            20.2941,
+            -12.51
+          ],
+          [
+            20.3502,
+            -14.78
+          ],
+          [
+            20.481,
+            -17.81
+          ],
+          [
+            20.7683,
+            -25.27
+          ],
+          [
+            20.8637,
+            -26.92
+          ],
+          [
+            21.4445,
+            -22.41
+          ],
+          [
+            21.784,
+            -16.13
+          ],
+          [
+            21.6682,
+            -16.66
+          ],
+          [
+            21.3708,
+            -16.83
+          ],
+          [
+            21.0991,
+            -17.23
+          ],
+          [
+            20.2941,
+            -12.51
+          ]
+        ]
+      ],
+      "best_month": 8,
+      "meaning_es": "cabra con cola de pez",
+      "bright": {
+        "n": "Deneb Algedi",
+        "d": "δ Cap",
+        "mag": 2.85
+      }
+    },
+    {
+      "abbr": "PsA",
+      "latin": "Piscis Austrinus",
+      "en": "Southern Fish",
+      "es": "Pez Austral",
+      "label": [
+        22.2,
+        -29
+      ],
+      "lines": [
+        [
+          [
+            22.6776,
+            -27.04
+          ],
+          [
+            22.9608,
+            -29.62
+          ],
+          [
+            22.9325,
+            -32.54
+          ],
+          [
+            22.8754,
+            -32.88
+          ],
+          [
+            22.5251,
+            -32.35
+          ],
+          [
+            22.1397,
+            -32.99
+          ],
+          [
+            21.7491,
+            -33.03
+          ],
+          [
+            21.7956,
+            -30.9
+          ],
+          [
+            22.1397,
+            -32.99
+          ],
+          [
+            22.6776,
+            -27.04
+          ]
+        ]
+      ],
+      "best_month": 8,
+      "meaning_es": "pez del sur",
+      "bright": {
+        "n": "Fomalhaut",
+        "d": "α PsA",
+        "mag": 1.17
+      }
+    },
+    {
+      "abbr": "Gru",
+      "latin": "Grus",
+      "en": "Crane",
+      "es": "Grulla",
+      "label": [
+        22.8,
+        -41.5
+      ],
+      "lines": [
+        [
+          [
+            23.0147,
+            -52.75
+          ],
+          [
+            22.8092,
+            -51.32
+          ],
+          [
+            22.7111,
+            -46.88
+          ],
+          [
+            22.496,
+            -43.75
+          ],
+          [
+            22.1372,
+            -46.96
+          ],
+          [
+            22.7111,
+            -46.88
+          ]
+        ],
+        [
+          [
+            22.4878,
+            -43.5
+          ],
+          [
+            22.2603,
+            -41.35
+          ],
+          [
+            22.1019,
+            -39.54
+          ],
+          [
+            21.8988,
+            -37.36
+          ]
+        ]
+      ],
+      "best_month": 9,
+      "meaning_es": "grulla",
+      "bright": {
+        "n": "Alnair",
+        "d": "α Gru",
+        "mag": 1.73
+      }
+    }
+  ],
+  "sources": {
+    "HYG": {
+      "role": "star position, apparent magnitude and colour index",
+      "mode": "SNAPSHOT_LOCAL",
+      "source": "HYG Database v4.1, David Nash (astronexus), CC BY-SA 4.0"
+    },
+    "IAU": {
+      "role": "constellation identities and official star names",
+      "mode": "SNAPSHOT_LOCAL",
+      "source": "IAU Working Group on Star Names (WGSN), lista compilada por Cora Schneck (iau-star-names), MIT · Líneas, límites y nombres de d3-celestial, Olaf Frohn, BSD-3-Clause; límites oficiales de la IAU (Delporte, 1930)"
+    },
+    "JPL": {
+      "role": "approximate planetary positions",
+      "mode": "LOCAL_FORMULA",
+      "range": "1800–2050",
+      "source": "JPL approximate Keplerian elements already used by Iris Green donor runtime"
+    }
+  },
+  "forbidden": {
+    "NASA": true,
+    "external_network": true,
+    "automatic_geolocation": true
+  }
+}
