@@ -128,10 +128,6 @@
   },
   "next_parallel": [
     {
-      "owner": "MOTOR",
-      "task": "MAR_22_MESO_RUNTIME_INTEGRATION_QA_PASS"
-    },
-    {
       "owner": "SENDA",
       "task": "INTEREST_05_PRODUCT_CONTENT_REUSE"
     },
@@ -142,6 +138,20 @@
     {
       "owner": "LUMEN",
       "task": "RINCON_A1_LUMEN_FINAL_AV_PASS"
+    },
+    {
+      "owner": "LUMEN",
+      "task": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW"
+    },
+    {
+      "owner": "SENDA",
+      "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF"
     }
-  ]
+  ],
+  "resource_constraints": {
+    "motor": {
+      "status": "BUSY_WITH_NEXO_SABIK_P0",
+      "rule": "NO_RINCON_OR_INTERESTS_UNTIL_RELEASE"
+    }
+  }
 }
