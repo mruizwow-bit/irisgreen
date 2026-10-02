@@ -3,8 +3,8 @@
 'use strict';
 if(window.IGAudience)return;
 var KEY='ig-age-band-v2',LEGACY_KEY='ig-audience-stage-v1';
-var AGE=['AGE_0_12','AGE_13_17','AGE_18_PLUS','ALL_AGES'],VALUES=['GENERAL'].concat(AGE),current='GENERAL';
-var LEGACY={children:'AGE_0_12',teenagers:'AGE_13_17',adults:'AGE_18_PLUS',any:'ALL_AGES',default:'GENERAL'};
+var USER_AGE=['AGE_0_12','AGE_13_17','AGE_18_PLUS'],AGE=USER_AGE.concat(['ALL_AGES']),VALUES=['GENERAL'].concat(USER_AGE),current='GENERAL';
+var LEGACY={children:'AGE_0_12',teenagers:'AGE_13_17',adults:'AGE_18_PLUS',any:'GENERAL',ALL_AGES:'GENERAL',default:'GENERAL'};
 var runtimePromise=null,runtimeCache=null;
 function canonical(v){v=String(v||'');return VALUES.indexOf(v)!==-1?v:(LEGACY[v]||null);}
 try{var saved=canonical(sessionStorage.getItem(KEY))||canonical(sessionStorage.getItem(LEGACY_KEY));if(saved)current=saved;}catch(_){}
@@ -31,15 +31,14 @@ function unclassifiedRouteAllowed(path){
  return SAFE_UNCLASSIFIED_PREFIXES.some(function(prefix){return path===prefix||path.indexOf(prefix+'/')===0;});
 }
 function allowedAgeBands(input){
- if(current==='GENERAL'||current==='AGE_18_PLUS'||current==='ALL_AGES')return true;
+ if(current==='GENERAL'||current==='AGE_18_PLUS')return true;
  var list=values(input).filter(function(v){return AGE.indexOf(v)!==-1;});
  if(!list.length)return false;
- if(current==='ALL_AGES')return list.indexOf('ALL_AGES')!==-1;
  return list.indexOf(current)!==-1||list.indexOf('ALL_AGES')!==-1;
 }
 /* Migration-only content metadata fallback. New age state is never emitted as legacy taxonomy. */
 function allowedAudience(input){
- var list=values(input);if(!list.length||current==='GENERAL'||current==='AGE_18_PLUS'||current==='ALL_AGES')return true;
+ var list=values(input);if(!list.length||current==='GENERAL'||current==='AGE_18_PLUS')return true;
  if(list.some(function(v){return AGE.indexOf(v)!==-1;}))return allowedAgeBands(list);
  if(list.indexOf('TRANSVERSAL')!==-1)return true;
  if(current==='AGE_0_12')return list.indexOf('INFANCIA')!==-1;
@@ -53,10 +52,10 @@ function loadAgeMatrix(){
  runtimePromise=fetch('/assets/safety/age-runtime-r51.json',{cache:'no-cache'}).then(function(r){if(!r.ok)throw new Error('Age matrix '+r.status);return r.json();}).then(function(d){if(!d||d.schema!=='R51_A2_AGE_RUNTIME/1.0'||!d.by_url)throw new Error('Invalid age runtime');runtimeCache=d;window.dispatchEvent(new CustomEvent('ig:age-matrix-ready'));return d;}).catch(function(e){runtimePromise=null;throw e;});return runtimePromise;
 }
 function ageBandsForUrl(url){return loadAgeMatrix().then(function(d){var k=routeKey(url),b=d.by_url[k];if(!b&&k.indexOf('#')!==-1)b=d.by_url[k.split('#')[0]];return Array.isArray(b)?b.slice():null;});}
-function allowedUrl(url){if(childRouteBlocked(url))return Promise.resolve(false);if(current==='GENERAL'||current==='AGE_18_PLUS'||current==='ALL_AGES')return Promise.resolve(true);return ageBandsForUrl(url).then(function(b){return Boolean(b&&allowedAgeBands(b));}).catch(function(){return false;});}
+function allowedUrl(url){if(childRouteBlocked(url))return Promise.resolve(false);if(current==='GENERAL'||current==='AGE_18_PLUS')return Promise.resolve(true);return ageBandsForUrl(url).then(function(b){return Boolean(b&&allowedAgeBands(b));}).catch(function(){return false;});}
 function displayName(){
  var en=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
- var names=en?{GENERAL:'General',AGE_0_12:'Ages 0–12',AGE_13_17:'Ages 13–17',AGE_18_PLUS:'Ages 18+',ALL_AGES:'All ages'}:{GENERAL:'General',AGE_0_12:'0–12 años',AGE_13_17:'13–17 años',AGE_18_PLUS:'18 años o más',ALL_AGES:'Todas las edades'};
+ var names=en?{GENERAL:'General',AGE_0_12:'Ages 0–12',AGE_13_17:'Ages 13–17',AGE_18_PLUS:'Ages 18+'}:{GENERAL:'General',AGE_0_12:'0–12 años',AGE_13_17:'13–17 años',AGE_18_PLUS:'18 años o más'};
  return names[current]||names.GENERAL;
 }
 function applyRoot(){document.documentElement.dataset.igAudience=current;document.documentElement.dataset.igAgeBand=current;document.documentElement.dataset.igSafetyMode=isAdult()?'adult-explicit':'safe-by-default';}
@@ -69,7 +68,7 @@ function syncPageGate(){var body=document.body;if(!body)return;var canonicalBand
 function apply(){applyRoot();document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncDiscovery(document);syncPageGate();}
 function set(value){var next=canonical(value);if(!next||next==='GENERAL')return false;current=next;try{sessionStorage.setItem(KEY,current);sessionStorage.removeItem(LEGACY_KEY);}catch(_){}apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{ageBand:selectedBand(),safetyMode:mode()}}));return true;}
 function clear(){current='GENERAL';try{sessionStorage.removeItem(KEY);sessionStorage.removeItem(LEGACY_KEY);}catch(_){}apply();window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{ageBand:null,safetyMode:mode()}}));}
-function mount(root){root=root||document;root.querySelectorAll('[data-ig-audience-picker]').forEach(function(picker){if(picker.dataset.igAudienceReady)return;picker.dataset.igAudienceReady='true';picker.addEventListener('click',function(event){var btn=event.target.closest('[data-ig-audience-stage]');if(!btn||!picker.contains(btn))return;var next=canonical(btn.getAttribute('data-ig-audience-stage'));if(next===current)clear();else set(next);});syncPicker(picker);});syncDiscovery(root);}
+function mount(root){root=root||document;root.querySelectorAll('[data-ig-audience-picker]').forEach(function(picker){if(picker.dataset.igAudienceReady)return;picker.dataset.igAudienceReady='true';picker.addEventListener('click',function(event){var btn=event.target.closest('[data-ig-audience-stage]');if(!btn||!picker.contains(btn))return;var next=canonical(btn.getAttribute('data-ig-audience-stage'));if(next==='GENERAL'||next===current)clear();else set(next);});syncPicker(picker);});syncDiscovery(root);}
 function observeBody(){if(!document.body)return;new MutationObserver(function(records){records.forEach(function(r){r.addedNodes.forEach(function(n){if(n.nodeType===1)syncDiscovery(n.matches&&n.matches('[data-ig-age-bands],[data-ig-audience-values]')?n.parentNode:n);});});}).observe(document.body,{childList:true,subtree:true});}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mount();apply();observeBody();},{once:true});else{mount();apply();observeBody();}
 new MutationObserver(function(){document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncPageGate();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
