@@ -84,11 +84,11 @@ def run_language(browser,base,lang,path,query):
     context=browser.new_context(viewport={"width":390,"height":844})
     context.add_init_script(INIT)
     page=context.new_page()
-    js_errors=[];bad=[];tts_requests=[];transcribe_requests=[]
+    js_errors=[];bad=[];tts_requests=[];transcribe_requests=[];route_hits=[]
 
     def voice_route(route):
         req=route.request
-        pathname=urlsplit(req.url).path
+        pathname=urlsplit(req.url).path\n        route_hits.append(pathname)
         if pathname.endswith("/capabilities"):
             route.fulfill(status=200,content_type="application/json",body=json.dumps(CAPABILITIES))
             return
@@ -117,7 +117,17 @@ def run_language(browser,base,lang,path,query):
 
     # Enable voice: service identity handshake, no autoplay.
     page.click("#sabik-voice")
-    page.wait_for_function("document.querySelector('#sabik-voice').getAttribute('aria-pressed')==='true'")
+    page.wait_for_timeout(600)
+    pressed=page.locator("#sabik-voice").get_attribute("aria-pressed")
+    if pressed!="true":
+        raise AssertionError({
+          "voice_not_enabled":True,
+          "aria_pressed":pressed,
+          "announcement":page.locator("#sabik-announcement").inner_text(),
+          "route_hits":route_hits,
+          "js_errors":js_errors,
+          "bad":bad,
+        })
     assert page.evaluate("window.__sabikAudioInstances.length")==0
     assert not page.locator("#sabik-mic").is_disabled()
 
