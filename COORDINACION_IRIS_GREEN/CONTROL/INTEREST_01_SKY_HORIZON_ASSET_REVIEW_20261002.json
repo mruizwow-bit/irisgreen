@@ -1,0 +1,29 @@
+{
+  "schema": "interest_01_sky_horizon_candidate_review_v1",
+  "date": "2026-10-02",
+  "candidate": {
+    "filename": "Panorama montañoso nocturno en capas (1).png",
+    "sha256": "f7c306a04e499f2007d86027577a6da9ea1e700d08483ad0cd0ffb699bb9e261",
+    "bytes": 664633,
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 2048,
+    "height": 682,
+    "alpha_zero_percent": 73.53014456561584,
+    "alpha_bbox": [
+      0,
+      128,
+      2048,
+      682
+    ],
+    "embedded_icc_profile": false
+  },
+  "visual": "KEEP",
+  "technical": "REWORK_REQUIRED",
+  "blockers": [
+    "expected_2560x768",
+    "aspect_ratio_mismatch_do_not_stretch",
+    "embedded_srgb_profile_missing"
+  ],
+  "next_gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS"
+}
