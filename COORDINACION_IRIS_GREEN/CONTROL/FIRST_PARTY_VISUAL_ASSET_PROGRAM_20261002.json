@@ -118,8 +118,19 @@
           "PREMIUM_VISUAL_EXECUTION"
         ],
         "reference_only": [
-          "uploaded_realistic_composites"
-        ]
+          "Cuatro mundos bajo el vacío espacial-2.png",
+          "Montaje realista del sistema solar-1.png"
+        ],
+        "preferred_reference": "Cuatro mundos bajo el vacío espacial-2.png",
+        "reference_notes": {
+          "keep": "materiality_depth_relief_atmospheric_volume",
+          "do_not_copy": [
+            "EARTH_CURRENT_WEATHER",
+            "EARTH_AMERICAS_ORIENTATION",
+            "SUN_PERMANENT_CORONA_OR_PROMINENCES",
+            "SUN_CURRENT_SPOT_PATTERN"
+          ]
+        }
       }
     },
     {
