@@ -47,9 +47,10 @@ Reglas:
 ## Estado de referencia al registrar esta memoria
 
 ### Main
-`main@156b3ee490d1bf59cde15f08bd51db3ce094b14f`
+HEAD vivo observado antes de esta actualización documental:
+`main@446288495e1423901d4390182bdafe75648d6282`
 
-Recovery #367 ya fusionada y publicada.
+Recovery #367 ya fusionada y publicada. Los commits documentales posteriores también forman parte de main; releer siempre HEAD antes de reconciliar producto.
 
 ### Cielo V2
 `INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS`
@@ -86,12 +87,43 @@ Gate:
 No Voyager · no ISS · no Batch 02 · no runtime · no main.
 
 ### R44 / Suite5
-Owner operativo: Nexo.
-Astra no duplica el carril.
+Owner original: Nexo.
+Cobertura temporal vigente: **Motor**, porque Nexo se ha bloqueado.
+Astra no duplica el carril y Rincón no interrumpe a Motor.
 Estado pendiente:
 `R44_SUITE5_TOKEN_CONSUMPTION_QA_PASS`
 
-Debe reconciliarse contra el main vivo antes de integración.
+Debe reconciliarse contra el main vivo antes de integración. Al cerrar, Motor queda disponible para la etapa de player del Nuevo Rincón.
+
+
+### Senda · Interés 03 · Exoplanetas V2
+
+Aceptado por Astra:
+`INTEREST_03_EXOPLANETS_V2_PRODUCT_CONTENT_AND_REUSE_PASS`
+
+Commit de coordinación:
+`9d4f1f84b85006759218e605830746a09be9ba32`
+
+Dirección:
+`EVIDENCE_FIRST → CHOOSE_A_WORLD → WHAT_WE_KNOW / WHAT_WE_DO_NOT_KNOW → DEPTH_ON_DEMAND`
+
+KEEP:
+- subset inicial de 6 mundos;
+- 5 métodos de detección;
+- snapshot local fechado;
+- incertidumbre explícita;
+- catálogo completo en depth;
+- patrón 3D lazy;
+- `NO_NEW_ASSETS_REQUIRED`.
+
+Siguiente micro-bloque de Senda:
+**Interés 04 · Eclipses V2**, solo producto/contenido/reuse.
+
+Gate:
+`INTEREST_04_ECLIPSES_V2_PRODUCT_CONTENT_AND_REUSE_PASS`
+
+No runtime · no imágenes · no 01–03 · no 05–07 · no main.
+
 
 ### Nuevo Rincón · duración final corregida y reafirmada
 
