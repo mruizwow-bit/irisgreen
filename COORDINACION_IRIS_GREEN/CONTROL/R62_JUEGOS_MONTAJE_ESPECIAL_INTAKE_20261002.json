@@ -64,5 +64,63 @@
     "P04_MUST_FOLLOW_PREREQUISITE_CHAIN",
     "PRESERVATION_IS_NOT_INTEGRATION",
     "MORE_PACKAGES_EXPECTED"
-  ]
+  ],
+  "expected_inventory": {
+    "r62_new_games": {
+      "total": 6,
+      "items": [
+        {
+          "id": "P01",
+          "name": "Habitación imposible",
+          "status": "RECOVERABLE_APPROVED_SPECIAL_ASSEMBLY"
+        },
+        {
+          "id": "P02",
+          "name": "Terrario vivo",
+          "status": "RECOVERABLE_APPROVED_SPECIAL_ASSEMBLY"
+        },
+        {
+          "id": "P03",
+          "name": "Rutas de luz",
+          "status": "RECOVERABLE_HUMAN_APPROVED_SPECIAL_ASSEMBLY"
+        },
+        {
+          "id": "P04",
+          "name": "Ritmo de colores",
+          "status": "SPECIAL_ASSEMBLY_GATE_NOT_FINAL"
+        },
+        {
+          "id": "P05",
+          "name": "Pesca tranquila",
+          "status": "CONCEPT_DEFINED_NOT_BUILT"
+        },
+        {
+          "id": "P06",
+          "name": "Mi museo",
+          "status": "CONCEPT_DEFINED_NOT_BUILT"
+        }
+      ]
+    },
+    "room_games_first_batch": {
+      "total": 3,
+      "items": [
+        {
+          "id": "ROOM_01",
+          "name": "Parejas",
+          "status": "S0_ROUTE_RUNTIME_IN_MAIN"
+        },
+        {
+          "id": "ROOM_02",
+          "name": "¿Qué falta aquí?",
+          "status": "NOT_BUILT_OR_NOT_INTEGRATED"
+        },
+        {
+          "id": "ROOM_03",
+          "name": "Ordena la historia",
+          "status": "NOT_BUILT_OR_NOT_INTEGRATED"
+        }
+      ]
+    }
+  },
+  "more_packages_expected": true
 }
