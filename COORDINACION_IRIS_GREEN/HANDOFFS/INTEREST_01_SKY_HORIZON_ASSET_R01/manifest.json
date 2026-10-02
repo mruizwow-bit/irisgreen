@@ -1,0 +1,109 @@
+{
+  "schema": "iris-green-first-party-visual-asset-manifest-v1",
+  "asset_id": "01-cielo-horizonte-observacion-r01",
+  "interest_id": "01-cielo",
+  "batch_id": "B00",
+  "date": "2026-10-02",
+  "status": "INTEREST_01_SKY_HORIZON_ASSET_PASS",
+  "file": {
+    "name": "01-cielo-horizonte-observacion-r01.png",
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 2560,
+    "height": 768,
+    "color_space": "sRGB",
+    "icc_profile_embedded": true,
+    "sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+    "library_path": "/Iris Green/Handoffs/Atlas/INTEREST_01_SKY_HORIZON_ASSET_R01/01-cielo-horizonte-observacion-r01.png",
+    "library_file_id": "libfile_bfc30f361e1c8191a936bcedaaaf4f58"
+  },
+  "composition": {
+    "role": "neutral night observation horizon base",
+    "horizon": "low_to_medium",
+    "upper_region": "transparent",
+    "procedural_sky_owner": "MOTOR_A5",
+    "must_not_compete_with_procedural_sky": true,
+    "forbidden_visible_elements": [
+      "stars",
+      "moon",
+      "planets",
+      "aurora",
+      "prominent_clouds",
+      "people",
+      "text",
+      "logos",
+      "recognizable_landmarks"
+    ]
+  },
+  "alpha_validation": {
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "fully_transparent_pixel_pct": 70.9357,
+    "upper_55pct_nonzero_alpha_pixels": 0,
+    "upper_55pct_fully_transparent": true,
+    "meaningful_horizon_y_min": 472,
+    "meaningful_horizon_y_max": 585,
+    "meaningful_horizon_y_median": 551
+  },
+  "safe_crops": [
+    {
+      "name": "16:9",
+      "x0": 597,
+      "y0": 0,
+      "x1": 1962,
+      "y1": 768,
+      "width": 1365,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100,
+      "horizon_first_alpha_y_min": 506,
+      "horizon_first_alpha_y_max": 585,
+      "top_55pct_transparent": true
+    },
+    {
+      "name": "3:4",
+      "x0": 992,
+      "y0": 0,
+      "x1": 1568,
+      "y1": 768,
+      "width": 576,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100,
+      "horizon_first_alpha_y_min": 550,
+      "horizon_first_alpha_y_max": 583,
+      "top_55pct_transparent": true
+    },
+    {
+      "name": "mobile_390x844",
+      "x0": 1102,
+      "y0": 0,
+      "x1": 1457,
+      "y1": 768,
+      "width": 355,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100,
+      "horizon_first_alpha_y_min": 550,
+      "horizon_first_alpha_y_max": 578,
+      "top_55pct_transparent": true
+    }
+  ],
+  "processing": {
+    "working_canvas": [
+      2172,
+      724
+    ],
+    "uniform_scale_factor": 1.1786372007366483,
+    "scaled_canvas": [
+      2560,
+      853
+    ],
+    "crop_top_px": 85,
+    "horizontal_crop_px": 0,
+    "art_redraw": false,
+    "alpha_cleanup": "alpha <= 2 -> 0; noise cleanup only"
+  },
+  "runtime_touched": false,
+  "main_touched": false
+}
