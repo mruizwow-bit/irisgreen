@@ -226,16 +226,22 @@ Nadie empieza la pieza siguiente por adelantado.
 
 ## Restricción temporal de Motor
 
-María confirma que Motor está cerrando temporalmente el carril de Nexo porque Nexo se ha bloqueado.
+A1 ha alcanzado:
+`RINCON_A1_LUMEN_FINAL_AV_PASS`
+
+Estado A1:
+`ACTIVE · WAIT_MOTOR_RELEASE`
+
+María confirma que Nexo necesita ahora a Motor para **Sabik definitivo P0**.
 
 Mientras siga esa cobertura:
-
-- Motor = ocupado con R44/Suite5;
+- Motor = ocupado con Sabik P0;
 - Rincón no debe interrumpirlo;
-- la etapa de player de A1 queda `WAIT_MOTOR_RELEASE`;
-- Lumen/Eco/Lumen pueden avanzar A1 hasta el handoff previo al player;
+- A1 queda congelada antes del player común;
 - Axioma espera al player;
 - A3 no se activa hasta `RINCON_A1_FINAL_PASS`.
 
 Regla:
-`DO_NOT_INTERRUPT_MOTOR_FOR_RINCON`
+`DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_INTERESTS`
+
+Lumen queda libre del carril A1 y puede trabajar en el programa visual first-party transversal sin activar A3.
