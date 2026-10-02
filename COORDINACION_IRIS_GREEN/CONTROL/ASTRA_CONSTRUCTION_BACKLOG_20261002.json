@@ -1,0 +1,147 @@
+{
+  "schema": "astra_construction_backlog_v1",
+  "date": "2026-10-02",
+  "main_observed_before_write": "6ce4531f0b3b19e099c3e7b7c2ce36a19ab918fa",
+  "excluded_owner_lane": {
+    "owner": "NEXO",
+    "scope": [
+      "SABIK_P0",
+      "GLOBAL_NAV",
+      "GRID_WIDTH",
+      "FIRST_PAINT_LANGUAGE_THEME",
+      "HOME",
+      "RESOURCES_ARCHITECTURE",
+      "GLOBAL_CONTENT_COPY",
+      "FINAL_EXPERIENCE_VISUAL_POLISH"
+    ]
+  },
+  "interests": {
+    "total": 72,
+    "r59_summary": {
+      "keep": 14,
+      "rework": 58,
+      "change_scope": {
+        "new_world": 23,
+        "refocus": 35,
+        "refine": 14
+      }
+    },
+    "active": {
+      "22": {
+        "name": "Vida marina",
+        "runtime_prep_pass": true,
+        "meso_packaging_pass": true,
+        "integration_6png_pending": true,
+        "remaining_species_after_meso": 12
+      },
+      "01": {
+        "name": "Cielo",
+        "runtime_in_main": true,
+        "human_visual_fail": true,
+        "asset_horizon_pending": true,
+        "owner_visual": "NEXO_PRISMA_COORDINATED"
+      },
+      "02": {
+        "name": "Sistema Solar",
+        "product_spec_pass": true,
+        "runtime_pending": true,
+        "new_assets_required": false
+      },
+      "03": {
+        "name": "Exoplanetas",
+        "product_spec_pass": true,
+        "runtime_pending": true,
+        "new_assets_required": false
+      },
+      "04": {
+        "name": "Eclipses",
+        "product_spec_pass": true,
+        "runtime_pending": true,
+        "new_assets_required": false
+      },
+      "05_07": {
+        "product_spec_pending": true,
+        "runtime_pending": true,
+        "source_state": "NOT_WIRED"
+      },
+      "08": {
+        "name": "Minerales",
+        "unblocked": true,
+        "implementation_pending": true
+      },
+      "09": {
+        "name": "Fósiles",
+        "product_keep": true,
+        "r48_integration_pending": true
+      }
+    }
+  },
+  "games": {
+    "existing_domestic_families": 19,
+    "r62_new_total": 6,
+    "r62": {
+      "P01": "PLAYABLE_INTEGRATION_PENDING",
+      "P02": "PLAYABLE_INTEGRATION_PENDING",
+      "P03": "PLAYABLE_INTEGRATION_PENDING",
+      "P04": "FINAL_IMPACT_GATE_AND_INTEGRATION_PENDING",
+      "P05": "NOT_BUILT",
+      "P06": "NOT_BUILT"
+    },
+    "room_games": {
+      "first_batch_total": 3,
+      "S0": "PASS_IN_MAIN",
+      "remaining": [
+        "S1_PACK_FORMAT",
+        "S2_ROOM_MODE",
+        "S3_PAIRS_FULL",
+        "S4_MISSING_PLUS_ORDER_STORY",
+        "S5_SHARED_SCREEN_TEST"
+      ]
+    },
+    "intake": "PARTIAL_MORE_PACKAGES_EXPECTED"
+  },
+  "workshop": {
+    "r65_studies": 27,
+    "r65_child_variants": 9,
+    "suite5": "MAIN_NETLIFY_PASS",
+    "r44_matrix_total": 64,
+    "r44_a0_guided": 8,
+    "r44_remaining_unbuilt": 56
+  },
+  "rincon": {
+    "media_total": 16,
+    "active": "A1_PECERA",
+    "active_next": "LUMEN_FINAL_AV_PASS",
+    "queued_count": 15,
+    "faroles_r68": "SPATIAL_DIRECTION_REVIEW_PENDING",
+    "sakura": "INTEGRATED_VERIFY_ONLY"
+  },
+  "videoteca": {
+    "published_videos": 122,
+    "themes": 17,
+    "audit_candidates": 171,
+    "state": "REBASE_REQUIRED"
+  },
+  "public_content": {
+    "bilingual_pieces": 23,
+    "state": "WAIT_FOR_PRODUCT_GATE"
+  },
+  "next_parallel": [
+    {
+      "owner": "MOTOR",
+      "task": "MAR_22_MESO_RUNTIME_INTEGRATION_QA_PASS"
+    },
+    {
+      "owner": "SENDA",
+      "task": "INTEREST_05_PRODUCT_CONTENT_REUSE"
+    },
+    {
+      "owner": "ATLAS",
+      "task": "INTEREST_01_SKY_HORIZON_ASSET_PASS"
+    },
+    {
+      "owner": "LUMEN",
+      "task": "RINCON_A1_LUMEN_FINAL_AV_PASS"
+    }
+  ]
+}
