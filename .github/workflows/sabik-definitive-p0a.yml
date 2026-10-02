@@ -1,0 +1,35 @@
+name: Sabik definitive P0-A
+on:
+  push:
+    branches: ['nexo/sabik-definitive-p0a-20261002']
+  pull_request:
+    paths:
+      - 'sabik/**'
+      - 'scripts/test_sabik_definitive_baseline.py'
+      - 'scripts/test_sabik_presence_r52.py'
+      - 'scripts/test_sabik_presence_r52_browser.py'
+      - 'scripts/test_sabik_audio_r01.mjs'
+      - 'scripts/test_sabik_audio_assets_r01.py'
+      - '.github/workflows/sabik-definitive-p0a.yml'
+permissions:
+  contents: read
+jobs:
+  baseline:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/test_sabik_definitive_baseline.py
+      - run: node tools/test-sabik-motion-r37.js
+      - run: node --check sabik/iris-mount.mjs
+      - run: node --check sabik/sabik-web-r01.js
+      - run: node scripts/test_sabik_audio_r01.mjs
+      - run: python scripts/test_sabik_presence_r52.py
+      - run: python scripts/test_sabik_presence_r52_browser.py
+      - run: python scripts/build_site.py
+      - run: python scripts/test_sabik_audio_assets_r01.py

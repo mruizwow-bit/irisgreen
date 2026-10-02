@@ -1,63 +1,62 @@
 #!/usr/bin/env python3
 from __future__ import annotations
-import hashlib
+import hashlib,json
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-panel = (ROOT / "sabik/iris-panel.html").read_text(encoding="utf-8")
-css = (ROOT / "sabik/iris-mount.css").read_text(encoding="utf-8")
-js = (ROOT / "sabik/sabik-web-r01.js").read_text(encoding="utf-8")
-motion = (ROOT / "sabik/sabik-motion-r37.js").read_text(encoding="utf-8")
-mount = (ROOT / "sabik/iris-mount.mjs").read_text(encoding="utf-8")
-publisher = (ROOT / "scripts/apply_iris_brief_r08.py").read_text(encoding="utf-8")
+ROOT=Path(__file__).resolve().parents[1]
+panel=(ROOT/"sabik/iris-panel.html").read_text(encoding="utf-8")
+css=(ROOT/"sabik/iris-mount.css").read_text(encoding="utf-8")
+js=(ROOT/"sabik/sabik-web-r01.js").read_text(encoding="utf-8")
+mount=(ROOT/"sabik/iris-mount.mjs").read_text(encoding="utf-8")
 
-def require(condition: bool, message: str) -> None:
-    if not condition:
-        raise AssertionError(message)
+def blob(path:Path)->str:
+    data=path.read_bytes()
+    return hashlib.sha1(b"blob "+str(len(data)).encode()+b"\0"+data).hexdigest()
 
-# The current/new Sabik identity is the five Web R01 masters. Keep them byte-exact.
-expected = {
-    "web_presente.png": "c18d8f2aae53c281e02baeeac0ccd832acca4ecb",
-    "web_orientar.png": "093abfdb63888f76924f0d50e076bc48314d6b21",
-    "web_transicion.png": "66209eee4efb61e71e4bedc8251b45cc93df3080",
-    "web_pausa.png": "d2b83e4e5ee66832a26f649674de209b11039485",
-    "web_confirmar.png": "7b4e1a22fc4ae00387b48cb5d372e7342af5ce6d",
+assert blob(ROOT/"sabik/assets/web-r01/web_presente.png")=="c18d8f2aae53c281e02baeeac0ccd832acca4ecb"
+expected={
+ "03_orbits_back.svg":"f9fa4b161d5476800804e82ce50e9fdd0e55e778",
+ "04_core_rings.svg":"783963177b5b5a23cd4c6e1b6965598fc2897184",
+ "05_core_light.svg":"9aaf39f8c15f572a47e7176d48fb4d4cf24e03ba",
+ "06_particles_front.svg":"ddb2ac706b80e7987aac936ad93b777f39bef951",
 }
-for name, expected_blob in expected.items():
-    data = (ROOT / "sabik/assets/web-r01" / name).read_bytes()
-    blob = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
-    require(blob == expected_blob, f"Sabik current master changed: {name} -> {blob}")
+for name,sha in expected.items():
+    assert blob(ROOT/"sabik/definitive-r01"/name)==sha,(name,blob(ROOT/"sabik/definitive-r01"/name))
 
-require('<img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png?v=r69-20260930-3"' in panel,
-        "Current Sabik PRESENTE master is not mounted with cache-safe version")
-for forbidden in ("sabik-base-640.webp","sabik-orbits-back.svg","sabik-orbits-front.svg","sabik-orbit-layer","sabik-layered-avatar","sabikR69OrbitBack","sabikR69OrbitFront"):
-    require(forbidden not in panel + css + js, f"Legacy Sabik donor leaked back in: {forbidden}")
-for required in ("sabik-current-presence","sabik-presence-motion","sabikR69SelfMotion","sabikR69SelfMotionReduced","dataset.renderActive"):
-    require(required in css + js, f"Current Sabik self-motion marker missing: {required}")
-require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
-        "Old donor WebP must not remain in the correction branch")
+manifest=json.loads((ROOT/"sabik/definitive-r01/layer-manifest.json").read_text(encoding="utf-8"))
+assert manifest["canvas"]["transform_origin"]=={"x":530,"y":359}
+assert manifest["body_mount"]["target_bbox"]=={"x":176,"y":8,"width":690,"height":642}
+assert [x["z"] for x in manifest["layers"]]==[10,20,30,40,50,60]
 
-# R37 is the motion system that must be preserved.
-for marker in ("SabikMotionR37", "TOKENS", "iterations: 1", "duration: 0"):
-    require(marker in motion + js, f"Missing R37 marker: {marker}")
-for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "newImage()", "/sabik/assets/web-r01/web_", "ASSET_VERSION","sabik-presence-motion"):
-    require(marker in js.replace(" ", ""), f"Missing current-master runtime marker: {marker}")
-require("requestAnimationFrame" not in motion + js, "R37 must not become continuous RAF motion")
-require("setInterval" not in motion + js, "R37 must not become loop motion")
-require("sabikMeasuredPrecession" not in css, "Historical donor keyframe name returned")
-require("sabikPresenceWave" not in css, "Historical donor presence keyframe name returned")
-require("sabikVoiceRipple" not in css, "Historical donor voice keyframe name returned")
-require("'.webp'" not in publisher, "R08 publisher still carries the old donor WebP")
+for marker in (
+ 'class="layer orbits orbits-back"',
+ 'class="layer core core-rings"',
+ 'class="layer core core-light"',
+ 'class="layer particles particles-front"',
+ 'data-state="idle"',
+ 'data-motion="normal"',
+ 'web_presente.png?v=sabik-definitive-r01',
+):
+    assert marker in panel,marker
 
-# Voice integration may signal activity, but it must not replace the current visual identity.
-require("setVoiceActive" in js, "A2 voice compatibility hook is missing")
-require("dataset.voiceActive" in js, "Voice hook must stay presentation-neutral")
-require("setVoiceActive(playing)" in mount, "A2 voice runtime is no longer wired to the presentation hook")
+for forbidden in ("sabik-presence-motion","sabikR69SelfMotion","sabikR69SelfMotionReduced"):
+    assert forbidden not in panel+css+js,forbidden
 
-# B3 transitions remain finite, while the measured orbit layers provide living presence.
-require("Movimiento suave y continuo." in panel + mount,
-        "ES continuous-motion copy missing")
-require("Gentle continuous motion." in mount,
-        "EN continuous-motion copy missing")
+for marker in ("sabikDefBreathe","sabikDefOrbit",'data-state="processing"','data-state="speaking"','data-motion="reduced"','data-motion="none"'):
+    assert marker in css,marker
 
-print("R52_A3_NEW_SABIK_SELF_MOTION_STATIC_PASS")
+for marker in ("setSemanticState","setVoiceActive","semanticState","layers:{orbits","BODY='/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01'"):
+    assert marker in js.replace(" ",""),marker
+
+assert "meta.inputMode==='voice'" in mount
+assert "meta.phase==='retrieval'" in mount
+assert "meta.phase==='error'" in mount
+assert "semantic='processing'" in mount
+assert "semantic='degraded'" in mount
+
+# Voice state is driven by actual playback state from createSabikVoice.
+assert "setVoiceActive(playing)" in mount
+# No mic/listening is faked for text input.
+assert "next==='ORIENTAR'&&meta.inputMode==='voice'" in mount
+
+print("SABIK_DEFINITIVE_LAYERED_STATIC_PASS")

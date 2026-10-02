@@ -1,61 +1,44 @@
-/* R69 · current Sabik masters. Sabik itself moves; no legacy orbit donor. */
+/* Sabik definitivo R01 · approved nucleus/orbit layers + R37 finite transitions. */
 (()=>{'use strict';
-const motion=window.SabikMotionR37,media=window.matchMedia('(prefers-reduced-motion: reduce)'),masters=new Map(),ASSET_VERSION='r69-20260930-4';
-let current={interaction:'espera',protection:'normal',lowIntensity:false},controller,bodyObserver,panelObserver;
+const motion=window.SabikMotionR37,media=window.matchMedia('(prefers-reduced-motion: reduce)');
+const BODY='/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01';
+const SEMANTIC=new Set(['idle','listening','processing','speaking','degraded']);
+let controller,bodyPromise,bodyObserver,panelObserver,semantic='idle',semanticBeforeVoice='idle',voiceActive=false;
 const nodes=()=>({visual:document.querySelector('#sabik-hologram'),master:document.querySelector('#sabik-web-master'),body:document.querySelector('#sabik-widget-body'),panel:document.querySelector('.sabik-panel')});
-function readyMaster(state){if(!masters.has(state)){const i=new Image();i.src='/sabik/assets/web-r01/web_'+state+'.png?v='+ASSET_VERSION;const d=i.decode().then(()=>i.src).catch(e=>{masters.delete(state);throw e});masters.set(state,d)}return masters.get(state)}
-function ensurePresence(){
- const {visual,master}=nodes();if(!visual||!master)return null;
- visual.classList.add('sabik-current-presence');master.classList.add('sabik-avatar-base');
- let holder=visual.querySelector('.sabik-presence-motion');
- if(!holder){holder=document.createElement('span');holder.className='sabik-presence-motion';master.parentNode.insertBefore(holder,master);holder.appendChild(master);}
- return visual;
-}
-function preferences(){return{motionLevel:document.querySelector('#sabik-motion-level')?.value||'NORMAL',systemReduced:media.matches,globalOff:Boolean(window.IGPreferences?.get?.().motion),lowIntensity:current.lowIntensity}}
-function setPresencePlayState(visual,paused){const holder=visual?.querySelector('.sabik-presence-motion');if(holder)holder.style.animationPlayState=paused?'paused':'running'}
-function syncRenderActivity(){
- const {visual,body,panel}=nodes();if(!visual)return false;
- const inactive=document.hidden||Boolean(body?.hidden)||Boolean(panel?.hidden)||Boolean(panel?.classList.contains('is-collapsed'));
- visual.dataset.renderActive=String(!inactive);
- const level=visual.dataset.motionLevel||document.querySelector('#sabik-motion-level')?.value||'NORMAL';
- setPresencePlayState(visual,inactive||level==='SIN_MOVIMIENTO'||Boolean(window.IGPreferences?.get?.().motion));
- return!inactive;
-}
-function observeActivity(){
- const {body,panel}=nodes();
- if(body&&!bodyObserver){bodyObserver=new MutationObserver(syncRenderActivity);bodyObserver.observe(body,{attributes:true,attributeFilter:['hidden']})}
- if(panel&&!panelObserver){panelObserver=new MutationObserver(syncRenderActivity);panelObserver.observe(panel,{attributes:true,attributeFilter:['hidden','class']})}
-}
+function readyBody(){if(!bodyPromise){const i=new Image();i.src=BODY;bodyPromise=i.decode().then(()=>i.src).catch(e=>{bodyPromise=null;throw e})}return bodyPromise}
+function preferences(){return{motionLevel:document.querySelector('#sabik-motion-level')?.value||'NORMAL',systemReduced:media.matches,globalOff:Boolean(window.IGPreferences?.get?.().motion)}}
+function effective(){return motion?.effectiveLevel?motion.effectiveLevel(preferences()):(preferences().globalOff?'SIN_MOVIMIENTO':preferences().systemReduced?'REDUCIDO':preferences().motionLevel)}
+function syncMotionMode(){const {visual}=nodes();if(!visual)return;const level=effective();visual.dataset.motionLevel=level;visual.dataset.motion=level==='SIN_MOVIMIENTO'?'none':level==='REDUCIDO'?'reduced':'normal';}
+function setSemanticState(next){if(!SEMANTIC.has(next))throw new RangeError('Unknown Sabik semantic state: '+next);semantic=next;const {visual}=nodes();if(visual)visual.dataset.state=next;return next}
+function syncRenderActivity(){const {visual,body,panel}=nodes();if(!visual)return false;const inactive=document.hidden||Boolean(body?.hidden)||Boolean(panel?.hidden)||Boolean(panel?.classList.contains('is-collapsed'));visual.dataset.renderActive=String(!inactive);syncMotionMode();return!inactive}
+function observeActivity(){const {body,panel}=nodes();if(body&&!bodyObserver){bodyObserver=new MutationObserver(syncRenderActivity);bodyObserver.observe(body,{attributes:true,attributeFilter:['hidden']})}if(panel&&!panelObserver){panelObserver=new MutationObserver(syncRenderActivity);panelObserver.observe(panel,{attributes:true,attributeFilter:['hidden','class']})}}
 function ensureController(){
  if(controller)return controller;
- const visual=ensurePresence(),{master}=nodes();if(!visual||!master||!motion)return null;
+ const {visual,master}=nodes();if(!visual||!master||!motion)return null;
+ for(const selector of ['.orbits-back','.core-rings','.core-light','.particles-front'])if(!visual.querySelector(selector))throw new Error('SABIK_DEFINITIVE_LAYER_MISSING:'+selector);
  controller=motion.createController({
-  element:master,load:readyMaster,preferences,
-  apply(src,state){master.src=src;visual.dataset.webAsset=state.toUpperCase()},
+  element:master,load:()=>readyBody(),preferences,
+  apply(src,state){master.src=src;visual.dataset.webAsset='PRESENTE';visual.dataset.webState=String(state).toUpperCase()},
   describe(state,level,active){
-   visual.dataset.webState=state.toUpperCase();visual.dataset.motionLevel=level;visual.dataset.motionActive=String(active);
-   setPresencePlayState(visual,level==='SIN_MOVIMIENTO'||visual.dataset.renderActive==='false'||document.hidden||Boolean(window.IGPreferences?.get?.().motion));
+   visual.dataset.webState=String(state).toUpperCase();visual.dataset.motionActive=String(active);syncMotionMode();
    const h=document.querySelector('#sabik-motion-help'),en=document.documentElement.lang.startsWith('en');
-   if(h)h.textContent=({NORMAL:en?'Sabik moves gently while present.':'Sabik se mueve suavemente mientras está presente.',REDUCIDO:en?'Reduced Sabik motion is active.':'Movimiento reducido de Sabik activado.',SIN_MOVIMIENTO:en?'Sabik motion is off.':'Movimiento de Sabik desactivado.'})[level];
+   if(h)h.textContent=({NORMAL:en?'Sabik moves gently while present.':'Sabik se mueve suavemente mientras está presente.',REDUCIDO:en?'Reduced Sabik motion is active.':'Movimiento reducido de Sabik activado.',SIN_MOVIMIENTO:en?'Sabik motion is off.':'Movimiento de Sabik desactivado.'})[effective()];
   }
  });
- controller.setSabikState('presente',{force:true,static:true});syncRenderActivity();observeActivity();return controller;
+ controller.setSabikState('presente',{force:true,static:true});setSemanticState('idle');syncRenderActivity();observeActivity();return controller;
 }
-function render(next){if(next)current=next;const c=ensureController();if(c)return c.setSabikState(motion.project(current),{reason:'functional-projection'})}
-function contextChange(){
- const c=ensureController();if(!c)return;
- const to=motion.project({...current,interaction:'espera'});
- if(to==='pausa'||['error','retrieving','composing'].includes(current.operation)||current.protection==='riesgo'||(current.safety&&current.safety!=='normal'))return render();
- return c.setSabikState('transicion',{to,reason:'explicit-context-change',force:true});
-}
-function setVoiceActive(active){const visual=ensurePresence();if(visual)visual.dataset.voiceActive=String(Boolean(active));return Boolean(active)}
+function legacySemantic(state,options={}){if(options.semantic&&SEMANTIC.has(options.semantic))return options.semantic;if(state==='pausa'&&options.reason==='error')return'degraded';return'idle'}
+function setSabikState(state,options={}){const c=ensureController();if(!c)return;setSemanticState(legacySemantic(state,options));return c.setSabikState(state,options)}
+function render(next){const c=ensureController();if(!c)return;return setSabikState(motion.project(next||{}),{reason:'functional-projection',semantic:'idle'})}
+function contextChange(){const c=ensureController();if(!c)return;setSemanticState('idle');return c.setSabikState('transicion',{to:'presente',reason:'explicit-context-change',force:true})}
+function setVoiceActive(active){voiceActive=Boolean(active);if(voiceActive){if(semantic!=='speaking')semanticBeforeVoice=semantic;setSemanticState('speaking')}else if(semantic==='speaking'){setSemanticState(semanticBeforeVoice||'idle')}const {visual}=nodes();if(visual)visual.dataset.voiceActive=String(voiceActive);return voiceActive}
 function refresh(){syncRenderActivity();return ensureController()?.refresh()}
 window.SabikWebPresentation=Object.freeze({
- render,contextChange,setSabikState(state,options){return ensureController()?.setSabikState(state,options)},setVoiceActive,refresh,
- snapshot(){const v=ensurePresence();return{...(ensureController()?.snapshot()||{}),voiceActive:v?.dataset.voiceActive==='true',renderActive:v?.dataset.renderActive==='true',presenceLayer:Boolean(v?.querySelector('.sabik-presence-motion'))}}
+ render,contextChange,setSabikState,setSemanticState,setVoiceActive,refresh,
+ snapshot(){const {visual}=nodes();return{...(ensureController()?.snapshot()||{}),semanticState:semantic,voiceActive,renderActive:visual?.dataset.renderActive==='true',layers:{orbits:Boolean(visual?.querySelector('.orbits-back')),core:Boolean(visual?.querySelector('.core-light')),particles:Boolean(visual?.querySelector('.particles-front'))}}}
 });
 window.setSabikState=(state,options)=>window.SabikWebPresentation.setSabikState(state,options);
-function boot(){ensureController();for(const s of motion.STATES)readyMaster(s).catch(()=>{});document.querySelector('#sabik-motion-level')?.addEventListener('change',refresh)}
+function boot(){ensureController();readyBody().catch(()=>{});document.querySelector('#sabik-motion-level')?.addEventListener('change',refresh)}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot,{once:true});else boot();
 document.addEventListener('visibilitychange',syncRenderActivity);
 window.addEventListener('pagehide',()=>{const {visual}=nodes();if(visual)visual.dataset.renderActive='false'});

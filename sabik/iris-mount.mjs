@@ -132,9 +132,14 @@ function mount(){
   }
   section.append(h,list);
  }
- function state(next){
+ function state(next,meta={}){
   const map={ORIENTAR:'orientar',TRANSICION:'transicion',CONFIRMAR:'confirmar',PAUSA:'pausa',PRESENTE:'presente'};
-  const v=map[next]||String(next||'presente').toLowerCase();void visual(v,{force:true,to:'presente'});
+  const v=map[next]||String(next||'presente').toLowerCase();
+  let semantic='idle';
+  if(next==='ORIENTAR'&&meta.inputMode==='voice')semantic='listening';
+  else if(next==='TRANSICION'&&meta.phase==='retrieval')semantic='processing';
+  else if(next==='PAUSA'&&meta.phase==='error')semantic='degraded';
+  void visual(v,{force:true,to:'presente',semantic,reason:meta.phase||'conversation-state'});
  }
  const conversation=createSabikConversation({retrieve,onState:state,onAnswer:renderAnswer,onSources:renderSources});
 
