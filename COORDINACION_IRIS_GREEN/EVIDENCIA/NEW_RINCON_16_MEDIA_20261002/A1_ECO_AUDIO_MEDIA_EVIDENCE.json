@@ -1,0 +1,181 @@
+{
+  "schema": "RINCON_A1_ECO_AUDIO_MEDIA_EVIDENCE/1.0",
+  "date": "2026-10-02",
+  "issue": 368,
+  "status": "RINCON_A1_ECO_AUDIO_MEDIA_PASS",
+  "input_video": {
+    "filename": "pecera_10min_parte1_de_2.mp4",
+    "sha256": "8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f",
+    "size_bytes": 19838329,
+    "duration_s": 300.083333,
+    "container": "MP4/MOV",
+    "video_codec": "h264",
+    "profile": "High",
+    "level": "3.1",
+    "pixel_format": "yuv420p",
+    "width": 960,
+    "height": 540,
+    "fps": 24,
+    "video_bitrate_bps": 526758,
+    "audio_streams": 0,
+    "atom_offsets": {
+      "ftyp": 4,
+      "mdat": 44,
+      "moov": 19758982
+    }
+  },
+  "audio_source": {
+    "first_party": true,
+    "external_samples": false,
+    "voice": false,
+    "music": false,
+    "deterministic_seed": 61012026,
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "source_samples": 14404000,
+    "source_duration_s": 300.0833333333333,
+    "water_body_hz": [
+      35,
+      700
+    ],
+    "water_texture_hz": [
+      260,
+      2400
+    ],
+    "bubble_model": "Minnaert-inspired resonance f_hz=3260/radius_mm; 12ms smooth attack + exponential decay",
+    "bubble_events": 275,
+    "bubble_events_per_s": 0.9164121077478479,
+    "bubble_radius_mm": [
+      2.2,
+      7.2
+    ],
+    "fade_in_out_s": 2.5,
+    "generator_path": "COORDINACION_IRIS_GREEN/EVIDENCIA/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_GENERATOR_R01.py",
+    "local_generator_sha256": "22090d7ed20e12bdf4eb53b012c34014dd032e0987b113f219b5a2d49c14e521"
+  },
+  "audio_output": {
+    "filename": "A1_pecera_audio_firstparty_5min.m4a",
+    "sha256": "36e7b00ccb4b268a8b7f1a4d640af7564585bd549071e5061fd291c2c871000e",
+    "size_bytes": 4886202,
+    "codec": "aac",
+    "profile": "LC",
+    "sample_rate_hz": 48000,
+    "channels": 2,
+    "channel_layout": "stereo",
+    "duration_s": 300.083,
+    "bitrate_bps": 128730,
+    "integrated_lufs": -23.03,
+    "loudness_range_lu": 1.9,
+    "true_peak_dbtp": -10.58,
+    "spectral_energy_fraction_mean": {
+      "below_1khz": 0.9811809263567736,
+      "from_1_to_3khz": 0.018107674190970202,
+      "above_3khz": 0.0002799522483337371
+    },
+    "stereo_correlation_10s_blocks": {
+      "min": 0.9276441669883598,
+      "max": 0.9291137921365645,
+      "median": 0.9284180519376077
+    },
+    "interior_100ms_adjacent_level_step_db": {
+      "p95": 1.2712831762930574,
+      "p99": 1.7254806706180619,
+      "max": 2.355628534681692
+    },
+    "note": "AAC decode can expose encoder tail padding; container stream duration is the canonical timing."
+  },
+  "final_mux": {
+    "filename": "A1_pecera_5min_AV_ECO_R01.mp4",
+    "sha256": "7bd18bd4aac9373fcb2ccbc25ceb8ae7e9fefeead3c161a4eb5cf343a74012c3",
+    "size_bytes": 24789723,
+    "duration_s": 300.083333,
+    "total_bitrate_bps": 660875,
+    "video": {
+      "codec": "h264",
+      "profile": "High",
+      "level": "3.1",
+      "pixel_format": "yuv420p",
+      "width": 960,
+      "height": 540,
+      "fps": 24,
+      "bitrate_bps": 526758,
+      "start_time_s": 0,
+      "duration_s": 300.083333
+    },
+    "audio": {
+      "codec": "aac",
+      "profile": "LC",
+      "sample_rate_hz": 48000,
+      "channels": 2,
+      "bitrate_bps": 128730,
+      "start_time_s": 0,
+      "duration_s": 300.083
+    },
+    "av_duration_delta_s": 0.000333,
+    "video_elementary_sha256_before": "771f88e17784fccc6dff36260366b6cfc2c6b3e2ecc2a7ae1d1c0aa215f6973b",
+    "video_elementary_sha256_after": "771f88e17784fccc6dff36260366b6cfc2c6b3e2ecc2a7ae1d1c0aa215f6973b",
+    "video_reencoded": false,
+    "faststart": true,
+    "atom_offsets": {
+      "ftyp": 4,
+      "moov": 36,
+      "mdat": 201729
+    },
+    "full_ffmpeg_decode": "PASS"
+  },
+  "browser_lab": {
+    "browser": "Chromium 144.0.7559.96 Debian GNU/Linux 13",
+    "transport": "exact mux embedded as data URL; not HTTP",
+    "canPlayType": {
+      "h264_aac": "probably",
+      "h264": "probably",
+      "aac": "probably"
+    },
+    "initial": {
+      "readyState": 4,
+      "networkState": 1,
+      "duration_s": 300.083333,
+      "width": 960,
+      "height": 540,
+      "error": null
+    },
+    "play": {
+      "resolved": true,
+      "time_to_currentTime_gt_1_s": 1.1228767229999903,
+      "total_frames_sample": 29,
+      "dropped_frames": 0,
+      "corrupted_frames": 0
+    },
+    "unmute": {
+      "continued_playback": true,
+      "error": null
+    },
+    "seek_150s": {
+      "latency_s": 0.06669169500003136,
+      "resumed": true,
+      "total_frames_sample": 111,
+      "dropped_frames": 0,
+      "corrupted_frames": 0
+    },
+    "limitation": "Does not validate HTTP Range/206, CDN/network startup or production host."
+  },
+  "pending": {
+    "http_range_206": "WAIT_COMMON_PLAYER_OR_HOST_SURFACE",
+    "production_network_startup": "WAIT_COMMON_PLAYER_OR_HOST_SURFACE",
+    "physical_mobile_hardware": "LATER_PLAYER_STAGE",
+    "human_perceptual_av_review": "LUMEN_NEXT"
+  },
+  "constraints": {
+    "one_active_media_item_only": true,
+    "other_media_items_touched": false,
+    "visual_rerender": false,
+    "player_work": false,
+    "motor_interrupted": false
+  },
+  "binary_distribution": {
+    "current_chat_artifacts_available": true,
+    "library_upload_attempt": "FAILED_PLATFORM_CONTAINER_SESSION_EXPIRED",
+    "slack_upload_attempt": "FAILED_RUNTIME_DNS_NO_FILE_BYTES_POSTED",
+    "canonical_reproduction": "input video persists in Library + generator/recipe/evidence persisted in GitHub"
+  }
+}
