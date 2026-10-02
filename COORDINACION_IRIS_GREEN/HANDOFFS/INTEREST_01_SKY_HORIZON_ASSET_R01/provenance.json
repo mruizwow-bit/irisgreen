@@ -1,0 +1,53 @@
+{
+  "schema": "iris-green-first-party-visual-provenance-v1",
+  "asset_id": "01-cielo-horizonte-observacion-r01",
+  "date": "2026-10-02",
+  "authority": "MARIA",
+  "owner": "ATLAS_A1",
+  "product_direction": {
+    "donor_reference": "María-provided Cielo horizon reference/direction from Images workspace",
+    "usage": "art-direction only; not accepted or copied as final asset",
+    "retained": [
+      "general horizon idea",
+      "calm natural nocturnal landscape mood",
+      "mountain/forest/relief silhouette language",
+      "dark quiet atmosphere"
+    ],
+    "removed": [
+      "existing sky",
+      "stars",
+      "aurora",
+      "astronomical glow",
+      "opaque upper sky",
+      "elements competing with procedural sky"
+    ]
+  },
+  "generation": {
+    "tool": "OpenAI image generation in ChatGPT",
+    "operator_role": "ATLAS_A1",
+    "immediate_reference": "previous Atlas-generated transparent horizon candidate used only to maintain horizon art direction",
+    "third_party_images_embedded": false,
+    "public_label": "Imagen hecha por ordenador"
+  },
+  "technical_derivation": {
+    "generated_working_canvas": [
+      2172,
+      724
+    ],
+    "final_canvas": [
+      2560,
+      768
+    ],
+    "uniform_scale": true,
+    "horizontal_geometry_distorted": false,
+    "horizontal_crop_px": 0,
+    "top_crop_px_after_uniform_scale": 85,
+    "alpha_noise_cleanup": "alpha <= 2 set to 0 only",
+    "srgb_icc_embedded": true,
+    "art_redraw_after_generation": false,
+    "runtime_modification": false
+  },
+  "final_sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+  "library_path": "/Iris Green/Handoffs/Atlas/INTEREST_01_SKY_HORIZON_ASSET_R01/01-cielo-horizonte-observacion-r01.png",
+  "library_file_id": "libfile_bfc30f361e1c8191a936bcedaaaf4f58"
+}
