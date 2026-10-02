@@ -1,0 +1,306 @@
+[
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: PNG y proyecto",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/dibujo/",
+  "esperado": "E01",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E01",
+    "estudio": "dibujo",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: PNG repetible y vista en mosaico",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/pixel-art/",
+  "esperado": "E06",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E06",
+    "estudio": "pixel-art",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: Imagen del montaje y cálculo educativo",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/estructuras/",
+  "esperado": "E17",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E17",
+    "estudio": "estructuras",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: Esquema SVG y tabla de verdad CSV",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/circuitos/",
+  "esperado": "E22",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E22",
+    "estudio": "circuitos",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igc-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: TXT, MD y HTML accesible",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/escritura-restricciones/",
+  "esperado": "E28",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E28",
+    "estudio": "escritura-restricciones",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igw-ta",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: Tablero, cartas y reglas imprimibles",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/juegos-de-mesa/",
+  "esperado": "E34",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E34",
+    "estudio": "juegos-de-mesa",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igj-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: WAV y MIDI",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/ritmo/",
+  "esperado": "E38",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E38",
+    "estudio": "ritmo",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igs-music",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "Lo que te llevas: Juego HTML autocontenido",
+  "textoEs": true,
+  "lang": "ES",
+  "ruta": "/es/taller/videojuegos/",
+  "esperado": "E44",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E44",
+    "estudio": "videojuegos",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: PNG and project file",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/drawing/",
+  "esperado": "E01",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E01",
+    "estudio": "dibujo",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: Repeatable PNG and mosaic view",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/pixel-art/",
+  "esperado": "E06",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E06",
+    "estudio": "pixel-art",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: Image of the assembly and the educational calculation",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/structures/",
+  "esperado": "E17",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E17",
+    "estudio": "estructuras",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: SVG schematic and truth table as CSV",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/circuits/",
+  "esperado": "E22",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E22",
+    "estudio": "circuitos",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igc-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: TXT, MD and accessible HTML",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/constraint-writing/",
+  "esperado": "E28",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E28",
+    "estudio": "escritura-restricciones",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igw-ta",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: Printable board, cards and rules",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/board-games/",
+  "esperado": "E34",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E34",
+    "estudio": "juegos-de-mesa",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igj-viewport",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: WAV and MIDI",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/rhythm-sequencer/",
+  "esperado": "E38",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E38",
+    "estudio": "ritmo",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport igs-music",
+  "axe": []
+ },
+ {
+  "escena": true,
+  "escenaAlto": 150,
+  "artefacto": "What you take away: Self-contained HTML game",
+  "textoEs": false,
+  "lang": "EN",
+  "ruta": "/en/workshop/video-game-design/",
+  "esperado": "E44",
+  "tema": "dark",
+  "eventos": [
+   {
+    "id": "E44",
+    "estudio": "videojuegos",
+    "fase": "empezar"
+   }
+  ],
+  "focoTrasEmpezar": "igs-viewport",
+  "axe": []
+ }
+]

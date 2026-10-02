@@ -1,0 +1,67 @@
+name: R69 unified interface recovery
+on:
+  push:
+    branches: ['astra/r69-unified-interface-recovery-20260930']
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: r69-unified-interface-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  r69:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile             scripts/build_site.py             scripts/apply_home_r42.py             scripts/apply_r69_workshop_stable.py             scripts/apply_r69_global_cleanup.py             scripts/test_r69_unified_interface.py             scripts/test_r69_unified_interface_browser.py             scripts/test_home_v4_css_integrity.py             scripts/test_r51_audience_filter_browser.py
+          node --check assets/ig-r49-transversal.js
+          node --check assets/ig-taller-r42.js
+          node --check assets/ig-taller-estudio.js
+          node --check assets/juegos-iris.js
+          node --check assets/rutinas-imprimibles.js
+          node --check assets/rutinas-visuales.js
+          node --check assets/musica.js
+          node --check sabik/sabik-motion-r37.js
+          node --check sabik/sabik-web-r01.js
+          python scripts/test_home_v4_css_integrity.py --root .
+      - name: Build unified artifact
+        run: python scripts/build_site.py
+      - name: Built Home v4 CSS integrity
+        run: python scripts/test_home_v4_css_integrity.py --root dist
+      - name: Static R69 gate
+        run: |
+          python scripts/test_r69_unified_interface.py --root dist
+          node tools/test-sabik-motion-r37.js
+      - name: Install browser
+        run: |
+          python -m venv /tmp/ig-r69
+          /tmp/ig-r69/bin/pip -q install playwright==1.55.0
+          /tmp/ig-r69/bin/python -m playwright install --with-deps chromium >/tmp/ig-r69-install.log 2>&1
+      - name: Browser gates
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-r69-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-r69/bin/python scripts/test_r69_unified_interface_browser.py
+          /tmp/ig-r69/bin/python scripts/test_r67_aura_recovery_browser.py
+          /tmp/ig-r69/bin/python scripts/test_r51_home_age_browser.py
+          /tmp/ig-r69/bin/python scripts/test_r51_audience_filter_browser.py
+      - name: Upload R69 evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r69-unified-interface
+          path: |
+            reports/r69-unified-interface
+            reports/r67-aura-recovery
+            reports/r51-home-age
+            reports/r51-audience-filter
+            reports/routes/build.json
+          retention-days: 14

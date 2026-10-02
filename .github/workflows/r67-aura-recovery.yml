@@ -1,0 +1,55 @@
+name: R67 Aura integrated recovery
+on:
+  push:
+    branches: ['aura/r67-integrated-recovery-20260929']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  recovery:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Syntax
+        run: |
+          python -m py_compile             scripts/apply_child_safe_r42.py             scripts/apply_r67_global_shell_all.py             scripts/test_r67_global_shell_all.py             scripts/test_r67_aura_recovery.py             scripts/test_r67_aura_recovery_browser.py             scripts/apply_r67_taller_shell.py
+          node --check assets/ig-r49-transversal.js
+          node --check assets/ig-r49-lang-bootstrap.js
+          node --check sabik/iris-mount.mjs
+          node --check sabik/conversation-core-r66.mjs
+      - name: Browser
+        run: |
+          python -m venv /tmp/ig-r67-aura
+          /tmp/ig-r67-aura/bin/pip -q install beautifulsoup4 pillow playwright==1.55.0
+          /tmp/ig-r67-aura/bin/python -m playwright install --with-deps chromium >/tmp/ig-r67-aura-install.log 2>&1
+      - name: Build
+        run: python scripts/build_site.py
+      - name: Static gates
+        run: |
+          python scripts/test_r67_global_shell_all.py --root dist
+          python scripts/test_r67_aura_recovery.py --root dist
+          python scripts/test_home_child_safe_r42.py --root dist
+          python scripts/test_r51_age_965.py
+      - name: Browser gates
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-r67-aura-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-r67-aura/bin/python scripts/test_r67_aura_recovery_browser.py
+          /tmp/ig-r67-aura/bin/python scripts/test_home_child_safe_browser.py
+          /tmp/ig-r67-aura/bin/python scripts/test_r51_home_age_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r67-aura-recovery
+          path: |
+            reports/r67-aura-recovery
+            reports/r42-a8-home-child-safe
+            reports/r51-home-age
+            reports/routes/build.json
+          retention-days: 14

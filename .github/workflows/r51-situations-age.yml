@@ -1,0 +1,48 @@
+name: R51 Situations age matrix QA
+on:
+  push:
+    branches: ['agent2/sabik-iris-r08-20260924']
+    paths:
+      - '.github/workflows/r51-situations-age.yml'
+      - 'assets/catalogo-comun.js'
+      - 'assets/buscador-comun.js'
+      - 'assets/ig-audience.js'
+      - 'assets/ig-age-gate-r51.css'
+      - 'assets/safety/age-classification-r51-situations.json'
+      - 'scripts/apply_r50_situations_ui.py'
+      - 'scripts/test_r51_situations_age_browser.py'
+      - 'scripts/build_site.py'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  situations-age:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.12'}
+      - name: Syntax
+        run: |
+          node --check assets/catalogo-comun.js
+          python -m py_compile scripts/apply_r50_situations_ui.py scripts/test_r51_situations_age_browser.py
+      - name: Prepare Chromium
+        run: |
+          python -m venv /tmp/ig-r51-situations
+          /tmp/ig-r51-situations/bin/pip -q install playwright==1.55.0
+          /tmp/ig-r51-situations/bin/python -m playwright install --with-deps chromium >/tmp/ig-r51-situations-install.log 2>&1
+      - name: Build public site
+        run: python scripts/build_site.py
+      - name: Situations only
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-r51-situations-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-r51-situations/bin/python scripts/test_r51_situations_age_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: r51-situations-age-qa
+          path: reports/r51-situations-age
+          retention-days: 14

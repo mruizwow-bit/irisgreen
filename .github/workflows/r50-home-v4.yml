@@ -1,0 +1,68 @@
+name: A2 Home v4 NAVY preview QA
+on:
+  push:
+    branches: ['agent2/sabik-iris-r08-20260924']
+    paths:
+      - '.github/workflows/r50-home-v4.yml'
+      - 'scripts/apply_home_r42.py'
+      - 'scripts/test_home_child_safe_r42.py'
+      - 'scripts/test_home_child_safe_browser.py'
+      - 'scripts/test_home_v4_css_integrity.py'
+      - 'assets/home-r42-child-safe.css'
+      - 'assets/home-r42-child-safe.js'
+      - 'assets/ig-global-ui-tokens-2026.css'
+      - 'assets/ig-r49-transversal.css'
+      - 'assets/ig-r49-transversal.js'
+      - 'assets/ig-theme.js'
+      - 'assets/ig-audience.js'
+      - 'assets/ig-audience.css'
+      - 'assets/ig-age-gate-r51.css'
+      - 'scripts/build_site.py'
+      - 'sabik/iris-panel.html'
+      - 'sabik/iris-mount.mjs'
+      - 'sabik/sabik-motion-r37.js'
+      - 'sabik/sabik-web-r01.js'
+  workflow_dispatch:
+permissions: {contents: read}
+jobs:
+  home-v4:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with: {python-version: '3.12'}
+      - name: Syntax
+        run: |
+          python -m py_compile scripts/apply_home_r42.py scripts/test_home_child_safe_r42.py scripts/test_home_child_safe_browser.py scripts/test_home_v4_css_integrity.py
+          python scripts/test_home_v4_css_integrity.py --root .
+          node --check assets/ig-theme.js
+          node --check assets/ig-audience.js
+          node --check assets/home-r42-child-safe.js
+          node --check sabik/sabik-motion-r37.js
+          node --check sabik/sabik-web-r01.js
+          node --check sabik/iris-mount.mjs
+      - name: Prepare Chromium
+        run: |
+          python -m venv /tmp/ig-home-v4
+          /tmp/ig-home-v4/bin/pip -q install playwright==1.55.0
+          /tmp/ig-home-v4/bin/python -m playwright install --with-deps chromium >/tmp/ig-home-v4-install.log 2>&1
+      - name: Build public site
+        run: python scripts/build_site.py
+      - name: Built CSS integrity
+        run: python scripts/test_home_v4_css_integrity.py --root dist
+      - name: Static Home v4 gate
+        run: python scripts/test_home_child_safe_r42.py --root dist
+      - name: Browser Home v4 NAVY
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/ig-home-v4-http.log 2>&1 &
+          server=$!
+          trap 'kill $server || true' EXIT
+          sleep 1
+          /tmp/ig-home-v4/bin/python scripts/test_home_child_safe_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: a2-home-v4-navy-qa
+          path: reports/r42-a8-home-child-safe
+          retention-days: 14
