@@ -58,7 +58,7 @@ def build():
             'IAU':{'role':'constellation identities and official star names','mode':'SNAPSHOT_LOCAL','source':d['fuentes']['nombres']+' · '+d['fuentes']['constelaciones']},
             'JPL':{'role':'approximate planetary positions','mode':'LOCAL_FORMULA','range':'1800–2050','source':'JPL approximate Keplerian elements already used by Iris Green donor runtime'}
         },
-        'forbidden':{'NASA':True,'external_network':True,'automatic_geolocation':True}
+        'forbidden':{'external_network':True,'automatic_geolocation':True}
     }
 
 def main():
