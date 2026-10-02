@@ -17,7 +17,7 @@ from urllib.parse import unquote, urlsplit
 SITE='https://irisgreen.eu'
 SITEMAP_NS='http://www.sitemaps.org/schemas/sitemap/0.9'
 ROOT=Path(__file__).resolve().parents[1]
-PUBLIC_DIRS=('assets','audio','img','es','en')
+PUBLIC_DIRS=('assets','audio','img','es','en','sabik')
 PUBLIC_ROOT=('index.html','404.html','buscador.json','videoteca-listado.json','sitemap.xml','sitemap-1.xml','robots.txt','llms.txt','_headers','_redirects')
 
 class Page(HTMLParser):
