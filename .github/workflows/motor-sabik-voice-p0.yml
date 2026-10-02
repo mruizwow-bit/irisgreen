@@ -1,7 +1,7 @@
 name: Motor · Sabik ES-EN voice P0
 on:
   push:
-    branches: ['motor/sabik-voice-runtime-p0-20261002']
+    branches: ['motor/sabik-voice-runtime-p0-20261002','nexo/sabik-voice-runtime-recovery-20261002']
     paths:
       - 'sabik/**'
       - 'scripts/test_sabik_presence_r52.py'
@@ -39,7 +39,7 @@ jobs:
         run: python scripts/build_site.py
       - name: Materialized audio gate
         run: python scripts/test_sabik_audio_assets_r01.py
-      - name: Bilingual voice browser QA
+      - name: Bilingual voice client contract browser QA
         run: python scripts/test_sabik_voice_browser.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
