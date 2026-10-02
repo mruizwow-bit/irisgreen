@@ -10,8 +10,9 @@ def need(v,m):
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);root=ap.parse_args().root.resolve()
  r49=(root/'assets/ig-r49-transversal.js').read_text(encoding='utf-8')
- for token in ('AGE_0_12','AGE_13_17','AGE_18_PLUS','ALL_AGES'):need(token in r49,'R49 missing '+token)
- need("['AGE_0_12',tr().children]" in r49,'R49 picker not canonical')
+ for token in ('GENERAL','AGE_0_12','AGE_13_17','AGE_18_PLUS'):need(token in r49,'R49 missing '+token)
+ need("[['GENERAL',tr().defaultStage],['AGE_0_12',tr().children],['AGE_13_17',tr().teenagers],['AGE_18_PLUS',tr().adults]]" in r49,'R49 picker not canonical four-profile contract')
+ need('ALL_AGES' not in r49,'R49 must not expose ALL_AGES as a user-selectable profile')
  bootstrap=(root/'assets/ig-r49-lang-bootstrap.js').read_text(encoding='utf-8')
  need('ig-age-band-v2' in bootstrap and "age='GENERAL'" in bootstrap,'R49 bootstrap still legacy')
  safe=json.loads((root/'assets/safety/search-safe-default.json').read_text(encoding='utf-8'))
