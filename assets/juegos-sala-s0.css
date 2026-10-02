@@ -1,0 +1,20 @@
+/* Iris Green · Juegos en sala · shell mínimo S0. */
+:root{color-scheme:light}
+*{box-sizing:border-box}
+html{background:#f6f8fb;color:#17395c;font-family:Arial,Helvetica,sans-serif}
+body{margin:0;background:#f6f8fb;color:#17395c}
+.room-skip{position:absolute;left:.75rem;top:-5rem;padding:.75rem 1rem;background:#17395c;color:#eef4f8;z-index:20}
+.room-skip:focus{top:.75rem}
+.room-top{min-height:4.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.65rem clamp(1rem,3vw,2rem);border-bottom:1px solid #d5e1ec;background:#f4f7fa}
+.room-brand{font-weight:800;color:#17395c;text-decoration:none;font-size:1.1rem}
+.room-nav{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap;justify-content:flex-end}
+.room-nav a{min-height:3.75rem;display:inline-flex;align-items:center;padding:0 1rem;border:1px solid #7a869d;border-radius:999px;color:#17395c;background:#eef2f6;text-decoration:none;font-weight:700}
+.room-nav a[aria-current="page"]{background:#17395c;color:#eef4f8}
+.room-game-page .jg-main{padding-top:clamp(1rem,3vw,2rem)}
+.room-static-title{font-size:clamp(1.8rem,4vw,2.6rem);line-height:1.1;margin:.25rem 0 1rem;color:#17395c}
+.room-game-page .jg-gamebar,.room-game-page .jg-play,.room-game-page .jg-inspector{background:#f4f7fa}
+.room-game-page .jg-tile,.room-game-page .jg-btn,.room-game-page .jg-op,.room-game-page .jg-row{background:#eef2f6}
+.room-fallback{max-width:48rem;margin:3rem auto;padding:1.5rem}
+.room-foot{padding:1rem 2rem 2rem;text-align:center;color:#435268}
+@media(max-width:30rem){.room-top{align-items:flex-start;flex-direction:column}.room-nav{width:100%;justify-content:flex-start}.room-nav a{min-height:3.75rem}}
+@media(forced-colors:active){.room-nav a{border:1px solid ButtonText}.room-game-page .jg-gamebar,.room-game-page .jg-play,.room-game-page .jg-inspector{forced-color-adjust:auto}}
