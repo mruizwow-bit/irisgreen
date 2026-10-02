@@ -28,8 +28,10 @@ def main():
    if s.count(asset)!=1:missing.append(rel+"::"+asset)
  if missing:raise AssertionError("Global shell missing/duplicate: "+", ".join(missing[:12]))
  js=(root/"assets/ig-r49-transversal.js").read_text(encoding="utf-8")
- for token in ("AGE_0_12","AGE_13_17","AGE_18_PLUS","ALL_AGES"):
-  if token not in js:raise AssertionError("Canonical age state missing in R49: "+token)
+ for token in ("GENERAL","AGE_0_12","AGE_13_17","AGE_18_PLUS"):
+  if token not in js:raise AssertionError("Canonical user profile missing in R49: "+token)
+ if "['ALL_AGES'" in js or "['ALL_AGES'," in js:
+  raise AssertionError("ALL_AGES must remain content metadata, not a selectable user profile")
  for old in ("'Infancia'","'Adolescencia'","'Adultez'","'Cualquier edad'","'Children'","'Teenagers'","'Adults'","'Any age'"):
   if old in js:raise AssertionError("Legacy age label remains in R49 picker: "+old)
  print(json.dumps({"global_shell":"PASS","pages":checked,"canonical_age_labels":"PASS"},ensure_ascii=False))
