@@ -17,14 +17,30 @@ STUDIES=[
 WIDTHS=[320,390,1440]
 PALETTES={
  "light":{
-  "--ig-ink":"#17395C","--ig-ink-muted":"#435268","--ig-separator":"#D5E1EC","--ig-control-border":"#7A869D",
-  "--ig-state-hover":"#E8F1F8","--ig-state-selected":"#17395C","--ig-state-selected-ink":"#FFFFFF",
-  "--ig-state-selected-soft":"#E6F1F8","--ig-focus":"#5A49A8","--ig-surface-content":"#F4F7FA","--ig-surface-content-soft":"#EEF2F6"
+  "--ig-bg-page":"#F6F8FB","--ig-bg-surface":"#F4F7FA","--ig-bg-surface-soft":"#EEF2F6",
+  "--ig-text":"#17395C","--ig-text-muted":"#435268",
+  "--ig-button-primary-bg":"#17395C","--ig-button-primary-fg":"#EEF4F8",
+  "--ig-button-secondary-bg":"#E6F1F8","--ig-button-secondary-fg":"#17395C",
+  "--ig-link":"#1F5F8B","--ig-accent":"#5A49A8","--ig-accent-secondary":"#197991",
+  "--ig-border-control":"#7A869D","--ig-separator":"#D5E1EC","--ig-focus-global":"#5A49A8",
+  "--ig-error":"#8A2942","--ig-success":"#1D6B3A",
+  "--ig-ink":"#17395C","--ig-ink-muted":"#435268","--ig-control-border":"#7A869D",
+  "--ig-state-hover":"#EEF2F6","--ig-state-selected":"#17395C","--ig-state-selected-ink":"#EEF4F8",
+  "--ig-state-selected-soft":"#E6F1F8","--ig-focus":"#5A49A8",
+  "--ig-surface-content":"#F4F7FA","--ig-surface-content-soft":"#EEF2F6"
  },
  "navy":{
-  "--ig-ink":"#EEF4F8","--ig-ink-muted":"#C9D5DD","--ig-separator":"#2A4460","--ig-control-border":"#8494A8",
+  "--ig-bg-page":"#0B1A2B","--ig-bg-surface":"#15304A","--ig-bg-surface-soft":"#1D3D5C",
+  "--ig-text":"#EEF4F8","--ig-text-muted":"#C9D5DD",
+  "--ig-button-primary-bg":"#315774","--ig-button-primary-fg":"#EEF4F8",
+  "--ig-button-secondary-bg":"#15304A","--ig-button-secondary-fg":"#EEF4F8",
+  "--ig-link":"#9FDCEA","--ig-accent":"#C3B8FF","--ig-accent-secondary":"#9FDCEA",
+  "--ig-border-control":"#8494A8","--ig-separator":"#2A4460","--ig-focus-global":"#C3B8FF",
+  "--ig-error":"#FFB3C1","--ig-success":"#9BE0B4",
+  "--ig-ink":"#EEF4F8","--ig-ink-muted":"#C9D5DD","--ig-control-border":"#8494A8",
   "--ig-state-hover":"#1D3D5C","--ig-state-selected":"#DCE8F2","--ig-state-selected-ink":"#0B1A2B",
-  "--ig-state-selected-soft":"#15304A","--ig-focus":"#C3B8FF","--ig-surface-content":"#15304A","--ig-surface-content-soft":"#1D3D5C"
+  "--ig-state-selected-soft":"#15304A","--ig-focus":"#C3B8FF",
+  "--ig-surface-content":"#15304A","--ig-surface-content-soft":"#1D3D5C"
  }
 }
 
