@@ -1,0 +1,68 @@
+{
+  "schema": "r62_special_assembly_intake_v1",
+  "date": "2026-10-02",
+  "status": "R62_SPECIAL_ASSEMBLY_INTAKE_PARTIAL_MORE_EXPECTED",
+  "inventory_complete": false,
+  "owner": "NEXO",
+  "library_target": "/Iris Green/Handoffs/ENTRADAS_CANONICAS/JUEGOS_R62_MONTAJE_ESPECIAL/",
+  "canonical_chain": [
+    {
+      "id": "P01_P02_P03_P04_MECHANISM",
+      "file": "r62-p03-cadena_2.bundle",
+      "sha256": "2f61695b23258409673f072f18104fbf7a48e83e7a526c2d864188e89c175f6e",
+      "bytes": 11096689,
+      "prerequisite": "318a5745789922b82e96bfaebd1536cac240a43e",
+      "head": "2e559991762aca18b7c62f65f4df83ecfbee519b"
+    },
+    {
+      "id": "P04_ROOM",
+      "file": "r62-p04-sala_1.bundle",
+      "sha256": "ddbe75ce59cecadd1750a289b157bd2bbc53f04e3df0f0e7f84512d78e3b6bd5",
+      "bytes": 1068383,
+      "prerequisite": "2e559991762aca18b7c62f65f4df83ecfbee519b",
+      "head": "8bc07acd962cd4a88b29890997efda8642df293d"
+    },
+    {
+      "id": "P04_IMPACT_PLAN",
+      "file": "r62-p04-golpe-y-plan_1.bundle",
+      "sha256": "d0b7466c6914e913e45f7711688ba3ad67e5f9528fc2b5788dfaff5e6998bb12",
+      "bytes": 1072875,
+      "prerequisite": "8bc07acd962cd4a88b29890997efda8642df293d",
+      "head": "041bfc3129569f06e621b1bc9a65ff87be84dd86"
+    }
+  ],
+  "current_turn_supporting": [
+    {
+      "file": "iris-claude_7.bundle",
+      "sha256": "f5ef74e632c433a09ba88d3f50573a1c1467fe99630c9c0d5995bb7029d1c3cd",
+      "classification": "HISTORY_TRANSPORT"
+    },
+    {
+      "file": "iris-claude_6.bundle",
+      "sha256": "b528b507e5dcd3302ffab4385d58aa3bf49abf18b22959a6efcf4093f95e6c40",
+      "classification": "HISTORY_TRANSPORT"
+    },
+    {
+      "file": "iris-claude_5.bundle",
+      "sha256": "a376d9272a7af31395a44f8f1ab0854a4f8b2ccca6a79d43a9b5a1e9067948c6",
+      "classification": "HISTORY_TRANSPORT"
+    },
+    {
+      "file": "r62-p02-terrario-e4_3.patch",
+      "sha256": "a2f989372216d396267b174b04877e75513dc04b16a45622045f3615546b960d",
+      "classification": "SUPPORTING_HISTORY"
+    },
+    {
+      "file": "r62-p03-rutas-luz_1.patch",
+      "sha256": "63200884be8acf10fe1aa415ed2905bc675d643e826a3f5427c61ba75a260991",
+      "classification": "SUPERSEDED_INITIAL_P03"
+    }
+  ],
+  "rules": [
+    "PRESERVE_RUNTIME_GENERATORS_TESTS_NOT_JUST_IMAGES",
+    "DO_NOT_APPLY_HISTORICAL_BUNDLES_WHOLE_TO_MAIN",
+    "P04_MUST_FOLLOW_PREREQUISITE_CHAIN",
+    "PRESERVATION_IS_NOT_INTEGRATION",
+    "MORE_PACKAGES_EXPECTED"
+  ]
+}
