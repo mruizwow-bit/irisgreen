@@ -23,8 +23,8 @@
       "family": "RELAXING",
       "name": "Acuario / Pecera R61",
       "status": "ACTIVE",
-      "current_owner": "ECO",
-      "notes": "Lumen visual KEEP PASS; exact 5min binary hash locked; audio missing; Eco audio+media next; no rerender",
+      "current_owner": "LUMEN",
+      "notes": "Lumen visual KEEP PASS + Eco first-party audio/media PASS; exact final mux hash locked; Lumen final AV check next; no rerender",
       "binary_identity": {
         "filename": "pecera_10min_parte1_de_2.mp4",
         "sha256": "8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f",
@@ -39,8 +39,47 @@
         "total_bitrate_bps": 528875,
         "audio_streams": 0
       },
-      "completed_stage": "LUMEN_VISUAL_REUSE_GATE",
-      "completed_stage_marker": "RINCON_A1_LUMEN_VISUAL_KEEP_PASS"
+      "completed_stage": "ECO_AUDIO_PROTOTYPE",
+      "completed_stage_marker": "RINCON_A1_ECO_AUDIO_MEDIA_PASS",
+      "eco_audio": {
+        "filename": "A1_pecera_audio_firstparty_5min.m4a",
+        "sha256": "36e7b00ccb4b268a8b7f1a4d640af7564585bd549071e5061fd291c2c871000e",
+        "size_bytes": 4886202,
+        "codec": "aac",
+        "profile": "LC",
+        "sample_rate_hz": 48000,
+        "channels": 2,
+        "duration_seconds": 300.083,
+        "integrated_lufs": -23.03,
+        "loudness_range_lu": 1.9,
+        "true_peak_dbtp": -10.58,
+        "first_party": true,
+        "external_samples": false,
+        "voice": false,
+        "music": false
+      },
+      "final_mux": {
+        "filename": "A1_pecera_5min_AV_ECO_R01.mp4",
+        "sha256": "7bd18bd4aac9373fcb2ccbc25ceb8ae7e9fefeead3c161a4eb5cf343a74012c3",
+        "size_bytes": 24789723,
+        "duration_seconds": 300.083333,
+        "video_codec": "h264",
+        "video_profile": "High",
+        "video_level": "3.1",
+        "width": 960,
+        "height": 540,
+        "fps": 24,
+        "audio_codec": "aac",
+        "audio_profile": "LC",
+        "audio_sample_rate_hz": 48000,
+        "audio_channels": 2,
+        "av_duration_delta_seconds": 0.000333,
+        "video_reencoded": false,
+        "faststart": true,
+        "full_decode": "PASS",
+        "browser_local_asset": "PASS",
+        "http_range_206": "PENDING_PLAYER_HOST_SURFACE"
+      }
     },
     {
       "order": 2,
@@ -151,8 +190,8 @@
     }
   ],
   "tracking_issue": 368,
-  "active_stage": "ECO_AUDIO_PROTOTYPE",
-  "active_stage_marker": "RINCON_A1_ECO_AUDIO_MEDIA_PASS",
+  "active_stage": "LUMEN_FINAL_AV_CHECK",
+  "active_stage_marker": "RINCON_A1_LUMEN_FINAL_AV_PASS",
   "last_orchestration_comment_id": 5957669623,
   "resource_constraints": {
     "motor": {
@@ -164,8 +203,8 @@
   },
   "last_completed_checkpoint": {
     "item": "A1",
-    "owner": "LUMEN",
-    "marker": "RINCON_A1_LUMEN_VISUAL_KEEP_PASS",
-    "evidence_path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_LUMEN_VISUAL_KEEP_PASS.md"
+    "owner": "ECO",
+    "marker": "RINCON_A1_ECO_AUDIO_MEDIA_PASS",
+    "evidence_path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_MEDIA_PASS.md"
   }
 }
