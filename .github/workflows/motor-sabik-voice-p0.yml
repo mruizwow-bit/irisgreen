@@ -1,0 +1,49 @@
+name: Motor · Sabik ES-EN voice P0
+on:
+  push:
+    branches: ['motor/sabik-voice-runtime-p0-20261002']
+    paths:
+      - 'sabik/**'
+      - 'scripts/test_sabik_presence_r52.py'
+      - 'scripts/test_sabik_voice_runtime.mjs'
+      - 'scripts/test_sabik_voice_browser.py'
+      - '.github/workflows/motor-sabik-voice-p0.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax and voice unit
+        run: |
+          node --check sabik/voice-runtime.mjs
+          node --check sabik/iris-mount.mjs
+          node scripts/test_sabik_voice_runtime.mjs
+          python -m py_compile scripts/test_sabik_voice_browser.py
+      - name: Preserve definitive visual/core
+        run: |
+          python scripts/test_sabik_definitive_baseline.py
+          node tools/test-sabik-motion-r37.js
+          node scripts/test_sabik_audio_r01.mjs
+          python scripts/test_sabik_presence_r52.py
+          python scripts/test_sabik_presence_r52_browser.py
+      - name: Canonical build
+        run: python scripts/build_site.py
+      - name: Materialized audio gate
+        run: python scripts/test_sabik_audio_assets_r01.py
+      - name: Bilingual voice browser QA
+        run: python scripts/test_sabik_voice_browser.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: sabik-voice-p0-evidence
+          path: reports/sabik-voice-p0/qa.json
+          retention-days: 14
