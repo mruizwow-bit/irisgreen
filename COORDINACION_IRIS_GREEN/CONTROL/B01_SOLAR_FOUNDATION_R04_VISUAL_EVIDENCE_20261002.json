@@ -1,0 +1,70 @@
+{
+  "schema": "iris-green-b01-solar-r04-visual-evidence-v1",
+  "date": "2026-10-02",
+  "owner": "LUMEN_A7",
+  "entry_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_REWORK_REQUIRED_VISUAL_QUALITY",
+  "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW",
+  "status": "READY_FOR_VISUAL_REVIEW_R04",
+  "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R04 Review",
+  "masters": [
+    {
+      "id": "sol",
+      "file": "b01_sol_master_r04.png",
+      "sha256": "051a2611c48c82e9460d1e07f8b8c987d53d41c20f0fe9e58e45b8d9e0aba92f"
+    },
+    {
+      "id": "mercurio",
+      "file": "b01_mercurio_master_r04.png",
+      "sha256": "91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126"
+    },
+    {
+      "id": "venus",
+      "file": "b01_venus_master_r04.png",
+      "sha256": "dc305bf68a611462655e5a5224034de930c4872ed8dc8a8a4df5b9da97bde878"
+    },
+    {
+      "id": "tierra",
+      "file": "b01_tierra_master_r04.png",
+      "sha256": "86fbd802104c9e1f906710bde3d696e332f936067227a175f33e4cb36c53d38a"
+    }
+  ],
+  "contact_sheet": {
+    "file": "B01_SOLAR_FOUNDATION_R04_CONTACT_SHEET.png",
+    "sha256": "1a008508dadcec8d67c5de9699ba5f27c6f17955706711128aed38f0d345bc7f",
+    "size": [
+      2400,
+      1800
+    ]
+  },
+  "technical_contract": {
+    "canvas": [
+      1536,
+      1536
+    ],
+    "format": "PNG",
+    "rgba": true,
+    "alpha": true,
+    "srgb_icc": true,
+    "one_body_per_file": true,
+    "no_text": true,
+    "no_space_background": true,
+    "relative_scale_baked": false,
+    "asset_class": "REPRESENTATION"
+  },
+  "factual_brief": {
+    "marker": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
+    "commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd"
+  },
+  "earth_factual_scaffold": {
+    "source": "NOAA NCEI ETOPO1",
+    "url": "https://www.ncei.noaa.gov/products/etopo-global-relief-model",
+    "rights": "PUBLIC_DOMAIN",
+    "use": "relief/geography scaffold only",
+    "final_asset_class": "REPRESENTATION",
+    "clouds": "GENERIC_NOT_CURRENT_WEATHER"
+  },
+  "previous_uploaded_composites": "VISUAL_REFERENCE_ONLY",
+  "atlas_packaging": "WAIT_R04_VISUAL_PASS",
+  "b02": "HOLD",
+  "b03": "HOLD"
+}

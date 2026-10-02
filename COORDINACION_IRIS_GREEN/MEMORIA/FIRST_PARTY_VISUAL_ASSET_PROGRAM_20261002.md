@@ -471,3 +471,76 @@ Salida nueva:
 `VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW`
 
 B02/B03 continúan HOLD.
+
+
+## B01 · R04 LUMEN · READY FOR REVIEW
+
+Estado:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW`
+
+Entrada:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_REWORK_REQUIRED_VISUAL_QUALITY`
+
+R04 rehace SOLO:
+- Sol;
+- Mercurio;
+- Venus;
+- Tierra.
+
+KEEP factual/técnico:
+- brief Senda `2a387fa0e1294b3a1167e4adcc800bd7419f4cfd`;
+- clase `REPRESENTATION`;
+- 1536×1536;
+- RGBA + alpha;
+- sRGB ICC;
+- un cuerpo por archivo;
+- disco completo;
+- sin texto/logos/estrellas;
+- sin escala relativa horneada;
+- B02/B03 HOLD.
+
+Library R04:
+`/Iris Green/First Party Visual/B01 Solar Foundation/R04 Review/`
+
+Masters R04:
+- Sol · `b01_sol_master_r04.png`
+  - SHA-256 `051a2611c48c82e9460d1e07f8b8c987d53d41c20f0fe9e58e45b8d9e0aba92f`
+- Mercurio · `b01_mercurio_master_r04.png`
+  - SHA-256 `91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126`
+- Venus · `b01_venus_master_r04.png`
+  - SHA-256 `dc305bf68a611462655e5a5224034de930c4872ed8dc8a8a4df5b9da97bde878`
+- Tierra · `b01_tierra_master_r04.png`
+  - SHA-256 `86fbd802104c9e1f906710bde3d696e332f936067227a175f33e4cb36c53d38a`
+
+Contact sheet:
+- `B01_SOLAR_FOUNDATION_R04_CONTACT_SHEET.png`
+- SHA-256 `1a008508dadcec8d67c5de9699ba5f27c6f17955706711128aed38f0d345bc7f`
+- 2400×1800;
+- solo review, no asset runtime.
+
+Dirección R04:
+- Sol: más granulación/microcontraste y lectura autoemisiva, glow corto; sin corona extensa/prominencias;
+- Mercurio: relieve/cráteres/rayos discretos más legibles, gris-parduzco; no cartografía exacta;
+- Venus: estructura nubosa crema/marfil más legible, superficie completamente oculta;
+- Tierra: África/Europa/Atlántico, relieve/materialidad, océanos azules, nube genérica y halo fino.
+
+Provenance R04:
+- Sol/Mercurio/Venus: generación first-party de Lumen + normalización factual/relighting; los composites previos de review NO se adoptan como masters;
+- Tierra: render first-party ortográfico con relief scaffold NOAA/NCEI ETOPO1 documentado como public-domain; nube genérica, no meteorología actual; master sigue siendo REPRESENTATION.
+
+Soporte en Library:
+- `B01_SOLAR_FOUNDATION_R04_DIRECTION.md`
+- `B01_SOLAR_FOUNDATION_R04_MANIFEST.json`
+- `B01_SOLAR_FOUNDATION_R04_PROVENANCE.json`
+
+Gate actual:
+`READY_FOR_VISUAL_REVIEW_R04`
+
+Siguiente:
+**Astra + María + Lumen visual review**.
+
+Atlas:
+`WAIT_R04_VISUAL_PASS`
+
+B02/B03:
+HOLD.
