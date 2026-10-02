@@ -1,7 +1,7 @@
 name: Juegos en sala S0 · runtime split
 on:
   push:
-    branches: [main, motor/room-games-s0-runtime-20261002]
+    branches: [main]
     paths:
       - 'assets/data/juegos/**'
       - 'assets/juegos-sala-s0.js'
