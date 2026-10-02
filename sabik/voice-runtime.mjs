@@ -219,7 +219,7 @@ export function createSabikConversationalVoice({
   current.onspeechend=()=>{try{current.stop?.();}catch{}};
   current.onaudioend=()=>{
    if(ticket!==revision||recognition!==current)return;
-   listening=false;emit({reason:'audio-end'});
+   listening=false;
   };
   current.onerror=event=>{
    if(ticket!==revision||recognition!==current)return;
@@ -233,7 +233,6 @@ export function createSabikConversationalVoice({
    clearRecognition();
    if(transcript){
     lastTranscript=transcript;
-    emit({reason:'transcript-ready'});
     Promise.resolve(onTranscript(transcript,{language:lang,recognitionLanguage:LANG[lang].recognition})).catch(()=>issue('transcript-handler-error'));
    }else if(audioActive){
     issue('no-speech');
