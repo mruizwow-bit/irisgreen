@@ -118,13 +118,59 @@ Revisión Lumen:
 - no se observa defecto visual que justifique rerender;
 - **no cambiar arte por duración**.
 
+Checkpoint Eco completado:
+`RINCON_A1_ECO_AUDIO_MEDIA_PASS`
+
+Audio first-party:
+- archivo: `A1_pecera_audio_firstparty_5min.m4a`;
+- SHA-256: `36e7b00ccb4b268a8b7f1a4d640af7564585bd549071e5061fd291c2c871000e`;
+- tamaño: 4.886.202 B;
+- AAC-LC · 48 kHz · estéreo · ~128.730 bps;
+- duración de stream: 300.083 s;
+- integrada: −23,03 LUFS;
+- LRA: 1,90 LU;
+- true peak: −10,58 dBTP;
+- 0 voz / 0 música / 0 samples externos;
+- cuerpo de agua + 275 resonancias de burbuja irregulares;
+- seed determinista: 61012026;
+- >98,1 % de la energía espectral medida queda por debajo de 1 kHz.
+
+Mux final:
+- archivo: `A1_pecera_5min_AV_ECO_R01.mp4`;
+- SHA-256: `7bd18bd4aac9373fcb2ccbc25ceb8ae7e9fefeead3c161a4eb5cf343a74012c3`;
+- tamaño: 24.789.723 B;
+- H.264 High 3.1 + AAC-LC;
+- 960×540 · 24 fps;
+- duración: 300.083333 s;
+- delta A/V: 0,000333 s;
+- vídeo copiado sin recodificar: hash elemental H.264 antes/después idéntico `771f88e17784fccc6dff36260366b6cfc2c6b3e2ecc2a7ae1d1c0aa215f6973b`;
+- full ffmpeg decode: PASS;
+- faststart aplicado: `moov` pasa de casi el final del input a offset 36 del mux final.
+
+Browser lab:
+- Chromium 144.0.7559.96;
+- exact mux final;
+- H.264/AAC `canPlayType=probably`;
+- play/unmute/seek PASS;
+- 0 dropped / 0 corrupted en la muestra;
+- HTTP Range/206 queda pendiente hasta disponer de player/host real.
+
+Evidencia:
+`COORDINACION_IRIS_GREEN/EVIDENCIA/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_MEDIA_EVIDENCE.json`
+
+Generador:
+`COORDINACION_IRIS_GREEN/EVIDENCIA/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_GENERATOR_R01.py`
+
+Handoff:
+`COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_MEDIA_PASS.md`
+
 Owner actual:
-**Eco A6** — crear sonido first-party propio de Pecera + mux/media QA sobre ESTE hash.
+**Lumen A7** — final AV check únicamente.
 
-Lumen entra en WAIT hasta:
-`RINCON_A1_ECO_AUDIO_MEDIA_PASS`.
+Salida esperada Lumen:
+`RINCON_A1_LUMEN_FINAL_AV_PASS`.
 
-No A3. No B2. Cola congelada por `ONE ACTIVE MEDIA ITEM ONLY`.
+No A3. No B2. Cola congelada por `ONE ACTIVE_MEDIA_ITEM_ONLY`.
 
 ### QUEUED
 A3, B2, A2, A4, A5, A6, A7, A8, B1, B3, B4, B5, B6, B7, B8.
