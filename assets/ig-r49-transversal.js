@@ -61,7 +61,7 @@ function langHref(){
 }
 function stageLabel(){
  var t=tr(),v=W.IGAudience?W.IGAudience.get():'GENERAL';
- return ({AGE_0_12:t.children,AGE_13_17:t.teenagers,AGE_18_PLUS:t.adults,ALL_AGES:t.any,GENERAL:t.defaultStage,children:t.children,teenagers:t.teenagers,adults:t.adults,any:t.any,default:t.defaultStage})[v]||t.defaultStage;
+ return ({AGE_0_12:t.children,AGE_13_17:t.teenagers,AGE_18_PLUS:t.adults,GENERAL:t.defaultStage,children:t.children,teenagers:t.teenagers,adults:t.adults,default:t.defaultStage})[v]||t.defaultStage;
 }
 function navLink(item){
  var a=h('a',{href:item.href,text:tr()[item.k]});if(current(item))a.setAttribute('aria-current','page');return a;
@@ -128,7 +128,7 @@ function openAudience(trigger){
  var d=dialog('ig-r49-audience',tr().stageTitle),body=d.querySelector('.ig-r49-dialog-body');
  body.replaceChildren();
  var pick=h('div',{class:'ig-r49-stage-picker','data-ig-audience-picker':''});
- [['AGE_0_12',tr().children],['AGE_13_17',tr().teenagers],['AGE_18_PLUS',tr().adults],['ALL_AGES',tr().any]].forEach(function(x){pick.appendChild(h('button',{type:'button','data-ig-audience-stage':x[0],'aria-pressed':'false',text:x[1]}));});
+ [['GENERAL',tr().defaultStage],['AGE_0_12',tr().children],['AGE_13_17',tr().teenagers],['AGE_18_PLUS',tr().adults]].forEach(function(x){pick.appendChild(h('button',{type:'button','data-ig-audience-stage':x[0],'aria-pressed':'false',text:x[1]}));});
  body.append(pick,h('p',{class:'ig-r49-note',text:tr().stageNote}));
  if(W.IGAudience)W.IGAudience.mount(body);openDialog(d,trigger);
 }
