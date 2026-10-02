@@ -3,12 +3,12 @@
 @font-face { font-family:"IG Escritura Mono"; src:url(/assets/fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2"); font-weight:500; font-display:swap; }
 
 body[data-ig-suite="escritura"] .igs-viewport.igw-viewport {
-  user-select:text; -webkit-user-select:text; touch-action:auto; background:#fff;
+  user-select:text; -webkit-user-select:text; touch-action:auto; background:var(--ig-bg-surface);
   height:clamp(22rem,calc(100svh - 22rem),52rem);
 }
 body[data-ig-suite="escritura"] .igw-editor {
   --igw-size:19px; --igw-measure:38rem; --igw-font:"Atkinson Hyperlegible",system-ui,sans-serif;
-  position:absolute; inset:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto; background:#fff;
+  position:absolute; inset:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto; background:var(--ig-bg-surface);
 }
 body[data-ig-suite="escritura"] .igw-editor[data-font="serif"] { --igw-font:"IG Escritura Serif",Georgia,serif; }
 body[data-ig-suite="escritura"] .igw-editor[data-font="mono"] { --igw-font:"IG Escritura Mono",ui-monospace,Consolas,monospace; --igw-measure:42rem; }
@@ -18,12 +18,12 @@ body[data-ig-suite="escritura"] .igw-head {
 }
 body[data-ig-suite="escritura"] .igw-label { display:flex; flex-wrap:wrap; gap:.35rem; align-items:baseline; margin:0; font:700 .95rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
 body[data-ig-suite="escritura"] .igw-label-k { color:var(--igs-ink-soft); font-weight:600; }
-body[data-ig-suite="escritura"] .igw-badge { margin:0; padding:.2rem .65rem; border-radius:999px; border:1px solid var(--igs-line); background:#fff; font:700 .85rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
-body[data-ig-suite="escritura"] .igw-badge[data-kind="ok"] { border-color:#7fb08f; background:#f1f8f3; color:#1d5a32; }
-body[data-ig-suite="escritura"] .igw-badge[data-kind="bad"] { border-color:#c98a97; background:#fbf1f3; color:#7d1f33; }
+body[data-ig-suite="escritura"] .igw-badge { margin:0; padding:.2rem .65rem; border-radius:999px; border:1px solid var(--igs-line); background:var(--ig-bg-surface); font:700 .85rem/1.35 "Atkinson Hyperlegible",system-ui,sans-serif; color:var(--igs-ink); }
+body[data-ig-suite="escritura"] .igw-badge[data-kind="ok"] { border-color:#7fb08f; background:var(--ig-bg-surface-soft); color:var(--ig-text); }
+body[data-ig-suite="escritura"] .igw-badge[data-kind="bad"] { border-color:#c98a97; background:var(--ig-bg-surface-soft); color:var(--ig-text); }
 
 /* Área de texto con capa de marcas detrás: mismas medidas y ajuste de línea. */
-body[data-ig-suite="escritura"] .igw-field { position:relative; min-height:0; background:#fff; }
+body[data-ig-suite="escritura"] .igw-field { position:relative; min-height:0; background:var(--ig-bg-surface); }
 body[data-ig-suite="escritura"] .igw-backdrop, body[data-ig-suite="escritura"] .igw-ta {
   position:absolute; inset:0; margin:0; box-sizing:border-box; width:100%; height:100%;
   /* Medida de lectura limitada (unos 62 caracteres) aunque el espacio de trabajo sea muy ancho. */
@@ -35,7 +35,7 @@ body[data-ig-suite="escritura"] .igw-backdrop { color:transparent; pointer-event
 body[data-ig-suite="escritura"] .igw-backdrop::-webkit-scrollbar { display:none; }
 body[data-ig-suite="escritura"] .igw-hl { position:relative; }
 body[data-ig-suite="escritura"] .igw-hl mark {
-  color:transparent; background:#fde3e8; border-radius:3px;
+  color:transparent; background:var(--ig-bg-surface-soft); border-radius:3px;
   text-decoration:underline wavy #a1283c; text-decoration-thickness:2px; text-underline-offset:.28em; text-decoration-skip-ink:none;
 }
 body[data-ig-suite="escritura"] .igw-editor[data-marks="false"] .igw-hl mark { background:transparent; text-decoration:none; }
@@ -53,11 +53,11 @@ body[data-ig-suite="escritura"] .igs-sec p, body[data-ig-suite="escritura"] .igs
 
 /* Estructura */
 body[data-ig-suite="escritura"] .igw-doc-ico { flex:none; width:1.1rem; text-align:center; color:var(--igs-violet); font-weight:800; }
-body[data-ig-suite="escritura"] .igw-part-n { flex:none; min-width:1.4rem; height:1.4rem; display:grid; place-items:center; border-radius:6px; background:#eef2f7; color:var(--igs-ink); font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
+body[data-ig-suite="escritura"] .igw-part-n { flex:none; min-width:1.4rem; height:1.4rem; display:grid; place-items:center; border-radius:6px; background:var(--ig-bg-surface-soft); color:var(--igs-ink); font:800 .75rem/1 "Atkinson Hyperlegible",system-ui,sans-serif; }
 body[data-ig-suite="escritura"] .igw-part-t { min-width:0; overflow:hidden; text-overflow:ellipsis; }
 
 /* Propiedades */
-body[data-ig-suite="escritura"] .igw-check { display:grid; gap:.3rem; padding:.55rem .65rem; border:1px solid var(--igs-line); border-radius:12px; background:#fff; }
+body[data-ig-suite="escritura"] .igw-check { display:grid; gap:.3rem; padding:.55rem .65rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); }
 body[data-ig-suite="escritura"] .igw-check[data-ok="false"] { border-color:#d7a6b0; }
 body[data-ig-suite="escritura"] .igw-check-head { display:flex; gap:.45rem; align-items:center; margin:0; }
 body[data-ig-suite="escritura"] .igw-check[data-ok="false"] .iga-mark, body[data-ig-suite="escritura"] .igw-issues li[data-ok="false"] .iga-mark,
@@ -68,7 +68,7 @@ body[data-ig-suite="escritura"] .igw-issues li { display:flex; gap:.45rem; align
 body[data-ig-suite="escritura"] .igw-issue-t { flex:1 1 auto; min-width:0; overflow-wrap:anywhere; }
 body[data-ig-suite="escritura"] .igw-go { flex:none; min-height:36px; min-width:44px; padding:.2rem .6rem; font-size:.85rem; }
 body[data-ig-suite="escritura"] .igw-more { color:var(--igs-ink-soft); font-style:italic; }
-body[data-ig-suite="escritura"] .igw-rule { display:grid; gap:.35rem; padding:.45rem .55rem; border:1px solid var(--igs-line); border-radius:12px; background:#fff; }
+body[data-ig-suite="escritura"] .igw-rule { display:grid; gap:.35rem; padding:.45rem .55rem; border:1px solid var(--igs-line); border-radius:12px; background:var(--ig-bg-surface); }
 body[data-ig-suite="escritura"] .igw-rule[data-on="true"] { border-color:var(--igs-blue); box-shadow:inset 3px 0 0 var(--igs-blue); background:#f7fafd; }
 body[data-ig-suite="escritura"] .igw-rule-help { margin:0; color:var(--igs-ink-soft); font-size:.86rem; line-height:1.4; }
 body[data-ig-suite="escritura"] .igw-cues { margin:0; padding-left:1.3rem; font-size:.9rem; line-height:1.45; }
