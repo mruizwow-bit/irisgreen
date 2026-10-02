@@ -48,15 +48,17 @@ for marker in ("sabikDefBreathe","sabikDefOrbit",'data-state="processing"','data
 for marker in ("setSemanticState","setVoiceActive","semanticState","layers:{orbits","BODY='/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01'"):
     assert marker in js.replace(" ",""),marker
 
-assert "meta.inputMode==='voice'" in mount
 assert "meta.phase==='retrieval'" in mount
 assert "meta.phase==='error'" in mount
 assert "semantic='processing'" in mount
 assert "semantic='degraded'" in mount
 
-# Voice state is driven by actual playback state from createSabikVoice.
-assert "setVoiceActive(playing)" in mount
-# No mic/listening is faked for text input.
-assert "next==='ORIENTAR'&&meta.inputMode==='voice'" in mount
+# Voice lifecycle is now owned by the real browser voice runtime.
+assert "createSabikConversationalVoice" in mount
+assert "setVoiceActive(speaking)" in mount
+assert "voice.startListening()" in mount
+assert "voice.speak(answer)" in mount
+# Listening is emitted only by the capture runtime, never inferred from a text/voice turn label.
+assert "next==='ORIENTAR'&&meta.inputMode==='voice'" not in mount
 
 print("SABIK_DEFINITIVE_LAYERED_STATIC_PASS")
