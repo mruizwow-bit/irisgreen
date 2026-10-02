@@ -27,8 +27,11 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - run: python scripts/build_site.py
       - run: python scripts/test_resources_current.py
+      - run: python scripts/test_room_games_s0.py
       - uses: actions/upload-artifact@v4
         if: always()
         with:
           name: recursos-es-en-evidencia
-          path: reports/resources-current/
+          path: |
+            reports/resources-current/
+            reports/room-games-s0/
