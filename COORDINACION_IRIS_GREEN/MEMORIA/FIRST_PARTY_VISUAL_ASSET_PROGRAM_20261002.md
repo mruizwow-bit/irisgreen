@@ -163,7 +163,30 @@ Gate:
 Lumen solo revisa si Atlas detecta que la adaptación exige reimaginar.
 
 ## BATCH 01 · SISTEMA SOLAR · FUNDACIÓN VISUAL
-Owner visual:
+
+Estado operativo:
+`AUTHORIZED_WAIT_FACTUAL_BRIEF`
+
+### Precondición obligatoria · Senda
+Antes de que Lumen genere ningún master, Senda debe cerrar para Sol, Mercurio, Venus y Tierra:
+
+- función de producto;
+- clasificación `REAL_DATA / CALCULATION / REPRESENTATION`;
+- descriptores factuales visibles permitidos;
+- qué NO puede inferirse ni representarse como hecho;
+- estados necesarios;
+- prioridad;
+- `REUSE / NEW`;
+- fuente/fecha cuando el descriptor dependa de información externa;
+- límites epistemológicos de la representación.
+
+Gate previo:
+`INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS`
+
+Hasta ese PASS:
+**Lumen NO genera los masters.**
+
+### Owner visual después del brief
 Lumen.
 
 Masters:
@@ -311,3 +334,19 @@ Cada tanda deja:
 - decisión KEEP/REWORK/PASS;
 - handoff al siguiente owner.
 
+
+
+## Precedencia Senda inmediata
+
+La orden previa:
+`INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF_PASS`
+
+queda **QUEUED / NO INMEDIATA**.
+
+La siguiente tarea de Senda es:
+`INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS`
+
+Solo después de entregar ese brief puede continuar el flujo:
+`SENDA BRIEF → LUMEN B01 → VISUAL REVIEW → ATLAS PACKAGING`.
+
+Interés 05 se retoma después de cerrar esta dependencia visual del Sistema Solar o cuando Astra lo reasigne expresamente.
