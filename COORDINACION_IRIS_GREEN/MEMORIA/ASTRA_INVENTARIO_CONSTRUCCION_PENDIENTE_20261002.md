@@ -464,16 +464,20 @@ Nuestros productos deben integrarse DESPUÉS sobre esa base sin volver a romperl
 # 8 · SIGUIENTES CONSTRUCCIONES EN PARALELO SIN PISAR NEXO
 
 ## Motor
-Ahora libre tras cerrar Suite5.
-Siguiente producto ya preparado:
+Reservado temporalmente por María para:
+`NEXO → SABIK_DEFINITIVE_P0`
+
+No interrumpir para Mar22 ni Rincón.
+
+Cuando Nexo emita release explícito, el siguiente producto preparado sigue siendo:
 `MAR_22_MESO_RUNTIME_INTEGRATION_QA_PASS`
 
-No tocar shell/Sabik.
+Después podrá asumir el player común del Nuevo Rincón según precedencia Astra/Nexo.
 
 ## Senda
 Eclipses V2 product spec ya cerrado.
 Siguiente:
-**Interés 05**, solo producto/contenido/reuse;
+**Interés 05 · Lluvias de estrellas y meteoritos**, solo producto/contenido/reuse + asset brief first-party;
 después 06 y 07, uno a uno.
 
 ## Atlas
@@ -483,10 +487,16 @@ Cerrar técnicamente el panorama:
 Después releer specs antes de Voyager/ISS.
 
 ## Lumen
-Cerrar A1 Pecera:
+A1 Pecera ya cerrada:
 `RINCON_A1_LUMEN_FINAL_AV_PASS`
 
-Después WAIT hasta player/Axioma/final gate.
+A1 queda `WAIT_MOTOR_RELEASE`.
+
+Lumen pasa al programa visual first-party transversal #370.
+Primer bloque:
+Sol · Mercurio · Venus · Tierra.
+Gate:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW`.
 
 ## Eco
 A1 ya PASS.
@@ -509,3 +519,24 @@ Preservar no equivale a integrar.
 Un paquete en Library no equivale a producto público.
 Un PASS técnico no equivale a HUMAN QA visual.
 No reconstruir lo ya aprobado si solo falta integración.
+
+
+## Programa visual first-party transversal
+
+Tracking:
+GitHub #370.
+
+Memoria:
+`COORDINACION_IRIS_GREEN/MEMORIA/FIRST_PARTY_VISUAL_ASSET_PROGRAM_20261002.md`
+
+Control:
+`COORDINACION_IRIS_GREEN/CONTROL/FIRST_PARTY_VISUAL_ASSET_PROGRAM_20261002.json`
+
+Owners:
+- Lumen = creación/dirección visual;
+- Atlas = packaging/provenance;
+- Senda = requisitos factual/producto;
+- Motor = integración cuando Nexo lo libere.
+
+Regla:
+`3–6 MASTERS → VISUAL GATE → ATLAS PACKAGING → INTEGRATION → NEXT`.
