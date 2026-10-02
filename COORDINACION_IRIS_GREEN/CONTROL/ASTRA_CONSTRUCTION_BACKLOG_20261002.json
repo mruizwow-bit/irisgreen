@@ -128,10 +128,6 @@
   },
   "next_parallel": [
     {
-      "owner": "SENDA",
-      "task": "INTEREST_05_PRODUCT_CONTENT_REUSE"
-    },
-    {
       "owner": "ATLAS",
       "task": "INTEREST_01_SKY_HORIZON_ASSET_PASS"
     },
@@ -145,7 +141,7 @@
     },
     {
       "owner": "SENDA",
-      "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF"
+      "task": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS"
     }
   ],
   "resource_constraints": {
@@ -153,5 +149,11 @@
       "status": "BUSY_WITH_NEXO_SABIK_P0",
       "rule": "NO_RINCON_OR_INTERESTS_UNTIL_RELEASE"
     }
-  }
+  },
+  "queued_after": [
+    {
+      "owner": "SENDA",
+      "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF_PASS"
+    }
+  ]
 }
