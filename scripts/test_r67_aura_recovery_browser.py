@@ -17,6 +17,10 @@ async def main():
   browser=await p.chromium.launch()
   ctx=await browser.new_context()
   page=await ctx.new_page()
+  console_errors=[];page_errors=[];sabik_responses=[]
+  page.on('console',lambda msg: console_errors.append(msg.text) if msg.type=='error' else None)
+  page.on('pageerror',lambda err: page_errors.append(str(err)))
+  page.on('response',lambda resp: sabik_responses.append({'url':resp.url,'status':resp.status,'content_type':resp.headers.get('content-type','')}) if '/sabik/' in resp.url else None)
 
   samples=['/es/situaciones/','/es/neurodiversidad/condiciones/','/es/datos/','/es/recursos/','/es/taller/','/es/intereses/','/es/sitio-tranquilo/']
   for path in samples:
@@ -69,7 +73,19 @@ async def main():
   await page.evaluate("IGAudience.clear()")
   input_=page.locator('#sabik-input')
   await input_.fill('ruido')
-  await page.locator('#sabik-submit').click()
+  await page.wait_for_timeout(400)
+  submit=page.locator('#sabik-submit')
+  diagnostic={
+   'module_script':await page.locator('script[src="/sabik/iris-mount.mjs"]').count(),
+   'input_value':await input_.input_value(),
+   'submit_disabled':await submit.is_disabled(),
+   'console_errors':console_errors[-12:],
+   'page_errors':page_errors[-12:],
+   'sabik_responses':sabik_responses[-30:],
+  }
+  print(json.dumps({'sabik_mount_diagnostic':diagnostic},ensure_ascii=False))
+  need(not diagnostic['submit_disabled'],'Sabik runtime did not mount '+repr(diagnostic))
+  await submit.click()
   await page.wait_for_selector('.sabik-conversation-answer',timeout=7000)
   answer=(await page.locator('.sabik-conversation-answer').inner_text()).strip()
   need(bool(answer),'Sabik local fallback produced no answer')
