@@ -1,0 +1,35 @@
+{
+  "schema": "cielo_v2_human_qa_visual_rework_v1",
+  "date": "2026-10-02",
+  "status": "INTEREST_01_CIELO_V2_HUMAN_QA_FAIL_VISUAL_QUALITY",
+  "evidence": {
+    "library_path": "/Iris Green/Handoffs/Astra/CIELO_V2_HUMAN_QA_FAIL_20261002/cielo-v2-human-qa-fail.png",
+    "sha256": "1896cb1cc5dd86527552ac717febac38a607dd43c6f6fa45119e193767744e3b",
+    "width": 2047,
+    "height": 1543
+  },
+  "functional_keep": [
+    "LOCAL_HYG_IAU_JPL",
+    "18_INTERACTIVE_TARGETS",
+    "MAX_5_CONSTELLATION_LABELS",
+    "KEYBOARD_TOUCH",
+    "MOTION_3",
+    "FORCED_COLORS",
+    "DEPTH_LAZY",
+    "NO_AUTO_GEO"
+  ],
+  "visual_fail": [
+    "DASHBOARD_READING",
+    "PERSISTENT_DOMINANT_SIDEBAR",
+    "STAR_TARGETS_LOOK_LIKE_BUBBLES",
+    "CONSTELLATION_LABELS_LOOK_LIKE_UI_PILLS",
+    "HORIZON_NOT_PERCEPTUALLY_PRESENT",
+    "INSUFFICIENT_ATMOSPHERIC_DEPTH",
+    "TECHNICAL_INFO_DOMINATES",
+    "WORLD_SCENE_FIRST_NOT_PERCEPTUALLY_MET"
+  ],
+  "owner": "PRISMA_A8",
+  "motor_status": "DO_NOT_INTERRUPT_BUSY_WITH_NEXO",
+  "next_gate": "INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA",
+  "merge_policy": "NO_MAIN_BEFORE_HUMAN_QA"
+}
