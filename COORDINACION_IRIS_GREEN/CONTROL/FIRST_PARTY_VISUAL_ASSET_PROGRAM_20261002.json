@@ -1,0 +1,73 @@
+{
+  "schema": "first_party_visual_asset_program_v1",
+  "date": "2026-10-02",
+  "authority": "MARIA",
+  "wip_batch_size": {
+    "min": 3,
+    "max": 6
+  },
+  "owners": {
+    "visual_creation": "LUMEN_A7",
+    "packaging_provenance": "ATLAS_A1",
+    "factual_product_requirements": "SENDA_R59",
+    "runtime_integration": "MOTOR_A5",
+    "accessibility_qa": "AXIOMA",
+    "audio_media": "ECO_A6"
+  },
+  "motor_constraint": {
+    "status": "BUSY_WITH_NEXO_SABIK_P0",
+    "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_INTERESTS"
+  },
+  "batches": [
+    {
+      "id": "B00",
+      "name": "Cielo horizonte",
+      "owner": "ATLAS",
+      "status": "ACTIVE_TECHNICAL_CLOSURE",
+      "gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS"
+    },
+    {
+      "id": "B01",
+      "name": "Solar foundation",
+      "owner": "LUMEN",
+      "status": "AUTHORIZED",
+      "assets": [
+        "sol",
+        "mercurio",
+        "venus",
+        "tierra"
+      ],
+      "gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_READY_FOR_REVIEW"
+    },
+    {
+      "id": "B02",
+      "name": "Solar remaining planets",
+      "owner": "LUMEN",
+      "status": "HOLD_AFTER_B01",
+      "assets": [
+        "marte",
+        "jupiter",
+        "saturno",
+        "urano",
+        "neptuno"
+      ]
+    },
+    {
+      "id": "B03",
+      "name": "Solar context moons",
+      "owner": "LUMEN",
+      "status": "HOLD_FOR_PRODUCT_SPEC"
+    }
+  ],
+  "locked_keep": {
+    "mar22_mesopelagic_6png": "DO_NOT_REGENERATE",
+    "fossils_r2v4_art": "DO_NOT_REGENERATE",
+    "games_p01_p02_p03": "DO_NOT_REGENERATE"
+  },
+  "science_rules": [
+    "DO_NOT_PRESENT_REPRESENTATION_AS_OBSERVATION",
+    "DO_NOT_INVENT_UNKNOWN_SURFACE_FEATURES",
+    "FACTUAL_DESCRIPTORS_BEFORE_GENERATION",
+    "KEEP_REAL_DATA_CALCULATION_REPRESENTATION_SEPARATE"
+  ]
+}
