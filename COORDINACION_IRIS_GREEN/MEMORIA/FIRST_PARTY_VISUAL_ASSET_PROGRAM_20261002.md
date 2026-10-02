@@ -377,3 +377,97 @@ Solo después de entregar ese brief puede continuar el flujo:
 `SENDA BRIEF → LUMEN B01 → VISUAL REVIEW → ATLAS PACKAGING`.
 
 Interés 05 se retoma después de cerrar esta dependencia visual del Sistema Solar o cuando Astra lo reasigne expresamente.
+
+
+## B01 · HUMAN QA VISUAL · RESULTADO 02/10/2026
+
+Estado:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_REWORK_REQUIRED_VISUAL_QUALITY`
+
+La entrega técnica R03 de Lumen cumple:
+- 1536×1536;
+- RGBA;
+- alpha;
+- sRGB ICC en los masters canónicos de Library;
+- un cuerpo por archivo;
+- sin texto/fondo/estrellas;
+- factual brief respetado;
+- seeds/config/provenance.
+
+Pero NO pasa aún HUMAN QA visual de Astra/María.
+
+Motivos:
+- Sol demasiado plano/pálido; falta presencia autoemisiva y granulación perceptible sin caer en “bola naranja en llamas”.
+- Mercurio demasiado lavado/plano; la craterización no tiene suficiente relieve/materialidad.
+- Venus demasiado uniforme; falta lectura de capa nubosa opaca y volumen atmosférico sin revelar superficie.
+- Tierra es reconocible pero todavía parece procedural/simplificada frente al nivel visual esperado.
+- la familia no alcanza todavía el acabado premium/E4 que María ha marcado como objetivo global.
+
+Los composites realistas aportados por María se clasifican:
+`VISUAL_REFERENCE_ONLY`
+
+No son masters finales porque:
+- agrupan varios cuerpos;
+- algunos incorporan texto;
+- algunos no conservan alpha limpio individual;
+- algunos Soles muestran corona/fulguraciones permanentes incompatibles con el brief;
+- algunas Tierras cambian el hemisferio/encuadre factual requerido.
+
+### Rework Lumen B01 R04
+
+Crear de nuevo SOLO:
+Sol · Mercurio · Venus · Tierra.
+
+Mantener:
+- 1536×1536;
+- RGBA;
+- alpha real;
+- sRGB ICC;
+- un cuerpo por archivo;
+- disco completo;
+- sin texto/fondo/estrellas;
+- no escala relativa horneada;
+- clase `REPRESENTATION`;
+- brief factual Senda sin cambios.
+
+Subir calidad:
+- materialidad y microrelieve perceptibles;
+- iluminación coherente y volumétrica;
+- borde/limbo natural;
+- profundidad suficiente a 1440 y móvil;
+- sin apariencia de esfera plana con ruido.
+
+Sol:
+- fotosfera blanca/blanco cálido;
+- granulación visible pero controlada;
+- autoemisivo;
+- glow de borde muy corto;
+- NO corona permanente;
+- NO grandes prominencias/llamaradas;
+- NO patrón “actual” de manchas.
+
+Mercurio:
+- gris parduzco;
+- relieve/cráteres legibles;
+- algunos rayos claros discretos;
+- NO cartografía exacta;
+- NO atmósfera gruesa.
+
+Venus:
+- crema/marfil;
+- estructura nubosa sutil pero visible;
+- opacidad completa de la superficie;
+- NO radar/UV falso color.
+
+Tierra:
+- África/Europa/Atlántico;
+- océanos azules;
+- nubes genéricas;
+- halo atmosférico fino;
+- NO meteorología actual;
+- NO geografía deformada.
+
+Salida nueva:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW`
+
+B02/B03 continúan HOLD.
