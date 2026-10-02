@@ -164,13 +164,56 @@ Generador:
 Handoff:
 `COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_ECO_AUDIO_MEDIA_PASS.md`
 
-Owner actual:
-**Lumen A7** — final AV check únicamente.
+Checkpoint Lumen final AV completado:
+`RINCON_A1_LUMEN_FINAL_AV_PASS`
 
-Salida esperada Lumen:
-`RINCON_A1_LUMEN_FINAL_AV_PASS`.
+Inputs verificados:
+- visual KEEP original: `pecera_10min_parte1_de_2.mp4`
+  - SHA-256 `8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f`
+- mux Eco: `A1_pecera_5min_AV_ECO_R01.mp4`
+  - SHA-256 `7bd18bd4aac9373fcb2ccbc25ceb8ae7e9fefeead3c161a4eb5cf343a74012c3`
+- audio separado: `A1_pecera_audio_firstparty_5min.m4a`
+  - SHA-256 `36e7b00ccb4b268a8b7f1a4d640af7564585bd549071e5061fd291c2c871000e`
 
-No A3. No B2. Cola congelada por `ONE ACTIVE_MEDIA_ITEM_ONLY`.
+Control audiovisual Lumen:
+- vídeo H.264 del mux = **idéntico bit a bit** al visual KEEP;
+- hash elemental Annex-B antes/después:
+  `771f88e17784fccc6dff36260366b6cfc2c6b3e2ecc2a7ae1d1c0aa215f6973b`;
+- 7.202 fotogramas en ambos;
+- 300.083333 s en ambos;
+- audio embebido = bitstream AAC idéntico al M4A separado;
+- audio: AAC-LC · 48 kHz · estéreo · 300.083 s;
+- integrada independiente: ~−23.0 LUFS;
+- LRA: ~1.8–1.9 LU;
+- true peak: ~−10.6 dBTP;
+- estéreo equilibrado;
+- fade-in/fade-out suave;
+- tramo central sin ataques bruscos: cambio RMS p95 <1 dB por 50 ms, máximo observado ~1.8 dB;
+- ~98,1 % de energía espectral bajo 1 kHz;
+- sin voz, sin música, sin samples externos;
+- cuerpo de agua + burbujas irregulares first-party.
+
+Juicio:
+- `VISUAL_UNCHANGED_PASS`;
+- `AUDIO_LOW_STIMULATION_PASS`;
+- `AUDIO_FITS_AQUARIUM_PASS`;
+- `NO_DISTRACTING_PEAKS_EVENTS`;
+- `RELAXING_WINDOW_FAMILY_KEEP`;
+- `NO_RERENDER`.
+
+Siguiente etapa planificada:
+`MOTOR_COMMON_PLAYER_INTEGRATION`
+
+Pero **NO se entrega todavía a Motor**:
+`WAIT_MOTOR_RELEASE`
+`DO_NOT_INTERRUPT_MOTOR_FOR_RINCON`.
+
+No handoff a Motor.
+No Astra.
+No Axioma.
+No A3.
+No B2.
+Cola congelada por `ONE ACTIVE MEDIA ITEM ONLY`.
 
 ### QUEUED
 A3, B2, A2, A4, A5, A6, A7, A8, B1, B3, B4, B5, B6, B7, B8.
