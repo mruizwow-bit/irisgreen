@@ -1,151 +1,152 @@
 import {createSabikVoice} from './audio-r01.mjs';
 
-const LANG={
- es:{recognition:'es-ES',tts:['es-ES','es'],name:'es'},
- en:{recognition:'en-GB',tts:['en-GB','en-US','en'],name:'en'}
+const MODEL={
+ es:{locale:'es',ttsLanguage:'Spanish',ttsId:'SABIK_ES_R01_FINAL',ttsSha:'8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291'},
+ en:{locale:'en',ttsLanguage:'English',ttsId:'SABIK_EN_R02_FINAL',ttsSha:'3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df'}
 };
-const ERROR_CODE=new Set([
- 'not-allowed','service-not-allowed','audio-capture','network','no-speech','aborted','language-not-supported'
-]);
+const MAX_CAPTURE_MS=30000;
 
 function language(value){return String(value||'').toLowerCase().startsWith('en')?'en':'es';}
 function clamp(value,min,max){const n=Number(value);return Number.isFinite(n)?Math.max(min,Math.min(max,n)):min;}
-function speechRecognitionCtor(host){
- return host?.SpeechRecognition||host?.webkitSpeechRecognition||null;
-}
-function speechSynthesisApi(host){
- const synth=host?.speechSynthesis;
- const Utterance=host?.SpeechSynthesisUtterance;
- return synth&&typeof synth.speak==='function'&&typeof synth.cancel==='function'&&typeof Utterance==='function'
-  ?{synth,Utterance}:null;
-}
-function normalizedError(event){
- const raw=String(event?.error||event?.name||event?.code||'unknown').toLowerCase();
- return ERROR_CODE.has(raw)?raw:'unknown';
-}
-function bestVoice(synth,lang){
- const voices=typeof synth.getVoices==='function'?synth.getVoices():[];
- const wanted=LANG[lang].tts.map(v=>v.toLowerCase());
- for(const exact of wanted){
-  const found=voices.find(v=>String(v.lang||'').toLowerCase()===exact);
-  if(found)return found;
+function cleanText(value){return String(value||'').replace(/\s+/g,' ').trim();}
+function failure(code,cause){const e=new Error(code);e.code=code;if(cause)e.cause=cause;return e;}
+function endpoint(base,path){return String(base||'/sabik-voice').replace(/\/$/,'')+path;}
+function chooseMime(host){
+ const MR=host?.MediaRecorder;
+ if(!MR)return '';
+ for(const type of ['audio/webm;codecs=opus','audio/webm','audio/ogg;codecs=opus']){
+  try{if(typeof MR.isTypeSupported!=='function'||MR.isTypeSupported(type))return type;}catch{}
  }
- const prefix=lang==='en'?'en':'es';
- return voices.find(v=>String(v.lang||'').toLowerCase().startsWith(prefix))||null;
+ return '';
+}
+async function jsonNoStore(response){
+ if(!response?.ok)throw failure('VOICE_SERVICE_HTTP_'+String(response?.status||0));
+ if(!/^application\/json(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('VOICE_SERVICE_BAD_JSON');
+ return response.json();
+}
+function assertCapabilities(raw){
+ if(!raw||raw.schema!=='iris-green/sabik-voice-runtime/v1')throw failure('VOICE_SERVICE_BAD_CAPABILITIES');
+ if(raw.privacy?.no_store!==true||raw.privacy?.persist_audio!==false||raw.privacy?.persist_transcript!==false)throw failure('VOICE_SERVICE_PRIVACY_MISMATCH');
+ if(!raw.stt||raw.stt.self_hosted!==true||!Array.isArray(raw.stt.languages)||!raw.stt.languages.includes('es')||!raw.stt.languages.includes('en'))throw failure('VOICE_SERVICE_STT_MISMATCH');
+ for(const lang of ['es','en']){
+  const expected=MODEL[lang],actual=raw.tts?.[lang];
+  if(!actual||actual.self_hosted!==true||actual.model_id!==expected.ttsId||actual.model_sha256!==expected.ttsSha)throw failure('VOICE_SERVICE_IDENTITY_MISMATCH_'+lang.toUpperCase());
+ }
+ return Object.freeze(raw);
 }
 
 export function createSabikConversationalVoice({
  initialLanguage='es',
  host=globalThis.window||globalThis,
+ endpointBase='/sabik-voice',
+ fetchImpl=globalThis.fetch?.bind(globalThis),
+ fixedVoiceFactory=createSabikVoice,
  onState=()=>{},
  onTranscript=()=>{},
- onError=()=>{},
- fixedVoiceFactory=createSabikVoice
+ onError=()=>{}
 }={}){
- let lang=language(initialLanguage);
- let enabled=false,recognition=null,listening=false,recognitionStarted=false;
- let dynamicSpeaking=false,fixedPlaying=false,lastText='',lastTranscript='';
- let volume=1,rate=1,revision=0,fixedReady=false;
- const Rec=()=>speechRecognitionCtor(host);
- const TTS=()=>speechSynthesisApi(host);
+ if(typeof fetchImpl!=='function')throw new TypeError('SABIK_VOICE_FETCH_REQUIRED');
+ let lang=language(initialLanguage),enabled=false,capability=null,capabilityPromise=null;
+ let stream=null,recorder=null,chunks=[],captureTimer=0,sttController=null,ttsController=null,audio=null,audioUrl='';
+ let listening=false,transcribing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
+ let fixedPlaying=false,fixedReady=false;
+
  const fixed=fixedVoiceFactory({
   initialLanguage:lang,
-  onState:s=>{
-   fixedPlaying=Boolean(s?.playing);
-   emit();
-  }
+  onState:s=>{fixedPlaying=Boolean(s?.playing);emit({reason:'fixed-state'});}
  });
 
- function capabilities(){
-  return Object.freeze({stt:Boolean(Rec()),tts:Boolean(TTS())});
- }
- function snapshot(){
-  const caps=capabilities();
+ function state(){
   return Object.freeze({
-   enabled,language:lang,recognitionLanguage:LANG[lang].recognition,
-   sttAvailable:caps.stt,ttsAvailable:caps.tts,listening,
-   speaking:dynamicSpeaking||fixedPlaying,volume,rate,
-   canRepeat:Boolean(lastText),lastTranscript
+   enabled,language:lang,listening,transcribing,speaking:speaking||fixedPlaying,
+   serviceReady:Boolean(capability),serviceStatus:capability?'ready':capabilityPromise?'checking':'unknown',
+   sttAvailable:Boolean(capability?.stt),ttsAvailable:Boolean(capability?.tts?.[lang]),
+   volume,rate,canRepeat:Boolean(lastText),lastTranscript
   });
  }
  function semantic(){
-  if(listening)return 'listening';
-  if(dynamicSpeaking||fixedPlaying)return 'speaking';
-  return 'idle';
+  if(listening)return'listening';
+  if(transcribing)return'processing';
+  if(speaking||fixedPlaying)return'speaking';
+  return'idle';
  }
- function emit(extra={}){
-  const state=snapshot();
-  onState(state,{semantic:semantic(),...extra});
-  return state;
+ function emit(meta={}){const s=state();onState(s,{semantic:semantic(),...meta});return s;}
+ function issue(code,detail={}){onError(code,{language:lang,...detail});emit({semantic:'degraded',error:code});}
+ function clearTimer(){if(captureTimer){host.clearTimeout?.(captureTimer);captureTimer=0;}}
+ function closeStream(){if(stream){for(const track of stream.getTracks?.()||[]){try{track.stop();}catch{}}stream=null;}}
+ function revoke(){if(audioUrl){try{host.URL?.revokeObjectURL?.(audioUrl);}catch{}audioUrl='';}}
+
+ async function capabilities({force=false}={}){
+  if(capability&&!force)return capability;
+  if(capabilityPromise&&!force)return capabilityPromise;
+  capabilityPromise=(async()=>{
+   const controller=new AbortController(),id=host.setTimeout?.(()=>controller.abort('timeout'),5000);
+   try{
+    const response=await fetchImpl(endpoint(endpointBase,'/capabilities'),{method:'GET',cache:'no-store',credentials:'same-origin',signal:controller.signal,headers:{Accept:'application/json'}});
+    const data=assertCapabilities(await jsonNoStore(response));capability=data;return data;
+   }catch(error){capability=null;throw failure(error?.code||'VOICE_SERVICE_UNAVAILABLE',error);}
+   finally{if(id)host.clearTimeout?.(id);capabilityPromise=null;emit({reason:'capabilities'});}
+  })();
+  return capabilityPromise;
  }
- function issue(code,detail={}){
-  onError(code,{language:lang,...detail});
-  emit({semantic:'degraded',error:code});
- }
- function clearRecognition(){
-  const current=recognition;
-  recognition=null;recognitionStarted=false;listening=false;
-  if(current){
-   current.onstart=current.onaudiostart=current.onspeechstart=current.onresult=current.onspeechend=current.onaudioend=current.onerror=current.onend=null;
+
+ function stopRecorder({discard=true}={}){
+  clearTimer();
+  if(recorder){
+   const current=recorder;recorder=null;
+   try{
+    current.onstart=current.ondataavailable=current.onerror=current.onstop=null;
+    if(current.state&&current.state!=='inactive')current.stop();
+   }catch{}
   }
+  closeStream();
+  if(discard)chunks=[];
+  listening=false;
  }
- function stopRecognition({abort=true,emitState=true}={}){
-  const current=recognition;
-  clearRecognition();
-  if(current){
-   try{abort&&typeof current.abort==='function'?current.abort():current.stop?.();}catch{}
-  }
-  if(emitState)emit({reason:'recognition-stop'});
+ function cancelStt(){
+  if(sttController){try{sttController.abort('cancelled');}catch{}sttController=null;}
+  transcribing=false;
  }
  function cancelDynamic({emitState=true}={}){
-  revision+=1;
-  const api=TTS();
-  if(api){try{api.synth.cancel();}catch{}}
-  dynamicSpeaking=false;
+  serial+=1;
+  if(ttsController){try{ttsController.abort('cancelled');}catch{}ttsController=null;}
+  if(audio){
+   try{audio.pause();audio.removeAttribute?.('src');audio.load?.();}catch{}
+   audio=null;
+  }
+  revoke();speaking=false;
   if(emitState)emit({reason:'speech-stop'});
  }
  function cancelSpeech({emitState=true}={}){
   cancelDynamic({emitState:false});
-  try{fixed.cancel();}catch{}
-  fixedPlaying=false;
+  try{fixed.cancel();}catch{}fixedPlaying=false;
   if(emitState)emit({reason:'speech-stop'});
  }
  function stopAll(reason='cancelled'){
-  stopRecognition({abort:true,emitState:false});
-  cancelSpeech({emitState:false});
-  emit({reason});
+  serial+=1;stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});emit({reason});
  }
+
  async function setEnabled(next){
-  enabled=Boolean(next);
-  if(!enabled){
-   stopAll('voice-disabled');
-   try{await fixed.setEnabled(false);}catch{}
-   fixedReady=false;
-   return snapshot();
+  const value=Boolean(next);
+  if(!value){
+   enabled=false;stopAll('voice-disabled');
+   try{await fixed.setEnabled(false);}catch{}fixedReady=false;
+   return state();
   }
-  const caps=capabilities();
   try{
-   await fixed.setEnabled(true);
-   fixedReady=true;
-  }catch{
-   fixedReady=false;
+   await capabilities();
+   try{await fixed.setEnabled(true);fixedReady=true;}catch{fixedReady=false;}
+   enabled=true;emit({reason:'voice-enabled'});return state();
+  }catch(error){
+   enabled=false;issue(error?.code||'VOICE_SERVICE_UNAVAILABLE');return state();
   }
-  if(!caps.stt&&!caps.tts&&!fixedReady){
-   enabled=false;
-   issue('voice-unavailable');
-  }else emit({reason:'voice-enabled'});
-  return snapshot();
  }
  function setLanguage(next){
-  const value=language(next);
-  if(value===lang){emit({reason:'language-same'});return lang;}
-  stopAll('language-change');
-  lang=value;fixed.setLanguage(lang);lastText='';lastTranscript='';
-  emit({reason:'language-change'});
-  return lang;
+  const value=language(next);if(value===lang){emit({reason:'language-same'});return lang;}
+  stopAll('language-change');lang=value;lastText='';lastTranscript='';fixed.setLanguage(lang);emit({reason:'language-change'});return lang;
  }
- function setVolume(value){volume=clamp(value,0,1);emit({reason:'volume'});return volume;}
- function setRate(value){rate=clamp(value,.6,1.6);emit({reason:'rate'});return rate;}
+ function setVolume(value){volume=clamp(value,0,1);if(audio)audio.volume=volume;emit({reason:'volume'});return volume;}
+ function setRate(value){rate=clamp(value,.6,1.6);if(audio)audio.playbackRate=rate;emit({reason:'rate'});return rate;}
 
  async function speakFixed(id,text,options={}){
   if(!enabled||!fixedReady)return Object.freeze({status:'disabled'});
@@ -154,102 +155,108 @@ export function createSabikConversationalVoice({
   if(['play-error','missing','text-mismatch'].includes(result.status))issue('fixed-voice-error',{status:result.status});
   return result;
  }
- function speak(text,{remember=true}={}){
-  const value=String(text||'').replace(/\s+/g,' ').trim();
-  if(!enabled||!value)return Promise.resolve(Object.freeze({status:'disabled'}));
-  const api=TTS();
-  if(!api){issue('tts-unavailable');return Promise.resolve(Object.freeze({status:'unavailable'}));}
+
+ async function transcribe(blob,ticket){
+  transcribing=true;emit({semantic:'processing',reason:'stt-start'});
+  const controller=new AbortController();sttController=controller;
+  try{
+   const form=new FormData();form.append('audio',blob,'turn.'+(blob.type.includes('ogg')?'ogg':'webm'));form.append('locale',lang);
+   const response=await fetchImpl(endpoint(endpointBase,'/transcribe'),{
+    method:'POST',body:form,cache:'no-store',credentials:'same-origin',signal:controller.signal,headers:{Accept:'application/json'}
+   });
+   const data=await jsonNoStore(response);
+   if(ticket!==serial||controller.signal.aborted)return;
+   const text=cleanText(data?.text);
+   if(!text)throw failure('STT_EMPTY');
+   if(language(data?.locale)!==lang)throw failure('STT_LANGUAGE_MISMATCH');
+   lastTranscript=text;transcribing=false;sttController=null;emit({semantic:'processing',reason:'stt-complete'});
+   await onTranscript(text,{language:lang,engine:data?.engine||'',model:data?.model||''});
+  }catch(error){
+   if(ticket!==serial||controller.signal.aborted)return;
+   transcribing=false;sttController=null;
+   issue(error?.code||'STT_ERROR');
+  }
+ }
+
+ async function startListening(){
+  if(!enabled){
+   const s=await setEnabled(true);if(!s.enabled)return Object.freeze({status:'unavailable'});
+  }
+  if(!capability?.stt){issue('STT_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
+  if(!host?.navigator?.mediaDevices?.getUserMedia||!host?.MediaRecorder){issue('MICROPHONE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
+  stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});
+  const ticket=++serial;
+  try{
+   stream=await host.navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true},video:false});
+   if(ticket!==serial){closeStream();return Object.freeze({status:'stale'});}
+   const mime=chooseMime(host),MR=host.MediaRecorder;
+   recorder=mime?new MR(stream,{mimeType:mime}):new MR(stream);chunks=[];
+   const current=recorder;
+   current.ondataavailable=event=>{if(ticket===serial&&event.data?.size)chunks.push(event.data);};
+   current.onerror=()=>{if(ticket===serial){stopRecorder({discard:true});issue('MICROPHONE_ERROR');}};
+   current.onstart=()=>{if(ticket===serial){listening=true;emit({semantic:'listening',reason:'capture-start'});}};
+   current.onstop=()=>{
+    if(ticket!==serial)return;
+    const type=current.mimeType||mime||'audio/webm',blob=new Blob(chunks,{type});chunks=[];closeStream();listening=false;
+    if(!blob.size){issue('STT_EMPTY_AUDIO');return;}
+    void transcribe(blob,ticket);
+   };
+   current.start(250);
+   captureTimer=host.setTimeout?.(()=>{if(ticket===serial)stopListening();},MAX_CAPTURE_MS)||0;
+   return Object.freeze({status:'starting'});
+  }catch(error){
+   closeStream();stopRecorder({discard:true});
+   const name=String(error?.name||'');
+   issue(name==='NotAllowedError'||name==='SecurityError'?'MICROPHONE_DENIED':'MICROPHONE_ERROR');
+   return Object.freeze({status:'error'});
+  }
+ }
+ function stopListening(){
+  clearTimer();
+  if(!recorder)return Object.freeze({status:'idle'});
+  const current=recorder;recorder=null;listening=false;emit({semantic:'processing',reason:'capture-stop'});
+  try{if(current.state!=='inactive')current.stop();else current.onstop?.();}catch{closeStream();chunks=[];issue('MICROPHONE_ERROR');}
+  return Object.freeze({status:'transcribing'});
+ }
+ function cancelListening(){serial+=1;stopRecorder({discard:true});cancelStt();emit({reason:'capture-cancel'});}
+
+ async function speak(text,{remember=true}={}){
+  const value=cleanText(text);if(!enabled||!value)return Object.freeze({status:'disabled'});
+  try{await capabilities();}catch(error){issue(error?.code||'VOICE_SERVICE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   cancelSpeech({emitState:false});
   if(remember)lastText=value;
-  const ticket=++revision;
-  return new Promise(resolve=>{
-   const utterance=new api.Utterance(value);
-   utterance.lang=LANG[lang].recognition;
-   utterance.volume=volume;utterance.rate=rate;
-   const voice=bestVoice(api.synth,lang);if(voice)utterance.voice=voice;
-   let settled=false;
-   const finish=(status,error)=>{
-    if(settled)return;settled=true;
-    if(ticket===revision)dynamicSpeaking=false;
-    if(error)issue(error,{status});
-    else emit({reason:'speech-'+status});
-    resolve(Object.freeze({status,language:lang,voice:voice?.name||null}));
-   };
-   utterance.onstart=()=>{
-    if(ticket!==revision){try{api.synth.cancel();}catch{}return;}
-    dynamicSpeaking=true;emit({semantic:'speaking',reason:'speech-start'});
-   };
-   utterance.onend=()=>finish('ended');
-   utterance.onerror=event=>{
-    const code=String(event?.error||'speech-error').toLowerCase();
-    if(['canceled','interrupted'].includes(code))finish('cancelled');
-    else finish('error','tts-error');
-   };
-   try{api.synth.speak(utterance);}
-   catch{finish('error','tts-error');}
-  });
+  const ticket=++serial,controller=new AbortController();ttsController=controller;
+  try{
+   const response=await fetchImpl(endpoint(endpointBase,'/synthesize'),{
+    method:'POST',cache:'no-store',credentials:'same-origin',signal:controller.signal,
+    headers:{'Content-Type':'application/json',Accept:'audio/wav'},
+    body:JSON.stringify({text:value,locale:lang,model_id:MODEL[lang].ttsId})
+   });
+   if(!response.ok)throw failure('TTS_HTTP_'+response.status);
+   if(!/^audio\/(?:wav|x-wav|wave)(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('TTS_BAD_MEDIA');
+   const blob=await response.blob();if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'stale'});
+   const AudioCtor=host.Audio;if(typeof AudioCtor!=='function')throw failure('AUDIO_PLAYBACK_UNAVAILABLE');
+   audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
+   const result=await new Promise(resolve=>{
+    let settled=false;
+    const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status});resolve(Object.freeze({status,language:lang,model_id:MODEL[lang].ttsId}));};
+    player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing'});},{once:true});
+    player.addEventListener?.('ended',()=>finish('ended'),{once:true});
+    player.addEventListener?.('error',()=>finish('play-error'),{once:true});
+    Promise.resolve(player.play()).catch(()=>finish('play-error'));
+   });
+   if(result.status==='play-error')issue('TTS_PLAYBACK_ERROR');
+   return result;
+  }catch(error){
+   if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
+   ttsController=null;issue(error?.code||'TTS_ERROR');return Object.freeze({status:'error'});
+  }finally{if(ticket===serial)ttsController=null;}
  }
  function repeat(){return lastText?speak(lastText,{remember:false}):Promise.resolve(Object.freeze({status:'empty'}));}
 
- function startListening(){
-  if(!enabled)return Object.freeze({status:'disabled'});
-  const Ctor=Rec();
-  if(!Ctor){issue('stt-unavailable');return Object.freeze({status:'unavailable'});}
-  cancelSpeech({emitState:false});
-  stopRecognition({abort:true,emitState:false});
-  const ticket=++revision,current=new Ctor();recognition=current;
-  let transcript='',audioActive=false,failed=false;
-  current.lang=LANG[lang].recognition;
-  current.continuous=false;current.interimResults=false;current.maxAlternatives=1;
-  current.onstart=()=>{recognitionStarted=true;emit({reason:'recognition-start'});};
-  current.onaudiostart=()=>{
-   if(ticket!==revision||recognition!==current)return;
-   audioActive=true;listening=true;emit({semantic:'listening',reason:'audio-start'});
-  };
-  current.onspeechstart=()=>{
-   if(ticket!==revision||recognition!==current)return;
-   if(!audioActive){audioActive=true;listening=true;emit({semantic:'listening',reason:'speech-start'});}
-  };
-  current.onresult=event=>{
-   if(ticket!==revision||recognition!==current)return;
-   const result=event?.results?.[event.resultIndex??0]||event?.results?.[0];
-   const item=result?.[0];
-   if(item&&result?.isFinal!==false)transcript=String(item.transcript||'').trim();
-  };
-  current.onspeechend=()=>{try{current.stop?.();}catch{}};
-  current.onaudioend=()=>{
-   if(ticket!==revision||recognition!==current)return;
-   listening=false;
-  };
-  current.onerror=event=>{
-   if(ticket!==revision||recognition!==current)return;
-   const code=normalizedError(event);
-   listening=false;
-   if(code==='aborted'){emit({reason:'recognition-aborted'});return;}
-   failed=true;issue(code==='not-allowed'||code==='service-not-allowed'?'microphone-denied':code);
-  };
-  current.onend=()=>{
-   if(ticket!==revision||recognition!==current)return;
-   clearRecognition();
-   if(transcript){
-    lastTranscript=transcript;
-    Promise.resolve(onTranscript(transcript,{language:lang,recognitionLanguage:LANG[lang].recognition})).catch(()=>issue('transcript-handler-error'));
-   }else if(failed){
-    // onerror already emitted the single recoverable diagnosis.
-   }else if(audioActive){
-    issue('no-speech');
-   }else emit({reason:'recognition-end'});
-  };
-  try{current.start();}
-  catch{clearRecognition();issue('stt-start-error');return Object.freeze({status:'error'});}
-  return Object.freeze({status:'starting',language:LANG[lang].recognition});
- }
-
  emit({reason:'init'});
  return Object.freeze({
-  setEnabled,setLanguage,setVolume,setRate,startListening,
-  cancelListening:()=>stopRecognition({abort:true,emitState:true}),
-  speak,speakFixed,repeat,cancelSpeech,stopAll,
-  getState:snapshot,capabilities
+  setEnabled,setLanguage,setVolume,setRate,startListening,stopListening,cancelListening,
+  speak,speakFixed,repeat,cancelSpeech,stopAll,capabilities,getState:state
  });
 }
