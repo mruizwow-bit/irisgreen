@@ -1,5 +1,5 @@
 name: Publicar Iris Green en Netlify
-# Trigger manual de producción tras recuperación PR #367 · 2026-10-02
+# Trigger manual de producción tras R44 SUITE5 · 2026-10-02
 on:
   push:
     branches: [main]
