@@ -198,7 +198,7 @@ export function createSabikConversationalVoice({
   cancelSpeech({emitState:false});
   stopRecognition({abort:true,emitState:false});
   const ticket=++revision,current=new Ctor();recognition=current;
-  let transcript='',audioActive=false;
+  let transcript='',audioActive=false,failed=false;
   current.lang=LANG[lang].recognition;
   current.continuous=false;current.interimResults=false;current.maxAlternatives=1;
   current.onstart=()=>{recognitionStarted=true;emit({reason:'recognition-start'});};
@@ -226,7 +226,7 @@ export function createSabikConversationalVoice({
    const code=normalizedError(event);
    listening=false;
    if(code==='aborted'){emit({reason:'recognition-aborted'});return;}
-   issue(code==='not-allowed'||code==='service-not-allowed'?'microphone-denied':code);
+   failed=true;issue(code==='not-allowed'||code==='service-not-allowed'?'microphone-denied':code);
   };
   current.onend=()=>{
    if(ticket!==revision||recognition!==current)return;
@@ -234,6 +234,8 @@ export function createSabikConversationalVoice({
    if(transcript){
     lastTranscript=transcript;
     Promise.resolve(onTranscript(transcript,{language:lang,recognitionLanguage:LANG[lang].recognition})).catch(()=>issue('transcript-handler-error'));
+   }else if(failed){
+    // onerror already emitted the single recoverable diagnosis.
    }else if(audioActive){
     issue('no-speech');
    }else emit({reason:'recognition-end'});
