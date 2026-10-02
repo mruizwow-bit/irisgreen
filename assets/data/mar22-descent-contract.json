@@ -1,0 +1,45 @@
+{
+  "schema": "iris-green/mar22-descent-contract/v1",
+  "interest_id": "22",
+  "runtime_state": "awaiting-assets",
+  "asset_base": "/img/intereses/temas/22-vida-marina/",
+  "zones": [
+    {"id":"epipelagic","min_m":0,"max_m":200,"label":{"es":"Zona epipelágica","en":"Epipelagic zone"}},
+    {"id":"mesopelagic","min_m":200,"max_m":1000,"label":{"es":"Zona mesopelágica","en":"Mesopelagic zone"}},
+    {"id":"bathypelagic","min_m":1000,"max_m":4000,"label":{"es":"Zona batipelágica","en":"Bathypelagic zone"}},
+    {"id":"abyssopelagic","min_m":4000,"max_m":6000,"label":{"es":"Zona abisopelágica","en":"Abyssopelagic zone"}},
+    {"id":"hadal","min_m":6000,"max_m":11000,"label":{"es":"Zona hadal","en":"Hadal zone"}}
+  ],
+  "species": [
+    {
+      "id":"pez-hacha",
+      "zone":"mesopelagic",
+      "label":{"es":"Pez hacha","en":"Hatchetfish"},
+      "assets":{"light":"/img/intereses/temas/22-vida-marina/pez-hacha-luz.png","dark":"/img/intereses/temas/22-vida-marina/pez-hacha-oscuro.png"},
+      "real_length_cm":null
+    },
+    {
+      "id":"pez-linterna",
+      "zone":"mesopelagic",
+      "label":{"es":"Pez linterna","en":"Lanternfish"},
+      "assets":{"light":"/img/intereses/temas/22-vida-marina/pez-linterna-luz.png","dark":"/img/intereses/temas/22-vida-marina/pez-linterna-oscuro.png"},
+      "real_length_cm":null
+    },
+    {
+      "id":"calamar-cristal",
+      "zone":"mesopelagic",
+      "label":{"es":"Calamar de cristal","en":"Glass squid"},
+      "assets":{"light":"/img/intereses/temas/22-vida-marina/calamar-cristal-luz.png","dark":"/img/intereses/temas/22-vida-marina/calamar-cristal-oscuro.png"},
+      "real_length_cm":null
+    }
+  ],
+  "rules": {
+    "only_individual_assets": true,
+    "composites": false,
+    "third_party_requests": false,
+    "embedded_text": false,
+    "light_dark_same_canvas_center_pose": true,
+    "motion_modes": ["normal","reduced","none"],
+    "locales": ["es","en"]
+  }
+}
