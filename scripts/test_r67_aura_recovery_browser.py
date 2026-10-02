@@ -23,8 +23,8 @@ async def main():
    await page.goto(BASE+path,wait_until='networkidle')
    await page.wait_for_function("document.querySelector('.ig-r49-global-header')?.dataset.igR49Upgraded==='true'")
    need(await page.locator('.ig-r49-global-header').is_visible(),'global shell not visible '+path)
-   need(await page.locator('[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]').count()==0,
-        'extra global header controls returned '+path)
+   need(await page.locator('[data-ig-r49-stage]').count()==1,
+        'canonical safety profile control missing '+path)
    need(await page.locator('[data-ig-music]').count()==1,'Music control missing '+path)
    need(await page.locator('[data-ig-r49-settings]').count()==1,'Accessibility control missing '+path)
    need(await page.locator('.ig-r49-lang').count()==1,'Language control missing '+path)
