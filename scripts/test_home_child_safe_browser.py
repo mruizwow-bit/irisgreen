@@ -68,10 +68,8 @@ async def main():
   await page.locator('#sabik-voice').click()
   await page.wait_for_timeout(650)
   need(not any('/sabik/assets/audio-r01/' in u and u.endswith('.wav') for u in voice_requests),'Sabik must not autoplay WAV after enabling voice')
-  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='true','Sabik voice did not remain enabled after successful playback start')
-  await page.locator('#sabik-voice').click()
-  await page.wait_for_timeout(80)
-  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='false','Sabik voice did not turn off')
+  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='false','Sabik voice must stay off when the voice backend is unavailable')
+  need(await page.locator('#sabik-input').is_enabled(),'Sabik text input must remain available when voice is unavailable')
   report['network']['sabik_welcome_requests']=sum('/sabik/assets/audio-r01/es/sabik__welcome.wav' in u for u in voice_requests)
   # Theme alternative lives inside Accessibility and persists globally.
   await page.get_by_role('button',name='Accesibilidad',exact=True).click()
