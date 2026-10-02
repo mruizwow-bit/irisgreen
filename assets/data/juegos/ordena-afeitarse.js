@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-afeitarse"]={"s":"ordena-afeitarse","t":{"es":"Ordena: afeitarse","en":"Put in order: shaving"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["afeit1","afeit2","afeit3","secarcara"],"red":{"pasos":["afeit1","secarcara"]}}],"c":"higiene","e":["ado","adu"],"min":2};})();

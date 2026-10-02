@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["esperar-el-turno"]={"s":"esperar-el-turno","c":"salir","t":{"es":"Esperar el turno","en":"Waiting your turn"},"d":{"es":"Ordena lo que pasa en una fila.","en":"Put what happens in a queue in order."},"f":[{"tipo":"orden","i":{"es":"Toca lo que va ahora.","en":"Tap what comes now."},"pasos":["fila","esperar","avanzar","tetoca"],"red":{"pasos":["fila","tetoca"]}}],"e":["todas"],"min":2};})();

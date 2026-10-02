@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["doblar-la-ropa"]={"s":"doblar-la-ropa","c":"casa","e":["todas"],"t":{"es":"Doblar la ropa","en":"Folding clothes"},"d":{"es":"Doblar una camiseta y guardarla.","en":"Folding a T-shirt and putting it away."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["dob1","dob2","dob3","monton","guardarArm"],"red":{"pasos":["dob1","dob3","guardarArm"]}}]};})();

@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-la-lavadora"]={"s":"ordena-la-lavadora","c":"casa","t":{"es":"Ordena la lavadora","en":"Put the washing in order"},"d":{"es":"De la ropa sucia a la ropa tendida.","en":"From dirty clothes to clothes on the line."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["lavsep","lavmeter","lavdet","lavmarcha","tender"],"red":{"pasos":["lavmeter","lavmarcha","tender"]}}],"e":["ado","adu"],"min":2};})();

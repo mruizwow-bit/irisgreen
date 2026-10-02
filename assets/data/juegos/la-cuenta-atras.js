@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["la-cuenta-atras"]={"s":"la-cuenta-atras","c":"tiempo","t":{"es":"La cuenta atrás","en":"The countdown"},"d":{"es":"Un reloj que se vacía poco a poco. Empieza cuando tú quieras.","en":"A clock that empties little by little. Start when you want."},"f":[{"tipo":"reloj","i":{"es":"Elige cuánto tiempo y pulsa «Empezar». No suena nada.","en":"Choose how long and press “Start”. Nothing makes a sound."},"mins":[1,2,5,10]}],"e":["todas"],"min":2};})();

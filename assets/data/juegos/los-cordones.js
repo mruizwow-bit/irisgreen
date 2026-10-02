@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["los-cordones"]={"s":"los-cordones","c":"vestirse","t":{"es":"Los cordones, paso a paso","en":"Shoelaces, step by step"},"d":{"es":"Pon en orden los pasos para atarte los cordones.","en":"Put the steps for tying your laces in order."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["cordA","cordB","cordC","cordD","cordE"],"red":{"pasos":["cordA","cordC","cordE"]}}],"e":["inf","ado"],"min":2};})();

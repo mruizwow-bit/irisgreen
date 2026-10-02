@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-esperar"]={"s":"ordena-esperar","t":{"es":"Ordena: esperar","en":"Put in order: wait"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_TIE04_1","R_TIE04_2","R_TIE04_3","R_TIE04_4"],"red":{"pasos":["R_TIE04_1","R_TIE04_3","R_TIE04_4"]}}],"c":"tiempo","e":["todas"],"min":2};})();

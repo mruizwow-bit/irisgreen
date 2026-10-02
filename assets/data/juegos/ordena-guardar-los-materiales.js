@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-guardar-los-materiales"]={"s":"ordena-guardar-los-materiales","t":{"es":"Ordena: guardar los materiales","en":"Put in order: put your materials away"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_EST04_1","R_EST04_2","R_EST04_3"]}],"c":"estudio","e":["ado","adu"],"min":2};})();

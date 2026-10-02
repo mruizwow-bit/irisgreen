@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-regar-las-plantas"]={"s":"ordena-regar-las-plantas","t":{"es":"Ordena: regar las plantas","en":"Put in order: water the plants"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_CAS12_1","R_CAS12_2","R_CAS12_3"]}],"c":"casa","e":["todas"],"min":2};})();

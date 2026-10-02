@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["abrir-un-envase"]={"s":"abrir-un-envase","c":"casa","t":{"es":"Abrir un envase","en":"Opening a pack"},"d":{"es":"Los pasos para abrir un envase difícil.","en":"The steps to open a tricky pack."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["envmirar","env1","env2","env3"],"red":{"pasos":["env1","env2","env3"]}}],"e":["todas"],"min":2};})();

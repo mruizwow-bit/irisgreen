@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-preparar-el-pijama"]={"s":"ordena-preparar-el-pijama","t":{"es":"Ordena: preparar el pijama","en":"Put in order: get your pyjamas ready"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_NOC01_1","R_NOC01_2","R_NOC01_3"]}],"c":"manana","e":["todas"],"min":2};})();

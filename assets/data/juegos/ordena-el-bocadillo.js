@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-el-bocadillo"]={"s":"ordena-el-bocadillo","c":"comidas","t":{"es":"Ordena el bocadillo","en":"Put the sandwich in order"},"d":{"es":"Los pasos para preparar un bocadillo.","en":"The steps to make a sandwich."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["sacarpan","abrirpan","relleno","cerrarbocadillo","fiambrera"],"red":{"pasos":["sacarpan","relleno","cerrarbocadillo"]}}],"e":["todas"],"min":2};})();

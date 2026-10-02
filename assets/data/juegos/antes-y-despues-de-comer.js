@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["antes-y-despues-de-comer"]={"s":"antes-y-despues-de-comer","c":"comidas","t":{"es":"Antes y después de comer","en":"Before and after eating"},"d":{"es":"Ordena lo que pasa con la mesa.","en":"Put what happens at the table in order."},"f":[{"tipo":"orden","i":{"es":"Toca lo que va primero.","en":"Tap what comes first."},"pasos":["ponermesa","comer","recogermesa"],"red":{"pasos":["ponermesa","recogermesa"]}}],"e":["todas"],"min":2};})();

@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["lavarse-las-manos"]={"s":"lavarse-las-manos","c":"higiene","e":["inf"],"t":{"es":"Lavarse las manos","en":"Washing your hands"},"d":{"es":"Los pasos para lavarse bien las manos.","en":"The steps for washing your hands well."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["grifo","jabon","frotar","aclarar","cerrarGrifo","secarManos"],"red":{"pasos":["grifo","frotar","secarManos"]}}]};})();

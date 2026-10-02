@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["antes-de-dormir"]={"s":"antes-de-dormir","c":"manana","t":{"es":"Antes de dormir","en":"Before sleep"},"d":{"es":"De la pantalla encendida a la luz apagada.","en":"From screen on to lights off."},"f":[{"tipo":"orden","i":{"es":"Toca lo que va primero.","en":"Tap what comes first."},"pasos":["apagartele","lampara","apagardormir"],"red":{"pasos":["apagartele","apagardormir"]}}],"e":["todas"],"min":2};})();

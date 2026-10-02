@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-usar-desodorante"]={"s":"ordena-usar-desodorante","t":{"es":"Ordena: usar desodorante","en":"Put in order: use deodorant"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_HIG11_1","R_HIG11_2","R_HIG11_3"]}],"c":"higiene","e":["todas"],"min":2};})();

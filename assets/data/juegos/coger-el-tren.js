@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["coger-el-tren"]={"s":"coger-el-tren","c":"salir","e":["ado","adu"],"t":{"es":"Coger el tren","en":"Taking the train"},"d":{"es":"Del billete a tu parada, paso a paso.","en":"From the ticket to your stop, step by step."},"f":[{"tipo":"orden","ruta":1,"i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["validar","anden","subirTren","mirarParadas","bajarTren"],"red":{"pasos":["validar","subirTren","bajarTren"]}}]};})();

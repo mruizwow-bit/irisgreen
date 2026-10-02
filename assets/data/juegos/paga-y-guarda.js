@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["paga-y-guarda"]={"s":"paga-y-guarda","c":"salir","t":{"es":"Paga y guarda","en":"Pay and put away"},"d":{"es":"Los pasos para pagar en una tienda. Sin cuentas.","en":"The steps to pay in a shop. No sums."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["sacarcartera","importe","pagar","cambio","ticket"],"red":{"pasos":["sacarcartera","pagar","ticket"]}}],"e":["ado","adu"],"min":2};})();

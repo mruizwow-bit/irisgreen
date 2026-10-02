@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["cruzar-bien"]={"s":"cruzar-bien","c":"salir","t":{"es":"Cruzar bien","en":"Crossing safely"},"d":{"es":"Los pasos para cruzar la calle con calma.","en":"The steps to cross the street calmly."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["llegarpaso","parar","semaforo","mirarlados","cruzar"],"red":{"pasos":["llegarpaso","semaforo","cruzar"]}}],"e":["todas"],"min":2};})();

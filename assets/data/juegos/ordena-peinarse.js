@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["ordena-peinarse"]={"s":"ordena-peinarse","t":{"es":"Ordena: peinarse","en":"Put in order: brush your hair"},"d":{"es":"Pon los pasos en orden, del primero al último.","en":"Put the steps in order, from first to last."},"f":[{"tipo":"orden","i":{"es":"Toca el paso que va ahora.","en":"Tap the step that comes now."},"pasos":["R_HIG05_1","R_HIG05_2","R_HIG05_3","R_HIG05_4"],"red":{"pasos":["R_HIG05_1","R_HIG05_3","R_HIG05_4"]}}],"c":"higiene","e":["todas"],"min":2};})();

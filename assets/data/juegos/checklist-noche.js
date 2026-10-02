@@ -1,0 +1,2 @@
+/* Iris Green · Juegos · contenido de un solo juego. */
+(function(){(window.IG_JUEGO=window.IG_JUEGO||{})["checklist-noche"]={"s":"checklist-noche","c":"manana","t":{"es":"Lista de la noche","en":"Night checklist"},"d":{"es":"Marca lo que ya has hecho antes de dormir.","en":"Tick off what you have done before bed."},"f":[{"tipo":"lista","i":{"es":"Toca cada cosa cuando la hayas hecho.","en":"Tap each thing when you have done it."},"items":["cara","dientes","ponerpijama","bano","cama"],"red":{"items":["dientes","ponerpijama","cama"]}}],"e":["todas"],"min":2};})();
