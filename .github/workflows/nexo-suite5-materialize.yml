@@ -29,6 +29,12 @@ jobs:
           for f in LICENCIAS.txt pixi.js tone.js; do cp "assets/vendor/taller/$f" "$D/assets/vendor/taller/$f"; done
           for f in comun.py escritura.py juegos_mesa.py musica_comun.py pixelart.py ritmo.py videojuegos.py; do cp "scripts/taller_suite/$f" "$D/scripts/taller_suite/$f"; done
           cp scripts/build_taller_suite5.py "$D/scripts/build_taller_suite5.py"
+          # Fixtures usados solo por el guard R4. No se materializan ni se
+          # incorporan a este micro-bloque Suite5.
+          FIXTURE_REF=origin/codex/repair-global-ui-child-safety-20261001
+          git show "$FIXTURE_REF:assets/data/r44-retos.json" > "$D/assets/data/r44-retos.json"
+          git show "$FIXTURE_REF:assets/ig-r44-retos.css" > "$D/assets/ig-r44-retos.css"
+          git show "$FIXTURE_REF:assets/ig-r44-retos.js" > "$D/assets/ig-r44-retos.js"
           printf '%s\n' "$D" > /tmp/donor_path
       - name: Guard baseline
         run: |
@@ -36,8 +42,8 @@ jobs:
           BASE=$(git rev-parse HEAD)
           D=$(cat /tmp/donor_path)
           DONANTE="$D" BASE_ESPERADA="$BASE" bash test_suite5.sh | tee /tmp/suite5-baseline.log
-          git restore -- es en
-          git clean -fd -- es en
+          git restore -- es en assets scripts
+          git clean -fd -- es en assets/data/r44-retos.json assets/ig-r44-retos.css assets/ig-r44-retos.js
       - name: Guard mutation F must fail
         run: |
           set -uxo pipefail
@@ -50,8 +56,8 @@ jobs:
           cat /tmp/suite5-f.log
           test "$rc" -eq 1
           grep -F 'es/taller/ruta-extra/index.html' /tmp/suite5-f.log
-          git restore -- es en
-          git clean -fd -- es en
+          git restore -- es en assets scripts
+          git clean -fd -- es en assets/data/r44-retos.json assets/ig-r44-retos.css assets/ig-r44-retos.js
       - name: Materialize exactly ten Suite5 hosts
         run: |
           set -euxo pipefail
