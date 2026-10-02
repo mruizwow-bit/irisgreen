@@ -24,8 +24,8 @@ const TEXT={
   volume:'Volumen',rate:'Velocidad',listening:'Escuchando',processing:'Procesando',speaking:'Hablando',
   voiceHelp:'La voz es opcional. El micrófono solo se activa cuando tú lo pulsas. El audio no se guarda en Iris Green.',
   voiceReady:'Voz preparada.',voiceError:'La voz no se pudo activar.',micDenied:'No se pudo usar el micrófono. Puedes seguir escribiendo.',
-  noSpeech:'No he detectado una consulta. Puedes intentarlo de nuevo o escribirla.',sttUnavailable:'Este navegador no ofrece reconocimiento de voz compatible. El texto sigue disponible.',
-  ttsUnavailable:'Este navegador no ofrece lectura de respuestas compatible. La respuesta escrita sigue disponible.',sources:'Fuentes'
+  noSpeech:'No he detectado una consulta. Puedes intentarlo de nuevo o escribirla.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
+  ttsUnavailable:'La voz dinámica de Sabik no está disponible ahora. La respuesta escrita sigue disponible.',sources:'Fuentes'
  },
  en:{
   subtitle:'Iris Green assistant',
@@ -43,8 +43,8 @@ const TEXT={
   volume:'Volume',rate:'Speed',listening:'Listening',processing:'Processing',speaking:'Speaking',
   voiceHelp:'Voice is optional. The microphone only starts when you press it. Iris Green does not store the audio.',
   voiceReady:'Voice ready.',voiceError:'Sabik voice could not be turned on.',micDenied:'The microphone could not be used. You can keep typing.',
-  noSpeech:'I did not detect a query. You can try again or type it.',sttUnavailable:'This browser does not provide compatible speech recognition. Text remains available.',
-  ttsUnavailable:'This browser does not provide compatible spoken responses. The written answer remains available.',sources:'Sources'
+  noSpeech:'I did not detect a query. You can try again or type it.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
+  ttsUnavailable:'Sabik dynamic voice is not available right now. The written answer remains available.',sources:'Sources'
  }
 };
 
@@ -59,14 +59,14 @@ function mount(){
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
  function voiceMessage(code){
-  const key={'microphone-denied':'micDenied','no-speech':'noSpeech','stt-unavailable':'sttUnavailable','tts-unavailable':'ttsUnavailable','voice-unavailable':'voiceError','tts-error':'voiceError','stt-start-error':'voiceError'}[code]||'voiceError';
+  const key={MICROPHONE_DENIED:'micDenied',MICROPHONE_UNAVAILABLE:'micDenied',MICROPHONE_ERROR:'micDenied',STT_UNAVAILABLE:'sttUnavailable',STT_ERROR:'sttUnavailable',STT_EMPTY:'noSpeech',STT_EMPTY_AUDIO:'noSpeech',VOICE_SERVICE_UNAVAILABLE:'voiceError',TTS_ERROR:'ttsUnavailable',TTS_PLAYBACK_ERROR:'ttsUnavailable'}[code]||'voiceError';
   announcement.textContent=strings()[key];
  }
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),speaking=Boolean(state?.speaking);
   voiceButton.setAttribute('aria-pressed',String(on));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:busy?strings().processing:on?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${on?strings().voiceOn:strings().voiceOff}`);
-  if(micButton)micButton.disabled=!on||!state?.sttAvailable||busy;
+  if(micButton)micButton.disabled=busy;
   if(voiceStop)voiceStop.disabled=!(listening||speaking||busy);
   if(voiceRepeat)voiceRepeat.disabled=!on||!state?.ttsAvailable||!state?.canRepeat;
   if(voiceVolume)voiceVolume.disabled=!on||!state?.ttsAvailable;
@@ -141,12 +141,12 @@ function mount(){
   return localRetrieve(request,{signal});
  }
 
- function renderAnswer(answer){
+ function renderAnswer(answer,meta={}){
   announcement.textContent=lang==='en'?'Answer ready.':'Respuesta lista.';
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
-  if(voiceEnabled())void voice.speak(answer);
+  if(meta.inputMode==='voice')queueMicrotask(()=>{if(voiceEnabled())void voice.speak(answer);});
  }
  function renderSources(sources){
   let section=root.querySelector('.sabik-conversation');if(!section){section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';root.appendChild(section);}
@@ -166,7 +166,7 @@ function mount(){
   let semantic='idle';
   if(next==='TRANSICION'&&meta.phase==='retrieval')semantic='processing';
   else if(next==='PAUSA'&&meta.phase==='error')semantic='degraded';
-  if(next==='CONFIRMAR'&&voiceEnabled()&&voice.getState().ttsAvailable)return;
+  if(next==='CONFIRMAR'&&meta.inputMode==='voice'&&voiceEnabled()&&voice.getState().ttsAvailable)return;
   void visual(v,{force:true,to:'presente',semantic,reason:meta.phase||'conversation-state'});
  }
  const conversation=createSabikConversation({retrieve,onState:state,onAnswer:renderAnswer,onSources:renderSources});
@@ -209,8 +209,8 @@ function mount(){
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();voice.stopAll('cancel');busy=false;controls();void visual('pausa',{force:true,semantic:'idle'});input.focus();});
  $('#sabik-toggle').addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);$('#sabik-toggle').setAttribute('aria-expanded',String(!body.hidden));$('#sabik-toggle').textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();voice.stopAll('close');busy=false;controls();void present();}else visual('transicion');});
  voiceButton.addEventListener('click',async()=>{voiceButton.disabled=true;try{await voice.setEnabled(!voiceEnabled());announcement.textContent=voiceEnabled()?strings().voiceReady:'';}catch{await voice.setEnabled(false);announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-toggle'});controls();}});
- if(micButton)micButton.addEventListener('click',()=>{const result=voice.startListening();if(result.status==='unavailable')announcement.textContent=strings().sttUnavailable;});
- if(voiceStop)voiceStop.addEventListener('click',()=>{conversation.cancel('voice-stop');connection?.disconnect();voice.stopAll('voice-stop');busy=false;controls();input.focus();});
+ if(micButton)micButton.addEventListener('click',async()=>{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error')announcement.textContent=strings().sttUnavailable;controls();});
+ if(voiceStop)voiceStop.addEventListener('click',()=>{const s=voice.getState();if(s.listening){voice.stopListening();controls();return;}if(s.speaking){voice.cancelSpeech();controls();input.focus();return;}if(busy){conversation.cancel('voice-stop');connection?.disconnect();voice.stopAll('voice-stop');busy=false;controls();input.focus();}});
  if(voiceRepeat)voiceRepeat.addEventListener('click',()=>{void voice.repeat();});
  if(voiceVolume)voiceVolume.addEventListener('input',()=>voice.setVolume(voiceVolume.value));
  if(voiceRate)voiceRate.addEventListener('input',()=>voice.setRate(voiceRate.value));
