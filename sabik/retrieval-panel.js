@@ -4,20 +4,20 @@
   const UI = Object.freeze({
     es: Object.freeze({
       heading: 'Resultados en Iris Green',
-      empty: 'No hay resultados de Iris Green para esta consulta.',
-      error: 'No se pudieron cargar los resultados de Iris Green. Puedes volver a intentarlo.',
-      cancelled: 'La consulta se canceló. No se mostrarán resultados antiguos.',
+      empty: 'No hay resultados en Iris Green para esta consulta.',
+      error: 'No se pudieron cargar los resultados de Iris Green. Puedes intentarlo de nuevo.',
+      cancelled: 'La consulta se ha cancelado. No se mostrarán resultados anteriores.',
       retry: 'Reintentar',
       resultsAnnouncement: count => count === 1 ? '1 resultado disponible.' : `${count} resultados disponibles.`,
       emptyAnnouncement: 'No hay resultados disponibles.',
-      errorAnnouncement: 'No se pudieron cargar los resultados. Puedes volver a intentarlo.',
+      errorAnnouncement: 'No se pudieron cargar los resultados. Puedes intentarlo de nuevo.',
       cancelledAnnouncement: 'Consulta cancelada.'
     }),
     en: Object.freeze({
       heading: 'Results from Iris Green',
-      empty: 'There are no Iris Green results for this query.',
+      empty: 'There are no results in Iris Green for this query.',
       error: 'The Iris Green results could not be loaded. You can try again.',
-      cancelled: 'The query was cancelled. Older results will not be shown.',
+      cancelled: 'The query has been cancelled. Earlier results will not be shown.',
       retry: 'Try again',
       resultsAnnouncement: count => count === 1 ? '1 result available.' : `${count} results available.`,
       emptyAnnouncement: 'No results are available.',
@@ -117,16 +117,33 @@
       groups: Object.freeze(groups), source_language: value.source_language });
   }
 
+
+  async function filterEnvelopeByAge(envelope) {
+    const gate = global && global.IGAudience;
+    if (!gate || typeof gate.get !== 'function' || gate.get() === 'default' || typeof gate.allowedUrl !== 'function') return envelope;
+    const groups = [];
+    const ids = new Set();
+    for (const group of envelope.groups) {
+      if (!(await gate.allowedUrl(group.url))) continue;
+      groups.push(group);
+      group.citations.forEach(citation => ids.add(citation.fragment_id));
+    }
+    const candidates = envelope.candidates.filter(candidate => ids.has(candidate.fragment_id));
+    return Object.freeze({ library_version: envelope.library_version, candidates: Object.freeze(candidates),
+      groups: Object.freeze(groups), source_language: envelope.source_language });
+  }
+
   function setText(node, value) {
     node.textContent = String(value);
     return node;
   }
 
-  function createRetrievalPanel({ root, query, announcement = null, language = 'es' } = {}) {
+  function createRetrievalPanel({ root, query, announcement = null, language = 'es', onVoiceEvent = () => {}, isVoiceEnabled = () => false } = {}) {
     if (!root || typeof root.replaceChildren !== 'function' || !root.ownerDocument) {
       throw new TypeError('A DOM root is required');
     }
     if (typeof query !== 'function') throw new TypeError('A query function is required');
+    if (typeof onVoiceEvent !== 'function' || typeof isVoiceEnabled !== 'function') throw new TypeError('Invalid voice callbacks');
 
     const document = root.ownerDocument;
     let lang = validLanguage(language);
@@ -149,6 +166,20 @@
       if (!announcement || typeof announcement.replaceChildren !== 'function' || !message) return;
       announcement.setAttribute('lang', lang);
       announcement.replaceChildren(document.createTextNode(message));
+    }
+
+    function voice(id, message, fallbackAnnouncement, expectedState) {
+      const token = serial;
+      const voiceLanguage = lang;
+      const fallbackIfCurrent = () => {
+        if (token === serial && voiceLanguage === lang && viewState === expectedState) announce(fallbackAnnouncement);
+      };
+      let result;
+      try { result = onVoiceEvent({ id, text: message, language: lang }); }
+      catch (_) { fallbackIfCurrent(); return; }
+      Promise.resolve(result).then(outcome => {
+        if (!outcome || outcome.status !== 'playing') fallbackIfCurrent();
+      }).catch(fallbackIfCurrent);
     }
 
     function replaceView(node) {
@@ -184,7 +215,7 @@
       return button;
     }
 
-    function renderStatus(kind, message, announcementText) {
+    function renderStatus(kind, message, announcementText, speakVoice = true) {
       const box = document.createElement('div');
       box.className = `sabik-retrieval-state sabik-retrieval-${kind}`;
       const paragraph = document.createElement('p');
@@ -197,7 +228,9 @@
       }
       replaceView(box);
       setState(kind);
-      announce(announcementText);
+      const voiceId = ({ empty: 'sabik.results.empty', error: 'sabik.results.error', cancelled: 'sabik.results.cancelled' })[kind];
+      if (speakVoice && voiceId && isVoiceEnabled()) voice(voiceId, message, announcementText, kind);
+      else announce(announcementText);
     }
 
     function renderResults(envelope) {
@@ -285,7 +318,7 @@
       try {
         const raw = await query(request, { signal });
         if (token !== serial) return Object.freeze({ status: 'stale' });
-        const envelope = normalizeEnvelope(raw);
+        const envelope = await filterEnvelopeByAge(normalizeEnvelope(raw));
         lastEnvelope = envelope;
         return renderResults(envelope);
       } catch (error) {
@@ -322,9 +355,9 @@
       lang = validLanguage(nextLanguage);
       root.setAttribute('lang', lang);
       if (viewState === 'results' && lastEnvelope) renderResults(lastEnvelope);
-      else if (viewState === 'empty') renderStatus('empty', strings().empty, strings().emptyAnnouncement);
-      else if (viewState === 'error') renderStatus('error', strings().error, strings().errorAnnouncement);
-      else if (viewState === 'cancelled') renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement);
+      else if (viewState === 'empty') renderStatus('empty', strings().empty, strings().emptyAnnouncement, false);
+      else if (viewState === 'error') renderStatus('error', strings().error, strings().errorAnnouncement, false);
+      else if (viewState === 'cancelled') renderStatus('cancelled', strings().cancelled, strings().cancelledAnnouncement, false);
       return lang;
     }
 
