@@ -12,6 +12,8 @@ if(!game){
  root.innerHTML='<p role="alert">'+(lang==='en'?'This game could not be loaded.':'No se ha podido cargar este juego.')+'</p>';
  return;
 }
+var staticTitle=document.getElementById('room-static-title');
+if(staticTitle)staticTitle.remove();
 /* S0 deliberately carries only the four visual records used by this pack.
    The complete pictogram catalogue is not a runtime dependency of the room route. */
 var pictos={
