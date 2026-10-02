@@ -61,11 +61,18 @@ def contrast(a,b):
 async def apply_palette(page,name):
     vals=PALETTES[name]
     await page.evaluate("""vals=>{
+      let freeze=document.getElementById('ig-qa-freeze-motion');
+      if(!freeze){
+        freeze=document.createElement('style');
+        freeze.id='ig-qa-freeze-motion';
+        freeze.textContent='*,*::before,*::after{transition:none!important;animation:none!important}';
+        document.head.appendChild(freeze);
+      }
       const b=document.body;
       for(const [k,v] of Object.entries(vals)) b.style.setProperty(k,v,'important');
       b.dataset.igQaPalette=vals['--ig-ink']==='#EEF4F8'?'navy':'light';
     }""",vals)
-    await page.wait_for_timeout(50)
+    await page.wait_for_timeout(10)
 
 async def inspect(page,palette):
     required=[
