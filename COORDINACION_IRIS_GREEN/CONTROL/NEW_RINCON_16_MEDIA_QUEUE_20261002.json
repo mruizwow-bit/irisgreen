@@ -1,0 +1,137 @@
+{
+  "schema": "new_rincon_media_queue_v1",
+  "date": "2026-10-02",
+  "duration_final_minutes": 5,
+  "ten_minute_policy": "MASTER_DONOR_ONLY",
+  "wip_limit": 1,
+  "active_item": "A1",
+  "pipeline": [
+    "LUMEN_VISUAL_REUSE_GATE",
+    "ECO_AUDIO_PROTOTYPE",
+    "ASTRA_MARIA_PROTOTYPE_GATE",
+    "LUMEN_FINAL_5MIN",
+    "ECO_FINAL_MEDIA_QA",
+    "MOTOR_COMMON_PLAYER_INTEGRATION",
+    "AXIOMA_ACCESSIBILITY_MOTION_QA",
+    "ASTRA_MARIA_FINAL_GATE",
+    "ITEM_PASS"
+  ],
+  "items": [
+    {
+      "order": 1,
+      "id": "A1",
+      "family": "RELAXING",
+      "name": "Acuario / Pecera R61",
+      "status": "ACTIVE",
+      "current_owner": "LUMEN",
+      "notes": "5min visual KEEP; audio missing; no rerender unless real defect"
+    },
+    {
+      "order": 2,
+      "id": "A3",
+      "family": "RELAXING",
+      "name": "Mar",
+      "status": "QUEUED",
+      "notes": "30s prototype received; visual direction KEEP; audio requires Eco correction"
+    },
+    {
+      "order": 3,
+      "id": "B2",
+      "family": "SENSORY_ROOM",
+      "name": "Discos líquidos",
+      "status": "QUEUED",
+      "notes": "30s prototype received"
+    },
+    {
+      "order": 4,
+      "id": "A2",
+      "family": "RELAXING",
+      "name": "Medusas",
+      "status": "QUEUED"
+    },
+    {
+      "order": 5,
+      "id": "A4",
+      "family": "RELAXING",
+      "name": "Río",
+      "status": "QUEUED"
+    },
+    {
+      "order": 6,
+      "id": "A5",
+      "family": "RELAXING",
+      "name": "Lluvia en la ventana",
+      "status": "QUEUED"
+    },
+    {
+      "order": 7,
+      "id": "A6",
+      "family": "RELAXING",
+      "name": "Noche estrellada",
+      "status": "QUEUED"
+    },
+    {
+      "order": 8,
+      "id": "A7",
+      "family": "RELAXING",
+      "name": "Bosque",
+      "status": "QUEUED"
+    },
+    {
+      "order": 9,
+      "id": "A8",
+      "family": "RELAXING",
+      "name": "Brasas",
+      "status": "QUEUED"
+    },
+    {
+      "order": 10,
+      "id": "B1",
+      "family": "SENSORY_ROOM",
+      "name": "Tubo de burbujas",
+      "status": "QUEUED"
+    },
+    {
+      "order": 11,
+      "id": "B3",
+      "family": "SENSORY_ROOM",
+      "name": "Espejo infinito",
+      "status": "QUEUED"
+    },
+    {
+      "order": 12,
+      "id": "B4",
+      "family": "SENSORY_ROOM",
+      "name": "Cielo de estrellas",
+      "status": "QUEUED"
+    },
+    {
+      "order": 13,
+      "id": "B5",
+      "family": "SENSORY_ROOM",
+      "name": "Columna de cera",
+      "status": "QUEUED"
+    },
+    {
+      "order": 14,
+      "id": "B6",
+      "family": "SENSORY_ROOM",
+      "name": "Cáusticas",
+      "status": "QUEUED"
+    },
+    {
+      "order": 15,
+      "id": "B7",
+      "family": "SENSORY_ROOM",
+      "name": "Velos de color",
+      "status": "QUEUED"
+    },
+    {
+      "order": 16,
+      "id": "B8",
+      "family": "SENSORY_ROOM",
+      "name": "Lluvia de luz",
+      "status": "QUEUED"
+    }
+  ]
+}
