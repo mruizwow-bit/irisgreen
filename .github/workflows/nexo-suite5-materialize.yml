@@ -1,0 +1,101 @@
+name: Nexo R44 Suite5 materialize microblock
+on:
+  push:
+    branches: ['nexo/r44-suite5-main-20261002']
+    paths: ['.github/workflows/nexo-suite5-materialize.yml']
+permissions:
+  contents: write
+jobs:
+  materialize-build:
+    if: contains(github.event.head_commit.message, 'RUN_NEXO_SUITE5_MATERIALIZE')
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: nexo/r44-suite5-main-20261002
+          fetch-depth: 0
+      - name: Prepare exact Suite5 donor snapshot
+        run: |
+          set -euxo pipefail
+          D=/tmp/suite5-donor
+          rm -rf "$D"
+          mkdir -p "$D/assets/data" "$D/assets/vendor/taller" "$D/scripts/taller_suite"
+          for f in \
+            ig-suite-core.js ig-suite-escritura.css ig-suite-escritura.js \
+            ig-suite-juego-runtime.js ig-suite-juegosmesa.css ig-suite-juegosmesa.js \
+            ig-suite-meter-worklet.js ig-suite-musica.js ig-suite-pixelart.js \
+            ig-suite-videojuegos.js; do cp "assets/$f" "$D/assets/$f"; done
+          for f in LICENCIAS.txt pixi.js tone.js; do cp "assets/vendor/taller/$f" "$D/assets/vendor/taller/$f"; done
+          for f in comun.py escritura.py juegos_mesa.py musica_comun.py pixelart.py ritmo.py videojuegos.py; do cp "scripts/taller_suite/$f" "$D/scripts/taller_suite/$f"; done
+          cp scripts/build_taller_suite5.py "$D/scripts/build_taller_suite5.py"
+          printf '%s\n' "$D" > /tmp/donor_path
+      - name: Guard baseline
+        run: |
+          set -euxo pipefail
+          BASE=$(git rev-parse HEAD)
+          D=$(cat /tmp/donor_path)
+          DONANTE="$D" BASE_ESPERADA="$BASE" bash test_suite5.sh | tee /tmp/suite5-baseline.log
+          git restore -- es en
+          git clean -fd -- es en
+      - name: Guard mutation F must fail
+        run: |
+          set -uxo pipefail
+          BASE=$(git rev-parse HEAD)
+          D=$(cat /tmp/donor_path)
+          set +e
+          SUITE5_MUTATION_F=1 DONANTE="$D" BASE_ESPERADA="$BASE" bash test_suite5.sh > /tmp/suite5-f.log 2>&1
+          rc=$?
+          set -e
+          cat /tmp/suite5-f.log
+          test "$rc" -eq 1
+          grep -F 'es/taller/ruta-extra/index.html' /tmp/suite5-f.log
+          git restore -- es en
+          git clean -fd -- es en
+      - name: Materialize exactly ten Suite5 hosts
+        run: |
+          set -euxo pipefail
+          python3 scripts/build_taller_suite5.py | tee /tmp/suite5-written.txt
+          test "$(grep -c . /tmp/suite5-written.txt)" -eq 10
+          cat > /tmp/expected.txt <<'EOF'
+          en/workshop/board-games/index.html
+          en/workshop/constraint-writing/index.html
+          en/workshop/pixel-art/index.html
+          en/workshop/rhythm-sequencer/index.html
+          en/workshop/video-game-design/index.html
+          es/taller/escritura-restricciones/index.html
+          es/taller/juegos-de-mesa/index.html
+          es/taller/pixel-art/index.html
+          es/taller/ritmo/index.html
+          es/taller/videojuegos/index.html
+          EOF
+          sort -o /tmp/expected.txt /tmp/expected.txt
+          sort /tmp/suite5-written.txt > /tmp/written.sorted
+          diff -u /tmp/expected.txt /tmp/written.sorted
+      - name: Canonical full build
+        run: |
+          set -euxo pipefail
+          python3 scripts/build_site.py | tee /tmp/suite5-build.log
+      - name: Verify source delta remains exact
+        run: |
+          set -euxo pipefail
+          git status --porcelain=v1 --untracked-files=all -- es en > /tmp/status-pages.txt
+          cat /tmp/status-pages.txt
+          awk '{print $2}' /tmp/status-pages.txt | sort > /tmp/status.paths
+          diff -u /tmp/expected.txt /tmp/status.paths
+          test "$(wc -l < /tmp/status.paths)" -eq 10
+      - name: Commit materialized hosts and remove temporary workflow
+        run: |
+          set -euxo pipefail
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -- \
+            es/taller/pixel-art/index.html en/workshop/pixel-art/index.html \
+            es/taller/escritura-restricciones/index.html en/workshop/constraint-writing/index.html \
+            es/taller/juegos-de-mesa/index.html en/workshop/board-games/index.html \
+            es/taller/ritmo/index.html en/workshop/rhythm-sequencer/index.html \
+            es/taller/videojuegos/index.html en/workshop/video-game-design/index.html
+          git rm .github/workflows/nexo-suite5-materialize.yml
+          git diff --cached --stat
+          git commit -m 'R44 SUITE5: materialize minimal five-study hosts after build PASS'
+          git push origin HEAD:nexo/r44-suite5-main-20261002
