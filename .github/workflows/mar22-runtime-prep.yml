@@ -1,0 +1,36 @@
+name: Motor · Mar 22 runtime prep
+on:
+  push:
+    branches: [motor/mar22-descent-runtime-prep-20261002]
+    paths:
+      - 'assets/data/mar22-descent-contract.json'
+      - 'assets/ig-mar22-descent.js'
+      - 'assets/ig-mar22-descent.css'
+      - 'tools/mar22-descent-runtime-harness.html'
+      - 'scripts/test_mar22_descent_runtime.py'
+      - '.github/workflows/mar22-runtime-prep.yml'
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0 pillow==11.3.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: |
+          node --check assets/ig-mar22-descent.js
+          python -m py_compile scripts/test_mar22_descent_runtime.py
+      - name: Runtime prep gate
+        run: python scripts/test_mar22_descent_runtime.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: mar22-runtime-prep
+          path: reports/mar22-descent-runtime/runtime-prep.json
+          retention-days: 14
