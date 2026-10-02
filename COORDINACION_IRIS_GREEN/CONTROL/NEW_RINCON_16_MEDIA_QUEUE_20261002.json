@@ -23,8 +23,24 @@
       "family": "RELAXING",
       "name": "Acuario / Pecera R61",
       "status": "ACTIVE",
-      "current_owner": "LUMEN",
-      "notes": "5min visual KEEP; audio missing; no rerender unless real defect"
+      "current_owner": "ECO",
+      "notes": "Lumen visual KEEP PASS; exact 5min binary hash locked; audio missing; Eco audio+media next; no rerender",
+      "binary_identity": {
+        "filename": "pecera_10min_parte1_de_2.mp4",
+        "sha256": "8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f",
+        "size_bytes": 19838329,
+        "duration_seconds": 300.083333,
+        "video_codec": "h264",
+        "profile": "High",
+        "width": 960,
+        "height": 540,
+        "fps": 24,
+        "video_bitrate_bps": 526758,
+        "total_bitrate_bps": 528875,
+        "audio_streams": 0
+      },
+      "completed_stage": "LUMEN_VISUAL_REUSE_GATE",
+      "completed_stage_marker": "RINCON_A1_LUMEN_VISUAL_KEEP_PASS"
     },
     {
       "order": 2,
@@ -135,8 +151,8 @@
     }
   ],
   "tracking_issue": 368,
-  "active_stage": "LUMEN_VISUAL_REUSE_GATE",
-  "active_stage_marker": "RINCON_A1_LUMEN_VISUAL_KEEP_PASS",
+  "active_stage": "ECO_AUDIO_PROTOTYPE",
+  "active_stage_marker": "RINCON_A1_ECO_AUDIO_MEDIA_PASS",
   "last_orchestration_comment_id": 5957669623,
   "resource_constraints": {
     "motor": {
@@ -145,5 +161,11 @@
       "rincon_player_stage": "WAIT_MOTOR_RELEASE",
       "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON"
     }
+  },
+  "last_completed_checkpoint": {
+    "item": "A1",
+    "owner": "LUMEN",
+    "marker": "RINCON_A1_LUMEN_VISUAL_KEEP_PASS",
+    "evidence_path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEW_RINCON_16_MEDIA_20261002/A1_LUMEN_VISUAL_KEEP_PASS.md"
   }
 }

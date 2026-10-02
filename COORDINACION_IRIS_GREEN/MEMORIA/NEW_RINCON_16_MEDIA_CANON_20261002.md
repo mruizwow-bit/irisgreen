@@ -88,17 +88,43 @@ El orden prioriza: cerrar primero la pieza más avanzada (Pecera), después los 
 ### ACTIVE
 `A1_ACUARIO_PECERA_R61`
 
-Binario visto:
-- ~5:00;
-- H.264;
+Checkpoint Lumen completado:
+`RINCON_A1_LUMEN_VISUAL_KEEP_PASS`
+
+Binario exacto que pasa a Eco:
+- archivo canónico: `pecera_10min_parte1_de_2.mp4`;
+- copia Library verificada: `pecera_10min_parte1_de_2(1).mp4`;
+- ambas copias son byte-identical;
+- SHA-256: `8b2e5e7cb28e9ccfbf1a045c718fd9201f8cac6e2c92ee707545c386693a1e8f`;
+- tamaño: `19.838.329 B`;
+- duración: `300.083333 s` ≈ 5:00;
+- H.264 High;
 - 960×540;
 - 24 fps;
-- visual KEEP;
-- sin audio.
+- bitrate vídeo: ~526.758 bps;
+- bitrate total: ~528.875 bps;
+- 1 stream de vídeo;
+- **0 streams de audio**.
 
-Siguiente owner:
-**Lumen A7** — confirmar visual KEEP exacto y que no requiere rerender.  
-Después **Eco A6** — audio first-party + mux/media QA.
+Revisión Lumen:
+- visual KEEP;
+- cámara fija/estable;
+- composición mantiene profundidad por capas, vegetación, peces y columna lateral de burbujas;
+- variación lenta perceptible a lo largo de los 5 min;
+- sin cortes detectados en barrido de scene-change >0,08;
+- muestreo temporal de luminancia estable: rango aproximado 2,06/255 en muestras de 1 s;
+- cambio visual 0,25 s contenido: media ~2,13/255, p95 ~2,59/255, máximo ~3,03/255;
+- decode completo del vídeo: 0 errores ffmpeg;
+- no se observa defecto visual que justifique rerender;
+- **no cambiar arte por duración**.
+
+Owner actual:
+**Eco A6** — crear sonido first-party propio de Pecera + mux/media QA sobre ESTE hash.
+
+Lumen entra en WAIT hasta:
+`RINCON_A1_ECO_AUDIO_MEDIA_PASS`.
+
+No A3. No B2. Cola congelada por `ONE ACTIVE MEDIA ITEM ONLY`.
 
 ### QUEUED
 A3, B2, A2, A4, A5, A6, A7, A8, B1, B3, B4, B5, B6, B7, B8.
