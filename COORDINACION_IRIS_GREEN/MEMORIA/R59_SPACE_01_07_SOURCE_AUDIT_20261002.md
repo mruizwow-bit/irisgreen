@@ -342,3 +342,28 @@ No se solicita cambio a Nube desde este documento.
 
 Estado:
 `R59_SPACE_01_07_SOURCE_AUDIT_COMPLETE`
+
+
+---
+
+# Fuentes públicas verificadas el 02/10/2026
+
+- HYG GitHub archivado / aviso de traslado:
+  https://github.com/astronexus/HYG-Database
+- HYG LICENSE:
+  https://github.com/astronexus/HYG-Database/blob/main/LICENSE
+- IAU · 59 nombres de estrellas publicados en 2026:
+  https://www.iau.org/IAU/News/Ann2026/New-Star-Names-2026.aspx
+- JPL · Approximate Positions of the Planets:
+  https://ssd.jpl.nasa.gov/planets/approx_pos.html
+- JPL · Planetary Satellite Physical Parameters:
+  https://ssd.jpl.nasa.gov/sats/phys_par/
+- JPL · Planetary Satellite Mean Elements:
+  https://ssd.jpl.nasa.gov/sats/elem/
+- NASA Exoplanet Archive:
+  https://exoplanetarchive.ipac.caltech.edu/
+- NASA Exoplanet Archive · TAP:
+  https://exoplanetarchive.ipac.caltech.edu/docs/TAP/usingTAP.html
+
+Nota de evidencia:
+Codeberg no fue accesible al crawler web de esta sesión por robots.txt. Por tanto este audit NO afirma qué número de versión HYG es actualmente el último en Codeberg. Solo afirma, con fuente primaria GitHub del autor, que el repositorio GitHub antiguo está archivado y que futuras actualizaciones se trasladaron a Codeberg.
