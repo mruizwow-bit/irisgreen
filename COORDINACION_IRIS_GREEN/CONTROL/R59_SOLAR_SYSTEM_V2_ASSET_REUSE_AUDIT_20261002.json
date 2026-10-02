@@ -1,0 +1,1204 @@
+{
+  "schema": "iris-green-solar-system-v2-asset-audit-v1",
+  "id": "R59_SOLAR_SYSTEM_V2_ASSET_REUSE_AUDIT_20261002",
+  "date": "2026-10-02",
+  "owner": "Senda · R59",
+  "scope": "Product/reuse audit only. No code, image generation, production order or legal clearance.",
+  "marker": "INTEREST_02_SOLAR_SYSTEM_V2_PRODUCT_AND_ASSET_AUDIT_PASS",
+  "source_snapshot": {
+    "consulta": "2026-09-24",
+    "json_path": "es/intereses/sistema-solar/sistema-solar.json",
+    "json_blob_sha": "72802030e6df20db4ce8eebbd23eb03ecc9437cd",
+    "routes": {
+      "es": "/es/intereses/sistema-solar/",
+      "en": "/en/interests/solar-system/"
+    }
+  },
+  "classification_legend": {
+    "ASSET_REUSE_OK": "Provenance/license is documented enough for product reuse planning. This is not legal clearance; preserve conditions and re-check before publish.",
+    "ASSET_REPLACEMENT_REQUIRED": "Do not carry into V2 without replacement.",
+    "PROVENANCE_UNKNOWN": "Exact origin/rights chain is not sufficiently pinned for V2 reuse."
+  },
+  "product_need": {
+    "initial_bodies": [
+      "sol",
+      "mercurio",
+      "venus",
+      "tierra",
+      "marte",
+      "jupiter",
+      "saturno",
+      "urano",
+      "neptuno"
+    ],
+    "contextual_moons": [
+      "luna",
+      "io",
+      "europa",
+      "ganimedes",
+      "encelado",
+      "titan"
+    ],
+    "new_assets_required_for_v2_minimum": [],
+    "batch_02_requested": false
+  },
+  "footprint_reference_only": {
+    "note": "Not a load budget. These are current donor bytes if all listed files were transferred.",
+    "initial_9_body_texture_bytes": 926877,
+    "initial_9_body_texture_kib": 905.2,
+    "initial_9_body_2d_render_bytes": 99394,
+    "initial_9_body_2d_render_kib": 97.1,
+    "contextual_6_moon_texture_bytes": 256830,
+    "contextual_6_moon_texture_kib": 250.8,
+    "contextual_6_moon_2d_render_bytes": 21010,
+    "contextual_6_moon_2d_render_kib": 20.5,
+    "current_3d_bundle_bytes": 596780,
+    "current_cielo_fondo_bytes": 411894
+  },
+  "special_rights_notes": [
+    {
+      "asset": "tex:calisto",
+      "note": "Current credit says CC BY-SA. Reuse is technically possible, but attribution + ShareAlike obligations must be preserved. Existing blanket 'Iris Green CC BY 4.0' wording must not override source ShareAlike; Lex should confirm final public licensing."
+    },
+    {
+      "assets": [
+        "tex:eris",
+        "tex:haumea",
+        "tex:makemake"
+      ],
+      "note": "These are recreations/imagined surfaces. They may be reused only when clearly labelled RECONSTRUCTION/SIMULATION; not as observed factual surface imagery."
+    },
+    {
+      "assets": [
+        "NASA/JPL-derived textures"
+      ],
+      "note": "Preserve credits and do not imply NASA/JPL/Caltech endorsement; re-check per-asset third-party exceptions before final publish."
+    }
+  ],
+  "textures": [
+    {
+      "asset_id": "tex:sol",
+      "body_id": "sol",
+      "path": "img/intereses/sistema-solar/tex/sol.webp",
+      "bytes": 198174,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:mercurio",
+      "body_id": "mercurio",
+      "path": "img/intereses/sistema-solar/tex/mercurio.webp",
+      "bytes": 112926,
+      "origin": "NASA/JHUAPL/Carnegie Institution of Washington (misión MESSENGER), vía el proyecto solar-system de Kyle Gough",
+      "license": "Imagen de la NASA, uso libre con crédito",
+      "source_url": "https://messenger.jhuapl.edu/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:venus",
+      "body_id": "venus",
+      "path": "img/intereses/sistema-solar/tex/venus.webp",
+      "bytes": 5132,
+      "origin": "Mapa de la atmósfera de Venus, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:luna",
+      "body_id": "luna",
+      "path": "img/intereses/sistema-solar/tex/luna.webp",
+      "bytes": 167390,
+      "origin": "Solar System Scope (INOVE), vía solar-system-textures de homer-jay",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:marte",
+      "body_id": "marte",
+      "path": "img/intereses/sistema-solar/tex/marte.webp",
+      "bytes": 16492,
+      "origin": "NASA/JPL-Caltech (mapas de David Seal), vía Stellarium",
+      "license": "Uso libre con crédito «Courtesy NASA/JPL-Caltech»",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:jupiter",
+      "body_id": "jupiter",
+      "path": "img/intereses/sistema-solar/tex/jupiter.webp",
+      "bytes": 99696,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:saturno",
+      "body_id": "saturno",
+      "path": "img/intereses/sistema-solar/tex/saturno.webp",
+      "bytes": 26762,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:urano",
+      "body_id": "urano",
+      "path": "img/intereses/sistema-solar/tex/urano.webp",
+      "bytes": 2748,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:neptuno",
+      "body_id": "neptuno",
+      "path": "img/intereses/sistema-solar/tex/neptuno.webp",
+      "bytes": 14404,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:ceres",
+      "body_id": "ceres",
+      "path": "img/intereses/sistema-solar/tex/ceres.webp",
+      "bytes": 27406,
+      "origin": "USGS Astrogeology (datos de Dawn), coloreado por RVS, vía Stellarium",
+      "license": "Dominio público",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:pluton",
+      "body_id": "pluton",
+      "path": "img/intereses/sistema-solar/tex/pluton.webp",
+      "bytes": 24214,
+      "origin": "Mapa hecho por Kexitt, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:caronte",
+      "body_id": "caronte",
+      "path": "img/intereses/sistema-solar/tex/caronte.webp",
+      "bytes": 14110,
+      "origin": "Mapa hecho por Kexitt, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:eris",
+      "body_id": "eris",
+      "path": "img/intereses/sistema-solar/tex/eris.webp",
+      "bytes": 14790,
+      "origin": "Mapa imaginado por MrSpace43, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": true,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required.",
+        "Must be labelled RECONSTRUCTION/SIMULATION, not observed surface imagery."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:haumea",
+      "body_id": "haumea",
+      "path": "img/intereses/sistema-solar/tex/haumea.webp",
+      "bytes": 17016,
+      "origin": "Mapa imaginado por Snowfall, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": true,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required.",
+        "Must be labelled RECONSTRUCTION/SIMULATION, not observed surface imagery."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:fobos",
+      "body_id": "fobos",
+      "path": "img/intereses/sistema-solar/tex/fobos.webp",
+      "bytes": 29472,
+      "origin": "NASA/JPL-Caltech (mapas de David Seal), vía Stellarium",
+      "license": "Uso libre con crédito «Courtesy NASA/JPL-Caltech»",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:deimos",
+      "body_id": "deimos",
+      "path": "img/intereses/sistema-solar/tex/deimos.webp",
+      "bytes": 7070,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:io",
+      "body_id": "io",
+      "path": "img/intereses/sistema-solar/tex/io.webp",
+      "bytes": 28000,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:europa",
+      "body_id": "europa",
+      "path": "img/intereses/sistema-solar/tex/europa.webp",
+      "bytes": 11938,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:ganimedes",
+      "body_id": "ganimedes",
+      "path": "img/intereses/sistema-solar/tex/ganimedes.webp",
+      "bytes": 17082,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:calisto",
+      "body_id": "calisto",
+      "path": "img/intereses/sistema-solar/tex/calisto.webp",
+      "bytes": 26024,
+      "origin": "John van Vliet a partir de datos del PDS, modificado por RVS, vía Stellarium",
+      "license": "CC BY-SA",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution + ShareAlike must be preserved; Lex final clearance for public derivative packaging."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:mimas",
+      "body_id": "mimas",
+      "path": "img/intereses/sistema-solar/tex/mimas.webp",
+      "bytes": 15738,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:encelado",
+      "body_id": "encelado",
+      "path": "img/intereses/sistema-solar/tex/encelado.webp",
+      "bytes": 30502,
+      "origin": "NASA, equipo CICLOPS (datos de Cassini), coloreado por RVS, vía Stellarium",
+      "license": "Dominio público",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:tetis",
+      "body_id": "tetis",
+      "path": "img/intereses/sistema-solar/tex/tetis.webp",
+      "bytes": 37152,
+      "origin": "Mapa procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:dione",
+      "body_id": "dione",
+      "path": "img/intereses/sistema-solar/tex/dione.webp",
+      "bytes": 31604,
+      "origin": "NASA, equipo CICLOPS (datos de Cassini), coloreado por RVS, vía Stellarium",
+      "license": "Dominio público",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:rea",
+      "body_id": "rea",
+      "path": "img/intereses/sistema-solar/tex/rea.webp",
+      "bytes": 34344,
+      "origin": "Mapa hecho por FarGetaNik, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:titan",
+      "body_id": "titan",
+      "path": "img/intereses/sistema-solar/tex/titan.webp",
+      "bytes": 1918,
+      "origin": "Mapa de nubes hecho por Magenta Meteorite, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "CONTEXTUAL_MOON_DONOR"
+    },
+    {
+      "asset_id": "tex:miranda",
+      "body_id": "miranda",
+      "path": "img/intereses/sistema-solar/tex/miranda.webp",
+      "bytes": 14902,
+      "origin": "Mapa hecho por Snowfall, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:ariel",
+      "body_id": "ariel",
+      "path": "img/intereses/sistema-solar/tex/ariel.webp",
+      "bytes": 17490,
+      "origin": "Mapa hecho por Snowfall, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:umbriel",
+      "body_id": "umbriel",
+      "path": "img/intereses/sistema-solar/tex/umbriel.webp",
+      "bytes": 15630,
+      "origin": "Mapa hecho por Kexitt, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:titania",
+      "body_id": "titania",
+      "path": "img/intereses/sistema-solar/tex/titania.webp",
+      "bytes": 23440,
+      "origin": "Mapa hecho por Kexitt, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:oberon",
+      "body_id": "oberon",
+      "path": "img/intereses/sistema-solar/tex/oberon.webp",
+      "bytes": 15576,
+      "origin": "Mapa hecho por Snowfall, procesado por Oleg Pluton (Helleformer), vía Stellarium",
+      "license": "CC BY 4.0",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:triton",
+      "body_id": "triton",
+      "path": "img/intereses/sistema-solar/tex/triton.webp",
+      "bytes": 16466,
+      "origin": "NASA/JPL-Caltech (mapas de David Seal), vía Stellarium",
+      "license": "Uso libre con crédito «Courtesy NASA/JPL-Caltech»",
+      "source_url": "https://github.com/Stellarium/stellarium/blob/master/CREDITS.md",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Credit source as documented; do not imply NASA/JPL/Caltech endorsement; verify third-party exceptions at final publish."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:anillos-saturno",
+      "body_id": "anillos-saturno",
+      "path": "img/intereses/sistema-solar/tex/anillos-saturno.png",
+      "bytes": 5661,
+      "origin": "Solar System Scope (INOVE), vía el proyecto solar-system de Kyle Gough",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:tierra-dia",
+      "body_id": "tierra-dia",
+      "path": "img/intereses/sistema-solar/tex/tierra-dia.webp",
+      "bytes": 136622,
+      "origin": "Solar System Scope (INOVE), versión redimensionada y combinada del proyecto three.js",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:tierra-noche",
+      "body_id": "tierra-noche",
+      "path": "img/intereses/sistema-solar/tex/tierra-noche.webp",
+      "bytes": 67880,
+      "origin": "Solar System Scope (INOVE), versión redimensionada y combinada del proyecto three.js",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:tierra-relieve-nubes",
+      "body_id": "tierra-relieve-nubes",
+      "path": "img/intereses/sistema-solar/tex/tierra-relieve-nubes.webp",
+      "bytes": 240380,
+      "origin": "Solar System Scope (INOVE), versión redimensionada y combinada del proyecto three.js",
+      "license": "CC BY 4.0",
+      "source_url": "https://www.solarsystemscope.com/textures/",
+      "reconstruction": false,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required."
+      ],
+      "v2_role": "INITIAL_9_BODY_DONOR"
+    },
+    {
+      "asset_id": "tex:makemake",
+      "body_id": "makemake",
+      "path": "img/intereses/sistema-solar/tex/makemake.webp",
+      "bytes": 22406,
+      "origin": "Iris Green, dibujado por ordenador",
+      "license": "CC BY 4.0",
+      "source_url": "https://irisgreen.eu/",
+      "reconstruction": true,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required.",
+        "Must be labelled RECONSTRUCTION/SIMULATION, not observed surface imagery."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    },
+    {
+      "asset_id": "tex:japeto",
+      "body_id": "japeto",
+      "path": "img/intereses/sistema-solar/tex/japeto.webp",
+      "bytes": 10382,
+      "origin": "Iris Green, dibujado por ordenador",
+      "license": "CC BY 4.0",
+      "source_url": "https://irisgreen.eu/",
+      "reconstruction": true,
+      "provenance_status": "DOCUMENTED",
+      "reuse_status": "ASSET_REUSE_OK",
+      "reuse_conditions": [
+        "Attribution required.",
+        "Must be labelled RECONSTRUCTION/SIMULATION, not observed surface imagery."
+      ],
+      "v2_role": "DEPTH_ONLY_DONOR"
+    }
+  ],
+  "derived_renders": {
+    "top_level": [
+      {
+        "asset_id": "render:ceres",
+        "path": "img/intereses/sistema-solar/ceres.webp",
+        "bytes": 8530,
+        "sha": "e6a7e0f3cfcc012e5c2317c77349d5c4b6835fb9",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "ceres"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:eris",
+        "path": "img/intereses/sistema-solar/eris.webp",
+        "bytes": 6766,
+        "sha": "c59943730a7bc73ca3c278e0c43a0b0be0d291fe",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "eris"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:haumea",
+        "path": "img/intereses/sistema-solar/haumea.webp",
+        "bytes": 4226,
+        "sha": "796fa9bce59d11392e41837974ee00d372fd00cf",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "haumea"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:jupiter",
+        "path": "img/intereses/sistema-solar/jupiter.webp",
+        "bytes": 10964,
+        "sha": "c4a54ccd9b3f0e594c7cdb8c7fc43636b7f3a8f1",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "jupiter"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:makemake",
+        "path": "img/intereses/sistema-solar/makemake.webp",
+        "bytes": 6792,
+        "sha": "5253fd025b8d04b41ffce3dc16be715825eb3e56",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "makemake"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:marte",
+        "path": "img/intereses/sistema-solar/marte.webp",
+        "bytes": 6962,
+        "sha": "ee67bdb1de31a02c699d674483f822141dad3c62",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "marte"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:mercurio",
+        "path": "img/intereses/sistema-solar/mercurio.webp",
+        "bytes": 12640,
+        "sha": "78672f7de3267d45deb657839bf0984ed5f2b0f5",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "mercurio"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:neptuno",
+        "path": "img/intereses/sistema-solar/neptuno.webp",
+        "bytes": 4014,
+        "sha": "08e0e912553a0aee48a5bad8bda1a3de6e577f52",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "neptuno"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:pluton",
+        "path": "img/intereses/sistema-solar/pluton.webp",
+        "bytes": 9086,
+        "sha": "1c626e089795daca365026de143a468e0917d2ba",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "pluton"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:saturno",
+        "path": "img/intereses/sistema-solar/saturno.webp",
+        "bytes": 5556,
+        "sha": "556f32a7a3d2ff94c48fe7a24b75908bbe3ddac5",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "saturno"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:sol",
+        "path": "img/intereses/sistema-solar/sol.webp",
+        "bytes": 24576,
+        "sha": "bbb3a690bd8e2f100c5513ef8ef3fc7399fc7d02",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "sol"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:tarjeta",
+        "path": "img/intereses/sistema-solar/tarjeta.webp",
+        "bytes": 6374,
+        "sha": "1c4f4541bb84e3c7d16e2804445163ccac6b7de6",
+        "provenance_status": "BROAD_FIRST_PARTY_CLAIM_ONLY",
+        "reuse_status": "PROVENANCE_UNKNOWN",
+        "note": "Current catalog thumbnail is covered only by the blanket statement that top-level WebP files are Iris Green computer renders; exact input texture composition is not individually pinned. Not needed by Solar System V2 first experience."
+      },
+      {
+        "asset_id": "render:tierra",
+        "path": "img/intereses/sistema-solar/tierra.webp",
+        "bytes": 23472,
+        "sha": "32f31814321482af564f2f9e105c166238795061",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "tierra-dia",
+          "tierra-noche",
+          "tierra-relieve-nubes"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:urano",
+        "path": "img/intereses/sistema-solar/urano.webp",
+        "bytes": 3968,
+        "sha": "b7de4b223f15b34da7ce3d930942719e9c7fa247",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "urano"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      },
+      {
+        "asset_id": "render:venus",
+        "path": "img/intereses/sistema-solar/venus.webp",
+        "bytes": 7242,
+        "sha": "845dbd348b120d6df92dd3035818f217a2d5773c",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "venus"
+        ],
+        "note": "Iris Green computer render; underlying texture attribution/license remains required. Suitable for fallback/depth/comparison, not automatically V2 hero art."
+      }
+    ],
+    "moons": [
+      {
+        "asset_id": "moon-render:ariel",
+        "path": "img/intereses/sistema-solar/lunas/ariel.webp",
+        "bytes": 2960,
+        "sha": "f9158f514a4d84c62a98991ad58403c9bac0b4cb",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "ariel"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:calisto",
+        "path": "img/intereses/sistema-solar/lunas/calisto.webp",
+        "bytes": 3004,
+        "sha": "ffe75fe6d55d2f634d54eba0f878b05eba0f9059",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "calisto"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:caronte",
+        "path": "img/intereses/sistema-solar/lunas/caronte.webp",
+        "bytes": 2842,
+        "sha": "bce19b83f1e6f4dc05e6116067d2d07e0e25155d",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "caronte"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:dione",
+        "path": "img/intereses/sistema-solar/lunas/dione.webp",
+        "bytes": 3192,
+        "sha": "caf78794961e580d145069ceabc02afd99759f95",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "dione"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:encelado",
+        "path": "img/intereses/sistema-solar/lunas/encelado.webp",
+        "bytes": 2264,
+        "sha": "8727d954c93dcd72e453dbe30334391830412257",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "encelado"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:europa",
+        "path": "img/intereses/sistema-solar/lunas/europa.webp",
+        "bytes": 2208,
+        "sha": "f828c0e8f455ff4cd5a03a74c7caae9422abb21a",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "europa"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:ganimedes",
+        "path": "img/intereses/sistema-solar/lunas/ganimedes.webp",
+        "bytes": 3776,
+        "sha": "4c902559daeca046b32a82dd0aaba552a82ef39b",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "ganimedes"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:io",
+        "path": "img/intereses/sistema-solar/lunas/io.webp",
+        "bytes": 5310,
+        "sha": "c0fdce61b40a55af2f013a56b02a9871a8f408a8",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "io"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:japeto",
+        "path": "img/intereses/sistema-solar/lunas/japeto.webp",
+        "bytes": 1526,
+        "sha": "7177765c1237cfda5b4c550d2c89812ef5aa2129",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "japeto"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:luna",
+        "path": "img/intereses/sistema-solar/lunas/luna.webp",
+        "bytes": 4422,
+        "sha": "3cb96cda2972281a580f0bafc770193b0801547c",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "luna"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:mimas",
+        "path": "img/intereses/sistema-solar/lunas/mimas.webp",
+        "bytes": 3308,
+        "sha": "77a1a38e808000cda61143ef685c7f915d2a63a5",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "mimas"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:miranda",
+        "path": "img/intereses/sistema-solar/lunas/miranda.webp",
+        "bytes": 2726,
+        "sha": "464b6846f697ec92214d69a22489b4f1d59755a3",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "miranda"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:oberon",
+        "path": "img/intereses/sistema-solar/lunas/oberon.webp",
+        "bytes": 2902,
+        "sha": "9e0eb27ec5e1a625a5f24408f73acc5b014ae000",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "oberon"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:rea",
+        "path": "img/intereses/sistema-solar/lunas/rea.webp",
+        "bytes": 4008,
+        "sha": "6d60e3a094bbd69d5a11f606a08fe863a9c6e762",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "rea"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:tetis",
+        "path": "img/intereses/sistema-solar/lunas/tetis.webp",
+        "bytes": 3576,
+        "sha": "b0f1bfb5d6947fcb8713042f872bd9782077b772",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "tetis"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:titan",
+        "path": "img/intereses/sistema-solar/lunas/titan.webp",
+        "bytes": 3030,
+        "sha": "a8f545522ce6322ee81f3d672f06f1bd8c4877a4",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "titan"
+        ],
+        "v2_role": "CONTEXTUAL_MOON_FALLBACK",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:titania",
+        "path": "img/intereses/sistema-solar/lunas/titania.webp",
+        "bytes": 4268,
+        "sha": "8485dd76799c9d5678ca4730f3b44b20a4d8362a",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "titania"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:triton",
+        "path": "img/intereses/sistema-solar/lunas/triton.webp",
+        "bytes": 3060,
+        "sha": "a2fae67be694a842e18da7c9a61593c336b30217",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "triton"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      },
+      {
+        "asset_id": "moon-render:umbriel",
+        "path": "img/intereses/sistema-solar/lunas/umbriel.webp",
+        "bytes": 3234,
+        "sha": "aae6f2400f77d925fea69ec2969baa8c3a272160",
+        "provenance_status": "DERIVED_FROM_DOCUMENTED_TEXTURE",
+        "reuse_status": "ASSET_REUSE_OK",
+        "underlying_texture": [
+          "umbriel"
+        ],
+        "v2_role": "DEPTH_ONLY",
+        "note": "Iris Green computer render; preserve underlying map credit/license."
+      }
+    ]
+  },
+  "non_asset_donor_decisions": [
+    {
+      "item": "es/intereses/sistema-solar/index.html",
+      "decision": "REWORK",
+      "keep": "route, ES factual copy as donor, fallback depth sections, sources/credits",
+      "change": "first viewport, hierarchy, counts/headlines, encyclopedia-first ordering"
+    },
+    {
+      "item": "en/interests/solar-system/index.html",
+      "decision": "REWORK",
+      "keep": "route, EN factual copy as donor, fallback depth sections, sources/credits",
+      "change": "same product architecture as ES"
+    },
+    {
+      "item": "assets/ig-sistema-solar.js",
+      "decision": "REWORK",
+      "keep": "same-origin snapshot loading, local calculations, sortable/depth helpers, lazy 3D launch pattern, fallback handling",
+      "change": "orchestration, scope, collection, eager cielo-fondo fetch, first-viewport controls"
+    },
+    {
+      "item": "assets/ig-sistema-solar-3d.js",
+      "decision": "REWORK",
+      "keep": "Three/WebGL donor, texture mapping, body geometry/orbit calculations, camera focus concepts",
+      "change": "all-bodies selector, autoplay/time UX, render lifecycle/budget, initial object set, accessibility wrapper"
+    },
+    {
+      "item": "es/intereses/sistema-solar/sistema-solar.json",
+      "decision": "KEEP",
+      "keep": "source metadata, physical data, orbital elements, 70 moon records, texture provenance",
+      "change": "V2 consumes curated subset first; snapshot dates visible where needed"
+    },
+    {
+      "item": "es/intereses/sistema-solar/cielo-fondo.json",
+      "decision": "DROP_FROM_02_ENTRY",
+      "keep": "shared donor for Cielo/other astronomy if needed",
+      "change": "do not eager load for Solar System V2 first experience"
+    },
+    {
+      "item": "img/intereses/sistema-solar/*.webp",
+      "decision": "KEEP_DEPTH_FALLBACK",
+      "keep": "first-party derived renders with inherited credits",
+      "change": "not automatic V2 hero identity"
+    },
+    {
+      "item": "img/intereses/sistema-solar/lunas/*.webp",
+      "decision": "KEEP_DEPTH_FALLBACK",
+      "keep": "first-party derived renders",
+      "change": "only 6 contextual moons in V2 initial depth"
+    },
+    {
+      "item": "img/intereses/sistema-solar/tex/*",
+      "decision": "KEEP_WITH_CONDITIONS",
+      "keep": "documented texture donor set",
+      "change": "load only needed subset; preserve per-source credits/reconstruction labels"
+    },
+    {
+      "item": "current 5 dwarf planets",
+      "decision": "KEEP_DEPTH",
+      "keep": "data/facts/source records",
+      "change": "not first viewport"
+    },
+    {
+      "item": "current 70 moon records",
+      "decision": "KEEP_DEPTH",
+      "keep": "data/facts",
+      "change": "6 contextual initial; 64 deeper"
+    },
+    {
+      "item": "current Mi colección/localStorage",
+      "decision": "REWORK_OR_DEFER",
+      "keep": "concept only if later useful",
+      "change": "not V2 minimum; any persistence must follow current opt-in/storage contract"
+    },
+    {
+      "item": "current Dónde están hoy table",
+      "decision": "REWORK_TO_DEPTH",
+      "keep": "local calculation within documented range",
+      "change": "secondary action, not first content block"
+    }
+  ]
+}
