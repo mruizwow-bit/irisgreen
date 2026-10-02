@@ -1,0 +1,368 @@
+{
+  "schema": "iris-green.r59.eclipses-v2.product-content-reuse-evidence.v1",
+  "date": "2026-10-02",
+  "owner": "Senda · R59",
+  "marker": "INTEREST_04_ECLIPSES_V2_PRODUCT_CONTENT_AND_REUSE_PASS",
+  "scope": [
+    "PRODUCT",
+    "FACTUAL_CONTENT",
+    "REUSE_AUDIT"
+  ],
+  "exclusions": [
+    "RUNTIME",
+    "PRODUCT_CODE",
+    "IMAGE_GENERATION",
+    "INTERESTS_01_03",
+    "INTERESTS_05_07",
+    "BATCH",
+    "MAIN"
+  ],
+  "precedence": {
+    "issue_323_comment": 5957711739,
+    "astra_memory_main_commit": "3e92408980060722653409db6403e68881c8acf6",
+    "main_observed_at_start": "3e92408980060722653409db6403e68881c8acf6",
+    "main_rechecked_before_recording": "adc067ab61e9532c7b462ce1711c49df53c4c7cf",
+    "eclipses_files_changed_between": false
+  },
+  "donor_files": {
+    "es_index": {
+      "path": "es/intereses/eclipses/index.html",
+      "sha": "6d885d0beb463a4e1c35230b20e923df7619a957",
+      "bytes": 229578
+    },
+    "en_index": {
+      "path": "en/interests/eclipses/index.html",
+      "sha": "941e5670b890fe11621c5a519d36c6e38dbb63d7",
+      "bytes": 229755
+    },
+    "json": {
+      "path": "es/intereses/eclipses/eclipses.json",
+      "sha": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+      "bytes": 191009
+    },
+    "js": {
+      "path": "assets/ig-eclipses.js",
+      "sha": "52a29d3e2bfcda5b9ab8dde9e2133750ad4ad050",
+      "bytes": 48992
+    },
+    "css": {
+      "path": "assets/ig-eclipses.css",
+      "sha": "41a84c6a890c57446e278c4e9d28db8e0a95b1f5",
+      "bytes": 3648
+    },
+    "astronomy_engine": {
+      "path": "assets/astronomy-engine-2.1.19.min.js",
+      "sha": "3aa017acedcb4b0ee5a7d7dd3aa9b9218cdbbaac",
+      "bytes": 116424,
+      "license": "MIT"
+    },
+    "shared_sky": {
+      "path": "es/intereses/sistema-solar/cielo-fondo.json",
+      "sha": "601a61f67a34dcd8a483d4dca88cc6cd53587694",
+      "bytes": 411894
+    },
+    "card": {
+      "path": "img/intereses/eclipses/tarjeta.webp",
+      "sha": "2ac47e17d3558e02f5de7189873a96881bb8785b",
+      "bytes": 3364,
+      "rights_status": "PROVENANCE_UNKNOWN"
+    }
+  },
+  "snapshot": {
+    "date": "2026-09-24",
+    "calculation_engine": "astronomy-engine 2.1.19 (Don Cross), MIT",
+    "places": 72,
+    "place_sources": {
+      "natural_earth": 49,
+      "iris_editorial": 23
+    },
+    "global_solar_2000_2100": 228,
+    "global_lunar_2000_2100": 230,
+    "global_total": 458,
+    "lunar_spain_2024_2040": 39,
+    "map_grid_degrees": 0.1
+  },
+  "product": {
+    "direction": "SAME_EVENT → CHANGE_PLACE → SEE_WHAT_CHANGES → EXPLAIN_THE_SHADOW → DEPTH_ON_DEMAND",
+    "central_question": {
+      "es": "¿Por qué el mismo eclipse puede ser total en un lugar y parcial en otro?",
+      "en": "Why can the same eclipse be total in one place and partial in another?"
+    },
+    "primary_event": "2027-08-02 solar eclipse",
+    "first_places": [
+      "Cádiz",
+      "Ceuta",
+      "Sevilla",
+      "Madrid",
+      "Barcelona"
+    ],
+    "secondary_events": [
+      "2028-01-26 annular solar eclipse",
+      "2027-02-20/21 penumbral lunar eclipse"
+    ]
+  },
+  "curated_calculated_content": {
+    "2027-08-02": {
+      "Cádiz": {
+        "kind": "total",
+        "peak_local": "10:46:48 CEST",
+        "central_seconds": 173,
+        "sun_alt_peak_deg": 37.5,
+        "official_ign_central_seconds": 174
+      },
+      "Ceuta": {
+        "kind": "total",
+        "peak_local": "10:47:37 CEST",
+        "central_seconds": 291,
+        "sun_alt_peak_deg": 38.5,
+        "official_ign_max_spain_seconds": 288
+      },
+      "Sevilla": {
+        "kind": "partial",
+        "peak_local": "10:47:25 CEST",
+        "obscuration": 0.982,
+        "sun_alt_peak_deg": 37.7
+      },
+      "Madrid": {
+        "kind": "partial",
+        "peak_local": "10:51:09 CEST",
+        "obscuration": 0.863,
+        "sun_alt_peak_deg": 39.8
+      },
+      "Barcelona": {
+        "kind": "partial",
+        "peak_local": "10:58:25 CEST",
+        "obscuration": 0.816,
+        "sun_alt_peak_deg": 45.2
+      }
+    },
+    "2028-01-26": {
+      "Sevilla": {
+        "kind": "annular",
+        "peak_local": "17:55:51 CET",
+        "sun_alt_peak_deg": 7.3
+      },
+      "Madrid": {
+        "kind": "partial",
+        "peak_local": "17:55:34 CET",
+        "obscuration": 0.823,
+        "sun_alt_peak_deg": 4.4
+      },
+      "Barcelona": {
+        "kind": "annular_geometry",
+        "peak_local": "17:56:28 CET",
+        "sun_alt_peak_deg": 0.2,
+        "visibility_caveat": "official IGN says only beginning of annular phase is visible before sunset"
+      },
+      "Palma": {
+        "kind": "annular_geometry",
+        "peak_local": "17:57:24 CET",
+        "sun_alt_peak_deg": 0.4,
+        "visibility_caveat": "official IGN says only beginning of annular phase is visible before sunset"
+      }
+    },
+    "2027-02-20_lunar": {
+      "kind": "penumbral",
+      "peak_utc": "23:12:44Z",
+      "madrid_moon_alt_peak_deg": 54.7
+    }
+  },
+  "epistemic_contract": {
+    "REAL_DATA": [
+      "IGN/NASA published eclipse facts",
+      "Natural Earth geodata",
+      "official safety guidance"
+    ],
+    "CALCULATION": [
+      "Astronomy Engine eclipse search",
+      "local circumstances",
+      "obscuration",
+      "altitude/azimuth",
+      "phase times",
+      "0.1 degree calculated grids",
+      "timezone formatting"
+    ],
+    "SIMULATION": [
+      "Canvas Sun/Moon disks",
+      "sky colors",
+      "corona",
+      "stars visibility heuristic",
+      "horizon hills",
+      "time animation"
+    ],
+    "hard_rules": [
+      "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+      "CALCULATION != OFFICIAL_EPHEMERIS",
+      "SIMULATION != OBSERVATION",
+      "WEATHER_NOT_MODELLED",
+      "LOCAL_HORIZON_AND_TERRAIN_NOT_MODELLED",
+      "LUNAR_LIMB_RELIEF_NOT_MODELLED",
+      "NO_AUTOMATIC_GEOLOCATION"
+    ]
+  },
+  "eager_audit": {
+    "current_fetches": [
+      {
+        "path": "es/intereses/eclipses/eclipses.json",
+        "bytes": 191009,
+        "decision": "REWORK_TO_CURATED_ENTRY_AND_DEPTH"
+      },
+      {
+        "path": "es/intereses/sistema-solar/cielo-fondo.json",
+        "bytes": 411894,
+        "decision": "DROP_FROM_FIRST_EXPERIENCE"
+      }
+    ],
+    "eager_json_total_bytes": 602903,
+    "astronomy_engine": {
+      "bytes": 116424,
+      "current_load": "DEFER_SCRIPT_BUT_NETWORK_ON_PAGE_LOAD",
+      "decision": "REWORK_TO_DYNAMIC_CALCULATION_OR_DEPTH"
+    },
+    "stars": "DROP_FIRST_EXPERIENCE"
+  },
+  "reuse": [
+    {
+      "item": "ES/EN routes",
+      "decision": "KEEP"
+    },
+    {
+      "item": "2027 event content",
+      "decision": "KEEP"
+    },
+    {
+      "item": "2028 event",
+      "decision": "KEEP_DEPTH"
+    },
+    {
+      "item": "eclipses.json",
+      "decision": "KEEP_DONOR_REWORK_EAGER"
+    },
+    {
+      "item": "Astronomy Engine 2.1.19",
+      "decision": "KEEP_TECHNICAL_DONOR_REWORK_LOAD"
+    },
+    {
+      "item": "ig-eclipses.js",
+      "decision": "REWORK"
+    },
+    {
+      "item": "ig-eclipses.css",
+      "decision": "REWORK"
+    },
+    {
+      "item": "Canvas simulator",
+      "decision": "KEEP_TECHNICAL_DONOR_REWORK_PRODUCT_ROLE"
+    },
+    {
+      "item": "cielo-fondo/HYG first viewport",
+      "decision": "DROP"
+    },
+    {
+      "item": "SVG maps",
+      "decision": "KEEP_DONOR_REWORK_INTERACTION"
+    },
+    {
+      "item": "72 places",
+      "decision": "KEEP_DEPTH"
+    },
+    {
+      "item": "explicit geolocation",
+      "decision": "DEFER"
+    },
+    {
+      "item": "catalogue 458",
+      "decision": "KEEP_DEPTH"
+    },
+    {
+      "item": "collection/localStorage",
+      "decision": "DEFER"
+    },
+    {
+      "item": "tarjeta.webp",
+      "decision": "DROP_V2_MINIMUM",
+      "rights_status": "PROVENANCE_UNKNOWN"
+    }
+  ],
+  "source_crosschecks": [
+    {
+      "authority": "IGN / Observatorio Astronómico Nacional",
+      "verified": "2026-10-02",
+      "url": "https://astronomia.ign.es/eclipses-de-sol-y-luna/eclipse-total-sol-de-2-de-agosto-2027",
+      "facts": [
+        "2027-08-02 totality crosses southern Spain",
+        "Cádiz official totality 2m54s",
+        "Ceuta maximum Spain 4m48s",
+        "partial throughout rest of Spain"
+      ]
+    },
+    {
+      "authority": "IGN",
+      "verified": "2026-10-02",
+      "url": "https://astronomia.ign.es/es/web/guest/eclipses-de-sol",
+      "facts": [
+        "2028-01-26 annular path in Spain",
+        "full annular phase in Sevilla/Málaga/Murcia/Valencia",
+        "Barcelona/Palma phase limited by sunset"
+      ]
+    },
+    {
+      "authority": "NASA Science",
+      "verified": "2026-10-02",
+      "url": "https://science.nasa.gov/eclipses/safety/",
+      "facts": [
+        "ISO 12312-2 solar viewers",
+        "no ordinary sunglasses",
+        "optics require front solar filters",
+        "unprotected only during complete totality",
+        "supervise children"
+      ]
+    },
+    {
+      "authority": "Astronomy Engine / Don Cross",
+      "verified": "2026-10-02",
+      "url": "https://github.com/cosinekitty/astronomy",
+      "facts": [
+        "MIT",
+        "VSOP87/NOVAS",
+        "general ±1 arcminute target",
+        "validated against NOVAS/JPL Horizons"
+      ]
+    }
+  ],
+  "limits": {
+    "astronomy_engine_general_accuracy_claim": "±1 arcminute target; not converted into per-contact time error bars",
+    "city_center_not_exact_observer": true,
+    "donor_grid_degrees": 0.1,
+    "weather": false,
+    "terrain": false,
+    "local_horizon": false,
+    "lunar_limb_relief": false,
+    "official_planning_reference_spain": "IGN",
+    "upstream_local_eclipse_visibility_warning": true
+  },
+  "motion": {
+    "current": "user initiated only, but reduced mode still runs continuous animation when play is used",
+    "decision": "MOTION_CONTRACT_REWORK_REQUIRED",
+    "NORMAL": "controlled animation after action",
+    "REDUCED": "phase steps, no continuous travel",
+    "NONE": "static start/max/end plus text"
+  },
+  "assets": {
+    "result": "NO_NEW_ASSETS_REQUIRED",
+    "existing_specific": [
+      {
+        "path": "img/intereses/eclipses/tarjeta.webp",
+        "bytes": 3364,
+        "rights_status": "PROVENANCE_UNKNOWN",
+        "needed": false
+      }
+    ],
+    "reusable_non_raster": [
+      "Natural Earth derived SVG maps",
+      "first-party SVG diagrams",
+      "Canvas/SVG/DOM procedural"
+    ]
+  },
+  "status": "PASS_AND_STOP"
+}
