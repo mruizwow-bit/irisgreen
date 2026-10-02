@@ -1,0 +1,2262 @@
+{
+  "schema": "R54_ESCENAS_RASTER_MANIFEST/1.0",
+  "note": "svg_sha256 es el SHA-256 del SVG final que genera la función de la escena, no del fichero .py. El build compara este manifiesto con el fuente regenerado en memoria y con los WebP versionados.",
+  "canvas_1x": [
+    640,
+    400
+  ],
+  "canvas_2x": [
+    1280,
+    800
+  ],
+  "budget_1x_bytes": 26624,
+  "budget_2x_bytes": 73728,
+  "render_settings": {
+    "rasterizador": "chromium",
+    "metodo_webp": 6,
+    "espacio_color": "RGB",
+    "device_scale_factor_1x": 1,
+    "device_scale_factor_2x": 2,
+    "espera_ms": 260,
+    "formatos": [
+      "avif",
+      "webp"
+    ]
+  },
+  "render_config_note": "render_config_sha256 es por escena porque la calidad 1x lo es. Cubre lienzo, DPR, calidades, método WebP, espacio de color y espera: todo lo que cambia los bytes a partir del mismo SVG. Los presupuestos quedan fuera porque no cambian el fichero, y la versión del navegador también, porque haría fallar el build en máquinas con otra versión sin que haya cambiado nada del proyecto.",
+  "rasterizer_version_informative": "chromium 141.0.7390.37",
+  "scenes": {
+    "arquitectura": {
+      "slug": "arquitectura",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "94ecb6b7660d0574322f3178d6ed726e7e5dff3addae5270de490069cdca0a13",
+      "svg_bytes": 34587,
+      "webp_1x": "arquitectura.webp",
+      "webp_1x_sha256": "3e084c1d85f9907c48b8af921b4df26da6c7d409bb9775d31a6e9cff056fdbf6",
+      "webp_1x_bytes": 23920,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "arquitectura@2x.webp",
+      "webp_2x_sha256": "c05ea86dde204a23e8f208a5e495912f88d89cf55f0a65aa876f670a166d72ac",
+      "webp_2x_bytes": 40420,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "arquitectura.avif",
+      "avif_1x_sha256": "eb38329d0939abe69228111a058d270b70aeb7585b112820d8a70543eabc6e25",
+      "avif_1x_bytes": 13790,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "arquitectura@2x.avif",
+      "avif_2x_sha256": "efef24d6f1e1069ba956837e22fa3739edec7ff7dd9c73a72e5926a671231814",
+      "avif_2x_bytes": 24904,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "arquitectura-age-0-12": {
+      "slug": "arquitectura-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "f1590ec16374376b2af1892697f52d8c01d7744346f89d7fc6dbbc1ed81b0ca4",
+      "svg_bytes": 19247,
+      "webp_1x": "arquitectura-age-0-12.webp",
+      "webp_1x_sha256": "33e8be6b91b96802c0ba341f749b5de695d2651bc4fcfdf6be5dc27a2b725468",
+      "webp_1x_bytes": 15264,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "arquitectura-age-0-12@2x.webp",
+      "webp_2x_sha256": "637c2e82d979ceaf206c905317ad557bcac3b61165e27ada80ac912ab4b56c72",
+      "webp_2x_bytes": 24006,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "arquitectura-age-0-12.avif",
+      "avif_1x_sha256": "127b7ee689fd1630cfa31b1e9317c3de172cd01fcb5c03922c49a19e3c0cb1b7",
+      "avif_1x_bytes": 9096,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "arquitectura-age-0-12@2x.avif",
+      "avif_2x_sha256": "396dcae8e041a5d2ff40e9deef48ae6a675b656039f53bdcbeaf0e08735c7049",
+      "avif_2x_bytes": 15719,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "circuitos": {
+      "slug": "circuitos",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "8b6867e80d7c5e5c12417d04f0fd1f9f5b92ffafc30d670fd7799cdacf669dd2",
+      "svg_bytes": 31664,
+      "webp_1x": "circuitos.webp",
+      "webp_1x_sha256": "b12f9c7ba870e52b93ed8f28af830d54bece0c4d9d61ee29401e2e1f2ad59065",
+      "webp_1x_bytes": 17704,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "circuitos@2x.webp",
+      "webp_2x_sha256": "e09397e488cf3048f1fc3e3690a71168f8ff2198e675f36a8610862238803219",
+      "webp_2x_bytes": 27122,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "circuitos.avif",
+      "avif_1x_sha256": "bc209feea06354d16c5fbbda16fbb6adc4d97443afe36dbb0ace336f403b8fa8",
+      "avif_1x_bytes": 10967,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "circuitos@2x.avif",
+      "avif_2x_sha256": "0e4e3b0802f2e343356ac3dc32c6208959b17be64a71eaa1e52e020f8f82113a",
+      "avif_2x_bytes": 19403,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "circuitos-age-0-12": {
+      "slug": "circuitos-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "81135efbb50279fad349584fc5c79cb6e8d6d4c2fb2d7e6e73743cf6d6f69391",
+      "svg_bytes": 24884,
+      "webp_1x": "circuitos-age-0-12.webp",
+      "webp_1x_sha256": "631d123a5e349014b19174265ef8b1d3415a233c29e53bba0a0fbb5c11917638",
+      "webp_1x_bytes": 13876,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "circuitos-age-0-12@2x.webp",
+      "webp_2x_sha256": "ab1fee2790c82841681be4c88d7a6672fca634962172234f1646c5dc518efa21",
+      "webp_2x_bytes": 20578,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "circuitos-age-0-12.avif",
+      "avif_1x_sha256": "f11bf584a901f5edffb9b77a79f05cf1e2c12ff3b354063635c09530e2113bb6",
+      "avif_1x_bytes": 8769,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "circuitos-age-0-12@2x.avif",
+      "avif_2x_sha256": "2ce1abd894670f80843ee11ba95ebdd4519cb35f76d41955f10cb58760e092e4",
+      "avif_2x_bytes": 15322,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "color": {
+      "slug": "color",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "1441f8a0be8bdcbfc0d7606fbf7f383ec9bc506f7a5171bf271aa1d6389c2ccf",
+      "svg_bytes": 58585,
+      "webp_1x": "color.webp",
+      "webp_1x_sha256": "f4e5925f843dbee2392d2b697f438d7e491d58fbdfe1f842c4df02e2189bc295",
+      "webp_1x_bytes": 23158,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "color@2x.webp",
+      "webp_2x_sha256": "dd93fa898e736bc7bb96c829d928636a1571cd31b406ba80d06be0f2045e583e",
+      "webp_2x_bytes": 34976,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "color.avif",
+      "avif_1x_sha256": "eae7ffc3b2c9ae0fa97e4cd6e600f72d3c8aa163444a8d4ccc95a67a76fa7bff",
+      "avif_1x_bytes": 12874,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "color@2x.avif",
+      "avif_2x_sha256": "2836323be75a3f35aa77d14e2d72b5efb4ef751cdae50d8d56b9912bfe7ebd0f",
+      "avif_2x_bytes": 22359,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "color-age-0-12": {
+      "slug": "color-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "601d389e0c6cb291ad5a65952a901688dff530e43b5b8c3f6fe0673e84a33b35",
+      "svg_bytes": 33377,
+      "webp_1x": "color-age-0-12.webp",
+      "webp_1x_sha256": "72bb52cb8685dcaf6ce6d3b9de732d2bed01ca60ab99cbeead3f85b552b806d7",
+      "webp_1x_bytes": 18714,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "color-age-0-12@2x.webp",
+      "webp_2x_sha256": "1e962885e98adbe2eb301a980745d05f746c6534694176750547c8ff913ae584",
+      "webp_2x_bytes": 28510,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "color-age-0-12.avif",
+      "avif_1x_sha256": "aca24281bb9323acc2999f378244d008533b9e165aee3bacba607ec27b8ed153",
+      "avif_1x_bytes": 10826,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "color-age-0-12@2x.avif",
+      "avif_2x_sha256": "47b9fcb937d65f00cbfba0f12b1a74723c7301566d4852c8dc771fb7d166bce5",
+      "avif_2x_bytes": 19090,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "comic": {
+      "slug": "comic",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "4ea32561d20d5b496ed3fa1f91cc0fa39933f26ab29de700ef98c494c0b39896",
+      "svg_bytes": 38133,
+      "webp_1x": "comic.webp",
+      "webp_1x_sha256": "6d7487b2e1213245bbd05408ca0bc3a7d8955e0d4deb67ec709698beb46fb156",
+      "webp_1x_bytes": 24872,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "comic@2x.webp",
+      "webp_2x_sha256": "50d95974b97e4e0e0cd69c3ea16e184505254daa423f9ff90e6a6d8220ace6a4",
+      "webp_2x_bytes": 41622,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "comic.avif",
+      "avif_1x_sha256": "9a61cf08e9e7ed54cc516844dc47ca8ef569a57691f0e3fb8f54da8fc65d79d4",
+      "avif_1x_bytes": 13627,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "comic@2x.avif",
+      "avif_2x_sha256": "8a14342e8a10367d7af20f5862a0f5e0ae3baa9cb66e3d7282bed95bf5eed066",
+      "avif_2x_bytes": 23228,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "composicion": {
+      "slug": "composicion",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "c7bead9a08875edd7e92c906ea56cc03aa068813bc44467e8d1a4e6d4fdc3b64",
+      "svg_bytes": 35283,
+      "webp_1x": "composicion.webp",
+      "webp_1x_sha256": "5415c69ffd9b2399f920e186f175ab3e2937097f8c7033bdd52abc6d6b2e85fc",
+      "webp_1x_bytes": 18738,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "composicion@2x.webp",
+      "webp_2x_sha256": "b8c5850f900d0903c7ac5790e1efabb5f65b845de8fbf7fd0ee04dd1a40dc7c3",
+      "webp_2x_bytes": 29488,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "composicion.avif",
+      "avif_1x_sha256": "43e6e4f665c017344292b4770482df60d1da89df59252ffbfc4930d7093c49e7",
+      "avif_1x_bytes": 10747,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "composicion@2x.avif",
+      "avif_2x_sha256": "adbcec55952d9f8ab2d16de4abd37eeb9761ad95898aac2df0f083f83f60e46d",
+      "avif_2x_bytes": 18792,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "composicion-age-0-12": {
+      "slug": "composicion-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "93ee827b724b8735b995aa206ee570e901a7e7889b5b52a7cd5105e925eb4a3e",
+      "svg_bytes": 29203,
+      "webp_1x": "composicion-age-0-12.webp",
+      "webp_1x_sha256": "f5680abb8c19259e3d64cb27fc95a26e3f94cddecd5f5c197018dbd230d11c57",
+      "webp_1x_bytes": 14040,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "composicion-age-0-12@2x.webp",
+      "webp_2x_sha256": "6b261f26bd0fe5b3799522f7557a53bc1d9766c7ac10c74483570cfe68d27326",
+      "webp_2x_bytes": 20558,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "composicion-age-0-12.avif",
+      "avif_1x_sha256": "d88b2e7f18986dbd7860b093c0f72dc5fcd09ed62930b16021b6fdf301fcee8e",
+      "avif_1x_bytes": 8321,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "composicion-age-0-12@2x.avif",
+      "avif_2x_sha256": "90671c54c595b1ff1e50d43cb5636910237bf9a44f70c35cd191ac42942d313a",
+      "avif_2x_bytes": 14901,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "dibujo": {
+      "slug": "dibujo",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "bcd919257319f9f28342279d152ec78813e6561a37f95ca35d384150a9506547",
+      "svg_bytes": 48790,
+      "webp_1x": "dibujo.webp",
+      "webp_1x_sha256": "b29f6ec72151b22aa0d4eded566e0f31151bb4679fea3169197680544fea6db5",
+      "webp_1x_bytes": 20590,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "dibujo@2x.webp",
+      "webp_2x_sha256": "f5d3d0782566497e8974280ffe157336dab92a4beebd48d07a2a9e54c098ea7d",
+      "webp_2x_bytes": 31356,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "dibujo.avif",
+      "avif_1x_sha256": "6f52e5638c4fbd1b905ed92bdff8f9dcc36b9662a49d6b3608f088dd372c49d5",
+      "avif_1x_bytes": 11977,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "dibujo@2x.avif",
+      "avif_2x_sha256": "c334feb9f9cdca2dd0aa8d5d03d12e13cbe6a027a02cdf9d6de8399cb23ed5b9",
+      "avif_2x_bytes": 20893,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "diseno-grafico": {
+      "slug": "diseno-grafico",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "416ed3434c602c8f141c9357fdc2516bdee3a1c569f0af54d23055de2933ed15",
+      "svg_bytes": 98724,
+      "webp_1x": "diseno-grafico.webp",
+      "webp_1x_sha256": "593cbf3331cc602622a7429979236804fbadbdc901ac690b1e1ce479bdc37511",
+      "webp_1x_bytes": 25954,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "diseno-grafico@2x.webp",
+      "webp_2x_sha256": "b7037be33e1e9d87a76d7c0c8c3216311ee129a5e28f54dd1bbf0ca08d30f722",
+      "webp_2x_bytes": 45684,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "diseno-grafico.avif",
+      "avif_1x_sha256": "6790f9d66c764e47533a3a0f4cbb63a9ece91257a1f96fd673fce13d595beb9e",
+      "avif_1x_bytes": 13958,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "diseno-grafico@2x.avif",
+      "avif_2x_sha256": "b33dd86018cec91a78491839b593b8a9336d53b107b3d87dd0dde37e3fa4f4df",
+      "avif_2x_bytes": 27510,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "escritura-restricciones": {
+      "slug": "escritura-restricciones",
+      "render_config_sha256": "844c85e5e784befe24bf1a62fa03e4e8e2180b130d0f124de21469b161aa7aab",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 82,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "9a8b2740e27aeed19f0687ed7f56b3c125df36b48bb36a71df9366e971b6196b",
+      "svg_bytes": 45571,
+      "webp_1x": "escritura-restricciones.webp",
+      "webp_1x_sha256": "2c3462194e6485512fa0f63093df4b795aad19aa5c5bf9c5ef850d6ec4315c48",
+      "webp_1x_bytes": 21478,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 82,
+      "webp_2x": "escritura-restricciones@2x.webp",
+      "webp_2x_sha256": "e30e69a2ccea72a239382c7c180a2a6f87df7869dd8bb4b7b5ebb832071009c5",
+      "webp_2x_bytes": 42260,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "escritura-restricciones.avif",
+      "avif_1x_sha256": "090d3a42b1e296a61d45f290a19075326725b8ad1b1216c3887711d9b8982664",
+      "avif_1x_bytes": 15251,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "escritura-restricciones@2x.avif",
+      "avif_2x_sha256": "bf5937ecaf7e89b627d51973e7e202debbc5e69696356fc9ba82a5762afca640",
+      "avif_2x_bytes": 25353,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "escritura-restricciones-age-0-12": {
+      "slug": "escritura-restricciones-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "0355edf03f996b8ed961b903b3c8f742fb47aa4e5485de2244235e66098a65a3",
+      "svg_bytes": 36139,
+      "webp_1x": "escritura-restricciones-age-0-12.webp",
+      "webp_1x_sha256": "2d40a7efc1214ef494ac55f5455f15fed82e43fd92c7952b9d7a5ca24a1bc1f6",
+      "webp_1x_bytes": 24488,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "escritura-restricciones-age-0-12@2x.webp",
+      "webp_2x_sha256": "3af5f6f67e67612264a7df11552bd66b2c52e351b317ea1cfd6902c221d580df",
+      "webp_2x_bytes": 36364,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "escritura-restricciones-age-0-12.avif",
+      "avif_1x_sha256": "3300104589fda54c8da70f4952919e9f0c2af80f6992a83b03b4182a0f444042",
+      "avif_1x_bytes": 13536,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "escritura-restricciones-age-0-12@2x.avif",
+      "avif_2x_sha256": "d5b1f3c165914d03b76b086b877158666c9d8cff3319fdb1d18d4fe617fccefe",
+      "avif_2x_bytes": 22403,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "estructuras": {
+      "slug": "estructuras",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "a83e09f11e95139f06f80bfc825ef7585fc1462c230ad544f8d2f4b18305ae70",
+      "svg_bytes": 47023,
+      "webp_1x": "estructuras.webp",
+      "webp_1x_sha256": "26cb54c798f920dcb26f671a9770d36962b14a34e0cd35d0d826fb1473e93694",
+      "webp_1x_bytes": 25820,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "estructuras@2x.webp",
+      "webp_2x_sha256": "b4d1c60f663f5e4dc501e85ac93f53a21c5e30fa275b2a45425da7566b8884a2",
+      "webp_2x_bytes": 38030,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "estructuras.avif",
+      "avif_1x_sha256": "c0a55fd99598cb67545adcca3df5792b5cfb8dffa13502cca8c78c8e87bff6cb",
+      "avif_1x_bytes": 14330,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "estructuras@2x.avif",
+      "avif_2x_sha256": "a19fedfec6a3563f96ae8e4be270635e838163d484b4fa63fa62fcfd98052c88",
+      "avif_2x_bytes": 24700,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "fotografia": {
+      "slug": "fotografia",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "2e887b539a41e06ce9e4c76d6a2661550487994ec1e3a53920a2acb397333e41",
+      "svg_bytes": 35819,
+      "webp_1x": "fotografia.webp",
+      "webp_1x_sha256": "dc4e0d8b7b032af752b2d740487daec26d46fecb6b0eb26eb2bf304019ebfc12",
+      "webp_1x_bytes": 23058,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "fotografia@2x.webp",
+      "webp_2x_sha256": "49cac6a05661b3519e8a6c59e67fad33cb1cf78e3d11f1cded4a2c91b29d1936",
+      "webp_2x_bytes": 35920,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "fotografia.avif",
+      "avif_1x_sha256": "5cd3c941aafef73e5b0e0c4aea5bd632b2f03055289eb9a0c3cd29269a20b1bc",
+      "avif_1x_bytes": 13180,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "fotografia@2x.avif",
+      "avif_2x_sha256": "28c3d1757e4a26997985576f35a4b9758e378f9b645700af0467c1ba5699c4e2",
+      "avif_2x_bytes": 21592,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "fotografia-age-0-12": {
+      "slug": "fotografia-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "3dbc6ee750266207268a0fdebd174538d618a39ce049a1097bff639e7509b0ed",
+      "svg_bytes": 26450,
+      "webp_1x": "fotografia-age-0-12.webp",
+      "webp_1x_sha256": "8a6c7e671a6c33debb19ae5638b34715a8fb8de388c00739c6f2721d0deb02ff",
+      "webp_1x_bytes": 18876,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "fotografia-age-0-12@2x.webp",
+      "webp_2x_sha256": "a9082f0fdc403902b9b9d3cca514a88de6e574456d74da260891982ffcdd1850",
+      "webp_2x_bytes": 29208,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "fotografia-age-0-12.avif",
+      "avif_1x_sha256": "8fca0ecfa7a7d47462136b81f24023b1f60c278e1f5c718380a9d69fa188a2b7",
+      "avif_1x_bytes": 11040,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "fotografia-age-0-12@2x.avif",
+      "avif_2x_sha256": "1eb929a8d7a86a86c73ba0eb6df214067883fc9ab9b6cba4d66a3788fc5a5d44",
+      "avif_2x_bytes": 18150,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "ideas": {
+      "slug": "ideas",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "99ff61d9b81a39780c543323c72afb9f64a18130396d4a6f383add26f1793ea7",
+      "svg_bytes": 41506,
+      "webp_1x": "ideas.webp",
+      "webp_1x_sha256": "560f64dfce10359d35f80ec76eb115a884bd19559acf88fff6cb648443bbfe37",
+      "webp_1x_bytes": 26210,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "ideas@2x.webp",
+      "webp_2x_sha256": "05438403c73ccfd68dfbc4f68297af37300fb17d78cb769b130c8e770d9ae767",
+      "webp_2x_bytes": 41812,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "ideas.avif",
+      "avif_1x_sha256": "04fa60612e065fe2276f3c1e9c81e3cdf73ac372b04cc46d2c99eed0d78f2fbf",
+      "avif_1x_bytes": 15176,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "ideas@2x.avif",
+      "avif_2x_sha256": "9cd80d9b2fa0fa0d5120ce3ceecfca826ffb8a83d206e41ce9b789ac61d6329f",
+      "avif_2x_bytes": 26810,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "juegos-de-mesa": {
+      "slug": "juegos-de-mesa",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "67a802dcad86acad83716f5755796213ce7b66f2d0fd62654341eba1aa22c140",
+      "svg_bytes": 39949,
+      "webp_1x": "juegos-de-mesa.webp",
+      "webp_1x_sha256": "7e385963f1576bb4567212767c87f6e4d29ce84db529f0e66fcb3cbb2e57eaa2",
+      "webp_1x_bytes": 24792,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "juegos-de-mesa@2x.webp",
+      "webp_2x_sha256": "4176e73b6aacde92c11d0244610b26dc3a2d1548e4ca9755c0b0126f3ea891dc",
+      "webp_2x_bytes": 38786,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "juegos-de-mesa.avif",
+      "avif_1x_sha256": "5a6a860548eae380313094884cb7b97029af1f03edbaa27ce666e1ad33eedc9e",
+      "avif_1x_bytes": 13989,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "juegos-de-mesa@2x.avif",
+      "avif_2x_sha256": "dcdfe84bf103b8240d28ee40e136cc7ca4c5d00e19e0a36ecd8ca4bf1a5da961",
+      "avif_2x_bytes": 24093,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "lenguas-inventadas": {
+      "slug": "lenguas-inventadas",
+      "render_config_sha256": "34ed036b136b26b623bb90e68c35be9753b9505d3c91149897487e1101200885",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 84,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "6787e0eaa150fb573abe753aeb5b7988c4aaf11b682aa03dbd2888111f9c1bf2",
+      "svg_bytes": 44702,
+      "webp_1x": "lenguas-inventadas.webp",
+      "webp_1x_sha256": "4e02e0318b4c9f2b1c532f583e6c2b7c83777ec6fe67c66a6a585910f9f15ad4",
+      "webp_1x_bytes": 22236,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 84,
+      "webp_2x": "lenguas-inventadas@2x.webp",
+      "webp_2x_sha256": "b8f078926d6d04913aeee8dab2cf6c26ba182a193753e7c7da1f2e188a2272ed",
+      "webp_2x_bytes": 43168,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "lenguas-inventadas.avif",
+      "avif_1x_sha256": "980736e790a81dac4491ea4f6fd5e339fa13ec82c320bd92de147caf5db8e487",
+      "avif_1x_bytes": 15173,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "lenguas-inventadas@2x.avif",
+      "avif_2x_sha256": "8d7d59645740b5941510aa802a5414a868bbbf3a117e00ab0e674e5779431c82",
+      "avif_2x_bytes": 25467,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "lenguas-inventadas-age-0-12": {
+      "slug": "lenguas-inventadas-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "c7ab216559a81f9c4ecb45ef1960af98ab9c78f64c5c88601cea7447e0474224",
+      "svg_bytes": 21457,
+      "webp_1x": "lenguas-inventadas-age-0-12.webp",
+      "webp_1x_sha256": "98b7c4933672e737ae6908883fe4e2ba8df09c853b57d85303fee644acf326b0",
+      "webp_1x_bytes": 17954,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "lenguas-inventadas-age-0-12@2x.webp",
+      "webp_2x_sha256": "ba9a2b9e4b087c704b6e8219f7d06dc189803d5bfbb9f26148a18b74e1395f4b",
+      "webp_2x_bytes": 26044,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "lenguas-inventadas-age-0-12.avif",
+      "avif_1x_sha256": "b3ee71ad9d640c9e48464e9441a471b0a993c71f53882e30cf7b554231e2712c",
+      "avif_1x_bytes": 9476,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "lenguas-inventadas-age-0-12@2x.avif",
+      "avif_2x_sha256": "3295c9cca6a72853e4c73643d320d665fcc3f53c0f8fc6bcd6bbe3cdd17d3dfd",
+      "avif_2x_bytes": 16873,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "maquinas": {
+      "slug": "maquinas",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "dafd28988237b7b18bb702d77cbff9b9f45b4379121999816b76b219aa60bc43",
+      "svg_bytes": 61325,
+      "webp_1x": "maquinas.webp",
+      "webp_1x_sha256": "5fbdb3db7996e424e223618d82bce4eb3213f1c26ad53190bf25af86e89ee305",
+      "webp_1x_bytes": 21662,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "maquinas@2x.webp",
+      "webp_2x_sha256": "3a12f024a2f9e496c73a27b205ae4fd9482936e9522c5c6edd76539b8bdc30ce",
+      "webp_2x_bytes": 30236,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "maquinas.avif",
+      "avif_1x_sha256": "2c418eb1f2b9fb39f055459ec9d1a4656964ace94093a6bca61b0b4e5c44b9a9",
+      "avif_1x_bytes": 13899,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "maquinas@2x.avif",
+      "avif_2x_sha256": "2959bfb0c693a02605c53071d3362497143de43c7ec02f42cd3eb3e1e8af7eb8",
+      "avif_2x_bytes": 24145,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "moda-textil": {
+      "slug": "moda-textil",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "758f8f959134536ee58e167ed9b1557c683599bad0cf5a7e6d0971a0f6e148d9",
+      "svg_bytes": 65855,
+      "webp_1x": "moda-textil.webp",
+      "webp_1x_sha256": "f1466f15b9cddff58a4d11759370eaf5b9ab17e573f6ce0b0dc64fcf3621f8e6",
+      "webp_1x_bytes": 26336,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "moda-textil@2x.webp",
+      "webp_2x_sha256": "22459912aed96c9edb95ee838af0bc91b00925cfff7bca19a0723b68ddcf5c46",
+      "webp_2x_bytes": 41586,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "moda-textil.avif",
+      "avif_1x_sha256": "4942e0c06df7d68af6fdf08ae81976c7c3a6af1718880568d09075b192cb8870",
+      "avif_1x_bytes": 14865,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "moda-textil@2x.avif",
+      "avif_2x_sha256": "a74c707bfdd1b1cb7ddb1c69741f4890d5da30f8bd9ad879015df2fc02e58d04",
+      "avif_2x_bytes": 29010,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "modelado-3d": {
+      "slug": "modelado-3d",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "513ea40acc8ee09638fad44e968f008c554fd330b02a2dfd28d9e21eeef53492",
+      "svg_bytes": 40131,
+      "webp_1x": "modelado-3d.webp",
+      "webp_1x_sha256": "97d2195b63f3492698aeb42617009b1ba334eb6ddfe3745cc517dd1b828f664c",
+      "webp_1x_bytes": 17720,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "modelado-3d@2x.webp",
+      "webp_2x_sha256": "59ac440ff539e0e24166e31bd8de91d88b1657d7adebcf7794f3062855e1a219",
+      "webp_2x_bytes": 26068,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "modelado-3d.avif",
+      "avif_1x_sha256": "ea18aa328f2d8d37b30bb9e1b21c5c6bc133205dd89c1ad8c46fca5011d756b7",
+      "avif_1x_bytes": 10764,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "modelado-3d@2x.avif",
+      "avif_2x_sha256": "cd521ff30afe08c5512e1eacd596a59620f509abfcd60c5c41a3abaeea6be20e",
+      "avif_2x_bytes": 18404,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "mundos": {
+      "slug": "mundos",
+      "render_config_sha256": "34ed036b136b26b623bb90e68c35be9753b9505d3c91149897487e1101200885",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 84,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "4c7829fa74dd4ce6f28e0bf805d1ec7f25014c787fc072efce4eb14824003add",
+      "svg_bytes": 98996,
+      "webp_1x": "mundos.webp",
+      "webp_1x_sha256": "5e14c41656ae190772c095b71afb68c61dc43559bd8217d93be79ad7f3097393",
+      "webp_1x_bytes": 25926,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 84,
+      "webp_2x": "mundos@2x.webp",
+      "webp_2x_sha256": "cd587ff13493d95631bf9894cd4542c37709d90164b23981e762915aa11a7ec4",
+      "webp_2x_bytes": 48452,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "mundos.avif",
+      "avif_1x_sha256": "905613bca3e1ba160d86cf2cce7f91fff7f0d110d106553e4453d177d2899a7c",
+      "avif_1x_bytes": 16272,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "mundos@2x.avif",
+      "avif_2x_sha256": "6cecc269c4c5c0b0eb215f97a63f1bdd5c1afbcadd7fc51793a4491d92e5213c",
+      "avif_2x_bytes": 29298,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "papiroflexia": {
+      "slug": "papiroflexia",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "8f7cc1b88afa4dc4f1b77d55a9dafdaee436dcd2614aee08a82040eda99b080e",
+      "svg_bytes": 29835,
+      "webp_1x": "papiroflexia.webp",
+      "webp_1x_sha256": "917458cf26becf417cbf9ace363a3bc2fd70cd3a7ba6b7387d3327f3d06aeb22",
+      "webp_1x_bytes": 18858,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "papiroflexia@2x.webp",
+      "webp_2x_sha256": "e2f69cb6be52e1059f56a00483d144c8be5bc50f4f42f517d230fa5bfb97777e",
+      "webp_2x_bytes": 28410,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "papiroflexia.avif",
+      "avif_1x_sha256": "655de100d6869b0212599ceda6181bf4c3189706707d321d6e5c7a4ee914849a",
+      "avif_1x_bytes": 11211,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "papiroflexia@2x.avif",
+      "avif_2x_sha256": "c7c2d02b20aa819be91d4d5b7612bd8239e7c7a67554da823a7e941bd62a9211",
+      "avif_2x_bytes": 19338,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "patrones": {
+      "slug": "patrones",
+      "render_config_sha256": "844c85e5e784befe24bf1a62fa03e4e8e2180b130d0f124de21469b161aa7aab",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 82,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "53c8323366d2fad46007d1943f9afa7d68cef7a30bbff3d8763f2f86bf821383",
+      "svg_bytes": 87827,
+      "webp_1x": "patrones.webp",
+      "webp_1x_sha256": "6d818a5421e3058a14877aad2c7d0977189fcf0e3e38748ad42c289c6605d9cf",
+      "webp_1x_bytes": 23004,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 82,
+      "webp_2x": "patrones@2x.webp",
+      "webp_2x_sha256": "0232859deb9bfb8587b56e025db0c348f6c3b6a71f0ed72c087ad47a25831514",
+      "webp_2x_bytes": 50738,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "patrones.avif",
+      "avif_1x_sha256": "3c1abe423ed27e5f21c33f46d6cc46a896060617bb0a96ac6ffcaebefc862325",
+      "avif_1x_bytes": 17057,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "patrones@2x.avif",
+      "avif_2x_sha256": "5348463f5041c81b5f7aa75c03885266a1d790fa9b1e97be44dd1898056b0e6a",
+      "avif_2x_bytes": 31063,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "pixel-art": {
+      "slug": "pixel-art",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "3e5cfbf4e3f7ac539f43ed15485411d5f26ae599d145c3c1fbf1e95ea6a657b5",
+      "svg_bytes": 111121,
+      "webp_1x": "pixel-art.webp",
+      "webp_1x_sha256": "ce3de9663b62591da77310f5d3a44623cc47985ef730194ee70e1036434993fa",
+      "webp_1x_bytes": 20328,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "pixel-art@2x.webp",
+      "webp_2x_sha256": "fd81aeb3797eb342b0a36a0f9118794852eee317ab681f054053fd64db77304d",
+      "webp_2x_bytes": 31086,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "pixel-art.avif",
+      "avif_1x_sha256": "2ab7ab4b72b0e0c7390376e187a4c88bab18d0dcad5914f1da1fef038780c050",
+      "avif_1x_bytes": 13080,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "pixel-art@2x.avif",
+      "avif_2x_sha256": "36d273b4d1d5e7da029894e5ad086433890b9af175fa4ea3eca1a1949927a0f6",
+      "avif_2x_bytes": 21422,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "programacion": {
+      "slug": "programacion",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "ad42057f6c3c73ebecaff87087bfaff5be1bc7c85a23dde7a2889809b5b16a3a",
+      "svg_bytes": 48096,
+      "webp_1x": "programacion.webp",
+      "webp_1x_sha256": "2b4c6e3617f98b87b0f1022f0b75da418894c113fff2f879160931ea2285dfeb",
+      "webp_1x_bytes": 25108,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "programacion@2x.webp",
+      "webp_2x_sha256": "7ac8e461f6a2bc53e86b18356a135687abfac2594ca02d5811329790b91121dd",
+      "webp_2x_bytes": 40428,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "programacion.avif",
+      "avif_1x_sha256": "735b0aeebfa82168a7da9cb2185326bf317d2d1d71665042e25e2f11a0a6da6c",
+      "avif_1x_bytes": 13579,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "programacion@2x.avif",
+      "avif_2x_sha256": "3acea4257c77304ae042524c06e82e604258845d3aa142a0d381f0671676e001",
+      "avif_2x_bytes": 23834,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "ritmo": {
+      "slug": "ritmo",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "65bc2d9d489c1c068fd4cf55d0f2d51e4e313e7a3a0b2208bb5d695af599b759",
+      "svg_bytes": 67576,
+      "webp_1x": "ritmo.webp",
+      "webp_1x_sha256": "9eedbd96f2b965b139358166c3dd3fc49041ae57756d430a56b383c485bf6021",
+      "webp_1x_bytes": 21958,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "ritmo@2x.webp",
+      "webp_2x_sha256": "27506e5539ad177d1ac9df83e037f90a3b6005b8ca5068049ebff0bfc5c9e6a5",
+      "webp_2x_bytes": 33026,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "ritmo.avif",
+      "avif_1x_sha256": "8022d0b5c576abccdc105dc8b29a88b5090ea8388eb19585a279e6e3818bbbe1",
+      "avif_1x_bytes": 13342,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "ritmo@2x.avif",
+      "avif_2x_sha256": "dd3703f5f28c01115b602c6efb16a74f0c1ce483a0180963a687db3639681dcc",
+      "avif_2x_bytes": 22786,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "robotica": {
+      "slug": "robotica",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "df1b1ada33de7f5598bc34f09172fefe633a386fa9a67ee7377e9ec20c671d81",
+      "svg_bytes": 36114,
+      "webp_1x": "robotica.webp",
+      "webp_1x_sha256": "6a687ade900e30042ea0b21be31b4ae00ed58ab891dd71fcb3484b2d00383a95",
+      "webp_1x_bytes": 18350,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "robotica@2x.webp",
+      "webp_2x_sha256": "564f14c0cb9dfbc594317ca131cf5349362bb8a7000e8c653f1b58fa7034acba",
+      "webp_2x_bytes": 28180,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "robotica.avif",
+      "avif_1x_sha256": "a6537d2b5204f3e804e1be3e9280fb310c2f96fb0453574d91106f6d993e5582",
+      "avif_1x_bytes": 10926,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "robotica@2x.avif",
+      "avif_2x_sha256": "84a29d2c386af32c7a8f3c626838308fb564ff27ffbd02f993b16f3391a041e1",
+      "avif_2x_bytes": 18829,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "simulaciones": {
+      "slug": "simulaciones",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "0a4c350c63afc1c5678618969e90b707dbbd31fb294463285776847b0ce0694b",
+      "svg_bytes": 47374,
+      "webp_1x": "simulaciones.webp",
+      "webp_1x_sha256": "d4b022624376dea3e1ebec7b8a531d9fc536f64718a1b41b65e09558d20be162",
+      "webp_1x_bytes": 21580,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "simulaciones@2x.webp",
+      "webp_2x_sha256": "aa56a367c7fa9505ec6eb24cd2a626532ece9346d631a9b41000612584a592bf",
+      "webp_2x_bytes": 35086,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "simulaciones.avif",
+      "avif_1x_sha256": "d962df08fbfeb047a6b314961be3833cc7ef2bcc0c5c37b8b8f7f173e0829282",
+      "avif_1x_bytes": 13018,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "simulaciones@2x.avif",
+      "avif_2x_sha256": "f07aea8c72f17ce0a73a212f6b4990d601d959a818ae732abeba68e07616a790",
+      "avif_2x_bytes": 22683,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "sintesis-sonido": {
+      "slug": "sintesis-sonido",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "63cc83525eaeb62f55ba4421b0eb089a26a141d1fe44ca1b1933b3e42c287e37",
+      "svg_bytes": 37980,
+      "webp_1x": "sintesis-sonido.webp",
+      "webp_1x_sha256": "4484ee407bededd7aa18012f292776a582ee593206936c5cac5f88765e4ee1f7",
+      "webp_1x_bytes": 19542,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "sintesis-sonido@2x.webp",
+      "webp_2x_sha256": "0d3ccf8335bdf5412bab6b10398b4eb68208a6590975d6cd97d5e7eab37e1694",
+      "webp_2x_bytes": 29582,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "sintesis-sonido.avif",
+      "avif_1x_sha256": "9edbd388e66150e28d59cdd342e4b73865550513bc7f21cb4436a09b792808e1",
+      "avif_1x_bytes": 11306,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "sintesis-sonido@2x.avif",
+      "avif_2x_sha256": "14c5f5e540a6ce22e4843ba3572162842f80cecdb9d7add2c453b7af7c57f606",
+      "avif_2x_bytes": 20051,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "sintesis-sonido-age-0-12": {
+      "slug": "sintesis-sonido-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "865c234fc7ef023411e650e35e02e47b444105310e6432adb942b7afb232cc6c",
+      "svg_bytes": 27156,
+      "webp_1x": "sintesis-sonido-age-0-12.webp",
+      "webp_1x_sha256": "b1f0ef604708503d7e0b1ad3b4ac8f68d4afd8869bf2c62c76ea0ddab5f2f564",
+      "webp_1x_bytes": 13278,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "sintesis-sonido-age-0-12@2x.webp",
+      "webp_2x_sha256": "ec6ed70fffd643af738676902cf1d28ddede51e5e2a9f90f7043fa2df7d94a4c",
+      "webp_2x_bytes": 20350,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "sintesis-sonido-age-0-12.avif",
+      "avif_1x_sha256": "fe2cc58aba56f9494c87abeadaef579537fb5ab21b026f6c91d3d828f1a3c33d",
+      "avif_1x_bytes": 8596,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "sintesis-sonido-age-0-12@2x.avif",
+      "avif_2x_sha256": "47bbee6a56ff48643bc8d3d8c3c038b7208b7168cb892a6d79a65aa0ef0de1ed",
+      "avif_2x_bytes": 15403,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "videojuegos": {
+      "slug": "videojuegos",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "94ddcf98ee1c15754b9f8971dda25c48721ee697150647bc2b1447b00989f6da",
+      "svg_bytes": 40084,
+      "webp_1x": "videojuegos.webp",
+      "webp_1x_sha256": "4632078a58fafc0ed9f503f77e0ddba9b9304412ff265b03ea84cbb23fdc0a24",
+      "webp_1x_bytes": 19940,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "videojuegos@2x.webp",
+      "webp_2x_sha256": "ee7f7bcb25ddf5648e269aa91cc38c77d1b5417e1615df2699490d192d10a775",
+      "webp_2x_bytes": 30654,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "videojuegos.avif",
+      "avif_1x_sha256": "198ad37ffcb09372e7e2a1f83e30d8cdcd33c876d53f4fb6ca3a7da951379c0f",
+      "avif_1x_bytes": 12568,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "videojuegos@2x.avif",
+      "avif_2x_sha256": "9609d96a3a059375176e4c2aa78292bee398ed5031b8cd3124c10cd671b13beb",
+      "avif_2x_bytes": 21752,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "videomapping": {
+      "slug": "videomapping",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "1af86e9f629fabd7443d4c77aa1921a889a81f02bb025b22ce1e3de42a5a12f9",
+      "svg_bytes": 28428,
+      "webp_1x": "videomapping.webp",
+      "webp_1x_sha256": "84a277de830eb01b7cac8a480aae760019cea8cdf57a7c94d1443919e4dec618",
+      "webp_1x_bytes": 12992,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "videomapping@2x.webp",
+      "webp_2x_sha256": "20cadd7f90513a1e99a7250805ac00a9745991764088485c6b2880f8d411ab9c",
+      "webp_2x_bytes": 21216,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "videomapping.avif",
+      "avif_1x_sha256": "82a5f0895ad3b5d7a449428d59b626b12535799fdb25147a9a4cadec5fd357e1",
+      "avif_1x_bytes": 8448,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "videomapping@2x.avif",
+      "avif_2x_sha256": "612f72562d941bbeaa40eefeec61fa647852b0dbe5d06778382bfc7b5c7789f8",
+      "avif_2x_bytes": 14834,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    },
+    "videomapping-age-0-12": {
+      "slug": "videomapping-age-0-12",
+      "render_config_sha256": "f3f974af437ed2a0c4808b9786bbcf87d70ded7657245d132c30d3a3ec361626",
+      "render_config": {
+        "rasterizador": "chromium",
+        "metodo_webp": 6,
+        "espacio_color": "RGB",
+        "espera_ms": 260,
+        "canvas_1x": [
+          640,
+          400
+        ],
+        "canvas_2x": [
+          1280,
+          800
+        ],
+        "dpr_1x": 1,
+        "dpr_2x": 2,
+        "quality_1x": 88,
+        "quality_2x": 78,
+        "quality_avif_1x": 62,
+        "quality_avif_2x": 50,
+        "formatos": [
+          "avif",
+          "webp"
+        ]
+      },
+      "svg_sha256": "282e01daa48591a3016995fb6f5815a33e092bbd7d048bd6e1e143b0c1169bdf",
+      "svg_bytes": 23659,
+      "webp_1x": "videomapping-age-0-12.webp",
+      "webp_1x_sha256": "d6ad86f9875de37c63ab2e6243e33672a14aee8d2b87dcf0664b10d9bbf19fe1",
+      "webp_1x_bytes": 12326,
+      "webp_1x_size": [
+        640,
+        400
+      ],
+      "webp_1x_quality": 88,
+      "webp_2x": "videomapping-age-0-12@2x.webp",
+      "webp_2x_sha256": "e9381d0f174282298735075fc13137f10d3a53f845e4940ccb98916f840c895d",
+      "webp_2x_bytes": 19566,
+      "webp_2x_size": [
+        1280,
+        800
+      ],
+      "webp_2x_quality": 78,
+      "avif_1x": "videomapping-age-0-12.avif",
+      "avif_1x_sha256": "b8316ec14009a5649e817097c9cedbb2e12cd61deb450fca295cfa4f1aae1208",
+      "avif_1x_bytes": 7958,
+      "avif_1x_size": [
+        640,
+        400
+      ],
+      "avif_1x_quality": 62,
+      "avif_2x": "videomapping-age-0-12@2x.avif",
+      "avif_2x_sha256": "c5f4063a1bc4def3e6b5b5e5947931b4eea7ca738390dc3f15802c2e55e238ea",
+      "avif_2x_bytes": 13798,
+      "avif_2x_size": [
+        1280,
+        800
+      ],
+      "avif_2x_quality": 50
+    }
+  }
+}
