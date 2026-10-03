@@ -114,3 +114,72 @@ That marker requires:
 
 Final chain:
 `ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN`
+
+
+## STT selected for R66
+
+After target-hardware validation on IrisGreen, the executable STT choice for this R66 media runtime is:
+
+- model: `nvidia/parakeet-tdt-0.6b-v3`;
+- official model snapshot used for validation: `541d1f99c6b0c3cd0b11a95167540bb8edefd82b`;
+- model.safetensors SHA-256: `3a2026366188c8c68598edbbff92f8d11590a08e0ae2e6775544e7b07d6a5e11`;
+- config SHA-256: `e747b85e1bdfd300c8b8ac63bac8dd5221f8fe9bc275b48d06c735fcd6971b6e`;
+- device: CPU;
+- Transformers: `5.18.0`;
+- license: CC BY 4.0 (see official NVIDIA/Hugging Face model card).
+
+Why Parakeet:
+- local 12-utterance ES/EN bank mean raw WER: 6.03%;
+- Whisper Base comparison on the same bank: 8.54%;
+- clean semantic gate: PASS;
+- 20 dB SNR noise gate: PASS;
+- ES↔EN code-switch gate: PASS;
+- acronym, negation, date semantics and project proper nouns covered.
+
+The closed project-brand correction only maps observed variants:
+`Sabick / Savick / Sabyck → Sabik`.
+No open-ended autocorrect is used.
+
+## Persistent STT sidecar
+
+Do not reload the 0.6B ASR model for every turn.
+
+Run the STT environment separately:
+
+```powershell
+python -m uvicorn stt_parakeet_service:app --host 127.0.0.1 --port 8876 --no-access-log
+```
+
+The sidecar:
+- preloads Parakeet once;
+- binds loopback only;
+- accepts only the runtime's own `%TEMP%/sabik-stt-*/turn*` files;
+- exposes `/health` and `/transcribe-path`;
+- returns `Cache-Control: no-store`;
+- applies only the closed Sabik brand correction.
+
+The main runtime invokes `stt_parakeet_adapter.py`, which is a lightweight loopback client.
+
+Set `SABIK_STT_SIDECAR_URL` only if a different private loopback port is needed.
+
+Target-hardware measurements:
+- per-turn STT before sidecar: approximately 9–11 s end-to-end;
+- persistent sidecar: ES 0.495 s end-to-end;
+- persistent sidecar: EN 0.434 s end-to-end;
+- residual `sabik-stt-*` temp directories after request: 0.
+
+## Two isolated Python environments
+
+Keep TTS and STT dependencies isolated.
+
+TTS:
+- Qwen runtime environment;
+- `qwen-tts==0.1.1`;
+- its pinned `transformers==4.57.3`.
+
+STT:
+- `requirements-stt.txt`;
+- `transformers==5.18.0`;
+- Parakeet CPU.
+
+Do not upgrade the Qwen TTS environment to the STT Transformers version.
