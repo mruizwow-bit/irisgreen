@@ -51,13 +51,16 @@
     "asset_sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0"
   },
   "latest_marker_commit": "34c7d5d75181e1fc0792a7815d5c9805f8f9f9ad",
-  "latest_ci_run": 37101529327,
+  "latest_ci_run": 37102695165,
   "main_modified": false,
   "human_qa_pending": true,
   "latest_mobile_non_overlap_fix": {
     "commit": "3ac5d57f938d3f04dd6d537d537b1682c230033a",
     "ci_run": 37102695165,
-    "observed_status": "IN_PROGRESS",
+    "ci_job": 111145203279,
+    "conclusion": "SUCCESS",
+    "artifact_id": 11266274408,
+    "artifact_sha256": "aa4d31f65b2f6be398da183218e689dbf1524dbdc00880c17d419cc54b254f48",
     "scope": "CSS_ONLY_MOVE_SETTINGS_BELOW_INTRO_AT_MOBILE"
   }
 }
