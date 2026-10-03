@@ -77,22 +77,43 @@ def main():
               page.evaluate("m=>window.__CIELO_V2_FIRST.setMotion(m)",motion)
               page.wait_for_timeout(230 if motion=='normal' else 50)
 
+              # Prisma visual contract: scene-first, compact native disclosures, no horizontal overflow.
+              assert page.locator('.skyv2-viewlist').evaluate("e=>e.tagName==='DETAILS' && !e.open")
+              assert page.locator('.skyv2-meta').evaluate("e=>e.tagName==='DETAILS' && !e.open")
+              assert page.locator('.skyv2-info').get_attribute('data-active')=='false'
+              if width<500:
+                assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+1"),(lang,width,'horizontal overflow')
+              scene_box=page.locator('.skyv2-scene').bounding_box();assert scene_box
+              assert scene_box['width']>=width-2,(lang,width,scene_box)
+
               stars=page.locator('.skyv2-star-target').count()
               labels=page.locator('.skyv2-const-label').count()
               assert 12<=stars<=24,(lang,width,motion,stars)
               assert labels<=5,(lang,width,motion,labels)
               assert page.locator('.skyv2-viewlist').is_visible()
               assert page.locator('.skyv2-star-target').first.is_visible()
+              target_box=page.locator('.skyv2-star-target').first.bounding_box();assert target_box
+              assert target_box['width']>=44 and target_box['height']>=44,(lang,width,target_box)
+              if labels:
+                label_style=page.locator('.skyv2-const-label').first.evaluate("e=>({bg:getComputedStyle(e).backgroundColor,bw:getComputedStyle(e).borderTopWidth})")
+                assert label_style['bg'] in ('rgba(0, 0, 0, 0)','transparent'),label_style
+                assert label_style['bw']=='0px',label_style
               assert DEPTH not in req,(lang,width,motion,'depth eager')
               assert not external,(lang,width,motion,external)
               assert not bad,(lang,width,motion,bad)
               assert not errors,(lang,width,motion,errors)
 
-              # LIGHT/NAVY chrome without changing the astronomy scene.
+              # LIGHT/NAVY chrome lives behind a compact native disclosure.
+              page.locator('.skyv2-meta > summary').click()
               page.locator('[data-theme="light"]').click()
               assert page.locator('#cielo-v2').get_attribute('data-theme')=='light'
               page.locator('[data-theme="navy"]').click()
               assert page.locator('#cielo-v2').get_attribute('data-theme')=='navy'
+              page.locator('.skyv2-meta').evaluate("e=>e.open=false")
+
+              # Human-QA evidence: first viewport before selection, overlays collapsed.
+              if lang=='es' and motion=='normal' and width in (390,1440):
+                page.screenshot(path=str(OUT/f'cielo-v2-prisma-scene-{width}.png'),full_page=False)
 
               # Keyboard look + reset.
               canvas=page.locator('.skyv2-canvas');canvas.focus()
@@ -111,6 +132,7 @@ def main():
                 first.click()
               page.wait_for_timeout(30)
               assert page.locator('.skyv2-info dl').count()==1
+              assert page.locator('.skyv2-info').get_attribute('data-active')=='true'
 
               # Depth loads only on explicit request (one representative case).
               depth_count=0
@@ -140,7 +162,8 @@ def main():
       server.shutdown()
 
     report={
-      'gate':'INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS',
+      'gate':'INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA',
+      'base_gate':'INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS',
       'static':static,
       'cases':cases,
       'summary':{
@@ -156,7 +179,11 @@ def main():
         'external_requests':sum(c['external'] for c in cases),
         'http_errors':sum(c['http_errors'] for c in cases),
         'js_errors':sum(c['js_errors'] for c in cases),
-        'depth_eager_requests':0
+        'depth_eager_requests':0,
+        'scene_first':True,
+        'compact_disclosures':True,
+        'progressive_info':True,
+        'human_qa_screenshots':['cielo-v2-prisma-scene-390.png','cielo-v2-prisma-scene-1440.png']
       },
       'passed':True
     }
