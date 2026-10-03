@@ -1,0 +1,71 @@
+name: Mantener Iris Green cerrada al público
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-mantenimiento-netlify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  maintenance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Construir únicamente el cartel de mantenimiento
+        run: python3 scripts/build_maintenance.py
+
+      - name: Publicar cartel de mantenimiento y bloquear deploy
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+        run: |
+          set -euo pipefail
+          TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
+          if [ -z "$TOKEN" ]; then
+            echo "::error::No hay token de Netlify configurado"
+            exit 1
+          fi
+
+          latest_published() {
+            curl -fsSL \
+              -H "Authorization: Bearer $TOKEN" \
+              "https://api.netlify.com/api/v1/sites/$SITE_ID/deploys?production=true&latest-published=true&per_page=1" \
+              | python3 -c 'import json,sys; d=json.load(sys.stdin); print(d[0]["id"] if d else "")'
+          }
+
+          OLD_ID="$(latest_published)"
+          if [ -n "$OLD_ID" ]; then
+            curl -fsSL -X POST \
+              -H "Authorization: Bearer $TOKEN" \
+              "https://api.netlify.com/api/v1/deploys/$OLD_ID/unlock" >/tmp/netlify-unlock.json
+          fi
+
+          npx -y netlify-cli@latest deploy \
+            --prod \
+            --dir=maintenance-dist \
+            --site="$SITE_ID" \
+            --auth="$TOKEN" \
+            --message="Iris Green public maintenance ${GITHUB_SHA}"
+
+          NEW_ID="$(latest_published)"
+          if [ -z "$NEW_ID" ]; then
+            echo "::error::No se pudo localizar el nuevo deploy de mantenimiento"
+            exit 1
+          fi
+
+          curl -fsSL -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            "https://api.netlify.com/api/v1/deploys/$NEW_ID/lock" >/tmp/netlify-lock.json
+
+          echo "PUBLIC_MAINTENANCE_DEPLOYED=$NEW_ID"
