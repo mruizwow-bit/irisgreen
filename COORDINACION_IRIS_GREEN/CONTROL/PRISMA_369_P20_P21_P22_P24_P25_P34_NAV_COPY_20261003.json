@@ -1,0 +1,50 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P20-P21-P22-P24-P25-P34-NAV-COPY-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [
+    20,
+    21,
+    22,
+    24,
+    25,
+    34
+  ],
+  "branch": "prisma/369-nav-copy-p20-p21-p22-p24-p25-p34-20261003",
+  "repair": {
+    "global_cleanup": "968155c105f2b7ef081809d009b2cdbb141f873d",
+    "conditions_es": "b12b7f98097845ddb8040e656373f5987487a3bc",
+    "conditions_en": "be8099254cedfc6e78eee92fea2f455fa2ccaeb6",
+    "conditions_meta_es": "df02ab4821287eb7afdc0732b8dfa1327bffb059",
+    "conditions_meta_en": "5bcbd7f54e0ba7fbd512e66bd06e343e3fcb9944",
+    "situations_es": "ba165c3071d649579cbbaa77e42827b9783d8aac",
+    "situations_en": "5327c39779319884b539a1c3ee550fdad0d7a32c"
+  },
+  "qa": {
+    "run_id": 37111445043,
+    "job_id": 111169990653,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P20_P21_P22_P24_P25_P34_NAV_COPY_PASS",
+    "html_pages_checked": 1052,
+    "situation_inner_pages_checked": 374,
+    "redundant_inicio_home_crumbs": 0,
+    "repeated_situation_disclaimers": 0,
+    "conditions_header": "PASS",
+    "situations_header": "PASS",
+    "data_inicio": "REMOVED"
+  },
+  "artifact": {
+    "id": 11269458976,
+    "name": "prisma-369-nav-copy",
+    "sha256": "7540a35c068893693413fc5d8b52a8416c2e67a4c26276ce1cb5e02a267c2bb1"
+  },
+  "notes": {
+    "p25": "Layout/body+Iris Card is evidenced separately in PRISMA_369_P23_P25_P26_CONTENT_GRID_20261003; this branch closes its breadcrumb/disclaimer remainder.",
+    "p36": "Research Inicio is removed by the global rule too, but P36 is not closed here because its flash/jump requirement remains separate."
+  },
+  "main_modified": false,
+  "next_owner": "NEXO_FOR_RECONCILIATION",
+  "status": "PRISMA_P20_P21_P22_P24_P25_P34_REPAIRED_READY_FOR_NEXO_RECONCILIATION"
+}
