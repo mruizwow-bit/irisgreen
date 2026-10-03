@@ -30,7 +30,7 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "READY_FOR_VISUAL_REVIEW_R04",
+      "status": "R04_PARTIAL_KEEP_REWORK",
       "assets": [
         "sol",
         "mercurio",
@@ -55,9 +55,9 @@
       "entry_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
       "entry_gate_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
       "generation_complete": true,
-      "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW",
-      "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
-      "atlas_packaging": "WAIT_R04_VISUAL_PASS",
+      "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
+      "next_owner": "LUMEN_A7",
+      "atlas_packaging": "WAIT_R05_VISUAL_PASS",
       "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R04 Review",
       "masters": [
         {
@@ -151,16 +151,39 @@
         }
       },
       "r04_review": {
-        "status": "PENDING",
-        "entry_fail": "VISUAL_BATCH_01_SOLAR_FOUNDATION_REWORK_REQUIRED_VISUAL_QUALITY",
-        "review_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW",
-        "reference_only_previous_composites": true,
-        "earth_relief_scaffold": {
-          "source": "NOAA_NCEI_ETOPO1",
-          "rights": "PUBLIC_DOMAIN",
-          "role": "FACTUAL_RELIEF_SCAFFOLD_ONLY",
-          "final_class": "REPRESENTATION"
-        }
+        "status": "PARTIAL_KEEP_REWORK",
+        "source_commit": "c7bb3026da341fb4f6a372f2e3404fad02b97b76",
+        "per_asset": {
+          "sol": "REWORK",
+          "mercurio": "KEEP_LOCKED",
+          "venus": "REWORK",
+          "tierra": "REWORK"
+        },
+        "global_pass": false,
+        "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
+        "b02": "HOLD",
+        "b03": "HOLD"
+      },
+      "r05": {
+        "authorized": true,
+        "owner": "LUMEN_A7",
+        "regenerate": [
+          "sol",
+          "venus",
+          "tierra"
+        ],
+        "frozen_keep": [
+          "mercurio"
+        ],
+        "next_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
+        "rules": [
+          "DO_NOT_REGENERATE_MERCURY",
+          "PRESERVE_FACTUAL_BRIEF",
+          "PRESERVE_1536_RGBA_ALPHA_SRGB",
+          "ONE_BODY_PER_FILE",
+          "NO_BAKED_SCALE",
+          "NO_TEXT_BACKGROUND_STARS"
+        ]
       }
     },
     {
@@ -206,8 +229,8 @@
   },
   "active_visual_review": {
     "batch": "B01",
-    "owner": "ASTRA_MARIA_LUMEN",
-    "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R04_READY_FOR_REVIEW",
+    "owner": "LUMEN_A7",
+    "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
     "atlas_packaging_blocked_until_pass": true
   }
 }
