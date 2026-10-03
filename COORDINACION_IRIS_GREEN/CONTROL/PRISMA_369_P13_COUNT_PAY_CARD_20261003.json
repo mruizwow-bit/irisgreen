@@ -1,0 +1,33 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P13-COUNT-PAY-CARD-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 13,
+  "branch": "prisma/369-games-p13-count-pay-card-20261003",
+  "base_main": "e602f3b4fb2d1691893459a828d374a0dd557c81",
+  "finding": "COUNT_AND_PAY_RENDERED_AS_LOOSE_HERO_TEXT_LINK_INSTEAD_OF_GAME_CARD",
+  "repair": {
+    "es_commit": "28c9dae504557cabbbc67725b981d4c2604a6b38",
+    "en_commit": "439198d5b541ca60070010bb4955642f0d757491",
+    "pattern_reused": ".jg-card",
+    "new_css": false,
+    "new_assets": false,
+    "visual_assets": [
+      "/assets/pictogramas/dinero/e2.svg",
+      "/assets/pictogramas/mulberry-extra/bank_card.svg",
+      "/assets/pictogramas/propios/ticket.svg"
+    ]
+  },
+  "qa": {
+    "test_commit": "a3ab8e8330125fa86062268f34f613e6b8d9be85",
+    "workflow_commit": "b2ffb292d0111e5de4f3556859f411b46669d379",
+    "run_id": 37107476098,
+    "status": "QUEUED",
+    "widths": [390,1440],
+    "languages": ["es","en"]
+  },
+  "main_modified": false,
+  "status": "P13_REPAIR_APPLIED_WAIT_CI"
+}
