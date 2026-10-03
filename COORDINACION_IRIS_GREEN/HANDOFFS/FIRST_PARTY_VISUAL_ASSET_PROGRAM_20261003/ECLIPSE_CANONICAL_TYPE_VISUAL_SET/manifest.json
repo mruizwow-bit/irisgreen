@@ -1,0 +1,121 @@
+{
+  "schema": "iris-green.eclipse-canonical-type-visual-set.v1",
+  "date": "2026-10-03",
+  "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
+  "owner": "ATLAS_A1",
+  "asset_class": "REPRESENTATION",
+  "reusable_by": "data-driven eclipse catalog",
+  "canvas": {
+    "format": "SVG",
+    "viewBox": "0 0 1600 1000",
+    "background": "transparent"
+  },
+  "assets": [
+    {
+      "id": "solar_total",
+      "file": "eclipse-solar-total-canonical-r01.svg",
+      "sha256": "b266ad4f69a7d89ab46cf5f7be9484aedb685b43d15387d0e883e1bf7a1b1587",
+      "git_blob_sha": "3a9255d8987979e537311c6f62d49d68333f55fe",
+      "title_es": "Eclipse solar total",
+      "title_en": "Total solar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse solar total: la Luna se sitúa entre el Sol y la Tierra y la umbra alcanza la Tierra.",
+      "alt_en": "Generic diagram of a total solar eclipse: the Moon lies between the Sun and Earth and the umbra reaches Earth.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "generic corona only for totality",
+        "not event-specific"
+      ]
+    },
+    {
+      "id": "solar_partial",
+      "file": "eclipse-solar-partial-canonical-r01.svg",
+      "sha256": "7efc729e97d97341b3c4d343bf65ee1dc89df0a0b749a42a403150c2afb31de8",
+      "git_blob_sha": "a1c50d8dd7ec26624fa0d68532c7e4c8d2d5afdb",
+      "title_es": "Eclipse solar parcial",
+      "title_en": "Partial solar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse solar parcial: la alineación está desplazada y la Tierra queda en la penumbra.",
+      "alt_en": "Generic diagram of a partial solar eclipse: the alignment is offset and Earth lies in the penumbra.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "no baked obscuration percentage",
+        "not event-specific"
+      ]
+    },
+    {
+      "id": "solar_annular",
+      "file": "eclipse-solar-annular-canonical-r01.svg",
+      "sha256": "292667a08568d60b4deca2a931113b6e5a2d72b3246c6b75192f6b19c8ed7723",
+      "git_blob_sha": "0379904f1cf33a64858aa6b0aa1453d16a8a1833",
+      "title_es": "Eclipse solar anular",
+      "title_en": "Annular solar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse solar anular: la Luna queda centrada pero su disco aparente es menor que el del Sol y queda visible un anillo.",
+      "alt_en": "Generic diagram of an annular solar eclipse: the Moon is centered but its apparent disk is smaller than the Sun, leaving a bright ring.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "does not claim a city sees full annularity",
+        "not event-specific"
+      ]
+    },
+    {
+      "id": "lunar_total",
+      "file": "eclipse-lunar-total-canonical-r01.svg",
+      "sha256": "20e85f7baf3493e1327c473b9f226d2fd8f78d0ed4e86c6da08aa65afa4575b2",
+      "git_blob_sha": "3ca1c266341fc7ff2359292d4f45f51e012bf6cc",
+      "title_es": "Eclipse lunar total",
+      "title_en": "Total lunar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse lunar total: la Tierra se sitúa entre el Sol y la Luna y la Luna entra en la umbra terrestre.",
+      "alt_en": "Generic diagram of a total lunar eclipse: Earth lies between the Sun and Moon and the Moon enters Earth's umbra.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "copper color is illustrative",
+        "not event-specific"
+      ]
+    },
+    {
+      "id": "lunar_partial",
+      "file": "eclipse-lunar-partial-canonical-r01.svg",
+      "sha256": "a6f50cb9f0dbab9b318336a5651cf20fa53ae6519e1e4b1c78a862f109bcacca",
+      "git_blob_sha": "d3c222f4e5e19cc5a0a378d268fb7b6648593429",
+      "title_es": "Eclipse lunar parcial",
+      "title_en": "Partial lunar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse lunar parcial: solo una parte de la Luna atraviesa la umbra de la Tierra.",
+      "alt_en": "Generic diagram of a partial lunar eclipse: only part of the Moon passes through Earth's umbra.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "not event-specific"
+      ]
+    },
+    {
+      "id": "lunar_penumbral",
+      "file": "eclipse-lunar-penumbral-canonical-r01.svg",
+      "sha256": "b3543f1318c5f55ff74000fa10c703224eb0b9e147cab745bb57d3ffe18e18ac",
+      "git_blob_sha": "cfbc0c1b85f062e8c94f58de540a68e0c886ce6e",
+      "title_es": "Eclipse lunar penumbral",
+      "title_en": "Penumbral lunar eclipse",
+      "alt_es": "Diagrama genérico de un eclipse lunar penumbral: la Luna atraviesa la penumbra de la Tierra sin entrar en la umbra.",
+      "alt_en": "Generic diagram of a penumbral lunar eclipse: the Moon passes through Earth's penumbra without entering the umbra.",
+      "notes": [
+        "generic geometry",
+        "not to scale",
+        "subtle dimming only",
+        "not event-specific"
+      ]
+    }
+  ],
+  "contact_sheet": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_CONTACT_SHEET.svg",
+  "rules": {
+    "visible_text_in_assets": false,
+    "event_specific_dates": false,
+    "event_specific_percentages": false,
+    "event_specific_maps": false,
+    "local_visibility_claims": false,
+    "official_ephemeris_claim": false,
+    "runtime_touched": false,
+    "main_touched": false
+  }
+}
