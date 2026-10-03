@@ -1,0 +1,40 @@
+name: Motor · Eclipse R02 canonical integration
+on:
+  push:
+    branches: ['motor/prisma-cover-eclipse-r02-*']
+    paths:
+      - 'assets/ig-eclipses.js'
+      - 'assets/ig-eclipses.css'
+      - 'img/intereses/eclipses/canonical-r02/**'
+      - 'scripts/test_eclipse_canonical_r02_integration.py'
+      - '.github/workflows/motor-eclipse-r02-integration.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  eclipse-r02:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: |
+          node --check assets/ig-eclipses.js
+          python -m py_compile scripts/test_eclipse_canonical_r02_integration.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA integración canónica R02
+        run: python scripts/test_eclipse_canonical_r02_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: eclipse-canonical-r02-integration
+          path: |
+            reports/eclipse-canonical-r02-integration/qa.json
+            reports/eclipse-canonical-r02-integration/*.png
+          retention-days: 14
