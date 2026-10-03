@@ -127,3 +127,32 @@ Cuando exista path binario canónico para B00:
 6. STOP para María/Astra.
 
 No main antes de HUMAN QA.
+
+
+## Micro-bloque · mobile disclosure non-overlap
+
+Fecha: 03/10/2026
+
+Problema observado en CI:
+- 390 px;
+- `Ajustes` solapaba el título `Cielo nocturno`.
+
+Corrección:
+- solo CSS;
+- `Ajustes` se mueve debajo del bloque introductorio en <= 30rem;
+- no motor;
+- no dataset;
+- no estado astronómico;
+- no cambio de lazy depth.
+
+Commit:
+`3ac5d57f938d3f04dd6d537d537b1682c230033a`
+
+CI lanzado:
+`37102695165`
+
+Estado al checkpoint:
+`IN_PROGRESS`
+
+No esperar en chat.
+El siguiente Prisma/turno debe leer el resultado del run antes de continuar.
