@@ -1,31 +1,31 @@
 /* Prisma A8 · Cielo y espacio / Sky and space entry shell.
    Presentation only. Visual slots remain byte-empty until assetStatus=approved. */
-.ig-space-shell{--space-bg:#eef3f7;--space-surface:#fff;--space-ink:#17395c;--space-muted:#5b6b7d;--space-line:#b7c4d0;--space-focus:#5a49a8;--space-accent:#284f76;background:var(--space-bg);color:var(--space-ink);border:1px solid color-mix(in srgb,var(--space-line) 70%,transparent);border-radius:1.4rem;padding:clamp(.85rem,2.4vw,1.4rem)}
-.ig-space-shell[data-theme=dark]{--space-bg:#071525;--space-surface:#0f263d;--space-ink:#eff5fa;--space-muted:#c2cfdb;--space-line:#607890;--space-focus:#f0dc84;--space-accent:#b8cce4}
+.ig-space-shell{--igs-bg:#eef3f7;--igs-surface:#fff;--igs-ink:#17395c;--igs-muted:#5b6b7d;--igs-line:#b7c4d0;--igs-focus:#5a49a8;--igs-accent:#284f76;background:var(--igs-bg);color:var(--igs-ink);border:1px solid color-mix(in srgb,var(--igs-line) 70%,transparent);border-radius:1.4rem;padding:clamp(.85rem,2.4vw,1.4rem)}
+.ig-space-shell[data-theme=dark]{--igs-bg:#071525;--igs-surface:#0f263d;--igs-ink:#eff5fa;--igs-muted:#c2cfdb;--igs-line:#607890;--igs-focus:#f0dc84;--igs-accent:#b8cce4}
 .ig-space-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin:0 0 .9rem}
 .ig-space-head h2{font:500 clamp(1.9rem,4vw,2.8rem)/1 Newsreader,Georgia,serif;margin:0}
 .ig-space-theme{display:flex;gap:.35rem;flex:0 0 auto}
-.ig-space-shell .ig-space-theme button{min-width:44px;min-height:44px;border:1px solid var(--space-line);border-radius:999px;background:var(--space-surface)!important;color:var(--space-ink)!important;font:700 .9rem/1 system-ui,sans-serif;padding:.45rem .75rem;cursor:pointer}
-.ig-space-shell .ig-space-theme button[aria-pressed=true]{background:var(--space-ink)!important;color:var(--space-bg)!important}
-.ig-space-theme button:focus-visible,.ig-space-card-link:focus-visible{outline:3px solid var(--space-focus);outline-offset:3px}
+.ig-space-shell .ig-space-theme button{min-width:44px;min-height:44px;border:1px solid var(--igs-line);border-radius:999px;background:var(--igs-surface)!important;color:var(--igs-ink)!important;font:700 .9rem/1 system-ui,sans-serif;padding:.45rem .75rem;cursor:pointer}
+.ig-space-shell .ig-space-theme button[aria-pressed=true]{background:var(--igs-ink)!important;color:var(--igs-bg)!important}
+.ig-space-theme button:focus-visible,.ig-space-card-link:focus-visible{outline:3px solid var(--igs-focus);outline-offset:3px}
 .ig-space-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(.65rem,1.4vw,1rem)}
 .ig-space-grid>li{min-width:0;grid-column:span 4}
 .ig-space-grid>li:nth-child(1),.ig-space-grid>li:nth-child(2){grid-column:span 6}
-.ig-space-card{height:100%;border:1px solid var(--space-line);border-radius:1.1rem;background:var(--space-surface);overflow:hidden}
-.ig-space-shell .ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;background:var(--space-surface)!important;color:var(--space-ink)!important;text-decoration:none!important}
+.ig-space-card{height:100%;border:1px solid var(--igs-line);border-radius:1.1rem;background:var(--igs-surface);overflow:hidden}
+.ig-space-shell .ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;background:var(--igs-surface)!important;color:var(--igs-ink)!important;text-decoration:none!important}
 .ig-space-card[data-route-status=pending] .ig-space-card-link{cursor:default}
 .ig-space-visual{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;background:
- radial-gradient(circle at 75% 20%,color-mix(in srgb,var(--space-accent) 15%,transparent),transparent 38%),
- linear-gradient(150deg,color-mix(in srgb,var(--space-surface) 84%,var(--space-accent)),var(--space-bg))}
+ radial-gradient(circle at 75% 20%,color-mix(in srgb,var(--igs-accent) 15%,transparent),transparent 38%),
+ linear-gradient(150deg,color-mix(in srgb,var(--igs-surface) 84%,var(--igs-accent)),var(--igs-bg))}
 .ig-space-visual img{width:100%;height:100%;display:block;object-fit:cover}
-.ig-space-slot{display:grid;place-items:center;text-align:center;min-height:100%;padding:1rem;color:var(--space-muted);font:700 .82rem/1.35 system-ui,sans-serif}
-.ig-space-slot::before{content:"";width:2.25rem;height:2.25rem;border-radius:50%;border:1px solid var(--space-line);margin-bottom:.45rem;display:block}
+.ig-space-slot{display:grid;place-items:center;text-align:center;min-height:100%;padding:1rem;color:var(--igs-muted);font:700 .82rem/1.35 system-ui,sans-serif}
+.ig-space-slot::before{content:"";width:2.25rem;height:2.25rem;border-radius:50%;border:1px solid var(--igs-line);margin-bottom:.45rem;display:block}
 .ig-space-copy{display:flex;flex-direction:column;gap:.35rem;flex:1;padding:.85rem .9rem 1rem}
-.ig-space-kicker{font:700 .7rem/1.25 system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--space-muted)}
+.ig-space-kicker{font:700 .7rem/1.25 system-ui,sans-serif;letter-spacing:.05em;text-transform:uppercase;color:var(--igs-muted)}
 .ig-space-title{font:600 clamp(1.22rem,2vw,1.6rem)/1.08 Newsreader,Georgia,serif;margin:0}
-.ig-space-description{font-size:.92rem;line-height:1.45;color:var(--space-muted);margin:.15rem 0 0}
-.ig-space-go{margin-top:auto;padding-top:.55rem;font-weight:700;color:var(--space-accent)}
-.ig-space-status{margin-top:auto;padding-top:.55rem;font-size:.84rem;font-weight:700;color:var(--space-muted)}
+.ig-space-description{font-size:.92rem;line-height:1.45;color:var(--igs-muted);margin:.15rem 0 0}
+.ig-space-go{margin-top:auto;padding-top:.55rem;font-weight:700;color:var(--igs-accent)}
+.ig-space-status{margin-top:auto;padding-top:.55rem;font-size:.84rem;font-weight:700;color:var(--igs-muted)}
 .ig-space-card[data-asset-status=approved] .ig-space-slot{display:none}
 .ig-space-shell .ig-space-card-link *{text-decoration:none!important}\n.ig-space-shell .ig-space-card-link[href]:hover .ig-space-title{text-decoration:underline!important;text-decoration-thickness:.08em;text-underline-offset:.15em}
 .ig-space-shell[data-motion=reduced] *,.ig-space-shell[data-motion=none] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
