@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Prisma space intake QA</title><link rel="stylesheet" href="/assets/ig-space-section-shell.css"></head>
+<body><main style="max-width:1100px;margin:auto;padding:12px"><section id="space-section-shell" data-lang="es"></section></main>
+<script src="/assets/ig-space-section-shell.js"></script>
+<script>
+window.__fixture=IGSpaceSectionShell.mount(document.getElementById('space-section-shell'),{
+  lang:'es',
+  theme:'light',
+  items:[
+    {id:'night-sky',label:'Cielo nocturno',href:'#night',routeStatus:'active',assetStatus:'approved',src:'/tools/prisma/fixtures/lazy-probe.svg',alt:'QA only',width:120,height:120},
+    {id:'solar-system',label:'Sistema solar',href:'#solar',routeStatus:'active',assetStatus:'pending',src:'/should-never-load-solar.png'},
+    {id:'exoplanets',label:'Exoplanetas',href:'#exo',routeStatus:'active',assetStatus:'pending',src:'/should-never-load-exo.png'},
+    {id:'eclipses',label:'Eclipses',href:'#eclipse',routeStatus:'active',assetStatus:'pending',src:'/should-never-load-eclipse.png'},
+    {id:'meteors',label:'Meteoros',routeStatus:'pending',assetStatus:'pending',src:'/should-never-load-meteors.png'}
+  ]
+});
+</script></body></html>
