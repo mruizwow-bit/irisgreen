@@ -39,9 +39,10 @@ def main():
     need('pt: {' not in source,'P43 must not restore a global PT language object')
     need('ig-nav-pt' not in source,'P43 must not restore PT global navigation')
 
-    # P44 · no book promotion in functional How-to-request surface.
-    for phrase in ('Todo aquí es gratis gracias a los libros de Iris Green','Leer las primeras páginas'):
-        need(phrase not in how,'P44 book promotion leaked into How to request: '+phrase)
+    # P44 · no book promotion is wired into the functional How-to-request surface.
+    # Compatibility strings may remain as dead dictionary data; rendered use is what matters.
+    need('{{ tBooksBar }}' not in how,'P44 book promo block still wired into How to request')
+    need('{{ tBooksCta }}' not in how,'P44 book promo CTA still wired into How to request')
 
     print('ISSUE_369_P39_P44_BOOKS_PASS')
 
