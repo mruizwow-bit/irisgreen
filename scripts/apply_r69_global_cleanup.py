@@ -50,6 +50,8 @@ FIRST_PAINT_LINK_RE=re.compile(
     re.I,
 )
 FIRST_PAINT_STYLE='/assets/ig-first-paint.css'
+DC_MUSTACHE_RE=re.compile(r'\{\{.*?\}\}',re.S)
+DC_PROTECTED_RE=re.compile(r'<(?:script|noscript)\b[^>]*>.*?</(?:script|noscript)\s*>',re.I|re.S)
 
 SITUATION_NOTICE_RE=re.compile(
     r'<p\b(?=[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'])[^>]*>'
@@ -77,6 +79,27 @@ def normalize_first_paint(text:str)->str:
         '<link rel="stylesheet" href="/assets/ig-first-paint.css">'
     )
     return text[:head.end()]+critical+text[head.end():]
+
+def encode_final_dc_markup(text:str)->str:
+    # finalize_dc_runtime_csp.py encodes active DC templates earlier in the
+    # pipeline. A few later UI adapters may touch/serialize those pages again.
+    # Re-assert the CSP-safe response contract at the final build boundary.
+    low=text.lower()
+    if '<x-dc' not in low and 'data-dc-script' not in low:
+        return text
+    out=[];pos=0
+    for m in DC_PROTECTED_RE.finditer(text):
+        chunk=text[pos:m.start()]
+        out.append(DC_MUSTACHE_RE.sub(
+            lambda token: token.group(0).replace('{{','&#123;&#123;',1).replace('}}','&#125;&#125;',1),
+            chunk
+        ))
+        out.append(m.group(0));pos=m.end()
+    out.append(DC_MUSTACHE_RE.sub(
+        lambda token: token.group(0).replace('{{','&#123;&#123;',1).replace('}}','&#125;&#125;',1),
+        text[pos:]
+    ))
+    return ''.join(out)
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
@@ -108,6 +131,7 @@ def main()->None:
         rel=p.relative_to(root).as_posix()
         after=normalize_first_paint(before)
         after=local_fonts(after)
+        after=encode_final_dc_markup(after)
         after,n=CRUMB_RE.subn('',after)
         crumb_removed+=n
         if rel.startswith(('es/situaciones/','en/situations/')):
