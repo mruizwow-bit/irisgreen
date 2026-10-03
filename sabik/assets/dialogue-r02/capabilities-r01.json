@@ -1,0 +1,95 @@
+{
+  "schema": "iris-green/sabik-capabilities/v1",
+  "principle": "dialogue_selects_capability_before_execution",
+  "capabilities": [
+    {
+      "id": "conversation",
+      "status_today": "available",
+      "target": "general_extensible",
+      "intents": [
+        "social.greeting",
+        "social.attention",
+        "social.thanks",
+        "social.goodbye",
+        "conversation.repeat",
+        "conversation.stop",
+        "conversation.continue",
+        "conversation.correction",
+        "conversation.not_that",
+        "conversation.change_topic",
+        "conversation.change_aspect",
+        "conversation.response_length"
+      ],
+      "requires_external_data": false
+    },
+    {
+      "id": "iris_green",
+      "status_today": "available_partial",
+      "target": "specialist_grounded_retrieval",
+      "intents": [
+        "search.topic",
+        "information.definition",
+        "information.aspect",
+        "information.comparison",
+        "information.source_request"
+      ],
+      "requires_external_data": false,
+      "grounding": "Iris Green published sources only"
+    },
+    {
+      "id": "general_knowledge",
+      "status_today": "not_wired",
+      "target": "open_knowledge_grounded",
+      "intents": ["general.question"],
+      "requires_external_data": true,
+      "grounding": "approved open knowledge/search layer"
+    },
+    {
+      "id": "time",
+      "status_today": "not_wired",
+      "target": "utility",
+      "intents": ["utility.time"],
+      "requires_external_data": true
+    },
+    {
+      "id": "date",
+      "status_today": "not_wired",
+      "target": "utility",
+      "intents": ["utility.date"],
+      "requires_external_data": true
+    },
+    {
+      "id": "weather",
+      "status_today": "not_wired",
+      "target": "utility",
+      "intents": ["utility.weather"],
+      "requires_external_data": true
+    },
+    {
+      "id": "calculator",
+      "status_today": "not_wired",
+      "target": "utility",
+      "intents": ["utility.calculate", "utility.convert"],
+      "requires_external_data": false
+    },
+    {
+      "id": "safe_companion",
+      "status_today": "not_wired",
+      "target": "safe_conversational_support",
+      "intents": ["conversation.support_explicit"],
+      "requires_external_data": false,
+      "constraints": [
+        "explicit_user_text_only",
+        "no_passive_emotion_inference",
+        "safety_gate_required"
+      ]
+    }
+  ],
+  "routing_rules": {
+    "social_and_control_first": true,
+    "utility_before_general_knowledge": true,
+    "iris_green_when_specialist_topic_or_explicit_request": true,
+    "general_knowledge_is_fallback_capability_not_search_string": true,
+    "never_route_empty_or_social_turn_to_retrieval": true
+  }
+}
