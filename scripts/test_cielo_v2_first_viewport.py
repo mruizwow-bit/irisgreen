@@ -173,7 +173,9 @@ def main():
       server.shutdown()
 
     report={
-      'gate':'INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA',
+      'gate':'INTEREST_01_CIELO_V2_VISUAL_REWORK_TECHNICAL_PASS',
+      'target_gate':'INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA',
+      'human_qa_blocker':'B00_APPROVED_HORIZON_BINARY_NOT_YET_CONNECTED_TO_WEB_PATH',
       'base_gate':'INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS',
       'static':static,
       'cases':cases,
