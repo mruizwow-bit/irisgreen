@@ -7,7 +7,7 @@
   "point": 47,
   "branch": "prisma/369-card-system-p47-audit-20261003",
   "base_commit": "3361ce29b038e8ef301da4cd2a516c757ec0f71c",
-  "scope": "AUDIT",
+  "scope": "REPAIR_AND_GATE",
   "surfaces": [
     "Home",
     "Recursos",
@@ -37,5 +37,27 @@
   "ci_run": 37109730613,
   "ci_status": "IN_PROGRESS",
   "main_modified": false,
-  "status": "P47_CARD_SYSTEM_AUDIT_RUNNING"
+  "status": "PRISMA_P47_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "qa": {
+    "run_id": 37111523477,
+    "job_id": 111170210408,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P47_CARD_SYSTEM_PASS",
+    "surfaces": 9,
+    "cases": 18,
+    "variants": [
+      "catalog",
+      "disclosure",
+      "media",
+      "result"
+    ],
+    "radius_px": 20,
+    "body_padding": "20px 22px"
+  },
+  "artifact": {
+    "id": 11269818269,
+    "name": "prisma-369-card-system-p47",
+    "sha256": "0034747be1a610db1ab675a22af50b924c011d17e4bb8ae9a652c98c32f7b610"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
