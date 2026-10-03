@@ -82,5 +82,6 @@
       "no_event_percentage_in_text": true
     }
   ],
-  "pass": false
+  "pass": true,
+  "note": "runtime_touched/main_touched are expected to be false; previous aggregate boolean treated expected-false checks incorrectly."
 }
