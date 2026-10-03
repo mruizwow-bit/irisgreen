@@ -620,3 +620,45 @@ Atlas:
 
 B02/B03:
 `HOLD`
+
+
+---
+
+# 03/10/2026 · ATLAS · CIELO NOCTURNO DATA/PROCEDURAL · A01
+
+Orden activa:
+#370 comentario `5965786714`.
+
+Regla:
+`PARALLEL_BATCH_PRODUCTION · DEFAULT_BATCH=10 · REVIEW_PER_BATCH`.
+
+Salida:
+`SKY_BATCH_A01_10_READY_FOR_REVIEW`.
+
+Atlas ha construido la primera tanda de 10 escenas desde HYG/IAU local:
+- selección = `cromo 1..10` ya curada;
+- magnitud límite A01 = 5.5;
+- 2.210 registros de estrella de escena;
+- mínimo 79 / máximo 411 por escena;
+- RA/Dec, magnitud, B-V, designación/nombre y categoría de brillo trazables;
+- proyección gnomónica solo como cálculo de review;
+- contact sheet procedural;
+- 0 catálogo raster;
+- 0 colocación manual de estrellas;
+- 0 figuras mitológicas;
+- 0 Luna/planetas horneados;
+- horizonte B00 = KEEP_LOCKED;
+- 0 runtime;
+- 0 main.
+
+MEMORIA dedicada:
+`COORDINACION_IRIS_GREEN/MEMORIA/ATLAS_SKY_BATCH_A01_10_20261003.md`
+
+CONTROL:
+`COORDINACION_IRIS_GREEN/CONTROL/ATLAS_SKY_BATCH_A01_10_20261003.json`
+
+HANDOFF:
+`COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_VISUAL_ASSET_PROGRAM_20261003/SKY_BATCH_A01_10/`
+
+Siguiente:
+review KEEP/REWORK antes de A02.
