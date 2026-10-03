@@ -2,7 +2,7 @@
 from pathlib import Path
 from http.server import SimpleHTTPRequestHandler,ThreadingHTTPServer
 from urllib.parse import urlsplit
-import functools,threading,json
+import functools,threading,json,re
 from playwright.sync_api import sync_playwright
 
 ROOT=Path(__file__).resolve().parent.parent
@@ -33,10 +33,14 @@ def main():
 
     es=(PUBLIC/'es/biblioteca/index.html').read_text(encoding='utf-8')
     en=(PUBLIC/'en/everyday-life/index.html').read_text(encoding='utf-8')
-    assert es.count('class="card vd-card"')==48,es.count('class="card vd-card"')
-    assert en.count('class="card vd-card"')==48,en.count('class="card vd-card"')
-    assert es.count('class="meta"')==48,es.count('class="meta"')
-    assert en.count('class="meta"')==48,en.count('class="meta"')
+    card_rx=re.compile(r'class=["\'][^"\']*\\bvd-card\\b[^"\']*["\']',re.I)
+    meta_rx=re.compile(r'class=["\'][^"\']*\\bmeta\\b[^"\']*["\']',re.I)
+    es_cards=len(card_rx.findall(es)); en_cards=len(card_rx.findall(en))
+    es_meta=len(meta_rx.findall(es)); en_meta=len(meta_rx.findall(en))
+    assert es_cards==48,('ES cards',es_cards)
+    assert en_cards==48,('EN cards',en_cards)
+    assert es_meta==48,('ES meta',es_meta)
+    assert en_meta==48,('EN meta',en_meta)
 
     server=ThreadingHTTPServer(('127.0.0.1',0),functools.partial(Quiet,directory=str(PUBLIC)))
     threading.Thread(target=server.serve_forever,daemon=True).start()
