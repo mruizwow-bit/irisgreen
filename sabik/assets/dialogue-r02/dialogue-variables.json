@@ -1,0 +1,399 @@
+{
+  "schema": "iris-green/sabik-dialogue-variables/v1",
+  "slots": {
+    "topic": {
+      "type": "dynamic_entity",
+      "description": "Tema principal de la conversación.",
+      "source": "Iris Green public search titles, aliases and active session context",
+      "examples": [
+        "autismo",
+        "TOC",
+        "ansiedad",
+        "sueño",
+        "TDAH"
+      ],
+      "persist": "session"
+    },
+    "aspect": {
+      "type": "enum",
+      "description": "Parte del tema que la persona quiere consultar.",
+      "persist": "session",
+      "values": {
+        "definition": {
+          "es": [
+            "qué es",
+            "definición",
+            "significado",
+            "explicación"
+          ],
+          "en": [
+            "what is",
+            "definition",
+            "meaning",
+            "explanation"
+          ],
+          "search_terms": {
+            "es": [
+              "qué es"
+            ],
+            "en": [
+              "what is"
+            ]
+          }
+        },
+        "signals": {
+          "es": [
+            "señales",
+            "senales",
+            "síntomas",
+            "sintomas",
+            "rasgos",
+            "cómo se nota",
+            "como se nota"
+          ],
+          "en": [
+            "signs",
+            "symptoms",
+            "traits",
+            "how it shows up"
+          ],
+          "search_terms": {
+            "es": [
+              "señales"
+            ],
+            "en": [
+              "signs"
+            ]
+          }
+        },
+        "supports": {
+          "es": [
+            "apoyos",
+            "ayudas",
+            "qué ayuda",
+            "que ayuda",
+            "adaptaciones"
+          ],
+          "en": [
+            "supports",
+            "support",
+            "what helps",
+            "accommodations"
+          ],
+          "search_terms": {
+            "es": [
+              "apoyos"
+            ],
+            "en": [
+              "supports"
+            ]
+          }
+        },
+        "assessment": {
+          "es": [
+            "valoración",
+            "valoracion",
+            "evaluación",
+            "evaluacion",
+            "diagnóstico",
+            "diagnostico",
+            "cómo se valora",
+            "como se valora"
+          ],
+          "en": [
+            "assessment",
+            "evaluation",
+            "diagnosis",
+            "how it is assessed"
+          ],
+          "search_terms": {
+            "es": [
+              "valoración"
+            ],
+            "en": [
+              "assessment"
+            ]
+          }
+        },
+        "causes": {
+          "es": [
+            "causas",
+            "por qué ocurre",
+            "por que ocurre",
+            "origen"
+          ],
+          "en": [
+            "causes",
+            "why it happens",
+            "origin"
+          ],
+          "search_terms": {
+            "es": [
+              "causas"
+            ],
+            "en": [
+              "causes"
+            ]
+          }
+        },
+        "sensory": {
+          "es": [
+            "sensorial",
+            "sentidos",
+            "ruido",
+            "luz",
+            "texturas"
+          ],
+          "en": [
+            "sensory",
+            "senses",
+            "noise",
+            "light",
+            "textures"
+          ],
+          "search_terms": {
+            "es": [
+              "sensorial"
+            ],
+            "en": [
+              "sensory"
+            ]
+          }
+        },
+        "communication": {
+          "es": [
+            "comunicación",
+            "comunicacion",
+            "habla",
+            "lenguaje",
+            "interacción",
+            "interaccion"
+          ],
+          "en": [
+            "communication",
+            "speech",
+            "language",
+            "interaction"
+          ],
+          "search_terms": {
+            "es": [
+              "comunicación"
+            ],
+            "en": [
+              "communication"
+            ]
+          }
+        },
+        "daily_life": {
+          "es": [
+            "vida diaria",
+            "día a día",
+            "dia a dia",
+            "rutinas"
+          ],
+          "en": [
+            "daily life",
+            "everyday life",
+            "routines"
+          ],
+          "search_terms": {
+            "es": [
+              "vida diaria"
+            ],
+            "en": [
+              "daily life"
+            ]
+          }
+        },
+        "education_work": {
+          "es": [
+            "colegio",
+            "escuela",
+            "clase",
+            "estudios",
+            "trabajo"
+          ],
+          "en": [
+            "school",
+            "class",
+            "education",
+            "work"
+          ],
+          "search_terms": {
+            "es": [
+              "estudios trabajo"
+            ],
+            "en": [
+              "education work"
+            ]
+          }
+        },
+        "research": {
+          "es": [
+            "investigación",
+            "investigacion",
+            "estudios",
+            "evidencia"
+          ],
+          "en": [
+            "research",
+            "studies",
+            "evidence"
+          ],
+          "search_terms": {
+            "es": [
+              "investigación"
+            ],
+            "en": [
+              "research"
+            ]
+          }
+        }
+      }
+    },
+    "audience": {
+      "type": "enum",
+      "values": [
+        "GENERAL",
+        "AGE_0_12",
+        "AGE_13_17",
+        "AGE_18_PLUS",
+        "ALL_AGES"
+      ],
+      "source": "Iris Green active audience profile",
+      "persist": "session"
+    },
+    "language": {
+      "type": "enum",
+      "values": [
+        "es",
+        "en"
+      ],
+      "source": "active page language",
+      "persist": "session"
+    },
+    "input_mode": {
+      "type": "enum",
+      "values": [
+        "voice",
+        "text"
+      ],
+      "persist": "turn"
+    },
+    "response_length": {
+      "type": "enum",
+      "values": [
+        "minimum",
+        "short",
+        "normal",
+        "detailed"
+      ],
+      "default": "normal",
+      "persist": "session"
+    },
+    "last_intent": {
+      "type": "string",
+      "persist": "session"
+    },
+    "pending_slot": {
+      "type": "string",
+      "persist": "session"
+    },
+    "last_topic": {
+      "type": "string",
+      "persist": "session",
+      "source": "dialogue_state"
+    },
+    "correction": {
+      "type": "string",
+      "persist": "turn",
+      "source": "explicit_user_text"
+    },
+    "follow_up": {
+      "type": "enum",
+      "values": [
+        "continue",
+        "more",
+        "new_topic",
+        "finish"
+      ],
+      "persist": "turn",
+      "source": "explicit_user_text"
+    },
+    "turn_count": {
+      "type": "integer",
+      "default": 0,
+      "persist": "session",
+      "source": "dialogue_runtime"
+    },
+    "fallback_count": {
+      "type": "integer",
+      "default": 0,
+      "persist": "session",
+      "source": "dialogue_runtime"
+    },
+    "last_prompt": {
+      "type": "string",
+      "persist": "session",
+      "source": "dialogue_runtime"
+    },
+    "asr_error_count": {
+      "type": "integer",
+      "default": 0,
+      "persist": "turn",
+      "source": "voice_runtime"
+    },
+    "asr_confidence": {
+      "type": "number",
+      "persist": "turn",
+      "source": "voice_runtime_if_available"
+    },
+    "capability": {
+      "type": "string",
+      "persist": "turn",
+      "source": "capability_router"
+    },
+    "compare_topic": {
+      "type": "dynamic_entity",
+      "persist": "turn",
+      "source": "user_text"
+    },
+    "timezone": {
+      "type": "string",
+      "persist": "session",
+      "source": "runtime_or_explicit_user_context",
+      "privacy": "no_precise_location_inference"
+    },
+    "location": {
+      "type": "string",
+      "persist": "turn",
+      "source": "explicit_user_or_permissioned_tool_only",
+      "privacy": "never_profile_by_default"
+    },
+    "safety_flags": {
+      "type": "array",
+      "default": [],
+      "persist": "session",
+      "source": "safety_gate_only"
+    }
+  },
+  "rendering": {
+    "placeholder_syntax": "{slot}",
+    "unknown_slot_policy": "fail_closed",
+    "prompt_selection": "session_cycle",
+    "source_text_never_used_as_prompt": true
+  },
+  "forbidden_passive_variables": {
+    "user_emotion": "Do not infer emotion from voice, face, typing cadence, pauses or other passive signals.",
+    "personalization_profile": "Do not create a hidden long-term profile from conversation content by default.",
+    "precise_location_history": "Do not persist precise location history.",
+    "raw_transcript_history": "Do not persist voice transcripts by default."
+  },
+  "session_policy": {
+    "memory": "session_only_by_default",
+    "audio_persistence": false,
+    "transcript_persistence": false,
+    "precise_location_persistence": false,
+    "passive_emotion_inference": false
+  }
+}
