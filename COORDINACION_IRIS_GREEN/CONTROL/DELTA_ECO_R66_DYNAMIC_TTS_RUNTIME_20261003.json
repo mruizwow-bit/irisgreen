@@ -1,0 +1,95 @@
+{
+  "schema": "iris-green-eco-r66-dynamic-tts-runtime-v1",
+  "date": "2026-10-03",
+  "issue": 332,
+  "cross_reference_issue": 354,
+  "alias": "Eco",
+  "agent": "A6",
+  "role": "Voice, Audio & Media Validation",
+  "branch": "eco/r66-dynamic-tts-runtime-artifact-r01-20261003",
+  "upstream": {
+    "branch": "nexo/sabik-voice-runtime-recovery-20261002",
+    "head": "914d2edc6341f17a99dc289045f5d057e93b0465",
+    "marker": "SABIK_VOICE_CLIENT_CONTRACT_PASS"
+  },
+  "state": "R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED",
+  "eco_state": "R66_ECO_RUNTIME_HOST_READY_PRIVATE_CANONICAL_WEIGHTS_REQUIRED",
+  "canonical_chain": "ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN",
+  "canonical_models": {
+    "es": {
+      "model_id": "SABIK_ES_R01_FINAL",
+      "sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
+      "packaging": "UNRESOLVED_PRIVATE_ARTIFACT",
+      "historical_mode": "Qwen3-TTS Base 1.7B ICL x_vector_only_mode=false",
+      "human_validation": "20/20 PASS"
+    },
+    "en": {
+      "model_id": "SABIK_EN_R02_FINAL",
+      "sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
+      "packaging": "PRIVATE_BYTES_NOT_ACCESSIBLE",
+      "recovered_historical_checkpoint": "C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0",
+      "recovered_runtime_mode": "custom_voice",
+      "recovered_speaker": "sabik_en"
+    }
+  },
+  "library_search": {
+    "sabik_handoffs_fixed_audio_found": true,
+    "fixed_audio_path": "/SABIK/HANDOFFS/SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED.zip",
+    "fixed_audio_is_dynamic_tts": false,
+    "final_dynamic_model_bytes_found": false,
+    "private_live_endpoint_found": false
+  },
+  "runtime_host": {
+    "path": "tools/sabik-voice-runtime-r66/runtime.py",
+    "discoverer": "tools/sabik-voice-runtime-r66/discover_private_models.py",
+    "example_config": "tools/sabik-voice-runtime-r66/private-config.example.json",
+    "requirements": "tools/sabik-voice-runtime-r66/requirements.txt",
+    "readme": "tools/sabik-voice-runtime-r66/README.md",
+    "endpoints": [
+      "GET /sabik-voice/capabilities",
+      "POST /sabik-voice/transcribe",
+      "POST /sabik-voice/synthesize"
+    ],
+    "schema": "iris-green/sabik-voice-runtime/v1",
+    "supported_qwen_modes": [
+      "custom_voice",
+      "voice_clone"
+    ],
+    "identity_fail_closed": true,
+    "no_store": true,
+    "browser_system_tts": false,
+    "weights_in_repo": false,
+    "masters_in_repo": false
+  },
+  "static_gate": {
+    "test": "scripts/test_eco_r66_private_runtime_static.py",
+    "workflow": ".github/workflows/eco-r66-private-runtime-static.yml",
+    "run_id": 37099787794,
+    "conclusion": "success",
+    "marker": "ECO_R66_PRIVATE_RUNTIME_STATIC_PASS",
+    "real_private_weights_exercised": false,
+    "eco_media_validation_pass": false
+  },
+  "remaining_blockers": [
+    "Locate/mount exact private ES canonical artifact",
+    "Locate/mount exact private EN canonical artifact",
+    "Verify canonical hash target for each model",
+    "Resolve ES final packaging mode from private artifact",
+    "Execute real ES dynamic synthesis",
+    "Execute real EN dynamic synthesis",
+    "Execute A6 R66 matrix with real models",
+    "Emit ECO_R66_MEDIA_VALIDATION_PASS only if all target real checks pass"
+  ],
+  "forbidden_substitutions": [
+    "SpeechSynthesis",
+    "SpeechSynthesisUtterance",
+    "generic narrator",
+    "commercial replacement voice",
+    "retraining",
+    "identity regeneration",
+    "mock E2E pass"
+  ],
+  "main": false,
+  "human_qa": false,
+  "eco_media_validation_pass": false
+}
