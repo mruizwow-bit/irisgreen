@@ -1,0 +1,56 @@
+{
+  "schema": "iris-green.r59.exoplanets.001-100.assign-by-physics-complete.v1",
+  "date": "2026-10-03",
+  "marker": "EXOPLANETS_001_100_ASSIGN_BY_PHYSICS_COMPLETE",
+  "policy": "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
+  "range": "001-100",
+  "prior_closed": [
+    "B01",
+    "B02",
+    "B03",
+    "B04",
+    "B05"
+  ],
+  "continuous": {
+    "B06": "EXOPLANETS_BATCH_06_ASSIGN_BY_PHYSICS_PASS",
+    "B07": "EXOPLANETS_BATCH_07_ASSIGN_BY_PHYSICS_PASS",
+    "B08": "EXOPLANETS_BATCH_08_ASSIGN_BY_PHYSICS_PASS",
+    "B09": "EXOPLANETS_BATCH_09_ASSIGN_BY_PHYSICS_PASS",
+    "B10": "EXOPLANETS_BATCH_10_ASSIGN_BY_PHYSICS_PASS"
+  },
+  "qa": {
+    "B06": {
+      "technical": "PASS",
+      "data": "PASS",
+      "epistemic": "PASS"
+    },
+    "B07": {
+      "technical": "PASS",
+      "data": "PASS",
+      "epistemic": "PASS"
+    },
+    "B08": {
+      "technical": "PASS",
+      "data": "PASS",
+      "epistemic": "PASS"
+    },
+    "B09": {
+      "technical": "PASS",
+      "data": "PASS",
+      "epistemic": "PASS"
+    },
+    "B10": {
+      "technical": "PASS",
+      "data": "PASS",
+      "epistemic": "PASS"
+    }
+  },
+  "hard_rules": [
+    "NO_AI_GENERATED_SCIENTIFIC_DATA",
+    "REPRESENTATION_NOT_OBSERVATION",
+    "UNKNOWN_APPEARANCE_WHEN_COMPOSITION_UNCONSTRAINED",
+    "NO_SOLID_SURFACE_FOR_JOVIAN_MASS_GAS_GIANTS",
+    "PSCOMPPARS_FIELDS_EXPLICITLY_COMPOSITE"
+  ],
+  "status": "PASS_AND_STOP"
+}
