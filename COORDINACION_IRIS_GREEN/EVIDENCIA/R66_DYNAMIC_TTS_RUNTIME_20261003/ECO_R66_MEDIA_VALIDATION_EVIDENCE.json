@@ -1,0 +1,173 @@
+{
+  "schema": "iris-green/eco-r66-media-validation-evidence/v1",
+  "date": "2026-10-03",
+  "marker": "ECO_R66_MEDIA_VALIDATION_PASS",
+  "scope": "VOICE_AUDIO_MEDIA_COMPONENT",
+  "system_pass": false,
+  "principle": "COMPONENT_PASS != SYSTEM_PASS",
+  "device": {
+    "name": "IrisGreen",
+    "gpu": "NVIDIA RTX 5000 Ada Generation Laptop GPU",
+    "gpu_memory_mib": 16376,
+    "python": "3.12.10",
+    "tts_torch": "2.14.0+cu130"
+  },
+  "tts": {
+    "es": {
+      "model_id": "SABIK_ES_R01_FINAL",
+      "model_bytes": 3833402520,
+      "model_sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
+      "config_sha256": "6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e",
+      "direct_probe": {
+        "sample_rate": 24000,
+        "duration_s": 5.6,
+        "load_s": 4.515,
+        "synth_s": 15.075,
+        "rtf": 2.692,
+        "peak_dbfs": -4.94,
+        "rms_dbfs": -19.07,
+        "wav_sha256": "7354ef34ac2b421a8d6a67cb97ddbe09685d25b6251dce3232017e9597bf8969",
+        "passed": true
+      },
+      "http_probe": {
+        "status": 200,
+        "seconds": 10.393,
+        "cache_control": "no-store, max-age=0",
+        "content_type": "audio/wav",
+        "bytes": 203564,
+        "wav_sha256": "2fd7a9ee661552057ed028487c331f78d09c0a3659575a97e7a5dafa6deb0eeb"
+      }
+    },
+    "en": {
+      "model_id": "SABIK_EN_R02_FINAL",
+      "model_bytes": 3833402520,
+      "model_sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
+      "config_sha256": "6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd",
+      "direct_probe": {
+        "sample_rate": 24000,
+        "duration_s": 4.96,
+        "load_s": 3.566,
+        "synth_s": 12.312,
+        "rtf": 2.482,
+        "peak_dbfs": -4.14,
+        "rms_dbfs": -18.97,
+        "wav_sha256": "becfb77e24fbb676e9941e3d4ccb065a955cddabc5484a1e3fa0f3ea0af23dad",
+        "passed": true
+      },
+      "http_probe": {
+        "status": 200,
+        "seconds": 11.301,
+        "cache_control": "no-store, max-age=0",
+        "content_type": "audio/wav",
+        "bytes": 234284,
+        "wav_sha256": "10ecc61f6ce56e8f620a17de924410d4d2fa1558112d7ac7072ce7f5ddaea0c1"
+      }
+    },
+    "media_bank": {
+      "count": 18,
+      "sample_rate_hz": 24000,
+      "all_pass": true,
+      "max_peak_dbfs": -2.77,
+      "clipped_samples_total": 0
+    },
+    "negative_tests": {
+      "wrong_model_id": {
+        "status": 409,
+        "detail": "TTS_MODEL_ID_MISMATCH"
+      },
+      "unsupported_locale": {
+        "status": 400,
+        "detail": "TTS_LOCALE_UNSUPPORTED"
+      },
+      "mismatched_artifact": {
+        "result": "MODEL_HASH_MISMATCH_ES"
+      }
+    }
+  },
+  "stt": {
+    "selected_model": "nvidia/parakeet-tdt-0.6b-v3",
+    "snapshot": "541d1f99c6b0c3cd0b11a95167540bb8edefd82b",
+    "model_bytes": 2508311120,
+    "model_sha256": "3a2026366188c8c68598edbbff92f8d11590a08e0ae2e6775544e7b07d6a5e11",
+    "config_sha256": "e747b85e1bdfd300c8b8ac63bac8dd5221f8fe9bc275b48d06c735fcd6971b6e",
+    "device": "cpu",
+    "transformers": "5.18.0",
+    "official_license": "CC-BY-4.0",
+    "official_source": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3",
+    "benchmark": {
+      "parakeet_raw_mean_wer": 0.0603,
+      "whisper_base_raw_mean_wer": 0.0854,
+      "clean_semantic_pass": true,
+      "noise_20db_pass": true,
+      "code_switch_es_en_pass": true,
+      "covered": [
+        "es",
+        "en",
+        "proper_nouns",
+        "dates",
+        "acronyms",
+        "negations",
+        "short",
+        "long",
+        "noise_20db",
+        "code_switch"
+      ]
+    },
+    "persistent_sidecar": {
+      "loopback_port": 8876,
+      "es_end_to_end_seconds": 0.495,
+      "en_end_to_end_seconds": 0.434,
+      "cache_control": "no-store",
+      "residual_runtime_temp_dirs": 0,
+      "path_restriction_negative": {
+        "status": 400,
+        "detail": "STT_INPUT_OUTSIDE_TEMP"
+      }
+    },
+    "brand_normalization": {
+      "closed_mapping": [
+        "Sabick→Sabik",
+        "Savick→Sabik",
+        "Sabyck→Sabik"
+      ],
+      "open_ended_autocorrect": false
+    }
+  },
+  "runtime": {
+    "contract": "iris-green/sabik-voice-runtime/v1",
+    "validation_port": 8875,
+    "capabilities_status": 200,
+    "privacy": {
+      "no_store": true,
+      "persist_audio": false,
+      "persist_transcript": false
+    },
+    "cache_control": "no-store, max-age=0",
+    "pragma": "no-cache",
+    "access_log": false,
+    "endpoints": [
+      "/sabik-voice/capabilities",
+      "/sabik-voice/transcribe",
+      "/sabik-voice/synthesize"
+    ]
+  },
+  "repo": {
+    "branch": "eco/r66-dynamic-tts-runtime-artifact-r01-20261003",
+    "runtime_windows_patch_commit": "7ac1e195fa75f2a483536cbb7a581ac05ea505c3",
+    "stt_adapter_commit": "72f60c7f7cd62d55c79fe039eba33c7d41bea515",
+    "stt_service_commit": "001378b184c3a4aa257e0a1ddb3b2343173e5d5a",
+    "stt_requirements_commit": "04ff71f86946c3f215359535c1d397e5119b29a4",
+    "private_config_example_commit": "4a9131de33e1f25e2f889944fd29ea204fec6820",
+    "readme_commit": "919c5a7794b0f3ff69a24a54e775e2b7a7b99b80"
+  },
+  "next_gate": "NEXO E2E REAL",
+  "not_claimed": [
+    "browser real-model end-to-end turn",
+    "barge-in/cancel lifecycle under real browser",
+    "responsive/browser matrix",
+    "human perceptual acceptance",
+    "HUMAN QA María",
+    "MAIN readiness"
+  ],
+  "canonical_chain": "ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN"
+}
