@@ -1,12 +1,18 @@
-MODO MANTENIMIENTO ACTIVO
+MODO MANTENIMIENTO PÚBLICO ACTIVO
 
 DECISIÓN EXPRESA DE MARÍA:
-La web permanece cerrada al público hasta que el proyecto esté terminado.
+La web pública permanece cerrada hasta que el proyecto esté terminado.
 
-NO retirar el cartel de mantenimiento.
-NO reabrir producción pública por iniciativa de ningún agente.
-NO interpretar merges, CI PASS, QA PASS o deploy interno como autorización de reapertura.
+SEPARACIÓN OBLIGATORIA:
+- main = código canónico completo de Iris Green.
+- main SIEMPRE usa el build normal: python3 scripts/build_site.py → dist.
+- el cartel de mantenimiento es un deploy operativo independiente.
+- mantenimiento público NO sustituye, mutila ni oculta el build canónico de main.
+- una superficie única de revisión de main puede existir en no-producción.
+- NO reabrir irisgreen.eu por iniciativa de ningún agente.
+
+NO interpretar merges, CI PASS, QA PASS o revisión interna como autorización de reapertura.
 
 REOPEN = MARIA_EXPLICIT_AUTHORIZATION_ONLY
 
-Reafirmado: 2026-10-03.
+Reafirmado y corregido: 2026-10-03.

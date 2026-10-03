@@ -1,0 +1,53 @@
+name: Main canónico · superficie de revisión
+
+on:
+  push:
+    branches: [main]
+    paths-ignore:
+      - 'COORDINACION_IRIS_GREEN/**'
+      - 'MAINTENANCE_ACTIVE.txt'
+      - 'assets/maintenance.html'
+      - 'scripts/build_maintenance.py'
+      - '.github/workflows/publicar-mantenimiento-netlify.yml'
+      - '.github/workflows/publicar-produccion-netlify.yml'
+      - '.github/workflows/publicar-main-review-netlify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  main-review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Construir main canónico
+        run: python3 scripts/build_site.py
+
+      - name: Publicar única superficie estable de revisión
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+        run: |
+          set -euo pipefail
+          TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
+          if [ -z "$TOKEN" ]; then
+            echo "::error::No hay token de Netlify configurado"
+            exit 1
+          fi
+
+          npx -y netlify-cli@latest deploy \
+            --dir=dist \
+            --site="$SITE_ID" \
+            --auth="$TOKEN" \
+            --alias=main-review \
+            --message="Iris Green canonical main review ${GITHUB_SHA}"
+
+          echo "MAIN_REVIEW_ALIAS=main-review"

@@ -1,35 +1,29 @@
-name: Publicar Iris Green en producción
+name: Mantener Iris Green cerrada al público
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publicar-mantenimiento-netlify.yml'
   workflow_dispatch:
-    inputs:
-      confirm_reopen:
-        description: 'Escribe MARIA_EXPLICIT_REOPEN para autorizar la reapertura pública'
-        required: true
-        type: string
 
 permissions:
   contents: read
 
 jobs:
-  deploy:
-    if: ${{ github.event.inputs.confirm_reopen == 'MARIA_EXPLICIT_REOPEN' }}
+  maintenance:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 20
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
 
-      - name: Verificar autorización explícita
-        run: |
-          test "${{ github.event.inputs.confirm_reopen }}" = "MARIA_EXPLICIT_REOPEN"
+      - name: Construir únicamente el cartel de mantenimiento
+        run: python3 scripts/build_maintenance.py
 
-      - name: Construir producto canónico
-        run: python3 scripts/build_site.py
-
-      - name: Publicar producto completo y bloquear deploy
+      - name: Publicar cartel de mantenimiento y bloquear deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
@@ -59,14 +53,14 @@ jobs:
 
           npx -y netlify-cli@latest deploy \
             --prod \
-            --dir=dist \
+            --dir=maintenance-dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
-            --message="Iris Green explicit reopen ${GITHUB_SHA}"
+            --message="Iris Green public maintenance ${GITHUB_SHA}"
 
           NEW_ID="$(latest_published)"
           if [ -z "$NEW_ID" ]; then
-            echo "::error::No se pudo localizar el nuevo deploy publicado"
+            echo "::error::No se pudo localizar el nuevo deploy de mantenimiento"
             exit 1
           fi
 
@@ -74,4 +68,4 @@ jobs:
             -H "Authorization: Bearer $TOKEN" \
             "https://api.netlify.com/api/v1/deploys/$NEW_ID/lock" >/tmp/netlify-lock.json
 
-          echo "Producción completa publicada por autorización explícita. Deploy: $NEW_ID"
+          echo "PUBLIC_MAINTENANCE_DEPLOYED=$NEW_ID"
