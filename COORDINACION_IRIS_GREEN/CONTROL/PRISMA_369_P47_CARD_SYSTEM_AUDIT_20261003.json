@@ -1,0 +1,41 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P47-CARD-SYSTEM-AUDIT-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 47,
+  "branch": "prisma/369-card-system-p47-audit-20261003",
+  "base_commit": "3361ce29b038e8ef301da4cd2a516c757ec0f71c",
+  "scope": "AUDIT",
+  "surfaces": [
+    "Home",
+    "Recursos",
+    "Juegos",
+    "Taller",
+    "Investigación",
+    "Vivir fuera",
+    "Datos",
+    "Ayudas"
+  ],
+  "viewports": [
+    1440,
+    390
+  ],
+  "metrics": [
+    "padding",
+    "radius",
+    "height",
+    "title typography",
+    "description typography",
+    "CTA bottom alignment",
+    "illustration presence",
+    "overflow"
+  ],
+  "test_commit": "e8031a1baa54d7256bb311fa3bca642b65326ac4",
+  "workflow_commit": "90a243fe88ece42efb01819266ef994426c6fcfa",
+  "ci_run": 37109730613,
+  "ci_status": "IN_PROGRESS",
+  "main_modified": false,
+  "status": "P47_CARD_SYSTEM_AUDIT_RUNNING"
+}
