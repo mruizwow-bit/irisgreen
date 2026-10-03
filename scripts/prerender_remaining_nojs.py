@@ -20,11 +20,17 @@ BLOCK = re.compile(re.escape(START) + r'.*?' + re.escape(END), re.S)
 JS_STRING = r'"(?:\\.|[^"\\])*"'
 PAIR_RE = re.compile(r'\[\s*(' + JS_STRING + r')\s*,\s*(' + JS_STRING + r')\s*\]')
 BOOK_RE = re.compile(
-    r'\{\s*title:\s*(' + JS_STRING + r'),\s*'
-    r'desc:\s*(' + JS_STRING + r'),\s*'
-    r'desc2:\s*(' + JS_STRING + r'),\s*'
-    r'prices:\s*\[(.*?)\],\s*'
-    r'note:\s*(' + JS_STRING + r'),?\s*\}', re.S)
+    r'\{\s*title:\s*(?P<title>' + JS_STRING + r'),\s*'
+    r'desc:\s*(?P<desc>' + JS_STRING + r'),\s*'
+    r'(?:'
+    r'desc2:\s*(?P<desc2>' + JS_STRING + r')'
+    r'|'
+    r'desc2Before:\s*(?P<desc2_before>' + JS_STRING + r'),\s*'
+    r'desc2Strong:\s*(?P<desc2_strong>' + JS_STRING + r'),\s*'
+    r'desc2After:\s*(?P<desc2_after>' + JS_STRING + r')'
+    r'),\s*'
+    r'prices:\s*\[(?P<prices>.*?)\],\s*'
+    r'note:\s*(?P<note>' + JS_STRING + r'),?\s*\}', re.S)
 COVER_RE = re.compile(
     r'\{\s*cover:\s*A\s*\+\s*(' + JS_STRING + r'),\s*'
     r'alt:\s*(' + JS_STRING + r'),\s*'
@@ -80,11 +86,19 @@ def books_markup(page: Path) -> tuple[str, int]:
         raise ValueError('No se encuentra books[] en Libros ES')
     books = []
     for m in BOOK_RE.finditer(books_block.group(1)):
+        if m.group('desc2') is not None:
+            desc2 = js(m.group('desc2'))
+        else:
+            desc2 = ''.join((
+                js(m.group('desc2_before')),
+                js(m.group('desc2_strong')),
+                js(m.group('desc2_after')),
+            ))
         books.append({
-            'title': js(m.group(1)), 'desc': js(m.group(2)),
-            'desc2': js(m.group(3)),
-            'prices': [(js(a), js(b)) for a, b in PAIR_RE.findall(m.group(4))],
-            'note': js(m.group(5)),
+            'title': js(m.group('title')), 'desc': js(m.group('desc')),
+            'desc2': desc2,
+            'prices': [(js(a), js(b)) for a, b in PAIR_RE.findall(m.group('prices'))],
+            'note': js(m.group('note')),
         })
     covers_block = re.search(r'const\s+COVERS\s*=\s*\[(.*?)\n\s*\];', text, re.S)
     if not covers_block:
