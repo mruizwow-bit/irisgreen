@@ -1,0 +1,36 @@
+{
+  "schema": "iris-green.solar-foundation-final-10-pass.v1",
+  "date": "2026-10-03",
+  "gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+  "owner_visual": "LUMEN_A7",
+  "human_qa": "MARIA",
+  "source_reference": {
+    "filename": "Esferas planetarias sobre transparencia-4.png",
+    "sha256": "5b84bdcd5990284b5d336a37b0d010d95fcb731d10a96661bc87bb08669b23cd"
+  },
+  "library_path": "/Iris Green/First Party Visual/Solar Foundation Final",
+  "count": 10,
+  "technical": {
+    "size": [
+      1536,
+      1536
+    ],
+    "format": "PNG RGBA",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "srgb_icc": true,
+    "qa_backgrounds": [
+      "BLACK",
+      "WHITE",
+      "MID-GRAY"
+    ],
+    "status": "PASS"
+  },
+  "contact_sheet": {
+    "filename": "SOLAR_FOUNDATION_FINAL_10_CONTACT_SHEET.png",
+    "sha256": "90a99038ff01d19474bc30f58cfc9112db75f123a3290d3a695d38cde9fa7df9"
+  },
+  "next_owner": "ATLAS_A1",
+  "art_locked": true,
+  "b03_context_moons": "SEPARATE_REQUIRES_SPEC"
+}

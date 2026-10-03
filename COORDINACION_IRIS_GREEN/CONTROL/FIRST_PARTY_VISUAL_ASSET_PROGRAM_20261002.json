@@ -30,7 +30,7 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "READY_FOR_VISUAL_REVIEW_R05",
+      "status": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
       "assets": [
         "sol",
         "mercurio",
@@ -55,10 +55,10 @@
       "entry_gate": "INTEREST_02_SOLAR_VISUAL_FACTUAL_ASSET_BRIEF_PASS",
       "entry_gate_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
       "generation_complete": true,
-      "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
-      "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
-      "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
-      "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review",
+      "output_marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+      "next_owner": "ATLAS_A1",
+      "atlas_packaging": "READY",
+      "library_path": "/Iris Green/First Party Visual/Solar Foundation Final",
       "masters": [
         {
           "id": "sol",
@@ -218,20 +218,40 @@
         "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
         "b02": "HOLD_AFTER_B01",
         "b03": "HOLD_FOR_PRODUCT_SPEC"
+      },
+      "final_10": {
+        "source_reference": "Esferas planetarias sobre transparencia-4.png",
+        "source_reference_sha256": "5b84bdcd5990284b5d336a37b0d010d95fcb731d10a96661bc87bb08669b23cd",
+        "marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+        "count": 10,
+        "technical_contract": {
+          "width": 1536,
+          "height": 1536,
+          "format": "PNG RGBA",
+          "alpha": [
+            0,
+            255
+          ],
+          "srgb_icc": true,
+          "transparent": true
+        },
+        "contact_sheet_sha256": "90a99038ff01d19474bc30f58cfc9112db75f123a3290d3a695d38cde9fa7df9"
       }
     },
     {
       "id": "B02",
       "name": "Solar remaining planets",
       "owner": "LUMEN",
-      "status": "HOLD_AFTER_B01",
+      "status": "COMPLETED_INCLUDED_IN_SOLAR_FOUNDATION_FINAL_10",
       "assets": [
         "marte",
         "jupiter",
         "saturno",
         "urano",
         "neptuno"
-      ]
+      ],
+      "output_marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+      "next_owner": "ATLAS_A1"
     },
     {
       "id": "B03",
@@ -262,9 +282,17 @@
     "status": "QUEUED_NOT_IMMEDIATE"
   },
   "active_visual_review": {
-    "batch": "B01",
-    "owner": "ASTRA_MARIA_LUMEN",
-    "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
-    "atlas_packaging_blocked_until_pass": true
+    "batch": "SOLAR_FOUNDATION_FINAL_10",
+    "owner": "ATLAS_A1",
+    "marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+    "atlas_packaging_blocked_until_pass": false,
+    "status": "VISUAL_AND_TECHNICAL_MASTER_PASS"
+  },
+  "solar_foundation_final": {
+    "status": "PASS",
+    "marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+    "library_path": "/Iris Green/First Party Visual/Solar Foundation Final",
+    "master_count": 10,
+    "next_owner": "ATLAS_A1"
   }
 }

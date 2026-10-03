@@ -698,3 +698,84 @@ B02:
 
 B03:
 `HOLD_FOR_PRODUCT_SPEC`
+
+
+## SISTEMA SOLAR · CIERRE FINAL 10 MASTERS · 03/10/2026
+
+Gate:
+`SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS`
+
+Este bloque SUPERA los estados históricos B01/B02 de review/HOLD para los 10 cuerpos principales.
+
+Referencia visual final aprobada por María:
+`Esferas planetarias sobre transparencia-4.png`
+
+SHA-256 referencia:
+`5b84bdcd5990284b5d336a37b0d010d95fcb731d10a96661bc87bb08669b23cd`
+
+KEEP visual definitivo:
+- Sol;
+- Mercurio;
+- Venus;
+- Tierra;
+- Marte;
+- Júpiter;
+- Saturno;
+- Urano;
+- Neptuno;
+- Plutón.
+
+Library canónica:
+`/Iris Green/First Party Visual/Solar Foundation Final/`
+
+Contrato técnico final de los 10 masters:
+- 1536×1536;
+- PNG RGBA;
+- alpha 0–255;
+- sRGB ICC embebido;
+- fondo transparente;
+- un cuerpo por archivo;
+- sin texto/fondo/estrellas/logos;
+- clase pública `REPRESENTATION`;
+- no escala relativa horneada.
+
+Los cuatro derivados de la referencia visual aprobada se exportaron sin rediseño:
+- `solar_01_sol_final.png` · `8b060092d09e1100d1d7b4c7dd1b4db093894aba717d9cbc6fd6e066369beace`
+- `solar_04_tierra_final.png` · `d09773ebd0774121287370556e01d6d0ea57fa0d4d35295c121325e155c61cac`
+- `solar_08_urano_final.png` · `2d4b6b6a262eb933130fc1fa1df5ba6d8aecb5c08ef7fec7d93786ac67b7b76f`
+- `solar_09_neptuno_final.png` · `9a85681f33eaca9448176a60b925cafbef2a6613960e58b562e66372071bf4cc`
+
+KEEP reutilizados sin regenerar:
+- Mercurio · `592e8f00fbaaece3f02221df3c65d93a50ba07c64473ae171522bd8c7910910f`
+- Venus · `a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f`
+- Marte · `2da051ee02e9583f1702409f126fd8b8a82810699af425f7e64d70e4474598e9`
+- Júpiter · `379c6f0bec39afacc444a9807d01c1f732cfa668e1d5a3670cfc9e036de51a59`
+- Saturno · `4b62485a38231ec47363db69208cda3cc94bc73430b21a8d6d579d38fbcc5631`
+- Plutón · `428fc88d8a86fe220f7ad53c34dae218fc1601404df8fe6f8b283d2c5f8c8844`
+
+QA técnico:
+- BLACK / WHITE / MID-GRAY;
+- alpha completo;
+- sRGB presente;
+- 0 matte técnico;
+- 0 componente espurio visible tras limpieza;
+- visual de Tierra/Neptuno preservado;
+- sin nueva variante artística.
+
+QA:
+`SOLAR_FINAL_ALPHA_VALIDATION_BLACK_WHITE_GRAY.png`
+
+Contact sheet final:
+`SOLAR_FOUNDATION_FINAL_10_CONTACT_SHEET.png`
+
+SHA-256 contact:
+`90a99038ff01d19474bc30f58cfc9112db75f123a3290d3a695d38cde9fa7df9`
+
+Estado de producción visual:
+`PASS / CLOSED`
+
+Siguiente owner:
+**Atlas A1** solo para packaging/provenance/cierre técnico de asset system.
+Atlas NO reimagina arte.
+
+B03 lunas/contexto sigue siendo una línea separada y requiere spec propia; no reabre estos 10 masters.
