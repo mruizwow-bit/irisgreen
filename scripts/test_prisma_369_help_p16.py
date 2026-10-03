@@ -9,8 +9,8 @@ PUBLIC=ROOT/'dist' if (ROOT/'dist').is_dir() else ROOT
 OUT=ROOT/'reports'/'prisma-369-help-p16';OUT.mkdir(parents=True,exist_ok=True)
 
 CASES=[
- ('es','/es/taller/arquitectura/','Ayuda'),
- ('en','/en/workshop/architecture-plans/','Help')
+ ('es','/es/taller/programacion/','Ayuda'),
+ ('en','/en/workshop/coding/','Help')
 ]
 
 class Quiet(SimpleHTTPRequestHandler):
@@ -49,7 +49,8 @@ def main():
             page.on('pageerror',lambda e:errors.append(str(e)))
             page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
             page.on('response',lambda r:bad.append((r.status,r.url)) if r.status>=400 else None)
-            page.goto(base+route,wait_until='networkidle')
+            page.goto(base+route,wait_until='domcontentloaded')
+            page.wait_for_function("document.querySelector('main#main')?.classList.contains('ig42-active')",timeout=15000)
             page.evaluate("(t)=>document.documentElement.setAttribute('data-ig-theme',t)",theme)
             page.locator(f'button[aria-label="{help_label}"]').wait_for(timeout=10000)
             page.locator(f'button[aria-label="{help_label}"]').click()
