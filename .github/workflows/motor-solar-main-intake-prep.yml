@@ -1,0 +1,34 @@
+name: Motor · Solar main asset intake prep
+on:
+  push:
+    branches: ['motor/space-pack-02-solar-intake-prep-*']
+    paths:
+      - 'assets/data/solar-main-asset-intake.json'
+      - 'scripts/test_solar_main_asset_intake_prep.py'
+      - '.github/workflows/motor-solar-main-intake-prep.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  solar-intake-prep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: python -m py_compile scripts/test_solar_main_asset_intake_prep.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: Runtime intake prep QA
+        run: python scripts/test_solar_main_asset_intake_prep.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: solar-main-intake-prep
+          path: reports/solar-main-intake-prep/qa.json
+          retention-days: 14
