@@ -84,7 +84,17 @@ def main() -> None:
     report_dir = root / "reports" / "publicacion"
     report_dir.mkdir(parents=True, exist_ok=True)
 
-    pages = [p for p in root.rglob("*.html") if "reports" not in p.parts]
+    def seo_document(path: Path) -> bool:
+        rel = path.relative_to(root).as_posix()
+        if "reports" in path.parts:
+            return False
+        # S2 full bodies are protected content fragments fetched only after an
+        # intentional adult action. They are not standalone/indexable pages.
+        if rel.startswith("assets/safety/full/"):
+            return False
+        return True
+
+    pages = [p for p in root.rglob("*.html") if seo_document(p)]
     parsed = {p: parse(p) for p in pages}
     failures: list[dict] = []
     warnings: list[dict] = []
@@ -189,6 +199,7 @@ def main() -> None:
         "limits": [
             "No evalúa la calidad de las traducciones ni modifica contenido editorial.",
             "Las parejas ES/EN declaradas con hreflang deben ser recíprocas; una relación unilateral se trata como regresión.",
+            "Los fragmentos protegidos assets/safety/full/ no son documentos SEO y quedan fuera del inventario de páginas.",
             "La ausencia de canonical solo se tolera en 404.html y la pantalla técnica de mantenimiento.",
             "No sustituye una inspección en Search Console ni una prueba del índice real de un buscador.",
         ],
