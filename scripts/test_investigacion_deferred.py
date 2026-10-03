@@ -62,9 +62,11 @@ def delayed_language(browser):
     errors = []
     page.on("pageerror", lambda exc: errors.append(str(exc)))
     page.goto(BASE + "/es/investigacion/", wait_until="domcontentloaded")
-    en = page.get_by_role("button", name=re.compile(r"^EN$"))
+    en = page.get_by_role("link", name=re.compile(r"^EN$"))
     en.wait_for(state="visible")
-    en.click()
+    with page.expect_navigation(wait_until="domcontentloaded"):
+        en.click()
+    assert "lang=en" in page.url, page.url
     assert page.evaluate("document.documentElement.lang") == "en"
     assert page.evaluate("localStorage.getItem('ig_lang')") == "en"
     page.wait_for_function("(n) => document.querySelectorAll('main article').length === n", arg=len(DATA))
