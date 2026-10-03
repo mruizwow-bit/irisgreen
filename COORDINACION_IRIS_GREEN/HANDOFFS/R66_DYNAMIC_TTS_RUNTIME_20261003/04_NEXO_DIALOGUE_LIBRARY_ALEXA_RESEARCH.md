@@ -248,3 +248,92 @@ No producción.
 La identidad de voz aprobada permanece:
 - ES → `SABIK_ES_MASTER_V1_ICL`
 - EN → `SABIK_EN_MASTER_V2_ICL`.
+
+
+## 11. Implementación R01 completada en rama
+
+Biblioteca declarativa creada:
+
+- `sabik/assets/dialogue-r01/dialogue-model.es.json`
+- `sabik/assets/dialogue-r01/dialogue-model.en.json`
+- `sabik/assets/dialogue-r01/dialogue-variables.json`
+- `sabik/assets/dialogue-r01/dialogue-tests.es.json`
+- `sabik/assets/dialogue-r01/dialogue-tests.en.json`
+- `sabik/assets/dialogue-r01/README.md`
+- `sabik/dialogue-library.mjs`
+
+El Core R66 ya consume esta biblioteca mediante:
+`getDialogue(locale)`.
+
+### QA declarativo
+
+- ES: `25/25 PASS`
+- EN: `18/18 PASS`
+
+Casos cubiertos:
+- saludo;
+- atención;
+- agradecimiento;
+- búsqueda de tema;
+- definición;
+- señales;
+- apoyos;
+- valoración;
+- sensorial;
+- comunicación;
+- cambio de aspecto;
+- cambio de tema;
+- repeat;
+- stop;
+- alias/mala transcripción de Sabik;
+- continuidad de topic;
+- pending slot;
+- búsqueda contextualizada.
+
+### QA público
+
+Secuencia validada contra el preview público:
+
+`Necesito buscar autismo.`
+→ `intent=search.topic`
+→ `topic=autismo`
+→ `pending_slot=aspect`
+→ respuesta: `Claro. ¿Qué necesitas saber sobre autismo?`
+→ `0 fuentes`.
+
+Segundo turno:
+`señales`
+→ `intent=information.aspect`
+→ `topic=autismo`
+→ `aspect=signals`
+→ query: `autismo señales`
+→ respuesta desde Iris Green;
+→ fuente principal: `Autismo`;
+→ `0 errores browser`.
+
+## 12. Datos históricos restaurados de forma segura
+
+Restaurados desde baseline histórico, siguiendo Control Maestro KEEP_FROM_PREVIEW:
+
+- `sabik/assets/NEA/data/discriminating-questions.es.json`
+- `sabik/assets/NEA/data/relations.es.json`
+- `sabik/assets/NEA/data/human-resources.es.json` (vacío deliberadamente)
+
+No restaurados por conflicto pendiente:
+- `actions.es.json`
+- `concepts.es.json`
+- `procedures.es.json`
+- `language-corpora.json`
+
+Razón:
+riesgo, procedencia editorial o contrato de ruta requieren reconciliación explícita antes de promoción.
+
+## 13. Estado actualizado
+
+`DIALOGUE_LIBRARY_R01_PASS_LOCAL_AND_PUBLIC`
+
+Todavía:
+- no main;
+- no producción;
+- HUMAN QA global pendiente;
+- esperar informe adicional de prompts/variaciones para ampliar R02 sin romper el modelo actual.
