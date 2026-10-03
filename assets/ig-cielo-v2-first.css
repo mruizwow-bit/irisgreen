@@ -26,11 +26,11 @@ a{color:inherit}
 .skyv2-canvas:focus-visible{outline:3px solid #f0dc84;outline-offset:-6px}
 .skyv2-targets,.skyv2-labels{position:absolute;inset:0;pointer-events:none;z-index:3}
 .skyv2-star-target,.skyv2-const-label{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer}
-.skyv2-star-target{width:44px;height:44px;border:0;border-radius:50%;background:transparent;padding:0}
+.skyv2 .skyv2-star-target{width:44px;height:44px;border:0!important;border-radius:50%;background:transparent!important;box-shadow:none!important;padding:0}
 .skyv2-star-target::after{content:"";position:absolute;inset:20px;border-radius:50%;background:#f7f4e9;opacity:.95}
 .skyv2-star-target:hover::before,.skyv2-star-target:focus-visible::before{content:"";position:absolute;inset:8px;border:1px solid rgba(240,220,132,.9);border-radius:50%;box-shadow:0 0 1rem rgba(240,220,132,.18)}
 .skyv2-star-target:focus-visible{outline:none}
-.skyv2-const-label{min-width:44px;min-height:44px;border:0;background:transparent;color:rgba(238,244,248,.88);padding:.55rem .7rem;font:700 .74rem/1.18 system-ui,sans-serif;white-space:nowrap;text-shadow:0 1px 4px #02060b,0 0 12px #02060b}
+.skyv2 .skyv2-const-label{min-width:44px;min-height:44px;border:0!important;background:transparent!important;box-shadow:none!important;color:rgba(238,244,248,.88);padding:.55rem .7rem;font:700 .74rem/1.18 system-ui,sans-serif;white-space:nowrap;text-shadow:0 1px 4px #02060b,0 0 12px #02060b}
 .skyv2-const-label:hover{color:#fff}
 .skyv2-const-label:focus-visible{outline:2px solid #f0dc84;outline-offset:1px;border-radius:.5rem}
 .skyv2-look{position:absolute;left:50%;bottom:clamp(.65rem,2vh,1rem);transform:translateX(-50%);z-index:5;display:flex;gap:.35rem;align-items:center;padding:.35rem;border-radius:999px;background:rgba(5,14,27,.38);backdrop-filter:blur(5px);max-width:calc(100% - 1.5rem);overflow-x:auto}
