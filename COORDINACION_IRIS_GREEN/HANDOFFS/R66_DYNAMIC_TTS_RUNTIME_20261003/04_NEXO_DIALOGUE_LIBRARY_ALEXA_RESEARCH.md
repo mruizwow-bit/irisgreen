@@ -337,3 +337,191 @@ Todavía:
 - no producción;
 - HUMAN QA global pendiente;
 - esperar informe adicional de prompts/variaciones para ampliar R02 sin romper el modelo actual.
+
+
+## 14. Cambio de alcance · Sabik asistente conversacional general y extensible
+
+Decisión de producto de María:
+
+Sabik no debe limitarse a ser un buscador hablado de Iris Green.
+
+Arquitectura objetivo:
+
+`SABIK = CONVERSATION CORE + CAPABILITY ROUTER + DOMAIN LIBRARIES + VOICE`
+
+Capacidades objetivo:
+- conversación general;
+- Iris Green especialista;
+- conocimiento abierto;
+- hora;
+- fecha;
+- meteorología;
+- calculadora/conversiones;
+- acompañamiento conversacional seguro;
+- capacidades futuras extensibles.
+
+Regla:
+`DIALOGUE_FIRST_CAPABILITY_SECOND`
+
+El diálogo decide primero:
+- intención;
+- slots;
+- pending slot;
+- continuidad;
+- corrección;
+- acción/capability.
+
+Solo después se ejecuta una herramienta o recuperación.
+
+### SABIK_TODAY
+
+Disponible/operativo hoy en la rama R66:
+- STT Parakeet ES/EN;
+- TTS Sabik HUMAN PASS ES/EN;
+- conversación de voz continua tras activación explícita;
+- dialogue library R01 conectada;
+- Iris Green local retrieval;
+- fuentes;
+- sesión local;
+- saludo/social turns básicos;
+- topic/aspect carry-over;
+- prompts/reprompts R01.
+
+Parcial:
+- Iris Green retrieval conversacional;
+- correcciones;
+- follow-up;
+- comparación.
+
+No conectado todavía:
+- conocimiento general abierto;
+- hora;
+- fecha;
+- meteorología;
+- calculadora/conversiones;
+- safe companion completo;
+- capability router productivo.
+
+### SABIK_TARGET_ARCHITECTURE
+
+- diálogo general extensible;
+- intents/slots data-driven;
+- capability registry;
+- capability routing;
+- multi-domain;
+- conversaciones largas;
+- correcciones y cambios parciales de contexto;
+- herramientas dinámicas;
+- grounded knowledge por dominio;
+- safety gate antes de acciones sensibles;
+- no persistencia por defecto.
+
+## 15. Dialogue Library R02
+
+R02 se crea encima de R01; R01 permanece estable.
+
+Ruta:
+`sabik/assets/dialogue-r02/`
+
+Incluye:
+- `dialogue-model.es.json`
+- `dialogue-model.en.json`
+- `dialogue-variables.json`
+- `dialogue-tests.es.json`
+- `dialogue-tests.en.json`
+- `capabilities-r01.json`
+- `README.md`
+
+### Intents añadidos R02
+
+- `information.comparison`
+- `conversation.not_that`
+- `conversation.correction_topic`
+- `conversation.continue`
+- `conversation.new_topic`
+- `conversation.response_length`
+- `conversation.response_length_detailed`
+- `information.supports_contextual`
+- `utility.time`
+- `utility.date`
+- `utility.weather`
+- `utility.calculate`
+- `general.wh_question`
+- `general.question`
+
+### Variables R02
+
+21 slots/variables declarados.
+
+Añadidos:
+- `last_topic`
+- `correction`
+- `follow_up`
+- `turn_count`
+- `fallback_count`
+- `last_prompt`
+- `asr_error_count`
+- `asr_confidence`
+- `capability`
+- `compare_topic`
+- `timezone`
+- `location`
+- `safety_flags`
+
+### Privacy/Safety
+
+No adoptar de los informes propuestas incompatibles con el canon.
+
+Explícitamente prohibido por defecto:
+- inferir `user_emotion` desde voz/rostro/tecleo/pausas;
+- crear perfil oculto persistente;
+- persistir ubicación precisa;
+- persistir transcripciones de voz;
+- usar logs de contenido como memoria del usuario.
+
+`location` solo request-scoped y explícita/permisada.
+`asr_confidence` solo por turno.
+`topic/last_topic/last_intent` solo sesión por defecto.
+
+## 16. QA Dialogue R02
+
+Batería total:
+- ES: `55/55 PASS`
+- EN: `46/46 PASS`
+- total: `101/101 PASS`
+
+Cobertura:
+- saludo;
+- social/attention;
+- thanks;
+- búsqueda de tema;
+- definición;
+- señales/apoyos/valoración;
+- comparación;
+- corrección;
+- “no era eso”;
+- cambio de topic;
+- cambio de aspect;
+- continue;
+- new topic;
+- response length;
+- repeat;
+- stop;
+- aliases ASR;
+- pending slots;
+- carry-over;
+- time;
+- date;
+- weather;
+- calculator;
+- general knowledge routing;
+- conflictos entre definition/calculator/general query.
+
+R02 todavía NO está conectada al preview.
+
+Estado:
+`DIALOGUE_R02_101_OF_101_PASS_NOT_YET_WIRED`
+
+R01 sigue siendo la versión activa en preview.
+
+No main.
