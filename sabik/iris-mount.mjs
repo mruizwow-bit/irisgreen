@@ -148,7 +148,12 @@ function mount(){
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
-   if(voiceTurn&&voiceEnabled()){voiceTurn=false;void voice.speak(answer);}
+  if(voiceTurn&&voiceEnabled()){
+   voiceTurn=false;
+   void voice.speak(answer).then(result=>{
+    if(meta.kind==='clarify'&&result?.status==='ended')void voice.startListening();
+   });
+  }
  }
  function renderSources(sources){
   let section=root.querySelector('.sabik-conversation');if(!section){section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';root.appendChild(section);}
@@ -226,3 +231,5 @@ function mount(){
  new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});translate();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
+
+[executed on device: IrisGreen (3f6b1cbe-9324-4e6b-9df9-94b7628af125)]
