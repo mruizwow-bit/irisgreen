@@ -1,0 +1,54 @@
+{
+  "schema": "iris-green.r59.solar-b02-factual-brief.v1",
+  "date": "2026-10-03",
+  "gate": "SOLAR_B02_FACTUAL_BRIEF_PASS",
+  "owner": "SENDA_R59",
+  "destination": "LUMEN_A7",
+  "assets": [
+    {
+      "id": "marte",
+      "state": "BASE_RUST_NEUTRAL",
+      "class": "REPRESENTATION",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER"
+    },
+    {
+      "id": "jupiter",
+      "state": "BASE_BANDED_NEUTRAL",
+      "class": "REPRESENTATION",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER"
+    },
+    {
+      "id": "saturno",
+      "state": "BASE_RINGED_NEUTRAL",
+      "class": "REPRESENTATION",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER"
+    },
+    {
+      "id": "urano",
+      "state": "BASE_PALE_BLUE_GREEN",
+      "class": "REPRESENTATION",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER"
+    },
+    {
+      "id": "neptuno",
+      "state": "BASE_BLUE_CYAN_NEUTRAL",
+      "class": "REPRESENTATION",
+      "reuse_new": "NEW_FIRST_PARTY_MASTER"
+    }
+  ],
+  "hard_rules": [
+    "NO_BAKED_RELATIVE_SCALE",
+    "NO_MOONS",
+    "DONORS_REFERENCE_ONLY",
+    "TRANSIENT_STORMS_ARE_NOT_CURRENT_STATE",
+    "NO_FALSE_COLOR_AS_NATURAL_COLOR"
+  ],
+  "sources": [
+    "https://science.nasa.gov/mars/facts/",
+    "https://science.nasa.gov/jupiter/jupiter-facts/",
+    "https://science.nasa.gov/saturn/facts/",
+    "https://science.nasa.gov/uranus/facts/",
+    "https://science.nasa.gov/neptune/neptune-facts/"
+  ],
+  "status": "PASS"
+}

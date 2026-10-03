@@ -1,0 +1,74 @@
+{
+  "schema": "iris-green.r59.night-sky-density-batch-brief.v1",
+  "date": "2026-10-03",
+  "gate": "NIGHT_SKY_DENSITY_AND_BATCH_BRIEF_PASS",
+  "owner": "SENDA_R59",
+  "destination": "ATLAS_A1",
+  "density": {
+    "desktop": {
+      "base_stars": [
+        180,
+        420
+      ],
+      "interactive_targets": [
+        24,
+        40
+      ],
+      "named_labels": [
+        6,
+        12
+      ],
+      "constellation_labels": [
+        3,
+        6
+      ]
+    },
+    "mobile": {
+      "base_stars": [
+        120,
+        260
+      ],
+      "interactive_targets": [
+        12,
+        24
+      ],
+      "constellation_labels": [
+        2,
+        4
+      ]
+    },
+    "deterministic": true,
+    "no_invented_stars": true
+  },
+  "batch": [
+    "SKY_A01_ORION_TAURUS",
+    "SKY_A02_WINTER_HEXAGON_NORTH",
+    "SKY_A03_CIRCUMPOLAR_NORTH",
+    "SKY_A04_LEO_VIRGO",
+    "SKY_A05_ARCTURUS_SPRING_ARC",
+    "SKY_A06_SUMMER_TRIANGLE",
+    "SKY_A07_SCORPIUS_SAGITTARIUS",
+    "SKY_A08_PEGASUS_ANDROMEDA",
+    "SKY_A09_CASSIOPEIA_PERSEUS",
+    "SKY_A10_AUTUMN_SOUTH_FOMALHAUT"
+  ],
+  "classifications": {
+    "REAL_DATA": [
+      "HYG RA/Dec/magnitude/color",
+      "IAU constellation identity/lines",
+      "WGSN names"
+    ],
+    "CALCULATION": [
+      "date/place projection",
+      "alt-az",
+      "field membership"
+    ],
+    "REPRESENTATION": [
+      "screen point size/brightness",
+      "selection halo",
+      "guide lines",
+      "horizon atmosphere"
+    ]
+  },
+  "status": "PASS"
+}

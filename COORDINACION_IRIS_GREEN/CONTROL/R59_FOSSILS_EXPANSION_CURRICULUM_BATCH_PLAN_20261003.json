@@ -1,0 +1,86 @@
+{
+  "schema": "iris-green.r59.fossils-expansion-curriculum-batch-plan.v1",
+  "date": "2026-10-03",
+  "gate": "FOSSILS_EXPANSION_CURRICULUM_BATCH_PLAN_PASS",
+  "current_seed": {
+    "count": 14,
+    "status": "KEEP_LOCKED_SEED"
+  },
+  "expansion": {
+    "new_batches": 5,
+    "batch_size": 10,
+    "new_units": 50,
+    "total_planned": 64
+  },
+  "generation_authorized_by_plan": false,
+  "batches": {
+    "F01": [
+      "Dickinsonia",
+      "Stromatolite",
+      "Anomalocaris",
+      "Opabinia",
+      "Hallucigenia",
+      "Graptolite",
+      "Orthocone nautiloid",
+      "Eurypterus",
+      "Crinoid",
+      "Spiriferid brachiopod"
+    ],
+    "F02": [
+      "Cooksonia",
+      "Rhynia",
+      "Tiktaalik",
+      "Acanthostega",
+      "Arthropleura",
+      "Lepidodendron",
+      "Calamites",
+      "Sigillaria",
+      "Glossopteris",
+      "Mesosaurus"
+    ],
+    "F03": [
+      "Dactylioceras ammonite",
+      "Belemnite",
+      "Ichthyosaurus",
+      "Plesiosaurus",
+      "Pterodactylus",
+      "Stegosaurus",
+      "Allosaurus",
+      "Triceratops",
+      "Velociraptor",
+      "Mosasaurus"
+    ],
+    "F04": [
+      "Sabalites",
+      "Megacerops",
+      "Basilosaurus",
+      "Dorudon",
+      "Otodus megalodon",
+      "Smilodon fatalis",
+      "Megatherium",
+      "Glyptodon",
+      "Paraceratherium",
+      "Merychippus"
+    ],
+    "F05": [
+      "Australopithecus afarensis",
+      "Homo neanderthalensis",
+      "Nummulites",
+      "Planktonic foraminifer",
+      "Fossil diatom",
+      "Fossil pollen",
+      "Coprolite",
+      "Dinosaur footprint",
+      "Skolithos",
+      "Insect in amber"
+    ]
+  },
+  "model_rule": "catalog_unit_type = TAXON | EVIDENCE_TYPE",
+  "sources": [
+    "https://stratigraphy.org/chart/",
+    "https://naturalhistory.si.edu/exhibits/david-h-koch-hall-fossils-deep-time",
+    "https://naturalhistory.si.edu/education/teaching-resources/paleontology/fossil-ammonites",
+    "https://www.nhm.ac.uk/discover/what-is-a-fossil.html"
+  ],
+  "status": "PASS"
+}
