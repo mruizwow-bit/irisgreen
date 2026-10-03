@@ -263,3 +263,17 @@ Once available:
 
 No main before that gate.
 Maintenance banner remains.
+
+
+## 10 · Cadena final canónica fijada por María · 03/10/2026
+
+`ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN`
+
+Esta cadena sustituye cualquier formulación anterior que intercale pasos no autorizados entre estos gates.
+
+Reglas:
+- Eco no emite PASS sin ejecutar el artefacto privado real ES+EN;
+- Nexo realiza el E2E real únicamente después del PASS de Eco;
+- María realiza HUMAN QA después del E2E real;
+- MAIN solo después de HUMAN QA;
+- no SpeechSynthesis, no voz sustituta, no reentrenamiento.
