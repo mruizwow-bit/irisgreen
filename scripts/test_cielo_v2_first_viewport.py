@@ -168,7 +168,7 @@ def main():
               assert page.locator('.skyv2-info h2').text_content()==first_name,(lang,width,first_name,page.locator('.skyv2-info h2').text_content())
               info_text=page.locator('.skyv2-info').inner_text()
               assert ('Altitud' in info_text and 'Azimut' in info_text and 'Dirección' in info_text) if lang=='es' else ('Altitude' in info_text and 'Azimuth' in info_text and 'Direction' in info_text)
-              first_list_text=page.locator('.skyv2-starlist, .skyv2-viewcols ul').nth(1).inner_text() if page.locator('.skyv2-viewcols ul').count()>1 else ''
+              first_list_text=page.locator('.skyv2-viewcols ul').nth(1).text_content() if page.locator('.skyv2-viewcols ul').count()>1 else ''
               assert '°' in first_list_text,(lang,width,'textual locate missing',first_list_text)
 
               # Depth loads only on explicit request (one representative case).
