@@ -44,13 +44,16 @@ def main():
         browser=pw.chromium.launch()
         for lang,route,help_label in CASES:
           for theme in ('light','dark'):
-            ctx=browser.new_context(viewport={'width':390,'height':844})
+            ctx=browser.new_context(viewport={'width':1440,'height':900})
             page=ctx.new_page(); errors=[]; bad=[]
             page.on('pageerror',lambda e:errors.append(str(e)))
             page.on('console',lambda m:errors.append(m.text) if m.type=='error' else None)
             page.on('response',lambda r:bad.append((r.status,r.url)) if r.status>=400 else None)
             page.goto(base+route,wait_until='domcontentloaded')
-            page.wait_for_function("document.querySelector('main#main')?.classList.contains('ig42-active')",timeout=15000)
+            page.wait_for_function("document.body.dataset.igR69Workshop==='1'",timeout=10000)
+            page.wait_for_function("document.querySelector('main#main')?.classList.contains('ig42-active')",timeout=20000)
+            assert page.locator('.ig42-workspace').count()==1,(lang,theme,'workspace')
+            assert page.locator('.ig42-topbar').count()==1,(lang,theme,'topbar')
             page.evaluate("(t)=>document.documentElement.setAttribute('data-ig-theme',t)",theme)
             page.locator(f'button[aria-label="{help_label}"]').wait_for(timeout=10000)
             page.locator(f'button[aria-label="{help_label}"]').click()
@@ -96,7 +99,7 @@ def main():
             assert not errors,(lang,theme,errors)
             assert not bad,(lang,theme,bad)
             assert dlg.get_attribute('open') is not None
-            page.screenshot(path=str(OUT/f'help-{lang}-{theme}-390.png'),full_page=True)
+            page.screenshot(path=str(OUT/f'help-{lang}-{theme}-1440.png'),full_page=True)
             results.append({'lang':lang,'theme':theme,'route':route,'styles':measured,'contrast_failures':failures})
             ctx.close()
         browser.close()
