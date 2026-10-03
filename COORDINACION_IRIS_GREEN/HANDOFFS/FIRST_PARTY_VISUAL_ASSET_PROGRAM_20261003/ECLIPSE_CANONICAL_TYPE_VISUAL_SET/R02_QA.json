@@ -1,0 +1,86 @@
+{
+  "schema": "iris-green.eclipse-canonical-type-visual-set.qa.v2",
+  "date": "2026-10-03",
+  "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
+  "version": "R02",
+  "checks": {
+    "canonical_asset_count": true,
+    "didactic_sequence_count": true,
+    "dispatch_mapping_count": true,
+    "dispatch_keys_exact": true,
+    "fallback_is_null": true,
+    "all_assets_no_visible_text": true,
+    "all_assets_have_title_desc": true,
+    "no_event_dates_baked": true,
+    "no_event_percentages_baked": true,
+    "runtime_touched": false,
+    "main_touched": false
+  },
+  "files": [
+    {
+      "file": "assets/eclipse-solar-total-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "assets/eclipse-solar-partial-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "assets/eclipse-solar-annular-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "assets/eclipse-lunar-total-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "assets/eclipse-lunar-partial-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "assets/eclipse-lunar-penumbral-canonical-r02.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "sequences/eclipse-solar-total-phase-sequence-r01.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    },
+    {
+      "file": "sequences/eclipse-lunar-total-phase-sequence-r01.svg",
+      "no_visible_text_elements": true,
+      "has_title": true,
+      "has_desc": true,
+      "no_event_date_in_text": true,
+      "no_event_percentage_in_text": true
+    }
+  ],
+  "pass": false
+}
