@@ -23,11 +23,23 @@
   "qa": {
     "test_commit": "a3ab8e8330125fa86062268f34f613e6b8d9be85",
     "workflow_commit": "b2ffb292d0111e5de4f3556859f411b46669d379",
-    "run_id": 37107476098,
-    "status": "QUEUED",
-    "widths": [390,1440],
-    "languages": ["es","en"]
+    "run_id": 37107598329,
+    "status": "IN_PROGRESS",
+    "widths": [
+      390,
+      1440
+    ],
+    "languages": [
+      "es",
+      "en"
+    ],
+    "last_failure": {
+      "run_id": 37107476098,
+      "type": "TEST_STRICTNESS",
+      "detail": "CTA computed display was flex; component contract remained valid"
+    },
+    "fix_commit": "14ff323c09951b097cf35cd4b25748e3131f78d1"
   },
   "main_modified": false,
-  "status": "P13_REPAIR_APPLIED_WAIT_CI"
+  "status": "P13_REPAIR_WAIT_CI_AFTER_QA_CALIBRATION"
 }
