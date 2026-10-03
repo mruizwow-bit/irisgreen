@@ -36,5 +36,29 @@
   "ci_status": "IN_PROGRESS",
   "authority_note": "Prisma presentation audit; Axioma retains accessibility/conformance authority.",
   "main_modified": false,
-  "status": "P48_DARK_LIGHT_AUDIT_RUNNING"
+  "status": "PRISMA_P48_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "repair": {
+    "css_commit": "6c9bd03206b8f4161f305ccf41494a3c934c675e",
+    "gate_commit": "1f234df60417fc759ce4ff21be4388b505ebe978",
+    "causes": [
+      "Default/legacy placeholder colors were not using semantic theme tokens",
+      "Living abroad article copy retained legacy dark ink in DARK/NAVY"
+    ]
+  },
+  "qa": {
+    "run_id": 37110007985,
+    "job_id": 111165901398,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P48_DARK_LIGHT_CONTRAST_PASS",
+    "surfaces": 7,
+    "cases": 14,
+    "samples": 534,
+    "failures": 0
+  },
+  "artifact": {
+    "id": 11270040364,
+    "name": "prisma-369-theme-p48",
+    "sha256": "7d8591f00c9017466ef39cb99a8002ffc85d1cc84f5b4ebb01b6bd2136598b47"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
