@@ -1,0 +1,43 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-CIELO-V2-VISUAL-REWORK-R01-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "branch": "prisma/cielo-v2-visual-rework-r01-20261003",
+  "technical_status": "INTEREST_01_CIELO_V2_VISUAL_REWORK_TECHNICAL_PASS",
+  "target_status": "INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA",
+  "target_status_declared": false,
+  "proven_ci": {
+    "run_id": 37099525044,
+    "job_id": 111136161607,
+    "head_sha": "9518ce5a9ce428a9c45b062e0190ed3b921d7f0c",
+    "conclusion": "SUCCESS",
+    "browser_cases": 18,
+    "widths": [320,390,1440],
+    "languages": ["es","en"],
+    "motion": ["normal","reduced","none"],
+    "themes": ["light","navy"],
+    "forced_colors": true,
+    "star_targets": 18,
+    "max_constellation_labels": 5,
+    "external_requests": 0,
+    "http_errors": 0,
+    "js_errors": 0,
+    "depth_eager_requests": 0,
+    "scene_first": true,
+    "compact_disclosures": true,
+    "progressive_info": true,
+    "artifact_id": 11265044254,
+    "artifact_sha256": "c38d945cbd442220574e284981bf1022e572529eac3b1b1ae9a5ef14c4ddf5be"
+  },
+  "human_qa_blocker": {
+    "code": "B00_APPROVED_HORIZON_BINARY_NOT_YET_CONNECTED_TO_WEB_PATH",
+    "asset": "01-cielo-horizonte-observacion-r01.png",
+    "asset_gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS",
+    "asset_sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0"
+  },
+  "latest_marker_commit": "34c7d5d75181e1fc0792a7815d5c9805f8f9f9ad",
+  "latest_ci_run": 37101529327,
+  "main_modified": false,
+  "human_qa_pending": true
+}
