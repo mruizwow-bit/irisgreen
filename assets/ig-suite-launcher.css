@@ -316,3 +316,31 @@ main.igk[data-stage="AGE_0_12"] .igk-art-2 .igk-art-child{display:block}
 body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active){background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important;box-shadow:none!important}
 body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) :is(.igk-name,.igk-cta){color:var(--ig-text)!important}
 body[data-ig-taller-launcher] main .igk-tile:is(:hover,:focus-visible,:active) .igk-desc{color:var(--ig-text-muted)!important}
+
+
+/* #369 P18 · projects are secondary information, not a full-width feature panel. */
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-collection{
+  width:min(100%,46rem);
+  max-width:46rem;
+  margin:1rem 0 .5rem;
+  border-radius:14px;
+  box-shadow:none!important;
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-collection summary{
+  min-height:44px;
+  padding:.35rem .9rem;
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-collection .igt-sec{
+  gap:.35rem;
+  padding:.15rem .9rem .9rem;
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-collection .igt-sec h2{
+  margin:0;
+  font:600 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-collection .igt-sec p{
+  margin:0;
+  max-width:64ch;
+  font-size:.92rem;
+  line-height:1.5;
+}
