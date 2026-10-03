@@ -782,3 +782,28 @@ MEMORIA:
 
 CONTROL:
 `COORDINACION_IRIS_GREEN/CONTROL/ATLAS_ECLIPSE_CANONICAL_TYPE_VISUAL_SET_20261003.json`
+
+
+---
+
+# 03/10/2026 · ATLAS · ECLIPSE CANONICAL TYPE VISUAL SET · R02
+
+Se aplica el review Astra #370 comentario `5966236303`.
+
+R02:
+- 6 tipos canónicos rehechos con geometría lateral + lectura observada;
+- dispatch data-driven `source_domain + kind_es`;
+- 2 secuencias didácticas donde aportan aprendizaje;
+- ES/EN accesible en manifest;
+- SHA-256 actualizado;
+- R01 queda histórico.
+
+Gate:
+`ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW`
+
+Estado:
+`READY_FOR_REVIEW_R02`
+
+0 runtime.
+0 main.
+0 deploy.
