@@ -20,9 +20,9 @@ const TEXT={
   browse:'Explorar los recursos',placeholder:'Por ejemplo: el ruido me agota',cleared:'La consulta y los resultados se han borrado.',
   busy:'Buscando en las fuentes de Iris Green.',error:'No se pudo conectar. Puedes intentarlo de nuevo o usar el buscador de Iris Green.',
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
-  voice:'Activar voz',voiceOn:'Activada',voiceOff:'Desactivada',mic:'Hablar',stopVoice:'Detener',repeat:'Repetir',
+  voice:'Hablar con Sabik',voiceOn:'Lista',voiceOff:'Lista',mic:'Hablar',stopVoice:'Detener',repeat:'Repetir',
   volume:'Volumen',rate:'Velocidad',listening:'Escuchando',processing:'Procesando',speaking:'Hablando',
-  voiceHelp:'La voz es opcional. El micrófono solo se activa cuando tú lo pulsas. El audio no se guarda en Iris Green.',
+  voiceHelp:'Pulsa «Hablar con Sabik» y habla. Sabik empezará a escuchar y enviará tu pregunta cuando termines. El audio no se guarda en Iris Green.',
   voiceReady:'Voz preparada.',voiceError:'La voz no se pudo activar.',micDenied:'No se pudo usar el micrófono. Puedes seguir escribiendo.',
   noSpeech:'No he detectado una consulta. Puedes intentarlo de nuevo o escribirla.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
   ttsUnavailable:'La voz dinámica de Sabik no está disponible ahora. La respuesta escrita sigue disponible.',sources:'Fuentes'
@@ -39,9 +39,9 @@ const TEXT={
   browse:'Explore resources',placeholder:'For example: noise drains me',cleared:'Your query and results have been cleared.',
   busy:'Searching Iris Green sources.',error:"Could not connect. You can try again or use Iris Green's search.",
   empty:'Write what you need.',spanish:'Some original sources are in Spanish.',
-  voice:'Enable voice',voiceOn:'On',voiceOff:'Off',mic:'Speak',stopVoice:'Stop',repeat:'Repeat',
+  voice:'Talk to Sabik',voiceOn:'Ready',voiceOff:'Ready',mic:'Speak',stopVoice:'Stop',repeat:'Repeat',
   volume:'Volume',rate:'Speed',listening:'Listening',processing:'Processing',speaking:'Speaking',
-  voiceHelp:'Voice is optional. The microphone only starts when you press it. Iris Green does not store the audio.',
+  voiceHelp:'Press “Talk to Sabik” and speak. Sabik starts listening and sends your question when you finish. Iris Green does not store the audio.',
   voiceReady:'Voice ready.',voiceError:'Sabik voice could not be turned on.',micDenied:'The microphone could not be used. You can keep typing.',
   noSpeech:'I did not detect a query. You can try again or type it.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
   ttsUnavailable:'Sabik dynamic voice is not available right now. The written answer remains available.',sources:'Sources'
@@ -210,7 +210,7 @@ function mount(){
  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();$('#sabik-form').requestSubmit();}});
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();voice.stopAll('cancel');busy=false;controls();void visual('pausa',{force:true,semantic:'idle'});input.focus();});
  $('#sabik-toggle').addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);$('#sabik-toggle').setAttribute('aria-expanded',String(!body.hidden));$('#sabik-toggle').textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();voice.stopAll('close');busy=false;controls();void present();}else visual('transicion');});
- voiceButton.addEventListener('click',async()=>{voiceButton.disabled=true;try{await voice.setEnabled(!voiceEnabled());announcement.textContent=voiceEnabled()?strings().voiceReady:'';}catch{await voice.setEnabled(false);announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-toggle'});controls();}});
+ voiceButton.addEventListener('click',async()=>{const s=voice.getState();if(s.listening){voice.stopListening();controls();return;}if(s.speaking){voice.cancelSpeech();controls();return;}voiceButton.disabled=true;try{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error')announcement.textContent=strings().sttUnavailable;}catch{announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-primary'});controls();}});
  if(micButton)micButton.addEventListener('click',async()=>{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error')announcement.textContent=strings().sttUnavailable;controls();});
  if(voiceStop)voiceStop.addEventListener('click',()=>{const s=voice.getState();if(s.listening){voice.stopListening();controls();return;}if(s.speaking){voice.cancelSpeech();controls();input.focus();return;}if(busy){conversation.cancel('voice-stop');connection?.disconnect();voice.stopAll('voice-stop');busy=false;controls();input.focus();}});
  if(voiceRepeat)voiceRepeat.addEventListener('click',()=>{void voice.repeat();});
