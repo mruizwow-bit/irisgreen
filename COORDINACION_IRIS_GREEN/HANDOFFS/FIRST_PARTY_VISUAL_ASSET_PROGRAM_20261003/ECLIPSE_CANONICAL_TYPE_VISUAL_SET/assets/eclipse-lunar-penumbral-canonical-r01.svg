@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="lunar-penumbral-title lunar-penumbral-desc">
+<title id="lunar-penumbral-title">Penumbral lunar eclipse generic geometry</title>
+<desc id="lunar-penumbral-desc">Generic educational representation: the Moon passes through Earth's penumbra but stays outside the umbra, causing a subtle reduction in brightness.</desc>
+<defs>
+  <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff8cf"/><stop offset="68%" stop-color="#ffd867"/><stop offset="100%" stop-color="#f0a52e"/></radialGradient>
+  <radialGradient id="earth" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#6ea5d7"/><stop offset="75%" stop-color="#2d5f8f"/><stop offset="100%" stop-color="#173c62"/></radialGradient>
+  <radialGradient id="moon" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d7d7d2"/><stop offset="80%" stop-color="#999a98"/><stop offset="100%" stop-color="#727472"/></radialGradient>
+  <radialGradient id="copper" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d98b67"/><stop offset="78%" stop-color="#a34f39"/><stop offset="100%" stop-color="#6f2f29"/></radialGradient>
+</defs>
+
+<circle cx="260" cy="500" r="110" fill="url(#sun)"/>
+<path d="M350 410 L1365 350 L1365 650 L350 590 Z" fill="#7a8799" opacity=".16"/>
+<path d="M880 455 L1310 482 L1310 518 L880 545 Z" fill="#020711" opacity=".68"/>
+<circle cx="800" cy="500" r="86" fill="url(#earth)"/><circle cx="800" cy="500" r="92" fill="none" stroke="#76b9e8" stroke-width="4" opacity=".65"/>
+<g transform="translate(1315 610)"><circle r="46" fill="url(#moon)"/><circle r="46" fill="#5b6475" opacity=".18"/></g>
+
+</svg>
