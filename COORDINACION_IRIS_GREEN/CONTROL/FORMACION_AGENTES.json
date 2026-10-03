@@ -1,6 +1,6 @@
 {
   "schema": "iris-green-training-registry-v1",
-  "updated": "2026-09-30",
+  "updated": "2026-10-03",
   "source": "COORDINACION_IRIS_GREEN/FORMACION/00_EMPIEZA_AQUI.md",
   "items": [
     {
@@ -217,11 +217,11 @@
       "Agente": "Design",
       "Puesto": "Especialista de Diseno de Producto y Sistema Visual",
       "Jefatura": "Maria",
-      "Carpeta": "PENDIENTE",
-      "Estado_formacion": "ROLE_DEFINED_TRAINING_PENDING",
-      "Ultimo_aprendizaje": "",
-      "Fecha": "2026-09-30",
-      "Pendiente_principal": "Definir formacion profesional"
+      "Carpeta": "FORMACION/CROMA",
+      "Estado_formacion": "FOUNDATION_STUDIED_PRACTICE_PENDING",
+      "Ultimo_aprendizaje": "APRENDIZAJE_CROMA_2026-10-03.md",
+      "Fecha": "2026-10-03",
+      "Pendiente_principal": "Completar practicas sobre encargo visual real y examen interno antes de FOUNDATION_PASS_INTERNAL"
     }
   ]
 }
