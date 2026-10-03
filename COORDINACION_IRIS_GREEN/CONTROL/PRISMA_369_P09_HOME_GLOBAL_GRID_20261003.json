@@ -1,0 +1,17 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P09-HOME-GLOBAL-GRID-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 9,
+  "branch": "prisma/369-home-grid-p9-verify-20261003",
+  "base": "956d5715d6f82563cf5d8e1c6d0fdb5a15139475",
+  "scope": "DIAGNOSE_ONLY",
+  "hypothesis": "FINAL_DISCOVER_GRID_MAX_WIDTH_78REM_BREAKS_COMMON_HOME_GRID",
+  "qa_commit": "4785e7a51d6bb92e98ee0f8b364d3ae0b8d0d91f",
+  "ci_run": 37104175360,
+  "ci_status": "QUEUED",
+  "main_modified": false,
+  "next": "READ_FINAL_CI_THEN_FIX_ONLY_MEASURED_GRID_DEVIATION"
+}
