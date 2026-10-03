@@ -118,5 +118,6 @@ def main():
     }
     (OUT/'qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
+    assert not axis_failures,('common grid axis failures',axis_failures)
 
 if __name__=='__main__':main()
