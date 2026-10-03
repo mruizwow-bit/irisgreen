@@ -77,7 +77,11 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
   try{   onState('TRANSICION',{phase:'retrieval',inputMode});
    const result=await retrieve({query:q,locale,audience,explicitIntent},{signal:controller.signal});
    if(ticket!==serial||controller.signal.aborted)throw new DOMException('Aborted','AbortError');
-   const src=sources(result);
+   let src=sources(result);
+   if(topic&&src.length){
+    const norm=s=>sentence(s).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'');
+    if(norm(src[0].title)===norm(topic))src=src.slice(0,1);
+   }
    if(topic&&!src.length){
     session.pendingTopic=topic;
     const answer=locale==='en'?`I'm still with you on ${topic}. Could you repeat what you want to know?`:`Sigo contigo en ${topic}. ¿Puedes repetir qué quieres saber?`;
