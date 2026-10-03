@@ -3,10 +3,13 @@
    unlayered; normal rules inside a named cascade layer would lose to them. */
 :root{--ig42-navy:var(--ig-text);--ig42-blue:var(--ig-accent-secondary);--ig42-violet:var(--ig-accent);--ig42-ink:var(--ig-text);--ig42-muted:var(--ig-text-muted);--ig42-line:var(--ig-separator);--ig42-surface:var(--ig-bg-surface);--ig42-soft:var(--ig-bg-surface-soft);--ig42-focus:var(--ig-focus);--ig42-radius:18px}
 html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"]:not([data-ig-r69-workshop-fallback="1"]) main#main:not(.ig42-active){
- opacity:0;visibility:hidden;min-height:calc(100dvh - var(--ig-r49-header-h,64px))
+ opacity:0;visibility:hidden;
+ height:calc(100dvh - var(--ig-r49-header-h,64px));
+ min-height:calc(100dvh - var(--ig-r49-header-h,64px));
+ overflow:hidden;contain:layout size;box-sizing:border-box
 }
 html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"] main#main.ig42-active{
- opacity:1;visibility:visible
+ opacity:1;visibility:visible;height:auto;overflow:visible;contain:none
 }
 html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"][data-ig-r69-workshop-fallback="1"] main#main:not(.ig42-active){
  opacity:1;visibility:visible
