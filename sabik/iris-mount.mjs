@@ -148,7 +148,7 @@ function mount(){
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
-  if(meta.inputMode==='voice')queueMicrotask(()=>{if(voiceEnabled())void voice.speak(answer);});
+   if(meta.inputMode==='voice'&&voiceEnabled())void voice.speak(answer);
  }
  function renderSources(sources){
   let section=root.querySelector('.sabik-conversation');if(!section){section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';root.appendChild(section);}
