@@ -68,6 +68,7 @@ export function createDialogueLibrary({model,variables}={}){
   const candidate=clean(stripped).replace(/^[¿¡?!.,;:\s]+|[¿¡?!.,;:\s]+$/g,'');
   const intents=[...(model?.intents||[])].sort((a,b)=>(b.priority||0)-(a.priority||0));
   for(const intent of intents){
+   if(session.pendingSlot&&intent.id==='general.question')continue;
    for(const pattern of intent.patterns||[]){
     const re=compile(pattern);
     if(!re)continue;
