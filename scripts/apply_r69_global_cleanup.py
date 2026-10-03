@@ -35,12 +35,48 @@ WORKSHOP_REPEAT_NOTE_RE=re.compile(
     re.I|re.S,
 )
 
+HEAD_OPEN_RE=re.compile(r'<head\b[^>]*>',re.I)
+META_CHARSET_RE=re.compile(r'<meta\b[^>]*charset\s*=\s*["\']?[^>"\']+["\']?[^>]*>\s*',re.I)
+LANG_BOOTSTRAP_RE=re.compile(
+    r'<script\b[^>]*src=["\']/assets/ig-r49-lang-bootstrap\.js(?:\?[^"\']*)?["\'][^>]*>\s*</script>\s*',
+    re.I,
+)
+THEME_BOOTSTRAP_RE=re.compile(
+    r'<script\b[^>]*src=["\']/assets/ig-theme\.js(?:\?[^"\']*)?["\'][^>]*>\s*</script>\s*',
+    re.I,
+)
+FIRST_PAINT_LINK_RE=re.compile(
+    r'<link\b[^>]*href=["\']/assets/ig-first-paint\.css(?:\?[^"\']*)?["\'][^>]*>\s*',
+    re.I,
+)
+FIRST_PAINT_STYLE='/assets/ig-first-paint.css'
+
 SITUATION_NOTICE_RE=re.compile(
     r'<p\b(?=[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'])[^>]*>'
     r'(?:(?!</p>).)*(?:Esta página describe una situación del día a día|This page describes an everyday situation)'
     r'.*?</p>\s*',
     re.I|re.S,
 )
+
+def normalize_first_paint(text:str)->str:
+    # One deterministic pre-paint contract for every public app page:
+    # charset -> language/age bootstrap -> theme bootstrap -> canvas CSS.
+    # Route-specific adapters may append these assets later; this final pass
+    # removes those copies and places the critical trio before all other CSS.
+    text=META_CHARSET_RE.sub('',text)
+    text=LANG_BOOTSTRAP_RE.sub('',text)
+    text=THEME_BOOTSTRAP_RE.sub('',text)
+    text=FIRST_PAINT_LINK_RE.sub('',text)
+    head=HEAD_OPEN_RE.search(text)
+    if not head:
+        raise AssertionError('HTML without <head>')
+    critical=(
+        '<meta charset="utf-8">'
+        '<script src="/assets/ig-r49-lang-bootstrap.js"></script>'
+        '<script src="/assets/ig-theme.js"></script>'
+        '<link rel="stylesheet" href="/assets/ig-first-paint.css">'
+    )
+    return text[:head.end()]+critical+text[head.end():]
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
@@ -70,7 +106,8 @@ def main()->None:
     for p in sorted(set(htmls)):
         before=p.read_text(encoding='utf-8')
         rel=p.relative_to(root).as_posix()
-        after=local_fonts(before)
+        after=normalize_first_paint(before)
+        after=local_fonts(after)
         after,n=CRUMB_RE.subn('',after)
         crumb_removed+=n
         if rel.startswith(('es/situaciones/','en/situations/')):

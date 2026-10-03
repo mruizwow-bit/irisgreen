@@ -1,0 +1,23 @@
+/* Iris Green · canonical pre-paint canvas.
+   Loaded immediately after language/age + theme bootstrap and before legacy CSS.
+   Prevents the browser default white canvas while the full product CSS/runtime mounts. */
+html{
+  background:#F6F8FB;
+  color-scheme:light;
+}
+html[data-ig-theme="dark"]{
+  background:#0B1A2B;
+  color-scheme:dark;
+}
+html[data-ig-theme="light"]{
+  background:#F6F8FB;
+  color-scheme:light;
+}
+html[data-ig-theme="dark"] body[data-ig-r49="1"]:not([data-ig-r42-family="quiet"]){
+  background:#0B1A2B!important;
+  color:#EEF4F8;
+}
+html[data-ig-theme="light"] body[data-ig-r49="1"]:not([data-ig-r42-family="quiet"]){
+  background:#F6F8FB!important;
+  color:#17395C;
+}
