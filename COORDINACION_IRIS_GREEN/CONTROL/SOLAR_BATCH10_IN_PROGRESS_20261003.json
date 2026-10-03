@@ -1,0 +1,61 @@
+{
+  "schema": "iris-green-solar-batch10-in-progress-v1",
+  "date": "2026-10-03",
+  "owner": "LUMEN_A7",
+  "rule": "VISUAL_BATCH_10_PRODUCTION_RULE_ACTIVE",
+  "status": "IN_PROGRESS_5_OF_10_NO_REVIEW",
+  "factual_gate": "SOLAR_B02_FACTUAL_BRIEF_PASS",
+  "source_reference": {
+    "file": "a_high_detail_space_illustration_composite_on_a_bl.png",
+    "sha256": "1c39106c20db24447387ac39a7a349911270be077ea308b382cf90bbecc5115d",
+    "role": "FIRST_PARTY_MATERIALITY_REFERENCE_ONLY"
+  },
+  "produced": [
+    {
+      "id": "marte",
+      "filename": "b02_marte_master_r01.png",
+      "sha256": "45853ed140c130dc846f88d7fac160db6d4e42603d628e10769f7cdc8030d851",
+      "status": "STAGING_NOT_REVIEWED"
+    },
+    {
+      "id": "jupiter",
+      "filename": "b02_jupiter_master_r01.png",
+      "sha256": "98c5a39563c785428730914d80b1cc453699897d72342179c08ed001693dc2e5",
+      "status": "STAGING_NOT_REVIEWED"
+    },
+    {
+      "id": "saturno",
+      "filename": "b02_saturno_master_r01.png",
+      "sha256": "b10fe0c9761894fb7a9936c001607b722f6957cee1112971d87755d7573ff27b",
+      "status": "STAGING_NOT_REVIEWED"
+    },
+    {
+      "id": "urano",
+      "filename": "b02_urano_master_r01.png",
+      "sha256": "841185a9bea65123894954335180495c5ff89f3d17e7844df76b4dacc020de90",
+      "status": "STAGING_NOT_REVIEWED"
+    },
+    {
+      "id": "neptuno",
+      "filename": "b02_neptuno_master_r01.png",
+      "sha256": "e695f8309b0b427902dd67688c04aefb9415499513fc10b0901c39671e03e06c",
+      "status": "STAGING_NOT_REVIEWED"
+    }
+  ],
+  "staging_contact_sheet": {
+    "library_path": "/Iris Green/First Party Visual/Solar Batch 10/Batch 01 Staging/SOLAR_BATCH10_STAGING_5_OF_10.png",
+    "sha256": "53d2538fdab71f1a46a2a7c36634676f0f298e7a071684462bb19081e54e6f27",
+    "review_status": "DO_NOT_REVIEW_UNTIL_10"
+  },
+  "missing_to_complete_10": [
+    "CERES_FACTUAL_BRIEF",
+    "PLUTO_FACTUAL_BRIEF",
+    "HAUMEA_FACTUAL_BRIEF",
+    "MAKEMAKE_FACTUAL_BRIEF",
+    "ERIS_FACTUAL_BRIEF"
+  ],
+  "dependency_owner": "SENDA_R59",
+  "request_sent_to_slack": true,
+  "review_policy": "NO_REVIEW_BEFORE_10_UNIQUE_MASTERS",
+  "next_action": "CONTINUE_IMMEDIATELY_WHEN_DWARF_PLANET_FACTUAL_BRIEF_ARRIVES"
+}
