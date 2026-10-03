@@ -1,0 +1,77 @@
+{
+  "schema": "iris-green.r59.exoplanets-batch06.assign-by-physics.control.v1",
+  "date": "2026-10-03",
+  "gate": "EXOPLANETS_BATCH_06_ASSIGN_BY_PHYSICS_PASS",
+  "range": [
+    51,
+    60
+  ],
+  "snapshot": "NASA Exoplanet Archive local snapshot 2026-09-24",
+  "records": [
+    [
+      51,
+      "AB Aur b",
+      "FORMING_JUPITER_LIKE_PROTOPLANET_REPRESENTATION"
+    ],
+    [
+      52,
+      "AB Pic b",
+      "MASSIVE_IMAGED_COMPANION_REPRESENTATION"
+    ],
+    [
+      53,
+      "AF Lep b",
+      "YOUNG_IMAGED_GAS_GIANT_REPRESENTATION"
+    ],
+    [
+      54,
+      "AT2021ueyL b",
+      "JOVIAN_MASS_MICROLENSING_REPRESENTATION"
+    ],
+    [
+      55,
+      "AU Mic b",
+      "NEPTUNE_LIKE_REPRESENTATION"
+    ],
+    [
+      56,
+      "AU Mic c",
+      "INTERMEDIATE_APPEARANCE_REPRESENTATION"
+    ],
+    [
+      57,
+      "AU Mic d",
+      "UNKNOWN_APPEARANCE_REPRESENTATION"
+    ],
+    [
+      58,
+      "AU Mic e",
+      "NEPTUNE_LIKE_REPRESENTATION"
+    ],
+    [
+      59,
+      "BD+03 2562 b",
+      "MASSIVE_GAS_GIANT_REPRESENTATION"
+    ],
+    [
+      60,
+      "BD+05 4868 A b",
+      "HOT_NEPTUNE_LIKE_REPRESENTATION"
+    ]
+  ],
+  "qa": {
+    "technical": "10/10 PASS",
+    "data": "10/10 PASS",
+    "epistemic": "PASS"
+  },
+  "rules": [
+    "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
+    "PSCOMPPARS_FIELDS_ARE_COMPOSITE_OR_MISSING",
+    "UNKNOWN_INTERMEDIATE_DO_NOT_ASSERT_COMPOSITION",
+    "NO_SOLID_SURFACE_FOR_JOVIAN_MASS_GAS_GIANTS",
+    "NO_LAVA_FOR_HOT_NEPTUNE_LIKE_WITHOUT_SURFACE_EVIDENCE",
+    "NO_AI_GENERATED_SCIENTIFIC_DATA"
+  ],
+  "next": "EXOPLANETS_BATCH_07_ASSIGN_BY_PHYSICS",
+  "status": "PASS"
+}
