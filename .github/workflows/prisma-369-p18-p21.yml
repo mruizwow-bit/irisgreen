@@ -5,6 +5,7 @@ on:
     paths:
       - 'assets/ig-suite-launcher.css'
       - 'scripts/apply_r69_global_cleanup.py'
+      - 'assets/ig-r49-transversal.js'
       - 'scripts/test_prisma_369_p18_p21.py'
       - '.github/workflows/prisma-369-p18-p21.yml'
   workflow_dispatch:
