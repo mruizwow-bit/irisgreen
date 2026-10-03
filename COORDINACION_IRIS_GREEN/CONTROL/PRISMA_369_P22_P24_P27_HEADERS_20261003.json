@@ -4,11 +4,7 @@
   "date": "2026-10-03",
   "owner": "Prisma A8",
   "issue": 369,
-  "points": [
-    22,
-    24,
-    27
-  ],
+  "points": [22, 24, 27],
   "branch": "prisma/369-headers-p22-p24-p27-20261003",
   "repairs": {
     "conditions_es": "2f9d73b01575b0890c6b1e180c6dc45885ba1d23",
@@ -23,9 +19,10 @@
   },
   "ci": {
     "run_id": 37113131250,
-    "status": "IN_PROGRESS",
-    "conclusion": null
+    "job_id": 111174746246,
+    "status": "COMPLETED",
+    "conclusion": "SUCCESS"
   },
   "main_modified": false,
-  "status": "P22_P24_P27_WAIT_FINAL_CI"
+  "status": "P22_P24_P27_FINAL_PASS"
 }
