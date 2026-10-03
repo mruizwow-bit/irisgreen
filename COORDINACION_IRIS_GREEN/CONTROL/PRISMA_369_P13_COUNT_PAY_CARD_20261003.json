@@ -21,25 +21,31 @@
     ]
   },
   "qa": {
-    "test_commit": "a3ab8e8330125fa86062268f34f613e6b8d9be85",
-    "workflow_commit": "b2ffb292d0111e5de4f3556859f411b46669d379",
     "run_id": 37107598329,
-    "status": "IN_PROGRESS",
-    "widths": [
-      390,
-      1440
-    ],
+    "job_id": 111159079743,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P13_COUNT_AND_PAY_CARD_PASS",
     "languages": [
       "es",
       "en"
     ],
-    "last_failure": {
-      "run_id": 37107476098,
-      "type": "TEST_STRICTNESS",
-      "detail": "CTA computed display was flex; component contract remained valid"
-    },
-    "fix_commit": "14ff323c09951b097cf35cd4b25748e3131f78d1"
+    "widths": [
+      390,
+      1440
+    ],
+    "card_count_per_case": 1,
+    "images_per_card": 3,
+    "hero_cross_link_count": 0,
+    "route_status": 200,
+    "http_errors": 0,
+    "js_errors": 0
   },
   "main_modified": false,
-  "status": "P13_REPAIR_WAIT_CI_AFTER_QA_CALIBRATION"
+  "status": "PRISMA_P13_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "artifact": {
+    "id": 11268242673,
+    "name": "prisma-369-games-p13",
+    "sha256": "9d5b211102885aa79f92fec6665e77d061a00b3673df52449bb26cc97057b347"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
