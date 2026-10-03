@@ -1,0 +1,44 @@
+{
+  "schema": "iris-green/space-section-shell/v1",
+  "lang": "es",
+  "entries": [
+    {
+      "id": "night-sky",
+      "label": "Cielo nocturno",
+      "description": "Las 88 constelaciones, las 597 estrellas con nombre oficial y un mapa de todo el cielo con 5.070 estrellas.",
+      "href": "/es/intereses/cielo/",
+      "routeStatus": "active",
+      "assetStatus": "pending"
+    },
+    {
+      "id": "solar-system",
+      "label": "Planetas y sistema solar",
+      "description": "El Sol, los 8 planetas, los 5 planetas enanos y 70 lunas, en 3D y en su posición de hoy.",
+      "href": "/es/intereses/sistema-solar/",
+      "routeStatus": "active",
+      "assetStatus": "pending"
+    },
+    {
+      "id": "exoplanets",
+      "label": "Exoplanetas",
+      "description": "Los 6.366 planetas confirmados fuera del sistema solar, en un mapa 3D de sus estrellas.",
+      "href": "/es/intereses/exoplanetas/",
+      "routeStatus": "active",
+      "assetStatus": "pending"
+    },
+    {
+      "id": "eclipses",
+      "label": "Eclipses",
+      "description": "El eclipse total del 2 de agosto de 2027 desde tu ciudad, minuto a minuto, y todos los eclipses hasta 2100.",
+      "href": "/es/intereses/eclipses/",
+      "routeStatus": "active",
+      "assetStatus": "pending"
+    },
+    {
+      "id": "meteors",
+      "label": "Meteoros",
+      "routeStatus": "pending",
+      "assetStatus": "pending"
+    }
+  ]
+}
