@@ -2,32 +2,11 @@ from __future__ import annotations
 
 import argparse
 import json
-import re
-import time
-from pathlib import Path
+import os
+import urllib.error
+import urllib.request
 
-from transformers import pipeline
-
-MODEL_ID = "nvidia/parakeet-tdt-0.6b-v3"
-
-# Closed, project-specific corrections only. No general autocorrect.
-BRAND_FIXES = {
-    "sabick": "Sabik",
-    "savick": "Sabik",
-    "sabyck": "Sabik",
-}
-
-
-def normalize_brand(text: str) -> str:
-    def repl(match: re.Match[str]) -> str:
-        return BRAND_FIXES.get(match.group(0).lower(), match.group(0))
-
-    return re.sub(
-        r"\b(?:Sabick|Savick|Sabyck)\b",
-        repl,
-        text,
-        flags=re.IGNORECASE,
-    )
+DEFAULT_URL = "http://127.0.0.1:8876/transcribe-path"
 
 
 def main() -> int:
@@ -36,23 +15,29 @@ def main() -> int:
     ap.add_argument("--locale", required=True, choices=["es", "en"])
     args = ap.parse_args()
 
-    audio = Path(args.input)
-    if not audio.is_file():
-        return 2
+    url = os.environ.get("SABIK_STT_SIDECAR_URL", DEFAULT_URL)
+    payload = json.dumps(
+        {"path": args.input, "locale": args.locale},
+        ensure_ascii=False,
+    ).encode("utf-8")
 
-    t0 = time.perf_counter()
-    asr = pipeline(
-        "automatic-speech-recognition",
-        model=MODEL_ID,
-        device=-1,
+    req = urllib.request.Request(
+        url,
+        data=payload,
+        method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "Accept": "application/json",
+        },
     )
-    load_s = time.perf_counter() - t0
 
-    t1 = time.perf_counter()
-    result = asr(str(audio))
-    infer_s = time.perf_counter() - t1
+    try:
+        with urllib.request.urlopen(req, timeout=30) as resp:
+            body = json.loads(resp.read().decode("utf-8"))
+    except (urllib.error.URLError, ValueError):
+        return 4
 
-    text = normalize_brand(str(result.get("text", "")).strip())
+    text = str(body.get("text", "")).strip()
     if not text:
         return 3
 
@@ -61,10 +46,9 @@ def main() -> int:
             {
                 "text": text,
                 "locale": args.locale,
-                "engine": "transformers-cpu",
-                "model": MODEL_ID,
-                "load_s": round(load_s, 3),
-                "infer_s": round(infer_s, 3),
+                "engine": str(body.get("engine", "transformers-cpu")),
+                "model": str(body.get("model", "nvidia/parakeet-tdt-0.6b-v3")),
+                "infer_s": body.get("infer_s"),
             },
             ensure_ascii=False,
         )
