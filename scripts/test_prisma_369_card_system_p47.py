@@ -18,7 +18,7 @@ SURFACES=[
  ('home','/',['.ig-home-v4-discover-grid .ig-home-v4-card'],'media'),
  ('resources','/es/recursos/',['.ig-activity-card'],'catalog'),
  ('games','/es/recursos/juegos/',['.ig-activity-card'],'catalog'),
- ('workshop','/es/taller/',['.igk-tile'],'media'),
+ ('workshop','/es/taller/',['.igk-start .igk-tile'],'media'),
  ('research','/es/investigacion/',['main article'],'result'),
  ('living_abroad','/es/vivir-fuera/',['main article'],'result'),
  ('conditions','/es/neurodiversidad/condiciones/',['.cards .card'],'catalog'),
