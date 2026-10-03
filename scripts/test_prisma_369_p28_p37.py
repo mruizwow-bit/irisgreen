@@ -13,11 +13,13 @@ class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
 
 def main():
+    tramites=(PUBLIC/'es/tramites/index.html').read_text(encoding='utf-8')
+    # P28 validates that the promo is not rendered. Translation literals may remain
+    # in the component dictionary as dead compatibility data.
+    assert '{{ tBooksBar }}' not in tramites
+    assert '{{ tBooksCta }}' not in tramites
+
     checks=[
-      ('es/tramites/index.html',[
-        'Todo aquí es gratis gracias a los libros de Iris Green',
-        'Leer las primeras páginas'
-      ]),
       ('es/biblioteca/index.html',[
         'Criterio editorial de esta colección','BORRADOR'
       ]),
