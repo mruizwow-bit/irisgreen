@@ -71,11 +71,33 @@
       "id": "information.aspect",
       "priority": 80,
       "patterns": [
-        "^(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|colegio|escuela|trabajo|investigación|investigacion)(?:\\s+(?:de|del|sobre)\\s+(?<topic>.+))?$"
+        "^(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|colegio|escuela|trabajo|investigación|investigacion)(?:\\s+(?:de|del|sobre|para)\\s+(?<topic>.+))?$"
       ],
       "required_slots": ["topic", "aspect"],
       "when_missing": {
         "topic": "search.ask_topic"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "conversation.change_aspect",
+      "priority": 96,
+      "patterns": [
+        "^(?:no[, ]*)?(?:mejor|prefiero)\\s+(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|investigación|investigacion)$"
+      ],
+      "required_slots": ["topic", "aspect"],
+      "action": "retrieve"
+    },
+    {
+      "id": "conversation.change_topic",
+      "priority": 94,
+      "patterns": [
+        "^(?:no[, ]*)?(?:mejor|cambia a|cambiar a|prefiero)\\s+(?<topic>.+)$"
+      ],
+      "clear_slots": ["aspect"],
+      "required_slots": ["topic", "aspect"],
+      "when_missing": {
+        "aspect": "search.ask_aspect"
       },
       "action": "retrieve"
     },
