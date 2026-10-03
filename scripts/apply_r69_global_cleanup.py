@@ -35,6 +35,13 @@ WORKSHOP_REPEAT_NOTE_RE=re.compile(
     re.I|re.S,
 )
 
+SITUATION_NOTICE_RE=re.compile(
+    r'<p\b(?=[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'])[^>]*>'
+    r'(?:(?!</p>).)*(?:Esta página describe una situación del día a día|This page describes an everyday situation)'
+    r'.*?</p>\s*',
+    re.I|re.S,
+)
+
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
     # One final unlayered compatibility sheet until all legacy skins migrate.
@@ -59,13 +66,16 @@ def main()->None:
         if base.is_dir(): htmls.extend(p for p in base.rglob('*.html') if p.is_file())
     for p in (root/'index.html',root/'en'/'index.html'):
         if p.is_file(): htmls.append(p)
-    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0;crumb_removed=0;workshop_note_removed=0
+    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0;crumb_removed=0;workshop_note_removed=0;situation_notices_removed=0
     for p in sorted(set(htmls)):
         before=p.read_text(encoding='utf-8')
         rel=p.relative_to(root).as_posix()
         after=local_fonts(before)
         after,n=CRUMB_RE.subn('',after)
         crumb_removed+=n
+        if rel.startswith(('es/situaciones/','en/situations/')):
+            after,n=SITUATION_NOTICE_RE.subn('',after)
+            situation_notices_removed+=n
         if rel in ('es/recursos/index.html','en/resources/index.html'):
             after,n=RESOURCE_STAGE_RE.subn('',after,count=1)
             resource_removed+=n
@@ -93,7 +103,14 @@ def main()->None:
             crumbs_left.append(p.relative_to(root).as_posix())
     if crumbs_left:
         raise AssertionError('Breadcrumbs remain after global cleanup: '+', '.join(crumbs_left[:12]))
-    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed,'breadcrumbs_removed':crumb_removed,'workshop_repeat_notes_removed':workshop_note_removed})
+    situation_left=[]
+    for p in sorted(set(htmls)):
+        rel=p.relative_to(root).as_posix()
+        if rel.startswith(('es/situaciones/','en/situations/')) and SITUATION_NOTICE_RE.search(p.read_text(encoding='utf-8')):
+            situation_left.append(rel)
+    if situation_left:
+        raise AssertionError('Repeated situation disclaimer remains: '+', '.join(situation_left[:12]))
+    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed,'breadcrumbs_removed':crumb_removed,'workshop_repeat_notes_removed':workshop_note_removed,'situation_disclaimers_removed':situation_notices_removed})
 
 if __name__=='__main__':
     main()
