@@ -5,14 +5,14 @@
 .ig-space-head{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin:0 0 .9rem}
 .ig-space-head h2{font:500 clamp(1.9rem,4vw,2.8rem)/1 Newsreader,Georgia,serif;margin:0}
 .ig-space-theme{display:flex;gap:.35rem;flex:0 0 auto}
-.ig-space-theme button{min-width:44px;min-height:44px;border:1px solid var(--space-line);border-radius:999px;background:var(--space-surface);color:var(--space-ink);font:700 .9rem/1 system-ui,sans-serif;padding:.45rem .75rem;cursor:pointer}
-.ig-space-theme button[aria-pressed=true]{background:var(--space-ink);color:var(--space-bg)}
+.ig-space-shell .ig-space-theme button{min-width:44px;min-height:44px;border:1px solid var(--space-line);border-radius:999px;background:var(--space-surface)!important;color:var(--space-ink)!important;font:700 .9rem/1 system-ui,sans-serif;padding:.45rem .75rem;cursor:pointer}
+.ig-space-shell .ig-space-theme button[aria-pressed=true]{background:var(--space-ink)!important;color:var(--space-bg)!important}
 .ig-space-theme button:focus-visible,.ig-space-card-link:focus-visible{outline:3px solid var(--space-focus);outline-offset:3px}
 .ig-space-grid{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:clamp(.65rem,1.4vw,1rem)}
 .ig-space-grid>li{min-width:0;grid-column:span 4}
 .ig-space-grid>li:nth-child(1),.ig-space-grid>li:nth-child(2){grid-column:span 6}
 .ig-space-card{height:100%;border:1px solid var(--space-line);border-radius:1.1rem;background:var(--space-surface);overflow:hidden}
-.ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;text-decoration:none;color:inherit}
+.ig-space-shell .ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;background:var(--space-surface)!important;color:var(--space-ink)!important;text-decoration:none!important}
 .ig-space-card[data-route-status=pending] .ig-space-card-link{cursor:default}
 .ig-space-visual{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;background:
  radial-gradient(circle at 75% 20%,color-mix(in srgb,var(--space-accent) 15%,transparent),transparent 38%),
@@ -27,7 +27,7 @@
 .ig-space-go{margin-top:auto;padding-top:.55rem;font-weight:700;color:var(--space-accent)}
 .ig-space-status{margin-top:auto;padding-top:.55rem;font-size:.84rem;font-weight:700;color:var(--space-muted)}
 .ig-space-card[data-asset-status=approved] .ig-space-slot{display:none}
-.ig-space-card-link[href]:hover .ig-space-title{text-decoration:underline;text-decoration-thickness:.08em;text-underline-offset:.15em}
+.ig-space-shell .ig-space-card-link *{text-decoration:none!important}\n.ig-space-shell .ig-space-card-link[href]:hover .ig-space-title{text-decoration:underline!important;text-decoration-thickness:.08em;text-underline-offset:.15em}
 .ig-space-shell[data-motion=reduced] *,.ig-space-shell[data-motion=none] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(max-width:56rem){
  .ig-space-grid>li,.ig-space-grid>li:nth-child(1),.ig-space-grid>li:nth-child(2){grid-column:span 6}
