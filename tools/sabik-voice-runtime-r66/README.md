@@ -32,7 +32,14 @@ Recovered EN inference contract:
 - non-streaming mode;
 - top_k 50 / top_p 1.0 / temperature 0.9 / repetition penalty 1.05.
 
-For ES, accessible historical evidence proves the approved Base/ICL route and master, but does **not** prove how the later artifact named `SABIK_ES_R01_FINAL` was packaged. Therefore the example config intentionally refuses to choose `custom_voice` vs `voice_clone` for ES until the private artifact is visible.
+The recovered finalization package closes the ES packaging question. Both final product models were copied from selected fine-tuned checkpoints and generated with `generate_custom_voice`:
+- ES source: `C:\\Users\\mruiz\\SabikVoice\\SABIK_ES_SFT_R01\\checkpoint-epoch-0`;
+- EN source: `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0`;
+- ES canonical destination: `C:\\Users\\mruiz\\SabikVoice\\FINAL_MODELS\\SABIK_ES_R01_FINAL`;
+- EN canonical destination: `C:\\Users\\mruiz\\SabikVoice\\FINAL_MODELS\\SABIK_EN_R02_FINAL`;
+- the canonical model hash is the SHA-256 of each final `model.safetensors`.
+
+Speakers are `sabik_es` and `sabik_en`.
 
 ## Runtime modes
 
@@ -82,3 +89,18 @@ That marker requires the real private ES+EN model bytes to be found, loaded and 
 
 Final chain:
 `ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN`
+
+
+## Windows private start gate
+
+`start_private_runtime_windows.ps1`:
+1. searches/verifies the two canonical `model.safetensors` hashes;
+2. checks both final model directories;
+3. requires an already-approved private ES/EN STT adapter via `SABIK_STT_ADAPTER_EXE`;
+4. writes the runtime config only to the local temporary directory;
+5. starts Uvicorn on loopback with `--no-access-log`.
+
+If model bytes are missing or hashes differ, it stops with:
+`R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED`.
+
+It never downloads, retrains or substitutes a model.
