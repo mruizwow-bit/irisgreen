@@ -1,0 +1,29 @@
+/* Prisma A8 · reusable visual cards for approved first-party interest assets.
+   No astronomy is encoded here: this layer only owns presentation, interaction and lazy loading. */
+.ig-asset-cards{--igac-bg:#f2f5f8;--igac-surface:#fff;--igac-surface-2:#e9eef3;--igac-ink:#17395c;--igac-muted:#5b6a7a;--igac-line:#b7c2ce;--igac-focus:#5a49a8;--igac-selected:#e8e1ff;color:var(--igac-ink);background:var(--igac-bg);border-radius:1.25rem;padding:clamp(.85rem,2.2vw,1.4rem)}
+.ig-asset-cards[data-theme=dark]{--igac-bg:#081525;--igac-surface:#10243a;--igac-surface-2:#0d1d31;--igac-ink:#eef4f8;--igac-muted:#bdcad8;--igac-line:#627990;--igac-focus:#f0dc84;--igac-selected:#24365d}
+.igac-toolbar{display:flex;justify-content:flex-end;gap:.4rem;margin:0 0 .85rem}
+.igac-toolbar button{min-height:44px;border:1px solid var(--igac-line);border-radius:999px;background:var(--igac-surface);color:var(--igac-ink);padding:.45rem .8rem;font:700 .92rem/1 system-ui,sans-serif;cursor:pointer}
+.igac-toolbar button[aria-pressed=true]{background:var(--igac-ink);color:var(--igac-bg)}
+.igac-toolbar button:focus-visible,.igac-card-action:focus-visible{outline:3px solid var(--igac-focus);outline-offset:3px}
+.igac-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(.65rem,1.5vw,1rem)}
+.igac-card{min-width:0;border:1px solid var(--igac-line);border-radius:1rem;background:var(--igac-surface);overflow:hidden}
+.igac-card[data-current=true]{box-shadow:0 0 0 3px var(--igac-focus)}
+.igac-card-action{width:100%;min-height:44px;border:0;background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer;font:inherit;display:block}
+.igac-media{position:relative;aspect-ratio:1;background:var(--igac-surface-2);display:grid;place-items:center;overflow:hidden}
+.igac-media img{width:100%;height:100%;display:block;object-fit:contain;padding:clamp(.55rem,2vw,1rem)}
+.igac-placeholder{display:grid;place-items:center;text-align:center;min-height:100%;padding:1rem;color:var(--igac-muted);font-size:.9rem}
+.igac-body{padding:.8rem .85rem .95rem}
+.igac-kicker{display:block;color:var(--igac-muted);font:700 .72rem/1.25 system-ui,sans-serif;letter-spacing:.04em;text-transform:uppercase;margin:0 0 .3rem}
+.igac-title{font:600 clamp(1.15rem,2vw,1.45rem)/1.08 Newsreader,Georgia,serif;margin:0}
+.igac-description{font-size:.9rem;line-height:1.45;color:var(--igac-muted);margin:.45rem 0 0}
+.igac-disclosure{font-size:.76rem;line-height:1.35;color:var(--igac-muted);margin:.55rem 0 0}
+.igac-card-action:hover .igac-media{filter:brightness(1.025)}
+.ig-asset-cards[data-motion=reduced] *,.ig-asset-cards[data-motion=none] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(max-width:64rem){.igac-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:32.5rem){.ig-asset-cards{padding:.7rem;border-radius:.9rem}.igac-grid{grid-template-columns:1fr;gap:.65rem}.igac-card{border-radius:.85rem}.igac-body{padding:.72rem .75rem .85rem}}
+@media(forced-colors:active){
+ .ig-asset-cards,.igac-card,.igac-toolbar button,.igac-media{background:Canvas;color:CanvasText;border-color:CanvasText}
+ .igac-card[data-current=true]{outline:3px solid Highlight;box-shadow:none}
+ .igac-toolbar button[aria-pressed=true]{forced-color-adjust:none;background:Highlight;color:HighlightText}
+}
