@@ -1,8 +1,8 @@
 import {createSabikVoice} from './audio-r01.mjs';
 
 const MODEL={
- es:{locale:'es',ttsLanguage:'Spanish',ttsId:'SABIK_ES_R01_FINAL',ttsSha:'8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291'},
- en:{locale:'en',ttsLanguage:'English',ttsId:'SABIK_EN_R02_FINAL',ttsSha:'3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df'}
+ es:{locale:'es',ttsLanguage:'Spanish',ttsId:'SABIK_ES_MASTER_V1_ICL',ttsSha:'38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c'},
+ en:{locale:'en',ttsLanguage:'English',ttsId:'SABIK_EN_MASTER_V2_ICL',ttsSha:'38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c'}
 };
 const MAX_CAPTURE_MS=12000;
 
