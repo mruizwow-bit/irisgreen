@@ -13,23 +13,31 @@
     "marker": "SABIK_VOICE_CLIENT_CONTRACT_PASS"
   },
   "state": "R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED",
-  "eco_state": "R66_ECO_RUNTIME_HOST_READY_PRIVATE_CANONICAL_WEIGHTS_REQUIRED",
+  "eco_state": "R66_ECO_RUNTIME_HOST_READY_PRIVATE_EXECUTION_INPUTS_REQUIRED",
   "canonical_chain": "ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN",
   "canonical_models": {
     "es": {
       "model_id": "SABIK_ES_R01_FINAL",
       "sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
-      "packaging": "UNRESOLVED_PRIVATE_ARTIFACT",
+      "packaging": "QWEN_FINETUNED_CUSTOM_VOICE",
       "historical_mode": "Qwen3-TTS Base 1.7B ICL x_vector_only_mode=false",
-      "human_validation": "20/20 PASS"
+      "human_validation": "20/20 PASS",
+      "source_checkpoint_role": "SABIK_ES_SFT_R01/checkpoint-epoch-0",
+      "final_role": "FINAL_MODELS/SABIK_ES_R01_FINAL",
+      "speaker": "sabik_es",
+      "config_sha256": "6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e"
     },
     "en": {
       "model_id": "SABIK_EN_R02_FINAL",
       "sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
-      "packaging": "PRIVATE_BYTES_NOT_ACCESSIBLE",
+      "packaging": "QWEN_FINETUNED_CUSTOM_VOICE",
       "recovered_historical_checkpoint": "C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0",
       "recovered_runtime_mode": "custom_voice",
-      "recovered_speaker": "sabik_en"
+      "recovered_speaker": "sabik_en",
+      "source_checkpoint_role": "SABIK_EN_SFT_R02_EXACT/checkpoint-epoch-0",
+      "final_role": "FINAL_MODELS/SABIK_EN_R02_FINAL",
+      "speaker": "sabik_en",
+      "config_sha256": "6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd"
     }
   },
   "library_search": {
@@ -59,7 +67,13 @@
     "no_store": true,
     "browser_system_tts": false,
     "weights_in_repo": false,
-    "masters_in_repo": false
+    "masters_in_repo": false,
+    "windows_launcher": "tools/sabik-voice-runtime-r66/start_private_runtime_windows.ps1",
+    "final_model_mode": {
+      "es": "custom_voice",
+      "en": "custom_voice"
+    },
+    "provenance_doc": "COORDINACION_IRIS_GREEN/HANDOFFS/R66_DYNAMIC_TTS_RUNTIME_20261003/02_ECO_FINAL_MODEL_PROVENANCE_RECOVERED.md"
   },
   "static_gate": {
     "test": "scripts/test_eco_r66_private_runtime_static.py",
@@ -71,14 +85,14 @@
     "eco_media_validation_pass": false
   },
   "remaining_blockers": [
-    "Locate/mount exact private ES canonical artifact",
-    "Locate/mount exact private EN canonical artifact",
-    "Verify canonical hash target for each model",
-    "Resolve ES final packaging mode from private artifact",
+    "Make exact private ES final model bytes available to the execution host",
+    "Make exact private EN final model bytes available to the execution host",
+    "Verify exact model.safetensors + config.json hashes",
+    "Provide the already-approved private ES/EN STT adapter to the host",
     "Execute real ES dynamic synthesis",
     "Execute real EN dynamic synthesis",
-    "Execute A6 R66 matrix with real models",
-    "Emit ECO_R66_MEDIA_VALIDATION_PASS only if all target real checks pass"
+    "Execute real voice turn and A6 R66 matrix",
+    "Emit ECO_R66_MEDIA_VALIDATION_PASS only if all real-model checks pass"
   ],
   "forbidden_substitutions": [
     "SpeechSynthesis",
