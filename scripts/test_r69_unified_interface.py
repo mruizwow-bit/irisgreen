@@ -70,7 +70,9 @@ def main()->None:
         s=p.read_text(encoding="utf-8")
         need('data-ig-r49="1"' in s,"Home not enrolled in global shell: "+p.as_posix())
         need(s.count('data-ig-audience-picker')==1,"Home canonical age picker count !=1: "+p.as_posix())
-        need(s.count('data-ig-audience-stage=')==4,"Home canonical age buttons count !=4: "+p.as_posix())
+        need(s.count('data-ig-audience-stage=')==3,"Home public age buttons count !=3: "+p.as_posix())
+        need('data-ig-audience-stage="GENERAL"' not in s,"GENERAL must not be a public Home age button: "+p.as_posix())
+        need('data-ig-audience-stage="ALL_AGES"' not in s,"ALL_AGES must not be a public Home age button: "+p.as_posix())
         need('ig-home-v4-safety-state' in s,"Home child-safe state is not visible: "+p.as_posix())
         need('/assets/ig-r49-lang-bootstrap.js' in s,"Home lacks first-paint R49 bootstrap: "+p.as_posix())
         need('/assets/ig-fonts.css' in s,"Home lacks local fonts: "+p.as_posix())
@@ -92,7 +94,7 @@ def main()->None:
         need('igk-start-sec' not in hub and 'igk-prof-sec' not in hub,"Duplicate studio launchers remain")
         need(len(re.findall(r'data-studio="',hub))==27,"Each studio must appear exactly once")
         for text in (visual,games,hub):
-            need('class="ig-activity-nav"' in text,"Missing the three-section navigation")
+            need('class="ig-activity-nav"' not in text,"Redundant secondary activity navigation remains")
             for href in re.findall(r'href="(/[^"?#]+/)"',text):
                 need((root/href.strip('/')/'index.html').is_file(),"Broken activity link: "+href)
     need("dlg.showModal()" not in (root/'assets/ig-suite-launcher.js').read_text(encoding="utf-8"),"Workshop catalogue must remain inline")
