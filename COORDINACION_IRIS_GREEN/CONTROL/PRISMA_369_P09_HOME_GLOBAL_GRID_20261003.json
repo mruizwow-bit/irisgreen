@@ -55,15 +55,36 @@
     {
       "run_id": 37106656853,
       "workflow": "Prisma #369 P9 Home grid + canonical CSS integrity",
-      "status": "IN_PROGRESS",
-      "head_sha": "779bfd236d5fd763f688eaca4269dd538460ccbf"
+      "job_id": 111156402802,
+      "conclusion": "SUCCESS",
+      "gate": "ISSUE_369_P9_HOME_GLOBAL_GRID_VERIFY"
     },
     {
       "run_id": 37106634142,
       "workflow": "R42 A8 Home child-safe QA",
-      "status": "IN_PROGRESS",
-      "head_sha": "09551f9d46e759d4b0858549d885d2aa0f378c63"
+      "conclusion": "SUCCESS"
     }
   ],
-  "status": "P09_FINAL_WIDTH_CAP_FIX_WAIT_CI"
+  "status": "PRISMA_P09_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "qa": {
+    "widths": [
+      390,
+      1440
+    ],
+    "hero_aligned": true,
+    "use_section_aligned": true,
+    "sabik_aligned": true,
+    "discover_section_aligned": true,
+    "discover_grid_aligned": true,
+    "footer_aligned": true,
+    "section_titles_same_start": true,
+    "hero_title_search_same_start": true,
+    "css_integrity": "PASS"
+  },
+  "artifact": {
+    "id": 11267313635,
+    "name": "prisma-369-home-grid-p9",
+    "sha256": "ff289f77f67934420a348cdbb2bd885d6767a58f1248720297f080c801b1f49d"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
