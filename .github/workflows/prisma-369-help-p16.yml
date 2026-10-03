@@ -1,0 +1,35 @@
+name: Prisma · #369 P16 Help modal diagnostic
+on:
+  push:
+    branches: ['prisma/369-help-modal-p16-diagnose-*']
+    paths:
+      - 'scripts/test_prisma_369_help_p16.py'
+      - '.github/workflows/prisma-369-help-p16.yml'
+      - 'assets/ig-r69-unified-ui.css'
+      - 'tools/prisma/help-modal-p16-fixture.html'
+      - 'assets/ig-taller-r42.css'
+      - 'assets/ig-taller-r42.js'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: Diagnose #369 P16
+        run: python scripts/test_prisma_369_help_p16.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-369-help-p16
+          path: reports/prisma-369-help-p16/
+          retention-days: 14
