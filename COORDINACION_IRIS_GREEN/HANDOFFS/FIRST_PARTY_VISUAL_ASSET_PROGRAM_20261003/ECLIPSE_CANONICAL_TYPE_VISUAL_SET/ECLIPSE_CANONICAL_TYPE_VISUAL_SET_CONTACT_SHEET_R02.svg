@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="1900" viewBox="0 0 1800 1900">
+<rect width="100%" height="100%" fill="#071522"/>
+<text x="44" y="54" fill="#f4f7fb" font-family="system-ui,Arial" font-size="32" font-weight="700">ECLIPSE CANONICAL TYPE VISUAL SET · R02</text>
+<text x="44" y="84" fill="#9eb1c5" font-family="system-ui,Arial" font-size="16">6 canonical reusable types + 2 didactic sequences · review sheet only</text><g><rect x="35" y="120" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="59" y="158" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Solar total</text>
+  <image href="assets/eclipse-solar-total-canonical-r02.svg" x="59" y="178" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="900" y="120" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="924" y="158" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Solar parcial</text>
+  <image href="assets/eclipse-solar-partial-canonical-r02.svg" x="924" y="178" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="35" y="550" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="59" y="588" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Solar anular</text>
+  <image href="assets/eclipse-solar-annular-canonical-r02.svg" x="59" y="608" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="900" y="550" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="924" y="588" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Lunar total</text>
+  <image href="assets/eclipse-lunar-total-canonical-r02.svg" x="924" y="608" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="35" y="980" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="59" y="1018" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Lunar parcial</text>
+  <image href="assets/eclipse-lunar-partial-canonical-r02.svg" x="59" y="1038" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="900" y="980" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="924" y="1018" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Lunar penumbral</text>
+  <image href="assets/eclipse-lunar-penumbral-canonical-r02.svg" x="924" y="1038" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="35" y="1410" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="59" y="1448" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Secuencia solar total</text>
+  <image href="sequences/eclipse-solar-total-phase-sequence-r01.svg" x="59" y="1468" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><g><rect x="900" y="1410" width="830" height="390" rx="20" fill="#0b1b2c" stroke="#2a435d"/>
+  <text x="924" y="1448" fill="#eef4fa" font-family="system-ui,Arial" font-size="21" font-weight="700">Secuencia lunar total</text>
+  <image href="sequences/eclipse-lunar-total-phase-sequence-r01.svg" x="924" y="1468" width="782" height="300" preserveAspectRatio="xMidYMid meet"/>
+  </g><text x="44" y="1860" fill="#8299af" font-family="system-ui,Arial" font-size="14">R02 change: side geometry + observed-disk reading; explicit type dispatch; only two extra phase sequences where learning value is clear.</text></svg>
