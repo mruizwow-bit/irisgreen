@@ -501,3 +501,19 @@ body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"],
 body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"] .sc-interp{
   color:var(--ig-text-muted)!important
 }
+
+
+/* #369 P29/P35 + P48 · final DARK contrast bridge on canonical main. */
+body[data-ig-r49-owner="R50_RESEARCH"] main > section{
+  background:var(--ig-bg-surface)!important;
+  border-color:var(--ig-separator)!important
+}
+body[data-ig-r49-owner="R50_RESEARCH"] main > section :where(p,span,small){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49-owner="R50_RESEARCH"] main > section :where(h2,h3,strong,label,summary){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49="1"] .jg-main .jg-small{
+  color:var(--ig-text-muted)!important
+}

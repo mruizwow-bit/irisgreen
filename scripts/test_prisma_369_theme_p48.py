@@ -119,7 +119,6 @@ def main():
     finally:
       server.shutdown()
     total_failures=sum(r['failure_count'] for r in rows)
-    assert total_failures==0,('contrast failures remain',total_failures,{f"{r['surface']}:{r['theme']}":r['failure_count'] for r in rows})
     report={
       'gate':'ISSUE_369_P48_DARK_LIGHT_CONTRAST_PASS',
       'surfaces':len(ROUTES),
@@ -129,9 +128,11 @@ def main():
       'failures_by_surface_theme':{f"{r['surface']}:{r['theme']}":r['failure_count'] for r in rows},
       'rows':rows,
       'note':'Presentation audit only. Axioma retains accessibility/conformance authority.',
-      'passed':True
+      'passed':total_failures==0
     }
     (OUT/'qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
+    failures=[{'surface':r['surface'],'theme':r['theme'],'failures':r['failures']} for r in rows if r['failure_count']]
+    assert total_failures==0,('contrast failures remain',total_failures,failures)
 
 if __name__=='__main__':main()
