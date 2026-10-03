@@ -1,0 +1,409 @@
+{
+  "schema": "iris-green/sabik-dialogue-model/v2",
+  "language": "en",
+  "assistant_aliases": [
+    "sabik",
+    "sabick",
+    "savik",
+    "sabyck",
+    "xavid",
+    "xavik",
+    "xabik",
+    "savid",
+    "tanik",
+    "tanick"
+  ],
+  "policies": {
+    "one_question_per_turn": true,
+    "confirm_only_when_material": true,
+    "prompt_selection": "session_cycle",
+    "preserve_topic_across_followups": true,
+    "retrieve_only_when_required_slots_ready": true,
+    "max_session_turns": 8
+  },
+  "intents": [
+    {
+      "id": "social.greeting",
+      "priority": 100,
+      "patterns": [
+        "^(?:hello|hi|hey|good morning|good afternoon|good evening)$"
+      ],
+      "prompt": "social.greeting.response",
+      "action": "respond"
+    },
+    {
+      "id": "social.attention",
+      "priority": 100,
+      "patterns": [
+        "^(?:answer|respond|listen|can you hear me|are you there|are you listening)$"
+      ],
+      "prompt": "social.attention.response",
+      "action": "respond"
+    },
+    {
+      "id": "social.thanks",
+      "priority": 100,
+      "patterns": [
+        "^(?:thanks|thank you|thanks a lot|okay thanks)$"
+      ],
+      "prompt": "social.thanks.response",
+      "action": "respond"
+    },
+    {
+      "id": "search.topic",
+      "priority": 90,
+      "patterns": [
+        "^(?:i need to|i want to|i would like to|i'd like to)?\\s*(?:search(?: for)?|find|look up|learn about|get information about|know more about)\\s+(?<topic>.+)$",
+        "^(?:search(?: for)?|find|look up|tell me about|information about)\\s+(?<topic>.+)$"
+      ],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
+      "when_missing": {
+        "topic": "search.ask_topic",
+        "aspect": "search.ask_aspect"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "information.definition",
+      "priority": 85,
+      "patterns": [
+        "^(?:define|explain)\\s+(?<topic>.+)$",
+        "^(?:what is|what does)\\s+(?<topic>autism|anxiety|ocd|adhd|ptsd|dyslexia|dyspraxia|dyscalculia|tourette(?:'s)?|selective mutism|depression)(?:\\s+mean)?$"
+      ],
+      "fixed_slots": {
+        "aspect": "definition"
+      },
+      "required_slots": [
+        "topic"
+      ],
+      "action": "retrieve"
+    },
+    {
+      "id": "information.aspect",
+      "priority": 80,
+      "patterns": [
+        "^(?<aspect>signs|symptoms|traits|supports|support|assessment|evaluation|diagnosis|causes|sensory|communication|daily life|school|education|work|research)(?:\\s+(?:of|about|for)\\s+(?<topic>.+))?$"
+      ],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
+      "when_missing": {
+        "topic": "search.ask_topic"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "conversation.repeat",
+      "priority": 95,
+      "patterns": [
+        "^(?:repeat|say that again|repeat that|can you repeat that)$"
+      ],
+      "action": "repeat"
+    },
+    {
+      "id": "conversation.stop",
+      "priority": 110,
+      "patterns": [
+        "^(?:stop|finish|exit|that's enough|that is enough)$"
+      ],
+      "action": "stop"
+    },
+    {
+      "id": "information.comparison",
+      "priority": 88,
+      "patterns": [
+        "^(?:what is the difference between|difference between|compare)\\s+(?<topic>.+?)\\s+(?:and|with|vs\\.?|versus)\\s+(?<compare_topic>.+)$",
+        "^(?<topic>.+?)\\s+(?:is the same as|is equal to)\\s+(?<compare_topic>.+)$"
+      ],
+      "fixed_slots": {
+        "aspect": "comparison"
+      },
+      "required_slots": [
+        "topic",
+        "compare_topic"
+      ],
+      "action": "route",
+      "capability": "iris_green"
+    },
+    {
+      "id": "conversation.not_that",
+      "priority": 108,
+      "patterns": [
+        "^(?:no[, ]*)?(?:not that|that was not it|that's not it|that isn't what i meant|that wasn't what i wanted)$"
+      ],
+      "prompt": "correction.ask",
+      "action": "respond"
+    },
+    {
+      "id": "conversation.correction_topic",
+      "priority": 107,
+      "patterns": [
+        "^(?:no[, ]*)?(?:i wasn't talking about|i did not mean|i meant|actually i meant|i wanted)\\s+(?<topic>.+)$"
+      ],
+      "clear_slots": [
+        "aspect"
+      ],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
+      "when_missing": {
+        "aspect": "search.ask_aspect"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "conversation.continue",
+      "priority": 101,
+      "patterns": [
+        "^(?:yes|okay|ok|all right|continue|go on|keep going)$"
+      ],
+      "prompt": "social.continue.response",
+      "action": "respond"
+    },
+    {
+      "id": "conversation.new_topic",
+      "priority": 106,
+      "patterns": [
+        "^(?:another topic|change topic|let's change topic|start again|go back)$"
+      ],
+      "prompt": "search.ask_topic",
+      "clear_slots": [
+        "topic",
+        "aspect",
+        "compare_topic"
+      ],
+      "action": "respond"
+    },
+    {
+      "id": "conversation.response_length",
+      "priority": 104,
+      "patterns": [
+        "^(?:shorter|brief|more concise|summary)$"
+      ],
+      "fixed_slots": {
+        "response_length": "short"
+      },
+      "prompt": "preference.length.short",
+      "action": "respond"
+    },
+    {
+      "id": "conversation.response_length_detailed",
+      "priority": 104,
+      "patterns": [
+        "^(?:more detail|detailed|explain more|go deeper)$"
+      ],
+      "fixed_slots": {
+        "response_length": "detailed"
+      },
+      "prompt": "preference.length.detailed",
+      "action": "respond"
+    },
+    {
+      "id": "utility.time",
+      "priority": 92,
+      "patterns": [
+        "^(?:what time is it|tell me the time|current time)$"
+      ],
+      "action": "route",
+      "capability": "time"
+    },
+    {
+      "id": "utility.date",
+      "priority": 92,
+      "patterns": [
+        "^(?:what day is it|what is today's date|what's today's date|tell me the date)$"
+      ],
+      "action": "route",
+      "capability": "date"
+    },
+    {
+      "id": "utility.weather",
+      "priority": 92,
+      "patterns": [
+        "^(?:what is the weather|what's the weather|how is the weather|weather tomorrow)(?:\\s+(?<location>.+))?$"
+      ],
+      "action": "route",
+      "capability": "weather"
+    },
+    {
+      "id": "utility.calculate",
+      "priority": 91,
+      "patterns": [
+        "^calculate\\s+(?<expression>.+)$",
+        "^what is\\s+(?<expression>[0-9+\\-*/().%\\s]+)$"
+      ],
+      "action": "route",
+      "capability": "calculator"
+    },
+    {
+      "id": "general.question",
+      "priority": 10,
+      "patterns": [
+        "^(?<question>.+)$"
+      ],
+      "action": "route",
+      "capability": "general_knowledge"
+    },
+    {
+      "id": "general.wh_question",
+      "priority": 84,
+      "patterns": [
+        "^(?:what|who|where|when|why|how)\\s+.+$"
+      ],
+      "action": "route",
+      "capability": "general_knowledge"
+    }
+  ],
+  "prompts": {
+    "social.greeting.response": {
+      "initial": [
+        "Hi. What do you need?",
+        "Hello. What do you need?",
+        "Hi. I'm listening. What do you need?",
+        "Hello. How can I help?"
+      ],
+      "reprompt": [
+        "Tell me what you need.",
+        "I'm listening."
+      ]
+    },
+    "social.attention.response": {
+      "initial": [
+        "Yes. I'm listening.",
+        "I'm here. I'm listening.",
+        "Yes, go ahead.",
+        "I'm listening. Continue."
+      ],
+      "reprompt": [
+        "I'm listening.",
+        "Go ahead."
+      ]
+    },
+    "social.thanks.response": {
+      "initial": [
+        "You're welcome.",
+        "Of course.",
+        "Any time."
+      ],
+      "reprompt": []
+    },
+    "search.ask_topic": {
+      "initial": [
+        "Sure. What topic do you want to search for?",
+        "Yes. What topic do you want to look up?",
+        "Okay. What do you want to search for?",
+        "All right. What do you need information about?"
+      ],
+      "reprompt": [
+        "What topic do you want to search for?",
+        "Tell me the topic you want to look up."
+      ]
+    },
+    "search.ask_aspect": {
+      "initial": [
+        "Sure. What do you need to know about {topic}?",
+        "Yes. Are you looking for something specific about {topic}?",
+        "Okay. Which part of {topic} do you want to look at?",
+        "All right. What do you want to know about {topic}?",
+        "Sure. Tell me what interests you about {topic}.",
+        "Yes. Which aspect of {topic} do you want to see?"
+      ],
+      "reprompt": [
+        "What do you want to know about {topic}?",
+        "Tell me which aspect of {topic} you need.",
+        "Are you looking for something specific about {topic}?"
+      ]
+    },
+    "search.no_result": {
+      "initial": [
+        "I'm still with you on {topic}. Can you say in another way what you want to know?",
+        "I haven't found that part yet. What exactly do you need to know about {topic}?",
+        "I'm keeping {topic} as the topic. Can you be a little more specific?"
+      ],
+      "reprompt": [
+        "What do you need to know about {topic}?",
+        "You can say it in another way."
+      ]
+    },
+    "clarify.not_understood": {
+      "initial": [
+        "I didn't understand that clearly. Can you repeat it?",
+        "I don't think I understood you. Can you say it again?",
+        "I'm not sure I heard that correctly. Can you repeat it?"
+      ],
+      "reprompt": [
+        "Can you repeat it?",
+        "Please say it again."
+      ]
+    },
+    "correction.ask": {
+      "initial": [
+        "I understand. What did you want to know exactly?",
+        "Okay, let's correct that. What did you mean?",
+        "All right. Which part do you want to change?"
+      ],
+      "reprompt": [
+        "What did you want to ask?",
+        "Tell me what you want to correct."
+      ]
+    },
+    "social.continue.response": {
+      "initial": [
+        "Sure, let's continue.",
+        "Yes, go ahead.",
+        "All right, let's keep going."
+      ],
+      "reprompt": []
+    },
+    "preference.length.short": {
+      "initial": [
+        "All right. I'll keep the answer shorter."
+      ],
+      "reprompt": []
+    },
+    "preference.length.detailed": {
+      "initial": [
+        "All right. I'll give you more detail."
+      ],
+      "reprompt": []
+    },
+    "clarify.ambiguous": {
+      "initial": [
+        "I didn't fully understand that. Can you clarify?",
+        "Can you say that another way?",
+        "I'm not sure what you mean. Can you be a little more specific?"
+      ],
+      "reprompt": [
+        "Can you clarify?",
+        "Say it another way, please."
+      ]
+    },
+    "clarify.silence": {
+      "initial": [
+        "Are you still there?",
+        "I didn't hear you. Are you still with me?",
+        "Do you need a little more time?"
+      ],
+      "reprompt": [
+        "Are you still there?",
+        "I'm listening when you're ready."
+      ]
+    },
+    "clarify.asr": {
+      "initial": [
+        "I didn't understand that clearly. Can you repeat it?",
+        "I don't think I heard that correctly. Can you say it again?",
+        "Sorry, can you repeat that?"
+      ],
+      "reprompt": [
+        "Can you repeat it?",
+        "Please say it again."
+      ]
+    }
+  }
+}
