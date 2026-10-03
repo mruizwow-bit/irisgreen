@@ -4,6 +4,7 @@
 'use strict';
 
 const DATA_URL='/assets/data/cielo-v2-first-view.json';
+const R03_INDEX_URL='/assets/data/cielo-constellations-r03-index.json';
 const R=Math.PI/180;
 const MOTION=new Set(['normal','reduced','none']);
 const THEMES=new Set(['light','navy']);
@@ -16,7 +17,7 @@ const TEXT={
   scene:'Escena del cielo nocturno',look:'Mirar',left:'Mirar a la izquierda',right:'Mirar a la derecha',up:'Mirar más arriba',down:'Mirar más abajo',zoomIn:'Acercar',zoomOut:'Alejar',
   reset:'Volver a vista inicial',hints:'Pistas',context:'Lugar y fecha-hora',place:'Lugar',datetime:'Fecha y hora',motion:'Movimiento',
   normal:'Normal',reduced:'Reducido',none:'Sin movimiento',inView:'En esta vista',constellations:'Constelaciones',stars:'Estrellas',
-  sources:'Datos locales: HYG · IAU · JPL',depth:'Explorar todo el cielo',depthLoading:'Cargando profundidad…',
+  sources:'Datos locales: HYG · IAU · JPL',depth:'Explorar todo el cielo',depthLoading:'Cargando profundidad…',allSky:'88 constelaciones',chooseConstellation:'Elige una constelación',locateConstellation:'Localizar',belowHorizon:'Está bajo el horizonte en este momento.',allSkyReady:'Catálogo completo R03 cargado: 88 constelaciones.',
   depthReady:n=>'Profundidad cargada bajo demanda: '+n+' constelaciones. Este bloque no monta la enciclopedia completa.',
   depthFail:'No se pudo cargar la profundidad.',select:'Elige una estrella o una figura.',calculated:'Cielo calculado para',
   star:'Estrella',constellation:'Constelación',planets:'Planetas',magnitude:'Magnitud aparente',distance:'Distancia',spectral:'Tipo espectral',designation:'Designación',altitude:'Altitud',azimuth:'Azimut',direction:'Dirección',
@@ -27,7 +28,7 @@ const TEXT={
   scene:'Night-sky scene',look:'Look',left:'Look left',right:'Look right',up:'Look higher',down:'Look lower',zoomIn:'Zoom in',zoomOut:'Zoom out',
   reset:'Return to initial view',hints:'Hints',context:'Place and date-time',place:'Place',datetime:'Date and time',motion:'Motion',
   normal:'Normal',reduced:'Reduced',none:'No motion',inView:'In this view',constellations:'Constellations',stars:'Stars',
-  sources:'Local data: HYG · IAU · JPL',depth:'Explore the whole sky',depthLoading:'Loading depth…',
+  sources:'Local data: HYG · IAU · JPL',depth:'Explore the whole sky',depthLoading:'Loading depth…',allSky:'88 constellations',chooseConstellation:'Choose a constellation',locateConstellation:'Locate',belowHorizon:'It is below the horizon at this time.',allSkyReady:'Full R03 catalogue loaded: 88 constellations.',
   depthReady:n=>'Depth loaded on demand: '+n+' constellations. This block does not mount the full encyclopaedia.',
   depthFail:'Depth could not be loaded.',select:'Choose a star or a pattern.',calculated:'Sky calculated for',
   star:'Star',constellation:'Constellation',planets:'Planets',magnitude:'Apparent magnitude',distance:'Distance',spectral:'Spectral type',designation:'Designation',altitude:'Altitude',azimuth:'Azimuth',direction:'Direction',
@@ -135,7 +136,7 @@ class Runtime{
    {id:'canarias-28n',label:{es:'Canarias · 28° N',en:'Canary Islands · 28° N'},lat:28,lon:-15.43}
   ];
   this.place=this.places[0];this.date=options.date?new Date(options.date):defaultNightDate(new Date(),this.place);
-  this.camera={az:180,alt:30,fov:105};this.initial=null;this.hints=true;this.selected=null;this.depth=null;
+  this.camera={az:180,alt:30,fov:105};this.initial=null;this.hints=true;this.selected=null;this.depth=null;this.fullSky=false;this.r03=null;this.r03By=new Map();
   this.raf=0;this.drag=null;this.animation=null;this.resizeObserver=null;
   this.consBy=new Map(data.constellations.map(c=>[c.abbr,c]));
   this.starVec=data.stars.map(s=>({s,u:unit(s.ra,s.dec)}));
@@ -182,7 +183,7 @@ class Runtime{
 
   const meta=d.createElement('details');meta.className='skyv2-meta';
   const metaSummary=d.createElement('summary');metaSummary.textContent=this.t.settings;meta.append(metaSummary);
-  const metaPanel=d.createElement('div');metaPanel.className='skyv2-meta-panel';
+  const metaPanel=d.createElement('div');metaPanel.className='skyv2-meta-panel';this.metaPanel=metaPanel;
   const context=d.createElement('details');context.className='skyv2-context';const sum=d.createElement('summary');sum.textContent=this.t.context;context.append(sum);
   const grid=d.createElement('div');grid.className='skyv2-context-grid';
   const placeLabel=d.createElement('label');placeLabel.textContent=this.t.place;
@@ -227,11 +228,16 @@ class Runtime{
   out.sort((a,b)=>a.s.mag-b.s.mag);return out;
  }
  current(w,h){
-  const m=matrix(this.date,this.place),visible=this.projectedStars(this.camera,m,w,h),targets=visible.slice(0,this.data.target_count);
+  const m=matrix(this.date,this.place),all=this.projectedStars(this.camera,m,w,h);
+  const displayLimit=this.fullSky?(w<500?260:420):all.length;
+  const visible=all.slice(0,displayLimit);
+  const targetLimit=this.fullSky?(w<500?20:32):this.data.target_count;
+  const labelLimit=this.fullSky?(w<500?4:6):this.data.max_constellation_labels;
+  const targets=visible.slice(0,targetLimit);
   const grouped=new Map();
   targets.forEach(x=>{if(!x.s.con||!this.consBy.has(x.s.con))return;const a=grouped.get(x.s.con)||[];a.push(x);grouped.set(x.s.con,a);});
   const cons=[...grouped.entries()].map(([abbr,arr])=>({c:this.consBy.get(abbr),arr,count:arr.length,best:Math.min(...arr.map(x=>x.s.mag))}))
-    .sort((a,b)=>b.count-a.count||a.best-b.best).slice(0,this.data.max_constellation_labels);
+    .sort((a,b)=>b.count-a.count||a.best-b.best).slice(0,labelLimit);
   return{m,visible,targets,cons};
  }
  fit(){
@@ -276,10 +282,12 @@ class Runtime{
    const add=(k,v)=>{if(v===null||v===undefined||v==='')return;const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;dl.append(dt,dd);};
    add(this.t.designation,s.designation);add(this.t.magnitude,s.mag.toFixed(2));add(this.t.distance,s.ly?Math.round(s.ly)+' ly':'—');add(this.t.spectral,s.sp||'—');add(this.t.constellation,c?(this.lang==='en'?c.latin:c.es)+' · '+c.abbr:s.con);add(this.t.altitude,Math.round(x.alt)+'°');add(this.t.azimuth,Math.round(x.az)+'°');add(this.t.direction,compassName(x.az,this.lang));this.info.append(dl);
   }else{
-   const item=this.selected.value,c=item.c,alts=item.arr.map(x=>x.alt),alt=Math.max(...alts);h.textContent=(this.lang==='en'?c.latin:c.es)+' · '+c.abbr;this.info.append(h);
-   const p1=document.createElement('p');p1.textContent=(this.lang==='en'?this.t.figure+': '+(c.en||c.latin):this.t.figure+': '+(c.meaning_es||c.es))+'. '+(alt>=35?this.t.high:this.t.low)+'.';this.info.append(p1);
-   const p2=document.createElement('p');p2.textContent=this.t.bestMonth+': '+monthLabel(c.best_month,this.lang)+'.';this.info.append(p2);
-   const loc=meanLocate(item.arr);if(loc){const p3=document.createElement('p');p3.textContent=this.t.altitude+': '+Math.round(loc.alt)+'° · '+this.t.azimuth+': '+Math.round(loc.az)+'° · '+this.t.direction+': '+compassName(loc.az,this.lang)+'.';this.info.append(p3);}
+   const item=this.selected.value,c=item.c,loc=item.loc||meanLocate(item.arr),alt=loc?loc.alt:0;h.textContent=(this.lang==='en'?c.latin:c.es)+' · '+c.abbr;this.info.append(h);
+   const meta=this.r03By.get(c.abbr);
+   const descriptor=meta?(this.lang==='en'?meta.name_en+(meta.descriptor_en?' · '+meta.descriptor_en:''):meta.name_es+(meta.descriptor_es?' · '+meta.descriptor_es:'')):(this.lang==='en'?(c.en||c.latin):(c.sig_es||c.es));
+   const p1=document.createElement('p');p1.textContent=this.t.figure+': '+descriptor+'. '+(alt>=35?this.t.high:this.t.low)+'.';this.info.append(p1);
+   const p2=document.createElement('p');p2.textContent=this.t.bestMonth+': '+monthLabel(c.mes??c.best_month,this.lang)+'.';this.info.append(p2);
+   if(loc){const p3=document.createElement('p');p3.textContent=this.t.altitude+': '+Math.round(loc.alt)+'° · '+this.t.azimuth+': '+Math.round(loc.az)+'° · '+this.t.direction+': '+compassName(loc.az,this.lang)+'.';this.info.append(p3);}
   }
   if(this.planets?.length){const q=document.createElement('p');q.className='skyv2-planet-context';q.textContent=this.t.planetContext+': '+this.planets.map(p=>p.name+' · '+locateText(p.alt,p.az,this.lang)).join(' · ');this.info.append(q);}
  }
@@ -299,11 +307,47 @@ class Runtime{
   this.animation=requestAnimationFrame(step);this.selected=null;
  }
  resetView(){if(this.initial)this.moveCamera({...this.initial})}
+ buildDepthNavigator(){
+  if(this.depthNavigator||!this.r03)return;
+  const d=this.root.ownerDocument,box=d.createElement('div');box.className='skyv2-depth-nav';
+  const label=d.createElement('label');label.textContent=this.t.chooseConstellation;
+  const select=d.createElement('select');select.className='skyv2-constellation-select';
+  this.r03.constellations.slice().sort((a,b)=>(this.lang==='en'?a.name_en:a.name_es).localeCompare(this.lang==='en'?b.name_en:b.name_es,this.lang)).forEach(meta=>{
+   const o=d.createElement('option');o.value=meta.abbr;o.textContent=(this.lang==='en'?meta.name_en:meta.name_es)+' · '+meta.abbr;select.append(o);
+  });
+  label.append(select);
+  const locate=d.createElement('button');locate.type='button';locate.className='skyv2-locate-constellation';locate.textContent=this.t.locateConstellation;locate.addEventListener('click',()=>this.locateConstellation(select.value));
+  box.append(label,locate);this.metaPanel.append(box);this.depthNavigator=box;this.depthSelect=select;
+ }
+ locateConstellation(abbr){
+  const c=this.consBy.get(abbr);if(!c)return false;
+  const loc=horiz(c.label[0],c.label[1],this.date,this.place),next={...this.camera,az:loc.az,alt:clamp(loc.alt,8,78),fov:Math.min(this.camera.fov,72)};
+  this.moveCamera(next);
+  this.selected={type:'constellation',value:{c:c,arr:[],loc:loc}};
+  this.renderInfo(this.current(Math.max(320,this.scene.clientWidth),Math.max(420,this.scene.clientHeight)));
+  const meta=this.r03By.get(abbr),name=meta?(this.lang==='en'?meta.name_en:meta.name_es):(this.lang==='en'?c.latin:c.es);
+  this.depthStatus.textContent=name+' · '+locateText(loc.alt,loc.az,this.lang)+(loc.alt<=0?' · '+this.t.belowHorizon:'');
+  this.canvas.focus({preventScroll:true});return true;
+ }
  async loadDepth(){
-  if(this.depth){this.depthStatus.textContent=this.t.depthReady(this.depth.constelaciones?.length||0);return}
+  if(this.depth){this.depthStatus.textContent=this.t.allSkyReady;this.buildDepthNavigator();return}
   this.depthButton.disabled=true;this.depthStatus.textContent=this.t.depthLoading;
-  try{const r=await fetch(this.data.depth_url,{credentials:'same-origin',cache:'no-store'});if(!r.ok)throw new Error('depth');const d=await r.json();this.depth=d;this.depthStatus.textContent=this.t.depthReady(d.constelaciones?.length||0);this.root.dataset.depthLoaded='true';}
-  catch(_){this.depthStatus.textContent=this.t.depthFail;}finally{this.depthButton.disabled=false}
+  try{
+   const res=await Promise.all([
+    fetch(this.data.depth_url,{credentials:'same-origin',cache:'no-store'}),
+    fetch(R03_INDEX_URL,{credentials:'same-origin',cache:'no-store'})
+   ]);
+   if(!res[0].ok||!res[1].ok)throw new Error('depth');
+   const d=await res[0].json(),idx=await res[1].json();
+   if(!Array.isArray(d.constelaciones)||d.constelaciones.length!==88||!Array.isArray(idx.constellations)||idx.constellations.length!==88)throw new Error('88');
+   const idxSet=new Set(idx.constellations.map(x=>x.abbr));
+   if(d.constelaciones.some(c=>!idxSet.has(c.abbr)))throw new Error('coverage');
+   this.depth=d;this.r03=idx;this.r03By=new Map(idx.constellations.map(x=>[x.abbr,x]));this.fullSky=true;
+   this.consBy=new Map(d.constelaciones.map(c=>[c.abbr,c]));
+   this.starVec=d.estrellas.map(s=>{const o={ra:s[0],dec:s[1],mag:s[2],ci:s[3],con:s[4]||'',designation:s[5]||'',name:s[6]||'',ly:s[7]??null,sp:s[8]||''};return{s:o,u:unit(o.ra,o.dec)};});
+   this.root.dataset.depthLoaded='true';this.root.dataset.constellationsR03='88';
+   this.depthStatus.textContent=this.t.allSkyReady;this.depthButton.hidden=true;this.buildDepthNavigator();this.render();
+  }catch(_){this.depthStatus.textContent=this.t.depthFail;}finally{this.depthButton.disabled=false}
  }
  destroy(){if(this.animation)cancelAnimationFrame(this.animation);if(this.resizeObserver)this.resizeObserver.disconnect();if(this._resize)global.removeEventListener('resize',this._resize);this.root.replaceChildren();}
 }

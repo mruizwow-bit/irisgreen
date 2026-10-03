@@ -1,0 +1,1336 @@
+{
+  "schema": "iris-green-night-sky-runtime-index-r03",
+  "source_gate": "NIGHT_SKY_CONSTELLATION_PIPELINE_R03_FINAL_PASS",
+  "source_zip_sha256": "6606430fcc0cf732bb794d8d582bcb31b3e643ac76c96e241c74a8418264df47",
+  "master_manifest_sha256": "b806c2f9135f03756a5695edc5e1d08dc3b21f4591e28944062292e0e205ef70",
+  "constellations_total": 88,
+  "runtime_policy": {
+    "geometry": "PROCEDURAL_LOCAL_FROM_CIELO_JSON",
+    "r03_visual_masters": "QA_REFERENCE_NOT_CARD_GALLERY",
+    "external_network": false,
+    "visibility_baked_into_art": false,
+    "direct_manipulation": "EXPLORE_LOCATE_REVEAL"
+  },
+  "constellations": [
+    {
+      "abbr": "Ant",
+      "name_es": "Máquina Neumática",
+      "name_en": "Air Pump",
+      "latin": "Antlia",
+      "descriptor_es": "bomba de aire",
+      "label_ra_hours": 10.4,
+      "label_dec_deg": -36,
+      "best_month": 2,
+      "bright": {
+        "n": "",
+        "d": "α Ant",
+        "mag": 4.28
+      }
+    },
+    {
+      "abbr": "Ara",
+      "name_es": "Altar",
+      "name_en": "Altar",
+      "latin": "Ara",
+      "descriptor_es": "altar",
+      "label_ra_hours": 17.2,
+      "label_dec_deg": -56,
+      "best_month": 6,
+      "bright": {
+        "n": "",
+        "d": "β Ara",
+        "mag": 2.84
+      }
+    },
+    {
+      "abbr": "And",
+      "name_es": "Andrómeda",
+      "name_en": "Andromeda",
+      "latin": "Andromeda",
+      "descriptor_es": "princesa encadenada",
+      "label_ra_hours": 0.05,
+      "label_dec_deg": 43,
+      "best_month": 9,
+      "bright": {
+        "n": "Alpheratz",
+        "d": "α And",
+        "mag": 2.07
+      }
+    },
+    {
+      "abbr": "Aqr",
+      "name_es": "Acuario",
+      "name_en": "Aquarius",
+      "latin": "Aquarius",
+      "descriptor_es": "portador de agua",
+      "label_ra_hours": 22.5,
+      "label_dec_deg": -5,
+      "best_month": 9,
+      "bright": {
+        "n": "Sadalsuud",
+        "d": "β Aqr",
+        "mag": 2.9
+      }
+    },
+    {
+      "abbr": "Sgr",
+      "name_es": "Sagitario",
+      "name_en": "Archer",
+      "latin": "Sagittarius",
+      "descriptor_es": "arquero",
+      "label_ra_hours": 19.5,
+      "label_dec_deg": -34,
+      "best_month": 7,
+      "bright": {
+        "n": "Kaus Australis",
+        "d": "ε Sgr",
+        "mag": 1.79
+      }
+    },
+    {
+      "abbr": "Sge",
+      "name_es": "Flecha",
+      "name_en": "Arrow",
+      "latin": "Sagitta",
+      "descriptor_es": "flecha",
+      "label_ra_hours": 19.4,
+      "label_dec_deg": 18,
+      "best_month": 7,
+      "bright": {
+        "n": "",
+        "d": "γ Sge",
+        "mag": 3.51
+      }
+    },
+    {
+      "abbr": "Lib",
+      "name_es": "Libra",
+      "name_en": "Balance",
+      "latin": "Libra",
+      "descriptor_es": "balanza",
+      "label_ra_hours": 15.4,
+      "label_dec_deg": -26,
+      "best_month": 5,
+      "bright": {
+        "n": "Zubeneschamali",
+        "d": "β Lib",
+        "mag": 2.61
+      }
+    },
+    {
+      "abbr": "Com",
+      "name_es": "Cabellera de Berenice",
+      "name_en": "Berenice's Hair",
+      "latin": "Coma Berenices",
+      "descriptor_es": "cabellera de la reina Berenice",
+      "label_ra_hours": 12.9,
+      "label_dec_deg": 24,
+      "best_month": 4,
+      "bright": {
+        "n": "",
+        "d": "β Com",
+        "mag": 4.23
+      }
+    },
+    {
+      "abbr": "UMa",
+      "name_es": "Osa Mayor",
+      "name_en": "Big Dipper",
+      "latin": "Ursa Major",
+      "descriptor_es": "osa grande",
+      "label_ra_hours": 11,
+      "label_dec_deg": 48,
+      "best_month": 3,
+      "bright": {
+        "n": "Alioth",
+        "d": "ε UMa",
+        "mag": 1.76
+      }
+    },
+    {
+      "abbr": "Aps",
+      "name_es": "Ave del Paraíso",
+      "name_en": "Bird of Paradise",
+      "latin": "Apus",
+      "descriptor_es": "ave del paraíso",
+      "label_ra_hours": 16,
+      "label_dec_deg": -74,
+      "best_month": 5,
+      "bright": {
+        "n": "",
+        "d": "α Aps",
+        "mag": 3.83
+      }
+    },
+    {
+      "abbr": "Tau",
+      "name_es": "Tauro",
+      "name_en": "Bull",
+      "latin": "Taurus",
+      "descriptor_es": "toro",
+      "label_ra_hours": 3.6,
+      "label_dec_deg": 15,
+      "best_month": 11,
+      "bright": {
+        "n": "Aldebaran",
+        "d": "α Tau",
+        "mag": 0.87
+      }
+    },
+    {
+      "abbr": "Cap",
+      "name_es": "Capricornio",
+      "name_en": "Capricorn",
+      "latin": "Capricornus",
+      "descriptor_es": "cabra con cola de pez",
+      "label_ra_hours": 21,
+      "label_dec_deg": -22,
+      "best_month": 8,
+      "bright": {
+        "n": "Deneb Algedi",
+        "d": "δ Cap",
+        "mag": 2.85
+      }
+    },
+    {
+      "abbr": "Cas",
+      "name_es": "Casiopea",
+      "name_en": "Cassiopeia",
+      "latin": "Cassiopeia",
+      "descriptor_es": "reina sentada",
+      "label_ra_hours": 23.6,
+      "label_dec_deg": 55.5,
+      "best_month": 9,
+      "bright": {
+        "n": "Cih",
+        "d": "γ Cas",
+        "mag": 2.15
+      }
+    },
+    {
+      "abbr": "Cen",
+      "name_es": "Centauro",
+      "name_en": "Centaur",
+      "latin": "Centaurus",
+      "descriptor_es": "centauro",
+      "label_ra_hours": 13.3,
+      "label_dec_deg": -40,
+      "best_month": 4,
+      "bright": {
+        "n": "Rigil Kentaurus",
+        "d": "α¹ Cen",
+        "mag": -0.01
+      }
+    },
+    {
+      "abbr": "Cep",
+      "name_es": "Cefeo",
+      "name_en": "Cepheus",
+      "latin": "Cepheus",
+      "descriptor_es": "rey",
+      "label_ra_hours": 22.5,
+      "label_dec_deg": 71,
+      "best_month": 9,
+      "bright": {
+        "n": "Alderamin",
+        "d": "α Cep",
+        "mag": 2.45
+      }
+    },
+    {
+      "abbr": "Cha",
+      "name_es": "Camaleón",
+      "name_en": "Chamaeleon",
+      "latin": "Chamaeleon",
+      "descriptor_es": "camaleón",
+      "label_ra_hours": 12.6,
+      "label_dec_deg": -81,
+      "best_month": 4,
+      "bright": {
+        "n": "",
+        "d": "α Cha",
+        "mag": 4.05
+      }
+    },
+    {
+      "abbr": "Aur",
+      "name_es": "Auriga",
+      "name_en": "Charioteer",
+      "latin": "Auriga",
+      "descriptor_es": "cochero",
+      "label_ra_hours": 5.5,
+      "label_dec_deg": 37,
+      "best_month": 0,
+      "bright": {
+        "n": "Capella",
+        "d": "α Aur",
+        "mag": 0.08
+      }
+    },
+    {
+      "abbr": "Hor",
+      "name_es": "Reloj",
+      "name_en": "Clock",
+      "latin": "Horologium",
+      "descriptor_es": "reloj de péndulo",
+      "label_ra_hours": 3.4,
+      "label_dec_deg": -52,
+      "best_month": 11,
+      "bright": {
+        "n": "",
+        "d": "α Hor",
+        "mag": 3.85
+      }
+    },
+    {
+      "abbr": "Equ",
+      "name_es": "Caballo Menor",
+      "name_en": "Colt",
+      "latin": "Equuleus",
+      "descriptor_es": "caballo pequeño",
+      "label_ra_hours": 21.35,
+      "label_dec_deg": 11.5,
+      "best_month": 8,
+      "bright": {
+        "n": "Kitalpha",
+        "d": "α Equ",
+        "mag": 3.92
+      }
+    },
+    {
+      "abbr": "Cir",
+      "name_es": "Compás",
+      "name_en": "Compass",
+      "latin": "Circinus",
+      "descriptor_es": "compás de dibujo",
+      "label_ra_hours": 14.5,
+      "label_dec_deg": -67,
+      "best_month": 4,
+      "bright": {
+        "n": "",
+        "d": "α Cir",
+        "mag": 3.18
+      }
+    },
+    {
+      "abbr": "Pyx",
+      "name_es": "Brújula",
+      "name_en": "Compass",
+      "latin": "Pyxis",
+      "descriptor_es": "brújula de navegación",
+      "label_ra_hours": 8.8,
+      "label_dec_deg": -24,
+      "best_month": 2,
+      "bright": {
+        "n": "",
+        "d": "α Pyx",
+        "mag": 3.68
+      }
+    },
+    {
+      "abbr": "Cnc",
+      "name_es": "Cáncer",
+      "name_en": "Crab",
+      "latin": "Cancer",
+      "descriptor_es": "cangrejo",
+      "label_ra_hours": 8.55,
+      "label_dec_deg": 27,
+      "best_month": 1,
+      "bright": {
+        "n": "Tarf",
+        "d": "β Cnc",
+        "mag": 3.53
+      }
+    },
+    {
+      "abbr": "Gru",
+      "name_es": "Grulla",
+      "name_en": "Crane",
+      "latin": "Grus",
+      "descriptor_es": "grulla",
+      "label_ra_hours": 22.8,
+      "label_dec_deg": -41.5,
+      "best_month": 9,
+      "bright": {
+        "n": "Alnair",
+        "d": "α Gru",
+        "mag": 1.73
+      }
+    },
+    {
+      "abbr": "Cru",
+      "name_es": "Cruz del Sur",
+      "name_en": "Cross",
+      "latin": "Crux",
+      "descriptor_es": "cruz",
+      "label_ra_hours": 12.9,
+      "label_dec_deg": -62,
+      "best_month": 4,
+      "bright": {
+        "n": "Acrux",
+        "d": "α¹ Cru",
+        "mag": 0.77
+      }
+    },
+    {
+      "abbr": "Crv",
+      "name_es": "Cuervo",
+      "name_en": "Crow",
+      "latin": "Corvus",
+      "descriptor_es": "cuervo",
+      "label_ra_hours": 12.4,
+      "label_dec_deg": -19.5,
+      "best_month": 3,
+      "bright": {
+        "n": "Gienah",
+        "d": "γ Crv",
+        "mag": 2.58
+      }
+    },
+    {
+      "abbr": "Crt",
+      "name_es": "Copa",
+      "name_en": "Cup",
+      "latin": "Crater",
+      "descriptor_es": "copa",
+      "label_ra_hours": 11.65,
+      "label_dec_deg": -15,
+      "best_month": 3,
+      "bright": {
+        "n": "",
+        "d": "δ Crt",
+        "mag": 3.56
+      }
+    },
+    {
+      "abbr": "Del",
+      "name_es": "Delfín",
+      "name_en": "Dolphin",
+      "latin": "Delphinus",
+      "descriptor_es": "delfín",
+      "label_ra_hours": 20.6,
+      "label_dec_deg": 6,
+      "best_month": 8,
+      "bright": {
+        "n": "Rotanev",
+        "d": "β Del",
+        "mag": 3.64
+      }
+    },
+    {
+      "abbr": "Col",
+      "name_es": "Paloma",
+      "name_en": "Dove",
+      "latin": "Columba",
+      "descriptor_es": "paloma",
+      "label_ra_hours": 5.7,
+      "label_dec_deg": -39,
+      "best_month": 0,
+      "bright": {
+        "n": "Phact",
+        "d": "α Col",
+        "mag": 2.65
+      }
+    },
+    {
+      "abbr": "Dra",
+      "name_es": "Dragón",
+      "name_en": "Dragon",
+      "latin": "Draco",
+      "descriptor_es": "dragón",
+      "label_ra_hours": 17.9,
+      "label_dec_deg": 64,
+      "best_month": 6,
+      "bright": {
+        "n": "Eltanin",
+        "d": "γ Dra",
+        "mag": 2.24
+      }
+    },
+    {
+      "abbr": "Aql",
+      "name_es": "Águila",
+      "name_en": "Eagle",
+      "latin": "Aquila",
+      "descriptor_es": "águila",
+      "label_ra_hours": 19.4,
+      "label_dec_deg": 8,
+      "best_month": 7,
+      "bright": {
+        "n": "Altair",
+        "d": "α Aql",
+        "mag": 0.76
+      }
+    },
+    {
+      "abbr": "Eri",
+      "name_es": "Erídano",
+      "name_en": "Eridanus",
+      "latin": "Eridanus",
+      "descriptor_es": "río",
+      "label_ra_hours": 3.5,
+      "label_dec_deg": -18,
+      "best_month": 11,
+      "bright": {
+        "n": "Achernar",
+        "d": "α Eri",
+        "mag": 0.45
+      }
+    },
+    {
+      "abbr": "Psc",
+      "name_es": "Piscis",
+      "name_en": "Fishes",
+      "latin": "Pisces",
+      "descriptor_es": "peces",
+      "label_ra_hours": 1.3,
+      "label_dec_deg": 15,
+      "best_month": 10,
+      "bright": {
+        "n": "Alpherg",
+        "d": "η Psc",
+        "mag": 3.62
+      }
+    },
+    {
+      "abbr": "Mus",
+      "name_es": "Mosca",
+      "name_en": "Fly",
+      "latin": "Musca",
+      "descriptor_es": "mosca",
+      "label_ra_hours": 13,
+      "label_dec_deg": -73,
+      "best_month": 4,
+      "bright": {
+        "n": "",
+        "d": "α Mus",
+        "mag": 2.69
+      }
+    },
+    {
+      "abbr": "Vol",
+      "name_es": "Pez Volador",
+      "name_en": "Flying Fish",
+      "latin": "Volans",
+      "descriptor_es": "pez volador",
+      "label_ra_hours": 7.4,
+      "label_dec_deg": -73,
+      "best_month": 1,
+      "bright": {
+        "n": "",
+        "d": "β Vol",
+        "mag": 3.77
+      }
+    },
+    {
+      "abbr": "For",
+      "name_es": "Horno",
+      "name_en": "Furnace",
+      "latin": "Fornax",
+      "descriptor_es": "horno químico",
+      "label_ra_hours": 2.7,
+      "label_dec_deg": -28,
+      "best_month": 11,
+      "bright": {
+        "n": "Dalim",
+        "d": "α For",
+        "mag": 3.8
+      }
+    },
+    {
+      "abbr": "Cam",
+      "name_es": "Jirafa",
+      "name_en": "Giraffe",
+      "latin": "Camelopardalis",
+      "descriptor_es": "jirafa",
+      "label_ra_hours": 5.6,
+      "label_dec_deg": 72,
+      "best_month": 0,
+      "bright": {
+        "n": "",
+        "d": "β Cam",
+        "mag": 4.03
+      }
+    },
+    {
+      "abbr": "Dor",
+      "name_es": "Dorado",
+      "name_en": "Goldfish",
+      "latin": "Dorado",
+      "descriptor_es": "pez dorado",
+      "label_ra_hours": 5.1,
+      "label_dec_deg": -64,
+      "best_month": 0,
+      "bright": {
+        "n": "",
+        "d": "α Dor",
+        "mag": 3.3
+      }
+    },
+    {
+      "abbr": "Cae",
+      "name_es": "Cincel",
+      "name_en": "Graving tool",
+      "latin": "Caelum",
+      "descriptor_es": "cincel de grabador",
+      "label_ra_hours": 4.9,
+      "label_dec_deg": -42,
+      "best_month": 0,
+      "bright": {
+        "n": "",
+        "d": "α Cae",
+        "mag": 4.44
+      }
+    },
+    {
+      "abbr": "CMa",
+      "name_es": "Can Mayor",
+      "name_en": "Great Dog",
+      "latin": "Canis Major",
+      "descriptor_es": "perro grande",
+      "label_ra_hours": 6.5,
+      "label_dec_deg": -26,
+      "best_month": 0,
+      "bright": {
+        "n": "Sirius",
+        "d": "α CMa",
+        "mag": -1.44
+      }
+    },
+    {
+      "abbr": "Lep",
+      "name_es": "Liebre",
+      "name_en": "Hare",
+      "latin": "Lepus",
+      "descriptor_es": "liebre",
+      "label_ra_hours": 5.9,
+      "label_dec_deg": -25,
+      "best_month": 0,
+      "bright": {
+        "n": "Arneb",
+        "d": "α Lep",
+        "mag": 2.58
+      }
+    },
+    {
+      "abbr": "Her",
+      "name_es": "Hércules",
+      "name_en": "Hercules",
+      "latin": "Hercules",
+      "descriptor_es": "héroe",
+      "label_ra_hours": 16.9,
+      "label_dec_deg": 35,
+      "best_month": 6,
+      "bright": {
+        "n": "Kornephoros",
+        "d": "β Her",
+        "mag": 2.78
+      }
+    },
+    {
+      "abbr": "Boo",
+      "name_es": "Boyero",
+      "name_en": "Herdsman",
+      "latin": "Boötes",
+      "descriptor_es": "boyero, pastor de bueyes",
+      "label_ra_hours": 14.9,
+      "label_dec_deg": 35,
+      "best_month": 5,
+      "bright": {
+        "n": "Arcturus",
+        "d": "α Boo",
+        "mag": -0.05
+      }
+    },
+    {
+      "abbr": "CVn",
+      "name_es": "Perros de Caza",
+      "name_en": "Hunting Dogs",
+      "latin": "Canes Venatici",
+      "descriptor_es": "perros de caza",
+      "label_ra_hours": 12.8,
+      "label_dec_deg": 43,
+      "best_month": 4,
+      "bright": {
+        "n": "Cor Caroli",
+        "d": "α² CVn",
+        "mag": 2.89
+      }
+    },
+    {
+      "abbr": "Hyi",
+      "name_es": "Hidra Macho",
+      "name_en": "Hydrus",
+      "latin": "Hydrus",
+      "descriptor_es": "serpiente de agua macho",
+      "label_ra_hours": 2.3,
+      "label_dec_deg": -72,
+      "best_month": 10,
+      "bright": {
+        "n": "",
+        "d": "β Hyi",
+        "mag": 2.82
+      }
+    },
+    {
+      "abbr": "Ind",
+      "name_es": "Indio",
+      "name_en": "Indian",
+      "latin": "Indus",
+      "descriptor_es": "indígena americano",
+      "label_ra_hours": 21.2,
+      "label_dec_deg": -55.5,
+      "best_month": 8,
+      "bright": {
+        "n": "",
+        "d": "α Ind",
+        "mag": 3.11
+      }
+    },
+    {
+      "abbr": "Car",
+      "name_es": "Quilla",
+      "name_en": "Keel",
+      "latin": "Carina",
+      "descriptor_es": "quilla de un barco",
+      "label_ra_hours": 9.6,
+      "label_dec_deg": -66,
+      "best_month": 2,
+      "bright": {
+        "n": "Canopus",
+        "d": "α Car",
+        "mag": -0.62
+      }
+    },
+    {
+      "abbr": "Nor",
+      "name_es": "Escuadra",
+      "name_en": "Level",
+      "latin": "Norma",
+      "descriptor_es": "escuadra de carpintero",
+      "label_ra_hours": 16.2,
+      "label_dec_deg": -52,
+      "best_month": 5,
+      "bright": {
+        "n": "",
+        "d": "γ² Nor",
+        "mag": 4.01
+      }
+    },
+    {
+      "abbr": "Leo",
+      "name_es": "Leo",
+      "name_en": "Lion",
+      "latin": "Leo",
+      "descriptor_es": "león",
+      "label_ra_hours": 10.6,
+      "label_dec_deg": 15,
+      "best_month": 3,
+      "bright": {
+        "n": "Regulus",
+        "d": "α Leo",
+        "mag": 1.36
+      }
+    },
+    {
+      "abbr": "UMi",
+      "name_es": "Osa Menor",
+      "name_en": "Little Dipper",
+      "latin": "Ursa Minor",
+      "descriptor_es": "osa pequeña",
+      "label_ra_hours": 15.1,
+      "label_dec_deg": 68,
+      "best_month": 5,
+      "bright": {
+        "n": "Polaris",
+        "d": "α UMi",
+        "mag": 1.97
+      }
+    },
+    {
+      "abbr": "CMi",
+      "name_es": "Can Menor",
+      "name_en": "Little Dog",
+      "latin": "Canis Minor",
+      "descriptor_es": "perro pequeño",
+      "label_ra_hours": 7.3,
+      "label_dec_deg": 5,
+      "best_month": 1,
+      "bright": {
+        "n": "Procyon",
+        "d": "α CMi",
+        "mag": 0.4
+      }
+    },
+    {
+      "abbr": "Vul",
+      "name_es": "Zorra",
+      "name_en": "Little Fox",
+      "latin": "Vulpecula",
+      "descriptor_es": "zorra pequeña",
+      "label_ra_hours": 19.7,
+      "label_dec_deg": 21,
+      "best_month": 7,
+      "bright": {
+        "n": "Anser",
+        "d": "α Vul",
+        "mag": 4.44
+      }
+    },
+    {
+      "abbr": "LMi",
+      "name_es": "León Menor",
+      "name_en": "Little Lion",
+      "latin": "Leo Minor",
+      "descriptor_es": "león pequeño",
+      "label_ra_hours": 10.5,
+      "label_dec_deg": 30,
+      "best_month": 2,
+      "bright": {
+        "n": "Praecipua",
+        "d": "46 LMi",
+        "mag": 3.79
+      }
+    },
+    {
+      "abbr": "Lac",
+      "name_es": "Lagarto",
+      "name_en": "Lizard",
+      "latin": "Lacerta",
+      "descriptor_es": "lagarto",
+      "label_ra_hours": 22.8,
+      "label_dec_deg": 47,
+      "best_month": 9,
+      "bright": {
+        "n": "",
+        "d": "α Lac",
+        "mag": 3.76
+      }
+    },
+    {
+      "abbr": "Lyn",
+      "name_es": "Lince",
+      "name_en": "Lynx",
+      "latin": "Lynx",
+      "descriptor_es": "lince",
+      "label_ra_hours": 8.1,
+      "label_dec_deg": 49,
+      "best_month": 1,
+      "bright": {
+        "n": "",
+        "d": "α Lyn",
+        "mag": 3.14
+      }
+    },
+    {
+      "abbr": "Lyr",
+      "name_es": "Lira",
+      "name_en": "Lyre",
+      "latin": "Lyra",
+      "descriptor_es": "lira, instrumento de cuerda",
+      "label_ra_hours": 18.6,
+      "label_dec_deg": 30,
+      "best_month": 6,
+      "bright": {
+        "n": "Vega",
+        "d": "α Lyr",
+        "mag": 0.03
+      }
+    },
+    {
+      "abbr": "Men",
+      "name_es": "Mesa",
+      "name_en": "Mensa",
+      "latin": "Mensa",
+      "descriptor_es": "montaña de la Mesa (Sudáfrica)",
+      "label_ra_hours": 5.5,
+      "label_dec_deg": -80,
+      "best_month": 0,
+      "bright": {
+        "n": "",
+        "d": "α Men",
+        "mag": 5.08
+      }
+    },
+    {
+      "abbr": "Mic",
+      "name_es": "Microscopio",
+      "name_en": "Microscope",
+      "latin": "Microscopium",
+      "descriptor_es": "microscopio",
+      "label_ra_hours": 21.1,
+      "label_dec_deg": -37,
+      "best_month": 8,
+      "bright": {
+        "n": "",
+        "d": "γ Mic",
+        "mag": 4.67
+      }
+    },
+    {
+      "abbr": "Ret",
+      "name_es": "Retículo",
+      "name_en": "Net",
+      "latin": "Reticulum",
+      "descriptor_es": "retícula de un ocular",
+      "label_ra_hours": 3.7,
+      "label_dec_deg": -61,
+      "best_month": 11,
+      "bright": {
+        "n": "",
+        "d": "α Ret",
+        "mag": 3.33
+      }
+    },
+    {
+      "abbr": "CrB",
+      "name_es": "Corona Boreal",
+      "name_en": "Northern Crown",
+      "latin": "Corona Borealis",
+      "descriptor_es": "corona del norte",
+      "label_ra_hours": 15.9,
+      "label_dec_deg": 32,
+      "best_month": 5,
+      "bright": {
+        "n": "Alphecca",
+        "d": "α CrB",
+        "mag": 2.22
+      }
+    },
+    {
+      "abbr": "Oct",
+      "name_es": "Octante",
+      "name_en": "Octant",
+      "latin": "Octans",
+      "descriptor_es": "octante de navegación",
+      "label_ra_hours": 20,
+      "label_dec_deg": -80,
+      "best_month": 7,
+      "bright": {
+        "n": "",
+        "d": "ν Oct",
+        "mag": 3.73
+      }
+    },
+    {
+      "abbr": "Oph",
+      "name_es": "Ofiuco",
+      "name_en": "Ophiuchus",
+      "latin": "Ophiuchus",
+      "descriptor_es": "portador de la serpiente",
+      "label_ra_hours": 17.2,
+      "label_dec_deg": 3,
+      "best_month": 6,
+      "bright": {
+        "n": "Rasalhague",
+        "d": "α Oph",
+        "mag": 2.08
+      }
+    },
+    {
+      "abbr": "Ori",
+      "name_es": "Orión",
+      "name_en": "Orion",
+      "latin": "Orion",
+      "descriptor_es": "cazador",
+      "label_ra_hours": 5.6,
+      "label_dec_deg": 13,
+      "best_month": 0,
+      "bright": {
+        "n": "Rigel",
+        "d": "β Ori",
+        "mag": 0.18
+      }
+    },
+    {
+      "abbr": "Pic",
+      "name_es": "Pintor",
+      "name_en": "Painter",
+      "latin": "Pictor",
+      "descriptor_es": "caballete del pintor",
+      "label_ra_hours": 5.5,
+      "label_dec_deg": -50,
+      "best_month": 0,
+      "bright": {
+        "n": "",
+        "d": "α Pic",
+        "mag": 3.24
+      }
+    },
+    {
+      "abbr": "Pav",
+      "name_es": "Pavo",
+      "name_en": "Peacock",
+      "latin": "Pavo",
+      "descriptor_es": "pavo real",
+      "label_ra_hours": 19.8,
+      "label_dec_deg": -62,
+      "best_month": 7,
+      "bright": {
+        "n": "Peacock",
+        "d": "α Pav",
+        "mag": 1.94
+      }
+    },
+    {
+      "abbr": "Peg",
+      "name_es": "Pegaso",
+      "name_en": "Pegasus",
+      "latin": "Pegasus",
+      "descriptor_es": "caballo alado",
+      "label_ra_hours": 22.3,
+      "label_dec_deg": 16,
+      "best_month": 8,
+      "bright": {
+        "n": "Enif",
+        "d": "ε Peg",
+        "mag": 2.38
+      }
+    },
+    {
+      "abbr": "Per",
+      "name_es": "Perseo",
+      "name_en": "Perseus",
+      "latin": "Perseus",
+      "descriptor_es": "héroe",
+      "label_ra_hours": 4.4,
+      "label_dec_deg": 45,
+      "best_month": 11,
+      "bright": {
+        "n": "Mirfak",
+        "d": "α Per",
+        "mag": 1.79
+      }
+    },
+    {
+      "abbr": "Phe",
+      "name_es": "Fénix",
+      "name_en": "Phoenix",
+      "latin": "Phoenix",
+      "descriptor_es": "ave fénix",
+      "label_ra_hours": 1.1,
+      "label_dec_deg": -43,
+      "best_month": 10,
+      "bright": {
+        "n": "Ankaa",
+        "d": "α Phe",
+        "mag": 2.4
+      }
+    },
+    {
+      "abbr": "Pup",
+      "name_es": "Popa",
+      "name_en": "Poop Deck",
+      "latin": "Puppis",
+      "descriptor_es": "popa de un barco",
+      "label_ra_hours": 7.4,
+      "label_dec_deg": -46,
+      "best_month": 1,
+      "bright": {
+        "n": "Naos",
+        "d": "ζ Pup",
+        "mag": 2.21
+      }
+    },
+    {
+      "abbr": "Ari",
+      "name_es": "Aries",
+      "name_en": "Ram",
+      "latin": "Aries",
+      "descriptor_es": "carnero",
+      "label_ra_hours": 2.8,
+      "label_dec_deg": 22,
+      "best_month": 11,
+      "bright": {
+        "n": "Hamal",
+        "d": "α Ari",
+        "mag": 2.01
+      }
+    },
+    {
+      "abbr": "Vel",
+      "name_es": "Vela",
+      "name_en": "Sails",
+      "latin": "Vela",
+      "descriptor_es": "vela de un barco",
+      "label_ra_hours": 9.55,
+      "label_dec_deg": -46,
+      "best_month": 2,
+      "bright": {
+        "n": "",
+        "d": "γ² Vel",
+        "mag": 1.75
+      }
+    },
+    {
+      "abbr": "Sco",
+      "name_es": "Escorpio",
+      "name_en": "Scorpion",
+      "latin": "Scorpius",
+      "descriptor_es": "escorpión",
+      "label_ra_hours": 16.6,
+      "label_dec_deg": -38,
+      "best_month": 6,
+      "bright": {
+        "n": "Antares",
+        "d": "α Sco",
+        "mag": 1.06
+      }
+    },
+    {
+      "abbr": "Scl",
+      "name_es": "Escultor",
+      "name_en": "Sculptor",
+      "latin": "Sculptor",
+      "descriptor_es": "taller del escultor",
+      "label_ra_hours": 0.1,
+      "label_dec_deg": -33,
+      "best_month": 9,
+      "bright": {
+        "n": "",
+        "d": "α Scl",
+        "mag": 4.3
+      }
+    },
+    {
+      "abbr": "Hya",
+      "name_es": "Hidra",
+      "name_en": "Sea Serpent",
+      "latin": "Hydra",
+      "descriptor_es": "serpiente de agua",
+      "label_ra_hours": 10,
+      "label_dec_deg": -22,
+      "best_month": 2,
+      "bright": {
+        "n": "Alphard",
+        "d": "α Hya",
+        "mag": 1.99
+      }
+    },
+    {
+      "abbr": "Ser",
+      "name_es": "Serpiente",
+      "name_en": "Serpent",
+      "latin": "Serpens Caput",
+      "descriptor_es": "serpiente",
+      "label_ra_hours": 15.5,
+      "label_dec_deg": 5,
+      "best_month": 5,
+      "bright": {
+        "n": "Unukalhai",
+        "d": "α Ser",
+        "mag": 2.63
+      }
+    },
+    {
+      "abbr": "Sex",
+      "name_es": "Sextante",
+      "name_en": "Sextant",
+      "latin": "Sextans",
+      "descriptor_es": "sextante",
+      "label_ra_hours": 10.5,
+      "label_dec_deg": -7,
+      "best_month": 2,
+      "bright": {
+        "n": "",
+        "d": "α Sex",
+        "mag": 4.48
+      }
+    },
+    {
+      "abbr": "Sct",
+      "name_es": "Escudo",
+      "name_en": "Shield",
+      "latin": "Scutum",
+      "descriptor_es": "escudo",
+      "label_ra_hours": 18.8,
+      "label_dec_deg": -12.5,
+      "best_month": 7,
+      "bright": {
+        "n": "",
+        "d": "α Sct",
+        "mag": 3.85
+      }
+    },
+    {
+      "abbr": "CrA",
+      "name_es": "Corona Austral",
+      "name_en": "Southern Crown",
+      "latin": "Corona Austrina",
+      "descriptor_es": "corona del sur",
+      "label_ra_hours": 18.8,
+      "label_dec_deg": -40,
+      "best_month": 7,
+      "bright": {
+        "n": "",
+        "d": "β CrA",
+        "mag": 4.1
+      }
+    },
+    {
+      "abbr": "PsA",
+      "name_es": "Pez Austral",
+      "name_en": "Southern Fish",
+      "latin": "Piscis Austrinus",
+      "descriptor_es": "pez del sur",
+      "label_ra_hours": 22.2,
+      "label_dec_deg": -29,
+      "best_month": 8,
+      "bright": {
+        "n": "Fomalhaut",
+        "d": "α PsA",
+        "mag": 1.17
+      }
+    },
+    {
+      "abbr": "TrA",
+      "name_es": "Triángulo Austral",
+      "name_en": "Southern Triangle",
+      "latin": "Triangulum Australe",
+      "descriptor_es": "triángulo del sur",
+      "label_ra_hours": 16,
+      "label_dec_deg": -67.5,
+      "best_month": 5,
+      "bright": {
+        "n": "Atria",
+        "d": "α TrA",
+        "mag": 1.91
+      }
+    },
+    {
+      "abbr": "Cyg",
+      "name_es": "Cisne",
+      "name_en": "Swan",
+      "latin": "Cygnus",
+      "descriptor_es": "cisne",
+      "label_ra_hours": 20.5,
+      "label_dec_deg": 50,
+      "best_month": 7,
+      "bright": {
+        "n": "Deneb",
+        "d": "α Cyg",
+        "mag": 1.25
+      }
+    },
+    {
+      "abbr": "Tel",
+      "name_es": "Telescopio",
+      "name_en": "Telescope",
+      "latin": "Telescopium",
+      "descriptor_es": "telescopio",
+      "label_ra_hours": 18.5,
+      "label_dec_deg": -54,
+      "best_month": 6,
+      "bright": {
+        "n": "",
+        "d": "α Tel",
+        "mag": 3.49
+      }
+    },
+    {
+      "abbr": "Tuc",
+      "name_es": "Tucán",
+      "name_en": "Toucan",
+      "latin": "Tucana",
+      "descriptor_es": "tucán",
+      "label_ra_hours": 23.2,
+      "label_dec_deg": -64,
+      "best_month": 9,
+      "bright": {
+        "n": "",
+        "d": "α Tuc",
+        "mag": 2.87
+      }
+    },
+    {
+      "abbr": "Tri",
+      "name_es": "Triángulo",
+      "name_en": "Triangle",
+      "latin": "Triangulum",
+      "descriptor_es": "triángulo",
+      "label_ra_hours": 1.8,
+      "label_dec_deg": 34,
+      "best_month": 10,
+      "bright": {
+        "n": "",
+        "d": "β Tri",
+        "mag": 3
+      }
+    },
+    {
+      "abbr": "Gem",
+      "name_es": "Géminis",
+      "name_en": "Twins",
+      "latin": "Gemini",
+      "descriptor_es": "gemelos",
+      "label_ra_hours": 7.15,
+      "label_dec_deg": 23.5,
+      "best_month": 1,
+      "bright": {
+        "n": "Pollux",
+        "d": "β Gem",
+        "mag": 1.16
+      }
+    },
+    {
+      "abbr": "Mon",
+      "name_es": "Unicornio",
+      "name_en": "Unicorn",
+      "latin": "Monoceros",
+      "descriptor_es": "unicornio",
+      "label_ra_hours": 7.65,
+      "label_dec_deg": -6,
+      "best_month": 1,
+      "bright": {
+        "n": "",
+        "d": "β Mon",
+        "mag": 3.76
+      }
+    },
+    {
+      "abbr": "Vir",
+      "name_es": "Virgo",
+      "name_en": "Virgin",
+      "latin": "Virgo",
+      "descriptor_es": "doncella",
+      "label_ra_hours": 13.3,
+      "label_dec_deg": -4,
+      "best_month": 4,
+      "bright": {
+        "n": "Spica",
+        "d": "α Vir",
+        "mag": 0.98
+      }
+    },
+    {
+      "abbr": "Cet",
+      "name_es": "Ballena",
+      "name_en": "Whale",
+      "latin": "Cetus",
+      "descriptor_es": "monstruo marino, ballena",
+      "label_ra_hours": 1.9,
+      "label_dec_deg": -5,
+      "best_month": 10,
+      "bright": {
+        "n": "Diphda",
+        "d": "β Cet",
+        "mag": 2.04
+      }
+    },
+    {
+      "abbr": "Lup",
+      "name_es": "Lobo",
+      "name_en": "Wolf",
+      "latin": "Lupus",
+      "descriptor_es": "lobo",
+      "label_ra_hours": 15.25,
+      "label_dec_deg": -35,
+      "best_month": 5,
+      "bright": {
+        "n": "",
+        "d": "α Lup",
+        "mag": 2.3
+      }
+    }
+  ]
+}

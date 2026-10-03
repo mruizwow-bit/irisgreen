@@ -118,3 +118,10 @@ a{color:inherit}
 .skyv2-planetlist{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--line) 45%,transparent);padding-top:.45rem}
 .skyv2-planetlist ul{display:grid;gap:.25rem}
 .skyv2-planetlist li{font-size:.88rem;line-height:1.35}
+
+/* R03 · 88 constellations · procedural depth intake */
+.skyv2-depth-nav{display:grid;gap:.5rem;margin-top:.7rem;padding-top:.7rem;border-top:1px solid color-mix(in srgb,var(--line) 55%,transparent)}
+.skyv2-depth-nav label{display:grid;gap:.3rem;font-weight:700;font-size:.9rem}
+.skyv2-depth-nav select,.skyv2-locate-constellation{min-height:44px;border:1px solid var(--line);border-radius:.65rem;background:var(--panel);color:var(--ink);padding:.45rem .55rem;font:inherit}
+.skyv2-locate-constellation{border-radius:999px;font-weight:700;cursor:pointer}
+.skyv2-locate-constellation:focus-visible,.skyv2-depth-nav select:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
