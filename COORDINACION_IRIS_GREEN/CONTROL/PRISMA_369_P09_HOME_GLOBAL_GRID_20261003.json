@@ -36,6 +36,15 @@
       "fix_commit": "d92f1844d3351cda29d3914424cf619d434b55c0",
       "cleanup_commit": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d",
       "status": "FIX_APPLIED_WAIT_CI"
+    },
+    {
+      "code": "FINAL_DISCOVER_GRID_WIDTH_CAP",
+      "evidence": "1440px discover grid right=1279.69 while common usable right=1408.31",
+      "cause": "Legacy max-width:78rem on .ig-home-v4-discover-grid",
+      "fix_commit": "09551f9d46e759d4b0858549d885d2aa0f378c63",
+      "integrity_commit": "0c0e655b0c0826c564e5e8e5caf5a2c09fc1cc04",
+      "workflow_commit": "779bfd236d5fd763f688eaca4269dd538460ccbf",
+      "status": "FIX_APPLIED_WAIT_CI"
     }
   ],
   "qa_measurement_fix": {
@@ -44,17 +53,17 @@
   },
   "ci": [
     {
-      "run_id": 37106361583,
-      "workflow": "Prisma #369 P9 Home grid",
+      "run_id": 37106656853,
+      "workflow": "Prisma #369 P9 Home grid + canonical CSS integrity",
       "status": "IN_PROGRESS",
-      "head_sha": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d"
+      "head_sha": "779bfd236d5fd763f688eaca4269dd538460ccbf"
     },
     {
-      "run_id": 37106361517,
+      "run_id": 37106634142,
       "workflow": "R42 A8 Home child-safe QA",
       "status": "IN_PROGRESS",
-      "head_sha": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d"
+      "head_sha": "09551f9d46e759d4b0858549d885d2aa0f378c63"
     }
   ],
-  "status": "P09_R49_HOME_MAIN_EXCLUSION_WAIT_CI"
+  "status": "P09_FINAL_WIDTH_CAP_FIX_WAIT_CI"
 }
