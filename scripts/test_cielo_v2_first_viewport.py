@@ -125,14 +125,17 @@ def main():
 
               # Touch/pointer selection: all targets are DOM controls.
               first=page.locator('.skyv2-star-target').first
+              first_name=first.get_attribute('data-star')
               box=first.bounding_box();assert box
+              px,py=box['x']+box['width']/2,box['y']+box['height']/2
               if width<500:
-                page.touchscreen.tap(box['x']+box['width']/2,box['y']+box['height']/2)
+                page.touchscreen.tap(px,py)
               else:
-                first.click()
+                page.mouse.click(px,py)
               page.wait_for_timeout(30)
               assert page.locator('.skyv2-info dl').count()==1
               assert page.locator('.skyv2-info').get_attribute('data-active')=='true'
+              assert page.locator('.skyv2-info h2').text_content()==first_name,(lang,width,first_name,page.locator('.skyv2-info h2').text_content())
 
               # Depth loads only on explicit request (one representative case).
               depth_count=0
