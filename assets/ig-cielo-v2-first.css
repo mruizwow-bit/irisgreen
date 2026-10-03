@@ -21,7 +21,7 @@ a{color:inherit}
 .skyv2[data-theme=navy]{--chrome:#0d1d33;--chrome2:#132b47;--ink:#eef4f8;--line:#68809a;--accent:#d5c8ff;--panel:#10263f}
 .skyv2-shell{position:relative;min-height:calc(100svh - 4rem);background:#06101d;overflow:hidden}
 .skyv2-scene{position:absolute;inset:0;overflow:hidden;background:#06101d;isolation:isolate}
-.skyv2-scene::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background-image:url('/img/intereses/cielo/01-cielo-horizonte-observacion-r01.png');background-repeat:no-repeat;background-position:center bottom;background-size:cover}
+.skyv2-scene::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background-image:var(--skyv2-horizon-image,none);background-repeat:no-repeat;background-position:center bottom;background-size:cover}
 .skyv2-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block;touch-action:none;outline:none}
 .skyv2-canvas:focus-visible{outline:3px solid #f0dc84;outline-offset:-6px}
 .skyv2-targets,.skyv2-labels{position:absolute;inset:0;pointer-events:none;z-index:3}
