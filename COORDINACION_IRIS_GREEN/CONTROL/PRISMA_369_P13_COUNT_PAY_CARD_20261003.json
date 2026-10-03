@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P13-COUNT-PAY-CARD-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 13,
+  "branch": "prisma/369-games-p13-count-pay-card-20261003",
+  "base_main": "e602f3b4fb2d1691893459a828d374a0dd557c81",
+  "finding": "COUNT_AND_PAY_RENDERED_AS_LOOSE_HERO_TEXT_LINK_INSTEAD_OF_GAME_CARD",
+  "repair": {
+    "es_commit": "28c9dae504557cabbbc67725b981d4c2604a6b38",
+    "en_commit": "439198d5b541ca60070010bb4955642f0d757491",
+    "pattern_reused": ".jg-card",
+    "new_css": false,
+    "new_assets": false,
+    "visual_assets": [
+      "/assets/pictogramas/dinero/e2.svg",
+      "/assets/pictogramas/mulberry-extra/bank_card.svg",
+      "/assets/pictogramas/propios/ticket.svg"
+    ]
+  },
+  "qa": {
+    "run_id": 37107598329,
+    "job_id": 111159079743,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P13_COUNT_AND_PAY_CARD_PASS",
+    "languages": [
+      "es",
+      "en"
+    ],
+    "widths": [
+      390,
+      1440
+    ],
+    "card_count_per_case": 1,
+    "images_per_card": 3,
+    "hero_cross_link_count": 0,
+    "route_status": 200,
+    "http_errors": 0,
+    "js_errors": 0
+  },
+  "main_modified": false,
+  "status": "PRISMA_P13_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "artifact": {
+    "id": 11268242673,
+    "name": "prisma-369-games-p13",
+    "sha256": "9d5b211102885aa79f92fec6665e77d061a00b3673df52449bb26cc97057b347"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
+}
