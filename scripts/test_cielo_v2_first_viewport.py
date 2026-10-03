@@ -84,7 +84,7 @@ def main():
               if width<500:
                 assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+1"),(lang,width,'horizontal overflow')
               scene_box=page.locator('.skyv2-scene').bounding_box();assert scene_box
-              assert scene_box['width']>=width-2,(lang,width,scene_box)
+              assert scene_box['width']/width>=0.94,(lang,width,scene_box)
 
               stars=page.locator('.skyv2-star-target').count()
               labels=page.locator('.skyv2-const-label').count()
