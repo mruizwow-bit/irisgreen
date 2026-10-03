@@ -1,0 +1,37 @@
+name: Prisma · #369 P29 P35 focused
+on:
+  push:
+    branches: ['prisma/369-p29-p35-focused-*']
+    paths:
+      - 'es/vivir-fuera/index.html'
+      - 'assets/ig-r69-unified-ui.css'
+      - 'scripts/test_prisma_369_p29_p35.py'
+      - '.github/workflows/prisma-369-p29-p35.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: Focused QA #369 P29 P35
+        run: python scripts/test_prisma_369_p29_p35.py
+      - name: Regression DARK LIGHT
+        run: python scripts/test_prisma_369_theme_p48.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-369-p29-p35
+          path: |
+            reports/prisma-369-p29-p35/
+            reports/prisma-369-theme-p48/
+          retention-days: 14
