@@ -12,7 +12,7 @@
 .ig-space-grid>li{min-width:0;grid-column:span 4}
 .ig-space-grid>li:nth-child(1),.ig-space-grid>li:nth-child(2){grid-column:span 6}
 .ig-space-card{height:100%;border:1px solid var(--igs-line);border-radius:1.1rem;background:var(--igs-surface);overflow:hidden}
-.ig-space-shell .ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;background:var(--igs-surface)!important;color:var(--igs-ink)!important;text-decoration:none!important}
+#space-section-shell.ig-space-shell .ig-space-card > .ig-space-card-link{display:flex;flex-direction:column;height:100%;min-height:44px;background-color:var(--igs-surface)!important;background-image:none!important;color:var(--igs-ink)!important;text-decoration:none!important}
 .ig-space-card[data-route-status=pending] .ig-space-card-link{cursor:default}
 .ig-space-visual{position:relative;aspect-ratio:16/9;display:grid;place-items:center;overflow:hidden;background:
  radial-gradient(circle at 75% 20%,color-mix(in srgb,var(--igs-accent) 15%,transparent),transparent 38%),
@@ -27,7 +27,8 @@
 .ig-space-go{margin-top:auto;padding-top:.55rem;font-weight:700;color:var(--igs-accent)}
 .ig-space-status{margin-top:auto;padding-top:.55rem;font-size:.84rem;font-weight:700;color:var(--igs-muted)}
 .ig-space-card[data-asset-status=approved] .ig-space-slot{display:none}
-.ig-space-shell .ig-space-card-link *{text-decoration:none!important}\n.ig-space-shell .ig-space-card-link[href]:hover .ig-space-title{text-decoration:underline!important;text-decoration-thickness:.08em;text-underline-offset:.15em}
+#space-section-shell.ig-space-shell .ig-space-card-link *{text-decoration:none!important}
+#space-section-shell.ig-space-shell .ig-space-card-link[href]:hover .ig-space-title{text-decoration:underline!important;text-decoration-thickness:.08em;text-underline-offset:.15em}
 .ig-space-shell[data-motion=reduced] *,.ig-space-shell[data-motion=none] *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
 @media(max-width:56rem){
  .ig-space-grid>li,.ig-space-grid>li:nth-child(1),.ig-space-grid>li:nth-child(2){grid-column:span 6}
