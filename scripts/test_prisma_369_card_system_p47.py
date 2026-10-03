@@ -16,7 +16,8 @@ SURFACES=[
  ('workshop','/es/taller/',['.ig42-area-card','.igk-tile','.ig-activity-card']),
  ('research','/es/investigacion/',['main article','[class*="-card"]']),
  ('living_abroad','/es/vivir-fuera/',['main article','[class*="-card"]']),
- ('data','/es/datos/',['main article','[class*="-card"]']),
+ ('conditions','/es/neurodiversidad/condiciones/',['.cards .card','.card']),
+ ('situations','/es/situaciones/',['.cards .card','.card']),
  ('support','/es/tramites/directorio/',['main article','[class*="-card"]']),
 ]
 VIEWS=[(1440,1000),(390,844)]
