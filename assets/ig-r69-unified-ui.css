@@ -345,19 +345,19 @@ body[data-ig-suite] .igs-inspector :is(h3,h4,p,label) {color:var(--ig-text)}
 body[data-ig-suite] main > .crumb {display:none}
 
 /* Dialogs are mounted under body, outside main: theme their controls too. */
-body[data-ig-r49="1"] .ig-r42-dialog {
+body[data-ig-r49="1"] .ig42-dialog {
  --r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);
  --r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft);
  --r42-line:var(--ig-separator);--r42-line-strong:var(--ig-border-control);
  background:var(--ig-bg-surface);color:var(--ig-text)
 }
-body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
+body[data-ig-r49="1"] :is(.ig42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
 body[data-ig-r49="1"] .igt-btn,
 body[data-ig-r49="1"] .igs-touch button {
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
  border-color:var(--ig-border-control)!important;box-shadow:none!important
 }
-body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] :is(.ig42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
 body[data-ig-r49="1"] .igt-btn:is(:hover,:active,[aria-pressed="true"]),
 body[data-ig-r49="1"] .igs-touch button:is(:hover,:active) {
  background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
@@ -377,9 +377,13 @@ body[data-ig-r49="1"] .jg-main :is(.jg-slot-card,.jg-slot-empty.is-focus,.jg-chi
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important
 }
 body[data-ig-r49="1"] .jg-main :is(button,.jg-card):focus-visible,
-body[data-ig-r49="1"] .ig-r42-dialog :is(button,input,select,textarea):focus-visible {
+body[data-ig-r49="1"] .ig42-dialog :is(button,input,select,textarea):focus-visible {
  outline:2px solid var(--ig-focus-global)!important;outline-offset:3px
 }
+body[data-ig-r49="1"] .ig42-dialog :where(h1,h2,h3,h4,strong,b,label,legend,summary,li,dt,dd){color:var(--ig-text)!important}
+body[data-ig-r49="1"] .ig42-dialog :where(p,.lede,.igt-note,.igt-caption,.muted,.meta,.desc){color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .ig42-dialog a{color:var(--ig-link)!important}
+
 /* Profile buttons contain their own text styles; keep the pair in both themes. */
 body[data-ig-taller-launcher] main .igk-p-btn:is(:hover,:focus-visible,:active) {
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important
