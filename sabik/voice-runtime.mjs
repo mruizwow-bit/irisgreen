@@ -48,6 +48,7 @@ export function createSabikConversationalVoice({
  if(typeof fetchImpl!=='function')throw new TypeError('SABIK_VOICE_FETCH_REQUIRED');
  let lang=language(initialLanguage),enabled=false,capability=null,capabilityPromise=null;
  let stream=null,recorder=null,chunks=[],captureTimer=0,vadTimer=0,vadContext=null,vadSource=null,vadAnalyser=null,sttController=null,ttsController=null,audio=null,audioUrl='';
+ let playbackContext=null,playbackGain=null,playbackSource=null;
  let listening=false,transcribing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
 
@@ -97,6 +98,15 @@ export function createSabikConversationalVoice({
   }catch{clearVad();}
  }
  function revoke(){if(audioUrl){try{host.URL?.revokeObjectURL?.(audioUrl);}catch{}audioUrl='';}}
+ function ensurePlaybackUnlocked(){
+  const AC=host.AudioContext||host.webkitAudioContext;
+  if(typeof AC!=='function')return false;
+  try{
+   if(!playbackContext){playbackContext=new AC();playbackGain=playbackContext.createGain();playbackGain.gain.value=volume;playbackGain.connect(playbackContext.destination);}
+   if(playbackContext.state==='suspended')void playbackContext.resume();
+   return true;
+  }catch{return false;}
+ }
 
  async function capabilities({force=false}={}){
   if(capability&&!force)return capability;
@@ -132,6 +142,7 @@ export function createSabikConversationalVoice({
  function cancelDynamic({emitState=true}={}){
   serial+=1;
   if(ttsController){try{ttsController.abort('cancelled');}catch{}ttsController=null;}
+  if(playbackSource){try{playbackSource.stop();}catch{}playbackSource=null;}
   if(audio){
    try{audio.pause();audio.removeAttribute?.('src');audio.load?.();}catch{}
    audio=null;
@@ -167,8 +178,8 @@ export function createSabikConversationalVoice({
   const value=language(next);if(value===lang){emit({reason:'language-same'});return lang;}
   stopAll('language-change');lang=value;lastText='';lastTranscript='';fixed.setLanguage(lang);emit({reason:'language-change'});return lang;
  }
- function setVolume(value){volume=clamp(value,0,1);if(audio)audio.volume=volume;emit({reason:'volume'});return volume;}
- function setRate(value){rate=clamp(value,.6,1.6);if(audio)audio.playbackRate=rate;emit({reason:'rate'});return rate;}
+ function setVolume(value){volume=clamp(value,0,1);if(audio)audio.volume=volume;if(playbackGain)playbackGain.gain.value=volume;emit({reason:'volume'});return volume;}
+ function setRate(value){rate=clamp(value,.6,1.6);if(audio)audio.playbackRate=rate;if(playbackSource)playbackSource.playbackRate.value=rate;emit({reason:'rate'});return rate;}
 
  async function speakFixed(id,text,options={}){
   if(!enabled||!fixedReady)return Object.freeze({status:'disabled'});
@@ -201,6 +212,7 @@ export function createSabikConversationalVoice({
  }
 
  async function startListening(){
+  ensurePlaybackUnlocked();
   if(!enabled){
    const s=await setEnabled(true);if(!s.enabled)return Object.freeze({status:'unavailable'});
   }
@@ -270,16 +282,32 @@ export function createSabikConversationalVoice({
     if(!response.ok)throw failure('TTS_HTTP_'+response.status);
     if(!/^audio\/(?:wav|x-wav|wave)(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('TTS_BAD_MEDIA');
     const blob=await response.blob();if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
-    const AudioCtor=host.Audio;if(typeof AudioCtor!=='function')throw failure('AUDIO_PLAYBACK_UNAVAILABLE');
-    audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
-    const result=await new Promise(resolve=>{
-     let settled=false;
-     const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
-     player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing',part:index+1,parts:parts.length});},{once:true});
-     player.addEventListener?.('ended',()=>finish('ended'),{once:true});
-     player.addEventListener?.('error',()=>finish('play-error'),{once:true});
-     Promise.resolve(player.play()).catch(()=>finish('play-error'));
-    });
+    let result;
+    if(ensurePlaybackUnlocked()&&playbackContext&&playbackGain){
+     try{
+      const bytes=await blob.arrayBuffer();
+      const buffer=await playbackContext.decodeAudioData(bytes.slice(0));
+      if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
+      result=await new Promise(resolve=>{
+       let settled=false;
+       const source=playbackContext.createBufferSource();playbackSource=source;source.buffer=buffer;source.playbackRate.value=rate;source.connect(playbackGain);
+       const finish=status=>{if(settled)return;settled=true;if(playbackSource===source)playbackSource=null;try{source.disconnect();}catch{}speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+       source.onended=()=>finish('ended');
+       try{speaking=true;emit({semantic:'speaking',reason:'audio-context-playing',part:index+1,parts:parts.length});source.start(0);}catch{finish('play-error');}
+      });
+     }catch{result='play-error';}
+    }else{
+     const AudioCtor=host.Audio;if(typeof AudioCtor!=='function')throw failure('AUDIO_PLAYBACK_UNAVAILABLE');
+     audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
+     result=await new Promise(resolve=>{
+      let settled=false;
+      const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+      player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing',part:index+1,parts:parts.length});},{once:true});
+      player.addEventListener?.('ended',()=>finish('ended'),{once:true});
+      player.addEventListener?.('error',()=>finish('play-error'),{once:true});
+      Promise.resolve(player.play()).catch(()=>finish('play-error'));
+     });
+    }
     if(result!=='ended'){if(result==='play-error')issue('TTS_PLAYBACK_ERROR');return Object.freeze({status:result,language:lang,model_id:MODEL[lang].ttsId});}
    }
    return Object.freeze({status:'ended',language:lang,model_id:MODEL[lang].ttsId,parts:parts.length});
