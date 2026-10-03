@@ -30,7 +30,7 @@
       "id": "B01",
       "name": "Solar foundation",
       "owner": "LUMEN",
-      "status": "R04_PARTIAL_KEEP_REWORK",
+      "status": "READY_FOR_VISUAL_REVIEW_R05",
       "assets": [
         "sol",
         "mercurio",
@@ -56,9 +56,9 @@
       "entry_gate_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
       "generation_complete": true,
       "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
-      "next_owner": "LUMEN_A7",
-      "atlas_packaging": "WAIT_R05_VISUAL_PASS",
-      "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R04 Review",
+      "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
+      "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
+      "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review",
       "masters": [
         {
           "id": "sol",
@@ -166,7 +166,9 @@
       },
       "r05": {
         "authorized": true,
+        "completed": true,
         "owner": "LUMEN_A7",
+        "output_marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
         "regenerate": [
           "sol",
           "venus",
@@ -175,15 +177,47 @@
         "frozen_keep": [
           "mercurio"
         ],
-        "next_gate": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
-        "rules": [
-          "DO_NOT_REGENERATE_MERCURY",
-          "PRESERVE_FACTUAL_BRIEF",
-          "PRESERVE_1536_RGBA_ALPHA_SRGB",
-          "ONE_BODY_PER_FILE",
-          "NO_BAKED_SCALE",
-          "NO_TEXT_BACKGROUND_STARS"
-        ]
+        "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review",
+        "masters": [
+          {
+            "id": "sol",
+            "filename": "b01_sol_master_r05.png",
+            "sha256": "2d72a6af1a05403666484b2cf7b46b6b585ccea0049990b001fb254a45be5528",
+            "status": "R05_REVIEW"
+          },
+          {
+            "id": "mercurio",
+            "filename": "../R04 Review/b01_mercurio_master_r04.png",
+            "sha256": "91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126",
+            "status": "KEEP_R04_LOCKED"
+          },
+          {
+            "id": "venus",
+            "filename": "b01_venus_master_r05.png",
+            "sha256": "a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f",
+            "status": "R05_REVIEW"
+          },
+          {
+            "id": "tierra",
+            "filename": "b01_tierra_master_r05.png",
+            "sha256": "06f69d85c93d3ab5354e834774baa52153e5ca0de2563d197e1a00b1a61c7cf8",
+            "status": "R05_REVIEW"
+          }
+        ],
+        "contact_sheet": {
+          "filename": "B01_SOLAR_FOUNDATION_R05_CONTACT_SHEET.png",
+          "sha256": "fb32c98d87684bb38a61691f527f83cc938179281335c019548881b71c181596",
+          "review_only": true
+        },
+        "support": [
+          "B01_SOLAR_FOUNDATION_R05_DIRECTION.md",
+          "B01_SOLAR_FOUNDATION_R05_MANIFEST.json",
+          "B01_SOLAR_FOUNDATION_R05_PROVENANCE.json"
+        ],
+        "factual_brief_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
+        "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
+        "b02": "HOLD_AFTER_B01",
+        "b03": "HOLD_FOR_PRODUCT_SPEC"
       }
     },
     {
@@ -229,7 +263,7 @@
   },
   "active_visual_review": {
     "batch": "B01",
-    "owner": "LUMEN_A7",
+    "owner": "ASTRA_MARIA_LUMEN",
     "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
     "atlas_packaging_blocked_until_pass": true
   }

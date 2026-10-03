@@ -1,0 +1,32 @@
+# HANDOFF · LUMEN B01 R05 → VISUAL REVIEW
+
+Fecha: 03/10/2026
+
+Gate:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW`
+
+Library:
+`/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review/`
+
+Abrir primero:
+`B01_SOLAR_FOUNDATION_R05_CONTACT_SHEET.png`
+
+Revisar:
+- Sol R05;
+- Mercurio KEEP R04;
+- Venus R05;
+- Tierra R05.
+
+Hashes:
+- Sol R05 · `2d72a6af1a05403666484b2cf7b46b6b585ccea0049990b001fb254a45be5528`
+- Mercurio R04 KEEP · `91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126`
+- Venus R05 · `a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f`
+- Tierra R05 · `06f69d85c93d3ab5354e834774baa52153e5ca0de2563d197e1a00b1a61c7cf8`
+
+Decisiones esperadas:
+- `B01_R05_VISUAL_PASS_FOR_ATLAS_PACKAGING`
+o
+- `B01_R05_VISUAL_REWORK_<ASSET>`
+
+Atlas WAIT.
+B02/B03 HOLD.

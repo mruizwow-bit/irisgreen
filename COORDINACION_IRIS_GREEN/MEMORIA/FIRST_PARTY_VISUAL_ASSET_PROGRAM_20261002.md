@@ -620,3 +620,81 @@ Atlas:
 
 B02/B03:
 `HOLD`
+
+
+## B01 · R05 LUMEN · READY FOR REVIEW · 03/10/2026
+
+Estado:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW`
+
+R04 parcial:
+- Mercurio → KEEP_LOCKED;
+- Sol → REWORK;
+- Venus → REWORK;
+- Tierra → REWORK.
+
+R05 rehace únicamente:
+- Sol;
+- Venus;
+- Tierra.
+
+Mercurio sigue con autoridad R04:
+`/Iris Green/First Party Visual/B01 Solar Foundation/R04 Review/b01_mercurio_master_r04.png`
+SHA-256:
+`91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126`
+
+Library R05:
+`/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review/`
+
+Masters nuevos:
+- Sol R05 · `b01_sol_master_r05.png`
+  - SHA-256 `2d72a6af1a05403666484b2cf7b46b6b585ccea0049990b001fb254a45be5528`
+- Venus R05 · `b01_venus_master_r05.png`
+  - SHA-256 `a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f`
+- Tierra R05 · `b01_tierra_master_r05.png`
+  - SHA-256 `06f69d85c93d3ab5354e834774baa52153e5ca0de2563d197e1a00b1a61c7cf8`
+
+Contact sheet:
+`B01_SOLAR_FOUNDATION_R05_CONTACT_SHEET.png`
+SHA-256:
+`fb32c98d87684bb38a61691f527f83cc938179281335c019548881b71c181596`
+
+Contrato preservado:
+- 1536×1536;
+- PNG RGBA;
+- alpha real;
+- sRGB ICC;
+- un cuerpo por archivo;
+- disco completo;
+- sin texto/logos/estrellas/fondo espacial;
+- no escala relativa horneada;
+- clase `REPRESENTATION`;
+- etiqueta pública futura:
+  - ES `Imagen hecha por ordenador`;
+  - EN `Computer-made image`.
+
+Dirección R05:
+- Sol: autoemisión más clara, fotosfera blanco/blanco cálido, granulación visible, glow corto, pequeñas manchas no dominantes; sin corona/prominencias permanentes.
+- Venus: bandas/capas nubosas crema-marfil más legibles, volumen atmosférico, superficie totalmente oculta.
+- Tierra: África/Europa/Atlántico, materialidad planetaria y nubes con profundidad, halo fino; nubes genéricas, no meteorología actual.
+- Mercurio: KEEP R04, no regenerado.
+
+Soporte R05 en Library:
+- `B01_SOLAR_FOUNDATION_R05_DIRECTION.md`
+- `B01_SOLAR_FOUNDATION_R05_MANIFEST.json`
+- `B01_SOLAR_FOUNDATION_R05_PROVENANCE.json`
+
+Gate:
+`READY_FOR_VISUAL_REVIEW_R05`
+
+Siguiente:
+**Astra + María + Lumen visual review.**
+
+Atlas:
+`WAIT_FULL_B01_VISUAL_PASS`
+
+B02:
+`HOLD_AFTER_B01`
+
+B03:
+`HOLD_FOR_PRODUCT_SPEC`

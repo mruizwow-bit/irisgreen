@@ -1,0 +1,49 @@
+{
+  "schema": "iris-green-b01-solar-foundation-r05-visual-evidence-v1",
+  "date": "2026-10-03",
+  "owner": "LUMEN_A7",
+  "input": "B01_R04_VISUAL_REWORK_SOL_VENUS_EARTH__MERCURY_KEEP",
+  "output": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
+  "library_path": "/Iris Green/First Party Visual/B01 Solar Foundation/R05 Review",
+  "assets": [
+    {
+      "id": "sol",
+      "sha256": "2d72a6af1a05403666484b2cf7b46b6b585ccea0049990b001fb254a45be5528",
+      "revision": "R05"
+    },
+    {
+      "id": "mercurio",
+      "sha256": "91cdc12c1af20c501a41191f9c4f50f150bff8fba1b9fad1fcaf9d496d02e126",
+      "revision": "R04_KEEP"
+    },
+    {
+      "id": "venus",
+      "sha256": "a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f",
+      "revision": "R05"
+    },
+    {
+      "id": "tierra",
+      "sha256": "06f69d85c93d3ab5354e834774baa52153e5ca0de2563d197e1a00b1a61c7cf8",
+      "revision": "R05"
+    }
+  ],
+  "contact_sheet": {
+    "sha256": "fb32c98d87684bb38a61691f527f83cc938179281335c019548881b71c181596",
+    "review_only": true
+  },
+  "technical_contract": {
+    "canvas": "1536x1536",
+    "format": "PNG RGBA",
+    "alpha": true,
+    "srgb_icc": true,
+    "one_body_per_file": true,
+    "no_text": true,
+    "no_space_background": true,
+    "relative_scale_baked": false,
+    "class": "REPRESENTATION"
+  },
+  "factual_brief_commit": "2a387fa0e1294b3a1167e4adcc800bd7419f4cfd",
+  "atlas_packaging": "WAIT_FULL_B01_VISUAL_PASS",
+  "b02": "HOLD_AFTER_B01",
+  "b03": "HOLD_FOR_PRODUCT_SPEC"
+}
