@@ -61,12 +61,12 @@ def main():
         for theme in ('dark','light'):
           for name,route,lang in routes:
             ctx=browser.new_context(viewport={'width':390,'height':844})
-            ctx.add_init_script(
-              """theme=>{try{localStorage.setItem('ig-theme-2026',theme)}catch(e){}
-              window.__igCLS=0;
-              try{new PerformanceObserver(list=>{for(const e of list.getEntries()){if(!e.hadRecentInput)window.__igCLS+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){} }""",
-              theme
+            init_script=(
+              "try{localStorage.setItem('ig-theme-2026',"+repr(theme)+")}catch(e){};"
+              "window.__igCLS=0;"
+              "try{new PerformanceObserver(list=>{for(const e of list.getEntries()){if(!e.hadRecentInput)window.__igCLS+=e.value}}).observe({type:'layout-shift',buffered:true})}catch(e){}"
             )
+            ctx.add_init_script(init_script)
             page=ctx.new_page(); bad=[]; errors=[]
             page.on('response',lambda r: bad.append((r.status,urlsplit(r.url).path)) if r.status>=400 else None)
             page.on('pageerror',lambda e: errors.append(str(e)))
