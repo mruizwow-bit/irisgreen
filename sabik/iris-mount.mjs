@@ -3,6 +3,7 @@ import {createAuthorizedTransport} from './authorized-transport.mjs';
 import {connectionConfig,sealedLibrary} from './mount-config.mjs';
 import {createSabikConversationalVoice} from './voice-runtime.mjs';
 import {createSabikConversation} from './conversation-core-r66.mjs';
+import {loadDialogueLibrary} from './dialogue-library.mjs';
 
 const TEXT={
  es:{
@@ -48,13 +49,15 @@ const TEXT={
  }
 };
 
-function mount(){
+async function mount(){
  const aside=document.querySelector('.sabik-panel');if(!aside)return;
  const $=s=>aside.querySelector(s),input=$('#sabik-input'),announcement=$('#sabik-announcement'),root=$('#sabik-results'),voiceButton=$('#sabik-voice'),voiceState=$('#sabik-voice-state'),micButton=$('#sabik-mic'),voiceStop=$('#sabik-voice-stop'),voiceRepeat=$('#sabik-voice-repeat'),voiceVolume=$('#sabik-voice-volume'),voiceRate=$('#sabik-voice-rate');
  const connection=connectionConfig.enabled?createAuthorizedTransport({cloudOrigin:connectionConfig.cloudOrigin}):null;
  const cloudQuery=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
  let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false,voiceSessionActive=false,voiceResumeTimer=0;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options),present=()=>visual('presente',{force:true});
+ const dialogues={es:null,en:null};
+ await Promise.all(['es','en'].map(async code=>{try{dialogues[code]=await loadDialogueLibrary({language:code,base:'/sabik/assets/dialogue-r01'});}catch{dialogues[code]=null;}}));
  let voice,lastLanguage=lang;
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
@@ -191,7 +194,7 @@ function mount(){
   if(next==='CONFIRMAR'&&meta.inputMode==='voice'&&voiceEnabled()&&voice.getState().ttsAvailable)return;
   void visual(v,{force:true,to:'presente',semantic,reason:meta.phase||'conversation-state'});
  }
- const conversation=createSabikConversation({retrieve,onState:state,onAnswer:renderAnswer,onSources:renderSources});
+ const conversation=createSabikConversation({retrieve,getDialogue:locale=>dialogues[locale]||null,onState:state,onAnswer:renderAnswer,onSources:renderSources});
 
  function translate(){
   const nextLang=document.documentElement.lang.startsWith('en')?'en':'es';
