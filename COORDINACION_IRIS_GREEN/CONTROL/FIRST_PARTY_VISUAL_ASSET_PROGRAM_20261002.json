@@ -266,5 +266,24 @@
     "owner": "ASTRA_MARIA_LUMEN",
     "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
     "atlas_packaging_blocked_until_pass": true
+  },
+  "updated": "2026-10-03",
+  "eclipse_catalog_production": {
+    "owner": "ATLAS_A1",
+    "status": "READY_FOR_FINAL_REVIEW",
+    "gate": "ECLIPSES_ALL_458_READY_FOR_FINAL_REVIEW",
+    "total_events": 458,
+    "solar": 228,
+    "lunar": 230,
+    "batches": 46,
+    "batch_policy": "45x10 + 1x8",
+    "review_policy": "FINAL_ONLY_AFTER_ALL_BATCHES_COMPLETE",
+    "source_path": "es/intereses/eclipses/eclipses.json",
+    "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+    "event_class": "CALCULATION",
+    "review_diagram_class": "REPRESENTATION",
+    "runtime_touched": false,
+    "main_touched": false,
+    "branch": "atlas/eclipse-catalog-batches-20261003"
   }
 }
