@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green.solar-b03-factual-gate.v1",
+  "date": "2026-10-03",
+  "owner_gate": "ASTRA_TEMPORARY",
+  "status": "PASS",
+  "gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "selection": [
+    "Ceres",
+    "Haumea",
+    "Makemake",
+    "Eris",
+    "Luna",
+    "Io",
+    "Europa",
+    "Ganímedes",
+    "Titán",
+    "Encélado"
+  ],
+  "decisions": {
+    "Ceres": "DAWN_SCAFFOLD_ALLOWED",
+    "Haumea": "ELONGATED_NEUTRAL_ICY_LOW_DETAIL__NO_RING_IN_BASE",
+    "Makemake": "REDDISH_BROWN_ICY_LOW_DETAIL__NO_PERMANENT_HALO",
+    "Eris": "PALE_LOW_DETAIL_ICY_ROCKY__NO_PLUTO_COPY__NO_PERMANENT_ATMOSPHERE",
+    "Luna": "NEARSIDE_NORTH_UP_OBSERVED_GEOGRAPHY__PHASE_RUNTIME",
+    "Io": "VOLCANIC_BASE__NO_SPECIFIC_ACTIVE_ERUPTION",
+    "Europa": "ICY_FRACTURED__NO_VISIBLE_INTERNAL_OCEAN",
+    "Ganymede": "DARK_CRATERED_PLUS_LIGHT_GROOVED",
+    "Titan": "OPAQUE_VISIBLE_LIGHT_HAZE__NO_SURFACE_MAP",
+    "Enceladus": "BRIGHT_ICY_BASE__NO_DRAMATIC_PLUME"
+  },
+  "next": "LUMEN_10_MASTERS_PLUS_CONTACT_SHEET",
+  "expected_marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_REVIEW",
+  "main": false,
+  "deploy": false
+}
