@@ -312,3 +312,160 @@ Toda decisión visual nueva debe dejar:
 - límites.
 
 No depender de este chat para recuperar Croma.
+
+
+## 15 · Cierre de lectura canónica · proyecto + normativa + inglés
+
+Fecha de cierre de este barrido: 03/10/2026.
+
+### Alcance real de “leer el proyecto entero”
+
+Croma ha reconciliado la **fuente canónica que gobierna decisiones y diseño**, no ha confundido conocimiento del proyecto con abrir byte a byte todos los binarios/media del repositorio.
+
+Leído/reconciliado:
+- `COORDINACION_IRIS_GREEN/README.md`;
+- `ESTADO_ACTUAL.md` y su mapa completo de carriles;
+- `MEMORIA/ESTADO_CONSOLIDADO.md`;
+- `CONTROL/ESTADO_TRABAJOS.csv`;
+- organización y Formación;
+- toda la carpeta `NORMATIVA/` vigente: **34 documentos inventariados y leídos**;
+- órdenes/issues/handoffs necesarios para resolver precedencias de Croma;
+- HEAD vivo de `main` y de coordinación;
+- estructura completa de la versión inglesa en `main`;
+- lectura representativa de superficies inglesas principales para comprobar cómo se materializan `lang`, canonical/hreflang, navegación, accesibilidad, age/safety y copy.
+
+No se consideran “leídos” por inspección conceptual los vídeos, audios, imágenes y otros binarios que solo deben abrirse cuando una tarea visual concreta los necesite.
+
+### Resume Gate al cierre
+
+`main` observado:
+`411f8eb9cfd7c0baf17a9e6b773fdafc222502ef`
+— `Astra: record Solar R04 partial keep and R05 scope`.
+
+Coordinación observada antes de este apéndice:
+`ad75e07664538e01bd8245226f3a1179a41d584a`
+— `R59: briefs Solar B02 Cielo densidad y expansión Fósiles`.
+
+La coordinación avanzó después del commit de formación Croma `7794659...`.
+Aprendizaje:
+**nunca asumir que el SHA de formación sigue siendo HEAD**.
+
+### Inventario inglés de `main`
+
+Bajo `/en/` se inventariaron:
+- **520 archivos**;
+- **518 HTML**;
+- **2 JSON**.
+
+Secciones:
+- data: 51 archivos;
+- everyday-life: 50;
+- interests: 7;
+- neurodiversity: 186;
+- privacy: 1;
+- quiet-space: 1;
+- resources: 7;
+- situations: 188;
+- workshop: 29.
+
+Lecturas representativas confirmaron:
+- `<html lang="en">`;
+- canonical EN;
+- hreflang ES/EN en varias superficies;
+- copy de controles de lectura en inglés;
+- navegación y contenidos públicos ingleses reales;
+- estados/labels de herramientas en inglés.
+
+### Hallazgos de deuda EN que Croma debe recordar
+
+La existencia de `/en/` no acredita por sí sola paridad completa.
+
+Ejemplos observados en `main`:
+1. `en/workshop/index.html` todavía presenta `All ages` / `ALL_AGES` como opción pública seleccionable.
+   Esto contradice la precedencia posterior registrada en #354:
+   `ALL_AGES = CONTENT_ELIGIBILITY_TAG_ONLY`.
+2. Varias páginas EN todavía enlazan partes de la navegación a rutas `/es/` (por ejemplo Vídeos, Investigación, Soporte, Libros, Play/Taller según superficie).
+3. Hay páginas EN con canonical correcto pero sin evidencia equivalente de hreflang en el fragmento revisado.
+4. Por tanto:
+   **EN_PRESENT != EN_PARITY_PASS**.
+
+Estos hallazgos se registran durante Formación.
+No se corrigen silenciosamente sin una orden de producto/integración.
+
+### Precedencias normativas aprendidas
+
+#### Edad
+Documentos R42 antiguos usan:
+`INFANCIA / ADOLESCENCIA / ADULTEZ / TRANSVERSAL`.
+
+La taxonomía posterior del 28/09 sustituyó esos valores por:
+- `AGE_0_12`;
+- `AGE_13_17`;
+- `AGE_18_PLUS`;
+- `ALL_AGES`;
+- `GENERAL` como estado de interfaz/sesión sin selección.
+
+Después, #354 precisó aún más:
+- perfiles públicos: `GENERAL`, `AGE_0_12`, `AGE_13_17`, `AGE_18_PLUS`;
+- `ALL_AGES` = etiqueta interna de elegibilidad de contenido, no perfil/botón.
+
+Croma debe usar la decisión posterior y no copiar literalmente UI histórica.
+
+#### Gates históricos
+Varios addenda R40–R42 dicen `no main`, `Deploy Preview` o describen flujos concretos de aquella oleada.
+No se elevan automáticamente a regla global eterna.
+
+Se distingue:
+- regla transversal vigente;
+- contrato específico de carril;
+- histórico superseded;
+- flujo actual.
+
+#### Material/cristal
+Los estudios de glass/liquid material son subordinados a toda la normativa Iris Green.
+No crean una identidad paralela.
+Regla estable:
+- arte puede tener lenguaje propio;
+- chrome usa sistema global;
+- lectura estable preferentemente opaca;
+- no glass-on-glass;
+- variantes low-stimulation/reduced transparency;
+- contraste sobre fondo efectivo.
+
+#### HUMAN QA
+CI, capturas, hashes y tests ayudan.
+No sustituyen:
+- legibilidad perceptiva;
+- jerarquía;
+- carga cognitiva;
+- materialidad;
+- ausencia de sobresalto;
+- identidad;
+- calidad visual final.
+
+## 16 · Estado de Croma tras este cierre
+
+Estado honesto:
+`FOUNDATION_STUDIED_PRACTICE_PENDING`.
+
+Croma ya dispone de:
+- identidad profesional;
+- fronteras;
+- plan de formación;
+- runbook;
+- normativa reconciliada;
+- formación externa primaria;
+- mapa del proyecto;
+- inventario EN;
+- prácticas P03 y P11 cerradas.
+
+Para `FOUNDATION_PASS_INTERNAL` aún se exige práctica sobre un encargo visual real:
+- brief;
+- responsive;
+- paridad ES/EN;
+- accesibilidad;
+- E4;
+- master/handoff;
+- examen interno.
+
+No se infla el estado por cantidad de lectura.
