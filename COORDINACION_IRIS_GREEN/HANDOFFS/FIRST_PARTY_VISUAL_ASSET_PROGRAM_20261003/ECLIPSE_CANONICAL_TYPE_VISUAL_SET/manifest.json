@@ -114,5 +114,9 @@
     "not_to_scale": true,
     "runtime_touched": false,
     "main_touched": false
+  },
+  "qa": {
+    "path": "R02_QA.json",
+    "status": "FAIL"
   }
 }
