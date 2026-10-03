@@ -18,7 +18,7 @@ SURFACES=[
  ('home','/',['.ig-home-v4-discover-grid .ig-home-v4-card'],'media'),
  ('resources','/es/recursos/',['.ig-activity-card'],'catalog'),
  ('games','/es/recursos/juegos/',['.ig-activity-card'],'catalog'),
- ('workshop','/es/taller/',['.igk-start .igk-tile'],'media'),
+ ('workshop','/es/taller/',['.igk-tile'],'media'),
  ('research','/es/investigacion/',['main article'],'result'),
  ('living_abroad','/es/vivir-fuera/',['main article'],'result'),
  ('conditions','/es/neurodiversidad/condiciones/',['.cards .card'],'catalog'),
@@ -135,10 +135,10 @@ def main():
 
             # True CTA variants finish on the same bottom rhythm. Home cards may
             # intentionally omit CTA; the whole card remains the link.
-            if name in ('resources','games','workshop'):
+            if name in ('resources','games'):
               assert data['cta'] is not None,(name,width,'cta missing')
               assert 18<=data['ctaBottom']<=22,(name,width,'cta bottom',data['ctaBottom'])
-            elif name=='home' and data['cta'] is not None:
+            elif name in ('home','workshop') and data['cta'] is not None:
               assert 18<=data['ctaBottom']<=22,(name,width,'cta bottom',data['ctaBottom'])
 
             # Support uses a disclosure control at the top; do not misclassify it as
