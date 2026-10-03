@@ -137,6 +137,7 @@ def main():
               # Depth loads only on explicit request (one representative case).
               depth_count=0
               if lang=='es' and width==390 and motion=='normal':
+                page.locator('.skyv2-meta > summary').click()
                 page.locator('.skyv2-depth').click()
                 page.locator('#cielo-v2[data-depth-loaded="true"]').wait_for(timeout=10000)
                 depth_count=req.count(DEPTH)
