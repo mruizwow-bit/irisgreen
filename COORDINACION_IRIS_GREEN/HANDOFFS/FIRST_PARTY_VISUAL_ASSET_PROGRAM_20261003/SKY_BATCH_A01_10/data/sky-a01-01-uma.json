@@ -7,15 +7,22 @@
     "abbr": "UMa",
     "official_latin": "Ursa Major",
     "name_es": "Osa Mayor",
+    "donor_common_en": "Big Dipper",
     "label_ra_h": 11,
-    "label_dec_deg": 48
+    "label_dec_deg": 48,
+    "brightest": {
+      "n": "Alioth",
+      "d": "ε UMa",
+      "mag": 1.76
+    }
   },
-  "selection_basis": "existing audited cielo.json cromo order 1-10",
+  "selection_basis": "existing audited cielo.json cromo order 1–10; no new editorial ordering invented by Atlas",
   "field": {
     "center_ra_h": 11,
     "center_dec_deg": 48,
     "radius_deg": 36.373,
-    "magnitude_limit": 5.5
+    "magnitude_limit": 5.5,
+    "projection": "gnomonic_local_review_projection"
   },
   "stars": [
     {
@@ -29,7 +36,16 @@
       "designation": "ε UMa",
       "name": "Alioth",
       "distance_ly": 83,
-      "spectral_type": "A0p"
+      "spectral_type": "A0p",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.383862,
+        "y": 0.271438,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-37",
@@ -42,7 +58,16 @@
       "designation": "α UMa",
       "name": "Dubhe",
       "distance_ly": 123,
-      "spectral_type": "F7V comp"
+      "spectral_type": "F7V comp",
+      "category": "BRIGHT",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.010773,
+        "y": 0.332333,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-39",
@@ -55,7 +80,16 @@
       "designation": "η UMa",
       "name": "Alkaid",
       "distance_ly": 104,
-      "spectral_type": "B3V SB"
+      "spectral_type": "B3V SB",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.665285,
+        "y": 0.224243,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-51",
@@ -68,7 +102,16 @@
       "designation": "γ¹ Leo",
       "name": "Algieba",
       "distance_ly": 130,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "BRIGHT",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.254465,
+        "y": -0.718169,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-58",
@@ -81,7 +124,16 @@
       "designation": "β UMi",
       "name": "Kochab",
       "distance_ly": 131,
-      "spectral_type": "K4IIIvar"
+      "spectral_type": "K4IIIvar",
+      "category": "BRIGHT",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.385482,
+        "y": 0.894267,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-63",
@@ -94,7 +146,16 @@
       "designation": "β Leo",
       "name": "Denebola",
       "distance_ly": 36,
-      "spectral_type": "A3Vvar"
+      "spectral_type": "A3Vvar",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.340518,
+        "y": -0.885165,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-70",
@@ -107,7 +168,16 @@
       "designation": "ζ UMa",
       "name": "Mizar",
       "distance_ly": 86,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.498591,
+        "y": 0.298381,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-81",
@@ -120,7 +190,16 @@
       "designation": "β UMa",
       "name": "Merak",
       "distance_ly": 80,
-      "spectral_type": "A1V"
+      "spectral_type": "A1V",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.006107,
+        "y": 0.200073,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-86",
@@ -133,7 +212,16 @@
       "designation": "γ UMa",
       "name": "Phecda",
       "distance_ly": 83,
-      "spectral_type": "A0V SB"
+      "spectral_type": "A0V SB",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.190094,
+        "y": 0.153562,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-97",
@@ -146,7 +234,16 @@
       "designation": "δ Leo",
       "name": "Zosma",
       "distance_ly": 58,
-      "spectral_type": "A4V"
+      "spectral_type": "A4V",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.088273,
+        "y": -0.704981,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-156",
@@ -159,7 +256,16 @@
       "designation": "α² CVn",
       "name": "Cor Caroli",
       "distance_ly": 115,
-      "spectral_type": "A0spe..."
+      "spectral_type": "A0spe...",
+      "category": "BRIGHT",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.561525,
+        "y": -0.140274,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-169",
@@ -172,7 +278,16 @@
       "designation": "ε Leo",
       "name": "Ras Elased Australis",
       "distance_ly": 247,
-      "spectral_type": "G0II"
+      "spectral_type": "G0II",
+      "category": "BRIGHT",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.448791,
+        "y": -0.578542,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-175",
@@ -185,7 +300,16 @@
       "designation": "ψ UMa",
       "name": null,
       "distance_ly": 145,
-      "spectral_type": "K1III"
+      "spectral_type": "K1III",
+      "category": "BRIGHT",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.040926,
+        "y": -0.082482,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-189",
@@ -198,7 +322,16 @@
       "designation": "μ UMa",
       "name": "Tania Australis",
       "distance_ly": 230,
-      "spectral_type": "M0III SB"
+      "spectral_type": "M0III SB",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.1686,
+        "y": -0.14543,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-197",
@@ -211,7 +344,16 @@
       "designation": "ι UMa",
       "name": "Talitha",
       "distance_ly": 47,
-      "spectral_type": "A7IV"
+      "spectral_type": "A7IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.486097,
+        "y": 0.098523,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-201",
@@ -224,7 +366,16 @@
       "designation": "α Lyn",
       "name": null,
       "distance_ly": 203,
-      "spectral_type": "M0IIIvar"
+      "spectral_type": "M0IIIvar",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.508873,
+        "y": -0.263787,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-205",
@@ -237,7 +388,16 @@
       "designation": "θ UMa",
       "name": null,
       "distance_ly": 44,
-      "spectral_type": "F6IV"
+      "spectral_type": "F6IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.32267,
+        "y": 0.136064,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-239",
@@ -250,7 +410,16 @@
       "designation": "δ UMa",
       "name": "Megrez",
       "distance_ly": 81,
-      "spectral_type": "A3Vvar"
+      "spectral_type": "A3Vvar",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.24666,
+        "y": 0.250637,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-244",
@@ -263,7 +432,16 @@
       "designation": "θ Leo",
       "name": "Chertan",
       "distance_ly": 165,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.096561,
+        "y": -0.866341,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-249",
@@ -276,7 +454,16 @@
       "designation": "ο UMa",
       "name": "Muscida",
       "distance_ly": 179,
-      "spectral_type": "G4II-III"
+      "spectral_type": "G4II-III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.444518,
+        "y": 0.441088,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-271",
@@ -289,7 +476,16 @@
       "designation": "ζ Leo",
       "name": "Adhafera",
       "distance_ly": 274,
-      "spectral_type": "F0III"
+      "spectral_type": "F0III",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.26049,
+        "y": -0.610331,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-273",
@@ -302,7 +498,16 @@
       "designation": "λ UMa",
       "name": "Tania Borealis",
       "distance_ly": 138,
-      "spectral_type": "A2IV"
+      "spectral_type": "A2IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.187386,
+        "y": -0.108814,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-280",
@@ -315,7 +520,16 @@
       "designation": "η Leo",
       "name": null,
       "distance_ly": 1269,
-      "spectral_type": "A0Ib"
+      "spectral_type": "A0Ib",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.353298,
+        "y": -0.809701,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-284",
@@ -328,7 +542,16 @@
       "designation": "ν UMa",
       "name": "Alula Borealis",
       "distance_ly": 399,
-      "spectral_type": "K3III SB"
+      "spectral_type": "K3III SB",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.094988,
+        "y": -0.359245,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-315",
@@ -341,7 +564,16 @@
       "designation": "κ UMa",
       "name": "Alkaphrah",
       "distance_ly": 358,
-      "spectral_type": "A1Vn"
+      "spectral_type": "A1Vn",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.476311,
+        "y": 0.070658,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-344",
@@ -354,7 +586,16 @@
       "designation": "23 UMa",
       "name": null,
       "distance_ly": 78,
-      "spectral_type": "F0IV"
+      "spectral_type": "F0IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.24549,
+        "y": 0.409667,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-350",
@@ -367,7 +608,16 @@
       "designation": "α Dra",
       "name": "Thuban",
       "distance_ly": 303,
-      "spectral_type": "A0III SB"
+      "spectral_type": "A0III SB",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.485879,
+        "y": 0.59326,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-360",
@@ -380,7 +630,16 @@
       "designation": "χ UMa",
       "name": "Taiyangshou",
       "distance_ly": 184,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.183756,
+        "y": 0.008481,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-403",
@@ -393,7 +652,16 @@
       "designation": "υ UMa",
       "name": null,
       "distance_ly": 116,
-      "spectral_type": "F0IV"
+      "spectral_type": "F0IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.214434,
+        "y": 0.29329,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-408",
@@ -406,7 +674,16 @@
       "designation": "46 LMi",
       "name": "Praecipua",
       "distance_ly": 95,
-      "spectral_type": "K0III-IV"
+      "spectral_type": "K0III-IV",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.033749,
+        "y": -0.332823,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-419",
@@ -419,7 +696,16 @@
       "designation": "38 Lyn",
       "name": null,
       "distance_ly": 125,
-      "spectral_type": "A1V"
+      "spectral_type": "A1V",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.499547,
+        "y": -0.200321,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-420",
@@ -432,7 +718,16 @@
       "designation": "λ Dra",
       "name": "Giausar",
       "distance_ly": 333,
-      "spectral_type": "M0IIIvar"
+      "spectral_type": "M0IIIvar",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.070443,
+        "y": 0.535049,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-440",
@@ -445,7 +740,16 @@
       "designation": "κ Dra",
       "name": null,
       "distance_ly": 490,
-      "spectral_type": "B6IIIp"
+      "spectral_type": "B6IIIp",
+      "category": "GUIDE",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.204575,
+        "y": 0.585475,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-460",
@@ -458,7 +762,16 @@
       "designation": "μ Leo",
       "name": "Rasalas",
       "distance_ly": 124,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.391407,
+        "y": -0.521009,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-495",
@@ -471,7 +784,16 @@
       "designation": "ζ UMa",
       "name": null,
       "distance_ly": 79,
-      "spectral_type": "A1 m"
+      "spectral_type": "A1 m",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.498715,
+        "y": 0.298302,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-498",
@@ -484,7 +806,16 @@
       "designation": "HIP 44248",
       "name": null,
       "distance_ly": 52,
-      "spectral_type": "F5V"
+      "spectral_type": "F5V",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.542847,
+        "y": -0.050956,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-518",
@@ -497,7 +828,16 @@
       "designation": "80 UMa",
       "name": "Alcor",
       "distance_ly": 82,
-      "spectral_type": "A5V SB"
+      "spectral_type": "A5V SB",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.50241,
+        "y": 0.302343,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-538",
@@ -510,7 +850,16 @@
       "designation": "ι Cnc",
       "name": null,
       "distance_ly": 331,
-      "spectral_type": "G8Iab:"
+      "spectral_type": "G8Iab:",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.771394,
+        "y": -0.356207,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-545",
@@ -523,7 +872,16 @@
       "designation": "θ Boo",
       "name": null,
       "distance_ly": 47,
-      "spectral_type": "F7V"
+      "spectral_type": "F7V",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.776562,
+        "y": 0.385307,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-623",
@@ -536,7 +894,16 @@
       "designation": "λ Boo",
       "name": "Xuange",
       "distance_ly": 99,
-      "spectral_type": "A0sh"
+      "spectral_type": "A0sh",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.848037,
+        "y": 0.23387,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-631",
@@ -549,7 +916,16 @@
       "designation": "β LMi",
       "name": null,
       "distance_ly": 154,
-      "spectral_type": "G8III-IV"
+      "spectral_type": "G8III-IV",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.155879,
+        "y": -0.264455,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-654",
@@ -562,7 +938,16 @@
       "designation": "β Com",
       "name": null,
       "distance_ly": 30,
-      "spectral_type": "G0V"
+      "spectral_type": "G0V",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.774061,
+        "y": -0.383374,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-666",
@@ -575,7 +960,16 @@
       "designation": "β CVn",
       "name": "Chara",
       "distance_ly": 28,
-      "spectral_type": "G0V"
+      "spectral_type": "G0V",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.425825,
+        "y": -0.09937,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-675",
@@ -588,7 +982,16 @@
       "designation": "31 Lyn",
       "name": "Alsciaukat",
       "distance_ly": 382,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.707386,
+        "y": 0.05914,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-677",
@@ -601,7 +1004,16 @@
       "designation": "5 UMi",
       "name": null,
       "distance_ly": 359,
-      "spectral_type": "K4III"
+      "spectral_type": "K4III",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.320995,
+        "y": 0.88358,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-700",
@@ -614,7 +1026,16 @@
       "designation": "HIP 47193",
       "name": null,
       "distance_ly": 994,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.087412,
+        "y": 0.911641,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-723",
@@ -627,7 +1048,16 @@
       "designation": "54 Leo",
       "name": null,
       "distance_ly": 287,
-      "spectral_type": "A1"
+      "spectral_type": "A1",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.025684,
+        "y": -0.583205,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-739",
@@ -640,7 +1070,16 @@
       "designation": "λ Leo",
       "name": "Alterf",
       "distance_ly": 329,
-      "spectral_type": "K5IIIvar"
+      "spectral_type": "K5IIIvar",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.545561,
+        "y": -0.588213,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-751",
@@ -653,7 +1092,16 @@
       "designation": "ξ UMa",
       "name": "Alula Australis",
       "distance_ly": 34,
-      "spectral_type": "G0 Ve"
+      "spectral_type": "G0 Ve",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.09584,
+        "y": -0.399349,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-773",
@@ -666,7 +1114,16 @@
       "designation": "γ Com",
       "name": null,
       "distance_ly": 167,
-      "spectral_type": "K2IIICN+..."
+      "spectral_type": "K2IIICN+...",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.492356,
+        "y": -0.439426,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-833",
@@ -679,7 +1136,16 @@
       "designation": "60 Leo",
       "name": null,
       "distance_ly": 127,
-      "spectral_type": "A1m"
+      "spectral_type": "A1m",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.014637,
+        "y": -0.716414,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-872",
@@ -692,7 +1158,16 @@
       "designation": "15 UMa",
       "name": null,
       "distance_ly": 94,
-      "spectral_type": "Am"
+      "spectral_type": "Am",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.413671,
+        "y": 0.165877,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-884",
@@ -705,7 +1180,16 @@
       "designation": "κ Leo",
       "name": null,
       "distance_ly": 201,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.561352,
+        "y": -0.487228,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-885",
@@ -718,7 +1202,16 @@
       "designation": "26 UMa",
       "name": null,
       "distance_ly": 262,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.312778,
+        "y": 0.142638,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-905",
@@ -731,7 +1224,16 @@
       "designation": "21 LMi",
       "name": null,
       "distance_ly": 92,
-      "spectral_type": "A7V"
+      "spectral_type": "A7V",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.262357,
+        "y": -0.28946,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-917",
@@ -744,7 +1246,16 @@
       "designation": "93 Leo",
       "name": null,
       "distance_ly": 233,
-      "spectral_type": "A comp SB"
+      "spectral_type": "A comp SB",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.304037,
+        "y": -0.702782,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-950",
@@ -757,7 +1268,16 @@
       "designation": "κ² Boo",
       "name": null,
       "distance_ly": 163,
-      "spectral_type": "A8IV"
+      "spectral_type": "A8IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.730858,
+        "y": 0.348416,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-958",
@@ -770,7 +1290,16 @@
       "designation": "10 LMi",
       "name": null,
       "distance_ly": 185,
-      "spectral_type": "G8III"
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.424004,
+        "y": -0.230112,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-959",
@@ -783,7 +1312,16 @@
       "designation": "24 UMa",
       "name": null,
       "distance_ly": 104,
-      "spectral_type": "G4III-IV"
+      "spectral_type": "G4III-IV",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.187042,
+        "y": 0.579571,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-971",
@@ -796,7 +1334,16 @@
       "designation": "φ UMa",
       "name": null,
       "distance_ly": 509,
-      "spectral_type": "A3IV"
+      "spectral_type": "A3IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.238023,
+        "y": 0.173154,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-981",
@@ -809,7 +1356,16 @@
       "designation": "HIP 44700",
       "name": null,
       "distance_ly": 817,
-      "spectral_type": "G8Ib-II"
+      "spectral_type": "G8Ib-II",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.547204,
+        "y": -0.14116,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-982",
@@ -822,7 +1378,16 @@
       "designation": "72 Leo",
       "name": null,
       "distance_ly": 959,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.091414,
+        "y": -0.62903,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-998",
@@ -835,7 +1400,16 @@
       "designation": "10 Dra",
       "name": null,
       "distance_ly": 371,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.447368,
+        "y": 0.573709,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1006",
@@ -848,7 +1422,16 @@
       "designation": "Pi-² UMa",
       "name": null,
       "distance_ly": 256,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.371306,
+        "y": 0.507515,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1026",
@@ -861,7 +1444,16 @@
       "designation": "21 Lyn",
       "name": null,
       "distance_ly": 274,
-      "spectral_type": "A1V"
+      "spectral_type": "A1V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.863518,
+        "y": 0.357066,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1050",
@@ -874,7 +1466,16 @@
       "designation": "83 UMa",
       "name": null,
       "distance_ly": 524,
-      "spectral_type": "M2IIIvar"
+      "spectral_type": "M2IIIvar",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.561557,
+        "y": 0.327819,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1051",
@@ -887,7 +1488,16 @@
       "designation": "HIP 73199",
       "name": null,
       "distance_ly": 459,
-      "spectral_type": "M5III"
+      "spectral_type": "M5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.582986,
+        "y": 0.758458,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1088",
@@ -900,7 +1510,16 @@
       "designation": "ω UMa",
       "name": null,
       "distance_ly": 246,
-      "spectral_type": "A1Vs"
+      "spectral_type": "A1Vs",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.026112,
+        "y": -0.114013,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1102",
@@ -913,7 +1532,16 @@
       "designation": "τ UMa",
       "name": null,
       "distance_ly": 126,
-      "spectral_type": "Am"
+      "spectral_type": "Am",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.298205,
+        "y": 0.444079,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1115",
@@ -926,7 +1554,16 @@
       "designation": "37 LMi",
       "name": null,
       "distance_ly": 578,
-      "spectral_type": "G0II"
+      "spectral_type": "G0II",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.111394,
+        "y": -0.38708,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1117",
@@ -939,7 +1576,16 @@
       "designation": "24 CVn",
       "name": null,
       "distance_ly": 180,
-      "spectral_type": "A5V"
+      "spectral_type": "A5V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.614769,
+        "y": 0.186683,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1161",
@@ -952,7 +1598,16 @@
       "designation": "30 LMi",
       "name": null,
       "distance_ly": 233,
-      "spectral_type": "F0V"
+      "spectral_type": "F0V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.173561,
+        "y": -0.336234,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1163",
@@ -965,7 +1620,16 @@
       "designation": "HIP 51658",
       "name": null,
       "distance_ly": 113,
-      "spectral_type": "A7IV"
+      "spectral_type": "A7IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.121919,
+        "y": -0.175867,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1165",
@@ -978,7 +1642,16 @@
       "designation": "11 Com",
       "name": null,
       "distance_ly": 290,
-      "spectral_type": "G8III"
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.540482,
+        "y": -0.756419,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1166",
@@ -991,7 +1664,16 @@
       "designation": "20 CVn",
       "name": null,
       "distance_ly": 264,
-      "spectral_type": "F3III"
+      "spectral_type": "F3III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.645146,
+        "y": -0.046052,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1185",
@@ -1004,7 +1686,16 @@
       "designation": "ρ UMa",
       "name": null,
       "distance_ly": 315,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.278695,
+        "y": 0.555951,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1198",
@@ -1017,7 +1708,16 @@
       "designation": "ι Boo",
       "name": null,
       "distance_ly": 95,
-      "spectral_type": "A9V"
+      "spectral_type": "A9V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.74925,
+        "y": 0.347322,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1211",
@@ -1030,7 +1730,16 @@
       "designation": "55 UMa",
       "name": null,
       "distance_ly": 192,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.090482,
+        "y": -0.232487,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1212",
@@ -1043,7 +1752,16 @@
       "designation": "5 CVn",
       "name": null,
       "distance_ly": 386,
-      "spectral_type": "G7III"
+      "spectral_type": "G7III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.311781,
+        "y": 0.129879,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1215",
@@ -1056,7 +1774,16 @@
       "designation": "HIP 67665",
       "name": null,
       "distance_ly": 601,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.925546,
+        "y": -0.115525,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1244",
@@ -1069,7 +1796,16 @@
       "designation": "27 Lyn",
       "name": null,
       "distance_ly": 250,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.648491,
+        "y": 0.282928,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1247",
@@ -1082,7 +1818,16 @@
       "designation": "40 Leo",
       "name": null,
       "distance_ly": 70,
-      "spectral_type": "F6IV"
+      "spectral_type": "F6IV",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.257512,
+        "y": -0.72946,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1248",
@@ -1095,7 +1840,16 @@
       "designation": "12 Com",
       "name": null,
       "distance_ly": 295,
-      "spectral_type": "F8:p..."
+      "spectral_type": "F8:p...",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.484966,
+        "y": -0.511259,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1277",
@@ -1108,7 +1862,16 @@
       "designation": "σ² UMa",
       "name": null,
       "distance_ly": 66,
-      "spectral_type": "F7IV-V"
+      "spectral_type": "F7IV-V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.265193,
+        "y": 0.534105,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1278",
@@ -1121,7 +1884,16 @@
       "designation": "18 UMa",
       "name": null,
       "distance_ly": 117,
-      "spectral_type": "A5V"
+      "spectral_type": "A5V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.365574,
+        "y": 0.211778,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1281",
@@ -1134,7 +1906,16 @@
       "designation": "23 Com",
       "name": null,
       "distance_ly": 310,
-      "spectral_type": "A0IV"
+      "spectral_type": "A0IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.591945,
+        "y": -0.590924,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1282",
@@ -1147,7 +1928,16 @@
       "designation": "41 Com",
       "name": null,
       "distance_ly": 331,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.746967,
+        "y": -0.399026,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1283",
@@ -1160,7 +1950,16 @@
       "designation": "4 UMi",
       "name": null,
       "distance_ly": 457,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.260837,
+        "y": 0.897605,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1294",
@@ -1173,7 +1972,16 @@
       "designation": "ξ UMa",
       "name": "Alula Australis B",
       "distance_ly": 34,
-      "spectral_type": "G0 Ve"
+      "spectral_type": "G0 Ve",
+      "category": "FIELD",
+      "color_category": "UNKNOWN",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.09584,
+        "y": -0.399349,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1300",
@@ -1186,7 +1994,16 @@
       "designation": "HIP 47029",
       "name": null,
       "distance_ly": 215,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.396895,
+        "y": -0.152024,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1312",
@@ -1199,7 +2016,16 @@
       "designation": "36 UMa",
       "name": null,
       "distance_ly": 42,
-      "spectral_type": "F8V"
+      "spectral_type": "F8V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.09833,
+        "y": 0.195635,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1314",
@@ -1212,7 +2038,16 @@
       "designation": "25 CVn",
       "name": null,
       "distance_ly": 199,
-      "spectral_type": "A7III"
+      "spectral_type": "A7III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.810002,
+        "y": -0.106139,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1375",
@@ -1225,7 +2060,16 @@
       "designation": "HIP 51808",
       "name": null,
       "distance_ly": 247,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.041094,
+        "y": 0.715651,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1408",
@@ -1238,7 +2082,16 @@
       "designation": "37 Com",
       "name": null,
       "distance_ly": 660,
-      "spectral_type": "K1IIIp"
+      "spectral_type": "K1IIIp",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.665742,
+        "y": -0.324857,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1427",
@@ -1251,7 +2104,16 @@
       "designation": "35 Com",
       "name": null,
       "distance_ly": 283,
-      "spectral_type": "G8III"
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.733747,
+        "y": -0.609354,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1455",
@@ -1264,7 +2126,16 @@
       "designation": "HIP 66257",
       "name": null,
       "distance_ly": 149,
-      "spectral_type": "F2IV SB"
+      "spectral_type": "F2IV SB",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.781696,
+        "y": -0.090543,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1473",
@@ -1277,7 +2148,16 @@
       "designation": "14 Com",
       "name": null,
       "distance_ly": 276,
-      "spectral_type": "F0p"
+      "spectral_type": "F0p",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.497228,
+        "y": -0.467436,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1488",
@@ -1290,7 +2170,16 @@
       "designation": "24 Lyn",
       "name": null,
       "distance_ly": 267,
-      "spectral_type": "A3IVn"
+      "spectral_type": "A3IVn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.619762,
+        "y": 0.503836,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1494",
@@ -1303,7 +2192,16 @@
       "designation": "7 Com",
       "name": null,
       "distance_ly": 249,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.461315,
+        "y": -0.571583,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1495",
@@ -1316,7 +2214,16 @@
       "designation": "31 Com",
       "name": null,
       "distance_ly": 291,
-      "spectral_type": "G0III"
+      "spectral_type": "G0III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.649614,
+        "y": -0.426811,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1496",
@@ -1329,7 +2236,16 @@
       "designation": "78 UMa",
       "name": null,
       "distance_ly": 83,
-      "spectral_type": "F2V"
+      "spectral_type": "F2V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.402579,
+        "y": 0.291019,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1515",
@@ -1342,7 +2258,16 @@
       "designation": "HIP 50933",
       "name": null,
       "distance_ly": 339,
-      "spectral_type": "A0sp..."
+      "spectral_type": "A0sp...",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.092144,
+        "y": 0.436703,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1518",
@@ -1355,7 +2280,16 @@
       "designation": "HIP 64540",
       "name": null,
       "distance_ly": 459,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.630982,
+        "y": -0.063781,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1530",
@@ -1368,7 +2302,16 @@
       "designation": "6 Dra",
       "name": null,
       "distance_ly": 602,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.205258,
+        "y": 0.592786,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1580",
@@ -1381,7 +2324,16 @@
       "designation": "16 Com",
       "name": null,
       "distance_ly": 278,
-      "spectral_type": "A4V"
+      "spectral_type": "A4V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.504393,
+        "y": -0.479021,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1602",
@@ -1394,7 +2346,16 @@
       "designation": "56 UMa",
       "name": null,
       "distance_ly": 533,
-      "spectral_type": "G8II"
+      "spectral_type": "G8II",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.098488,
+        "y": -0.103871,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1603",
@@ -1407,7 +2368,16 @@
       "designation": "HIP 59856",
       "name": null,
       "distance_ly": 316,
-      "spectral_type": "K1III"
+      "spectral_type": "K1III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.398608,
+        "y": -0.324307,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1620",
@@ -1420,7 +2390,16 @@
       "designation": "HIP 35384",
       "name": null,
       "distance_ly": 349,
-      "spectral_type": "A4IIIn"
+      "spectral_type": "A4IIIn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.894188,
+        "y": 0.391379,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1648",
@@ -1433,7 +2412,16 @@
       "designation": "HIP 52425",
       "name": null,
       "distance_ly": 418,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.038383,
+        "y": 0.524662,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1651",
@@ -1446,7 +2434,16 @@
       "designation": "6 CVn",
       "name": null,
       "distance_ly": 262,
-      "spectral_type": "G8III-IV"
+      "spectral_type": "G8III-IV",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.405545,
+        "y": -0.165591,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1652",
@@ -1459,7 +2456,16 @@
       "designation": "4 Dra",
       "name": null,
       "distance_ly": 621,
-      "spectral_type": "M3IIIa"
+      "spectral_type": "M3IIIa",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.202056,
+        "y": 0.566999,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1660",
@@ -1472,7 +2478,16 @@
       "designation": "46 UMa",
       "name": null,
       "distance_ly": 237,
-      "spectral_type": "K1III"
+      "spectral_type": "K1III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.021735,
+        "y": -0.350835,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1677",
@@ -1485,7 +2500,16 @@
       "designation": "47 UMa",
       "name": "Chalawan",
       "distance_ly": 46,
-      "spectral_type": "G0V"
+      "spectral_type": "G0V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.002429,
+        "y": -0.180431,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1678",
@@ -1498,7 +2522,16 @@
       "designation": "24 Com",
       "name": null,
       "distance_ly": 450,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.637247,
+        "y": -0.72334,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1735",
@@ -1511,7 +2544,16 @@
       "designation": "49 UMa",
       "name": null,
       "distance_ly": 377,
-      "spectral_type": "Am"
+      "spectral_type": "Am",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.003901,
+        "y": -0.209888,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1782",
@@ -1524,7 +2566,16 @@
       "designation": "HIP 48113",
       "name": null,
       "distance_ly": 60,
-      "spectral_type": "G2V"
+      "spectral_type": "G2V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.29583,
+        "y": -0.013457,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1786",
@@ -1537,7 +2588,16 @@
       "designation": "41 LMi",
       "name": null,
       "distance_ly": 229,
-      "spectral_type": "A3Vn"
+      "spectral_type": "A3Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.099583,
+        "y": -0.62613,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1806",
@@ -1550,7 +2610,16 @@
       "designation": "HIP 47965",
       "name": null,
       "distance_ly": 553,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.239679,
+        "y": 0.251113,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1842",
@@ -1563,7 +2632,16 @@
       "designation": "43 Cam",
       "name": null,
       "distance_ly": 979,
-      "spectral_type": "B7III"
+      "spectral_type": "B7III",
+      "category": "FIELD",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.53227,
+        "y": 0.834786,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1844",
@@ -1576,7 +2654,16 @@
       "designation": "19 LMi",
       "name": null,
       "distance_ly": 92,
-      "spectral_type": "F6Vs"
+      "spectral_type": "F6Vs",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.282262,
+        "y": -0.139811,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1866",
@@ -1589,7 +2676,16 @@
       "designation": "38 UMa",
       "name": null,
       "distance_ly": 227,
-      "spectral_type": "K2IIIvar"
+      "spectral_type": "K2IIIvar",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.046169,
+        "y": 0.435458,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1867",
@@ -1602,7 +2698,16 @@
       "designation": "44 UMa",
       "name": null,
       "distance_ly": 654,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.022207,
+        "y": 0.156987,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1890",
@@ -1615,7 +2720,16 @@
       "designation": "HIP 69038",
       "name": null,
       "distance_ly": 513,
-      "spectral_type": "M4.2III"
+      "spectral_type": "M4.2III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.848099,
+        "y": 0.157637,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1905",
@@ -1628,7 +2742,16 @@
       "designation": "42 Cam",
       "name": null,
       "distance_ly": 924,
-      "spectral_type": "B4IV"
+      "spectral_type": "B4IV",
+      "category": "FIELD",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.568996,
+        "y": 0.819856,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1917",
@@ -1641,7 +2764,16 @@
       "designation": "HIP 59504",
       "name": null,
       "distance_ly": 109,
-      "spectral_type": "A5m"
+      "spectral_type": "A5m",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.104625,
+        "y": 0.790456,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1919",
@@ -1654,7 +2786,16 @@
       "designation": "21 CVn",
       "name": null,
       "distance_ly": 275,
-      "spectral_type": "A0V"
+      "spectral_type": "A0V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.539806,
+        "y": 0.16796,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1934",
@@ -1667,7 +2808,16 @@
       "designation": "HIP 37946",
       "name": null,
       "distance_ly": 433,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.998902,
+        "y": 0.0264,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1936",
@@ -1680,7 +2830,16 @@
       "designation": "35 Lyn",
       "name": null,
       "distance_ly": 265,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.563081,
+        "y": 0.010522,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1937",
@@ -1693,7 +2852,16 @@
       "designation": "σ¹ UMa",
       "name": null,
       "distance_ly": 521,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.272521,
+        "y": 0.529927,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1938",
@@ -1706,7 +2874,16 @@
       "designation": "27 UMa",
       "name": null,
       "distance_ly": 478,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.151635,
+        "y": 0.638566,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1965",
@@ -1719,7 +2896,16 @@
       "designation": "ξ Cnc",
       "name": "Nahn",
       "distance_ly": 373,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": -0.705334,
+        "y": -0.588395,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1966",
@@ -1732,7 +2918,16 @@
       "designation": "37 UMa",
       "name": null,
       "distance_ly": 87,
-      "spectral_type": "F1V"
+      "spectral_type": "F1V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.080999,
+        "y": 0.220791,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-1986",
@@ -1745,7 +2940,16 @@
       "designation": "13 Com",
       "name": null,
       "distance_ly": 265,
-      "spectral_type": "A3V"
+      "spectral_type": "A3V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.493974,
+        "y": -0.502251,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2012",
@@ -1758,7 +2962,16 @@
       "designation": "16 UMa",
       "name": null,
       "distance_ly": 64,
-      "spectral_type": "F9V"
+      "spectral_type": "F9V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.3076,
+        "y": 0.389203,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2013",
@@ -1771,7 +2984,16 @@
       "designation": "HIP 52469",
       "name": null,
       "distance_ly": 121,
-      "spectral_type": "F5III"
+      "spectral_type": "F5III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.06751,
+        "y": -0.040822,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2016",
@@ -1784,7 +3006,16 @@
       "designation": "HIP 69373",
       "name": null,
       "distance_ly": 428,
-      "spectral_type": "M2III"
+      "spectral_type": "M2III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.415637,
+        "y": 0.719184,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2034",
@@ -1797,7 +3028,16 @@
       "designation": "2 Dra",
       "name": null,
       "distance_ly": 238,
-      "spectral_type": "K0III"
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.080853,
+        "y": 0.536374,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2055",
@@ -1810,7 +3050,16 @@
       "designation": "18 Lyn",
       "name": null,
       "distance_ly": 199,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.685451,
+        "y": 0.600821,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2062",
@@ -1823,7 +3072,16 @@
       "designation": "14 CVn",
       "name": null,
       "distance_ly": 340,
-      "spectral_type": "B9V"
+      "spectral_type": "B9V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.639726,
+        "y": -0.185829,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2102",
@@ -1836,7 +3094,16 @@
       "designation": "67 UMa",
       "name": null,
       "distance_ly": 112,
-      "spectral_type": "A7m"
+      "spectral_type": "A7m",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.271486,
+        "y": -0.092325,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2119",
@@ -1849,7 +3116,16 @@
       "designation": "ρ² Cnc",
       "name": null,
       "distance_ly": 487,
-      "spectral_type": "G8II-III"
+      "spectral_type": "G8II-III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.724929,
+        "y": -0.395591,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2120",
@@ -1862,7 +3138,16 @@
       "designation": "σ³ Cnc",
       "name": null,
       "distance_ly": 296,
-      "spectral_type": "G9III"
+      "spectral_type": "G9III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.648274,
+        "y": -0.281531,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2126",
@@ -1875,7 +3160,16 @@
       "designation": "8 Dra",
       "name": "Taiyi",
       "distance_ly": 96,
-      "spectral_type": "A5n"
+      "spectral_type": "A5n",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.296345,
+        "y": 0.499187,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2178",
@@ -1888,7 +3182,16 @@
       "designation": "HIP 51502",
       "name": null,
       "distance_ly": 70,
-      "spectral_type": "F2V"
+      "spectral_type": "F2V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.026893,
+        "y": 0.937231,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2200",
@@ -1901,7 +3204,16 @@
       "designation": "92 Leo",
       "name": null,
       "distance_ly": 270,
-      "spectral_type": "K1III"
+      "spectral_type": "K1III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.253213,
+        "y": -0.67208,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2203",
@@ -1914,7 +3226,16 @@
       "designation": "13 Boo",
       "name": null,
       "distance_ly": 549,
-      "spectral_type": "M2III"
+      "spectral_type": "M2III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.75053,
+        "y": 0.283056,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2220",
@@ -1927,7 +3248,16 @@
       "designation": "31 UMa",
       "name": null,
       "distance_ly": 208,
-      "spectral_type": "A3III"
+      "spectral_type": "A3III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.246784,
+        "y": 0.069773,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2223",
@@ -1940,7 +3270,16 @@
       "designation": "HIP 57477",
       "name": null,
       "distance_ly": 216,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.158505,
+        "y": 0.195393,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2249",
@@ -1953,7 +3292,16 @@
       "designation": "17 UMa",
       "name": null,
       "distance_ly": 720,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.343712,
+        "y": 0.276002,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2251",
@@ -1966,7 +3314,16 @@
       "designation": "42 Lyn",
       "name": null,
       "distance_ly": 123,
-      "spectral_type": "F0V"
+      "spectral_type": "F0V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.37695,
+        "y": -0.140778,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2254",
@@ -1979,7 +3336,16 @@
       "designation": "3 CVn",
       "name": null,
       "distance_ly": 590,
-      "spectral_type": "M0III"
+      "spectral_type": "M0III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.31234,
+        "y": 0.064781,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2281",
@@ -1992,7 +3358,16 @@
       "designation": "22 Leo",
       "name": null,
       "distance_ly": 135,
-      "spectral_type": "A5IV"
+      "spectral_type": "A5IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.407059,
+        "y": -0.565839,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2282",
@@ -2005,7 +3380,16 @@
       "designation": "17 Com",
       "name": null,
       "distance_ly": 238,
-      "spectral_type": "A0p"
+      "spectral_type": "A0p",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.523857,
+        "y": -0.502414,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2303",
@@ -2018,7 +3402,16 @@
       "designation": "36 Lyn",
       "name": null,
       "distance_ly": 581,
-      "spectral_type": "B8IIIMNp"
+      "spectral_type": "B8IIIMNp",
+      "category": "FIELD",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.46792,
+        "y": -0.037724,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2306",
@@ -2031,7 +3424,16 @@
       "designation": "57 UMa",
       "name": null,
       "distance_ly": 213,
-      "spectral_type": "A2V"
+      "spectral_type": "A2V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.134939,
+        "y": -0.201366,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2324",
@@ -2044,7 +3446,16 @@
       "designation": "HIP 37701",
       "name": null,
       "distance_ly": 740,
-      "spectral_type": "A0IIIn"
+      "spectral_type": "A0IIIn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.765314,
+        "y": 0.326712,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2327",
@@ -2057,7 +3468,16 @@
       "designation": "73 Leo",
       "name": null,
       "distance_ly": 386,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.111353,
+        "y": -0.93876,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2328",
@@ -2070,7 +3490,16 @@
       "designation": "61 UMa",
       "name": null,
       "distance_ly": 31,
-      "spectral_type": "G8Vvar"
+      "spectral_type": "G8Vvar",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.207905,
+        "y": -0.322628,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2346",
@@ -2083,7 +3512,16 @@
       "designation": "3 Dra",
       "name": null,
       "distance_ly": 602,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.104812,
+        "y": 0.470197,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2390",
@@ -2096,7 +3534,16 @@
       "designation": "HIP 40215",
       "name": null,
       "distance_ly": 752,
-      "spectral_type": "G8II"
+      "spectral_type": "G8II",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.379737,
+        "y": 0.650897,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2413",
@@ -2109,7 +3556,16 @@
       "designation": "22 Lyn",
       "name": null,
       "distance_ly": 66,
-      "spectral_type": "F6V"
+      "spectral_type": "F6V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.839991,
+        "y": 0.355676,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2414",
@@ -2122,7 +3578,16 @@
       "designation": "34 Lyn",
       "name": null,
       "distance_ly": 180,
-      "spectral_type": "G0IV"
+      "spectral_type": "G0IV",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.588486,
+        "y": 0.080814,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2447",
@@ -2135,7 +3600,16 @@
       "designation": "42 LMi",
       "name": null,
       "distance_ly": 382,
-      "spectral_type": "A1Vn"
+      "spectral_type": "A1Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.075479,
+        "y": -0.422102,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2467",
@@ -2148,7 +3622,16 @@
       "designation": "HIP 39117",
       "name": null,
       "distance_ly": 879,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.314364,
+        "y": 0.798734,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2468",
@@ -2161,7 +3644,16 @@
       "designation": "20 LMi",
       "name": null,
       "distance_ly": 49,
-      "spectral_type": "G1V"
+      "spectral_type": "G1V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.311321,
+        "y": -0.369096,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2470",
@@ -2174,7 +3666,16 @@
       "designation": "74 UMa",
       "name": null,
       "distance_ly": 273,
-      "spectral_type": "A5e..."
+      "spectral_type": "A5e...",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.284338,
+        "y": 0.29829,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2471",
@@ -2187,7 +3688,16 @@
       "designation": "9 Dra",
       "name": null,
       "distance_ly": 625,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.295409,
+        "y": 0.533432,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2499",
@@ -2200,7 +3710,16 @@
       "designation": "HIP 62572",
       "name": null,
       "distance_ly": 583,
-      "spectral_type": "A1IIIsh"
+      "spectral_type": "A1IIIsh",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.0886,
+        "y": 0.991569,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2526",
@@ -2213,7 +3732,16 @@
       "designation": "HIP 39538",
       "name": null,
       "distance_ly": 323,
-      "spectral_type": "A0p..."
+      "spectral_type": "A0p...",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.209548,
+        "y": 0.928474,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2527",
@@ -2226,7 +3754,16 @@
       "designation": "8 LMi",
       "name": null,
       "distance_ly": 480,
-      "spectral_type": "M1III"
+      "spectral_type": "M1III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.447466,
+        "y": -0.259296,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2553",
@@ -2239,7 +3776,16 @@
       "designation": "57 Cnc",
       "name": null,
       "distance_ly": 461,
-      "spectral_type": "G7III"
+      "spectral_type": "G7III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.701124,
+        "y": -0.320812,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2555",
@@ -2252,7 +3798,16 @@
       "designation": "HIP 46471",
       "name": "Intercrus",
       "distance_ly": 280,
-      "spectral_type": "K0III-IV"
+      "spectral_type": "K0III-IV",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.382999,
+        "y": -0.001574,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2556",
@@ -2265,7 +3820,16 @@
       "designation": "11 LMi",
       "name": null,
       "distance_ly": 37,
-      "spectral_type": "G8IV-V"
+      "spectral_type": "G8IV-V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.420896,
+        "y": -0.246408,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2558",
@@ -2278,7 +3842,16 @@
       "designation": "HIP 65728",
       "name": null,
       "distance_ly": 233,
-      "spectral_type": "A1Vn"
+      "spectral_type": "A1Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.450628,
+        "y": 0.421085,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2608",
@@ -2291,7 +3864,16 @@
       "designation": "τ Cnc",
       "name": null,
       "distance_ly": 274,
-      "spectral_type": "G8III"
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.628678,
+        "y": -0.368521,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2609",
@@ -2304,7 +3886,16 @@
       "designation": "37 Leo",
       "name": null,
       "distance_ly": 586,
-      "spectral_type": "M1III"
+      "spectral_type": "M1III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.304149,
+        "y": -0.916913,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2611",
@@ -2317,7 +3908,16 @@
       "designation": "HIP 61309",
       "name": null,
       "distance_ly": 291,
-      "spectral_type": "K0IIICN..."
+      "spectral_type": "K0IIICN...",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.48988,
+        "y": -0.299958,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2612",
@@ -2330,7 +3930,16 @@
       "designation": "HIP 62223",
       "name": "La Superba",
       "distance_ly": 1045,
-      "spectral_type": "C7Iab"
+      "spectral_type": "C7Iab",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.44382,
+        "y": 0.013201,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2629",
@@ -2343,7 +3952,16 @@
       "designation": "46 Leo",
       "name": null,
       "distance_ly": 694,
-      "spectral_type": "M2III"
+      "spectral_type": "M2III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.192991,
+        "y": -0.907621,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2632",
@@ -2356,7 +3974,16 @@
       "designation": "7 Dra",
       "name": "Tianyi",
       "distance_ly": 741,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.263599,
+        "y": 0.523122,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2662",
@@ -2369,7 +3996,16 @@
       "designation": "σ² Cnc",
       "name": null,
       "distance_ly": 194,
-      "spectral_type": "A7IV"
+      "spectral_type": "A7IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.657683,
+        "y": -0.264269,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2693",
@@ -2382,7 +4018,16 @@
       "designation": "ν Cnc",
       "name": null,
       "distance_ly": 392,
-      "spectral_type": "A0III"
+      "spectral_type": "A0III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.721499,
+        "y": -0.506458,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2722",
@@ -2395,7 +4040,16 @@
       "designation": "HIP 34912",
       "name": null,
       "distance_ly": 723,
-      "spectral_type": "M3III"
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.872612,
+        "y": 0.44976,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2728",
@@ -2408,7 +4062,16 @@
       "designation": "HIP 56290",
       "name": null,
       "distance_ly": 91,
-      "spectral_type": "F6V"
+      "spectral_type": "F6V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.095125,
+        "y": 0.321566,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2732",
@@ -2421,7 +4084,16 @@
       "designation": "82 UMa",
       "name": null,
       "distance_ly": 175,
-      "spectral_type": "A3Vn"
+      "spectral_type": "A3Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.581543,
+        "y": 0.285826,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2758",
@@ -2434,7 +4106,16 @@
       "designation": "26 Lyn",
       "name": null,
       "distance_ly": 841,
-      "spectral_type": "K4III"
+      "spectral_type": "K4III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.770165,
+        "y": 0.232861,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2759",
@@ -2447,7 +4128,16 @@
       "designation": "2 UMa",
       "name": null,
       "distance_ly": 152,
-      "spectral_type": "A2m"
+      "spectral_type": "A2m",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.375479,
+        "y": 0.535904,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2763",
@@ -2460,7 +4150,16 @@
       "designation": "HIP 53781",
       "name": null,
       "distance_ly": 826,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.001022,
+        "y": -0.058661,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2764",
@@ -2473,7 +4172,16 @@
       "designation": "HIP 60044",
       "name": null,
       "distance_ly": 319,
-      "spectral_type": "A1V"
+      "spectral_type": "A1V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.133299,
+        "y": 0.721755,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2765",
@@ -2486,7 +4194,16 @@
       "designation": "18 Com",
       "name": null,
       "distance_ly": 201,
-      "spectral_type": "F5III"
+      "spectral_type": "F5III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.542949,
+        "y": -0.553452,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2766",
@@ -2499,7 +4216,16 @@
       "designation": "21 Com",
       "name": null,
       "distance_ly": 270,
-      "spectral_type": "A2pvar"
+      "spectral_type": "A2pvar",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.5488,
+        "y": -0.538427,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2791",
@@ -2512,7 +4238,16 @@
       "designation": "HIP 44613",
       "name": null,
       "distance_ly": 317,
-      "spectral_type": "F6II-III"
+      "spectral_type": "F6II-III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.455836,
+        "y": 0.099784,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2794",
@@ -2525,7 +4260,16 @@
       "designation": "HIP 72664",
       "name": null,
       "distance_ly": 453,
-      "spectral_type": "K4III"
+      "spectral_type": "K4III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.715286,
+        "y": 0.617788,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2819",
@@ -2538,7 +4282,16 @@
       "designation": "23 LMi",
       "name": null,
       "distance_ly": 261,
-      "spectral_type": "A0Vn"
+      "spectral_type": "A0Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.239859,
+        "y": -0.447398,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2820",
@@ -2551,7 +4304,16 @@
       "designation": "52 Leo",
       "name": null,
       "distance_ly": 287,
-      "spectral_type": "G4III:"
+      "spectral_type": "G4III:",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.093922,
+        "y": -0.908255,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2822",
@@ -2564,7 +4326,16 @@
       "designation": "26 Com",
       "name": null,
       "distance_ly": 273,
-      "spectral_type": "G9III"
+      "spectral_type": "G9III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.636732,
+        "y": -0.633517,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2848",
@@ -2577,7 +4348,16 @@
       "designation": "HIP 49005",
       "name": null,
       "distance_ly": 500,
-      "spectral_type": "K5III"
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.197594,
+        "y": 0.232557,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2850",
@@ -2590,7 +4370,16 @@
       "designation": "51 Leo",
       "name": null,
       "distance_ly": 187,
-      "spectral_type": "K3III"
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.087242,
+        "y": -0.754979,
+        "method": "gnomonic_local_review_projection"
+      }
     },
     {
       "id": "hyg-local-2852",
@@ -2603,140 +4392,304 @@
       "designation": "HIP 66435",
       "name": null,
       "distance_ly": 411,
-      "spectral_type": "K2III"
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.317754,
+        "y": 0.699999,
+        "method": "gnomonic_local_review_projection"
+      }
     }
   ],
   "guide_lines": [
-    [
-      [
-        12.2571,
-        57.03
+    {
+      "segment": 0,
+      "source_points": [
+        {
+          "ra_h": 12.2571,
+          "dec_deg": 57.03
+        },
+        {
+          "ra_h": 11.0621,
+          "dec_deg": 61.75
+        },
+        {
+          "ra_h": 11.0307,
+          "dec_deg": 56.38
+        },
+        {
+          "ra_h": 11.8972,
+          "dec_deg": 53.69
+        },
+        {
+          "ra_h": 12.2571,
+          "dec_deg": 57.03
+        },
+        {
+          "ra_h": 12.9005,
+          "dec_deg": 55.96
+        },
+        {
+          "ra_h": 13.3988,
+          "dec_deg": 54.93
+        },
+        {
+          "ra_h": 13.7923,
+          "dec_deg": 49.31
+        }
       ],
-      [
-        11.0621,
-        61.75
-      ],
-      [
-        11.0307,
-        56.38
-      ],
-      [
-        11.8972,
-        53.69
-      ],
-      [
-        12.2571,
-        57.03
-      ],
-      [
-        12.9005,
-        55.96
-      ],
-      [
-        13.3988,
-        54.93
-      ],
-      [
-        13.7923,
-        49.31
+      "projected_points": [
+        {
+          "x": 0.246678,
+          "y": 0.250565
+        },
+        {
+          "x": 0.010756,
+          "y": 0.332308
+        },
+        {
+          "x": 0.006107,
+          "y": 0.200025
+        },
+        {
+          "x": 0.190115,
+          "y": 0.153443
+        },
+        {
+          "x": 0.246678,
+          "y": 0.250565
+        },
+        {
+          "x": 0.383862,
+          "y": 0.271438
+        },
+        {
+          "x": 0.49855,
+          "y": 0.298506
+        },
+        {
+          "x": 0.665305,
+          "y": 0.224162
+        }
       ]
-    ],
-    [
-      [
-        11.8972,
-        53.69
+    },
+    {
+      "segment": 1,
+      "source_points": [
+        {
+          "ra_h": 11.8972,
+          "dec_deg": 53.69
+        },
+        {
+          "ra_h": 11.7675,
+          "dec_deg": 47.78
+        },
+        {
+          "ra_h": 11.308,
+          "dec_deg": 33.09
+        },
+        {
+          "ra_h": 11.3031,
+          "dec_deg": 31.53
+        }
       ],
-      [
-        11.7675,
-        47.78
-      ],
-      [
-        11.308,
-        33.09
-      ],
-      [
-        11.3031,
-        31.53
+      "projected_points": [
+        {
+          "x": 0.190115,
+          "y": 0.153443
+        },
+        {
+          "x": 0.183752,
+          "y": 0.008505
+        },
+        {
+          "x": 0.094994,
+          "y": -0.359346
+        },
+        {
+          "x": 0.095839,
+          "y": -0.399323
+        }
       ]
-    ],
-    [
-      [
-        11.7675,
-        47.78
+    },
+    {
+      "segment": 2,
+      "source_points": [
+        {
+          "ra_h": 11.7675,
+          "dec_deg": 47.78
+        },
+        {
+          "ra_h": 11.1611,
+          "dec_deg": 44.5
+        },
+        {
+          "ra_h": 10.3722,
+          "dec_deg": 41.5
+        }
       ],
-      [
-        11.1611,
-        44.5
-      ],
-      [
-        10.3722,
-        41.5
+      "projected_points": [
+        {
+          "x": 0.183752,
+          "y": 0.008505
+        },
+        {
+          "x": 0.040924,
+          "y": -0.082435
+        },
+        {
+          "x": -0.1686,
+          "y": -0.14543
+        }
       ]
-    ],
-    [
-      [
-        11.1611,
-        44.5
+    },
+    {
+      "segment": 3,
+      "source_points": [
+        {
+          "ra_h": 11.1611,
+          "dec_deg": 44.5
+        },
+        {
+          "ra_h": 10.2849,
+          "dec_deg": 42.91
+        }
       ],
-      [
-        10.2849,
-        42.91
+      "projected_points": [
+        {
+          "x": 0.040924,
+          "y": -0.082435
+        },
+        {
+          "x": -0.187426,
+          "y": -0.108906
+        }
       ]
-    ],
-    [
-      [
-        11.0621,
-        61.75
+    },
+    {
+      "segment": 4,
+      "source_points": [
+        {
+          "ra_h": 11.0621,
+          "dec_deg": 61.75
+        },
+        {
+          "ra_h": 9.5255,
+          "dec_deg": 63.06
+        },
+        {
+          "ra_h": 8.5044,
+          "dec_deg": 60.72
+        },
+        {
+          "ra_h": 9.8498,
+          "dec_deg": 59.04
+        },
+        {
+          "ra_h": 11.0307,
+          "dec_deg": 56.38
+        }
       ],
-      [
-        9.5255,
-        63.06
-      ],
-      [
-        8.5044,
-        60.72
-      ],
-      [
-        9.8498,
-        59.04
-      ],
-      [
-        11.0307,
-        56.38
+      "projected_points": [
+        {
+          "x": 0.010756,
+          "y": 0.332308
+        },
+        {
+          "x": -0.245505,
+          "y": 0.409618
+        },
+        {
+          "x": -0.444492,
+          "y": 0.441134
+        },
+        {
+          "x": -0.214447,
+          "y": 0.293319
+        },
+        {
+          "x": 0.006107,
+          "y": 0.200025
+        }
       ]
-    ],
-    [
-      [
-        11.0307,
-        56.38
+    },
+    {
+      "segment": 5,
+      "source_points": [
+        {
+          "ra_h": 11.0307,
+          "dec_deg": 56.38
+        },
+        {
+          "ra_h": 9.8684,
+          "dec_deg": 54.06
+        },
+        {
+          "ra_h": 9.5476,
+          "dec_deg": 51.68
+        },
+        {
+          "ra_h": 8.9868,
+          "dec_deg": 48.04
+        }
       ],
-      [
-        9.8684,
-        54.06
-      ],
-      [
-        9.5476,
-        51.68
-      ],
-      [
-        8.9868,
-        48.04
+      "projected_points": [
+        {
+          "x": 0.006107,
+          "y": 0.200025
+        },
+        {
+          "x": -0.238045,
+          "y": 0.173059
+        },
+        {
+          "x": -0.322672,
+          "y": 0.136142
+        },
+        {
+          "x": -0.486117,
+          "y": 0.098477
+        }
       ]
-    ],
-    [
-      [
-        9.0604,
-        47.16
+    },
+    {
+      "segment": 6,
+      "source_points": [
+        {
+          "ra_h": 9.0604,
+          "dec_deg": 47.16
+        },
+        {
+          "ra_h": 9.5476,
+          "dec_deg": 51.68
+        }
       ],
-      [
-        9.5476,
-        51.68
+      "projected_points": [
+        {
+          "x": -0.476283,
+          "y": 0.070728
+        },
+        {
+          "x": -0.322672,
+          "y": 0.136142
+        }
       ]
-    ]
+    }
   ],
+  "stats": {
+    "BEACON": 0,
+    "BRIGHT": 13,
+    "GUIDE": 43,
+    "FIELD": 143,
+    "named": 39,
+    "target_constellation": 68
+  },
   "classification": {
     "stars_names_constellations": "REAL_DATA",
-    "projection": "CALCULATION",
-    "styling": "REPRESENTATION"
+    "local_projection_xy": "CALCULATION",
+    "guide_line_styling_star_size_color": "REPRESENTATION"
   }
 }
