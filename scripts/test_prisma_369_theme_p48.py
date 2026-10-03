@@ -118,16 +118,18 @@ def main():
         browser.close()
     finally:
       server.shutdown()
+    total_failures=sum(r['failure_count'] for r in rows)
+    assert total_failures==0,('contrast failures remain',total_failures,{f"{r['surface']}:{r['theme']}":r['failure_count'] for r in rows})
     report={
-      'gate':'ISSUE_369_P48_DARK_LIGHT_CONTRAST_AUDIT',
+      'gate':'ISSUE_369_P48_DARK_LIGHT_CONTRAST_PASS',
       'surfaces':len(ROUTES),
       'cases':len(rows),
       'total_samples':sum(r['sample_count'] for r in rows),
-      'total_failures':sum(r['failure_count'] for r in rows),
+      'total_failures':total_failures,
       'failures_by_surface_theme':{f"{r['surface']}:{r['theme']}":r['failure_count'] for r in rows},
       'rows':rows,
       'note':'Presentation audit only. Axioma retains accessibility/conformance authority.',
-      'diagnostic_complete':True
+      'passed':True
     }
     (OUT/'qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
