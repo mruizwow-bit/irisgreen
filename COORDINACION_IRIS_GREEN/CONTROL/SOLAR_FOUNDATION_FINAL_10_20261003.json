@@ -1,0 +1,96 @@
+{
+  "schema": "iris-green.solar-foundation-final-10.v1",
+  "date": "2026-10-03",
+  "owner": "LUMEN_A7",
+  "marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_TECHNICAL_AND_VISUAL_PASS_READY",
+  "library_path": "/Iris Green/First Party Visual/Solar Foundation Final",
+  "technical_contract": {
+    "width": 1536,
+    "height": 1536,
+    "format": "PNG",
+    "mode": "RGBA",
+    "alpha_extrema": [
+      0,
+      255
+    ],
+    "srgb_icc": true,
+    "transparent_background": true
+  },
+  "masters": [
+    {
+      "filename": "solar_01_sol_final.png",
+      "sha256": "c9eb015752758cc0349e51e98e1a772a038c2777dce68be54f2ab74e66d0fe31"
+    },
+    {
+      "filename": "solar_02_mercurio.png",
+      "sha256": "592e8f00fbaaece3f02221df3c65d93a50ba07c64473ae171522bd8c7910910f"
+    },
+    {
+      "filename": "solar_03_venus.png",
+      "sha256": "a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f"
+    },
+    {
+      "filename": "solar_04_tierra_final.png",
+      "sha256": "9dbd645a7a29bd4aa5770485c9fbfec73546a161b25c11569d73c056b5a78c87"
+    },
+    {
+      "filename": "solar_05_marte.png",
+      "sha256": "2da051ee02e9583f1702409f126fd8b8a82810699af425f7e64d70e4474598e9"
+    },
+    {
+      "filename": "solar_06_jupiter.png",
+      "sha256": "379c6f0bec39afacc444a9807d01c1f732cfa668e1d5a3670cfc9e036de51a59"
+    },
+    {
+      "filename": "solar_07_saturno.png",
+      "sha256": "4b62485a38231ec47363db69208cda3cc94bc73430b21a8d6d579d38fbcc5631"
+    },
+    {
+      "filename": "solar_08_urano_final.png",
+      "sha256": "8b0beaec52334a37e9584558d47e2b3786cd400e2ab887fafd0e46c850dac844"
+    },
+    {
+      "filename": "solar_09_neptuno_final.png",
+      "sha256": "c383b3c3941a4fa768d0289eb7693999cb594155d3948e7a03d610589ee57bb1"
+    },
+    {
+      "filename": "solar_10_pluton.png",
+      "sha256": "428fc88d8a86fe220f7ad53c34dae218fc1601404df8fe6f8b283d2c5f8c8844"
+    }
+  ],
+  "keep_without_regeneration": [
+    "mercurio",
+    "venus",
+    "marte",
+    "jupiter",
+    "saturno"
+  ],
+  "pluto": {
+    "status": "KEEP_VISUAL_TECHNICAL_NORMALIZATION_ONLY",
+    "regenerated": false,
+    "filename": "solar_10_pluton.png"
+  },
+  "corrected": [
+    "sol",
+    "urano"
+  ],
+  "keep_visual_technical_normalization": [
+    "tierra",
+    "neptuno"
+  ],
+  "validation": {
+    "backgrounds": [
+      "BLACK",
+      "WHITE",
+      "MID-GRAY"
+    ],
+    "file": "SOLAR_FINAL_ALPHA_VALIDATION_BLACK_WHITE_GRAY.png",
+    "result": "PASS"
+  },
+  "contact_sheet": {
+    "filename": "SOLAR_FOUNDATION_FINAL_10_CONTACT_SHEET.png",
+    "sha256": "348fd293eef4187e98ea15923ae1bdab7bdee3d6a7d85d99fd0403fc9f2006c2",
+    "role": "QA_ONLY"
+  },
+  "status": "READY_FOR_BATCH_REVIEW"
+}
