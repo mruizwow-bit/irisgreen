@@ -94,3 +94,78 @@ Vigilar WCAG, WCAG-EM, ARIA, EN 301 549/OJEU, ISO, PDF/UA, EPUB, CBE/ONCE y sopo
 
 ## Regla final
 **Axioma no colecciona sellos verdes. Construye confianza técnica demostrable.**
+
+
+## 17 · QA POR TANDA APROBADA · 03/10/2026
+
+Orden de María:
+
+**Axioma entra después de cada tanda aprobada, no antes.**
+
+Secuencia operativa:
+`PRODUCCIÓN/REVISIÓN VISUAL → TANDA APROBADA → AXIOMA QA → RETEST SI HAY FINDINGS → SIGUIENTE GATE`
+
+Axioma no interrumpe la generación ni entra a dirigir arte durante la tanda salvo bloqueo explícito de seguridad/accesibilidad que haga inútil continuar.
+
+### Gate mínimo por tanda
+
+Comprobar siempre:
+
+1. **Accesibilidad**
+   - estructura/semántica cuando exista UI;
+   - teclado/touch cuando aplique;
+   - foco;
+   - estados;
+   - nombres accesibles;
+   - reflow/zoom;
+   - forced colors cuando aplique.
+
+2. **Contraste**
+   - texto;
+   - controles;
+   - estados;
+   - foco;
+   - información gráfica necesaria;
+   - no asumir PASS por token nominal: medir el par de colores realmente adyacente.
+
+3. **Reduced motion / no-motion**
+   - REDUCIDO produce una reducción real;
+   - SIN_MOVIMIENTO elimina movimiento continuo;
+   - `prefers-reduced-motion` se aplica al contenido relevante, no solo al chrome;
+   - audio y movimiento se mantienen independientes cuando el contrato lo requiera.
+
+4. **Equivalentes textuales**
+   - imagen informativa → alternativa textual adecuada;
+   - imagen compleja → descripción suficiente cuando haga falta;
+   - imagen funcional → nombre/propósito accesible;
+   - decorativa → se oculta correctamente a AT;
+   - audio/vídeo significativo → equivalente/transcripción/subtítulos según corresponda.
+
+5. **Ninguna información depende solo de la imagen**
+   - datos, instrucciones, estado, solución, significado o decisión deben existir también como texto/semántica accesible;
+   - no aceptar texto incrustado en imagen como única fuente;
+   - no aceptar color, icono, forma o posición visual como único canal para información necesaria.
+
+### Resultado por tanda
+
+Usar:
+- `AXIOMA_BATCH_PASS`
+- `AXIOMA_BATCH_REWORK_REQUIRED`
+- `AXIOMA_BATCH_PENDING_EVIDENCE`
+
+Cada resultado debe indicar:
+`BATCH_ID · ASSET/VIEW · REQUIREMENT · METHOD · EVIDENCE · RESULT · OWNER · RETEST`
+
+### Regla de alcance
+
+Axioma hace QA de lo **aprobado en la tanda**.
+
+No:
+- rediseñar;
+- reabrir dirección artística aprobada;
+- pedir variantes no justificadas;
+- bloquear por preferencias personales;
+- adelantar QA a assets todavía en producción.
+
+Si detecta un fallo:
+describir requisito + evidencia + corrección mínima esperada y devolver al owner correspondiente.
