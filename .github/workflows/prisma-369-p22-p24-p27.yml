@@ -1,0 +1,36 @@
+name: Prisma · #369 P22 P24 P27 headers
+on:
+  push:
+    branches: ['prisma/369-headers-p22-p24-p27-*']
+    paths:
+      - 'es/neurodiversidad/condiciones/index.html'
+      - 'en/neurodiversity/conditions/index.html'
+      - 'es/situaciones/index.html'
+      - 'en/situations/index.html'
+      - 'es/tramites/directorio/index.html'
+      - 'scripts/test_prisma_369_p22_p24_p27.py'
+      - '.github/workflows/prisma-369-p22-p24-p27.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA #369 P22 P24 P27
+        run: python scripts/test_prisma_369_p22_p24_p27.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-369-p22-p24-p27
+          path: reports/prisma-369-p22-p24-p27/
+          retention-days: 14
