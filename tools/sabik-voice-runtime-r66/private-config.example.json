@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green/sabik-private-runtime-config/v1",
+  "tts": {
+    "es": {
+      "model_id": "SABIK_ES_R01_FINAL",
+      "model_sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
+      "model_path": "C:/PRIVATE/SABIK_ES_R01_FINAL",
+      "hash_file": "model.safetensors",
+      "mode": "custom_voice",
+      "speaker": "sabik_es",
+      "language": "Spanish",
+      "device_map": "cuda:0",
+      "dtype": "bfloat16",
+      "attn_implementation": "sdpa"
+    },
+    "en": {
+      "model_id": "SABIK_EN_R02_FINAL",
+      "model_sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
+      "model_path": "C:/PRIVATE/SABIK_EN_R02_FINAL",
+      "hash_file": "model.safetensors",
+      "mode": "custom_voice",
+      "speaker": "sabik_en",
+      "language": "English",
+      "device_map": "cuda:0",
+      "dtype": "bfloat16",
+      "attn_implementation": "sdpa"
+    }
+  },
+  "stt": {
+    "command": ["C:/PRIVATE/STT/adapter.exe"],
+    "languages": ["es", "en"],
+    "engine": "PRIVATE_CANONICAL_STT",
+    "model": "PRIVATE_CANONICAL_STT"
+  }
+}
