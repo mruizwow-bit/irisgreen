@@ -1,0 +1,33 @@
+name: Prisma · #369 P46 common grid audit
+on:
+  push:
+    branches: ['prisma/369-common-grid-p46-audit-*']
+    paths:
+      - 'scripts/test_prisma_369_common_grid_p46.py'
+      - '.github/workflows/prisma-369-common-grid-p46.yml'
+      - 'assets/ig-r49-transversal.css'
+      - 'assets/home-r42-child-safe.css'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: Audit #369 P46
+        run: python scripts/test_prisma_369_common_grid_p46.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-369-common-grid-p46
+          path: reports/prisma-369-common-grid-p46/
+          retention-days: 14
