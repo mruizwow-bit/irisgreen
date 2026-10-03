@@ -1,0 +1,45 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P23-P25-P26-CONTENT-GRID-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [
+    23,
+    25,
+    26
+  ],
+  "branch": "prisma/369-content-grid-p23-p25-p26-20261003",
+  "base_main": "25853db0971627af6ffcdb5edb90b0503f171226",
+  "repair_commit": "f2d1266605576a16b7a648036e64911aae5777ff",
+  "qa": {
+    "test_commit": "a29391851634712797d121765550dccec4e0c044",
+    "workflow_commit": "e53c9923bc5ab948c07639371aaeb9c10c2e9d60",
+    "run_id": 37108730787,
+    "job_id": 111162291756,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P23_P25_P26_CONTENT_GRID_PASS",
+    "routes": 6,
+    "cases": 18,
+    "languages": [
+      "es",
+      "en"
+    ],
+    "widths": [
+      1440,
+      820,
+      390
+    ],
+    "desktop_body_min_width": 800,
+    "tablet_breakpoint": 900,
+    "overflow": "PASS"
+  },
+  "artifact": {
+    "id": 11268324089,
+    "name": "prisma-369-content-grid",
+    "sha256": "3aefed04d3f912ef887756d73e67de572553b30feda8f05c834ec6a0190f32ba"
+  },
+  "main_modified": false,
+  "next_owner": "NEXO_FOR_RECONCILIATION",
+  "status": "PRISMA_P23_P25_P26_REPAIRED_READY_FOR_NEXO_RECONCILIATION"
+}
