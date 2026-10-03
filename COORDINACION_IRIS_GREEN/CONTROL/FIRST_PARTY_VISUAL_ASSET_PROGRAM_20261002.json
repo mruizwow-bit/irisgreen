@@ -232,5 +232,34 @@
     "owner": "LUMEN_A7",
     "marker": "VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW",
     "atlas_packaging_blocked_until_pass": true
+  },
+  "updated": "2026-10-03",
+  "parallel_batch_production": {
+    "status": "ACTIVE",
+    "default_batch": 10,
+    "review_per_batch": true,
+    "source_issue": 370,
+    "source_comment": 5965786714
+  },
+  "sky_data_procedural": {
+    "a01": {
+      "owner": "ATLAS_A1",
+      "status": "READY_FOR_REVIEW",
+      "gate": "SKY_BATCH_A01_10_READY_FOR_REVIEW",
+      "scene_count": 10,
+      "selection": "cielo.json cromo 1..10",
+      "magnitude_limit": 5.5,
+      "total_scene_star_records": 2210,
+      "min_scene_star_count": 79,
+      "max_scene_star_count": 411,
+      "source_path": "es/intereses/cielo/cielo.json",
+      "source_git_blob": "f8594587d14c0ac51f33e424507c08be0429b680",
+      "raster_star_catalog": false,
+      "manual_star_placement": false,
+      "horizon_b00": "KEEP_LOCKED",
+      "runtime_touched": false,
+      "main_touched": false,
+      "branch": "atlas/sky-batch-a01-10-20261003"
+    }
   }
 }
