@@ -1,0 +1,33 @@
+{
+  "schema": "iris-green.provenance.sky-batch-a01.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "upstream": {
+    "source_path": "es/intereses/cielo/cielo.json",
+    "source_git_blob": "f8594587d14c0ac51f33e424507c08be0429b680",
+    "sources": {
+      "estrellas": "HYG Database v4.1, David Nash (astronexus), CC BY-SA 4.0",
+      "nombres": "IAU Working Group on Star Names (WGSN), lista compilada por Cora Schneck (iau-star-names), MIT",
+      "constelaciones": "Líneas, límites y nombres de d3-celestial, Olaf Frohn, BSD-3-Clause; límites oficiales de la IAU (Delporte, 1930)"
+    },
+    "factual_brief_ref": "COORDINACION_IRIS_GREEN/MEMORIA/R59_SKY_VISUAL_FACTUAL_BRIEF_20261003.md @ e7e77e888c17f2ad73319f1aac9c7ec07ce8a85b",
+    "work_order": "#370 comment 5965786714"
+  },
+  "derivation": {
+    "selection": "cromo 1–10",
+    "field_selection": "constellation boundary angular extent + 12% margin, min 12°, cap 45°",
+    "magnitude_limit": 5.5,
+    "projection": "gnomonic tangent-plane centered on constellation label, review-only",
+    "brightness_categories": {
+      "BEACON": "mag<=1.5",
+      "BRIGHT": "1.5<mag<=3.0",
+      "GUIDE": "3.0<mag<=4.5",
+      "FIELD": "4.5<mag<=5.5"
+    },
+    "color_categories": "derived from HYG B-V color index for review display only",
+    "no_manual_star_placement": true
+  },
+  "third_party_pixels": false,
+  "raster_star_catalog": false,
+  "output_class": "DATA_BACKED_PROCEDURAL_REVIEW_ASSETS"
+}
