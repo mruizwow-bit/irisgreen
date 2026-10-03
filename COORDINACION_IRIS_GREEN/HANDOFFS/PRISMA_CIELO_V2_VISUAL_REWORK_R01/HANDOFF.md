@@ -156,3 +156,35 @@ Estado al checkpoint:
 
 No esperar en chat.
 El siguiente Prisma/turno debe leer el resultado del run antes de continuar.
+
+
+## Cierre micro-bloque · mobile disclosure non-overlap
+
+Resultado:
+`PASS`
+
+Commit probado:
+`3ac5d57f938d3f04dd6d537d537b1682c230033a`
+
+CI:
+- run `37102695165` · **SUCCESS**
+- job `111145203279`
+
+También PASS:
+- donor subset;
+- syntax;
+- build canónico;
+- QA first viewport.
+
+Artifact:
+`cielo-v2-first-viewport`
+ID:
+`11266274408`
+
+Digest:
+`sha256:aa4d31f65b2f6be398da183218e689dbf1524dbdc00880c17d419cc54b254f48`
+
+El solapamiento de `Ajustes` con el título en 390 px queda resuelto.
+
+Permanece sin cambios el bloqueante HUMAN QA:
+B00 aprobado todavía sin path binario web canónico conectado.
