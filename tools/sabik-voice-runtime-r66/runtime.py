@@ -11,9 +11,22 @@ from dataclasses import dataclass
 from pathlib import Path
 from typing import Optional
 
+os.environ.setdefault("PYTORCH_CUDA_ALLOC_CONF", "expandable_segments:True")
+
 import numpy as np
 import soundfile as sf
 import torch
+
+# Windows compatibility already required by the original Sabik Qwen training scripts.
+# Prevent optional sklearn discovery from pulling the problematic sklearn/SciPy path
+# before qwen_tts initializes. This does not alter model weights or inference math.
+import importlib.util as _iu
+_original_find_spec = _iu.find_spec
+_iu.find_spec = lambda name, *a, **k: (
+    None if name == "sklearn" or name.startswith("sklearn.")
+    else _original_find_spec(name, *a, **k)
+)
+
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.responses import JSONResponse, Response
 from pydantic import BaseModel
