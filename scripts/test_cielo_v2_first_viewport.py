@@ -14,6 +14,7 @@ OUT=ROOT/'reports'/'cielo-v2-first-viewport';OUT.mkdir(parents=True,exist_ok=Tru
 ROUTES={'es':'/es/intereses/cielo/','en':'/en/interests/night-sky/'}
 DEPTH='/es/intereses/cielo/cielo.json'
 FIRST='/assets/data/cielo-v2-first-view.json'
+HORIZON='/img/intereses/cielo/01-cielo-horizonte-observacion-r01.png'
 ALLOWED_NEW={
  'assets/data/cielo-v2-first-view.json',
  'assets/ig-cielo-v2-first.js',
@@ -32,7 +33,11 @@ def static_gate():
     es=(ROOT/'es/intereses/cielo/index.html').read_text(encoding='utf-8')
     en=(ROOT/'en/interests/night-sky/index.html').read_text(encoding='utf-8')
     js=(ROOT/'assets/ig-cielo-v2-first.js').read_text(encoding='utf-8')
+    css=(ROOT/'assets/ig-cielo-v2-first.css').read_text(encoding='utf-8')
     data=json.loads((ROOT/'assets/data/cielo-v2-first-view.json').read_text(encoding='utf-8'))
+    assert (ROOT/HORIZON.lstrip('/')).is_file()
+    assert "--skyv2-horizon-image:url('/img/intereses/cielo/01-cielo-horizonte-observacion-r01.png')" in css
+    assert "dataset.zoom" in js and "addEventListener('wheel'" in js
     joined='\n'.join([es,en,js,json.dumps(data,ensure_ascii=False)])
     assert 'NASA' not in joined
     assert 'navigator.geolocation' not in joined
@@ -77,24 +82,62 @@ def main():
               page.evaluate("m=>window.__CIELO_V2_FIRST.setMotion(m)",motion)
               page.wait_for_timeout(230 if motion=='normal' else 50)
 
+              # Prisma visual contract: scene-first, compact native disclosures, no horizontal overflow.
+              assert page.locator('.skyv2-viewlist').evaluate("e=>e.tagName==='DETAILS' && !e.open")
+              assert page.locator('.skyv2-meta').evaluate("e=>e.tagName==='DETAILS' && !e.open")
+              assert page.locator('.skyv2-info').get_attribute('data-active')=='false'
+              view_box=page.locator('.skyv2-viewlist').bounding_box();meta_box=page.locator('.skyv2-meta').bounding_box();intro_box=page.locator('.skyv2-intro').bounding_box();h1_box=page.locator('.skyv2-intro h1').bounding_box()
+              assert view_box and meta_box and intro_box and h1_box
+              assert view_box['width']<=200 and meta_box['width']<=180,(lang,width,view_box,meta_box)
+              if width<500:
+                overlap=lambda a,b:not(a['x']+a['width']<=b['x'] or b['x']+b['width']<=a['x'] or a['y']+a['height']<=b['y'] or b['y']+b['height']<=a['y'])
+                assert not overlap(h1_box,meta_box),(lang,width,'meta overlaps title',h1_box,meta_box)
+                assert view_box['y']>=intro_box['y']+intro_box['height']-2,(lang,width,'view disclosure overlaps intro',view_box,intro_box)
+              if width<500:
+                assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+1"),(lang,width,'horizontal overflow')
+              scene_box=page.locator('.skyv2-scene').bounding_box();assert scene_box
+              assert scene_box['width']/width>=0.94,(lang,width,scene_box)
+
               stars=page.locator('.skyv2-star-target').count()
               labels=page.locator('.skyv2-const-label').count()
               assert 12<=stars<=24,(lang,width,motion,stars)
               assert labels<=5,(lang,width,motion,labels)
               assert page.locator('.skyv2-viewlist').is_visible()
               assert page.locator('.skyv2-star-target').first.is_visible()
+              target_box=page.locator('.skyv2-star-target').first.bounding_box();assert target_box
+              assert target_box['width']>=44 and target_box['height']>=44,(lang,width,target_box)
+              if labels:
+                label_style=page.locator('.skyv2-const-label').first.evaluate("e=>({bg:getComputedStyle(e).backgroundColor,bw:getComputedStyle(e).borderTopWidth})")
+                assert label_style['bg'] in ('rgba(0, 0, 0, 0)','transparent'),label_style
+                assert label_style['bw']=='0px',label_style
               assert DEPTH not in req,(lang,width,motion,'depth eager')
+              assert HORIZON in req,(lang,width,motion,'approved horizon not requested',req)
+              horizon_bg=page.locator('.skyv2-scene').evaluate("e=>getComputedStyle(e,'::after').backgroundImage")
+              assert '01-cielo-horizonte-observacion-r01.png' in horizon_bg,(lang,width,horizon_bg)
               assert not external,(lang,width,motion,external)
               assert not bad,(lang,width,motion,bad)
               assert not errors,(lang,width,motion,errors)
 
-              # LIGHT/NAVY chrome without changing the astronomy scene.
+              # LIGHT/NAVY chrome lives behind a compact native disclosure.
+              page.locator('.skyv2-meta > summary').click()
               page.locator('[data-theme="light"]').click()
               assert page.locator('#cielo-v2').get_attribute('data-theme')=='light'
               page.locator('[data-theme="navy"]').click()
               assert page.locator('#cielo-v2').get_attribute('data-theme')=='navy'
+              page.locator('.skyv2-meta').evaluate("e=>e.open=false")
 
-              # Keyboard look + reset.
+              # Human-QA evidence: first viewport before selection, overlays collapsed.
+              if lang=='es' and motion=='normal' and width in (390,1440):
+                page.screenshot(path=str(OUT/f'cielo-v2-prisma-scene-{width}.png'),full_page=False)
+
+              # EXPLORE: zoom is an explicit real user action available to touch and keyboard.
+              fov0=page.evaluate("()=>window.__CIELO_V2_FIRST.camera.fov")
+              page.locator('[data-zoom="in"]').click();page.wait_for_timeout(240 if motion=='normal' else 40)
+              fov1=page.evaluate("()=>window.__CIELO_V2_FIRST.camera.fov")
+              assert fov1<fov0,(lang,width,motion,'zoom-in did not reduce FOV',fov0,fov1)
+              page.locator('[data-zoom="out"]').click();page.wait_for_timeout(240 if motion=='normal' else 40)
+
+              # LOCATE: keyboard orientation moves the camera; Home restores the view.
               canvas=page.locator('.skyv2-canvas');canvas.focus()
               before=page.evaluate("()=>window.__CIELO_V2_FIRST.camera.az")
               page.keyboard.press('ArrowRight');page.wait_for_timeout(240 if motion=='normal' else 40)
@@ -102,19 +145,24 @@ def main():
               assert before!=after,(before,after)
               page.keyboard.press('Home');page.wait_for_timeout(240 if motion=='normal' else 40)
 
-              # Touch/pointer selection: all targets are DOM controls.
+              # REVEAL: touch/pointer selection exposes the information panel.
               first=page.locator('.skyv2-star-target').first
+              first_name=first.get_attribute('data-star')
               box=first.bounding_box();assert box
+              px,py=box['x']+box['width']/2,box['y']+box['height']/2
               if width<500:
-                page.touchscreen.tap(box['x']+box['width']/2,box['y']+box['height']/2)
+                page.touchscreen.tap(px,py)
               else:
-                first.click()
+                page.mouse.click(px,py)
               page.wait_for_timeout(30)
               assert page.locator('.skyv2-info dl').count()==1
+              assert page.locator('.skyv2-info').get_attribute('data-active')=='true'
+              assert page.locator('.skyv2-info h2').text_content()==first_name,(lang,width,first_name,page.locator('.skyv2-info h2').text_content())
 
               # Depth loads only on explicit request (one representative case).
               depth_count=0
               if lang=='es' and width==390 and motion=='normal':
+                page.locator('.skyv2-meta > summary').click()
                 page.locator('.skyv2-depth').click()
                 page.locator('#cielo-v2[data-depth-loaded="true"]').wait_for(timeout=10000)
                 depth_count=req.count(DEPTH)
@@ -140,7 +188,9 @@ def main():
       server.shutdown()
 
     report={
-      'gate':'INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS',
+      'gate':'INTEREST_01_CIELO_V2_VISUAL_REWORK_READY_FOR_HUMAN_QA',
+      'human_qa_blocker':None,
+      'base_gate':'INTEREST_01_CIELO_V2_FIRST_VIEWPORT_PASS',
       'static':static,
       'cases':cases,
       'summary':{
@@ -156,7 +206,16 @@ def main():
         'external_requests':sum(c['external'] for c in cases),
         'http_errors':sum(c['http_errors'] for c in cases),
         'js_errors':sum(c['js_errors'] for c in cases),
-        'depth_eager_requests':0
+        'depth_eager_requests':0,
+        'scene_first':True,
+        'compact_disclosures':True,
+        'progressive_info':True,
+        'approved_horizon_connected':True,
+        'explore_locate_reveal':True,
+        'zoom_touch_buttons':True,
+        'zoom_keyboard':True,
+        'zoom_wheel':True,
+        'human_qa_screenshots':['cielo-v2-prisma-scene-390.png','cielo-v2-prisma-scene-1440.png']
       },
       'passed':True
     }

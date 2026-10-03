@@ -13,7 +13,7 @@ const MONTHS={
 };
 const TEXT={
  es:{
-  scene:'Escena del cielo nocturno',look:'Mirar',left:'Mirar a la izquierda',right:'Mirar a la derecha',up:'Mirar más arriba',down:'Mirar más abajo',
+  scene:'Escena del cielo nocturno',look:'Mirar',left:'Mirar a la izquierda',right:'Mirar a la derecha',up:'Mirar más arriba',down:'Mirar más abajo',zoomIn:'Acercar',zoomOut:'Alejar',
   reset:'Volver a vista inicial',hints:'Pistas',context:'Lugar y fecha-hora',place:'Lugar',datetime:'Fecha y hora',motion:'Movimiento',
   normal:'Normal',reduced:'Reducido',none:'Sin movimiento',inView:'En esta vista',constellations:'Constelaciones',stars:'Estrellas',
   sources:'Datos locales: HYG · IAU · JPL',depth:'Explorar todo el cielo',depthLoading:'Cargando profundidad…',
@@ -21,10 +21,10 @@ const TEXT={
   depthFail:'No se pudo cargar la profundidad.',select:'Elige una estrella o una figura.',calculated:'Cielo calculado para',
   star:'Estrella',constellation:'Constelación',magnitude:'Magnitud aparente',distance:'Distancia',spectral:'Tipo espectral',designation:'Designación',
   bestMonth:'Mes orientativo',high:'alta en esta vista',low:'baja en esta vista',figure:'Figura',planetContext:'Contexto planetario JPL local',
-  light:'Claro',navy:'Navy',theme:'Chrome',noTargets:'No hay suficientes estrellas en esta dirección. Usa los controles para mirar alrededor.'
+  settings:'Ajustes',light:'Claro',navy:'Navy',theme:'Chrome',noTargets:'No hay suficientes estrellas en esta dirección. Usa los controles para mirar alrededor.'
  },
  en:{
-  scene:'Night-sky scene',look:'Look',left:'Look left',right:'Look right',up:'Look higher',down:'Look lower',
+  scene:'Night-sky scene',look:'Look',left:'Look left',right:'Look right',up:'Look higher',down:'Look lower',zoomIn:'Zoom in',zoomOut:'Zoom out',
   reset:'Return to initial view',hints:'Hints',context:'Place and date-time',place:'Place',datetime:'Date and time',motion:'Motion',
   normal:'Normal',reduced:'Reduced',none:'No motion',inView:'In this view',constellations:'Constellations',stars:'Stars',
   sources:'Local data: HYG · IAU · JPL',depth:'Explore the whole sky',depthLoading:'Loading depth…',
@@ -32,7 +32,7 @@ const TEXT={
   depthFail:'Depth could not be loaded.',select:'Choose a star or a pattern.',calculated:'Sky calculated for',
   star:'Star',constellation:'Constellation',magnitude:'Apparent magnitude',distance:'Distance',spectral:'Spectral type',designation:'Designation',
   bestMonth:'Approximate month',high:'high in this view',low:'low in this view',figure:'Figure',planetContext:'Local JPL planetary context',
-  light:'Light',navy:'Navy',theme:'Chrome',noTargets:'There are not enough bright stars in this direction. Use the controls to look around.'
+  settings:'Settings',light:'Light',navy:'Navy',theme:'Chrome',noTargets:'There are not enough bright stars in this direction. Use the controls to look around.'
  }
 };
 
@@ -139,6 +139,9 @@ class Runtime{
   [['left','←',this.t.left],['up','↑',this.t.up],['down','↓',this.t.down],['right','→',this.t.right]].forEach(([id,glyph,label])=>{
    const b=d.createElement('button');b.type='button';b.dataset.look=id;b.textContent=glyph;b.setAttribute('aria-label',label);b.addEventListener('click',()=>this.look(id));look.append(b);
   });
+  [['in','＋',this.t.zoomIn],['out','−',this.t.zoomOut]].forEach(([id,glyph,label])=>{
+   const b=d.createElement('button');b.type='button';b.dataset.zoom=id;b.textContent=glyph;b.setAttribute('aria-label',label);b.addEventListener('click',()=>this.zoom(id));look.append(b);
+  });
   const reset=d.createElement('button');reset.type='button';reset.dataset.action='reset';reset.textContent=this.t.reset;reset.addEventListener('click',()=>this.resetView());look.append(reset);
   const hints=d.createElement('button');hints.type='button';hints.dataset.action='hints';hints.textContent=this.t.hints;hints.setAttribute('aria-pressed','true');hints.addEventListener('click',()=>{this.hints=!this.hints;hints.setAttribute('aria-pressed',String(this.hints));this.render();});look.append(hints);
   scene.append(look);
@@ -146,22 +149,27 @@ class Runtime{
   canvas.addEventListener('keydown',e=>{
    const map={ArrowLeft:'left',ArrowRight:'right',ArrowUp:'up',ArrowDown:'down'};
    if(map[e.key]){e.preventDefault();this.look(map[e.key]);}
+   if(e.key==='+'||e.key==='='||e.key==='Add'){e.preventDefault();this.zoom('in');}
+   if(e.key==='-'||e.key==='_'||e.key==='Subtract'){e.preventDefault();this.zoom('out');}
    if(e.key==='Home'){e.preventDefault();this.resetView();}
   });
+  canvas.addEventListener('wheel',e=>{e.preventDefault();this.zoom(e.deltaY<0?'in':'out');},{passive:false});
   canvas.addEventListener('pointerdown',e=>{this.drag={x:e.clientX,y:e.clientY,az:this.camera.az,alt:this.camera.alt};canvas.setPointerCapture?.(e.pointerId);});
   canvas.addEventListener('pointermove',e=>{if(!this.drag)return;this.camera.az=mod(this.drag.az-(e.clientX-this.drag.x)*.22,360);this.camera.alt=clamp(this.drag.alt+(e.clientY-this.drag.y)*.15,8,78);this.render();});
   canvas.addEventListener('pointerup',()=>this.drag=null);canvas.addEventListener('pointercancel',()=>this.drag=null);
 
   const side=d.createElement('aside');side.className='skyv2-side';
   const info=d.createElement('section');info.className='skyv2-info';info.setAttribute('aria-live','polite');side.append(info);this.info=info;
-  const view=d.createElement('section');view.className='skyv2-viewlist';
-  const vh=d.createElement('h2');vh.textContent=this.t.inView;view.append(vh);
+  const view=d.createElement('details');view.className='skyv2-viewlist';
+  const vh=d.createElement('summary');vh.textContent=this.t.inView;view.append(vh);
   const cols=d.createElement('div');cols.className='skyv2-viewcols';
   const cbox=d.createElement('div'),sbox=d.createElement('div');
   cbox.innerHTML='<h3>'+this.t.constellations+'</h3>';sbox.innerHTML='<h3>'+this.t.stars+'</h3>';
   this.constList=d.createElement('ul');this.starList=d.createElement('ul');cbox.append(this.constList);sbox.append(this.starList);cols.append(cbox,sbox);view.append(cols);side.append(view);
 
-  const meta=d.createElement('div');meta.className='skyv2-meta';
+  const meta=d.createElement('details');meta.className='skyv2-meta';
+  const metaSummary=d.createElement('summary');metaSummary.textContent=this.t.settings;meta.append(metaSummary);
+  const metaPanel=d.createElement('div');metaPanel.className='skyv2-meta-panel';
   const context=d.createElement('details');context.className='skyv2-context';const sum=d.createElement('summary');sum.textContent=this.t.context;context.append(sum);
   const grid=d.createElement('div');grid.className='skyv2-context-grid';
   const placeLabel=d.createElement('label');placeLabel.textContent=this.t.place;
@@ -169,15 +177,15 @@ class Runtime{
   const dtLabel=d.createElement('label');dtLabel.textContent=this.t.datetime;const dt=d.createElement('input');dt.type='datetime-local';dt.value=toLocalInput(this.date);dt.addEventListener('change',()=>{const v=new Date(dt.value);if(!Number.isNaN(v.getTime())){this.date=v;this.chooseInitialView();this.render();}});dtLabel.append(dt);grid.append(dtLabel);
   const mLabel=d.createElement('label');mLabel.textContent=this.t.motion;const m=d.createElement('select');
   [['normal',this.t.normal],['reduced',this.t.reduced],['none',this.t.none]].forEach(([v,l])=>{const o=d.createElement('option');o.value=v;o.textContent=l;o.selected=v===this.motion;m.append(o);});
-  m.addEventListener('change',()=>this.setMotion(m.value));mLabel.append(m);grid.append(mLabel);context.append(grid);meta.append(context);
+  m.addEventListener('change',()=>this.setMotion(m.value));mLabel.append(m);grid.append(mLabel);context.append(grid);metaPanel.append(context);
 
   const themes=d.createElement('div');themes.className='skyv2-theme';themes.setAttribute('role','group');themes.setAttribute('aria-label',this.t.theme);
-  [['light',this.t.light],['navy',this.t.navy]].forEach(([v,l])=>{const b=d.createElement('button');b.type='button';b.dataset.theme=v;b.textContent=l;b.setAttribute('aria-pressed',String(v===this.theme));b.addEventListener('click',()=>this.setTheme(v));themes.append(b);});meta.append(themes);
+  [['light',this.t.light],['navy',this.t.navy]].forEach(([v,l])=>{const b=d.createElement('button');b.type='button';b.dataset.theme=v;b.textContent=l;b.setAttribute('aria-pressed',String(v===this.theme));b.addEventListener('click',()=>this.setTheme(v));themes.append(b);});metaPanel.append(themes);
 
-  const source=d.createElement('p');source.className='skyv2-sources';source.textContent=this.t.sources;meta.append(source);
-  const depth=d.createElement('button');depth.type='button';depth.className='skyv2-depth';depth.textContent=this.t.depth;depth.addEventListener('click',()=>this.loadDepth());meta.append(depth);this.depthButton=depth;
-  const depthStatus=d.createElement('p');depthStatus.className='skyv2-depth-status';depthStatus.setAttribute('role','status');meta.append(depthStatus);this.depthStatus=depthStatus;
-  side.append(meta);
+  const source=d.createElement('p');source.className='skyv2-sources';source.textContent=this.t.sources;metaPanel.append(source);
+  const depth=d.createElement('button');depth.type='button';depth.className='skyv2-depth';depth.textContent=this.t.depth;depth.addEventListener('click',()=>this.loadDepth());metaPanel.append(depth);this.depthButton=depth;
+  const depthStatus=d.createElement('p');depthStatus.className='skyv2-depth-status';depthStatus.setAttribute('role','status');metaPanel.append(depthStatus);this.depthStatus=depthStatus;
+  meta.append(metaPanel);side.append(meta);
 
   const shell=d.createElement('div');shell.className='skyv2-shell';shell.append(scene,side);this.root.append(shell);this.scene=scene;
   this.root.dataset.ready='true';
@@ -237,7 +245,7 @@ class Runtime{
  }
  renderTargets(cur){
   this.targets.replaceChildren();this.labels.replaceChildren();const r=this.scene.getBoundingClientRect(),w=Math.max(320,r.width),h=Math.max(420,r.height);
-  for(const x of cur.targets){const b=document.createElement('button');b.type='button';b.className='skyv2-star-target';b.style.left=(x.q.x/w*100)+'%';b.style.top=(x.q.y/h*100)+'%';b.dataset.star=(x.s.name||x.s.designation);b.setAttribute('aria-label',(x.s.name||x.s.designation||this.t.star)+' · '+this.t.magnitude+' '+x.s.mag.toFixed(2));b.addEventListener('click',()=>{this.selected={type:'star',value:x};this.renderInfo(cur);});this.targets.append(b);}
+  for(const x of cur.targets){const b=document.createElement('button');b.type='button';b.className='skyv2-star-target';b.style.left=(x.q.x/w*100)+'%';b.style.top=(x.q.y/h*100)+'%';b.dataset.star=(x.s.name||x.s.designation);b.setAttribute('aria-label',(x.s.name||x.s.designation||this.t.star)+' · '+this.t.magnitude+' '+x.s.mag.toFixed(2));b.addEventListener('click',ev=>{let pick=x;if(ev.detail!==0&&Number.isFinite(ev.clientX)&&Number.isFinite(ev.clientY)){const rr=this.targets.getBoundingClientRect(),px=(ev.clientX-rr.left)*(w/Math.max(1,rr.width)),py=(ev.clientY-rr.top)*(h/Math.max(1,rr.height));let best=Infinity;for(const candidate of cur.targets){const dx=candidate.q.x-px,dy=candidate.q.y-py,d2=dx*dx+dy*dy;if(d2<best){best=d2;pick=candidate;}}}this.selected={type:'star',value:pick};this.renderInfo(cur);});this.targets.append(b);}
   if(this.hints){for(const item of cur.cons){const pts=item.arr.map(x=>x.q),x=pts.reduce((a,p)=>a+p.x,0)/pts.length,y=pts.reduce((a,p)=>a+p.y,0)/pts.length;const b=document.createElement('button');b.type='button';b.className='skyv2-const-label';b.style.left=(x/w*100)+'%';b.style.top=(y/h*100)+'%';b.textContent=this.lang==='en'?item.c.latin:item.c.es;b.dataset.constellation=item.c.abbr;b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});this.labels.append(b);}}
  }
  renderLists(cur){
@@ -246,7 +254,7 @@ class Runtime{
   for(const x of cur.targets){const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=x.s.name||x.s.designation||this.t.star;b.addEventListener('click',()=>{this.selected={type:'star',value:x};this.renderInfo(cur);});li.append(b);this.starList.append(li);}
  }
  renderInfo(cur){
-  this.info.replaceChildren();const h=document.createElement('h2'),p=document.createElement('p');
+  this.info.replaceChildren();this.info.dataset.active=this.selected?'true':'false';const h=document.createElement('h2'),p=document.createElement('p');
   if(!this.selected){h.textContent=this.t.calculated+' '+(this.place.label[this.lang]||this.place.label.es);p.textContent=this.t.select;this.info.append(h,p);}
   else if(this.selected.type==='star'){
    const x=this.selected.value,s=x.s,c=this.consBy.get(s.con);h.textContent=s.name||s.designation||this.t.star;this.info.append(h);
@@ -259,6 +267,12 @@ class Runtime{
    const p2=document.createElement('p');p2.textContent=this.t.bestMonth+': '+monthLabel(c.best_month,this.lang)+'.';this.info.append(p2);
   }
   if(this.planets?.length){const q=document.createElement('p');q.className='skyv2-planet-context';q.textContent=this.t.planetContext+': '+this.planets.map(p=>p.name+' '+Math.round(p.alt)+'°').join(' · ');this.info.append(q);}
+ }
+ zoom(dir){
+  const next={...this.camera},before=next.fov;
+  next.fov=clamp(next.fov+(dir==='in'?-12:12),42,120);
+  if(next.fov===before)return false;
+  this.moveCamera(next);return true;
  }
  look(dir){
   const next={...this.camera};if(dir==='left')next.az=mod(next.az-12,360);if(dir==='right')next.az=mod(next.az+12,360);if(dir==='up')next.alt=clamp(next.alt+7,8,78);if(dir==='down')next.alt=clamp(next.alt-7,8,78);this.moveCamera(next);
