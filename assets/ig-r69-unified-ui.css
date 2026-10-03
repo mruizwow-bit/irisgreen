@@ -495,3 +495,9 @@ body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article,
 body[data-ig-r49-owner="R50_SUPPORT"] main article{
   padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
 }
+
+/* #369 P29 · Living Abroad introduction sits directly under main, outside result cards. */
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"],
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"] .sc-interp{
+  color:var(--ig-text-muted)!important
+}
