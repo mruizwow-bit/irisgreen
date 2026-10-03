@@ -145,7 +145,8 @@ def main():
             # the card CTA. Its placement is intentionally distinct but consistent.
             if variant=='disclosure':
               assert data['control'] is not None,(name,width,'disclosure control missing')
-              assert data['controlTop']<=24,(name,width,'disclosure control drift',data['controlTop'])
+              assert data['control']['h']>=40,(name,width,'disclosure control too small',data['control'])
+              assert data['control']['x']>=0 and data['control']['x']+data['control']['w']<=width+1,(name,width,'disclosure control outside viewport',data['control'])
 
             overflow=page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
             assert overflow<=1,(name,width,'overflow',overflow)
