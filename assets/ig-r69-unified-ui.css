@@ -173,6 +173,11 @@ body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article :where(h2,h3,strong,lab
 body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article a{
   color:var(--ig-link)!important
 }
+/* #369 P29: the Living Abroad introduction lives outside article cards. */
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"],
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"] .sc-interp{
+  color:var(--ig-text-muted)!important
+}
 
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx{--ink:var(--ig-text);--muted:var(--ig-text-muted);--line:var(--ig-separator);--glass:var(--ig-bg-surface);color:var(--ig-text)!important}
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.topic-card,.media-card,.filter,.backtopics,.share-options button,.cromo,.bajar,.vacio,.finder input,.lang-switch a,.lang-switch span){
