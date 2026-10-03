@@ -26,6 +26,14 @@ WORKSHOP_LOCAL_AGE_RE=re.compile(
     r'<nav\s+class=["\']igk-para["\'][^>]*>.*?</nav>',
     re.I|re.S,
 )
+CRUMB_RE=re.compile(
+    r'<p\b[^>]*class=["\'][^"\']*\bcrumb\b[^"\']*["\'][^>]*>.*?</p>\s*',
+    re.I|re.S,
+)
+WORKSHOP_REPEAT_NOTE_RE=re.compile(
+    r'<p\b[^>]*class=["\'][^"\']*\bigk-note\b[^"\']*["\'][^>]*>.*?</p>\s*',
+    re.I|re.S,
+)
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
@@ -51,17 +59,21 @@ def main()->None:
         if base.is_dir(): htmls.extend(p for p in base.rglob('*.html') if p.is_file())
     for p in (root/'index.html',root/'en'/'index.html'):
         if p.is_file(): htmls.append(p)
-    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0
+    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0;crumb_removed=0;workshop_note_removed=0
     for p in sorted(set(htmls)):
         before=p.read_text(encoding='utf-8')
         rel=p.relative_to(root).as_posix()
         after=local_fonts(before)
+        after,n=CRUMB_RE.subn('',after)
+        crumb_removed+=n
         if rel in ('es/recursos/index.html','en/resources/index.html'):
             after,n=RESOURCE_STAGE_RE.subn('',after,count=1)
             resource_removed+=n
         if rel in ('es/taller/index.html','en/workshop/index.html'):
             after,n=WORKSHOP_LOCAL_AGE_RE.subn('',after,count=1)
             workshop_age_removed+=n
+            after,n=WORKSHOP_REPEAT_NOTE_RE.subn('',after,count=1)
+            workshop_note_removed+=n
         if after!=before:
             p.write_text(after,encoding='utf-8');changed+=1
         if 'fonts.googleapis.com' in after or 'fonts.gstatic.com' in after:
@@ -73,7 +85,15 @@ def main()->None:
             raise AssertionError('Redundant resource age block remains: '+rel)
     if workshop_age_removed!=2:
         raise AssertionError(f'Expected 2 redundant Workshop age navs removed, got {workshop_age_removed}')
-    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed})
+    if workshop_note_removed!=2:
+        raise AssertionError(f'Expected 2 repetitive Workshop notes removed, got {workshop_note_removed}')
+    crumbs_left=[]
+    for p in sorted(set(htmls)):
+        if CRUMB_RE.search(p.read_text(encoding='utf-8')):
+            crumbs_left.append(p.relative_to(root).as_posix())
+    if crumbs_left:
+        raise AssertionError('Breadcrumbs remain after global cleanup: '+', '.join(crumbs_left[:12]))
+    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed,'breadcrumbs_removed':crumb_removed,'workshop_repeat_notes_removed':workshop_note_removed})
 
 if __name__=='__main__':
     main()
