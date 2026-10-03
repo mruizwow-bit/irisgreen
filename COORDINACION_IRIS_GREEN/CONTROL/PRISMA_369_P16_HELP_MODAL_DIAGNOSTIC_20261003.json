@@ -32,7 +32,7 @@
   "ci_run": 37108337667,
   "ci_status": "IN_PROGRESS",
   "main_modified": false,
-  "status": "P16_DIAGNOSTIC_RERUN_CANONICAL_1440",
+  "status": "PRISMA_P16_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
   "last_failure": {
     "run_id": 37108121166,
     "type": "DIAGNOSTIC_VIEWPORT_MOUNT",
@@ -40,5 +40,41 @@
   },
   "test_fix_commit": "9162cba2e65743ea98e0e69f972763deffeb482a",
   "diagnostic_viewport": 1440,
-  "viewport_rationale": "Match canonical R69 Workshop browser QA surface before evaluating modal contrast"
+  "viewport_rationale": "Match canonical R69 Workshop browser QA surface before evaluating modal contrast",
+  "repair": {
+    "cause": "Theme bridge targeted .ig-r42-dialog while the real component is .ig42-dialog; moved legacy help content retained dark legacy colors outside main.",
+    "css_commit": "2b0f99b4d96686bcbc2ff855143ba144c12c93f5",
+    "fixture_commit": "7b4be6f62624531a1c25ab48f24327429ca27e61",
+    "qa_commit": "54f4889e666a7a903104a93142cf1ed7f14144de",
+    "workflow_commit": "7feb931a3a6b621a499d1957db4fbc61cc021d00"
+  },
+  "qa": {
+    "run_id": 37108889896,
+    "job_id": 111162755012,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P16_HELP_MODAL_THEME_PASS",
+    "themes": [
+      "light",
+      "dark"
+    ],
+    "min_ratio_light": 6.37,
+    "min_ratio_dark": 8.95,
+    "checked": [
+      "heading",
+      "lede",
+      "paragraph",
+      "list",
+      "link",
+      "note",
+      "close",
+      "action"
+    ],
+    "note": "Presentation contrast evidence only; Axioma retains accessibility/conformance authority."
+  },
+  "artifact": {
+    "id": 11268971470,
+    "name": "prisma-369-help-p16",
+    "sha256": "4bc72e5cc30fed87ff4959636eb218c4a1ce43e30450f665e5b2e6f132f8b6ad"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
