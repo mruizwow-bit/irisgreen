@@ -288,13 +288,20 @@
   },
   "eclipse_canonical_type_visual_set": {
     "owner": "ATLAS_A1",
-    "status": "READY_FOR_REVIEW",
+    "status": "READY_FOR_REVIEW_R02",
     "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
+    "version": "R02",
+    "supersedes": "R01",
     "count": 6,
+    "additional_didactic_sequences": 2,
     "class": "REPRESENTATION",
     "catalog_relation": "TYPE_DRIVEN_REUSE_OVER_458_CALCULATION_EVENTS",
+    "dispatch_key": [
+      "source_domain",
+      "kind_es"
+    ],
     "source_review_comment": 5966236303,
-    "visible_text_in_assets": false,
+    "visible_text_in_runtime_assets": false,
     "es_en_metadata": true,
     "sha256": true,
     "runtime_touched": false,
