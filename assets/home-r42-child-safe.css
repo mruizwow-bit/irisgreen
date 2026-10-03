@@ -475,3 +475,16 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-left{max-width:36rem;margin-inline:auto;width:100%}
 .ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-right{width:100%}
 .ig-home-v4 .sabik-panel.is-expanded #sabik-input{min-height:10rem}
+
+
+/* R66 HUMAN QA · single-column Sabik identity and containment. */
+.ig-home-v4-sabik,.ig-home-v4-sabik>.sabik-panel,.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{min-width:0;max-width:100%}
+.ig-home-v4-sabik-identity-row{flex-direction:column;align-items:flex-start;min-width:0}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{width:100%;display:flex;justify-content:center}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:min(100%,300px);max-width:300px;overflow:clip}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-identity{width:100%;max-width:100%}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-identity p{max-width:34rem}
+.ig-home-v4 .ig-home-v4-sabik-controls{max-width:100%;overflow:visible}
+.ig-home-v4 .sabik-voice-control{max-width:100%}
+.ig-home-v4 .sabik-voice-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+@media(max-width:900px){.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:min(70vw,280px)}}
