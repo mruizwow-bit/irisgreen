@@ -1,0 +1,23 @@
+{
+  "schema": "iris-green.exoplanets-100-master-production.v1",
+  "date": "2026-10-03",
+  "authority": "MARIA",
+  "status": "EXOPLANETS_100_MASTER_PIPELINE_LOCKED",
+  "total": 100,
+  "batch_size": 10,
+  "batches": 10,
+  "order_source": "es/intereses/exoplanetas/exoplanetas.json first 100 records",
+  "output_contract": [
+    "ONE_PLANET_PER_MASTER",
+    "NO_TEXT",
+    "NO_DATA_IN_IMAGE",
+    "TRANSPARENT_BACKGROUND",
+    "SRGB",
+    "REPRESENTATION",
+    "NO_SCALE"
+  ],
+  "data_pipeline": "CLEAN_MASTER -> CANONICAL_JSON -> TEMPLATE_CONTACT_SHEET",
+  "review_policy": "REVIEW_AFTER_BATCH_10",
+  "previous_contact_sheets": "FAIL_DATA_AND_COMPOSITING_KEEP_VISUAL_DIRECTION",
+  "final_gate": "EXOPLANETS_100_MASTERS_READY_FOR_FINAL_REVIEW"
+}
