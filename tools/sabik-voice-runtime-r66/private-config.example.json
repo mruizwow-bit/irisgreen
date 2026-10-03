@@ -4,9 +4,9 @@
     "es": {
       "model_id": "SABIK_ES_R01_FINAL",
       "model_sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291",
-      "model_path": "C:/PRIVATE/SABIK_ES_R01_FINAL",
-      "hash_file": "REPLACE_WITH_CANONICAL_HASH_TARGET",
-      "mode": "REPLACE_FROM_PRIVATE_ARTIFACT_CUSTOM_VOICE_OR_VOICE_CLONE",
+      "model_path": "C:/Users/mruiz/SabikVoice/FINAL_MODELS/SABIK_ES_R01_FINAL",
+      "hash_file": "model.safetensors",
+      "mode": "custom_voice",
       "speaker": "sabik_es",
       "language": "Spanish",
       "device_map": "cuda:0",
@@ -16,7 +16,7 @@
     "en": {
       "model_id": "SABIK_EN_R02_FINAL",
       "model_sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df",
-      "model_path": "C:/Users/mruiz/SabikVoice/SABIK_EN_SFT_R02_EXACT/checkpoint-epoch-0",
+      "model_path": "C:/Users/mruiz/SabikVoice/FINAL_MODELS/SABIK_EN_R02_FINAL",
       "hash_file": "model.safetensors",
       "mode": "custom_voice",
       "speaker": "sabik_en",
