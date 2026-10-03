@@ -16,13 +16,23 @@ Canonical identities:
 
 ## Private artifact discovery
 
-`discover_private_models.py` hashes every `model.safetensors` below `SABIKVOICE_ROOT` (default `C:\\Users\\mruiz\\SabikVoice`) and only exits 0 if both canonical hashes are found.
+`discover_private_models.py` hashes candidate private files below `SABIKVOICE_ROOT` (default `C:\\Users\\mruiz\\SabikVoice`).
+
+By default it scans `**/model.safetensors`, because the recovered Sabik EN training scripts explicitly used that file. If the canonical SHA was defined over another private file, set `SABIK_MODEL_HASH_PATTERN` to the exact intended target pattern. Folder names are hints; **hash identity is authority**.
 
 Historical evidence identifies EN checkpoints such as:
 - `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0`
 - `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_V1`
 
-These are hints, not authority; hash matching is authority.
+Recovered EN inference contract:
+- Qwen3-TTS fine-tuned checkpoint;
+- `generate_custom_voice`;
+- speaker `sabik_en`;
+- language `English`;
+- non-streaming mode;
+- top_k 50 / top_p 1.0 / temperature 0.9 / repetition penalty 1.05.
+
+For ES, accessible historical evidence proves the approved Base/ICL route and master, but does **not** prove how the later artifact named `SABIK_ES_R01_FINAL` was packaged. Therefore the example config intentionally refuses to choose `custom_voice` vs `voice_clone` for ES until the private artifact is visible.
 
 ## Runtime modes
 
@@ -37,23 +47,38 @@ No fallback between identities is automatic.
 1. Create a private config from `private-config.example.json` outside public GitHub.
 2. Set `SABIK_VOICE_PRIVATE_CONFIG` to that path.
 3. Install requirements in an isolated environment.
-4. Start with:
+4. Start with access logging disabled:
 
-`uvicorn runtime:app --host 127.0.0.1 --port 8765`
+`uvicorn runtime:app --host 127.0.0.1 --port 8765 --no-access-log`
 
 Put the service behind the same-origin `/sabik-voice` route used by Nexo.
 
 ## Privacy / safety behavior
 
-- `Cache-Control: no-store` on capabilities, STT and TTS responses.
+- `Cache-Control: no-store` on capabilities, STT and TTS responses;
 - audio is held only in memory / ephemeral temporary files for the active STT call;
 - temp input is deleted after the command returns;
 - request text/audio are not logged by this runtime;
+- Uvicorn access logging must remain disabled so application-layer IP/request access lines are not created by this host;
 - STT is a private command adapter and must be supplied by the already-approved STT lane;
 - system/browser TTS is never used;
 - model identity mismatch stops startup.
 
-## Gate
+## Static gate
+
+`python scripts/test_eco_r66_private_runtime_static.py`
+
+Expected:
+`ECO_R66_PRIVATE_RUNTIME_STATIC_PASS`
+
+This only validates the host/contract. It explicitly reports:
+- `real_private_weights_exercised=false`;
+- `eco_media_validation_pass=false`.
+
+## Final gate
 
 This code is **not** `ECO_R66_MEDIA_VALIDATION_PASS`.
 That marker requires the real private ES+EN model bytes to be found, loaded and exercised through the A6 matrix.
+
+Final chain:
+`ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN`
