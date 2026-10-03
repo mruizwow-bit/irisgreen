@@ -81,7 +81,12 @@ function mount(){
  }
  async function voiceTranscript(text){
   input.value=text;controls();
-  return submitQuery(text,'voice');
+  const result=await submitQuery(text,'voice');
+  if(result?.kind==='listen-again'){
+   voiceTurn=false;
+   window.setTimeout(()=>{if(!busy&&!voice.getState().speaking&&!voice.getState().listening)void voice.startListening();},650);
+  }
+  return result;
  }
  voice=createSabikConversationalVoice({
   initialLanguage:lang,
@@ -151,7 +156,9 @@ function mount(){
   if(voiceTurn&&voiceEnabled()){
    voiceTurn=false;
    void voice.speak(answer).then(result=>{
-    if(meta.kind==='clarify'&&result?.status==='ended')void voice.startListening();
+    if(meta.kind==='clarify'&&result?.status==='ended'){
+     window.setTimeout(()=>{if(!busy&&!voice.getState().speaking&&!voice.getState().listening)void voice.startListening();},650);
+    }
    });
   }
  }
@@ -231,5 +238,3 @@ function mount(){
  new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});translate();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
-
-[executed on device: IrisGreen (3f6b1cbe-9324-4e6b-9df9-94b7628af125)]
