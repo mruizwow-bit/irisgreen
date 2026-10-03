@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green.eclipse-canonical-type-provenance.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "authority": "MARIA",
+  "upstream": {
+    "global_review": "#370 comment 5966236303",
+    "factual_brief": "INTEREST_04_ECLIPSES_VISUAL_FACTUAL_BRIEF_PASS",
+    "factual_brief_ref": "COORDINACION_IRIS_GREEN/MEMORIA/R59_ECLIPSES_VISUAL_FACTUAL_BRIEF_20261003.md @ e7e77e888c17f2ad73319f1aac9c7ec07ce8a85b",
+    "catalog_gate": "ECLIPSES_458_STRUCTURAL_AND_PROVENANCE_PASS"
+  },
+  "method": {
+    "production": "first-party procedural SVG",
+    "external_pixels": 0,
+    "manual_event_map": false,
+    "not_to_scale": true,
+    "reusable_by_type": true,
+    "generic_geometry": true
+  },
+  "epistemic_contract": {
+    "canonical_type_visuals": "REPRESENTATION",
+    "event_date_type_catalog": "CALCULATION",
+    "published_IGN_NASA_facts": "REAL_DATA",
+    "rule_1": "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+    "rule_2": "SIMULATION != OBSERVATION"
+  },
+  "design_notes": {
+    "solar_total": "generic corona permitted only in total visual",
+    "solar_partial": "penumbra concept; no fixed obscuration",
+    "solar_annular": "smaller apparent lunar disk; no city-specific claim",
+    "lunar_total": "generic copper coloration only",
+    "lunar_partial": "partial umbral coverage",
+    "lunar_penumbral": "penumbral dimming without umbral entry"
+  }
+}
