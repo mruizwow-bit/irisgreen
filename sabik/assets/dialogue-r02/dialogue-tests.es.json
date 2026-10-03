@@ -1,0 +1,678 @@
+{
+  "schema": "iris-green/sabik-dialogue-tests/v1",
+  "language": "es",
+  "cases": [
+    {
+      "id": "es-001",
+      "text": "Hola, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.greeting",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-002",
+      "text": "Responde, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-003",
+      "text": "¿Me oyes, Sabik?",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-004",
+      "text": "Gracias, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.thanks",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-005",
+      "text": "Busca autismo.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "autismo"
+        },
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-006",
+      "text": "Necesito buscar autismo.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "autismo"
+        },
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-007",
+      "text": "Quiero saber sobre ansiedad.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "ansiedad"
+        },
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-008",
+      "text": "Información sobre TOC.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "TOC"
+        },
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-009",
+      "text": "¿Qué es el autismo?",
+      "context": {},
+      "expect": {
+        "intent": "information.definition",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "definition"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-010",
+      "text": "Señales",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "signals"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-011",
+      "text": "Apoyos",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-012",
+      "text": "Valoración",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "assessment"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-013",
+      "text": "Sensorial",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "sensory"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-014",
+      "text": "Comunicación",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "communication"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-015",
+      "text": "Señales de autismo",
+      "context": {},
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "signals"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-016",
+      "text": "Apoyos para ansiedad",
+      "context": {},
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "ansiedad",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-017",
+      "text": "Repite",
+      "context": {},
+      "expect": {
+        "intent": "conversation.repeat",
+        "action": "repeat"
+      }
+    },
+    {
+      "id": "es-018",
+      "text": "Detente",
+      "context": {},
+      "expect": {
+        "intent": "conversation.stop",
+        "action": "stop"
+      }
+    },
+    {
+      "id": "es-019",
+      "text": "Sabik",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "action": "listen_again",
+        "keep_topic": "autismo"
+      }
+    },
+    {
+      "id": "es-020",
+      "text": "Tanik",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "action": "listen_again",
+        "keep_topic": "autismo"
+      }
+    },
+    {
+      "id": "es-021",
+      "text": "No, mejor apoyos",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "keep_topic": "autismo",
+        "slots": {
+          "aspect": "supports"
+        }
+      }
+    },
+    {
+      "id": "es-022",
+      "text": "Mejor ansiedad",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "switch_topic": "ansiedad"
+      }
+    },
+    {
+      "id": "es-023",
+      "text": "Necesito buscar sueño",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "sueño"
+        },
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-024",
+      "text": "Qué ayuda con el ruido",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-025",
+      "text": "No lo sé",
+      "context": {
+        "topic": "autismo",
+        "pending_slot": "aspect"
+      },
+      "expect": {
+        "keep_topic": "autismo",
+        "next_prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-026",
+      "text": "¿Cuál es la diferencia entre autismo y TDAH?",
+      "context": {},
+      "expect": {
+        "intent": "information.comparison",
+        "action": "route",
+        "capability": "iris_green",
+        "slots": {
+          "topic": "autismo",
+          "compare_topic": "TDAH",
+          "aspect": "comparison"
+        }
+      }
+    },
+    {
+      "id": "es-027",
+      "text": "No era eso",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.not_that",
+        "action": "respond",
+        "prompt": "correction.ask",
+        "keep_topic": "autismo"
+      }
+    },
+    {
+      "id": "es-028",
+      "text": "No me refería a autismo, me refería a ansiedad",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.correction_topic",
+        "action": "elicit",
+        "slots": {
+          "topic": "ansiedad"
+        },
+        "prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-029",
+      "text": "En realidad quería ansiedad",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.correction_topic",
+        "action": "elicit",
+        "slots": {
+          "topic": "ansiedad"
+        },
+        "prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-030",
+      "text": "Vale",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.continue",
+        "action": "respond",
+        "prompt": "social.continue.response"
+      }
+    },
+    {
+      "id": "es-031",
+      "text": "Sigue",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.continue",
+        "action": "respond"
+      }
+    },
+    {
+      "id": "es-032",
+      "text": "Otro tema",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.new_topic",
+        "action": "respond",
+        "prompt": "search.ask_topic"
+      }
+    },
+    {
+      "id": "es-033",
+      "text": "Más corto",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.response_length",
+        "action": "respond",
+        "slots": {
+          "response_length": "short"
+        }
+      }
+    },
+    {
+      "id": "es-034",
+      "text": "Más detalle",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.response_length_detailed",
+        "action": "respond",
+        "slots": {
+          "response_length": "detailed"
+        }
+      }
+    },
+    {
+      "id": "es-035",
+      "text": "¿Qué hora es?",
+      "context": {},
+      "expect": {
+        "intent": "utility.time",
+        "action": "route",
+        "capability": "time"
+      }
+    },
+    {
+      "id": "es-036",
+      "text": "¿Qué fecha es hoy?",
+      "context": {},
+      "expect": {
+        "intent": "utility.date",
+        "action": "route",
+        "capability": "date"
+      }
+    },
+    {
+      "id": "es-037",
+      "text": "¿Qué tiempo hace?",
+      "context": {},
+      "expect": {
+        "intent": "utility.weather",
+        "action": "route",
+        "capability": "weather"
+      }
+    },
+    {
+      "id": "es-038",
+      "text": "¿Qué tiempo hará mañana Madrid?",
+      "context": {},
+      "expect": {
+        "intent": "utility.weather",
+        "action": "route",
+        "capability": "weather"
+      }
+    },
+    {
+      "id": "es-039",
+      "text": "Calcula 8 por 7",
+      "context": {},
+      "expect": {
+        "intent": "utility.calculate",
+        "action": "route",
+        "capability": "calculator"
+      }
+    },
+    {
+      "id": "es-040",
+      "text": "¿Cuál es la capital de España?",
+      "context": {},
+      "expect": {
+        "intent": "general.question",
+        "action": "route",
+        "capability": "general_knowledge"
+      }
+    },
+    {
+      "id": "es-041",
+      "text": "Explícame la fotosíntesis",
+      "context": {},
+      "expect": {
+        "intent": "information.definition",
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-042",
+      "text": "Eso",
+      "context": {},
+      "expect": {
+        "intent": "general.question",
+        "action": "route",
+        "capability": "general_knowledge"
+      }
+    },
+    {
+      "id": "es-043",
+      "text": "No lo sé",
+      "context": {
+        "topic": "autismo",
+        "pending_slot": "aspect"
+      },
+      "expect": {
+        "action": "fallback",
+        "keep_topic": "autismo",
+        "prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-044",
+      "text": "Gracias",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "social.thanks",
+        "action": "respond"
+      }
+    },
+    {
+      "id": "es-045",
+      "text": "Basta",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.stop",
+        "action": "stop"
+      }
+    },
+    {
+      "id": "es-046",
+      "text": "Repite",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "conversation.repeat",
+        "action": "repeat"
+      }
+    },
+    {
+      "id": "es-047",
+      "text": "Apoyos",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "action": "retrieve",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        }
+      }
+    },
+    {
+      "id": "es-048",
+      "text": "Mejor apoyos",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.change_aspect",
+        "action": "retrieve",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        }
+      }
+    },
+    {
+      "id": "es-049",
+      "text": "Mejor ansiedad",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.change_topic",
+        "action": "elicit",
+        "slots": {
+          "topic": "ansiedad"
+        },
+        "prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-050",
+      "text": "Necesito información sobre sueño",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "action": "elicit",
+        "slots": {
+          "topic": "sueño"
+        },
+        "prompt": "search.ask_aspect"
+      }
+    },
+    {
+      "id": "es-051",
+      "text": "Señales de ansiedad",
+      "context": {},
+      "expect": {
+        "intent": "information.aspect",
+        "action": "retrieve",
+        "slots": {
+          "topic": "ansiedad",
+          "aspect": "signals"
+        }
+      }
+    },
+    {
+      "id": "es-052",
+      "text": "¿Qué es ansiedad?",
+      "context": {},
+      "expect": {
+        "intent": "information.definition",
+        "action": "retrieve",
+        "slots": {
+          "topic": "ansiedad",
+          "aspect": "definition"
+        }
+      }
+    },
+    {
+      "id": "es-053",
+      "text": "¿Me oyes?",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond"
+      }
+    },
+    {
+      "id": "es-054",
+      "text": "Responde",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond"
+      }
+    },
+    {
+      "id": "es-055",
+      "text": "Empezamos de nuevo",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "intent": "conversation.new_topic",
+        "action": "respond",
+        "prompt": "search.ask_topic"
+      }
+    }
+  ]
+}
