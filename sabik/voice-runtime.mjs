@@ -4,7 +4,7 @@ const MODEL={
  es:{locale:'es',ttsLanguage:'Spanish',ttsId:'SABIK_ES_R01_FINAL',ttsSha:'8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291'},
  en:{locale:'en',ttsLanguage:'English',ttsId:'SABIK_EN_R02_FINAL',ttsSha:'3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df'}
 };
-const MAX_CAPTURE_MS=30000;
+const MAX_CAPTURE_MS=12000;
 
 function language(value){return String(value||'').toLowerCase().startsWith('en')?'en':'es';}
 function clamp(value,min,max){const n=Number(value);return Number.isFinite(n)?Math.max(min,Math.min(max,n)):min;}
