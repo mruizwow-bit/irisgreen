@@ -1,0 +1,40 @@
+name: Motor · Night Sky R03 88 constellations
+on:
+  push:
+    branches: ['motor/space-pack-01-constellations88-*']
+    paths:
+      - 'assets/data/cielo-constellations-r03-index.json'
+      - 'assets/ig-cielo-v2-first.js'
+      - 'assets/ig-cielo-v2-first.css'
+      - 'scripts/test_cielo_constellations_r03_integration.py'
+      - '.github/workflows/motor-cielo-constellations-r03.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  constellations-r03:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: |
+          node --check assets/ig-cielo-v2-first.js
+          python -m py_compile scripts/test_cielo_constellations_r03_integration.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA 88 constelaciones
+        run: python scripts/test_cielo_constellations_r03_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: cielo-r03-88-constellations
+          path: |
+            reports/cielo-constellations-r03/qa.json
+            reports/cielo-constellations-r03/*.png
+          retention-days: 14
