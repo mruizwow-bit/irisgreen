@@ -1,0 +1,119 @@
+{
+  "schema": "iris-green/solar-main-asset-intake/v1",
+  "date": "2026-10-03",
+  "product": "INTEREST_02_SOLAR_SYSTEM_MAIN",
+  "upstream_visual_gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+  "packaging_status": "PENDING_ATLAS_WEB_PACKAGE",
+  "integration_order": 2,
+  "predecessor": "NIGHT_SKY_CONSTELLATIONS_88_RUNTIME_INTEGRATION_PASS",
+  "interaction_contract": "EXPLORE_LOCATE_REVEAL",
+  "runtime_keep": {
+    "engine": "assets/ig-sistema-solar-3d.js",
+    "shell": "assets/ig-sistema-solar.js",
+    "direct_manipulation": [
+      "drag_rotate",
+      "button_rotate",
+      "keyboard_rotate",
+      "button_zoom",
+      "keyboard_zoom",
+      "focused_wheel_zoom"
+    ],
+    "locate": [
+      "scene_pick",
+      "labels",
+      "go_to_select",
+      "previous_next"
+    ],
+    "reveal": [
+      "ss-now",
+      "full_entry_link",
+      "data_facts"
+    ],
+    "lazy_3d_after_user_action": true
+  },
+  "visual_policy": {
+    "touch_visual_assets": false,
+    "use_old_donors_as_final": false,
+    "no_invented_paths": true,
+    "no_invented_hashes": true,
+    "canonical_master_contract": "1536x1536 PNG RGBA + alpha + embedded sRGB + transparent background",
+    "expected_packaging": [
+      "web_paths",
+      "sha256",
+      "manifest",
+      "provenance"
+    ]
+  },
+  "bodies": [
+    {
+      "id": "sol",
+      "name_en": "Sun",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "mercurio",
+      "name_en": "Mercury",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "venus",
+      "name_en": "Venus",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "tierra",
+      "name_en": "Earth",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "marte",
+      "name_en": "Mars",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "jupiter",
+      "name_en": "Jupiter",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "saturno",
+      "name_en": "Saturn",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "urano",
+      "name_en": "Uranus",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "neptuno",
+      "name_en": "Neptune",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    },
+    {
+      "id": "pluton",
+      "name_en": "Pluto",
+      "asset_status": "pending_packaging",
+      "web_path": null,
+      "sha256": null
+    }
+  ]
+}
