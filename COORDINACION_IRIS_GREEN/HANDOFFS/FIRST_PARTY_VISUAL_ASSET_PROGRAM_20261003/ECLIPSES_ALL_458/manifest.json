@@ -1,0 +1,484 @@
+{
+  "schema": "iris-green.eclipse-all.manifest.v1",
+  "date": "2026-10-03",
+  "gate": "ECLIPSES_ALL_458_READY_FOR_FINAL_REVIEW",
+  "source": {
+    "path": "es/intereses/eclipses/eclipses.json",
+    "git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+    "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+    "snapshot_date": "2026-09-24"
+  },
+  "files": {
+    "batches": [
+      {
+        "path": "batches/ECLIPSE_BATCH_01.json",
+        "git_blob_sha": "e8d5d7fffd4bc8549738f008e032db1e6ec67229",
+        "size_bytes": 10054
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_02.json",
+        "git_blob_sha": "c79c0859e68d05c60b6573a42d1e308c0569e000",
+        "size_bytes": 10142
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_03.json",
+        "git_blob_sha": "e1bc361329aabf29b9c57921a4eb5fe218a7f5e7",
+        "size_bytes": 10118
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_04.json",
+        "git_blob_sha": "aa3b4b2e0b3fb21ad1b942912357331064fb3e2a",
+        "size_bytes": 10116
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_05.json",
+        "git_blob_sha": "dfa8174d2188c5935b0fc6aa406d0369d8780201",
+        "size_bytes": 10156
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_06.json",
+        "git_blob_sha": "1a127f28dcf02109f60cc6f5323530f7f80684e6",
+        "size_bytes": 10085
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_07.json",
+        "git_blob_sha": "9abcb42cdd1576ee8e54a1bbd4c9a64fd9eb7a60",
+        "size_bytes": 10110
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_08.json",
+        "git_blob_sha": "ff9d7f92ba4378798c0601189bf533ffafd578a6",
+        "size_bytes": 10151
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_09.json",
+        "git_blob_sha": "4e48fa7f97156a549ec199bc280eef6ad7e1d034",
+        "size_bytes": 10078
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_10.json",
+        "git_blob_sha": "533bbf53bf4b3a5f9d0cff6fc04b0a08148512cc",
+        "size_bytes": 10154
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_11.json",
+        "git_blob_sha": "9b564b497f270196056f371ef03e5f20fab3346f",
+        "size_bytes": 10128
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_12.json",
+        "git_blob_sha": "32c1e57c3a1b3658f193aeba233a4b34a4529464",
+        "size_bytes": 10091
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_13.json",
+        "git_blob_sha": "9b31101fbe3e66ea810b51d8ac24c1fe017d531d",
+        "size_bytes": 10175
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_14.json",
+        "git_blob_sha": "529bf3d9eaee733b661480ded37c4a43679645d3",
+        "size_bytes": 10089
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_15.json",
+        "git_blob_sha": "8d164cd238cc3184c93239022e8683d13dce6f0f",
+        "size_bytes": 10159
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_16.json",
+        "git_blob_sha": "3ceaa188d05a2b53cf07502f1a8fe28d849fb2d2",
+        "size_bytes": 10133
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_17.json",
+        "git_blob_sha": "ced4f1ecc9a72dc3f3f979e7065a980f1a2c9659",
+        "size_bytes": 10081
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_18.json",
+        "git_blob_sha": "cdaa02c688b1741b2cf316deb9d86b50cbd82d94",
+        "size_bytes": 10176
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_19.json",
+        "git_blob_sha": "f89b9b9a12dd0db386460856f147b883398c4a76",
+        "size_bytes": 10128
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_20.json",
+        "git_blob_sha": "b3208329eb15a22499834beba9b80fa86fd4e138",
+        "size_bytes": 10124
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_21.json",
+        "git_blob_sha": "ab4c1af1f1bc55964f41f52f7cd429872adee6a2",
+        "size_bytes": 10139
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_22.json",
+        "git_blob_sha": "6d757c41b7630c39c1a989ac3d261914f688315a",
+        "size_bytes": 10103
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_23.json",
+        "git_blob_sha": "917566681bf7a728d5a1ac44369ed55e11d41b1f",
+        "size_bytes": 10170
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_24.json",
+        "git_blob_sha": "14a7ff5dff8a3d7d2cca9b98a5319e3a4f2af9da",
+        "size_bytes": 10143
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_25.json",
+        "git_blob_sha": "d4583b40abc2ecc5e8a42dc25ece498206e59ad0",
+        "size_bytes": 10095
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_26.json",
+        "git_blob_sha": "ded39a03d121241f683e9a7cdb00aea94c044c94",
+        "size_bytes": 10186
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_27.json",
+        "git_blob_sha": "fa21decdc71958b0e676bb5b95408631debc2015",
+        "size_bytes": 10101
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_28.json",
+        "git_blob_sha": "96cca6eb8e87920147ab00ad26b632c637c1a66d",
+        "size_bytes": 10169
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_29.json",
+        "git_blob_sha": "9296786a27362f63f99bc291fc0338aa6cac70be",
+        "size_bytes": 10138
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_30.json",
+        "git_blob_sha": "d93b5b74ea825ccf9799327637bc024f6dca1dc1",
+        "size_bytes": 10103
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_31.json",
+        "git_blob_sha": "394ea00619b6bef9b484e2fc939e00c8a06a0a0f",
+        "size_bytes": 10182
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_32.json",
+        "git_blob_sha": "794e38d976e88998f165d281284fe8c113e6912c",
+        "size_bytes": 10098
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_33.json",
+        "git_blob_sha": "4173fdc6c14331b78124a3f184a4264f874591f2",
+        "size_bytes": 10129
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_34.json",
+        "git_blob_sha": "4c99e115818594eaf3411ddd7bb82d04fc0d0318",
+        "size_bytes": 10169
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_35.json",
+        "git_blob_sha": "3aa3dcb2271c0831721c9a0403edd9dae5fa12d0",
+        "size_bytes": 10104
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_36.json",
+        "git_blob_sha": "02a6daf466c0c8ba79f98cb7afb867c5adc2417a",
+        "size_bytes": 10185
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_37.json",
+        "git_blob_sha": "ec3298fcfdd01c15d47e76e322c1455c273c77fd",
+        "size_bytes": 10133
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_38.json",
+        "git_blob_sha": "e0699588975ba7a75cc1d331b3c7bf5c252bc029",
+        "size_bytes": 10101
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_39.json",
+        "git_blob_sha": "658c0a1b5335233ff6c9f90baf388bce42fa6ff0",
+        "size_bytes": 10181
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_40.json",
+        "git_blob_sha": "ec1434c0ce6f4b5ccefcf2c627ef22692c0e922c",
+        "size_bytes": 10101
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_41.json",
+        "git_blob_sha": "960486b2801ce587179c800618fdc0a225146c84",
+        "size_bytes": 10176
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_42.json",
+        "git_blob_sha": "4103f8228c38f439e6cf8ba87e9c088dd0d172e1",
+        "size_bytes": 10133
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_43.json",
+        "git_blob_sha": "cd3dfc8f48102f6cfa60043d80e9ac0a0f80ead9",
+        "size_bytes": 10105
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_44.json",
+        "git_blob_sha": "aa6371ee0f8eeddd613d90678ed6247306fbff0f",
+        "size_bytes": 10173
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_45.json",
+        "git_blob_sha": "49c950a859556cd9ed1b51ec800878c3a6b707da",
+        "size_bytes": 10128
+      },
+      {
+        "path": "batches/ECLIPSE_BATCH_46.json",
+        "git_blob_sha": "3cd18d38bef80ff392dbbd40051b2a01638eebda",
+        "size_bytes": 8200
+      }
+    ],
+    "review_sheets": [
+      {
+        "path": "review/ECLIPSE_BATCH_01.svg",
+        "git_blob_sha": "f31a47e4d21fe6f8904f9084ac9435c64491748c",
+        "size_bytes": 10582
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_02.svg",
+        "git_blob_sha": "ba300ae0e6ea3baad54eeec773fb3cb29ee7c1bb",
+        "size_bytes": 10665
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_03.svg",
+        "git_blob_sha": "bb74690c1c426f664fc9918207058832f074b8a4",
+        "size_bytes": 10692
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_04.svg",
+        "git_blob_sha": "4505af01c357dd304b70d5bb1eba3066f1ee67a6",
+        "size_bytes": 10579
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_05.svg",
+        "git_blob_sha": "ee3ba6d4bbec0ac8166aa0f69c3fd8fb4077a69b",
+        "size_bytes": 10666
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_06.svg",
+        "git_blob_sha": "7df0290831be2f2f7b0cff1d345e3e54b0b29def",
+        "size_bytes": 10533
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_07.svg",
+        "git_blob_sha": "6525e49e6c87c4c7915202b7238e2d16ac81d6e4",
+        "size_bytes": 10635
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_08.svg",
+        "git_blob_sha": "e996ac5f25551b3165d4d97a5fcb28d8591067e8",
+        "size_bytes": 10520
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_09.svg",
+        "git_blob_sha": "c73575af4006e40d3b82266dc579ac13de8c7044",
+        "size_bytes": 10673
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_10.svg",
+        "git_blob_sha": "6ab114901c57be094e069402c3e658af5b20b75a",
+        "size_bytes": 10480
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_11.svg",
+        "git_blob_sha": "696547713e899b9d44261eca423ab04e82dda8d4",
+        "size_bytes": 10635
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_12.svg",
+        "git_blob_sha": "cd5ff221f1b41bdf0b08dd7d1019140db46bff49",
+        "size_bytes": 10639
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_13.svg",
+        "git_blob_sha": "7ddedee9c4197c211997425af256aef72178a0ef",
+        "size_bytes": 10598
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_14.svg",
+        "git_blob_sha": "7560f63abb2da2988882b05f6f8aaeb8e4c208b5",
+        "size_bytes": 10556
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_15.svg",
+        "git_blob_sha": "ef9b6a4384b23dfc7a8b223d9d80081c4fa3daea",
+        "size_bytes": 10461
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_16.svg",
+        "git_blob_sha": "bcdc4ac41ecf1acc69599a3f6bbaacc92b677b7f",
+        "size_bytes": 10571
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_17.svg",
+        "git_blob_sha": "edc9d047e7c811587c0ce2fb5c0e9f78028b20b8",
+        "size_bytes": 10626
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_18.svg",
+        "git_blob_sha": "f8177fbb64e43bd69eab2a19b4028ad70663835b",
+        "size_bytes": 10422
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_19.svg",
+        "git_blob_sha": "f65ed751496c25e6a919d80289257cdc5ab9d08e",
+        "size_bytes": 10612
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_20.svg",
+        "git_blob_sha": "7ca1eb073718a152c14a8f7d40af666e009534eb",
+        "size_bytes": 10494
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_21.svg",
+        "git_blob_sha": "710be45cb36b58ebc7a2daed2bdb23923dd36b44",
+        "size_bytes": 10660
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_22.svg",
+        "git_blob_sha": "2d945e2eeead4bc943c8b005ea735d4e4da3cc28",
+        "size_bytes": 10413
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_23.svg",
+        "git_blob_sha": "fb4c0dc2c627e6b5829c521a921e8b20d2a9fd1e",
+        "size_bytes": 10407
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_24.svg",
+        "git_blob_sha": "c247ca6fac25b21482fe7c1ba32198c0d72cb1b8",
+        "size_bytes": 10375
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_25.svg",
+        "git_blob_sha": "92217fb29fa4d34fead17251928915a88f36a6e3",
+        "size_bytes": 10443
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_26.svg",
+        "git_blob_sha": "2c7f482d620af7207c7ca6ef9a5221d6f3138197",
+        "size_bytes": 10326
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_27.svg",
+        "git_blob_sha": "e509c77c139e84033ca2f70d55c264180dd4ad7b",
+        "size_bytes": 10427
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_28.svg",
+        "git_blob_sha": "1229ed1b4af7f247c41d3eaf4638afb9cd79644a",
+        "size_bytes": 10402
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_29.svg",
+        "git_blob_sha": "8bc67b03ce7d2ea348aa98bc300d5b05544deb3d",
+        "size_bytes": 10387
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_30.svg",
+        "git_blob_sha": "896b56a5773947106e7e440b693d86f2083ca199",
+        "size_bytes": 10413
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_31.svg",
+        "git_blob_sha": "43a60e571873c667cfbc1256f251c296511935d0",
+        "size_bytes": 10410
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_32.svg",
+        "git_blob_sha": "12b95b4709a499eb31feb86d09b2ff3b74b8f3fd",
+        "size_bytes": 10401
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_33.svg",
+        "git_blob_sha": "c7ca16b99acc3d498d7d5868e962f97372ba631b",
+        "size_bytes": 10417
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_34.svg",
+        "git_blob_sha": "fe7d31b31808e2b3f5a6ed059894086cb657b822",
+        "size_bytes": 10390
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_35.svg",
+        "git_blob_sha": "094b3f85a6a3223df1b91dac7589c75a2ea8595b",
+        "size_bytes": 10427
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_36.svg",
+        "git_blob_sha": "d6cbb1f1987abe9eb5ad4c0ad19e89afc12262af",
+        "size_bytes": 10380
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_37.svg",
+        "git_blob_sha": "e5b2c637554983ceea6483817a68b7d7777706ed",
+        "size_bytes": 10398
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_38.svg",
+        "git_blob_sha": "49f45276eafa201ef8f65f2afef6ac35f6f119c6",
+        "size_bytes": 10390
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_39.svg",
+        "git_blob_sha": "aaf74a32fe1fbb1c5b4d1ce590eeaaed9cf9d000",
+        "size_bytes": 10337
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_40.svg",
+        "git_blob_sha": "3d70f7f39a147e12f90444b729d373c8f09b4cde",
+        "size_bytes": 10444
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_41.svg",
+        "git_blob_sha": "2d6bc56615ff6daa68ac2a9d5455bdf1ec2f1db5",
+        "size_bytes": 10389
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_42.svg",
+        "git_blob_sha": "c4a8a172cb2cde9b3e9a3c3de357d63b7a8458e5",
+        "size_bytes": 10388
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_43.svg",
+        "git_blob_sha": "fb17144ae5dccd430f97c29ef20b418fd3ec571a",
+        "size_bytes": 8813
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_44.svg",
+        "git_blob_sha": "a9ec35b7a9c054eb5c1635ea99230f0f40941eab",
+        "size_bytes": 7451
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_45.svg",
+        "git_blob_sha": "3edc3851c13bcf26a40dafd93f95ea81f36b627e",
+        "size_bytes": 7323
+      },
+      {
+        "path": "review/ECLIPSE_BATCH_46.svg",
+        "git_blob_sha": "c6ae996e664a80b6dc8cb3f9d98bc7ccaff9974a",
+        "size_bytes": 6062
+      }
+    ]
+  },
+  "counts": {
+    "batch_json": 46,
+    "review_svg": 46,
+    "events": 458
+  },
+  "review_policy": "FINAL_ONLY_AFTER_ALL_BATCHES_COMPLETE",
+  "runtime_asset_note": "Review SVG sheets are evidence/review derivatives, not runtime astronomy assets."
+}
