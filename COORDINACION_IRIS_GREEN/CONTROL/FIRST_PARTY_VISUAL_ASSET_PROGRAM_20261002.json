@@ -285,5 +285,20 @@
     "runtime_touched": false,
     "main_touched": false,
     "branch": "atlas/eclipse-catalog-batches-20261003"
+  },
+  "eclipse_canonical_type_visual_set": {
+    "owner": "ATLAS_A1",
+    "status": "READY_FOR_REVIEW",
+    "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
+    "count": 6,
+    "class": "REPRESENTATION",
+    "catalog_relation": "TYPE_DRIVEN_REUSE_OVER_458_CALCULATION_EVENTS",
+    "source_review_comment": 5966236303,
+    "visible_text_in_assets": false,
+    "es_en_metadata": true,
+    "sha256": true,
+    "runtime_touched": false,
+    "main_touched": false,
+    "branch": "atlas/eclipse-canonical-type-visual-set-20261003"
   }
 }
