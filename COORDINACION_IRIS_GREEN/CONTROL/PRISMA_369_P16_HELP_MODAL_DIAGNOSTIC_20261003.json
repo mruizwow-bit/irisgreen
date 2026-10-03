@@ -29,14 +29,16 @@
   "axioma_note": "Prisma measures presentation; Axioma remains authority for accessibility/conformance.",
   "test_commit": "e5613c364222fe4a49c716cb4e79939903e87173",
   "workflow_commit": "269da97b916b3086362bd06bce76606e40e68260",
-  "ci_run": 37108121166,
+  "ci_run": 37108337667,
   "ci_status": "IN_PROGRESS",
   "main_modified": false,
-  "status": "P16_DIAGNOSTIC_RERUN_ON_CANONICAL_R69_MOUNT",
+  "status": "P16_DIAGNOSTIC_RERUN_CANONICAL_1440",
   "last_failure": {
-    "run_id": 37107970632,
-    "type": "DIAGNOSTIC_ROUTE_MOUNT_TIMING",
-    "detail": "Ayuda button not mounted on the first sampled route within timeout"
+    "run_id": 37108121166,
+    "type": "DIAGNOSTIC_VIEWPORT_MOUNT",
+    "detail": "R42 enhanced workspace did not mount in the 390px diagnostic path before contrast measurement"
   },
-  "test_fix_commit": "1c21f9daf3c3b56868c1e7a721607d23b3df73f8"
+  "test_fix_commit": "9162cba2e65743ea98e0e69f972763deffeb482a",
+  "diagnostic_viewport": 1440,
+  "viewport_rationale": "Match canonical R69 Workshop browser QA surface before evaluating modal contrast"
 }
