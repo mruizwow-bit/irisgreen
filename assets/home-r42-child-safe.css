@@ -463,7 +463,7 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4-age p{margin:.35rem 0}
 .ig-home-v4-media[data-ig-media-status="pending"]{display:none}
 .ig-home-v4-card{min-height:0}
-.ig-home-v4-discover-grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,16rem),1fr))}
+.ig-home-v4-discover-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .ig-home-search-status:empty{display:none}
 
 .ig-home-v4 .ig-home-v4-age{gap:.4rem}
