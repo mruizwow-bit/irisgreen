@@ -1,0 +1,25 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P08-HOME-GRID-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 8,
+  "branch": "prisma/369-home-grid-p8-verify-20261003",
+  "base_main": "4d3c96f1842c591ebc3fff1445fad0433171b57f",
+  "finding": "LATE_RECOVERY_RULE_CHANGED_3_COLUMNS_TO_AUTO_FIT_AND_RENDERED_4_COLUMNS_AT_1440",
+  "fix_commit": "166ab3bfc2d07518b2074a404649a53089e54546",
+  "fix_scope": "HOME_DISCOVER_GRID_ONLY",
+  "expected": {
+    "cards": 9,
+    "desktop_columns": 3,
+    "tablet_columns": 2,
+    "mobile_columns": 1
+  },
+  "ci": [
+    {"run_id":37103755144,"workflow":"Prisma #369 P8 Home grid","status":"IN_PROGRESS"},
+    {"run_id":37103755382,"workflow":"R42 A8 Home child-safe QA","status":"IN_PROGRESS"}
+  ],
+  "main_modified": false,
+  "status": "FIX_APPLIED_WAIT_CI"
+}
