@@ -19,6 +19,7 @@ on:
       - 'scripts/test_prisma_369_card_system_p47.py'
       - 'scripts/test_prisma_369_theme_p48.py'
       - 'scripts/test_prisma_369_data_p30_p33.py'
+      - 'scripts/test_prisma_369_books_p39_p44.py'
       - '.github/workflows/prisma-369-main.yml'
   workflow_dispatch:
 
@@ -66,6 +67,11 @@ jobs:
         continue-on-error: true
         run: python scripts/test_prisma_369_data_p30_p33.py --root dist
 
+      - id: p39_p44
+        name: '#369 P39 P44'
+        continue-on-error: true
+        run: python scripts/test_prisma_369_books_p39_p44.py --root dist
+
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -81,14 +87,17 @@ jobs:
           P47: ${{ steps.p47.outcome }}
           P48: ${{ steps.p48.outcome }}
           P30_P33: ${{ steps.p30_p33.outcome }}
+          P39_P44: ${{ steps.p39_p44.outcome }}
         run: |
           echo "P28_P37=$P28_P37"
           echo "P29_P35=$P29_P35"
           echo "P47=$P47"
           echo "P48=$P48"
           echo "P30_P33=$P30_P33"
+          echo "P39_P44=$P39_P44"
           test "$P28_P37" = success
           test "$P29_P35" = success
           test "$P47" = success
           test "$P48" = success
           test "$P30_P33" = success
+          test "$P39_P44" = success
