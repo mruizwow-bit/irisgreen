@@ -50,6 +50,11 @@ def main():
      assert page.locator('.ig-space-card img').count()==0,(lang,width,'pending visual leaked')
      assert page.locator('.ig-space-card[data-asset-status="pending"]').count()==5
      assert page.locator('.ig-space-card[data-route-status="active"] a[href]').count()==4
+     # Global site link/button styles must not leak into the component surface.
+     first_link=page.locator('.ig-space-card[data-route-status="active"] .ig-space-card-link').first
+     visual_style=first_link.evaluate("e=>({bg:getComputedStyle(e).backgroundColor,td:getComputedStyle(e).textDecorationLine,title:getComputedStyle(e.querySelector('.ig-space-title')).textDecorationLine})")
+     assert visual_style['bg'] in ('rgb(255, 255, 255)','rgba(255, 255, 255, 1)'),(lang,width,visual_style)
+     assert visual_style['td']=='none' and visual_style['title']=='none',(lang,width,visual_style)
      fifth=page.locator('.ig-space-card[data-entry="meteors"]')
      assert fifth.get_attribute('data-route-status')=='pending'
      assert fifth.locator('a').count()==0
