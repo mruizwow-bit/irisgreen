@@ -698,3 +698,46 @@ B02:
 
 B03:
 `HOLD_FOR_PRODUCT_SPEC`
+
+
+---
+
+# 03/10/2026 · ATLAS · ECLIPSES · CATÁLOGO COMPLETO
+
+Orden María:
+**todos los eclipses de 10 en 10; revisión al final**.
+
+Estado:
+`ECLIPSES_ALL_458_READY_FOR_FINAL_REVIEW`
+
+Resultado:
+- 458 eventos;
+- 228 solares;
+- 230 lunares;
+- 46 tandas;
+- 45 × 10 + 1 × 8;
+- 46 JSON;
+- 46 SVG de review;
+- manifest + provenance + FINAL_QA + índice final.
+
+Clasificación:
+- catálogo calculado = `CALCULATION`;
+- diagramas = `REPRESENTATION`.
+
+No se han creado:
+- mapas event-specific;
+- claims de visibilidad local;
+- runtime;
+- cambios en main.
+
+MEMORIA dedicada:
+`COORDINACION_IRIS_GREEN/MEMORIA/ATLAS_ECLIPSES_ALL_458_20261003.md`
+
+CONTROL:
+`COORDINACION_IRIS_GREEN/CONTROL/ATLAS_ECLIPSES_ALL_458_20261003.json`
+
+HANDOFF:
+`COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_VISUAL_ASSET_PROGRAM_20261003/ECLIPSES_ALL_458/`
+
+Siguiente:
+revisión final única.
