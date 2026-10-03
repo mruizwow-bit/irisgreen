@@ -1,0 +1,49 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P18-P19-P20-P21-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [
+    18,
+    19,
+    20,
+    21
+  ],
+  "branch": "prisma/369-workshop-nav-p18-p19-p20-p21-20261003",
+  "status": "PRISMA_P18_P19_P20_P21_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "repairs": {
+    "workshop_projects_css": "a7b729c1665922c592138b7c4a179a9e5bd38f0b",
+    "global_cleanup": "572fa909024c059365e739a5d2dc770e2245d42a",
+    "breadcrumb_runtime_fix": "f13c0998c2eb4c9216fd19151035b86125eda394",
+    "workflow": "e62707138127e73944f4b4efb34dc9d743832fcd"
+  },
+  "qa": {
+    "run_id": 37112156122,
+    "job_id": 111172004030,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P18_P19_P20_P21_WORKSHOP_NAV_PASS",
+    "html_pages_checked": 1052,
+    "breadcrumbs_remaining": 0,
+    "workshop_repeat_note_remaining": 0,
+    "breadcrumbs_removed": 997,
+    "workshop_repeat_notes_removed": 2,
+    "workshop_es_1440": {
+      "collapsed_width": 768,
+      "collapsed_height": 46,
+      "open_height": 161.45
+    },
+    "workshop_es_390": {
+      "collapsed_width": 359,
+      "collapsed_height": 46,
+      "open_height": 251.7
+    }
+  },
+  "artifact": {
+    "id": 11269269846,
+    "name": "prisma-369-p18-p21",
+    "sha256": "d71565efe537eba55370e193b231c9f08770f79effe0c3c3cc36e95e49a17040"
+  },
+  "main_modified": false,
+  "next_owner": "NEXO_FOR_RECONCILIATION"
+}

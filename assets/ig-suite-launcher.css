@@ -247,7 +247,17 @@ html[data-ig-motion="off"] .igk-tile { transition:none; transform:none; }
   .igk-profiles { grid-template-columns:1fr; }
 }
 /* Proyectos y guardado, en panel */
-.igk-collection { margin:1.6rem 0 .6rem; }
+.igk-collection {
+  margin:1.25rem 0 .5rem;
+  width:min(100%,48rem);
+  max-width:48rem;
+  align-self:flex-start;
+}
+.igk-collection[open]{box-shadow:none}
+.igk-collection .igt-sec{padding:.15rem 1rem .9rem}
+.igk-collection .igt-sec h2{font-size:1.15rem;line-height:1.25;margin:.15rem 0 .35rem}
+.igk-collection .igt-sec p{font-size:.94rem;line-height:1.5;margin:0}
+@media(max-width:52rem){.igk-collection{width:100%;max-width:none}}
 
 /* Textos largos del lanzador: medida de lectura limitada, no la página. */
 .igk-note, .igk-collection p { max-width:72ch; }
