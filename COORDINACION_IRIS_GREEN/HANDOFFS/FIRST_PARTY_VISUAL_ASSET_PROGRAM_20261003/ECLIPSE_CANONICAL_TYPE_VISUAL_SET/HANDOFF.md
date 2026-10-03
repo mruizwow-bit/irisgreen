@@ -1,44 +1,65 @@
-# ATLAS · ECLIPSE CANONICAL TYPE VISUAL SET · R01
+# ATLAS · ECLIPSE CANONICAL TYPE VISUAL SET · R02 REWORK
 
 Gate:
 `ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW`
 
-Source decision:
-#370 · comentario `5966236303`.
+Este R02 aplica los cambios de producto del review Astra:
+#370 comentario `5966236303`.
 
-## Set canónico
-1. Solar total
-2. Solar parcial
-3. Solar anular
-4. Lunar total
-5. Lunar parcial
-6. Lunar penumbral
+## CAMBIOS APLICADOS
 
-## Contrato
-- 6 SVG first-party procedurales;
-- 1600×1000 viewBox estable;
-- fondo transparente;
-- sin texto visible dentro del asset;
-- sin fecha, ciudad, porcentaje, mapa o visibilidad event-specific;
-- no escala física;
-- reusable por tipo;
-- ES/EN accesible en manifest;
-- clasificación: `REPRESENTATION`.
+### 1 · Seis tipos canónicos rehechos
+Cada tipo tiene ahora:
+- geometría lateral genérica;
+- lectura complementaria del disco observado;
+- sin fecha/ciudad/porcentaje;
+- sin mapa event-specific;
+- no a escala.
 
-## Relación con catálogo
-Los 458 eventos permanecen como catálogo `CALCULATION`.
-El producto selecciona uno de estos seis visuales por tipo/estado.
+Tipos:
+1. solar total;
+2. solar parcial;
+3. solar anular;
+4. lunar total;
+5. lunar parcial;
+6. lunar penumbral.
 
-No se crean 458 artes únicos.
+### 2 · Dispatch data-driven explícito
+`eclipse-type-visual-map.json`
 
-## Integridad
-SHA-256:
-ver `SHA256SUMS.txt`.
+Clave:
+`source_domain + kind_es`
 
-## Límites
+El catálogo de 458 eventos selecciona visual por tipo.
+No usa fecha, lat/lon, porcentaje, contactos, alt/az o visibilidad para escoger el arte.
+
+### 3 · Diagramas adicionales solo donde aportan aprendizaje
+Se añaden SOLO:
+- secuencia genérica de eclipse solar total;
+- secuencia genérica de eclipse lunar total.
+
+No se generan secuencias redundantes para los seis tipos.
+
+### 4 · ES/EN
+Manifest R02 incluye título y alternativa ES/EN para los seis assets.
+
+## RELACIÓN CON CATÁLOGO
+- 458 eventos = `CALCULATION`;
+- seis visuales + dos secuencias = `REPRESENTATION`;
+- publicación IGN/NASA = `REAL_DATA` cuando se cite.
+
+## INTEGRIDAD
+Ver:
+`SHA256SUMS.txt`
+
+## HISTÓRICO
+R01 permanece como histórico.
+R02 es el candidato canónico actual.
+
+## LÍMITES
 - 0 runtime;
 - 0 main;
 - 0 deploy.
 
 Estado:
-`READY_FOR_REVIEW`
+`READY_FOR_REVIEW_R02`
