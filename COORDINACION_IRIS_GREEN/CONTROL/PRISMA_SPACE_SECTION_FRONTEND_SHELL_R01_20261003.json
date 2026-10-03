@@ -1,0 +1,20 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-SPACE-SECTION-FRONTEND-SHELL-R01-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "branch": "prisma/space-section-frontend-shell-r01-20261003",
+  "base_main": "411f8eb9cfd7c0baf17a9e6b773fdafc222502ef",
+  "target_gate": "SPACE_SECTION_FRONTEND_SHELL_READY_FOR_ASSET_INTAKE",
+  "entries": [
+    {"id":"night-sky","route":"ACTIVE","asset":"PENDING"},
+    {"id":"solar-system","route":"ACTIVE","asset":"PENDING"},
+    {"id":"exoplanets","route":"ACTIVE","asset":"PENDING"},
+    {"id":"eclipses","route":"ACTIVE","asset":"PENDING"},
+    {"id":"meteors","route":"PENDING","asset":"PENDING"}
+  ],
+  "features": ["FIVE_ENTRY_SHELL","RESPONSIVE_320_390_DESKTOP","LIGHT_DARK","NATIVE_NAVIGATION","FOCUS","FORCED_COLORS","ASSET_GATED_LAZY_LOADING","NOSCRIPT"],
+  "master_asset_requests": 0,
+  "product_route_modified": true,
+  "main_modified": false
+}
