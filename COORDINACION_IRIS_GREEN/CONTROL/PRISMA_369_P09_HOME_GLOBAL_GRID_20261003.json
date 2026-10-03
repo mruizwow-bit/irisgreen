@@ -13,5 +13,33 @@
   "ci_run": 37104175360,
   "ci_status": "QUEUED",
   "main_modified": false,
-  "next": "READ_FINAL_CI_THEN_FIX_ONLY_MEASURED_GRID_DEVIATION"
+  "next": "READ_FINAL_CI_THEN_FIX_ONLY_MEASURED_GRID_DEVIATION",
+  "findings": [
+    {
+      "code": "MOBILE_DOUBLE_GUTTER",
+      "evidence": "390px hero left=32 while wrapper usable gutter should be 16",
+      "cause": "R49 browse main mobile padding stacked on Home wrapper padding",
+      "fix_commit": "4be13d101213b54b278779d84298e84a67b66cd2",
+      "status": "FIX_APPLIED_WAIT_CI"
+    }
+  ],
+  "qa_measurement_fix": {
+    "commit": "4d146ed3efa144cdcbf898c143753c1258dc29c6",
+    "note": "Compare Home surfaces to wrapper usable content edges, not wrapper border box"
+  },
+  "ci": [
+    {
+      "run_id": 37105759369,
+      "workflow": "Prisma #369 P9 Home grid",
+      "status": "IN_PROGRESS",
+      "head_sha": "4d146ed3efa144cdcbf898c143753c1258dc29c6"
+    },
+    {
+      "run_id": 37105756695,
+      "workflow": "R42 A8 Home child-safe QA",
+      "status": "IN_PROGRESS",
+      "head_sha": "4be13d101213b54b278779d84298e84a67b66cd2"
+    }
+  ],
+  "status": "P09_FIRST_MEASURED_DEVIATION_FIXED_WAIT_CI"
 }
