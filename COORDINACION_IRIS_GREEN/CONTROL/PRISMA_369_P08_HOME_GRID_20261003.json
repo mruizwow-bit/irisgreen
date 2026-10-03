@@ -17,9 +17,36 @@
     "mobile_columns": 1
   },
   "ci": [
-    {"run_id":37103755144,"workflow":"Prisma #369 P8 Home grid","status":"IN_PROGRESS"},
-    {"run_id":37103755382,"workflow":"R42 A8 Home child-safe QA","status":"IN_PROGRESS"}
+    {
+      "run_id": 37103755144,
+      "workflow": "Prisma #369 P8 Home grid",
+      "job_id": 111148188627,
+      "conclusion": "SUCCESS",
+      "gate": "ISSUE_369_P8_HOME_9_CARDS_3X3_VERIFY"
+    },
+    {
+      "run_id": 37103755382,
+      "workflow": "R42 A8 Home child-safe QA",
+      "conclusion": "SUCCESS"
+    }
   ],
   "main_modified": false,
-  "status": "FIX_APPLIED_WAIT_CI"
+  "status": "PRISMA_P08_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "qa": {
+    "cards": 9,
+    "desktop_columns": 3,
+    "equal_widths": true,
+    "equal_heights": true,
+    "same_padding": true,
+    "same_border": true,
+    "books_in_grid": true,
+    "http_errors": 0,
+    "js_errors": 0
+  },
+  "artifact": {
+    "id": 11267925031,
+    "name": "prisma-369-home-grid-p8",
+    "sha256": "703d1d7cbb980094d147ca0c06382b8a772dccca84c4510cde4875f4710cfbed"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
 }
