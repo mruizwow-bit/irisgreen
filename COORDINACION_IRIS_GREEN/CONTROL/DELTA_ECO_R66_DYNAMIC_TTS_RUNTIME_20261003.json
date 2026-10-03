@@ -85,14 +85,13 @@
     "eco_media_validation_pass": false
   },
   "remaining_blockers": [
-    "Make exact private ES final model bytes available to the execution host",
-    "Make exact private EN final model bytes available to the execution host",
-    "Verify exact model.safetensors + config.json hashes",
-    "Provide the already-approved private ES/EN STT adapter to the host",
-    "Execute real ES dynamic synthesis",
-    "Execute real EN dynamic synthesis",
-    "Execute real voice turn and A6 R66 matrix",
-    "Emit ECO_R66_MEDIA_VALIDATION_PASS only if all real-model checks pass"
+    "Expose exact private ES final model bytes to the authorized execution host",
+    "Expose exact private EN final model bytes to the authorized execution host",
+    "Run hash verification against final model.safetensors + config.json",
+    "Run real unseen ES and EN TTS probe",
+    "Provide/identify the approved private ES/EN STT executable adapter for the full voice-turn matrix",
+    "Execute A6 R66 full real-media matrix",
+    "Emit ECO_R66_MEDIA_VALIDATION_PASS only after all required real checks pass"
   ],
   "forbidden_substitutions": [
     "SpeechSynthesis",
@@ -105,5 +104,31 @@
   ],
   "main": false,
   "human_qa": false,
-  "eco_media_validation_pass": false
+  "eco_media_validation_pass": false,
+  "provenance_recovery": {
+    "state": "R66_ECO_FINAL_MODEL_PROVENANCE_RECOVERED",
+    "document": "COORDINACION_IRIS_GREEN/HANDOFFS/R66_DYNAMIC_TTS_RUNTIME_20261003/02_ECO_FINAL_MODEL_PROVENANCE_RECOVERED.md",
+    "independent_cross_check": "SABIK_AUDIO_LIBRARY_R01_FINAL_VERIFIED manifest + VERIFICATION",
+    "model_hash_semantics": "SHA256_OF_FINAL_MODEL_SAFETENSORS",
+    "final_modes": {
+      "es": "custom_voice",
+      "en": "custom_voice"
+    },
+    "config_sha256": {
+      "es": "6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e",
+      "en": "6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd"
+    }
+  },
+  "real_model_probe": {
+    "path": "scripts/probe_eco_r66_private_runtime.py",
+    "purpose": "Exact capabilities/privacy/fail-closed + unseen ES/EN dynamic WAV synthesis and basic media/latency metrics",
+    "executed_against_real_models": false,
+    "pass_marker": "ECO_R66_REAL_MODEL_TTS_PROBE_PASS"
+  },
+  "stt_status": {
+    "contract_required": true,
+    "runtime_adapter_interface_ready": true,
+    "canonical_executable_artifact_located": false,
+    "note": "Historical research contains candidates/recommendations but no later executable canonical STT artifact was located. Do not promote research recommendation to release authority."
+  }
 }
