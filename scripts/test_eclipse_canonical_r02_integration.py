@@ -99,6 +99,13 @@ def main():
                 assert expected_title in fig.locator('figcaption').inner_text()
                 seq=fig.locator('.ec-canonical-sequence').count()
                 assert seq==(1 if key in ('solar:total','lunar:total') else 0),(lang,key,seq)
+                if seq:
+                    seq_alt=fig.locator('.ec-canonical-sequence').get_attribute('alt')
+                    if key=='solar:total':
+                        words=('contacto','parcial','totalidad','final') if lang=='es' else ('contact','partial','totality','end')
+                    else:
+                        words=('penumbral','parcial','total','final') if lang=='es' else ('penumbral','partial','totality','final')
+                    assert all(w.lower() in seq_alt.lower() for w in words),(lang,key,seq_alt)
 
             # EXPLORE: recorrer tiempo; LOCATE: elegir otro eclipse; REVEAL: facts + canonical type visual.
             start_name='Start' if lang=='en' else 'Inicio'
@@ -137,6 +144,25 @@ def main():
             })
             ctx.close()
 
+        # Axioma motion rework: REDUCED and OFF use discrete stepping, never interval playback.
+        for mode in ('reduced','off'):
+            ctx=browser.new_context(viewport={'width':390,'height':844},reduced_motion='reduce' if mode=='reduced' else 'no-preference')
+            page=ctx.new_page()
+            page.goto(base+ROUTES['es'],wait_until='networkidle',timeout=60000)
+            page.locator('#ec-time').wait_for(timeout=15000)
+            if mode=='off':
+                page.evaluate("()=>document.documentElement.setAttribute('data-ig-motion','off')")
+            start_btn=page.locator('#ec-ui button').filter(has_text='Avanzar el tiempo').first
+            before=page.locator('#ec-time').input_value()
+            start_btn.click();page.wait_for_timeout(120)
+            once=page.locator('#ec-time').input_value()
+            page.wait_for_timeout(500)
+            later=page.locator('#ec-time').input_value()
+            assert before!=once,(mode,'discrete step did not advance')
+            assert once==later,(mode,'continuous playback remained active',once,later)
+            assert start_btn.get_attribute('aria-pressed')=='false',(mode,'play stayed pressed')
+            ctx.close()
+
         for lang,path in ROUTES.items():
             ctx=browser.new_context(viewport={'width':390,'height':844})
             page=ctx.new_page();page.emulate_media(forced_colors='active')
@@ -164,6 +190,8 @@ def main():
         'js_errors':sum(c['js_errors'] for c in cases),
         'explore_locate_reveal':True,
         'localized_manifest_alt':True,
+        'reduced_and_off_discrete_time':True,
+        'sequence_phase_order_in_alt':True,
         'screenshots':['eclipse-r02-types-390.png','eclipse-r02-types-1440.png'],
       },
       'cases':cases,

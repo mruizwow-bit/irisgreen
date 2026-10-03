@@ -14,7 +14,12 @@
   var TYPE_ROOT = '/img/intereses/eclipses/canonical-r02/';
   var TYPE_MANIFEST_URL = TYPE_ROOT + 'manifest.json', TYPE_MAP_URL = TYPE_ROOT + 'eclipse-type-visual-map.json';
   var TYPESET = null;
-  var reduce = function () { return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || document.documentElement.getAttribute('data-ig-motion') === 'off'; };
+  function motionMode() {
+    if (document.documentElement.getAttribute('data-ig-motion') === 'off') return 'none';
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return 'reduced';
+    return 'normal';
+  }
+  var reduce = function () { return motionMode() !== 'normal'; };
   var KIND = { total: T('total', 'total'), annular: T('anular', 'annular'), partial: T('parcial', 'partial'), anular: T('anular', 'annular'), parcial: T('parcial', 'partial'), hibrido: T('híbrido', 'hybrid'), penumbral: T('penumbral', 'penumbral') };
   var CITY_EN = { 'Sevilla': 'Seville', 'Observatorio del Teide': 'Teide Observatory' };
 
@@ -78,8 +83,8 @@
   }
   function sequenceAlt(key) {
     return key === 'solar:total'
-      ? T('Secuencia didáctica genérica de las fases de un eclipse solar total.', 'Generic learning sequence showing the phases of a total solar eclipse.')
-      : T('Secuencia didáctica genérica de las fases de un eclipse lunar total.', 'Generic learning sequence showing the phases of a total lunar eclipse.');
+      ? T('Secuencia didáctica genérica: antes del contacto, parcial de entrada, totalidad, parcial de salida y final.', 'Generic learning sequence: before contact, ingress partial phase, totality, egress partial phase, and end.')
+      : T('Secuencia didáctica genérica: fase penumbral, parcial, total, parcial de salida y penumbral final.', 'Generic learning sequence: penumbral phase, partial phase, totality, egress partial phase, and final penumbral phase.');
   }
   function typeFigure(domain, kind, includeSequence) {
     var item = canonicalFor(domain, kind); if (!item) return null;
@@ -378,16 +383,25 @@
     draw();
   }
   function stop() { if (st.play) { clearInterval(st.play); st.play = null; } if (playBtn) { playBtn.setAttribute('aria-pressed', 'false'); playBtn.textContent = T('Avanzar el tiempo', 'Run the clock'); } }
+  function advanceDiscrete() {
+    var e=st.ecl, points=[e.partial_begin,e.total_begin,e.peak,e.total_end,e.partial_end].filter(Boolean).map(function(x){return x.time.date.getTime();});
+    points=points.filter(function(v,i,a){return a.indexOf(v)===i;}).sort(function(a,b){return a-b;});
+    var next=points.filter(function(v){return v>st.t+500;})[0];
+    if(next===undefined) next=points[0]!==undefined?points[0]:st.t0;
+    st.t=next;slider.value=String(st.t);updateTime();
+    say(T('Avance discreto. ', 'Discrete step. ')+PHASE[phaseOf(st.t)]);
+  }
   function start() {
+    if (motionMode() !== 'normal') { stop(); advanceDiscrete(); return; }
     if (st.play) { stop(); say(T('Parado a las ', 'Stopped at ') + fmtTime(new Date(st.t), st.place.tz)); return; }
     if (st.t >= st.t1 - 1000) st.t = st.t0;
     playBtn.setAttribute('aria-pressed', 'true'); playBtn.textContent = T('Parar', 'Stop');
     var e = st.ecl, tb = e.total_begin ? e.total_begin.time.date.getTime() : e.peak.time.date.getTime(), te = e.total_end ? e.total_end.time.date.getTime() : tb;
     st.play = setInterval(function () {
       var near = st.t > tb - 90000 && st.t < te + 90000;
-      st.t = Math.min(st.t + (near ? 3000 : 40000) * (reduce() ? 2 : 1), st.t1); slider.value = String(st.t); updateTime();
+      st.t = Math.min(st.t + (near ? 3000 : 40000), st.t1); slider.value = String(st.t); updateTime();
       if (st.t >= st.t1) stop();
-    }, reduce() ? 200 : 100);
+    }, 100);
   }
 
   /* ---------- controles ---------- */
