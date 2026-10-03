@@ -955,3 +955,68 @@ Salida:
 Siguiente:
 Astra + María + Lumen → review final de tanda.
 No nueva generación de los 8 KEEP.
+
+
+## B03 · FINAL PASS VISUAL + TÉCNICO · 03/10/2026
+
+Gate factual:
+`SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS`
+
+Gate visual Astra/María:
+`SOLAR_B03_DWARF_MOONS_10_VISUAL_PASS`
+#370 comentario `5967438227`.
+
+Gate técnico Lumen:
+`SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS`
+
+Selección cerrada:
+Ceres · Haumea · Makemake · Eris · Luna · Io · Europa · Ganímedes · Titán · Encélado.
+
+Visual:
+10/10 PASS.
+No más rework.
+No regenerar ningún cuerpo.
+
+Library final:
+`/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final/`
+
+Masters individuales:
+- Ceres · `75e103718247528863c80ad8aa213bc0083e74fb420d0073ce64675c8fc7beb9`
+- Haumea · `ee969ade1fb69a433b69e2fe7ce3ebd152ce04752a686533072c33848fac9ec2`
+- Makemake · `f2bbc1f176a6bc6c06bff97950ed3dd285849a1a32b3390ec2aa38219817c9eb`
+- Eris · `f76c70b9e844071364e533f01cb013beb460fdcea6f8158c91bbfdb97157f2b6`
+- Luna · `9fa00c11a11ed0db21fd44b2cbe85b191557fe5538b24117a048a0c74c58bdcc`
+- Io · `aa1b05a8aab22aeb7c5236056c57789ca4dc78c85d2e355bdf859aa055e09793`
+- Europa · `9d122e0dc434d84968e9edccb5d2673d906d31becd23bf045c6c3573ddda275e`
+- Ganímedes · `e5921eb319efa9211f5a3269cb6a1e1a678612fc9df50c3fcb863b396ca738a1`
+- Titán · `099732e31d2401f6d0c6e29870395484fb26f5fe2ef60becd44ea3ed28c5e4c7`
+- Encélado · `6c3b7986a09b63cb792354c2d68ec27ff2dc256e1df94071197eb87fe77f1204`
+
+Contrato técnico verificado 10/10:
+- 1536×1536;
+- PNG RGBA;
+- alpha 0–255;
+- ICC/sRGB presente;
+- fondo transparente real.
+
+QA:
+`SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY_FINAL.png`
+SHA-256:
+`0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730`
+
+Contact sheet QA:
+`SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET_FINAL_REVIEW.png`
+SHA-256:
+`0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578`
+
+Siguiente owner:
+**Atlas A1**
+
+Tarea Atlas:
+`PACKAGING → MANIFEST → PROVENANCE → HASHES`
+
+Arte:
+`KEEP_LOCKED`
+
+Lumen:
+STOP B03.

@@ -1,0 +1,26 @@
+{
+  "schema": "iris-green.solar-b03-dwarf-moons-final-pass.v1",
+  "date": "2026-10-03",
+  "factual_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "visual_gate": "SOLAR_B03_DWARF_MOONS_10_VISUAL_PASS",
+  "visual_gate_issue_comment": 5967438227,
+  "technical_gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+  "status": "PASS",
+  "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final",
+  "master_count": 10,
+  "contract": {
+    "width": 1536,
+    "height": 1536,
+    "format": "PNG RGBA",
+    "alpha_min": 0,
+    "alpha_max": 255,
+    "srgb_embedded": true,
+    "transparent": true
+  },
+  "contact_sheet_sha256": "0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578",
+  "qa_sha256": "0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730",
+  "next_owner": "ATLAS_A1",
+  "next_action": "PACKAGING_MANIFEST_PROVENANCE_HASHES",
+  "art_locked": true,
+  "callisto": "PRIORITY_CANDIDATE_NEXT_BATCH"
+}

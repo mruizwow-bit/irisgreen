@@ -257,12 +257,12 @@
       "id": "B03",
       "name": "Solar dwarf planets + moons",
       "owner": "LUMEN",
-      "status": "READY_FOR_FINAL_VISUAL_REVIEW",
+      "status": "FINAL_PASS_READY_FOR_ATLAS",
       "precondition_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
       "precondition_owner": "ASTRA_TEMPORARY",
       "precondition_commit": "fb2417106e9cecdaa8c6932d19c1f6b4b4e70e90",
-      "output_marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_FINAL_REVIEW",
-      "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final Review",
+      "output_marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+      "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final",
       "assets": [
         "ceres",
         "haumea",
@@ -276,10 +276,11 @@
         "encelado"
       ],
       "master_count": 10,
-      "next_owner": "ASTRA_MARIA_LUMEN_FINAL_VISUAL_REVIEW",
+      "next_owner": "ATLAS_A1",
       "contact_sheet": {
-        "filename": "SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET.png",
-        "sha256": "e98e1d991f5d369026ce3df313db0d947e2feab544e5f7b3e017509ba64e21b1"
+        "filename": "SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET_FINAL_REVIEW.png",
+        "sha256": "0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578",
+        "role": "QA_ONLY"
       },
       "technical_qa": {
         "filename": "SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY.png",
@@ -345,7 +346,44 @@
           "titan": "099732e31d2401f6d0c6e29870395484fb26f5fe2ef60becd44ea3ed28c5e4c7",
           "encelado": "6c3b7986a09b63cb792354c2d68ec27ff2dc256e1df94071197eb87fe77f1204"
         }
-      }
+      },
+      "visual_gate": "SOLAR_B03_DWARF_MOONS_10_VISUAL_PASS",
+      "technical": {
+        "width": 1536,
+        "height": 1536,
+        "format": "PNG RGBA",
+        "alpha": [
+          0,
+          255
+        ],
+        "srgb_icc": true,
+        "transparent_background": true,
+        "qa": "PASS"
+      },
+      "master_hashes": {
+        "ceres": "75e103718247528863c80ad8aa213bc0083e74fb420d0073ce64675c8fc7beb9",
+        "haumea": "ee969ade1fb69a433b69e2fe7ce3ebd152ce04752a686533072c33848fac9ec2",
+        "makemake": "f2bbc1f176a6bc6c06bff97950ed3dd285849a1a32b3390ec2aa38219817c9eb",
+        "eris": "f76c70b9e844071364e533f01cb013beb460fdcea6f8158c91bbfdb97157f2b6",
+        "luna": "9fa00c11a11ed0db21fd44b2cbe85b191557fe5538b24117a048a0c74c58bdcc",
+        "io": "aa1b05a8aab22aeb7c5236056c57789ca4dc78c85d2e355bdf859aa055e09793",
+        "europa": "9d122e0dc434d84968e9edccb5d2673d906d31becd23bf045c6c3573ddda275e",
+        "ganimedes": "e5921eb319efa9211f5a3269cb6a1e1a678612fc9df50c3fcb863b396ca738a1",
+        "titan": "099732e31d2401f6d0c6e29870395484fb26f5fe2ef60becd44ea3ed28c5e4c7",
+        "encelado": "6c3b7986a09b63cb792354c2d68ec27ff2dc256e1df94071197eb87fe77f1204"
+      },
+      "qa": {
+        "filename": "SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY_FINAL.png",
+        "sha256": "0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730",
+        "backgrounds": [
+          "BLACK",
+          "WHITE",
+          "MID-GRAY"
+        ],
+        "status": "PASS"
+      },
+      "next_action": "PACKAGING_MANIFEST_PROVENANCE_HASHES",
+      "art_locked": true
     }
   ],
   "locked_keep": {
@@ -371,9 +409,9 @@
   },
   "active_visual_review": {
     "batch": "B03_DWARF_MOONS_10",
-    "owner": "ASTRA_MARIA_LUMEN",
-    "marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_FINAL_REVIEW",
-    "status": "READY_FOR_FINAL_VISUAL_REVIEW"
+    "owner": "ATLAS_A1",
+    "marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+    "status": "VISUAL_AND_TECHNICAL_PASS"
   },
   "solar_foundation_final": {
     "status": "PASS",
