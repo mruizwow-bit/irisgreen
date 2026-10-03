@@ -22,6 +22,7 @@ on:
       - 'scripts/test_prisma_369_books_p39_p44.py'
       - 'scripts/test_prisma_369_first_paint_p14_p15_p36.py'
       - 'scripts/test_prisma_369_p45_redundant_copy.py'
+      - 'scripts/test_prisma_369_home_p4_p7_p10.py'
       - 'assets/ig-first-paint.css'
       - '.github/workflows/prisma-369-main.yml'
   workflow_dispatch:
@@ -85,6 +86,11 @@ jobs:
         continue-on-error: true
         run: python scripts/test_prisma_369_p45_redundant_copy.py --root dist
 
+      - id: p4_p7_p10
+        name: '#369 P4 P7 P10'
+        continue-on-error: true
+        run: python scripts/test_prisma_369_home_p4_p7_p10.py --root dist
+
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
@@ -103,6 +109,7 @@ jobs:
           P39_P44: ${{ steps.p39_p44.outcome }}
           P14_P15_P36: ${{ steps.p14_p15_p36.outcome }}
           P45: ${{ steps.p45.outcome }}
+          P4_P7_P10: ${{ steps.p4_p7_p10.outcome }}
         run: |
           echo "P28_P37=$P28_P37"
           echo "P29_P35=$P29_P35"
@@ -112,6 +119,7 @@ jobs:
           echo "P39_P44=$P39_P44"
           echo "P14_P15_P36=$P14_P15_P36"
           echo "P45=$P45"
+          echo "P4_P7_P10=$P4_P7_P10"
           test "$P28_P37" = success
           test "$P29_P35" = success
           test "$P47" = success
@@ -120,3 +128,4 @@ jobs:
           test "$P39_P44" = success
           test "$P14_P15_P36" = success
           test "$P45" = success
+          test "$P4_P7_P10" = success
