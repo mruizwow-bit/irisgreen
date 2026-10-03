@@ -28,13 +28,14 @@
   },
   "stt": {
     "command": [
-      "C:/PRIVATE/STT/adapter.exe"
+      "C:/PRIVATE/STT/python.exe",
+      "C:/PRIVATE/STT/stt_parakeet_adapter.py"
     ],
     "languages": [
       "es",
       "en"
     ],
-    "engine": "PRIVATE_CANONICAL_STT",
-    "model": "PRIVATE_CANONICAL_STT"
+    "engine": "transformers-cpu",
+    "model": "nvidia/parakeet-tdt-0.6b-v3"
   }
 }
