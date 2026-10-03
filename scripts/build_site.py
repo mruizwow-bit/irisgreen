@@ -277,6 +277,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_workshop_stable.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/reorganize_activity_hubs.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/apply_r69_global_cleanup.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # #369 P22/P24/P27: final collection headers after all recovery adapters.
+    subprocess.run([sys.executable,str(ROOT/'scripts/fix_369_collection_headers.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
