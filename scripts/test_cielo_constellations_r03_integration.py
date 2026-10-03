@@ -102,7 +102,9 @@ def main():
             assert ('Orión' in title if lang=='es' else 'Orion' in title),title
             info=page.locator('.skyv2-info').inner_text()
             assert ('Altitud' in info and 'Azimut' in info and 'Dirección' in info) if lang=='es' else ('Altitude' in info and 'Azimuth' in info and 'Direction' in info)
-            assert ('cazador' in info.lower()) if lang=='es' else ('hunter' in info.lower())
+            meta=page.evaluate("()=>window.__CIELO_V2_FIRST.r03By.get('Ori')")
+            assert meta and meta['abbr']=='Ori'
+            assert meta['descriptor_es']=='cazador'
 
             # EXPLORE remains direct manipulation after loading all 88.
             page.locator('.skyv2-meta').evaluate("e=>e.open=false")
