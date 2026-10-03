@@ -1,0 +1,43 @@
+name: Prisma · Space section shell
+on:
+  push:
+    branches: [main, 'prisma/space-section-frontend-shell-*']
+    paths:
+      - 'assets/ig-space-section-shell.css'
+      - 'assets/ig-space-section-shell.js'
+      - 'assets/ig-space-section-init.js'
+      - 'assets/data/space-section-shell.es.json'
+      - 'assets/data/space-section-shell.en.json'
+      - 'es/intereses/index.html'
+      - 'en/interests/index.html'
+      - 'scripts/test_prisma_space_section_shell.py'
+      - '.github/workflows/prisma-space-section-shell.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: |
+          node --check assets/ig-space-section-shell.js
+          node --check assets/ig-space-section-init.js
+          python -m py_compile scripts/test_prisma_space_section_shell.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA shell
+        run: python scripts/test_prisma_space_section_shell.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-space-section-shell
+          path: reports/prisma-space-section-shell/
+          retention-days: 14
