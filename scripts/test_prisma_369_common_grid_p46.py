@@ -82,17 +82,29 @@ def main():
         if hit is None: out.append([v,1])
         else: hit[1]+=1
       return [{'value':round(v,2),'count':n} for v,n in out]
+    refs={}
+    for width in (1440,390):
+      ref=next(r for r in rows if r['surface']=='conditions' and r['width']==width)
+      refs[width]={'left':ref['main_left'],'right':ref['main_right']}
+      for r in [x for x in rows if x['width']==width]:
+        assert abs(r['main_left']-ref['main_left'])<=3,(width,r['surface'],'main left',r['main_left'],ref['main_left'])
+        assert abs(r['main_right']-ref['main_right'])<=3,(width,r['surface'],'main right',r['main_right'],ref['main_right'])
+        if r['footer_left'] is not None:
+          assert abs(r['footer_left']-ref['main_left'])<=3,(width,r['surface'],'footer left',r['footer_left'],ref['main_left'])
+          assert abs(r['footer_right']-ref['main_right'])<=3,(width,r['surface'],'footer right',r['footer_right'],ref['main_right'])
+        assert not r['http_errors'],(width,r['surface'],'http',r['http_errors'])
     report={
-      'gate':'ISSUE_369_P46_COMMON_GRID_AUDIT',
+      'gate':'ISSUE_369_P46_COMMON_GRID_PASS',
       'surfaces':len(ROUTES),
       'cases':len(rows),
+      'references':refs,
       'desktop_left_clusters':clusters([r['main_left'] for r in desktop]),
       'desktop_right_clusters':clusters([r['main_right'] for r in desktop]),
       'mobile_left_clusters':clusters([r['main_left'] for r in mobile]),
       'mobile_right_clusters':clusters([r['main_right'] for r in mobile]),
       'footer_desktop_left_clusters':clusters([r['footer_left'] for r in desktop if r['footer_left'] is not None]),
       'rows':rows,
-      'diagnostic_complete':True
+      'passed':True
     }
     (OUT/'qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
