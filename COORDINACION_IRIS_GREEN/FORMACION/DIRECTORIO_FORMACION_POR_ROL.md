@@ -1,6 +1,6 @@
 # DIRECTORIO · QUIÉN SOY, QUÉ ESTUDIO Y DÓNDE
 
-Fecha: 30/09/2026
+Fecha: 30/09/2026 · actualización Croma: 03/10/2026
 
 ## Dirección y jefaturas
 
@@ -44,7 +44,7 @@ Fecha: 30/09/2026
 
 | Alias | Puesto | Relación | Formación |
 |---|---|---|---|
-| Croma | Especialista de Diseño de Producto y Sistema Visual | María | PLAN DETALLADO PENDIENTE |
+| Croma | Especialista de Diseño de Producto y Sistema Visual | María | FORMACION/CROMA/ · foundation R01 estudiada; prácticas/examen pendientes |
 
 ## Proveedores externos
 
