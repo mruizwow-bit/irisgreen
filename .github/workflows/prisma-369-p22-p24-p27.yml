@@ -9,6 +9,8 @@ on:
       - 'en/situations/index.html'
       - 'es/tramites/directorio/index.html'
       - 'scripts/apply_language_updates.py'
+      - 'scripts/fix_369_collection_headers.py'
+      - 'scripts/build_site.py'
       - 'scripts/test_prisma_369_p22_p24_p27.py'
       - '.github/workflows/prisma-369-p22-p24-p27.yml'
   workflow_dispatch:
