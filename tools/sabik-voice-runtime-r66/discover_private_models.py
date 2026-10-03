@@ -2,7 +2,7 @@ from __future__ import annotations
 import hashlib, json, os, sys
 from pathlib import Path
 
-ROOT = Path(os.environ.get("SABIKVOICE_ROOT", r"C:\Users\mruiz\SabikVoice"))
+ROOT = Path(os.environ.get("SABIKVOICE_ROOT", str(Path.home() / "SabikVoice")))
 PATTERN = os.environ.get("SABIK_MODEL_HASH_PATTERN", "**/model.safetensors")
 EXPECTED = {
   "es": ("SABIK_ES_R01_FINAL", "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291"),
@@ -23,9 +23,7 @@ for p in ROOT.glob(PATTERN):
     if not p.is_file():
         continue
     try:
-        size=p.stat().st_size
-        digest=sha256(p)
-        candidates.append({"path":str(p),"size_bytes":size,"sha256":digest})
+        candidates.append({"path":str(p),"size_bytes":p.stat().st_size,"sha256":sha256(p)})
     except Exception as exc:
         candidates.append({"path":str(p),"error":type(exc).__name__})
 
@@ -40,8 +38,10 @@ for lang,(mid,expected) in EXPECTED.items():
         found[lang]={"model_id":mid,"match":None}
 
 known_hints=[
+ str(ROOT / "FINAL_MODELS" / "SABIK_ES_R01_FINAL" / "model.safetensors"),
+ str(ROOT / "FINAL_MODELS" / "SABIK_EN_R02_FINAL" / "model.safetensors"),
+ str(ROOT / "SABIK_ES_SFT_R01" / "checkpoint-epoch-0" / "model.safetensors"),
  str(ROOT / "SABIK_EN_SFT_R02_EXACT" / "checkpoint-epoch-0" / "model.safetensors"),
- str(ROOT / "SABIK_EN_V1" / "model.safetensors"),
 ]
 report={
  "gate":"R66_PRIVATE_MODEL_DISCOVERY",
@@ -51,7 +51,7 @@ report={
  "found":found,
  "candidate_count":len(candidates),
  "known_hints":known_hints,
- "note":"Default pattern follows the historical Qwen fine-tuning scripts. If the canonical SHA targets another file, set SABIK_MODEL_HASH_PATTERN explicitly; do not rename or re-hash the model by assumption.",
+ "note":"The default pattern follows recovered Qwen training/finalization scripts. Folder names are only hints; exact SHA-256 identity is authoritative.",
  "candidates":candidates,
 }
 print(json.dumps(report,ensure_ascii=False,indent=2))
