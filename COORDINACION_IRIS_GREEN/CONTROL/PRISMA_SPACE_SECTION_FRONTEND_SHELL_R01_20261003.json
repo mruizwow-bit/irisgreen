@@ -7,14 +7,71 @@
   "base_main": "411f8eb9cfd7c0baf17a9e6b773fdafc222502ef",
   "target_gate": "SPACE_SECTION_FRONTEND_SHELL_READY_FOR_ASSET_INTAKE",
   "entries": [
-    {"id":"night-sky","route":"ACTIVE","asset":"PENDING"},
-    {"id":"solar-system","route":"ACTIVE","asset":"PENDING"},
-    {"id":"exoplanets","route":"ACTIVE","asset":"PENDING"},
-    {"id":"eclipses","route":"ACTIVE","asset":"PENDING"},
-    {"id":"meteors","route":"PENDING","asset":"PENDING"}
+    {
+      "id": "night-sky",
+      "route": "ACTIVE",
+      "asset": "PENDING"
+    },
+    {
+      "id": "solar-system",
+      "route": "ACTIVE",
+      "asset": "PENDING"
+    },
+    {
+      "id": "exoplanets",
+      "route": "ACTIVE",
+      "asset": "PENDING"
+    },
+    {
+      "id": "eclipses",
+      "route": "ACTIVE",
+      "asset": "PENDING"
+    },
+    {
+      "id": "meteors",
+      "route": "PENDING",
+      "asset": "PENDING"
+    }
   ],
-  "features": ["FIVE_ENTRY_SHELL","RESPONSIVE_320_390_DESKTOP","LIGHT_DARK","NATIVE_NAVIGATION","FOCUS","FORCED_COLORS","ASSET_GATED_LAZY_LOADING","NOSCRIPT"],
+  "features": [
+    "FIVE_ENTRY_SHELL",
+    "RESPONSIVE_320_390_DESKTOP",
+    "LIGHT_DARK",
+    "NATIVE_NAVIGATION",
+    "FOCUS",
+    "FORCED_COLORS",
+    "ASSET_GATED_LAZY_LOADING",
+    "NOSCRIPT"
+  ],
   "master_asset_requests": 0,
   "product_route_modified": true,
-  "main_modified": false
+  "main_modified": false,
+  "status": "SPACE_SECTION_FRONTEND_SHELL_READY_FOR_ASSET_INTAKE",
+  "head_sha": "7b53c94063a71e6171966dd61091ce200420ec19",
+  "ci": {
+    "run_id": 37099834557,
+    "job_id": 111137044566,
+    "conclusion": "SUCCESS",
+    "artifact_id": 11265668416,
+    "artifact_sha256": "bf11f8a612c7bc808399ba6a699b825c3266bfdb7072c60ecd4f204222fe526c"
+  },
+  "qa": {
+    "languages": [
+      "es",
+      "en"
+    ],
+    "widths": [
+      320,
+      390,
+      1440
+    ],
+    "cards": 5,
+    "active_routes": 4,
+    "pending_routes": 1,
+    "light_dark": true,
+    "forced_colors": true,
+    "asset_requests_while_pending": 0,
+    "canonical_build": "PASS",
+    "global_chrome_isolation": "PASS"
+  }
 }
