@@ -2,9 +2,9 @@
 export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{},onSources=()=>{}}={}){
  if(typeof retrieve!=='function') throw new TypeError('R66_RETRIEVE_REQUIRED');
  let controller=null,serial=0;
- const session={turns:[],locale:'es',audience:'GENERAL',pendingTopic:''};
+ const session={turns:[],locale:'es',audience:'GENERAL',pendingTopic:'',repromptCount:0};
  const sentence=(s)=>String(s||'').replace(/\s+/g,' ').trim();
- const aliases='(?:sabik|sábik|savik|sabick|sabyck|xavid|xavik|xabik|savid)';
+ const aliases='(?:sabik|sábik|savik|sabick|sabyck|xavid|xavik|xabik|savid|tanik|tanick)';
  function stripAddress(value,locale){
   let q=sentence(value);
   const greeting=locale==='en'?/^(?:hello|hi|hey)\b[\s,.:;!?-]*/i:/^(?:hola|oye|buenas)\b[\s,.:;!?¡¿-]*/i;
@@ -65,20 +65,31 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
    if(ticket===serial)controller=null;
    return {answer,sources:[],result:null,kind:'clarify'};
   }
-  let q=stripAddress(raw,locale);
-  if(session.pendingTopic){
-   q=locale==='en'?`${session.pendingTopic}. ${q}`:`${session.pendingTopic}. ${q}`;
-   session.pendingTopic='';
+  const addressed=stripAddress(raw,locale);
+  if(session.pendingTopic&&!addressed){
+   onState('PRESENTE',{phase:'awaiting-followup',inputMode});
+   if(ticket===serial)controller=null;
+   return {answer:'',sources:[],result:null,kind:'listen-again',topic:session.pendingTopic};
   }
+  const topic=session.pendingTopic;
+  const q=topic?`${topic}. ${addressed}`:addressed;
   const turn={query:q,inputMode,locale,audience,startedAt:Date.now()};
   try{   onState('TRANSICION',{phase:'retrieval',inputMode});
    const result=await retrieve({query:q,locale,audience,explicitIntent},{signal:controller.signal});
    if(ticket!==serial||controller.signal.aborted)throw new DOMException('Aborted','AbortError');
-   const answer=compose(result,locale),src=sources(result);
+   const src=sources(result);
+   if(topic&&!src.length){
+    session.pendingTopic=topic;
+    const answer=locale==='en'?`I'm still with you on ${topic}. Could you repeat what you want to know?`:`Sigo contigo en ${topic}. ¿Puedes repetir qué quieres saber?`;
+    turn.answer=answer;turn.sources=[];turn.completedAt=Date.now();turn.kind='clarify';
+    remember(turn);onAnswer(answer,{inputMode,locale,kind:'clarify'});onSources([]);
+    onState('CONFIRMAR',{phase:'answer',inputMode});
+    return {answer,sources:[],result,kind:'clarify'};
+   }
+   if(topic)session.pendingTopic='';
+   const answer=compose(result,locale);
    turn.answer=answer;turn.sources=src;turn.completedAt=Date.now();turn.kind='answer';
-   remember(turn);
-   onAnswer(answer,{inputMode,locale,kind:'answer'});
-   onSources(src);
+   remember(turn);onAnswer(answer,{inputMode,locale,kind:'answer'});onSources(src);
    onState('CONFIRMAR',{phase:'answer',inputMode});
    return {answer,sources:src,result,kind:'answer'};
   }catch(error){
@@ -91,5 +102,3 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
  function snapshot(){return {locale:session.locale,audience:session.audience,pendingTopic:session.pendingTopic,turns:session.turns.map(t=>({...t,sources:[...(t.sources||[])]}))};}
  return {submitTurn,cancel,reset,snapshot};
 }
-
-[executed on device: IrisGreen (3f6b1cbe-9324-4e6b-9df9-94b7628af125)]
