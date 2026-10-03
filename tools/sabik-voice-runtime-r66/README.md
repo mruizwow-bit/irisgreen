@@ -14,62 +14,78 @@ Canonical identities:
 - ES `SABIK_ES_R01_FINAL` · `8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291`
 - EN `SABIK_EN_R02_FINAL` · `3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df`
 
+## Provenance recovered
+
+The private finalization package proves that both product models are fine-tuned Qwen checkpoints served through `generate_custom_voice`.
+
+Relative to `SABIKVOICE_ROOT`:
+
+ES:
+- source `SABIK_ES_SFT_R01/checkpoint-epoch-0`;
+- final `FINAL_MODELS/SABIK_ES_R01_FINAL`;
+- speaker `sabik_es`;
+- language `Spanish`.
+
+EN:
+- source `SABIK_EN_SFT_R02_EXACT/checkpoint-epoch-0`;
+- final `FINAL_MODELS/SABIK_EN_R02_FINAL`;
+- speaker `sabik_en`;
+- language `English`.
+
+The verified fixed-audio package independently records the same final IDs, source roles, canonical roles and model/config hashes.
+
 ## Private artifact discovery
 
-`discover_private_models.py` hashes candidate private files below `SABIKVOICE_ROOT` (default `C:\\Users\\mruiz\\SabikVoice`).
+`discover_private_models.py` hashes candidate files below `SABIKVOICE_ROOT`.
 
-By default it scans `**/model.safetensors`, because the recovered Sabik EN training scripts explicitly used that file. If the canonical SHA was defined over another private file, set `SABIK_MODEL_HASH_PATTERN` to the exact intended target pattern. Folder names are hints; **hash identity is authority**.
+Default private root:
+`%USERPROFILE%/SabikVoice`
 
-Historical evidence identifies EN checkpoints such as:
-- `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0`
-- `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_V1`
+Default pattern:
+`**/model.safetensors`
 
-Recovered EN inference contract:
-- Qwen3-TTS fine-tuned checkpoint;
-- `generate_custom_voice`;
-- speaker `sabik_en`;
-- language `English`;
-- non-streaming mode;
-- top_k 50 / top_p 1.0 / temperature 0.9 / repetition penalty 1.05.
-
-The recovered finalization package closes the ES packaging question. Both final product models were copied from selected fine-tuned checkpoints and generated with `generate_custom_voice`:
-- ES source: `C:\\Users\\mruiz\\SabikVoice\\SABIK_ES_SFT_R01\\checkpoint-epoch-0`;
-- EN source: `C:\\Users\\mruiz\\SabikVoice\\SABIK_EN_SFT_R02_EXACT\\checkpoint-epoch-0`;
-- ES canonical destination: `C:\\Users\\mruiz\\SabikVoice\\FINAL_MODELS\\SABIK_ES_R01_FINAL`;
-- EN canonical destination: `C:\\Users\\mruiz\\SabikVoice\\FINAL_MODELS\\SABIK_EN_R02_FINAL`;
-- the canonical model hash is the SHA-256 of each final `model.safetensors`.
-
-Speakers are `sabik_es` and `sabik_en`.
+The canonical hashes are the SHA-256 values of the final `model.safetensors` files.
+Folder names are hints; exact hash identity is authority.
 
 ## Runtime modes
 
-Per language the private config can select:
-- `custom_voice`: fine-tuned Qwen3-TTS checkpoint, `generate_custom_voice`;
-- `voice_clone`: Base/ICL checkpoint with private `ref_audio` + exact `ref_text`, `generate_voice_clone`.
+The host supports:
+- `custom_voice` for fine-tuned Qwen3-TTS checkpoints;
+- `voice_clone` for Base/ICL checkpoints when needed for another approved artifact.
 
-No fallback between identities is automatic.
+R66 final Sabik ES and EN are configured as `custom_voice`.
+There is no automatic identity fallback.
 
-## Start
+## Start on the private Windows host
 
-1. Create a private config from `private-config.example.json` outside public GitHub.
-2. Set `SABIK_VOICE_PRIVATE_CONFIG` to that path.
-3. Install requirements in an isolated environment.
-4. Start with access logging disabled:
+1. Preserve model bytes outside public GitHub.
+2. Set `SABIK_STT_ADAPTER_EXE` to the already-approved private ES/EN STT adapter.
+3. From this package run:
 
+`powershell -ExecutionPolicy Bypass -File .\start_private_runtime_windows.ps1`
+
+The launcher:
+- verifies both canonical model hashes before startup;
+- requires both final model directories;
+- writes runtime config only to a temporary local file;
+- binds to loopback by default;
+- disables Uvicorn access logs;
+- never downloads, retrains or substitutes a voice.
+
+Manual equivalent:
 `uvicorn runtime:app --host 127.0.0.1 --port 8765 --no-access-log`
 
 Put the service behind the same-origin `/sabik-voice` route used by Nexo.
 
 ## Privacy / safety behavior
 
-- `Cache-Control: no-store` on capabilities, STT and TTS responses;
-- audio is held only in memory / ephemeral temporary files for the active STT call;
-- temp input is deleted after the command returns;
-- request text/audio are not logged by this runtime;
-- Uvicorn access logging must remain disabled so application-layer IP/request access lines are not created by this host;
-- STT is a private command adapter and must be supplied by the already-approved STT lane;
-- system/browser TTS is never used;
-- model identity mismatch stops startup.
+- `Cache-Control: no-store` on capabilities, STT and TTS;
+- active-turn audio only;
+- ephemeral STT temp file, deleted after the private adapter returns;
+- request text/audio are not logged by this host;
+- browser/system TTS is never used;
+- identity mismatch stops startup;
+- no weights or human masters are committed here.
 
 ## Static gate
 
@@ -78,29 +94,23 @@ Put the service behind the same-origin `/sabik-voice` route used by Nexo.
 Expected:
 `ECO_R66_PRIVATE_RUNTIME_STATIC_PASS`
 
-This only validates the host/contract. It explicitly reports:
+The static gate explicitly reports:
 - `real_private_weights_exercised=false`;
 - `eco_media_validation_pass=false`.
 
 ## Final gate
 
-This code is **not** `ECO_R66_MEDIA_VALIDATION_PASS`.
-That marker requires the real private ES+EN model bytes to be found, loaded and exercised through the A6 matrix.
+Static/runtime-host readiness is NOT:
+`ECO_R66_MEDIA_VALIDATION_PASS`.
+
+That marker requires:
+- actual private ES model bytes;
+- actual private EN model bytes;
+- exact hash match;
+- real model load;
+- real unseen synthesis ES+EN;
+- A6 media matrix;
+- real STT/turn chain required by R66.
 
 Final chain:
 `ARTEFACTO PRIVADO → ECO_R66_MEDIA_VALIDATION_PASS → NEXO E2E REAL → HUMAN QA MARÍA → MAIN`
-
-
-## Windows private start gate
-
-`start_private_runtime_windows.ps1`:
-1. searches/verifies the two canonical `model.safetensors` hashes;
-2. checks both final model directories;
-3. requires an already-approved private ES/EN STT adapter via `SABIK_STT_ADAPTER_EXE`;
-4. writes the runtime config only to the local temporary directory;
-5. starts Uvicorn on loopback with `--no-access-log`.
-
-If model bytes are missing or hashes differ, it stops with:
-`R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED`.
-
-It never downloads, retrains or substitutes a model.
