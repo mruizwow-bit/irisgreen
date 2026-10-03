@@ -8,6 +8,7 @@ on:
       - 'es/**'
       - 'en/**'
       - 'scripts/build_site.py'
+      - 'scripts/prerender_remaining_nojs.py'
       - 'scripts/apply_*.py'
       - 'scripts/reorganize_activity_hubs.py'
       - 'scripts/fix_369_collection_headers.py'
