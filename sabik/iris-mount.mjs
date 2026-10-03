@@ -53,7 +53,7 @@ function mount(){
  const $=s=>aside.querySelector(s),input=$('#sabik-input'),announcement=$('#sabik-announcement'),root=$('#sabik-results'),voiceButton=$('#sabik-voice'),voiceState=$('#sabik-voice-state'),micButton=$('#sabik-mic'),voiceStop=$('#sabik-voice-stop'),voiceRepeat=$('#sabik-voice-repeat'),voiceVolume=$('#sabik-voice-volume'),voiceRate=$('#sabik-voice-rate');
  const connection=connectionConfig.enabled?createAuthorizedTransport({cloudOrigin:connectionConfig.cloudOrigin}):null;
  const cloudQuery=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
- let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false;
+ let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options),present=()=>visual('presente',{force:true});
  let voice,lastLanguage=lang;
 
@@ -148,7 +148,7 @@ function mount(){
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
-   if(meta.inputMode==='voice'&&voiceEnabled())void voice.speak(answer);
+   if(voiceTurn&&voiceEnabled()){voiceTurn=false;void voice.speak(answer);}
  }
  function renderSources(sources){
   let section=root.querySelector('.sabik-conversation');if(!section){section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';root.appendChild(section);}
@@ -188,6 +188,7 @@ function mount(){
   syncVoice(voice.getState(),{reason:'translate'});controls();
  }
  async function submitQuery(q,inputMode){
+   voiceTurn=inputMode==='voice';
   q=String(q||'').trim();
   if(!q){void visual('orientar',{force:true,semantic:'idle'});say(strings().empty,{voiceId:'sabik.input.empty'});input.focus();return;}
   voice.cancelSpeech({emitState:false});busy=true;controls();announcement.textContent=strings().processing;
