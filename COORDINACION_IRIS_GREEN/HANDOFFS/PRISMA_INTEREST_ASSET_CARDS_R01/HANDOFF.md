@@ -113,3 +113,43 @@ Por tanto esta foundation contiene infraestructura y QA, no masters solares.
 
 No main.
 No master astronómico generado.
+
+
+## QA ejecutado
+
+Estado:
+`PRISMA_INTEREST_ASSET_CARDS_FOUNDATION_R01_PASS`
+
+GitHub Actions:
+- run: `37098791715`
+- job: `111134050499`
+- conclusión: **SUCCESS**
+
+Casos:
+- 320 px: PASS;
+- 390 px: PASS;
+- 1440 px: PASS.
+
+En cada caso:
+- `forbidden_asset_requests = 0`;
+- LIGHT / DARK = PASS;
+- activación = PASS;
+- pending no crea `<img>`;
+- solo approved recibe `src`;
+- 0 HTTP errors;
+- 0 JS errors.
+
+Artifact:
+`prisma-interest-asset-cards`
+ID:
+`11265356952`
+
+SHA-256 del ZIP de artifact:
+`dad69b9f854e617b19f03930155a3b731f05daaa28a20bc581878a9f5a1ddf61`
+
+## Cierre
+
+Foundation web lista para conectar tandas cuando tengan PASS.
+No implica aprobación de B01 Solar.
+No masters solares conectados.
+No main.
