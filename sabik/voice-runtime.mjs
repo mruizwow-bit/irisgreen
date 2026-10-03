@@ -247,28 +247,42 @@ export function createSabikConversationalVoice({
   try{await capabilities();}catch(error){issue(error?.code||'VOICE_SERVICE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   cancelSpeech({emitState:false});
   if(remember)lastText=value;
+  const pieces=value.split(/(?<=[.!?])\s+/).map(cleanText).filter(Boolean),parts=[];
+  for(const piece of pieces){
+   if(piece.length<=180){parts.push(piece);continue;}
+   const words=piece.split(/\s+/);let current='';
+   for(const word of words){
+    const next=(current+' '+word).trim();
+    if(current&&next.length>180){parts.push(current);current=word;}else current=next;
+   }
+   if(current)parts.push(current);
+  }
+  if(!parts.length)parts.push(value);
   const ticket=++serial,controller=new AbortController();ttsController=controller;
   try{
-   const response=await fetchImpl(endpoint(endpointBase,'/synthesize'),{
-    method:'POST',cache:'no-store',credentials:'same-origin',signal:controller.signal,
-    headers:{'Content-Type':'application/json',Accept:'audio/wav'},
-    body:JSON.stringify({text:value,locale:lang,model_id:MODEL[lang].ttsId})
-   });
-   if(!response.ok)throw failure('TTS_HTTP_'+response.status);
-   if(!/^audio\/(?:wav|x-wav|wave)(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('TTS_BAD_MEDIA');
-   const blob=await response.blob();if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'stale'});
-   const AudioCtor=host.Audio;if(typeof AudioCtor!=='function')throw failure('AUDIO_PLAYBACK_UNAVAILABLE');
-   audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
-   const result=await new Promise(resolve=>{
-    let settled=false;
-    const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status});resolve(Object.freeze({status,language:lang,model_id:MODEL[lang].ttsId}));};
-    player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing'});},{once:true});
-    player.addEventListener?.('ended',()=>finish('ended'),{once:true});
-    player.addEventListener?.('error',()=>finish('play-error'),{once:true});
-    Promise.resolve(player.play()).catch(()=>finish('play-error'));
-   });
-   if(result.status==='play-error')issue('TTS_PLAYBACK_ERROR');
-   return result;
+   for(let index=0;index<parts.length;index++){
+    if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
+    const response=await fetchImpl(endpoint(endpointBase,'/synthesize'),{
+     method:'POST',cache:'no-store',credentials:'same-origin',signal:controller.signal,
+     headers:{'Content-Type':'application/json',Accept:'audio/wav'},
+     body:JSON.stringify({text:parts[index],locale:lang,model_id:MODEL[lang].ttsId})
+    });
+    if(!response.ok)throw failure('TTS_HTTP_'+response.status);
+    if(!/^audio\/(?:wav|x-wav|wave)(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('TTS_BAD_MEDIA');
+    const blob=await response.blob();if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
+    const AudioCtor=host.Audio;if(typeof AudioCtor!=='function')throw failure('AUDIO_PLAYBACK_UNAVAILABLE');
+    audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
+    const result=await new Promise(resolve=>{
+     let settled=false;
+     const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+     player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing',part:index+1,parts:parts.length});},{once:true});
+     player.addEventListener?.('ended',()=>finish('ended'),{once:true});
+     player.addEventListener?.('error',()=>finish('play-error'),{once:true});
+     Promise.resolve(player.play()).catch(()=>finish('play-error'));
+    });
+    if(result!=='ended'){if(result==='play-error')issue('TTS_PLAYBACK_ERROR');return Object.freeze({status:result,language:lang,model_id:MODEL[lang].ttsId});}
+   }
+   return Object.freeze({status:'ended',language:lang,model_id:MODEL[lang].ttsId,parts:parts.length});
   }catch(error){
    if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
    ttsController=null;issue(error?.code||'TTS_ERROR');return Object.freeze({status:'error'});
