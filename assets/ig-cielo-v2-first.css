@@ -87,7 +87,7 @@ a{color:inherit}
  .skyv2-intro{width:100%;padding:.85rem 4.8rem .65rem .75rem}
  .skyv2-intro .crumb{font-size:.82rem}.skyv2-intro h1{font-size:clamp(2rem,12vw,2.75rem)}
  .skyv2-question{font-size:1rem;line-height:1.36}.skyv2-instruction{font-size:.88rem}
- .skyv2-meta{right:.65rem;top:.65rem;width:8.75rem;max-width:calc(100% - 1.3rem)}
+ .skyv2-meta{right:.65rem;top:13.15rem;width:8.75rem;max-width:calc(100% - 1.3rem)}
  .skyv2-meta[open]{width:calc(100% - 1.3rem)}
  .skyv2-viewlist{left:.65rem;top:13.15rem;width:9.75rem;max-width:calc(100% - 1.3rem)}
  .skyv2-viewlist[open]{width:calc(100% - 1.3rem)}
