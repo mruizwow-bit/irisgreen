@@ -30,6 +30,8 @@ ALLOWED_STORAGE = {
         "ig-sistema-solar-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-eclipses-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-a11y": {"getItem", "setItem", "removeItem"},
+        # Preferencia global LIGHT/DARK NAVY; explícita, local al navegador y borrable.
+        "ig-theme-2026": {"getItem", "setItem", "removeItem"},
         "ig_lang": {"getItem", "setItem", "removeItem"},
         "ig_saved_videos": {"getItem", "setItem", "removeItem"},
     },
@@ -37,6 +39,10 @@ ALLOWED_STORAGE = {
         # Cielo nocturno: solo se lee y se borra la lista de la versión anterior
         # (sessionStorage) para pasarla a localStorage.
         "ig-cielo-mis-listas": {"getItem", "removeItem"},
+        # Lente de edad global: solo dura la pestaña/sesión. GENERAL no se persiste.
+        "ig-age-band-v2": {"getItem", "setItem", "removeItem"},
+        # Clave antigua leída/borrada únicamente para migración de estado.
+        "ig-audience-stage-v1": {"getItem", "removeItem"},
         "ig-conditions-url": {"getItem", "setItem", "removeItem"},
         "ig-situations-url": {"getItem", "setItem", "removeItem"},
         # Selector de idioma: solo vive durante la pestaña y evita cambios de
@@ -74,6 +80,15 @@ CLEAR_RE = re.compile(
 # modelan explícitamente aquí para que el auditor siga fallando ante cualquier
 # otra clave dinámica.
 DYNAMIC_KEY_SETS = {
+    # ig-audience.js declara KEY y LEGACY_KEY en una sola sentencia var.
+    # KEY se resuelve como constante simple; LEGACY_KEY se restringe aquí al
+    # único valor histórico permitido para lectura/borrado de migración.
+    ("assets/ig-audience.js", "sessionStorage", "getItem", "LEGACY_KEY"): {
+        "ig-audience-stage-v1",
+    },
+    ("assets/ig-audience.js", "sessionStorage", "removeItem", "LEGACY_KEY"): {
+        "ig-audience-stage-v1",
+    },
     ("assets/rutinas-visuales.js", "sessionStorage", "setItem", "storageKey"): {
         "ig-rutinas-hechos-ready", "ig-rutinas-hechos-builder",
     },
