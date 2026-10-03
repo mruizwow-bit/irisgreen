@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green.eclipse-type-visual-map.v2",
+  "date": "2026-10-03",
+  "dispatch_key": [
+    "source_domain",
+    "kind_es"
+  ],
+  "canonical_set_version": "R02",
+  "mapping": {
+    "solar:total": "assets/eclipse-solar-total-canonical-r02.svg",
+    "solar:parcial": "assets/eclipse-solar-partial-canonical-r02.svg",
+    "solar:anular": "assets/eclipse-solar-annular-canonical-r02.svg",
+    "lunar:total": "assets/eclipse-lunar-total-canonical-r02.svg",
+    "lunar:parcial": "assets/eclipse-lunar-partial-canonical-r02.svg",
+    "lunar:penumbral": "assets/eclipse-lunar-penumbral-canonical-r02.svg"
+  },
+  "didactic_sequences": {
+    "solar:total": "sequences/eclipse-solar-total-phase-sequence-r01.svg",
+    "lunar:total": "sequences/eclipse-lunar-total-phase-sequence-r01.svg"
+  },
+  "fallback": null,
+  "unknown_key_behavior": "NO_CANONICAL_VISUAL__SURFACE_DATA_ONLY",
+  "event_specific_fields_not_used_for_visual_selection": [
+    "time_utc",
+    "lat",
+    "lon",
+    "obscuration",
+    "contact_times",
+    "altitude",
+    "azimuth",
+    "visibility"
+  ],
+  "rules": [
+    "TYPE_VISUAL_REUSE != EVENT_SPECIFIC_OBSERVATION",
+    "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+    "CALCULATION_DATA_DRIVES_TYPE_SELECTION_ONLY"
+  ]
+}

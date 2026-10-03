@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1800" height="520" viewBox="0 0 1800 520" role="img" aria-labelledby="st-title st-desc">
+<title id="st-title">Generic phase sequence around a total solar eclipse</title>
+<desc id="st-desc">Five generic states show the Moon moving across the solar disk: partial coverage, deeper partial coverage, totality with a generic corona, deeper partial coverage, and partial coverage. No timing or exact obscuration is implied.</desc>
+<defs>
+ <radialGradient id="sun" cx="48%" cy="45%" r="55%"><stop offset="0%" stop-color="#fffce5"/><stop offset="64%" stop-color="#ffe27a"/><stop offset="100%" stop-color="#eeb13a"/></radialGradient>
+ <radialGradient id="moon" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#deded9"/><stop offset="78%" stop-color="#9d9e9b"/><stop offset="100%" stop-color="#70716f"/></radialGradient>
+ <radialGradient id="copper" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#df9774"/><stop offset="72%" stop-color="#b25b43"/><stop offset="100%" stop-color="#713128"/></radialGradient>
+ </defs>
+<g transform="translate(180 260)"><circle r="92" fill="url(#sun)"/><circle cx="92" cy="0" r="92" fill="#090d16"/></g>
+<g transform="translate(540 260)"><circle r="92" fill="url(#sun)"/><circle cx="48" cy="0" r="92" fill="#090d16"/></g>
+<g transform="translate(900 260)"><circle r="118" fill="none" stroke="#f3e4b9" stroke-width="5" opacity=".58"/><circle r="92" fill="url(#sun)"/><circle r="91" fill="#090d16"/></g>
+<g transform="translate(1260 260)"><circle r="92" fill="url(#sun)"/><circle cx="-48" cy="0" r="92" fill="#090d16"/></g>
+<g transform="translate(1620 260)"><circle r="92" fill="url(#sun)"/><circle cx="-92" cy="0" r="92" fill="#090d16"/></g>
+</svg>

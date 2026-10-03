@@ -57,3 +57,22 @@ html[data-ig-text-enlarged] .ec-inset{width:clamp(150px,20vw,240px)}
   .ec-phase{border-left-color:CanvasText}
 }
 @media print{.ec-stage,#mi-coleccion,#ec-cat-tools{display:none!important}.ec-how,.ec-mapfig{break-inside:avoid}}
+
+/* R02 · visuales canónicos por tipo · EXPLORE → LOCATE → REVEAL */
+.ec-type-explorer{grid-column:1/-1;padding:clamp(.85rem,2vw,1.2rem);gap:.75rem}
+.ec-type-explorer-head h3{margin:0 0 .35rem}
+.ec-type-explorer-head p{margin:0;color:var(--muted,#435268);line-height:1.5}
+.ec-type-choices{display:flex;flex-wrap:wrap;gap:.45rem}
+.ec-type-choices button{min-height:44px;border:1px solid var(--ig-border-control,#7a869d);border-radius:999px;background:var(--ig-bg-surface,#f4f7fa);color:var(--ig-text,#17395c);padding:.45rem .75rem;font:700 .9rem/1.2 "Atkinson Hyperlegible",system-ui,sans-serif;cursor:pointer}
+.ec-type-choices button[aria-pressed="true"]{background:var(--ig-button-primary-bg,#17395c);color:var(--ig-button-primary-fg,#eef4f8);border-color:var(--ig-button-primary-bg,#17395c)}
+.ec-type-choices button:focus-visible{outline:3px solid var(--ig-focus-global,#5a49a8);outline-offset:2px}
+.ec-type-slot{min-height:12rem}
+.ec-canonical{margin:.85rem 0 0;display:grid;gap:.55rem}
+.ec-canonical-media{display:grid;grid-template-columns:minmax(0,1fr);gap:.6rem;border:1px solid var(--line,#dfe6ef);border-radius:16px;overflow:hidden;background:#050b18;padding:.5rem}
+.ec-canonical-img,.ec-canonical-sequence{display:block;width:100%;height:auto;max-height:30rem;object-fit:contain}
+.ec-canonical-sequence{border-top:1px solid rgba(255,255,255,.18);padding-top:.5rem}
+.ec-canonical figcaption{font-size:.9rem;line-height:1.45;color:var(--muted,#435268)}
+#ec-now .ec-canonical{margin-top:.9rem}
+#ec-now .ec-canonical-media{max-width:42rem}
+@media(max-width:560px){.ec-type-choices{display:grid;grid-template-columns:1fr}.ec-type-choices button{width:100%}}
+@media(forced-colors:active){.ec-type-choices button,.ec-canonical-media{border-color:CanvasText}.ec-type-choices button[aria-pressed="true"]{background:Highlight;color:HighlightText}}

@@ -13,6 +13,10 @@ on:
       - 'scripts/build_cielo_v2_first_view.py'
       - 'scripts/test_cielo_v2_first_viewport.py'
       - 'scripts/test_cielo_constellations_r03_integration.py'
+      - 'assets/ig-eclipses.css'
+      - 'assets/ig-eclipses.js'
+      - 'img/intereses/eclipses/canonical-r02/**'
+      - 'scripts/test_eclipse_canonical_r02_integration.py'
       - '.github/workflows/cielo-v2-first-viewport.yml'
   workflow_dispatch:
 permissions:
@@ -33,13 +37,15 @@ jobs:
       - name: Syntax
         run: |
           node --check assets/ig-cielo-v2-first.js
-          python -m py_compile scripts/build_cielo_v2_first_view.py scripts/test_cielo_v2_first_viewport.py scripts/test_cielo_constellations_r03_integration.py
+          python -m py_compile scripts/build_cielo_v2_first_view.py scripts/test_cielo_v2_first_viewport.py scripts/test_cielo_constellations_r03_integration.py scripts/test_eclipse_canonical_r02_integration.py
       - name: Build canónico
         run: python scripts/build_site.py
       - name: QA first viewport
         run: python scripts/test_cielo_v2_first_viewport.py
       - name: QA 88 constelaciones
         run: python scripts/test_cielo_constellations_r03_integration.py
+      - name: QA Eclipses R02
+        run: python scripts/test_eclipse_canonical_r02_integration.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
