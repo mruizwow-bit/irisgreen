@@ -9,7 +9,7 @@
 - leave content, product engines and immersive art untouched.
 """
 from __future__ import annotations
-import argparse,re
+import argparse,re,html as html_lib
 from pathlib import Path
 
 GOOGLE_LINK_RE=re.compile(
@@ -26,6 +26,30 @@ WORKSHOP_LOCAL_AGE_RE=re.compile(
     r'<nav\s+class=["\']igk-para["\'][^>]*>.*?</nav>',
     re.I|re.S,
 )
+CRUMB_BLOCK_RE=re.compile(
+    r'<p\b(?=[^>]*class=["\'][^"\']*\bcrumb\b[^"\']*["\'])[^>]*>.*?</p>\s*',
+    re.I|re.S,
+)
+SITUATION_NOTICE_RE=re.compile(
+    r'<p\b(?=[^>]*class=["\'][^"\']*\bnotice\b[^"\']*["\'])[^>]*>'
+    r'(?:(?!</p>).)*(?:Esta página describe una situación del día a día|This page describes an everyday situation)'
+    r'.*?</p>\s*',
+    re.I|re.S,
+)
+
+def _plain(fragment:str)->str:
+    return re.sub(r'\s+',' ',html_lib.unescape(re.sub(r'<[^>]+>',' ',fragment))).strip()
+
+def remove_redundant_home_crumbs(text:str)->tuple[str,int]:
+    removed=0
+    def repl(m):
+        nonlocal removed
+        plain=_plain(m.group(0))
+        if re.search(r'(^|\s)(Inicio|Home)(\s|$|›|>)',plain,re.I):
+            removed+=1
+            return ''
+        return m.group(0)
+    return CRUMB_BLOCK_RE.sub(repl,text),removed
 
 def local_fonts(text:str)->str:
     text=GOOGLE_LINK_RE.sub('',text)
@@ -51,11 +75,16 @@ def main()->None:
         if base.is_dir(): htmls.extend(p for p in base.rglob('*.html') if p.is_file())
     for p in (root/'index.html',root/'en'/'index.html'):
         if p.is_file(): htmls.append(p)
-    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0
+    changed=0;google_left=[];resource_removed=0;workshop_age_removed=0;home_crumbs_removed=0;situation_notices_removed=0
     for p in sorted(set(htmls)):
         before=p.read_text(encoding='utf-8')
         rel=p.relative_to(root).as_posix()
         after=local_fonts(before)
+        after,n=remove_redundant_home_crumbs(after)
+        home_crumbs_removed+=n
+        if rel.startswith(('es/situaciones/','en/situations/')):
+            after,n=SITUATION_NOTICE_RE.subn('',after)
+            situation_notices_removed+=n
         if rel in ('es/recursos/index.html','en/resources/index.html'):
             after,n=RESOURCE_STAGE_RE.subn('',after,count=1)
             resource_removed+=n
@@ -73,7 +102,24 @@ def main()->None:
             raise AssertionError('Redundant resource age block remains: '+rel)
     if workshop_age_removed!=2:
         raise AssertionError(f'Expected 2 redundant Workshop age navs removed, got {workshop_age_removed}')
-    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed})
+    leftover_crumbs=[]
+    leftover_situation_notices=[]
+    for p in sorted(set(htmls)):
+        final=p.read_text(encoding='utf-8')
+        for m in CRUMB_BLOCK_RE.finditer(final):
+            if re.search(r'(^|\s)(Inicio|Home)(\s|$|›|>)',_plain(m.group(0)),re.I):
+                leftover_crumbs.append(p.relative_to(root).as_posix())
+                break
+        if p.relative_to(root).as_posix().startswith(('es/situaciones/','en/situations/')) and SITUATION_NOTICE_RE.search(final):
+            leftover_situation_notices.append(p.relative_to(root).as_posix())
+    if leftover_crumbs:
+        raise AssertionError('Redundant Inicio/Home crumbs remain: '+', '.join(leftover_crumbs[:12]))
+    if leftover_situation_notices:
+        raise AssertionError('Repeated situation disclaimer remains: '+', '.join(leftover_situation_notices[:12]))
+    print({'html':len(set(htmls)),'changed':changed,'google_fonts':0,
+           'resource_age_blocks_removed':resource_removed,'workshop_age_navs_removed':workshop_age_removed,
+           'redundant_home_crumbs_removed':home_crumbs_removed,
+           'situation_disclaimers_removed':situation_notices_removed})
 
 if __name__=='__main__':
     main()
