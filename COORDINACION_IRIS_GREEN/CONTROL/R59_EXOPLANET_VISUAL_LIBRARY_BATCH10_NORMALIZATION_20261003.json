@@ -1,0 +1,61 @@
+{
+  "schema": "iris-green.r59.exoplanet-visual-library-batch10-normalization.v1",
+  "date": "2026-10-03",
+  "owner": "SENDA_R59",
+  "marker": "EXOPLANET_VISUAL_LIBRARY_BATCH_10_TECHNICALLY_NORMALIZED_READY_FOR_ASSIGNMENT",
+  "library_path": "/Iris Green/First Party Visual/Exoplanets/Visual Library Batch 10/",
+  "assets": 10,
+  "technical": {
+    "size": [
+      1536,
+      1536
+    ],
+    "format": "PNG",
+    "mode": "RGBA",
+    "alpha": [
+      0,
+      255
+    ],
+    "embedded_profile": "sRGB",
+    "transparent_background": true,
+    "one_planet_per_file": true,
+    "text": false,
+    "stars": false,
+    "logos": false
+  },
+  "qa": {
+    "technical_pass": "10/10",
+    "background_checks": [
+      "black",
+      "white",
+      "gray"
+    ]
+  },
+  "assignment_status": "UNASSIGNED_GENERIC_MASTERS",
+  "visual_status": {
+    "keep": [
+      "01",
+      "02",
+      "04",
+      "05",
+      "06",
+      "08",
+      "09",
+      "10"
+    ],
+    "keep_conditional": [
+      "03"
+    ],
+    "specialized": [
+      "07"
+    ]
+  },
+  "assignment_rule": [
+    "TYPE",
+    "MASS",
+    "RADIUS",
+    "TEMPERATURE_OR_IRRADIATION_WHEN_AVAILABLE",
+    "ATMOSPHERE_OR_SURFACE_CONSTRAINTS"
+  ],
+  "status": "PASS"
+}
