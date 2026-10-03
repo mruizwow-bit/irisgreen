@@ -1,0 +1,57 @@
+{
+  "schema": "iris-green.control.atlas-eclipses-all.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "authority": "MARIA",
+  "gate": "ECLIPSES_ALL_458_READY_FOR_FINAL_REVIEW",
+  "status": "READY_FOR_FINAL_REVIEW",
+  "source": {
+    "path": "es/intereses/eclipses/eclipses.json",
+    "git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+    "snapshot_date": "2026-09-24",
+    "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT"
+  },
+  "catalog": {
+    "total": 458,
+    "solar": 228,
+    "lunar": 230,
+    "solar_types": {
+      "parcial": 84,
+      "total": 74,
+      "anular": 70
+    },
+    "lunar_types": {
+      "total": 87,
+      "parcial": 58,
+      "penumbral": 85
+    }
+  },
+  "batching": {
+    "total": 46,
+    "full_batches": 45,
+    "full_batch_size": 10,
+    "final_batch_size": 8,
+    "review_policy": "FINAL_ONLY_AFTER_ALL_BATCHES_COMPLETE"
+  },
+  "outputs": {
+    "batch_json": 46,
+    "review_svg": 46,
+    "manifest": true,
+    "provenance": true,
+    "final_qa": true,
+    "final_review_index": true,
+    "handoff": true
+  },
+  "classification": {
+    "dataset_events": "CALCULATION",
+    "review_diagrams": "REPRESENTATION"
+  },
+  "constraints": {
+    "official_event_maps": false,
+    "local_visibility_baked": false,
+    "local_percentages_baked": false,
+    "runtime_touched": false,
+    "main_touched": false
+  },
+  "branch": "atlas/eclipse-catalog-batches-20261003"
+}
