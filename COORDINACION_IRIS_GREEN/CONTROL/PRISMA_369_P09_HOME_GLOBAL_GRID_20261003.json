@@ -28,6 +28,14 @@
       "cause": "R49 stylesheet loads after Home and uses a more specific !important browse-main rule",
       "fix_commit": "fa29ef04801678e2c5202bf1b945c38c4650937f",
       "status": "FIX_APPLIED_WAIT_CI"
+    },
+    {
+      "code": "R49_GENERIC_BROWSE_OWNS_HOME_MAIN",
+      "evidence": "390px remained x=32 after Home-side important override; R49 layout rules are inside cascade layer and continue owning browse main",
+      "cause": "Generic R49 browse main rule incorrectly applies to canonical Home main",
+      "fix_commit": "d92f1844d3351cda29d3914424cf619d434b55c0",
+      "cleanup_commit": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d",
+      "status": "FIX_APPLIED_WAIT_CI"
     }
   ],
   "qa_measurement_fix": {
@@ -36,17 +44,17 @@
   },
   "ci": [
     {
-      "run_id": 37106025743,
+      "run_id": 37106361583,
       "workflow": "Prisma #369 P9 Home grid",
       "status": "IN_PROGRESS",
-      "head_sha": "fa29ef04801678e2c5202bf1b945c38c4650937f"
+      "head_sha": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d"
     },
     {
-      "run_id": 37106025811,
+      "run_id": 37106361517,
       "workflow": "R42 A8 Home child-safe QA",
       "status": "IN_PROGRESS",
-      "head_sha": "fa29ef04801678e2c5202bf1b945c38c4650937f"
+      "head_sha": "3eee4c00d0b5d73e93841a28cf1c2384bae5909d"
     }
   ],
-  "status": "P09_MOBILE_GUTTER_CASCADE_FIX_WAIT_CI"
+  "status": "P09_R49_HOME_MAIN_EXCLUSION_WAIT_CI"
 }
