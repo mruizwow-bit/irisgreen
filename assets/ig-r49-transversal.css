@@ -1,4 +1,5 @@
 @layer ig-r49-tokens,ig-r49-chrome,ig-r49-layout,ig-r49-components,ig-r49-a11y;
+html:has(body[data-ig-r49="1"]){scrollbar-gutter:stable}
 @layer ig-r49-tokens{
 :root{
  --ig-layout-gutter:clamp(1rem,3.2vw,5rem);
