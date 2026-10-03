@@ -1,0 +1,96 @@
+{
+  "schema": "iris-green.asset-manifest.sky-batch-a01.v1",
+  "date": "2026-10-03",
+  "gate": "SKY_BATCH_A01_10_READY_FOR_REVIEW",
+  "scene_count": 10,
+  "files": [
+    {
+      "path": "data/sky-a01-01-uma.json",
+      "kind": "scene_data",
+      "git_blob_sha": "2b7f258f596d659ee0c7a5d7101149e8e70b99a4",
+      "size_bytes": 118751
+    },
+    {
+      "path": "data/sky-a01-02-umi.json",
+      "kind": "scene_data",
+      "git_blob_sha": "316bfccad66bd7b38ff770dc9f741282333501e8",
+      "size_bytes": 75606
+    },
+    {
+      "path": "data/sky-a01-03-cas.json",
+      "kind": "scene_data",
+      "git_blob_sha": "c2bed67b51eacda435407b1891bd885f09c33ada",
+      "size_bytes": 151732
+    },
+    {
+      "path": "data/sky-a01-04-ori.json",
+      "kind": "scene_data",
+      "git_blob_sha": "5b51b3d3c2eef4b4d6dace225a43568f1cec3abd",
+      "size_bytes": 145390
+    },
+    {
+      "path": "data/sky-a01-05-cma.json",
+      "kind": "scene_data",
+      "git_blob_sha": "79dd74dc39ad150c8e8d38205804ef42f04c1662",
+      "size_bytes": 98921
+    },
+    {
+      "path": "data/sky-a01-06-tau.json",
+      "kind": "scene_data",
+      "git_blob_sha": "062e16f56822aa4d84f87e67f9021b0b46f30ffa",
+      "size_bytes": 236191
+    },
+    {
+      "path": "data/sky-a01-07-gem.json",
+      "kind": "scene_data",
+      "git_blob_sha": "d22d9ee72440332a03a2f7f3eaf06659d75bd653",
+      "size_bytes": 47841
+    },
+    {
+      "path": "data/sky-a01-08-leo.json",
+      "kind": "scene_data",
+      "git_blob_sha": "ada971af589526e3e20667da0aa3913f335d8cf5",
+      "size_bytes": 82267
+    },
+    {
+      "path": "data/sky-a01-09-sco.json",
+      "kind": "scene_data",
+      "git_blob_sha": "dd7577fb2ff6b0ffbd8a9d14c0a5842b0ee89da2",
+      "size_bytes": 198277
+    },
+    {
+      "path": "data/sky-a01-10-cyg.json",
+      "kind": "scene_data",
+      "git_blob_sha": "70d243667a0e8ef9e0f51ba56c76c6a40b0995a0",
+      "size_bytes": 133864
+    },
+    {
+      "path": "SKY_BATCH_A01_10_CONTACT_SHEET.svg",
+      "kind": "contact_sheet",
+      "git_blob_sha": "f2e651b047fa6ee8c7a78a17b90bf019f4ae0ca5"
+    },
+    {
+      "path": "SKY_BATCH_A01_10.json",
+      "kind": "batch_summary",
+      "git_blob_sha": "b8e82f07b9ea03fd31dd05e0749f7b6b8af617c1"
+    },
+    {
+      "path": "provenance.json",
+      "kind": "provenance",
+      "git_blob_sha": "faf12ad6d88ee0f6eb30ee56def5d9d113d966ee"
+    }
+  ],
+  "validation": {
+    "expected_scene_count": 10,
+    "actual_scene_count": 10,
+    "source_position_traceable": true,
+    "source_brightness_traceable": true,
+    "brightness_category_traceable": true,
+    "contact_sheet_present": true,
+    "raster_star_catalog": false,
+    "manual_star_placement": false,
+    "horizon_b00_modified": false,
+    "runtime_touched": false,
+    "main_touched": false
+  }
+}
