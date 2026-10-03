@@ -16,7 +16,9 @@ def main():
   need('data-ig-home-version="v4"' in txt,'Home v4 marker missing')
   need('data-ig-r49="1"' in txt,'Home is not enrolled in the global shell')
   need(txt.count('data-ig-audience-picker')==1,'Home canonical age picker count !=1')
-  need(txt.count('data-ig-audience-stage=')==4,'Home canonical age button count !=4')
+  need(txt.count('data-ig-audience-stage=')==3,'Home public age button count !=3')
+  need('data-ig-audience-stage="GENERAL"' not in txt,'GENERAL must not be a public age button')
+  need('data-ig-audience-stage="ALL_AGES"' not in txt,'ALL_AGES must not be a public age button')
   need('ig-home-v4-safety-state' in txt,'Home child-safe status missing')
   for label in labels: need(label in txt,'Home v4 missing '+label)
   for asset in ['/assets/ig-global-ui-tokens-2026.css','/assets/ig-theme.js','/assets/ig-audience.js','/assets/buscador-comun.js','/assets/home-r42-child-safe.js','/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/iris-mount.mjs']:
