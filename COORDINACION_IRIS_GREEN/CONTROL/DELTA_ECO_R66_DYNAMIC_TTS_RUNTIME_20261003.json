@@ -78,11 +78,21 @@
   "static_gate": {
     "test": "scripts/test_eco_r66_private_runtime_static.py",
     "workflow": ".github/workflows/eco-r66-private-runtime-static.yml",
-    "run_id": 37099787794,
+    "latest_success_run_id": 37100484755,
+    "latest_success_commit": "02124d4b22ab72ef167918638af7ea5e44a02841",
     "conclusion": "success",
     "marker": "ECO_R66_PRIVATE_RUNTIME_STATIC_PASS",
     "real_private_weights_exercised": false,
-    "eco_media_validation_pass": false
+    "eco_media_validation_pass": false,
+    "final_model_paths_locked": true,
+    "final_modes": {
+      "es": "custom_voice",
+      "en": "custom_voice"
+    },
+    "fail_closed_identity": true,
+    "system_tts_fallback": false,
+    "real_model_probe_present": true,
+    "superseded_harness_failure_run_id": 37100357482
   },
   "remaining_blockers": [
     "Expose exact private ES final model bytes to the authorized execution host",
@@ -130,5 +140,20 @@
     "runtime_adapter_interface_ready": true,
     "canonical_executable_artifact_located": false,
     "note": "Historical research contains candidates/recommendations but no later executable canonical STT artifact was located. Do not promote research recommendation to release authority."
+  },
+  "library_exhaustive_search": {
+    "exact_name_search": true,
+    "hash_search": true,
+    "sabik_folder_recursive": true,
+    "training_day_size_time_search": true,
+    "large_private_model_file_found": false,
+    "conclusion": "PRIVATE_MODEL_BYTES_EXIST_OUTSIDE_CHATGPT_LIBRARY"
+  },
+  "execution_access": {
+    "github": true,
+    "slack": true,
+    "chatgpt_library": true,
+    "local_windows_filesystem": false,
+    "note": "No local-computer filesystem connector is active in this chat; private model bytes remain outside the executable environment."
   }
 }
