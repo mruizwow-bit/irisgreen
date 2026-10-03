@@ -21,6 +21,13 @@
       "cause": "R49 browse main mobile padding stacked on Home wrapper padding",
       "fix_commit": "4be13d101213b54b278779d84298e84a67b66cd2",
       "status": "FIX_APPLIED_WAIT_CI"
+    },
+    {
+      "code": "MOBILE_DOUBLE_GUTTER_CASCADE_PRECEDENCE",
+      "evidence": "First override did not win against later R49 important selector; 390px hero remained x=32 while usable_left=16",
+      "cause": "R49 stylesheet loads after Home and uses a more specific !important browse-main rule",
+      "fix_commit": "fa29ef04801678e2c5202bf1b945c38c4650937f",
+      "status": "FIX_APPLIED_WAIT_CI"
     }
   ],
   "qa_measurement_fix": {
@@ -29,17 +36,17 @@
   },
   "ci": [
     {
-      "run_id": 37105759369,
+      "run_id": 37106025743,
       "workflow": "Prisma #369 P9 Home grid",
       "status": "IN_PROGRESS",
-      "head_sha": "4d146ed3efa144cdcbf898c143753c1258dc29c6"
+      "head_sha": "fa29ef04801678e2c5202bf1b945c38c4650937f"
     },
     {
-      "run_id": 37105756695,
+      "run_id": 37106025811,
       "workflow": "R42 A8 Home child-safe QA",
       "status": "IN_PROGRESS",
-      "head_sha": "4be13d101213b54b278779d84298e84a67b66cd2"
+      "head_sha": "fa29ef04801678e2c5202bf1b945c38c4650937f"
     }
   ],
-  "status": "P09_FIRST_MEASURED_DEVIATION_FIXED_WAIT_CI"
+  "status": "P09_MOBILE_GUTTER_CASCADE_FIX_WAIT_CI"
 }
