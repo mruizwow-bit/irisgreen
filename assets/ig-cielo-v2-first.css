@@ -114,3 +114,7 @@ a{color:inherit}
  .skyv2-look{position:static;transform:none;background:Canvas;backdrop-filter:none;margin:0 1rem 1rem}
  .skyv2-look button,.skyv2-viewcols button,.skyv2-context select,.skyv2-context input,.skyv2-theme button,.skyv2-depth{background:ButtonFace;color:ButtonText;border-color:ButtonText}
 }
+
+.skyv2-planetlist{grid-column:1/-1;border-top:1px solid color-mix(in srgb,var(--line) 45%,transparent);padding-top:.45rem}
+.skyv2-planetlist ul{display:grid;gap:.25rem}
+.skyv2-planetlist li{font-size:.88rem;line-height:1.35}

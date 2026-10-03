@@ -19,7 +19,7 @@ const TEXT={
   sources:'Datos locales: HYG · IAU · JPL',depth:'Explorar todo el cielo',depthLoading:'Cargando profundidad…',
   depthReady:n=>'Profundidad cargada bajo demanda: '+n+' constelaciones. Este bloque no monta la enciclopedia completa.',
   depthFail:'No se pudo cargar la profundidad.',select:'Elige una estrella o una figura.',calculated:'Cielo calculado para',
-  star:'Estrella',constellation:'Constelación',magnitude:'Magnitud aparente',distance:'Distancia',spectral:'Tipo espectral',designation:'Designación',
+  star:'Estrella',constellation:'Constelación',planets:'Planetas',magnitude:'Magnitud aparente',distance:'Distancia',spectral:'Tipo espectral',designation:'Designación',altitude:'Altitud',azimuth:'Azimut',direction:'Dirección',
   bestMonth:'Mes orientativo',high:'alta en esta vista',low:'baja en esta vista',figure:'Figura',planetContext:'Contexto planetario JPL local',
   settings:'Ajustes',light:'Claro',navy:'Navy',theme:'Chrome',noTargets:'No hay suficientes estrellas en esta dirección. Usa los controles para mirar alrededor.'
  },
@@ -30,7 +30,7 @@ const TEXT={
   sources:'Local data: HYG · IAU · JPL',depth:'Explore the whole sky',depthLoading:'Loading depth…',
   depthReady:n=>'Depth loaded on demand: '+n+' constellations. This block does not mount the full encyclopaedia.',
   depthFail:'Depth could not be loaded.',select:'Choose a star or a pattern.',calculated:'Sky calculated for',
-  star:'Star',constellation:'Constellation',magnitude:'Apparent magnitude',distance:'Distance',spectral:'Spectral type',designation:'Designation',
+  star:'Star',constellation:'Constellation',planets:'Planets',magnitude:'Apparent magnitude',distance:'Distance',spectral:'Spectral type',designation:'Designation',altitude:'Altitude',azimuth:'Azimuth',direction:'Direction',
   bestMonth:'Approximate month',high:'high in this view',low:'low in this view',figure:'Figure',planetContext:'Local JPL planetary context',
   settings:'Settings',light:'Light',navy:'Navy',theme:'Chrome',noTargets:'There are not enough bright stars in this direction. Use the controls to look around.'
  }
@@ -95,6 +95,19 @@ function starRgb(ci){
 }
 function hill(az){const a=az*R;return 1.2+.8*Math.sin(a*3+1.3)+.5*Math.sin(a*7+.4)+.25*Math.sin(a*13+2.1)}
 function monthLabel(n,lang){return MONTHS[lang][clamp(Number(n)||0,0,11)]}
+function compassName(az,lang){
+ const es=['N','NE','E','SE','S','SO','O','NO'],en=['N','NE','E','SE','S','SW','W','NW'],a=lang==='en'?en:es;
+ return a[Math.round(mod(az,360)/45)%8];
+}
+function locateText(alt,az,lang){
+ return (lang==='en'?'alt. ':'alt. ')+Math.round(alt)+'° · '+(lang==='en'?'az. ':'az. ')+Math.round(az)+'° · '+compassName(az,lang);
+}
+function meanLocate(arr){
+ if(!arr||!arr.length)return null;
+ const alt=arr.reduce((n,x)=>n+x.alt,0)/arr.length;
+ const sy=arr.reduce((n,x)=>n+Math.sin(x.az*R),0),cx=arr.reduce((n,x)=>n+Math.cos(x.az*R),0);
+ return {alt:alt,az:mod(Math.atan2(sy,cx)/R,360)};
+}
 function safeDepthUrl(url){return url==='/es/intereses/cielo/cielo.json'}
 
 async function fetchData(url=DATA_URL){
@@ -154,8 +167,8 @@ class Runtime{
    if(e.key==='Home'){e.preventDefault();this.resetView();}
   });
   canvas.addEventListener('wheel',e=>{e.preventDefault();this.zoom(e.deltaY<0?'in':'out');},{passive:false});
-  canvas.addEventListener('pointerdown',e=>{this.drag={x:e.clientX,y:e.clientY,az:this.camera.az,alt:this.camera.alt};canvas.setPointerCapture?.(e.pointerId);});
-  canvas.addEventListener('pointermove',e=>{if(!this.drag)return;this.camera.az=mod(this.drag.az-(e.clientX-this.drag.x)*.22,360);this.camera.alt=clamp(this.drag.alt+(e.clientY-this.drag.y)*.15,8,78);this.render();});
+  canvas.addEventListener('pointerdown',e=>{if(this.motion==='none')return;this.drag={x:e.clientX,y:e.clientY,az:this.camera.az,alt:this.camera.alt};canvas.setPointerCapture?.(e.pointerId);});
+  canvas.addEventListener('pointermove',e=>{if(this.motion==='none'||!this.drag)return;this.camera.az=mod(this.drag.az-(e.clientX-this.drag.x)*.22,360);this.camera.alt=clamp(this.drag.alt+(e.clientY-this.drag.y)*.15,8,78);this.render();});
   canvas.addEventListener('pointerup',()=>this.drag=null);canvas.addEventListener('pointercancel',()=>this.drag=null);
 
   const side=d.createElement('aside');side.className='skyv2-side';
@@ -163,9 +176,9 @@ class Runtime{
   const view=d.createElement('details');view.className='skyv2-viewlist';
   const vh=d.createElement('summary');vh.textContent=this.t.inView;view.append(vh);
   const cols=d.createElement('div');cols.className='skyv2-viewcols';
-  const cbox=d.createElement('div'),sbox=d.createElement('div');
-  cbox.innerHTML='<h3>'+this.t.constellations+'</h3>';sbox.innerHTML='<h3>'+this.t.stars+'</h3>';
-  this.constList=d.createElement('ul');this.starList=d.createElement('ul');cbox.append(this.constList);sbox.append(this.starList);cols.append(cbox,sbox);view.append(cols);side.append(view);
+  const cbox=d.createElement('div'),sbox=d.createElement('div'),pbox=d.createElement('div');pbox.className='skyv2-planetlist';
+  cbox.innerHTML='<h3>'+this.t.constellations+'</h3>';sbox.innerHTML='<h3>'+this.t.stars+'</h3>';pbox.innerHTML='<h3>'+this.t.planets+'</h3>';
+  this.constList=d.createElement('ul');this.starList=d.createElement('ul');this.planetList=d.createElement('ul');cbox.append(this.constList);sbox.append(this.starList);pbox.append(this.planetList);cols.append(cbox,sbox,pbox);view.append(cols);side.append(view);
 
   const meta=d.createElement('details');meta.className='skyv2-meta';
   const metaSummary=d.createElement('summary');metaSummary.textContent=this.t.settings;meta.append(metaSummary);
@@ -249,9 +262,10 @@ class Runtime{
   if(this.hints){for(const item of cur.cons){const pts=item.arr.map(x=>x.q),x=pts.reduce((a,p)=>a+p.x,0)/pts.length,y=pts.reduce((a,p)=>a+p.y,0)/pts.length;const b=document.createElement('button');b.type='button';b.className='skyv2-const-label';b.style.left=(x/w*100)+'%';b.style.top=(y/h*100)+'%';b.textContent=this.lang==='en'?item.c.latin:item.c.es;b.dataset.constellation=item.c.abbr;b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});this.labels.append(b);}}
  }
  renderLists(cur){
-  this.constList.replaceChildren();this.starList.replaceChildren();
-  for(const item of cur.cons){const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=(this.lang==='en'?item.c.latin:item.c.es)+' · '+item.c.abbr;b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});li.append(b);this.constList.append(li);}
-  for(const x of cur.targets){const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=x.s.name||x.s.designation||this.t.star;b.addEventListener('click',()=>{this.selected={type:'star',value:x};this.renderInfo(cur);});li.append(b);this.starList.append(li);}
+  this.constList.replaceChildren();this.starList.replaceChildren();this.planetList.replaceChildren();
+  for(const item of cur.cons){const li=document.createElement('li'),b=document.createElement('button'),loc=meanLocate(item.arr);b.type='button';b.textContent=(this.lang==='en'?item.c.latin:item.c.es)+' · '+item.c.abbr+(loc?' · '+locateText(loc.alt,loc.az,this.lang):'');b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});li.append(b);this.constList.append(li);}
+  for(const x of cur.targets){const li=document.createElement('li'),b=document.createElement('button');b.type='button';b.textContent=(x.s.name||x.s.designation||this.t.star)+' · '+locateText(x.alt,x.az,this.lang);b.addEventListener('click',()=>{this.selected={type:'star',value:x};this.renderInfo(cur);});li.append(b);this.starList.append(li);}
+  for(const p of this.planets||[]){const li=document.createElement('li');li.textContent=p.name+' · '+locateText(p.alt,p.az,this.lang);this.planetList.append(li);}
  }
  renderInfo(cur){
   this.info.replaceChildren();this.info.dataset.active=this.selected?'true':'false';const h=document.createElement('h2'),p=document.createElement('p');
@@ -260,13 +274,14 @@ class Runtime{
    const x=this.selected.value,s=x.s,c=this.consBy.get(s.con);h.textContent=s.name||s.designation||this.t.star;this.info.append(h);
    const dl=document.createElement('dl');
    const add=(k,v)=>{if(v===null||v===undefined||v==='')return;const dt=document.createElement('dt'),dd=document.createElement('dd');dt.textContent=k;dd.textContent=v;dl.append(dt,dd);};
-   add(this.t.designation,s.designation);add(this.t.magnitude,s.mag.toFixed(2));add(this.t.distance,s.ly?Math.round(s.ly)+' ly':'—');add(this.t.spectral,s.sp||'—');add(this.t.constellation,c?(this.lang==='en'?c.latin:c.es)+' · '+c.abbr:s.con);this.info.append(dl);
+   add(this.t.designation,s.designation);add(this.t.magnitude,s.mag.toFixed(2));add(this.t.distance,s.ly?Math.round(s.ly)+' ly':'—');add(this.t.spectral,s.sp||'—');add(this.t.constellation,c?(this.lang==='en'?c.latin:c.es)+' · '+c.abbr:s.con);add(this.t.altitude,Math.round(x.alt)+'°');add(this.t.azimuth,Math.round(x.az)+'°');add(this.t.direction,compassName(x.az,this.lang));this.info.append(dl);
   }else{
    const item=this.selected.value,c=item.c,alts=item.arr.map(x=>x.alt),alt=Math.max(...alts);h.textContent=(this.lang==='en'?c.latin:c.es)+' · '+c.abbr;this.info.append(h);
    const p1=document.createElement('p');p1.textContent=(this.lang==='en'?this.t.figure+': '+(c.en||c.latin):this.t.figure+': '+(c.meaning_es||c.es))+'. '+(alt>=35?this.t.high:this.t.low)+'.';this.info.append(p1);
    const p2=document.createElement('p');p2.textContent=this.t.bestMonth+': '+monthLabel(c.best_month,this.lang)+'.';this.info.append(p2);
+   const loc=meanLocate(item.arr);if(loc){const p3=document.createElement('p');p3.textContent=this.t.altitude+': '+Math.round(loc.alt)+'° · '+this.t.azimuth+': '+Math.round(loc.az)+'° · '+this.t.direction+': '+compassName(loc.az,this.lang)+'.';this.info.append(p3);}
   }
-  if(this.planets?.length){const q=document.createElement('p');q.className='skyv2-planet-context';q.textContent=this.t.planetContext+': '+this.planets.map(p=>p.name+' '+Math.round(p.alt)+'°').join(' · ');this.info.append(q);}
+  if(this.planets?.length){const q=document.createElement('p');q.className='skyv2-planet-context';q.textContent=this.t.planetContext+': '+this.planets.map(p=>p.name+' · '+locateText(p.alt,p.az,this.lang)).join(' · ');this.info.append(q);}
  }
  zoom(dir){
   const next={...this.camera},before=next.fov;

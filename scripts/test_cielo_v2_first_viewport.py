@@ -137,6 +137,14 @@ def main():
               assert fov1<fov0,(lang,width,motion,'zoom-in did not reduce FOV',fov0,fov1)
               page.locator('[data-zoom="out"]').click();page.wait_for_timeout(240 if motion=='normal' else 40)
 
+              # NONE: no continuous pointer-driven motion; only discrete controls remain.
+              if motion=='none':
+                cam0=page.evaluate("()=>({az:window.__CIELO_V2_FIRST.camera.az,alt:window.__CIELO_V2_FIRST.camera.alt})")
+                canvas=page.locator('.skyv2-canvas');boxc=canvas.bounding_box();assert boxc
+                page.mouse.move(boxc['x']+80,boxc['y']+180);page.mouse.down();page.mouse.move(boxc['x']+190,boxc['y']+260,steps=8);page.mouse.up()
+                cam1=page.evaluate("()=>({az:window.__CIELO_V2_FIRST.camera.az,alt:window.__CIELO_V2_FIRST.camera.alt})")
+                assert cam0==cam1,(lang,width,'NONE drag moved continuously',cam0,cam1)
+
               # LOCATE: keyboard orientation moves the camera; Home restores the view.
               canvas=page.locator('.skyv2-canvas');canvas.focus()
               before=page.evaluate("()=>window.__CIELO_V2_FIRST.camera.az")
@@ -158,6 +166,10 @@ def main():
               assert page.locator('.skyv2-info dl').count()==1
               assert page.locator('.skyv2-info').get_attribute('data-active')=='true'
               assert page.locator('.skyv2-info h2').text_content()==first_name,(lang,width,first_name,page.locator('.skyv2-info h2').text_content())
+              info_text=page.locator('.skyv2-info').inner_text()
+              assert ('Altitud' in info_text and 'Azimut' in info_text and 'Dirección' in info_text) if lang=='es' else ('Altitude' in info_text and 'Azimuth' in info_text and 'Direction' in info_text)
+              first_list_text=page.locator('.skyv2-starlist, .skyv2-viewcols ul').nth(1).inner_text() if page.locator('.skyv2-viewcols ul').count()>1 else ''
+              assert '°' in first_list_text,(lang,width,'textual locate missing',first_list_text)
 
               # Depth loads only on explicit request (one representative case).
               depth_count=0
@@ -215,6 +227,8 @@ def main():
         'zoom_touch_buttons':True,
         'zoom_keyboard':True,
         'zoom_wheel':True,
+        'none_motion_discrete_only':True,
+        'textual_locate_alt_az_direction':True,
         'human_qa_screenshots':['cielo-v2-prisma-scene-390.png','cielo-v2-prisma-scene-1440.png']
       },
       'passed':True
