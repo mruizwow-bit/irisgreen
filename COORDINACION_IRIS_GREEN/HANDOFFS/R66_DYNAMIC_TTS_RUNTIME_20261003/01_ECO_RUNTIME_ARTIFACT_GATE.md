@@ -277,3 +277,164 @@ Reglas:
 - María realiza HUMAN QA después del E2E real;
 - MAIN solo después de HUMAN QA;
 - no SpeechSynthesis, no voz sustituta, no reentrenamiento.
+
+
+## 11 · Trabajo ejecutado por Eco tras el gate de Nexo
+
+Eco ha continuado la orden sin reabrir el cliente.
+
+Paquete creado:
+`tools/sabik-voice-runtime-r66/`
+
+Archivos:
+- `runtime.py`
+- `discover_private_models.py`
+- `private-config.example.json`
+- `requirements.txt`
+- `README.md`
+
+Gate estático:
+`scripts/test_eco_r66_private_runtime_static.py`
+
+Workflow aislado:
+`.github/workflows/eco-r66-private-runtime-static.yml`
+
+CI:
+- run `37099787794`
+- resultado: **SUCCESS**
+- gate: `ECO_R66_PRIVATE_RUNTIME_STATIC_PASS`
+- `real_private_weights_exercised=false`
+- `eco_media_validation_pass=false`
+- `fail_closed_identity=true`
+- `system_tts_fallback=false`
+
+## 12 · Runtime privado preparado
+
+El host implementa el contrato ya aceptado por Nexo:
+
+- `GET /sabik-voice/capabilities`
+- `POST /sabik-voice/transcribe`
+- `POST /sabik-voice/synthesize`
+
+Propiedades:
+- mismo schema `iris-green/sabik-voice-runtime/v1`;
+- IDs/hashes ES+EN fijados;
+- `Cache-Control: no-store`;
+- sin SpeechSynthesis/system TTS;
+- sin fallback de identidad;
+- rechazo de model_id incorrecto;
+- startup fail-closed si falta path/hash/config;
+- audio STT temporal y limpieza;
+- adapter STT privado desacoplado;
+- acceso del host recomendado en loopback + `--no-access-log`.
+
+El runtime soporta dos formas Qwen reales:
+1. `custom_voice` → checkpoint fine-tuned + speaker;
+2. `voice_clone` → Base/ICL + referencia privada exacta.
+
+No decide automáticamente cuál corresponde a cada idioma.
+
+## 13 · Evidencia privada recuperada
+
+La búsqueda posterior recuperó metadatos de entrenamiento que no estaban en GitHub:
+
+### EN
+
+Hoja maestra:
+- `SABIK_EN_V1` seleccionado;
+- `checkpoint-epoch-0`;
+- E0 > E2 > E1;
+- corpus 160 clips / 621,76 s;
+- configuración SFT batch 1 / grad accumulation 4 / bf16 / SDPA / lr 2e-6.
+
+Script privado recuperado:
+`sabik_en_retrain_exact_r02.py`
+
+Rutas históricas:
+- root `C:\Users\mruiz\SabikVoice`;
+- `SABIK_EN_SFT_R02_EXACT\checkpoint-epoch-0`;
+- `SABIK_EN_V1`.
+
+El script comprueba `model.safetensors` y carga el checkpoint con:
+- `Qwen3TTSModel.from_pretrained(...)`;
+- `generate_custom_voice(...)`;
+- speaker `sabik_en`;
+- language `English`.
+
+Esto justifica que la plantilla EN use `custom_voice`.
+
+### ES
+
+La evidencia accesible confirma la ruta anterior aprobada:
+- Qwen3-TTS Base 1.7B;
+- ICL;
+- `x_vector_only_mode=False`;
+- master ES canónico;
+- español peninsular;
+- 20/20 HUMAN PASS.
+
+Pero esa evidencia anterior NO demuestra el empaquetado posterior de:
+`SABIK_ES_R01_FINAL`.
+
+Por eso la plantilla ES queda deliberadamente sin elegir entre:
+- `custom_voice`;
+- `voice_clone`.
+
+Eco no inventa esa transición.
+
+## 14 · Descubrimiento local por hash
+
+`discover_private_models.py` puede ejecutarse directamente en la máquina histórica de entrenamiento.
+
+Default:
+`SABIKVOICE_ROOT=C:\Users\mruiz\SabikVoice`
+
+Patrón default:
+`**/model.safetensors`
+
+Puede cambiarse únicamente si la definición canónica del SHA apunta a otro archivo:
+`SABIK_MODEL_HASH_PATTERN`.
+
+Regla:
+**el nombre de la carpeta NO prueba identidad; el hash es autoridad.**
+
+El descubridor no copia ni sube pesos.
+
+## 15 · Estado después del trabajo Eco
+
+Nuevo subestado:
+
+`R66_ECO_RUNTIME_HOST_READY_PRIVATE_CANONICAL_WEIGHTS_REQUIRED`
+
+Se conserva el bloqueo superior:
+
+`R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED`
+
+Porque Eco todavía NO ha podido:
+- localizar ambos bytes canónicos;
+- verificar ambos hashes contra el target privado real;
+- cargar ambos modelos finales;
+- sintetizar ES+EN reales;
+- ejecutar la matriz completa.
+
+Por tanto sigue prohibido emitir:
+`ECO_R66_MEDIA_VALIDATION_PASS`.
+
+## 16 · Próxima acción automática cuando aparezcan los pesos
+
+1. ejecutar descubridor/manifest privado;
+2. confirmar hash ES exacto;
+3. confirmar hash EN exacto;
+4. fijar modo ES según artefacto real;
+5. arrancar runtime privado;
+6. comprobar `/capabilities`;
+7. síntesis inédita ES;
+8. síntesis inédita EN;
+9. STT/turno completo;
+10. ejecutar matriz A6 R66;
+11. si todo pasa:
+   `ECO_R66_MEDIA_VALIDATION_PASS`.
+
+Después, sin etapa adicional:
+
+`NEXO E2E REAL → HUMAN QA MARÍA → MAIN`.
