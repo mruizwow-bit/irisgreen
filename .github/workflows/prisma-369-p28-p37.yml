@@ -1,0 +1,34 @@
+name: Prisma · #369 P28 P37 public leaks
+on:
+  push:
+    branches: ['prisma/369-public-leaks-p28-p37-*']
+    paths:
+      - 'es/tramites/index.html'
+      - 'es/biblioteca/index.html'
+      - 'en/everyday-life/index.html'
+      - 'scripts/test_prisma_369_p28_p37.py'
+      - '.github/workflows/prisma-369-p28-p37.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  qa:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA #369 P28 P37
+        run: python scripts/test_prisma_369_p28_p37.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: prisma-369-p28-p37
+          path: reports/prisma-369-p28-p37/
+          retention-days: 14
