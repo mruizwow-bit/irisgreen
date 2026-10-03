@@ -7,10 +7,10 @@ PKG=ROOT/"tools"/"sabik-voice-runtime-r66"
 runtime=(PKG/"runtime.py").read_text(encoding="utf-8")
 discover=(PKG/"discover_private_models.py").read_text(encoding="utf-8")
 config=json.loads((PKG/"private-config.example.json").read_text(encoding="utf-8"))
-launcher=(PKG/"start_private_runtime_windows.ps1").read_text(encoding="utf-8")
+launcher=(PKG/"start_private_runtime_windows.ps1").read_text(encoding="utf-8")\nprobe=(ROOT/"scripts"/"probe_eco_r66_private_runtime.py").read_text(encoding="utf-8")
 
 compile(runtime,str(PKG/"runtime.py"),"exec")
-compile(discover,str(PKG/"discover_private_models.py"),"exec")
+compile(discover,str(PKG/"discover_private_models.py"),"exec")\ncompile(probe,str(ROOT/"scripts"/"probe_eco_r66_private_runtime.py"),"exec")
 
 ES_ID="SABIK_ES_R01_FINAL"
 ES_SHA="8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291"
@@ -56,7 +56,7 @@ for lang,mid,sha,speaker,folder in (
 
 assert "--no-access-log" in launcher
 assert "R66_STT_PRIVATE_ADAPTER_REQUIRED" in launcher
-assert "R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED" in launcher
+assert "R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED" in launcher\nassert "ECO_R66_REAL_MODEL_TTS_PROBE_PASS" in probe\nassert "/capabilities" in probe and "/synthesize" in probe\nassert "WRONG_MODEL" in probe\nassert "audio/wav" in probe
 
 print(json.dumps({
     "gate":"ECO_R66_PRIVATE_RUNTIME_STATIC_PASS",
