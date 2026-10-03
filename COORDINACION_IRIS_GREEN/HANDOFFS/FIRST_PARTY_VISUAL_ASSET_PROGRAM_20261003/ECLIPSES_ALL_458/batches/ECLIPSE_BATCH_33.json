@@ -1,0 +1,324 @@
+{
+  "schema": "iris-green.eclipse-batch.v1",
+  "batch_id": "ECLIPSE_BATCH_33",
+  "batch_number": 33,
+  "review_policy": "REVIEW_ONLY_AFTER_ALL_BATCHES_COMPLETE",
+  "source": {
+    "path": "es/intereses/eclipses/eclipses.json",
+    "git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+    "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+    "snapshot_date": "2026-09-24"
+  },
+  "events": [
+    {
+      "event_id": "eclipse-321-lunar-20701019T184855Z",
+      "sequence": 321,
+      "source_domain": "lunar",
+      "source_index": 160,
+      "time_utc": "2070-10-19T18:48:55Z",
+      "kind_es": "parcial",
+      "kind_en": "partial",
+      "source_record": {
+        "t": "2070-10-19T18:48:55Z",
+        "k": "parcial",
+        "dP": 132,
+        "dp": 41.6,
+        "dt": 0,
+        "o": 0.077
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-322-lunar-20710316T012846Z",
+      "sequence": 322,
+      "source_domain": "lunar",
+      "source_index": 161,
+      "time_utc": "2071-03-16T01:28:46Z",
+      "kind_es": "penumbral",
+      "kind_en": "penumbral",
+      "source_record": {
+        "t": "2071-03-16T01:28:46Z",
+        "k": "penumbral",
+        "dP": 123,
+        "dp": 0,
+        "dt": 0,
+        "o": 0
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-323-solar-20710331T145850Z",
+      "sequence": 323,
+      "source_domain": "solar",
+      "source_index": 160,
+      "time_utc": "2071-03-31T14:58:50Z",
+      "kind_es": "anular",
+      "kind_en": "annular",
+      "source_record": {
+        "t": "2071-03-31T14:58:50Z",
+        "k": "anular",
+        "lat": -16.72,
+        "lon": -37
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-324-lunar-20710909T150324Z",
+      "sequence": 324,
+      "source_domain": "lunar",
+      "source_index": 162,
+      "time_utc": "2071-09-09T15:03:24Z",
+      "kind_es": "penumbral",
+      "kind_en": "penumbral",
+      "source_record": {
+        "t": "2071-09-09T15:03:24Z",
+        "k": "penumbral",
+        "dP": 133,
+        "dp": 0,
+        "dt": 0,
+        "o": 0
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-325-solar-20710923T171805Z",
+      "sequence": 325,
+      "source_domain": "solar",
+      "source_index": 161,
+      "time_utc": "2071-09-23T17:18:05Z",
+      "kind_es": "total",
+      "kind_en": "total",
+      "source_record": {
+        "t": "2071-09-23T17:18:05Z",
+        "k": "total",
+        "lat": 14.23,
+        "lon": -76.73
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-326-lunar-20720304T152045Z",
+      "sequence": 326,
+      "source_domain": "lunar",
+      "source_index": 163,
+      "time_utc": "2072-03-04T15:20:45Z",
+      "kind_es": "total",
+      "kind_en": "total",
+      "source_record": {
+        "t": "2072-03-04T15:20:45Z",
+        "k": "total",
+        "dP": 156.9,
+        "dp": 100,
+        "dt": 34.7,
+        "o": 1
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-327-solar-20720319T200811Z",
+      "sequence": 327,
+      "source_domain": "solar",
+      "source_index": 162,
+      "time_utc": "2072-03-19T20:08:11Z",
+      "kind_es": "parcial",
+      "kind_en": "partial",
+      "source_record": {
+        "t": "2072-03-19T20:08:11Z",
+        "k": "parcial",
+        "lat": null,
+        "lon": null
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-328-lunar-20720828T160316Z",
+      "sequence": 328,
+      "source_domain": "lunar",
+      "source_index": 164,
+      "time_utc": "2072-08-28T16:03:16Z",
+      "kind_es": "total",
+      "kind_en": "total",
+      "source_record": {
+        "t": "2072-08-28T16:03:16Z",
+        "k": "total",
+        "dP": 183.4,
+        "dp": 110.5,
+        "dt": 32.7,
+        "o": 1
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-329-solar-20720912T085657Z",
+      "sequence": 329,
+      "source_domain": "solar",
+      "source_index": 163,
+      "time_utc": "2072-09-12T08:56:57Z",
+      "kind_es": "total",
+      "kind_en": "total",
+      "source_record": {
+        "t": "2072-09-12T08:56:57Z",
+        "k": "total",
+        "lat": 69.77,
+        "lon": 102.03
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    },
+    {
+      "event_id": "eclipse-330-solar-20730207T015333Z",
+      "sequence": 330,
+      "source_domain": "solar",
+      "source_index": 164,
+      "time_utc": "2073-02-07T01:53:33Z",
+      "kind_es": "parcial",
+      "kind_en": "partial",
+      "source_record": {
+        "t": "2073-02-07T01:53:33Z",
+        "k": "parcial",
+        "lat": null,
+        "lon": null
+      },
+      "classification": {
+        "event_record": "CALCULATION",
+        "derived_diagram": "REPRESENTATION"
+      },
+      "provenance": {
+        "source_path": "es/intereses/eclipses/eclipses.json",
+        "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+        "calculation": "astronomy-engine 2.1.19 (Don Cross), MIT",
+        "snapshot_date": "2026-09-24"
+      },
+      "constraints": [
+        "SIMULATION != OBSERVATION",
+        "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+        "NO_EVENT_SPECIFIC_MAP_OR_LOCAL_PERCENTAGE_BAKED_IN"
+      ]
+    }
+  ]
+}
