@@ -255,9 +255,38 @@
     },
     {
       "id": "B03",
-      "name": "Solar context moons",
+      "name": "Solar dwarf planets + moons",
       "owner": "LUMEN",
-      "status": "HOLD_FOR_PRODUCT_SPEC"
+      "status": "READY_FOR_VISUAL_REVIEW",
+      "precondition_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+      "precondition_owner": "ASTRA_TEMPORARY",
+      "precondition_commit": "fb2417106e9cecdaa8c6932d19c1f6b4b4e70e90",
+      "output_marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_REVIEW",
+      "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Batch 10",
+      "assets": [
+        "ceres",
+        "haumea",
+        "makemake",
+        "eris",
+        "luna",
+        "io",
+        "europa",
+        "ganimedes",
+        "titan",
+        "encelado"
+      ],
+      "master_count": 10,
+      "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
+      "contact_sheet": {
+        "filename": "SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET.png",
+        "sha256": "e98e1d991f5d369026ce3df313db0d947e2feab544e5f7b3e017509ba64e21b1"
+      },
+      "technical_qa": {
+        "filename": "SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY.png",
+        "sha256": "278293c1bc832fa761df81a0adf76f4417fb7484e172356b13706c8910e21797",
+        "status": "PASS"
+      },
+      "callisto": "PRIORITY_CANDIDATE_NEXT_BATCH"
     }
   ],
   "locked_keep": {
@@ -282,11 +311,10 @@
     "status": "QUEUED_NOT_IMMEDIATE"
   },
   "active_visual_review": {
-    "batch": "SOLAR_FOUNDATION_FINAL_10",
-    "owner": "ATLAS_A1",
-    "marker": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
-    "atlas_packaging_blocked_until_pass": false,
-    "status": "VISUAL_AND_TECHNICAL_MASTER_PASS"
+    "batch": "B03_DWARF_MOONS_10",
+    "owner": "ASTRA_MARIA_LUMEN",
+    "marker": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_REVIEW",
+    "status": "READY_FOR_VISUAL_REVIEW"
   },
   "solar_foundation_final": {
     "status": "PASS",

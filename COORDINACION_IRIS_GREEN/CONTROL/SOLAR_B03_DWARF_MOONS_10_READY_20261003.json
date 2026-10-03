@@ -1,0 +1,16 @@
+{
+  "schema": "iris-green.solar-b03-dwarf-moons-batch10-ready.v1",
+  "date": "2026-10-03",
+  "gate_in": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "gate_out": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_REVIEW",
+  "owner": "LUMEN_A7",
+  "factual_gate_owner": "ASTRA_TEMPORARY",
+  "factual_gate_commit": "fb2417106e9cecdaa8c6932d19c1f6b4b4e70e90",
+  "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Batch 10",
+  "master_count": 10,
+  "contact_sheet_sha256": "e98e1d991f5d369026ce3df313db0d947e2feab544e5f7b3e017509ba64e21b1",
+  "technical_qa_sha256": "278293c1bc832fa761df81a0adf76f4417fb7484e172356b13706c8910e21797",
+  "technical_status": "PASS",
+  "next_owner": "ASTRA_MARIA_LUMEN_VISUAL_REVIEW",
+  "callisto": "PRIORITY_CANDIDATE_NEXT_BATCH"
+}

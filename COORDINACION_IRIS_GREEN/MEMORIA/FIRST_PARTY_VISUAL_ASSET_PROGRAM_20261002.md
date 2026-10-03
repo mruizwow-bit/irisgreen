@@ -779,3 +779,96 @@ Siguiente owner:
 Atlas NO reimagina arte.
 
 B03 lunas/contexto sigue siendo una línea separada y requiere spec propia; no reabre estos 10 masters.
+
+
+## B03 · PLANETAS ENANOS + LUNAS · READY FOR REVIEW · 03/10/2026
+
+Entrada factual:
+`SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS`
+
+Owner gate factual temporal:
+Astra / María.
+
+Fuente:
+- branch `astra/solar-b03-factual-gate-20261003`;
+- HEAD `fb2417106e9cecdaa8c6932d19c1f6b4b4e70e90`;
+- handoff `COORDINACION_IRIS_GREEN/HANDOFFS/SOLAR_B03_DWARF_MOONS_FACTUAL_GATE_20261003/HANDOFF.md`.
+
+Selección:
+1. Ceres
+2. Haumea
+3. Makemake
+4. Eris
+5. Luna
+6. Io
+7. Europa
+8. Ganímedes
+9. Titán
+10. Encélado
+
+Salida Lumen:
+`SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_REVIEW`
+
+Library:
+`/Iris Green/First Party Visual/Solar B03 Dwarf Moons Batch 10/`
+
+Contrato de los 10:
+- 1536×1536;
+- PNG RGBA;
+- alpha 0–255;
+- sRGB ICC;
+- fondo transparente;
+- un cuerpo por archivo;
+- sin texto/estrellas/logos;
+- clase `REPRESENTATION`.
+
+Hashes:
+- Ceres · `1376c8fd565ed957d26f4eef0cffa83bb310f26eda888f502a4b6fdce0c0728e`
+- Haumea · `4737552211f44d84040e21ff6635e954a6e07680ae306c6f4023c0e399e15c96`
+- Makemake · `e46cf63e12ed2a57e80f15b2848c9a84fa652f54fa0f59f074bd0dcd8823812b`
+- Eris · `d6b864d0967122744fe8f3cdae3b0160d71bb4ee99079f13c02ba0a5a17927da`
+- Luna · `1865a69f612d259a4c62dbb644acd2425d6f0c3605c48908d370ebf0af233b96`
+- Io · `49ab24c343e9d7244140f9bdb08f17ecbf7a0f4859395d6fdbb15a6e15181196`
+- Europa · `16c2035169f1672d6f3c03f37994a23ff7c863536e17e06de229e0c661a18e1b`
+- Ganímedes · `a7f6fffe173f5ecb59033745b159578b99bacf7cee403ddd45a1c03846f895c4`
+- Titán · `39613033741c48ecfd2d5e7395ce04aef22197c830ee8e3f6e5c52c25ff37347`
+- Encélado · `d0079ecfb7a681d5a94f9596c53f556ea6a2cb98e543844b31dadd7b2f940879`
+
+Contact sheet:
+`SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET.png`
+
+SHA-256:
+`e98e1d991f5d369026ce3df313db0d947e2feab544e5f7b3e017509ba64e21b1`
+
+Technical QA:
+`SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY.png`
+
+SHA-256:
+`278293c1bc832fa761df81a0adf76f4417fb7484e172356b13706c8910e21797`
+
+Resultado técnico:
+- alpha 0–255 en 10/10;
+- sRGB ICC presente 10/10;
+- 1536×1536 10/10;
+- componentes espurios de separación eliminados;
+- contact sheet = QA only.
+
+Decisiones de prudencia factual aplicadas:
+- Haumea: superficie neutralizada; forma alargada conservada; sin anillo horneado;
+- Makemake: bajo detalle rojizo-marrón; sin halo atmosférico;
+- Eris: pálido y deliberadamente bajo detalle; no copia de Plutón;
+- Luna: cara visible/norte-arriba; fase fuera del master;
+- Titán: bruma opaca visible-light; superficie no expuesta;
+- Encélado: sin pluma dramática;
+- Ceres: depósitos brillantes contenidos, no protagonistas.
+
+Estado:
+`READY_FOR_VISUAL_REVIEW`
+
+Callisto:
+candidato prioritario para la siguiente tanda; NO incluido en B03.
+
+Siguiente:
+**Astra + María + Lumen → review de los 10 en contact sheet.**
+
+No review cuerpo por cuerpo.
