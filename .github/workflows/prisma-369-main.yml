@@ -33,21 +33,53 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - run: pip install playwright==1.55.0
-      - run: python -m playwright install --with-deps chromium
+
       - name: Build canónico
         run: python scripts/build_site.py
-      - name: '#369 P28 P37'
+
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+
+      - id: p28_p37
+        name: '#369 P28 P37'
+        continue-on-error: true
         run: python scripts/test_prisma_369_p28_p37.py
-      - name: '#369 P29 P35'
+
+      - id: p29_p35
+        name: '#369 P29 P35'
+        continue-on-error: true
         run: python scripts/test_prisma_369_p29_p35.py
-      - name: '#369 P47'
+
+      - id: p47
+        name: '#369 P47'
+        continue-on-error: true
         run: python scripts/test_prisma_369_card_system_p47.py
-      - name: '#369 P48'
+
+      - id: p48
+        name: '#369 P48'
+        continue-on-error: true
         run: python scripts/test_prisma_369_theme_p48.py
+
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         if: always()
         with:
           name: prisma-369-main-qa
           path: reports/prisma-369-*
           retention-days: 14
+
+      - name: Resumen de gates
+        if: always()
+        env:
+          P28_P37: ${{ steps.p28_p37.outcome }}
+          P29_P35: ${{ steps.p29_p35.outcome }}
+          P47: ${{ steps.p47.outcome }}
+          P48: ${{ steps.p48.outcome }}
+        run: |
+          echo "P28_P37=$P28_P37"
+          echo "P29_P35=$P29_P35"
+          echo "P47=$P47"
+          echo "P48=$P48"
+          test "$P28_P37" = success
+          test "$P29_P35" = success
+          test "$P47" = success
+          test "$P48" = success
