@@ -17,6 +17,10 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE = ROOT / 'editorial/navigation'
 ASSETS = ('assets/navigation-approved.css', 'assets/navigation-approved.js')
+P45_FORBIDDEN_TEMPLATE_COPY = (
+    'Esta página describe una situación del día a día, no un diagnóstico.',
+    'This page describes an everyday situation, not a diagnosis.',
+)
 HOME_CORRECTIONS = '''<style id="ig-home-corrections">
 /* Condiciones vuelve al estilo neutro de las tarjetas secundarias. */
 .small-card[data-section="condiciones"]{background:rgba(255,255,255,.8);border-color:#c4cede}
@@ -68,6 +72,9 @@ def build(check: bool = False) -> dict:
         if not path.is_file():
             raise ValueError('Refusing to create an unexpected route: ' + target)
         text = (SOURCE/template).read_text(encoding='utf-8')
+        stale = [phrase for phrase in P45_FORBIDDEN_TEMPLATE_COPY if phrase in text]
+        if stale:
+            raise ValueError('Approved navigation template reintroduces superseded P45 copy: ' + template)
         if 'noindex,nofollow,noarchive' in text or 'iris-review-route' in text:
             raise ValueError('A review wrapper must not be published')
         text = accessible_dialog_defaults(text, target)
