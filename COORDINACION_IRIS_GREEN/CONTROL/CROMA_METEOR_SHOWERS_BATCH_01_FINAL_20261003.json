@@ -1,0 +1,49 @@
+{
+  "id": "CROMA_METEOR_SHOWERS_BATCH_01_FINAL_20261003",
+  "owner": "CROMA",
+  "date": "2026-10-03",
+  "state": "METEOR_SHOWERS_BATCH_01_FINAL_10_PASS_READY_FOR_REVIEW",
+  "scope": "technical normalization, factual packaging, contact sheets, QA",
+  "visual_redesign": false,
+  "masters": {
+    "count": 10,
+    "size": "1536x1536",
+    "format": "PNG",
+    "mode": "RGB",
+    "icc": "sRGB built-in",
+    "icc_bytes": 588,
+    "unique_hashes": true
+  },
+  "visual_activity_tiers": {
+    "HIGH": ["Cuadrántidas", "Perseidas", "Gemínidas"],
+    "MEDIUM": ["Eta Acuáridas", "Oriónidas", "Leónidas"],
+    "LOW_MODERATE": ["Líridas", "Delta Acuáridas del Sur", "Táuridas", "Úrsidas"]
+  },
+  "human_visual_qa": {
+    "distinct_landscapes": "PASS",
+    "distinct_compositions": "PASS",
+    "radiant_geometry": "PASS",
+    "taurids_sparse": "PASS",
+    "leonids_not_historic_storm": "PASS",
+    "eta_subtropical_coast": "PASS"
+  },
+  "factual": {
+    "year": 2026,
+    "primary_numeric_source": "American Meteor Society 2026 Meteor Shower List, credited to IMO + Masahiro Koseki",
+    "parent_crosscheck": ["NASA/JPL Solar System Dynamics Meteor Streams", "NASA Science"],
+    "southern_delta_parent": "UNCERTAIN_ASSOCIATION_PRESERVED",
+    "taurids_quantitative_basis": "Southern Taurids"
+  },
+  "artifact_sha256": {
+    "visual_contact_sheet": "109c9090826abe586994815f7bad5df0359a1f0179cf2a91a543b02a824c7acb",
+    "factual_contact_sheet": "63cdbee8ee36097db470e68201af5273a7d8d0348a71e78b7d95fc73fb822bbc",
+    "factual_json": "c2ce45d93d5b692d9423ff0c73c43da482943fb00f08bc4ab021daf8c0944a8c",
+    "local_zip": "3397e8bb41fa5209861f0652c5e95ea888ade5be708bfc83e4b9f013fb60efa4"
+  },
+  "integration": {
+    "main": false,
+    "runtime": false,
+    "web": false
+  },
+  "next": "REVIEW_BATCH_THEN_HANDOFF_TO_ASSET_INTAKE"
+}
