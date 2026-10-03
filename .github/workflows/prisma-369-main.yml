@@ -10,6 +10,7 @@ on:
       - 'scripts/build_site.py'
       - 'scripts/prerender_remaining_nojs.py'
       - 'scripts/test_home_child_safe_r42.py'
+      - 'scripts/test_r69_unified_interface.py'
       - 'scripts/apply_*.py'
       - 'scripts/reorganize_activity_hubs.py'
       - 'scripts/fix_369_collection_headers.py'
