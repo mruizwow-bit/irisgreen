@@ -1,0 +1,31 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P30-P33-DATA-HUB-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [30,31,32,33],
+  "branch": "prisma/369-reconciliation-r01-20261003",
+  "changes": {
+    "data_adapter": "7d75a21fcccd81c7ffc118c68cebac1ffafe7421",
+    "data_filter_js": "8507de0e12f4e2627279747eaff0b0b2e64de661",
+    "data_filter_css": "0c4c7b3803fd2fef448f15d5a0d83af374630882",
+    "regression_test": "7c62710119b20ccd43e99360ce66ea8e717e27d3",
+    "workflow": "e2aaa835c2ba73472db9bd429b897a7423af94b1"
+  },
+  "contract": {
+    "languages": ["es","en"],
+    "cards_expected_per_language": 49,
+    "filters": ["text","place","topic"],
+    "progressive_enhancement": true,
+    "single_results_grid": true,
+    "editorial_draft_copy_public": false,
+    "methodology_compact_secondary": true
+  },
+  "ci": {
+    "status": "NOT_EMITTED",
+    "reason": "No workflow run was created for the connector-authored workflow commit; no local-machine fallback used."
+  },
+  "main_modified": false,
+  "status": "P30_P33_CODE_AND_GATE_READY_FOR_CI"
+}
