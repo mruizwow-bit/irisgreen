@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P48-DARK-LIGHT-AUDIT-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 48,
+  "branch": "prisma/369-theme-p48-audit-20261003",
+  "base_commit": "3361ce29b038e8ef301da4cd2a516c757ec0f71c",
+  "scope": "AUDIT",
+  "surfaces": [
+    "Home",
+    "Recursos",
+    "Juegos",
+    "Investigación",
+    "Ayudas",
+    "Vivir fuera",
+    "Taller"
+  ],
+  "themes": [
+    "light",
+    "dark"
+  ],
+  "viewport": 1440,
+  "targets": [
+    "secondary text",
+    "placeholders",
+    "notes",
+    "labels",
+    "cards",
+    "form controls"
+  ],
+  "test_commit": "ae411955b3c60c32c48f5f7ad82bc0070cd0860f",
+  "workflow_commit": "4fbc39aa0ae4bfc4bed799c82825d760f7400276",
+  "ci_run": 37109770526,
+  "ci_status": "IN_PROGRESS",
+  "authority_note": "Prisma presentation audit; Axioma retains accessibility/conformance authority.",
+  "main_modified": false,
+  "status": "P48_DARK_LIGHT_AUDIT_RUNNING"
+}
