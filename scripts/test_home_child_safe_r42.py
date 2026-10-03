@@ -12,7 +12,7 @@ def page(root,url): return root/url.strip('/')/'index.html'
 def main():
  ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);root=ap.parse_args().root.resolve()
  es=(root/'index.html').read_text(encoding='utf-8');en=(root/'en/index.html').read_text(encoding='utf-8')
- for txt,labels in [(es,['Encuentra lo que necesitas','Entra y úsalo','Pregunta a Sabik','Entiende y encuentra']),(en,['Find what you need','Open and use','Ask Sabik','Understand and find'])]:
+ for txt,labels in [(es,['Buscar','Explora','Pregunta a Sabik','Información y recursos']),(en,['Search','Explore','Ask Sabik','Information and resources'])]:
   need('data-ig-home-version="v4"' in txt,'Home v4 marker missing')
   need('data-ig-r49="1"' in txt,'Home is not enrolled in the global shell')
   need(txt.count('data-ig-audience-picker')==1,'Home canonical age picker count !=1')
