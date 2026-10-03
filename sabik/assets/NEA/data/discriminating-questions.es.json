@@ -1,0 +1,13 @@
+[
+  {
+    "id": "q_durante_o_despues",
+    "language": "es",
+    "concept_a": "carga_atencional",
+    "concept_b": "recuperacion_posterior",
+    "text": "Te pesa mas mientras estas alli o sobre todo al volver?",
+    "contexts_allowed": ["exploracion", "claridad"],
+    "risk_max": "medium",
+    "gender_neutral": true,
+    "editorial_status": "PUBLICABLE"
+  }
+]
