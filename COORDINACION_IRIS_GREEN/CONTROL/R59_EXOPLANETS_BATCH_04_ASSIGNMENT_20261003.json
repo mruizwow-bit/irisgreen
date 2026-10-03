@@ -1,0 +1,62 @@
+{
+  "schema": "iris-green.r59.exoplanets.batch04.assignment.v1",
+  "date": "2026-10-03",
+  "status": "EXOPLANETS_BATCH_04_ASSIGNMENT_PASS_WITH_SCIENTIFIC_HOLDS",
+  "assigned": [
+    {
+      "planet": "51 Peg b",
+      "master": "04"
+    },
+    {
+      "planet": "55 Cnc b",
+      "master": "01"
+    },
+    {
+      "planet": "55 Cnc c",
+      "master": "03"
+    },
+    {
+      "planet": "55 Cnc d",
+      "master": "06"
+    },
+    {
+      "planet": "55 Cnc e",
+      "master": "07"
+    },
+    {
+      "planet": "55 Cnc f",
+      "master": "08"
+    },
+    {
+      "planet": "6 Lyn b",
+      "master": "05"
+    }
+  ],
+  "holds": [
+    {
+      "planet": "55 Cnc B b",
+      "reason": "RV-only; composition not sufficiently constrained"
+    },
+    {
+      "planet": "55 Cnc B c",
+      "reason": "RV-only; composition not sufficiently constrained"
+    },
+    {
+      "planet": "61 Vir b",
+      "reason": "RV-only; composition not sufficiently constrained"
+    }
+  ],
+  "unused_generic_masters": [
+    "02",
+    "09",
+    "10"
+  ],
+  "hard_rules": [
+    "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
+    "MASTER_07_ONLY_IF_EXTREME_IRRADIATION_JUSTIFIES_MOLTEN_VISUAL",
+    "ESTIMATED_RADIUS_IS_NOT_MEASURED_RADIUS",
+    "HOLD_IF_SURFACE_ATMOSPHERE_COMPOSITION_IS_NOT_CONSTRAINED"
+  ],
+  "numeric_snapshot": "NASA Exoplanet Archive local snapshot 2026-09-24",
+  "fresh_validation_date": "2026-10-03"
+}
