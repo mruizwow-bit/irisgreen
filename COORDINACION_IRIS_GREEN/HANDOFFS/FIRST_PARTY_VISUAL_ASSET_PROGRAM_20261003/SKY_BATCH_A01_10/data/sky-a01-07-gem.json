@@ -1,0 +1,1900 @@
+{
+  "schema": "iris-green.sky-scene.a01.v1",
+  "scene_id": "sky-a01-07-gem",
+  "batch": "SKY_BATCH_A01_10",
+  "order": 7,
+  "constellation": {
+    "abbr": "Gem",
+    "official_latin": "Gemini",
+    "name_es": "Géminis",
+    "donor_common_en": "Twins",
+    "label_ra_h": 7.15,
+    "label_dec_deg": 23.5,
+    "brightest": {
+      "n": "Pollux",
+      "d": "β Gem",
+      "mag": 1.16
+    }
+  },
+  "selection_basis": "existing audited cielo.json cromo order 1–10; no new editorial ordering invented by Atlas",
+  "field": {
+    "center_ra_h": 7.15,
+    "center_dec_deg": 23.5,
+    "radius_deg": 18.074,
+    "magnitude_limit": 5.5,
+    "projection": "gnomonic_local_review_projection"
+  },
+  "stars": [
+    {
+      "id": "hyg-local-17",
+      "source_index": 17,
+      "ra_h": 7.7553,
+      "dec_deg": 28.026,
+      "apparent_mag": 1.16,
+      "bv_ci": 0.99,
+      "source_constellation": "Gem",
+      "designation": "β Gem",
+      "name": "Pollux",
+      "distance_ly": 34,
+      "spectral_type": "K0IIIvar",
+      "category": "BEACON",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.43258,
+        "y": 0.258747,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-24",
+      "source_index": 24,
+      "ra_h": 7.5766,
+      "dec_deg": 31.888,
+      "apparent_mag": 1.58,
+      "bv_ci": 0.03,
+      "source_constellation": "Gem",
+      "designation": "α Gem",
+      "name": "Castor",
+      "distance_ly": 51,
+      "spectral_type": "A2Vm",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.294551,
+        "y": 0.46062,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-44",
+      "source_index": 44,
+      "ra_h": 6.6285,
+      "dec_deg": 16.399,
+      "apparent_mag": 1.93,
+      "bv_ci": 0,
+      "source_constellation": "Gem",
+      "designation": "γ Gem",
+      "name": "Alhena",
+      "distance_ly": 109,
+      "spectral_type": "A0IV",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.406534,
+        "y": -0.373814,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-147",
+      "source_index": 147,
+      "ra_h": 7.5768,
+      "dec_deg": 31.891,
+      "apparent_mag": 2.85,
+      "bv_ci": null,
+      "source_constellation": "Gem",
+      "designation": "α Gem",
+      "name": "Castor B",
+      "distance_ly": 52,
+      "spectral_type": "A m",
+      "category": "BRIGHT",
+      "color_category": "UNKNOWN",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.294682,
+        "y": 0.460793,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-150",
+      "source_index": 150,
+      "ra_h": 6.3827,
+      "dec_deg": 22.514,
+      "apparent_mag": 2.87,
+      "bv_ci": 1.62,
+      "source_constellation": "Gem",
+      "designation": "μ Gem",
+      "name": "Tejat",
+      "distance_ly": 232,
+      "spectral_type": "M3IIIvar",
+      "category": "BRIGHT",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.574681,
+        "y": -0.030557,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-155",
+      "source_index": 155,
+      "ra_h": 7.4525,
+      "dec_deg": 8.289,
+      "apparent_mag": 2.89,
+      "bv_ci": -0.1,
+      "source_constellation": "CMi",
+      "designation": "β CMi",
+      "name": "Gomeisa",
+      "distance_ly": 162,
+      "spectral_type": "B8Vvar",
+      "category": "BRIGHT",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.249326,
+        "y": -0.831684,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-188",
+      "source_index": 188,
+      "ra_h": 6.7322,
+      "dec_deg": 25.131,
+      "apparent_mag": 3.06,
+      "bv_ci": 1.38,
+      "source_constellation": "Gem",
+      "designation": "ε Gem",
+      "name": "Mebsuta",
+      "distance_ly": 845,
+      "spectral_type": "A3mA6-A9",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.304465,
+        "y": 0.094332,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-235",
+      "source_index": 235,
+      "ra_h": 6.248,
+      "dec_deg": 22.507,
+      "apparent_mag": 3.31,
+      "bv_ci": 1.6,
+      "source_constellation": "Gem",
+      "designation": "η Gem",
+      "name": "Propus",
+      "distance_ly": 385,
+      "spectral_type": "M3III",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.678334,
+        "y": -0.022305,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-248",
+      "source_index": 248,
+      "ra_h": 6.7548,
+      "dec_deg": 12.896,
+      "apparent_mag": 3.35,
+      "bv_ci": 0.44,
+      "source_constellation": "Gem",
+      "designation": "ξ Gem",
+      "name": "Alzirr",
+      "distance_ly": 59,
+      "spectral_type": "F5IV",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.315379,
+        "y": -0.569965,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-289",
+      "source_index": 289,
+      "ra_h": 7.3354,
+      "dec_deg": 21.982,
+      "apparent_mag": 3.5,
+      "bv_ci": 0.37,
+      "source_constellation": "Gem",
+      "designation": "δ Gem",
+      "name": "Wasat",
+      "distance_ly": 60,
+      "spectral_type": "F0IV...",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.13805,
+        "y": -0.079948,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-314",
+      "source_index": 314,
+      "ra_h": 7.7408,
+      "dec_deg": 24.398,
+      "apparent_mag": 3.57,
+      "bv_ci": 0.93,
+      "source_constellation": "Gem",
+      "designation": "κ Gem",
+      "name": null,
+      "distance_ly": 141,
+      "spectral_type": "G8III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.434285,
+        "y": 0.061932,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-318",
+      "source_index": 318,
+      "ra_h": 7.3015,
+      "dec_deg": 16.54,
+      "apparent_mag": 3.58,
+      "bv_ci": 0.11,
+      "source_constellation": "Gem",
+      "designation": "λ Gem",
+      "name": null,
+      "distance_ly": 101,
+      "spectral_type": "A3V...",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.117422,
+        "y": -0.373399,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-326",
+      "source_index": 326,
+      "ra_h": 6.8798,
+      "dec_deg": 33.961,
+      "apparent_mag": 3.6,
+      "bv_ci": 0.1,
+      "source_constellation": "Gem",
+      "designation": "θ Gem",
+      "name": null,
+      "distance_ly": 189,
+      "spectral_type": "A3III",
+      "category": "GUIDE",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.183022,
+        "y": 0.56944,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-402",
+      "source_index": 402,
+      "ra_h": 7.4288,
+      "dec_deg": 27.798,
+      "apparent_mag": 3.78,
+      "bv_ci": 1.02,
+      "source_constellation": "Gem",
+      "designation": "ι Gem",
+      "name": null,
+      "distance_ly": 120,
+      "spectral_type": "G9III+...",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.198657,
+        "y": 0.233684,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-525",
+      "source_index": 525,
+      "ra_h": 7.0685,
+      "dec_deg": 20.57,
+      "apparent_mag": 4.01,
+      "bv_ci": 0.9,
+      "source_constellation": "Gem",
+      "designation": "ζ Gem",
+      "name": "Mekbuda",
+      "distance_ly": 1376,
+      "spectral_type": "G3Ibv SB",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": -0.061299,
+        "y": -0.156605,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-556",
+      "source_index": 556,
+      "ra_h": 7.5987,
+      "dec_deg": 26.896,
+      "apparent_mag": 4.06,
+      "bv_ci": 1.54,
+      "source_constellation": "Gem",
+      "designation": "υ Gem",
+      "name": null,
+      "distance_ly": 271,
+      "spectral_type": "K5III",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.322662,
+        "y": 0.190431,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-600",
+      "source_index": 600,
+      "ra_h": 6.4827,
+      "dec_deg": 20.212,
+      "apparent_mag": 4.13,
+      "bv_ci": -0.12,
+      "source_constellation": "Gem",
+      "designation": "ν Gem",
+      "name": null,
+      "distance_ly": 545,
+      "spectral_type": "B6III",
+      "category": "GUIDE",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.507278,
+        "y": -0.160664,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-616",
+      "source_index": 616,
+      "ra_h": 6.0687,
+      "dec_deg": 23.263,
+      "apparent_mag": 4.16,
+      "bv_ci": 0.83,
+      "source_constellation": "Gem",
+      "designation": "1 Gem",
+      "name": null,
+      "distance_ly": 155,
+      "spectral_type": "G7III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.813596,
+        "y": 0.033113,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-617",
+      "source_index": 617,
+      "ra_h": 7.4852,
+      "dec_deg": 31.785,
+      "apparent_mag": 4.16,
+      "bv_ci": 0.32,
+      "source_constellation": "Gem",
+      "designation": "ρ Gem",
+      "name": null,
+      "distance_ly": 59,
+      "spectral_type": "F0V...",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.231389,
+        "y": 0.451609,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-653",
+      "source_index": 653,
+      "ra_h": 7.7219,
+      "dec_deg": 28.884,
+      "apparent_mag": 4.23,
+      "bv_ci": 1.12,
+      "source_constellation": "Gem",
+      "designation": "σ Gem",
+      "name": null,
+      "distance_ly": 125,
+      "spectral_type": "K1III SB",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.405645,
+        "y": 0.303551,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-737",
+      "source_index": 737,
+      "ra_h": 6.2563,
+      "dec_deg": 29.498,
+      "apparent_mag": 4.32,
+      "bv_ci": 1.02,
+      "source_constellation": "Aur",
+      "designation": "κ Aur",
+      "name": null,
+      "distance_ly": 177,
+      "spectral_type": "G8IIIvar",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.635625,
+        "y": 0.358938,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-745",
+      "source_index": 745,
+      "ra_h": 7.4694,
+      "dec_deg": 8.926,
+      "apparent_mag": 4.33,
+      "bv_ci": 1.43,
+      "source_constellation": "CMi",
+      "designation": "γ CMi",
+      "name": null,
+      "distance_ly": 318,
+      "spectral_type": "K3III SB",
+      "category": "GUIDE",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.26209,
+        "y": -0.794925,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-804",
+      "source_index": 804,
+      "ra_h": 5.9064,
+      "dec_deg": 20.276,
+      "apparent_mag": 4.39,
+      "bv_ci": 0.59,
+      "source_constellation": "Ori",
+      "designation": "χ¹ Ori",
+      "name": null,
+      "distance_ly": 28,
+      "spectral_type": "G0V",
+      "category": "GUIDE",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.964475,
+        "y": -0.117622,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-820",
+      "source_index": 820,
+      "ra_h": 7.1857,
+      "dec_deg": 30.245,
+      "apparent_mag": 4.41,
+      "bv_ci": 1.26,
+      "source_constellation": "Gem",
+      "designation": "τ Gem",
+      "name": null,
+      "distance_ly": 321,
+      "spectral_type": "K2III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.024913,
+        "y": 0.362461,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-828",
+      "source_index": 828,
+      "ra_h": 6.1262,
+      "dec_deg": 14.768,
+      "apparent_mag": 4.42,
+      "bv_ci": -0.16,
+      "source_constellation": "Ori",
+      "designation": "ν Ori",
+      "name": null,
+      "distance_ly": 516,
+      "spectral_type": "B3IV",
+      "category": "GUIDE",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.820171,
+        "y": -0.442124,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-860",
+      "source_index": 860,
+      "ra_h": 6.199,
+      "dec_deg": 14.209,
+      "apparent_mag": 4.45,
+      "bv_ci": -0.18,
+      "source_constellation": "Ori",
+      "designation": "ξ Ori",
+      "name": null,
+      "distance_ly": 607,
+      "spectral_type": "B3IV",
+      "category": "GUIDE",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.762863,
+        "y": -0.477547,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-902",
+      "source_index": 902,
+      "ra_h": 6.7331,
+      "dec_deg": 13.228,
+      "apparent_mag": 4.49,
+      "bv_ci": 1.17,
+      "source_constellation": "Gem",
+      "designation": "30 Gem",
+      "name": null,
+      "distance_ly": 289,
+      "spectral_type": "K1III",
+      "category": "GUIDE",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.332006,
+        "y": -0.551097,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-970",
+      "source_index": 970,
+      "ra_h": 7.4966,
+      "dec_deg": 12.007,
+      "apparent_mag": 4.55,
+      "bv_ci": 1.28,
+      "source_constellation": "CMi",
+      "designation": "6 CMi",
+      "name": null,
+      "distance_ly": 572,
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.278194,
+        "y": -0.62035,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-980",
+      "source_index": 980,
+      "ra_h": 5.8888,
+      "dec_deg": 27.612,
+      "apparent_mag": 4.56,
+      "bv_ci": -0.01,
+      "source_constellation": "Tau",
+      "designation": "136 Tau",
+      "name": null,
+      "distance_ly": 423,
+      "spectral_type": "A0V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.923214,
+        "y": 0.291764,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1059",
+      "source_index": 1059,
+      "ra_h": 6.0653,
+      "dec_deg": 20.138,
+      "apparent_mag": 4.64,
+      "bv_ci": 0.24,
+      "source_constellation": "Ori",
+      "designation": "χ² Ori",
+      "name": null,
+      "distance_ly": 1802,
+      "spectral_type": "B2Iavar",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.836302,
+        "y": -0.138779,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1083",
+      "source_index": 1083,
+      "ra_h": 6.683,
+      "dec_deg": 9.896,
+      "apparent_mag": 4.66,
+      "bv_ci": -0.23,
+      "source_constellation": "Mon",
+      "designation": "15 Mon",
+      "name": null,
+      "distance_ly": 919,
+      "spectral_type": "O7",
+      "category": "FIELD",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.381411,
+        "y": -0.737409,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1101",
+      "source_index": 1101,
+      "ra_h": 8.2035,
+      "dec_deg": 17.648,
+      "apparent_mag": 4.67,
+      "bv_ci": 0.53,
+      "source_constellation": "Cnc",
+      "designation": "ζ² Cnc",
+      "name": "Tegmine",
+      "distance_ly": 82,
+      "spectral_type": "G0V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": true,
+      "projected": {
+        "x": 0.826798,
+        "y": -0.279092,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1171",
+      "source_index": 1171,
+      "ra_h": 6.9107,
+      "dec_deg": 13.178,
+      "apparent_mag": 4.73,
+      "bv_ci": 0.32,
+      "source_constellation": "Gem",
+      "designation": "38 Gem",
+      "name": null,
+      "distance_ly": 84,
+      "spectral_type": "F0Vp",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.190202,
+        "y": -0.556696,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1225",
+      "source_index": 1225,
+      "ra_h": 6.7888,
+      "dec_deg": 8.037,
+      "apparent_mag": 4.77,
+      "bv_ci": 1.4,
+      "source_constellation": "Mon",
+      "designation": "17 Mon",
+      "name": null,
+      "distance_ly": 493,
+      "spectral_type": "K4III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.2985,
+        "y": -0.845602,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1298",
+      "source_index": 1298,
+      "ra_h": 5.9666,
+      "dec_deg": 25.954,
+      "apparent_mag": 4.81,
+      "bv_ci": -0.09,
+      "source_constellation": "Tau",
+      "designation": "139 Tau",
+      "name": null,
+      "distance_ly": 1553,
+      "spectral_type": "B1Ib",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.875159,
+        "y": 0.191187,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1421",
+      "source_index": 1421,
+      "ra_h": 7.6528,
+      "dec_deg": 34.584,
+      "apparent_mag": 4.89,
+      "bv_ci": 0.41,
+      "source_constellation": "Gem",
+      "designation": "ο Gem",
+      "name": "Jishui",
+      "distance_ly": 166,
+      "spectral_type": "F3III",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": true,
+      "projected": {
+        "x": 0.339673,
+        "y": 0.613235,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1422",
+      "source_index": 1422,
+      "ra_h": 7.7687,
+      "dec_deg": 18.51,
+      "apparent_mag": 4.89,
+      "bv_ci": 1.43,
+      "source_constellation": "Gem",
+      "designation": "81 Gem",
+      "name": null,
+      "distance_ly": 339,
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.475815,
+        "y": -0.255238,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1452",
+      "source_index": 1452,
+      "ra_h": 7.1943,
+      "dec_deg": 39.321,
+      "apparent_mag": 4.91,
+      "bv_ci": 1.45,
+      "source_constellation": "Aur",
+      "designation": "63 Aur",
+      "name": null,
+      "distance_ly": 485,
+      "spectral_type": "K4II-III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.028576,
+        "y": 0.868407,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1512",
+      "source_index": 1512,
+      "ra_h": 8.0586,
+      "dec_deg": 27.794,
+      "apparent_mag": 4.94,
+      "bv_ci": 1.13,
+      "source_constellation": "Gem",
+      "designation": "χ Gem",
+      "name": null,
+      "distance_ly": 256,
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.655547,
+        "y": 0.266708,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1528",
+      "source_index": 1528,
+      "ra_h": 6.2009,
+      "dec_deg": 16.13,
+      "apparent_mag": 4.95,
+      "bv_ci": -0.15,
+      "source_constellation": "Ori",
+      "designation": "69 Ori",
+      "name": null,
+      "distance_ly": 529,
+      "spectral_type": "B5Vn",
+      "category": "FIELD",
+      "color_category": "BLUE_WHITE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.750403,
+        "y": -0.370089,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1559",
+      "source_index": 1559,
+      "ra_h": 7.8916,
+      "dec_deg": 26.766,
+      "apparent_mag": 4.97,
+      "bv_ci": 0.1,
+      "source_constellation": "Gem",
+      "designation": "φ Gem",
+      "name": null,
+      "distance_ly": 222,
+      "spectral_type": "A3V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.536977,
+        "y": 0.198445,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1597",
+      "source_index": 1597,
+      "ra_h": 7.4275,
+      "dec_deg": 9.276,
+      "apparent_mag": 4.99,
+      "bv_ci": 0.99,
+      "source_constellation": "CMi",
+      "designation": "ε CMi",
+      "name": null,
+      "distance_ly": 1042,
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.22701,
+        "y": -0.775359,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1644",
+      "source_index": 1644,
+      "ra_h": 7.4969,
+      "dec_deg": 27.916,
+      "apparent_mag": 5.01,
+      "bv_ci": 1.12,
+      "source_constellation": "Gem",
+      "designation": "65 Gem",
+      "name": null,
+      "distance_ly": 484,
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.247124,
+        "y": 0.241912,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1696",
+      "source_index": 1696,
+      "ra_h": 6.2741,
+      "dec_deg": 12.272,
+      "apparent_mag": 5.04,
+      "bv_ci": 0.43,
+      "source_constellation": "Ori",
+      "designation": "74 Ori",
+      "name": null,
+      "distance_ly": 63,
+      "spectral_type": "F5IV-V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.710878,
+        "y": -0.590546,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1698",
+      "source_index": 1698,
+      "ra_h": 7.3913,
+      "dec_deg": 25.051,
+      "apparent_mag": 5.04,
+      "bv_ci": 0.9,
+      "source_constellation": "Gem",
+      "designation": "57 Gem",
+      "name": null,
+      "distance_ly": 159,
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.175603,
+        "y": 0.085319,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1699",
+      "source_index": 1699,
+      "ra_h": 7.6579,
+      "dec_deg": 17.675,
+      "apparent_mag": 5.04,
+      "bv_ci": 1.62,
+      "source_constellation": "Gem",
+      "designation": "74 Gem",
+      "name": null,
+      "distance_ly": 525,
+      "spectral_type": "M0III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.392114,
+        "y": -0.304634,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1753",
+      "source_index": 1753,
+      "ra_h": 7.2229,
+      "dec_deg": 16.159,
+      "apparent_mag": 5.07,
+      "bv_ci": 1.65,
+      "source_constellation": "Gem",
+      "designation": "51 Gem",
+      "name": null,
+      "distance_ly": 541,
+      "spectral_type": "K3V",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.056641,
+        "y": -0.394612,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1754",
+      "source_index": 1754,
+      "ra_h": 7.489,
+      "dec_deg": 28.118,
+      "apparent_mag": 5.07,
+      "bv_ci": 0.12,
+      "source_constellation": "Gem",
+      "designation": "64 Gem",
+      "name": null,
+      "distance_ly": 176,
+      "spectral_type": "A4V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.241088,
+        "y": 0.252571,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1800",
+      "source_index": 1800,
+      "ra_h": 7.3658,
+      "dec_deg": 20.444,
+      "apparent_mag": 5.09,
+      "bv_ci": 1.53,
+      "source_constellation": "Gem",
+      "designation": "56 Gem",
+      "name": null,
+      "distance_ly": 443,
+      "spectral_type": "M0III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.162581,
+        "y": -0.161985,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1861",
+      "source_index": 1861,
+      "ra_h": 7.3674,
+      "dec_deg": 36.761,
+      "apparent_mag": 5.12,
+      "bv_ci": 1.08,
+      "source_constellation": "Aur",
+      "designation": "65 Aur",
+      "name": null,
+      "distance_ly": 236,
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.143644,
+        "y": 0.724661,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1887",
+      "source_index": 1887,
+      "ra_h": 8.3344,
+      "dec_deg": 27.218,
+      "apparent_mag": 5.13,
+      "bv_ci": 0.49,
+      "source_constellation": "Cnc",
+      "designation": "χ Cnc",
+      "name": null,
+      "distance_ly": 60,
+      "spectral_type": "F6V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.866999,
+        "y": 0.261228,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1903",
+      "source_index": 1903,
+      "ra_h": 6.0576,
+      "dec_deg": 19.691,
+      "apparent_mag": 5.14,
+      "bv_ci": -0.1,
+      "source_constellation": "Ori",
+      "designation": "64 Ori",
+      "name": null,
+      "distance_ly": 718,
+      "spectral_type": "B8V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.845402,
+        "y": -0.162905,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1907",
+      "source_index": 1907,
+      "ra_h": 7.0606,
+      "dec_deg": 10.952,
+      "apparent_mag": 5.14,
+      "bv_ci": 1.39,
+      "source_constellation": "Gem",
+      "designation": "HIP 34033",
+      "name": null,
+      "distance_ly": 594,
+      "spectral_type": "K3III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.072146,
+        "y": -0.681849,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1910",
+      "source_index": 1910,
+      "ra_h": 7.7918,
+      "dec_deg": 33.416,
+      "apparent_mag": 5.14,
+      "bv_ci": 1.64,
+      "source_constellation": "Gem",
+      "designation": "π Gem",
+      "name": null,
+      "distance_ly": 662,
+      "spectral_type": "M0III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.43902,
+        "y": 0.556341,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1912",
+      "source_index": 1912,
+      "ra_h": 8.0846,
+      "dec_deg": 13.118,
+      "apparent_mag": 5.14,
+      "bv_ci": 0.02,
+      "source_constellation": "Cnc",
+      "designation": "8 Cnc",
+      "name": null,
+      "distance_ly": 215,
+      "spectral_type": "A1V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.755377,
+        "y": -0.539963,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-1934",
+      "source_index": 1934,
+      "ra_h": 7.7776,
+      "dec_deg": 37.517,
+      "apparent_mag": 5.15,
+      "bv_ci": 1.59,
+      "source_constellation": "Lyn",
+      "designation": "HIP 37946",
+      "name": null,
+      "distance_ly": 433,
+      "spectral_type": "M3III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.413921,
+        "y": 0.786352,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2050",
+      "source_index": 2050,
+      "ra_h": 6.2475,
+      "dec_deg": 19.156,
+      "apparent_mag": 5.2,
+      "bv_ci": 0.43,
+      "source_constellation": "Ori",
+      "designation": "71 Ori",
+      "name": null,
+      "distance_ly": 68,
+      "spectral_type": "F6V",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.696319,
+        "y": -0.205568,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2052",
+      "source_index": 2052,
+      "ra_h": 6.7068,
+      "dec_deg": 17.645,
+      "apparent_mag": 5.2,
+      "bv_ci": 0.06,
+      "source_constellation": "Gem",
+      "designation": "26 Gem",
+      "name": null,
+      "distance_ly": 142,
+      "spectral_type": "A2V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.341844,
+        "y": -0.308174,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2053",
+      "source_index": 2053,
+      "ra_h": 7.0402,
+      "dec_deg": 24.215,
+      "apparent_mag": 5.2,
+      "bv_ci": 0.95,
+      "source_constellation": "Gem",
+      "designation": "ω Gem",
+      "name": null,
+      "distance_ly": 1489,
+      "spectral_type": "G5II",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.080355,
+        "y": 0.038714,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2056",
+      "source_index": 2056,
+      "ra_h": 7.4623,
+      "dec_deg": 21.445,
+      "apparent_mag": 5.2,
+      "bv_ci": 0.46,
+      "source_constellation": "Gem",
+      "designation": "63 Gem",
+      "name": null,
+      "distance_ly": 104,
+      "spectral_type": "F5IV-V...",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.233742,
+        "y": -0.106452,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2093",
+      "source_index": 2093,
+      "ra_h": 6.5301,
+      "dec_deg": 11.544,
+      "apparent_mag": 5.22,
+      "bv_ci": 0.18,
+      "source_constellation": "Mon",
+      "designation": "HIP 31119",
+      "name": null,
+      "distance_ly": 208,
+      "spectral_type": "A3V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.501907,
+        "y": -0.64051,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2096",
+      "source_index": 2096,
+      "ra_h": 7.4672,
+      "dec_deg": 6.942,
+      "apparent_mag": 5.22,
+      "bv_ci": 0.22,
+      "source_constellation": "CMi",
+      "designation": "η CMi",
+      "name": null,
+      "distance_ly": 318,
+      "spectral_type": "F0III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.264085,
+        "y": -0.909653,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2117",
+      "source_index": 2117,
+      "ra_h": 7.4024,
+      "dec_deg": 40.672,
+      "apparent_mag": 5.23,
+      "bv_ci": 1.25,
+      "source_constellation": "Aur",
+      "designation": "66 Aur",
+      "name": null,
+      "distance_ly": 1208,
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.160873,
+        "y": 0.950518,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2175",
+      "source_index": 2175,
+      "ra_h": 7.7712,
+      "dec_deg": 10.768,
+      "apparent_mag": 5.25,
+      "bv_ci": 0.02,
+      "source_constellation": "CMi",
+      "designation": "11 CMi",
+      "name": null,
+      "distance_ly": 301,
+      "spectral_type": "A1Vnn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.505854,
+        "y": -0.684452,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2193",
+      "source_index": 2193,
+      "ra_h": 6.5867,
+      "dec_deg": 28.022,
+      "apparent_mag": 5.26,
+      "bv_ci": -0.01,
+      "source_constellation": "Aur",
+      "designation": "49 Aur",
+      "name": null,
+      "distance_ly": 370,
+      "spectral_type": "A0Vnn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.402251,
+        "y": 0.256346,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2218",
+      "source_index": 2218,
+      "ra_h": 7.5601,
+      "dec_deg": 15.827,
+      "apparent_mag": 5.27,
+      "bv_ci": 0.06,
+      "source_constellation": "Gem",
+      "designation": "68 Gem",
+      "name": null,
+      "distance_ly": 424,
+      "spectral_type": "A1Vn",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.320403,
+        "y": -0.40809,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2246",
+      "source_index": 2246,
+      "ra_h": 6.8592,
+      "dec_deg": 21.761,
+      "apparent_mag": 5.28,
+      "bv_ci": -0.02,
+      "source_constellation": "Gem",
+      "designation": "36 Gem",
+      "name": null,
+      "distance_ly": 491,
+      "spectral_type": "A2V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.217085,
+        "y": -0.089965,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2299",
+      "source_index": 2299,
+      "ra_h": 7.7353,
+      "dec_deg": 25.784,
+      "apparent_mag": 5.3,
+      "bv_ci": 1.53,
+      "source_constellation": "Gem",
+      "designation": "76 Gem",
+      "name": null,
+      "distance_ly": 635,
+      "spectral_type": "K5III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.42559,
+        "y": 0.136437,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2301",
+      "source_index": 2301,
+      "ra_h": 8.1294,
+      "dec_deg": 21.582,
+      "apparent_mag": 5.3,
+      "bv_ci": 0.64,
+      "source_constellation": "Cnc",
+      "designation": "Mu-² Cnc",
+      "name": null,
+      "distance_ly": 76,
+      "spectral_type": "G2IV",
+      "category": "FIELD",
+      "color_category": "WHITE_YELLOW",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.743774,
+        "y": -0.067327,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2384",
+      "source_index": 2384,
+      "ra_h": 6.257,
+      "dec_deg": 16.143,
+      "apparent_mag": 5.34,
+      "bv_ci": -0.1,
+      "source_constellation": "Ori",
+      "designation": "72 Ori",
+      "name": null,
+      "distance_ly": 523,
+      "spectral_type": "B7V",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.704559,
+        "y": -0.372439,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2386",
+      "source_index": 2386,
+      "ra_h": 6.647,
+      "dec_deg": 39.903,
+      "apparent_mag": 5.34,
+      "bv_ci": -0.07,
+      "source_constellation": "Aur",
+      "designation": "ψ³ Aur",
+      "name": null,
+      "distance_ly": 1370,
+      "spectral_type": "B8III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.323804,
+        "y": 0.916298,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2389",
+      "source_index": 2389,
+      "ra_h": 7.5858,
+      "dec_deg": 30.961,
+      "apparent_mag": 5.34,
+      "bv_ci": 1.01,
+      "source_constellation": "Gem",
+      "designation": "HIP 36896",
+      "name": null,
+      "distance_ly": 372,
+      "spectral_type": "K0III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.303258,
+        "y": 0.410275,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2466",
+      "source_index": 2466,
+      "ra_h": 7.4162,
+      "dec_deg": 11.67,
+      "apparent_mag": 5.37,
+      "bv_ci": 0.1,
+      "source_constellation": "CMi",
+      "designation": "1 CMi",
+      "name": null,
+      "distance_ly": 316,
+      "spectral_type": "A5IV",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": 0.213976,
+        "y": -0.64028,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2494",
+      "source_index": 2494,
+      "ra_h": 7.9277,
+      "dec_deg": 19.884,
+      "apparent_mag": 5.38,
+      "bv_ci": -0.04,
+      "source_constellation": "Gem",
+      "designation": "85 Gem",
+      "name": null,
+      "distance_ly": 374,
+      "spectral_type": "A0Vs",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.594411,
+        "y": -0.172949,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2551",
+      "source_index": 2551,
+      "ra_h": 6.6091,
+      "dec_deg": 38.446,
+      "apparent_mag": 5.4,
+      "bv_ci": 2.77,
+      "source_constellation": "Aur",
+      "designation": "HIP 31579",
+      "name": null,
+      "distance_ly": null,
+      "spectral_type": "C5II",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.353193,
+        "y": 0.834079,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2605",
+      "source_index": 2605,
+      "ra_h": 6.746,
+      "dec_deg": 28.971,
+      "apparent_mag": 5.42,
+      "bv_ci": 1.45,
+      "source_constellation": "Gem",
+      "designation": "28 Gem",
+      "name": null,
+      "distance_ly": 476,
+      "spectral_type": "K4III",
+      "category": "FIELD",
+      "color_category": "ORANGE_RED",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.28559,
+        "y": 0.300841,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2656",
+      "source_index": 2656,
+      "ra_h": 6.2625,
+      "dec_deg": 12.551,
+      "apparent_mag": 5.44,
+      "bv_ci": 0.01,
+      "source_constellation": "Ori",
+      "designation": "73 Ori",
+      "name": null,
+      "distance_ly": 1165,
+      "spectral_type": "B9II-III",
+      "category": "FIELD",
+      "color_category": "WHITE_BLUE",
+      "target_constellation": false,
+      "named": false,
+      "projected": {
+        "x": -0.719098,
+        "y": -0.574218,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2689",
+      "source_index": 2689,
+      "ra_h": 7.5301,
+      "dec_deg": 17.086,
+      "apparent_mag": 5.45,
+      "bv_ci": 1.13,
+      "source_constellation": "Gem",
+      "designation": "HIP 36616",
+      "name": null,
+      "distance_ly": 316,
+      "spectral_type": "K2III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": 0.294097,
+        "y": -0.340135,
+        "method": "gnomonic_local_review_projection"
+      }
+    },
+    {
+      "id": "hyg-local-2757",
+      "source_index": 2757,
+      "ra_h": 7.1395,
+      "dec_deg": 15.931,
+      "apparent_mag": 5.47,
+      "bv_ci": 1.02,
+      "source_constellation": "Gem",
+      "designation": "45 Gem",
+      "name": null,
+      "distance_ly": 323,
+      "spectral_type": "G8III",
+      "category": "FIELD",
+      "color_category": "YELLOW_ORANGE",
+      "target_constellation": true,
+      "named": false,
+      "projected": {
+        "x": -0.008171,
+        "y": -0.407163,
+        "method": "gnomonic_local_review_projection"
+      }
+    }
+  ],
+  "guide_lines": [
+    {
+      "segment": 0,
+      "source_points": [
+        {
+          "ra_h": 6.248,
+          "dec_deg": 22.51
+        },
+        {
+          "ra_h": 6.3827,
+          "dec_deg": 22.51
+        },
+        {
+          "ra_h": 6.7322,
+          "dec_deg": 25.13
+        },
+        {
+          "ra_h": 7.1857,
+          "dec_deg": 30.25
+        },
+        {
+          "ra_h": 7.5766,
+          "dec_deg": 31.89
+        },
+        {
+          "ra_h": 7.7553,
+          "dec_deg": 28.03
+        },
+        {
+          "ra_h": 7.5987,
+          "dec_deg": 26.9
+        },
+        {
+          "ra_h": 7.3354,
+          "dec_deg": 21.98
+        },
+        {
+          "ra_h": 7.0685,
+          "dec_deg": 20.57
+        },
+        {
+          "ra_h": 6.6285,
+          "dec_deg": 16.4
+        },
+        {
+          "ra_h": 6.7548,
+          "dec_deg": 12.9
+        }
+      ],
+      "projected_points": [
+        {
+          "x": -0.678318,
+          "y": -0.022141
+        },
+        {
+          "x": -0.574698,
+          "y": -0.030774
+        },
+        {
+          "x": -0.304468,
+          "y": 0.094278
+        },
+        {
+          "x": 0.024912,
+          "y": 0.362732
+        },
+        {
+          "x": 0.294546,
+          "y": 0.460729
+        },
+        {
+          "x": 0.432567,
+          "y": 0.258964
+        },
+        {
+          "x": 0.322652,
+          "y": 0.190647
+        },
+        {
+          "x": 0.138052,
+          "y": -0.080055
+        },
+        {
+          "x": -0.061299,
+          "y": -0.156605
+        },
+        {
+          "x": -0.406531,
+          "y": -0.37376
+        },
+        {
+          "x": -0.31537,
+          "y": -0.569743
+        }
+      ]
+    },
+    {
+      "segment": 1,
+      "source_points": [
+        {
+          "ra_h": 7.3354,
+          "dec_deg": 21.98
+        },
+        {
+          "ra_h": 7.3015,
+          "dec_deg": 16.54
+        }
+      ],
+      "projected_points": [
+        {
+          "x": 0.138052,
+          "y": -0.080055
+        },
+        {
+          "x": 0.117422,
+          "y": -0.373399
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "BEACON": 1,
+    "BRIGHT": 5,
+    "GUIDE": 21,
+    "FIELD": 52,
+    "named": 13,
+    "target_constellation": 45
+  },
+  "classification": {
+    "stars_names_constellations": "REAL_DATA",
+    "local_projection_xy": "CALCULATION",
+    "guide_line_styling_star_size_color": "REPRESENTATION"
+  }
+}
