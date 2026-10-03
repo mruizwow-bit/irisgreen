@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="solar-annular-title solar-annular-desc">
+<title id="solar-annular-title">Annular solar eclipse generic geometry</title>
+<desc id="solar-annular-desc">Generic educational representation: the Moon is centered but its apparent disk is smaller than the Sun, so an annulus remains visible. The diagram is not to scale and not tied to a city or date.</desc>
+<defs>
+  <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff8cf"/><stop offset="68%" stop-color="#ffd867"/><stop offset="100%" stop-color="#f0a52e"/></radialGradient>
+  <radialGradient id="earth" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#6ea5d7"/><stop offset="75%" stop-color="#2d5f8f"/><stop offset="100%" stop-color="#173c62"/></radialGradient>
+  <radialGradient id="moon" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d7d7d2"/><stop offset="80%" stop-color="#999a98"/><stop offset="100%" stop-color="#727472"/></radialGradient>
+  <radialGradient id="copper" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d98b67"/><stop offset="78%" stop-color="#a34f39"/><stop offset="100%" stop-color="#6f2f29"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+
+<path d="M350 450 L1040 492 L1220 470 L1220 530 L1040 508 L350 550 Z" fill="#8ea7c4" opacity=".15"/>
+<path d="M350 472 L1040 497 L1220 486 L1220 514 L1040 503 L350 528 Z" fill="#020711" opacity=".24"/>
+<circle cx="260" cy="500" r="110" fill="url(#sun)"/>
+<circle cx="820" cy="500" r="31" fill="url(#moon)"/>
+<circle cx="1290" cy="500" r="72" fill="url(#earth)"/><circle cx="1290" cy="500" r="78" fill="none" stroke="#76b9e8" stroke-width="4" opacity=".65"/>
+<circle cx="820" cy="500" r="39" fill="none" stroke="#f5cf5b" stroke-width="8" opacity=".75"/>
+<path d="M350 455 L820 469 L1040 497 M350 545 L820 531 L1040 503" fill="none" stroke="#f0d47b" stroke-width="2" opacity=".3"/>
+
+</svg>
