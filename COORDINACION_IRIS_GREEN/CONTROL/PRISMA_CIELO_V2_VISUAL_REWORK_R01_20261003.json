@@ -13,10 +13,24 @@
     "head_sha": "9518ce5a9ce428a9c45b062e0190ed3b921d7f0c",
     "conclusion": "SUCCESS",
     "browser_cases": 18,
-    "widths": [320,390,1440],
-    "languages": ["es","en"],
-    "motion": ["normal","reduced","none"],
-    "themes": ["light","navy"],
+    "widths": [
+      320,
+      390,
+      1440
+    ],
+    "languages": [
+      "es",
+      "en"
+    ],
+    "motion": [
+      "normal",
+      "reduced",
+      "none"
+    ],
+    "themes": [
+      "light",
+      "navy"
+    ],
     "forced_colors": true,
     "star_targets": 18,
     "max_constellation_labels": 5,
@@ -39,5 +53,11 @@
   "latest_marker_commit": "34c7d5d75181e1fc0792a7815d5c9805f8f9f9ad",
   "latest_ci_run": 37101529327,
   "main_modified": false,
-  "human_qa_pending": true
+  "human_qa_pending": true,
+  "latest_mobile_non_overlap_fix": {
+    "commit": "3ac5d57f938d3f04dd6d537d537b1682c230033a",
+    "ci_run": 37102695165,
+    "observed_status": "IN_PROGRESS",
+    "scope": "CSS_ONLY_MOVE_SETTINGS_BELOW_INTRO_AT_MOBILE"
+  }
 }
