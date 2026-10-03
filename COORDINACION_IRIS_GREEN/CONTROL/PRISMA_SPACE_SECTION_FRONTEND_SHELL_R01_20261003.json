@@ -75,18 +75,10 @@
     "global_chrome_isolation": "PASS"
   },
   "asset_intake_path_test": {
-    "status": "IN_PROGRESS",
-    "commit": "6ae21766a0a99aec4da695d48c47fd6901655c12",
-    "ci_run": 37102845076,
-    "expected_contract": {
-      "approved_images": 1,
-      "pending_images": 0,
-      "pending_asset_requests": 0,
-      "widths": [
-        320,
-        390,
-        1440
-      ]
-    }
+    "status": "QUEUED",
+    "commit": "043ecf85d8db436df0467234ca511d39309e6302",
+    "ci_run": 37103052693,
+    "last_failure": "QA_FIXTURE_USED_FRAGMENT_ROUTES_INSTEAD_OF_LOCAL_ABSOLUTE_PATHS",
+    "correction_scope": "FIXTURE_ONLY"
   }
 }
