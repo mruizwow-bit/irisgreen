@@ -28,8 +28,13 @@
   "cases": 22,
   "test_commit": "41409e4b95f5efa18124f999c852d2e559a401de",
   "workflow_commit": "7d7444fbf1e8ae73998b769951eeeac25193e5ff",
-  "ci_run": 37109123156,
+  "ci_run": 37109836642,
   "ci_status": "IN_PROGRESS",
   "main_modified": false,
-  "status": "P46_COMMON_GRID_AUDIT_RUNNING"
+  "status": "P46_COMMON_GRID_GATE_RUNNING_AFTER_SCROLLBAR_SAFE_FIX",
+  "repair_commits": [
+    "74c0b8ef5691a93978095d7ada5715b150952c2b",
+    "a69e86e8a6accd374022b5b2c55564f31a85e195"
+  ],
+  "gate_commit": "3361ce29b038e8ef301da4cd2a516c757ec0f71c"
 }
