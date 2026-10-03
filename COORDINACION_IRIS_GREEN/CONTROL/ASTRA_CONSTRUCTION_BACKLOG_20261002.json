@@ -155,5 +155,26 @@
       "owner": "SENDA",
       "task": "INTEREST_05_METEORS_PRODUCT_CONTENT_REUSE_AND_ASSET_BRIEF_PASS"
     }
-  ]
+  ],
+  "sabik": {
+    "voice": {
+      "client_status": "SABIK_VOICE_CLIENT_CONTRACT_PASS",
+      "recovery_branch": "nexo/sabik-voice-runtime-recovery-20261002",
+      "recovery_head": "914d2edc6341f17a99dc289045f5d057e93b0465",
+      "ci_voice": "37057033611_SUCCESS",
+      "ci_home_materialization": "37056460638_SUCCESS",
+      "es_model": {
+        "id": "SABIK_ES_R01_FINAL",
+        "sha256": "8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291"
+      },
+      "en_model": {
+        "id": "SABIK_EN_R02_FINAL",
+        "sha256": "3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df"
+      },
+      "current_blocker": "R66_DYNAMIC_TTS_RUNTIME_ARTIFACT_REQUIRED",
+      "next_owner": "ECO_A6",
+      "next_gate": "ECO_R66_MEDIA_VALIDATION_PASS",
+      "merge_policy": "NO_MAIN_BEFORE_REAL_MODEL_E2E_AND_HUMAN_QA"
+    }
+  }
 }
