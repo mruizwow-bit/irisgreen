@@ -42,6 +42,7 @@ function canonicalAspect(text,variables,language){
 
 function extractSlots(match,intent,variables,language,session){
  const slots={...(session?.slots||{})};
+ for(const key of intent?.clear_slots||[])delete slots[key];
  if(intent?.fixed_slots)Object.assign(slots,intent.fixed_slots);
  const groups=match?.groups||{};
  for(const [key,value] of Object.entries(groups)){
@@ -64,7 +65,7 @@ export function createDialogueLibrary({model,variables}={}){
 
  function classify(text){
   const stripped=stripAssistant(text,model);
-  const candidate=norm(stripped);
+  const candidate=clean(stripped).replace(/^[¿¡?!.,;:\s]+|[¿¡?!.,;:\s]+$/g,'');
   const intents=[...(model?.intents||[])].sort((a,b)=>(b.priority||0)-(a.priority||0));
   for(const intent of intents){
    for(const pattern of intent.patterns||[]){
@@ -81,6 +82,16 @@ export function createDialogueLibrary({model,variables}={}){
     session.turn+=1;
     return {intent,match,stripped,candidate,slots:{...slots},missing,promptKey:session.promptKey,action:missing?'elicit':intent.action||'retrieve',session:snapshot()};
    }
+  }
+  if(!candidate){
+   if(session.slots.topic){
+    session.turn+=1;
+    return {intent:{id:'conversation.attention',action:'listen_again'},stripped,candidate,slots:{...session.slots},missing:session.pendingSlot,promptKey:session.promptKey,action:'listen_again',session:snapshot()};
+   }
+   session.intent='social.attention';
+   session.promptKey='social.attention.response';
+   session.turn+=1;
+   return {intent:{id:'social.attention',action:'respond'},stripped,candidate,slots:{...session.slots},missing:'',promptKey:session.promptKey,action:'respond',session:snapshot()};
   }
   const aspect=canonicalAspect(stripped,variables,model.language);
   if(aspect&&session.slots.topic){
@@ -106,10 +117,11 @@ export function createDialogueLibrary({model,variables}={}){
   return clean(`${topic} ${term}`);
  }
  function setSlot(key,value){if(key)session.slots[key]=clean(value);if(session.pendingSlot===key)session.pendingSlot='';}
+ function setPendingSlot(key,promptKey=''){session.pendingSlot=clean(key);session.promptKey=clean(promptKey)||session.promptKey;}
  function clearSlot(key){delete session.slots[key];if(session.pendingSlot===key)session.pendingSlot='';}
  function reset(){session.intent='';session.slots={};session.pendingSlot='';session.promptKey='';session.turn=0;}
  function snapshot(){return {intent:session.intent,slots:{...session.slots},pendingSlot:session.pendingSlot,promptKey:session.promptKey,turn:session.turn};}
- return {classify,prompt,retrievalQuery,setSlot,clearSlot,reset,snapshot,stripAssistant:text=>stripAssistant(text,model)};
+ return {classify,prompt,retrievalQuery,setSlot,setPendingSlot,clearSlot,reset,snapshot,stripAssistant:text=>stripAssistant(text,model)};
 }
 
 export async function loadDialogueLibrary({language='es',base=DEFAULT_BASE,fetchImpl=globalThis.fetch?.bind(globalThis)}={}){
