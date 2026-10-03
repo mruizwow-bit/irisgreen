@@ -157,3 +157,24 @@ CI:
 `37102845076` · IN_PROGRESS al checkpoint.
 
 No esperar en chat.
+
+
+## Micro-bloque · intake fixture route contract
+
+Fallo anterior:
+el fixture de QA usaba rutas `#fragment`, pero el contrato del shell exige rutas locales activas que empiecen por `/`.
+
+Corrección:
+- solo fixture de QA;
+- componente/producto sin cambios.
+
+Commit:
+`043ecf85d8db436df0467234ca511d39309e6302`
+
+CI lanzado:
+`37103052693`
+
+Estado al checkpoint:
+`QUEUED`
+
+No esperar en chat.
