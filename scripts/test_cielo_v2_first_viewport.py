@@ -96,7 +96,10 @@ def main():
               if width<500:
                 assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+1"),(lang,width,'horizontal overflow')
               scene_box=page.locator('.skyv2-scene').bounding_box();assert scene_box
-              assert scene_box['width']/width>=0.94,(lang,width,scene_box)
+              main_box=page.locator('main#main').bounding_box();assert main_box
+              # Integrated R69 shell owns the page gutter. The sky scene must fill
+              # the usable main area, not the raw viewport outside that gutter.
+              assert scene_box['width']>=main_box['width']*.97,(lang,width,'scene/main width',scene_box,main_box)
 
               stars=page.locator('.skyv2-star-target').count()
               labels=page.locator('.skyv2-const-label').count()
