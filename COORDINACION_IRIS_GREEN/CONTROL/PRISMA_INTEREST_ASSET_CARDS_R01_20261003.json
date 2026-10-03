@@ -1,0 +1,19 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-INTEREST-ASSET-CARDS-R01-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "branch": "prisma/interest-asset-cards-foundation-r01-20261003",
+  "base_main": "411f8eb9cfd7c0baf17a9e6b773fdafc222502ef",
+  "target_gate": "PRISMA_INTEREST_ASSET_CARDS_FOUNDATION_R01_PASS",
+  "features": ["CARDS","RESPONSIVE_320_390","LIGHT_DARK","NATIVE_BUTTON_INTERACTION","FOCUS","FORCED_COLORS","ASSET_GATED_LAZY_LOADING"],
+  "solar_b01_global_pass": false,
+  "solar_asset_state": {
+    "mercurio": "KEEP_LOCKED_R04",
+    "sol": "R05_REWORK",
+    "venus": "R05_REWORK",
+    "tierra": "R05_REWORK"
+  },
+  "product_route_modified": false,
+  "main_modified": false
+}
