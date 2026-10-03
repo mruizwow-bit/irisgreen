@@ -33,8 +33,8 @@ def main():
 
     es=(PUBLIC/'es/biblioteca/index.html').read_text(encoding='utf-8')
     en=(PUBLIC/'en/everyday-life/index.html').read_text(encoding='utf-8')
-    card_rx=re.compile(r'class=["\'][^"\']*\\bvd-card\\b[^"\']*["\']',re.I)
-    meta_rx=re.compile(r'class=["\'][^"\']*\\bmeta\\b[^"\']*["\']',re.I)
+    card_rx=re.compile(r'class=["\'][^"\']*\bvd-card\b[^"\']*["\']',re.I)
+    meta_rx=re.compile(r'class=["\'][^"\']*\bmeta\b[^"\']*["\']',re.I)
     es_cards=len(card_rx.findall(es)); en_cards=len(card_rx.findall(en))
     es_meta=len(meta_rx.findall(es)); en_meta=len(meta_rx.findall(en))
     assert es_cards==48,('ES cards',es_cards)
