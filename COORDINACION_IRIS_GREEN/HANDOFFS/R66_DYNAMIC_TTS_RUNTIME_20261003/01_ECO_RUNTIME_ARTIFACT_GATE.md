@@ -351,7 +351,7 @@ Script privado recuperado:
 `sabik_en_retrain_exact_r02.py`
 
 Rutas históricas:
-- root `C:\Users\mruiz\SabikVoice`;
+- root `%SABIKVOICE_ROOT%`;
 - `SABIK_EN_SFT_R02_EXACT\checkpoint-epoch-0`;
 - `SABIK_EN_V1`.
 
@@ -387,7 +387,7 @@ Eco no inventa esa transición.
 `discover_private_models.py` puede ejecutarse directamente en la máquina histórica de entrenamiento.
 
 Default:
-`SABIKVOICE_ROOT=C:\Users\mruiz\SabikVoice`
+`SABIKVOICE_ROOT=%SABIKVOICE_ROOT%`
 
 Patrón default:
 `**/model.safetensors`
@@ -438,3 +438,37 @@ Por tanto sigue prohibido emitir:
 Después, sin etapa adicional:
 
 `NEXO E2E REAL → HUMAN QA MARÍA → MAIN`.
+
+
+## 17 · Final-model provenance cross-check
+
+Recovered finalization metadata and the already-verified 30-WAV package independently agree on the two product models.
+
+ES:
+- model ID `SABIK_ES_R01_FINAL`;
+- source `SABIK_ES_SFT_R01/checkpoint-epoch-0`;
+- final role `FINAL_MODELS/SABIK_ES_R01_FINAL`;
+- speaker `sabik_es`;
+- model.safetensors SHA `8100e9770471094efae26c186c9020056c35c55e9b0822aaec800f1affd1c291`;
+- config SHA `6c62a7c419fe2a72c64c51f2e143fc702ba552e12c31ff2bda31feeee1ab5a9e`.
+
+EN:
+- model ID `SABIK_EN_R02_FINAL`;
+- source `SABIK_EN_SFT_R02_EXACT/checkpoint-epoch-0`;
+- final role `FINAL_MODELS/SABIK_EN_R02_FINAL`;
+- speaker `sabik_en`;
+- model.safetensors SHA `3aec07b84f81b199af25e170a044b51c96b54f9ec24ed4b77bc3a13b4f47e9df`;
+- config SHA `6ac9cbf2727344d18fbb4d66ea8274b675f64a14b0737e9e28801181e96c0abd`.
+
+Both final models are therefore configured as:
+`custom_voice`.
+
+Evidence-only companion:
+`COORDINACION_IRIS_GREEN/HANDOFFS/R66_DYNAMIC_TTS_RUNTIME_20261003/02_ECO_FINAL_MODEL_PROVENANCE_RECOVERED.md`.
+
+Remaining blocker is no longer model identity/packaging research.
+It is execution access:
+- private ES bytes;
+- private EN bytes;
+- approved private STT adapter;
+- real A6 matrix.
