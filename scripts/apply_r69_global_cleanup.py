@@ -93,10 +93,12 @@ def main()->None:
     for rel in ('es/recursos/index.html','en/resources/index.html'):
         if RESOURCE_STAGE_RE.search((root/rel).read_text(encoding='utf-8')):
             raise AssertionError('Redundant resource age block remains: '+rel)
-    if workshop_age_removed!=2:
-        raise AssertionError(f'Expected 2 redundant Workshop age navs removed, got {workshop_age_removed}')
-    if workshop_note_removed!=2:
-        raise AssertionError(f'Expected 2 repetitive Workshop notes removed, got {workshop_note_removed}')
+    for rel in ('es/taller/index.html','en/workshop/index.html'):
+        workshop_text=(root/rel).read_text(encoding='utf-8')
+        if WORKSHOP_LOCAL_AGE_RE.search(workshop_text):
+            raise AssertionError('Redundant Workshop age navigation remains: '+rel)
+        if WORKSHOP_REPEAT_NOTE_RE.search(workshop_text):
+            raise AssertionError('Repetitive Workshop note remains: '+rel)
     crumbs_left=[]
     for p in sorted(set(htmls)):
         if CRUMB_RE.search(p.read_text(encoding='utf-8')):
