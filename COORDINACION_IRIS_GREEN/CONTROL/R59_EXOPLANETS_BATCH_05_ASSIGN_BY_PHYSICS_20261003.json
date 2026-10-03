@@ -1,0 +1,86 @@
+{
+  "schema": "iris-green.exoplanets.batch05.assign-by-physics.control.v1",
+  "date": "2026-10-03",
+  "gate": "EXOPLANETS_BATCH_05_ASSIGN_BY_PHYSICS_PASS",
+  "source": {
+    "authority": "NASA Exoplanet Archive",
+    "snapshot": "2026-09-24",
+    "local_file": "es/intereses/exoplanetas/exoplanetas.json"
+  },
+  "assignments": [
+    [
+      41,
+      "61 Vir c",
+      "UNKNOWN_APPEARANCE_REPRESENTATION",
+      "NEW_NEUTRAL"
+    ],
+    [
+      42,
+      "61 Vir d",
+      "UNKNOWN_APPEARANCE_REPRESENTATION",
+      "NEW_NEUTRAL"
+    ],
+    [
+      43,
+      "7 CMa b",
+      "COOL_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      44,
+      "7 CMa c",
+      "COOL_GAS_GIANT",
+      "REUSE_GENERIC_MASTER_09"
+    ],
+    [
+      45,
+      "70 Vir b",
+      "MASSIVE_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      46,
+      "75 Cet b",
+      "WARM_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      47,
+      "75 Cet c",
+      "COOL_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      48,
+      "8 UMi b",
+      "HOT_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      49,
+      "81 Cet b",
+      "MASSIVE_GAS_GIANT",
+      "NEW"
+    ],
+    [
+      50,
+      "91 Aqr b",
+      "WARM_GAS_GIANT",
+      "NEW"
+    ]
+  ],
+  "rules": [
+    "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
+    "UNKNOWN_APPEARANCE_REPRESENTATION_DOES_NOT_ASSERT_COMPOSITION",
+    "NO_AI_GENERATED_SCIENTIFIC_DATA"
+  ],
+  "qa": {
+    "technical": "10/10 PASS",
+    "data": "10/10 PASS",
+    "size": "1536x1536",
+    "format": "PNG RGBA",
+    "alpha": "0-255",
+    "icc": "sRGB embedded"
+  },
+  "status": "PASS"
+}
