@@ -33,6 +33,10 @@ body[data-ig-r49="1"] main :where(.chip,.pill,.badge,.tag,[class*="-chip"],[clas
 body[data-ig-r49="1"] main :where(input,select,textarea){
   background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important
 }
+body[data-ig-r49="1"] :is(input,textarea)::placeholder{
+  color:var(--ig-text-muted)!important;
+  opacity:1!important
+}
 /* Prevent legacy fallback flashes without ever hiding a whole page. */
 html[data-ig-r49-js="1"] body[data-ig-r49="1"] #jg-app>.jg-nojs,
 html[data-ig-r49-js="1"] body[data-ig-r49="1"] #im-app>.jg-nojs{display:none!important}
@@ -159,6 +163,16 @@ body[data-ig-r49-owner="R50_SUPPORT"] main .ig-search-shell{background:var(--ig-
 body[data-ig-r49-owner="R50_SUPPORT"] main .ig-search-input{background:transparent!important;color:var(--ig-text)!important;caret-color:var(--ig-text)!important}
 body[data-ig-r49-owner="R50_SUPPORT"] main .ig-filter-button{background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;border-color:var(--ig-border-control)!important}
 body[data-ig-r49-owner="R50_SUPPORT"] main .ig-filter-button[aria-pressed="true"]{background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;border-color:var(--ig-button-primary-bg)!important}
+
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article :where(p,span,small,li){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article :where(h2,h3,strong,label){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article a{
+  color:var(--ig-link)!important
+}
 
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx{--ink:var(--ig-text);--muted:var(--ig-text-muted);--line:var(--ig-separator);--glass:var(--ig-bg-surface);color:var(--ig-text)!important}
 body[data-ig-r49="1"][data-ig-profile="workspace"] main.igx :where(.topic-card,.media-card,.filter,.backtopics,.share-options button,.cromo,.bajar,.vacio,.finder input,.lang-switch a,.lang-switch span){
