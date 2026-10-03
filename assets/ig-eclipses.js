@@ -11,6 +11,9 @@
   var KEY = 'ig-eclipses-coleccion', MARCA = 'IRIS GREEN · irisgreen.eu';
   var A = window.Astronomy;
   var D = null, STARS = [];
+  var TYPE_ROOT = '/img/intereses/eclipses/canonical-r02/';
+  var TYPE_MANIFEST_URL = TYPE_ROOT + 'manifest.json', TYPE_MAP_URL = TYPE_ROOT + 'eclipse-type-visual-map.json';
+  var TYPESET = null;
   var reduce = function () { return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || document.documentElement.getAttribute('data-ig-motion') === 'off'; };
   var KIND = { total: T('total', 'total'), annular: T('anular', 'annular'), partial: T('parcial', 'partial'), anular: T('anular', 'annular'), parcial: T('parcial', 'partial'), hibrido: T('híbrido', 'hybrid'), penumbral: T('penumbral', 'penumbral') };
   var CITY_EN = { 'Sevilla': 'Seville', 'Observatorio del Teide': 'Teide Observatory' };
@@ -47,6 +50,69 @@
     if (lat < 30 && lat > 27 && lon < -12.5 && lon > -18.5) return 'Atlantic/Canary';
     if (lat > 35 && lat < 44.2 && lon > -9.5 && lon < 4.6) return 'Europe/Madrid';
     try { return Intl.DateTimeFormat().resolvedOptions().timeZone || 'UTC'; } catch (e) { return 'UTC'; }
+  }
+
+  /* ---------- visuales canónicos R02 ---------- */
+  function typeKey(domain, kind) {
+    domain = domain === 'sol' ? 'solar' : domain === 'luna' ? 'lunar' : domain;
+    kind = kind === 'partial' ? 'parcial' : kind === 'annular' ? 'anular' : kind;
+    var key = domain + ':' + kind;
+    return TYPESET && TYPESET.mapping[key] ? key : null;
+  }
+  function initTypeSet(manifest, map) {
+    if (!manifest || !map || !Array.isArray(manifest.canonical_assets) || !map.mapping || map.fallback !== null) { TYPESET = null; return; }
+    var byFile = {}, mapping = {}, sequences = {};
+    manifest.canonical_assets.forEach(function (a) {
+      byFile[a.file] = {
+        id: a.id, file: a.file, src: new URL(a.file, location.origin + TYPE_ROOT).pathname,
+        title_es: a.title_es, title_en: a.title_en, alt_es: a.alt_es, alt_en: a.alt_en
+      };
+    });
+    Object.keys(map.mapping).forEach(function (key) { if (byFile[map.mapping[key]]) mapping[key] = byFile[map.mapping[key]]; });
+    Object.keys(map.didactic_sequences || {}).forEach(function (key) { sequences[key] = new URL(map.didactic_sequences[key], location.origin + TYPE_ROOT).pathname; });
+    TYPESET = { manifest: manifest, map: map, mapping: mapping, sequences: sequences };
+  }
+  function canonicalFor(domain, kind) {
+    var key = typeKey(domain, kind);
+    return key ? { key: key, asset: TYPESET.mapping[key], sequence: TYPESET.sequences[key] || null } : null;
+  }
+  function sequenceAlt(key) {
+    return key === 'solar:total'
+      ? T('Secuencia didáctica genérica de las fases de un eclipse solar total.', 'Generic learning sequence showing the phases of a total solar eclipse.')
+      : T('Secuencia didáctica genérica de las fases de un eclipse lunar total.', 'Generic learning sequence showing the phases of a total lunar eclipse.');
+  }
+  function typeFigure(domain, kind, includeSequence) {
+    var item = canonicalFor(domain, kind); if (!item) return null;
+    var a = item.asset, title = EN ? a.title_en : a.title_es, alt = EN ? a.alt_en : a.alt_es;
+    var media = h('div', { class: 'ec-canonical-media' },
+      h('img', { class: 'ec-canonical-img', src: a.src, alt: alt, loading: 'lazy', decoding: 'async' }));
+    if (includeSequence && item.sequence) media.appendChild(h('img', { class: 'ec-canonical-sequence', src: item.sequence, alt: sequenceAlt(item.key), loading: 'lazy', decoding: 'async' }));
+    return h('figure', { class: 'ec-canonical', 'data-visual-key': item.key },
+      media,
+      h('figcaption', {}, h('strong', { text: title }), ' · ', T('Representación genérica, no a escala.', 'Generic representation, not to scale.')));
+  }
+  function buildTypeExplorer() {
+    var host = document.querySelector('#como .ec-hows'); if (!host || !TYPESET) return;
+    var order = ['solar:total','solar:parcial','solar:anular','lunar:total','lunar:parcial','lunar:penumbral'];
+    var slot = h('div', { class: 'ec-type-slot' });
+    var choices = h('div', { class: 'ec-type-choices', role: 'group', 'aria-label': T('Tipos de eclipse', 'Eclipse types') });
+    function show(key) {
+      Array.prototype.forEach.call(choices.querySelectorAll('button'), function (b) { b.setAttribute('aria-pressed', String(b.getAttribute('data-eclipse-type-key') === key)); });
+      var p = key.split(':'), fig = typeFigure(p[0], p[1], true);
+      slot.replaceChildren.apply(slot, fig ? [fig] : []);
+    }
+    order.forEach(function (key) {
+      var item = TYPESET.mapping[key]; if (!item) return;
+      var b = h('button', { type: 'button', 'data-eclipse-type-key': key, 'aria-pressed': 'false', text: EN ? item.title_en : item.title_es,
+        on: { click: function () { show(key); } } });
+      choices.appendChild(b);
+    });
+    var box = h('article', { class: 'ec-how ec-type-explorer', id: 'ec-type-explorer' },
+      h('div', { class: 'ec-type-explorer-head' },
+        h('h3', { text: T('Explora los tipos de eclipse', 'Explore eclipse types') }),
+        h('p', { text: T('Elige un tipo para revelar su geometría genérica.', 'Choose a type to reveal its generic geometry.') })),
+      choices, slot);
+    host.insertBefore(box, host.firstChild); show(order[0]);
   }
 
   /* ---------- astronomía ---------- */
@@ -292,6 +358,8 @@
       h('dl', { class: 'cn-facts' }, h('div', { class: 'cn-fact' }, h('dt', { text: T('Hora', 'Time') }), liveBits.clock), h('div', { class: 'cn-fact' }, h('dt', { text: T('Sol tapado', 'Sun covered') }), liveBits.cover), h('div', { class: 'cn-fact' }, h('dt', { text: T('Dónde está el Sol', 'Where the Sun is') }), liveBits.sun)),
       h('p', { class: 'cn-note' }, T('Horas oficiales de ese lugar (', 'Official local time there ('), tz === 'Atlantic/Canary' ? T('hora de Canarias', 'Canary Islands time') : tz === 'Europe/Madrid' ? T('hora peninsular', 'mainland Spain time') : tz, T('). Para planificar, consulta las horas del IGN. ', '). To plan, check the IGN’s times. '), h('a', { href: '#seguridad', text: T('Cómo mirarlo sin peligro', 'How to watch safely') })),
       h('div', { class: 'filters' }, mineBtn(id, past ? 'visto' : 'quiero')));
+    var canonical = typeFigure('solar', kind, false);
+    if (canonical) nowBox.appendChild(canonical);
   }
   function updateTime(silent) {
     if (!st.ecl) return;
@@ -516,13 +584,13 @@
   }
 
   /* ---------- arranque ---------- */
-  function begin(d, fondo) {
-    D = d;
+  function begin(d, fondo, visualManifest, visualMap) {
+    D = d; initTypeSet(visualManifest, visualMap);
     if (fondo && fondo.estrellas) STARS = fondo.estrellas.filter(function (s) { return s[2] <= 4.2; });
     d.solar.forEach(function (e) { ALL['sol-' + e.t.slice(0, 10)] = e; }); d.lunar.forEach(function (e) { ALL['luna-' + e.t.slice(0, 10)] = e; });
     var ok = !!A && !!(document.createElement('canvas').getContext);
     if (ok) {
-      buildUI();
+      buildUI(); buildTypeExplorer();
       var c = D.ciudades.filter(function (x) { return x.n === 'Madrid'; })[0];
       placeSel.value = String(D.ciudades.indexOf(c));
       setPlace({ city: c.n, lat: c.lat, lon: c.lon, tz: c.tz }, '2027-08-02');
@@ -534,8 +602,10 @@
   }
   Promise.all([
     fetch('/es/intereses/eclipses/eclipses.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }),
-    fetch('/es/intereses/sistema-solar/cielo-fondo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; })
-  ]).then(function (res) { begin(res[0], res[1]); }).catch(function () {
+    fetch('/es/intereses/sistema-solar/cielo-fondo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
+    fetch(TYPE_MANIFEST_URL, { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw new Error('manifest'); return r.json(); }).catch(function () { return null; }),
+    fetch(TYPE_MAP_URL, { credentials: 'same-origin' }).then(function (r) { if (!r.ok) throw new Error('map'); return r.json(); }).catch(function () { return null; })
+  ]).then(function (res) { begin(res[0], res[1], res[2], res[3]); }).catch(function () {
     var p = view && view.querySelector('.cn-stage-nojs'); if (p) p.textContent = T('No se han podido cargar los datos. Los mapas y las tablas de abajo siguen disponibles.', 'The data could not be loaded. The maps and tables below are still available.');
   });
 })();

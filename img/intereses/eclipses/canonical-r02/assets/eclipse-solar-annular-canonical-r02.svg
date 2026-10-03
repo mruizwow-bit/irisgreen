@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="solar-annular-r02-title solar-annular-r02-desc">
+<title id="solar-annular-r02-title">Annular solar eclipse generic geometry and observed-disk inset</title>
+<desc id="solar-annular-r02-desc">Educational representation with two linked views. Side view: the Moon is centered but the umbra does not reach Earth. Inset: the Moon appears smaller than the Sun, leaving a bright annulus. Not tied to any city or date.</desc>
+<defs>
+ <radialGradient id="sun" cx="48%" cy="45%" r="55%"><stop offset="0%" stop-color="#fffce5"/><stop offset="64%" stop-color="#ffe27a"/><stop offset="100%" stop-color="#eeb13a"/></radialGradient>
+ <radialGradient id="earth" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#75addc"/><stop offset="72%" stop-color="#346d9e"/><stop offset="100%" stop-color="#183e62"/></radialGradient>
+ <radialGradient id="moon" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#deded9"/><stop offset="78%" stop-color="#9d9e9b"/><stop offset="100%" stop-color="#70716f"/></radialGradient>
+ <radialGradient id="copper" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#df9774"/><stop offset="72%" stop-color="#b25b43"/><stop offset="100%" stop-color="#713128"/></radialGradient>
+ <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
+ </defs>
+
+<path d="M340 445 L1010 488 L1240 465 L1240 535 L1010 512 L340 555 Z" fill="#8397ad" opacity=".15"/>
+<path d="M340 472 L1010 496 L1240 484 L1240 516 L1010 504 L340 528 Z" fill="#030812" opacity=".24"/>
+<circle cx="245" cy="500" r="112" fill="url(#sun)"/>
+<circle cx="790" cy="500" r="32" fill="url(#moon)"/>
+<circle cx="1288" cy="500" r="74" fill="url(#earth)"/><circle cx="1288" cy="500" r="80" fill="none" stroke="#7fc2ee" stroke-width="4" opacity=".6"/>
+<path d="M357 455 L790 468 L1010 496 M357 545 L790 532 L1010 504" fill="none" stroke="#f3d77b" stroke-width="2" opacity=".27"/>
+<g transform="translate(1380 175)"><circle r="62" fill="url(#sun)"/><circle r="48" fill="#090d16"/></g>
+
+</svg>
