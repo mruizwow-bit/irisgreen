@@ -1,0 +1,33 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P16-HELP-MODAL-DIAGNOSTIC-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 16,
+  "branch": "prisma/369-help-modal-p16-diagnose-20261003",
+  "base_main": "25853db0971627af6ffcdb5edb90b0503f171226",
+  "scope": "DIAGNOSTIC_ONLY",
+  "surface": "#ig42-help .ig42-dialog",
+  "representative_routes": [
+    "/es/taller/arquitectura/",
+    "/en/workshop/architecture-plans/"
+  ],
+  "themes": ["light","dark"],
+  "viewport": 390,
+  "measures": [
+    "dialog background",
+    "heading text",
+    "body text",
+    "body link",
+    "close button",
+    "computed contrast ratio"
+  ],
+  "axioma_note": "Prisma measures presentation; Axioma remains authority for accessibility/conformance.",
+  "test_commit": "e5613c364222fe4a49c716cb4e79939903e87173",
+  "workflow_commit": "269da97b916b3086362bd06bce76606e40e68260",
+  "ci_run": 37107970632,
+  "ci_status": "IN_PROGRESS",
+  "main_modified": false,
+  "status": "P16_DIAGNOSTIC_RUNNING"
+}
