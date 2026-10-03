@@ -10,10 +10,13 @@
   "scope": "DIAGNOSTIC_ONLY",
   "surface": "#ig42-help .ig42-dialog",
   "representative_routes": [
-    "/es/taller/arquitectura/",
-    "/en/workshop/architecture-plans/"
+    "/es/taller/programacion/",
+    "/en/workshop/coding/"
   ],
-  "themes": ["light","dark"],
+  "themes": [
+    "light",
+    "dark"
+  ],
   "viewport": 390,
   "measures": [
     "dialog background",
@@ -26,8 +29,14 @@
   "axioma_note": "Prisma measures presentation; Axioma remains authority for accessibility/conformance.",
   "test_commit": "e5613c364222fe4a49c716cb4e79939903e87173",
   "workflow_commit": "269da97b916b3086362bd06bce76606e40e68260",
-  "ci_run": 37107970632,
+  "ci_run": 37108121166,
   "ci_status": "IN_PROGRESS",
   "main_modified": false,
-  "status": "P16_DIAGNOSTIC_RUNNING"
+  "status": "P16_DIAGNOSTIC_RERUN_ON_CANONICAL_R69_MOUNT",
+  "last_failure": {
+    "run_id": 37107970632,
+    "type": "DIAGNOSTIC_ROUTE_MOUNT_TIMING",
+    "detail": "Ayuda button not mounted on the first sampled route within timeout"
+  },
+  "test_fix_commit": "1c21f9daf3c3b56868c1e7a721607d23b3df73f8"
 }
