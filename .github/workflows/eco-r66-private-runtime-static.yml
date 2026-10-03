@@ -1,0 +1,22 @@
+name: Eco · R66 private runtime static gate
+on:
+  push:
+    branches: ['eco/r66-dynamic-tts-runtime-artifact-r01-20261003']
+    paths:
+      - 'tools/sabik-voice-runtime-r66/**'
+      - 'scripts/test_eco_r66_private_runtime_static.py'
+      - '.github/workflows/eco-r66-private-runtime-static.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Static private runtime contract gate
+        run: python scripts/test_eco_r66_private_runtime_static.py
