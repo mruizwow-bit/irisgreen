@@ -67,14 +67,14 @@ T = {
     'es': {
         'title': 'El taller', 'meta': 'El taller de Iris Green: 27 estudios para crear en el navegador, sin puntuaciones y sin subir nada. Dibujo, 3D, música, código, robótica, videojuegos, escritura y más.',
         'lede': 'Crea imágenes, música, construcciones, código e historias. Aquí están los 27 estudios, agrupados por lo que quieres hacer.',
-        'note': 'Sin puntuaciones ni rankings. Lo que haces no sale de tu dispositivo: lo guardas tú como archivo.',
+        'note': '',
         'para': 'Para ti', 'paraOpts': [('', 'Cualquier edad'), ('infancia', 'Infancia'), ('adolescencia', 'Adolescencia'), ('adultez', 'Adultez')], 'paraKey': 'para',
         'paraHelp': 'Cambia los ejemplos de partida. No se guarda y no quita herramientas.',
         'search': 'Buscar un estudio', 'searchPh': 'Por ejemplo: 3D, música, robot…',
         'start': 'Para empezar', 'startCta': 'Empezar', 'all': 'Todos los estudios', 'allFilter': 'Todos', 'filters': 'Filtrar por tipo de estudio',
         'new': 'Nuevo', 'count': '{n} estudios', 'none': 'Ningún estudio coincide con «{q}».', 'clear': 'Quitar la búsqueda',
-        'collection': 'Tus proyectos', 'collectionH': 'Dónde se guarda tu trabajo',
-        'collectionP': 'Mientras creas, tu trabajo vive solo en esta pestaña. No se envía a ningún sitio y el taller no lo guarda en el navegador. Para conservarlo, en el estudio abre Archivo y pulsa «Guardar proyecto»: se descarga un archivo a tu dispositivo. Para seguir otro día, abre ese archivo desde Archivo → Abrir.',
+        'collection': 'Tus proyectos', 'collectionH': 'Guardar y abrir',
+        'collectionP': 'Para conservar un proyecto, abre Archivo dentro del estudio y elige «Guardar proyecto». Para retomarlo otro día, usa Archivo → Abrir.',
         'skip': 'Saltar a los estudios',
         'profiles': 'Cinco formas de trabajar', 'profileCta': 'Ver los estudios', 'profileCount': '{n} estudios',
         'continueT': 'Seguir donde estabas', 'continueCta': 'Volver a {name}',
@@ -83,14 +83,14 @@ T = {
     'en': {
         'title': 'The workshop', 'meta': 'Iris Green’s workshop: 27 studios to create in the browser, with no scores and nothing uploaded. Drawing, 3D, music, code, robotics, video games, writing and more.',
         'lede': 'Create images, music, structures, code and stories. Browse all 27 studios, grouped by what you want to make.',
-        'note': 'No scores or rankings. What you make never leaves your device: you keep it as a file.',
+        'note': '',
         'para': 'For you', 'paraOpts': [('', 'Any age'), ('childhood', 'Childhood'), ('adolescence', 'Adolescence'), ('adulthood', 'Adulthood')], 'paraKey': 'for',
         'paraHelp': 'Changes the starting examples. Nothing is saved and no tools are taken away.',
         'search': 'Find a studio', 'searchPh': 'For example: 3D, music, robot…',
         'start': 'Good places to start', 'startCta': 'Start', 'all': 'All studios', 'allFilter': 'All', 'filters': 'Filter by kind of studio',
         'new': 'New', 'count': '{n} studios', 'none': 'No studio matches “{q}”.', 'clear': 'Clear the search',
-        'collection': 'Your projects', 'collectionH': 'Where your work is kept',
-        'collectionP': 'While you work, everything stays in this browser tab. It is not sent anywhere and the workshop does not store it in your browser. To keep it, open File in the studio and press “Save project”: a file downloads to your device. To carry on another day, open that file from File → Open.',
+        'collection': 'Your projects', 'collectionH': 'Save and open',
+        'collectionP': 'To keep a project, open File in the studio and choose “Save project”. To carry on another day, use File → Open.',
         'skip': 'Skip to the studios',
         'profiles': 'Five ways of working', 'profileCta': 'See the studios', 'profileCount': '{n} studios',
         'continueT': 'Carry on where you were', 'continueCta': 'Back to {name}',
@@ -348,7 +348,7 @@ def page(lang: str) -> str:
         + f'<p id="igk-status" class="igk-status" role="status" aria-live="polite"></p>{groups}</section>'
         # 8 · proyectos y guardado, en panel
         + f'<details class="igk-collection"><summary>{e(t["collection"])}</summary><div class="igt-sec"><h2>{e(t["collectionH"])}</h2><p>{e(t["collectionP"])}</p></div></details>'
-        + f'<p class="igk-note">{e(t["note"])}</p>'
+        
         + '</main>' + FOOTER[lang].replace('{credits}', '')
         + '<script id="igk-i18n" type="application/json">'
         + json.dumps({'count': t['count'], 'none': t['none'], 'key': t['paraKey'], 'contCta': t['continueCta'],
