@@ -74,6 +74,12 @@ export function createSabikConversation({
    return {answer:'',sources:[],result:null,kind:'repeat',intent:parsed.intent?.id||'',slots:parsed.slots||{}};
   }
 
+  if(parsed?.action==='listen_again'){
+   onState('PRESENTE',{phase:'awaiting-followup',inputMode});
+   if(ticket===serial)controller=null;
+   return {answer:'',sources:[],result:null,kind:'listen-again',intent:parsed.intent?.id||'',slots:parsed.slots||{}};
+  }
+
   if(parsed?.action==='respond'){
    const answer=dialogue?.prompt?.(parsed.promptKey,{slots:parsed.slots})||'';
    const out=direct(answer,{raw,inputMode,locale,audience,kind:'social',intent:parsed.intent?.id||'',slots:parsed.slots||{}});
