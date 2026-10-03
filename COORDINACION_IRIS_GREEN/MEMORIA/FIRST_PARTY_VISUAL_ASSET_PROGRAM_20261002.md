@@ -872,3 +872,86 @@ Siguiente:
 **Astra + María + Lumen → review de los 10 en contact sheet.**
 
 No review cuerpo por cuerpo.
+
+
+## B03 · REWORK QUIRÚRGICO 2/10 · FINAL REVIEW · 03/10/2026
+
+Entrada review:
+- Ceres → KEEP
+- Haumea → REWORK
+- Makemake → KEEP
+- Eris → KEEP
+- Luna → KEEP
+- Io → KEEP
+- Europa → KEEP
+- Ganímedes → REWORK
+- Titán → KEEP
+- Encélado → KEEP
+
+Regla:
+`8 KEEP + 2 REWORK`
+No regenerar los 8 KEEP.
+
+Rework ejecutado:
+### Haumea
+- mantiene forma alargada/elipsoidal;
+- blanco/gris helado;
+- microrelieve fuertemente reducido;
+- sin cráteres claramente definidos;
+- sin cartografía/rasgos específicos;
+- sin anillo en master base;
+- contrato:
+  `UNKNOWN_SURFACE_ELONGATED_ICY_REPRESENTATION`.
+
+### Ganímedes
+- cuerpo helado;
+- regiones oscuras craterizadas;
+- regiones claras/acanaladas más legibles;
+- rayos discretos;
+- sin océano/aurora/campo magnético horneado;
+- contrato:
+  `ICY_DARK_LIGHT_TERRAIN_REPRESENTATION`.
+
+Los 8 KEEP solo reciben limpieza técnica de componentes alpha espurios; no rediseño visual.
+
+Library:
+`/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final Review/`
+
+Masters finales para review:
+- Ceres · `75e103718247528863c80ad8aa213bc0083e74fb420d0073ce64675c8fc7beb9`
+- Haumea · `ee969ade1fb69a433b69e2fe7ce3ebd152ce04752a686533072c33848fac9ec2`
+- Makemake · `f2bbc1f176a6bc6c06bff97950ed3dd285849a1a32b3390ec2aa38219817c9eb`
+- Eris · `f76c70b9e844071364e533f01cb013beb460fdcea6f8158c91bbfdb97157f2b6`
+- Luna · `9fa00c11a11ed0db21fd44b2cbe85b191557fe5538b24117a048a0c74c58bdcc`
+- Io · `aa1b05a8aab22aeb7c5236056c57789ca4dc78c85d2e355bdf859aa055e09793`
+- Europa · `9d122e0dc434d84968e9edccb5d2673d906d31becd23bf045c6c3573ddda275e`
+- Ganímedes · `e5921eb319efa9211f5a3269cb6a1e1a678612fc9df50c3fcb863b396ca738a1`
+- Titán · `099732e31d2401f6d0c6e29870395484fb26f5fe2ef60becd44ea3ed28c5e4c7`
+- Encélado · `6c3b7986a09b63cb792354c2d68ec27ff2dc256e1df94071197eb87fe77f1204`
+
+Contrato técnico 10/10:
+- 1536×1536;
+- PNG RGBA;
+- alpha 0–255;
+- sRGB ICC presente;
+- fondo transparente;
+- un cuerpo por archivo.
+
+Contact sheet final review:
+`SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET_FINAL_REVIEW.png`
+
+SHA-256:
+`0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578`
+
+QA:
+`SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY_FINAL.png`
+
+SHA-256:
+`0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730`
+
+Salida:
+`SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_FINAL_REVIEW`
+
+Siguiente:
+Astra + María + Lumen → review final de tanda.
+No nueva generación de los 8 KEEP.

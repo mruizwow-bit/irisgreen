@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green.solar-b03-final-review.v1",
+  "date": "2026-10-03",
+  "owner": "LUMEN_A7",
+  "gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_READY_FOR_FINAL_REVIEW",
+  "keep": [
+    "Ceres",
+    "Makemake",
+    "Eris",
+    "Luna",
+    "Io",
+    "Europa",
+    "Titán",
+    "Encélado"
+  ],
+  "rework_completed": [
+    "Haumea",
+    "Ganímedes"
+  ],
+  "library_path": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final Review",
+  "contact_sheet_sha256": "0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578",
+  "technical_qa_sha256": "0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730",
+  "technical": {
+    "count": 10,
+    "width": 1536,
+    "height": 1536,
+    "mode": "RGBA",
+    "alpha": [
+      0,
+      255
+    ],
+    "srgb_icc": true
+  },
+  "next_owner": "ASTRA_MARIA_LUMEN_FINAL_VISUAL_REVIEW"
+}
