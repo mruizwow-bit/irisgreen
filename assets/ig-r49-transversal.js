@@ -174,9 +174,8 @@ function ensureSkip(){
 function ensurePageTools(){
  if(D.body.hasAttribute('data-ig-home-version'))return;
  var main=D.querySelector('main');if(!main)return;
- if(!main.querySelector(':scope > .crumb')){
-  main.prepend(h('nav',{class:'crumb','aria-label':en()?'Breadcrumb':'Ruta'},h('a',{href:en()?'/en/':'/',text:tr().home})));
- }
+ /* #369 P20/P21: global navigation already supplies context.
+    Do not recreate legacy Home/Inicio breadcrumbs after the build removes them. */
  if(D.body.getAttribute('data-ig-r49-owner')!=='R50_DATA'||D.body.getAttribute('data-ig-profile')!=='browse'||main.querySelector('[data-ig-data-search]'))return;
  var first=main.querySelector('.cards'),heading=main.querySelector('h1');if(!first||!heading)return;
  var groupHeading=first.previousElementSibling;
