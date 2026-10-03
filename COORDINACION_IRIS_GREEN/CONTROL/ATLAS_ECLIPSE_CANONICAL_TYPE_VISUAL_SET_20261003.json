@@ -1,0 +1,45 @@
+{
+  "schema": "iris-green.control.eclipse-canonical-type-visual-set.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
+  "source_review": {
+    "issue": 370,
+    "comment_id": 5966236303
+  },
+  "set_count": 6,
+  "assets": [
+    "eclipse-solar-total-canonical-r01.svg",
+    "eclipse-solar-partial-canonical-r01.svg",
+    "eclipse-solar-annular-canonical-r01.svg",
+    "eclipse-lunar-total-canonical-r01.svg",
+    "eclipse-lunar-partial-canonical-r01.svg",
+    "eclipse-lunar-penumbral-canonical-r01.svg"
+  ],
+  "class": "REPRESENTATION",
+  "reuse_model": "TYPE_DRIVEN",
+  "related_catalog": {
+    "events": 458,
+    "class": "CALCULATION"
+  },
+  "accessibility": {
+    "visible_text_in_asset": false,
+    "es_en_metadata_in_manifest": true
+  },
+  "integrity": {
+    "sha256_file": true,
+    "manifest": true,
+    "provenance": true,
+    "contact_sheet": true
+  },
+  "constraints": {
+    "event_specific_maps": false,
+    "event_specific_dates": false,
+    "event_specific_percentages": false,
+    "local_visibility_claims": false,
+    "runtime_touched": false,
+    "main_touched": false
+  },
+  "branch": "atlas/eclipse-canonical-type-visual-set-20261003",
+  "status": "READY_FOR_REVIEW"
+}
