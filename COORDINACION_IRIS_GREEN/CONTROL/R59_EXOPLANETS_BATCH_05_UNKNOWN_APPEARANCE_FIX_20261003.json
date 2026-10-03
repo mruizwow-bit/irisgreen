@@ -1,0 +1,52 @@
+{
+  "schema": "iris-green.r59.exoplanets-batch05-unknown-fix.v1",
+  "date": "2026-10-03",
+  "marker": "EXOPLANETS_BATCH_05_PASS_AFTER_UNKNOWN_APPEARANCE_FIX",
+  "rework": [
+    41,
+    42
+  ],
+  "keep_byte_identical": [
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50
+  ],
+  "unknown_contract": {
+    "classification": "UNKNOWN_APPEARANCE_REPRESENTATION",
+    "forbidden_assertions": [
+      "atmosphere",
+      "clouds",
+      "ocean",
+      "rocky surface",
+      "ice",
+      "lava",
+      "rings"
+    ],
+    "allowed_differences": [
+      "lighting orientation",
+      "contrast",
+      "subtle gray-blue tonal gradient"
+    ]
+  },
+  "data_policy": {
+    "snapshot": "NASA Exoplanet Archive PSCompPars local 2026-09-24",
+    "radius_status": "composite",
+    "teq_status": "composite",
+    "ui_41_42": {
+      "radius": "—",
+      "teq": "—"
+    }
+  },
+  "qa": {
+    "keep_byte_identical": true,
+    "technical": "10/10 PASS",
+    "data": "10/10 PASS",
+    "unknown_contract": "PASS"
+  },
+  "status": "PASS"
+}
