@@ -53,6 +53,13 @@ def main():
             target='.ig-home-v4-wrap' if name=='home' else 'main'
             main_box=box(page,target)
             footer=box(page,'.ig-r49-global-footer .ig-r49-footer-inner')
+            viewport=page.evaluate("""() => {
+              const de=document.documentElement,b=document.body,dr=de.getBoundingClientRect(),br=b.getBoundingClientRect();
+              return {innerWidth:innerWidth,clientWidth:de.clientWidth,scrollWidth:de.scrollWidth,
+                      html:{x:dr.x,width:dr.width},body:{x:br.x,width:br.width},
+                      bodyWidth:getComputedStyle(b).width,htmlWidth:getComputedStyle(de).width,
+                      overflowY:getComputedStyle(de).overflowY};
+            }""")
             assert main_box is not None,(name,width,'main')
             profile=page.locator('body').get_attribute('data-ig-profile') or ''
             rows.append({
@@ -62,6 +69,7 @@ def main():
               'main_right':round(main_box['x']+main_box['width'],2),
               'footer_left':footer['x'] if footer else None,
               'footer_right':round(footer['x']+footer['width'],2) if footer else None,
+              'viewport':viewport,
               'http_errors':bad
             })
             if width==1440 and name in ('home','research','workshop','games'):
@@ -83,15 +91,16 @@ def main():
         else: hit[1]+=1
       return [{'value':round(v,2),'count':n} for v,n in out]
     refs={}
+    axis_failures=[]
     for width in (1440,390):
       ref=next(r for r in rows if r['surface']=='conditions' and r['width']==width)
       refs[width]={'left':ref['main_left'],'right':ref['main_right']}
       for r in [x for x in rows if x['width']==width]:
-        assert abs(r['main_left']-ref['main_left'])<=3,(width,r['surface'],'main left',r['main_left'],ref['main_left'])
-        assert abs(r['main_right']-ref['main_right'])<=3,(width,r['surface'],'main right',r['main_right'],ref['main_right'])
+        if abs(r['main_left']-ref['main_left'])>3: axis_failures.append((width,r['surface'],'main left',r['main_left'],ref['main_left']))
+        if abs(r['main_right']-ref['main_right'])>3: axis_failures.append((width,r['surface'],'main right',r['main_right'],ref['main_right']))
         if r['footer_left'] is not None:
-          assert abs(r['footer_left']-ref['main_left'])<=3,(width,r['surface'],'footer left',r['footer_left'],ref['main_left'])
-          assert abs(r['footer_right']-ref['main_right'])<=3,(width,r['surface'],'footer right',r['footer_right'],ref['main_right'])
+          if abs(r['footer_left']-ref['main_left'])>3: axis_failures.append((width,r['surface'],'footer left',r['footer_left'],ref['main_left']))
+          if abs(r['footer_right']-ref['main_right'])>3: axis_failures.append((width,r['surface'],'footer right',r['footer_right'],ref['main_right']))
         assert not r['http_errors'],(width,r['surface'],'http',r['http_errors'])
     report={
       'gate':'ISSUE_369_P46_COMMON_GRID_PASS',
@@ -104,7 +113,8 @@ def main():
       'mobile_right_clusters':clusters([r['main_right'] for r in mobile]),
       'footer_desktop_left_clusters':clusters([r['footer_left'] for r in desktop if r['footer_left'] is not None]),
       'rows':rows,
-      'passed':True
+      'axis_failures':axis_failures,
+      'passed':not axis_failures
     }
     (OUT/'qa.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps(report,ensure_ascii=False,indent=2))
