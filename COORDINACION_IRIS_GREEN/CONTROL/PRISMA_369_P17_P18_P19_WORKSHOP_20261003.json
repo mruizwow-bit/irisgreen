@@ -1,0 +1,55 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P17-P18-P19-WORKSHOP-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [
+    17,
+    18,
+    19
+  ],
+  "branch": "prisma/369-workshop-p17-p18-p19-20261003",
+  "base_commit": "b9dfd42fa9d2acdd84e61b9ef61ba8c74cbce443",
+  "repair": {
+    "p17_js": "d39a9bedd5baa9b3d77b8b046f8f6c0414ff9d76",
+    "p17_css": "ec086e395bcb415d4e09ead2458dd67492bd383c",
+    "p18_p19_generator": "93add7ece66d5798f426ef30775e10030b249ddd",
+    "p18_css": "437e149f4e972dfcb4f6199a9824b8a7a3b10bfd"
+  },
+  "qa": {
+    "run_id": 37110911081,
+    "job_id": 111168476714,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P17_P18_P19_WORKSHOP_PASS",
+    "help_order": [
+      "what-it-is",
+      "how-to-use",
+      "keyboard-shortcuts",
+      "technical-detail",
+      "files-and-links"
+    ],
+    "project_panel": {
+      "max_width_px": 738,
+      "closed_height_px": 46,
+      "open_height_max_px": 149.81
+    },
+    "languages": [
+      "es",
+      "en"
+    ],
+    "widths": [
+      1440,
+      390
+    ],
+    "repeated_launcher_copy": 0
+  },
+  "artifact": {
+    "id": 11269602636,
+    "name": "prisma-369-workshop-p17-p18-p19",
+    "sha256": "efe5f53d68678bae878aaff1231691e0a5a2a882ddb437c656629f73dcd8a56c"
+  },
+  "main_modified": false,
+  "next_owner": "NEXO_FOR_RECONCILIATION",
+  "status": "PRISMA_P17_P18_P19_REPAIRED_READY_FOR_NEXO_RECONCILIATION"
+}
