@@ -122,3 +122,38 @@ Digest:
 El shell queda listo para recibir assets aprobados uno a uno o por tanda.
 No hace falta esperar al catálogo completo.
 No se conecta ningún visual hasta `assetStatus=approved`.
+
+
+## Micro-bloque · approved-only asset intake
+
+Fecha: 03/10/2026
+
+Objetivo:
+probar el camino real `pending → approved` antes de conectar masters astronómicos reales.
+
+Se añade fixture no productivo con:
+- 1 asset local de QA marcado `approved`;
+- 4 slots `pending`;
+- 320 / 390 / 1440.
+
+Contrato esperado:
+- approved crea un único `<img>`;
+- `loading=lazy`;
+- `decoding=async`;
+- entra en IntersectionObserver;
+- pending crea 0 `<img>`;
+- pending genera 0 requests de asset.
+
+Archivos:
+- `tools/prisma/space-section-approved-fixture.html`
+- `scripts/test_prisma_space_asset_intake.py`
+
+Commits:
+- fixture: `bf25feb79da90c96f73e434e9621c9753c4d5266`
+- test: `0b6e50db78f10b128168bf207f160fcd1bdf2aee`
+- workflow gate: `6ae21766a0a99aec4da695d48c47fd6901655c12`
+
+CI:
+`37102845076` · IN_PROGRESS al checkpoint.
+
+No esperar en chat.
