@@ -1,0 +1,182 @@
+{
+  "schema": "iris-green/sabik-dialogue-model/v1",
+  "language": "es",
+  "assistant_aliases": [
+    "sabik", "sábik", "savik", "sabick", "sabyck",
+    "xavid", "xavik", "xabik", "savid", "tanik", "tanick"
+  ],
+  "policies": {
+    "one_question_per_turn": true,
+    "confirm_only_when_material": true,
+    "prompt_selection": "session_cycle",
+    "preserve_topic_across_followups": true,
+    "retrieve_only_when_required_slots_ready": true,
+    "max_session_turns": 8
+  },
+  "intents": [
+    {
+      "id": "social.greeting",
+      "priority": 100,
+      "patterns": [
+        "^(?:hola|buenas|buenos dias|buenos días|buenas tardes|buenas noches)$"
+      ],
+      "prompt": "social.greeting.response",
+      "action": "respond"
+    },
+    {
+      "id": "social.attention",
+      "priority": 100,
+      "patterns": [
+        "^(?:responde|contesta|escucha|me oyes|me escuchas|estas ahi|estás ahí|sigues ahi|sigues ahí)$"
+      ],
+      "prompt": "social.attention.response",
+      "action": "respond"
+    },
+    {
+      "id": "social.thanks",
+      "priority": 100,
+      "patterns": [
+        "^(?:gracias|muchas gracias|vale gracias|perfecto gracias)$"
+      ],
+      "prompt": "social.thanks.response",
+      "action": "respond"
+    },
+    {
+      "id": "search.topic",
+      "priority": 90,
+      "patterns": [
+        "^(?:necesito|quiero|quisiera|me gustaria|me gustaría)?\\s*(?:buscar|encontrar|consultar|informarme sobre|informacion sobre|información sobre|saber(?: mas| más)? sobre)\\s+(?<topic>.+)$",
+        "^(?:busca|buscar|buscame|búscame|encuentra|hablame de|háblame de)\\s+(?<topic>.+)$"
+      ],
+      "required_slots": ["topic", "aspect"],
+      "when_missing": {
+        "topic": "search.ask_topic",
+        "aspect": "search.ask_aspect"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "information.definition",
+      "priority": 85,
+      "patterns": [
+        "^(?:que es|qué es|que significa|qué significa|explicame|explícame|define)\\s+(?:el |la |los |las )?(?<topic>.+)$"
+      ],
+      "fixed_slots": {
+        "aspect": "definition"
+      },
+      "required_slots": ["topic"],
+      "action": "retrieve"
+    },
+    {
+      "id": "information.aspect",
+      "priority": 80,
+      "patterns": [
+        "^(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|colegio|escuela|trabajo|investigación|investigacion)(?:\\s+(?:de|del|sobre)\\s+(?<topic>.+))?$"
+      ],
+      "required_slots": ["topic", "aspect"],
+      "when_missing": {
+        "topic": "search.ask_topic"
+      },
+      "action": "retrieve"
+    },
+    {
+      "id": "conversation.repeat",
+      "priority": 95,
+      "patterns": [
+        "^(?:repite|repitelo|repítelo|otra vez|puedes repetirlo|¿puedes repetirlo)$"
+      ],
+      "action": "repeat"
+    },
+    {
+      "id": "conversation.stop",
+      "priority": 110,
+      "patterns": [
+        "^(?:para|detente|deten|detén|termina|salir|basta)$"
+      ],
+      "action": "stop"
+    }
+  ],
+  "prompts": {
+    "social.greeting.response": {
+      "initial": [
+        "Hola. ¿Qué necesitas?",
+        "Hola. Dime, ¿qué necesitas?",
+        "Hola. Te escucho. ¿Qué necesitas?",
+        "Hola. ¿En qué puedo ayudarte?"
+      ],
+      "reprompt": [
+        "Dime qué necesitas.",
+        "Te escucho."
+      ]
+    },
+    "social.attention.response": {
+      "initial": [
+        "Sí. Te escucho.",
+        "Aquí estoy. Te escucho.",
+        "Sí, dime.",
+        "Te escucho. Continúa."
+      ],
+      "reprompt": [
+        "Te escucho.",
+        "Dime."
+      ]
+    },
+    "social.thanks.response": {
+      "initial": [
+        "De nada.",
+        "Claro.",
+        "Cuando quieras."
+      ],
+      "reprompt": []
+    },
+    "search.ask_topic": {
+      "initial": [
+        "Claro. ¿Sobre qué tema quieres buscar?",
+        "Sí. ¿Qué tema quieres consultar?",
+        "De acuerdo. ¿Qué quieres buscar?",
+        "Perfecto. ¿Sobre qué necesitas información?"
+      ],
+      "reprompt": [
+        "¿Qué tema quieres buscar?",
+        "Dime el tema que quieres consultar."
+      ]
+    },
+    "search.ask_aspect": {
+      "initial": [
+        "Claro. ¿Qué necesitas saber sobre {topic}?",
+        "Sí. ¿Buscas algo en concreto sobre {topic}?",
+        "De acuerdo. ¿Qué aspecto de {topic} quieres consultar?",
+        "Perfecto. ¿Qué quieres saber sobre {topic}?",
+        "Claro. Dime qué te interesa de {topic}.",
+        "Sí. ¿Qué parte de {topic} quieres ver?"
+      ],
+      "reprompt": [
+        "¿Qué quieres saber sobre {topic}?",
+        "Dime qué aspecto de {topic} necesitas.",
+        "¿Buscas algo en concreto sobre {topic}?"
+      ]
+    },
+    "search.no_result": {
+      "initial": [
+        "Sigo contigo en {topic}. ¿Puedes decirme de otra forma qué quieres saber?",
+        "No he encontrado esa parte todavía. ¿Qué necesitas saber exactamente sobre {topic}?",
+        "Mantengo {topic} como tema. ¿Puedes concretar un poco más?"
+      ],
+      "reprompt": [
+        "¿Qué necesitas saber sobre {topic}?",
+        "Puedes decirlo con otras palabras."
+      ]
+    },
+    "clarify.not_understood": {
+      "initial": [
+        "No lo he entendido bien. ¿Puedes repetirlo?",
+        "Creo que no te he entendido. ¿Puedes decirlo otra vez?",
+        "No estoy seguro de haberlo oído bien. ¿Puedes repetirlo?"
+      ],
+      "reprompt": [
+        "¿Puedes repetirlo?",
+        "Dímelo otra vez, por favor."
+      ]
+    }
+  }
+}
