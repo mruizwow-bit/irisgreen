@@ -95,8 +95,8 @@
             </div>
             <h2 style="margin: 0 0 8px; font-family: 'Newsreader', serif; font-weight: 400; font-size: clamp(26px, 3vw, 36px); letter-spacing: -0.015em;">{{ b.title }}</h2>
             <p style="margin: 0 0 16px; color: #435268; max-width: 40em; text-wrap: pretty;">{{ b.desc }}</p>
-            <sc-if value="{{ b.desc2 }}" hint-placeholder-val="">
-              <p style="margin: 0 0 16px; color: #435268; max-width: 40em; text-wrap: pretty;">{{ b.desc2 }}</p>
+            <sc-if value="{{ b.desc2Strong }}" hint-placeholder-val="">
+              <p style="margin: 0 0 16px; color: #435268; max-width: 40em; text-wrap: pretty;">{{ b.desc2Before }}<strong>{{ b.desc2Strong }}</strong>{{ b.desc2After }}</p>
             </sc-if>
 
             <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 18px;">
@@ -112,7 +112,6 @@
               <sc-for list="{{ b.links }}" as="l" hint-placeholder-count="4">
                 <a href="{{ l.url }}" target="_blank" rel="noopener" style="background: {{ l.bg }}; color: {{ l.color }}; border: 1px solid {{ l.border }}; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 15px;">{{ l.label }}</a>
               </sc-for>
-              <a href="{{ b.previewUrl }}" style="background: transparent; border: 1px solid rgba(111,95,192,0.5); color: #5a49a8; border-radius: 999px; padding: 10px 18px; font-weight: 700; font-size: 15px;">{{ b.previewLabel }}</a>
             </div>
 
             <p style="margin: 14px 0 0; font-size: 14px; color: #5a6675; max-width: 46em;">{{ b.note }}</p>
@@ -205,7 +204,7 @@ const STR = {
     navHome: "Inicio", navVideos: "Vídeos", navAsk: "¿Qué puedo pedir?", navTopics: "Temas", reading: "Lectura",
     readingPanel: "Lectura accesible", textSize: "Tamaño del texto", reset: "Restablecer",
     eyebrow: "Libros de Iris Green", title: "Los libros",
-    lede: "Puedes leer una muestra de cada libro antes de comprarlo. Aquí puedes ver de qué trata, para quién está pensado y en qué formatos e idiomas está disponible.",
+    lede: "Consulta cada libro, abre una muestra y revisa sus formatos, idiomas y enlaces de compra.",
     preview: "Leer las primeras páginas",
     coming: "Próximamente", comingTitle: "En preparación",
     whyTitle: "Por qué hay libros en una web gratuita",
@@ -224,7 +223,7 @@ const STR = {
       {
         title: "Autismo en la vida diaria",
         desc: "El libro cuenta el día a día de Lily, Melissa y Oliver. Aparecen situaciones como la ropa que le molesta a Lily, los cambios de planes, el ruido, las conversaciones y las relaciones con otras personas. También hay juegos, amistades y momentos en familia.",
-        desc2: "Cada tema incluye una explicación y las <strong>Notas de Melissa</strong>, con señales que se pueden observar y apoyos que pueden ayudar.",
+        desc2Before: "Cada tema incluye una explicación y las ", desc2Strong: "Notas de Melissa", desc2After: ", con señales que se pueden observar y apoyos que pueden ayudar.",
         prices: [["Amazon.es · impreso", "13,95 €"], ["Kindle ES", "5,95 €"], ["Edición EN", "según tienda"]],
         note: "Kindle Unlimited disponible. Lulu e IngramSpark se incorporarán cuando estén activas las nuevas ediciones.",
       }
@@ -236,7 +235,7 @@ const STR = {
     navHome: "Home", navVideos: "Videos", navAsk: "What can I ask for?", navTopics: "Topics", reading: "Reading",
     readingPanel: "Accessible reading", textSize: "Text size", reset: "Reset",
     eyebrow: "Books by Iris Green", title: "The books",
-    lede: "You can read a sample of each book before buying it. Here you can see what each book is about, who it is intended for, and which formats and languages are available.",
+    lede: "Explore each book, open a sample, and check its formats, languages and purchase links.",
     preview: "Read the first pages",
     coming: "Coming soon", comingTitle: "In preparation",
     whyTitle: "Why a free site has books",
@@ -255,7 +254,7 @@ const STR = {
       {
         title: "Autism in Everyday Life",
         desc: "The book follows the everyday lives of Lily, Melissa and Oliver. It includes situations such as clothes that bother Lily, changes of plan, noise, conversations and relationships with other people. There are also games, friendships and family moments.",
-        desc2: "Each topic includes an explanation and <strong>Melissa&#8217;s Notes</strong>, with signs that can be noticed and forms of support that may help.",
+        desc2Before: "Each topic includes an explanation and ", desc2Strong: "Melissa’s Notes", desc2After: ", with signs that can be noticed and forms of support that may help.",
         prices: [["Amazon · print", "€13.95"], ["Kindle", "€5.95"], ["EN edition", "store price"]],
         note: "Available on Kindle Unlimited. Lulu and IngramSpark will be added once the new editions are live.",
       }
@@ -339,7 +338,7 @@ class Component extends DCLogic {
       tCreditsTitle: T.creditsTitle, tCredits: T.credits,
 
       books: T.books.map((b, n) => ({
-        title: b.title, desc: b.desc, desc2: b.desc2 || "", note: b.note,
+        title: b.title, desc: b.desc, desc2Before: b.desc2Before || "", desc2Strong: b.desc2Strong || "", desc2After: b.desc2After || "", note: b.note,
         cover: COVERS[n].cover, coverAlt: COVERS[n].alt, coverWidth: 512, coverHeight: n === 0 ? 512 : 725,
         badge: T.published, langs: T.langs,
         prices: b.prices.map((p) => ({ where: p[0], price: p[1] })),
@@ -349,8 +348,6 @@ class Component extends DCLogic {
           color: k === 0 ? "#fff" : "#17395c",
           border: k === 0 ? "#a8336f" : "rgba(23,57,92,0.14)"
         })),
-        previewLabel: T.preview,
-        previewUrl: COVERS[n].muestra
       })),
 
       musicOpen: st.music,

@@ -5,13 +5,6 @@ from html import escape
 from pathlib import Path
 
 
-def navigation(lang, current):
-    rows = [('games', '/en/resources/games/' if lang == 'en' else '/es/recursos/juegos/', 'Games' if lang == 'en' else 'Juegos'),
-            ('workshop', '/en/workshop/' if lang == 'en' else '/es/taller/', 'Workshop' if lang == 'en' else 'Taller'),
-            ('visual', '/en/resources/' if lang == 'en' else '/es/recursos/', 'Pictograms and visual supports' if lang == 'en' else 'Pictogramas y apoyos visuales')]
-    return '<nav class="ig-activity-nav" aria-label="'+('Activities and tools' if lang == 'en' else 'Actividades y herramientas')+'">'+''.join(
-        '<a href="'+url+'"'+(' aria-current="page"' if key == current else '')+'>'+label+'</a>' for key,url,label in rows)+'</nav>'
-
 
 def card(url, title, description, cta):
     return '<li><a class="ig-activity-card" href="'+url+'"><h2>'+escape(title)+'</h2><p>'+escape(description)+'</p><span>'+escape(cta)+' →</span></a></li>'
@@ -35,11 +28,11 @@ def run(root):
             assert (root/base/slug/'index.html').is_file(), base+slug
         page=root/base/'index.html'
         text=page.read_text(encoding='utf-8')
-        inner = navigation(lang,'visual')+'<header class="ig-activity-head"><h1>'+title+'</h1><p>'+desc+'</p></header><ul class="ig-activity-grid">'+''.join(card('/'+base+slug,name,info,cta) for slug,name,info,cta in tools)+'</ul>'
+        inner = '<header class="ig-activity-head"><h1>'+title+'</h1><p>'+desc+'</p></header><ul class="ig-activity-grid">'+''.join(card('/'+base+slug,name,info,cta) for slug,name,info,cta in tools)+'</ul>'
         text=re.sub(r'(<main\b[^>]*>).*?</main>',lambda m:m.group(1)+inner+'</main>',text,count=1,flags=re.S)
         text=re.sub(r'<title>.*?</title>','<title>'+title+' | Iris Green</title>',text,count=1,flags=re.S)
         page.write_bytes(text.encode())
-        # Shared navigation lives on the three hubs and their visual/money tools.
+        # #369 P12: global navigation already provides context; strip any legacy activity nav.
         pages=[(root/workshop/'index.html','workshop'),(root/base/'games/index.html' if en else root/base/'juegos/index.html','games'),(root/money/'index.html','games')]
         pages += [(root/base/slug/'index.html','visual') for slug,*_ in tools]
         for page,kind in pages:
@@ -47,7 +40,6 @@ def run(root):
             text=re.sub(r'<p class="crumb">.*?</p>', '', text, flags=re.S)
             text=re.sub(r'<nav class="ig-activity-nav".*?</nav>', '', text, flags=re.S)
             text=re.sub(r'<section class="ig-activity-overview".*?</section>', '', text, flags=re.S)
-            text=re.sub(r'(<main\b[^>]*>)',lambda m:m.group(1)+navigation(lang,kind),text,count=1)
             if page.parent.name in ('games','juegos'):
                 text=re.sub(r'<p class="crumb">(?:(?!</p>).)*id="jg-crumb".*?</p>', '', text, flags=re.S)
                 text=re.sub(r'<p class="jg-cross">.*?</p>','',text,flags=re.S)
@@ -61,7 +53,7 @@ def run(root):
             final=re.search(r'<link[^>]*href="/assets/ig-r69-unified-ui\.css[^"]*"[^>]*>',text)
             text=text[:final.start()]+css+text[final.start():] if final else text.replace('</head>',css+'</head>',1)
             page.write_bytes(text.encode())
-    print('Activity navigation: 3 distinct sections, ES/EN; money under Games.')
+    print('Activity hubs: global navigation only; visual tools grouped separately; money remains under Games pending P0 real-games reconciliation.')
 
 
 if __name__=='__main__':

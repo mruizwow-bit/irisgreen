@@ -1,0 +1,72 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P46-COMMON-GRID-AUDIT-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 46,
+  "branch": "prisma/369-common-grid-p46-audit-20261003",
+  "base_commit": "59b4832f696c0ad9d9074702d88f2b3e27cea682",
+  "scope": "REPAIR_AND_GATE",
+  "surfaces": [
+    "Home",
+    "Condiciones",
+    "Situaciones",
+    "Vida diaria",
+    "Datos",
+    "Investigación",
+    "Ayudas",
+    "Vivir fuera",
+    "Taller",
+    "Juegos",
+    "Pictogramas/Recursos proxy"
+  ],
+  "viewports": [
+    1440,
+    390
+  ],
+  "cases": 22,
+  "test_commit": "41409e4b95f5efa18124f999c852d2e559a401de",
+  "workflow_commit": "7d7444fbf1e8ae73998b769951eeeac25193e5ff",
+  "ci_run": 37110658802,
+  "ci_status": "SUCCESS",
+  "main_modified": false,
+  "status": "PRISMA_P46_REPAIRED_READY_FOR_NEXO_RECONCILIATION",
+  "repair_commits": [
+    "74c0b8ef5691a93978095d7ada5715b150952c2b",
+    "a69e86e8a6accd374022b5b2c55564f31a85e195"
+  ],
+  "gate_commit": "3361ce29b038e8ef301da4cd2a516c757ec0f71c",
+  "repair": {
+    "common_layout_commit": "74c0b8ef5691a93978095d7ada5715b150952c2b",
+    "scrollbar_safe_commit": "a69e86e8a6accd374022b5b2c55564f31a85e195",
+    "root_geometry_commit": "d4f1e76f3a1024b90aa2557bb217fdecc7509fc2",
+    "stable_gutter_commit": "9af9ac9943d21ef4e9c2a78cacb34a3efe480fca",
+    "strict_gate_commit": "038f073befe5ab3e679b2c24bc2efc30038139be"
+  },
+  "qa": {
+    "run_id": 37110658802,
+    "job_id": 111167757403,
+    "conclusion": "SUCCESS",
+    "gate": "ISSUE_369_P46_COMMON_GRID_PASS",
+    "surfaces": 11,
+    "cases": 22,
+    "desktop": {
+      "left": 46.08,
+      "right": 1378.92,
+      "clusters": 1
+    },
+    "mobile": {
+      "left": 16,
+      "right": 359,
+      "clusters": 1
+    },
+    "footer_clusters": 1
+  },
+  "artifact": {
+    "id": 11269632008,
+    "name": "prisma-369-common-grid-p46",
+    "sha256": "1abef0dc33737a79dc31dad792be0529cd654dc9496fbb2abd8791ab6c7a5b9c"
+  },
+  "next_owner": "NEXO_FOR_RECONCILIATION"
+}

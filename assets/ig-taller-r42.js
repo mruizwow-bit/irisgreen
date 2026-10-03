@@ -58,8 +58,18 @@
   }
 
   function moveSourceSections(helpBody){
+    /* Help order: what it is -> what/how to do -> keyboard shortcuts ->
+       technical detail -> files/related links. Never lead with implementation detail. */
     var selectors=['.igt-hero','.igt-sec[aria-labelledby="igt-how"]','.igt-sec[aria-labelledby="igt-x0"]','.igt-sec[aria-labelledby="igt-files"]','nav.igt-sec'];
     selectors.forEach(function(s){qa(s).forEach(function(sec){if(sec.closest('.ig42-dialog'))return;sec.classList.add('ig42-help-source');helpBody.appendChild(sec);});});
+  }
+  function addHelpShortcuts(helpBody,app){
+    if(!helpBody||!app||q('.ig42-help-shortcuts',helpBody))return;
+    var keys=q('.igt-keys',app);if(!keys)return;
+    var sec=el('section','ig42-help-shortcuts'),h=el('h3','',T('Atajos de teclado','Keyboard shortcuts'));
+    sec.appendChild(h);sec.appendChild(keys.cloneNode(true));
+    var technical=q('.igt-sec[aria-labelledby="igt-x0"]',helpBody)||q('.igt-sec[aria-labelledby="igt-files"]',helpBody)||q('nav.igt-sec',helpBody);
+    if(technical)helpBody.insertBefore(sec,technical);else helpBody.appendChild(sec);
   }
   function buildRail(app){
     var rail=el('nav','ig42-toolrail');rail.setAttribute('aria-label',T('Herramientas del estudio','Studio tools'));rail.tabIndex=-1;
@@ -128,7 +138,7 @@
     top.props.addEventListener('click',function(){setInspector(!ws.node.classList.contains('ig42-inspector-open'));});ws.inspector.close.addEventListener('click',function(){setInspector(false);top.props.focus();});
     ws.node.addEventListener('keydown',function(e){if(e.key==='Escape'&&ws.node.classList.contains('ig42-inspector-open')){setInspector(false);top.props.focus();}});
     moveSourceSections(q('.ig42-dialog-body',helpDlg));makeManagementButton(main);
-    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);if(root.IGTallerR42Direct&&typeof root.IGTallerR42Direct.enhance==='function')root.IGTallerR42Direct.enhance(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);},120);}
+    var tries=0;function settle(){tries++;extractProjectBar(app,q('.ig42-dialog-body',fileDlg),top);extractChallenges(app,q('.ig42-dialog-body',challengeDlg),top,study);mirrorInspector(app,ws.inspector);directManipulation(app);addHelpShortcuts(q('.ig42-dialog-body',helpDlg),app);if(root.IGTallerR42Direct&&typeof root.IGTallerR42Direct.enhance==='function')root.IGTallerR42Direct.enhance(app);bindFileSystemAccess(q('.ig42-dialog-body',fileDlg),app,study);if(ws.rail.querySelector('.ig42-tool-placeholder')&&(q('.igt-r40-controls',app)||q('.igt-side button',app)||q('.igt-tabs',app))){var nr=buildRail(app);ws.node.replaceChild(nr,ws.rail);ws.rail=nr;}if((!q('.igt-r40-tool',app)&&!q('.igt-work',app))&&tries<20){root.setTimeout(settle,80);return;}root.setTimeout(function(){directManipulation(app);addHelpShortcuts(q('.ig42-dialog-body',helpDlg),app);},120);}
     root.setTimeout(settle,0);return true;
   }
 

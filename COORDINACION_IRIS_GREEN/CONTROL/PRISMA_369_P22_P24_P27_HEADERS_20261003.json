@@ -1,0 +1,28 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P22-P24-P27-HEADERS-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "points": [22, 24, 27],
+  "branch": "prisma/369-headers-p22-p24-p27-20261003",
+  "repairs": {
+    "conditions_es": "2f9d73b01575b0890c6b1e180c6dc45885ba1d23",
+    "conditions_en": "1538850de23b5830689d2e805932ba5690af9129",
+    "situations_es": "58dacc61cc9ca831b69c45f0bfd3ceb498f745d7",
+    "situations_en": "79a4b62041dbd7fdeb5279d039870994ed236fe7",
+    "support": "10ea128fca8b45f630ec34cae907e4fd8a42a3dd",
+    "language_build_fix": "a8b6b7462e21445351b9e0b94d2e2c870be98736",
+    "final_normalizer": "6d5c575e1e6a276fb545af723a36c19800147618",
+    "build_hook": "8ede1263843a86706aa9ab0f46d1e321eb3ce441",
+    "workflow": "4e3f4999dcba00e44bd93dbd3054dad718c4ce10"
+  },
+  "ci": {
+    "run_id": 37113131250,
+    "job_id": 111174746246,
+    "status": "COMPLETED",
+    "conclusion": "SUCCESS"
+  },
+  "main_modified": false,
+  "status": "P22_P24_P27_FINAL_PASS"
+}

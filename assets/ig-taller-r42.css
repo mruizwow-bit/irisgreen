@@ -70,3 +70,24 @@ html[data-ig-r49-js="1"] body[data-ig-r69-workshop="1"][data-ig-r69-workshop-fal
 @media(prefers-reduced-motion:reduce){
   .ig42-direct-canvas{scroll-behavior:auto}
 }
+
+
+/* #369 P17 · Help hierarchy: usage first, shortcuts secondary, technical detail last. */
+.ig42-help-shortcuts{
+  margin:.4rem 0 1rem;
+  padding:.8rem .9rem;
+  border:1px solid var(--ig42-line);
+  border-radius:14px;
+  background:var(--ig42-soft);
+  color:var(--ig42-ink);
+}
+.ig42-help-shortcuts>h3{
+  margin:0 0 .35rem;
+  font:600 1rem/1.3 "Atkinson Hyperlegible",system-ui,sans-serif;
+}
+.ig42-help-shortcuts .igt-keys{
+  margin:0;
+  background:transparent;
+  border:0;
+  padding:0;
+}

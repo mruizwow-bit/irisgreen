@@ -345,19 +345,19 @@ body[data-ig-suite] .igs-inspector :is(h3,h4,p,label) {color:var(--ig-text)}
 body[data-ig-suite] main > .crumb {display:none}
 
 /* Dialogs are mounted under body, outside main: theme their controls too. */
-body[data-ig-r49="1"] .ig-r42-dialog {
+body[data-ig-r49="1"] .ig42-dialog {
  --r42-ink:var(--ig-text);--r42-muted:var(--ig-text-muted);
  --r42-surface:var(--ig-bg-surface);--r42-soft:var(--ig-bg-surface-soft);
  --r42-line:var(--ig-separator);--r42-line-strong:var(--ig-border-control);
  background:var(--ig-bg-surface);color:var(--ig-text)
 }
-body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
+body[data-ig-r49="1"] :is(.ig42-dialog,.ig-r42-inspector,.igs-inspector) :where(button,input:not([type="color"]):not([type="range"]):not([type="checkbox"]),select,textarea),
 body[data-ig-r49="1"] .igt-btn,
 body[data-ig-r49="1"] .igs-touch button {
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;
  border-color:var(--ig-border-control)!important;box-shadow:none!important
 }
-body[data-ig-r49="1"] :is(.ig-r42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
+body[data-ig-r49="1"] :is(.ig42-dialog,.ig-r42-inspector,.igs-inspector) button:is(:hover,:active,[aria-pressed="true"]),
 body[data-ig-r49="1"] .igt-btn:is(:hover,:active,[aria-pressed="true"]),
 body[data-ig-r49="1"] .igs-touch button:is(:hover,:active) {
  background:var(--ig-button-primary-bg)!important;color:var(--ig-button-primary-fg)!important;
@@ -377,11 +377,127 @@ body[data-ig-r49="1"] .jg-main :is(.jg-slot-card,.jg-slot-empty.is-focus,.jg-chi
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important
 }
 body[data-ig-r49="1"] .jg-main :is(button,.jg-card):focus-visible,
-body[data-ig-r49="1"] .ig-r42-dialog :is(button,input,select,textarea):focus-visible {
+body[data-ig-r49="1"] .ig42-dialog :is(button,input,select,textarea):focus-visible {
  outline:2px solid var(--ig-focus-global)!important;outline-offset:3px
 }
+body[data-ig-r49="1"] .ig42-dialog :where(h1,h2,h3,h4,strong,b,label,legend,summary,li,dt,dd){color:var(--ig-text)!important}
+body[data-ig-r49="1"] .ig42-dialog :where(p,.lede,.igt-note,.igt-caption,.muted,.meta,.desc){color:var(--ig-text-muted)!important}
+body[data-ig-r49="1"] .ig42-dialog a{color:var(--ig-link)!important}
+
 /* Profile buttons contain their own text styles; keep the pair in both themes. */
 body[data-ig-taller-launcher] main .igk-p-btn:is(:hover,:focus-visible,:active) {
  background:var(--ig-bg-surface-soft)!important;color:var(--ig-text)!important;transform:none!important
 }
 body[data-ig-taller-launcher] main .igk-p-btn :is(.igk-p-name,.igk-p-desc,.igk-p-n,.igk-cta) {color:inherit!important}
+
+
+/* #369 P48 · global placeholder contrast + Living Abroad legacy text bridge. */
+body[data-ig-r49="1"] :is(input,textarea)::placeholder{
+  color:var(--ig-text-muted)!important;
+  opacity:1!important
+}
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article :where(p,span,small,li){
+  color:var(--ig-text-muted)!important
+}
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article :where(h2,h3,strong,label){
+  color:var(--ig-text)!important
+}
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article a{
+  color:var(--ig-link)!important
+}
+
+
+/* #369 P47 · canonical card system.
+   Media, catalogue and result/disclosure cards share shell metrics.
+   Illustration remains optional by variant. */
+body[data-ig-r49="1"]{
+  --ig-card-radius:20px;
+  --ig-card-pad-block:1.25rem;
+  --ig-card-pad-inline:1.375rem;
+  --ig-card-gap:.55rem;
+  --ig-card-title-size:1.4rem;
+  --ig-card-copy-size:1rem;
+  --ig-card-cta-bottom:1.25rem;
+}
+body[data-ig-r49="1"] :is(
+  .ig-home-v4-card,
+  .ig-activity-card,
+  .igk-tile,
+  .conditions-collection .card,
+  .situations-collection .card,
+  [data-ig-r49-owner="R50_RESEARCH"] main article,
+  [data-ig-r49-owner="R50_LIVING_ABROAD"] main article,
+  [data-ig-r49-owner="R50_SUPPORT"] main article
+){
+  border-radius:var(--ig-card-radius)!important;
+  border-width:1px!important;
+  border-style:solid!important;
+  border-color:var(--ig-separator)!important;
+  box-sizing:border-box!important;
+}
+body[data-ig-r49="1"] .ig-home-v4-card>span:not(.ig-home-v4-media){
+  gap:var(--ig-card-gap)!important;
+  padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
+}
+body[data-ig-r49="1"] .ig-home-v4-card strong{
+  font-family:"Newsreader",Georgia,serif!important;
+  font-size:var(--ig-card-title-size)!important;
+  line-height:1.2!important;
+  font-weight:600!important;
+}
+body[data-ig-r49="1"] .ig-home-v4-card-copy{
+  font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important;
+  font-size:var(--ig-card-copy-size)!important;
+  line-height:1.5!important;
+}
+body[data-ig-r49="1"] .ig-home-v4-card-cta{
+  margin-top:auto!important;
+  padding-top:.35rem!important;
+  min-height:1.5rem;
+}
+body[data-ig-r49="1"] .ig-activity-card{
+  gap:var(--ig-card-gap)!important;
+  padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
+  height:100%!important;
+}
+body[data-ig-r49="1"] .ig-activity-card h2,
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card strong,
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-name{
+  font-family:"Newsreader",Georgia,serif!important;
+  font-size:var(--ig-card-title-size)!important;
+  line-height:1.2!important;
+  font-weight:600!important;
+}
+body[data-ig-r49="1"] .ig-activity-card p,
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card>span:last-child,
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-desc{
+  font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important;
+  font-size:var(--ig-card-copy-size)!important;
+  line-height:1.5!important;
+}
+body[data-ig-r49="1"] .ig-activity-card>span:last-child{margin-top:auto!important}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-tile{border-radius:var(--ig-card-radius)!important}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-text{
+  gap:var(--ig-card-gap)!important;
+  padding:var(--ig-card-pad-block) var(--ig-card-pad-inline) .5rem!important;
+}
+body[data-ig-r49="1"][data-ig-taller-launcher] .igk-cta{
+  margin:auto var(--ig-card-pad-inline) var(--ig-card-cta-bottom)!important;
+}
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card{
+  gap:var(--ig-card-gap)!important;
+  padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
+  min-height:12rem;
+  height:100%;
+}
+body[data-ig-r49-owner="R50_RESEARCH"] main article,
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main article,
+body[data-ig-r49-owner="R50_SUPPORT"] main article{
+  padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
+}
+
+/* #369 P29 · Living Abroad introduction sits directly under main, outside result cards. */
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"],
+body[data-ig-r49-owner="R50_LIVING_ABROAD"] main > p[style*="font-size: 19px"] .sc-interp{
+  color:var(--ig-text-muted)!important
+}
