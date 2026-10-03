@@ -1,0 +1,68 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 62,
+  "iau_abbreviation": "Men",
+  "name_es": "Mesa",
+  "name_en": "Mensa",
+  "english_descriptor": "Table",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 23467,
+      "ra_hours": 5.04528,
+      "dec_deg": -71.31433,
+      "magnitude": 5.3,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 29271,
+      "ra_hours": 6.17061,
+      "dec_deg": -74.75253,
+      "magnitude": 5.08,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 29271,
+      "to_hip": 23467,
+      "from_xy": [
+        267.794,
+        1413.309
+      ],
+      "to_xy": [
+        1172.206,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

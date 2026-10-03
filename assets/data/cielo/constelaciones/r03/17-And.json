@@ -1,0 +1,238 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "And",
+  "name_es": "Andrómeda",
+  "name_en": "Andromeda",
+  "descriptor_es": "La princesa",
+  "descriptor_en": "The Chained Maiden",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 677,
+      "ra_hours": 0.13977,
+      "dec_deg": 29.09083,
+      "magnitude": 2.07,
+      "bv": -0.038,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1201.442
+      ],
+      "proper_name": "Alpheratz"
+    },
+    {
+      "hip": 3092,
+      "ra_hours": 0.65544,
+      "dec_deg": 30.86122,
+      "magnitude": 3.27,
+      "bv": 1.268,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        955.413,
+        1157.883
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 3881,
+      "ra_hours": 0.83023,
+      "dec_deg": 41.07894,
+      "magnitude": 4.53,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        879.767,
+        821.196
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 4436,
+      "ra_hours": 0.94586,
+      "dec_deg": 38.49925,
+      "magnitude": 3.86,
+      "bv": 0.13,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        838.907,
+        907.097
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 5447,
+      "ra_hours": 1.16217,
+      "dec_deg": 35.62083,
+      "magnitude": 2.07,
+      "bv": 1.576,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        756.788,
+        1000.688
+      ],
+      "proper_name": "Mirach"
+    },
+    {
+      "hip": 9640,
+      "ra_hours": 2.06498,
+      "dec_deg": 42.32986,
+      "magnitude": 2.1,
+      "bv": 1.37,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        447.056,
+        737.543
+      ],
+      "proper_name": "Almach"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 677,
+      "to_hip": 3092,
+      "from_xy": [
+        1172.206,
+        1201.442
+      ],
+      "to_xy": [
+        955.413,
+        1157.883
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 3092,
+      "to_hip": 5447,
+      "from_xy": [
+        955.413,
+        1157.883
+      ],
+      "to_xy": [
+        756.788,
+        1000.688
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 9640,
+      "to_hip": 5447,
+      "from_xy": [
+        447.056,
+        737.543
+      ],
+      "to_xy": [
+        756.788,
+        1000.688
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 5447,
+      "to_hip": 4436,
+      "from_xy": [
+        756.788,
+        1000.688
+      ],
+      "to_xy": [
+        838.907,
+        907.097
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 4436,
+      "to_hip": 3881,
+      "from_xy": [
+        838.907,
+        907.097
+      ],
+      "to_xy": [
+        879.767,
+        821.196
+      ]
+    }
+  ],
+  "labels_review": {
+    "677": {
+      "name": "Alpheratz",
+      "x": 1204.21,
+      "y": 1196.44,
+      "box": [
+        1200.21,
+        1193.44,
+        1323.21,
+        1222.44
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        1207.94
+      ]
+    },
+    "5447": {
+      "name": "Mirach",
+      "x": 788.79,
+      "y": 995.69,
+      "box": [
+        784.79,
+        992.69,
+        872.79,
+        1016.69
+      ],
+      "leader": false,
+      "anchor": [
+        788.79,
+        1004.69
+      ]
+    },
+    "9640": {
+      "name": "Almach",
+      "x": 479.06,
+      "y": 732.54,
+      "box": [
+        475.06,
+        729.54,
+        573.06,
+        753.54
+      ],
+      "leader": false,
+      "anchor": [
+        479.06,
+        741.54
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 17
+}

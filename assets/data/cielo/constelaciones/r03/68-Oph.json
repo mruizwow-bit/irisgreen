@@ -1,0 +1,609 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 68,
+  "iau_abbreviation": "Oph",
+  "name_es": "Ofiuco",
+  "name_en": "Ophiuchus",
+  "english_descriptor": "Serpent Bearer",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 79593,
+      "ra_hours": 16.2391,
+      "dec_deg": -3.69397,
+      "magnitude": 2.73,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        816.485
+      ],
+      "proper_name": "Yed Prior"
+    },
+    {
+      "hip": 79882,
+      "ra_hours": 16.30534,
+      "dec_deg": -4.69261,
+      "magnitude": 3.23,
+      "bv": 0.966,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1136.192,
+        838.511
+      ],
+      "proper_name": "Yed Posterior"
+    },
+    {
+      "hip": 80343,
+      "ra_hours": 16.40172,
+      "dec_deg": -20.03722,
+      "magnitude": 4.48,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1073.533,
+        1179.385
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80473,
+      "ra_hours": 16.42642,
+      "dec_deg": -23.44711,
+      "magnitude": 4.57,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1058.548,
+        1257.787
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80569,
+      "ra_hours": 16.4504,
+      "dec_deg": -18.45619,
+      "magnitude": 4.22,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1050.43,
+        1142.796
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80628,
+      "ra_hours": 16.4634,
+      "dec_deg": -8.37169,
+      "magnitude": 4.62,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1050.947,
+        919.041
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80883,
+      "ra_hours": 16.51523,
+      "dec_deg": 1.98411,
+      "magnitude": 3.82,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1030.752,
+        688.024
+      ],
+      "proper_name": "Marfik"
+    },
+    {
+      "hip": 80894,
+      "ra_hours": 16.519,
+      "dec_deg": -16.61264,
+      "magnitude": 4.29,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1017.342,
+        1100.619
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 81377,
+      "ra_hours": 16.61931,
+      "dec_deg": -10.56714,
+      "magnitude": 2.54,
+      "bv": 0.038,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        970.03,
+        966.382
+      ],
+      "proper_name": "Saik"
+    },
+    {
+      "hip": 83000,
+      "ra_hours": 16.96119,
+      "dec_deg": 9.37506,
+      "magnitude": 3.19,
+      "bv": 1.16,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        796.692,
+        515.141
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 84012,
+      "ra_hours": 17.17296,
+      "dec_deg": -15.72514,
+      "magnitude": 2.43,
+      "bv": 0.059,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        692.259,
+        1079.467
+      ],
+      "proper_name": "Sabik"
+    },
+    {
+      "hip": 84970,
+      "ra_hours": 17.36683,
+      "dec_deg": -24.9995,
+      "magnitude": 3.27,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        601.298,
+        1293.004
+      ],
+      "proper_name": "Garafsa"
+    },
+    {
+      "hip": 85423,
+      "ra_hours": 17.45591,
+      "dec_deg": -29.86669,
+      "magnitude": 4.28,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        561.775,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 86032,
+      "ra_hours": 17.58222,
+      "dec_deg": 12.56058,
+      "magnitude": 2.08,
+      "bv": 0.155,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        458.454,
+        431.691
+      ],
+      "proper_name": "Rasalhague"
+    },
+    {
+      "hip": 86742,
+      "ra_hours": 17.72455,
+      "dec_deg": 4.56692,
+      "magnitude": 2.76,
+      "bv": 1.168,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        389.198,
+        626.833
+      ],
+      "proper_name": "Cebalrai"
+    },
+    {
+      "hip": 87108,
+      "ra_hours": 17.79821,
+      "dec_deg": 2.70747,
+      "magnitude": 3.75,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        351.072,
+        670.242
+      ],
+      "proper_name": "Muliphen"
+    },
+    {
+      "hip": 88048,
+      "ra_hours": 17.98378,
+      "dec_deg": -9.77336,
+      "magnitude": 3.32,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        956.341
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 86032,
+      "to_hip": 83000,
+      "from_xy": [
+        458.454,
+        431.691
+      ],
+      "to_xy": [
+        796.692,
+        515.141
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 83000,
+      "to_hip": 80883,
+      "from_xy": [
+        796.692,
+        515.141
+      ],
+      "to_xy": [
+        1030.752,
+        688.024
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 80883,
+      "to_hip": 79593,
+      "from_xy": [
+        1030.752,
+        688.024
+      ],
+      "to_xy": [
+        1172.206,
+        816.485
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 79593,
+      "to_hip": 79882,
+      "from_xy": [
+        1172.206,
+        816.485
+      ],
+      "to_xy": [
+        1136.192,
+        838.511
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 79882,
+      "to_hip": 80628,
+      "from_xy": [
+        1136.192,
+        838.511
+      ],
+      "to_xy": [
+        1050.947,
+        919.041
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 80628,
+      "to_hip": 81377,
+      "from_xy": [
+        1050.947,
+        919.041
+      ],
+      "to_xy": [
+        970.03,
+        966.382
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 83000,
+      "to_hip": 81377,
+      "from_xy": [
+        796.692,
+        515.141
+      ],
+      "to_xy": [
+        970.03,
+        966.382
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 81377,
+      "to_hip": 84012,
+      "from_xy": [
+        970.03,
+        966.382
+      ],
+      "to_xy": [
+        692.259,
+        1079.467
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 84012,
+      "to_hip": 86742,
+      "from_xy": [
+        692.259,
+        1079.467
+      ],
+      "to_xy": [
+        389.198,
+        626.833
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 86742,
+      "to_hip": 87108,
+      "from_xy": [
+        389.198,
+        626.833
+      ],
+      "to_xy": [
+        351.072,
+        670.242
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 87108,
+      "to_hip": 88048,
+      "from_xy": [
+        351.072,
+        670.242
+      ],
+      "to_xy": [
+        267.794,
+        956.341
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 86742,
+      "to_hip": 86032,
+      "from_xy": [
+        389.198,
+        626.833
+      ],
+      "to_xy": [
+        458.454,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 84012,
+      "to_hip": 84970,
+      "from_xy": [
+        692.259,
+        1079.467
+      ],
+      "to_xy": [
+        601.298,
+        1293.004
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 84970,
+      "to_hip": 85423,
+      "from_xy": [
+        601.298,
+        1293.004
+      ],
+      "to_xy": [
+        561.775,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 81377,
+      "to_hip": 80894,
+      "from_xy": [
+        970.03,
+        966.382
+      ],
+      "to_xy": [
+        1017.342,
+        1100.619
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 80894,
+      "to_hip": 80569,
+      "from_xy": [
+        1017.342,
+        1100.619
+      ],
+      "to_xy": [
+        1050.43,
+        1142.796
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 80569,
+      "to_hip": 80343,
+      "from_xy": [
+        1050.43,
+        1142.796
+      ],
+      "to_xy": [
+        1073.533,
+        1179.385
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 80343,
+      "to_hip": 80473,
+      "from_xy": [
+        1073.533,
+        1179.385
+      ],
+      "to_xy": [
+        1058.548,
+        1257.787
+      ]
+    }
+  ],
+  "labels_review": {
+    "86032": {
+      "name": "Rasalhague",
+      "x": 286.45,
+      "y": 426.69,
+      "box": [
+        282.45,
+        423.69,
+        430.45,
+        452.69
+      ],
+      "leader": false,
+      "anchor": [
+        426.45,
+        438.19
+      ]
+    },
+    "84012": {
+      "name": "Sabik",
+      "x": 724.26,
+      "y": 1074.47,
+      "box": [
+        720.26,
+        1071.47,
+        794.26,
+        1095.47
+      ],
+      "leader": false,
+      "anchor": [
+        724.26,
+        1083.47
+      ]
+    },
+    "81377": {
+      "name": "Saik",
+      "x": 1002.03,
+      "y": 961.38,
+      "box": [
+        998.03,
+        958.38,
+        1057.03,
+        982.38
+      ],
+      "leader": false,
+      "anchor": [
+        1002.03,
+        970.38
+      ]
+    },
+    "79593": {
+      "name": "Yed Prior",
+      "x": 1204.21,
+      "y": 811.49,
+      "box": [
+        1200.21,
+        808.49,
+        1313.21,
+        832.49
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        820.49
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

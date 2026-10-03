@@ -1,0 +1,15 @@
+{
+  "schema": "iris-green.asset-reception-lane.v1",
+  "owner": "ATLAS_A1",
+  "family": "METEORS_10",
+  "status": "CLOSED_PACKAGED_READY_FOR_RUNTIME",
+  "intake_allowed": true,
+  "source_gate": "METEOR_SHOWERS_BATCH_01_FINAL_10_PASS_READY_FOR_REVIEW",
+  "source_commit": "67f784196518744a448871e23a3648bd8cd916d9",
+  "package_gate": "METEOR_SHOWERS_10_PACKAGED_READY_FOR_RUNTIME",
+  "canonical_masters_root": "/img/intereses/meteoros/r01/",
+  "canonical_json": "/assets/data/meteoros/r01/meteor_showers_2026_verified.json",
+  "packaging_handoff": "COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_ASSETS_PACKAGED_20261003/METEOR_SHOWERS_10/",
+  "pixel_policy": "DO_NOT_MODIFY_APPROVED_MASTER_PIXELS",
+  "runtime_integration": false
+}

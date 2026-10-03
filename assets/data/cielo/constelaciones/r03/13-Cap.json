@@ -1,0 +1,309 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Cap",
+  "name_es": "Capricornio",
+  "name_en": "Capricornus",
+  "descriptor_es": "La cabra marina",
+  "descriptor_en": "The Sea Goat",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 100064,
+      "ra_hours": 20.30089,
+      "dec_deg": -12.54486,
+      "magnitude": 3.58,
+      "bv": 0.883,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1101.642,
+        697.059
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 100345,
+      "ra_hours": 20.35018,
+      "dec_deg": -14.78139,
+      "magnitude": 3.05,
+      "bv": 0.79,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1077.129,
+        771.874
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 102485,
+      "ra_hours": 20.76827,
+      "dec_deg": -25.27053,
+      "magnitude": 4.13,
+      "bv": 0.426,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        900.053,
+        1114.312
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 102978,
+      "ra_hours": 20.86369,
+      "dec_deg": -26.91914,
+      "magnitude": 4.12,
+      "bv": 1.633,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        863.383,
+        1168.613
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 104139,
+      "ra_hours": 21.09911,
+      "dec_deg": -17.23272,
+      "magnitude": 4.08,
+      "bv": -0.01,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        775.49,
+        844.794
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 105515,
+      "ra_hours": 21.37077,
+      "dec_deg": -16.83456,
+      "magnitude": 4.28,
+      "bv": 0.888,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        668.196,
+        833.187
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 105881,
+      "ra_hours": 21.44445,
+      "dec_deg": -22.41139,
+      "magnitude": 3.77,
+      "bv": 1.002,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        643.833,
+        1019.706
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 106985,
+      "ra_hours": 21.66815,
+      "dec_deg": -16.66225,
+      "magnitude": 3.69,
+      "bv": 0.32,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        549.309,
+        832.27
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 107556,
+      "ra_hours": 21.78397,
+      "dec_deg": -16.12656,
+      "magnitude": 2.85,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        501.53,
+        817.004
+      ],
+      "proper_name": "Deneb Algedi"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 100064,
+      "to_hip": 100345,
+      "from_xy": [
+        1101.642,
+        697.059
+      ],
+      "to_xy": [
+        1077.129,
+        771.874
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 100345,
+      "to_hip": 104139,
+      "from_xy": [
+        1077.129,
+        771.874
+      ],
+      "to_xy": [
+        775.49,
+        844.794
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 104139,
+      "to_hip": 105515,
+      "from_xy": [
+        775.49,
+        844.794
+      ],
+      "to_xy": [
+        668.196,
+        833.187
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 105515,
+      "to_hip": 106985,
+      "from_xy": [
+        668.196,
+        833.187
+      ],
+      "to_xy": [
+        549.309,
+        832.27
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 106985,
+      "to_hip": 107556,
+      "from_xy": [
+        549.309,
+        832.27
+      ],
+      "to_xy": [
+        501.53,
+        817.004
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 105515,
+      "to_hip": 105881,
+      "from_xy": [
+        668.196,
+        833.187
+      ],
+      "to_xy": [
+        643.833,
+        1019.706
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 105881,
+      "to_hip": 104139,
+      "from_xy": [
+        643.833,
+        1019.706
+      ],
+      "to_xy": [
+        775.49,
+        844.794
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 100345,
+      "to_hip": 102485,
+      "from_xy": [
+        1077.129,
+        771.874
+      ],
+      "to_xy": [
+        900.053,
+        1114.312
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 104139,
+      "to_hip": 102978,
+      "from_xy": [
+        775.49,
+        844.794
+      ],
+      "to_xy": [
+        863.383,
+        1168.613
+      ]
+    }
+  ],
+  "labels_review": {
+    "107556": {
+      "name": "Deneb Algedi",
+      "x": 308.53,
+      "y": 812.0,
+      "box": [
+        304.53,
+        809.0,
+        473.53,
+        838.0
+      ],
+      "leader": false,
+      "anchor": [
+        469.53,
+        823.5
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 13
+}

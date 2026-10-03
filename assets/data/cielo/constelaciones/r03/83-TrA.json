@@ -1,0 +1,158 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 83,
+  "iau_abbreviation": "TrA",
+  "name_es": "Triángulo Austral",
+  "name_en": "Triangulum Australe",
+  "english_descriptor": "Southern Triangle",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 74946,
+      "ra_hours": 15.31519,
+      "dec_deg": -68.67947,
+      "magnitude": 2.87,
+      "bv": 0.014,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1307.791
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 76440,
+      "ra_hours": 15.612,
+      "dec_deg": -66.31692,
+      "magnitude": 4.11,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1009.615,
+        903.385
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 77952,
+      "ra_hours": 15.91911,
+      "dec_deg": -63.42975,
+      "magnitude": 2.83,
+      "bv": 0.315,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        800.55,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 82273,
+      "ra_hours": 16.81108,
+      "dec_deg": -69.02764,
+      "magnitude": 1.91,
+      "bv": 1.447,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": "Atria"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 82273,
+      "to_hip": 77952,
+      "from_xy": [
+        267.794,
+        1413.309
+      ],
+      "to_xy": [
+        800.55,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 77952,
+      "to_hip": 76440,
+      "from_xy": [
+        800.55,
+        431.691
+      ],
+      "to_xy": [
+        1009.615,
+        903.385
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 76440,
+      "to_hip": 74946,
+      "from_xy": [
+        1009.615,
+        903.385
+      ],
+      "to_xy": [
+        1172.206,
+        1307.791
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 74946,
+      "to_hip": 82273,
+      "from_xy": [
+        1172.206,
+        1307.791
+      ],
+      "to_xy": [
+        267.794,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "82273": {
+      "name": "Atria",
+      "x": 178.79,
+      "y": 1408.31,
+      "box": [
+        174.79,
+        1405.31,
+        239.79,
+        1429.31
+      ],
+      "leader": false,
+      "anchor": [
+        235.79,
+        1417.31
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

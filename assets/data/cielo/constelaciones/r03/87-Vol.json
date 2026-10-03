@@ -1,0 +1,184 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 87,
+  "iau_abbreviation": "Vol",
+  "name_es": "Pez Volador",
+  "name_en": "Volans",
+  "english_descriptor": "Flying Fish",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 34481,
+      "ra_hours": 7.14578,
+      "dec_deg": -70.49919,
+      "magnitude": 3.78,
+      "bv": 1.006,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 35228,
+      "ra_hours": 7.28051,
+      "dec_deg": -67.95717,
+      "magnitude": 3.97,
+      "bv": 0.76,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1155.434,
+        867.634
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 39794,
+      "ra_hours": 8.13218,
+      "dec_deg": -68.61714,
+      "magnitude": 4.35,
+      "bv": -0.113,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        742.241,
+        922.72
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 41312,
+      "ra_hours": 8.42896,
+      "dec_deg": -66.13653,
+      "magnitude": 3.77,
+      "bv": 1.132,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        581.505,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 44382,
+      "ra_hours": 9.04078,
+      "dec_deg": -66.39583,
+      "magnitude": 4,
+      "bv": 0.145,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        610.774
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 44382,
+      "to_hip": 41312,
+      "from_xy": [
+        267.794,
+        610.774
+      ],
+      "to_xy": [
+        581.505,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 41312,
+      "to_hip": 39794,
+      "from_xy": [
+        581.505,
+        431.691
+      ],
+      "to_xy": [
+        742.241,
+        922.72
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 39794,
+      "to_hip": 35228,
+      "from_xy": [
+        742.241,
+        922.72
+      ],
+      "to_xy": [
+        1155.434,
+        867.634
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 35228,
+      "to_hip": 34481,
+      "from_xy": [
+        1155.434,
+        867.634
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 34481,
+      "to_hip": 39794,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        742.241,
+        922.72
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 39794,
+      "to_hip": 44382,
+      "from_xy": [
+        742.241,
+        922.72
+      ],
+      "to_xy": [
+        267.794,
+        610.774
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

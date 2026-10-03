@@ -1,0 +1,358 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Cyg",
+  "name_es": "Cisne",
+  "name_en": "Cygnus",
+  "descriptor_es": "El cisne",
+  "descriptor_en": "The Swan",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 94779,
+      "ra_hours": 19.28503,
+      "dec_deg": 53.36817,
+      "magnitude": 3.8,
+      "bv": 0.95,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        960.188,
+        646.55
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95853,
+      "ra_hours": 19.49509,
+      "dec_deg": 51.72947,
+      "magnitude": 3.76,
+      "bv": 0.148,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        927.016,
+        706.928
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95947,
+      "ra_hours": 19.51203,
+      "dec_deg": 27.95969,
+      "magnitude": 3.05,
+      "bv": 1.088,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        989.5,
+        1396.113
+      ],
+      "proper_name": "Albireo"
+    },
+    {
+      "hip": 97165,
+      "ra_hours": 19.74957,
+      "dec_deg": 45.13069,
+      "magnitude": 2.86,
+      "bv": -0.002,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        892.777,
+        909.572
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98110,
+      "ra_hours": 19.93844,
+      "dec_deg": 35.0835,
+      "magnitude": 3.89,
+      "bv": 1.019,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        866.712,
+        1201.454
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 100453,
+      "ra_hours": 20.37047,
+      "dec_deg": 40.25669,
+      "magnitude": 2.23,
+      "bv": 0.673,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        764.132,
+        1058.234
+      ],
+      "proper_name": "Sadr"
+    },
+    {
+      "hip": 102098,
+      "ra_hours": 20.69053,
+      "dec_deg": 45.28033,
+      "magnitude": 1.25,
+      "bv": 0.092,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        698.931,
+        911.41
+      ],
+      "proper_name": "Deneb"
+    },
+    {
+      "hip": 102488,
+      "ra_hours": 20.77012,
+      "dec_deg": 33.96944,
+      "magnitude": 2.48,
+      "bv": 1.021,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        666.441,
+        1232.597
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 104732,
+      "ra_hours": 21.21561,
+      "dec_deg": 30.22708,
+      "magnitude": 3.21,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        545.867,
+        1326.287
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 107310,
+      "ra_hours": 21.73567,
+      "dec_deg": 28.74322,
+      "magnitude": 4.49,
+      "bv": 0.512,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        399.717,
+        1339.83
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 94779,
+      "to_hip": 95853,
+      "from_xy": [
+        960.188,
+        646.55
+      ],
+      "to_xy": [
+        927.016,
+        706.928
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 95853,
+      "to_hip": 97165,
+      "from_xy": [
+        927.016,
+        706.928
+      ],
+      "to_xy": [
+        892.777,
+        909.572
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 97165,
+      "to_hip": 100453,
+      "from_xy": [
+        892.777,
+        909.572
+      ],
+      "to_xy": [
+        764.132,
+        1058.234
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 100453,
+      "to_hip": 102098,
+      "from_xy": [
+        764.132,
+        1058.234
+      ],
+      "to_xy": [
+        698.931,
+        911.41
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 100453,
+      "to_hip": 102488,
+      "from_xy": [
+        764.132,
+        1058.234
+      ],
+      "to_xy": [
+        666.441,
+        1232.597
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 102488,
+      "to_hip": 104732,
+      "from_xy": [
+        666.441,
+        1232.597
+      ],
+      "to_xy": [
+        545.867,
+        1326.287
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 104732,
+      "to_hip": 107310,
+      "from_xy": [
+        545.867,
+        1326.287
+      ],
+      "to_xy": [
+        399.717,
+        1339.83
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 100453,
+      "to_hip": 98110,
+      "from_xy": [
+        764.132,
+        1058.234
+      ],
+      "to_xy": [
+        866.712,
+        1201.454
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 98110,
+      "to_hip": 95947,
+      "from_xy": [
+        866.712,
+        1201.454
+      ],
+      "to_xy": [
+        989.5,
+        1396.113
+      ]
+    }
+  ],
+  "labels_review": {
+    "102098": {
+      "name": "Deneb",
+      "x": 730.93,
+      "y": 906.41,
+      "box": [
+        726.93,
+        903.41,
+        812.93,
+        927.41
+      ],
+      "leader": false,
+      "anchor": [
+        730.93,
+        915.41
+      ]
+    },
+    "100453": {
+      "name": "Sadr",
+      "x": 796.13,
+      "y": 1053.23,
+      "box": [
+        792.13,
+        1050.23,
+        855.13,
+        1074.23
+      ],
+      "leader": false,
+      "anchor": [
+        796.13,
+        1062.23
+      ]
+    },
+    "95947": {
+      "name": "Albireo",
+      "x": 1021.5,
+      "y": 1391.11,
+      "box": [
+        1017.5,
+        1388.11,
+        1109.5,
+        1412.11
+      ],
+      "leader": false,
+      "anchor": [
+        1021.5,
+        1400.11
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 5
+}

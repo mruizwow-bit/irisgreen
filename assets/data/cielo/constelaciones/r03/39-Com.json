@@ -1,0 +1,144 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 39,
+  "iau_abbreviation": "Com",
+  "name_es": "Cabellera de Berenice",
+  "name_en": "Coma Berenices",
+  "english_descriptor": "Berenice's Hair",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 60742,
+      "ra_hours": 12.44898,
+      "dec_deg": 28.26861,
+      "magnitude": 4.35,
+      "bv": 1.128,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        943.122,
+        760.255
+      ],
+      "proper_name": "Al Dafirah"
+    },
+    {
+      "hip": 64241,
+      "ra_hours": 13.16654,
+      "dec_deg": 17.52911,
+      "magnitude": 4.32,
+      "bv": 0.455,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        377.727,
+        1241.034
+      ],
+      "proper_name": "Diadem"
+    },
+    {
+      "hip": 64394,
+      "ra_hours": 13.19803,
+      "dec_deg": 27.87603,
+      "magnitude": 4.23,
+      "bv": 0.572,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        368.076,
+        784.159
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 64241,
+      "to_hip": 64241,
+      "from_xy": [
+        377.727,
+        1241.034
+      ],
+      "to_xy": [
+        377.727,
+        1241.034
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 64241,
+      "to_hip": 64394,
+      "from_xy": [
+        377.727,
+        1241.034
+      ],
+      "to_xy": [
+        368.076,
+        784.159
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 64394,
+      "to_hip": 60742,
+      "from_xy": [
+        368.076,
+        784.159
+      ],
+      "to_xy": [
+        943.122,
+        760.255
+      ]
+    }
+  ],
+  "labels_review": {
+    "64241": {
+      "name": "Diadem",
+      "x": 409.73,
+      "y": 1236.03,
+      "box": [
+        405.73,
+        1233.03,
+        506.73,
+        1257.03
+      ],
+      "leader": false,
+      "anchor": [
+        409.73,
+        1245.03
+      ]
+    },
+    "60742": {
+      "name": "Al Dafirah",
+      "x": 975.12,
+      "y": 755.25,
+      "box": [
+        971.12,
+        752.25,
+        1098.12,
+        776.25
+      ],
+      "leader": false,
+      "anchor": [
+        975.12,
+        764.25
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

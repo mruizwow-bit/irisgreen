@@ -1,0 +1,98 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 21,
+  "iau_abbreviation": "Ant",
+  "name_es": "Antlia",
+  "name_en": "Antlia",
+  "english_descriptor": "Air Pump",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 46515,
+      "ra_hours": 9.48743,
+      "dec_deg": -35.95136,
+      "magnitude": 4.51,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1083.806,
+        940.475
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51172,
+      "ra_hours": 10.45254,
+      "dec_deg": -31.06781,
+      "magnitude": 4.28,
+      "bv": 1.429,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        675.191,
+        724.408
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 53502,
+      "ra_hours": 10.94528,
+      "dec_deg": -37.13747,
+      "magnitude": 4.6,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        476.595,
+        978.769
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 53502,
+      "to_hip": 51172,
+      "from_xy": [
+        476.595,
+        978.769
+      ],
+      "to_xy": [
+        675.191,
+        724.408
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 51172,
+      "to_hip": 46515,
+      "from_xy": [
+        675.191,
+        724.408
+      ],
+      "to_xy": [
+        1083.806,
+        940.475
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

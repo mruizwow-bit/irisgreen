@@ -1,0 +1,141 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 54,
+  "iau_abbreviation": "Hyi",
+  "name_es": "Hidra Macho",
+  "name_en": "Hydrus",
+  "english_descriptor": "Male Water Snake",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 2021,
+      "ra_hours": 0.42756,
+      "dec_deg": -77.25503,
+      "magnitude": 2.82,
+      "bv": 0.618,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 9236,
+      "ra_hours": 1.97941,
+      "dec_deg": -61.56992,
+      "magnitude": 2.86,
+      "bv": 0.29,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        861.367,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 11001,
+      "ra_hours": 2.36251,
+      "dec_deg": -68.65942,
+      "magnitude": 4.08,
+      "bv": 0.034,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        675.721,
+        842.849
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17678,
+      "ra_hours": 3.78729,
+      "dec_deg": -74.23925,
+      "magnitude": 3.26,
+      "bv": 1.59,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        267.794,
+        1237.041
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 2021,
+      "to_hip": 17678,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        267.794,
+        1237.041
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 17678,
+      "to_hip": 11001,
+      "from_xy": [
+        267.794,
+        1237.041
+      ],
+      "to_xy": [
+        675.721,
+        842.849
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 11001,
+      "to_hip": 9236,
+      "from_xy": [
+        675.721,
+        842.849
+      ],
+      "to_xy": [
+        861.367,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 9236,
+      "to_hip": 2021,
+      "from_xy": [
+        861.367,
+        431.691
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

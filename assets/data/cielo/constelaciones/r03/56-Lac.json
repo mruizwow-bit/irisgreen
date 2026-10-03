@@ -1,0 +1,304 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 56,
+  "iau_abbreviation": "Lac",
+  "name_es": "Lagarto",
+  "name_en": "Lacerta",
+  "english_descriptor": "Lizard",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 109754,
+      "ra_hours": 22.23131,
+      "dec_deg": 39.71489,
+      "magnitude": 4.5,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1277.738
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 109937,
+      "ra_hours": 22.26616,
+      "dec_deg": 37.74872,
+      "magnitude": 4.14,
+      "bv": 1.447,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1108.852,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110351,
+      "ra_hours": 22.35043,
+      "dec_deg": 46.53656,
+      "magnitude": 4.55,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        901.7,
+        817.721
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110538,
+      "ra_hours": 22.39268,
+      "dec_deg": 52.2295,
+      "magnitude": 4.42,
+      "bv": 1.015,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        815.756,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110609,
+      "ra_hours": 22.40861,
+      "dec_deg": 49.47639,
+      "magnitude": 4.55,
+      "bv": 0.092,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        790.176,
+        619.187
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111022,
+      "ra_hours": 22.49217,
+      "dec_deg": 47.70689,
+      "magnitude": 4.34,
+      "bv": 1.679,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        636.424,
+        738.687
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111104,
+      "ra_hours": 22.50813,
+      "dec_deg": 43.12339,
+      "magnitude": 4.52,
+      "bv": -0.086,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        593.548,
+        1048.188
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111169,
+      "ra_hours": 22.52149,
+      "dec_deg": 50.28244,
+      "magnitude": 3.76,
+      "bv": 0.031,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        590.854,
+        563.852
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111944,
+      "ra_hours": 22.67522,
+      "dec_deg": 44.27628,
+      "magnitude": 4.5,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        966.513
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 111022,
+      "to_hip": 111169,
+      "from_xy": [
+        636.424,
+        738.687
+      ],
+      "to_xy": [
+        590.854,
+        563.852
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 111169,
+      "to_hip": 110538,
+      "from_xy": [
+        590.854,
+        563.852
+      ],
+      "to_xy": [
+        815.756,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 110538,
+      "to_hip": 110609,
+      "from_xy": [
+        815.756,
+        431.691
+      ],
+      "to_xy": [
+        790.176,
+        619.187
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 110609,
+      "to_hip": 111022,
+      "from_xy": [
+        790.176,
+        619.187
+      ],
+      "to_xy": [
+        636.424,
+        738.687
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 111022,
+      "to_hip": 110351,
+      "from_xy": [
+        636.424,
+        738.687
+      ],
+      "to_xy": [
+        901.7,
+        817.721
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 110351,
+      "to_hip": 111104,
+      "from_xy": [
+        901.7,
+        817.721
+      ],
+      "to_xy": [
+        593.548,
+        1048.188
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 111104,
+      "to_hip": 111944,
+      "from_xy": [
+        593.548,
+        1048.188
+      ],
+      "to_xy": [
+        267.794,
+        966.513
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 111944,
+      "to_hip": 111022,
+      "from_xy": [
+        267.794,
+        966.513
+      ],
+      "to_xy": [
+        636.424,
+        738.687
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 111104,
+      "to_hip": 109754,
+      "from_xy": [
+        593.548,
+        1048.188
+      ],
+      "to_xy": [
+        1172.206,
+        1277.738
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 109754,
+      "to_hip": 109937,
+      "from_xy": [
+        1172.206,
+        1277.738
+      ],
+      "to_xy": [
+        1108.852,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

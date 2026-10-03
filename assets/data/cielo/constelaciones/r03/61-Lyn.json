@@ -1,0 +1,265 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 61,
+  "iau_abbreviation": "Lyn",
+  "name_es": "Lince",
+  "name_en": "Lynx",
+  "english_descriptor": "Lynx",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 30060,
+      "ra_hours": 6.32705,
+      "dec_deg": 59.01092,
+      "magnitude": 4.44,
+      "bv": 0.032,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 33449,
+      "ra_hours": 6.95461,
+      "dec_deg": 58.42306,
+      "magnitude": 4.35,
+      "bv": 0.85,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1018.555,
+        526.563
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 36145,
+      "ra_hours": 7.44524,
+      "dec_deg": 49.21164,
+      "magnitude": 4.61,
+      "bv": -0.001,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        948.678,
+        889.588
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 41075,
+      "ra_hours": 8.38059,
+      "dec_deg": 43.18836,
+      "magnitude": 4.25,
+      "bv": 1.55,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        657.731,
+        1131.239
+      ],
+      "proper_name": "Alsciaukat"
+    },
+    {
+      "hip": 44248,
+      "ra_hours": 9.01076,
+      "dec_deg": 41.78344,
+      "magnitude": 3.96,
+      "bv": 0.463,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        433.277,
+        1168.413
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 44700,
+      "ra_hours": 9.10883,
+      "dec_deg": 38.45225,
+      "magnitude": 4.56,
+      "bv": 1.037,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        384.058,
+        1281.136
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 45688,
+      "ra_hours": 9.31408,
+      "dec_deg": 36.80289,
+      "magnitude": 3.82,
+      "bv": 0.066,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        296.554,
+        1328.697
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 45860,
+      "ra_hours": 9.35096,
+      "dec_deg": 34.39253,
+      "magnitude": 3.14,
+      "bv": 1.55,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 45860,
+      "to_hip": 45688,
+      "from_xy": [
+        267.794,
+        1413.309
+      ],
+      "to_xy": [
+        296.554,
+        1328.697
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 45688,
+      "to_hip": 44700,
+      "from_xy": [
+        296.554,
+        1328.697
+      ],
+      "to_xy": [
+        384.058,
+        1281.136
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 44700,
+      "to_hip": 44248,
+      "from_xy": [
+        384.058,
+        1281.136
+      ],
+      "to_xy": [
+        433.277,
+        1168.413
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 44248,
+      "to_hip": 41075,
+      "from_xy": [
+        433.277,
+        1168.413
+      ],
+      "to_xy": [
+        657.731,
+        1131.239
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 41075,
+      "to_hip": 36145,
+      "from_xy": [
+        657.731,
+        1131.239
+      ],
+      "to_xy": [
+        948.678,
+        889.588
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 36145,
+      "to_hip": 33449,
+      "from_xy": [
+        948.678,
+        889.588
+      ],
+      "to_xy": [
+        1018.555,
+        526.563
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 33449,
+      "to_hip": 30060,
+      "from_xy": [
+        1018.555,
+        526.563
+      ],
+      "to_xy": [
+        1172.206,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {
+    "41075": {
+      "name": "Alsciaukat",
+      "x": 689.73,
+      "y": 1126.24,
+      "box": [
+        685.73,
+        1123.24,
+        816.73,
+        1147.24
+      ],
+      "leader": false,
+      "anchor": [
+        689.73,
+        1135.24
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

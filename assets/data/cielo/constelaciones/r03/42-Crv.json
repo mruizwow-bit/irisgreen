@@ -1,0 +1,236 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 42,
+  "iau_abbreviation": "Crv",
+  "name_es": "Cuervo",
+  "name_en": "Corvus",
+  "english_descriptor": "Crow",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 59199,
+      "ra_hours": 12.14021,
+      "dec_deg": -24.72878,
+      "magnitude": 4.02,
+      "bv": 0.334,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        908.65,
+        1055.661
+      ],
+      "proper_name": "Alchiba"
+    },
+    {
+      "hip": 59316,
+      "ra_hours": 12.16876,
+      "dec_deg": -22.61981,
+      "magnitude": 3.02,
+      "bv": 1.326,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        892.316,
+        963.681
+      ],
+      "proper_name": "Minkar"
+    },
+    {
+      "hip": 59803,
+      "ra_hours": 12.26346,
+      "dec_deg": -17.54197,
+      "magnitude": 2.58,
+      "bv": -0.107,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        833.945,
+        742.778
+      ],
+      "proper_name": "Gienah"
+    },
+    {
+      "hip": 60965,
+      "ra_hours": 12.49777,
+      "dec_deg": -16.51508,
+      "magnitude": 2.94,
+      "bv": -0.012,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        680.177,
+        698.618
+      ],
+      "proper_name": "Algorab"
+    },
+    {
+      "hip": 61359,
+      "ra_hours": 12.57312,
+      "dec_deg": -23.39661,
+      "magnitude": 2.65,
+      "bv": 0.893,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        637.713,
+        998.44
+      ],
+      "proper_name": "Kraz"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 60965,
+      "to_hip": 59803,
+      "from_xy": [
+        680.177,
+        698.618
+      ],
+      "to_xy": [
+        833.945,
+        742.778
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 59803,
+      "to_hip": 59316,
+      "from_xy": [
+        833.945,
+        742.778
+      ],
+      "to_xy": [
+        892.316,
+        963.681
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 59316,
+      "to_hip": 61359,
+      "from_xy": [
+        892.316,
+        963.681
+      ],
+      "to_xy": [
+        637.713,
+        998.44
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 61359,
+      "to_hip": 60965,
+      "from_xy": [
+        637.713,
+        998.44
+      ],
+      "to_xy": [
+        680.177,
+        698.618
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 59316,
+      "to_hip": 59199,
+      "from_xy": [
+        892.316,
+        963.681
+      ],
+      "to_xy": [
+        908.65,
+        1055.661
+      ]
+    }
+  ],
+  "labels_review": {
+    "59803": {
+      "name": "Gienah",
+      "x": 865.95,
+      "y": 737.78,
+      "box": [
+        861.95,
+        734.78,
+        954.95,
+        758.78
+      ],
+      "leader": false,
+      "anchor": [
+        865.95,
+        746.78
+      ]
+    },
+    "61359": {
+      "name": "Kraz",
+      "x": 552.71,
+      "y": 993.44,
+      "box": [
+        548.71,
+        990.44,
+        609.71,
+        1014.44
+      ],
+      "leader": false,
+      "anchor": [
+        605.71,
+        1002.44
+      ]
+    },
+    "60965": {
+      "name": "Algorab",
+      "x": 555.18,
+      "y": 693.62,
+      "box": [
+        551.18,
+        690.62,
+        652.18,
+        719.62
+      ],
+      "leader": false,
+      "anchor": [
+        648.18,
+        705.12
+      ]
+    },
+    "59316": {
+      "name": "Minkar",
+      "x": 924.32,
+      "y": 958.68,
+      "box": [
+        920.32,
+        955.68,
+        1009.32,
+        979.68
+      ],
+      "leader": false,
+      "anchor": [
+        924.32,
+        967.68
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

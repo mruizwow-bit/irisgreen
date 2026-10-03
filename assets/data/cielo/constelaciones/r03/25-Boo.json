@@ -1,0 +1,459 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 25,
+  "iau_abbreviation": "Boo",
+  "name_es": "Boyero",
+  "name_en": "Boötes",
+  "english_descriptor": "Herdsman",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 67275,
+      "ra_hours": 13.78779,
+      "dec_deg": 17.45678,
+      "magnitude": 4.5,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        959.866,
+        1272.826
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 67927,
+      "ra_hours": 13.91142,
+      "dec_deg": 18.39858,
+      "magnitude": 2.68,
+      "bv": 0.58,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        926.627,
+        1255.509
+      ],
+      "proper_name": "Muphrid"
+    },
+    {
+      "hip": 69483,
+      "ra_hours": 14.22471,
+      "dec_deg": 51.79,
+      "magnitude": 4.53,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        827.59,
+        608.834
+      ],
+      "proper_name": "Asellus Tertius"
+    },
+    {
+      "hip": 69673,
+      "ra_hours": 14.26121,
+      "dec_deg": 19.18728,
+      "magnitude": 0,
+      "bv": 1.239,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        837.916,
+        1242.897
+      ],
+      "proper_name": "Arcturus"
+    },
+    {
+      "hip": 69732,
+      "ra_hours": 14.27311,
+      "dec_deg": 46.08792,
+      "magnitude": 4.18,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        822.318,
+        726.24
+      ],
+      "proper_name": "Xuange"
+    },
+    {
+      "hip": 70497,
+      "ra_hours": 14.42001,
+      "dec_deg": 51.85172,
+      "magnitude": 4.04,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        794.787,
+        608.653
+      ],
+      "proper_name": "Asellus Primus"
+    },
+    {
+      "hip": 71053,
+      "ra_hours": 14.53052,
+      "dec_deg": 30.37114,
+      "magnitude": 3.57,
+      "bv": 1.298,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        772.758,
+        1028.018
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 71075,
+      "ra_hours": 14.53466,
+      "dec_deg": 38.30789,
+      "magnitude": 3.04,
+      "bv": 0.191,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        773.173,
+        878.039
+      ],
+      "proper_name": "Seginus"
+    },
+    {
+      "hip": 71795,
+      "ra_hours": 14.68581,
+      "dec_deg": 13.72833,
+      "magnitude": 3.78,
+      "bv": 0.044,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        729.191,
+        1354.383
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 72105,
+      "ra_hours": 14.74979,
+      "dec_deg": 27.07417,
+      "magnitude": 2.35,
+      "bv": 0.966,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        721.947,
+        1089.27
+      ],
+      "proper_name": "Izar"
+    },
+    {
+      "hip": 73555,
+      "ra_hours": 15.03244,
+      "dec_deg": 40.39064,
+      "magnitude": 3.49,
+      "bv": 0.956,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        675.123,
+        832.279
+      ],
+      "proper_name": "Nekkar"
+    },
+    {
+      "hip": 74666,
+      "ra_hours": 15.25836,
+      "dec_deg": 33.31511,
+      "magnitude": 3.46,
+      "bv": 0.961,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        616.089,
+        961.775
+      ],
+      "proper_name": "Thiba"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 69673,
+      "to_hip": 72105,
+      "from_xy": [
+        837.916,
+        1242.897
+      ],
+      "to_xy": [
+        721.947,
+        1089.27
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 72105,
+      "to_hip": 74666,
+      "from_xy": [
+        721.947,
+        1089.27
+      ],
+      "to_xy": [
+        616.089,
+        961.775
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 74666,
+      "to_hip": 73555,
+      "from_xy": [
+        616.089,
+        961.775
+      ],
+      "to_xy": [
+        675.123,
+        832.279
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 73555,
+      "to_hip": 71075,
+      "from_xy": [
+        675.123,
+        832.279
+      ],
+      "to_xy": [
+        773.173,
+        878.039
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 71075,
+      "to_hip": 71053,
+      "from_xy": [
+        773.173,
+        878.039
+      ],
+      "to_xy": [
+        772.758,
+        1028.018
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 71053,
+      "to_hip": 69673,
+      "from_xy": [
+        772.758,
+        1028.018
+      ],
+      "to_xy": [
+        837.916,
+        1242.897
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 69673,
+      "to_hip": 67927,
+      "from_xy": [
+        837.916,
+        1242.897
+      ],
+      "to_xy": [
+        926.627,
+        1255.509
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 67927,
+      "to_hip": 67275,
+      "from_xy": [
+        926.627,
+        1255.509
+      ],
+      "to_xy": [
+        959.866,
+        1272.826
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 69673,
+      "to_hip": 71795,
+      "from_xy": [
+        837.916,
+        1242.897
+      ],
+      "to_xy": [
+        729.191,
+        1354.383
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 71075,
+      "to_hip": 69732,
+      "from_xy": [
+        773.173,
+        878.039
+      ],
+      "to_xy": [
+        822.318,
+        726.24
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 69732,
+      "to_hip": 70497,
+      "from_xy": [
+        822.318,
+        726.24
+      ],
+      "to_xy": [
+        794.787,
+        608.653
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 70497,
+      "to_hip": 69483,
+      "from_xy": [
+        794.787,
+        608.653
+      ],
+      "to_xy": [
+        827.59,
+        608.834
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 69483,
+      "to_hip": 69732,
+      "from_xy": [
+        827.59,
+        608.834
+      ],
+      "to_xy": [
+        822.318,
+        726.24
+      ]
+    }
+  ],
+  "labels_review": {
+    "69673": {
+      "name": "Arcturus",
+      "x": 849.92,
+      "y": 1180.9,
+      "box": [
+        845.92,
+        1177.9,
+        954.92,
+        1201.9
+      ],
+      "leader": true,
+      "anchor": [
+        849.92,
+        1189.9
+      ]
+    },
+    "72105": {
+      "name": "Izar",
+      "x": 645.95,
+      "y": 1084.27,
+      "box": [
+        641.95,
+        1081.27,
+        693.95,
+        1105.27
+      ],
+      "leader": false,
+      "anchor": [
+        689.95,
+        1093.27
+      ]
+    },
+    "67927": {
+      "name": "Muphrid",
+      "x": 783.63,
+      "y": 1277.51,
+      "box": [
+        779.63,
+        1274.51,
+        885.63,
+        1303.51
+      ],
+      "leader": true,
+      "anchor": [
+        881.63,
+        1289.01
+      ]
+    },
+    "71075": {
+      "name": "Seginus",
+      "x": 805.17,
+      "y": 873.04,
+      "box": [
+        801.17,
+        870.04,
+        904.17,
+        899.04
+      ],
+      "leader": false,
+      "anchor": [
+        805.17,
+        884.54
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

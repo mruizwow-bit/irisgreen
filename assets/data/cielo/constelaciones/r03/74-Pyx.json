@@ -1,0 +1,145 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 74,
+  "iau_abbreviation": "Pyx",
+  "name_es": "Brújula",
+  "name_en": "Pyxis",
+  "english_descriptor": "Magnetic Compass",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 39429,
+      "ra_hours": 8.05974,
+      "dec_deg": -40.00319,
+      "magnitude": 2.21,
+      "bv": -0.269,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": "Naos"
+    },
+    {
+      "hip": 42515,
+      "ra_hours": 8.66837,
+      "dec_deg": -35.30831,
+      "magnitude": 3.97,
+      "bv": 0.936,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        497.291,
+        1023.856
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 42828,
+      "ra_hours": 8.72654,
+      "dec_deg": -33.18642,
+      "magnitude": 3.68,
+      "bv": -0.18,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        425.512,
+        858.917
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 43409,
+      "ra_hours": 8.84223,
+      "dec_deg": -27.71006,
+      "magnitude": 4.02,
+      "bv": 1.272,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 39429,
+      "to_hip": 42515,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        497.291,
+        1023.856
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 42515,
+      "to_hip": 42828,
+      "from_xy": [
+        497.291,
+        1023.856
+      ],
+      "to_xy": [
+        425.512,
+        858.917
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 42828,
+      "to_hip": 43409,
+      "from_xy": [
+        425.512,
+        858.917
+      ],
+      "to_xy": [
+        267.794,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {
+    "39429": {
+      "name": "Naos",
+      "x": 1204.21,
+      "y": 1408.31,
+      "box": [
+        1200.21,
+        1405.31,
+        1268.21,
+        1429.31
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        1417.31
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

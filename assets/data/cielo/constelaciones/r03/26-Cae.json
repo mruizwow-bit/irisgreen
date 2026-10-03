@@ -1,0 +1,128 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 26,
+  "iau_abbreviation": "Cae",
+  "name_es": "Cincel",
+  "name_en": "Caelum",
+  "english_descriptor": "Engraving Tool",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 21060,
+      "ra_hours": 4.51392,
+      "dec_deg": -44.95375,
+      "magnitude": 5.07,
+      "bv": -0.194,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        789.502,
+        1151.293
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 21770,
+      "ra_hours": 4.67606,
+      "dec_deg": -41.86358,
+      "magnitude": 4.44,
+      "bv": 0.342,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        716.087,
+        1003.322
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 21861,
+      "ra_hours": 4.70096,
+      "dec_deg": -37.14478,
+      "magnitude": 5.04,
+      "bv": 0.391,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        705.707,
+        781.557
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 23595,
+      "ra_hours": 5.07342,
+      "dec_deg": -35.48286,
+      "magnitude": 4.55,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        507.912,
+        707.703
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 23595,
+      "to_hip": 21861,
+      "from_xy": [
+        507.912,
+        707.703
+      ],
+      "to_xy": [
+        705.707,
+        781.557
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 21861,
+      "to_hip": 21770,
+      "from_xy": [
+        705.707,
+        781.557
+      ],
+      "to_xy": [
+        716.087,
+        1003.322
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 21770,
+      "to_hip": 21060,
+      "from_xy": [
+        716.087,
+        1003.322
+      ],
+      "to_xy": [
+        789.502,
+        1151.293
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

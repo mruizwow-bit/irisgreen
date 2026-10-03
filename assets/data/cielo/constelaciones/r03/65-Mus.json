@@ -1,0 +1,201 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 65,
+  "iau_abbreviation": "Mus",
+  "name_es": "Mosca",
+  "name_en": "Musca",
+  "english_descriptor": "Fly",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 57363,
+      "ra_hours": 11.76016,
+      "dec_deg": -66.72883,
+      "magnitude": 3.63,
+      "bv": 0.16,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 59929,
+      "ra_hours": 12.29296,
+      "dec_deg": -67.96067,
+      "magnitude": 4.06,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        752.335,
+        604.522
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 61199,
+      "ra_hours": 12.54114,
+      "dec_deg": -72.13297,
+      "magnitude": 3.84,
+      "bv": -0.157,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        577.387,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 61585,
+      "ra_hours": 12.61974,
+      "dec_deg": -69.13553,
+      "magnitude": 2.69,
+      "bv": -0.176,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        516.465,
+        831.209
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 62322,
+      "ra_hours": 12.77135,
+      "dec_deg": -68.10808,
+      "magnitude": 3.04,
+      "bv": -0.178,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        400.783,
+        639.821
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 63613,
+      "ra_hours": 13.03772,
+      "dec_deg": -71.54881,
+      "magnitude": 3.61,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1334.651
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 57363,
+      "to_hip": 59929,
+      "from_xy": [
+        1172.206,
+        431.691
+      ],
+      "to_xy": [
+        752.335,
+        604.522
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 59929,
+      "to_hip": 61585,
+      "from_xy": [
+        752.335,
+        604.522
+      ],
+      "to_xy": [
+        516.465,
+        831.209
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 61585,
+      "to_hip": 62322,
+      "from_xy": [
+        516.465,
+        831.209
+      ],
+      "to_xy": [
+        400.783,
+        639.821
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 62322,
+      "to_hip": 63613,
+      "from_xy": [
+        400.783,
+        639.821
+      ],
+      "to_xy": [
+        267.794,
+        1334.651
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 63613,
+      "to_hip": 61199,
+      "from_xy": [
+        267.794,
+        1334.651
+      ],
+      "to_xy": [
+        577.387,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 61199,
+      "to_hip": 61585,
+      "from_xy": [
+        577.387,
+        1413.309
+      ],
+      "to_xy": [
+        516.465,
+        831.209
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

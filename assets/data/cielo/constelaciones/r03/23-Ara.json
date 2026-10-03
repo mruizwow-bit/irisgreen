@@ -1,0 +1,248 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 23,
+  "iau_abbreviation": "Ara",
+  "name_es": "Altar",
+  "name_en": "Ara",
+  "english_descriptor": "Altar",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 82363,
+      "ra_hours": 16.82975,
+      "dec_deg": -59.04131,
+      "magnitude": 3.77,
+      "bv": 1.562,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        905.926,
+        1160.092
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 83081,
+      "ra_hours": 16.97701,
+      "dec_deg": -55.99006,
+      "magnitude": 3.12,
+      "bv": 1.552,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        868.879,
+        1017.67
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 83153,
+      "ra_hours": 16.99307,
+      "dec_deg": -53.1605,
+      "magnitude": 4.06,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        872.791,
+        890.188
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85258,
+      "ra_hours": 17.42167,
+      "dec_deg": -55.52983,
+      "magnitude": 2.84,
+      "bv": 1.479,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        711.81,
+        990.895
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85267,
+      "ra_hours": 17.42324,
+      "dec_deg": -56.37769,
+      "magnitude": 3.31,
+      "bv": -0.15,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        711.684,
+        1029.005
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85727,
+      "ra_hours": 17.51833,
+      "dec_deg": -60.68361,
+      "magnitude": 3.6,
+      "bv": -0.104,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        684.403,
+        1223.965
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85792,
+      "ra_hours": 17.5307,
+      "dec_deg": -49.87597,
+      "magnitude": 2.84,
+      "bv": -0.136,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        664.487,
+        737.194
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 88714,
+      "ra_hours": 18.11052,
+      "dec_deg": -50.09144,
+      "magnitude": 3.65,
+      "bv": -0.101,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        429.097,
+        770.088
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 85267,
+      "to_hip": 85727,
+      "from_xy": [
+        711.684,
+        1029.005
+      ],
+      "to_xy": [
+        684.403,
+        1223.965
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 85727,
+      "to_hip": 82363,
+      "from_xy": [
+        684.403,
+        1223.965
+      ],
+      "to_xy": [
+        905.926,
+        1160.092
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 82363,
+      "to_hip": 83081,
+      "from_xy": [
+        905.926,
+        1160.092
+      ],
+      "to_xy": [
+        868.879,
+        1017.67
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 83081,
+      "to_hip": 83153,
+      "from_xy": [
+        868.879,
+        1017.67
+      ],
+      "to_xy": [
+        872.791,
+        890.188
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 83153,
+      "to_hip": 85792,
+      "from_xy": [
+        872.791,
+        890.188
+      ],
+      "to_xy": [
+        664.487,
+        737.194
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 85792,
+      "to_hip": 88714,
+      "from_xy": [
+        664.487,
+        737.194
+      ],
+      "to_xy": [
+        429.097,
+        770.088
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 85792,
+      "to_hip": 85258,
+      "from_xy": [
+        664.487,
+        737.194
+      ],
+      "to_xy": [
+        711.81,
+        990.895
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

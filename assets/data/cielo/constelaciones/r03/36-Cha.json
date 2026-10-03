@@ -1,0 +1,171 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 36,
+  "iau_abbreviation": "Cha",
+  "name_es": "Camaleón",
+  "name_en": "Chamaeleon",
+  "english_descriptor": "Chameleon",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 40702,
+      "ra_hours": 8.30869,
+      "dec_deg": -76.91997,
+      "magnitude": 4.05,
+      "bv": 0.413,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1038.85,
+        858.826
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51839,
+      "ra_hours": 10.59117,
+      "dec_deg": -78.60781,
+      "magnitude": 4.11,
+      "bv": 1.58,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        728.905,
+        822.558
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 52633,
+      "ra_hours": 10.76309,
+      "dec_deg": -80.54019,
+      "magnitude": 4.45,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        708.009,
+        911.081
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 58484,
+      "ra_hours": 11.9938,
+      "dec_deg": -78.22181,
+      "magnitude": 4.88,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        550.685,
+        832.908
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 60000,
+      "ra_hours": 12.30582,
+      "dec_deg": -79.31228,
+      "magnitude": 4.24,
+      "bv": -0.123,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        531.012,
+        894.811
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 40702,
+      "to_hip": 51839,
+      "from_xy": [
+        1038.85,
+        858.826
+      ],
+      "to_xy": [
+        728.905,
+        822.558
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 51839,
+      "to_hip": 52633,
+      "from_xy": [
+        728.905,
+        822.558
+      ],
+      "to_xy": [
+        708.009,
+        911.081
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 52633,
+      "to_hip": 60000,
+      "from_xy": [
+        708.009,
+        911.081
+      ],
+      "to_xy": [
+        531.012,
+        894.811
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 60000,
+      "to_hip": 58484,
+      "from_xy": [
+        531.012,
+        894.811
+      ],
+      "to_xy": [
+        550.685,
+        832.908
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 58484,
+      "to_hip": 51839,
+      "from_xy": [
+        550.685,
+        832.908
+      ],
+      "to_xy": [
+        728.905,
+        822.558
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

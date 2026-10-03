@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Hidra Macho / Hydrus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="337.665" cy="452.138" r="2.599"/>
+<circle id="bg-star-002" cx="810.548" cy="1480.592" r="2.920"/>
+<circle id="bg-star-003" cx="1159.277" cy="1352.753" r="2.023"/>
+<circle id="bg-star-004" cx="1329.689" cy="1158.944" r="2.256"/>
+<circle id="bg-star-005" cx="553.640" cy="1250.416" r="2.805"/>
+<circle id="bg-star-006" cx="1002.421" cy="578.309" r="1.638"/>
+<circle id="bg-star-007" cx="317.254" cy="1378.326" r="2.987"/>
+<circle id="bg-star-008" cx="554.746" cy="1520.214" r="1.819"/>
+<circle id="bg-star-009" cx="1148.497" cy="1082.671" r="1.649"/>
+<circle id="bg-star-010" cx="699.407" cy="448.883" r="1.637"/>
+<circle id="bg-star-011" cx="1093.081" cy="1165.418" r="3.077"/>
+<circle id="bg-star-012" cx="229.221" cy="1288.699" r="3.329"/>
+<circle id="bg-star-013" cx="1215.993" cy="330.580" r="2.382"/>
+<circle id="bg-star-014" cx="161.632" cy="1438.817" r="2.376"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="2021" data-to-hip="17678" x1="1172.206" y1="1413.309" x2="267.794" y2="1237.041"/>
+<line id="edge-02" data-from-hip="17678" data-to-hip="11001" x1="267.794" y1="1237.041" x2="675.721" y2="842.849"/>
+<line id="edge-03" data-from-hip="11001" data-to-hip="9236" x1="675.721" y1="842.849" x2="861.367" y2="431.691"/>
+<line id="edge-04" data-from-hip="9236" data-to-hip="2021" x1="861.367" y1="431.691" x2="1172.206" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-2021" data-hip="2021" data-mag="2.82" data-bv="0.618" cx="1172.206" cy="1413.309" r="6.693" fill="rgb(255, 244, 221)"/>
+<circle id="hip-9236" data-hip="9236" data-mag="2.86" data-bv="0.29" cx="861.367" cy="431.691" r="6.639" fill="rgb(222, 232, 255)"/>
+<circle id="hip-11001" data-hip="11001" data-mag="4.08" data-bv="0.034" cx="675.721" cy="842.849" r="4.992" fill="rgb(190, 215, 255)"/>
+<circle id="hip-17678" data-hip="17678" data-mag="3.26" data-bv="1.59" cx="267.794" cy="1237.041" r="6.099" fill="rgb(255, 150, 96)"/>
+</g></svg>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Andrómeda / Andromeda</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="312.364" cy="1375.775" r="4.094"/>
+<circle id="bg-star-002" cx="367.525" cy="976.438" r="3.450"/>
+<circle id="bg-star-003" cx="450.739" cy="1177.212" r="3.177"/>
+<circle id="bg-star-004" cx="622.142" cy="549.942" r="3.067"/>
+<circle id="bg-star-005" cx="307.212" cy="1004.159" r="2.780"/>
+<circle id="bg-star-006" cx="906.475" cy="1383.252" r="2.748"/>
+<circle id="bg-star-007" cx="603.928" cy="795.719" r="2.735"/>
+<circle id="bg-star-008" cx="267.794" cy="431.691" r="2.735"/>
+<circle id="bg-star-009" cx="770.858" cy="612.410" r="2.631"/>
+<circle id="bg-star-010" cx="967.345" cy="1062.047" r="2.579"/>
+<circle id="bg-star-011" cx="962.832" cy="1209.578" r="2.579"/>
+<circle id="bg-star-012" cx="834.866" cy="1413.309" r="2.540"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="677" data-to-hip="3092" x1="1172.206" y1="1201.442" x2="955.413" y2="1157.883"/>
+<line id="edge-02" data-from-hip="3092" data-to-hip="5447" x1="955.413" y1="1157.883" x2="756.788" y2="1000.688"/>
+<line id="edge-03" data-from-hip="9640" data-to-hip="5447" x1="447.056" y1="737.543" x2="756.788" y2="1000.688"/>
+<line id="edge-04" data-from-hip="5447" data-to-hip="4436" x1="756.788" y1="1000.688" x2="838.907" y2="907.097"/>
+<line id="edge-05" data-from-hip="4436" data-to-hip="3881" x1="838.907" y1="907.097" x2="879.767" y2="821.196"/>
+</g><g id="stars">
+<circle id="hip-677" data-hip="677" data-mag="2.07" data-bv="-0.038" cx="1172.206" cy="1201.442" r="7.706" fill="rgb(190, 215, 255)"/>
+<circle id="hip-3092" data-hip="3092" data-mag="3.27" data-bv="1.268" cx="955.413" cy="1157.883" r="6.085" fill="rgb(255, 188, 125)"/>
+<circle id="hip-3881" data-hip="3881" data-mag="4.53" data-bv="" cx="879.767" cy="821.196" r="4.384" fill="rgb(235, 240, 255)"/>
+<circle id="hip-4436" data-hip="4436" data-mag="3.86" data-bv="0.13" cx="838.907" cy="907.097" r="5.289" fill="rgb(222, 232, 255)"/>
+<circle id="hip-5447" data-hip="5447" data-mag="2.07" data-bv="1.576" cx="756.788" cy="1000.688" r="7.706" fill="rgb(255, 150, 96)"/>
+<circle id="hip-9640" data-hip="9640" data-mag="2.1" data-bv="1.37" cx="447.056" cy="737.543" r="7.665" fill="rgb(255, 188, 125)"/>
+</g></svg>

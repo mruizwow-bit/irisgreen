@@ -1,0 +1,492 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Aqr",
+  "name_es": "Acuario",
+  "name_en": "Aquarius",
+  "descriptor_es": "El portador de agua",
+  "descriptor_en": "The Water Bearer",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 102618,
+      "ra_hours": 20.79459,
+      "dec_deg": -9.49569,
+      "magnitude": 3.78,
+      "bv": 0,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        990.027,
+        908.547
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 106278,
+      "ra_hours": 21.52598,
+      "dec_deg": -5.57117,
+      "magnitude": 2.9,
+      "bv": 0.828,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        820.683,
+        785.87
+      ],
+      "proper_name": "Sadalsuud"
+    },
+    {
+      "hip": 109074,
+      "ra_hours": 22.0964,
+      "dec_deg": 0.31983,
+      "magnitude": 2.95,
+      "bv": 0.969,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        698.114,
+        626.357
+      ],
+      "proper_name": "Sadalmelik"
+    },
+    {
+      "hip": 109139,
+      "ra_hours": 22.10728,
+      "dec_deg": -13.86953,
+      "magnitude": 4.29,
+      "bv": -0.075,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        692.665,
+        998.515
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110003,
+      "ra_hours": 22.28055,
+      "dec_deg": -7.78325,
+      "magnitude": 4.17,
+      "bv": 0.979,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        657.549,
+        839.053
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110395,
+      "ra_hours": 22.36092,
+      "dec_deg": -1.38736,
+      "magnitude": 3.86,
+      "bv": -0.057,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        641.139,
+        671.711
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110960,
+      "ra_hours": 22.4805,
+      "dec_deg": 0.02006,
+      "magnitude": 3.65,
+      "bv": 0.406,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        615.661,
+        634.383
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111123,
+      "ra_hours": 22.51078,
+      "dec_deg": -10.67789,
+      "magnitude": 4.82,
+      "bv": -0.053,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        609.42,
+        913.889
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111497,
+      "ra_hours": 22.58926,
+      "dec_deg": 0.11736,
+      "magnitude": 4.04,
+      "bv": -0.083,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        592.393,
+        631.791
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112716,
+      "ra_hours": 22.82653,
+      "dec_deg": -13.59253,
+      "magnitude": 4.05,
+      "bv": 1.57,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        544.321,
+        991.137
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112961,
+      "ra_hours": 22.87691,
+      "dec_deg": -7.57967,
+      "magnitude": 3.73,
+      "bv": 1.626,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        532.421,
+        834.602
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 113136,
+      "ra_hours": 22.91084,
+      "dec_deg": -15.82075,
+      "magnitude": 3.27,
+      "bv": 0.066,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        527.381,
+        1050.606
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 114341,
+      "ra_hours": 23.15743,
+      "dec_deg": -21.17247,
+      "magnitude": 3.68,
+      "bv": 1.202,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        478.189,
+        1199.12
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 114855,
+      "ra_hours": 23.2648,
+      "dec_deg": -9.08769,
+      "magnitude": 4.24,
+      "bv": 1.107,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        449.939,
+        877.686
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 115438,
+      "ra_hours": 23.38286,
+      "dec_deg": -20.10033,
+      "magnitude": 3.96,
+      "bv": 1.082,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        430.348,
+        1176.094
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 106278,
+      "to_hip": 109074,
+      "from_xy": [
+        820.683,
+        785.87
+      ],
+      "to_xy": [
+        698.114,
+        626.357
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 109074,
+      "to_hip": 110395,
+      "from_xy": [
+        698.114,
+        626.357
+      ],
+      "to_xy": [
+        641.139,
+        671.711
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 110395,
+      "to_hip": 110960,
+      "from_xy": [
+        641.139,
+        671.711
+      ],
+      "to_xy": [
+        615.661,
+        634.383
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 110960,
+      "to_hip": 111497,
+      "from_xy": [
+        615.661,
+        634.383
+      ],
+      "to_xy": [
+        592.393,
+        631.791
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 111497,
+      "to_hip": 112961,
+      "from_xy": [
+        592.393,
+        631.791
+      ],
+      "to_xy": [
+        532.421,
+        834.602
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 112961,
+      "to_hip": 114855,
+      "from_xy": [
+        532.421,
+        834.602
+      ],
+      "to_xy": [
+        449.939,
+        877.686
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 114855,
+      "to_hip": 115438,
+      "from_xy": [
+        449.939,
+        877.686
+      ],
+      "to_xy": [
+        430.348,
+        1176.094
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 109074,
+      "to_hip": 110003,
+      "from_xy": [
+        698.114,
+        626.357
+      ],
+      "to_xy": [
+        657.549,
+        839.053
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 110003,
+      "to_hip": 109139,
+      "from_xy": [
+        657.549,
+        839.053
+      ],
+      "to_xy": [
+        692.665,
+        998.515
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 110003,
+      "to_hip": 111123,
+      "from_xy": [
+        657.549,
+        839.053
+      ],
+      "to_xy": [
+        609.42,
+        913.889
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 111123,
+      "to_hip": 112716,
+      "from_xy": [
+        609.42,
+        913.889
+      ],
+      "to_xy": [
+        544.321,
+        991.137
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 112716,
+      "to_hip": 113136,
+      "from_xy": [
+        544.321,
+        991.137
+      ],
+      "to_xy": [
+        527.381,
+        1050.606
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 113136,
+      "to_hip": 114341,
+      "from_xy": [
+        527.381,
+        1050.606
+      ],
+      "to_xy": [
+        478.189,
+        1199.12
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 102618,
+      "to_hip": 106278,
+      "from_xy": [
+        990.027,
+        908.547
+      ],
+      "to_xy": [
+        820.683,
+        785.87
+      ]
+    }
+  ],
+  "labels_review": {
+    "109074": {
+      "name": "Sadalmelik",
+      "x": 730.11,
+      "y": 621.36,
+      "box": [
+        726.11,
+        618.36,
+        866.11,
+        642.36
+      ],
+      "leader": false,
+      "anchor": [
+        730.11,
+        630.36
+      ]
+    },
+    "106278": {
+      "name": "Sadalsuud",
+      "x": 852.68,
+      "y": 780.87,
+      "box": [
+        848.68,
+        777.87,
+        981.68,
+        801.87
+      ],
+      "leader": false,
+      "anchor": [
+        852.68,
+        789.87
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 14
+}

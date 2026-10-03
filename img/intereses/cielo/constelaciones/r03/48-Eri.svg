@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Erídano / Eridanus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="537.600" cy="1405.886" r="5.400"/>
+<circle id="bg-star-002" cx="334.836" cy="1041.518" r="5.400"/>
+<circle id="bg-star-003" cx="567.601" cy="907.046" r="5.283"/>
+<circle id="bg-star-004" cx="403.999" cy="708.146" r="5.107"/>
+<circle id="bg-star-005" cx="624.085" cy="589.196" r="4.835"/>
+<circle id="bg-star-006" cx="352.341" cy="1195.790" r="4.425"/>
+<circle id="bg-star-007" cx="505.898" cy="731.840" r="4.334"/>
+<circle id="bg-star-008" cx="494.442" cy="830.072" r="4.302"/>
+<circle id="bg-star-009" cx="483.389" cy="839.391" r="4.269"/>
+<circle id="bg-star-010" cx="305.744" cy="1180.990" r="4.211"/>
+<circle id="bg-star-011" cx="412.711" cy="1038.080" r="4.113"/>
+<circle id="bg-star-012" cx="1052.637" cy="431.691" r="4.094"/>
+<circle id="bg-star-013" cx="1172.206" cy="1045.365" r="4.074"/>
+<circle id="bg-star-014" cx="485.432" cy="930.336" r="4.055"/>
+<circle id="bg-star-015" cx="504.042" cy="818.836" r="3.938"/>
+<circle id="bg-star-016" cx="1113.781" cy="1325.762" r="3.840"/>
+<circle id="bg-star-017" cx="267.794" cy="1240.888" r="3.808"/>
+<circle id="bg-star-018" cx="860.147" cy="768.076" r="3.749"/>
+<circle id="bg-star-019" cx="543.422" cy="1009.917" r="3.723"/>
+<circle id="bg-star-020" cx="1086.363" cy="481.325" r="3.684"/>
+<circle id="bg-star-021" cx="563.639" cy="1170.270" r="3.678"/>
+<circle id="bg-star-022" cx="342.003" cy="1315.651" r="3.639"/>
+<circle id="bg-star-023" cx="509.068" cy="885.510" r="3.613"/>
+<circle id="bg-star-024" cx="559.758" cy="1036.761" r="3.574"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="23875" data-to-hip="22109" x1="578.224" y1="872.797" x2="628.804" y2="851.33"/>
+<line id="edge-02" data-from-hip="22109" data-to-hip="21444" x1="628.804" y1="851.33" x2="650.125" y2="851.982"/>
+<line id="edge-03" data-from-hip="21444" data-to-hip="19587" x1="650.125" y1="851.982" x2="706.821" y2="886.868"/>
+<line id="edge-04" data-from-hip="19587" data-to-hip="18543" x1="706.821" y1="886.868" x2="738.26" y2="950.317"/>
+<line id="edge-05" data-from-hip="18543" data-to-hip="17593" x1="738.26" y1="950.317" x2="761.605" y2="936.82"/>
+<line id="edge-06" data-from-hip="17593" data-to-hip="17378" x1="761.605" y1="936.82" x2="767.174" y2="914.643"/>
+<line id="edge-07" data-from-hip="17378" data-to-hip="16537" x1="767.174" y1="914.643" x2="788.167" y2="911.693"/>
+<line id="edge-08" data-from-hip="16537" data-to-hip="13701" x1="788.167" y1="911.693" x2="863.83" y2="907.666"/>
+<line id="edge-09" data-from-hip="13701" data-to-hip="12770" x1="863.83" y1="907.666" x2="885.506" y2="956.535"/>
+<line id="edge-10" data-from-hip="12770" data-to-hip="12770" x1="885.506" y1="956.535" x2="885.506" y2="956.535"/>
+<line id="edge-11" data-from-hip="12770" data-to-hip="12843" x1="885.506" y1="956.535" x2="879.441" y2="1000.138"/>
+<line id="edge-12" data-from-hip="12843" data-to-hip="14146" x1="879.441" y1="1000.138" x2="842.92" y2="1043.113"/>
+<line id="edge-13" data-from-hip="14146" data-to-hip="15474" x1="842.92" y1="1043.113" x2="812.027" y2="1024.916"/>
+<line id="edge-14" data-from-hip="15474" data-to-hip="16611" x1="812.027" y1="1024.916" x2="785.663" y2="1023.274"/>
+<line id="edge-15" data-from-hip="16611" data-to-hip="17651" x1="785.663" y1="1023.274" x2="761.764" y2="1037.696"/>
+<line id="edge-16" data-from-hip="17651" data-to-hip="18216" x1="761.764" y1="1037.696" x2="749.57" y2="1050.058"/>
+<line id="edge-17" data-from-hip="18216" data-to-hip="18673" x1="749.57" y1="1050.058" x2="738.124" y2="1045.214"/>
+<line id="edge-18" data-from-hip="18673" data-to-hip="21248" x1="738.124" y1="1045.214" x2="681.027" y2="1101.657"/>
+<line id="edge-19" data-from-hip="21248" data-to-hip="21393" x1="681.027" y1="1101.657" x2="678.096" y2="1109.341"/>
+<line id="edge-20" data-from-hip="21393" data-to-hip="20535" x1="678.096" y1="1109.341" x2="700.997" y2="1137.879"/>
+<line id="edge-21" data-from-hip="20535" data-to-hip="20042" x1="700.997" y1="1137.879" x2="711.264" y2="1134.67"/>
+<line id="edge-22" data-from-hip="20042" data-to-hip="17874" x1="711.264" y1="1134.67" x2="759.33" y2="1153.017"/>
+<line id="edge-23" data-from-hip="17874" data-to-hip="17874" x1="759.33" y1="1153.017" x2="759.33" y2="1153.017"/>
+<line id="edge-24" data-from-hip="17874" data-to-hip="16870" x1="759.33" y1="1153.017" x2="779.348" y2="1190.291"/>
+<line id="edge-25" data-from-hip="16870" data-to-hip="15510" x1="779.348" y1="1190.291" x2="805.357" y2="1217.707"/>
+<line id="edge-26" data-from-hip="15510" data-to-hip="13847" x1="805.357" y1="1217.707" x2="840.16" y2="1194.553"/>
+<line id="edge-27" data-from-hip="13847" data-to-hip="12486" x1="840.16" y1="1194.553" x2="868.692" y2="1194.695"/>
+<line id="edge-28" data-from-hip="12486" data-to-hip="12413" x1="868.692" y1="1194.695" x2="867.115" y2="1224.084"/>
+<line id="edge-29" data-from-hip="12413" data-to-hip="11407" x1="867.115" y1="1224.084" x2="881.256" y2="1276.931"/>
+<line id="edge-30" data-from-hip="11407" data-to-hip="9007" x1="881.256" y1="1276.931" x2="920.989" y2="1334.884"/>
+<line id="edge-31" data-from-hip="9007" data-to-hip="7588" x1="920.989" y1="1334.884" x2="933.528" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-7588" data-hip="7588" data-mag="0.45" data-bv="-0.158" cx="933.528" cy="1413.309" r="9.893" fill="rgb(168, 199, 255)"/>
+<circle id="hip-9007" data-hip="9007" data-mag="3.69" data-bv="0.844" cx="920.989" cy="1334.884" r="5.518" fill="rgb(255, 221, 170)"/>
+<circle id="hip-11407" data-hip="11407" data-mag="4.24" data-bv="-0.136" cx="881.256" cy="1276.931" r="4.776" fill="rgb(190, 215, 255)"/>
+<circle id="hip-12413" data-hip="12413" data-mag="4.74" data-bv="0.061" cx="867.115" cy="1224.084" r="4.101" fill="rgb(222, 232, 255)"/>
+<circle id="hip-12486" data-hip="12486" data-mag="4.11" data-bv="1.006" cx="868.692" cy="1194.695" r="4.951" fill="rgb(255, 221, 170)"/>
+<circle id="hip-12770" data-hip="12770" data-mag="4.24" data-bv="-0.122" cx="885.506" cy="956.535" r="4.776" fill="rgb(190, 215, 255)"/>
+<circle id="hip-12843" data-hip="12843" data-mag="4.47" data-bv="0.481" cx="879.441" cy="1000.138" r="4.465" fill="rgb(255, 244, 221)"/>
+<circle id="hip-13701" data-hip="13701" data-mag="3.89" data-bv="1.088" cx="863.830" cy="907.666" r="5.248" fill="rgb(255, 221, 170)"/>
+<circle id="hip-13847" data-hip="13847" data-mag="2.88" data-bv="0.128" cx="840.160" cy="1194.553" r="6.612" fill="rgb(222, 232, 255)"/>
+<circle id="hip-14146" data-hip="14146" data-mag="4.08" data-bv="0.163" cx="842.920" cy="1043.113" r="4.992" fill="rgb(222, 232, 255)"/>
+<circle id="hip-15474" data-hip="15474" data-mag="3.7" data-bv="1.614" cx="812.027" cy="1024.916" r="5.505" fill="rgb(255, 150, 96)"/>
+<circle id="hip-15510" data-hip="15510" data-mag="4.26" data-bv="0.711" cx="805.357" cy="1217.707" r="4.749" fill="rgb(255, 244, 221)"/>
+<circle id="hip-16537" data-hip="16537" data-mag="3.72" data-bv="0.881" cx="788.167" cy="911.693" r="5.478" fill="rgb(255, 221, 170)"/>
+<circle id="hip-16611" data-hip="16611" data-mag="4.26" data-bv="-0.106" cx="785.663" cy="1023.274" r="4.749" fill="rgb(190, 215, 255)"/>
+<circle id="hip-16870" data-hip="16870" data-mag="4.57" data-bv="" cx="779.348" cy="1190.291" r="4.330" fill="rgb(235, 240, 255)"/>
+<circle id="hip-17378" data-hip="17378" data-mag="3.52" data-bv="0.915" cx="767.174" cy="914.643" r="5.748" fill="rgb(255, 221, 170)"/>
+<circle id="hip-17593" data-hip="17593" data-mag="4.43" data-bv="" cx="761.605" cy="936.820" r="4.519" fill="rgb(235, 240, 255)"/>
+<circle id="hip-17651" data-hip="17651" data-mag="4.22" data-bv="0.434" cx="761.764" cy="1037.696" r="4.803" fill="rgb(255, 244, 221)"/>
+<circle id="hip-17874" data-hip="17874" data-mag="4.17" data-bv="0.927" cx="759.330" cy="1153.017" r="4.870" fill="rgb(255, 221, 170)"/>
+<circle id="hip-18216" data-hip="18216" data-mag="4.64" data-bv="" cx="749.570" cy="1050.058" r="4.236" fill="rgb(235, 240, 255)"/>
+<circle id="hip-18543" data-hip="18543" data-mag="2.97" data-bv="" cx="738.260" cy="950.317" r="6.490" fill="rgb(235, 240, 255)"/>
+<circle id="hip-18673" data-hip="18673" data-mag="4.62" data-bv="" cx="738.124" cy="1045.214" r="4.263" fill="rgb(235, 240, 255)"/>
+<circle id="hip-19587" data-hip="19587" data-mag="4.04" data-bv="" cx="706.821" cy="886.868" r="5.046" fill="rgb(235, 240, 255)"/>
+<circle id="hip-20042" data-hip="20042" data-mag="3.55" data-bv="-0.108" cx="711.264" cy="1134.670" r="5.707" fill="rgb(190, 215, 255)"/>
+<circle id="hip-20535" data-hip="20535" data-mag="3.97" data-bv="1.468" cx="700.997" cy="1137.879" r="5.140" fill="rgb(255, 150, 96)"/>
+<circle id="hip-21248" data-hip="21248" data-mag="4.49" data-bv="" cx="681.027" cy="1101.657" r="4.438" fill="rgb(235, 240, 255)"/>
+<circle id="hip-21393" data-hip="21393" data-mag="3.81" data-bv="0.957" cx="678.096" cy="1109.341" r="5.356" fill="rgb(255, 221, 170)"/>
+<circle id="hip-21444" data-hip="21444" data-mag="3.93" data-bv="" cx="650.125" cy="851.982" r="5.194" fill="rgb(235, 240, 255)"/>
+<circle id="hip-22109" data-hip="22109" data-mag="4.01" data-bv="-0.148" cx="628.804" cy="851.330" r="5.087" fill="rgb(190, 215, 255)"/>
+<circle id="hip-23875" data-hip="23875" data-mag="2.78" data-bv="0.161" cx="578.224" cy="872.797" r="6.747" fill="rgb(222, 232, 255)"/>
+</g></svg>

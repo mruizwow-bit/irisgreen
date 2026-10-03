@@ -1,0 +1,188 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 52,
+  "iau_abbreviation": "Hor",
+  "name_es": "Reloj",
+  "name_en": "Horologium",
+  "english_descriptor": "Clock",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 12225,
+      "ra_hours": 2.62341,
+      "dec_deg": -52.54308,
+      "magnitude": 5.3,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        871.971
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 12484,
+      "ra_hours": 2.67766,
+      "dec_deg": -54.54992,
+      "magnitude": 5.21,
+      "bv": 0.411,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1137.01,
+        964.759
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 12653,
+      "ra_hours": 2.70921,
+      "dec_deg": -50.80083,
+      "magnitude": 5.4,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1138.683,
+        786.05
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 13884,
+      "ra_hours": 2.97994,
+      "dec_deg": -64.07131,
+      "magnitude": 4.98,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        987.404,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 14240,
+      "ra_hours": 3.06025,
+      "dec_deg": -59.73761,
+      "magnitude": 5.12,
+      "bv": 0.349,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        961.024,
+        1203.806
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 19747,
+      "ra_hours": 4.23336,
+      "dec_deg": -42.29386,
+      "magnitude": 3.85,
+      "bv": 1.085,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 19747,
+      "to_hip": 12653,
+      "from_xy": [
+        267.794,
+        431.691
+      ],
+      "to_xy": [
+        1138.683,
+        786.05
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 12653,
+      "to_hip": 12225,
+      "from_xy": [
+        1138.683,
+        786.05
+      ],
+      "to_xy": [
+        1172.206,
+        871.971
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 12225,
+      "to_hip": 12484,
+      "from_xy": [
+        1172.206,
+        871.971
+      ],
+      "to_xy": [
+        1137.01,
+        964.759
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 12484,
+      "to_hip": 14240,
+      "from_xy": [
+        1137.01,
+        964.759
+      ],
+      "to_xy": [
+        961.024,
+        1203.806
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 14240,
+      "to_hip": 13884,
+      "from_xy": [
+        961.024,
+        1203.806
+      ],
+      "to_xy": [
+        987.404,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

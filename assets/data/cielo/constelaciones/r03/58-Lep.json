@@ -1,0 +1,429 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 58,
+  "iau_abbreviation": "Lep",
+  "name_es": "Liebre",
+  "name_en": "Lepus",
+  "english_descriptor": "Hare",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 23685,
+      "ra_hours": 5.09101,
+      "dec_deg": -22.37086,
+      "magnitude": 3.19,
+      "bv": 1.46,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 24305,
+      "ra_hours": 5.21552,
+      "dec_deg": -16.20542,
+      "magnitude": 3.29,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1073.58,
+        769.159
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 24327,
+      "ra_hours": 5.22053,
+      "dec_deg": -12.94128,
+      "magnitude": 4.36,
+      "bv": -0.094,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1074.701,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 24845,
+      "ra_hours": 5.32626,
+      "dec_deg": -13.17678,
+      "magnitude": 4.29,
+      "bv": -0.235,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        976.958,
+        453.241
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 25606,
+      "ra_hours": 5.47076,
+      "dec_deg": -20.75922,
+      "magnitude": 2.81,
+      "bv": 0.807,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        840.633,
+        1230.95
+      ],
+      "proper_name": "Nihal"
+    },
+    {
+      "hip": 25985,
+      "ra_hours": 5.5455,
+      "dec_deg": -17.82231,
+      "magnitude": 2.58,
+      "bv": 0.211,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        775.356,
+        928.332
+      ],
+      "proper_name": "Arneb"
+    },
+    {
+      "hip": 27072,
+      "ra_hours": 5.7411,
+      "dec_deg": -22.4475,
+      "magnitude": 3.59,
+      "bv": 0.481,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        604.482,
+        1406.609
+      ],
+      "proper_name": "Kursi al Jabbar"
+    },
+    {
+      "hip": 27288,
+      "ra_hours": 5.7826,
+      "dec_deg": -14.82194,
+      "magnitude": 3.55,
+      "bv": 0.104,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        560.437,
+        622.243
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27654,
+      "ra_hours": 5.85532,
+      "dec_deg": -20.8775,
+      "magnitude": 3.76,
+      "bv": 0.984,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        502.619,
+        1247.846
+      ],
+      "proper_name": "Arsh al Jauzah"
+    },
+    {
+      "hip": 28103,
+      "ra_hours": 5.94009,
+      "dec_deg": -14.16803,
+      "magnitude": 3.71,
+      "bv": 0.337,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        415.6,
+        559.229
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 28910,
+      "ra_hours": 6.10259,
+      "dec_deg": -14.93528,
+      "magnitude": 4.67,
+      "bv": 0.046,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        645.932
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 23685,
+      "to_hip": 24305,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        1073.58,
+        769.159
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 24305,
+      "to_hip": 25985,
+      "from_xy": [
+        1073.58,
+        769.159
+      ],
+      "to_xy": [
+        775.356,
+        928.332
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 25985,
+      "to_hip": 25606,
+      "from_xy": [
+        775.356,
+        928.332
+      ],
+      "to_xy": [
+        840.633,
+        1230.95
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 25606,
+      "to_hip": 23685,
+      "from_xy": [
+        840.633,
+        1230.95
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 24845,
+      "to_hip": 24305,
+      "from_xy": [
+        976.958,
+        453.241
+      ],
+      "to_xy": [
+        1073.58,
+        769.159
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 24305,
+      "to_hip": 24327,
+      "from_xy": [
+        1073.58,
+        769.159
+      ],
+      "to_xy": [
+        1074.701,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 25606,
+      "to_hip": 27072,
+      "from_xy": [
+        840.633,
+        1230.95
+      ],
+      "to_xy": [
+        604.482,
+        1406.609
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 27072,
+      "to_hip": 27654,
+      "from_xy": [
+        604.482,
+        1406.609
+      ],
+      "to_xy": [
+        502.619,
+        1247.846
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 27654,
+      "to_hip": 28910,
+      "from_xy": [
+        502.619,
+        1247.846
+      ],
+      "to_xy": [
+        267.794,
+        645.932
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 28910,
+      "to_hip": 28103,
+      "from_xy": [
+        267.794,
+        645.932
+      ],
+      "to_xy": [
+        415.6,
+        559.229
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 28103,
+      "to_hip": 27288,
+      "from_xy": [
+        415.6,
+        559.229
+      ],
+      "to_xy": [
+        560.437,
+        622.243
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 27288,
+      "to_hip": 25985,
+      "from_xy": [
+        560.437,
+        622.243
+      ],
+      "to_xy": [
+        775.356,
+        928.332
+      ]
+    }
+  ],
+  "labels_review": {
+    "25985": {
+      "name": "Arneb",
+      "x": 807.36,
+      "y": 923.33,
+      "box": [
+        803.36,
+        920.33,
+        882.36,
+        944.33
+      ],
+      "leader": false,
+      "anchor": [
+        807.36,
+        932.33
+      ]
+    },
+    "25606": {
+      "name": "Nihal",
+      "x": 747.63,
+      "y": 1225.95,
+      "box": [
+        743.63,
+        1222.95,
+        812.63,
+        1246.95
+      ],
+      "leader": false,
+      "anchor": [
+        808.63,
+        1234.95
+      ]
+    },
+    "27072": {
+      "name": "Kursi al Jabbar",
+      "x": 636.48,
+      "y": 1401.61,
+      "box": [
+        632.48,
+        1398.61,
+        812.48,
+        1427.61
+      ],
+      "leader": false,
+      "anchor": [
+        636.48,
+        1413.11
+      ]
+    },
+    "27654": {
+      "name": "Arsh al Jauzah",
+      "x": 534.62,
+      "y": 1242.85,
+      "box": [
+        530.62,
+        1239.85,
+        708.62,
+        1268.85
+      ],
+      "leader": false,
+      "anchor": [
+        534.62,
+        1254.35
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

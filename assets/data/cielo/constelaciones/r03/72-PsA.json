@@ -1,0 +1,307 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 72,
+  "iau_abbreviation": "PsA",
+  "name_es": "Pez Austral",
+  "name_en": "Piscis Austrinus",
+  "english_descriptor": "Southern Fish",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 107380,
+      "ra_hours": 21.74911,
+      "dec_deg": -33.02556,
+      "magnitude": 4.35,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 107608,
+      "ra_hours": 21.7956,
+      "dec_deg": -30.89831,
+      "magnitude": 5.02,
+      "bv": 0.042,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1149.039,
+        1076.458
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 109285,
+      "ra_hours": 22.13971,
+      "dec_deg": -32.98839,
+      "magnitude": 4.5,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        883.538,
+        1351.61
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 111188,
+      "ra_hours": 22.52508,
+      "dec_deg": -32.34603,
+      "magnitude": 4.29,
+      "bv": 0.011,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        600.978,
+        1239.693
+      ],
+      "proper_name": "Fum al Hui"
+    },
+    {
+      "hip": 111954,
+      "ra_hours": 22.67759,
+      "dec_deg": -27.04361,
+      "magnitude": 4.18,
+      "bv": -0.105,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        479.298,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112948,
+      "ra_hours": 22.87543,
+      "dec_deg": -32.87544,
+      "magnitude": 4.46,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        343.959,
+        1343.927
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 113246,
+      "ra_hours": 22.93247,
+      "dec_deg": -32.53969,
+      "magnitude": 4.2,
+      "bv": 0.952,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        300.58,
+        1299.333
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 113368,
+      "ra_hours": 22.96079,
+      "dec_deg": -29.62183,
+      "magnitude": 1.17,
+      "bv": 0.145,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        854.533
+      ],
+      "proper_name": "Fomalhaut"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 113368,
+      "to_hip": 113246,
+      "from_xy": [
+        267.794,
+        854.533
+      ],
+      "to_xy": [
+        300.58,
+        1299.333
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 113246,
+      "to_hip": 112948,
+      "from_xy": [
+        300.58,
+        1299.333
+      ],
+      "to_xy": [
+        343.959,
+        1343.927
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 112948,
+      "to_hip": 111188,
+      "from_xy": [
+        343.959,
+        1343.927
+      ],
+      "to_xy": [
+        600.978,
+        1239.693
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 111188,
+      "to_hip": 109285,
+      "from_xy": [
+        600.978,
+        1239.693
+      ],
+      "to_xy": [
+        883.538,
+        1351.61
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 109285,
+      "to_hip": 107380,
+      "from_xy": [
+        883.538,
+        1351.61
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 107380,
+      "to_hip": 107608,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        1149.039,
+        1076.458
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 107608,
+      "to_hip": 109285,
+      "from_xy": [
+        1149.039,
+        1076.458
+      ],
+      "to_xy": [
+        883.538,
+        1351.61
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 109285,
+      "to_hip": 111954,
+      "from_xy": [
+        883.538,
+        1351.61
+      ],
+      "to_xy": [
+        479.298,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 111954,
+      "to_hip": 113368,
+      "from_xy": [
+        479.298,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        854.533
+      ]
+    }
+  ],
+  "labels_review": {
+    "113368": {
+      "name": "Fomalhaut",
+      "x": 299.79,
+      "y": 849.53,
+      "box": [
+        295.79,
+        846.53,
+        430.79,
+        870.53
+      ],
+      "leader": false,
+      "anchor": [
+        299.79,
+        858.53
+      ]
+    },
+    "111188": {
+      "name": "Fum al Hui",
+      "x": 612.98,
+      "y": 1177.69,
+      "box": [
+        608.98,
+        1174.69,
+        744.98,
+        1198.69
+      ],
+      "leader": true,
+      "anchor": [
+        612.98,
+        1186.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

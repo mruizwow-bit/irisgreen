@@ -1,0 +1,489 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 35,
+  "iau_abbreviation": "Cet",
+  "name_es": "Ballena",
+  "name_en": "Cetus",
+  "english_descriptor": "Sea Monster",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 1562,
+      "ra_hours": 0.3238,
+      "dec_deg": -8.82383,
+      "magnitude": 3.56,
+      "bv": 1.214,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1079.47,
+        1107.125
+      ],
+      "proper_name": "Deneb Kaitos Shemali"
+    },
+    {
+      "hip": 3419,
+      "ra_hours": 0.72645,
+      "dec_deg": -17.98669,
+      "magnitude": 2.04,
+      "bv": 1.019,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        983.63,
+        1237.549
+      ],
+      "proper_name": "Diphda"
+    },
+    {
+      "hip": 5364,
+      "ra_hours": 1.14313,
+      "dec_deg": -10.18192,
+      "magnitude": 3.46,
+      "bv": 1.161,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        896.34,
+        1116.682
+      ],
+      "proper_name": "Dheneb"
+    },
+    {
+      "hip": 6537,
+      "ra_hours": 1.4004,
+      "dec_deg": -8.18275,
+      "magnitude": 3.6,
+      "bv": 1.065,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        843.692,
+        1087.067
+      ],
+      "proper_name": "Al Naymat I"
+    },
+    {
+      "hip": 8102,
+      "ra_hours": 1.73476,
+      "dec_deg": -15.93956,
+      "magnitude": 3.49,
+      "bv": 0.727,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        776.022,
+        1194.032
+      ],
+      "proper_name": "Al Naymat II"
+    },
+    {
+      "hip": 8645,
+      "ra_hours": 1.85767,
+      "dec_deg": -10.33494,
+      "magnitude": 3.74,
+      "bv": 1.136,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        751.943,
+        1115.21
+      ],
+      "proper_name": "Baten Kaitos"
+    },
+    {
+      "hip": 10826,
+      "ra_hours": 2.32244,
+      "dec_deg": -2.97706,
+      "magnitude": 6.47,
+      "bv": 0.966,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        659.467,
+        1015.046
+      ],
+      "proper_name": "Mira"
+    },
+    {
+      "hip": 11484,
+      "ra_hours": 2.46931,
+      "dec_deg": 8.46008,
+      "magnitude": 4.3,
+      "bv": -0.053,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        628.944,
+        857.075
+      ],
+      "proper_name": "Al Kaff al Jidhmah II"
+    },
+    {
+      "hip": 12387,
+      "ra_hours": 2.65804,
+      "dec_deg": 0.32853,
+      "magnitude": 4.08,
+      "bv": -0.212,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        591.168,
+        970.041
+      ],
+      "proper_name": "Al Kaff al Jidhmah III"
+    },
+    {
+      "hip": 12706,
+      "ra_hours": 2.7217,
+      "dec_deg": 3.23617,
+      "magnitude": 3.47,
+      "bv": 0.093,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        577.655,
+        929.68
+      ],
+      "proper_name": "Kaffaljidhma"
+    },
+    {
+      "hip": 12828,
+      "ra_hours": 2.74899,
+      "dec_deg": 10.11422,
+      "magnitude": 4.27,
+      "bv": 0.311,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        570.991,
+        831.8
+      ],
+      "proper_name": "Al Kaff al Jidhmah IV"
+    },
+    {
+      "hip": 13954,
+      "ra_hours": 2.99525,
+      "dec_deg": 8.90739,
+      "magnitude": 4.71,
+      "bv": -0.109,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        518.969,
+        847.423
+      ],
+      "proper_name": "Menkar"
+    },
+    {
+      "hip": 14135,
+      "ra_hours": 3.03799,
+      "dec_deg": 4.08992,
+      "magnitude": 2.54,
+      "bv": 1.63,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        510.747,
+        916.664
+      ],
+      "proper_name": "Menkar"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 12706,
+      "to_hip": 14135,
+      "from_xy": [
+        577.655,
+        929.68
+      ],
+      "to_xy": [
+        510.747,
+        916.664
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 14135,
+      "to_hip": 13954,
+      "from_xy": [
+        510.747,
+        916.664
+      ],
+      "to_xy": [
+        518.969,
+        847.423
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 13954,
+      "to_hip": 12828,
+      "from_xy": [
+        518.969,
+        847.423
+      ],
+      "to_xy": [
+        570.991,
+        831.8
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 12828,
+      "to_hip": 11484,
+      "from_xy": [
+        570.991,
+        831.8
+      ],
+      "to_xy": [
+        628.944,
+        857.075
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 11484,
+      "to_hip": 12706,
+      "from_xy": [
+        628.944,
+        857.075
+      ],
+      "to_xy": [
+        577.655,
+        929.68
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 12706,
+      "to_hip": 12387,
+      "from_xy": [
+        577.655,
+        929.68
+      ],
+      "to_xy": [
+        591.168,
+        970.041
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 12387,
+      "to_hip": 10826,
+      "from_xy": [
+        591.168,
+        970.041
+      ],
+      "to_xy": [
+        659.467,
+        1015.046
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 10826,
+      "to_hip": 8645,
+      "from_xy": [
+        659.467,
+        1015.046
+      ],
+      "to_xy": [
+        751.943,
+        1115.21
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 8645,
+      "to_hip": 8102,
+      "from_xy": [
+        751.943,
+        1115.21
+      ],
+      "to_xy": [
+        776.022,
+        1194.032
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 8102,
+      "to_hip": 3419,
+      "from_xy": [
+        776.022,
+        1194.032
+      ],
+      "to_xy": [
+        983.63,
+        1237.549
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 3419,
+      "to_hip": 1562,
+      "from_xy": [
+        983.63,
+        1237.549
+      ],
+      "to_xy": [
+        1079.47,
+        1107.125
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 1562,
+      "to_hip": 5364,
+      "from_xy": [
+        1079.47,
+        1107.125
+      ],
+      "to_xy": [
+        896.34,
+        1116.682
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 5364,
+      "to_hip": 6537,
+      "from_xy": [
+        896.34,
+        1116.682
+      ],
+      "to_xy": [
+        843.692,
+        1087.067
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 6537,
+      "to_hip": 8645,
+      "from_xy": [
+        843.692,
+        1087.067
+      ],
+      "to_xy": [
+        751.943,
+        1115.21
+      ]
+    }
+  ],
+  "labels_review": {
+    "3419": {
+      "name": "Diphda",
+      "x": 1015.63,
+      "y": 1232.55,
+      "box": [
+        1011.63,
+        1229.55,
+        1105.63,
+        1258.55
+      ],
+      "leader": false,
+      "anchor": [
+        1015.63,
+        1244.05
+      ]
+    },
+    "14135": {
+      "name": "Menkar",
+      "x": 389.75,
+      "y": 911.66,
+      "box": [
+        385.75,
+        908.66,
+        482.75,
+        932.66
+      ],
+      "leader": false,
+      "anchor": [
+        478.75,
+        920.66
+      ]
+    },
+    "5364": {
+      "name": "Dheneb",
+      "x": 908.34,
+      "y": 1054.68,
+      "box": [
+        904.34,
+        1051.68,
+        1006.34,
+        1075.68
+      ],
+      "leader": true,
+      "anchor": [
+        908.34,
+        1063.68
+      ]
+    },
+    "12706": {
+      "name": "Kaffaljidhma",
+      "x": 609.66,
+      "y": 924.68,
+      "box": [
+        605.66,
+        921.68,
+        763.66,
+        950.68
+      ],
+      "leader": false,
+      "anchor": [
+        609.66,
+        936.18
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

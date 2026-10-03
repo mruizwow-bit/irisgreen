@@ -1,0 +1,399 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 30,
+  "iau_abbreviation": "CMa",
+  "name_es": "Can Mayor",
+  "name_en": "Canis Major",
+  "english_descriptor": "Great Dog",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 30324,
+      "ra_hours": 6.37833,
+      "dec_deg": -17.95592,
+      "magnitude": 1.98,
+      "bv": -0.24,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        954.425,
+        841.054
+      ],
+      "proper_name": "Mirzam"
+    },
+    {
+      "hip": 31592,
+      "ra_hours": 6.61139,
+      "dec_deg": -19.25572,
+      "magnitude": 3.95,
+      "bv": 1.037,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        855.156,
+        884.307
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 32349,
+      "ra_hours": 6.75257,
+      "dec_deg": -16.71314,
+      "magnitude": 0,
+      "bv": 0.009,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        797.58,
+        790.576
+      ],
+      "proper_name": "Sirius"
+    },
+    {
+      "hip": 33152,
+      "ra_hours": 6.90221,
+      "dec_deg": -24.18422,
+      "magnitude": 3.89,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        734.61,
+        1061.071
+      ],
+      "proper_name": "Udra"
+    },
+    {
+      "hip": 33160,
+      "ra_hours": 6.90319,
+      "dec_deg": -12.03858,
+      "magnitude": 4.08,
+      "bv": 1.418,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        734.133,
+        618.634
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 33347,
+      "ra_hours": 6.93562,
+      "dec_deg": -17.05425,
+      "magnitude": 4.36,
+      "bv": -0.063,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        720.55,
+        802.578
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 33579,
+      "ra_hours": 6.9771,
+      "dec_deg": -28.97208,
+      "magnitude": 1.5,
+      "bv": -0.211,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        705.617,
+        1236.507
+      ],
+      "proper_name": "Adhara"
+    },
+    {
+      "hip": 34045,
+      "ra_hours": 7.06264,
+      "dec_deg": -15.63325,
+      "magnitude": 4.11,
+      "bv": -0.112,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        666.549,
+        751.272
+      ],
+      "proper_name": "Muliphein"
+    },
+    {
+      "hip": 34444,
+      "ra_hours": 7.13986,
+      "dec_deg": -26.39319,
+      "magnitude": 1.83,
+      "bv": 0.671,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        640.775,
+        1143.202
+      ],
+      "proper_name": "Wezen"
+    },
+    {
+      "hip": 35904,
+      "ra_hours": 7.40159,
+      "dec_deg": -29.30311,
+      "magnitude": 2.45,
+      "bv": -0.083,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        540.817,
+        1256.402
+      ],
+      "proper_name": "Aludra"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 30324,
+      "to_hip": 32349,
+      "from_xy": [
+        954.425,
+        841.054
+      ],
+      "to_xy": [
+        797.58,
+        790.576
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 32349,
+      "to_hip": 34444,
+      "from_xy": [
+        797.58,
+        790.576
+      ],
+      "to_xy": [
+        640.775,
+        1143.202
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 34444,
+      "to_hip": 33579,
+      "from_xy": [
+        640.775,
+        1143.202
+      ],
+      "to_xy": [
+        705.617,
+        1236.507
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 34444,
+      "to_hip": 35904,
+      "from_xy": [
+        640.775,
+        1143.202
+      ],
+      "to_xy": [
+        540.817,
+        1256.402
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 30324,
+      "to_hip": 31592,
+      "from_xy": [
+        954.425,
+        841.054
+      ],
+      "to_xy": [
+        855.156,
+        884.307
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 31592,
+      "to_hip": 33152,
+      "from_xy": [
+        855.156,
+        884.307
+      ],
+      "to_xy": [
+        734.61,
+        1061.071
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 33152,
+      "to_hip": 33579,
+      "from_xy": [
+        734.61,
+        1061.071
+      ],
+      "to_xy": [
+        705.617,
+        1236.507
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 32349,
+      "to_hip": 33347,
+      "from_xy": [
+        797.58,
+        790.576
+      ],
+      "to_xy": [
+        720.55,
+        802.578
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 33347,
+      "to_hip": 34045,
+      "from_xy": [
+        720.55,
+        802.578
+      ],
+      "to_xy": [
+        666.549,
+        751.272
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 34045,
+      "to_hip": 33160,
+      "from_xy": [
+        666.549,
+        751.272
+      ],
+      "to_xy": [
+        734.133,
+        618.634
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 33160,
+      "to_hip": 33347,
+      "from_xy": [
+        734.133,
+        618.634
+      ],
+      "to_xy": [
+        720.55,
+        802.578
+      ]
+    }
+  ],
+  "labels_review": {
+    "32349": {
+      "name": "Sirius",
+      "x": 809.58,
+      "y": 728.58,
+      "box": [
+        805.58,
+        725.58,
+        879.58,
+        749.58
+      ],
+      "leader": true,
+      "anchor": [
+        809.58,
+        737.58
+      ]
+    },
+    "33579": {
+      "name": "Adhara",
+      "x": 737.62,
+      "y": 1231.51,
+      "box": [
+        733.62,
+        1228.51,
+        827.62,
+        1252.51
+      ],
+      "leader": false,
+      "anchor": [
+        737.62,
+        1240.51
+      ]
+    },
+    "34444": {
+      "name": "Wezen",
+      "x": 528.77,
+      "y": 1138.2,
+      "box": [
+        524.77,
+        1135.2,
+        612.77,
+        1159.2
+      ],
+      "leader": false,
+      "anchor": [
+        608.77,
+        1147.2
+      ]
+    },
+    "30324": {
+      "name": "Mirzam",
+      "x": 986.43,
+      "y": 836.05,
+      "box": [
+        982.43,
+        833.05,
+        1078.43,
+        857.05
+      ],
+      "leader": false,
+      "anchor": [
+        986.43,
+        845.05
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Jirafa / Camelopardalis</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="558.808" cy="1413.309" r="5.348"/>
+<circle id="bg-star-002" cx="1056.055" cy="1240.667" r="4.237"/>
+<circle id="bg-star-003" cx="1097.857" cy="1102.802" r="3.509"/>
+<circle id="bg-star-004" cx="991.410" cy="1328.521" r="3.444"/>
+<circle id="bg-star-005" cx="1172.206" cy="698.573" r="3.223"/>
+<circle id="bg-star-006" cx="424.076" cy="1118.897" r="2.982"/>
+<circle id="bg-star-007" cx="1121.385" cy="1011.107" r="2.950"/>
+<circle id="bg-star-008" cx="1147.079" cy="1105.954" r="2.846"/>
+<circle id="bg-star-009" cx="1004.859" cy="510.014" r="2.833"/>
+<circle id="bg-star-010" cx="874.971" cy="1353.677" r="2.826"/>
+<circle id="bg-star-011" cx="1123.763" cy="1224.672" r="2.768"/>
+<circle id="bg-star-012" cx="844.104" cy="1335.165" r="2.722"/>
+<circle id="bg-star-013" cx="872.677" cy="1269.076" r="2.638"/>
+<circle id="bg-star-014" cx="1017.266" cy="1308.252" r="2.592"/>
+<circle id="bg-star-015" cx="267.794" cy="913.287" r="2.573"/>
+<circle id="bg-star-016" cx="1045.431" cy="1306.893" r="2.566"/>
+<circle id="bg-star-017" cx="395.617" cy="958.212" r="2.514"/>
+<circle id="bg-star-018" cx="1031.874" cy="671.316" r="2.501"/>
+<circle id="bg-star-019" cx="1032.419" cy="543.417" r="2.482"/>
+<circle id="bg-star-020" cx="957.797" cy="982.954" r="2.443"/>
+<circle id="bg-star-021" cx="823.219" cy="1277.422" r="2.410"/>
+<circle id="bg-star-022" cx="1037.573" cy="1258.320" r="2.365"/>
+<circle id="bg-star-023" cx="1149.108" cy="538.132" r="2.332"/>
+<circle id="bg-star-024" cx="929.841" cy="782.985" r="2.319"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="23040" data-to-hip="23522" x1="660.788" y1="1176.398" x2="649.162" y2="976.348"/>
+<line id="edge-02" data-from-hip="23522" data-to-hip="22783" x1="649.162" y1="976.348" x2="683.839" y2="806.605"/>
+<line id="edge-03" data-from-hip="22783" data-to-hip="29997" x1="683.839" y1="806.605" x2="496.827" y2="675.74"/>
+<line id="edge-04" data-from-hip="29997" data-to-hip="33694" x1="496.827" y1="675.74" x2="515.009" y2="431.691"/>
+<line id="edge-05" data-from-hip="22783" data-to-hip="17959" x1="683.839" y1="806.605" x2="818.792" y2="647.119"/>
+<line id="edge-06" data-from-hip="17959" data-to-hip="17884" x1="818.792" y1="647.119" x2="854.251" y2="811.563"/>
+<line id="edge-07" data-from-hip="17884" data-to-hip="16228" x1="854.251" y1="811.563" x2="952.003" y2="951.907"/>
+</g><g id="stars">
+<circle id="hip-16228" data-hip="16228" data-mag="4.21" data-bv="0.419" cx="952.003" cy="951.907" r="4.816" fill="rgb(255, 244, 221)"/>
+<circle id="hip-17884" data-hip="17884" data-mag="4.39" data-bv="" cx="854.251" cy="811.563" r="4.574" fill="rgb(235, 240, 255)"/>
+<circle id="hip-17959" data-hip="17959" data-mag="4.59" data-bv="0.064" cx="818.792" cy="647.119" r="4.303" fill="rgb(222, 232, 255)"/>
+<circle id="hip-22783" data-hip="22783" data-mag="4.26" data-bv="" cx="683.839" cy="806.605" r="4.749" fill="rgb(235, 240, 255)"/>
+<circle id="hip-23040" data-hip="23040" data-mag="4.43" data-bv="" cx="660.788" cy="1176.398" r="4.519" fill="rgb(235, 240, 255)"/>
+<circle id="hip-23522" data-hip="23522" data-mag="4.03" data-bv="" cx="649.162" cy="976.348" r="5.059" fill="rgb(235, 240, 255)"/>
+<circle id="hip-29997" data-hip="29997" data-mag="4.76" data-bv="" cx="496.827" cy="675.740" r="4.074" fill="rgb(235, 240, 255)"/>
+<circle id="hip-33694" data-hip="33694" data-mag="4.55" data-bv="" cx="515.009" cy="431.691" r="4.357" fill="rgb(235, 240, 255)"/>
+</g></svg>

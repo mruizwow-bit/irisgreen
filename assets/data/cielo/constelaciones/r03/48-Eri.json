@@ -1,0 +1,999 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 48,
+  "iau_abbreviation": "Eri",
+  "name_es": "Erídano",
+  "name_en": "Eridanus",
+  "english_descriptor": "River",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 7588,
+      "ra_hours": 1.62854,
+      "dec_deg": -57.23667,
+      "magnitude": 0.45,
+      "bv": -0.158,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        933.528,
+        1413.309
+      ],
+      "proper_name": "Achernar"
+    },
+    {
+      "hip": 9007,
+      "ra_hours": 1.93245,
+      "dec_deg": -51.60958,
+      "magnitude": 3.69,
+      "bv": 0.844,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        920.989,
+        1334.884
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 11407,
+      "ra_hours": 2.44975,
+      "dec_deg": -47.70383,
+      "magnitude": 4.24,
+      "bv": -0.136,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        881.256,
+        1276.931
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 12413,
+      "ra_hours": 2.66331,
+      "dec_deg": -42.89164,
+      "magnitude": 4.74,
+      "bv": 0.061,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        867.115,
+        1224.084
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 12486,
+      "ra_hours": 2.67776,
+      "dec_deg": -39.85531,
+      "magnitude": 4.11,
+      "bv": 1.006,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        868.692,
+        1194.695
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 12770,
+      "ra_hours": 2.73537,
+      "dec_deg": -13.85867,
+      "magnitude": 4.24,
+      "bv": -0.122,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        885.506,
+        956.535
+      ],
+      "proper_name": "Sadr al Kaitos IV"
+    },
+    {
+      "hip": 12843,
+      "ra_hours": 2.75166,
+      "dec_deg": -18.57264,
+      "magnitude": 4.47,
+      "bv": 0.481,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        879.441,
+        1000.138
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 13701,
+      "ra_hours": 2.94044,
+      "dec_deg": -8.89761,
+      "magnitude": 3.89,
+      "bv": 1.088,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        863.83,
+        907.666
+      ],
+      "proper_name": "Azha"
+    },
+    {
+      "hip": 13847,
+      "ra_hours": 2.97103,
+      "dec_deg": -40.30472,
+      "magnitude": 2.88,
+      "bv": 0.128,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        840.16,
+        1194.553
+      ],
+      "proper_name": "Acamar"
+    },
+    {
+      "hip": 14146,
+      "ra_hours": 3.03989,
+      "dec_deg": -23.62433,
+      "magnitude": 4.08,
+      "bv": 0.163,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        842.92,
+        1043.113
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 15474,
+      "ra_hours": 3.32527,
+      "dec_deg": -21.75794,
+      "magnitude": 3.7,
+      "bv": 1.614,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        812.027,
+        1024.916
+      ],
+      "proper_name": "Angetenar"
+    },
+    {
+      "hip": 15510,
+      "ra_hours": 3.33145,
+      "dec_deg": -43.07156,
+      "magnitude": 4.26,
+      "bv": 0.711,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        805.357,
+        1217.707
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 16537,
+      "ra_hours": 3.54901,
+      "dec_deg": -9.45831,
+      "magnitude": 3.72,
+      "bv": 0.881,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        788.167,
+        911.693
+      ],
+      "proper_name": "Ran"
+    },
+    {
+      "hip": 16611,
+      "ra_hours": 3.56312,
+      "dec_deg": -21.63281,
+      "magnitude": 4.26,
+      "bv": -0.106,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        785.663,
+        1023.274
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 16870,
+      "ra_hours": 3.61824,
+      "dec_deg": -40.2745,
+      "magnitude": 4.57,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        779.348,
+        1190.291
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17378,
+      "ra_hours": 3.72082,
+      "dec_deg": -9.76519,
+      "magnitude": 3.52,
+      "bv": 0.915,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        767.174,
+        914.643
+      ],
+      "proper_name": "Rana"
+    },
+    {
+      "hip": 17593,
+      "ra_hours": 3.76903,
+      "dec_deg": -12.10172,
+      "magnitude": 4.43,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        761.605,
+        936.82
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17651,
+      "ra_hours": 3.78083,
+      "dec_deg": -23.24844,
+      "magnitude": 4.22,
+      "bv": 0.434,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        761.764,
+        1037.696
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17874,
+      "ra_hours": 3.82424,
+      "dec_deg": -36.20011,
+      "magnitude": 4.17,
+      "bv": 0.927,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        759.33,
+        1153.017
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18216,
+      "ra_hours": 3.89519,
+      "dec_deg": -24.61222,
+      "magnitude": 4.64,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        749.57,
+        1050.058
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18543,
+      "ra_hours": 3.96715,
+      "dec_deg": -13.50825,
+      "magnitude": 2.97,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        738.26,
+        950.317
+      ],
+      "proper_name": "Zaurak"
+    },
+    {
+      "hip": 18673,
+      "ra_hours": 3.99874,
+      "dec_deg": -24.01625,
+      "magnitude": 4.62,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        738.124,
+        1045.214
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 19587,
+      "ra_hours": 4.19776,
+      "dec_deg": -6.83778,
+      "magnitude": 4.04,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        706.821,
+        886.868
+      ],
+      "proper_name": "Beid"
+    },
+    {
+      "hip": 20042,
+      "ra_hours": 4.29823,
+      "dec_deg": -33.79833,
+      "magnitude": 3.55,
+      "bv": -0.108,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        711.264,
+        1134.67
+      ],
+      "proper_name": "Beemim I"
+    },
+    {
+      "hip": 20535,
+      "ra_hours": 4.4006,
+      "dec_deg": -34.017,
+      "magnitude": 3.97,
+      "bv": 1.468,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        700.997,
+        1137.879
+      ],
+      "proper_name": "Beemim"
+    },
+    {
+      "hip": 21248,
+      "ra_hours": 4.55851,
+      "dec_deg": -29.76583,
+      "magnitude": 4.49,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        681.027,
+        1101.657
+      ],
+      "proper_name": "Beemim"
+    },
+    {
+      "hip": 21393,
+      "ra_hours": 4.59252,
+      "dec_deg": -30.56231,
+      "magnitude": 3.81,
+      "bv": 0.957,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        678.096,
+        1109.341
+      ],
+      "proper_name": "Theemin"
+    },
+    {
+      "hip": 21444,
+      "ra_hours": 4.60532,
+      "dec_deg": -3.35244,
+      "magnitude": 3.93,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        650.125,
+        851.982
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 22109,
+      "ra_hours": 4.75837,
+      "dec_deg": -3.25461,
+      "magnitude": 4.01,
+      "bv": -0.148,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        628.804,
+        851.33
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 23875,
+      "ra_hours": 5.13084,
+      "dec_deg": -5.08625,
+      "magnitude": 2.78,
+      "bv": 0.161,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        578.224,
+        872.797
+      ],
+      "proper_name": "Cursa"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 23875,
+      "to_hip": 22109,
+      "from_xy": [
+        578.224,
+        872.797
+      ],
+      "to_xy": [
+        628.804,
+        851.33
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 22109,
+      "to_hip": 21444,
+      "from_xy": [
+        628.804,
+        851.33
+      ],
+      "to_xy": [
+        650.125,
+        851.982
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 21444,
+      "to_hip": 19587,
+      "from_xy": [
+        650.125,
+        851.982
+      ],
+      "to_xy": [
+        706.821,
+        886.868
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 19587,
+      "to_hip": 18543,
+      "from_xy": [
+        706.821,
+        886.868
+      ],
+      "to_xy": [
+        738.26,
+        950.317
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 18543,
+      "to_hip": 17593,
+      "from_xy": [
+        738.26,
+        950.317
+      ],
+      "to_xy": [
+        761.605,
+        936.82
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 17593,
+      "to_hip": 17378,
+      "from_xy": [
+        761.605,
+        936.82
+      ],
+      "to_xy": [
+        767.174,
+        914.643
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 17378,
+      "to_hip": 16537,
+      "from_xy": [
+        767.174,
+        914.643
+      ],
+      "to_xy": [
+        788.167,
+        911.693
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 16537,
+      "to_hip": 13701,
+      "from_xy": [
+        788.167,
+        911.693
+      ],
+      "to_xy": [
+        863.83,
+        907.666
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 13701,
+      "to_hip": 12770,
+      "from_xy": [
+        863.83,
+        907.666
+      ],
+      "to_xy": [
+        885.506,
+        956.535
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 12770,
+      "to_hip": 12770,
+      "from_xy": [
+        885.506,
+        956.535
+      ],
+      "to_xy": [
+        885.506,
+        956.535
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 12770,
+      "to_hip": 12843,
+      "from_xy": [
+        885.506,
+        956.535
+      ],
+      "to_xy": [
+        879.441,
+        1000.138
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 12843,
+      "to_hip": 14146,
+      "from_xy": [
+        879.441,
+        1000.138
+      ],
+      "to_xy": [
+        842.92,
+        1043.113
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 14146,
+      "to_hip": 15474,
+      "from_xy": [
+        842.92,
+        1043.113
+      ],
+      "to_xy": [
+        812.027,
+        1024.916
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 15474,
+      "to_hip": 16611,
+      "from_xy": [
+        812.027,
+        1024.916
+      ],
+      "to_xy": [
+        785.663,
+        1023.274
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 16611,
+      "to_hip": 17651,
+      "from_xy": [
+        785.663,
+        1023.274
+      ],
+      "to_xy": [
+        761.764,
+        1037.696
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 17651,
+      "to_hip": 18216,
+      "from_xy": [
+        761.764,
+        1037.696
+      ],
+      "to_xy": [
+        749.57,
+        1050.058
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 18216,
+      "to_hip": 18673,
+      "from_xy": [
+        749.57,
+        1050.058
+      ],
+      "to_xy": [
+        738.124,
+        1045.214
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 18673,
+      "to_hip": 21248,
+      "from_xy": [
+        738.124,
+        1045.214
+      ],
+      "to_xy": [
+        681.027,
+        1101.657
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 21248,
+      "to_hip": 21393,
+      "from_xy": [
+        681.027,
+        1101.657
+      ],
+      "to_xy": [
+        678.096,
+        1109.341
+      ]
+    },
+    {
+      "id": "edge-20",
+      "from_hip": 21393,
+      "to_hip": 20535,
+      "from_xy": [
+        678.096,
+        1109.341
+      ],
+      "to_xy": [
+        700.997,
+        1137.879
+      ]
+    },
+    {
+      "id": "edge-21",
+      "from_hip": 20535,
+      "to_hip": 20042,
+      "from_xy": [
+        700.997,
+        1137.879
+      ],
+      "to_xy": [
+        711.264,
+        1134.67
+      ]
+    },
+    {
+      "id": "edge-22",
+      "from_hip": 20042,
+      "to_hip": 17874,
+      "from_xy": [
+        711.264,
+        1134.67
+      ],
+      "to_xy": [
+        759.33,
+        1153.017
+      ]
+    },
+    {
+      "id": "edge-23",
+      "from_hip": 17874,
+      "to_hip": 17874,
+      "from_xy": [
+        759.33,
+        1153.017
+      ],
+      "to_xy": [
+        759.33,
+        1153.017
+      ]
+    },
+    {
+      "id": "edge-24",
+      "from_hip": 17874,
+      "to_hip": 16870,
+      "from_xy": [
+        759.33,
+        1153.017
+      ],
+      "to_xy": [
+        779.348,
+        1190.291
+      ]
+    },
+    {
+      "id": "edge-25",
+      "from_hip": 16870,
+      "to_hip": 15510,
+      "from_xy": [
+        779.348,
+        1190.291
+      ],
+      "to_xy": [
+        805.357,
+        1217.707
+      ]
+    },
+    {
+      "id": "edge-26",
+      "from_hip": 15510,
+      "to_hip": 13847,
+      "from_xy": [
+        805.357,
+        1217.707
+      ],
+      "to_xy": [
+        840.16,
+        1194.553
+      ]
+    },
+    {
+      "id": "edge-27",
+      "from_hip": 13847,
+      "to_hip": 12486,
+      "from_xy": [
+        840.16,
+        1194.553
+      ],
+      "to_xy": [
+        868.692,
+        1194.695
+      ]
+    },
+    {
+      "id": "edge-28",
+      "from_hip": 12486,
+      "to_hip": 12413,
+      "from_xy": [
+        868.692,
+        1194.695
+      ],
+      "to_xy": [
+        867.115,
+        1224.084
+      ]
+    },
+    {
+      "id": "edge-29",
+      "from_hip": 12413,
+      "to_hip": 11407,
+      "from_xy": [
+        867.115,
+        1224.084
+      ],
+      "to_xy": [
+        881.256,
+        1276.931
+      ]
+    },
+    {
+      "id": "edge-30",
+      "from_hip": 11407,
+      "to_hip": 9007,
+      "from_xy": [
+        881.256,
+        1276.931
+      ],
+      "to_xy": [
+        920.989,
+        1334.884
+      ]
+    },
+    {
+      "id": "edge-31",
+      "from_hip": 9007,
+      "to_hip": 7588,
+      "from_xy": [
+        920.989,
+        1334.884
+      ],
+      "to_xy": [
+        933.528,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "7588": {
+      "name": "Achernar",
+      "x": 945.53,
+      "y": 1351.31,
+      "box": [
+        941.53,
+        1348.31,
+        1058.53,
+        1372.31
+      ],
+      "leader": true,
+      "anchor": [
+        945.53,
+        1360.31
+      ]
+    },
+    "23875": {
+      "name": "Cursa",
+      "x": 477.22,
+      "y": 867.8,
+      "box": [
+        473.22,
+        864.8,
+        550.22,
+        888.8
+      ],
+      "leader": false,
+      "anchor": [
+        546.22,
+        876.8
+      ]
+    },
+    "13847": {
+      "name": "Acamar",
+      "x": 852.16,
+      "y": 1132.55,
+      "box": [
+        848.16,
+        1129.55,
+        948.16,
+        1153.55
+      ],
+      "leader": true,
+      "anchor": [
+        852.16,
+        1141.55
+      ]
+    },
+    "18543": {
+      "name": "Zaurak",
+      "x": 621.26,
+      "y": 945.32,
+      "box": [
+        617.26,
+        942.32,
+        710.26,
+        966.32
+      ],
+      "leader": false,
+      "anchor": [
+        706.26,
+        954.32
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

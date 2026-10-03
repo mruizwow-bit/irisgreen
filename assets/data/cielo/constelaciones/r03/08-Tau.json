@@ -1,0 +1,415 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Tau",
+  "name_es": "Tauro",
+  "name_en": "Taurus",
+  "descriptor_es": "El toro",
+  "descriptor_en": "The Bull",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 15900,
+      "ra_hours": 3.41357,
+      "dec_deg": 9.02906,
+      "magnitude": 3.61,
+      "bv": 0.887,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        961.889,
+        1218.578
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17847,
+      "ra_hours": 3.81937,
+      "dec_deg": 24.05353,
+      "magnitude": 3.62,
+      "bv": -0.07,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        844.039,
+        732.531
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18724,
+      "ra_hours": 4.01134,
+      "dec_deg": 12.49039,
+      "magnitude": 3.41,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        807.425,
+        1113.571
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 20205,
+      "ra_hours": 4.32987,
+      "dec_deg": 15.62769,
+      "magnitude": 3.65,
+      "bv": 0.981,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        729.829,
+        1014.3
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 20455,
+      "ra_hours": 4.38223,
+      "dec_deg": 17.54258,
+      "magnitude": 3.77,
+      "bv": 0.983,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        717.246,
+        952.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 20648,
+      "ra_hours": 4.42481,
+      "dec_deg": 17.928,
+      "magnitude": 4.3,
+      "bv": 0.049,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        707.281,
+        940.362
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 20889,
+      "ra_hours": 4.47693,
+      "dec_deg": 19.18053,
+      "magnitude": 3.53,
+      "bv": 1.014,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        695.163,
+        900.027
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 20894,
+      "ra_hours": 4.47769,
+      "dec_deg": 15.87094,
+      "magnitude": 3.4,
+      "bv": 0.179,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        694.923,
+        1006.733
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 21421,
+      "ra_hours": 4.59867,
+      "dec_deg": 16.50975,
+      "magnitude": 0.87,
+      "bv": 1.538,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        666.507,
+        985.801
+      ],
+      "proper_name": "Aldebaran"
+    },
+    {
+      "hip": 21881,
+      "ra_hours": 4.70408,
+      "dec_deg": 22.95697,
+      "magnitude": 4.27,
+      "bv": -0.112,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        643.818,
+        776.756
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 25428,
+      "ra_hours": 5.43819,
+      "dec_deg": 28.60786,
+      "magnitude": 1.65,
+      "bv": -0.13,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        481.925,
+        566.326
+      ],
+      "proper_name": "Elnath"
+    },
+    {
+      "hip": 26451,
+      "ra_hours": 5.62741,
+      "dec_deg": 21.14258,
+      "magnitude": 2.97,
+      "bv": -0.148,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        425.203,
+        806.874
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 25428,
+      "to_hip": 21881,
+      "from_xy": [
+        481.925,
+        566.326
+      ],
+      "to_xy": [
+        643.818,
+        776.756
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 21881,
+      "to_hip": 20889,
+      "from_xy": [
+        643.818,
+        776.756
+      ],
+      "to_xy": [
+        695.163,
+        900.027
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 21421,
+      "to_hip": 26451,
+      "from_xy": [
+        666.507,
+        985.801
+      ],
+      "to_xy": [
+        425.203,
+        806.874
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 20205,
+      "to_hip": 20455,
+      "from_xy": [
+        729.829,
+        1014.3
+      ],
+      "to_xy": [
+        717.246,
+        952.691
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 20205,
+      "to_hip": 18724,
+      "from_xy": [
+        729.829,
+        1014.3
+      ],
+      "to_xy": [
+        807.425,
+        1113.571
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 18724,
+      "to_hip": 15900,
+      "from_xy": [
+        807.425,
+        1113.571
+      ],
+      "to_xy": [
+        961.889,
+        1218.578
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 21421,
+      "to_hip": 20889,
+      "from_xy": [
+        666.507,
+        985.801
+      ],
+      "to_xy": [
+        695.163,
+        900.027
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 21421,
+      "to_hip": 20894,
+      "from_xy": [
+        666.507,
+        985.801
+      ],
+      "to_xy": [
+        694.923,
+        1006.733
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 20894,
+      "to_hip": 20205,
+      "from_xy": [
+        694.923,
+        1006.733
+      ],
+      "to_xy": [
+        729.829,
+        1014.3
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 20889,
+      "to_hip": 20648,
+      "from_xy": [
+        695.163,
+        900.027
+      ],
+      "to_xy": [
+        707.281,
+        940.362
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 20648,
+      "to_hip": 20455,
+      "from_xy": [
+        707.281,
+        940.362
+      ],
+      "to_xy": [
+        717.246,
+        952.691
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 20455,
+      "to_hip": 17847,
+      "from_xy": [
+        717.246,
+        952.691
+      ],
+      "to_xy": [
+        844.039,
+        732.531
+      ]
+    }
+  ],
+  "labels_review": {
+    "21421": {
+      "name": "Aldebaran",
+      "x": 531.51,
+      "y": 923.8,
+      "box": [
+        527.51,
+        920.8,
+        658.51,
+        944.8
+      ],
+      "leader": true,
+      "anchor": [
+        654.51,
+        932.8
+      ]
+    },
+    "25428": {
+      "name": "Elnath",
+      "x": 513.93,
+      "y": 561.33,
+      "box": [
+        509.93,
+        558.33,
+        593.93,
+        582.33
+      ],
+      "leader": false,
+      "anchor": [
+        513.93,
+        570.33
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 8
+}

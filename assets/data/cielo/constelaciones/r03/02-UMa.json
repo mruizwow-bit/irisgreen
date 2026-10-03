@@ -1,0 +1,688 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "UMa",
+  "name_es": "Osa Mayor",
+  "name_en": "Ursa Major",
+  "descriptor_es": "La osa mayor",
+  "descriptor_en": "The Great Bear",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 41704,
+      "ra_hours": 8.50445,
+      "dec_deg": 60.71844,
+      "magnitude": 3.35,
+      "bv": 0.856,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1120.882,
+        616.591
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 44127,
+      "ra_hours": 8.9869,
+      "dec_deg": 48.04236,
+      "magnitude": 3.12,
+      "bv": 0.223,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1142.65,
+        962.0
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 44471,
+      "ra_hours": 9.06043,
+      "dec_deg": 47.15667,
+      "magnitude": 3.57,
+      "bv": 0.007,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1137.85,
+        990.562
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 46733,
+      "ra_hours": 9.52544,
+      "dec_deg": 63.06181,
+      "magnitude": 3.65,
+      "bv": 0.36,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1023.06,
+        639.653
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 46853,
+      "ra_hours": 9.54787,
+      "dec_deg": 51.67861,
+      "magnitude": 3.17,
+      "bv": 0.475,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1060.315,
+        917.648
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 48319,
+      "ra_hours": 9.84991,
+      "dec_deg": 59.03911,
+      "magnitude": 3.78,
+      "bv": 0.291,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1006.855,
+        754.021
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 48402,
+      "ra_hours": 9.86843,
+      "dec_deg": 54.06428,
+      "magnitude": 4.55,
+      "bv": 0.038,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1017.84,
+        876.632
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 50372,
+      "ra_hours": 10.28498,
+      "dec_deg": 42.91447,
+      "magnitude": 3.45,
+      "bv": 0.029,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        989.749,
+        1171.135
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 50801,
+      "ra_hours": 10.37217,
+      "dec_deg": 41.49944,
+      "magnitude": 3.06,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        979.648,
+        1210.178
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 53910,
+      "ra_hours": 11.03066,
+      "dec_deg": 56.38233,
+      "magnitude": 2.34,
+      "bv": 0.033,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        894.745,
+        840.385
+      ],
+      "proper_name": "Merak"
+    },
+    {
+      "hip": 54061,
+      "ra_hours": 11.06218,
+      "dec_deg": 61.75111,
+      "magnitude": 1.81,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        894.68,
+        706.493
+      ],
+      "proper_name": "Dubhe"
+    },
+    {
+      "hip": 54539,
+      "ra_hours": 11.16107,
+      "dec_deg": 44.49856,
+      "magnitude": 3,
+      "bv": 1.144,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        871.576,
+        1135.643
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 57399,
+      "ra_hours": 11.76754,
+      "dec_deg": 47.77933,
+      "magnitude": 3.69,
+      "bv": 1.181,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        799.405,
+        1033.816
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 58001,
+      "ra_hours": 11.89715,
+      "dec_deg": 53.69472,
+      "magnitude": 2.41,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        799.935,
+        881.659
+      ],
+      "proper_name": "Phecda"
+    },
+    {
+      "hip": 59774,
+      "ra_hours": 12.25707,
+      "dec_deg": 57.03261,
+      "magnitude": 3.32,
+      "bv": 0.077,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        773.659,
+        780.051
+      ],
+      "proper_name": "Megrez"
+    },
+    {
+      "hip": 62956,
+      "ra_hours": 12.90045,
+      "dec_deg": 55.95983,
+      "magnitude": 1.76,
+      "bv": -0.022,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        704.352,
+        753.795
+      ],
+      "proper_name": "Alioth"
+    },
+    {
+      "hip": 65378,
+      "ra_hours": 13.39873,
+      "dec_deg": 54.92542,
+      "magnitude": 2.23,
+      "bv": 0.057,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        646.704,
+        722.122
+      ],
+      "proper_name": "Mizar"
+    },
+    {
+      "hip": 67301,
+      "ra_hours": 13.79237,
+      "dec_deg": 49.31331,
+      "magnitude": 1.85,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        557.705,
+        791.503
+      ],
+      "proper_name": "Alkaid"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 67301,
+      "to_hip": 65378,
+      "from_xy": [
+        557.705,
+        791.503
+      ],
+      "to_xy": [
+        646.704,
+        722.122
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 65378,
+      "to_hip": 62956,
+      "from_xy": [
+        646.704,
+        722.122
+      ],
+      "to_xy": [
+        704.352,
+        753.795
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 62956,
+      "to_hip": 59774,
+      "from_xy": [
+        704.352,
+        753.795
+      ],
+      "to_xy": [
+        773.659,
+        780.051
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 59774,
+      "to_hip": 54061,
+      "from_xy": [
+        773.659,
+        780.051
+      ],
+      "to_xy": [
+        894.68,
+        706.493
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 54061,
+      "to_hip": 53910,
+      "from_xy": [
+        894.68,
+        706.493
+      ],
+      "to_xy": [
+        894.745,
+        840.385
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 53910,
+      "to_hip": 58001,
+      "from_xy": [
+        894.745,
+        840.385
+      ],
+      "to_xy": [
+        799.935,
+        881.659
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 58001,
+      "to_hip": 59774,
+      "from_xy": [
+        799.935,
+        881.659
+      ],
+      "to_xy": [
+        773.659,
+        780.051
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 58001,
+      "to_hip": 57399,
+      "from_xy": [
+        799.935,
+        881.659
+      ],
+      "to_xy": [
+        799.405,
+        1033.816
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 57399,
+      "to_hip": 54539,
+      "from_xy": [
+        799.405,
+        1033.816
+      ],
+      "to_xy": [
+        871.576,
+        1135.643
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 54539,
+      "to_hip": 50372,
+      "from_xy": [
+        871.576,
+        1135.643
+      ],
+      "to_xy": [
+        989.749,
+        1171.135
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 54539,
+      "to_hip": 50801,
+      "from_xy": [
+        871.576,
+        1135.643
+      ],
+      "to_xy": [
+        979.648,
+        1210.178
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 53910,
+      "to_hip": 48402,
+      "from_xy": [
+        894.745,
+        840.385
+      ],
+      "to_xy": [
+        1017.84,
+        876.632
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 48402,
+      "to_hip": 46853,
+      "from_xy": [
+        1017.84,
+        876.632
+      ],
+      "to_xy": [
+        1060.315,
+        917.648
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 46853,
+      "to_hip": 44471,
+      "from_xy": [
+        1060.315,
+        917.648
+      ],
+      "to_xy": [
+        1137.85,
+        990.562
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 46853,
+      "to_hip": 44127,
+      "from_xy": [
+        1060.315,
+        917.648
+      ],
+      "to_xy": [
+        1142.65,
+        962.0
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 48402,
+      "to_hip": 48319,
+      "from_xy": [
+        1017.84,
+        876.632
+      ],
+      "to_xy": [
+        1006.855,
+        754.021
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 48319,
+      "to_hip": 41704,
+      "from_xy": [
+        1006.855,
+        754.021
+      ],
+      "to_xy": [
+        1120.882,
+        616.591
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 41704,
+      "to_hip": 46733,
+      "from_xy": [
+        1120.882,
+        616.591
+      ],
+      "to_xy": [
+        1023.06,
+        639.653
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 46733,
+      "to_hip": 54061,
+      "from_xy": [
+        1023.06,
+        639.653
+      ],
+      "to_xy": [
+        894.68,
+        706.493
+      ]
+    }
+  ],
+  "labels_review": {
+    "54061": {
+      "name": "Dubhe",
+      "x": 926.68,
+      "y": 701.49,
+      "box": [
+        922.68,
+        698.49,
+        1009.68,
+        722.49
+      ],
+      "leader": false,
+      "anchor": [
+        926.68,
+        710.49
+      ]
+    },
+    "53910": {
+      "name": "Merak",
+      "x": 906.74,
+      "y": 778.38,
+      "box": [
+        902.74,
+        775.38,
+        984.74,
+        799.38
+      ],
+      "leader": true,
+      "anchor": [
+        906.74,
+        787.38
+      ]
+    },
+    "58001": {
+      "name": "Phecda",
+      "x": 831.94,
+      "y": 876.66,
+      "box": [
+        827.94,
+        873.66,
+        923.94,
+        897.66
+      ],
+      "leader": false,
+      "anchor": [
+        831.94,
+        885.66
+      ]
+    },
+    "59774": {
+      "name": "Megrez",
+      "x": 805.66,
+      "y": 775.05,
+      "box": [
+        801.66,
+        772.05,
+        896.66,
+        801.05
+      ],
+      "leader": false,
+      "anchor": [
+        805.66,
+        786.55
+      ]
+    },
+    "62956": {
+      "name": "Alioth",
+      "x": 716.35,
+      "y": 691.79,
+      "box": [
+        712.35,
+        688.79,
+        789.35,
+        712.79
+      ],
+      "leader": true,
+      "anchor": [
+        716.35,
+        700.79
+      ]
+    },
+    "65378": {
+      "name": "Mizar",
+      "x": 549.7,
+      "y": 717.12,
+      "box": [
+        545.7,
+        714.12,
+        618.7,
+        738.12
+      ],
+      "leader": false,
+      "anchor": [
+        614.7,
+        726.12
+      ]
+    },
+    "67301": {
+      "name": "Alkaid",
+      "x": 589.7,
+      "y": 786.5,
+      "box": [
+        585.7,
+        783.5,
+        666.7,
+        807.5
+      ],
+      "leader": false,
+      "anchor": [
+        589.7,
+        795.5
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 2
+}

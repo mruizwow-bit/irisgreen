@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">León Menor / Leo Minor</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="952.091" cy="1536.186" r="1.777"/>
+<circle id="bg-star-002" cx="684.212" cy="1056.505" r="2.095"/>
+<circle id="bg-star-003" cx="659.864" cy="1276.302" r="2.507"/>
+<circle id="bg-star-004" cx="149.892" cy="1509.508" r="2.742"/>
+<circle id="bg-star-005" cx="1046.463" cy="336.722" r="2.720"/>
+<circle id="bg-star-006" cx="1316.161" cy="982.274" r="1.983"/>
+<circle id="bg-star-007" cx="1138.212" cy="1372.811" r="2.555"/>
+<circle id="bg-star-008" cx="393.360" cy="353.420" r="1.989"/>
+<circle id="bg-star-009" cx="949.854" cy="1188.701" r="1.954"/>
+<circle id="bg-star-010" cx="1076.580" cy="1120.262" r="1.438"/>
+<circle id="bg-star-011" cx="1306.986" cy="1011.880" r="2.455"/>
+<circle id="bg-star-012" cx="595.767" cy="1377.085" r="3.105"/>
+<circle id="bg-star-013" cx="1174.457" cy="916.815" r="1.681"/>
+<circle id="bg-star-014" cx="1171.051" cy="652.107" r="2.109"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="46952" data-to-hip="49593" x1="1172.206" y1="431.691" x2="797.823" y2="948.897"/>
+<line id="edge-02" data-from-hip="49593" data-to-hip="51233" x1="797.823" y1="948.897" x2="566.533" y2="485.017"/>
+<line id="edge-03" data-from-hip="51233" data-to-hip="53229" x1="566.533" y1="485.017" x2="267.794" y2="1183.816"/>
+<line id="edge-04" data-from-hip="53229" data-to-hip="51056" x1="267.794" y1="1183.816" x2="585.343" y2="1413.309"/>
+<line id="edge-05" data-from-hip="51056" data-to-hip="49593" x1="585.343" y1="1413.309" x2="797.823" y2="948.897"/>
+</g><g id="stars">
+<circle id="hip-46952" data-hip="46952" data-mag="4.54" data-bv="0.914" cx="1172.206" cy="431.691" r="4.371" fill="rgb(255, 221, 170)"/>
+<circle id="hip-49593" data-hip="49593" data-mag="4.49" data-bv="0.19" cx="797.823" cy="948.897" r="4.438" fill="rgb(222, 232, 255)"/>
+<circle id="hip-51056" data-hip="51056" data-mag="4.72" data-bv="" cx="585.343" cy="1413.309" r="4.128" fill="rgb(235, 240, 255)"/>
+<circle id="hip-51233" data-hip="51233" data-mag="4.2" data-bv="0.908" cx="566.533" cy="485.017" r="4.830" fill="rgb(255, 221, 170)"/>
+<circle id="hip-53229" data-hip="53229" data-mag="3.79" data-bv="1.04" cx="267.794" cy="1183.816" r="5.383" fill="rgb(255, 221, 170)"/>
+</g></svg>

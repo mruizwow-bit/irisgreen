@@ -1,0 +1,188 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 55,
+  "iau_abbreviation": "Ind",
+  "name_es": "Indio",
+  "name_en": "Indus",
+  "english_descriptor": "Indian",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 101772,
+      "ra_hours": 20.62611,
+      "dec_deg": -47.29167,
+      "magnitude": 3.11,
+      "bv": 0.998,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": "Persian"
+    },
+    {
+      "hip": 102333,
+      "ra_hours": 20.73394,
+      "dec_deg": -51.92083,
+      "magnitude": 4.51,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1064.868,
+        838.159
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 103227,
+      "ra_hours": 20.91349,
+      "dec_deg": -58.45408,
+      "magnitude": 3.67,
+      "bv": 1.25,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        924.179,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 105319,
+      "ra_hours": 21.33108,
+      "dec_deg": -53.44928,
+      "magnitude": 4.39,
+      "bv": 0.191,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        663.881,
+        968.005
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 108431,
+      "ra_hours": 21.96529,
+      "dec_deg": -54.99256,
+      "magnitude": 4.4,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1163.565
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 103227,
+      "to_hip": 102333,
+      "from_xy": [
+        924.179,
+        1413.309
+      ],
+      "to_xy": [
+        1064.868,
+        838.159
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 102333,
+      "to_hip": 101772,
+      "from_xy": [
+        1064.868,
+        838.159
+      ],
+      "to_xy": [
+        1172.206,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 101772,
+      "to_hip": 105319,
+      "from_xy": [
+        1172.206,
+        431.691
+      ],
+      "to_xy": [
+        663.881,
+        968.005
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 105319,
+      "to_hip": 108431,
+      "from_xy": [
+        663.881,
+        968.005
+      ],
+      "to_xy": [
+        267.794,
+        1163.565
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 108431,
+      "to_hip": 103227,
+      "from_xy": [
+        267.794,
+        1163.565
+      ],
+      "to_xy": [
+        924.179,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "101772": {
+      "name": "Persian",
+      "x": 1204.21,
+      "y": 426.69,
+      "box": [
+        1200.21,
+        423.69,
+        1295.21,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        435.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

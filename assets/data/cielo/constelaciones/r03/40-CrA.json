@@ -1,0 +1,175 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 40,
+  "iau_abbreviation": "CrA",
+  "name_es": "Corona Austral",
+  "name_en": "Corona Australis",
+  "english_descriptor": "Southern Crown",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 90982,
+      "ra_hours": 18.55838,
+      "dec_deg": -42.31247,
+      "magnitude": 4.62,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        955.169,
+        1103.5
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93825,
+      "ra_hours": 19.10696,
+      "dec_deg": -37.06275,
+      "magnitude": 4.23,
+      "bv": 0.523,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        677.574,
+        859.089
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 94005,
+      "ra_hours": 19.13915,
+      "dec_deg": -40.49664,
+      "magnitude": 4.57,
+      "bv": 1.07,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        663.001,
+        1012.926
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 94114,
+      "ra_hours": 19.15786,
+      "dec_deg": -37.90425,
+      "magnitude": 4.11,
+      "bv": 0.042,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        650.925,
+        897.195
+      ],
+      "proper_name": "Meridiana"
+    },
+    {
+      "hip": 94160,
+      "ra_hours": 19.16715,
+      "dec_deg": -39.34069,
+      "magnitude": 4.1,
+      "bv": 1.163,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        647.44,
+        961.538
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 93825,
+      "to_hip": 94114,
+      "from_xy": [
+        677.574,
+        859.089
+      ],
+      "to_xy": [
+        650.925,
+        897.195
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 94114,
+      "to_hip": 94160,
+      "from_xy": [
+        650.925,
+        897.195
+      ],
+      "to_xy": [
+        647.44,
+        961.538
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 94160,
+      "to_hip": 94005,
+      "from_xy": [
+        647.44,
+        961.538
+      ],
+      "to_xy": [
+        663.001,
+        1012.926
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 94005,
+      "to_hip": 90982,
+      "from_xy": [
+        663.001,
+        1012.926
+      ],
+      "to_xy": [
+        955.169,
+        1103.5
+      ]
+    }
+  ],
+  "labels_review": {
+    "94114": {
+      "name": "Meridiana",
+      "x": 682.93,
+      "y": 892.19,
+      "box": [
+        678.93,
+        889.19,
+        805.93,
+        913.19
+      ],
+      "leader": false,
+      "anchor": [
+        682.93,
+        901.19
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

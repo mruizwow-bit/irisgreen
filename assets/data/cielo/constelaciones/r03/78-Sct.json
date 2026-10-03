@@ -1,0 +1,141 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 78,
+  "iau_abbreviation": "Sct",
+  "name_es": "Escudo",
+  "name_en": "Scutum",
+  "english_descriptor": "Shield",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 90595,
+      "ra_hours": 18.48663,
+      "dec_deg": -14.56581,
+      "magnitude": 4.67,
+      "bv": 0.076,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 91117,
+      "ra_hours": 18.58679,
+      "dec_deg": -8.24331,
+      "magnitude": 3.85,
+      "bv": 1.317,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        876.795,
+        780.608
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 91726,
+      "ra_hours": 18.70456,
+      "dec_deg": -9.05256,
+      "magnitude": 4.7,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        520.261,
+        861.287
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 92175,
+      "ra_hours": 18.78624,
+      "dec_deg": -4.74783,
+      "magnitude": 4.22,
+      "bv": 1.087,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 92175,
+      "to_hip": 91117,
+      "from_xy": [
+        267.794,
+        431.691
+      ],
+      "to_xy": [
+        876.795,
+        780.608
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 91117,
+      "to_hip": 90595,
+      "from_xy": [
+        876.795,
+        780.608
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 90595,
+      "to_hip": 91726,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        520.261,
+        861.287
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 91726,
+      "to_hip": 92175,
+      "from_xy": [
+        520.261,
+        861.287
+      ],
+      "to_xy": [
+        267.794,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

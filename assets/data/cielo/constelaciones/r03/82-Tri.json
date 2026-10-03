@@ -1,0 +1,144 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 82,
+  "iau_abbreviation": "Tri",
+  "name_es": "Triángulo",
+  "name_en": "Triangulum",
+  "english_descriptor": "Triangle",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 8796,
+      "ra_hours": 1.88469,
+      "dec_deg": 29.57939,
+      "magnitude": 3.42,
+      "bv": 0.488,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": "Mothallah"
+    },
+    {
+      "hip": 10064,
+      "ra_hours": 2.15903,
+      "dec_deg": 34.98739,
+      "magnitude": 3,
+      "bv": 0.14,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        551.779,
+        431.691
+      ],
+      "proper_name": "Mizan"
+    },
+    {
+      "hip": 10670,
+      "ra_hours": 2.28857,
+      "dec_deg": 33.84733,
+      "magnitude": 4.03,
+      "bv": 0.019,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        635.118
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 8796,
+      "to_hip": 10064,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        551.779,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 10064,
+      "to_hip": 10670,
+      "from_xy": [
+        551.779,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        635.118
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 10670,
+      "to_hip": 8796,
+      "from_xy": [
+        267.794,
+        635.118
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "10064": {
+      "name": "Mizan",
+      "x": 583.78,
+      "y": 426.69,
+      "box": [
+        579.78,
+        423.69,
+        657.78,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        583.78,
+        435.69
+      ]
+    },
+    "8796": {
+      "name": "Mothallah",
+      "x": 1204.21,
+      "y": 1408.31,
+      "box": [
+        1200.21,
+        1405.31,
+        1326.21,
+        1429.31
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        1417.31
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

@@ -1,0 +1,224 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Cas",
+  "name_es": "Casiopea",
+  "name_en": "Cassiopeia",
+  "descriptor_es": "La reina",
+  "descriptor_en": "The Queen",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 746,
+      "ra_hours": 0.1528,
+      "dec_deg": 59.15022,
+      "magnitude": 2.28,
+      "bv": 0.38,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1172.206,
+        945.716
+      ],
+      "proper_name": "Caph"
+    },
+    {
+      "hip": 3179,
+      "ra_hours": 0.67511,
+      "dec_deg": 56.53742,
+      "magnitude": 2.24,
+      "bv": 1.17,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1002.951,
+        1080.548
+      ],
+      "proper_name": "Schedar"
+    },
+    {
+      "hip": 4427,
+      "ra_hours": 0.94514,
+      "dec_deg": 60.71675,
+      "magnitude": 2.15,
+      "bv": -0.046,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        901.889,
+        904.377
+      ],
+      "proper_name": "Gamma Cas"
+    },
+    {
+      "hip": 6686,
+      "ra_hours": 1.43017,
+      "dec_deg": 60.23542,
+      "magnitude": 2.66,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        742.12,
+        918.086
+      ],
+      "proper_name": "Ruchbah"
+    },
+    {
+      "hip": 8886,
+      "ra_hours": 1.90658,
+      "dec_deg": 63.67014,
+      "magnitude": 3.35,
+      "bv": -0.15,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        617.492,
+        748.942
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 8886,
+      "to_hip": 6686,
+      "from_xy": [
+        617.492,
+        748.942
+      ],
+      "to_xy": [
+        742.12,
+        918.086
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 6686,
+      "to_hip": 4427,
+      "from_xy": [
+        742.12,
+        918.086
+      ],
+      "to_xy": [
+        901.889,
+        904.377
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 4427,
+      "to_hip": 3179,
+      "from_xy": [
+        901.889,
+        904.377
+      ],
+      "to_xy": [
+        1002.951,
+        1080.548
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 3179,
+      "to_hip": 746,
+      "from_xy": [
+        1002.951,
+        1080.548
+      ],
+      "to_xy": [
+        1172.206,
+        945.716
+      ]
+    }
+  ],
+  "labels_review": {
+    "3179": {
+      "name": "Schedar",
+      "x": 1034.95,
+      "y": 1075.55,
+      "box": [
+        1030.95,
+        1072.55,
+        1136.95,
+        1096.55
+      ],
+      "leader": false,
+      "anchor": [
+        1034.95,
+        1084.55
+      ]
+    },
+    "746": {
+      "name": "Caph",
+      "x": 1204.21,
+      "y": 940.72,
+      "box": [
+        1200.21,
+        937.72,
+        1270.21,
+        966.72
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        952.22
+      ]
+    },
+    "4427": {
+      "name": "Gamma Cas",
+      "x": 933.89,
+      "y": 899.38,
+      "box": [
+        929.89,
+        896.38,
+        1083.89,
+        920.38
+      ],
+      "leader": false,
+      "anchor": [
+        933.89,
+        908.38
+      ]
+    },
+    "6686": {
+      "name": "Ruchbah",
+      "x": 606.12,
+      "y": 913.09,
+      "box": [
+        602.12,
+        910.09,
+        714.12,
+        934.09
+      ],
+      "leader": false,
+      "anchor": [
+        710.12,
+        922.09
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 4
+}

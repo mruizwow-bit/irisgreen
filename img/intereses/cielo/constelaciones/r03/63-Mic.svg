@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Microscopio / Microscopium</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="804.373" cy="1101.836" r="1.545"/>
+<circle id="bg-star-002" cx="979.630" cy="1425.966" r="1.648"/>
+<circle id="bg-star-003" cx="1086.762" cy="1037.191" r="2.710"/>
+<circle id="bg-star-004" cx="987.628" cy="1021.504" r="2.890"/>
+<circle id="bg-star-005" cx="1018.120" cy="971.947" r="2.676"/>
+<circle id="bg-star-006" cx="344.119" cy="494.016" r="3.275"/>
+<circle id="bg-star-007" cx="363.939" cy="700.037" r="2.784"/>
+<circle id="bg-star-008" cx="134.291" cy="779.066" r="3.383"/>
+<circle id="bg-star-009" cx="648.949" cy="1563.620" r="3.229"/>
+<circle id="bg-star-010" cx="978.252" cy="1361.913" r="1.714"/>
+<circle id="bg-star-011" cx="357.953" cy="580.933" r="2.514"/>
+<circle id="bg-star-012" cx="886.404" cy="474.639" r="2.718"/>
+<circle id="bg-star-013" cx="236.223" cy="526.623" r="2.672"/>
+<circle id="bg-star-014" cx="777.970" cy="1290.879" r="3.065"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="102831" data-to-hip="102989" x1="1172.206" y1="1413.309" x2="267.794" y2="431.691"/>
+</g><g id="stars">
+<circle id="hip-102831" data-hip="102831" data-mag="4.89" data-bv="1.004" cx="1172.206" cy="1413.309" r="3.899" fill="rgb(255, 221, 170)"/>
+<circle id="hip-102989" data-hip="102989" data-mag="6.06" data-bv="" cx="267.794" cy="431.691" r="2.319" fill="rgb(235, 240, 255)"/>
+</g></svg>

@@ -1,0 +1,201 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 84,
+  "iau_abbreviation": "Tuc",
+  "name_es": "Tucán",
+  "name_en": "Tucana",
+  "english_descriptor": "Toucan",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 1599,
+      "ra_hours": 0.33386,
+      "dec_deg": -64.87761,
+      "magnitude": 4.23,
+      "bv": 0.576,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        364.48,
+        1369.467
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 2484,
+      "ra_hours": 0.52571,
+      "dec_deg": -62.95808,
+      "magnitude": 4.36,
+      "bv": -0.064,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1162.407
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110130,
+      "ra_hours": 22.30838,
+      "dec_deg": -60.2595,
+      "magnitude": 2.87,
+      "bv": 1.39,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1172.206,
+        839.358
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110838,
+      "ra_hours": 22.45552,
+      "dec_deg": -64.96639,
+      "magnitude": 4.51,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1046.554,
+        1404.345
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 114996,
+      "ra_hours": 23.2905,
+      "dec_deg": -58.23592,
+      "magnitude": 3.99,
+      "bv": 0.41,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        759.497,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 118322,
+      "ra_hours": 23.99859,
+      "dec_deg": -65.57708,
+      "magnitude": 4.49,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        491.134,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 2484,
+      "to_hip": 1599,
+      "from_xy": [
+        267.794,
+        1162.407
+      ],
+      "to_xy": [
+        364.48,
+        1369.467
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 1599,
+      "to_hip": 118322,
+      "from_xy": [
+        364.48,
+        1369.467
+      ],
+      "to_xy": [
+        491.134,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 118322,
+      "to_hip": 110838,
+      "from_xy": [
+        491.134,
+        1413.309
+      ],
+      "to_xy": [
+        1046.554,
+        1404.345
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 110838,
+      "to_hip": 110130,
+      "from_xy": [
+        1046.554,
+        1404.345
+      ],
+      "to_xy": [
+        1172.206,
+        839.358
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 110130,
+      "to_hip": 114996,
+      "from_xy": [
+        1172.206,
+        839.358
+      ],
+      "to_xy": [
+        759.497,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 114996,
+      "to_hip": 2484,
+      "from_xy": [
+        759.497,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        1162.407
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

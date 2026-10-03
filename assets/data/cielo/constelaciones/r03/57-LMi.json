@@ -1,0 +1,188 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 57,
+  "iau_abbreviation": "LMi",
+  "name_es": "León Menor",
+  "name_en": "Leo Minor",
+  "english_descriptor": "Lesser Lion",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 46952,
+      "ra_hours": 9.57038,
+      "dec_deg": 36.39761,
+      "magnitude": 4.54,
+      "bv": 0.914,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 49593,
+      "ra_hours": 10.12381,
+      "dec_deg": 35.24469,
+      "magnitude": 4.49,
+      "bv": 0.19,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        797.823,
+        948.897
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51056,
+      "ra_hours": 10.43191,
+      "dec_deg": 33.79625,
+      "magnitude": 4.72,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        585.343,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51233,
+      "ra_hours": 10.46475,
+      "dec_deg": 36.70747,
+      "magnitude": 4.2,
+      "bv": 0.908,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        566.533,
+        485.017
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 53229,
+      "ra_hours": 10.88851,
+      "dec_deg": 34.21556,
+      "magnitude": 3.79,
+      "bv": 1.04,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        267.794,
+        1183.816
+      ],
+      "proper_name": "Praecipua"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 46952,
+      "to_hip": 49593,
+      "from_xy": [
+        1172.206,
+        431.691
+      ],
+      "to_xy": [
+        797.823,
+        948.897
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 49593,
+      "to_hip": 51233,
+      "from_xy": [
+        797.823,
+        948.897
+      ],
+      "to_xy": [
+        566.533,
+        485.017
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 51233,
+      "to_hip": 53229,
+      "from_xy": [
+        566.533,
+        485.017
+      ],
+      "to_xy": [
+        267.794,
+        1183.816
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 53229,
+      "to_hip": 51056,
+      "from_xy": [
+        267.794,
+        1183.816
+      ],
+      "to_xy": [
+        585.343,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 51056,
+      "to_hip": 49593,
+      "from_xy": [
+        585.343,
+        1413.309
+      ],
+      "to_xy": [
+        797.823,
+        948.897
+      ]
+    }
+  ],
+  "labels_review": {
+    "53229": {
+      "name": "Praecipua",
+      "x": 299.79,
+      "y": 1178.82,
+      "box": [
+        295.79,
+        1175.82,
+        421.79,
+        1204.82
+      ],
+      "leader": false,
+      "anchor": [
+        299.79,
+        1190.32
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

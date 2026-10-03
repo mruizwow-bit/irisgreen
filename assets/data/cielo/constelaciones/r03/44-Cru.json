@@ -1,0 +1,180 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 44,
+  "iau_abbreviation": "Cru",
+  "name_es": "Cruz del Sur",
+  "name_en": "Crux",
+  "english_descriptor": "Southern Cross",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 59747,
+      "ra_hours": 12.25243,
+      "dec_deg": -58.74889,
+      "magnitude": 2.79,
+      "bv": -0.193,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        821.472,
+        921.592
+      ],
+      "proper_name": "Imai"
+    },
+    {
+      "hip": 60718,
+      "ra_hours": 12.44332,
+      "dec_deg": -63.09906,
+      "magnitude": 0.77,
+      "bv": -0.243,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        757.872,
+        1124.476
+      ],
+      "proper_name": "Acrux"
+    },
+    {
+      "hip": 61084,
+      "ra_hours": 12.51943,
+      "dec_deg": -57.11256,
+      "magnitude": 1.59,
+      "bv": 1.6,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        735.623,
+        841.79
+      ],
+      "proper_name": "Gacrux"
+    },
+    {
+      "hip": 62434,
+      "ra_hours": 12.79537,
+      "dec_deg": -59.68872,
+      "magnitude": 1.25,
+      "bv": -0.238,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        649.988,
+        966.796
+      ],
+      "proper_name": "Mimosa"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 60718,
+      "to_hip": 61084,
+      "from_xy": [
+        757.872,
+        1124.476
+      ],
+      "to_xy": [
+        735.623,
+        841.79
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 62434,
+      "to_hip": 59747,
+      "from_xy": [
+        649.988,
+        966.796
+      ],
+      "to_xy": [
+        821.472,
+        921.592
+      ]
+    }
+  ],
+  "labels_review": {
+    "60718": {
+      "name": "Acrux",
+      "x": 769.87,
+      "y": 1062.48,
+      "box": [
+        765.87,
+        1059.48,
+        842.87,
+        1083.48
+      ],
+      "leader": true,
+      "anchor": [
+        769.87,
+        1071.48
+      ]
+    },
+    "62434": {
+      "name": "Mimosa",
+      "x": 524.99,
+      "y": 961.8,
+      "box": [
+        520.99,
+        958.8,
+        621.99,
+        982.8
+      ],
+      "leader": false,
+      "anchor": [
+        617.99,
+        970.8
+      ]
+    },
+    "61084": {
+      "name": "Gacrux",
+      "x": 767.62,
+      "y": 836.79,
+      "box": [
+        763.62,
+        833.79,
+        857.62,
+        857.79
+      ],
+      "leader": false,
+      "anchor": [
+        767.62,
+        845.79
+      ]
+    },
+    "59747": {
+      "name": "Imai",
+      "x": 853.47,
+      "y": 916.59,
+      "box": [
+        849.47,
+        913.59,
+        909.47,
+        937.59
+      ],
+      "leader": false,
+      "anchor": [
+        853.47,
+        925.59
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

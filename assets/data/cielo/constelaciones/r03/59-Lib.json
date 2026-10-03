@@ -1,0 +1,266 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 59,
+  "iau_abbreviation": "Lib",
+  "name_es": "Libra",
+  "name_en": "Libra",
+  "english_descriptor": "Scales",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 72622,
+      "ra_hours": 14.84799,
+      "dec_deg": -16.04161,
+      "magnitude": 2.75,
+      "bv": 0.147,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        759.842
+      ],
+      "proper_name": "Zubenelgenubi"
+    },
+    {
+      "hip": 73714,
+      "ra_hours": 15.06785,
+      "dec_deg": -25.28186,
+      "magnitude": 3.25,
+      "bv": 1.674,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        893.721,
+        1195.583
+      ],
+      "proper_name": "Brachium"
+    },
+    {
+      "hip": 74785,
+      "ra_hours": 15.28346,
+      "dec_deg": -9.38286,
+      "magnitude": 2.61,
+      "bv": -0.071,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        661.941,
+        431.691
+      ],
+      "proper_name": "Zubeneschamali"
+    },
+    {
+      "hip": 76333,
+      "ra_hours": 15.59209,
+      "dec_deg": -14.78956,
+      "magnitude": 3.91,
+      "bv": 1.007,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        294.814,
+        695.537
+      ],
+      "proper_name": "Zubenelhakrabi"
+    },
+    {
+      "hip": 76470,
+      "ra_hours": 15.61707,
+      "dec_deg": -28.13508,
+      "magnitude": 3.6,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        293.447,
+        1332.944
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 76600,
+      "ra_hours": 15.64427,
+      "dec_deg": -29.77769,
+      "magnitude": 3.66,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 72622,
+      "to_hip": 74785,
+      "from_xy": [
+        1172.206,
+        759.842
+      ],
+      "to_xy": [
+        661.941,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 72622,
+      "to_hip": 73714,
+      "from_xy": [
+        1172.206,
+        759.842
+      ],
+      "to_xy": [
+        893.721,
+        1195.583
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 74785,
+      "to_hip": 76333,
+      "from_xy": [
+        661.941,
+        431.691
+      ],
+      "to_xy": [
+        294.814,
+        695.537
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 76333,
+      "to_hip": 72622,
+      "from_xy": [
+        294.814,
+        695.537
+      ],
+      "to_xy": [
+        1172.206,
+        759.842
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 76333,
+      "to_hip": 76470,
+      "from_xy": [
+        294.814,
+        695.537
+      ],
+      "to_xy": [
+        293.447,
+        1332.944
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 76470,
+      "to_hip": 76600,
+      "from_xy": [
+        293.447,
+        1332.944
+      ],
+      "to_xy": [
+        267.794,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "74785": {
+      "name": "Zubeneschamali",
+      "x": 693.94,
+      "y": 426.69,
+      "box": [
+        689.94,
+        423.69,
+        896.94,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        693.94,
+        435.69
+      ]
+    },
+    "72622": {
+      "name": "Zubenelgenubi",
+      "x": 1184.21,
+      "y": 697.84,
+      "box": [
+        1180.21,
+        694.84,
+        1369.21,
+        723.84
+      ],
+      "leader": true,
+      "anchor": [
+        1184.21,
+        709.34
+      ]
+    },
+    "73714": {
+      "name": "Brachium",
+      "x": 925.72,
+      "y": 1190.58,
+      "box": [
+        921.72,
+        1187.58,
+        1044.72,
+        1211.58
+      ],
+      "leader": false,
+      "anchor": [
+        925.72,
+        1199.58
+      ]
+    },
+    "76333": {
+      "name": "Zubenelhakrabi",
+      "x": 93.81,
+      "y": 633.54,
+      "box": [
+        89.81,
+        630.54,
+        286.81,
+        654.54
+      ],
+      "leader": true,
+      "anchor": [
+        282.81,
+        642.54
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

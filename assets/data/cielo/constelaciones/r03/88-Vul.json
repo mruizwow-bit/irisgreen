@@ -1,0 +1,85 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 88,
+  "iau_abbreviation": "Vul",
+  "name_es": "Zorra",
+  "name_en": "Vulpecula",
+  "english_descriptor": "Fox",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 95771,
+      "ra_hours": 19.47845,
+      "dec_deg": 24.66517,
+      "magnitude": 4.44,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": "Anser"
+    },
+    {
+      "hip": 97886,
+      "ra_hours": 19.89102,
+      "dec_deg": 24.07953,
+      "magnitude": 4.57,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 95771,
+      "to_hip": 97886,
+      "from_xy": [
+        1172.206,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "95771": {
+      "name": "Anser",
+      "x": 1204.21,
+      "y": 426.69,
+      "box": [
+        1200.21,
+        423.69,
+        1277.21,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        435.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

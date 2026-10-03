@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Mesa / Mensa</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="1025.563" cy="425.631" r="2.947"/>
+<circle id="bg-star-002" cx="451.127" cy="826.493" r="3.064"/>
+<circle id="bg-star-003" cx="247.839" cy="1199.207" r="1.357"/>
+<circle id="bg-star-004" cx="950.965" cy="1466.803" r="2.092"/>
+<circle id="bg-star-005" cx="396.924" cy="906.461" r="1.880"/>
+<circle id="bg-star-006" cx="183.651" cy="1268.099" r="2.686"/>
+<circle id="bg-star-007" cx="780.752" cy="946.888" r="1.910"/>
+<circle id="bg-star-008" cx="828.936" cy="689.315" r="3.031"/>
+<circle id="bg-star-009" cx="345.799" cy="693.416" r="2.961"/>
+<circle id="bg-star-010" cx="464.280" cy="668.642" r="2.249"/>
+<circle id="bg-star-011" cx="367.907" cy="571.896" r="2.843"/>
+<circle id="bg-star-012" cx="852.412" cy="601.649" r="1.375"/>
+<circle id="bg-star-013" cx="136.732" cy="1437.252" r="2.176"/>
+<circle id="bg-star-014" cx="814.352" cy="1175.350" r="3.366"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="29271" data-to-hip="23467" x1="267.794" y1="1413.309" x2="1172.206" y2="431.691"/>
+</g><g id="stars">
+<circle id="hip-23467" data-hip="23467" data-mag="5.3" data-bv="" cx="1172.206" cy="431.691" r="3.345" fill="rgb(235, 240, 255)"/>
+<circle id="hip-29271" data-hip="29271" data-mag="5.08" data-bv="" cx="267.794" cy="1413.309" r="3.642" fill="rgb(235, 240, 255)"/>
+</g></svg>

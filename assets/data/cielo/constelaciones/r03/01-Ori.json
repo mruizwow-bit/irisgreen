@@ -1,0 +1,742 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Ori",
+  "name_es": "Orión",
+  "name_en": "Orion",
+  "descriptor_es": "El cazador",
+  "descriptor_en": "The Hunter",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 22449,
+      "ra_hours": 4.83059,
+      "dec_deg": 6.96125,
+      "magnitude": 3.19,
+      "bv": 0.484,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1083.136,
+        877.768
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 22509,
+      "ra_hours": 4.84353,
+      "dec_deg": 8.90025,
+      "magnitude": 4.35,
+      "bv": 0.01,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1076.679,
+        839.07
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 22549,
+      "ra_hours": 4.85344,
+      "dec_deg": 5.60511,
+      "magnitude": 3.68,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1074.494,
+        905.022
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 22730,
+      "ra_hours": 4.88966,
+      "dec_deg": 2.50828,
+      "magnitude": 5.33,
+      "bv": 1.632,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        1061.237,
+        967.155
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 22845,
+      "ra_hours": 4.91492,
+      "dec_deg": 10.15114,
+      "magnitude": 4.64,
+      "bv": 0.085,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1046.837,
+        814.642
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 23123,
+      "ra_hours": 4.97581,
+      "dec_deg": 1.71403,
+      "magnitude": 4.47,
+      "bv": 1.369,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1026.049,
+        983.233
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 24436,
+      "ra_hours": 5.2423,
+      "dec_deg": -8.20164,
+      "magnitude": 0.18,
+      "bv": -0.03,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        919.581,
+        1185.859
+      ],
+      "proper_name": "Rigel"
+    },
+    {
+      "hip": 25336,
+      "ra_hours": 5.41885,
+      "dec_deg": 6.34972,
+      "magnitude": 1.64,
+      "bv": -0.224,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        845.302,
+        892.036
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 25930,
+      "ra_hours": 5.53344,
+      "dec_deg": 0.29908,
+      "magnitude": 2.25,
+      "bv": -0.175,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        799.447,
+        1011.724
+      ],
+      "proper_name": "Mintaka"
+    },
+    {
+      "hip": 26207,
+      "ra_hours": 5.58563,
+      "dec_deg": 9.93417,
+      "magnitude": 3.39,
+      "bv": -0.16,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        778.796,
+        821.443
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 26311,
+      "ra_hours": 5.60356,
+      "dec_deg": -1.20192,
+      "magnitude": 1.69,
+      "bv": -0.184,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        770.962,
+        1041.749
+      ],
+      "proper_name": "Alnilam"
+    },
+    {
+      "hip": 26727,
+      "ra_hours": 5.67931,
+      "dec_deg": -1.94258,
+      "magnitude": 1.74,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        740.08,
+        1056.667
+      ],
+      "proper_name": "Alnitak"
+    },
+    {
+      "hip": 27366,
+      "ra_hours": 5.79594,
+      "dec_deg": -9.66961,
+      "magnitude": 2.07,
+      "bv": -0.168,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        690.681,
+        1217.074
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27913,
+      "ra_hours": 5.90641,
+      "dec_deg": 20.27642,
+      "magnitude": 4.39,
+      "bv": 0.594,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        654.39,
+        610.981
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27989,
+      "ra_hours": 5.91953,
+      "dec_deg": 7.40703,
+      "magnitude": 0.45,
+      "bv": 1.5,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        644.944,
+        870.504
+      ],
+      "proper_name": "Betelgeuse"
+    },
+    {
+      "hip": 28614,
+      "ra_hours": 6.03972,
+      "dec_deg": 9.64736,
+      "magnitude": 4.12,
+      "bv": 0.17,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        597.299,
+        825.426
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 28716,
+      "ra_hours": 6.06533,
+      "dec_deg": 20.13847,
+      "magnitude": 4.64,
+      "bv": 0.236,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        591.804,
+        611.913
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 29038,
+      "ra_hours": 6.1262,
+      "dec_deg": 14.76853,
+      "magnitude": 4.42,
+      "bv": -0.164,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        564.862,
+        721.804
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 29426,
+      "ra_hours": 6.199,
+      "dec_deg": 14.20881,
+      "magnitude": 4.45,
+      "bv": -0.18,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        535.172,
+        732.269
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 29434,
+      "ra_hours": 6.20091,
+      "dec_deg": 16.13044,
+      "magnitude": 4.95,
+      "bv": -0.149,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        535.522,
+        693.017
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 26727,
+      "to_hip": 26311,
+      "from_xy": [
+        740.08,
+        1056.667
+      ],
+      "to_xy": [
+        770.962,
+        1041.749
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 26311,
+      "to_hip": 25930,
+      "from_xy": [
+        770.962,
+        1041.749
+      ],
+      "to_xy": [
+        799.447,
+        1011.724
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 29434,
+      "to_hip": 29426,
+      "from_xy": [
+        535.522,
+        693.017
+      ],
+      "to_xy": [
+        535.172,
+        732.269
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 29434,
+      "to_hip": 28716,
+      "from_xy": [
+        535.522,
+        693.017
+      ],
+      "to_xy": [
+        591.804,
+        611.913
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 28716,
+      "to_hip": 27913,
+      "from_xy": [
+        591.804,
+        611.913
+      ],
+      "to_xy": [
+        654.39,
+        610.981
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 29426,
+      "to_hip": 29038,
+      "from_xy": [
+        535.172,
+        732.269
+      ],
+      "to_xy": [
+        564.862,
+        721.804
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 29038,
+      "to_hip": 27913,
+      "from_xy": [
+        564.862,
+        721.804
+      ],
+      "to_xy": [
+        654.39,
+        610.981
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 29426,
+      "to_hip": 28614,
+      "from_xy": [
+        535.172,
+        732.269
+      ],
+      "to_xy": [
+        597.299,
+        825.426
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 28614,
+      "to_hip": 27989,
+      "from_xy": [
+        597.299,
+        825.426
+      ],
+      "to_xy": [
+        644.944,
+        870.504
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 27989,
+      "to_hip": 26727,
+      "from_xy": [
+        644.944,
+        870.504
+      ],
+      "to_xy": [
+        740.08,
+        1056.667
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 26727,
+      "to_hip": 27366,
+      "from_xy": [
+        740.08,
+        1056.667
+      ],
+      "to_xy": [
+        690.681,
+        1217.074
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 27366,
+      "to_hip": 24436,
+      "from_xy": [
+        690.681,
+        1217.074
+      ],
+      "to_xy": [
+        919.581,
+        1185.859
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 24436,
+      "to_hip": 25930,
+      "from_xy": [
+        919.581,
+        1185.859
+      ],
+      "to_xy": [
+        799.447,
+        1011.724
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 25930,
+      "to_hip": 25336,
+      "from_xy": [
+        799.447,
+        1011.724
+      ],
+      "to_xy": [
+        845.302,
+        892.036
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 25336,
+      "to_hip": 26207,
+      "from_xy": [
+        845.302,
+        892.036
+      ],
+      "to_xy": [
+        778.796,
+        821.443
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 26207,
+      "to_hip": 27989,
+      "from_xy": [
+        778.796,
+        821.443
+      ],
+      "to_xy": [
+        644.944,
+        870.504
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 25336,
+      "to_hip": 22449,
+      "from_xy": [
+        845.302,
+        892.036
+      ],
+      "to_xy": [
+        1083.136,
+        877.768
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 22449,
+      "to_hip": 22549,
+      "from_xy": [
+        1083.136,
+        877.768
+      ],
+      "to_xy": [
+        1074.494,
+        905.022
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 22549,
+      "to_hip": 22730,
+      "from_xy": [
+        1074.494,
+        905.022
+      ],
+      "to_xy": [
+        1061.237,
+        967.155
+      ]
+    },
+    {
+      "id": "edge-20",
+      "from_hip": 22730,
+      "to_hip": 23123,
+      "from_xy": [
+        1061.237,
+        967.155
+      ],
+      "to_xy": [
+        1026.049,
+        983.233
+      ]
+    },
+    {
+      "id": "edge-21",
+      "from_hip": 22449,
+      "to_hip": 22509,
+      "from_xy": [
+        1083.136,
+        877.768
+      ],
+      "to_xy": [
+        1076.679,
+        839.07
+      ]
+    },
+    {
+      "id": "edge-22",
+      "from_hip": 22509,
+      "to_hip": 22845,
+      "from_xy": [
+        1076.679,
+        839.07
+      ],
+      "to_xy": [
+        1046.837,
+        814.642
+      ]
+    },
+    {
+      "id": "edge-23",
+      "from_hip": 29038,
+      "to_hip": 28614,
+      "from_xy": [
+        564.862,
+        721.804
+      ],
+      "to_xy": [
+        597.299,
+        825.426
+      ]
+    }
+  ],
+  "labels_review": {
+    "27989": {
+      "name": "Betelgeuse",
+      "x": 491.94,
+      "y": 880.5,
+      "box": [
+        487.94,
+        877.5,
+        630.94,
+        906.5
+      ],
+      "leader": false,
+      "anchor": [
+        626.94,
+        892.0
+      ]
+    },
+    "24436": {
+      "name": "Rigel",
+      "x": 931.58,
+      "y": 1123.86,
+      "box": [
+        927.58,
+        1120.86,
+        995.58,
+        1149.86
+      ],
+      "leader": true,
+      "anchor": [
+        931.58,
+        1135.36
+      ]
+    },
+    "26727": {
+      "name": "Alnitak",
+      "x": 560.0,
+      "y": 1060.0,
+      "box": [
+        556.0,
+        1057.0,
+        647.0,
+        1081.0
+      ],
+      "leader": true,
+      "anchor": [
+        643.0,
+        1069.0
+      ]
+    },
+    "26311": {
+      "name": "Alnilam",
+      "x": 690.0,
+      "y": 952.0,
+      "box": [
+        686.0,
+        949.0,
+        784.0,
+        973.0
+      ],
+      "leader": true,
+      "anchor": [
+        780.0,
+        961.0
+      ]
+    },
+    "25930": {
+      "name": "Mintaka",
+      "x": 860.0,
+      "y": 968.0,
+      "box": [
+        856.0,
+        965.0,
+        959.0,
+        989.0
+      ],
+      "leader": true,
+      "anchor": [
+        860.0,
+        977.0
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 1
+}

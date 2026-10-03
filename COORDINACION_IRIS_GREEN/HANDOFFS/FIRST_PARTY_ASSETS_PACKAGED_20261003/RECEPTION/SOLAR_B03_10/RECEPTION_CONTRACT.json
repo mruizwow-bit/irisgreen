@@ -1,0 +1,17 @@
+{
+  "schema": "iris-green.asset-reception-lane.v1",
+  "owner": "ATLAS_A1",
+  "family": "SOLAR_B03_10",
+  "status": "CLOSED_PACKAGED_READY_FOR_RUNTIME",
+  "intake_allowed": true,
+  "factual_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "visual_gate": "SOLAR_B03_DWARF_MOONS_10_VISUAL_PASS",
+  "source_gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+  "source_commit": "7d82a9c60b3e3a7fb82a7bd0f0ae67eb6c06c269",
+  "package_gate": "SOLAR_B03_10_PACKAGED_READY_FOR_RUNTIME",
+  "canonical_masters_root": "/img/intereses/sistema-solar/b03/",
+  "packaging_handoff": "COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_ASSETS_PACKAGED_20261003/SOLAR_B03_10/",
+  "library_package": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/SOLAR_B03_10/",
+  "pixel_policy": "DO_NOT_MODIFY_APPROVED_MASTER_PIXELS",
+  "runtime_integration": false
+}

@@ -1,0 +1,399 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 34,
+  "iau_abbreviation": "Cep",
+  "name_es": "Cefeo",
+  "name_en": "Cepheus",
+  "english_descriptor": "King",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 101093,
+      "ra_hours": 20.49301,
+      "dec_deg": 62.99414,
+      "magnitude": 4.21,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        908.763,
+        846.637
+      ],
+      "proper_name": "Al Kidr"
+    },
+    {
+      "hip": 102422,
+      "ra_hours": 20.7548,
+      "dec_deg": 61.83681,
+      "magnitude": 3.41,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        881.002,
+        891.371
+      ],
+      "proper_name": "Kabalfird"
+    },
+    {
+      "hip": 105199,
+      "ra_hours": 21.30961,
+      "dec_deg": 62.58544,
+      "magnitude": 2.45,
+      "bv": 0.257,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        804.706,
+        890.974
+      ],
+      "proper_name": "Alderamin"
+    },
+    {
+      "hip": 106032,
+      "ra_hours": 21.47766,
+      "dec_deg": 70.56069,
+      "magnitude": 3.23,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        769.675,
+        675.978
+      ],
+      "proper_name": "Alfirk"
+    },
+    {
+      "hip": 107259,
+      "ra_hours": 21.72512,
+      "dec_deg": 58.78006,
+      "magnitude": 4.23,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        751.782,
+        1001.182
+      ],
+      "proper_name": "The Garnet Star"
+    },
+    {
+      "hip": 109492,
+      "ra_hours": 22.18091,
+      "dec_deg": 58.20125,
+      "magnitude": 3.39,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        682.839,
+        1014.545
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 109857,
+      "ra_hours": 22.25047,
+      "dec_deg": 57.04347,
+      "magnitude": 4.18,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        670.095,
+        1045.207
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 110991,
+      "ra_hours": 22.48618,
+      "dec_deg": 58.41519,
+      "magnitude": 4.07,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        637.212,
+        1001.289
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112724,
+      "ra_hours": 22.82803,
+      "dec_deg": 66.20072,
+      "magnitude": 3.5,
+      "bv": 1.053,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        620.911,
+        778.587
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 116727,
+      "ra_hours": 23.65583,
+      "dec_deg": 77.63197,
+      "magnitude": 3.21,
+      "bv": 1.031,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        623.274,
+        439.222
+      ],
+      "proper_name": "Errai"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 102422,
+      "to_hip": 105199,
+      "from_xy": [
+        881.002,
+        891.371
+      ],
+      "to_xy": [
+        804.706,
+        890.974
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 105199,
+      "to_hip": 106032,
+      "from_xy": [
+        804.706,
+        890.974
+      ],
+      "to_xy": [
+        769.675,
+        675.978
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 106032,
+      "to_hip": 112724,
+      "from_xy": [
+        769.675,
+        675.978
+      ],
+      "to_xy": [
+        620.911,
+        778.587
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 106032,
+      "to_hip": 116727,
+      "from_xy": [
+        769.675,
+        675.978
+      ],
+      "to_xy": [
+        623.274,
+        439.222
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 116727,
+      "to_hip": 112724,
+      "from_xy": [
+        623.274,
+        439.222
+      ],
+      "to_xy": [
+        620.911,
+        778.587
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 112724,
+      "to_hip": 110991,
+      "from_xy": [
+        620.911,
+        778.587
+      ],
+      "to_xy": [
+        637.212,
+        1001.289
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 110991,
+      "to_hip": 109492,
+      "from_xy": [
+        637.212,
+        1001.289
+      ],
+      "to_xy": [
+        682.839,
+        1014.545
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 109492,
+      "to_hip": 109857,
+      "from_xy": [
+        682.839,
+        1014.545
+      ],
+      "to_xy": [
+        670.095,
+        1045.207
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 109857,
+      "to_hip": 107259,
+      "from_xy": [
+        670.095,
+        1045.207
+      ],
+      "to_xy": [
+        751.782,
+        1001.182
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 107259,
+      "to_hip": 105199,
+      "from_xy": [
+        751.782,
+        1001.182
+      ],
+      "to_xy": [
+        804.706,
+        890.974
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 101093,
+      "to_hip": 102422,
+      "from_xy": [
+        908.763,
+        846.637
+      ],
+      "to_xy": [
+        881.002,
+        891.371
+      ]
+    }
+  ],
+  "labels_review": {
+    "105199": {
+      "name": "Alderamin",
+      "x": 649.71,
+      "y": 885.97,
+      "box": [
+        645.71,
+        882.97,
+        776.71,
+        906.97
+      ],
+      "leader": false,
+      "anchor": [
+        772.71,
+        894.97
+      ]
+    },
+    "116727": {
+      "name": "Errai",
+      "x": 655.27,
+      "y": 434.22,
+      "box": [
+        651.27,
+        431.22,
+        715.27,
+        455.22
+      ],
+      "leader": false,
+      "anchor": [
+        655.27,
+        443.22
+      ]
+    },
+    "106032": {
+      "name": "Alfirk",
+      "x": 801.68,
+      "y": 670.98,
+      "box": [
+        797.68,
+        667.98,
+        867.68,
+        691.98
+      ],
+      "leader": false,
+      "anchor": [
+        801.68,
+        679.98
+      ]
+    },
+    "102422": {
+      "name": "Kabalfird",
+      "x": 913.0,
+      "y": 886.37,
+      "box": [
+        909.0,
+        883.37,
+        1023.0,
+        907.37
+      ],
+      "leader": false,
+      "anchor": [
+        913.0,
+        895.37
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

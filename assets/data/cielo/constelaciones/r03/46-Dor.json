@@ -1,0 +1,214 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 46,
+  "iau_abbreviation": "Dor",
+  "name_es": "Dorado",
+  "name_en": "Dorado",
+  "english_descriptor": "Swordfish",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 19893,
+      "ra_hours": 4.26708,
+      "dec_deg": -51.48708,
+      "magnitude": 4.26,
+      "bv": 0.312,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        954.649,
+        560.249
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 21281,
+      "ra_hours": 4.56659,
+      "dec_deg": -55.045,
+      "magnitude": 3.3,
+      "bv": -0.079,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        858.436,
+        715.096
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 23693,
+      "ra_hours": 5.09186,
+      "dec_deg": -57.473,
+      "magnitude": 4.71,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        724.721,
+        820.521
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 26069,
+      "ra_hours": 5.56042,
+      "dec_deg": -62.48986,
+      "magnitude": 3.76,
+      "bv": 0.64,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        628.481,
+        1072.812
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27100,
+      "ra_hours": 5.74623,
+      "dec_deg": -65.73553,
+      "magnitude": 4.34,
+      "bv": 0.217,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        604.557,
+        1238.454
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27890,
+      "ra_hours": 5.90164,
+      "dec_deg": -63.09103,
+      "magnitude": 4.65,
+      "bv": 1.022,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        562.149,
+        1118.602
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 19893,
+      "to_hip": 21281,
+      "from_xy": [
+        954.649,
+        560.249
+      ],
+      "to_xy": [
+        858.436,
+        715.096
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 21281,
+      "to_hip": 23693,
+      "from_xy": [
+        858.436,
+        715.096
+      ],
+      "to_xy": [
+        724.721,
+        820.521
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 23693,
+      "to_hip": 26069,
+      "from_xy": [
+        724.721,
+        820.521
+      ],
+      "to_xy": [
+        628.481,
+        1072.812
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 26069,
+      "to_hip": 21281,
+      "from_xy": [
+        628.481,
+        1072.812
+      ],
+      "to_xy": [
+        858.436,
+        715.096
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 26069,
+      "to_hip": 27100,
+      "from_xy": [
+        628.481,
+        1072.812
+      ],
+      "to_xy": [
+        604.557,
+        1238.454
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 27100,
+      "to_hip": 27890,
+      "from_xy": [
+        604.557,
+        1238.454
+      ],
+      "to_xy": [
+        562.149,
+        1118.602
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 27890,
+      "to_hip": 26069,
+      "from_xy": [
+        562.149,
+        1118.602
+      ],
+      "to_xy": [
+        628.481,
+        1072.812
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

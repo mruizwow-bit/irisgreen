@@ -1,0 +1,506 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 86,
+  "iau_abbreviation": "Vir",
+  "name_es": "Virgo",
+  "name_en": "Virgo",
+  "english_descriptor": "Maiden",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 57380,
+      "ra_hours": 11.76432,
+      "dec_deg": 6.52981,
+      "magnitude": 4.04,
+      "bv": 1.501,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        1172.206,
+        609.213
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 57757,
+      "ra_hours": 11.8448,
+      "dec_deg": 1.76539,
+      "magnitude": 3.59,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1146.163,
+        834.869
+      ],
+      "proper_name": "Zavijava"
+    },
+    {
+      "hip": 58948,
+      "ra_hours": 12.08685,
+      "dec_deg": 8.73283,
+      "magnitude": 4.12,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1069.378,
+        515.763
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 60129,
+      "ra_hours": 12.33178,
+      "dec_deg": -0.66675,
+      "magnitude": 3.89,
+      "bv": 0.026,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        995.006,
+        947.1
+      ],
+      "proper_name": "Zaniah"
+    },
+    {
+      "hip": 61941,
+      "ra_hours": 12.69444,
+      "dec_deg": -1.44953,
+      "magnitude": 2.74,
+      "bv": 0.368,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        888.249,
+        981.161
+      ],
+      "proper_name": "Porrima"
+    },
+    {
+      "hip": 63090,
+      "ra_hours": 12.9268,
+      "dec_deg": 3.39761,
+      "magnitude": 3.39,
+      "bv": 1.571,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        821.301,
+        767.998
+      ],
+      "proper_name": "Minelauva"
+    },
+    {
+      "hip": 63608,
+      "ra_hours": 13.03632,
+      "dec_deg": 10.95911,
+      "magnitude": 2.85,
+      "bv": 0.934,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        789.968,
+        431.691
+      ],
+      "proper_name": "Vindemiatrix"
+    },
+    {
+      "hip": 64238,
+      "ra_hours": 13.16584,
+      "dec_deg": -5.53892,
+      "magnitude": 4.38,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        753.065,
+        1160.455
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 65474,
+      "ra_hours": 13.41989,
+      "dec_deg": -11.16125,
+      "magnitude": 0.98,
+      "bv": -0.235,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        680.491,
+        1413.309
+      ],
+      "proper_name": "Spica"
+    },
+    {
+      "hip": 66249,
+      "ra_hours": 13.57826,
+      "dec_deg": -0.59594,
+      "magnitude": 3.38,
+      "bv": 0.114,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        635.091,
+        943.392
+      ],
+      "proper_name": "Heze"
+    },
+    {
+      "hip": 68520,
+      "ra_hours": 14.02744,
+      "dec_deg": 1.54458,
+      "magnitude": 4.23,
+      "bv": 0.121,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        503.523,
+        847.895
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 69701,
+      "ra_hours": 14.26691,
+      "dec_deg": -5.99953,
+      "magnitude": 4.07,
+      "bv": 0.511,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        430.522,
+        1191.745
+      ],
+      "proper_name": "Syrma"
+    },
+    {
+      "hip": 71957,
+      "ra_hours": 14.71766,
+      "dec_deg": -5.65742,
+      "magnitude": 3.87,
+      "bv": 0.385,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        285.457,
+        1187.091
+      ],
+      "proper_name": "Rijl al Awwa"
+    },
+    {
+      "hip": 72220,
+      "ra_hours": 14.77083,
+      "dec_deg": 1.89294,
+      "magnitude": 3.73,
+      "bv": -0.005,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        826.638
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 60129,
+      "to_hip": 58948,
+      "from_xy": [
+        995.006,
+        947.1
+      ],
+      "to_xy": [
+        1069.378,
+        515.763
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 58948,
+      "to_hip": 57380,
+      "from_xy": [
+        1069.378,
+        515.763
+      ],
+      "to_xy": [
+        1172.206,
+        609.213
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 57380,
+      "to_hip": 57757,
+      "from_xy": [
+        1172.206,
+        609.213
+      ],
+      "to_xy": [
+        1146.163,
+        834.869
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 57757,
+      "to_hip": 60129,
+      "from_xy": [
+        1146.163,
+        834.869
+      ],
+      "to_xy": [
+        995.006,
+        947.1
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 60129,
+      "to_hip": 61941,
+      "from_xy": [
+        995.006,
+        947.1
+      ],
+      "to_xy": [
+        888.249,
+        981.161
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 61941,
+      "to_hip": 63090,
+      "from_xy": [
+        888.249,
+        981.161
+      ],
+      "to_xy": [
+        821.301,
+        767.998
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 63090,
+      "to_hip": 63608,
+      "from_xy": [
+        821.301,
+        767.998
+      ],
+      "to_xy": [
+        789.968,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 61941,
+      "to_hip": 64238,
+      "from_xy": [
+        888.249,
+        981.161
+      ],
+      "to_xy": [
+        753.065,
+        1160.455
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 64238,
+      "to_hip": 65474,
+      "from_xy": [
+        753.065,
+        1160.455
+      ],
+      "to_xy": [
+        680.491,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 61941,
+      "to_hip": 66249,
+      "from_xy": [
+        888.249,
+        981.161
+      ],
+      "to_xy": [
+        635.091,
+        943.392
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 66249,
+      "to_hip": 68520,
+      "from_xy": [
+        635.091,
+        943.392
+      ],
+      "to_xy": [
+        503.523,
+        847.895
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 68520,
+      "to_hip": 72220,
+      "from_xy": [
+        503.523,
+        847.895
+      ],
+      "to_xy": [
+        267.794,
+        826.638
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 66249,
+      "to_hip": 69701,
+      "from_xy": [
+        635.091,
+        943.392
+      ],
+      "to_xy": [
+        430.522,
+        1191.745
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 69701,
+      "to_hip": 71957,
+      "from_xy": [
+        430.522,
+        1191.745
+      ],
+      "to_xy": [
+        285.457,
+        1187.091
+      ]
+    }
+  ],
+  "labels_review": {
+    "65474": {
+      "name": "Spica",
+      "x": 712.49,
+      "y": 1408.31,
+      "box": [
+        708.49,
+        1405.31,
+        781.49,
+        1434.31
+      ],
+      "leader": false,
+      "anchor": [
+        712.49,
+        1419.81
+      ]
+    },
+    "61941": {
+      "name": "Porrima",
+      "x": 920.25,
+      "y": 976.16,
+      "box": [
+        916.25,
+        973.16,
+        1016.25,
+        997.16
+      ],
+      "leader": false,
+      "anchor": [
+        920.25,
+        985.16
+      ]
+    },
+    "63608": {
+      "name": "Vindemiatrix",
+      "x": 821.97,
+      "y": 426.69,
+      "box": [
+        817.97,
+        423.69,
+        978.97,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        821.97,
+        435.69
+      ]
+    },
+    "66249": {
+      "name": "Heze",
+      "x": 543.09,
+      "y": 938.39,
+      "box": [
+        539.09,
+        935.39,
+        607.09,
+        959.39
+      ],
+      "leader": false,
+      "anchor": [
+        603.09,
+        947.39
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 37,
+  "iau_abbreviation": "Cir",
+  "name_es": "Compás",
+  "name_en": "Circinus",
+  "english_descriptor": "Drafting Compass",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 71908,
+      "ra_hours": 14.70852,
+      "dec_deg": -64.97458,
+      "magnitude": 3.18,
+      "bv": 0.256,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        875.643,
+        1203.764
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 74824,
+      "ra_hours": 15.29193,
+      "dec_deg": -58.80089,
+      "magnitude": 4.07,
+      "bv": 0.088,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        685.32,
+        865.65
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 75323,
+      "ra_hours": 15.38963,
+      "dec_deg": -59.32069,
+      "magnitude": 4.48,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        649.61,
+        895.163
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 74824,
+      "to_hip": 71908,
+      "from_xy": [
+        685.32,
+        865.65
+      ],
+      "to_xy": [
+        875.643,
+        1203.764
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 71908,
+      "to_hip": 75323,
+      "from_xy": [
+        875.643,
+        1203.764
+      ],
+      "to_xy": [
+        649.61,
+        895.163
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

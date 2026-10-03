@@ -1,0 +1,279 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 70,
+  "iau_abbreviation": "Phe",
+  "name_es": "Fénix",
+  "name_en": "Phoenix",
+  "english_descriptor": "Phoenix",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 765,
+      "ra_hours": 0.15682,
+      "dec_deg": -45.747,
+      "magnitude": 3.88,
+      "bv": 1.013,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        725.599
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 2081,
+      "ra_hours": 0.43802,
+      "dec_deg": -42.30511,
+      "magnitude": 2.4,
+      "bv": 1.083,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1003.937,
+        431.691
+      ],
+      "proper_name": "Ankaa"
+    },
+    {
+      "hip": 5165,
+      "ra_hours": 1.10142,
+      "dec_deg": -46.7185,
+      "magnitude": 3.32,
+      "bv": 0.885,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        535.741,
+        752.921
+      ],
+      "proper_name": "Alrial III"
+    },
+    {
+      "hip": 5348,
+      "ra_hours": 1.13974,
+      "dec_deg": -55.24583,
+      "magnitude": 3.94,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        529.581,
+        1413.309
+      ],
+      "proper_name": "Wurren"
+    },
+    {
+      "hip": 6867,
+      "ra_hours": 1.47276,
+      "dec_deg": -43.31772,
+      "magnitude": 3.41,
+      "bv": 1.542,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        267.794,
+        509.455
+      ],
+      "proper_name": "Alrial V"
+    },
+    {
+      "hip": 7083,
+      "ra_hours": 1.52083,
+      "dec_deg": -49.07308,
+      "magnitude": 3.93,
+      "bv": 0.972,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        274.149,
+        956.151
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 2081,
+      "to_hip": 5165,
+      "from_xy": [
+        1003.937,
+        431.691
+      ],
+      "to_xy": [
+        535.741,
+        752.921
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 5165,
+      "to_hip": 6867,
+      "from_xy": [
+        535.741,
+        752.921
+      ],
+      "to_xy": [
+        267.794,
+        509.455
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 2081,
+      "to_hip": 765,
+      "from_xy": [
+        1003.937,
+        431.691
+      ],
+      "to_xy": [
+        1172.206,
+        725.599
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 765,
+      "to_hip": 5165,
+      "from_xy": [
+        1172.206,
+        725.599
+      ],
+      "to_xy": [
+        535.741,
+        752.921
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 5165,
+      "to_hip": 5348,
+      "from_xy": [
+        535.741,
+        752.921
+      ],
+      "to_xy": [
+        529.581,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 5348,
+      "to_hip": 7083,
+      "from_xy": [
+        529.581,
+        1413.309
+      ],
+      "to_xy": [
+        274.149,
+        956.151
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 7083,
+      "to_hip": 6867,
+      "from_xy": [
+        274.149,
+        956.151
+      ],
+      "to_xy": [
+        267.794,
+        509.455
+      ]
+    }
+  ],
+  "labels_review": {
+    "2081": {
+      "name": "Ankaa",
+      "x": 1035.94,
+      "y": 426.69,
+      "box": [
+        1031.94,
+        423.69,
+        1114.94,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        1035.94,
+        435.69
+      ]
+    },
+    "5165": {
+      "name": "Alrial III",
+      "x": 413.74,
+      "y": 747.92,
+      "box": [
+        409.74,
+        744.92,
+        507.74,
+        768.92
+      ],
+      "leader": false,
+      "anchor": [
+        503.74,
+        756.92
+      ]
+    },
+    "6867": {
+      "name": "Alrial V",
+      "x": 299.79,
+      "y": 504.45,
+      "box": [
+        295.79,
+        501.45,
+        389.79,
+        525.45
+      ],
+      "leader": false,
+      "anchor": [
+        299.79,
+        513.45
+      ]
+    },
+    "5348": {
+      "name": "Wurren",
+      "x": 561.58,
+      "y": 1408.31,
+      "box": [
+        557.58,
+        1405.31,
+        652.58,
+        1429.31
+      ],
+      "leader": false,
+      "anchor": [
+        561.58,
+        1417.31
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

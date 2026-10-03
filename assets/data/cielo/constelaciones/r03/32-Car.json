@@ -1,0 +1,536 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 32,
+  "iau_abbreviation": "Car",
+  "name_es": "Quilla",
+  "name_en": "Carina",
+  "english_descriptor": "Keel",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 30438,
+      "ra_hours": 6.39919,
+      "dec_deg": -52.69572,
+      "magnitude": 0,
+      "bv": 0.164,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1103.569,
+        845.238
+      ],
+      "proper_name": "Canopus"
+    },
+    {
+      "hip": 38827,
+      "ra_hours": 7.94632,
+      "dec_deg": -52.98239,
+      "magnitude": 3.46,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        922.295,
+        706.45
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 39953,
+      "ra_hours": 8.15888,
+      "dec_deg": -47.33661,
+      "magnitude": 1.75,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        921.31,
+        581.849
+      ],
+      "proper_name": "Regor"
+    },
+    {
+      "hip": 41037,
+      "ra_hours": 8.37524,
+      "dec_deg": -59.50953,
+      "magnitude": 1.86,
+      "bv": 1.196,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        849.327,
+        811.141
+      ],
+      "proper_name": "Avior"
+    },
+    {
+      "hip": 42913,
+      "ra_hours": 8.74506,
+      "dec_deg": -54.70856,
+      "magnitude": 1.93,
+      "bv": 0.043,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        823.939,
+        705.249
+      ],
+      "proper_name": "Alsephina"
+    },
+    {
+      "hip": 45238,
+      "ra_hours": 9.22007,
+      "dec_deg": -69.71747,
+      "magnitude": 1.67,
+      "bv": 0.07,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        757.348,
+        992.502
+      ],
+      "proper_name": "Miaplacidus"
+    },
+    {
+      "hip": 45556,
+      "ra_hours": 9.28484,
+      "dec_deg": -59.27525,
+      "magnitude": 2.21,
+      "bv": 0.189,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        759.717,
+        785.841
+      ],
+      "proper_name": "Aspidiske"
+    },
+    {
+      "hip": 50099,
+      "ra_hours": 10.22897,
+      "dec_deg": -70.03792,
+      "magnitude": 3.29,
+      "bv": -0.074,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        689.185,
+        1004.644
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 50371,
+      "ra_hours": 10.28472,
+      "dec_deg": -61.33233,
+      "magnitude": 3.39,
+      "bv": 1.541,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        664.852,
+        835.501
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51576,
+      "ra_hours": 10.53374,
+      "dec_deg": -61.68536,
+      "magnitude": 3.3,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        642.823,
+        849.677
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 52419,
+      "ra_hours": 10.71595,
+      "dec_deg": -64.39447,
+      "magnitude": 2.74,
+      "bv": -0.22,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        636.095,
+        908.068
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 53253,
+      "ra_hours": 10.89155,
+      "dec_deg": -58.85328,
+      "magnitude": 3.78,
+      "bv": 0.945,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        598.313,
+        810.023
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 54301,
+      "ra_hours": 11.10902,
+      "dec_deg": -62.42414,
+      "magnitude": 4.62,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        594.179,
+        888.136
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 54463,
+      "ra_hours": 11.14317,
+      "dec_deg": -58.97506,
+      "magnitude": 3.93,
+      "bv": 1.225,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        574.014,
+        825.536
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 54751,
+      "ra_hours": 11.21001,
+      "dec_deg": -60.31764,
+      "magnitude": 4.59,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        574.435,
+        854.415
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 30438,
+      "to_hip": 45238,
+      "from_xy": [
+        1103.569,
+        845.238
+      ],
+      "to_xy": [
+        757.348,
+        992.502
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 45238,
+      "to_hip": 50099,
+      "from_xy": [
+        757.348,
+        992.502
+      ],
+      "to_xy": [
+        689.185,
+        1004.644
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 50099,
+      "to_hip": 52419,
+      "from_xy": [
+        689.185,
+        1004.644
+      ],
+      "to_xy": [
+        636.095,
+        908.068
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 52419,
+      "to_hip": 51576,
+      "from_xy": [
+        636.095,
+        908.068
+      ],
+      "to_xy": [
+        642.823,
+        849.677
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 51576,
+      "to_hip": 50371,
+      "from_xy": [
+        642.823,
+        849.677
+      ],
+      "to_xy": [
+        664.852,
+        835.501
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 50371,
+      "to_hip": 45556,
+      "from_xy": [
+        664.852,
+        835.501
+      ],
+      "to_xy": [
+        759.717,
+        785.841
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 45556,
+      "to_hip": 42913,
+      "from_xy": [
+        759.717,
+        785.841
+      ],
+      "to_xy": [
+        823.939,
+        705.249
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 51576,
+      "to_hip": 53253,
+      "from_xy": [
+        642.823,
+        849.677
+      ],
+      "to_xy": [
+        598.313,
+        810.023
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 52419,
+      "to_hip": 54301,
+      "from_xy": [
+        636.095,
+        908.068
+      ],
+      "to_xy": [
+        594.179,
+        888.136
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 54301,
+      "to_hip": 54751,
+      "from_xy": [
+        594.179,
+        888.136
+      ],
+      "to_xy": [
+        574.435,
+        854.415
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 54751,
+      "to_hip": 54463,
+      "from_xy": [
+        574.435,
+        854.415
+      ],
+      "to_xy": [
+        574.014,
+        825.536
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 54463,
+      "to_hip": 53253,
+      "from_xy": [
+        574.014,
+        825.536
+      ],
+      "to_xy": [
+        598.313,
+        810.023
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 45556,
+      "to_hip": 41037,
+      "from_xy": [
+        759.717,
+        785.841
+      ],
+      "to_xy": [
+        849.327,
+        811.141
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 41037,
+      "to_hip": 38827,
+      "from_xy": [
+        849.327,
+        811.141
+      ],
+      "to_xy": [
+        922.295,
+        706.45
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 38827,
+      "to_hip": 39953,
+      "from_xy": [
+        922.295,
+        706.45
+      ],
+      "to_xy": [
+        921.31,
+        581.849
+      ]
+    }
+  ],
+  "labels_review": {
+    "30438": {
+      "name": "Canopus",
+      "x": 1115.57,
+      "y": 783.24,
+      "box": [
+        1111.57,
+        780.24,
+        1223.57,
+        809.24
+      ],
+      "leader": true,
+      "anchor": [
+        1115.57,
+        794.74
+      ]
+    },
+    "45238": {
+      "name": "Miaplacidus",
+      "x": 789.35,
+      "y": 987.5,
+      "box": [
+        785.35,
+        984.5,
+        935.35,
+        1013.5
+      ],
+      "leader": false,
+      "anchor": [
+        789.35,
+        999.0
+      ]
+    },
+    "39953": {
+      "name": "Regor",
+      "x": 953.31,
+      "y": 576.85,
+      "box": [
+        949.31,
+        573.85,
+        1027.31,
+        602.85
+      ],
+      "leader": false,
+      "anchor": [
+        953.31,
+        588.35
+      ]
+    },
+    "41037": {
+      "name": "Avior",
+      "x": 881.33,
+      "y": 806.14,
+      "box": [
+        877.33,
+        803.14,
+        946.33,
+        827.14
+      ],
+      "leader": false,
+      "anchor": [
+        881.33,
+        815.14
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

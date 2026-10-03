@@ -1,0 +1,16 @@
+{
+  "schema": "iris-green-meteor-showers-provenance-r01",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "source_croma_gate": "METEOR_SHOWERS_BATCH_01_FINAL_10_PASS_READY_FOR_REVIEW",
+  "source_zip_sha256": "3397e8bb41fa5209861f0652c5e95ea888ade5be708bfc83e4b9f013fb60efa4",
+  "visual_origin": "first-party generated scenes normalized by Croma; packaging copies approved final bytes unchanged",
+  "factual_origin": {
+    "numeric": "American Meteor Society 2026 table credited to International Meteor Organization + Masahiro Koseki",
+    "parents": "NASA/JPL SSD + NASA Science cross-check",
+    "southern_delta_aquariids_caveat": "96P/Machholz treated as suspected; JPL SSD lists P/2008 Y12 (SOHO)",
+    "taurids_basis": "Southern Taurids used as the single quantitative basis for grouped public visual"
+  },
+  "source_temp_paths_in_croma_manifest": "PROVENANCE_ONLY_NOT_CANONICAL_RUNTIME_PATHS",
+  "master_bytes_changed_by_atlas": false
+}

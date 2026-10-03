@@ -1,0 +1,24 @@
+{
+  "schema": "iris-green.solar-b03-provenance.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "upstream": {
+    "factual_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+    "source_commit": "7d82a9c60b3e3a7fb82a7bd0f0ae67eb6c06c269",
+    "producer": "LUMEN_A7"
+  },
+  "factual_limits": [
+    "Haumea: elongated neutral low-detail surface; no base ring",
+    "Makemake: reddish-brown low-detail; no permanent halo",
+    "Eris: pale low-detail; no copied Pluto appearance",
+    "Moon: canonical near-side/north-up intent; phase belongs to runtime",
+    "Io: volcanic character without a specific eruption",
+    "Europa: ice/fractures; no visible internal ocean",
+    "Ganymede: dark cratered + lighter grooved terrain",
+    "Titan: opaque visible-light haze; no surface map presented as visible",
+    "Enceladus: bright ice/fractures; no dramatic base plume",
+    "Ceres: bright deposits subdued"
+  ],
+  "packaging": "Atlas copies/records approved master identities only; no redraw, recolor, relight, resampling or surface edits.",
+  "legal_status": "FIRST_PARTY_VISUALS__FACTUAL_SCAFFOLDS_AND_SOURCE_CREDITS_PRESERVED__NO_NEW_LICENSE_CLAIM_BY_ATLAS"
+}

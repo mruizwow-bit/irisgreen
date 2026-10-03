@@ -1,0 +1,321 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 60,
+  "iau_abbreviation": "Lup",
+  "name_es": "Lobo",
+  "name_en": "Lupus",
+  "english_descriptor": "Wolf",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 71860,
+      "ra_hours": 14.69882,
+      "dec_deg": -47.38814,
+      "magnitude": 2.3,
+      "bv": -0.154,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1182.443
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 73273,
+      "ra_hours": 14.97554,
+      "dec_deg": -43.13386,
+      "magnitude": 2.68,
+      "bv": -0.184,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        1012.744,
+        939.229
+      ],
+      "proper_name": "KeKouan"
+    },
+    {
+      "hip": 74395,
+      "ra_hours": 15.20478,
+      "dec_deg": -52.09908,
+      "magnitude": 3.41,
+      "bv": 0.918,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        833.775,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 75141,
+      "ra_hours": 15.35621,
+      "dec_deg": -40.64747,
+      "magnitude": 3.22,
+      "bv": -0.227,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        749.736,
+        797.874
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 75177,
+      "ra_hours": 15.36346,
+      "dec_deg": -36.26117,
+      "magnitude": 3.57,
+      "bv": 1.534,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        746.324,
+        563.903
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 75264,
+      "ra_hours": 15.37803,
+      "dec_deg": -44.68958,
+      "magnitude": 3.37,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        732.998,
+        1012.527
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 76297,
+      "ra_hours": 15.58568,
+      "dec_deg": -41.16669,
+      "magnitude": 2.8,
+      "bv": -0.216,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        585.379,
+        827.124
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 77634,
+      "ra_hours": 15.84932,
+      "dec_deg": -33.62711,
+      "magnitude": 3.97,
+      "bv": -0.045,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        358.307,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 78384,
+      "ra_hours": 16.00204,
+      "dec_deg": -38.39664,
+      "magnitude": 3.42,
+      "bv": -0.206,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        696.544
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 71860,
+      "to_hip": 74395,
+      "from_xy": [
+        1172.206,
+        1182.443
+      ],
+      "to_xy": [
+        833.775,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 74395,
+      "to_hip": 75264,
+      "from_xy": [
+        833.775,
+        1413.309
+      ],
+      "to_xy": [
+        732.998,
+        1012.527
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 75264,
+      "to_hip": 76297,
+      "from_xy": [
+        732.998,
+        1012.527
+      ],
+      "to_xy": [
+        585.379,
+        827.124
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 76297,
+      "to_hip": 75141,
+      "from_xy": [
+        585.379,
+        827.124
+      ],
+      "to_xy": [
+        749.736,
+        797.874
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 75141,
+      "to_hip": 73273,
+      "from_xy": [
+        749.736,
+        797.874
+      ],
+      "to_xy": [
+        1012.744,
+        939.229
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 76297,
+      "to_hip": 78384,
+      "from_xy": [
+        585.379,
+        827.124
+      ],
+      "to_xy": [
+        267.794,
+        696.544
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 78384,
+      "to_hip": 75177,
+      "from_xy": [
+        267.794,
+        696.544
+      ],
+      "to_xy": [
+        746.324,
+        563.903
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 75177,
+      "to_hip": 77634,
+      "from_xy": [
+        746.324,
+        563.903
+      ],
+      "to_xy": [
+        358.307,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 77634,
+      "to_hip": 78384,
+      "from_xy": [
+        358.307,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        696.544
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 78384,
+      "to_hip": 74395,
+      "from_xy": [
+        267.794,
+        696.544
+      ],
+      "to_xy": [
+        833.775,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "73273": {
+      "name": "KeKouan",
+      "x": 1044.74,
+      "y": 934.23,
+      "box": [
+        1040.74,
+        931.23,
+        1152.74,
+        955.23
+      ],
+      "leader": false,
+      "anchor": [
+        1044.74,
+        943.23
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

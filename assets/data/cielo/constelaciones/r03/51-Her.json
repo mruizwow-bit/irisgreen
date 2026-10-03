@@ -1,0 +1,729 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 51,
+  "iau_abbreviation": "Her",
+  "name_es": "Hércules",
+  "name_en": "Hercules",
+  "english_descriptor": "Hercules",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 77760,
+      "ra_hours": 15.87783,
+      "dec_deg": 42.45,
+      "magnitude": 4.6,
+      "bv": 0.563,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1172.206,
+        518.487
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 79101,
+      "ra_hours": 16.14617,
+      "dec_deg": 44.93481,
+      "magnitude": 4.23,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1060.405,
+        463.192
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 79992,
+      "ra_hours": 16.32901,
+      "dec_deg": 46.31328,
+      "magnitude": 3.91,
+      "bv": -0.151,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        989.841,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80170,
+      "ra_hours": 16.36534,
+      "dec_deg": 19.15303,
+      "magnitude": 3.74,
+      "bv": 0.299,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1058.851,
+        1184.331
+      ],
+      "proper_name": "Nasak Shamiya III"
+    },
+    {
+      "hip": 80463,
+      "ra_hours": 16.42359,
+      "dec_deg": 14.03342,
+      "magnitude": 4.57,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1045.653,
+        1334.633
+      ],
+      "proper_name": "Cujam"
+    },
+    {
+      "hip": 80816,
+      "ra_hours": 16.50368,
+      "dec_deg": 21.48964,
+      "magnitude": 2.78,
+      "bv": 0.947,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        986.969,
+        1121.379
+      ],
+      "proper_name": "Kornephoros"
+    },
+    {
+      "hip": 81008,
+      "ra_hours": 16.54344,
+      "dec_deg": 11.48822,
+      "magnitude": 4.84,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        991.464,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 81126,
+      "ra_hours": 16.56839,
+      "dec_deg": 42.43689,
+      "magnitude": 4.2,
+      "bv": -0.013,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        914.016,
+        549.782
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 81693,
+      "ra_hours": 16.68819,
+      "dec_deg": 31.60189,
+      "magnitude": 2.81,
+      "bv": 0.65,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        886.22,
+        848.519
+      ],
+      "proper_name": "Rutilicus"
+    },
+    {
+      "hip": 81833,
+      "ra_hours": 16.71493,
+      "dec_deg": 38.92247,
+      "magnitude": 3.48,
+      "bv": 0.916,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        865.053,
+        650.209
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 83207,
+      "ra_hours": 17.00484,
+      "dec_deg": 30.92633,
+      "magnitude": 3.92,
+      "bv": -0.018,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        754.789,
+        869.351
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 84345,
+      "ra_hours": 17.24413,
+      "dec_deg": 14.39025,
+      "magnitude": 2.78,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        637.965,
+        1328.334
+      ],
+      "proper_name": "Rasalgethi"
+    },
+    {
+      "hip": 84379,
+      "ra_hours": 17.25053,
+      "dec_deg": 24.83958,
+      "magnitude": 3.12,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        645.917,
+        1033.111
+      ],
+      "proper_name": "Sarin"
+    },
+    {
+      "hip": 84380,
+      "ra_hours": 17.25079,
+      "dec_deg": 36.80917,
+      "magnitude": 3.16,
+      "bv": 1.437,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        658.019,
+        709.031
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85112,
+      "ra_hours": 17.39471,
+      "dec_deg": 37.14592,
+      "magnitude": 4.15,
+      "bv": -0.011,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        602.058,
+        697.626
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85693,
+      "ra_hours": 17.51231,
+      "dec_deg": 26.11061,
+      "magnitude": 4.41,
+      "bv": 1.434,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        531.612,
+        994.451
+      ],
+      "proper_name": "Maasym"
+    },
+    {
+      "hip": 86414,
+      "ra_hours": 17.65775,
+      "dec_deg": 46.00633,
+      "magnitude": 3.82,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        524.687,
+        442.716
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 86974,
+      "ra_hours": 17.77437,
+      "dec_deg": 27.7225,
+      "magnitude": 3.42,
+      "bv": 0.75,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        420.063,
+        943.298
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 87808,
+      "ra_hours": 17.93755,
+      "dec_deg": 37.25053,
+      "magnitude": 3.86,
+      "bv": 1.35,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        387.427,
+        676.429
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 87933,
+      "ra_hours": 17.96273,
+      "dec_deg": 29.24792,
+      "magnitude": 3.7,
+      "bv": 0.935,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        342.731,
+        894.253
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 88794,
+      "ra_hours": 18.12571,
+      "dec_deg": 28.76247,
+      "magnitude": 3.84,
+      "bv": -0.018,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        899.778
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 84379,
+      "to_hip": 84345,
+      "from_xy": [
+        645.917,
+        1033.111
+      ],
+      "to_xy": [
+        637.965,
+        1328.334
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 84345,
+      "to_hip": 80816,
+      "from_xy": [
+        637.965,
+        1328.334
+      ],
+      "to_xy": [
+        986.969,
+        1121.379
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 80816,
+      "to_hip": 80170,
+      "from_xy": [
+        986.969,
+        1121.379
+      ],
+      "to_xy": [
+        1058.851,
+        1184.331
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 80816,
+      "to_hip": 81693,
+      "from_xy": [
+        986.969,
+        1121.379
+      ],
+      "to_xy": [
+        886.22,
+        848.519
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 81693,
+      "to_hip": 83207,
+      "from_xy": [
+        886.22,
+        848.519
+      ],
+      "to_xy": [
+        754.789,
+        869.351
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 81693,
+      "to_hip": 81833,
+      "from_xy": [
+        886.22,
+        848.519
+      ],
+      "to_xy": [
+        865.053,
+        650.209
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 81833,
+      "to_hip": 81126,
+      "from_xy": [
+        865.053,
+        650.209
+      ],
+      "to_xy": [
+        914.016,
+        549.782
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 81126,
+      "to_hip": 79992,
+      "from_xy": [
+        914.016,
+        549.782
+      ],
+      "to_xy": [
+        989.841,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 81833,
+      "to_hip": 84380,
+      "from_xy": [
+        865.053,
+        650.209
+      ],
+      "to_xy": [
+        658.019,
+        709.031
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 84380,
+      "to_hip": 85112,
+      "from_xy": [
+        658.019,
+        709.031
+      ],
+      "to_xy": [
+        602.058,
+        697.626
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 85112,
+      "to_hip": 87808,
+      "from_xy": [
+        602.058,
+        697.626
+      ],
+      "to_xy": [
+        387.427,
+        676.429
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 87808,
+      "to_hip": 86414,
+      "from_xy": [
+        387.427,
+        676.429
+      ],
+      "to_xy": [
+        524.687,
+        442.716
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 84380,
+      "to_hip": 83207,
+      "from_xy": [
+        658.019,
+        709.031
+      ],
+      "to_xy": [
+        754.789,
+        869.351
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 83207,
+      "to_hip": 84379,
+      "from_xy": [
+        754.789,
+        869.351
+      ],
+      "to_xy": [
+        645.917,
+        1033.111
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 84379,
+      "to_hip": 85693,
+      "from_xy": [
+        645.917,
+        1033.111
+      ],
+      "to_xy": [
+        531.612,
+        994.451
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 85693,
+      "to_hip": 86974,
+      "from_xy": [
+        531.612,
+        994.451
+      ],
+      "to_xy": [
+        420.063,
+        943.298
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 86974,
+      "to_hip": 87933,
+      "from_xy": [
+        420.063,
+        943.298
+      ],
+      "to_xy": [
+        342.731,
+        894.253
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 87933,
+      "to_hip": 88794,
+      "from_xy": [
+        342.731,
+        894.253
+      ],
+      "to_xy": [
+        267.794,
+        899.778
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 77760,
+      "to_hip": 79101,
+      "from_xy": [
+        1172.206,
+        518.487
+      ],
+      "to_xy": [
+        1060.405,
+        463.192
+      ]
+    },
+    {
+      "id": "edge-20",
+      "from_hip": 79101,
+      "to_hip": 79992,
+      "from_xy": [
+        1060.405,
+        463.192
+      ],
+      "to_xy": [
+        989.841,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-21",
+      "from_hip": 80170,
+      "to_hip": 80463,
+      "from_xy": [
+        1058.851,
+        1184.331
+      ],
+      "to_xy": [
+        1045.653,
+        1334.633
+      ]
+    },
+    {
+      "id": "edge-22",
+      "from_hip": 80463,
+      "to_hip": 81008,
+      "from_xy": [
+        1045.653,
+        1334.633
+      ],
+      "to_xy": [
+        991.464,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "80816": {
+      "name": "Kornephoros",
+      "x": 1018.97,
+      "y": 1116.38,
+      "box": [
+        1014.97,
+        1113.38,
+        1172.97,
+        1142.38
+      ],
+      "leader": false,
+      "anchor": [
+        1018.97,
+        1127.88
+      ]
+    },
+    "84345": {
+      "name": "Rasalgethi",
+      "x": 669.96,
+      "y": 1323.33,
+      "box": [
+        665.96,
+        1320.33,
+        799.96,
+        1349.33
+      ],
+      "leader": false,
+      "anchor": [
+        669.96,
+        1334.83
+      ]
+    },
+    "81693": {
+      "name": "Rutilicus",
+      "x": 918.22,
+      "y": 843.52,
+      "box": [
+        914.22,
+        840.52,
+        1023.22,
+        864.52
+      ],
+      "leader": false,
+      "anchor": [
+        918.22,
+        852.52
+      ]
+    },
+    "84379": {
+      "name": "Sarin",
+      "x": 677.92,
+      "y": 1028.11,
+      "box": [
+        673.92,
+        1025.11,
+        743.92,
+        1049.11
+      ],
+      "leader": false,
+      "anchor": [
+        677.92,
+        1037.11
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

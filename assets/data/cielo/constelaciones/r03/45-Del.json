@@ -1,0 +1,236 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 45,
+  "iau_abbreviation": "Del",
+  "name_es": "Delfín",
+  "name_en": "Delphinus",
+  "english_descriptor": "Dolphin",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 101421,
+      "ra_hours": 20.55354,
+      "dec_deg": 11.30333,
+      "magnitude": 4.03,
+      "bv": -0.123,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        774.3,
+        1084.246
+      ],
+      "proper_name": "Aldulfin"
+    },
+    {
+      "hip": 101769,
+      "ra_hours": 20.6258,
+      "dec_deg": 14.59519,
+      "magnitude": 3.64,
+      "bv": 0.425,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        727.819,
+        931.879
+      ],
+      "proper_name": "Rotanev"
+    },
+    {
+      "hip": 101958,
+      "ra_hours": 20.66062,
+      "dec_deg": 15.91206,
+      "magnitude": 3.77,
+      "bv": -0.057,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        705.92,
+        870.946
+      ],
+      "proper_name": "Sualocin"
+    },
+    {
+      "hip": 102281,
+      "ra_hours": 20.72432,
+      "dec_deg": 15.07469,
+      "magnitude": 4.43,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        666.013,
+        909.649
+      ],
+      "proper_name": "Al Ukud"
+    },
+    {
+      "hip": 102532,
+      "ra_hours": 20.77764,
+      "dec_deg": 16.12478,
+      "magnitude": 4.27,
+      "bv": 1.042,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        632.912,
+        860.802
+      ],
+      "proper_name": "Al Salib"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 101421,
+      "to_hip": 101769,
+      "from_xy": [
+        774.3,
+        1084.246
+      ],
+      "to_xy": [
+        727.819,
+        931.879
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 101769,
+      "to_hip": 101958,
+      "from_xy": [
+        727.819,
+        931.879
+      ],
+      "to_xy": [
+        705.92,
+        870.946
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 101958,
+      "to_hip": 102532,
+      "from_xy": [
+        705.92,
+        870.946
+      ],
+      "to_xy": [
+        632.912,
+        860.802
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 102532,
+      "to_hip": 102281,
+      "from_xy": [
+        632.912,
+        860.802
+      ],
+      "to_xy": [
+        666.013,
+        909.649
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 102281,
+      "to_hip": 101769,
+      "from_xy": [
+        666.013,
+        909.649
+      ],
+      "to_xy": [
+        727.819,
+        931.879
+      ]
+    }
+  ],
+  "labels_review": {
+    "101769": {
+      "name": "Rotanev",
+      "x": 759.82,
+      "y": 926.88,
+      "box": [
+        755.82,
+        923.88,
+        862.82,
+        947.88
+      ],
+      "leader": false,
+      "anchor": [
+        759.82,
+        935.88
+      ]
+    },
+    "101958": {
+      "name": "Sualocin",
+      "x": 737.92,
+      "y": 865.95,
+      "box": [
+        733.92,
+        862.95,
+        843.92,
+        886.95
+      ],
+      "leader": false,
+      "anchor": [
+        737.92,
+        874.95
+      ]
+    },
+    "101421": {
+      "name": "Aldulfin",
+      "x": 806.3,
+      "y": 1079.25,
+      "box": [
+        802.3,
+        1076.25,
+        901.3,
+        1100.25
+      ],
+      "leader": false,
+      "anchor": [
+        806.3,
+        1088.25
+      ]
+    },
+    "102532": {
+      "name": "Al Salib",
+      "x": 511.91,
+      "y": 855.8,
+      "box": [
+        507.91,
+        852.8,
+        604.91,
+        876.8
+      ],
+      "leader": false,
+      "anchor": [
+        600.91,
+        864.8
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

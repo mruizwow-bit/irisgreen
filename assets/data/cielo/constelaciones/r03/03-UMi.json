@@ -1,0 +1,281 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "UMi",
+  "name_es": "Osa Menor",
+  "name_en": "Ursa Minor",
+  "descriptor_es": "La osa menor",
+  "descriptor_en": "The Little Bear",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 11767,
+      "ra_hours": 2.52974,
+      "dec_deg": 89.26414,
+      "magnitude": 1.97,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        729.287,
+        834.412
+      ],
+      "proper_name": "Polaris"
+    },
+    {
+      "hip": 72607,
+      "ra_hours": 14.84511,
+      "dec_deg": 74.15547,
+      "magnitude": 2.07,
+      "bv": 1.465,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        820.624,
+        1218.223
+      ],
+      "proper_name": "Kochab"
+    },
+    {
+      "hip": 75097,
+      "ra_hours": 15.34549,
+      "dec_deg": 71.83397,
+      "magnitude": 3,
+      "bv": 0.058,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        779.882,
+        1281.789
+      ],
+      "proper_name": "Pherkad"
+    },
+    {
+      "hip": 77055,
+      "ra_hours": 15.73429,
+      "dec_deg": 77.7945,
+      "magnitude": 4.29,
+      "bv": 0.038,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        736.84,
+        1142.149
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 79822,
+      "ra_hours": 16.29181,
+      "dec_deg": 75.75469,
+      "magnitude": 4.95,
+      "bv": 0.393,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        690.035,
+        1187.391
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 82080,
+      "ra_hours": 16.76616,
+      "dec_deg": 82.03725,
+      "magnitude": 4.21,
+      "bv": 0.897,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        687.464,
+        1035.528
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85822,
+      "ra_hours": 17.53692,
+      "dec_deg": 86.58633,
+      "magnitude": 4.35,
+      "bv": 0.021,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        699.456,
+        925.159
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 11767,
+      "to_hip": 85822,
+      "from_xy": [
+        729.287,
+        834.412
+      ],
+      "to_xy": [
+        699.456,
+        925.159
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 85822,
+      "to_hip": 82080,
+      "from_xy": [
+        699.456,
+        925.159
+      ],
+      "to_xy": [
+        687.464,
+        1035.528
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 82080,
+      "to_hip": 77055,
+      "from_xy": [
+        687.464,
+        1035.528
+      ],
+      "to_xy": [
+        736.84,
+        1142.149
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 77055,
+      "to_hip": 79822,
+      "from_xy": [
+        736.84,
+        1142.149
+      ],
+      "to_xy": [
+        690.035,
+        1187.391
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 79822,
+      "to_hip": 75097,
+      "from_xy": [
+        690.035,
+        1187.391
+      ],
+      "to_xy": [
+        779.882,
+        1281.789
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 75097,
+      "to_hip": 72607,
+      "from_xy": [
+        779.882,
+        1281.789
+      ],
+      "to_xy": [
+        820.624,
+        1218.223
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 72607,
+      "to_hip": 77055,
+      "from_xy": [
+        820.624,
+        1218.223
+      ],
+      "to_xy": [
+        736.84,
+        1142.149
+      ]
+    }
+  ],
+  "labels_review": {
+    "11767": {
+      "name": "Polaris",
+      "x": 761.29,
+      "y": 829.41,
+      "box": [
+        757.29,
+        826.41,
+        844.29,
+        850.41
+      ],
+      "leader": false,
+      "anchor": [
+        761.29,
+        838.41
+      ]
+    },
+    "72607": {
+      "name": "Kochab",
+      "x": 852.62,
+      "y": 1213.22,
+      "box": [
+        848.62,
+        1210.22,
+        944.62,
+        1234.22
+      ],
+      "leader": false,
+      "anchor": [
+        852.62,
+        1222.22
+      ]
+    },
+    "75097": {
+      "name": "Pherkad",
+      "x": 811.88,
+      "y": 1276.79,
+      "box": [
+        807.88,
+        1273.79,
+        913.88,
+        1297.79
+      ],
+      "leader": false,
+      "anchor": [
+        811.88,
+        1285.79
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 3
+}

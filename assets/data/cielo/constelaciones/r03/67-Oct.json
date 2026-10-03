@@ -1,0 +1,111 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 67,
+  "iau_abbreviation": "Oct",
+  "name_es": "Octante",
+  "name_en": "Octans",
+  "english_descriptor": "Octant",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 70638,
+      "ra_hours": 14.44882,
+      "dec_deg": -83.66786,
+      "magnitude": 4.31,
+      "bv": 1.3,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 107089,
+      "ra_hours": 21.69124,
+      "dec_deg": -77.38947,
+      "magnitude": 3.73,
+      "bv": 1.008,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        403.16,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112405,
+      "ra_hours": 22.7677,
+      "dec_deg": -81.38161,
+      "magnitude": 4.13,
+      "bv": 0.208,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        780.011
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 70638,
+      "to_hip": 107089,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        403.16,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 107089,
+      "to_hip": 112405,
+      "from_xy": [
+        403.16,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        780.011
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 112405,
+      "to_hip": 70638,
+      "from_xy": [
+        267.794,
+        780.011
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

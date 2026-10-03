@@ -1,0 +1,464 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Sco",
+  "name_es": "Escorpio",
+  "name_en": "Scorpius",
+  "descriptor_es": "El escorpión",
+  "descriptor_en": "The Scorpion",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 78265,
+      "ra_hours": 15.98087,
+      "dec_deg": -26.11406,
+      "magnitude": 2.89,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1048.283,
+        749.808
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 78401,
+      "ra_hours": 16.00556,
+      "dec_deg": -22.62161,
+      "magnitude": 2.29,
+      "bv": -0.117,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1050.827,
+        648.462
+      ],
+      "proper_name": "Dschubba"
+    },
+    {
+      "hip": 78820,
+      "ra_hours": 16.09062,
+      "dec_deg": -19.80539,
+      "magnitude": 2.56,
+      "bv": -0.065,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1030.787,
+        563.0
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80763,
+      "ra_hours": 16.49013,
+      "dec_deg": -26.43194,
+      "magnitude": 1.06,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        890.684,
+        744.879
+      ],
+      "proper_name": "Antares"
+    },
+    {
+      "hip": 81266,
+      "ra_hours": 16.59804,
+      "dec_deg": -28.21597,
+      "magnitude": 2.82,
+      "bv": -0.206,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        856.423,
+        793.329
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 82396,
+      "ra_hours": 16.83618,
+      "dec_deg": -34.29261,
+      "magnitude": 2.29,
+      "bv": 1.144,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        785.502,
+        959.823
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 82514,
+      "ra_hours": 16.86451,
+      "dec_deg": -38.04733,
+      "magnitude": 3,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        777.86,
+        1063.36
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 82671,
+      "ra_hours": 16.89992,
+      "dec_deg": -42.36203,
+      "magnitude": 4.7,
+      "bv": 0.444,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        769.237,
+        1183.576
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 84143,
+      "ra_hours": 17.20255,
+      "dec_deg": -43.2385,
+      "magnitude": 3.32,
+      "bv": 0.441,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        694.606,
+        1211.644
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 85927,
+      "ra_hours": 17.56015,
+      "dec_deg": -37.10375,
+      "magnitude": 1.62,
+      "bv": -0.231,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        590.884,
+        1050.578
+      ],
+      "proper_name": "Shaula"
+    },
+    {
+      "hip": 86228,
+      "ra_hours": 17.62198,
+      "dec_deg": -42.99783,
+      "magnitude": 1.86,
+      "bv": 0.406,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        589.486,
+        1218.032
+      ],
+      "proper_name": "Sargas"
+    },
+    {
+      "hip": 86670,
+      "ra_hours": 17.70813,
+      "dec_deg": -39.02992,
+      "magnitude": 2.39,
+      "bv": -0.171,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        556.114,
+        1110.448
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 87073,
+      "ra_hours": 17.79308,
+      "dec_deg": -40.12697,
+      "magnitude": 2.99,
+      "bv": 0.509,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        536.905,
+        1145.364
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 85927,
+      "to_hip": 86670,
+      "from_xy": [
+        590.884,
+        1050.578
+      ],
+      "to_xy": [
+        556.114,
+        1110.448
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 86670,
+      "to_hip": 87073,
+      "from_xy": [
+        556.114,
+        1110.448
+      ],
+      "to_xy": [
+        536.905,
+        1145.364
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 87073,
+      "to_hip": 86228,
+      "from_xy": [
+        536.905,
+        1145.364
+      ],
+      "to_xy": [
+        589.486,
+        1218.032
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 86228,
+      "to_hip": 84143,
+      "from_xy": [
+        589.486,
+        1218.032
+      ],
+      "to_xy": [
+        694.606,
+        1211.644
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 84143,
+      "to_hip": 82671,
+      "from_xy": [
+        694.606,
+        1211.644
+      ],
+      "to_xy": [
+        769.237,
+        1183.576
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 82671,
+      "to_hip": 82514,
+      "from_xy": [
+        769.237,
+        1183.576
+      ],
+      "to_xy": [
+        777.86,
+        1063.36
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 82514,
+      "to_hip": 82396,
+      "from_xy": [
+        777.86,
+        1063.36
+      ],
+      "to_xy": [
+        785.502,
+        959.823
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 82396,
+      "to_hip": 81266,
+      "from_xy": [
+        785.502,
+        959.823
+      ],
+      "to_xy": [
+        856.423,
+        793.329
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 81266,
+      "to_hip": 80763,
+      "from_xy": [
+        856.423,
+        793.329
+      ],
+      "to_xy": [
+        890.684,
+        744.879
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 80763,
+      "to_hip": 78401,
+      "from_xy": [
+        890.684,
+        744.879
+      ],
+      "to_xy": [
+        1050.827,
+        648.462
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 80763,
+      "to_hip": 78265,
+      "from_xy": [
+        890.684,
+        744.879
+      ],
+      "to_xy": [
+        1048.283,
+        749.808
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 80763,
+      "to_hip": 78820,
+      "from_xy": [
+        890.684,
+        744.879
+      ],
+      "to_xy": [
+        1030.787,
+        563.0
+      ]
+    }
+  ],
+  "labels_review": {
+    "80763": {
+      "name": "Antares",
+      "x": 766.68,
+      "y": 739.88,
+      "box": [
+        762.68,
+        736.88,
+        862.68,
+        760.88
+      ],
+      "leader": false,
+      "anchor": [
+        858.68,
+        748.88
+      ]
+    },
+    "85927": {
+      "name": "Shaula",
+      "x": 622.88,
+      "y": 1045.58,
+      "box": [
+        618.88,
+        1042.58,
+        708.88,
+        1066.58
+      ],
+      "leader": false,
+      "anchor": [
+        622.88,
+        1054.58
+      ]
+    },
+    "86228": {
+      "name": "Sargas",
+      "x": 475.49,
+      "y": 1213.03,
+      "box": [
+        471.49,
+        1210.03,
+        561.49,
+        1239.03
+      ],
+      "leader": false,
+      "anchor": [
+        557.49,
+        1224.53
+      ]
+    },
+    "78401": {
+      "name": "Dschubba",
+      "x": 1082.83,
+      "y": 643.46,
+      "box": [
+        1078.83,
+        640.46,
+        1206.83,
+        664.46
+      ],
+      "leader": false,
+      "anchor": [
+        1082.83,
+        652.46
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 11
+}

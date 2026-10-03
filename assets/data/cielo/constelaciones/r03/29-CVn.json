@@ -1,0 +1,101 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 29,
+  "iau_abbreviation": "CVn",
+  "name_es": "Perros de Caza",
+  "name_en": "Canes Venatici",
+  "english_descriptor": "Hunting Dogs",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 61317,
+      "ra_hours": 12.56253,
+      "dec_deg": 41.35678,
+      "magnitude": 4.24,
+      "bv": 0.588,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        860.637,
+        873.311
+      ],
+      "proper_name": "Chara"
+    },
+    {
+      "hip": 63125,
+      "ra_hours": 12.93384,
+      "dec_deg": 38.31825,
+      "magnitude": 2.89,
+      "bv": -0.115,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        662.31,
+        1027.918
+      ],
+      "proper_name": "Cor Caroli"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 63125,
+      "to_hip": 61317,
+      "from_xy": [
+        662.31,
+        1027.918
+      ],
+      "to_xy": [
+        860.637,
+        873.311
+      ]
+    }
+  ],
+  "labels_review": {
+    "63125": {
+      "name": "Cor Caroli",
+      "x": 694.31,
+      "y": 1022.92,
+      "box": [
+        690.31,
+        1019.92,
+        816.31,
+        1043.92
+      ],
+      "leader": false,
+      "anchor": [
+        694.31,
+        1031.92
+      ]
+    },
+    "61317": {
+      "name": "Chara",
+      "x": 892.64,
+      "y": 868.31,
+      "box": [
+        888.64,
+        865.31,
+        967.64,
+        889.31
+      ],
+      "leader": false,
+      "anchor": [
+        892.64,
+        877.31
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

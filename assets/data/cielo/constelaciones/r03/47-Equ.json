@@ -1,0 +1,115 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 47,
+  "iau_abbreviation": "Equ",
+  "name_es": "Caballito",
+  "name_en": "Equuleus",
+  "english_descriptor": "Little Horse",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 104521,
+      "ra_hours": 21.17235,
+      "dec_deg": 10.13194,
+      "magnitude": 4.7,
+      "bv": 0.262,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        770.794,
+        926.053
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 104858,
+      "ra_hours": 21.24133,
+      "dec_deg": 10.00772,
+      "magnitude": 4.47,
+      "bv": 0.529,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        726.379,
+        932.347
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 104987,
+      "ra_hours": 21.26372,
+      "dec_deg": 5.24808,
+      "magnitude": 3.92,
+      "bv": 0.549,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        711.656,
+        1171.782
+      ],
+      "proper_name": "Kitalpha"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 104987,
+      "to_hip": 104858,
+      "from_xy": [
+        711.656,
+        1171.782
+      ],
+      "to_xy": [
+        726.379,
+        932.347
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 104858,
+      "to_hip": 104521,
+      "from_xy": [
+        726.379,
+        932.347
+      ],
+      "to_xy": [
+        770.794,
+        926.053
+      ]
+    }
+  ],
+  "labels_review": {
+    "104987": {
+      "name": "Kitalpha",
+      "x": 743.66,
+      "y": 1166.78,
+      "box": [
+        739.66,
+        1163.78,
+        845.66,
+        1192.78
+      ],
+      "leader": false,
+      "anchor": [
+        743.66,
+        1178.28
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

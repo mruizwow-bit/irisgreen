@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Triángulo Austral / Triangulum Australe</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="530.975" cy="918.772" r="1.975"/>
+<circle id="bg-star-002" cx="164.127" cy="709.087" r="3.011"/>
+<circle id="bg-star-003" cx="894.651" cy="707.596" r="1.841"/>
+<circle id="bg-star-004" cx="195.833" cy="386.467" r="1.322"/>
+<circle id="bg-star-005" cx="980.227" cy="411.952" r="2.277"/>
+<circle id="bg-star-006" cx="172.817" cy="563.738" r="2.324"/>
+<circle id="bg-star-007" cx="1121.067" cy="1103.866" r="2.191"/>
+<circle id="bg-star-008" cx="634.130" cy="1215.626" r="3.286"/>
+<circle id="bg-star-009" cx="638.128" cy="1387.949" r="2.256"/>
+<circle id="bg-star-010" cx="321.861" cy="1389.276" r="1.325"/>
+<circle id="bg-star-011" cx="921.769" cy="366.040" r="2.182"/>
+<circle id="bg-star-012" cx="158.594" cy="1350.620" r="1.529"/>
+<circle id="bg-star-013" cx="1189.217" cy="1226.407" r="2.354"/>
+<circle id="bg-star-014" cx="306.451" cy="901.925" r="3.243"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="82273" data-to-hip="77952" x1="267.794" y1="1413.309" x2="800.55" y2="431.691"/>
+<line id="edge-02" data-from-hip="77952" data-to-hip="76440" x1="800.55" y1="431.691" x2="1009.615" y2="903.385"/>
+<line id="edge-03" data-from-hip="76440" data-to-hip="74946" x1="1009.615" y1="903.385" x2="1172.206" y2="1307.791"/>
+<line id="edge-04" data-from-hip="74946" data-to-hip="82273" x1="1172.206" y1="1307.791" x2="267.794" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-74946" data-hip="74946" data-mag="2.87" data-bv="0.014" cx="1172.206" cy="1307.791" r="6.625" fill="rgb(190, 215, 255)"/>
+<circle id="hip-76440" data-hip="76440" data-mag="4.11" data-bv="" cx="1009.615" cy="903.385" r="4.951" fill="rgb(235, 240, 255)"/>
+<circle id="hip-77952" data-hip="77952" data-mag="2.83" data-bv="0.315" cx="800.550" cy="431.691" r="6.679" fill="rgb(222, 232, 255)"/>
+<circle id="hip-82273" data-hip="82273" data-mag="1.91" data-bv="1.447" cx="267.794" cy="1413.309" r="7.921" fill="rgb(255, 188, 125)"/>
+</g></svg>

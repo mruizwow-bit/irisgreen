@@ -1,0 +1,223 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 28,
+  "iau_abbreviation": "Cnc",
+  "name_es": "Cáncer",
+  "name_en": "Cancer",
+  "english_descriptor": "Crab",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 40526,
+      "ra_hours": 8.27526,
+      "dec_deg": 9.18567,
+      "magnitude": 3.53,
+      "bv": 1.481,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        885.33,
+        1210.582
+      ],
+      "proper_name": "Tarf"
+    },
+    {
+      "hip": 42806,
+      "ra_hours": 8.72145,
+      "dec_deg": 21.46858,
+      "magnitude": 4.66,
+      "bv": 0.01,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        668.268,
+        805.439
+      ],
+      "proper_name": "Asellus Borealis"
+    },
+    {
+      "hip": 42911,
+      "ra_hours": 8.74475,
+      "dec_deg": 18.15486,
+      "magnitude": 3.94,
+      "bv": 1.083,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        657.259,
+        914.71
+      ],
+      "proper_name": "Asellus Australis"
+    },
+    {
+      "hip": 43103,
+      "ra_hours": 8.77829,
+      "dec_deg": 28.76,
+      "magnitude": 4.03,
+      "bv": 1.007,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        644.038,
+        560.907
+      ],
+      "proper_name": "Zubanah"
+    },
+    {
+      "hip": 44066,
+      "ra_hours": 8.97478,
+      "dec_deg": 11.85778,
+      "magnitude": 4.26,
+      "bv": 0.141,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        545.944,
+        1121.899
+      ],
+      "proper_name": "Acubens"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 44066,
+      "to_hip": 42911,
+      "from_xy": [
+        545.944,
+        1121.899
+      ],
+      "to_xy": [
+        657.259,
+        914.71
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 42911,
+      "to_hip": 40526,
+      "from_xy": [
+        657.259,
+        914.71
+      ],
+      "to_xy": [
+        885.33,
+        1210.582
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 42911,
+      "to_hip": 42806,
+      "from_xy": [
+        657.259,
+        914.71
+      ],
+      "to_xy": [
+        668.268,
+        805.439
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 42806,
+      "to_hip": 43103,
+      "from_xy": [
+        668.268,
+        805.439
+      ],
+      "to_xy": [
+        644.038,
+        560.907
+      ]
+    }
+  ],
+  "labels_review": {
+    "40526": {
+      "name": "Tarf",
+      "x": 917.33,
+      "y": 1205.58,
+      "box": [
+        913.33,
+        1202.58,
+        966.33,
+        1226.58
+      ],
+      "leader": false,
+      "anchor": [
+        917.33,
+        1214.58
+      ]
+    },
+    "42911": {
+      "name": "Asellus Australis",
+      "x": 689.26,
+      "y": 909.71,
+      "box": [
+        685.26,
+        906.71,
+        889.26,
+        930.71
+      ],
+      "leader": false,
+      "anchor": [
+        689.26,
+        918.71
+      ]
+    },
+    "43103": {
+      "name": "Zubanah",
+      "x": 676.04,
+      "y": 555.91,
+      "box": [
+        672.04,
+        552.91,
+        787.04,
+        576.91
+      ],
+      "leader": false,
+      "anchor": [
+        676.04,
+        564.91
+      ]
+    },
+    "44066": {
+      "name": "Acubens",
+      "x": 577.94,
+      "y": 1116.9,
+      "box": [
+        573.94,
+        1113.9,
+        683.94,
+        1137.9
+      ],
+      "leader": false,
+      "anchor": [
+        577.94,
+        1125.9
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

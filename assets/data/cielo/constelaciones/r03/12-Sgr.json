@@ -1,0 +1,740 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Sgr",
+  "name_es": "Sagitario",
+  "name_en": "Sagittarius",
+  "descriptor_es": "El arquero",
+  "descriptor_en": "The Archer",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 87072,
+      "ra_hours": 17.79268,
+      "dec_deg": -27.83075,
+      "magnitude": 4.53,
+      "bv": 0.6,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        946.745,
+        783.424
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 88635,
+      "ra_hours": 18.09681,
+      "dec_deg": -30.42364,
+      "magnitude": 2.98,
+      "bv": 0.981,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        864.491,
+        838.225
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 89341,
+      "ra_hours": 18.22939,
+      "dec_deg": -21.05883,
+      "magnitude": 3.84,
+      "bv": 0.195,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        849.077,
+        584.924
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 89642,
+      "ra_hours": 18.29381,
+      "dec_deg": -36.76128,
+      "magnitude": 3.1,
+      "bv": 1.582,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        806.843,
+        998.758
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 89931,
+      "ra_hours": 18.34989,
+      "dec_deg": -29.82803,
+      "magnitude": 2.72,
+      "bv": 1.38,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        804.499,
+        813.98
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 90185,
+      "ra_hours": 18.40287,
+      "dec_deg": -34.38431,
+      "magnitude": 1.79,
+      "bv": -0.031,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        785.711,
+        932.339
+      ],
+      "proper_name": "Kaus Australis"
+    },
+    {
+      "hip": 90496,
+      "ra_hours": 18.46619,
+      "dec_deg": -25.42125,
+      "magnitude": 2.82,
+      "bv": 1.025,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        781.864,
+        695.448
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 92041,
+      "ra_hours": 18.76093,
+      "dec_deg": -26.99078,
+      "magnitude": 3.17,
+      "bv": -0.107,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        708.016,
+        732.366
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 92855,
+      "ra_hours": 18.92109,
+      "dec_deg": -26.29658,
+      "magnitude": 2.05,
+      "bv": -0.134,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        669.175,
+        713.385
+      ],
+      "proper_name": "Nunki"
+    },
+    {
+      "hip": 93085,
+      "ra_hours": 18.96216,
+      "dec_deg": -21.10661,
+      "magnitude": 3.52,
+      "bv": 1.151,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        659.19,
+        576.549
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93506,
+      "ra_hours": 19.04353,
+      "dec_deg": -29.88011,
+      "magnitude": 2.6,
+      "bv": 0.062,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        639.893,
+        807.004
+      ],
+      "proper_name": "Ascella"
+    },
+    {
+      "hip": 93683,
+      "ra_hours": 19.07804,
+      "dec_deg": -21.74136,
+      "magnitude": 3.76,
+      "bv": 1.012,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        629.612,
+        593.651
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93864,
+      "ra_hours": 19.11568,
+      "dec_deg": -27.66981,
+      "magnitude": 3.32,
+      "bv": 1.169,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        622.083,
+        749.689
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 94820,
+      "ra_hours": 19.29391,
+      "dec_deg": -18.95289,
+      "magnitude": 4.88,
+      "bv": 1.013,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        572.197,
+        520.59
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95168,
+      "ra_hours": 19.36122,
+      "dec_deg": -17.84725,
+      "magnitude": 3.92,
+      "bv": 0.228,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        553.39,
+        491.349
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95294,
+      "ra_hours": 19.38696,
+      "dec_deg": -44.79964,
+      "magnitude": 4.27,
+      "bv": 0.35,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        573.688,
+        1210.733
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95347,
+      "ra_hours": 19.3981,
+      "dec_deg": -40.61564,
+      "magnitude": 3.96,
+      "bv": -0.105,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        566.964,
+        1095.513
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 96406,
+      "ra_hours": 19.60046,
+      "dec_deg": -24.71903,
+      "magnitude": 5.64,
+      "bv": 0.185,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        499.783,
+        679.947
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98032,
+      "ra_hours": 19.92102,
+      "dec_deg": -41.86842,
+      "magnitude": 4.12,
+      "bv": 1.063,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        457.851,
+        1149.4
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98412,
+      "ra_hours": 19.9956,
+      "dec_deg": -35.27625,
+      "magnitude": 4.37,
+      "bv": -0.15,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        424.941,
+        974.481
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98688,
+      "ra_hours": 20.04429,
+      "dec_deg": -27.70989,
+      "magnitude": 4.43,
+      "bv": 1.64,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        393.586,
+        775.376
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 89931,
+      "to_hip": 90496,
+      "from_xy": [
+        804.499,
+        813.98
+      ],
+      "to_xy": [
+        781.864,
+        695.448
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 89642,
+      "to_hip": 90185,
+      "from_xy": [
+        806.843,
+        998.758
+      ],
+      "to_xy": [
+        785.711,
+        932.339
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 90185,
+      "to_hip": 88635,
+      "from_xy": [
+        785.711,
+        932.339
+      ],
+      "to_xy": [
+        864.491,
+        838.225
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 88635,
+      "to_hip": 87072,
+      "from_xy": [
+        864.491,
+        838.225
+      ],
+      "to_xy": [
+        946.745,
+        783.424
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 88635,
+      "to_hip": 89931,
+      "from_xy": [
+        864.491,
+        838.225
+      ],
+      "to_xy": [
+        804.499,
+        813.98
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 89931,
+      "to_hip": 90185,
+      "from_xy": [
+        804.499,
+        813.98
+      ],
+      "to_xy": [
+        785.711,
+        932.339
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 90185,
+      "to_hip": 93506,
+      "from_xy": [
+        785.711,
+        932.339
+      ],
+      "to_xy": [
+        639.893,
+        807.004
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 93506,
+      "to_hip": 92041,
+      "from_xy": [
+        639.893,
+        807.004
+      ],
+      "to_xy": [
+        708.016,
+        732.366
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 92041,
+      "to_hip": 89931,
+      "from_xy": [
+        708.016,
+        732.366
+      ],
+      "to_xy": [
+        804.499,
+        813.98
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 92041,
+      "to_hip": 90496,
+      "from_xy": [
+        708.016,
+        732.366
+      ],
+      "to_xy": [
+        781.864,
+        695.448
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 90496,
+      "to_hip": 89341,
+      "from_xy": [
+        781.864,
+        695.448
+      ],
+      "to_xy": [
+        849.077,
+        584.924
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 93506,
+      "to_hip": 93864,
+      "from_xy": [
+        639.893,
+        807.004
+      ],
+      "to_xy": [
+        622.083,
+        749.689
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 93864,
+      "to_hip": 92855,
+      "from_xy": [
+        622.083,
+        749.689
+      ],
+      "to_xy": [
+        669.175,
+        713.385
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 92855,
+      "to_hip": 92041,
+      "from_xy": [
+        669.175,
+        713.385
+      ],
+      "to_xy": [
+        708.016,
+        732.366
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 92855,
+      "to_hip": 93085,
+      "from_xy": [
+        669.175,
+        713.385
+      ],
+      "to_xy": [
+        659.19,
+        576.549
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 93085,
+      "to_hip": 93683,
+      "from_xy": [
+        659.19,
+        576.549
+      ],
+      "to_xy": [
+        629.612,
+        593.651
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 93683,
+      "to_hip": 94820,
+      "from_xy": [
+        629.612,
+        593.651
+      ],
+      "to_xy": [
+        572.197,
+        520.59
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 94820,
+      "to_hip": 95168,
+      "from_xy": [
+        572.197,
+        520.59
+      ],
+      "to_xy": [
+        553.39,
+        491.349
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 93864,
+      "to_hip": 96406,
+      "from_xy": [
+        622.083,
+        749.689
+      ],
+      "to_xy": [
+        499.783,
+        679.947
+      ]
+    },
+    {
+      "id": "edge-20",
+      "from_hip": 96406,
+      "to_hip": 98688,
+      "from_xy": [
+        499.783,
+        679.947
+      ],
+      "to_xy": [
+        393.586,
+        775.376
+      ]
+    },
+    {
+      "id": "edge-21",
+      "from_hip": 98688,
+      "to_hip": 98412,
+      "from_xy": [
+        393.586,
+        775.376
+      ],
+      "to_xy": [
+        424.941,
+        974.481
+      ]
+    },
+    {
+      "id": "edge-22",
+      "from_hip": 98412,
+      "to_hip": 98032,
+      "from_xy": [
+        424.941,
+        974.481
+      ],
+      "to_xy": [
+        457.851,
+        1149.4
+      ]
+    },
+    {
+      "id": "edge-23",
+      "from_hip": 98032,
+      "to_hip": 95347,
+      "from_xy": [
+        457.851,
+        1149.4
+      ],
+      "to_xy": [
+        566.964,
+        1095.513
+      ]
+    },
+    {
+      "id": "edge-24",
+      "from_hip": 98032,
+      "to_hip": 95294,
+      "from_xy": [
+        457.851,
+        1149.4
+      ],
+      "to_xy": [
+        573.688,
+        1210.733
+      ]
+    }
+  ],
+  "labels_review": {
+    "90185": {
+      "name": "Kaus Australis",
+      "x": 817.71,
+      "y": 927.34,
+      "box": [
+        813.71,
+        924.34,
+        990.71,
+        948.34
+      ],
+      "leader": false,
+      "anchor": [
+        817.71,
+        936.34
+      ]
+    },
+    "92855": {
+      "name": "Nunki",
+      "x": 681.17,
+      "y": 651.38,
+      "box": [
+        677.17,
+        648.38,
+        754.17,
+        672.38
+      ],
+      "leader": true,
+      "anchor": [
+        681.17,
+        660.38
+      ]
+    },
+    "93506": {
+      "name": "Ascella",
+      "x": 671.89,
+      "y": 802.0,
+      "box": [
+        667.89,
+        799.0,
+        760.89,
+        823.0
+      ],
+      "leader": false,
+      "anchor": [
+        671.89,
+        811.0
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 12
+}

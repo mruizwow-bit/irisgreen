@@ -1,0 +1,221 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 38,
+  "iau_abbreviation": "Col",
+  "name_es": "Paloma",
+  "name_en": "Columba",
+  "english_descriptor": "Dove",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 25859,
+      "ra_hours": 5.52021,
+      "dec_deg": -35.47044,
+      "magnitude": 3.86,
+      "bv": 1.13,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        945.509,
+        867.452
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 26634,
+      "ra_hours": 5.66082,
+      "dec_deg": -34.07406,
+      "magnitude": 2.65,
+      "bv": -0.12,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        876.846,
+        798.939
+      ],
+      "proper_name": "Phact"
+    },
+    {
+      "hip": 27628,
+      "ra_hours": 5.84932,
+      "dec_deg": -35.76931,
+      "magnitude": 3.12,
+      "bv": 1.146,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        780.169,
+        875.482
+      ],
+      "proper_name": "Wazn"
+    },
+    {
+      "hip": 28199,
+      "ra_hours": 5.95895,
+      "dec_deg": -35.28331,
+      "magnitude": 4.36,
+      "bv": -0.165,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        725.206,
+        853.059
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 28328,
+      "ra_hours": 5.98578,
+      "dec_deg": -42.81511,
+      "magnitude": 3.96,
+      "bv": 1.146,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        716.304,
+        1204.105
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 30277,
+      "ra_hours": 6.36857,
+      "dec_deg": -33.43628,
+      "magnitude": 3.85,
+      "bv": 0.858,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        513.111,
+        776.704
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 26634,
+      "to_hip": 27628,
+      "from_xy": [
+        876.846,
+        798.939
+      ],
+      "to_xy": [
+        780.169,
+        875.482
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 25859,
+      "to_hip": 26634,
+      "from_xy": [
+        945.509,
+        867.452
+      ],
+      "to_xy": [
+        876.846,
+        798.939
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 28328,
+      "to_hip": 27628,
+      "from_xy": [
+        716.304,
+        1204.105
+      ],
+      "to_xy": [
+        780.169,
+        875.482
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 27628,
+      "to_hip": 28199,
+      "from_xy": [
+        780.169,
+        875.482
+      ],
+      "to_xy": [
+        725.206,
+        853.059
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 28199,
+      "to_hip": 30277,
+      "from_xy": [
+        725.206,
+        853.059
+      ],
+      "to_xy": [
+        513.111,
+        776.704
+      ]
+    }
+  ],
+  "labels_review": {
+    "26634": {
+      "name": "Phact",
+      "x": 908.85,
+      "y": 793.94,
+      "box": [
+        904.85,
+        790.94,
+        979.85,
+        814.94
+      ],
+      "leader": false,
+      "anchor": [
+        908.85,
+        802.94
+      ]
+    },
+    "27628": {
+      "name": "Wazn",
+      "x": 812.17,
+      "y": 870.48,
+      "box": [
+        808.17,
+        867.48,
+        881.17,
+        891.48
+      ],
+      "leader": false,
+      "anchor": [
+        812.17,
+        879.48
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

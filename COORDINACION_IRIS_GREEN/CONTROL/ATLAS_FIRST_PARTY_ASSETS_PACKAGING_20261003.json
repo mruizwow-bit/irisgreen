@@ -1,0 +1,50 @@
+{
+  "schema": "iris-green.control.atlas-first-party-assets-packaging.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "marker": "FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME",
+  "status": "PASS",
+  "packages": [
+    {
+      "family": "NIGHT_SKY_88_R03",
+      "source_gate": "NIGHT_SKY_CONSTELLATION_PIPELINE_R03_FINAL_PASS",
+      "package_gate": "NIGHT_SKY_88_PACKAGED_READY_FOR_RUNTIME",
+      "count": 88,
+      "master_type": "SVG",
+      "canonical_root": "/img/intereses/cielo/constelaciones/r03/",
+      "data_root": "/assets/data/cielo/constelaciones/r03/",
+      "source_zip_sha256": "6606430fcc0cf732bb794d8d582bcb31b3e643ac76c96e241c74a8418264df47",
+      "pixels_or_geometry_modified": false
+    },
+    {
+      "family": "METEOR_SHOWERS_10",
+      "source_gate": "METEOR_SHOWERS_BATCH_01_FINAL_10_PASS_READY_FOR_REVIEW",
+      "package_gate": "METEOR_SHOWERS_10_PACKAGED_READY_FOR_RUNTIME",
+      "count": 10,
+      "master_type": "PNG_RGB",
+      "canonical_root": "/img/intereses/meteoros/r01/",
+      "data_root": "/assets/data/meteoros/r01/",
+      "source_zip_sha256": "3397e8bb41fa5209861f0652c5e95ea888ade5be708bfc83e4b9f013fb60efa4",
+      "pixels_modified": false
+    },
+    {
+      "family": "SOLAR_B03_10",
+      "source_gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+      "package_gate": "SOLAR_B03_10_PACKAGED_READY_FOR_RUNTIME",
+      "count": 10,
+      "master_type": "PNG_RGBA",
+      "library_package": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/SOLAR_B03_10/",
+      "canonical_runtime_target": "/img/intereses/sistema-solar/b03/",
+      "package_zip_sha256": "d7bf6dfd31511368e46b5d6ff359a3fbded2cca7e51c400451664dcd4b789339",
+      "pixels_modified": false
+    }
+  ],
+  "invariants": {
+    "approved_assets_only": true,
+    "no_art_reinterpretation": true,
+    "no_runtime_integration": true,
+    "main_touched": false,
+    "deploy": false
+  },
+  "next_owner": "PRISMA_MOTOR"
+}

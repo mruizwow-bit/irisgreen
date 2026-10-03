@@ -1,0 +1,568 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Gem",
+  "name_es": "Géminis",
+  "name_en": "Gemini",
+  "descriptor_es": "Los gemelos",
+  "descriptor_en": "The Twins",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 28734,
+      "ra_hours": 6.06867,
+      "dec_deg": 23.26364,
+      "magnitude": 4.16,
+      "bv": 0.835,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        916.293,
+        891.485
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 29655,
+      "ra_hours": 6.24797,
+      "dec_deg": 22.50683,
+      "magnitude": 3.31,
+      "bv": 1.6,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        867.471,
+        918.272
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 30343,
+      "ra_hours": 6.38266,
+      "dec_deg": 22.51386,
+      "magnitude": 2.87,
+      "bv": 1.621,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        830.119,
+        921.635
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 30883,
+      "ra_hours": 6.48272,
+      "dec_deg": 20.21217,
+      "magnitude": 4.13,
+      "bv": -0.115,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        805.119,
+        986.626
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 31681,
+      "ra_hours": 6.62853,
+      "dec_deg": 16.39942,
+      "magnitude": 1.93,
+      "bv": 0.001,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        767.565,
+        1093.492
+      ],
+      "proper_name": "Alhena"
+    },
+    {
+      "hip": 32246,
+      "ra_hours": 6.7322,
+      "dec_deg": 25.13117,
+      "magnitude": 3.06,
+      "bv": 1.377,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        733.089,
+        856.603
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 32362,
+      "ra_hours": 6.75484,
+      "dec_deg": 12.89606,
+      "magnitude": 3.35,
+      "bv": 0.443,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        733.449,
+        1192.203
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 33018,
+      "ra_hours": 6.87982,
+      "dec_deg": 33.96136,
+      "magnitude": 3.6,
+      "bv": 0.102,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        691.627,
+        616.121
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 34088,
+      "ra_hours": 7.06848,
+      "dec_deg": 20.57031,
+      "magnitude": 4.01,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        643.267,
+        981.513
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 34693,
+      "ra_hours": 7.18566,
+      "dec_deg": 30.24528,
+      "magnitude": 4.41,
+      "bv": 1.261,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        614.793,
+        718.296
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 35350,
+      "ra_hours": 7.30156,
+      "dec_deg": 16.54047,
+      "magnitude": 3.58,
+      "bv": 0.106,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        576.619,
+        1090.33
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 35550,
+      "ra_hours": 7.33539,
+      "dec_deg": 21.98233,
+      "magnitude": 3.5,
+      "bv": 0.374,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        570.818,
+        941.244
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 36046,
+      "ra_hours": 7.4288,
+      "dec_deg": 27.79828,
+      "magnitude": 3.78,
+      "bv": 1.024,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        550.474,
+        781.77
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 36850,
+      "ra_hours": 7.57667,
+      "dec_deg": 31.88864,
+      "magnitude": 1.58,
+      "bv": 0.034,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        516.652,
+        665.872
+      ],
+      "proper_name": "Castor"
+    },
+    {
+      "hip": 36962,
+      "ra_hours": 7.59871,
+      "dec_deg": 26.896,
+      "magnitude": 4.06,
+      "bv": 1.54,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        504.682,
+        802.575
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 37740,
+      "ra_hours": 7.7408,
+      "dec_deg": 24.39814,
+      "magnitude": 3.57,
+      "bv": 0.932,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        462.78,
+        866.878
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 37826,
+      "ra_hours": 7.75538,
+      "dec_deg": 28.02631,
+      "magnitude": 1.16,
+      "bv": 0.991,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        464.626,
+        766.872
+      ],
+      "proper_name": "Pollux"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 31681,
+      "to_hip": 34088,
+      "from_xy": [
+        767.565,
+        1093.492
+      ],
+      "to_xy": [
+        643.267,
+        981.513
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 34088,
+      "to_hip": 35550,
+      "from_xy": [
+        643.267,
+        981.513
+      ],
+      "to_xy": [
+        570.818,
+        941.244
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 35550,
+      "to_hip": 35350,
+      "from_xy": [
+        570.818,
+        941.244
+      ],
+      "to_xy": [
+        576.619,
+        1090.33
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 35350,
+      "to_hip": 32362,
+      "from_xy": [
+        576.619,
+        1090.33
+      ],
+      "to_xy": [
+        733.449,
+        1192.203
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 35550,
+      "to_hip": 36962,
+      "from_xy": [
+        570.818,
+        941.244
+      ],
+      "to_xy": [
+        504.682,
+        802.575
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 36962,
+      "to_hip": 37740,
+      "from_xy": [
+        504.682,
+        802.575
+      ],
+      "to_xy": [
+        462.78,
+        866.878
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 36962,
+      "to_hip": 37826,
+      "from_xy": [
+        504.682,
+        802.575
+      ],
+      "to_xy": [
+        464.626,
+        766.872
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 36962,
+      "to_hip": 36046,
+      "from_xy": [
+        504.682,
+        802.575
+      ],
+      "to_xy": [
+        550.474,
+        781.77
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 36046,
+      "to_hip": 34693,
+      "from_xy": [
+        550.474,
+        781.77
+      ],
+      "to_xy": [
+        614.793,
+        718.296
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 34693,
+      "to_hip": 36850,
+      "from_xy": [
+        614.793,
+        718.296
+      ],
+      "to_xy": [
+        516.652,
+        665.872
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 34693,
+      "to_hip": 33018,
+      "from_xy": [
+        614.793,
+        718.296
+      ],
+      "to_xy": [
+        691.627,
+        616.121
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 34693,
+      "to_hip": 32246,
+      "from_xy": [
+        614.793,
+        718.296
+      ],
+      "to_xy": [
+        733.089,
+        856.603
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 32246,
+      "to_hip": 30883,
+      "from_xy": [
+        733.089,
+        856.603
+      ],
+      "to_xy": [
+        805.119,
+        986.626
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 32246,
+      "to_hip": 30343,
+      "from_xy": [
+        733.089,
+        856.603
+      ],
+      "to_xy": [
+        830.119,
+        921.635
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 30343,
+      "to_hip": 29655,
+      "from_xy": [
+        830.119,
+        921.635
+      ],
+      "to_xy": [
+        867.471,
+        918.272
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 29655,
+      "to_hip": 28734,
+      "from_xy": [
+        867.471,
+        918.272
+      ],
+      "to_xy": [
+        916.293,
+        891.485
+      ]
+    }
+  ],
+  "labels_review": {
+    "36850": {
+      "name": "Castor",
+      "x": 406.65,
+      "y": 660.87,
+      "box": [
+        402.65,
+        657.87,
+        488.65,
+        681.87
+      ],
+      "leader": false,
+      "anchor": [
+        484.65,
+        669.87
+      ]
+    },
+    "37826": {
+      "name": "Pollux",
+      "x": 361.63,
+      "y": 761.87,
+      "box": [
+        357.63,
+        758.87,
+        436.63,
+        782.87
+      ],
+      "leader": false,
+      "anchor": [
+        432.63,
+        770.87
+      ]
+    },
+    "31681": {
+      "name": "Alhena",
+      "x": 799.56,
+      "y": 1088.49,
+      "box": [
+        795.56,
+        1085.49,
+        886.56,
+        1109.49
+      ],
+      "leader": false,
+      "anchor": [
+        799.56,
+        1097.49
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 9
+}

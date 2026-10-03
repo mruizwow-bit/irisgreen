@@ -1,0 +1,251 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 41,
+  "iau_abbreviation": "CrB",
+  "name_es": "Corona Boreal",
+  "name_en": "Corona Borealis",
+  "english_descriptor": "Northern Crown",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 75695,
+      "ra_hours": 15.46385,
+      "dec_deg": 29.1055,
+      "magnitude": 3.66,
+      "bv": 0.319,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        865.375,
+        890.21
+      ],
+      "proper_name": "Nusakan"
+    },
+    {
+      "hip": 76127,
+      "ra_hours": 15.54883,
+      "dec_deg": 31.35917,
+      "magnitude": 4.14,
+      "bv": -0.127,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        806.098,
+        788.121
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 76267,
+      "ra_hours": 15.57811,
+      "dec_deg": 26.71492,
+      "magnitude": 2.22,
+      "bv": 0.032,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        791.457,
+        1001.729
+      ],
+      "proper_name": "Alphecca"
+    },
+    {
+      "hip": 76952,
+      "ra_hours": 15.7124,
+      "dec_deg": 26.29553,
+      "magnitude": 3.81,
+      "bv": 0.02,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        700.072,
+        1021.81
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 77512,
+      "ra_hours": 15.82658,
+      "dec_deg": 26.06856,
+      "magnitude": 4.59,
+      "bv": 0.794,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        621.917,
+        1031.917
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 78159,
+      "ra_hours": 15.95981,
+      "dec_deg": 26.87803,
+      "magnitude": 4.14,
+      "bv": 1.231,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        531.743,
+        993.197
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 78493,
+      "ra_hours": 16.02405,
+      "dec_deg": 29.85108,
+      "magnitude": 4.98,
+      "bv": -0.05,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        493.414,
+        855.405
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 76127,
+      "to_hip": 75695,
+      "from_xy": [
+        806.098,
+        788.121
+      ],
+      "to_xy": [
+        865.375,
+        890.21
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 75695,
+      "to_hip": 76267,
+      "from_xy": [
+        865.375,
+        890.21
+      ],
+      "to_xy": [
+        791.457,
+        1001.729
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 76267,
+      "to_hip": 76952,
+      "from_xy": [
+        791.457,
+        1001.729
+      ],
+      "to_xy": [
+        700.072,
+        1021.81
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 76952,
+      "to_hip": 77512,
+      "from_xy": [
+        700.072,
+        1021.81
+      ],
+      "to_xy": [
+        621.917,
+        1031.917
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 77512,
+      "to_hip": 78159,
+      "from_xy": [
+        621.917,
+        1031.917
+      ],
+      "to_xy": [
+        531.743,
+        993.197
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 78159,
+      "to_hip": 78493,
+      "from_xy": [
+        531.743,
+        993.197
+      ],
+      "to_xy": [
+        493.414,
+        855.405
+      ]
+    }
+  ],
+  "labels_review": {
+    "76267": {
+      "name": "Alphecca",
+      "x": 823.46,
+      "y": 996.73,
+      "box": [
+        819.46,
+        993.73,
+        936.46,
+        1022.73
+      ],
+      "leader": false,
+      "anchor": [
+        823.46,
+        1008.23
+      ]
+    },
+    "75695": {
+      "name": "Nusakan",
+      "x": 897.37,
+      "y": 885.21,
+      "box": [
+        893.37,
+        882.21,
+        1005.37,
+        906.21
+      ],
+      "leader": false,
+      "anchor": [
+        897.37,
+        894.21
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

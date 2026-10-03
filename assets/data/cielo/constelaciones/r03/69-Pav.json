@@ -1,0 +1,381 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 69,
+  "iau_abbreviation": "Pav",
+  "name_es": "Pavo",
+  "name_en": "Pavo",
+  "english_descriptor": "Peacock",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 86929,
+      "ra_hours": 17.76222,
+      "dec_deg": -64.72372,
+      "magnitude": 3.61,
+      "bv": 1.161,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1172.206,
+        1011.298
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 88866,
+      "ra_hours": 18.143,
+      "dec_deg": -63.66806,
+      "magnitude": 4.33,
+      "bv": 0.228,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1091.611,
+        893.718
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 90098,
+      "ra_hours": 18.38712,
+      "dec_deg": -61.49392,
+      "magnitude": 4.35,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1049.692,
+        731.238
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 91792,
+      "ra_hours": 18.71726,
+      "dec_deg": -71.42772,
+      "magnitude": 4.01,
+      "bv": 1.134,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        891.124,
+        1323.901
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 92609,
+      "ra_hours": 18.87029,
+      "dec_deg": -62.18756,
+      "magnitude": 4.22,
+      "bv": -0.15,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        909.637,
+        735.522
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93015,
+      "ra_hours": 18.94918,
+      "dec_deg": -67.23353,
+      "magnitude": 4.4,
+      "bv": 0.53,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        865.67,
+        1049.275
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98495,
+      "ra_hours": 20.00983,
+      "dec_deg": -72.91019,
+      "magnitude": 3.97,
+      "bv": -0.032,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        654.36,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 99240,
+      "ra_hours": 20.14496,
+      "dec_deg": -66.17933,
+      "magnitude": 3.55,
+      "bv": 0.751,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        583.502,
+        998.151
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 100751,
+      "ra_hours": 20.42746,
+      "dec_deg": -56.73489,
+      "magnitude": 1.94,
+      "bv": -0.118,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        423.978,
+        431.691
+      ],
+      "proper_name": "Peacock"
+    },
+    {
+      "hip": 102395,
+      "ra_hours": 20.74932,
+      "dec_deg": -66.20325,
+      "magnitude": 3.42,
+      "bv": 0.163,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        441.367,
+        1057.122
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 105858,
+      "ra_hours": 21.44069,
+      "dec_deg": -65.36814,
+      "magnitude": 4.21,
+      "bv": 0.494,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        267.794,
+        1116.156
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 100751,
+      "to_hip": 99240,
+      "from_xy": [
+        423.978,
+        431.691
+      ],
+      "to_xy": [
+        583.502,
+        998.151
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 99240,
+      "to_hip": 102395,
+      "from_xy": [
+        583.502,
+        998.151
+      ],
+      "to_xy": [
+        441.367,
+        1057.122
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 100751,
+      "to_hip": 105858,
+      "from_xy": [
+        423.978,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        1116.156
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 105858,
+      "to_hip": 102395,
+      "from_xy": [
+        267.794,
+        1116.156
+      ],
+      "to_xy": [
+        441.367,
+        1057.122
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 91792,
+      "to_hip": 99240,
+      "from_xy": [
+        891.124,
+        1323.901
+      ],
+      "to_xy": [
+        583.502,
+        998.151
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 99240,
+      "to_hip": 98495,
+      "from_xy": [
+        583.502,
+        998.151
+      ],
+      "to_xy": [
+        654.36,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 99240,
+      "to_hip": 93015,
+      "from_xy": [
+        583.502,
+        998.151
+      ],
+      "to_xy": [
+        865.67,
+        1049.275
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 93015,
+      "to_hip": 88866,
+      "from_xy": [
+        865.67,
+        1049.275
+      ],
+      "to_xy": [
+        1091.611,
+        893.718
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 88866,
+      "to_hip": 86929,
+      "from_xy": [
+        1091.611,
+        893.718
+      ],
+      "to_xy": [
+        1172.206,
+        1011.298
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 88866,
+      "to_hip": 90098,
+      "from_xy": [
+        1091.611,
+        893.718
+      ],
+      "to_xy": [
+        1049.692,
+        731.238
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 90098,
+      "to_hip": 92609,
+      "from_xy": [
+        1049.692,
+        731.238
+      ],
+      "to_xy": [
+        909.637,
+        735.522
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 92609,
+      "to_hip": 99240,
+      "from_xy": [
+        909.637,
+        735.522
+      ],
+      "to_xy": [
+        583.502,
+        998.151
+      ]
+    }
+  ],
+  "labels_review": {
+    "100751": {
+      "name": "Peacock",
+      "x": 455.98,
+      "y": 426.69,
+      "box": [
+        451.98,
+        423.69,
+        557.98,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        455.98,
+        435.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

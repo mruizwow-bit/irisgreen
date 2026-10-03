@@ -1,0 +1,326 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 85,
+  "iau_abbreviation": "Vel",
+  "name_es": "Vela",
+  "name_en": "Vela",
+  "english_descriptor": "Sails",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 39953,
+      "ra_hours": 8.15888,
+      "dec_deg": -47.33661,
+      "magnitude": 1.75,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1007.296
+      ],
+      "proper_name": "Regor"
+    },
+    {
+      "hip": 42913,
+      "ra_hours": 8.74506,
+      "dec_deg": -54.70856,
+      "magnitude": 1.93,
+      "bv": 0.043,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        926.429,
+        1413.309
+      ],
+      "proper_name": "Alsephina"
+    },
+    {
+      "hip": 44816,
+      "ra_hours": 9.13327,
+      "dec_deg": -43.43261,
+      "magnitude": 2.23,
+      "bv": 1.665,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        837.703,
+        639.261
+      ],
+      "proper_name": "Suhail"
+    },
+    {
+      "hip": 45941,
+      "ra_hours": 9.36856,
+      "dec_deg": -55.01069,
+      "magnitude": 2.47,
+      "bv": -0.141,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        739.087,
+        1399.638
+      ],
+      "proper_name": "Markeb"
+    },
+    {
+      "hip": 46651,
+      "ra_hours": 9.5117,
+      "dec_deg": -40.46689,
+      "magnitude": 3.6,
+      "bv": 0.371,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        694.728,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 48774,
+      "ra_hours": 9.94771,
+      "dec_deg": -54.56781,
+      "magnitude": 3.52,
+      "bv": -0.067,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        565.277,
+        1381.845
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 50191,
+      "ra_hours": 10.24563,
+      "dec_deg": -42.12206,
+      "magnitude": 3.85,
+      "bv": 0.051,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        411.015,
+        580.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 52727,
+      "ra_hours": 10.77948,
+      "dec_deg": -49.42014,
+      "magnitude": 2.69,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1135.19
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 42913,
+      "to_hip": 39953,
+      "from_xy": [
+        926.429,
+        1413.309
+      ],
+      "to_xy": [
+        1172.206,
+        1007.296
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 39953,
+      "to_hip": 44816,
+      "from_xy": [
+        1172.206,
+        1007.296
+      ],
+      "to_xy": [
+        837.703,
+        639.261
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 44816,
+      "to_hip": 46651,
+      "from_xy": [
+        837.703,
+        639.261
+      ],
+      "to_xy": [
+        694.728,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 46651,
+      "to_hip": 50191,
+      "from_xy": [
+        694.728,
+        431.691
+      ],
+      "to_xy": [
+        411.015,
+        580.309
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 50191,
+      "to_hip": 52727,
+      "from_xy": [
+        411.015,
+        580.309
+      ],
+      "to_xy": [
+        267.794,
+        1135.19
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 52727,
+      "to_hip": 48774,
+      "from_xy": [
+        267.794,
+        1135.19
+      ],
+      "to_xy": [
+        565.277,
+        1381.845
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 48774,
+      "to_hip": 45941,
+      "from_xy": [
+        565.277,
+        1381.845
+      ],
+      "to_xy": [
+        739.087,
+        1399.638
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 45941,
+      "to_hip": 42913,
+      "from_xy": [
+        739.087,
+        1399.638
+      ],
+      "to_xy": [
+        926.429,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "39953": {
+      "name": "Regor",
+      "x": 1204.21,
+      "y": 1002.3,
+      "box": [
+        1200.21,
+        999.3,
+        1278.21,
+        1028.3
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        1013.8
+      ]
+    },
+    "42913": {
+      "name": "Alsephina",
+      "x": 958.43,
+      "y": 1408.31,
+      "box": [
+        954.43,
+        1405.31,
+        1079.43,
+        1434.31
+      ],
+      "leader": false,
+      "anchor": [
+        958.43,
+        1419.81
+      ]
+    },
+    "44816": {
+      "name": "Suhail",
+      "x": 869.7,
+      "y": 634.26,
+      "box": [
+        865.7,
+        631.26,
+        947.7,
+        655.26
+      ],
+      "leader": false,
+      "anchor": [
+        869.7,
+        643.26
+      ]
+    },
+    "45941": {
+      "name": "Markeb",
+      "x": 751.09,
+      "y": 1337.64,
+      "box": [
+        747.09,
+        1334.64,
+        843.09,
+        1358.64
+      ],
+      "leader": true,
+      "anchor": [
+        751.09,
+        1346.64
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

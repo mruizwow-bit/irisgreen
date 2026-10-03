@@ -1,0 +1,493 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 79,
+  "iau_abbreviation": "Ser",
+  "name_es": "Serpiente",
+  "name_en": "Serpens",
+  "english_descriptor": "Serpent",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 76276,
+      "ra_hours": 15.58005,
+      "dec_deg": 10.53886,
+      "magnitude": 3.8,
+      "bv": 0.268,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        687.369
+      ],
+      "proper_name": "Nasak Yamani I"
+    },
+    {
+      "hip": 76852,
+      "ra_hours": 15.69252,
+      "dec_deg": 19.6705,
+      "magnitude": 4.51,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1141.005,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 77070,
+      "ra_hours": 15.73778,
+      "dec_deg": 6.42553,
+      "magnitude": 2.63,
+      "bv": 1.167,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1132.573,
+        802.012
+      ],
+      "proper_name": "Unukalhai"
+    },
+    {
+      "hip": 77233,
+      "ra_hours": 15.76978,
+      "dec_deg": 15.42192,
+      "magnitude": 3.65,
+      "bv": 0.073,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1122.481,
+        555.741
+      ],
+      "proper_name": "Chow"
+    },
+    {
+      "hip": 77450,
+      "ra_hours": 15.81234,
+      "dec_deg": 18.14178,
+      "magnitude": 4.09,
+      "bv": 1.616,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        1111.203,
+        479.623
+      ],
+      "proper_name": "Gudja"
+    },
+    {
+      "hip": 77516,
+      "ra_hours": 15.82702,
+      "dec_deg": -3.43014,
+      "magnitude": 3.54,
+      "bv": -0.036,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1111.802,
+        1067.851
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 77622,
+      "ra_hours": 15.84691,
+      "dec_deg": 4.47758,
+      "magnitude": 3.71,
+      "bv": 0.147,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1105.219,
+        855.274
+      ],
+      "proper_name": "Nasak Yamani II"
+    },
+    {
+      "hip": 78072,
+      "ra_hours": 15.94083,
+      "dec_deg": 15.66472,
+      "magnitude": 3.85,
+      "bv": 0.478,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1079.691,
+        552.61
+      ],
+      "proper_name": "Nasak Shamiya II"
+    },
+    {
+      "hip": 79593,
+      "ra_hours": 16.2391,
+      "dec_deg": -3.69397,
+      "magnitude": 2.73,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1008.35,
+        1073.415
+      ],
+      "proper_name": "Yed Prior"
+    },
+    {
+      "hip": 84012,
+      "ra_hours": 17.17296,
+      "dec_deg": -15.72514,
+      "magnitude": 2.43,
+      "bv": 0.059,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        776.069,
+        1411.905
+      ],
+      "proper_name": "Sabik"
+    },
+    {
+      "hip": 86263,
+      "ra_hours": 17.62645,
+      "dec_deg": -15.39842,
+      "magnitude": 3.54,
+      "bv": 0.262,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        658.126,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 88048,
+      "ra_hours": 17.98378,
+      "dec_deg": -9.77336,
+      "magnitude": 3.32,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        561.887,
+        1256.046
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 89962,
+      "ra_hours": 18.35526,
+      "dec_deg": -2.89711,
+      "magnitude": 3.23,
+      "bv": 0.941,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        455.988,
+        1060.661
+      ],
+      "proper_name": "Alava"
+    },
+    {
+      "hip": 92946,
+      "ra_hours": 18.93699,
+      "dec_deg": 4.20353,
+      "magnitude": 4.62,
+      "bv": 0.161,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        840.47
+      ],
+      "proper_name": "Alya"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 77233,
+      "to_hip": 78072,
+      "from_xy": [
+        1122.481,
+        555.741
+      ],
+      "to_xy": [
+        1079.691,
+        552.61
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 78072,
+      "to_hip": 77450,
+      "from_xy": [
+        1079.691,
+        552.61
+      ],
+      "to_xy": [
+        1111.203,
+        479.623
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 77450,
+      "to_hip": 76852,
+      "from_xy": [
+        1111.203,
+        479.623
+      ],
+      "to_xy": [
+        1141.005,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 76852,
+      "to_hip": 77233,
+      "from_xy": [
+        1141.005,
+        431.691
+      ],
+      "to_xy": [
+        1122.481,
+        555.741
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 77233,
+      "to_hip": 76276,
+      "from_xy": [
+        1122.481,
+        555.741
+      ],
+      "to_xy": [
+        1172.206,
+        687.369
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 76276,
+      "to_hip": 77070,
+      "from_xy": [
+        1172.206,
+        687.369
+      ],
+      "to_xy": [
+        1132.573,
+        802.012
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 77070,
+      "to_hip": 77622,
+      "from_xy": [
+        1132.573,
+        802.012
+      ],
+      "to_xy": [
+        1105.219,
+        855.274
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 77622,
+      "to_hip": 77516,
+      "from_xy": [
+        1105.219,
+        855.274
+      ],
+      "to_xy": [
+        1111.802,
+        1067.851
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 77516,
+      "to_hip": 79593,
+      "from_xy": [
+        1111.802,
+        1067.851
+      ],
+      "to_xy": [
+        1008.35,
+        1073.415
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 84012,
+      "to_hip": 86263,
+      "from_xy": [
+        776.069,
+        1411.905
+      ],
+      "to_xy": [
+        658.126,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 86263,
+      "to_hip": 88048,
+      "from_xy": [
+        658.126,
+        1413.309
+      ],
+      "to_xy": [
+        561.887,
+        1256.046
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 88048,
+      "to_hip": 89962,
+      "from_xy": [
+        561.887,
+        1256.046
+      ],
+      "to_xy": [
+        455.988,
+        1060.661
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 89962,
+      "to_hip": 92946,
+      "from_xy": [
+        455.988,
+        1060.661
+      ],
+      "to_xy": [
+        267.794,
+        840.47
+      ]
+    }
+  ],
+  "labels_review": {
+    "84012": {
+      "name": "Sabik",
+      "x": 808.07,
+      "y": 1406.9,
+      "box": [
+        804.07,
+        1403.9,
+        878.07,
+        1427.9
+      ],
+      "leader": false,
+      "anchor": [
+        808.07,
+        1415.9
+      ]
+    },
+    "77070": {
+      "name": "Unukalhai",
+      "x": 1164.57,
+      "y": 797.01,
+      "box": [
+        1160.57,
+        794.01,
+        1287.57,
+        818.01
+      ],
+      "leader": false,
+      "anchor": [
+        1164.57,
+        806.01
+      ]
+    },
+    "79593": {
+      "name": "Yed Prior",
+      "x": 871.35,
+      "y": 1068.42,
+      "box": [
+        867.35,
+        1065.42,
+        980.35,
+        1089.42
+      ],
+      "leader": false,
+      "anchor": [
+        976.35,
+        1077.42
+      ]
+    },
+    "89962": {
+      "name": "Alava",
+      "x": 487.99,
+      "y": 1055.66,
+      "box": [
+        483.99,
+        1052.66,
+        558.99,
+        1076.66
+      ],
+      "leader": false,
+      "anchor": [
+        487.99,
+        1064.66
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

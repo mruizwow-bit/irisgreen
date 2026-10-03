@@ -1,0 +1,68 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 63,
+  "iau_abbreviation": "Mic",
+  "name_es": "Microscopio",
+  "name_en": "Microscopium",
+  "english_descriptor": "Microscope",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 102831,
+      "ra_hours": 20.8328,
+      "dec_deg": -33.77967,
+      "magnitude": 4.89,
+      "bv": 1.004,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 102989,
+      "ra_hours": 20.86632,
+      "dec_deg": -33.17797,
+      "magnitude": 6.06,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 102831,
+      "to_hip": 102989,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        267.794,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

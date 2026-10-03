@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Lobo / Lupus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="1099.758" cy="1084.316" r="3.338"/>
+<circle id="bg-star-002" cx="407.499" cy="1205.440" r="1.456"/>
+<circle id="bg-star-003" cx="249.182" cy="1576.410" r="2.128"/>
+<circle id="bg-star-004" cx="491.738" cy="936.307" r="3.391"/>
+<circle id="bg-star-005" cx="409.504" cy="1376.224" r="2.459"/>
+<circle id="bg-star-006" cx="386.376" cy="304.657" r="2.424"/>
+<circle id="bg-star-007" cx="1018.664" cy="283.934" r="1.950"/>
+<circle id="bg-star-008" cx="1243.771" cy="679.770" r="2.112"/>
+<circle id="bg-star-009" cx="1242.891" cy="1570.471" r="2.268"/>
+<circle id="bg-star-010" cx="461.788" cy="1077.081" r="1.865"/>
+<circle id="bg-star-011" cx="140.686" cy="563.605" r="2.688"/>
+<circle id="bg-star-012" cx="1198.307" cy="1417.988" r="2.776"/>
+<circle id="bg-star-013" cx="217.435" cy="1106.602" r="1.875"/>
+<circle id="bg-star-014" cx="571.317" cy="920.166" r="3.152"/>
+<circle id="bg-star-015" cx="1286.269" cy="778.690" r="2.026"/>
+<circle id="bg-star-016" cx="1175.965" cy="867.238" r="3.176"/>
+<circle id="bg-star-017" cx="581.421" cy="893.020" r="2.545"/>
+<circle id="bg-star-018" cx="445.459" cy="335.379" r="2.844"/>
+<circle id="bg-star-019" cx="345.774" cy="1266.408" r="2.275"/>
+<circle id="bg-star-020" cx="246.132" cy="764.089" r="2.978"/>
+<circle id="bg-star-021" cx="1216.063" cy="458.849" r="1.685"/>
+<circle id="bg-star-022" cx="939.265" cy="1175.651" r="1.698"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="71860" data-to-hip="74395" x1="1172.206" y1="1182.443" x2="833.775" y2="1413.309"/>
+<line id="edge-02" data-from-hip="74395" data-to-hip="75264" x1="833.775" y1="1413.309" x2="732.998" y2="1012.527"/>
+<line id="edge-03" data-from-hip="75264" data-to-hip="76297" x1="732.998" y1="1012.527" x2="585.379" y2="827.124"/>
+<line id="edge-04" data-from-hip="76297" data-to-hip="75141" x1="585.379" y1="827.124" x2="749.736" y2="797.874"/>
+<line id="edge-05" data-from-hip="75141" data-to-hip="73273" x1="749.736" y1="797.874" x2="1012.744" y2="939.229"/>
+<line id="edge-06" data-from-hip="76297" data-to-hip="78384" x1="585.379" y1="827.124" x2="267.794" y2="696.544"/>
+<line id="edge-07" data-from-hip="78384" data-to-hip="75177" x1="267.794" y1="696.544" x2="746.324" y2="563.903"/>
+<line id="edge-08" data-from-hip="75177" data-to-hip="77634" x1="746.324" y1="563.903" x2="358.307" y2="431.691"/>
+<line id="edge-09" data-from-hip="77634" data-to-hip="78384" x1="358.307" y1="431.691" x2="267.794" y2="696.544"/>
+<line id="edge-10" data-from-hip="78384" data-to-hip="74395" x1="267.794" y1="696.544" x2="833.775" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-71860" data-hip="71860" data-mag="2.3" data-bv="-0.154" cx="1172.206" cy="1182.443" r="7.395" fill="rgb(168, 199, 255)"/>
+<circle id="hip-73273" data-hip="73273" data-mag="2.68" data-bv="-0.184" cx="1012.744" cy="939.229" r="6.882" fill="rgb(168, 199, 255)"/>
+<circle id="hip-74395" data-hip="74395" data-mag="3.41" data-bv="0.918" cx="833.775" cy="1413.309" r="5.896" fill="rgb(255, 221, 170)"/>
+<circle id="hip-75141" data-hip="75141" data-mag="3.22" data-bv="-0.227" cx="749.736" cy="797.874" r="6.153" fill="rgb(168, 199, 255)"/>
+<circle id="hip-75177" data-hip="75177" data-mag="3.57" data-bv="1.534" cx="746.324" cy="563.903" r="5.681" fill="rgb(255, 150, 96)"/>
+<circle id="hip-75264" data-hip="75264" data-mag="3.37" data-bv="" cx="732.998" cy="1012.527" r="5.950" fill="rgb(235, 240, 255)"/>
+<circle id="hip-76297" data-hip="76297" data-mag="2.8" data-bv="-0.216" cx="585.379" cy="827.124" r="6.720" fill="rgb(168, 199, 255)"/>
+<circle id="hip-77634" data-hip="77634" data-mag="3.97" data-bv="-0.045" cx="358.307" cy="431.691" r="5.140" fill="rgb(190, 215, 255)"/>
+<circle id="hip-78384" data-hip="78384" data-mag="3.42" data-bv="-0.206" cx="267.794" cy="696.544" r="5.883" fill="rgb(168, 199, 255)"/>
+</g></svg>

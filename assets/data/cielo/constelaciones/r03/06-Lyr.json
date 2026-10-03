@@ -1,0 +1,221 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Lyr",
+  "name_es": "Lira",
+  "name_en": "Lyra",
+  "descriptor_es": "La lira",
+  "descriptor_en": "The Lyre",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 91262,
+      "ra_hours": 18.61561,
+      "dec_deg": 38.783,
+      "magnitude": 0.03,
+      "bv": -0.001,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        808.429,
+        755.795
+      ],
+      "proper_name": "Vega"
+    },
+    {
+      "hip": 91971,
+      "ra_hours": 18.74621,
+      "dec_deg": 37.60506,
+      "magnitude": 4.34,
+      "bv": 0.192,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        747.208,
+        831.757
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 92420,
+      "ra_hours": 18.83466,
+      "dec_deg": 33.36267,
+      "magnitude": 3.52,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        704.383,
+        1097.438
+      ],
+      "proper_name": "Sheliak"
+    },
+    {
+      "hip": 92791,
+      "ra_hours": 18.90841,
+      "dec_deg": 36.89861,
+      "magnitude": 4.22,
+      "bv": 1.575,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        668.973,
+        875.821
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93194,
+      "ra_hours": 18.98239,
+      "dec_deg": 32.68956,
+      "magnitude": 3.25,
+      "bv": -0.049,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        628.896,
+        1138.169
+      ],
+      "proper_name": "Sulafat"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 91262,
+      "to_hip": 91971,
+      "from_xy": [
+        808.429,
+        755.795
+      ],
+      "to_xy": [
+        747.208,
+        831.757
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 91971,
+      "to_hip": 92420,
+      "from_xy": [
+        747.208,
+        831.757
+      ],
+      "to_xy": [
+        704.383,
+        1097.438
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 92420,
+      "to_hip": 93194,
+      "from_xy": [
+        704.383,
+        1097.438
+      ],
+      "to_xy": [
+        628.896,
+        1138.169
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 93194,
+      "to_hip": 92791,
+      "from_xy": [
+        628.896,
+        1138.169
+      ],
+      "to_xy": [
+        668.973,
+        875.821
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 92791,
+      "to_hip": 91971,
+      "from_xy": [
+        668.973,
+        875.821
+      ],
+      "to_xy": [
+        747.208,
+        831.757
+      ]
+    }
+  ],
+  "labels_review": {
+    "91262": {
+      "name": "Vega",
+      "x": 820.43,
+      "y": 693.79,
+      "box": [
+        816.43,
+        690.79,
+        883.43,
+        719.79
+      ],
+      "leader": true,
+      "anchor": [
+        820.43,
+        705.29
+      ]
+    },
+    "92420": {
+      "name": "Sheliak",
+      "x": 736.38,
+      "y": 1092.44,
+      "box": [
+        732.38,
+        1089.44,
+        827.38,
+        1113.44
+      ],
+      "leader": false,
+      "anchor": [
+        736.38,
+        1101.44
+      ]
+    },
+    "93194": {
+      "name": "Sulafat",
+      "x": 660.9,
+      "y": 1133.17,
+      "box": [
+        656.9,
+        1130.17,
+        748.9,
+        1154.17
+      ],
+      "leader": false,
+      "anchor": [
+        660.9,
+        1142.17
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 6
+}

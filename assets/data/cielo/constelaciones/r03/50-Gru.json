@@ -1,0 +1,280 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 50,
+  "iau_abbreviation": "Gru",
+  "name_es": "Grulla",
+  "name_en": "Grus",
+  "english_descriptor": "Crane",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 108085,
+      "ra_hours": 21.89879,
+      "dec_deg": -37.36483,
+      "magnitude": 3,
+      "bv": -0.084,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        912.681,
+        638.751
+      ],
+      "proper_name": "Aldhanab"
+    },
+    {
+      "hip": 109111,
+      "ra_hours": 22.10192,
+      "dec_deg": -39.54306,
+      "magnitude": 4.47,
+      "bv": 1.349,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        827.304,
+        716.468
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 109268,
+      "ra_hours": 22.13719,
+      "dec_deg": -46.96061,
+      "magnitude": 1.73,
+      "bv": -0.07,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        800.757,
+        998.033
+      ],
+      "proper_name": "Alnair"
+    },
+    {
+      "hip": 110997,
+      "ra_hours": 22.48782,
+      "dec_deg": -43.49556,
+      "magnitude": 3.97,
+      "bv": 1.022,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        680.87,
+        863.709
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 112122,
+      "ra_hours": 22.71109,
+      "dec_deg": -46.88456,
+      "magnitude": 2.07,
+      "bv": 1.61,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        606.761,
+        995.337
+      ],
+      "proper_name": "Tiaki"
+    },
+    {
+      "hip": 112623,
+      "ra_hours": 22.80922,
+      "dec_deg": -51.31669,
+      "magnitude": 3.49,
+      "bv": 0.083,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        584.253,
+        1166.638
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 113638,
+      "ra_hours": 23.01469,
+      "dec_deg": -52.75411,
+      "magnitude": 4.11,
+      "bv": 0.96,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        525.628,
+        1229.243
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 108085,
+      "to_hip": 109111,
+      "from_xy": [
+        912.681,
+        638.751
+      ],
+      "to_xy": [
+        827.304,
+        716.468
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 109111,
+      "to_hip": 110997,
+      "from_xy": [
+        827.304,
+        716.468
+      ],
+      "to_xy": [
+        680.87,
+        863.709
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 110997,
+      "to_hip": 109268,
+      "from_xy": [
+        680.87,
+        863.709
+      ],
+      "to_xy": [
+        800.757,
+        998.033
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 109268,
+      "to_hip": 112122,
+      "from_xy": [
+        800.757,
+        998.033
+      ],
+      "to_xy": [
+        606.761,
+        995.337
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 112122,
+      "to_hip": 110997,
+      "from_xy": [
+        606.761,
+        995.337
+      ],
+      "to_xy": [
+        680.87,
+        863.709
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 112122,
+      "to_hip": 112623,
+      "from_xy": [
+        606.761,
+        995.337
+      ],
+      "to_xy": [
+        584.253,
+        1166.638
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 112623,
+      "to_hip": 113638,
+      "from_xy": [
+        584.253,
+        1166.638
+      ],
+      "to_xy": [
+        525.628,
+        1229.243
+      ]
+    }
+  ],
+  "labels_review": {
+    "109268": {
+      "name": "Alnair",
+      "x": 832.76,
+      "y": 993.03,
+      "box": [
+        828.76,
+        990.03,
+        906.76,
+        1014.03
+      ],
+      "leader": false,
+      "anchor": [
+        832.76,
+        1002.03
+      ]
+    },
+    "112122": {
+      "name": "Tiaki",
+      "x": 517.76,
+      "y": 990.34,
+      "box": [
+        513.76,
+        987.34,
+        578.76,
+        1011.34
+      ],
+      "leader": false,
+      "anchor": [
+        574.76,
+        999.34
+      ]
+    },
+    "108085": {
+      "name": "Aldhanab",
+      "x": 944.68,
+      "y": 633.75,
+      "box": [
+        940.68,
+        630.75,
+        1061.68,
+        654.75
+      ],
+      "leader": false,
+      "anchor": [
+        944.68,
+        642.75
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

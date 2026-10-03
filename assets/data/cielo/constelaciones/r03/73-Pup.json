@@ -1,0 +1,416 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 73,
+  "iau_abbreviation": "Pup",
+  "name_es": "Popa",
+  "name_en": "Puppis",
+  "english_descriptor": "Stern",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 30438,
+      "ra_hours": 6.39919,
+      "dec_deg": -52.69572,
+      "magnitude": 0,
+      "bv": 0.164,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": "Canopus"
+    },
+    {
+      "hip": 31685,
+      "ra_hours": 6.62935,
+      "dec_deg": -43.19592,
+      "magnitude": 3.17,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1136.456,
+        1070.737
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 35264,
+      "ra_hours": 7.28571,
+      "dec_deg": -37.0975,
+      "magnitude": 2.71,
+      "bv": 1.616,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        798.714,
+        844.148
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 36917,
+      "ra_hours": 7.58971,
+      "dec_deg": -28.36928,
+      "magnitude": 4.65,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        625.347,
+        558.932
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 37229,
+      "ra_hours": 7.64719,
+      "dec_deg": -26.80389,
+      "magnitude": 3.8,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        588.352,
+        507.743
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 37677,
+      "ra_hours": 7.73013,
+      "dec_deg": -28.95483,
+      "magnitude": 3.94,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        536.567,
+        578.405
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 38070,
+      "ra_hours": 7.80144,
+      "dec_deg": -25.93717,
+      "magnitude": 4.4,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        487.235,
+        480.136
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 38170,
+      "ra_hours": 7.82157,
+      "dec_deg": -24.85978,
+      "magnitude": 3.34,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        472.365,
+        444.674
+      ],
+      "proper_name": "Azmidi"
+    },
+    {
+      "hip": 39429,
+      "ra_hours": 8.05974,
+      "dec_deg": -40.00319,
+      "magnitude": 2.21,
+      "bv": -0.269,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        363.642,
+        941.461
+      ],
+      "proper_name": "Naos"
+    },
+    {
+      "hip": 39757,
+      "ra_hours": 8.12575,
+      "dec_deg": -24.30444,
+      "magnitude": 2.83,
+      "bv": 0.458,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": "Tureis"
+    },
+    {
+      "hip": 39953,
+      "ra_hours": 8.15888,
+      "dec_deg": -47.33661,
+      "magnitude": 1.75,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        338.325,
+        1187.569
+      ],
+      "proper_name": "Regor"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 39953,
+      "to_hip": 39429,
+      "from_xy": [
+        338.325,
+        1187.569
+      ],
+      "to_xy": [
+        363.642,
+        941.461
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 39429,
+      "to_hip": 39757,
+      "from_xy": [
+        363.642,
+        941.461
+      ],
+      "to_xy": [
+        267.794,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 39757,
+      "to_hip": 38170,
+      "from_xy": [
+        267.794,
+        431.691
+      ],
+      "to_xy": [
+        472.365,
+        444.674
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 38170,
+      "to_hip": 37229,
+      "from_xy": [
+        472.365,
+        444.674
+      ],
+      "to_xy": [
+        588.352,
+        507.743
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 37229,
+      "to_hip": 36917,
+      "from_xy": [
+        588.352,
+        507.743
+      ],
+      "to_xy": [
+        625.347,
+        558.932
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 36917,
+      "to_hip": 35264,
+      "from_xy": [
+        625.347,
+        558.932
+      ],
+      "to_xy": [
+        798.714,
+        844.148
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 35264,
+      "to_hip": 31685,
+      "from_xy": [
+        798.714,
+        844.148
+      ],
+      "to_xy": [
+        1136.456,
+        1070.737
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 31685,
+      "to_hip": 30438,
+      "from_xy": [
+        1136.456,
+        1070.737
+      ],
+      "to_xy": [
+        1172.206,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 36917,
+      "to_hip": 37677,
+      "from_xy": [
+        625.347,
+        558.932
+      ],
+      "to_xy": [
+        536.567,
+        578.405
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 37677,
+      "to_hip": 38070,
+      "from_xy": [
+        536.567,
+        578.405
+      ],
+      "to_xy": [
+        487.235,
+        480.136
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 38070,
+      "to_hip": 38170,
+      "from_xy": [
+        487.235,
+        480.136
+      ],
+      "to_xy": [
+        472.365,
+        444.674
+      ]
+    }
+  ],
+  "labels_review": {
+    "30438": {
+      "name": "Canopus",
+      "x": 1184.21,
+      "y": 1351.31,
+      "box": [
+        1180.21,
+        1348.31,
+        1292.21,
+        1377.31
+      ],
+      "leader": true,
+      "anchor": [
+        1184.21,
+        1362.81
+      ]
+    },
+    "39953": {
+      "name": "Regor",
+      "x": 370.33,
+      "y": 1182.57,
+      "box": [
+        366.33,
+        1179.57,
+        444.33,
+        1208.57
+      ],
+      "leader": false,
+      "anchor": [
+        370.33,
+        1194.07
+      ]
+    },
+    "39429": {
+      "name": "Naos",
+      "x": 395.64,
+      "y": 936.46,
+      "box": [
+        391.64,
+        933.46,
+        459.64,
+        957.46
+      ],
+      "leader": false,
+      "anchor": [
+        395.64,
+        945.46
+      ]
+    },
+    "39757": {
+      "name": "Tureis",
+      "x": 164.79,
+      "y": 426.69,
+      "box": [
+        160.79,
+        423.69,
+        239.79,
+        447.69
+      ],
+      "leader": false,
+      "anchor": [
+        235.79,
+        435.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

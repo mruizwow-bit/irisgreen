@@ -1,0 +1,178 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Ari",
+  "name_es": "Aries",
+  "name_en": "Aries",
+  "descriptor_es": "El carnero",
+  "descriptor_en": "The Ram",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 8832,
+      "ra_hours": 1.89216,
+      "dec_deg": 19.29408,
+      "magnitude": 3.88,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        929.834,
+        1160.359
+      ],
+      "proper_name": "Mesarthim"
+    },
+    {
+      "hip": 8903,
+      "ra_hours": 1.91065,
+      "dec_deg": 20.80831,
+      "magnitude": 2.64,
+      "bv": 0.165,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        921.633,
+        1092.913
+      ],
+      "proper_name": "Sheratan"
+    },
+    {
+      "hip": 9884,
+      "ra_hours": 2.11952,
+      "dec_deg": 23.46278,
+      "magnitude": 2.01,
+      "bv": 1.151,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        842.272,
+        976.635
+      ],
+      "proper_name": "Hamal"
+    },
+    {
+      "hip": 13209,
+      "ra_hours": 2.83305,
+      "dec_deg": 27.26078,
+      "magnitude": 3.61,
+      "bv": -0.1,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        583.366,
+        791.748
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 13209,
+      "to_hip": 9884,
+      "from_xy": [
+        583.366,
+        791.748
+      ],
+      "to_xy": [
+        842.272,
+        976.635
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 9884,
+      "to_hip": 8903,
+      "from_xy": [
+        842.272,
+        976.635
+      ],
+      "to_xy": [
+        921.633,
+        1092.913
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 8903,
+      "to_hip": 8832,
+      "from_xy": [
+        921.633,
+        1092.913
+      ],
+      "to_xy": [
+        929.834,
+        1160.359
+      ]
+    }
+  ],
+  "labels_review": {
+    "9884": {
+      "name": "Hamal",
+      "x": 874.27,
+      "y": 971.64,
+      "box": [
+        870.27,
+        968.64,
+        956.27,
+        992.64
+      ],
+      "leader": false,
+      "anchor": [
+        874.27,
+        980.64
+      ]
+    },
+    "8903": {
+      "name": "Sheratan",
+      "x": 953.63,
+      "y": 1087.91,
+      "box": [
+        949.63,
+        1084.91,
+        1066.63,
+        1108.91
+      ],
+      "leader": false,
+      "anchor": [
+        953.63,
+        1096.91
+      ]
+    },
+    "8832": {
+      "name": "Mesarthim",
+      "x": 961.83,
+      "y": 1155.36,
+      "box": [
+        957.83,
+        1152.36,
+        1092.83,
+        1176.36
+      ],
+      "leader": false,
+      "anchor": [
+        961.83,
+        1164.36
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 16
+}

@@ -1,0 +1,145 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 76,
+  "iau_abbreviation": "Sge",
+  "name_es": "Flecha",
+  "name_en": "Sagitta",
+  "english_descriptor": "Arrow",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 96757,
+      "ra_hours": 19.66827,
+      "dec_deg": 18.01394,
+      "magnitude": 4.39,
+      "bv": 0.777,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        1152.94
+      ],
+      "proper_name": "Sham"
+    },
+    {
+      "hip": 96837,
+      "ra_hours": 19.68415,
+      "dec_deg": 17.47611,
+      "magnitude": 4.39,
+      "bv": 1.041,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1126.64,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 97365,
+      "ra_hours": 19.7898,
+      "dec_deg": 18.53425,
+      "magnitude": 3.68,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        817.051,
+        905.473
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98337,
+      "ra_hours": 19.97927,
+      "dec_deg": 19.49208,
+      "magnitude": 3.51,
+      "bv": 1.571,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        267.794,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 98337,
+      "to_hip": 97365,
+      "from_xy": [
+        267.794,
+        431.691
+      ],
+      "to_xy": [
+        817.051,
+        905.473
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 97365,
+      "to_hip": 96757,
+      "from_xy": [
+        817.051,
+        905.473
+      ],
+      "to_xy": [
+        1172.206,
+        1152.94
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 97365,
+      "to_hip": 96837,
+      "from_xy": [
+        817.051,
+        905.473
+      ],
+      "to_xy": [
+        1126.64,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "96757": {
+      "name": "Sham",
+      "x": 1204.21,
+      "y": 1147.94,
+      "box": [
+        1200.21,
+        1144.94,
+        1277.21,
+        1168.94
+      ],
+      "leader": false,
+      "anchor": [
+        1204.21,
+        1156.94
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

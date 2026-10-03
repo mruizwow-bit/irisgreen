@@ -1,0 +1,592 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Psc",
+  "name_es": "Piscis",
+  "name_en": "Pisces",
+  "descriptor_es": "Los peces",
+  "descriptor_en": "The Fishes",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 1645,
+      "ra_hours": 0.34329,
+      "dec_deg": 8.19025,
+      "magnitude": 5.38,
+      "bv": 1.343,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        814.289,
+        1197.865
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 3760,
+      "ra_hours": 0.80482,
+      "dec_deg": 7.29992,
+      "magnitude": 5.92,
+      "bv": 1.104,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        670.745,
+        1226.883
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 4889,
+      "ra_hours": 1.04697,
+      "dec_deg": 31.80433,
+      "magnitude": 5.5,
+      "bv": -0.043,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        602.367,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 4906,
+      "ra_hours": 1.04907,
+      "dec_deg": 7.89008,
+      "magnitude": 4.27,
+      "bv": 0.952,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        594.845,
+        1207.919
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 5742,
+      "ra_hours": 1.22915,
+      "dec_deg": 24.58378,
+      "magnitude": 4.67,
+      "bv": 1.047,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        546.094,
+        676.848
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 6193,
+      "ra_hours": 1.32444,
+      "dec_deg": 27.26408,
+      "magnitude": 4.74,
+      "bv": 0.032,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        519.172,
+        583.842
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 7007,
+      "ra_hours": 1.50304,
+      "dec_deg": 6.14394,
+      "magnitude": 4.84,
+      "bv": 1.372,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        450.061,
+        1259.081
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 7097,
+      "ra_hours": 1.52472,
+      "dec_deg": 15.34583,
+      "magnitude": 3.62,
+      "bv": 0.974,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        449.92,
+        968.238
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 7884,
+      "ra_hours": 1.69053,
+      "dec_deg": 5.48761,
+      "magnitude": 4.45,
+      "bv": 1.347,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        388.139,
+        1277.951
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 8198,
+      "ra_hours": 1.75655,
+      "dec_deg": 9.15764,
+      "magnitude": 4.26,
+      "bv": 0.942,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        369.829,
+        1159.611
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 8833,
+      "ra_hours": 1.89259,
+      "dec_deg": 3.18747,
+      "magnitude": 4.61,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        317.576,
+        1350.369
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 9487,
+      "ra_hours": 2.03411,
+      "dec_deg": 2.76375,
+      "magnitude": 3.82,
+      "bv": 0.024,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1363.158
+      ],
+      "proper_name": "Alrescha"
+    },
+    {
+      "hip": 114971,
+      "ra_hours": 23.28597,
+      "dec_deg": 3.28225,
+      "magnitude": 3.7,
+      "bv": 0.916,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        1343.871
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 115738,
+      "ra_hours": 23.44886,
+      "dec_deg": 1.25583,
+      "magnitude": 4.95,
+      "bv": 0.036,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1116.459,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 115830,
+      "ra_hours": 23.46616,
+      "dec_deg": 6.37911,
+      "magnitude": 4.27,
+      "bv": 1.062,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1103.372,
+        1243.697
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 116771,
+      "ra_hours": 23.66578,
+      "dec_deg": 5.62736,
+      "magnitude": 4.13,
+      "bv": 0.507,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1035.719,
+        1271.465
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 116928,
+      "ra_hours": 23.7008,
+      "dec_deg": 1.78042,
+      "magnitude": 4.49,
+      "bv": 0.2,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1028.019,
+        1396.969
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 118268,
+      "ra_hours": 23.9885,
+      "dec_deg": 6.86358,
+      "magnitude": 4.03,
+      "bv": 0.419,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        927.882,
+        1236.089
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 4889,
+      "to_hip": 5742,
+      "from_xy": [
+        602.367,
+        431.691
+      ],
+      "to_xy": [
+        546.094,
+        676.848
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 4889,
+      "to_hip": 6193,
+      "from_xy": [
+        602.367,
+        431.691
+      ],
+      "to_xy": [
+        519.172,
+        583.842
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 6193,
+      "to_hip": 5742,
+      "from_xy": [
+        519.172,
+        583.842
+      ],
+      "to_xy": [
+        546.094,
+        676.848
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 5742,
+      "to_hip": 7097,
+      "from_xy": [
+        546.094,
+        676.848
+      ],
+      "to_xy": [
+        449.92,
+        968.238
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 7097,
+      "to_hip": 8198,
+      "from_xy": [
+        449.92,
+        968.238
+      ],
+      "to_xy": [
+        369.829,
+        1159.611
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 8198,
+      "to_hip": 9487,
+      "from_xy": [
+        369.829,
+        1159.611
+      ],
+      "to_xy": [
+        267.794,
+        1363.158
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 9487,
+      "to_hip": 8833,
+      "from_xy": [
+        267.794,
+        1363.158
+      ],
+      "to_xy": [
+        317.576,
+        1350.369
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 8833,
+      "to_hip": 7884,
+      "from_xy": [
+        317.576,
+        1350.369
+      ],
+      "to_xy": [
+        388.139,
+        1277.951
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 7884,
+      "to_hip": 7007,
+      "from_xy": [
+        388.139,
+        1277.951
+      ],
+      "to_xy": [
+        450.061,
+        1259.081
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 7007,
+      "to_hip": 4906,
+      "from_xy": [
+        450.061,
+        1259.081
+      ],
+      "to_xy": [
+        594.845,
+        1207.919
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 4906,
+      "to_hip": 3760,
+      "from_xy": [
+        594.845,
+        1207.919
+      ],
+      "to_xy": [
+        670.745,
+        1226.883
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 3760,
+      "to_hip": 1645,
+      "from_xy": [
+        670.745,
+        1226.883
+      ],
+      "to_xy": [
+        814.289,
+        1197.865
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 1645,
+      "to_hip": 118268,
+      "from_xy": [
+        814.289,
+        1197.865
+      ],
+      "to_xy": [
+        927.882,
+        1236.089
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 118268,
+      "to_hip": 116771,
+      "from_xy": [
+        927.882,
+        1236.089
+      ],
+      "to_xy": [
+        1035.719,
+        1271.465
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 116771,
+      "to_hip": 116928,
+      "from_xy": [
+        1035.719,
+        1271.465
+      ],
+      "to_xy": [
+        1028.019,
+        1396.969
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 116928,
+      "to_hip": 115738,
+      "from_xy": [
+        1028.019,
+        1396.969
+      ],
+      "to_xy": [
+        1116.459,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 115738,
+      "to_hip": 114971,
+      "from_xy": [
+        1116.459,
+        1413.309
+      ],
+      "to_xy": [
+        1172.206,
+        1343.871
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 114971,
+      "to_hip": 115830,
+      "from_xy": [
+        1172.206,
+        1343.871
+      ],
+      "to_xy": [
+        1103.372,
+        1243.697
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 115830,
+      "to_hip": 116771,
+      "from_xy": [
+        1103.372,
+        1243.697
+      ],
+      "to_xy": [
+        1035.719,
+        1271.465
+      ]
+    }
+  ],
+  "labels_review": {
+    "9487": {
+      "name": "Alrescha",
+      "x": 132.79,
+      "y": 1358.16,
+      "box": [
+        128.79,
+        1355.16,
+        239.79,
+        1379.16
+      ],
+      "leader": false,
+      "anchor": [
+        235.79,
+        1367.16
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 15
+}

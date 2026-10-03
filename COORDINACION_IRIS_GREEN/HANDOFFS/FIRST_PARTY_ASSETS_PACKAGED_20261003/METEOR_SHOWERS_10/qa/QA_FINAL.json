@@ -1,0 +1,219 @@
+{
+  "schema": "iris-green.visual-assets.qa.v1",
+  "gate": "METEOR_SHOWERS_BATCH_01_FINAL_10_PASS_READY_FOR_REVIEW",
+  "date": "2026-10-03",
+  "result": "PASS_READY_FOR_REVIEW",
+  "scope": "technical normalization + collection packaging; no redesign; no runtime/main integration",
+  "master_count": 10,
+  "technical_checks": {
+    "all_exist": true,
+    "all_1536_square": true,
+    "all_png": true,
+    "all_rgb_or_rgba": true,
+    "all_srgb_embedded": true,
+    "all_hashes_unique": true,
+    "visual_contact_sheet_openable": true,
+    "factual_contact_sheet_openable": true,
+    "no_generated_text_in_masters": "HUMAN_VISUAL_APPROVAL_PRE_NORMALIZATION + unchanged visual pixels except resampling"
+  },
+  "collection_visual_checks": {
+    "ten_distinct_landscapes": "HUMAN_PASS_BY_MARIA_BEFORE_NORMALIZATION",
+    "ten_distinct_compositions": "HUMAN_PASS_BY_MARIA_BEFORE_NORMALIZATION",
+    "radiants_coherent": "HUMAN_PASS_BY_MARIA_BEFORE_NORMALIZATION",
+    "high_activity": [
+      "Cuadrántidas",
+      "Perseidas",
+      "Gemínidas"
+    ],
+    "medium_activity": [
+      "Eta Acuáridas",
+      "Oriónidas",
+      "Leónidas"
+    ],
+    "low_moderate_activity": [
+      "Líridas",
+      "Delta Acuáridas del Sur",
+      "Táuridas",
+      "Úrsidas"
+    ],
+    "taurids_sparse": "HUMAN_PASS",
+    "leonids_not_historic_storm": "HUMAN_PASS",
+    "eta_new_subtropical_coast": "HUMAN_PASS",
+    "perceptual_duplicate_screen": {
+      "method": "16x16 dHash; support-only, not visual approval",
+      "minimum_pair_distance": {
+        "a": "meteor_06_orionidas.png",
+        "b": "meteor_10_ursidas.png",
+        "distance": 97
+      }
+    }
+  },
+  "factual_checks": {
+    "json_records": 10,
+    "required_fields": [
+      "name",
+      "period",
+      "peak",
+      "ZHR",
+      "velocity",
+      "radiant",
+      "parent"
+    ],
+    "numeric_source": "AMS 2026 list credited to IMO + Masahiro Koseki",
+    "parent_crosscheck": "NASA/JPL SSD + NASA Science",
+    "southern_delta_parent_caveat": "96P/Machholz kept as suspected; JPL SSD differs (P/2008 Y12 SOHO)",
+    "taurids_basis": "Southern Taurids used as single quantitative basis for one grouped public visual"
+  },
+  "masters": [
+    {
+      "file": "meteor_01_cuadrantidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "b586baab4d924bce7582c3db721fc14d521df1b3954be14835a0f7d53125622d",
+      "bytes": 3384153
+    },
+    {
+      "file": "meteor_02_liridas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "809bbd82f6bbb49684e4af91ad3a4416812bdf4ea1892a5b52505de5c0379997",
+      "bytes": 2919448
+    },
+    {
+      "file": "meteor_03_eta-acuaridas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "81c1222159dabc22c0fde83611f6ef6def086e7926fb483659f51bd2ce071d20",
+      "bytes": 3241954
+    },
+    {
+      "file": "meteor_04_delta-acuaridas-sur.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "25e1482b2fe224bef735725332f0c299622e69c25f3c2a913866e9368fa16fa0",
+      "bytes": 2826479
+    },
+    {
+      "file": "meteor_05_perseidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "68e57578ac9c0b372bdf07ef05bae7b53b2f413bd16034e3e8c0a9d688f0e3ef",
+      "bytes": 3890049
+    },
+    {
+      "file": "meteor_06_orionidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "f3186e94e3ef611aebe89a95c53eae95e125ad83908f914de3e5cba9417eef5f",
+      "bytes": 3503571
+    },
+    {
+      "file": "meteor_07_tauridas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "98edf1089808667460d4a09d50819202fadc272d42ac815334cf118d9c974857",
+      "bytes": 2970949
+    },
+    {
+      "file": "meteor_08_leonidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "9e9ef40719157b4f7047f7067a0e15d552638544cd75d8b509380496e4c9bce7",
+      "bytes": 3262994
+    },
+    {
+      "file": "meteor_09_geminidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "24cabce8d7fdadc001cf01e0617f6ea0a09460dbc4a0dd6ad866eb583de3592a",
+      "bytes": 3612226
+    },
+    {
+      "file": "meteor_10_ursidas.png",
+      "exists": true,
+      "size": [
+        1536,
+        1536
+      ],
+      "mode": "RGB",
+      "png": true,
+      "icc_present": true,
+      "icc_bytes": 588,
+      "icc_description": "sRGB built-in",
+      "sha256": "644a8a54380880a0c4bbb2ad222b9603efe4910f5b333b4f3d2e6a59f453bcd0",
+      "bytes": 2709355
+    }
+  ]
+}

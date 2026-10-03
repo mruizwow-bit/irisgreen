@@ -1,0 +1,328 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Aql",
+  "name_es": "Águila",
+  "name_en": "Aquila",
+  "descriptor_es": "El águila",
+  "descriptor_en": "The Eagle",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 93244,
+      "ra_hours": 18.99372,
+      "dec_deg": 15.06847,
+      "magnitude": 4.02,
+      "bv": 1.082,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        923.935,
+        643.463
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93747,
+      "ra_hours": 19.09017,
+      "dec_deg": 13.86372,
+      "magnitude": 2.99,
+      "bv": 0.014,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        890.539,
+        678.054
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 93805,
+      "ra_hours": 19.10415,
+      "dec_deg": -4.88233,
+      "magnitude": 3.43,
+      "bv": -0.096,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        891.667,
+        1188.241
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 95501,
+      "ra_hours": 19.42493,
+      "dec_deg": 3.11458,
+      "magnitude": 3.36,
+      "bv": 0.319,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        775.445,
+        969.714
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 97278,
+      "ra_hours": 19.77099,
+      "dec_deg": 10.61328,
+      "magnitude": 2.72,
+      "bv": 1.507,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        654.612,
+        768.664
+      ],
+      "proper_name": "Tarazed"
+    },
+    {
+      "hip": 97649,
+      "ra_hours": 19.8463,
+      "dec_deg": 8.86739,
+      "magnitude": 0.76,
+      "bv": 0.221,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        628.11,
+        815.307
+      ],
+      "proper_name": "Altair"
+    },
+    {
+      "hip": 97804,
+      "ra_hours": 19.87454,
+      "dec_deg": 1.00567,
+      "magnitude": 3.87,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        616.721,
+        1026.376
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 98036,
+      "ra_hours": 19.92188,
+      "dec_deg": 6.40794,
+      "magnitude": 3.71,
+      "bv": 0.855,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        601.108,
+        880.997
+      ],
+      "proper_name": "Alshain"
+    },
+    {
+      "hip": 99473,
+      "ra_hours": 20.18841,
+      "dec_deg": 0.82147,
+      "magnitude": 3.24,
+      "bv": -0.066,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        504.245,
+        1031.139
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 98036,
+      "to_hip": 97649,
+      "from_xy": [
+        601.108,
+        880.997
+      ],
+      "to_xy": [
+        628.11,
+        815.307
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 97649,
+      "to_hip": 97278,
+      "from_xy": [
+        628.11,
+        815.307
+      ],
+      "to_xy": [
+        654.612,
+        768.664
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 97649,
+      "to_hip": 95501,
+      "from_xy": [
+        628.11,
+        815.307
+      ],
+      "to_xy": [
+        775.445,
+        969.714
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 95501,
+      "to_hip": 97804,
+      "from_xy": [
+        775.445,
+        969.714
+      ],
+      "to_xy": [
+        616.721,
+        1026.376
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 99473,
+      "to_hip": 97804,
+      "from_xy": [
+        504.245,
+        1031.139
+      ],
+      "to_xy": [
+        616.721,
+        1026.376
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 95501,
+      "to_hip": 93747,
+      "from_xy": [
+        775.445,
+        969.714
+      ],
+      "to_xy": [
+        890.539,
+        678.054
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 93747,
+      "to_hip": 93244,
+      "from_xy": [
+        890.539,
+        678.054
+      ],
+      "to_xy": [
+        923.935,
+        643.463
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 95501,
+      "to_hip": 93805,
+      "from_xy": [
+        775.445,
+        969.714
+      ],
+      "to_xy": [
+        891.667,
+        1188.241
+      ]
+    }
+  ],
+  "labels_review": {
+    "97649": {
+      "name": "Altair",
+      "x": 552.11,
+      "y": 753.31,
+      "box": [
+        548.11,
+        750.31,
+        620.11,
+        774.31
+      ],
+      "leader": true,
+      "anchor": [
+        616.11,
+        762.31
+      ]
+    },
+    "97278": {
+      "name": "Tarazed",
+      "x": 686.61,
+      "y": 763.66,
+      "box": [
+        682.61,
+        760.66,
+        784.61,
+        784.66
+      ],
+      "leader": false,
+      "anchor": [
+        686.61,
+        772.66
+      ]
+    },
+    "98036": {
+      "name": "Alshain",
+      "x": 482.11,
+      "y": 876.0,
+      "box": [
+        478.11,
+        873.0,
+        573.11,
+        897.0
+      ],
+      "leader": false,
+      "anchor": [
+        569.11,
+        885.0
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 7
+}

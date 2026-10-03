@@ -1,0 +1,294 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 43,
+  "iau_abbreviation": "Crt",
+  "name_es": "Copa",
+  "name_en": "Crater",
+  "english_descriptor": "Cup",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 53740,
+      "ra_hours": 10.99632,
+      "dec_deg": -18.29911,
+      "magnitude": 4.08,
+      "bv": 1.079,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        970.517,
+        925.127
+      ],
+      "proper_name": "Alkes"
+    },
+    {
+      "hip": 54682,
+      "ra_hours": 11.1943,
+      "dec_deg": -22.82561,
+      "magnitude": 4.46,
+      "bv": 0.025,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        857.86,
+        1180.89
+      ],
+      "proper_name": "Al Sharasif"
+    },
+    {
+      "hip": 55282,
+      "ra_hours": 11.32237,
+      "dec_deg": -14.77906,
+      "magnitude": 3.56,
+      "bv": 1.112,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        792.224,
+        717.457
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 55687,
+      "ra_hours": 11.41017,
+      "dec_deg": -10.85939,
+      "magnitude": 4.81,
+      "bv": 1.556,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        743.736,
+        492.287
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 55705,
+      "ra_hours": 11.41472,
+      "dec_deg": -17.68403,
+      "magnitude": 4.06,
+      "bv": 0.216,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        740.369,
+        882.941
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 56633,
+      "ra_hours": 11.61137,
+      "dec_deg": -9.80225,
+      "magnitude": 4.7,
+      "bv": -0.073,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        628.791,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 57283,
+      "ra_hours": 11.74604,
+      "dec_deg": -18.35061,
+      "magnitude": 4.71,
+      "bv": 0.958,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        558.604,
+        923.834
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 58188,
+      "ra_hours": 11.93361,
+      "dec_deg": -17.15081,
+      "magnitude": 5.17,
+      "bv": -0.022,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        453.331,
+        859.705
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 53740,
+      "to_hip": 54682,
+      "from_xy": [
+        970.517,
+        925.127
+      ],
+      "to_xy": [
+        857.86,
+        1180.89
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 54682,
+      "to_hip": 55705,
+      "from_xy": [
+        857.86,
+        1180.89
+      ],
+      "to_xy": [
+        740.369,
+        882.941
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 55705,
+      "to_hip": 57283,
+      "from_xy": [
+        740.369,
+        882.941
+      ],
+      "to_xy": [
+        558.604,
+        923.834
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 57283,
+      "to_hip": 58188,
+      "from_xy": [
+        558.604,
+        923.834
+      ],
+      "to_xy": [
+        453.331,
+        859.705
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 55705,
+      "to_hip": 55282,
+      "from_xy": [
+        740.369,
+        882.941
+      ],
+      "to_xy": [
+        792.224,
+        717.457
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 55282,
+      "to_hip": 55687,
+      "from_xy": [
+        792.224,
+        717.457
+      ],
+      "to_xy": [
+        743.736,
+        492.287
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 55687,
+      "to_hip": 56633,
+      "from_xy": [
+        743.736,
+        492.287
+      ],
+      "to_xy": [
+        628.791,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 55282,
+      "to_hip": 53740,
+      "from_xy": [
+        792.224,
+        717.457
+      ],
+      "to_xy": [
+        970.517,
+        925.127
+      ]
+    }
+  ],
+  "labels_review": {
+    "53740": {
+      "name": "Alkes",
+      "x": 1002.52,
+      "y": 920.13,
+      "box": [
+        998.52,
+        917.13,
+        1069.52,
+        941.13
+      ],
+      "leader": false,
+      "anchor": [
+        1002.52,
+        929.13
+      ]
+    },
+    "54682": {
+      "name": "Al Sharasif",
+      "x": 889.86,
+      "y": 1175.89,
+      "box": [
+        885.86,
+        1172.89,
+        1022.86,
+        1196.89
+      ],
+      "leader": false,
+      "anchor": [
+        889.86,
+        1184.89
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

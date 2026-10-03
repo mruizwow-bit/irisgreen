@@ -1,0 +1,128 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 22,
+  "iau_abbreviation": "Aps",
+  "name_es": "Ave del Paraíso",
+  "name_en": "Apus",
+  "english_descriptor": "Bird of Paradise",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 72370,
+      "ra_hours": 14.7977,
+      "dec_deg": -79.04472,
+      "magnitude": 3.83,
+      "bv": 1.433,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        845.721,
+        971.588
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80047,
+      "ra_hours": 16.33912,
+      "dec_deg": -78.69567,
+      "magnitude": 4.68,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        637.834,
+        929.05
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 81065,
+      "ra_hours": 16.55763,
+      "dec_deg": -78.89697,
+      "magnitude": 3.86,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        608.233,
+        939.997
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 81852,
+      "ra_hours": 16.71817,
+      "dec_deg": -77.51658,
+      "magnitude": 4.23,
+      "bv": 1.06,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        576.301,
+        883.337
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 72370,
+      "to_hip": 81065,
+      "from_xy": [
+        845.721,
+        971.588
+      ],
+      "to_xy": [
+        608.233,
+        939.997
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 80047,
+      "to_hip": 81852,
+      "from_xy": [
+        637.834,
+        929.05
+      ],
+      "to_xy": [
+        576.301,
+        883.337
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 81852,
+      "to_hip": 81065,
+      "from_xy": [
+        576.301,
+        883.337
+      ],
+      "to_xy": [
+        608.233,
+        939.997
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

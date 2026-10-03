@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Corona Boreal / Corona Borealis</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="990.389" cy="689.909" r="3.151"/>
+<circle id="bg-star-002" cx="627.628" cy="1400.085" r="2.742"/>
+<circle id="bg-star-003" cx="885.609" cy="505.243" r="2.599"/>
+<circle id="bg-star-004" cx="715.291" cy="1328.300" r="2.469"/>
+<circle id="bg-star-005" cx="1136.508" cy="976.041" r="2.462"/>
+<circle id="bg-star-006" cx="733.522" cy="544.485" r="2.384"/>
+<circle id="bg-star-007" cx="427.672" cy="543.844" r="2.325"/>
+<circle id="bg-star-008" cx="598.909" cy="1266.823" r="2.319"/>
+<circle id="bg-star-009" cx="610.597" cy="589.808" r="2.287"/>
+<circle id="bg-star-010" cx="1172.206" cy="1064.007" r="2.280"/>
+<circle id="bg-star-011" cx="470.410" cy="1179.488" r="2.267"/>
+<circle id="bg-star-012" cx="267.794" cy="794.685" r="2.241"/>
+<circle id="bg-star-013" cx="1111.634" cy="1074.420" r="2.196"/>
+<circle id="bg-star-014" cx="914.382" cy="833.999" r="2.157"/>
+<circle id="bg-star-015" cx="473.568" cy="1413.309" r="2.085"/>
+<circle id="bg-star-016" cx="773.869" cy="431.691" r="2.059"/>
+<circle id="bg-star-017" cx="276.855" cy="659.443" r="2.020"/>
+<circle id="bg-star-018" cx="359.557" cy="662.957" r="2.001"/>
+<circle id="bg-star-019" cx="1014.252" cy="881.016" r="1.968"/>
+<circle id="bg-star-020" cx="923.595" cy="711.281" r="1.903"/>
+<circle id="bg-star-021" cx="504.054" cy="696.301" r="1.897"/>
+<circle id="bg-star-022" cx="275.036" cy="663.784" r="1.890"/>
+<circle id="bg-star-023" cx="566.010" cy="481.265" r="1.871"/>
+<circle id="bg-star-024" cx="558.542" cy="1297.439" r="1.857"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="76127" data-to-hip="75695" x1="806.098" y1="788.121" x2="865.375" y2="890.21"/>
+<line id="edge-02" data-from-hip="75695" data-to-hip="76267" x1="865.375" y1="890.21" x2="791.457" y2="1001.729"/>
+<line id="edge-03" data-from-hip="76267" data-to-hip="76952" x1="791.457" y1="1001.729" x2="700.072" y2="1021.81"/>
+<line id="edge-04" data-from-hip="76952" data-to-hip="77512" x1="700.072" y1="1021.81" x2="621.917" y2="1031.917"/>
+<line id="edge-05" data-from-hip="77512" data-to-hip="78159" x1="621.917" y1="1031.917" x2="531.743" y2="993.197"/>
+<line id="edge-06" data-from-hip="78159" data-to-hip="78493" x1="531.743" y1="993.197" x2="493.414" y2="855.405"/>
+</g><g id="stars">
+<circle id="hip-75695" data-hip="75695" data-mag="3.66" data-bv="0.319" cx="865.375" cy="890.210" r="5.559" fill="rgb(222, 232, 255)"/>
+<circle id="hip-76127" data-hip="76127" data-mag="4.14" data-bv="-0.127" cx="806.098" cy="788.121" r="4.911" fill="rgb(190, 215, 255)"/>
+<circle id="hip-76267" data-hip="76267" data-mag="2.22" data-bv="0.032" cx="791.457" cy="1001.729" r="7.503" fill="rgb(190, 215, 255)"/>
+<circle id="hip-76952" data-hip="76952" data-mag="3.81" data-bv="0.02" cx="700.072" cy="1021.810" r="5.356" fill="rgb(190, 215, 255)"/>
+<circle id="hip-77512" data-hip="77512" data-mag="4.59" data-bv="0.794" cx="621.917" cy="1031.917" r="4.303" fill="rgb(255, 221, 170)"/>
+<circle id="hip-78159" data-hip="78159" data-mag="4.14" data-bv="1.231" cx="531.743" cy="993.197" r="4.911" fill="rgb(255, 188, 125)"/>
+<circle id="hip-78493" data-hip="78493" data-mag="4.98" data-bv="-0.05" cx="493.414" cy="855.405" r="3.777" fill="rgb(190, 215, 255)"/>
+</g></svg>

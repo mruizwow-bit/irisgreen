@@ -1,0 +1,46 @@
+{
+  "schema": "iris-green-provenance-r03",
+  "sources": [
+    {
+      "kind": "constellation_regions",
+      "source": "IAU",
+      "note": "IAU defines the 88 constellations/regions; no claim that stick figures are official IAU graphics."
+    },
+    {
+      "kind": "line_figure",
+      "source": "Stellarium Modern",
+      "reference": "skycultures/modern_st/index.json"
+    },
+    {
+      "kind": "star_positions",
+      "source": "Hipparcos-derived bright-star data",
+      "fields": [
+        "HIP",
+        "RA",
+        "Dec",
+        "magnitude"
+      ]
+    },
+    {
+      "kind": "bv",
+      "source": "Hipparcos line-star derivative where available",
+      "note": "null when absent in source"
+    },
+    {
+      "kind": "proper_names",
+      "source": "Stellarium modern star_names.fab v24.2",
+      "note": "common labels for review; not asserted as the IAU official proper-name set"
+    }
+  ],
+  "transformations": [
+    "gnomonic local projection",
+    "vector SVG generation",
+    "collision-avoiding review labels",
+    "sRGB-tagged PNG review",
+    "undirected-edge deduplication where needed",
+    "background-star consistency restore where missing",
+    "index normalization for T01-T02",
+    "Orion belt label spacing refinement"
+  ],
+  "visibility_policy": "Localized metadata only; not baked into base artwork."
+}

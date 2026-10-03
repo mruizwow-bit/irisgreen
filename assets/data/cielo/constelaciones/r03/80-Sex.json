@@ -1,0 +1,128 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 80,
+  "iau_abbreviation": "Sex",
+  "name_es": "Sextante",
+  "name_en": "Sextans",
+  "english_descriptor": "Sextant",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 48437,
+      "ra_hours": 9.87513,
+      "dec_deg": -8.10492,
+      "magnitude": 5.07,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 49641,
+      "ra_hours": 10.13231,
+      "dec_deg": -0.37164,
+      "magnitude": 4.48,
+      "bv": -0.032,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        804.303,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51362,
+      "ra_hours": 10.49131,
+      "dec_deg": -2.73906,
+      "magnitude": 5.19,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        288.022,
+        730.964
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51437,
+      "ra_hours": 10.50486,
+      "dec_deg": -0.63697,
+      "magnitude": 5.08,
+      "bv": -0.138,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        465.35
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 48437,
+      "to_hip": 49641,
+      "from_xy": [
+        1172.206,
+        1413.309
+      ],
+      "to_xy": [
+        804.303,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 49641,
+      "to_hip": 51437,
+      "from_xy": [
+        804.303,
+        431.691
+      ],
+      "to_xy": [
+        267.794,
+        465.35
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 51437,
+      "to_hip": 51362,
+      "from_xy": [
+        267.794,
+        465.35
+      ],
+      "to_xy": [
+        288.022,
+        730.964
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

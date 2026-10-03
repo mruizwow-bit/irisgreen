@@ -1,0 +1,181 @@
+{
+  "schema": "iris-green.solar-b03-runtime-package.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "factual_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "visual_gate": "SOLAR_B03_DWARF_MOONS_10_VISUAL_PASS",
+  "source_gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+  "package_gate": "SOLAR_B03_10_PACKAGED_READY_FOR_RUNTIME",
+  "general_marker": "FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME",
+  "source_commit": "7d82a9c60b3e3a7fb82a7bd0f0ae67eb6c06c269",
+  "source_library": "/Iris Green/First Party Visual/Solar B03 Dwarf Moons Final/",
+  "atlas_library_package": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/SOLAR_B03_10/",
+  "canonical_runtime_root": "/img/intereses/sistema-solar/b03/",
+  "masters": [
+    {
+      "id": 1,
+      "name": "Ceres",
+      "file": "solar_b03_01_ceres.png",
+      "sha256": "75e103718247528863c80ad8aa213bc0083e74fb420d0073ce64675c8fc7beb9",
+      "bytes": 1382955,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_01_ceres.png"
+    },
+    {
+      "id": 2,
+      "name": "Haumea",
+      "file": "solar_b03_02_haumea.png",
+      "sha256": "ee969ade1fb69a433b69e2fe7ce3ebd152ce04752a686533072c33848fac9ec2",
+      "bytes": 346836,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_02_haumea.png"
+    },
+    {
+      "id": 3,
+      "name": "Makemake",
+      "file": "solar_b03_03_makemake.png",
+      "sha256": "f2bbc1f176a6bc6c06bff97950ed3dd285849a1a32b3390ec2aa38219817c9eb",
+      "bytes": 559237,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_03_makemake.png"
+    },
+    {
+      "id": 4,
+      "name": "Eris",
+      "file": "solar_b03_04_eris.png",
+      "sha256": "f76c70b9e844071364e533f01cb013beb460fdcea6f8158c91bbfdb97157f2b6",
+      "bytes": 503863,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_04_eris.png"
+    },
+    {
+      "id": 5,
+      "name": "Luna",
+      "file": "solar_b03_05_luna.png",
+      "sha256": "9fa00c11a11ed0db21fd44b2cbe85b191557fe5538b24117a048a0c74c58bdcc",
+      "bytes": 1233655,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_05_luna.png"
+    },
+    {
+      "id": 6,
+      "name": "Io",
+      "file": "solar_b03_06_io.png",
+      "sha256": "aa1b05a8aab22aeb7c5236056c57789ca4dc78c85d2e355bdf859aa055e09793",
+      "bytes": 1240869,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_06_io.png"
+    },
+    {
+      "id": 7,
+      "name": "Europa",
+      "file": "solar_b03_07_europa.png",
+      "sha256": "9d122e0dc434d84968e9edccb5d2673d906d31becd23bf045c6c3573ddda275e",
+      "bytes": 1368338,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_07_europa.png"
+    },
+    {
+      "id": 8,
+      "name": "Ganímedes",
+      "file": "solar_b03_08_ganymede.png",
+      "sha256": "e5921eb319efa9211f5a3269cb6a1e1a678612fc9df50c3fcb863b396ca738a1",
+      "bytes": 1505048,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_08_ganymede.png"
+    },
+    {
+      "id": 9,
+      "name": "Titán",
+      "file": "solar_b03_09_titan.png",
+      "sha256": "099732e31d2401f6d0c6e29870395484fb26f5fe2ef60becd44ea3ed28c5e4c7",
+      "bytes": 547904,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_09_titan.png"
+    },
+    {
+      "id": 10,
+      "name": "Encélado",
+      "file": "solar_b03_10_encelado.png",
+      "sha256": "6c3b7986a09b63cb792354c2d68ec27ff2dc256e1df94071197eb87fe77f1204",
+      "bytes": 1362121,
+      "width": 1536,
+      "height": 1536,
+      "mode": "RGBA",
+      "alpha_min": 0,
+      "alpha_max": 255,
+      "srgb_embedded": true,
+      "canonical_runtime_path": "/img/intereses/sistema-solar/b03/solar_b03_10_encelado.png"
+    }
+  ],
+  "contact_sheet": {
+    "file": "SOLAR_B03_DWARF_MOONS_10_CONTACT_SHEET_FINAL_REVIEW.png",
+    "sha256": "0d8b1d05fd2b7e9aa456c2cc59dc8972f9be8a70bf81cb0cc6f7bfd7abd9b578",
+    "role": "QA_ONLY"
+  },
+  "alpha_qa": {
+    "file": "SOLAR_B03_ALPHA_VALIDATION_BLACK_WHITE_GRAY_FINAL.png",
+    "sha256": "0c13174baad6078151b2dce22105b40f827232c2159bdf6e6e14a61618b4f730",
+    "role": "QA_ONLY"
+  },
+  "package_zip": {
+    "file": "SOLAR_B03_10_RUNTIME_PACKAGE_R01.zip",
+    "sha256": "d7bf6dfd31511368e46b5d6ff359a3fbded2cca7e51c400451664dcd4b789339",
+    "bytes": 12211140
+  },
+  "immutability": {
+    "art": "KEEP_LOCKED",
+    "pixels_modified_by_atlas": false,
+    "reencoded_by_atlas": false
+  },
+  "integration": {
+    "runtime_owner": "PRISMA_MOTOR",
+    "atlas_runtime_changes": false,
+    "main_touched": false
+  }
+}

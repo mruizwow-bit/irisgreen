@@ -1,0 +1,372 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "iau_abbreviation": "Per",
+  "name_es": "Perseo",
+  "name_en": "Perseus",
+  "descriptor_es": "El héroe",
+  "descriptor_en": "The Hero",
+  "geometry_status": "KEEP_FROM_R01",
+  "line_figure_source": "Stellarium-derived R01 geometry; unchanged in R02",
+  "iau_scope_note": "IAU defines the constellation/region; the line figure is not an official IAU graphic pattern.",
+  "stars": [
+    {
+      "hip": 13254,
+      "ra_hours": 2.84303,
+      "dec_deg": 38.31892,
+      "magnitude": 4.22,
+      "bv": 0.343,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        820.207,
+        962.063
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 13268,
+      "ra_hours": 2.84494,
+      "dec_deg": 55.89553,
+      "magnitude": 3.77,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        744.022,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 14328,
+      "ra_hours": 3.07994,
+      "dec_deg": 53.50644,
+      "magnitude": 2.91,
+      "bv": 0.716,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        671.531,
+        512.732
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 14354,
+      "ra_hours": 3.08625,
+      "dec_deg": 38.84053,
+      "magnitude": 3.32,
+      "bv": 1.528,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        706.937,
+        953.344
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 14576,
+      "ra_hours": 3.13615,
+      "dec_deg": 40.95564,
+      "magnitude": 2.09,
+      "bv": -0.003,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        679.57,
+        891.269
+      ],
+      "proper_name": "Algol"
+    },
+    {
+      "hip": 15863,
+      "ra_hours": 3.40537,
+      "dec_deg": 49.86125,
+      "magnitude": 1.79,
+      "bv": 0.481,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        558.102,
+        628.068
+      ],
+      "proper_name": "Mirfak"
+    },
+    {
+      "hip": 17358,
+      "ra_hours": 3.71541,
+      "dec_deg": 47.78767,
+      "magnitude": 3.01,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        437.15,
+        688.611
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 17448,
+      "ra_hours": 3.73865,
+      "dec_deg": 32.28828,
+      "magnitude": 3.84,
+      "bv": 0.022,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        397.709,
+        1153.019
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18246,
+      "ra_hours": 3.9022,
+      "dec_deg": 31.88367,
+      "magnitude": 2.84,
+      "bv": 0.271,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        314.412,
+        1162.219
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18532,
+      "ra_hours": 3.96423,
+      "dec_deg": 40.01028,
+      "magnitude": 2.9,
+      "bv": -0.199,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        311.967,
+        914.914
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 18614,
+      "ra_hours": 3.98275,
+      "dec_deg": 35.79103,
+      "magnitude": 3.98,
+      "bv": 0.016,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        288.21,
+        1040.889
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 17448,
+      "to_hip": 18246,
+      "from_xy": [
+        397.709,
+        1153.019
+      ],
+      "to_xy": [
+        314.412,
+        1162.219
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 18246,
+      "to_hip": 18614,
+      "from_xy": [
+        314.412,
+        1162.219
+      ],
+      "to_xy": [
+        288.21,
+        1040.889
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 18614,
+      "to_hip": 18532,
+      "from_xy": [
+        288.21,
+        1040.889
+      ],
+      "to_xy": [
+        311.967,
+        914.914
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 18532,
+      "to_hip": 17358,
+      "from_xy": [
+        311.967,
+        914.914
+      ],
+      "to_xy": [
+        437.15,
+        688.611
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 17358,
+      "to_hip": 15863,
+      "from_xy": [
+        437.15,
+        688.611
+      ],
+      "to_xy": [
+        558.102,
+        628.068
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 15863,
+      "to_hip": 14328,
+      "from_xy": [
+        558.102,
+        628.068
+      ],
+      "to_xy": [
+        671.531,
+        512.732
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 14328,
+      "to_hip": 13268,
+      "from_xy": [
+        671.531,
+        512.732
+      ],
+      "to_xy": [
+        744.022,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 15863,
+      "to_hip": 14576,
+      "from_xy": [
+        558.102,
+        628.068
+      ],
+      "to_xy": [
+        679.57,
+        891.269
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 14576,
+      "to_hip": 14354,
+      "from_xy": [
+        679.57,
+        891.269
+      ],
+      "to_xy": [
+        706.937,
+        953.344
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 14354,
+      "to_hip": 13254,
+      "from_xy": [
+        706.937,
+        953.344
+      ],
+      "to_xy": [
+        820.207,
+        962.063
+      ]
+    }
+  ],
+  "labels_review": {
+    "15863": {
+      "name": "Mirfak",
+      "x": 590.1,
+      "y": 623.07,
+      "box": [
+        586.1,
+        620.07,
+        668.1,
+        644.07
+      ],
+      "leader": false,
+      "anchor": [
+        590.1,
+        632.07
+      ]
+    },
+    "14576": {
+      "name": "Algol",
+      "x": 711.57,
+      "y": 886.27,
+      "box": [
+        707.57,
+        883.27,
+        775.57,
+        912.27
+      ],
+      "leader": false,
+      "anchor": [
+        711.57,
+        897.77
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular o localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  },
+  "index": 19
+}

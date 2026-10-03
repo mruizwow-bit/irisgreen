@@ -1,0 +1,690 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 53,
+  "iau_abbreviation": "Hya",
+  "name_es": "Hidra",
+  "name_en": "Hydra",
+  "english_descriptor": "Female Water Snake",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 42313,
+      "ra_hours": 8.62761,
+      "dec_deg": 5.70381,
+      "magnitude": 4.14,
+      "bv": 0.003,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        441.898
+      ],
+      "proper_name": "Minazal I"
+    },
+    {
+      "hip": 42402,
+      "ra_hours": 8.64596,
+      "dec_deg": 3.34147,
+      "magnitude": 4.45,
+      "bv": 1.216,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1167.955,
+        481.465
+      ],
+      "proper_name": "Minchir"
+    },
+    {
+      "hip": 42799,
+      "ra_hours": 8.72041,
+      "dec_deg": 3.39867,
+      "magnitude": 4.3,
+      "bv": -0.192,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        1158.724,
+        481.025
+      ],
+      "proper_name": "Minazal II"
+    },
+    {
+      "hip": 43109,
+      "ra_hours": 8.77963,
+      "dec_deg": 6.41892,
+      "magnitude": 3.38,
+      "bv": 0.685,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        1153.662,
+        431.691
+      ],
+      "proper_name": "Ashlesha"
+    },
+    {
+      "hip": 43234,
+      "ra_hours": 8.80722,
+      "dec_deg": 5.83789,
+      "magnitude": 4.35,
+      "bv": -0.044,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1149.844,
+        441.689
+      ],
+      "proper_name": "Minazal IV"
+    },
+    {
+      "hip": 43813,
+      "ra_hours": 8.92324,
+      "dec_deg": 5.94553,
+      "magnitude": 3.11,
+      "bv": 0.978,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1135.889,
+        441.102
+      ],
+      "proper_name": "Minazal V"
+    },
+    {
+      "hip": 45336,
+      "ra_hours": 9.23939,
+      "dec_deg": 2.31503,
+      "magnitude": 3.89,
+      "bv": -0.06,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1097.549,
+        500.417
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 46390,
+      "ra_hours": 9.45979,
+      "dec_deg": -8.65869,
+      "magnitude": 1.99,
+      "bv": 1.44,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        1069.694,
+        660.131
+      ],
+      "proper_name": "Alphard"
+    },
+    {
+      "hip": 47431,
+      "ra_hours": 9.66426,
+      "dec_deg": -1.14267,
+      "magnitude": 3.9,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1050.855,
+        552.116
+      ],
+      "proper_name": "Ukdah"
+    },
+    {
+      "hip": 48356,
+      "ra_hours": 9.85797,
+      "dec_deg": -14.84656,
+      "magnitude": 4.11,
+      "bv": 0.918,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1028.465,
+        743.552
+      ],
+      "proper_name": "Zhang"
+    },
+    {
+      "hip": 49402,
+      "ra_hours": 10.08541,
+      "dec_deg": -13.06467,
+      "magnitude": 4.6,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1006.742,
+        717.904
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 49841,
+      "ra_hours": 10.1765,
+      "dec_deg": -12.35383,
+      "magnitude": 3.61,
+      "bv": 1.007,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        998.01,
+        707.914
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 51069,
+      "ra_hours": 10.43486,
+      "dec_deg": -16.83608,
+      "magnitude": 3.83,
+      "bv": 1.456,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        973.275,
+        769.504
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 52943,
+      "ra_hours": 10.82706,
+      "dec_deg": -16.19414,
+      "magnitude": 3.11,
+      "bv": 1.232,
+      "rgb_approx": [
+        255,
+        188,
+        125
+      ],
+      "projected_xy": [
+        935.794,
+        762.33
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 53740,
+      "ra_hours": 10.99632,
+      "dec_deg": -18.29911,
+      "magnitude": 4.08,
+      "bv": 1.079,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        919.918,
+        793.265
+      ],
+      "proper_name": "Alkes"
+    },
+    {
+      "hip": 54682,
+      "ra_hours": 11.1943,
+      "dec_deg": -22.82561,
+      "magnitude": 4.46,
+      "bv": 0.025,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        902.119,
+        860.635
+      ],
+      "proper_name": "Al Sharasif"
+    },
+    {
+      "hip": 56343,
+      "ra_hours": 11.55007,
+      "dec_deg": -31.85753,
+      "magnitude": 3.54,
+      "bv": 0.947,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        871.677,
+        1007.157
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 57936,
+      "ra_hours": 11.88182,
+      "dec_deg": -33.90814,
+      "magnitude": 4.29,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        840.276,
+        1055.045
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 64962,
+      "ra_hours": 13.31535,
+      "dec_deg": -23.17142,
+      "magnitude": 2.99,
+      "bv": 0.92,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        645.642,
+        973.939
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 68895,
+      "ra_hours": 14.10619,
+      "dec_deg": -26.68203,
+      "magnitude": 3.25,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        496.101,
+        1161.949
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 72571,
+      "ra_hours": 14.83819,
+      "dec_deg": -27.96022,
+      "magnitude": 4.42,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 43234,
+      "to_hip": 42799,
+      "from_xy": [
+        1149.844,
+        441.689
+      ],
+      "to_xy": [
+        1158.724,
+        481.025
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 42799,
+      "to_hip": 42402,
+      "from_xy": [
+        1158.724,
+        481.025
+      ],
+      "to_xy": [
+        1167.955,
+        481.465
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 42402,
+      "to_hip": 42313,
+      "from_xy": [
+        1167.955,
+        481.465
+      ],
+      "to_xy": [
+        1172.206,
+        441.898
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 42313,
+      "to_hip": 43109,
+      "from_xy": [
+        1172.206,
+        441.898
+      ],
+      "to_xy": [
+        1153.662,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 43109,
+      "to_hip": 43813,
+      "from_xy": [
+        1153.662,
+        431.691
+      ],
+      "to_xy": [
+        1135.889,
+        441.102
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 43813,
+      "to_hip": 45336,
+      "from_xy": [
+        1135.889,
+        441.102
+      ],
+      "to_xy": [
+        1097.549,
+        500.417
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 45336,
+      "to_hip": 47431,
+      "from_xy": [
+        1097.549,
+        500.417
+      ],
+      "to_xy": [
+        1050.855,
+        552.116
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 47431,
+      "to_hip": 46390,
+      "from_xy": [
+        1050.855,
+        552.116
+      ],
+      "to_xy": [
+        1069.694,
+        660.131
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 46390,
+      "to_hip": 48356,
+      "from_xy": [
+        1069.694,
+        660.131
+      ],
+      "to_xy": [
+        1028.465,
+        743.552
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 48356,
+      "to_hip": 49402,
+      "from_xy": [
+        1028.465,
+        743.552
+      ],
+      "to_xy": [
+        1006.742,
+        717.904
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 49402,
+      "to_hip": 49841,
+      "from_xy": [
+        1006.742,
+        717.904
+      ],
+      "to_xy": [
+        998.01,
+        707.914
+      ]
+    },
+    {
+      "id": "edge-12",
+      "from_hip": 49841,
+      "to_hip": 51069,
+      "from_xy": [
+        998.01,
+        707.914
+      ],
+      "to_xy": [
+        973.275,
+        769.504
+      ]
+    },
+    {
+      "id": "edge-13",
+      "from_hip": 51069,
+      "to_hip": 52943,
+      "from_xy": [
+        973.275,
+        769.504
+      ],
+      "to_xy": [
+        935.794,
+        762.33
+      ]
+    },
+    {
+      "id": "edge-14",
+      "from_hip": 52943,
+      "to_hip": 53740,
+      "from_xy": [
+        935.794,
+        762.33
+      ],
+      "to_xy": [
+        919.918,
+        793.265
+      ]
+    },
+    {
+      "id": "edge-15",
+      "from_hip": 54682,
+      "to_hip": 56343,
+      "from_xy": [
+        902.119,
+        860.635
+      ],
+      "to_xy": [
+        871.677,
+        1007.157
+      ]
+    },
+    {
+      "id": "edge-16",
+      "from_hip": 56343,
+      "to_hip": 57936,
+      "from_xy": [
+        871.677,
+        1007.157
+      ],
+      "to_xy": [
+        840.276,
+        1055.045
+      ]
+    },
+    {
+      "id": "edge-17",
+      "from_hip": 57936,
+      "to_hip": 64962,
+      "from_xy": [
+        840.276,
+        1055.045
+      ],
+      "to_xy": [
+        645.642,
+        973.939
+      ]
+    },
+    {
+      "id": "edge-18",
+      "from_hip": 64962,
+      "to_hip": 68895,
+      "from_xy": [
+        645.642,
+        973.939
+      ],
+      "to_xy": [
+        496.101,
+        1161.949
+      ]
+    },
+    {
+      "id": "edge-19",
+      "from_hip": 68895,
+      "to_hip": 72571,
+      "from_xy": [
+        496.101,
+        1161.949
+      ],
+      "to_xy": [
+        267.794,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {
+    "46390": {
+      "name": "Alphard",
+      "x": 1101.69,
+      "y": 655.13,
+      "box": [
+        1097.69,
+        652.13,
+        1198.69,
+        681.13
+      ],
+      "leader": false,
+      "anchor": [
+        1101.69,
+        666.63
+      ]
+    },
+    "43813": {
+      "name": "Minazal V",
+      "x": 987.89,
+      "y": 436.1,
+      "box": [
+        983.89,
+        433.1,
+        1107.89,
+        457.1
+      ],
+      "leader": false,
+      "anchor": [
+        1103.89,
+        445.1
+      ]
+    },
+    "43109": {
+      "name": "Ashlesha",
+      "x": 1165.66,
+      "y": 369.69,
+      "box": [
+        1161.66,
+        366.69,
+        1277.66,
+        390.69
+      ],
+      "leader": true,
+      "anchor": [
+        1165.66,
+        378.69
+      ]
+    },
+    "47431": {
+      "name": "Ukdah",
+      "x": 1082.86,
+      "y": 547.12,
+      "box": [
+        1078.86,
+        544.12,
+        1163.86,
+        568.12
+      ],
+      "leader": false,
+      "anchor": [
+        1082.86,
+        556.12
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

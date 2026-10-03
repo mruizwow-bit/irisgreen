@@ -1,0 +1,37 @@
+{
+  "schema": "iris-green-provenance-r03",
+  "sources": [
+    {
+      "kind": "constellation_regions",
+      "source": "International Astronomical Union (IAU)",
+      "note": "IAU defines the 88 constellations/regions; no claim that stick figures are official IAU graphics."
+    },
+    {
+      "kind": "line_figure",
+      "source": "Stellarium Modern / R01 preserved geometry",
+      "note": "T01-T02 geometry preserved; R02 changes only output system."
+    },
+    {
+      "kind": "stars",
+      "source": "Hipparcos-derived dataset used in R01",
+      "fields": [
+        "HIP",
+        "RA",
+        "Dec",
+        "magnitude",
+        "B-V when available"
+      ]
+    }
+  ],
+  "transformations": [
+    "gnomonic local projection",
+    "vector SVG generation",
+    "collision-avoiding review labels",
+    "sRGB-tagged PNG review",
+    "undirected-edge deduplication where needed",
+    "background-star consistency restore where missing",
+    "index normalization for T01-T02",
+    "Orion belt label spacing refinement"
+  ],
+  "visibility_policy": "Localized metadata only; not baked into base artwork."
+}

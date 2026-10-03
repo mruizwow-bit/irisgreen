@@ -1,0 +1,98 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 71,
+  "iau_abbreviation": "Pic",
+  "name_es": "Pintor",
+  "name_en": "Pictor",
+  "english_descriptor": "Painter's Easel",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 27321,
+      "ra_hours": 5.78808,
+      "dec_deg": -51.06672,
+      "magnitude": 3.85,
+      "bv": 0.171,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        1172.206,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 27530,
+      "ra_hours": 5.83044,
+      "dec_deg": -56.1665,
+      "magnitude": 4.5,
+      "bv": 1.075,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1093.127,
+        876.223
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 32607,
+      "ra_hours": 6.80321,
+      "dec_deg": -61.94197,
+      "magnitude": 3.24,
+      "bv": 0.225,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        1413.309
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 32607,
+      "to_hip": 27530,
+      "from_xy": [
+        267.794,
+        1413.309
+      ],
+      "to_xy": [
+        1093.127,
+        876.223
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 27530,
+      "to_hip": 27321,
+      "from_xy": [
+        1093.127,
+        876.223
+      ],
+      "to_xy": [
+        1172.206,
+        431.691
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

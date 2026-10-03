@@ -1,0 +1,141 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 66,
+  "iau_abbreviation": "Nor",
+  "name_es": "Escuadra",
+  "name_en": "Norma",
+  "english_descriptor": "Carpenter's Square",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 78639,
+      "ra_hours": 16.05357,
+      "dec_deg": -49.22972,
+      "magnitude": 4.65,
+      "bv": 0.902,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        1235.22
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 78914,
+      "ra_hours": 16.10817,
+      "dec_deg": -45.17328,
+      "magnitude": 4.73,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        1073.584,
+        431.691
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80000,
+      "ra_hours": 16.33071,
+      "dec_deg": -50.15539,
+      "magnitude": 4.01,
+      "bv": 1.08,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        559.941,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 80582,
+      "ra_hours": 16.45307,
+      "dec_deg": -47.55472,
+      "magnitude": 4.46,
+      "bv": -0.07,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        907.75
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 78639,
+      "to_hip": 80000,
+      "from_xy": [
+        1172.206,
+        1235.22
+      ],
+      "to_xy": [
+        559.941,
+        1413.309
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 80000,
+      "to_hip": 80582,
+      "from_xy": [
+        559.941,
+        1413.309
+      ],
+      "to_xy": [
+        267.794,
+        907.75
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 80582,
+      "to_hip": 78914,
+      "from_xy": [
+        267.794,
+        907.75
+      ],
+      "to_xy": [
+        1073.584,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 78914,
+      "to_hip": 78639,
+      "from_xy": [
+        1073.584,
+        431.691
+      ],
+      "to_xy": [
+        1172.206,
+        1235.22
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

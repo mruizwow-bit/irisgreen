@@ -1,0 +1,101 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 31,
+  "iau_abbreviation": "CMi",
+  "name_es": "Can Menor",
+  "name_en": "Canis Minor",
+  "english_descriptor": "Lesser Dog",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 36188,
+      "ra_hours": 7.45252,
+      "dec_deg": 8.28942,
+      "magnitude": 2.89,
+      "bv": -0.097,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        766.791,
+        855.425
+      ],
+      "proper_name": "Gomeisa"
+    },
+    {
+      "hip": 37279,
+      "ra_hours": 7.65515,
+      "dec_deg": 5.2275,
+      "magnitude": 0.4,
+      "bv": 0.432,
+      "rgb_approx": [
+        255,
+        244,
+        221
+      ],
+      "projected_xy": [
+        644.539,
+        991.76
+      ],
+      "proper_name": "Procyon"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 37279,
+      "to_hip": 36188,
+      "from_xy": [
+        644.539,
+        991.76
+      ],
+      "to_xy": [
+        766.791,
+        855.425
+      ]
+    }
+  ],
+  "labels_review": {
+    "37279": {
+      "name": "Procyon",
+      "x": 537.54,
+      "y": 929.76,
+      "box": [
+        533.54,
+        926.76,
+        636.54,
+        955.76
+      ],
+      "leader": true,
+      "anchor": [
+        632.54,
+        941.26
+      ]
+    },
+    "36188": {
+      "name": "Gomeisa",
+      "x": 798.79,
+      "y": 850.42,
+      "box": [
+        794.79,
+        847.42,
+        907.79,
+        871.42
+      ],
+      "leader": false,
+      "anchor": [
+        798.79,
+        859.42
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

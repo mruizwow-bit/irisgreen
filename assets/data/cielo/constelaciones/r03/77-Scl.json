@@ -1,0 +1,128 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 77,
+  "iau_abbreviation": "Scl",
+  "name_es": "Escultor",
+  "name_en": "Sculptor",
+  "english_descriptor": "Sculptor",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 4577,
+      "ra_hours": 0.97676,
+      "dec_deg": -29.35747,
+      "magnitude": 4.3,
+      "bv": -0.154,
+      "rgb_approx": [
+        168,
+        199,
+        255
+      ],
+      "projected_xy": [
+        267.794,
+        648.606
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 115102,
+      "ra_hours": 23.31373,
+      "dec_deg": -32.53183,
+      "magnitude": 4.41,
+      "bv": 1.109,
+      "rgb_approx": [
+        255,
+        221,
+        170
+      ],
+      "projected_xy": [
+        1172.206,
+        904.042
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 116231,
+      "ra_hours": 23.5495,
+      "dec_deg": -37.81836,
+      "magnitude": 4.38,
+      "bv": -0.095,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        1035.387,
+        1413.309
+      ],
+      "proper_name": null
+    },
+    {
+      "hip": 117452,
+      "ra_hours": 23.81541,
+      "dec_deg": -28.13003,
+      "magnitude": 4.59,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        909.666,
+        431.691
+      ],
+      "proper_name": null
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 4577,
+      "to_hip": 117452,
+      "from_xy": [
+        267.794,
+        648.606
+      ],
+      "to_xy": [
+        909.666,
+        431.691
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 117452,
+      "to_hip": 115102,
+      "from_xy": [
+        909.666,
+        431.691
+      ],
+      "to_xy": [
+        1172.206,
+        904.042
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 115102,
+      "to_hip": 116231,
+      "from_xy": [
+        1172.206,
+        904.042
+      ],
+      "to_xy": [
+        1035.387,
+        1413.309
+      ]
+    }
+  ],
+  "labels_review": {},
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}

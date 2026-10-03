@@ -1,0 +1,382 @@
+{
+  "schema": "iris-green-constellation-r02",
+  "index": 24,
+  "iau_abbreviation": "Aur",
+  "name_es": "Auriga",
+  "name_en": "Auriga",
+  "english_descriptor": "Charioteer",
+  "geometry_status": "NEW_R02",
+  "line_figure_source": "Stellarium Modern (modern_st index.json)",
+  "iau_scope_note": "IAU defines the constellation/region; this stick figure is a Stellarium convention.",
+  "stars": [
+    {
+      "hip": 23015,
+      "ra_hours": 4.94989,
+      "dec_deg": 33.16614,
+      "magnitude": 2.69,
+      "bv": 1.49,
+      "rgb_approx": [
+        255,
+        150,
+        96
+      ],
+      "projected_xy": [
+        843.455,
+        1102.0
+      ],
+      "proper_name": "Hassaleh"
+    },
+    {
+      "hip": 23416,
+      "ra_hours": 5.03281,
+      "dec_deg": 43.82331,
+      "magnitude": 3.03,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        802.552,
+        846.793
+      ],
+      "proper_name": "Almaaz"
+    },
+    {
+      "hip": 23453,
+      "ra_hours": 5.0413,
+      "dec_deg": 41.07589,
+      "magnitude": 3.69,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        804.478,
+        912.789
+      ],
+      "proper_name": "Saclateni"
+    },
+    {
+      "hip": 23767,
+      "ra_hours": 5.10858,
+      "dec_deg": 41.23464,
+      "magnitude": 3.18,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        786.51,
+        910.034
+      ],
+      "proper_name": "Haedus"
+    },
+    {
+      "hip": 24608,
+      "ra_hours": 5.27814,
+      "dec_deg": 45.99903,
+      "magnitude": 0.08,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        739.387,
+        797.411
+      ],
+      "proper_name": "Capella"
+    },
+    {
+      "hip": 25428,
+      "ra_hours": 5.43819,
+      "dec_deg": 28.60786,
+      "magnitude": 1.65,
+      "bv": -0.13,
+      "rgb_approx": [
+        190,
+        215,
+        255
+      ],
+      "projected_xy": [
+        698.246,
+        1219.505
+      ],
+      "proper_name": "Elnath"
+    },
+    {
+      "hip": 28358,
+      "ra_hours": 5.9921,
+      "dec_deg": 54.28497,
+      "magnitude": 3.72,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        585.273,
+        586.243
+      ],
+      "proper_name": "Prijipati"
+    },
+    {
+      "hip": 28360,
+      "ra_hours": 5.99216,
+      "dec_deg": 44.94744,
+      "magnitude": 1.9,
+      "bv": 0.077,
+      "rgb_approx": [
+        222,
+        232,
+        255
+      ],
+      "projected_xy": [
+        562.595,
+        815.032
+      ],
+      "proper_name": "Menkalinan"
+    },
+    {
+      "hip": 28380,
+      "ra_hours": 5.99534,
+      "dec_deg": 37.21278,
+      "magnitude": 2.65,
+      "bv": null,
+      "rgb_approx": [
+        235,
+        240,
+        255
+      ],
+      "projected_xy": [
+        543.299,
+        1000.692
+      ],
+      "proper_name": "Mahasim"
+    }
+  ],
+  "edges": [
+    {
+      "id": "edge-01",
+      "from_hip": 25428,
+      "to_hip": 23015,
+      "from_xy": [
+        698.246,
+        1219.505
+      ],
+      "to_xy": [
+        843.455,
+        1102.0
+      ]
+    },
+    {
+      "id": "edge-02",
+      "from_hip": 23015,
+      "to_hip": 23767,
+      "from_xy": [
+        843.455,
+        1102.0
+      ],
+      "to_xy": [
+        786.51,
+        910.034
+      ]
+    },
+    {
+      "id": "edge-03",
+      "from_hip": 23767,
+      "to_hip": 24608,
+      "from_xy": [
+        786.51,
+        910.034
+      ],
+      "to_xy": [
+        739.387,
+        797.411
+      ]
+    },
+    {
+      "id": "edge-04",
+      "from_hip": 24608,
+      "to_hip": 28360,
+      "from_xy": [
+        739.387,
+        797.411
+      ],
+      "to_xy": [
+        562.595,
+        815.032
+      ]
+    },
+    {
+      "id": "edge-05",
+      "from_hip": 28360,
+      "to_hip": 28380,
+      "from_xy": [
+        562.595,
+        815.032
+      ],
+      "to_xy": [
+        543.299,
+        1000.692
+      ]
+    },
+    {
+      "id": "edge-06",
+      "from_hip": 28380,
+      "to_hip": 25428,
+      "from_xy": [
+        543.299,
+        1000.692
+      ],
+      "to_xy": [
+        698.246,
+        1219.505
+      ]
+    },
+    {
+      "id": "edge-07",
+      "from_hip": 23767,
+      "to_hip": 23453,
+      "from_xy": [
+        786.51,
+        910.034
+      ],
+      "to_xy": [
+        804.478,
+        912.789
+      ]
+    },
+    {
+      "id": "edge-08",
+      "from_hip": 23453,
+      "to_hip": 23416,
+      "from_xy": [
+        804.478,
+        912.789
+      ],
+      "to_xy": [
+        802.552,
+        846.793
+      ]
+    },
+    {
+      "id": "edge-09",
+      "from_hip": 23416,
+      "to_hip": 24608,
+      "from_xy": [
+        802.552,
+        846.793
+      ],
+      "to_xy": [
+        739.387,
+        797.411
+      ]
+    },
+    {
+      "id": "edge-10",
+      "from_hip": 24608,
+      "to_hip": 28358,
+      "from_xy": [
+        739.387,
+        797.411
+      ],
+      "to_xy": [
+        585.273,
+        586.243
+      ]
+    },
+    {
+      "id": "edge-11",
+      "from_hip": 28358,
+      "to_hip": 28360,
+      "from_xy": [
+        585.273,
+        586.243
+      ],
+      "to_xy": [
+        562.595,
+        815.032
+      ]
+    }
+  ],
+  "labels_review": {
+    "24608": {
+      "name": "Capella",
+      "x": 751.39,
+      "y": 735.41,
+      "box": [
+        747.39,
+        732.41,
+        845.39,
+        761.41
+      ],
+      "leader": true,
+      "anchor": [
+        751.39,
+        746.91
+      ]
+    },
+    "25428": {
+      "name": "Elnath",
+      "x": 730.25,
+      "y": 1214.51,
+      "box": [
+        726.25,
+        1211.51,
+        810.25,
+        1235.51
+      ],
+      "leader": false,
+      "anchor": [
+        730.25,
+        1223.51
+      ]
+    },
+    "28360": {
+      "name": "Menkalinan",
+      "x": 393.6,
+      "y": 810.03,
+      "box": [
+        389.6,
+        807.03,
+        534.6,
+        831.03
+      ],
+      "leader": false,
+      "anchor": [
+        530.6,
+        819.03
+      ]
+    },
+    "28380": {
+      "name": "Mahasim",
+      "x": 575.3,
+      "y": 995.69,
+      "box": [
+        571.3,
+        992.69,
+        687.3,
+        1016.69
+      ],
+      "leader": false,
+      "anchor": [
+        575.3,
+        1004.69
+      ]
+    }
+  },
+  "visibility": {
+    "baked_into_art": false,
+    "note_es": "Calcular/localizar según latitud, hemisferio, fecha y hora.",
+    "note_en": "Calculate/localize by latitude, hemisphere, date and time."
+  }
+}
