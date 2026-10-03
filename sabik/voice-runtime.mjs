@@ -47,7 +47,7 @@ export function createSabikConversationalVoice({
 }={}){
  if(typeof fetchImpl!=='function')throw new TypeError('SABIK_VOICE_FETCH_REQUIRED');
  let lang=language(initialLanguage),enabled=false,capability=null,capabilityPromise=null;
- let stream=null,recorder=null,chunks=[],captureTimer=0,sttController=null,ttsController=null,audio=null,audioUrl='';
+ let stream=null,recorder=null,chunks=[],captureTimer=0,vadTimer=0,vadContext=null,vadSource=null,vadAnalyser=null,sttController=null,ttsController=null,audio=null,audioUrl='';
  let listening=false,transcribing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
 
@@ -73,7 +73,29 @@ export function createSabikConversationalVoice({
  function emit(meta={}){const s=state();onState(s,{semantic:semantic(),...meta});return s;}
  function issue(code,detail={}){onError(code,{language:lang,...detail});emit({semantic:'degraded',error:code});}
  function clearTimer(){if(captureTimer){host.clearTimeout?.(captureTimer);captureTimer=0;}}
- function closeStream(){if(stream){for(const track of stream.getTracks?.()||[]){try{track.stop();}catch{}}stream=null;}}
+ function clearVad(){
+  if(vadTimer){host.clearTimeout?.(vadTimer);vadTimer=0;}
+  try{vadSource?.disconnect?.();}catch{}vadSource=null;vadAnalyser=null;
+  if(vadContext){try{void vadContext.close?.();}catch{}vadContext=null;}
+ }
+ function closeStream(){clearVad();if(stream){for(const track of stream.getTracks?.()||[]){try{track.stop();}catch{}}stream=null;}}
+ function startVad(current,ticket){
+  const AC=host.AudioContext||host.webkitAudioContext;if(typeof AC!=='function'||!stream)return;
+  try{
+   const ctx=new AC();vadContext=ctx;vadSource=ctx.createMediaStreamSource(stream);vadAnalyser=ctx.createAnalyser();vadAnalyser.fftSize=512;vadAnalyser.smoothingTimeConstant=.15;vadSource.connect(vadAnalyser);void ctx.resume?.();
+   const data=new Uint8Array(vadAnalyser.fftSize),started=(host.performance?.now?.()??Date.now());let heard=false,lastVoice=started;
+   const tick=()=>{
+    if(ticket!==serial||recorder!==current||!listening)return clearVad();
+    vadAnalyser.getByteTimeDomainData(data);let sum=0;
+    for(const n of data){const x=(n-128)/128;sum+=x*x;}
+    const rms=Math.sqrt(sum/data.length),now=(host.performance?.now?.()??Date.now());
+    if(rms>.018){heard=true;lastVoice=now;}
+    if(heard&&now-lastVoice>1100&&now-started>700){stopListening();return;}
+    vadTimer=host.setTimeout?.(tick,100)||0;
+   };
+   vadTimer=host.setTimeout?.(tick,120)||0;
+  }catch{clearVad();}
+ }
  function revoke(){if(audioUrl){try{host.URL?.revokeObjectURL?.(audioUrl);}catch{}audioUrl='';}}
 
  async function capabilities({force=false}={}){
@@ -194,7 +216,7 @@ export function createSabikConversationalVoice({
    const current=recorder;
    current.ondataavailable=event=>{if(ticket===serial&&event.data?.size)chunks.push(event.data);};
    current.onerror=()=>{if(ticket===serial){stopRecorder({discard:true});issue('MICROPHONE_ERROR');}};
-   current.onstart=()=>{if(ticket===serial){listening=true;emit({semantic:'listening',reason:'capture-start'});}};
+    current.onstart=()=>{if(ticket===serial){listening=true;emit({semantic:'listening',reason:'capture-start'});startVad(current,ticket);}};
    current.onstop=()=>{
     if(ticket!==serial)return;
     const type=current.mimeType||mime||'audio/webm',blob=new Blob(chunks,{type});chunks=[];closeStream();listening=false;
