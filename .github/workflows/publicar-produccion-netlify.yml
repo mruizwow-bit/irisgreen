@@ -1,17 +1,19 @@
-name: Publicar Iris Green en Netlify
-# Trigger manual de producción tras R44 SUITE5 · 2026-10-02
+name: Publicar Iris Green en producción
+
 on:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/publicar-produccion-netlify.yml'
   workflow_dispatch:
+    inputs:
+      confirm_reopen:
+        description: 'Escribe MARIA_EXPLICIT_REOPEN para autorizar la reapertura pública'
+        required: true
+        type: string
 
 permissions:
   contents: read
 
 jobs:
   deploy:
+    if: ${{ github.event.inputs.confirm_reopen == 'MARIA_EXPLICIT_REOPEN' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -19,9 +21,15 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      - name: Construir dist
+
+      - name: Verificar autorización explícita
+        run: |
+          test "${{ github.event.inputs.confirm_reopen }}" = "MARIA_EXPLICIT_REOPEN"
+
+      - name: Construir producto canónico
         run: python3 scripts/build_site.py
-      - name: Desbloquear, publicar y volver a bloquear producción
+
+      - name: Publicar producto completo y bloquear deploy
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
@@ -31,7 +39,7 @@ jobs:
           set -euo pipefail
           TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
           if [ -z "$TOKEN" ]; then
-            echo "::error::No hay token de Netlify configurado en los secretos del repositorio"
+            echo "::error::No hay token de Netlify configurado"
             exit 1
           fi
 
@@ -43,21 +51,18 @@ jobs:
           }
 
           OLD_ID="$(latest_published)"
-          if [ -z "$OLD_ID" ]; then
-            echo "::error::No se pudo localizar el deploy publicado actual"
-            exit 1
+          if [ -n "$OLD_ID" ]; then
+            curl -fsSL -X POST \
+              -H "Authorization: Bearer $TOKEN" \
+              "https://api.netlify.com/api/v1/deploys/$OLD_ID/unlock" >/tmp/netlify-unlock.json
           fi
-
-          curl -fsSL -X POST \
-            -H "Authorization: Bearer $TOKEN" \
-            "https://api.netlify.com/api/v1/deploys/$OLD_ID/unlock" >/tmp/netlify-unlock.json
 
           npx -y netlify-cli@latest deploy \
             --prod \
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
-            --message="Iris Green main ${GITHUB_SHA}"
+            --message="Iris Green explicit reopen ${GITHUB_SHA}"
 
           NEW_ID="$(latest_published)"
           if [ -z "$NEW_ID" ]; then
@@ -69,4 +74,4 @@ jobs:
             -H "Authorization: Bearer $TOKEN" \
             "https://api.netlify.com/api/v1/deploys/$NEW_ID/lock" >/tmp/netlify-lock.json
 
-          echo "Producción publicada y bloqueada de nuevo. Deploy: $NEW_ID"
+          echo "Producción completa publicada por autorización explícita. Deploy: $NEW_ID"
