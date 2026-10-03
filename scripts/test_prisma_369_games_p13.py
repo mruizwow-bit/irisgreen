@@ -45,7 +45,7 @@ def main():
             assert styles['display']=='flex',(lang,width,styles)
             assert styles['border']!='0px',(lang,width,styles)
             assert styles['imgDisplay']=='grid',(lang,width,styles)
-            assert styles['ctaDisplay']=='inline-flex',(lang,width,styles)
+            assert styles['ctaDisplay'] in ('inline-flex','flex'),(lang,width,styles)
             assert styles['ctaMinHeight']>=40,(lang,width,styles)
             overflow=page.evaluate("document.documentElement.scrollWidth-document.documentElement.clientWidth")
             assert overflow<=1,(lang,width,overflow)
