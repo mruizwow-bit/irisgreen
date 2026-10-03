@@ -17,7 +17,7 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright
 
 ROOT=Path.cwd().resolve()
-ROUTES=[('/', 'Empieza por lo que te pasa'),('/es/libros/','Los libros'),('/es/tramites/directorio/','Todo lo que puedes pedir'),('/es/investigacion/','Investigación'),('/es/videos/','Vídeos'),('/es/recursos/juegos/','Juegos'),('/es/intereses/','Tus intereses'),('/es/datos/autismo-en-la-poblacion/','Autismo en la población'),('/es/situaciones/la-ropa-me-molesta/','etiquetas'),('/es/sitio-tranquilo/','Rincón tranquilo')]
+ROUTES=[('/', 'Buscar'),('/es/libros/','Los libros'),('/es/tramites/directorio/','Directorio de ayudas'),('/es/investigacion/','Investigación'),('/es/videos/','Vídeos'),('/es/recursos/juegos/','Juegos'),('/es/intereses/','Tus intereses'),('/es/datos/autismo-en-la-poblacion/','Autismo en la población'),('/es/situaciones/la-ropa-me-molesta/','etiquetas'),('/es/sitio-tranquilo/','Rincón tranquilo')]
 VIDEO_FRAME_SOURCES={'https://www.youtube-nocookie.com','https://player.vimeo.com','https://www.instagram.com'}
 SABIK_FRAME_SOURCE='https://6ab7a2cd2cf8dc09d3ae9aca--sabik-asistente.netlify.app'
 REVIEWED_FRAME_SOURCES=VIDEO_FRAME_SOURCES|{SABIK_FRAME_SOURCE}
@@ -95,7 +95,7 @@ def main():
                 try:
                     page.goto(base+route,wait_until='domcontentloaded');page.locator('main h1').first.wait_for(state='visible');page.wait_for_timeout(500);h1=page.locator('main h1').first.inner_text().strip();body=page.locator('body').inner_text()
                     if expected.casefold() not in (h1+' '+body).casefold():failures.append(f'{route}: no aparece texto esperado {expected!r}; h1={h1!r}')
-                    if route=='/' and page.locator('#q').is_disabled():failures.append('/: el buscador sigue deshabilitado con CSP')
+                    if route=='/' and page.locator('#ig-home-q').is_disabled():failures.append('/: el buscador sigue deshabilitado con CSP')
                     blocked=[x for x in request_failures if 'ERR_BLOCKED_BY_CSP' in x or ('blocked' in x.lower() and 'csp' in x.lower())]
                     if csp_messages:failures.extend(f'{route}: {x}' for x in csp_messages[:6])
                     if blocked:failures.extend(f'{route}: {x}' for x in blocked[:6])
