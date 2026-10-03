@@ -81,6 +81,13 @@ def main():
               assert page.locator('.skyv2-viewlist').evaluate("e=>e.tagName==='DETAILS' && !e.open")
               assert page.locator('.skyv2-meta').evaluate("e=>e.tagName==='DETAILS' && !e.open")
               assert page.locator('.skyv2-info').get_attribute('data-active')=='false'
+              view_box=page.locator('.skyv2-viewlist').bounding_box();meta_box=page.locator('.skyv2-meta').bounding_box();intro_box=page.locator('.skyv2-intro').bounding_box();h1_box=page.locator('.skyv2-intro h1').bounding_box()
+              assert view_box and meta_box and intro_box and h1_box
+              assert view_box['width']<=200 and meta_box['width']<=180,(lang,width,view_box,meta_box)
+              if width<500:
+                overlap=lambda a,b:not(a['x']+a['width']<=b['x'] or b['x']+b['width']<=a['x'] or a['y']+a['height']<=b['y'] or b['y']+b['height']<=a['y'])
+                assert not overlap(h1_box,meta_box),(lang,width,'meta overlaps title',h1_box,meta_box)
+                assert view_box['y']>=intro_box['y']+intro_box['height']-2,(lang,width,'view disclosure overlaps intro',view_box,intro_box)
               if width<500:
                 assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+1"),(lang,width,'horizontal overflow')
               scene_box=page.locator('.skyv2-scene').bounding_box();assert scene_box
