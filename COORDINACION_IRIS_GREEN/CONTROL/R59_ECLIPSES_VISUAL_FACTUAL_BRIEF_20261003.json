@@ -1,0 +1,56 @@
+{
+  "schema": "iris-green.r59.quick-visual-factual-brief.v1",
+  "date": "2026-10-03",
+  "interest": "04_ECLIPSES",
+  "gate": "INTEREST_04_ECLIPSES_VISUAL_FACTUAL_BRIEF_PASS",
+  "batch": [
+    {
+      "id": "total_solar_geometry",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "partial_solar_geometry",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "annular_solar_geometry",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "lunar_eclipse_geometry",
+      "class": "REPRESENTATION"
+    }
+  ],
+  "REAL_DATA": [
+    "IGN/NASA published event facts",
+    "safety guidance",
+    "Natural Earth if mapped"
+  ],
+  "CALCULATION": [
+    "contact times",
+    "obscuration",
+    "alt-az",
+    "local kind",
+    "visibility above horizon",
+    "event paths/grids"
+  ],
+  "hard_rules": [
+    "GEOMETRIC_ECLIPSE_KIND != FULL_VISIBLE_PHASE",
+    "EVENT_MAPS_ARE_DATA_CALCULATION_NOT_GENERATIVE_ART",
+    "SIMULATION != OBSERVATION"
+  ],
+  "prohibited": [
+    "invented local skyline/weather",
+    "baked times/percentages",
+    "corona in partial/annular",
+    "artistic official-looking event map"
+  ],
+  "sources": [
+    "https://astronomia.ign.es/eclipses-de-sol-y-luna/eclipse-total-sol-de-2-de-agosto-2027",
+    "https://science.nasa.gov/eclipses/geometry/",
+    "https://science.nasa.gov/eclipses/types/",
+    "https://science.nasa.gov/eclipses/safety/",
+    "https://science.nasa.gov/moon/eclipses/"
+  ],
+  "status": "PASS"
+}

@@ -1,0 +1,45 @@
+{
+  "schema": "iris-green.r59.quick-visual-factual-brief.v1",
+  "date": "2026-10-03",
+  "interest": "01_SKY",
+  "gate": "INTEREST_01_SKY_VISUAL_FACTUAL_BRIEF_PASS",
+  "classifications": {
+    "REAL_DATA": [
+      "HYG local star snapshot",
+      "IAU constellation names/boundaries",
+      "IAU/WGSN star names"
+    ],
+    "CALCULATION": [
+      "date/place sky transform",
+      "alt-az",
+      "JPL approximate planet positions",
+      "lunar orientation/phase when used"
+    ],
+    "REPRESENTATION": [
+      "horizon",
+      "atmosphere/haze",
+      "night gradient",
+      "constellation guide lines",
+      "selection halos"
+    ]
+  },
+  "locked_keep": [
+    "01-cielo-horizonte-observacion-r01.png"
+  ],
+  "producer_may_create": [
+    "representation-only atmosphere/scene layers"
+  ],
+  "producer_must_not_create": [
+    "raster star catalogue",
+    "mythological constellation art",
+    "baked Moon/planets/stars",
+    "invented Milky Way",
+    "weather",
+    "aurora"
+  ],
+  "sources": [
+    "https://www.iau.org/IAU/IAU/Astronomy-FAQs/FAQs.aspx",
+    "https://ssd.jpl.nasa.gov/planets/approx_pos.html"
+  ],
+  "status": "PASS"
+}

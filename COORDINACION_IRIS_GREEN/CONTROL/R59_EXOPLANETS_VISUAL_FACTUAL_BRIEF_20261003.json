@@ -1,0 +1,43 @@
+{
+  "schema": "iris-green.r59.quick-visual-factual-brief.v1",
+  "date": "2026-10-03",
+  "interest": "03_EXOPLANETS",
+  "gate": "INTEREST_03_EXOPLANETS_VISUAL_FACTUAL_BRIEF_PASS",
+  "batch": [
+    {
+      "id": "transit",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "radial_velocity",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "microlensing",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "direct_imaging",
+      "class": "REPRESENTATION"
+    },
+    {
+      "id": "pulsar_timing",
+      "class": "REPRESENTATION"
+    }
+  ],
+  "real_data_source": "NASA Exoplanet Archive local snapshot 2026-09-24",
+  "calculation_rule": "numeric curves/scales only from runtime/data; producer does not invent values",
+  "prohibited": [
+    "named-world photoreal surfaces",
+    "invented oceans/continents/clouds",
+    "habitability inference",
+    "equilibrium-temperature-as-climate",
+    "artist concept presented as observation"
+  ],
+  "sources": [
+    "https://science.nasa.gov/exoplanets/facts/",
+    "https://science.nasa.gov/exoplanets/how-we-find-and-characterize/",
+    "https://science.nasa.gov/universe/exoplanets/observing-exoplanets-what-can-we-really-see/"
+  ],
+  "status": "PASS"
+}
