@@ -1,0 +1,35 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "PRISMA-369-P46-COMMON-GRID-AUDIT-20261003",
+  "date": "2026-10-03",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "point": 46,
+  "branch": "prisma/369-common-grid-p46-audit-20261003",
+  "base_commit": "59b4832f696c0ad9d9074702d88f2b3e27cea682",
+  "scope": "AUDIT",
+  "surfaces": [
+    "Home",
+    "Condiciones",
+    "Situaciones",
+    "Vida diaria",
+    "Datos",
+    "Investigación",
+    "Ayudas",
+    "Vivir fuera",
+    "Taller",
+    "Juegos",
+    "Pictogramas/Recursos proxy"
+  ],
+  "viewports": [
+    1440,
+    390
+  ],
+  "cases": 22,
+  "test_commit": "41409e4b95f5efa18124f999c852d2e559a401de",
+  "workflow_commit": "7d7444fbf1e8ae73998b769951eeeac25193e5ff",
+  "ci_run": 37109123156,
+  "ci_status": "IN_PROGRESS",
+  "main_modified": false,
+  "status": "P46_COMMON_GRID_AUDIT_RUNNING"
+}
