@@ -1,31 +1,31 @@
-// R66 · Sabik conversational core. One turn path for text and voice.
+﻿// R66 Â· Sabik conversational core. One turn path for text and voice.
 export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{},onSources=()=>{}}={}){
  if(typeof retrieve!=='function') throw new TypeError('R66_RETRIEVE_REQUIRED');
  let controller=null,serial=0;
  const session={turns:[],locale:'es',audience:'GENERAL',pendingTopic:'',repromptCount:0};
  const sentence=(s)=>String(s||'').replace(/\s+/g,' ').trim();
- const aliases='(?:sabik|sábik|savik|sabick|sabyck|xavid|xavik|xabik|savid|tanik|tanick)';
+ const aliases='(?:sabik|sÃ¡bik|savik|sabick|sabyck|xavid|xavik|xabik|savid|tanik|tanick)';
  function stripAddress(value,locale){
   let q=sentence(value);
-  const greeting=locale==='en'?/^(?:hello|hi|hey)\b[\s,.:;!?-]*/i:/^(?:hola|oye|buenas)\b[\s,.:;!?¡¿-]*/i;
+  const greeting=locale==='en'?/^(?:hello|hi|hey)\b[\s,.:;!?-]*/i:/^(?:hola|oye|buenas)\b[\s,.:;!?Â¡Â¿-]*/i;
   q=q.replace(greeting,'');
-  q=q.replace(new RegExp('^'+aliases+'\\b[\\s,.:;!?¡¿-]*','i'),'');
+  q=q.replace(new RegExp('^'+aliases+'\\b[\\s,.:;!?Â¡Â¿-]*','i'),'');
   return sentence(q);
  }
  function broadLookup(value,locale){
   const q=stripAddress(value,locale).replace(/[.!]+$/,'').trim();
   const re=locale==='en'
    ?/^(?:search(?: for)?|find|look up|tell me about|information about)\s+(.+)$/i
-   :/^(?:busca|buscar|búscame|buscame|encuentra|háblame de|hablame de|información sobre|informacion sobre)\s+(.+)$/i;
+   :/^(?:busca|buscar|bÃºscame|buscame|encuentra|hÃ¡blame de|hablame de|informaciÃ³n sobre|informacion sobre)\s+(.+)$/i;
   const m=q.match(re);if(!m)return null;
   const topic=sentence(m[1]).replace(/[.!]+$/,'');
-  const question=locale==='en'?/^(?:what|how|why|when|where|which|who)\b/i:/^(?:qué|que|cómo|como|por qué|por que|cuándo|cuando|dónde|donde|cuál|cual|quién|quien)\b/i;
+  const question=locale==='en'?/^(?:what|how|why|when|where|which|who)\b/i:/^(?:quÃ©|que|cÃ³mo|como|por quÃ©|por que|cuÃ¡ndo|cuando|dÃ³nde|donde|cuÃ¡l|cual|quiÃ©n|quien)\b/i;
   return topic&&!question.test(topic)?topic:null;
  } function compose(result,locale){
   const rows=Array.isArray(result?.candidates)?result.candidates:[];
   if(!rows.length) return locale==='en'
     ?"I couldn't find enough information in the available Iris Green sources."
-    :'No he encontrado información suficiente en las fuentes disponibles de Iris Green.';
+    :'No he encontrado informaciÃ³n suficiente en las fuentes disponibles de Iris Green.';
   const first=rows.find(r=>sentence(r?.snippet));
   if(!first) return locale==='en'
     ?"I found sources, but not enough text to give you a reliable answer."
@@ -58,7 +58,7 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
    session.pendingTopic=directTopic;
    const answer=locale==='en'
     ?`Sure. What do you need to know about ${directTopic}?`
-    :`Claro. ¿Qué necesitas saber sobre ${directTopic}?`;
+    :`Claro. Â¿QuÃ© necesitas saber sobre ${directTopic}?`;
    const turn={query:raw,inputMode,locale,audience,answer,sources:[],completedAt:Date.now(),kind:'clarify'};
    remember(turn);onAnswer(answer,{inputMode,locale,kind:'clarify'});onSources([]);
    onState('CONFIRMAR',{phase:'answer',inputMode});
@@ -66,6 +66,14 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
    return {answer,sources:[],result:null,kind:'clarify'};
   }
   const addressed=stripAddress(raw,locale);
+  if(!session.pendingTopic&&!addressed){
+   const answer=locale==='en'?'Hi. What do you need?':'Hola. ¿Qué necesitas?';
+   const turn={query:raw,inputMode,locale,audience,answer,sources:[],completedAt:Date.now(),kind:'clarify'};
+   remember(turn);onAnswer(answer,{inputMode,locale,kind:'clarify'});onSources([]);
+   onState('CONFIRMAR',{phase:'answer',inputMode});
+   if(ticket===serial)controller=null;
+   return {answer,sources:[],result:null,kind:'clarify'};
+  }
   if(session.pendingTopic&&!addressed){
    onState('PRESENTE',{phase:'awaiting-followup',inputMode});
    if(ticket===serial)controller=null;
@@ -84,7 +92,7 @@ export function createSabikConversation({retrieve,onState=()=>{},onAnswer=()=>{}
    }
    if(topic&&!src.length){
     session.pendingTopic=topic;
-    const answer=locale==='en'?`I'm still with you on ${topic}. Could you repeat what you want to know?`:`Sigo contigo en ${topic}. ¿Puedes repetir qué quieres saber?`;
+    const answer=locale==='en'?`I'm still with you on ${topic}. Could you repeat what you want to know?`:`Sigo contigo en ${topic}. Â¿Puedes repetir quÃ© quieres saber?`;
     turn.answer=answer;turn.sources=[];turn.completedAt=Date.now();turn.kind='clarify';
     remember(turn);onAnswer(answer,{inputMode,locale,kind:'clarify'});onSources([]);
     onState('CONFIRMAR',{phase:'answer',inputMode});
