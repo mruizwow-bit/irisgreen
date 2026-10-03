@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="solar-partial-title solar-partial-desc">
+<title id="solar-partial-title">Partial solar eclipse generic geometry</title>
+<desc id="solar-partial-desc">Generic educational representation: the Moon is offset from exact alignment so Earth is in the penumbra and only part of the Sun is covered. Not event-specific.</desc>
+<defs>
+  <radialGradient id="sun" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#fff8cf"/><stop offset="68%" stop-color="#ffd867"/><stop offset="100%" stop-color="#f0a52e"/></radialGradient>
+  <radialGradient id="earth" cx="40%" cy="35%" r="65%"><stop offset="0%" stop-color="#6ea5d7"/><stop offset="75%" stop-color="#2d5f8f"/><stop offset="100%" stop-color="#173c62"/></radialGradient>
+  <radialGradient id="moon" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d7d7d2"/><stop offset="80%" stop-color="#999a98"/><stop offset="100%" stop-color="#727472"/></radialGradient>
+  <radialGradient id="copper" cx="38%" cy="32%" r="66%"><stop offset="0%" stop-color="#d98b67"/><stop offset="78%" stop-color="#a34f39"/><stop offset="100%" stop-color="#6f2f29"/></radialGradient>
+  <filter id="soft"><feGaussianBlur stdDeviation="18"/></filter>
+</defs>
+
+<path d="M350 405 L1218 425 L1218 650 L350 595 Z" fill="#8ea7c4" opacity=".16"/>
+<path d="M350 455 L1185 455 L1185 535 L350 545 Z" fill="#020711" opacity=".18"/>
+<circle cx="260" cy="500" r="110" fill="url(#sun)"/>
+<circle cx="820" cy="430" r="37" fill="url(#moon)"/>
+<circle cx="1290" cy="500" r="72" fill="url(#earth)"/><circle cx="1290" cy="500" r="78" fill="none" stroke="#76b9e8" stroke-width="4" opacity=".65"/>
+<path d="M350 420 L820 393 M350 580 L820 467" stroke="#f4d16b" stroke-width="2" opacity=".3"/>
+<path d="M857 395 L1225 430 M857 465 L1225 650" stroke="#d6deea" stroke-width="2" opacity=".22"/>
+
+</svg>
