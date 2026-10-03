@@ -49,17 +49,20 @@ def main():
                 discover_h2=sections.nth(1).locator('h2').bounding_box()
                 assert all([wrap,hero,use,discover,sabik,grid,footer,h1,search,use_h2,discover_h2])
 
+                wrap_pad=page.locator('.ig-home-v4-wrap').evaluate("e=>{const s=getComputedStyle(e);return {left:parseFloat(s.paddingLeft)||0,right:parseFloat(s.paddingRight)||0}}")
+                usable_left=wrap['x']+wrap_pad['left']
+                usable_right=wrap['x']+wrap['width']-wrap_pad['right']
                 outer=[('hero',hero),('use',use),('sabik',sabik),('discover',discover),('footer',footer)]
                 for name,box in outer:
-                    assert close(box['x'],wrap['x']),(width,name,'left',edge(box),edge(wrap))
-                    assert close(box['x']+box['width'],wrap['x']+wrap['width']),(width,name,'right',edge(box),edge(wrap))
+                    assert close(box['x'],usable_left),(width,name,'left',edge(box),{'left':usable_left,'right':usable_right})
+                    assert close(box['x']+box['width'],usable_right),(width,name,'right',edge(box),{'left':usable_left,'right':usable_right})
 
                 assert close(use_h2['x'],discover_h2['x']),(width,'section title starts differ',use_h2,discover_h2)
                 assert close(h1['x'],search['x']),(width,'hero title/search starts differ',h1,search)
 
                 # #369 P9: final information/resources block must use the same usable width.
-                assert close(grid['x'],wrap['x']),(width,'discover grid left differs',edge(grid),edge(wrap))
-                assert close(grid['x']+grid['width'],wrap['x']+wrap['width']),(width,'discover grid right differs',edge(grid),edge(wrap))
+                assert close(grid['x'],usable_left),(width,'discover grid left differs',edge(grid),{'left':usable_left,'right':usable_right})
+                assert close(grid['x']+grid['width'],usable_right),(width,'discover grid right differs',edge(grid),{'left':usable_left,'right':usable_right})
 
                 assert not errors,(width,errors)
                 assert not bad,(width,bad)
