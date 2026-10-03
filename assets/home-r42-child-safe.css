@@ -429,7 +429,7 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .ig-home-v4-sabik-controls>.sabik-actions,
 .ig-home-v4 .ig-home-v4-sabik-controls>.sabik-voice-control,
 .ig-home-v4 .ig-home-v4-sabik-controls>.sabik-motion-control{margin:0!important;padding:0!important}
-.ig-home-v4 .sabik-voice-control{display:flex;align-items:center}
+.ig-home-v4 .sabik-voice-control{display:grid;gap:.45rem;min-width:0}.ig-home-v4 .sabik-voice-settings,.ig-home-v4 .sabik-voice-settings label{min-width:0}.ig-home-v4 .sabik-voice-settings input[type=range]{min-width:0;max-width:100%}
 .ig-home-v4 .sabik-voice-toggle{width:auto!important;min-width:0;padding:.62rem 1rem;border-radius:999px;background:var(--ig-bg-surface-soft)!important}
 .ig-home-v4 .sabik-motion-control{display:grid;grid-template-columns:1fr;gap:.25rem}
 .ig-home-v4 .sabik-motion-control label{margin:0;font-size:.92rem}
