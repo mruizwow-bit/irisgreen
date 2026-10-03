@@ -1,0 +1,29 @@
+{
+  "schema": "iris-green.eclipse-all.provenance.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "authority": "MARIA",
+  "user_order": "Produce all eclipses in batches of 10; review only after the full set is complete.",
+  "upstream": {
+    "source_path": "es/intereses/eclipses/eclipses.json",
+    "source_git_blob": "11660e752bd4afdc8c227fb610c412024ab80b3c",
+    "calculation_engine": "astronomy-engine 2.1.19 (Don Cross), MIT",
+    "snapshot_date": "2026-09-24",
+    "factual_brief": "INTEREST_04_ECLIPSES_VISUAL_FACTUAL_BRIEF_PASS",
+    "factual_brief_ref": "COORDINACION_IRIS_GREEN/MEMORIA/R59_ECLIPSES_VISUAL_FACTUAL_BRIEF_20261003.md @ e7e77e888c17f2ad73319f1aac9c7ec07ce8a85b"
+  },
+  "derivation": {
+    "ordering": "solar+lunar merged by UTC event time; domain tie-breaker",
+    "batching": "45 batches of 10 + final batch of 8",
+    "event_records": "audited local calculation snapshot with source_index/domain preserved",
+    "derived_review_visuals": "generic procedural geometry by event domain/type only",
+    "event_specific_maps": false,
+    "event_specific_local_visibility_visuals": false,
+    "manual_astronomical_geometry": false
+  },
+  "epistemic_contract": {
+    "dataset_events": "CALCULATION",
+    "review_diagrams": "REPRESENTATION",
+    "published IGN/NASA facts": "REAL_DATA only when separately cited; not injected into these batch diagrams"
+  }
+}
