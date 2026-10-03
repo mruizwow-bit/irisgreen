@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Prisma asset cards QA</title><link rel="stylesheet" href="/assets/ig-interest-asset-cards.css"></head>
+<body><main style="max-width:1100px;margin:auto;padding:12px"><div id="cards" data-lang="es"></div></main>
+<script src="/assets/ig-interest-asset-cards.js"></script>
+<script>
+window.__activated=null;
+window.__cards=IGInterestAssetCards.mount(document.getElementById('cards'),{
+ theme:'light',
+ items:[
+  {id:'sol',label:'Sol',kicker:'Representación',assetStatus:'pending',src:'/should-never-load-sol.png',disclosure:'Imagen hecha por ordenador'},
+  {id:'mercurio',label:'Mercurio',kicker:'Representación',assetStatus:'approved',src:'/tools/prisma/fixtures/lazy-probe.svg',alt:'QA only',disclosure:'Imagen hecha por ordenador'},
+  {id:'venus',label:'Venus',kicker:'Representación',assetStatus:'pending',src:'/should-never-load-venus.png',disclosure:'Imagen hecha por ordenador'},
+  {id:'tierra',label:'Tierra',kicker:'Representación',assetStatus:'pending',src:'/should-never-load-earth.png',disclosure:'Imagen hecha por ordenador'}
+ ],
+ onActivate:function(id){window.__activated=id}
+});
+</script></body></html>
