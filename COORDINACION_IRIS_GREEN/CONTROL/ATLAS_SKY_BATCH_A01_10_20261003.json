@@ -1,0 +1,262 @@
+{
+  "schema": "iris-green.control.atlas-sky-batch-a01.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "gate": "SKY_BATCH_A01_10_READY_FOR_REVIEW",
+  "issue": 370,
+  "work_order_comment": 5965786714,
+  "branch": "atlas/sky-batch-a01-10-20261003",
+  "source": {
+    "path": "es/intereses/cielo/cielo.json",
+    "git_blob": "f8594587d14c0ac51f33e424507c08be0429b680",
+    "fields": [
+      "ra",
+      "dec",
+      "mag",
+      "ci",
+      "con",
+      "d",
+      "n",
+      "ly",
+      "sp"
+    ],
+    "declared_sources": {
+      "estrellas": "HYG Database v4.1, David Nash (astronexus), CC BY-SA 4.0",
+      "nombres": "IAU Working Group on Star Names (WGSN), lista compilada por Cora Schneck (iau-star-names), MIT",
+      "constelaciones": "Líneas, límites y nombres de d3-celestial, Olaf Frohn, BSD-3-Clause; límites oficiales de la IAU (Delporte, 1930)"
+    },
+    "snapshot_counts": {
+      "constellations": 88,
+      "stars": 5070,
+      "named_stars": 597
+    }
+  },
+  "selection": {
+    "basis": "existing audited cromo order 1–10",
+    "scenes": [
+      {
+        "scene_id": "sky-a01-01-uma",
+        "order": 1,
+        "abbr": "UMa",
+        "name_es": "Osa Mayor",
+        "official_latin": "Ursa Major",
+        "star_count": 199,
+        "radius_deg": 36.373,
+        "stats": {
+          "BEACON": 0,
+          "BRIGHT": 13,
+          "GUIDE": 43,
+          "FIELD": 143,
+          "named": 39,
+          "target_constellation": 68
+        },
+        "blob": "2b7f258f596d659ee0c7a5d7101149e8e70b99a4"
+      },
+      {
+        "scene_id": "sky-a01-02-umi",
+        "order": 2,
+        "abbr": "UMi",
+        "name_es": "Osa Menor",
+        "official_latin": "Ursa Minor",
+        "star_count": 129,
+        "radius_deg": 26.83,
+        "stats": {
+          "BEACON": 0,
+          "BRIGHT": 11,
+          "GUIDE": 26,
+          "FIELD": 92,
+          "named": 26,
+          "target_constellation": 16
+        },
+        "blob": "316bfccad66bd7b38ff770dc9f741282333501e8"
+      },
+      {
+        "scene_id": "sky-a01-03-cas",
+        "order": 3,
+        "abbr": "Cas",
+        "name_es": "Casiopea",
+        "official_latin": "Cassiopeia",
+        "star_count": 264,
+        "radius_deg": 33.914,
+        "stats": {
+          "BEACON": 1,
+          "BRIGHT": 12,
+          "GUIDE": 66,
+          "FIELD": 185,
+          "named": 29,
+          "target_constellation": 47
+        },
+        "blob": "c2bed67b51eacda435407b1891bd885f09c33ada"
+      },
+      {
+        "scene_id": "sky-a01-04-ori",
+        "order": 4,
+        "abbr": "Ori",
+        "name_es": "Orión",
+        "official_latin": "Orion",
+        "star_count": 247,
+        "radius_deg": 27.599,
+        "stats": {
+          "BEACON": 3,
+          "BRIGHT": 13,
+          "GUIDE": 63,
+          "FIELD": 168,
+          "named": 29,
+          "target_constellation": 76
+        },
+        "blob": "5b51b3d3c2eef4b4d6dace225a43568f1cec3abd"
+      },
+      {
+        "scene_id": "sky-a01-05-cma",
+        "order": 5,
+        "abbr": "CMa",
+        "name_es": "Can Mayor",
+        "official_latin": "Canis Major",
+        "star_count": 168,
+        "radius_deg": 22.517,
+        "stats": {
+          "BEACON": 2,
+          "BRIGHT": 9,
+          "GUIDE": 44,
+          "FIELD": 113,
+          "named": 16,
+          "target_constellation": 51
+        },
+        "blob": "79dd74dc39ad150c8e8d38205804ef42f04c1662"
+      },
+      {
+        "scene_id": "sky-a01-06-tau",
+        "order": 6,
+        "abbr": "Tau",
+        "name_es": "Tauro",
+        "official_latin": "Taurus",
+        "star_count": 411,
+        "radius_deg": 40.407,
+        "stats": {
+          "BEACON": 5,
+          "BRIGHT": 24,
+          "GUIDE": 112,
+          "FIELD": 270,
+          "named": 64,
+          "target_constellation": 88
+        },
+        "blob": "062e16f56822aa4d84f87e67f9021b0b46f30ffa"
+      },
+      {
+        "scene_id": "sky-a01-07-gem",
+        "order": 7,
+        "abbr": "Gem",
+        "name_es": "Géminis",
+        "official_latin": "Gemini",
+        "star_count": 79,
+        "radius_deg": 18.074,
+        "stats": {
+          "BEACON": 1,
+          "BRIGHT": 5,
+          "GUIDE": 21,
+          "FIELD": 52,
+          "named": 13,
+          "target_constellation": 45
+        },
+        "blob": "d22d9ee72440332a03a2f7f3eaf06659d75bd653"
+      },
+      {
+        "scene_id": "sky-a01-08-leo",
+        "order": 8,
+        "abbr": "Leo",
+        "name_es": "Leo",
+        "official_latin": "Leo",
+        "star_count": 140,
+        "radius_deg": 29.669,
+        "stats": {
+          "BEACON": 1,
+          "BRIGHT": 5,
+          "GUIDE": 39,
+          "FIELD": 95,
+          "named": 25,
+          "target_constellation": 49
+        },
+        "blob": "ada971af589526e3e20667da0aa3913f335d8cf5"
+      },
+      {
+        "scene_id": "sky-a01-09-sco",
+        "order": 9,
+        "abbr": "Sco",
+        "name_es": "Escorpio",
+        "official_latin": "Scorpius",
+        "star_count": 342,
+        "radius_deg": 34.318,
+        "stats": {
+          "BEACON": 4,
+          "BRIGHT": 34,
+          "GUIDE": 94,
+          "FIELD": 210,
+          "named": 43,
+          "target_constellation": 62
+        },
+        "blob": "dd7577fb2ff6b0ffbd8a9d14c0a5842b0ee89da2"
+      },
+      {
+        "scene_id": "sky-a01-10-cyg",
+        "order": 10,
+        "abbr": "Cyg",
+        "name_es": "Cisne",
+        "official_latin": "Cygnus",
+        "star_count": 231,
+        "radius_deg": 29.346,
+        "stats": {
+          "BEACON": 2,
+          "BRIGHT": 6,
+          "GUIDE": 57,
+          "FIELD": 166,
+          "named": 22,
+          "target_constellation": 75
+        },
+        "blob": "70d243667a0e8ef9e0f51ba56c76c6a40b0995a0"
+      }
+    ]
+  },
+  "density": {
+    "magnitude_limit": 5.5,
+    "total_scene_star_records": 2210,
+    "min_scene_star_count": 79,
+    "max_scene_star_count": 411
+  },
+  "classifications": {
+    "REAL_DATA": [
+      "RA",
+      "Dec",
+      "apparent magnitude",
+      "B-V color index",
+      "constellation identity",
+      "names/designations where present"
+    ],
+    "CALCULATION": [
+      "angular scene selection",
+      "gnomonic local review projection"
+    ],
+    "REPRESENTATION": [
+      "brightness point size",
+      "B-V display color mapping",
+      "constellation guide styling",
+      "contact sheet composition"
+    ]
+  },
+  "validation": {
+    "scene_count": 10,
+    "min_scene_star_count_ge_70": true,
+    "traceable_ra_dec": true,
+    "traceable_magnitude": true,
+    "traceable_bv": true,
+    "traceable_brightness_category": true,
+    "contact_sheet": true,
+    "manifest": true,
+    "provenance": true,
+    "raster_star_catalog": false,
+    "manual_star_placement": false,
+    "horizon_b00_modified": false,
+    "runtime_touched": false,
+    "main_touched": false
+  },
+  "status": "READY_FOR_REVIEW"
+}
