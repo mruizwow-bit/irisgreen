@@ -472,19 +472,19 @@ body[data-ig-r49="1"][data-ig-taller-launcher] .igk-desc{
 body[data-ig-r49="1"][data-ig-taller-launcher] .igk-cta{
   margin:auto var(--ig-card-pad-inline) var(--ig-card-cta-bottom)!important;
 }
-body[data-ig-r49="1"] :is(.conditions-collection,.situations-collection) .card{
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card{
   gap:var(--ig-card-gap)!important;
   padding:var(--ig-card-pad-block) var(--ig-card-pad-inline)!important;
   min-height:12rem;
   height:100%;
 }
-body[data-ig-r49="1"] :is(.conditions-collection,.situations-collection) .card strong{
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card strong{
   font-family:"Newsreader",Georgia,serif!important;
   font-size:var(--ig-card-title-size)!important;
   line-height:1.2!important;
   font-weight:600!important;
 }
-body[data-ig-r49="1"] :is(.conditions-collection,.situations-collection) .card>span:last-child{
+body[data-ig-r49="1"]:is(.conditions-collection,.situations-collection) .card>span:last-child{
   font-family:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif!important;
   font-size:var(--ig-card-copy-size)!important;
   line-height:1.5!important;
