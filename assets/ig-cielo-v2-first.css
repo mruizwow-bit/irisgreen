@@ -1,52 +1,114 @@
-/* Iris Green · Cielo V2 · primer viewport. Escena oscura; chrome LIGHT/NAVY. */
+/* Iris Green · Cielo V2 · rework visual Prisma A8.
+   WORLD_SCENE_FIRST · motor/datos intactos · chrome LIGHT/NAVY · B00 horizonte aprobado. */
 :root{color-scheme:light}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;font-family:Atkinson Hyperlegible,system-ui,sans-serif;background:#eef2f6;color:#17395c}
+html,body{margin:0;min-height:100%;font-family:Atkinson Hyperlegible,system-ui,sans-serif;background:#edf2f6;color:#17395c}
 a{color:inherit}
-.skyv2-page{min-height:100vh;background:#eef2f6}
-.skyv2-top{min-height:4.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.65rem clamp(1rem,3vw,2rem);border-bottom:1px solid #c8d4df;background:#e8edf2}
-.skyv2-brand{font:700 1.05rem/1 system-ui,sans-serif;text-decoration:none}
-.skyv2-nav{display:flex;gap:.55rem;align-items:center;flex-wrap:wrap}.skyv2-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .8rem;border:1px solid #7c8998;border-radius:999px;text-decoration:none;font-weight:700}
+.skyv2-page{min-height:100vh;background:#edf2f6}
+.skyv2-top{min-height:4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.55rem clamp(.85rem,2vw,1.5rem);border-bottom:1px solid #c8d4df;background:#e8edf2;position:relative;z-index:20}
+.skyv2-brand{font:700 1rem/1 system-ui,sans-serif;text-decoration:none}
+.skyv2-nav{display:flex;gap:.45rem;align-items:center;flex-wrap:wrap}
+.skyv2-nav a{display:inline-flex;align-items:center;min-height:44px;padding:0 .75rem;border:1px solid #7c8998;border-radius:999px;text-decoration:none;font-weight:700}
 .skyv2-nav [aria-current=true]{background:#17395c;color:#eef4f8}
-.skyv2-intro{position:relative;z-index:3;max-width:75rem;margin:0 auto;padding:clamp(1.2rem,3vw,2rem) clamp(1rem,3vw,2rem) 1rem}
-.skyv2-intro .crumb{margin:0 0 .45rem}.skyv2-intro h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(2.2rem,5vw,4.8rem);line-height:.98;letter-spacing:-.035em;margin:.1rem 0 .7rem}
-.skyv2-question{font-size:clamp(1.05rem,2vw,1.3rem);line-height:1.5;max-width:54rem;margin:0 0 .4rem;font-weight:700}.skyv2-instruction{margin:0;color:#44566c}
-.skyv2{--chrome:#eef2f6;--chrome2:#e5ebf1;--ink:#17395c;--line:#a8b6c5;--accent:#5a49a8;--panel:#f3f6f9;max-width:80rem;margin:0 auto;padding:0 clamp(.75rem,2vw,1.5rem) 2rem;color:var(--ink)}
+.skyv2-stage{position:relative;min-height:calc(100svh - 4rem);overflow:hidden;background:#06101d}
+.skyv2-intro{position:absolute;z-index:8;top:0;left:0;width:min(52rem,calc(100% - 5rem));padding:clamp(1rem,2.5vw,1.65rem) clamp(.85rem,3vw,2rem);color:#f5f8fb;pointer-events:none;text-shadow:0 2px 18px rgba(0,0,0,.72)}
+.skyv2-intro a{pointer-events:auto}
+.skyv2-intro .crumb{margin:0 0 .35rem;font-size:.92rem;opacity:.88}
+.skyv2-intro h1{font-family:Newsreader,Georgia,serif;font-weight:500;font-size:clamp(2.15rem,4.6vw,4.4rem);line-height:.98;letter-spacing:-.035em;margin:.08rem 0 .55rem}
+.skyv2-question{font-size:clamp(1.02rem,1.7vw,1.24rem);line-height:1.45;max-width:46rem;margin:0 0 .3rem;font-weight:700}
+.skyv2-instruction{margin:0;color:#e0e8f1;font-size:.96rem}
+.skyv2{--chrome:#f4f7fa;--chrome2:#e7edf3;--ink:#17395c;--line:#a8b6c5;--accent:#5a49a8;--panel:#f8fafc;position:relative;max-width:none;margin:0;padding:0;color:var(--ink)}
 .skyv2[data-theme=navy]{--chrome:#0d1d33;--chrome2:#132b47;--ink:#eef4f8;--line:#68809a;--accent:#d5c8ff;--panel:#10263f}
-.skyv2-shell{display:grid;grid-template-columns:minmax(0,1.65fr) minmax(18rem,.75fr);background:var(--chrome);border:1px solid var(--line);border-radius:1.25rem;overflow:hidden;box-shadow:0 1.2rem 3rem rgba(10,28,48,.12)}
-.skyv2-scene{position:relative;min-height:clamp(31rem,72svh,50rem);overflow:hidden;background:#06101d;isolation:isolate}
-.skyv2-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:none;outline:none}
+.skyv2-shell{position:relative;min-height:calc(100svh - 4rem);background:#06101d;overflow:hidden}
+.skyv2-scene{position:absolute;inset:0;overflow:hidden;background:#06101d;isolation:isolate}
+.skyv2-scene::after{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background-image:url('/img/intereses/cielo/01-cielo-horizonte-observacion-r01.png');background-repeat:no-repeat;background-position:center bottom;background-size:cover}
+.skyv2-canvas{position:absolute;inset:0;z-index:1;width:100%;height:100%;display:block;touch-action:none;outline:none}
 .skyv2-canvas:focus-visible{outline:3px solid #f0dc84;outline-offset:-6px}
 .skyv2-targets,.skyv2-labels{position:absolute;inset:0;pointer-events:none;z-index:3}
 .skyv2-star-target,.skyv2-const-label{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer}
-.skyv2-star-target{width:44px;height:44px;border:0;border-radius:50%;background:transparent}
-.skyv2-star-target::after{content:"";position:absolute;inset:18px;border-radius:50%;background:#f4f1e6;box-shadow:0 0 .7rem rgba(255,255,255,.8)}
-.skyv2-star-target:hover::before,.skyv2-star-target:focus-visible::before{content:"";position:absolute;inset:8px;border:1px solid #f0dc84;border-radius:50%}
-.skyv2-const-label{min-height:34px;max-width:10rem;border:1px solid rgba(224,234,247,.45);border-radius:999px;background:rgba(8,20,38,.72);color:#eef4f8;padding:.25rem .65rem;font:700 .78rem/1.2 system-ui,sans-serif;white-space:nowrap}
-.skyv2-const-label:focus-visible{outline:3px solid #f0dc84;outline-offset:2px}
-.skyv2-look{position:absolute;left:.8rem;right:.8rem;bottom:.8rem;z-index:5;display:flex;gap:.45rem;align-items:center;flex-wrap:wrap;padding:.5rem;border-radius:1rem;background:rgba(5,14,27,.64);backdrop-filter:blur(4px)}
-.skyv2-look button{min-width:44px;min-height:44px;border:1px solid rgba(238,244,248,.55);border-radius:999px;background:#10263f;color:#eef4f8;padding:.45rem .75rem;font:700 1rem/1 system-ui,sans-serif;cursor:pointer}.skyv2-look [data-action=reset],.skyv2-look [data-action=hints]{min-width:auto}
+.skyv2-star-target{width:44px;height:44px;border:0;border-radius:50%;background:transparent;padding:0}
+.skyv2-star-target::after{content:"";position:absolute;inset:20px;border-radius:50%;background:#f7f4e9;opacity:.95}
+.skyv2-star-target:hover::before,.skyv2-star-target:focus-visible::before{content:"";position:absolute;inset:8px;border:1px solid rgba(240,220,132,.9);border-radius:50%;box-shadow:0 0 1rem rgba(240,220,132,.18)}
+.skyv2-star-target:focus-visible{outline:none}
+.skyv2-const-label{min-width:44px;min-height:44px;border:0;background:transparent;color:rgba(238,244,248,.88);padding:.55rem .7rem;font:700 .74rem/1.18 system-ui,sans-serif;white-space:nowrap;text-shadow:0 1px 4px #02060b,0 0 12px #02060b}
+.skyv2-const-label:hover{color:#fff}
+.skyv2-const-label:focus-visible{outline:2px solid #f0dc84;outline-offset:1px;border-radius:.5rem}
+.skyv2-look{position:absolute;left:50%;bottom:clamp(.65rem,2vh,1rem);transform:translateX(-50%);z-index:5;display:flex;gap:.35rem;align-items:center;padding:.35rem;border-radius:999px;background:rgba(5,14,27,.38);backdrop-filter:blur(5px);max-width:calc(100% - 1.5rem);overflow-x:auto}
+.skyv2-look button{flex:0 0 auto;min-width:44px;min-height:44px;border:1px solid rgba(238,244,248,.42);border-radius:999px;background:rgba(16,38,63,.7);color:#eef4f8;padding:.42rem .72rem;font:700 .96rem/1 system-ui,sans-serif;cursor:pointer}
+.skyv2-look [data-action=reset],.skyv2-look [data-action=hints]{min-width:auto}
 .skyv2-look button[aria-pressed=true]{background:#eef4f8;color:#10263f}
 .skyv2-look button:focus-visible{outline:3px solid #f0dc84;outline-offset:2px}
-.skyv2-side{background:var(--chrome);color:var(--ink);border-left:1px solid var(--line);display:flex;flex-direction:column;min-width:0}
-.skyv2-info,.skyv2-viewlist,.skyv2-meta{padding:clamp(1rem,2.5vw,1.45rem);border-bottom:1px solid var(--line)}
-.skyv2-info h2,.skyv2-viewlist h2{font-family:Newsreader,Georgia,serif;font-size:clamp(1.45rem,2.5vw,2rem);line-height:1.05;margin:0 0 .65rem}.skyv2-info p{line-height:1.5}.skyv2-info dl{display:grid;grid-template-columns:max-content 1fr;gap:.35rem .8rem;margin:.5rem 0}.skyv2-info dt{font-weight:700}.skyv2-info dd{margin:0;min-width:0}
-.skyv2-planet-context{padding:.6rem .75rem;border-radius:.75rem;background:var(--chrome2);font-size:.9rem}
-.skyv2-viewcols{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.skyv2-viewcols h3{font-size:1rem;margin:.2rem 0 .5rem}.skyv2-viewcols ul{list-style:none;padding:0;margin:0;display:grid;gap:.3rem}
-.skyv2-viewcols button{width:100%;min-height:44px;border:1px solid var(--line);border-radius:.7rem;background:var(--panel);color:var(--ink);text-align:left;padding:.45rem .6rem;font:inherit;cursor:pointer}.skyv2-viewcols button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
-.skyv2-context summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}.skyv2-context-grid{display:grid;gap:.75rem;padding:.6rem 0}.skyv2-context label{display:grid;gap:.3rem;font-weight:700}.skyv2-context select,.skyv2-context input{min-height:44px;border:1px solid var(--line);border-radius:.65rem;padding:.45rem .55rem;background:var(--panel);color:var(--ink);font:inherit}
-.skyv2-theme{display:flex;gap:.4rem;align-items:center;margin:.7rem 0}.skyv2-theme button,.skyv2-depth{min-height:44px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);padding:.45rem .8rem;font:inherit;font-weight:700;cursor:pointer}.skyv2-theme button[aria-pressed=true]{background:var(--ink);color:var(--chrome)}
-.skyv2-sources,.skyv2-depth-status{font-size:.9rem;line-height:1.4}.skyv2-depth{width:100%;justify-content:center}.skyv2-depth:disabled{opacity:.6}
+.skyv2-side{position:absolute;inset:0;z-index:6;pointer-events:none;background:transparent;color:var(--ink)}
+.skyv2-info,.skyv2-viewlist,.skyv2-meta{pointer-events:auto;border:1px solid color-mix(in srgb,var(--line) 78%,transparent);background:color-mix(in srgb,var(--chrome) 90%,transparent);backdrop-filter:blur(12px);box-shadow:0 .7rem 2rem rgba(4,12,24,.18)}
+.skyv2-info{position:absolute;left:clamp(.75rem,2vw,1.4rem);bottom:5.45rem;width:min(24rem,calc(100% - 1.5rem));padding:1rem 1.05rem;border-radius:1rem;opacity:0;transform:translateY(.45rem);pointer-events:none;transition:opacity .16s ease,transform .16s ease}
+.skyv2-info[data-active=true]{opacity:1;transform:none;pointer-events:auto}
+.skyv2-info h2{font-family:Newsreader,Georgia,serif;font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.05;margin:0 0 .55rem}
+.skyv2-info p{line-height:1.45;margin:.5rem 0}
+.skyv2-info dl{display:grid;grid-template-columns:max-content 1fr;gap:.3rem .7rem;margin:.45rem 0}
+.skyv2-info dt{font-weight:700}.skyv2-info dd{margin:0;min-width:0}
+.skyv2-planet-context{padding:.55rem .65rem;border-radius:.65rem;background:var(--chrome2);font-size:.86rem}
+.skyv2-viewlist{position:absolute;left:clamp(.75rem,2vw,1.4rem);top:clamp(10.6rem,24vh,13.4rem);width:min(22rem,calc(100% - 1.5rem));border-radius:999px}
+.skyv2-viewlist[open]{border-radius:1rem;max-height:min(56svh,34rem);overflow:auto}
+.skyv2-viewlist>summary,.skyv2-meta>summary{display:flex;align-items:center;min-height:44px;padding:.5rem .85rem;font-weight:700;cursor:pointer;list-style:none}
+.skyv2-viewlist>summary::-webkit-details-marker,.skyv2-meta>summary::-webkit-details-marker{display:none}
+.skyv2-viewlist>summary::after,.skyv2-meta>summary::after{content:"＋";margin-left:auto;font-size:1.05rem}
+.skyv2-viewlist[open]>summary::after,.skyv2-meta[open]>summary::after{content:"−"}
+.skyv2-viewcols{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;padding:0 .8rem .85rem}
+.skyv2-viewcols h3{font-size:.9rem;margin:.15rem 0 .4rem}
+.skyv2-viewcols ul{list-style:none;padding:0;margin:0;display:grid;gap:.25rem}
+.skyv2-viewcols button{width:100%;min-height:44px;border:1px solid var(--line);border-radius:.65rem;background:var(--panel);color:var(--ink);text-align:left;padding:.42rem .55rem;font:inherit;cursor:pointer}
+.skyv2-viewcols button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.skyv2-meta{position:absolute;right:clamp(.75rem,2vw,1.4rem);top:clamp(.75rem,2vw,1.4rem);width:min(18rem,calc(100% - 1.5rem));border-radius:999px}
+.skyv2-meta[open]{border-radius:1rem}
+.skyv2-meta-panel{padding:0 .85rem .85rem}
+.skyv2-context{border-top:1px solid color-mix(in srgb,var(--line) 50%,transparent)}
+.skyv2-context summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center}
+.skyv2-context-grid{display:grid;gap:.65rem;padding:.45rem 0}
+.skyv2-context label{display:grid;gap:.25rem;font-weight:700;font-size:.9rem}
+.skyv2-context select,.skyv2-context input{min-height:44px;border:1px solid var(--line);border-radius:.6rem;padding:.4rem .5rem;background:var(--panel);color:var(--ink);font:inherit;max-width:100%}
+.skyv2-theme{display:flex;gap:.35rem;align-items:center;margin:.65rem 0}
+.skyv2-theme button,.skyv2-depth{min-height:44px;border:1px solid var(--line);border-radius:999px;background:var(--panel);color:var(--ink);padding:.42rem .7rem;font:inherit;font-weight:700;cursor:pointer}
+.skyv2-theme button[aria-pressed=true]{background:var(--ink);color:var(--chrome)}
+.skyv2-sources,.skyv2-depth-status{font-size:.82rem;line-height:1.35;margin:.45rem 0}
+.skyv2-depth{width:100%}.skyv2-depth:disabled{opacity:.6}
 .skyv2-noscript{max-width:75rem;margin:1rem auto;padding:1rem 1.25rem;border:1px solid #8797a7;border-radius:1rem;background:#e4eaf0}
 .skyv2-footer{max-width:75rem;margin:auto;padding:1rem 1.25rem 2rem;color:#44566c}
 .skyv2[data-motion=reduced] *,.skyv2[data-motion=none] *{scroll-behavior:auto!important;animation:none!important;transition:none!important}
-@media(max-width:56rem){.skyv2-shell{grid-template-columns:1fr}.skyv2-side{border-left:0;border-top:1px solid var(--line)}.skyv2-scene{min-height:62svh}.skyv2-viewcols{grid-template-columns:1fr 1fr}.skyv2-info,.skyv2-viewlist,.skyv2-meta{padding:1rem}}
-@media(max-width:30rem){.skyv2-top{align-items:flex-start;flex-direction:column}.skyv2-nav{width:100%}.skyv2-intro{padding-top:1rem}.skyv2-scene{min-height:66svh}.skyv2-look{overflow-x:auto;flex-wrap:nowrap}.skyv2-viewcols{grid-template-columns:1fr}.skyv2-info dl{grid-template-columns:1fr}.skyv2-const-label{max-width:7rem;white-space:normal;text-align:center}}
+
+@media(max-width:56rem){
+ .skyv2-intro{width:min(42rem,calc(100% - 4.4rem));padding-top:1rem}
+ .skyv2-info{bottom:5.2rem}
+ .skyv2-viewlist{top:10.2rem}
+}
+@media(max-width:30rem){
+ .skyv2-top{min-height:3.6rem;align-items:center;padding:.45rem .65rem}
+ .skyv2-nav a:first-child{display:none}
+ .skyv2-stage,.skyv2-shell{min-height:calc(100svh - 3.6rem)}
+ .skyv2-intro{width:100%;padding:.85rem 4.8rem .65rem .75rem}
+ .skyv2-intro .crumb{font-size:.82rem}.skyv2-intro h1{font-size:clamp(2rem,12vw,2.75rem)}
+ .skyv2-question{font-size:1rem;line-height:1.36}.skyv2-instruction{font-size:.88rem}
+ .skyv2-meta{right:.65rem;top:.65rem;width:min(15.5rem,calc(100% - 1.3rem))}
+ .skyv2-viewlist{left:.65rem;top:10rem;width:min(18rem,calc(100% - 1.3rem))}
+ .skyv2-viewcols{grid-template-columns:1fr}
+ .skyv2-info{left:.65rem;bottom:5rem;width:calc(100% - 1.3rem);padding:.85rem}
+ .skyv2-info dl{grid-template-columns:1fr;gap:.1rem}
+ .skyv2-look{bottom:.55rem}
+ .skyv2-const-label{max-width:8rem;white-space:normal;text-align:center}
+}
+@media(max-width:22rem){
+ .skyv2-intro{padding-right:.75rem;padding-top:4rem}
+ .skyv2-viewlist{top:12.2rem}
+}
+
 @media(forced-colors:active){
  .skyv2-page,.skyv2-top,.skyv2,.skyv2-side,.skyv2-info,.skyv2-viewlist,.skyv2-meta{background:Canvas;color:CanvasText}
- .skyv2-shell,.skyv2-side,.skyv2-info,.skyv2-viewlist,.skyv2-meta{border-color:CanvasText}
- .skyv2-canvas,.skyv2-targets,.skyv2-labels{display:none!important}
- .skyv2-scene{min-height:auto;background:Canvas;color:CanvasText;padding:1rem}
- .skyv2-look{position:static;background:Canvas;backdrop-filter:none}
+ .skyv2-stage,.skyv2-shell,.skyv2-scene{background:Canvas;color:CanvasText}
+ .skyv2-scene::after,.skyv2-canvas,.skyv2-targets,.skyv2-labels{display:none!important}
+ .skyv2-shell{min-height:auto;padding-top:8rem}
+ .skyv2-scene{position:relative;min-height:auto;padding:1rem}
+ .skyv2-side{position:relative;inset:auto;display:grid;gap:.75rem;padding:1rem;pointer-events:auto}
+ .skyv2-info,.skyv2-viewlist,.skyv2-meta{position:relative;inset:auto;width:auto;max-width:none;opacity:1;transform:none;pointer-events:auto;border-color:CanvasText;box-shadow:none;backdrop-filter:none}
+ .skyv2-info[data-active=false]{display:none}
+ .skyv2-look{position:static;transform:none;background:Canvas;backdrop-filter:none;margin:0 1rem 1rem}
  .skyv2-look button,.skyv2-viewcols button,.skyv2-context select,.skyv2-context input,.skyv2-theme button,.skyv2-depth{background:ButtonFace;color:ButtonText;border-color:ButtonText}
 }
