@@ -6,6 +6,7 @@ on:
       - 'scripts/test_prisma_369_home_grid_p9.py'
       - '.github/workflows/prisma-369-home-grid-p9.yml'
       - 'assets/home-r42-child-safe.css'
+      - 'scripts/test_home_v4_css_integrity.py'
       - 'scripts/apply_home_r42.py'
   workflow_dispatch:
 permissions:
@@ -23,6 +24,8 @@ jobs:
       - run: python -m playwright install --with-deps chromium
       - name: Build canónico
         run: python scripts/build_site.py
+      - name: Home CSS integrity
+        run: python scripts/test_home_v4_css_integrity.py --root dist
       - name: QA #369 P9
         run: python scripts/test_prisma_369_home_grid_p9.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
