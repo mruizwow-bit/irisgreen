@@ -741,3 +741,44 @@ HANDOFF:
 
 Siguiente:
 revisión final única.
+
+
+---
+
+# 03/10/2026 · ATLAS · ECLIPSE CANONICAL TYPE VISUAL SET
+
+Gate:
+`ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW`
+
+Tras el review global de los 458 eventos (#370 comentario `5966236303`), Atlas crea el set reusable por tipo:
+
+1. solar total;
+2. solar parcial;
+3. solar anular;
+4. lunar total;
+5. lunar parcial;
+6. lunar penumbral.
+
+Contrato:
+- 6 SVG first-party procedurales;
+- fondo transparente;
+- sin texto visible;
+- ES/EN accesible en manifest;
+- SHA-256;
+- contact sheet;
+- provenance;
+- reusable por el catálogo data-driven.
+
+Separación:
+- set visual = `REPRESENTATION`;
+- 458 eventos = `CALCULATION`.
+
+No 458 artes únicos.
+No runtime.
+No main.
+
+MEMORIA:
+`COORDINACION_IRIS_GREEN/MEMORIA/ATLAS_ECLIPSE_CANONICAL_TYPE_VISUAL_SET_20261003.md`
+
+CONTROL:
+`COORDINACION_IRIS_GREEN/CONTROL/ATLAS_ECLIPSE_CANONICAL_TYPE_VISUAL_SET_20261003.json`
