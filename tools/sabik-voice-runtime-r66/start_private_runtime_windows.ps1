@@ -1,5 +1,5 @@
 param(
-  [string]$SabikVoiceRoot = "C:\Users\mruiz\SabikVoice",
+  [string]$SabikVoiceRoot = (Join-Path $env:USERPROFILE "SabikVoice"),
   [string]$HostAddress = "127.0.0.1",
   [int]$Port = 8765
 )
@@ -10,7 +10,7 @@ $Python = Join-Path $SabikVoiceRoot ".venv\Scripts\python.exe"
 $Discover = Join-Path $RuntimeDir "discover_private_models.py"
 
 if (-not (Test-Path $Python)) {
-  throw "R66_PRIVATE_PYTHON_NOT_FOUND: $Python"
+  throw "R66_PRIVATE_PYTHON_NOT_FOUND"
 }
 
 $env:SABIKVOICE_ROOT = $SabikVoiceRoot
@@ -29,14 +29,14 @@ foreach ($p in @(
   (Join-Path $EnPath "model.safetensors"),
   (Join-Path $EnPath "config.json")
 )) {
-  if (-not (Test-Path $p)) { throw "R66_PRIVATE_MODEL_FILE_MISSING: $p" }
+  if (-not (Test-Path $p)) { throw "R66_PRIVATE_MODEL_FILE_MISSING" }
 }
 
 if (-not $env:SABIK_STT_ADAPTER_EXE) {
-  throw "R66_STT_PRIVATE_ADAPTER_REQUIRED: set SABIK_STT_ADAPTER_EXE to the already-approved private ES/EN STT adapter"
+  throw "R66_STT_PRIVATE_ADAPTER_REQUIRED"
 }
 if (-not (Test-Path $env:SABIK_STT_ADAPTER_EXE)) {
-  throw "R66_STT_PRIVATE_ADAPTER_NOT_FOUND: $env:SABIK_STT_ADAPTER_EXE"
+  throw "R66_STT_PRIVATE_ADAPTER_NOT_FOUND"
 }
 
 $ConfigPath = Join-Path $env:TEMP "sabik-r66-private-runtime-config.json"
@@ -79,7 +79,6 @@ $Config | ConvertTo-Json -Depth 8 | Set-Content -Encoding UTF8 $ConfigPath
 $env:SABIK_VOICE_PRIVATE_CONFIG = $ConfigPath
 
 Write-Host "R66_PRIVATE_MODEL_HASHES_PASS"
-Write-Host ("Starting private Sabik voice runtime on http://{0}:{1}" -f $HostAddress,$Port)
 Push-Location $RuntimeDir
 try {
   & $Python -m uvicorn runtime:app --host $HostAddress --port $Port --no-access-log
