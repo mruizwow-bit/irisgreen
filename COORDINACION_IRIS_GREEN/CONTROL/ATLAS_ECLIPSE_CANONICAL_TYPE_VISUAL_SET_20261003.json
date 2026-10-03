@@ -1,5 +1,5 @@
 {
-  "schema": "iris-green.control.eclipse-canonical-type-visual-set.v1",
+  "schema": "iris-green.control.eclipse-canonical-type-visual-set.v2",
   "date": "2026-10-03",
   "owner": "ATLAS_A1",
   "gate": "ECLIPSE_CANONICAL_TYPE_VISUAL_SET_READY_FOR_REVIEW",
@@ -9,12 +9,12 @@
   },
   "set_count": 6,
   "assets": [
-    "eclipse-solar-total-canonical-r01.svg",
-    "eclipse-solar-partial-canonical-r01.svg",
-    "eclipse-solar-annular-canonical-r01.svg",
-    "eclipse-lunar-total-canonical-r01.svg",
-    "eclipse-lunar-partial-canonical-r01.svg",
-    "eclipse-lunar-penumbral-canonical-r01.svg"
+    "eclipse-solar-total-canonical-r02.svg",
+    "eclipse-solar-partial-canonical-r02.svg",
+    "eclipse-solar-annular-canonical-r02.svg",
+    "eclipse-lunar-total-canonical-r02.svg",
+    "eclipse-lunar-partial-canonical-r02.svg",
+    "eclipse-lunar-penumbral-canonical-r02.svg"
   ],
   "class": "REPRESENTATION",
   "reuse_model": "TYPE_DRIVEN",
@@ -30,7 +30,8 @@
     "sha256_file": true,
     "manifest": true,
     "provenance": true,
-    "contact_sheet": true
+    "contact_sheet": true,
+    "contact_sheet_r02": true
   },
   "constraints": {
     "event_specific_maps": false,
@@ -41,5 +42,19 @@
     "main_touched": false
   },
   "branch": "atlas/eclipse-canonical-type-visual-set-20261003",
-  "status": "READY_FOR_REVIEW"
+  "status": "READY_FOR_REVIEW_R02",
+  "version": "R02",
+  "supersedes": "R01",
+  "didactic_sequences": [
+    "eclipse-solar-total-phase-sequence-r01.svg",
+    "eclipse-lunar-total-phase-sequence-r01.svg"
+  ],
+  "dispatch_contract": "eclipse-type-visual-map.json",
+  "rework_applied": [
+    "SIDE_GEOMETRY_PLUS_OBSERVED_DISK",
+    "DATA_DRIVEN_DOMAIN_KIND_DISPATCH",
+    "SOLAR_TOTAL_PHASE_SEQUENCE",
+    "LUNAR_TOTAL_PHASE_SEQUENCE",
+    "ES_EN_ALT_METADATA"
+  ]
 }
