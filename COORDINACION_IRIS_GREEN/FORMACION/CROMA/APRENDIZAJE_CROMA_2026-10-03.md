@@ -469,3 +469,29 @@ Para `FOUNDATION_PASS_INTERNAL` aún se exige práctica sobre un encargo visual 
 - examen interno.
 
 No se infla el estado por cantidad de lectura.
+
+
+## 17 · Práctica real · Meteor Showers B01 · 2026-10-03
+
+Croma cerró una práctica real de producción visual por tanda bajo el contrato de María:
+
+`10 ASSETS → 1 CONTACT SHEET → REVIEW DE TANDA`
+
+Evidencia:
+- brief real con HUMAN visual iterations;
+- FAIL de colección por repetición detectado y corregido;
+- segunda dirección con 10 paisajes/composiciones/radiantes diferenciados;
+- separación estricta entre `REPRESENTATION` y datos científicos;
+- 10 masters normalizados a 1536×1536 PNG sRGB;
+- manifest/hashes/QA;
+- contact sheet visual 5×2 y factual 5×2;
+- handoff registrado sin tocar `main`.
+
+Lecciones:
+1. variedad de familia ≠ repetir un único fondo con cambios superficiales;
+2. activity tier visual es una decisión perceptiva y no puede confundirse con ZHR literal;
+3. el radiante es parte de la identidad compositiva y debe variar entre lluvias;
+4. factual ambiguity debe conservarse como ambigüedad (caso Southern Delta Aquariids), no resolverse estéticamente;
+5. la normalización técnica se realiza después del HUMAN KEEP para no reabrir arte aprobado.
+
+Esta práctica aporta evidencia a: brief real, E4 visual review, master/handoff y factual-separation. No cierra por sí sola las prácticas responsive/ES-EN/a11y/interacción ni el examen interno pendiente, por lo que el estado global de formación NO se eleva artificialmente a PASS.
