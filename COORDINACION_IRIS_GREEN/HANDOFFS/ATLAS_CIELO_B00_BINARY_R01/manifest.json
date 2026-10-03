@@ -1,0 +1,75 @@
+{
+  "schema": "iris-green.cielo-b00-binary-package.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "gate": "INTEREST_01_SKY_HORIZON_BINARY_PACKAGE_READY_FOR_PRISMA",
+  "asset_id": "01-cielo-horizonte-observacion-r01",
+  "web_path": "/img/intereses/cielo/01-cielo-horizonte-observacion-r01.png",
+  "master": {
+    "approved_sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+    "decoded_rgba_sha256": "3f3591d332530dfa4226f14eaa3cc3d23c401c01edef20e6d23d4bc365b099ed"
+  },
+  "web_binary": {
+    "sha256": "ee569aa0e520d0d819e259eff684fafdf1180d3a22d9dbd4cc1ec7b84b1d4641",
+    "bytes": 708801,
+    "format": "PNG",
+    "mode": "RGBA",
+    "width": 2560,
+    "height": 768,
+    "icc_profile_sha256": "0ea2385dc1cadf2842b4088a2b1e09a4f3b5d6d61aeb1c7b69ac9f79c3cff729",
+    "icc_profile_bytes": 588,
+    "decoded_rgba_sha256": "3f3591d332530dfa4226f14eaa3cc3d23c401c01edef20e6d23d4bc365b099ed"
+  },
+  "equivalence": {
+    "decoded_pixels_identical_to_approved_master": true,
+    "icc_profile_identical_to_approved_master": true,
+    "byte_stream_identical": false,
+    "byte_stream_note": "PNG DEFLATE stream was re-encoded on Windows; decoded RGBA pixels and embedded ICC profile are identical to the approved master."
+  },
+  "alpha": {
+    "min": 0,
+    "max": 255,
+    "fully_transparent_pixel_pct": 70.9357,
+    "upper_55pct_nonzero_alpha_pixels": 0
+  },
+  "safe_crops": [
+    {
+      "name": "16:9",
+      "x0": 597,
+      "x1": 1962,
+      "width": 1365,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100.0,
+      "horizon_first_alpha_y_min": 506,
+      "horizon_first_alpha_y_max": 585,
+      "top_55pct_transparent": true
+    },
+    {
+      "name": "3:4",
+      "x0": 992,
+      "x1": 1568,
+      "width": 576,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100.0,
+      "horizon_first_alpha_y_min": 550,
+      "horizon_first_alpha_y_max": 583,
+      "top_55pct_transparent": true
+    },
+    {
+      "name": "mobile_390x844",
+      "x0": 1102,
+      "x1": 1457,
+      "width": 355,
+      "height": 768,
+      "all_columns_have_horizon": true,
+      "columns_with_horizon_pct": 100.0,
+      "horizon_first_alpha_y_min": 550,
+      "horizon_first_alpha_y_max": 578,
+      "top_55pct_transparent": true
+    }
+  ],
+  "runtime_touched": false,
+  "main_touched": false
+}

@@ -1,0 +1,27 @@
+{
+  "schema": "iris-green.cielo-b00-binary-provenance.v1",
+  "date": "2026-10-03",
+  "owner": "ATLAS_A1",
+  "source_master": {
+    "asset_id": "01-cielo-horizonte-observacion-r01",
+    "approved_master_sha256": "f35cb943ca72b254a092c721e8007ddbe4d414ed80d154f287b5eedce57493d0",
+    "approved_gate": "INTEREST_01_SKY_HORIZON_ASSET_PASS",
+    "source_donor_sha256": "a4373de0272f536b83f3dee06de51b1d1b9a2bee2ee8fb3cad9a40884dc7858c"
+  },
+  "repackaging": {
+    "purpose": "Materialize approved B00 horizon at a canonical web repository path for Prisma Cielo V2 integration.",
+    "steps": [
+      "uniform Lanczos scale donor 2172x724 to 2560x853",
+      "crop top 85px to 2560x768",
+      "set alpha <=2 to 0",
+      "embed the approved sRGB ICC profile",
+      "PNG re-encode only; no redraw, recolor, relight or geometry change"
+    ],
+    "decoded_rgba_sha256": "3f3591d332530dfa4226f14eaa3cc3d23c401c01edef20e6d23d4bc365b099ed",
+    "icc_profile_sha256": "0ea2385dc1cadf2842b4088a2b1e09a4f3b5d6d61aeb1c7b69ac9f79c3cff729",
+    "web_binary_sha256": "ee569aa0e520d0d819e259eff684fafdf1180d3a22d9dbd4cc1ec7b84b1d4641"
+  },
+  "consumer": "PRISMA_A8_CIELO_V2",
+  "css_slot": "--skyv2-horizon-image",
+  "runtime_change_by_atlas": false
+}
