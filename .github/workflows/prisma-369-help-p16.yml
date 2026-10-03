@@ -6,6 +6,7 @@ on:
       - 'scripts/test_prisma_369_help_p16.py'
       - '.github/workflows/prisma-369-help-p16.yml'
       - 'assets/ig-r69-unified-ui.css'
+      - 'tools/prisma/help-modal-p16-fixture.html'
       - 'assets/ig-taller-r42.css'
       - 'assets/ig-taller-r42.js'
   workflow_dispatch:
