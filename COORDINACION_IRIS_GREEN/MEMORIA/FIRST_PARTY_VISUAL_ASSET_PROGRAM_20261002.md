@@ -544,3 +544,79 @@ Atlas:
 
 B02/B03:
 HOLD.
+
+
+## B01 R04 · revisión parcial KEEP/REWORK · 03/10/2026
+
+Fuente:
+`COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_VISUAL_ASSET_PROGRAM_20261002/B01_LUMEN_R04_VISUAL_REVIEW.md`
+
+Commit:
+`c7bb3026da341fb4f6a372f2e3404fad02b97b76`
+
+Resultado:
+`B01_R04_VISUAL_REWORK_SOL_VENUS_EARTH__MERCURY_KEEP`
+
+Por asset:
+- Mercurio → `KEEP_LOCKED`
+- Sol → `REWORK`
+- Venus → `REWORK`
+- Tierra → `REWORK`
+
+No hay PASS global B01 todavía.
+
+### Mercurio
+Queda congelado. No regenerar ni "mejorar" mientras no aparezca defecto factual/técnico nuevo.
+
+### Sol
+Subir:
+- autoemisión;
+- granulación;
+- profundidad luminosa.
+
+Mantener:
+- blanco/blanco cálido;
+- sin naranja dominante;
+- sin corona permanente;
+- sin prominencias;
+- sin patrón de manchas actual.
+
+### Venus
+Subir:
+- lectura de capas nubosas;
+- volumen atmosférico.
+
+Mantener:
+- opacidad completa de superficie;
+- crema/marfil;
+- sin radar/UV falso color.
+
+### Tierra
+Subir:
+- esfericidad convincente;
+- integración de relieve;
+- profundidad de nubes;
+- halo natural.
+
+Mantener:
+- África/Europa/Atlántico;
+- nubes genéricas;
+- no meteorología actual;
+- no luces nocturnas/auroras.
+
+### B01 R05
+Lumen autorizado a rehacer SOLO:
+- Sol
+- Venus
+- Tierra
+
+Mercurio se reutiliza desde R04.
+
+Gate:
+`VISUAL_BATCH_01_SOLAR_FOUNDATION_R05_READY_FOR_REVIEW`
+
+Atlas:
+`WAIT_FULL_B01_VISUAL_PASS`
+
+B02/B03:
+`HOLD`
