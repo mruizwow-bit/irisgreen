@@ -9,13 +9,13 @@ REQUIRED={
     '.ig-home-v4-hero,.ig-home-v4-sabik':('display:block','background:var(--ig-bg-surface)','border:1px solid var(--ig-separator)'),
     '.ig-home-v4-hero':('display:flex','padding:clamp(1.25rem,3vw,2.25rem)'),
     '.ig-home-v4-search-row':('display:flex','gap:.6rem'),
-    '.ig-home-v4-use-grid':('display:grid','grid-template-columns:repeat(2,minmax(0,1fr))'),
-    '.ig-home-v4-use-pair':('display:grid','grid-template-columns:repeat(2,minmax(0,1fr))'),
+    '.ig-home-v4-main':('width:min(100%,88rem)','margin-inline:auto'),
+    '.ig-home-v4-use-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))','width:100%','max-width:none'),
     '.ig-home-v4-card':('display:grid','background:var(--ig-bg-surface)'),
     '.ig-home-v4-media':('display:grid','min-height:112px'),
     '.ig-home-v4-discover-grid':('display:grid','grid-template-columns:repeat(3,minmax(0,1fr))','width:100%','max-width:none'),
-    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:minmax(250px,.8fr)minmax(320px,1.2fr)'),
-    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual':('max-width:300px','aspect-ratio:1','margin:0'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget':('display:grid','grid-template-columns:minmax(22rem,.92fr)minmax(24rem,1.08fr)'),
+    '.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual':('width:min(100%,34rem)','max-width:34rem','margin-inline:auto'),
     '.ig-home-v4-footer':('display:flex','justify-content:space-between','var(--ig-content-wide,104rem)'),
 }
 CONTROL_ALLOWED={9,10,13}
@@ -46,7 +46,9 @@ def check(root:Path):
     for legacy in ['#ffffff','#fff;','background:white','background: white']:
         need(legacy not in css.lower(),'Pure white UI hardcode in Home v4 CSS: '+legacy)
     need('.ig-home-v4 .sabik-widget' in css,'Sabik Home chassis rule missing')
-    need('grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr)' in css,'Compact Sabik two-column layout missing')
+    need('grid-template-columns:minmax(22rem,.92fr) minmax(24rem,1.08fr)' in css,'Definitive Sabik two-column layout missing')
+    need('.ig-home-v4-use-pair' not in css,'Obsolete nested Explore pair layout must not return')
+    need('.ig-home-v4-safety-state' not in css,'Visible child-safety status styling must not return')
     need('html[data-ig-theme="light"]' in css,'LIGHT alternate theme integration missing')
     print({'css':'PASS','bytes':len(raw),'controls':0,'braces':css.count('{'),'required':len(REQUIRED)})
 
