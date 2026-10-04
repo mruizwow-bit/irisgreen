@@ -31,7 +31,7 @@ def main():
    need(token in txt,'Real Sabik control missing '+token)
   for obsolete in ['id="sabik-expand"','id="sabik-toggle"','id="sabik-low"','id="sabik-mic"']:
    need(obsolete not in txt,'Obsolete Sabik Home control returned '+obsolete)
-  need('class="ig-home-v4-sabik-center"' in txt,'Centered Sabik Home hierarchy missing')
+  need('class="ig-home-v4-sabik-left"' in txt and 'class="ig-home-v4-sabik-right"' in txt,'Compact Sabik left/right hierarchy missing')
   need('class="sabik-primary-actions"' in txt,'Sabik primary-action hierarchy missing')
   need('>Opciones de Sabik<' in txt or '>Sabik options<' in txt,'Sabik options disclosure missing')
   for layer in ['orbits-back','core-rings','core-light','particles-front']:
