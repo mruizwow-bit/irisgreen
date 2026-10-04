@@ -9,6 +9,7 @@ on:
       - 'assets/home-r42-child-safe.css'
       - 'scripts/test_sabik_*.py'
       - 'scripts/test_sabik_*.mjs'
+      - 'scripts/test_home_child_safe_*.py'
       - 'tools/test-sabik-*.js'
       - '.github/workflows/iris-sabik-r08.yml'
   workflow_dispatch:
@@ -47,3 +48,9 @@ jobs:
         run: node tools/test-sabik-authorized-transport-r06.mjs
       - name: Canonical build
         run: python scripts/build_site.py
+      - name: Home age + Sabik browser gate
+        run: |
+          python -m http.server 4173 --directory dist >/tmp/iris-home-http.log 2>&1 &
+          SERVER_PID=$!
+          trap 'kill $SERVER_PID || true' EXIT
+          python scripts/test_home_child_safe_browser.py
