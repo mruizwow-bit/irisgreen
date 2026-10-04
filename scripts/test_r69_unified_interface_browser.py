@@ -26,12 +26,26 @@ async def shell_ready(page,path):
         need(await page.locator(selector).count()<=1,"duplicate global header control "+selector+" "+path)
     need(await page.locator("[data-ig-music]").count()==1 and await page.locator("[data-ig-r49-settings]").count()==1 and await page.locator(".ig-r49-lang").count()==1,
          "compact global header controls missing "+path)
+    await page.wait_for_function("() => window.IGAudience !== undefined")
+    await page.evaluate("IGAudience.clear()")
+    need(await page.locator("html").get_attribute("data-ig-audience")=="AGE_UNSET","route did not enter mandatory AGE_UNSET "+path)
+    gate=page.locator("[data-ig-mandatory-age-gate]")
+    need(await gate.count()==1 and await gate.is_visible(),"mandatory age gate missing "+path)
+    need(await page.locator("main").get_attribute("inert") is not None,"main not blocked while AGE_UNSET "+path)
+    if path in ("/","/en/"):
+        need(await page.locator("[data-ig-audience-picker]").count()==2 and await page.locator("[data-ig-audience-stage]").count()==6,
+             "Home must contain normal age picker plus mandatory gate while AGE_UNSET "+path)
+    else:
+        need(await page.locator("[data-ig-audience-picker]").count()==1 and await page.locator("[data-ig-audience-stage]").count()==3,
+             "mandatory gate should be the only age picker outside Home "+path)
+    await gate.locator('[data-ig-audience-stage="AGE_18_PLUS"]').click()
+    need(await gate.count()==0,"mandatory gate remained after valid age selection "+path)
     if path in ("/","/en/"):
         need(await page.locator("[data-ig-audience-picker]").count()==1 and await page.locator("[data-ig-audience-stage]").count()==3,
-             "Home canonical three-choice age picker missing "+path)
+             "Home canonical three-choice age picker missing after selection "+path)
     else:
         need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
-             "local age picker exists outside Home "+path)
+             "local age picker exists outside Home after selection "+path)
     need(await page.locator("#ig-page-finder").count()<=1,"duplicate page finder "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
     need(await page.locator(".igk-para").count()==0,"Workshop hub local «Para ti» age UI "+path)
@@ -122,19 +136,19 @@ async def main():
         need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Buscar","Home Search heading missing")
         need(await page.locator("[data-ig-audience-stage]").count()==3,"Home public age buttons count !=3")
         need(await page.locator("html").get_attribute("data-ig-safety-mode")=="safe-by-default","Home did not start child-safe")
-        need(await page.locator("[data-ig-home-safe]").is_visible(),"Home child-safe status is not visible")
+        need(await page.locator("[data-ig-home-safe],[data-ig-home-adult]").count()==0,"internal safety labels leaked into Home")
         await page.locator('[data-ig-audience-stage="AGE_0_12"]').click()
         need(await page.locator("html").get_attribute("data-ig-audience")=="AGE_0_12","Home 0–12 selection did not become canonical")
         await page.goto(BASE+"/es/intereses/",wait_until="domcontentloaded")
-        await page.wait_for_selector("[data-ig-audience-blocked-message]",state="attached",timeout=5000)
-        need(await page.locator("main").first.is_hidden(),"AGE_0_12 direct Interests route is not blocked")
+        need(await page.locator("main").first.is_visible(),"ALL_AGES Interests route was blocked for AGE_0_12")
+        need(await page.locator("[data-ig-audience-blocked-message]").count()==0,"ALL_AGES Interests route showed age block")
         await page.goto(BASE+"/es/recursos/juegos/",wait_until="domcontentloaded")
         need(await page.locator("main").first.is_visible(),"AGE_0_12 safe Games route was blocked")
         await page.goto(BASE+"/",wait_until="networkidle")
         await page.locator('[data-ig-audience-stage="AGE_18_PLUS"]').click()
-        need(await page.locator("html").get_attribute("data-ig-safety-mode")=="adult-explicit","Explicit adult choice did not change safety mode")
-        need(await page.locator("[data-ig-home-adult]").is_visible(),"Explicit adult status is not visible")
-        await page.evaluate("IGAudience.clear()")
+        need(await page.locator("html").get_attribute("data-ig-safety-mode")=="safe-by-default","18+ claim incorrectly changed to unrestricted safety mode")
+        need(await page.evaluate("IGAudience.isAdultClaimed()") is True,"18+ claim not recorded")
+        need(await page.evaluate("IGAudience.hasAdultAssurance()") is False,"18+ claim incorrectly became assurance")
         footer_box=await page.locator(".ig-r49-global-footer .ig-r49-footer-inner").bounding_box()
         need(footer_box is not None and abs(footer_box["x"]-home_layout["wrap"]["l"])<3,"Home footer is not aligned to product axis "+repr(footer_box))
         lang_origin=await page.locator(".ig-r49-lang").evaluate("(a)=>new URL(a.href,location.href).origin===location.origin")
@@ -209,16 +223,16 @@ async def main():
             visibleMedia:media.filter(shown).length
           };
         }""")
-        need(home["useCount"]==4,"Home use cards count !=4 "+repr(home))
-        need(home["discoverCount"]==9,"Home discover cards count !=9 "+repr(home))
-        need(home["mediaCount"]==13 and home["visibleMedia"]==13,"Home card media not rendered "+repr(home))
+        need(home["useCount"]==6,"Home use cards count !=6 "+repr(home))
+        need(home["discoverCount"]==7,"Home discover cards count !=7 "+repr(home))
+        need(home["mediaCount"]==13 and home["visibleMedia"]==0,"Unapproved Home media placeholders became visible "+repr(home))
         need(home["useGrid"]=="grid" and home["discoverGrid"]=="grid","Home card containers are not grids "+repr(home))
         need(all(x=="grid" for x in home["useDisplays"]+home["discoverDisplays"]),"Home anchors collapsed to inline text "+repr(home))
         need(all(r["w"]>150 and r["h"]>110 for r in home["useRects"]),"Home use cards have collapsed boxes "+repr(home))
         need(all(r["w"]>150 and r["h"]>100 for r in home["discoverRects"]),"Home discover cards have collapsed boxes "+repr(home))
         need(max(r["w"] for r in home["discoverRects"])<450,"Home discover cards are too wide for a three-card row "+repr(home["discoverRects"]))
         await page.screenshot(path=str(OUT/"home-cards-1440.png"),full_page=False)
-        report["home_cards"]={"use":4,"discover":9,"media":13,"layout":"GRID_PASS"}
+        report["home_cards"]={"use":6,"discover":7,"media_slots":13,"visible_unapproved_media":0,"layout":"GRID_PASS"}
 
 
         # Header has only Music, Accessibility and language. AGE is an internal session runtime.
@@ -248,11 +262,10 @@ async def main():
              "Workshop still propagates a second local age query")
         await page.evaluate("IGAudience.clear()")
         await page.wait_for_timeout(80)
-        general=page.locator(".igk-start:not([hidden])")
-        need(await general.count()==1,"Workshop hub did not return to one general/all-ages start view")
-        general_stage=(await general.get_attribute("data-para")) or "ALL_AGES"
-        need(general_stage=="ALL_AGES","Workshop general start view is not the all-ages view")
-        report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","GENERAL":"PASS"}
+        need(await page.locator("[data-ig-mandatory-age-gate]").count()==1,"Workshop did not return to mandatory AGE_UNSET gate")
+        need(await page.locator("main").get_attribute("inert") is not None,"Workshop remained usable after clearing age")
+        await page.evaluate("IGAudience.set('AGE_18_PLUS')")
+        report["workshop_age"]={"source":"IGAudience","local_selector":0,"AGE_0_12":"PASS","AGE_UNSET":"FAIL_CLOSED_PASS"}
 
         # Dynamic hubs stay navigable while only their long legacy fallback is suppressed.
         for path,marker,fallback in [
@@ -299,13 +312,17 @@ async def main():
         need(await page.locator("#sabik-hologram").get_attribute("data-render-active")=="true","Sabik self-motion render not active")
         sabik_visible=await page.evaluate("""() => {
           const v=document.querySelector('#sabik-hologram'),m=document.querySelector('#sabik-web-master'),r=v.getBoundingClientRect(),mr=m.getBoundingClientRect(),c=getComputedStyle(m);
-          const controls=[document.querySelector('#sabik-voice'),document.querySelector('#sabik-reset'),document.querySelector('#sabik-motion-level')].map(e=>{const x=e.getBoundingClientRect();return {top:x.top,bottom:x.bottom,left:x.left};});
-          return {vw:r.width,vh:r.height,mw:mr.width,mh:mr.height,clip:c.clipPath,natural:m.naturalWidth,controls};
+          return {vw:r.width,vh:r.height,mw:mr.width,mh:mr.height,clip:c.clipPath,natural:m.naturalWidth};
         }""")
         need(sabik_visible["vw"]>=220 and sabik_visible["vh"]>=220 and sabik_visible["mw"]>=220 and sabik_visible["mh"]>=220,"Sabik visual collapsed or invisible "+repr(sabik_visible))
         need(sabik_visible["clip"] in ("none",""),"Sabik current master is incorrectly clipped "+repr(sabik_visible))
         need(sabik_visible["natural"]>0,"Sabik current master did not load")
-        need(max(x["top"] for x in sabik_visible["controls"])-min(x["top"] for x in sabik_visible["controls"])<40,"Sabik controls are scattered vertically "+repr(sabik_visible["controls"]))
+        need(await page.locator("#sabik-voice").is_visible(),"Sabik primary voice action missing")
+        need(await page.locator("#sabik-submit").is_visible(),"Sabik primary send action missing")
+        need(await page.locator("#sabik-reset").is_hidden() and await page.locator("#sabik-motion-level").is_hidden(),"Sabik secondary controls compete in idle")
+        need(not await page.locator("#sabik-options").evaluate("(el)=>el.open"),"Sabik options must start closed")
+        await page.locator("#sabik-options summary").click()
+        need(await page.locator("#sabik-reset").is_visible() and await page.locator("#sabik-motion-level").is_visible(),"Sabik secondary controls missing from options")
         await page.locator("#sabik-motion-level").select_option("NORMAL")
         before_presence=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
         await page.wait_for_timeout(300)
@@ -330,7 +347,7 @@ async def main():
         still_after=await page.locator(".sabik-presence-motion").evaluate("(e)=>getComputedStyle(e).transform")
         need(still_before==still_after,"Sabik self-motion continues in SIN_MOVIMIENTO")
         await page.screenshot(path=str(OUT/"home-sabik-pausa-no-motion-1440.png"),full_page=False)
-        report["sabik"]={"masters":"PASS","visible":"PASS","legacy_orbits":0,"self_motion":"PASS","controls":"COMPACT_ROW","continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
+        report["sabik"]={"masters":"PASS","visible":"PASS","legacy_orbits":0,"self_motion":"PASS","controls":"PRIMARY_PLUS_DISCLOSURE","continuous_normal":"PASS","r37_state_change":"PASS","no_motion":"PASS","dynamic_tts":"NOT_CLAIMED"}
 
         # Theme tokens should drive the same shell on both themes.
         await page.evaluate("IGTheme.set('light')")
