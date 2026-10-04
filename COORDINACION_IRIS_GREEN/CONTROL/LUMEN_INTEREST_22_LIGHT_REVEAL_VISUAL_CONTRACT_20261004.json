@@ -1,0 +1,105 @@
+{
+  "schema": "iris-green.interest-22-light-reveal-visual-contract.v1",
+  "date": "2026-10-04",
+  "owner": "LUMEN_A7",
+  "authority": "MARIA",
+  "issue": 323,
+  "status": "PASS",
+  "gate": "INTEREST_22_LIGHT_REVEAL_VISUAL_CONTRACT_PASS",
+  "core_mechanic": "MOVE_LIGHT_REVEAL_DARKNESS_RETURNS",
+  "not_fossils_clone": true,
+  "not_aquarium": true,
+  "not_depth_icon_bar": true,
+  "zones": [
+    {
+      "id": "epipelagic",
+      "min_m": 0,
+      "max_m": 200
+    },
+    {
+      "id": "mesopelagic",
+      "min_m": 200,
+      "max_m": 1000
+    },
+    {
+      "id": "bathypelagic",
+      "min_m": 1000,
+      "max_m": 4000
+    },
+    {
+      "id": "abyssopelagic",
+      "min_m": 4000,
+      "max_m": 6000
+    },
+    {
+      "id": "hadal",
+      "min_m": 6000,
+      "max_m": 11000
+    }
+  ],
+  "existing_keep": {
+    "gate": "MAR_22_MESO_PACKAGING_PASS",
+    "species": [
+      "pez-hacha",
+      "pez-linterna",
+      "calamar-cristal"
+    ],
+    "states": [
+      "luz",
+      "oscuro"
+    ],
+    "geometry_lock": "SAME_CANVAS_CENTER_POSE_SCALE_0PX_DISPLACEMENT"
+  },
+  "runtime_owned": [
+    "water",
+    "depth_absorption",
+    "flashlight_beam",
+    "pixel_mask_blend",
+    "relative_size",
+    "scene_composition",
+    "fixed_bioluminescence",
+    "zone_navigation",
+    "keyboard",
+    "touch",
+    "motion_modes",
+    "lazy_loading"
+  ],
+  "asset_owned": [
+    "creature_master_light",
+    "same_geometry_dark_state_when_needed",
+    "transparent_alpha",
+    "morphology",
+    "first_party_visual"
+  ],
+  "hard_rules": [
+    "USER_ACTION_ONLY_VISUAL_CHANGE",
+    "BIOLUMINESCENCE_IS_SIGNAL_NOT_ANIMATION",
+    "WIDE_BEAM_NOT_PRECISION_POINTER",
+    "DEPTH_IS_WONDER_NOT_HORROR",
+    "NO_BINARY_CREATURE_ON_OFF",
+    "DO_NOT_GENERATE_UNSCOPED_12"
+  ],
+  "age": {
+    "AGE_0_12": {
+      "creatures_per_zone": 1,
+      "beam": "wider",
+      "initial_card": "identity_depth"
+    },
+    "AGE_13_17": {
+      "creatures_per_zone": "2-3",
+      "initial_card": "full"
+    },
+    "AGE_18_PLUS": {
+      "creatures_per_zone": "all_available",
+      "note": "more_populated_not_dashboard"
+    },
+    "ALL_AGES": {
+      "creatures_per_zone": "all_safe_available",
+      "note": "not_more_cluttered"
+    }
+  },
+  "collection": "THEMATIC_DEPTH_ALBUM",
+  "next_asset_dependency": "INTEREST_22_REMAINING_SPECIES_FACTUAL_ASSET_BRIEF",
+  "runtime_delta_required": true,
+  "product_assets_regenerated": false
+}
