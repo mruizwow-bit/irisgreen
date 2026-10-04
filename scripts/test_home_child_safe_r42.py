@@ -48,10 +48,10 @@ def main():
    need('href="/es/libros/" data-ig-age-bands="ALL_AGES"' in txt,'Books must stay ALL_AGES in ES Home')
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
- safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text());adult=json.loads((root/'assets/safety/search-adult-full-catalog.json').read_text())
+ safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text())
  need(all(x['sensitivity']!='S2_HIGH_SENSITIVITY' for x in safe),'S2 leaked into safe autocomplete payload')
  need(all(x['sensitivity']=='S2_HIGH_SENSITIVITY' for x in intent),'Intentional S2 contract contains non-S2')
- need(len(adult)==len(safe)+len(intent),'Adult search metadata catalogue mismatch')
+ need(not (root/'assets/safety/search-adult-full-catalog.json').exists(),'Adult-full search catalogue must not be public in P0')
  protected=0
  for url,cid in zip(S2_ES,IDS):
   p=page(root,url)
@@ -75,5 +75,5 @@ def main():
   need(api in audience,'Adult claim/assurance API missing '+api)
  need("canAccessRestrictedAdultContent(){return false;}" in audience,'P0 adult assurance must fail closed')
  print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
- print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':len(adult),'s2_pages':protected*2},ensure_ascii=False))
+ print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':0,'s2_pages':protected*2},ensure_ascii=False))
 if __name__=='__main__': main()
