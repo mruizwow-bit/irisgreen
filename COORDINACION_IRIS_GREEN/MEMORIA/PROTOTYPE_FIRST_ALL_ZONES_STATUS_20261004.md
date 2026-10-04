@@ -724,3 +724,29 @@ Estado:
 `PECERA_AUDIO_OAI_R02_BUBBLE_DOMINANT_HUMAN_QA_REQUIRED`
 
 No 5 min antes de María.
+
+
+---
+
+# 13 · Pecera · autorización de pieza completa 5 min
+
+María aprueba la dirección del candidato:
+`PECERA_R02_CLIP_40s_AUDIO_OAI_R02_BUBBLE_DOMINANT.mp4`
+para avanzar a pieza completa.
+
+Estado:
+`PECERA_AUDIO_OAI_R02_HUMAN_QA_PASS_TO_FULL_RENDER`
+
+Orden:
+1. generar visual R02 completo ~5 min;
+2. generar audio bubble-dominant completo ~5 min desde recipe/source, sin loop del clip 40 s;
+3. mux final faststart;
+4. media QA del binario exacto;
+5. Motor common player/integración Rincón;
+6. Axioma;
+7. HUMAN QA final María.
+
+Gate:
+`RINCON_PECERA_R02_FULL_5MIN_AV_READY_FOR_MEDIA_QA`
+
+No integrar el clip 40 s como producto final.
