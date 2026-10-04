@@ -59,7 +59,8 @@ def sabik_home(en):
     return f'''<aside class="sabik-panel ig-home-v4-sabik-panel" aria-labelledby="sabik-widget-title" data-connected="false">
 <section class="sabik-widget">
 <div id="sabik-announcement" class="sabik-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-<div class="ig-home-v4-sabik-center">
+
+<div class="ig-home-v4-sabik-left">
   <h2 id="sabik-widget-title" class="ig-home-v4-sabik-title">{t['title']}</h2>
   <div class="sabik-web-presentation">
     <div class="sabik-hologram sabik-web-visual sabik-visual" id="sabik-hologram" aria-hidden="true" data-web-state="PRESENTE" data-state="idle" data-motion="normal">
@@ -78,6 +79,9 @@ def sabik_home(en):
     <p class="sabik-capability sabik-sr-only" id="sabik-availability" data-sabik-text="explanation">{t['explanation']}</p>
   </div>
   <p class="sabik-turn-state" role="status" aria-live="polite"><span class="sabik-sr-only">{t['state_label']}: </span><span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></p>
+</div>
+
+<div class="ig-home-v4-sabik-right">
   <div class="sabik-widget-body ig-home-v4-sabik-composer" id="sabik-widget-body">
     <form class="sabik-widget-form" id="sabik-form">
       <label for="sabik-input" data-sabik-text="label">{t['label']}</label>
@@ -96,6 +100,7 @@ def sabik_home(en):
     </div>
     <div id="sabik-results"></div>
   </div>
+
   <details class="sabik-options" id="sabik-options">
     <summary data-sabik-text="options">{t['options']}</summary>
     <div class="sabik-options-grid">
@@ -122,6 +127,7 @@ def sabik_home(en):
     </div>
   </details>
 </div>
+
 </section></aside>'''
 
 def render(root,lang):
