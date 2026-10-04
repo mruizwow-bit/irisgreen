@@ -1,0 +1,29 @@
+{
+  "schema": "new_games_area_r01_baseline",
+  "date": "2026-10-04",
+  "base_main_sha": "496dc10a9e791331aa43647c32aa74048c698584",
+  "branch": "nexo/new-games-area-r01-20261004",
+  "strategy": "ONE_GAME_AT_A_TIME__NO_LEGACY_CUTOVER",
+  "new_routes": {
+    "es_hub": "/es/juegos/",
+    "es_game": "/es/juegos/mapa-del-tesoro/"
+  },
+  "legacy_routes_preserved": {
+    "es": "/es/recursos/juegos/",
+    "en": "/en/resources/games/"
+  },
+  "legacy_baseline_shas": {
+    "es/recursos/juegos/index.html": "983ec78e026f0776e67856146c4916d489740334",
+    "en/resources/games/index.html": "37c6a2423e6df70fe96d8118e00e6456e3f2a293",
+    "assets/juegos-iris.css": "eca3c98d3b6544707adbcf690999c74f28b65515",
+    "assets/juegos-iris.js": "c8156338b543492dfd28bcfc58bed6c579087a30",
+    "assets/data/juegos-iris-data.js": "f6bf0808401031a5178db8835f1bc668af63036c",
+    "scripts/apply_r50_games_ui.py": "07f31a3d0f1c5686333debfbcd74fb37d9779aab",
+    "scripts/build_site.py": "c9a5bc74d0c42076987a68472ae05d678fa96154",
+    "scripts/fix_resources_navigation.py": "ae5666116a8cb0ee13bcdd95b77b4a3f9d638a8a"
+  },
+  "overlap_with_motor_sabik_main": false,
+  "cutover": "BLOCKED_UNTIL_HUMAN_QA_AND_FRESH_MAIN_RECONCILIATION",
+  "reconciled_at_main_sha": "496dc10a9e791331aa43647c32aa74048c698584",
+  "reconciliation_reason": "Motor/Sabik advanced main by 16 commits; branch rebuilt from live main preserving only isolated new files"
+}
