@@ -248,7 +248,14 @@ html[data-ig-contrast="on"] .ig-home-header{
   overflow:visible;
 }
 .ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{
+  position:absolute;
+  left:16.526%;
+  top:1.053%;
+  width:64.789%;
+  height:84.474%;
   max-width:none;
+  object-fit:contain;
+  transform-origin:51.304% 54.673%;
   opacity:1;
   visibility:visible;
 }
