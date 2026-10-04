@@ -29,6 +29,25 @@ ALLOWED_NEW={
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
 
+def assert_labels_safe(page, lang, width, phase):
+    geom=page.evaluate("""() => {
+      const scene=document.querySelector('.skyv2-scene'),intro=document.querySelector('.skyv2-intro');
+      if(!scene)return null;
+      const s=scene.getBoundingClientRect(),i=intro?intro.getBoundingClientRect():null;
+      const rect=r=>({left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height});
+      return {scene:rect(s),intro:i?rect(i):null,labels:[...document.querySelectorAll('.skyv2-const-label')].map(e=>({text:e.textContent,rect:rect(e.getBoundingClientRect()),clamped:e.dataset.safeClamped||''}))};
+    }""")
+    assert geom,(lang,width,phase,'missing scene geometry')
+    s=geom['scene'];i=geom['intro']
+    for row in geom['labels']:
+        r=row['rect']
+        assert r['left']>=s['left']-1 and r['right']<=s['right']+1,(lang,width,phase,'label clipped horizontally',row,s)
+        assert r['top']>=s['top']-1 and r['bottom']<=s['bottom']+1,(lang,width,phase,'label clipped vertically',row,s)
+        if i:
+            overlap=not (r['right']<=i['left']+1 or i['right']<=r['left']+1 or r['bottom']<=i['top']+1 or i['bottom']<=r['top']+1)
+            assert not overlap,(lang,width,phase,'label overlaps intro/question',row,i)
+    return geom
+
 def static_gate():
     es=(ROOT/'es/intereses/cielo/index.html').read_text(encoding='utf-8')
     en=(ROOT/'en/interests/night-sky/index.html').read_text(encoding='utf-8')
@@ -113,6 +132,14 @@ def main():
                 label_style=page.locator('.skyv2-const-label').first.evaluate("e=>({bg:getComputedStyle(e).backgroundColor,bw:getComputedStyle(e).borderTopWidth})")
                 assert label_style['bg'] in ('rgba(0, 0, 0, 0)','transparent'),label_style
                 assert label_style['bw']=='0px',label_style
+              assert_labels_safe(page,lang,width,'default-text')
+              if motion=='normal':
+                page.evaluate("()=>{document.documentElement.style.fontSize='200%'}")
+                page.wait_for_timeout(180)
+                assert_labels_safe(page,lang,width,'text-200')
+                page.evaluate("()=>{document.documentElement.style.fontSize=''}")
+                page.wait_for_timeout(180)
+                assert_labels_safe(page,lang,width,'text-restored')
               assert DEPTH not in req,(lang,width,motion,'depth eager')
               assert HORIZON in req,(lang,width,motion,'approved horizon not requested',req)
               horizon_bg=page.locator('.skyv2-scene').evaluate("e=>getComputedStyle(e,'::after').backgroundImage")
@@ -232,6 +259,8 @@ def main():
         'zoom_wheel':True,
         'none_motion_discrete_only':True,
         'textual_locate_alt_az_direction':True,
+        'constellation_label_safe_zone':True,
+        'text_200_percent_label_safe_zone':True,
         'human_qa_screenshots':['cielo-v2-prisma-scene-390.png','cielo-v2-prisma-scene-1440.png']
       },
       'passed':True
