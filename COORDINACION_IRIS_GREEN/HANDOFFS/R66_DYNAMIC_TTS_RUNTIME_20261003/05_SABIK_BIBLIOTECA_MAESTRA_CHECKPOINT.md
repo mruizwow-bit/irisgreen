@@ -26361,3 +26361,11906 @@ ESTADO: BILINGUAL_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: páginas individuales de Recursos y corpus de Juegos / rutinas.
+
+# 72. RECURSOS · JUEGOS / GAMES · CATÁLOGO ESTRUCTURADO
+
+FUENTE: `assets/data/r42-games-metadata.json` · SHA `6138bb2bc2002cde9e6d52738032f3055557ff30`.
+
+SOURCE DATASET: `assets/data/juegos-iris-data.js` · blob `f6bf0808401031a5178db8835f1bc668af63036c`.
+
+ES REGLA: Se conservan los metadatos declarados. No se inventan rutas públicas por juego cuando el metadata no las declara.
+
+EN RULE: Declared metadata is preserved. Public per-game routes are not invented when the metadata does not declare them.
+
+## WEB-GAME-001
+
+GAME_ID: los-cordones
+
+ES TÍTULO: Los cordones, paso a paso
+
+EN TITLE: Shoelaces, step by step
+
+ES DESCRIPCIÓN: Pon en orden los pasos para atarte los cordones.
+
+EN DESCRIPTION: Put the steps for tying your laces in order.
+
+STAGES: inf · ado
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-002
+
+GAME_ID: ordena-la-ducha
+
+ES TÍTULO: Ordena la ducha
+
+EN TITLE: Put the shower in order
+
+ES DESCRIPCIÓN: Coloca los pasos de la ducha, del primero al último.
+
+EN DESCRIPTION: Place the shower steps, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-003
+
+GAME_ID: que-falta-dientes
+
+ES TÍTULO: ¿Qué falta para lavarse los dientes?
+
+EN TITLE: What is missing to brush your teeth?
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-004
+
+GAME_ID: que-viene-manana
+
+ES TÍTULO: ¿Qué viene ahora? · mañana
+
+EN TITLE: What comes next? · morning
+
+ES DESCRIPCIÓN: La mañana ya ha empezado. Elige lo que va después.
+
+EN DESCRIPTION: The morning has started. Choose what comes next.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-005
+
+GAME_ID: prepara-tu-mochila
+
+ES TÍTULO: Prepara tu mochila
+
+EN TITLE: Pack your backpack
+
+ES DESCRIPCIÓN: Mete en la mochila lo que hace falta hoy.
+
+EN DESCRIPTION: Put what you need today in your backpack.
+
+STAGES: inf · ado
+
+CONTEXT: manana
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-006
+
+GAME_ID: vistete-lluvia
+
+ES TÍTULO: Vístete para la lluvia
+
+EN TITLE: Dress for the rain
+
+ES DESCRIPCIÓN: Hoy llueve. Elige ropa que te proteja.
+
+EN DESCRIPTION: It is raining. Choose clothes that protect you.
+
+STAGES: inf
+
+CONTEXT: vestirse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-007
+
+GAME_ID: objeto-accion
+
+ES TÍTULO: Objeto y acción
+
+EN TITLE: Object and action
+
+ES DESCRIPCIÓN: Une cada objeto con lo que haces con él.
+
+EN DESCRIPTION: Match each object with what you do with it.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-008
+
+GAME_ID: antes-y-despues-de-comer
+
+ES TÍTULO: Antes y después de comer
+
+EN TITLE: Before and after eating
+
+ES DESCRIPCIÓN: Ordena lo que pasa con la mesa.
+
+EN DESCRIPTION: Put what happens at the table in order.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-009
+
+GAME_ID: intruso-ducha
+
+ES TÍTULO: El intruso de la ducha
+
+EN TITLE: The odd one out in the shower
+
+ES DESCRIPCIÓN: Todo sirve para la ducha menos una cosa.
+
+EN DESCRIPTION: Everything is for the shower except one thing.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-010
+
+GAME_ID: construye-tu-manana
+
+ES TÍTULO: Construye tu mañana
+
+EN TITLE: Build your morning
+
+ES DESCRIPCIÓN: Elige tus pasos y ponlos en tu orden. Puedes imprimirlo.
+
+EN DESCRIPTION: Choose your steps and put them in your order. You can print it.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-011
+
+GAME_ID: checklist-noche
+
+ES TÍTULO: Lista de la noche
+
+EN TITLE: Night checklist
+
+ES DESCRIPCIÓN: Marca lo que ya has hecho antes de dormir.
+
+EN DESCRIPTION: Tick off what you have done before bed.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-012
+
+GAME_ID: ruta-al-autobus
+
+ES TÍTULO: Ruta al autobús
+
+EN TITLE: Route to the bus
+
+ES DESCRIPCIÓN: Coloca los sitios de la ruta, de casa al destino.
+
+EN DESCRIPTION: Place the stops on the route, from home to where you are going.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-013
+
+GAME_ID: cremallera-y-botones
+
+ES TÍTULO: Cremallera y botones
+
+EN TITLE: Zips and buttons
+
+ES DESCRIPCIÓN: Dos secuencias cortas: abrochar un botón y subir una cremallera.
+
+EN DESCRIPTION: Two short sequences: doing up a button and a zip.
+
+STAGES: inf
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-014
+
+GAME_ID: cual-es-el-primero
+
+ES TÍTULO: ¿Cuál es el primero?
+
+EN TITLE: Which comes first?
+
+ES DESCRIPCIÓN: Para desayunar cereales, ¿qué haces primero?
+
+EN DESCRIPTION: To have cereal, what do you do first?
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-015
+
+GAME_ID: dos-rutinas-mezcladas
+
+ES TÍTULO: Dos rutinas mezcladas
+
+EN TITLE: Two routines mixed up
+
+ES DESCRIPCIÓN: Separa lo que es de lavarse los dientes y lo que es de hacer la cama.
+
+EN DESCRIPTION: Sort what is for brushing teeth and what is for making the bed.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-016
+
+GAME_ID: donde-pasa-esto
+
+ES TÍTULO: ¿Dónde va esto?
+
+EN TITLE: Where does this go?
+
+ES DESCRIPCIÓN: Lleva cada cosa a su sitio de la casa.
+
+EN DESCRIPTION: Take each thing to its place in the home.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-017
+
+GAME_ID: manana-de-lluvia
+
+ES TÍTULO: La mañana de un día de lluvia
+
+EN TITLE: A rainy morning
+
+ES DESCRIPCIÓN: La mañana de siempre, con lluvia. Ordena los pasos.
+
+EN DESCRIPTION: The usual morning, with rain. Put the steps in order.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-018
+
+GAME_ID: ordena-la-lavadora
+
+ES TÍTULO: Ordena la lavadora
+
+EN TITLE: Put the washing in order
+
+ES DESCRIPCIÓN: De la ropa sucia a la ropa tendida.
+
+EN DESCRIPTION: From dirty clothes to clothes on the line.
+
+STAGES: ado · adu
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-019
+
+GAME_ID: pon-la-mesa
+
+ES TÍTULO: Pon la mesa
+
+EN TITLE: Set the table
+
+ES DESCRIPCIÓN: Elige lo que va en la mesa para comer.
+
+EN DESCRIPTION: Choose what goes on the table for a meal.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-020
+
+GAME_ID: intruso-compra
+
+ES TÍTULO: El intruso de la compra
+
+EN TITLE: The odd one out in the shopping
+
+ES DESCRIPCIÓN: Todo es comida menos una cosa.
+
+EN DESCRIPTION: Everything is food except one thing.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-021
+
+GAME_ID: cruzar-bien
+
+ES TÍTULO: Cruzar bien
+
+EN TITLE: Crossing safely
+
+ES DESCRIPCIÓN: Los pasos para cruzar la calle con calma.
+
+EN DESCRIPTION: The steps to cross the street calmly.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-022
+
+GAME_ID: esperar-el-turno
+
+ES TÍTULO: Esperar el turno
+
+EN TITLE: Waiting your turn
+
+ES DESCRIPCIÓN: Ordena lo que pasa en una fila.
+
+EN DESCRIPTION: Put what happens in a queue in order.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-023
+
+GAME_ID: paga-y-guarda
+
+ES TÍTULO: Paga y guarda
+
+EN TITLE: Pay and put away
+
+ES DESCRIPCIÓN: Los pasos para pagar en una tienda. Sin cuentas.
+
+EN DESCRIPTION: The steps to pay in a shop. No sums.
+
+STAGES: ado · adu
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-024
+
+GAME_ID: mochila-del-finde
+
+ES TÍTULO: La mochila del finde
+
+EN TITLE: The weekend bag
+
+ES DESCRIPCIÓN: Te vas dos días. Elige qué llevas.
+
+EN DESCRIPTION: You are away for two days. Choose what to take.
+
+STAGES: inf · ado
+
+CONTEXT: manana
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-025
+
+GAME_ID: antes-de-dormir
+
+ES TÍTULO: Antes de dormir
+
+EN TITLE: Before sleep
+
+ES DESCRIPCIÓN: De la pantalla encendida a la luz apagada.
+
+EN DESCRIPTION: From screen on to lights off.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-026
+
+GAME_ID: construye-tu-tarde
+
+ES TÍTULO: Construye tu tarde
+
+EN TITLE: Build your afternoon
+
+ES DESCRIPCIÓN: Organiza tu tarde. Incluye un descanso.
+
+EN DESCRIPTION: Plan your afternoon. Include a break.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-027
+
+GAME_ID: primero-despues
+
+ES TÍTULO: Primero, después
+
+EN TITLE: First, then
+
+ES DESCRIPCIÓN: Elige qué haces primero y qué después.
+
+EN DESCRIPTION: Choose what you do first and what comes after.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-028
+
+GAME_ID: que-falta-al-salir
+
+ES TÍTULO: ¿Qué falta al salir?
+
+EN TITLE: What is missing when you go out?
+
+ES DESCRIPCIÓN: Tienes casi todo. ¿Qué falta?
+
+EN DESCRIPTION: You have almost everything. What is missing?
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-029
+
+GAME_ID: ordena-el-bocadillo
+
+ES TÍTULO: Ordena el bocadillo
+
+EN TITLE: Put the sandwich in order
+
+ES DESCRIPCIÓN: Los pasos para preparar un bocadillo.
+
+EN DESCRIPTION: The steps to make a sandwich.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-030
+
+GAME_ID: recoge-la-habitacion
+
+ES TÍTULO: Recoge la habitación
+
+EN TITLE: Tidy the room
+
+ES DESCRIPCIÓN: Elige dónde va cada cosa. Algunas valen en dos sitios.
+
+EN DESCRIPTION: Choose where each thing goes. Some fit in two places.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-031
+
+GAME_ID: la-ruta-del-medico
+
+ES TÍTULO: La ruta del médico
+
+EN TITLE: The route to the doctor
+
+ES DESCRIPCIÓN: Qué pasa desde que sales de casa hasta que vuelves a estar tranquilo.
+
+EN DESCRIPTION: What happens from leaving home until you are calm again.
+
+STAGES: ado · adu
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-032
+
+GAME_ID: abrir-un-envase
+
+ES TÍTULO: Abrir un envase
+
+EN TITLE: Opening a pack
+
+ES DESCRIPCIÓN: Los pasos para abrir un envase difícil.
+
+EN DESCRIPTION: The steps to open a tricky pack.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-033
+
+GAME_ID: checklist-manana
+
+ES TÍTULO: Lista de la mañana
+
+EN TITLE: Morning checklist
+
+ES DESCRIPCIÓN: Marca lo que ya has hecho antes de salir. Puedes imprimirla.
+
+EN DESCRIPTION: Tick off what you have done before leaving. You can print it.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-034
+
+GAME_ID: empareja-sitio-objeto
+
+ES TÍTULO: Cada cosa con su sitio
+
+EN TITLE: Each thing and its place
+
+ES DESCRIPCIÓN: Une cada sitio con lo que se guarda allí.
+
+EN DESCRIPTION: Match each place with what is kept there.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-035
+
+GAME_ID: la-cuenta-atras
+
+ES TÍTULO: La cuenta atrás
+
+EN TITLE: The countdown
+
+ES DESCRIPCIÓN: Un reloj que se vacía poco a poco. Empieza cuando tú quieras.
+
+EN DESCRIPTION: A clock that empties little by little. Start when you want.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-036
+
+GAME_ID: vistete-para-el-tiempo
+
+ES TÍTULO: Vístete para el frío, el calor y la lluvia
+
+EN TITLE: Dress for cold, heat and rain
+
+ES DESCRIPCIÓN: Tres días distintos y un mismo armario.
+
+EN DESCRIPTION: Three different days and one wardrobe.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-037
+
+GAME_ID: que-viene-noche
+
+ES TÍTULO: ¿Qué viene ahora? · noche
+
+EN TITLE: What comes next? · night
+
+ES DESCRIPCIÓN: La noche ya ha empezado. Elige lo que va después.
+
+EN DESCRIPTION: The evening has started. Choose what comes next.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-038
+
+GAME_ID: separa-para-reciclar
+
+ES TÍTULO: Separa para reciclar
+
+EN TITLE: Sort for recycling
+
+ES DESCRIPCIÓN: Lleva cada cosa a su contenedor.
+
+EN DESCRIPTION: Take each thing to its bin.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-039
+
+GAME_ID: intruso-escritorio
+
+ES TÍTULO: El intruso del escritorio
+
+EN TITLE: The odd one out on the desk
+
+ES DESCRIPCIÓN: Todo ayuda a estudiar menos una cosa, que puede esperar.
+
+EN DESCRIPTION: Everything helps you study except one thing, which can wait.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-040
+
+GAME_ID: empieza-por-uno
+
+ES TÍTULO: Empieza por uno
+
+EN TITLE: Start with one
+
+ES DESCRIPCIÓN: Para empezar una tarea, elige un trozo pequeño. Hay varios buenos.
+
+EN DESCRIPTION: To start a task, choose a small piece. There are several good ones.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-041
+
+GAME_ID: la-medicacion-de-hoy
+
+ES TÍTULO: Recordatorio de la medicación
+
+EN TITLE: Medication reminder
+
+ES DESCRIPCIÓN: Marca cada momento del día cuando ya lo hayas hecho.
+
+EN DESCRIPTION: Tick each time of day once you have done it.
+
+STAGES: ado · adu
+
+CONTEXT: cuidarse
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-042
+
+GAME_ID: salir-con-el-perro
+
+ES TÍTULO: Salir con el perro
+
+EN TITLE: Going out with the dog
+
+ES DESCRIPCIÓN: Ordena los pasos del paseo con el perro.
+
+EN DESCRIPTION: Put the steps of the dog walk in order.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-043
+
+GAME_ID: cambio-de-actividad
+
+ES TÍTULO: Cambio de actividad
+
+EN TITLE: Changing activity
+
+ES DESCRIPCIÓN: Pasar de una actividad a otra eligiendo cómo. Las dos opciones valen.
+
+EN DESCRIPTION: Moving from one activity to another, choosing how. Both options work.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-044
+
+GAME_ID: volver-del-descanso
+
+ES TÍTULO: Volver del descanso
+
+EN TITLE: Coming back from a break
+
+ES DESCRIPCIÓN: Volver a la tarea sin prisa, empezando por algo pequeño.
+
+EN DESCRIPTION: Getting back to the task without rushing, starting small.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-045
+
+GAME_ID: la-compra
+
+ES TÍTULO: La compra y el pago
+
+EN TITLE: Shopping and paying
+
+ES DESCRIPCIÓN: Coger lo de la lista, esperar en la fila y pagar sin hacer cuentas.
+
+EN DESCRIPTION: Pick up what is on the list, queue and pay with no sums.
+
+STAGES: ado · adu
+
+CONTEXT: salir
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-046
+
+GAME_ID: preparar-una-cita-medica
+
+ES TÍTULO: Preparar una cita médica
+
+EN TITLE: Getting ready for a medical appointment
+
+ES DESCRIPCIÓN: Lo práctico de una cita: qué llevas y qué haces mientras esperas.
+
+EN DESCRIPTION: The practical side: what you take and what you do while you wait.
+
+STAGES: ado · adu
+
+CONTEXT: cuidarse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 5
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-047
+
+GAME_ID: cambiar-de-aula
+
+ES TÍTULO: Cambiar de aula
+
+EN TITLE: Changing classrooms
+
+ES DESCRIPCIÓN: Los pasos para cambiar de aula sin perder nada por el camino.
+
+EN DESCRIPTION: The steps to change classrooms without leaving anything behind.
+
+STAGES: ado
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-048
+
+GAME_ID: organizar-los-deberes
+
+ES TÍTULO: Organizar los deberes
+
+EN TITLE: Planning your homework
+
+ES DESCRIPCIÓN: Reparte los deberes entre hoy, mañana y esta semana. Tú decides.
+
+EN DESCRIPTION: Share out your homework between today, tomorrow and this week. You decide.
+
+STAGES: ado
+
+CONTEXT: estudio
+
+TYPE: planificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-049
+
+GAME_ID: estudiar-para-un-examen
+
+ES TÍTULO: Estudiar para un examen
+
+EN TITLE: Studying for a test
+
+ES DESCRIPCIÓN: Un orden para estudiar por partes, con pausas.
+
+EN DESCRIPTION: An order for studying in parts, with breaks.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-050
+
+GAME_ID: planificar-una-quedada
+
+ES TÍTULO: Planificar una quedada
+
+EN TITLE: Planning a meet-up
+
+ES DESCRIPCIÓN: Lo que conviene decidir antes de quedar con alguien.
+
+EN DESCRIPTION: What helps to decide before meeting up with someone.
+
+STAGES: ado · adu
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-051
+
+GAME_ID: cambio-de-plan
+
+ES TÍTULO: Cuando cambia el plan
+
+EN TITLE: When plans change
+
+ES DESCRIPCIÓN: La quedada se cancela. Elige qué haces. Todas las opciones valen.
+
+EN DESCRIPTION: The meet-up is cancelled. Choose what you do. Every option works.
+
+STAGES: ado · adu
+
+CONTEXT: tiempo
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-052
+
+GAME_ID: tiempo-con-pantallas
+
+ES TÍTULO: Tiempo con pantallas
+
+EN TITLE: Screen time
+
+ES DESCRIPCIÓN: Llevas mucho rato con el móvil y quieres parar. Elige cómo.
+
+EN DESCRIPTION: You have been on your phone a long time and want to stop. Choose how.
+
+STAGES: ado · adu
+
+CONTEXT: tiempo
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-053
+
+GAME_ID: responder-un-correo
+
+ES TÍTULO: Responder un correo
+
+EN TITLE: Answering an email
+
+ES DESCRIPCIÓN: Pasos cortos para contestar un correo sin darle muchas vueltas.
+
+EN DESCRIPTION: Short steps for answering an email without overthinking it.
+
+STAGES: adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-054
+
+GAME_ID: hacer-una-llamada
+
+ES TÍTULO: Hacer una llamada
+
+EN TITLE: Making a phone call
+
+ES DESCRIPCIÓN: Preparar una llamada paso a paso para que cueste menos.
+
+EN DESCRIPTION: Getting ready for a phone call step by step so it feels easier.
+
+STAGES: ado · adu
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-055
+
+GAME_ID: demasiadas-tareas
+
+ES TÍTULO: Cuando hay demasiadas tareas
+
+EN TITLE: When there is too much to do
+
+ES DESCRIPCIÓN: Reparte las tareas entre ahora, más tarde y otro día. Tú decides.
+
+EN DESCRIPTION: Share out your tasks between now, later and another day. You decide.
+
+STAGES: adu
+
+CONTEXT: estudio
+
+TYPE: planificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-056
+
+GAME_ID: dividir-una-tarea-grande
+
+ES TÍTULO: Dividir una tarea grande
+
+EN TITLE: Breaking down a big task
+
+ES DESCRIPCIÓN: «Limpiar la casa» es mucho. Elige tres trozos y ponlos en orden.
+
+EN DESCRIPTION: “Clean the house” is a lot. Choose three pieces and put them in order.
+
+STAGES: ado · adu
+
+CONTEXT: casa
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-057
+
+GAME_ID: ordenar-papeles
+
+ES TÍTULO: Ordenar los papeles
+
+EN TITLE: Sorting paperwork
+
+ES DESCRIPCIÓN: Separa lo que hay que pagar, lo que se guarda y lo que se tira.
+
+EN DESCRIPTION: Sort what needs paying, what to keep and what to throw away.
+
+STAGES: adu
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-058
+
+GAME_ID: despues-de-un-dia-dificil
+
+ES TÍTULO: Después de un día que agota
+
+EN TITLE: After an exhausting day
+
+ES DESCRIPCIÓN: Volver a casa y recuperar energía, a tu manera.
+
+EN DESCRIPTION: Getting home and recharging, your way.
+
+STAGES: ado · adu
+
+CONTEXT: cuidarse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-059
+
+GAME_ID: preparar-la-noche-anterior
+
+ES TÍTULO: Dejarlo listo la noche anterior
+
+EN TITLE: Getting ready the night before
+
+ES DESCRIPCIÓN: Lo que conviene dejar preparado para que la mañana sea más fácil.
+
+EN DESCRIPTION: What to get ready so the morning is easier.
+
+STAGES: ado · adu
+
+CONTEXT: manana
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-060
+
+GAME_ID: memoria-de-la-cocina
+
+ES TÍTULO: Memoria de la cocina
+
+EN TITLE: Kitchen memory
+
+ES DESCRIPCIÓN: Encuentra las parejas. No hay tiempo ni puntos.
+
+EN DESCRIPTION: Find the pairs. No timer and no points.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-061
+
+GAME_ID: busca-lo-que-necesitas-para-salir
+
+ES TÍTULO: Busca lo que necesitas para salir
+
+EN TITLE: Find what you need to go out
+
+ES DESCRIPCIÓN: Entre muchas cosas, encuentra las llaves, la cartera y el móvil.
+
+EN DESCRIPTION: Among lots of things, find the keys, the wallet and the phone.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-062
+
+GAME_ID: coger-el-tren
+
+ES TÍTULO: Coger el tren
+
+EN TITLE: Taking the train
+
+ES DESCRIPCIÓN: Del billete a tu parada, paso a paso.
+
+EN DESCRIPTION: From the ticket to your stop, step by step.
+
+STAGES: ado · adu
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-063
+
+GAME_ID: doblar-la-ropa
+
+ES TÍTULO: Doblar la ropa
+
+EN TITLE: Folding clothes
+
+ES DESCRIPCIÓN: Doblar una camiseta y guardarla.
+
+EN DESCRIPTION: Folding a T-shirt and putting it away.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-064
+
+GAME_ID: lavarse-las-manos
+
+ES TÍTULO: Lavarse las manos
+
+EN TITLE: Washing your hands
+
+ES DESCRIPCIÓN: Los pasos para lavarse bien las manos.
+
+EN DESCRIPTION: The steps for washing your hands well.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-065
+
+GAME_ID: busca-lo-del-bano
+
+ES TÍTULO: Busca lo del baño
+
+EN TITLE: Find the bathroom things
+
+ES DESCRIPCIÓN: Encuentra las cosas que se usan en el baño.
+
+EN DESCRIPTION: Find the things you use in the bathroom.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-066
+
+GAME_ID: memoria-de-la-higiene
+
+ES TÍTULO: Memoria de la higiene
+
+EN TITLE: Hygiene memory
+
+ES DESCRIPCIÓN: Encuentra las parejas de cosas del baño.
+
+EN DESCRIPTION: Find the pairs of bathroom things.
+
+STAGES: inf
+
+CONTEXT: higiene
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: sin_duracion_fija
+
+ES DURACIÓN: Sin duración fija
+
+EN DURATION: No fixed duration
+
+ESTIMATED_MINUTES: —
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-067
+
+GAME_ID: ordena-atarse-los-cordones
+
+ES TÍTULO: Ordena: atarse los cordones
+
+EN TITLE: Put in order: tie your shoelaces
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-068
+
+GAME_ID: que-viene-atarse-los-cordones
+
+ES TÍTULO: ¿Qué viene ahora? · Atarse los cordones
+
+EN TITLE: What comes next? · Tie your shoelaces
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-069
+
+GAME_ID: ordena-ponerse-y-quitarse-los-zapatos
+
+ES TÍTULO: Ordena: ponerse y quitarse los zapatos
+
+EN TITLE: Put in order: put on and take off shoes
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-070
+
+GAME_ID: que-viene-ponerse-y-quitarse-los-zapatos
+
+ES TÍTULO: ¿Qué viene ahora? · Ponerse y quitarse los zapatos
+
+EN TITLE: What comes next? · Put on and take off shoes
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-071
+
+GAME_ID: ordena-abrochar-botones
+
+ES TÍTULO: Ordena: abrochar botones
+
+EN TITLE: Put in order: do up buttons
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-072
+
+GAME_ID: que-viene-abrochar-botones
+
+ES TÍTULO: ¿Qué viene ahora? · Abrochar botones
+
+EN TITLE: What comes next? · Do up buttons
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-073
+
+GAME_ID: ordena-subir-y-bajar-la-cremallera
+
+ES TÍTULO: Ordena: subir y bajar la cremallera
+
+EN TITLE: Put in order: do up and undo a zip
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-074
+
+GAME_ID: que-falta-subir-y-bajar-la-cremallera
+
+ES TÍTULO: ¿Qué falta? · Subir y bajar la cremallera
+
+EN TITLE: What is missing? · Do up and undo a zip
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-075
+
+GAME_ID: ordena-elegir-la-ropa
+
+ES TÍTULO: Ordena: elegir la ropa
+
+EN TITLE: Put in order: choose your clothes
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-076
+
+GAME_ID: que-viene-elegir-la-ropa
+
+ES TÍTULO: ¿Qué viene ahora? · Elegir la ropa
+
+EN TITLE: What comes next? · Choose your clothes
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-077
+
+GAME_ID: ordena-vestirse-por-orden
+
+ES TÍTULO: Ordena: vestirse por orden
+
+EN TITLE: Put in order: get dressed in order
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-078
+
+GAME_ID: que-viene-vestirse-por-orden
+
+ES TÍTULO: ¿Qué viene ahora? · Vestirse por orden
+
+EN TITLE: What comes next? · Get dressed in order
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-079
+
+GAME_ID: ordena-preparar-la-ropa-del-dia-siguiente
+
+ES TÍTULO: Ordena: preparar la ropa del día siguiente
+
+EN TITLE: Put in order: lay out tomorrow's clothes
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-080
+
+GAME_ID: que-viene-preparar-la-ropa-del-dia-siguiente
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar la ropa del día siguiente
+
+EN TITLE: What comes next? · Lay out tomorrow's clothes
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-081
+
+GAME_ID: ordena-quitarse-la-ropa-y-dejarla-en-su-sitio
+
+ES TÍTULO: Ordena: quitarse la ropa y dejarla en su sitio
+
+EN TITLE: Put in order: undress and put clothes away
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-082
+
+GAME_ID: que-falta-quitarse-la-ropa-y-dejarla-en-su-sitio
+
+ES TÍTULO: ¿Qué falta? · Quitarse la ropa y dejarla en su sitio
+
+EN TITLE: What is missing? · Undress and put clothes away
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-083
+
+GAME_ID: ordena-lavarse-los-dientes
+
+ES TÍTULO: Ordena: lavarse los dientes
+
+EN TITLE: Put in order: brush your teeth
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-084
+
+GAME_ID: que-viene-lavarse-los-dientes
+
+ES TÍTULO: ¿Qué viene ahora? · Lavarse los dientes
+
+EN TITLE: What comes next? · Brush your teeth
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-085
+
+GAME_ID: ordena-ducharse
+
+ES TÍTULO: Ordena: ducharse
+
+EN TITLE: Put in order: have a shower
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-086
+
+GAME_ID: que-viene-ducharse
+
+ES TÍTULO: ¿Qué viene ahora? · Ducharse
+
+EN TITLE: What comes next? · Have a shower
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-087
+
+GAME_ID: ordena-lavarse-el-pelo
+
+ES TÍTULO: Ordena: lavarse el pelo
+
+EN TITLE: Put in order: wash your hair
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-088
+
+GAME_ID: que-viene-lavarse-el-pelo
+
+ES TÍTULO: ¿Qué viene ahora? · Lavarse el pelo
+
+EN TITLE: What comes next? · Wash your hair
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-089
+
+GAME_ID: ordena-secarse
+
+ES TÍTULO: Ordena: secarse
+
+EN TITLE: Put in order: dry yourself
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-090
+
+GAME_ID: que-viene-secarse
+
+ES TÍTULO: ¿Qué viene ahora? · Secarse
+
+EN TITLE: What comes next? · Dry yourself
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-091
+
+GAME_ID: ordena-peinarse
+
+ES TÍTULO: Ordena: peinarse
+
+EN TITLE: Put in order: brush your hair
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-092
+
+GAME_ID: que-falta-peinarse
+
+ES TÍTULO: ¿Qué falta? · Peinarse
+
+EN TITLE: What is missing? · Brush your hair
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-093
+
+GAME_ID: ordena-lavarse-las-manos
+
+ES TÍTULO: Ordena: lavarse las manos
+
+EN TITLE: Put in order: wash your hands
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-094
+
+GAME_ID: que-viene-lavarse-las-manos
+
+ES TÍTULO: ¿Qué viene ahora? · Lavarse las manos
+
+EN TITLE: What comes next? · Wash your hands
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-095
+
+GAME_ID: ordena-ir-al-bano
+
+ES TÍTULO: Ordena: ir al baño
+
+EN TITLE: Put in order: go to the toilet
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-096
+
+GAME_ID: que-viene-ir-al-bano
+
+ES TÍTULO: ¿Qué viene ahora? · Ir al baño
+
+EN TITLE: What comes next? · Go to the toilet
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-097
+
+GAME_ID: ordena-cuidado-menstrual
+
+ES TÍTULO: Ordena: cuidado menstrual
+
+EN TITLE: Put in order: period care
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-098
+
+GAME_ID: que-viene-cuidado-menstrual
+
+ES TÍTULO: ¿Qué viene ahora? · Cuidado menstrual
+
+EN TITLE: What comes next? · Period care
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-099
+
+GAME_ID: ordena-afeitarse-o-cuidado-personal
+
+ES TÍTULO: Ordena: afeitarse o cuidado personal
+
+EN TITLE: Put in order: shave or personal grooming
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-100
+
+GAME_ID: que-viene-afeitarse-o-cuidado-personal
+
+ES TÍTULO: ¿Qué viene ahora? · Afeitarse o cuidado personal
+
+EN TITLE: What comes next? · Shave or personal grooming
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-101
+
+GAME_ID: ordena-cortarse-las-unas
+
+ES TÍTULO: Ordena: cortarse las uñas
+
+EN TITLE: Put in order: clip your nails
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-102
+
+GAME_ID: que-viene-cortarse-las-unas
+
+ES TÍTULO: ¿Qué viene ahora? · Cortarse las uñas
+
+EN TITLE: What comes next? · Clip your nails
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-103
+
+GAME_ID: ordena-usar-desodorante
+
+ES TÍTULO: Ordena: usar desodorante
+
+EN TITLE: Put in order: use deodorant
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-104
+
+GAME_ID: primero-usar-desodorante
+
+ES TÍTULO: ¿Qué va primero? · Usar desodorante
+
+EN TITLE: What comes first? · Use deodorant
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-105
+
+GAME_ID: ordena-levantarse
+
+ES TÍTULO: Ordena: levantarse
+
+EN TITLE: Put in order: get up
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-106
+
+GAME_ID: que-viene-levantarse
+
+ES TÍTULO: ¿Qué viene ahora? · Levantarse
+
+EN TITLE: What comes next? · Get up
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-107
+
+GAME_ID: ordena-desayunar
+
+ES TÍTULO: Ordena: desayunar
+
+EN TITLE: Put in order: have breakfast
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-108
+
+GAME_ID: que-viene-desayunar
+
+ES TÍTULO: ¿Qué viene ahora? · Desayunar
+
+EN TITLE: What comes next? · Have breakfast
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-109
+
+GAME_ID: ordena-preparar-la-mochila
+
+ES TÍTULO: Ordena: preparar la mochila
+
+EN TITLE: Put in order: pack your bag
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-110
+
+GAME_ID: que-viene-preparar-la-mochila
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar la mochila
+
+EN TITLE: What comes next? · Pack your bag
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-111
+
+GAME_ID: ordena-comprobar-llaves-telefono-y-documentos
+
+ES TÍTULO: Ordena: comprobar llaves, teléfono y documentos
+
+EN TITLE: Put in order: check keys, phone and documents
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-112
+
+GAME_ID: que-viene-comprobar-llaves-telefono-y-documentos
+
+ES TÍTULO: ¿Qué viene ahora? · Comprobar llaves, teléfono y documentos
+
+EN TITLE: What comes next? · Check keys, phone and documents
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-113
+
+GAME_ID: ordena-ponerse-el-abrigo-y-salir
+
+ES TÍTULO: Ordena: ponerse el abrigo y salir
+
+EN TITLE: Put in order: put on your coat and leave
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-114
+
+GAME_ID: que-viene-ponerse-el-abrigo-y-salir
+
+ES TÍTULO: ¿Qué viene ahora? · Ponerse el abrigo y salir
+
+EN TITLE: What comes next? · Put on your coat and leave
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-115
+
+GAME_ID: ordena-salir-a-tiempo
+
+ES TÍTULO: Ordena: salir a tiempo
+
+EN TITLE: Put in order: leave on time
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-116
+
+GAME_ID: que-viene-salir-a-tiempo
+
+ES TÍTULO: ¿Qué viene ahora? · Salir a tiempo
+
+EN TITLE: What comes next? · Leave on time
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-117
+
+GAME_ID: ordena-transicion-casa-escuela-o-trabajo
+
+ES TÍTULO: Ordena: transición casa → escuela o trabajo
+
+EN TITLE: Put in order: transition home → school or work
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-118
+
+GAME_ID: que-viene-transicion-casa-escuela-o-trabajo
+
+ES TÍTULO: ¿Qué viene ahora? · Transición casa → escuela o trabajo
+
+EN TITLE: What comes next? · Transition home → school or work
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-119
+
+GAME_ID: ordena-preparar-un-desayuno-sencillo
+
+ES TÍTULO: Ordena: preparar un desayuno sencillo
+
+EN TITLE: Put in order: make a simple breakfast
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-120
+
+GAME_ID: que-viene-preparar-un-desayuno-sencillo
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar un desayuno sencillo
+
+EN TITLE: What comes next? · Make a simple breakfast
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-121
+
+GAME_ID: ordena-preparar-un-bocadillo
+
+ES TÍTULO: Ordena: preparar un bocadillo
+
+EN TITLE: Put in order: make a sandwich
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-122
+
+GAME_ID: que-viene-preparar-un-bocadillo
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar un bocadillo
+
+EN TITLE: What comes next? · Make a sandwich
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-123
+
+GAME_ID: ordena-poner-la-mesa
+
+ES TÍTULO: Ordena: poner la mesa
+
+EN TITLE: Put in order: set the table
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-124
+
+GAME_ID: que-viene-poner-la-mesa
+
+ES TÍTULO: ¿Qué viene ahora? · Poner la mesa
+
+EN TITLE: What comes next? · Set the table
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-125
+
+GAME_ID: ordena-recoger-la-mesa
+
+ES TÍTULO: Ordena: recoger la mesa
+
+EN TITLE: Put in order: clear the table
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-126
+
+GAME_ID: que-falta-recoger-la-mesa
+
+ES TÍTULO: ¿Qué falta? · Recoger la mesa
+
+EN TITLE: What is missing? · Clear the table
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-127
+
+GAME_ID: ordena-lavar-los-platos
+
+ES TÍTULO: Ordena: lavar los platos
+
+EN TITLE: Put in order: wash up
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-128
+
+GAME_ID: que-viene-lavar-los-platos
+
+ES TÍTULO: ¿Qué viene ahora? · Lavar los platos
+
+EN TITLE: What comes next? · Wash up
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-129
+
+GAME_ID: ordena-guardar-la-comida
+
+ES TÍTULO: Ordena: guardar la comida
+
+EN TITLE: Put in order: put food away
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-130
+
+GAME_ID: que-falta-guardar-la-comida
+
+ES TÍTULO: ¿Qué falta? · Guardar la comida
+
+EN TITLE: What is missing? · Put food away
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-131
+
+GAME_ID: ordena-usar-el-microondas-con-seguridad
+
+ES TÍTULO: Ordena: usar el microondas con seguridad
+
+EN TITLE: Put in order: use the microwave safely
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-132
+
+GAME_ID: que-viene-usar-el-microondas-con-seguridad
+
+ES TÍTULO: ¿Qué viene ahora? · Usar el microondas con seguridad
+
+EN TITLE: What comes next? · Use the microwave safely
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-133
+
+GAME_ID: ordena-seguir-una-receta-visual-sencilla
+
+ES TÍTULO: Ordena: seguir una receta visual sencilla
+
+EN TITLE: Put in order: follow a simple visual recipe
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-134
+
+GAME_ID: que-viene-seguir-una-receta-visual-sencilla
+
+ES TÍTULO: ¿Qué viene ahora? · Seguir una receta visual sencilla
+
+EN TITLE: What comes next? · Follow a simple visual recipe
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-135
+
+GAME_ID: ordena-preparar-la-comida-para-llevar
+
+ES TÍTULO: Ordena: preparar la comida para llevar
+
+EN TITLE: Put in order: pack a packed lunch
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-136
+
+GAME_ID: que-viene-preparar-la-comida-para-llevar
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar la comida para llevar
+
+EN TITLE: What comes next? · Pack a packed lunch
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-137
+
+GAME_ID: ordena-beber-agua-a-lo-largo-del-dia
+
+ES TÍTULO: Ordena: beber agua a lo largo del día
+
+EN TITLE: Put in order: drink water through the day
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-138
+
+GAME_ID: que-falta-beber-agua-a-lo-largo-del-dia
+
+ES TÍTULO: ¿Qué falta? · Beber agua a lo largo del día
+
+EN TITLE: What is missing? · Drink water through the day
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-139
+
+GAME_ID: ordena-hacer-la-cama
+
+ES TÍTULO: Ordena: hacer la cama
+
+EN TITLE: Put in order: make the bed
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-140
+
+GAME_ID: que-falta-hacer-la-cama
+
+ES TÍTULO: ¿Qué falta? · Hacer la cama
+
+EN TITLE: What is missing? · Make the bed
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-141
+
+GAME_ID: ordena-recoger-una-habitacion
+
+ES TÍTULO: Ordena: recoger una habitación
+
+EN TITLE: Put in order: tidy a room
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-142
+
+GAME_ID: que-viene-recoger-una-habitacion
+
+ES TÍTULO: ¿Qué viene ahora? · Recoger una habitación
+
+EN TITLE: What comes next? · Tidy a room
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-143
+
+GAME_ID: ordena-clasificar-la-ropa
+
+ES TÍTULO: Ordena: clasificar la ropa
+
+EN TITLE: Put in order: sort the laundry
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-144
+
+GAME_ID: que-falta-clasificar-la-ropa
+
+ES TÍTULO: ¿Qué falta? · Clasificar la ropa
+
+EN TITLE: What is missing? · Sort the laundry
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-145
+
+GAME_ID: ordena-poner-la-lavadora
+
+ES TÍTULO: Ordena: poner la lavadora
+
+EN TITLE: Put in order: put on a wash
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-146
+
+GAME_ID: que-viene-poner-la-lavadora
+
+ES TÍTULO: ¿Qué viene ahora? · Poner la lavadora
+
+EN TITLE: What comes next? · Put on a wash
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-147
+
+GAME_ID: ordena-tender-la-ropa
+
+ES TÍTULO: Ordena: tender la ropa
+
+EN TITLE: Put in order: hang out the washing
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-148
+
+GAME_ID: que-falta-tender-la-ropa
+
+ES TÍTULO: ¿Qué falta? · Tender la ropa
+
+EN TITLE: What is missing? · Hang out the washing
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-149
+
+GAME_ID: ordena-doblar-la-ropa
+
+ES TÍTULO: Ordena: doblar la ropa
+
+EN TITLE: Put in order: fold the clothes
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-150
+
+GAME_ID: que-falta-doblar-la-ropa
+
+ES TÍTULO: ¿Qué falta? · Doblar la ropa
+
+EN TITLE: What is missing? · Fold the clothes
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-151
+
+GAME_ID: ordena-guardar-los-objetos-en-su-lugar
+
+ES TÍTULO: Ordena: guardar los objetos en su lugar
+
+EN TITLE: Put in order: put things back in their place
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-152
+
+GAME_ID: primero-guardar-los-objetos-en-su-lugar
+
+ES TÍTULO: ¿Qué va primero? · Guardar los objetos en su lugar
+
+EN TITLE: What comes first? · Put things back in their place
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-153
+
+GAME_ID: ordena-sacar-la-basura
+
+ES TÍTULO: Ordena: sacar la basura
+
+EN TITLE: Put in order: take out the rubbish
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-154
+
+GAME_ID: que-falta-sacar-la-basura
+
+ES TÍTULO: ¿Qué falta? · Sacar la basura
+
+EN TITLE: What is missing? · Take out the rubbish
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-155
+
+GAME_ID: ordena-separar-para-reciclar
+
+ES TÍTULO: Ordena: separar para reciclar
+
+EN TITLE: Put in order: sort the recycling
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-156
+
+GAME_ID: que-viene-separar-para-reciclar
+
+ES TÍTULO: ¿Qué viene ahora? · Separar para reciclar
+
+EN TITLE: What comes next? · Sort the recycling
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-157
+
+GAME_ID: ordena-limpiar-una-superficie
+
+ES TÍTULO: Ordena: limpiar una superficie
+
+EN TITLE: Put in order: clean a surface
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-158
+
+GAME_ID: que-falta-limpiar-una-superficie
+
+ES TÍTULO: ¿Qué falta? · Limpiar una superficie
+
+EN TITLE: What is missing? · Clean a surface
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-159
+
+GAME_ID: ordena-pasar-la-aspiradora
+
+ES TÍTULO: Ordena: pasar la aspiradora
+
+EN TITLE: Put in order: vacuum
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-160
+
+GAME_ID: que-falta-pasar-la-aspiradora
+
+ES TÍTULO: ¿Qué falta? · Pasar la aspiradora
+
+EN TITLE: What is missing? · Vacuum
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-161
+
+GAME_ID: ordena-regar-las-plantas
+
+ES TÍTULO: Ordena: regar las plantas
+
+EN TITLE: Put in order: water the plants
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-162
+
+GAME_ID: primero-regar-las-plantas
+
+ES TÍTULO: ¿Qué va primero? · Regar las plantas
+
+EN TITLE: What comes first? · Water the plants
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-163
+
+GAME_ID: ordena-cuidar-a-un-animal-de-compania
+
+ES TÍTULO: Ordena: cuidar a un animal de compañía
+
+EN TITLE: Put in order: look after a pet
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-164
+
+GAME_ID: que-falta-cuidar-a-un-animal-de-compania
+
+ES TÍTULO: ¿Qué falta? · Cuidar a un animal de compañía
+
+EN TITLE: What is missing? · Look after a pet
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-165
+
+GAME_ID: ordena-preparar-el-escritorio
+
+ES TÍTULO: Ordena: preparar el escritorio
+
+EN TITLE: Put in order: set up your desk
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-166
+
+GAME_ID: que-falta-preparar-el-escritorio
+
+ES TÍTULO: ¿Qué falta? · Preparar el escritorio
+
+EN TITLE: What is missing? · Set up your desk
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-167
+
+GAME_ID: ordena-empezar-una-tarea
+
+ES TÍTULO: Ordena: empezar una tarea
+
+EN TITLE: Put in order: start a task
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-168
+
+GAME_ID: que-viene-empezar-una-tarea
+
+ES TÍTULO: ¿Qué viene ahora? · Empezar una tarea
+
+EN TITLE: What comes next? · Start a task
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-169
+
+GAME_ID: ordena-dividir-una-tarea-grande
+
+ES TÍTULO: Ordena: dividir una tarea grande
+
+EN TITLE: Put in order: break a big task down
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-170
+
+GAME_ID: que-viene-dividir-una-tarea-grande
+
+ES TÍTULO: ¿Qué viene ahora? · Dividir una tarea grande
+
+EN TITLE: What comes next? · Break a big task down
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-171
+
+GAME_ID: ordena-guardar-los-materiales
+
+ES TÍTULO: Ordena: guardar los materiales
+
+EN TITLE: Put in order: put your materials away
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-172
+
+GAME_ID: primero-guardar-los-materiales
+
+ES TÍTULO: ¿Qué va primero? · Guardar los materiales
+
+EN TITLE: What comes first? · Put your materials away
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-173
+
+GAME_ID: ordena-entregar-una-tarea
+
+ES TÍTULO: Ordena: entregar una tarea
+
+EN TITLE: Put in order: hand in a task
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-174
+
+GAME_ID: que-falta-entregar-una-tarea
+
+ES TÍTULO: ¿Qué falta? · Entregar una tarea
+
+EN TITLE: What is missing? · Hand in a task
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-175
+
+GAME_ID: ordena-transicion-descanso-trabajo
+
+ES TÍTULO: Ordena: transición descanso → trabajo
+
+EN TITLE: Put in order: transition break → work
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-176
+
+GAME_ID: que-viene-transicion-descanso-trabajo
+
+ES TÍTULO: ¿Qué viene ahora? · Transición descanso → trabajo
+
+EN TITLE: What comes next? · Transition break → work
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-177
+
+GAME_ID: ordena-pedir-una-adaptacion-o-ayuda
+
+ES TÍTULO: Ordena: pedir una adaptación o ayuda
+
+EN TITLE: Put in order: ask for an adjustment or help
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-178
+
+GAME_ID: que-falta-pedir-una-adaptacion-o-ayuda
+
+ES TÍTULO: ¿Qué falta? · Pedir una adaptación o ayuda
+
+EN TITLE: What is missing? · Ask for an adjustment or help
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-179
+
+GAME_ID: ordena-seguir-un-horario-del-dia
+
+ES TÍTULO: Ordena: seguir un horario del día
+
+EN TITLE: Put in order: follow a day timetable
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-180
+
+GAME_ID: que-viene-seguir-un-horario-del-dia
+
+ES TÍTULO: ¿Qué viene ahora? · Seguir un horario del día
+
+EN TITLE: What comes next? · Follow a day timetable
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: ado · adu
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-181
+
+GAME_ID: ordena-cruzar-por-el-paso-de-peatones
+
+ES TÍTULO: Ordena: cruzar por el paso de peatones
+
+EN TITLE: Put in order: cross at the crossing
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-182
+
+GAME_ID: que-viene-cruzar-por-el-paso-de-peatones
+
+ES TÍTULO: ¿Qué viene ahora? · Cruzar por el paso de peatones
+
+EN TITLE: What comes next? · Cross at the crossing
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-183
+
+GAME_ID: ordena-esperar-el-turno
+
+ES TÍTULO: Ordena: esperar el turno
+
+EN TITLE: Put in order: wait your turn
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-184
+
+GAME_ID: que-falta-esperar-el-turno
+
+ES TÍTULO: ¿Qué falta? · Esperar el turno
+
+EN TITLE: What is missing? · Wait your turn
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-185
+
+GAME_ID: ordena-usar-el-transporte-publico
+
+ES TÍTULO: Ordena: usar el transporte público
+
+EN TITLE: Put in order: use public transport
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-186
+
+GAME_ID: que-viene-usar-el-transporte-publico
+
+ES TÍTULO: ¿Qué viene ahora? · Usar el transporte público
+
+EN TITLE: What comes next? · Use public transport
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-187
+
+GAME_ID: ordena-subir-y-bajar-del-autobus-o-metro
+
+ES TÍTULO: Ordena: subir y bajar del autobús o metro
+
+EN TITLE: Put in order: get on and off the bus or metro
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-188
+
+GAME_ID: que-viene-subir-y-bajar-del-autobus-o-metro
+
+ES TÍTULO: ¿Qué viene ahora? · Subir y bajar del autobús o metro
+
+EN TITLE: What comes next? · Get on and off the bus or metro
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-189
+
+GAME_ID: ordena-comprar-en-una-tienda
+
+ES TÍTULO: Ordena: comprar en una tienda
+
+EN TITLE: Put in order: shop in a shop
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-190
+
+GAME_ID: que-viene-comprar-en-una-tienda
+
+ES TÍTULO: ¿Qué viene ahora? · Comprar en una tienda
+
+EN TITLE: What comes next? · Shop in a shop
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-191
+
+GAME_ID: ordena-pagar
+
+ES TÍTULO: Ordena: pagar
+
+EN TITLE: Put in order: pay
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-192
+
+GAME_ID: que-viene-pagar
+
+ES TÍTULO: ¿Qué viene ahora? · Pagar
+
+EN TITLE: What comes next? · Pay
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-193
+
+GAME_ID: ordena-guardar-el-ticket-y-el-cambio
+
+ES TÍTULO: Ordena: guardar el ticket y el cambio
+
+EN TITLE: Put in order: keep the receipt and change
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-194
+
+GAME_ID: primero-guardar-el-ticket-y-el-cambio
+
+ES TÍTULO: ¿Qué va primero? · Guardar el ticket y el cambio
+
+EN TITLE: What comes first? · Keep the receipt and change
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-195
+
+GAME_ID: ordena-pedir-ayuda
+
+ES TÍTULO: Ordena: pedir ayuda
+
+EN TITLE: Put in order: ask for help
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-196
+
+GAME_ID: que-falta-pedir-ayuda
+
+ES TÍTULO: ¿Qué falta? · Pedir ayuda
+
+EN TITLE: What is missing? · Ask for help
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-197
+
+GAME_ID: ordena-orientarse-en-un-lugar-conocido
+
+ES TÍTULO: Ordena: orientarse en un lugar conocido
+
+EN TITLE: Put in order: find your way in a familiar place
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-198
+
+GAME_ID: que-falta-orientarse-en-un-lugar-conocido
+
+ES TÍTULO: ¿Qué falta? · Orientarse en un lugar conocido
+
+EN TITLE: What is missing? · Find your way in a familiar place
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-199
+
+GAME_ID: ordena-ir-a-una-cita-medica
+
+ES TÍTULO: Ordena: ir a una cita médica
+
+EN TITLE: Put in order: go to a medical appointment
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-200
+
+GAME_ID: que-viene-ir-a-una-cita-medica
+
+ES TÍTULO: ¿Qué viene ahora? · Ir a una cita médica
+
+EN TITLE: What comes next? · Go to a medical appointment
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-201
+
+GAME_ID: ordena-salir-del-sitio-cuando-hay-sobrecarga
+
+ES TÍTULO: Ordena: salir del sitio cuando hay sobrecarga
+
+EN TITLE: Put in order: leave when you are overloaded
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-202
+
+GAME_ID: que-viene-salir-del-sitio-cuando-hay-sobrecarga
+
+ES TÍTULO: ¿Qué viene ahora? · Salir del sitio cuando hay sobrecarga
+
+EN TITLE: What comes next? · Leave when you are overloaded
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-203
+
+GAME_ID: ordena-prepararse-para-salir
+
+ES TÍTULO: Ordena: prepararse para salir
+
+EN TITLE: Put in order: get ready to go out
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-204
+
+GAME_ID: que-falta-prepararse-para-salir
+
+ES TÍTULO: ¿Qué falta? · Prepararse para salir
+
+EN TITLE: What is missing? · Get ready to go out
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-205
+
+GAME_ID: ordena-terminar-una-actividad
+
+ES TÍTULO: Ordena: terminar una actividad
+
+EN TITLE: Put in order: finish an activity
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-206
+
+GAME_ID: que-falta-terminar-una-actividad
+
+ES TÍTULO: ¿Qué falta? · Terminar una actividad
+
+EN TITLE: What is missing? · Finish an activity
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-207
+
+GAME_ID: ordena-cambiar-de-tarea
+
+ES TÍTULO: Ordena: cambiar de tarea
+
+EN TITLE: Put in order: switch task
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-208
+
+GAME_ID: que-viene-cambiar-de-tarea
+
+ES TÍTULO: ¿Qué viene ahora? · Cambiar de tarea
+
+EN TITLE: What comes next? · Switch task
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-209
+
+GAME_ID: ordena-esperar
+
+ES TÍTULO: Ordena: esperar
+
+EN TITLE: Put in order: wait
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-210
+
+GAME_ID: que-falta-esperar
+
+ES TÍTULO: ¿Qué falta? · Esperar
+
+EN TITLE: What is missing? · Wait
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-211
+
+GAME_ID: ordena-seguir-una-cuenta-atras-visual
+
+ES TÍTULO: Ordena: seguir una cuenta atrás visual
+
+EN TITLE: Put in order: follow a visual countdown
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-212
+
+GAME_ID: que-falta-seguir-una-cuenta-atras-visual
+
+ES TÍTULO: ¿Qué falta? · Seguir una cuenta atrás visual
+
+EN TITLE: What is missing? · Follow a visual countdown
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-213
+
+GAME_ID: ordena-organizar-la-secuencia-de-la-tarde
+
+ES TÍTULO: Ordena: organizar la secuencia de la tarde
+
+EN TITLE: Put in order: plan the afternoon sequence
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-214
+
+GAME_ID: que-falta-organizar-la-secuencia-de-la-tarde
+
+ES TÍTULO: ¿Qué falta? · Organizar la secuencia de la tarde
+
+EN TITLE: What is missing? · Plan the afternoon sequence
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-215
+
+GAME_ID: primero-primero-despues
+
+ES TÍTULO: ¿Qué va primero? · Primero → después
+
+EN TITLE: What comes first? · First → then
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-216
+
+GAME_ID: ordena-preparar-el-pijama
+
+ES TÍTULO: Ordena: preparar el pijama
+
+EN TITLE: Put in order: get your pyjamas ready
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-217
+
+GAME_ID: primero-preparar-el-pijama
+
+ES TÍTULO: ¿Qué va primero? · Preparar el pijama
+
+EN TITLE: What comes first? · Get your pyjamas ready
+
+ES DESCRIPCIÓN: Elige el paso con el que se empieza.
+
+EN DESCRIPTION: Choose the step you start with.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-218
+
+GAME_ID: ordena-higiene-nocturna
+
+ES TÍTULO: Ordena: higiene nocturna
+
+EN TITLE: Put in order: night-time hygiene
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-219
+
+GAME_ID: que-falta-higiene-nocturna
+
+ES TÍTULO: ¿Qué falta? · Higiene nocturna
+
+EN TITLE: What is missing? · Night-time hygiene
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-220
+
+GAME_ID: ordena-dejar-preparadas-las-cosas-del-dia-siguiente
+
+ES TÍTULO: Ordena: dejar preparadas las cosas del día siguiente
+
+EN TITLE: Put in order: get tomorrow's things ready
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-221
+
+GAME_ID: que-falta-dejar-preparadas-las-cosas-del-dia-siguiente
+
+ES TÍTULO: ¿Qué falta? · Dejar preparadas las cosas del día siguiente
+
+EN TITLE: What is missing? · Get tomorrow's things ready
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-222
+
+GAME_ID: ordena-apagar-pantallas-y-luces
+
+ES TÍTULO: Ordena: apagar pantallas y luces
+
+EN TITLE: Put in order: turn off screens and lights
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-223
+
+GAME_ID: que-falta-apagar-pantallas-y-luces
+
+ES TÍTULO: ¿Qué falta? · Apagar pantallas y luces
+
+EN TITLE: What is missing? · Turn off screens and lights
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-224
+
+GAME_ID: ordena-acostarse
+
+ES TÍTULO: Ordena: acostarse
+
+EN TITLE: Put in order: go to bed
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-225
+
+GAME_ID: que-falta-acostarse
+
+ES TÍTULO: ¿Qué falta? · Acostarse
+
+EN TITLE: What is missing? · Go to bed
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-226
+
+GAME_ID: ordena-preparar-el-ambiente-de-descanso
+
+ES TÍTULO: Ordena: preparar el ambiente de descanso
+
+EN TITLE: Put in order: set up a restful room
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-227
+
+GAME_ID: que-viene-preparar-el-ambiente-de-descanso
+
+ES TÍTULO: ¿Qué viene ahora? · Preparar el ambiente de descanso
+
+EN TITLE: What comes next? · Set up a restful room
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-228
+
+GAME_ID: ordena-volver-a-la-cama-si-te-despiertas
+
+ES TÍTULO: Ordena: volver a la cama si te despiertas
+
+EN TITLE: Put in order: go back to bed if you wake up
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-229
+
+GAME_ID: que-viene-volver-a-la-cama-si-te-despiertas
+
+ES TÍTULO: ¿Qué viene ahora? · Volver a la cama si te despiertas
+
+EN TITLE: What comes next? · Go back to bed if you wake up
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-230
+
+GAME_ID: ordena-tomar-la-medicacion
+
+ES TÍTULO: Ordena: tomar la medicación
+
+EN TITLE: Put in order: take your medication
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-231
+
+GAME_ID: que-falta-tomar-la-medicacion
+
+ES TÍTULO: ¿Qué falta? · Tomar la medicación
+
+EN TITLE: What is missing? · Take your medication
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-232
+
+GAME_ID: ordena-prepararse-para-el-dentista
+
+ES TÍTULO: Ordena: prepararse para el dentista
+
+EN TITLE: Put in order: get ready for the dentist
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-233
+
+GAME_ID: que-viene-prepararse-para-el-dentista
+
+ES TÍTULO: ¿Qué viene ahora? · Prepararse para el dentista
+
+EN TITLE: What comes next? · Get ready for the dentist
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-234
+
+GAME_ID: ordena-cargar-el-telefono
+
+ES TÍTULO: Ordena: cargar el teléfono
+
+EN TITLE: Put in order: charge your phone
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-235
+
+GAME_ID: que-falta-cargar-el-telefono
+
+ES TÍTULO: ¿Qué falta? · Cargar el teléfono
+
+EN TITLE: What is missing? · Charge your phone
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-236
+
+GAME_ID: ordena-manejar-el-dinero-de-la-semana
+
+ES TÍTULO: Ordena: manejar el dinero de la semana
+
+EN TITLE: Put in order: manage the week's money
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-237
+
+GAME_ID: que-viene-manejar-el-dinero-de-la-semana
+
+ES TÍTULO: ¿Qué viene ahora? · Manejar el dinero de la semana
+
+EN TITLE: What comes next? · Manage the week's money
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-238
+
+GAME_ID: ordena-abrir-un-envase-dificil
+
+ES TÍTULO: Ordena: abrir un envase difícil
+
+EN TITLE: Put in order: open a tricky package
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-239
+
+GAME_ID: que-falta-abrir-un-envase-dificil
+
+ES TÍTULO: ¿Qué falta? · Abrir un envase difícil
+
+EN TITLE: What is missing? · Open a tricky package
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-240
+
+GAME_ID: ordena-contestar-a-la-puerta-o-al-telefono
+
+ES TÍTULO: Ordena: contestar a la puerta o al teléfono
+
+EN TITLE: Put in order: answer the door or the phone
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-241
+
+GAME_ID: que-viene-contestar-a-la-puerta-o-al-telefono
+
+ES TÍTULO: ¿Qué viene ahora? · Contestar a la puerta o al teléfono
+
+EN TITLE: What comes next? · Answer the door or the phone
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-242
+
+GAME_ID: ordena-usar-una-lista-de-la-compra
+
+ES TÍTULO: Ordena: usar una lista de la compra
+
+EN TITLE: Put in order: use a shopping list
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-243
+
+GAME_ID: que-falta-usar-una-lista-de-la-compra
+
+ES TÍTULO: ¿Qué falta? · Usar una lista de la compra
+
+EN TITLE: What is missing? · Use a shopping list
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-244
+
+GAME_ID: ordena-descansar-antes-de-agotarte
+
+ES TÍTULO: Ordena: descansar antes de agotarte
+
+EN TITLE: Put in order: rest before you crash
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-245
+
+GAME_ID: que-viene-descansar-antes-de-agotarte
+
+ES TÍTULO: ¿Qué viene ahora? · Descansar antes de agotarte
+
+EN TITLE: What comes next? · Rest before you crash
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-246
+
+GAME_ID: ordena-prepararse-para-un-cambio-previsto
+
+ES TÍTULO: Ordena: prepararse para un cambio previsto
+
+EN TITLE: Put in order: get ready for a planned change
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-247
+
+GAME_ID: que-viene-prepararse-para-un-cambio-previsto
+
+ES TÍTULO: ¿Qué viene ahora? · Prepararse para un cambio previsto
+
+EN TITLE: What comes next? · Get ready for a planned change
+
+ES DESCRIPCIÓN: Mira lo que ya ha pasado y elige el paso siguiente.
+
+EN DESCRIPTION: Look at what has happened and choose the next step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-248
+
+GAME_ID: ordena-recargar-el-abono-de-transporte
+
+ES TÍTULO: Ordena: recargar el abono de transporte
+
+EN TITLE: Put in order: top up your travel card
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-249
+
+GAME_ID: que-falta-recargar-el-abono-de-transporte
+
+ES TÍTULO: ¿Qué falta? · Recargar el abono de transporte
+
+EN TITLE: What is missing? · Top up your travel card
+
+ES DESCRIPCIÓN: Mira la secuencia y elige el paso que falta.
+
+EN DESCRIPTION: Look at the sequence and choose the missing step.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-250
+
+GAME_ID: ordena-afeitarse
+
+ES TÍTULO: Ordena: afeitarse
+
+EN TITLE: Put in order: shaving
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-251
+
+GAME_ID: ordena-cocinar-una-receta
+
+ES TÍTULO: Ordena: cocinar una receta
+
+EN TITLE: Put in order: cooking a recipe
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: ado · adu
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-252
+
+GAME_ID: ordena-limpiar-la-casa
+
+ES TÍTULO: Ordena: limpiar la casa por partes
+
+EN TITLE: Put in order: cleaning the house in parts
+
+ES DESCRIPCIÓN: Pon los pasos en orden, del primero al último.
+
+EN DESCRIPTION: Put the steps in order, from first to last.
+
+STAGES: adu
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: hasta_2_min
+
+ES DURACIÓN: Hasta 2 min aprox.
+
+EN DURATION: Up to about 2 min
+
+ESTIMATED_MINUTES: 2
+
+LINEAGE: A2_FROZEN_PUBLIC_BASELINE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-253
+
+GAME_ID: r40-higiene-ordenar
+
+ES TÍTULO: Lavarse las manos, paso a paso
+
+EN TITLE: Wash your hands, step by step
+
+ES DESCRIPCIÓN: Pon en orden una secuencia cotidiana para lavarte las manos.
+
+EN DESCRIPTION: Put an everyday hand-washing sequence in order.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-254
+
+GAME_ID: r40-higiene-elegir
+
+ES TÍTULO: ¿Por dónde quieres empezar?
+
+EN TITLE: Where do you want to start?
+
+ES DESCRIPCIÓN: Elige una tarea de cuidado personal para empezar. Las tres opciones pueden servir.
+
+EN DESCRIPTION: Choose a personal-care task to start with. Any of the three can work.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-255
+
+GAME_ID: r40-higiene-clasificar
+
+ES TÍTULO: Cada objeto con su cuidado
+
+EN TITLE: Match each item to its care task
+
+ES DESCRIPCIÓN: Separa las cosas de los dientes y las del pelo.
+
+EN DESCRIPTION: Sort the things for teeth and the things for hair.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-256
+
+GAME_ID: r40-higiene-planificar
+
+ES TÍTULO: Prepara tu cuidado personal
+
+EN TITLE: Plan your personal care
+
+ES DESCRIPCIÓN: Elige las tareas que quieres hacer y ordénalas a tu manera.
+
+EN DESCRIPTION: Choose the tasks you want to do and put them in your own order.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-257
+
+GAME_ID: r40-higiene-memoria
+
+ES TÍTULO: Memoria del baño
+
+EN TITLE: Bathroom memory
+
+ES DESCRIPCIÓN: Encuentra parejas de objetos cotidianos del baño.
+
+EN DESCRIPTION: Find pairs of everyday bathroom items.
+
+STAGES: todas
+
+CONTEXT: higiene
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-258
+
+GAME_ID: r40-vestirse-ordenar
+
+ES TÍTULO: Vestirse para salir
+
+EN TITLE: Get dressed to go out
+
+ES DESCRIPCIÓN: Pon en orden una secuencia sencilla de ropa y calzado.
+
+EN DESCRIPTION: Put a simple clothes-and-shoes sequence in order.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-259
+
+GAME_ID: r40-vestirse-elegir
+
+ES TÍTULO: Elige una prenda para empezar
+
+EN TITLE: Choose an item to start with
+
+ES DESCRIPCIÓN: Elige con qué prenda quieres empezar. Puedes decidir según el día y cómo te encuentres.
+
+EN DESCRIPTION: Choose which item you want to start with. You can decide based on the day and how you feel.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-260
+
+GAME_ID: r40-vestirse-clasificar
+
+ES TÍTULO: Ropa y calzado
+
+EN TITLE: Clothes and footwear
+
+ES DESCRIPCIÓN: Separa prendas de vestir y calzado.
+
+EN DESCRIPTION: Sort clothes and footwear.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-261
+
+GAME_ID: r40-vestirse-planificar
+
+ES TÍTULO: Prepara lo que te vas a poner
+
+EN TITLE: Plan what you will wear
+
+ES DESCRIPCIÓN: Elige las prendas que quieres usar y ordénalas como te resulte cómodo.
+
+EN DESCRIPTION: Choose the clothes you want to use and put them in an order that feels comfortable.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-262
+
+GAME_ID: r40-vestirse-memoria
+
+ES TÍTULO: Memoria de la ropa
+
+EN TITLE: Clothes memory
+
+ES DESCRIPCIÓN: Encuentra parejas de prendas y calzado.
+
+EN DESCRIPTION: Find pairs of clothes and footwear.
+
+STAGES: todas
+
+CONTEXT: vestirse
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-263
+
+GAME_ID: r40-comidas-ordenar
+
+ES TÍTULO: Preparar un bocadillo
+
+EN TITLE: Make a sandwich
+
+ES DESCRIPCIÓN: Pon en orden cuatro pasos para preparar y guardar un bocadillo.
+
+EN DESCRIPTION: Put four steps for making and packing a sandwich in order.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-264
+
+GAME_ID: r40-comidas-elegir
+
+ES TÍTULO: ¿Qué comida quieres preparar?
+
+EN TITLE: Which meal do you want to prepare?
+
+ES DESCRIPCIÓN: Elige una comida del día para empezar a organizarla.
+
+EN DESCRIPTION: Choose a meal of the day to start organising.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-265
+
+GAME_ID: r40-comidas-clasificar
+
+ES TÍTULO: Nevera o fregadero
+
+EN TITLE: Fridge or sink
+
+ES DESCRIPCIÓN: Separa lo que se guarda en frío y lo que se lava después de usarlo.
+
+EN DESCRIPTION: Sort what is kept cold and what is washed after use.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-266
+
+GAME_ID: r40-comidas-planificar
+
+ES TÍTULO: Prepara una comida para llevar
+
+EN TITLE: Plan food to take with you
+
+ES DESCRIPCIÓN: Elige qué quieres preparar o llevar y ordénalo a tu manera.
+
+EN DESCRIPTION: Choose what you want to prepare or take and put it in your own order.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-267
+
+GAME_ID: r40-comidas-memoria
+
+ES TÍTULO: Memoria de la cocina · nueva tanda
+
+EN TITLE: Kitchen memory · new set
+
+ES DESCRIPCIÓN: Encuentra parejas de objetos cotidianos de la cocina.
+
+EN DESCRIPTION: Find pairs of everyday kitchen items.
+
+STAGES: todas
+
+CONTEXT: comidas
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-268
+
+GAME_ID: r40-manana-ordenar
+
+ES TÍTULO: Prepararse para salir
+
+EN TITLE: Get ready to go out
+
+ES DESCRIPCIÓN: Pon en orden una mañana sencilla antes de salir.
+
+EN DESCRIPTION: Put a simple morning-before-leaving sequence in order.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-269
+
+GAME_ID: r40-manana-elegir
+
+ES TÍTULO: Deja una cosa lista
+
+EN TITLE: Get one thing ready
+
+ES DESCRIPCIÓN: Elige una cosa que quieras dejar preparada para que la salida sea más sencilla.
+
+EN DESCRIPTION: Choose one thing to get ready so leaving is simpler.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-270
+
+GAME_ID: r40-manana-clasificar
+
+ES TÍTULO: Mañana o noche
+
+EN TITLE: Morning or night
+
+ES DESCRIPCIÓN: Separa acciones típicas de la mañana y de la noche.
+
+EN DESCRIPTION: Sort typical morning and night actions.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-271
+
+GAME_ID: r40-manana-planificar
+
+ES TÍTULO: Construye tu salida de casa
+
+EN TITLE: Build your leaving-home plan
+
+ES DESCRIPCIÓN: Elige los pasos que te ayudan antes de salir y ponlos en tu orden.
+
+EN DESCRIPTION: Choose the steps that help before leaving and put them in your order.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-272
+
+GAME_ID: r40-manana-memoria
+
+ES TÍTULO: Memoria antes de salir
+
+EN TITLE: Leaving-home memory
+
+ES DESCRIPCIÓN: Encuentra parejas de cosas que pueden acompañarte al salir.
+
+EN DESCRIPTION: Find pairs of things that can go with you when you leave.
+
+STAGES: todas
+
+CONTEXT: manana
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-273
+
+GAME_ID: r40-casa-ordenar
+
+ES TÍTULO: Poner a punto una habitación
+
+EN TITLE: Get a room ready
+
+ES DESCRIPCIÓN: Prueba un orden posible para hacer varias tareas pequeñas de casa.
+
+EN DESCRIPTION: Try one possible order for several small household tasks.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-274
+
+GAME_ID: r40-casa-elegir
+
+ES TÍTULO: Elige una tarea pequeña de casa
+
+EN TITLE: Choose one small household task
+
+ES DESCRIPCIÓN: Elige una tarea concreta para empezar. Las tres son opciones posibles.
+
+EN DESCRIPTION: Choose one specific task to start with. Any of the three can work.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-275
+
+GAME_ID: r40-casa-clasificar
+
+ES TÍTULO: Armario o nevera
+
+EN TITLE: Wardrobe or fridge
+
+ES DESCRIPCIÓN: Separa cosas que se guardan en el armario y cosas que se guardan en frío.
+
+EN DESCRIPTION: Sort things kept in the wardrobe and things kept cold.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-276
+
+GAME_ID: r40-casa-planificar
+
+ES TÍTULO: Haz tu plan de casa
+
+EN TITLE: Make your home plan
+
+ES DESCRIPCIÓN: Elige unas tareas de casa y ordénalas como prefieras.
+
+EN DESCRIPTION: Choose some household tasks and put them in the order you prefer.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-277
+
+GAME_ID: r40-casa-memoria
+
+ES TÍTULO: Memoria de casa
+
+EN TITLE: Home memory
+
+ES DESCRIPCIÓN: Encuentra parejas de objetos y lugares cotidianos de casa.
+
+EN DESCRIPTION: Find pairs of everyday household items and places.
+
+STAGES: todas
+
+CONTEXT: casa
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-278
+
+GAME_ID: r40-salir-ordenar
+
+ES TÍTULO: Del portal al destino
+
+EN TITLE: From home to your destination
+
+ES DESCRIPCIÓN: Pon en orden una ruta sencilla en transporte público.
+
+EN DESCRIPTION: Put a simple public-transport route in order.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-279
+
+GAME_ID: r40-salir-elegir
+
+ES TÍTULO: Comprueba una cosa antes de salir
+
+EN TITLE: Check one thing before leaving
+
+ES DESCRIPCIÓN: Elige qué quieres comprobar primero. Las tres opciones pueden ser útiles.
+
+EN DESCRIPTION: Choose what you want to check first. Any of the three can be useful.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-280
+
+GAME_ID: r40-salir-clasificar
+
+ES TÍTULO: Lo llevo o se queda en casa
+
+EN TITLE: Take it or leave it at home
+
+ES DESCRIPCIÓN: Separa algunas cosas que suelen acompañarte de una cosa que se queda en casa.
+
+EN DESCRIPTION: Sort some things that often go with you from one thing that stays at home.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-281
+
+GAME_ID: r40-salir-planificar
+
+ES TÍTULO: Planifica una salida sencilla
+
+EN TITLE: Plan a simple trip out
+
+ES DESCRIPCIÓN: Elige qué necesitas para la salida y ordénalo a tu manera.
+
+EN DESCRIPTION: Choose what you need for going out and put it in your own order.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-282
+
+GAME_ID: r40-salir-memoria
+
+ES TÍTULO: Memoria para salir
+
+EN TITLE: Going-out memory
+
+ES DESCRIPCIÓN: Encuentra parejas de cosas que puedes comprobar antes de salir.
+
+EN DESCRIPTION: Find pairs of things you can check before going out.
+
+STAGES: todas
+
+CONTEXT: salir
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-283
+
+GAME_ID: r40-estudio-ordenar
+
+ES TÍTULO: Responder una tarea breve
+
+EN TITLE: Complete a short task
+
+ES DESCRIPCIÓN: Pon en orden cuatro pasos desde abrir el material hasta entregar la respuesta.
+
+EN DESCRIPTION: Put four steps in order, from opening the material to sending the answer.
+
+STAGES: todas
+
+CONTEXT: estudio
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-284
+
+GAME_ID: r40-estudio-elegir
+
+ES TÍTULO: Elige cómo empezar
+
+EN TITLE: Choose how to start
+
+ES DESCRIPCIÓN: Elige una forma pequeña de empezar una tarea. No hay una única opción correcta.
+
+EN DESCRIPTION: Choose a small way to start a task. There is no single correct option.
+
+STAGES: todas
+
+CONTEXT: estudio
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-285
+
+GAME_ID: r40-estudio-clasificar
+
+ES TÍTULO: Trabajo o descanso
+
+EN TITLE: Work or break
+
+ES DESCRIPCIÓN: Separa cosas para la tarea y cosas para una pausa.
+
+EN DESCRIPTION: Sort things for the task and things for a break.
+
+STAGES: todas
+
+CONTEXT: estudio
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-286
+
+GAME_ID: r40-estudio-planificar
+
+ES TÍTULO: Construye una sesión de estudio o trabajo
+
+EN TITLE: Build a study or work session
+
+ES DESCRIPCIÓN: Elige partes de trabajo y descanso y colócalas en el orden que prefieras.
+
+EN DESCRIPTION: Choose work and break parts and put them in the order you prefer.
+
+STAGES: todas
+
+CONTEXT: estudio
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-287
+
+GAME_ID: r40-estudio-memoria
+
+ES TÍTULO: Memoria del escritorio
+
+EN TITLE: Desk memory
+
+ES DESCRIPCIÓN: Encuentra parejas de materiales de estudio o trabajo.
+
+EN DESCRIPTION: Find pairs of study or work materials.
+
+STAGES: todas
+
+CONTEXT: estudio
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-288
+
+GAME_ID: r40-tiempo-ordenar
+
+ES TÍTULO: Cambiar de una tarea a otra
+
+EN TITLE: Move from one task to another
+
+ES DESCRIPCIÓN: Pon en orden una transición sencilla entre dos actividades.
+
+EN DESCRIPTION: Put a simple transition between two activities in order.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-289
+
+GAME_ID: r40-tiempo-elegir
+
+ES TÍTULO: Elige cómo preparar un cambio
+
+EN TITLE: Choose how to prepare for a change
+
+ES DESCRIPCIÓN: Elige una forma de prepararte para cambiar de actividad.
+
+EN DESCRIPTION: Choose a way to prepare for changing activity.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-290
+
+GAME_ID: r40-tiempo-clasificar
+
+ES TÍTULO: Actividad o pausa
+
+EN TITLE: Activity or break
+
+ES DESCRIPCIÓN: Separa acciones de tarea y acciones de pausa.
+
+EN DESCRIPTION: Sort task actions and break actions.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-291
+
+GAME_ID: r40-tiempo-planificar
+
+ES TÍTULO: Organiza un rato de tarde
+
+EN TITLE: Plan part of your afternoon
+
+ES DESCRIPCIÓN: Elige actividad, descanso y siguiente paso, y ordénalos como prefieras.
+
+EN DESCRIPTION: Choose activity, break and next step, and put them in the order you prefer.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-292
+
+GAME_ID: r40-tiempo-memoria
+
+ES TÍTULO: Memoria de planes
+
+EN TITLE: Plans memory
+
+ES DESCRIPCIÓN: Encuentra parejas de apoyos para organizar el tiempo.
+
+EN DESCRIPTION: Find pairs of supports for organising time.
+
+STAGES: todas
+
+CONTEXT: tiempo
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-293
+
+GAME_ID: r40-cuidarse-ordenar
+
+ES TÍTULO: Hacer una pausa y volver
+
+EN TITLE: Take a break and return
+
+ES DESCRIPCIÓN: Pon en orden una forma posible de parar un momento y volver después.
+
+EN DESCRIPTION: Put one possible way to pause for a moment and return afterwards in order.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: ordenar
+
+SKILL_ID: secuenciacion
+
+ES HABILIDAD: Secuenciación
+
+EN SKILL: Sequencing
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-294
+
+GAME_ID: r40-cuidarse-elegir
+
+ES TÍTULO: ¿Qué necesitas ahora?
+
+EN TITLE: What do you need now?
+
+ES DESCRIPCIÓN: Elige una opción cotidiana que pueda ayudarte a cuidarte en este momento.
+
+EN DESCRIPTION: Choose an everyday option that may help you look after yourself right now.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: elegir
+
+SKILL_ID: eleccion_decision
+
+ES HABILIDAD: Elección y decisión
+
+EN SKILL: Choosing and deciding
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-295
+
+GAME_ID: r40-cuidarse-clasificar
+
+ES TÍTULO: Para una pausa o para salir
+
+EN TITLE: For a break or for going out
+
+ES DESCRIPCIÓN: Separa cosas que pueden acompañar una pausa y cosas que puedes llevar al salir.
+
+EN DESCRIPTION: Sort things that can go with a break and things you can take when going out.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: clasificar
+
+SKILL_ID: clasificacion
+
+ES HABILIDAD: Clasificación
+
+EN SKILL: Sorting
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-296
+
+GAME_ID: r40-cuidarse-planificar
+
+ES TÍTULO: Prepara una pausa a tu manera
+
+EN TITLE: Plan a break your way
+
+ES DESCRIPCIÓN: Elige lo que te ayuda a hacer una pausa y ordénalo como quieras.
+
+EN DESCRIPTION: Choose what helps you take a break and put it in any order you like.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: planificar
+
+SKILL_ID: planificacion_organizacion
+
+ES HABILIDAD: Planificación y organización
+
+EN SKILL: Planning and organising
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-GAME-297
+
+GAME_ID: r40-cuidarse-memoria
+
+ES TÍTULO: Memoria de cosas útiles
+
+EN TITLE: Useful-things memory
+
+ES DESCRIPCIÓN: Encuentra parejas de objetos cotidianos que puedes querer tener a mano.
+
+EN DESCRIPTION: Find pairs of everyday items you may want to keep handy.
+
+STAGES: todas
+
+CONTEXT: cuidarse
+
+TYPE: memoria
+
+SKILL_ID: memoria_visual
+
+ES HABILIDAD: Memoria visual
+
+EN SKILL: Visual memory
+
+DURATION_BUCKET: 3_5_min
+
+ES DURACIÓN: 3–5 min aprox.
+
+EN DURATION: About 3–5 min
+
+ESTIMATED_MINUTES: 3
+
+LINEAGE: R40_A1_45_NEW
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## QA · JUEGOS / GAMES
+
+- SOURCE_RECORDS: 297/297
+- UNIQUE_GAME_IDS: 297/297
+- ES_COMPLETE: 297/297
+- EN_COMPLETE: 297/297
+- SOURCE_LINEAGE_PRESERVED: 297/297
+- SOURCE_CONTEXT_PRESERVED: 297/297
+- SOURCE_SKILL_PRESERVED: 297/297
+- STATUS: PASS
+
+SIGUIENTE FASE: 109 rutinas imprimibles bilingües.
