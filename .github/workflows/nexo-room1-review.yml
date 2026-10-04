@@ -1,0 +1,33 @@
+name: Nexo Sala 1 review
+on:
+  push:
+    branches: [nexo/new-games-area-r01-20261004]
+    paths: ['es/juegos/**', 'assets/habitacion-room1/**', 'assets/games-new-r01.css', '.github/workflows/nexo-room1-review.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - name: Preparar solo Area de Juegos
+        run: |
+          mkdir -p room-review/es room-review/assets
+          cp -R es/juegos room-review/es/
+          cp -R assets/habitacion-room1 room-review/assets/
+          cp assets/games-new-r01.css room-review/assets/
+          printf '/ /es/juegos/ 302\n' > room-review/_redirects
+          printf '[build]\n  publish = "."\n' > room-review/netlify.toml
+      - name: Publicar revision de Sala 1
+        working-directory: room-review
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+        run: |
+          set -euo pipefail
+          TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
+          test -n "$TOKEN"
+          npx -y netlify-cli@latest deploy --dir=. --site=40042464-343c-4587-b6b7-f6159836e291 --auth="$TOKEN" --alias=games-room1 --message="Sala 1 approved storyboard ${GITHUB_SHA}"
