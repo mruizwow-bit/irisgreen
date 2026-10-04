@@ -1,0 +1,72 @@
+{
+  "schema": "IRIS_GREEN_CHILD_SAFETY_MANDATORY_AGE_GATE_R01",
+  "date": "2026-10-04",
+  "authority": "Maria",
+  "owner_architecture": "Astra",
+  "status": "ACTIVE_IMPLEMENTATION_REQUIRED",
+  "rule": "AGE_SELECTION_NE_ADULT_ACCESS_AUTHORIZATION",
+  "public_age_choices": [
+    "AGE_0_12",
+    "AGE_13_17",
+    "AGE_18_PLUS"
+  ],
+  "initial_state": "AGE_UNSET",
+  "general_state": {
+    "public_selectable": false,
+    "role": "fail_safe_migration_only"
+  },
+  "adult_states": {
+    "claimed": "AGE_18_PLUS_CLAIMED",
+    "assurance_unverified": "ADULT_ASSURANCE_UNVERIFIED",
+    "assurance_verified": "ADULT_ASSURANCE_VERIFIED"
+  },
+  "fail_closed": {
+    "required": true,
+    "unverified_adult_access": "SAFE_VARIANT_ONLY",
+    "unknown_state": "SAFE_BY_DEFAULT",
+    "expired_assurance": "SAFE_BY_DEFAULT"
+  },
+  "forbidden": [
+    "AGE_18_PLUS_BUTTON_DIRECTLY_UNLOCKS_S2_FULL",
+    "SELF_DECLARATION_COUNTS_AS_ADULT_ASSURANCE",
+    "STRIPE_PAYMENT_COUNTS_AS_AGE_PROOF",
+    "GENERAL_PUBLIC_BYPASS",
+    "DIRECT_FULL_ASSET_BYPASS",
+    "SABIK_BYPASS"
+  ],
+  "surfaces": [
+    "home",
+    "navigation",
+    "search",
+    "autocomplete",
+    "intentional_search",
+    "direct_routes",
+    "s2_safe_full_split",
+    "full_assets",
+    "sabik_text",
+    "sabik_voice",
+    "recommendations",
+    "interests",
+    "books",
+    "research",
+    "data",
+    "support",
+    "questionnaires"
+  ],
+  "owners": {
+    "motor": "implementation",
+    "axioma": "accessibility_standards_qa",
+    "vigia": "privacy_evidence_fail_closed",
+    "lex": "legal_age_assurance_provider_retention",
+    "nube": "library_safety_metadata",
+    "cortex": "sabik_rag_evals",
+    "nexo": "e2e",
+    "astra": "red_team",
+    "maria": "human_qa"
+  },
+  "gates": [
+    "AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT",
+    "MANDATORY_AGE_GATE_FAIL_CLOSED_PASS",
+    "ADULT_ACCESS_REQUIRES_INDEPENDENT_ASSURANCE_PASS"
+  ]
+}
