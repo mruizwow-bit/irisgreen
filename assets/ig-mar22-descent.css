@@ -1,0 +1,20 @@
+/* Iris Green · Mar 22 · runtime visual sin criaturas provisionales. */
+.mar22-runtime{--mar22-surface:var(--ig-bg-surface,#f4f7fa);--mar22-soft:var(--ig-bg-surface-soft,#eef2f6);--mar22-ink:var(--ig-text,#17395c);--mar22-focus:var(--ig-focus,#5a49a8);color:var(--mar22-ink)}
+.mar22-stage{position:relative;min-height:clamp(32rem,72svh,52rem);overflow:hidden;border-radius:1.25rem;background:#06172b;isolation:isolate}
+.mar22-water{position:absolute;inset:0;width:100%;height:100%;display:block}
+.mar22-creature-slot{position:absolute;left:50%;top:52%;width:min(42%,28rem);height:min(42%,24rem);transform:translate(-50%,-50%) scale(var(--mar22-real-ratio,1));transform-origin:50% 50%;display:grid;place-items:center;z-index:2;pointer-events:none}
+.mar22-creature{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;object-position:50% 50%}
+.mar22-creature-fallback{position:absolute;left:50%;top:52%;transform:translate(-50%,-50%);z-index:2;max-width:min(78%,34rem);padding:.9rem 1.1rem;border:1px solid rgba(238,244,248,.55);border-radius:.85rem;background:rgba(6,23,43,.76);color:#eef4f8;text-align:center;font-weight:700}
+.mar22-status{position:absolute;left:1rem;right:1rem;top:1rem;z-index:3;margin:0;padding:.65rem .8rem;border-radius:.75rem;background:rgba(6,23,43,.76);color:#eef4f8;font-size:.95rem}
+.mar22-zone-nav,.mar22-controls,.mar22-species{position:absolute;z-index:4;display:flex;gap:.45rem;flex-wrap:wrap}
+.mar22-zone-nav{left:1rem;right:1rem;bottom:5.4rem}
+.mar22-controls{right:1rem;bottom:1rem;justify-content:flex-end}
+.mar22-species{left:1rem;bottom:1rem;max-width:70%}
+.mar22-stage button{min-height:44px;border:1px solid rgba(238,244,248,.58);border-radius:999px;background:rgba(11,26,43,.78);color:#eef4f8;padding:.55rem .85rem;font:inherit;font-weight:700;cursor:pointer}
+.mar22-stage button[aria-pressed="true"]{background:#eef4f8;color:#0b1a2b}
+.mar22-stage button:focus-visible{outline:3px solid var(--mar22-focus);outline-offset:3px}
+.mar22-runtime[data-zone="epipelagic"] .mar22-species,.mar22-runtime[data-zone="bathypelagic"] .mar22-species,.mar22-runtime[data-zone="abyssopelagic"] .mar22-species,.mar22-runtime[data-zone="hadal"] .mar22-species{opacity:.72}
+.mar22-runtime[data-motion="reduced"] .mar22-creature-slot,.mar22-runtime[data-motion="none"] .mar22-creature-slot{transition:none}
+@media(max-width:42rem){.mar22-stage{min-height:70svh}.mar22-zone-nav{bottom:8.5rem;overflow-x:auto;flex-wrap:nowrap}.mar22-species{left:1rem;right:1rem;bottom:4.4rem;max-width:none;overflow-x:auto;flex-wrap:nowrap}.mar22-controls{left:1rem;right:1rem;bottom:.7rem;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}.mar22-creature-slot{width:min(64%,22rem);height:min(40%,20rem)}}
+@media(prefers-reduced-motion:reduce){.mar22-runtime *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(forced-colors:active){.mar22-water{display:none}.mar22-stage{background:Canvas;color:CanvasText;border:1px solid CanvasText}.mar22-status,.mar22-creature-fallback{background:Canvas;color:CanvasText;border-color:CanvasText}.mar22-stage button{background:ButtonFace;color:ButtonText;border-color:ButtonText}}

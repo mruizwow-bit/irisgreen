@@ -1,0 +1,43 @@
+{
+  "schema": "iris-green-asset-provenance-v1",
+  "package_id": "MAR_22_MESO_PACKAGING_R01",
+  "date": "2026-10-02",
+  "authority": {
+    "product": "María / Iris Green",
+    "art_approval_reference": "GitHub issue #323 · MAR_22_ART_APPROVED_PACKAGING_ONLY / MAR_22_MESO_ART_APPROVED_PACKAGING_CONTRACT_LOCKED",
+    "packaging_owner": "Atlas · A1"
+  },
+  "source_generation": {
+    "source_library_file_id": "file_0000000067cc8210a86c5778776dda2f",
+    "source_name": "Cuadrícula científica de criaturas abisales.png",
+    "source_created_at": "2026-10-02T07:45:26.184618+00:00",
+    "source_model_generated": true,
+    "tool": "OpenAI image generation via ChatGPT Library artifact",
+    "exact_model_version": "not preserved in the source file metadata available to Atlas",
+    "generation_operator": "not recoverable from the source file metadata available to Atlas",
+    "third_party_image_inputs": "none referenced in the approved packaging materials; not independently reconstructable from source-file metadata"
+  },
+  "master_takes": {
+    "pez-hacha": "approved high/compressed body, tubular upward-looking eyes, silver mirror body, ventral keel photophores",
+    "pez-linterna": "approved large eye and photophore pattern across belly/flanks",
+    "calamar-cristal": "approved transparent mantle, compact visible organs, open arms, photophore under eye"
+  },
+  "derivation": {
+    "states": [
+      "luz",
+      "oscuro"
+    ],
+    "method": "technical packaging only from approved source master",
+    "alpha": "direct preserved source alpha; recorta.py fallback was not needed",
+    "registration": "dark-state cell translated only to register with the same approved geometry; then both states received identical crop/scale/placement",
+    "color": "no recoloring or relighting; sRGB ICC embedded",
+    "content_edits": "none",
+    "new_image_generation": "none during packaging"
+  },
+  "public_label": "Imagen hecha por ordenador",
+  "notes": [
+    "No anatomy or style was changed.",
+    "No water, snow, flashlight beam, particles, bubbles, text or labels are baked into the six final PNG files.",
+    "The source composite itself is not shipped as a runtime asset."
+  ]
+}

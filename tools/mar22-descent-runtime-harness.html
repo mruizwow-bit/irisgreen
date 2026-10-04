@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Mar 22 runtime harness</title>
+<link rel="stylesheet" href="/assets/ig-mar22-descent.css">
+<style>body{margin:0;padding:1rem;background:#f6f8fb;font-family:system-ui,sans-serif}main{max-width:1100px;margin:auto}</style>
+</head>
+<body>
+<main><h1>Mar 22 runtime harness</h1><div id="mar22" data-lang="es"></div></main>
+<script src="/assets/ig-mar22-descent.js"></script>
+<script>
+(async()=>{
+ const q=new URLSearchParams(location.search),lang=q.get('lang')==='en'?'en':'es',motion=q.get('motion')||undefined;
+ document.documentElement.lang=lang;document.getElementById('mar22').dataset.lang=lang;
+ window.__MAR22_RUNTIME=await IGMar22Descent.mount(document.getElementById('mar22'),{lang,motion});
+ document.documentElement.dataset.harnessReady='true';
+})();
+</script>
+</body>
+</html>
