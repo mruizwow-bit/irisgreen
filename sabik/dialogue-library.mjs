@@ -52,8 +52,8 @@ function extractSlots(match,intent,variables,language,session){
  return slots;
 }
 
-function missingSlot(intent,slots){
- for(const key of intent?.required_slots||[]){
+function missingRequiredParameter(intent,slots){
+ for(const key of intent?.required_parameters||[]){
   if(!clean(slots?.[key]))return key;
  }
  return '';
@@ -61,14 +61,13 @@ function missingSlot(intent,slots){
 
 export function createDialogueLibrary({model,variables}={}){
  if(!model||!variables)throw new TypeError('DIALOGUE_LIBRARY_DATA_REQUIRED');
- const session={intent:'',slots:{},pendingSlot:'',promptKey:'',turn:0};
+ const session={intent:'',slots:{},promptKey:'',turn:0};
 
  function classify(text){
   const stripped=stripAssistant(text,model);
   const candidate=clean(stripped).replace(/^[¿¡?!.,;:\s]+|[¿¡?!.,;:\s]+$/g,'');
   const intents=[...(model?.intents||[])].sort((a,b)=>(b.priority||0)-(a.priority||0));
   for(const intent of intents){
-   if(session.pendingSlot&&intent.id==='general.question')continue;
    for(const pattern of intent.patterns||[]){
     const re=compile(pattern);
     if(!re)continue;
@@ -77,17 +76,16 @@ export function createDialogueLibrary({model,variables}={}){
     const slots=extractSlots(match,intent,variables,model.language,session);
     session.intent=intent.id;
     session.slots=slots;
-    const missing=missingSlot(intent,slots);
-    session.pendingSlot=missing;
-    session.promptKey=missing?(intent.when_missing?.[missing]||''):(intent.prompt||'');
+    const missing=missingRequiredParameter(intent,slots);
+    session.promptKey=missing?(intent.when_missing_parameter?.[missing]||''):(intent.prompt||'');
     session.turn+=1;
-    return {intent,match,stripped,candidate,slots:{...slots},missing,promptKey:session.promptKey,action:missing?'elicit':intent.action||'retrieve',session:snapshot()};
+    return {intent,match,stripped,candidate,slots:{...slots},missing,promptKey:session.promptKey,action:missing?'need_parameter':intent.action||'retrieve',session:snapshot()};
    }
   }
   if(!candidate){
    if(session.slots.topic){
     session.turn+=1;
-    return {intent:{id:'conversation.attention',action:'listen_again'},stripped,candidate,slots:{...session.slots},missing:session.pendingSlot,promptKey:session.promptKey,action:'listen_again',session:snapshot()};
+    return {intent:{id:'conversation.attention',action:'listen_again'},stripped,candidate,slots:{...session.slots},missing:'',promptKey:session.promptKey,action:'listen_again',session:snapshot()};
    }
    session.intent='social.attention';
    session.promptKey='social.attention.response';
@@ -98,12 +96,11 @@ export function createDialogueLibrary({model,variables}={}){
   if(aspect&&session.slots.topic){
    session.intent='information.aspect';
    session.slots.aspect=aspect;
-   session.pendingSlot='';
    session.promptKey='';
    session.turn+=1;
    return {intent:{id:'information.aspect',action:'retrieve'},stripped,candidate,slots:{...session.slots},missing:'',promptKey:'',action:'retrieve',session:snapshot()};
   }
-  return {intent:null,stripped,candidate,slots:{...session.slots},missing:session.pendingSlot,promptKey:session.promptKey,action:'fallback',session:snapshot()};
+  return {intent:null,stripped,candidate,slots:{...session.slots},missing:'',promptKey:'',action:'fallback',session:snapshot()};
  }
 
  function prompt(key,{reprompt=false,slots=session.slots}={}){
@@ -117,12 +114,11 @@ export function createDialogueLibrary({model,variables}={}){
   const term=variables?.slots?.aspect?.values?.[aspect]?.search_terms?.[model.language]?.[0]||aspect;
   return clean(`${topic} ${term}`);
  }
- function setSlot(key,value){if(key)session.slots[key]=clean(value);if(session.pendingSlot===key)session.pendingSlot='';}
- function setPendingSlot(key,promptKey=''){session.pendingSlot=clean(key);session.promptKey=clean(promptKey)||session.promptKey;}
- function clearSlot(key){delete session.slots[key];if(session.pendingSlot===key)session.pendingSlot='';}
- function reset(){session.intent='';session.slots={};session.pendingSlot='';session.promptKey='';session.turn=0;}
- function snapshot(){return {intent:session.intent,slots:{...session.slots},pendingSlot:session.pendingSlot,promptKey:session.promptKey,turn:session.turn};}
- return {classify,prompt,retrievalQuery,setSlot,setPendingSlot,clearSlot,reset,snapshot,stripAssistant:text=>stripAssistant(text,model)};
+ function setSlot(key,value){if(key)session.slots[key]=clean(value);}
+ function clearSlot(key){delete session.slots[key];}
+ function reset(){session.intent='';session.slots={};session.promptKey='';session.turn=0;}
+ function snapshot(){return {intent:session.intent,slots:{...session.slots},promptKey:session.promptKey,turn:session.turn};}
+ return {classify,prompt,retrievalQuery,setSlot,clearSlot,reset,snapshot,stripAssistant:text=>stripAssistant(text,model)};
 }
 
 export async function loadDialogueLibrary({language='es',base=DEFAULT_BASE,fetchImpl=globalThis.fetch?.bind(globalThis)}={}){
