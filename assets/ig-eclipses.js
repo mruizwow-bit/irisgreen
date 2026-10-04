@@ -452,22 +452,81 @@
           h('button', { type: 'button', class: 'filter', text: T('Máximo', 'Maximum'), on: { click: function () { jump('c'); } } }),
           h('button', { type: 'button', class: 'filter', text: T('Final', 'End'), on: { click: function () { jump('e'); } } }), playBtn)),
       h('div', { class: 'cn-ui-row' }, h('div', { class: 'filters' }, h('button', { type: 'button', class: 'filter', text: T('Guardar imagen', 'Save image'), on: { click: saveImage } }), fs)),
-      h('p', { class: 'ss-help', text: T('La hora se mueve con el deslizador o con las flechas del teclado. En el recuadro redondo, el Sol y la Luna a su tamaño real, ampliados; en el cielo grande, el horizonte hacia donde está el Sol y su camino durante el eclipse. También puedes pulsar en cualquier punto de los mapas de más abajo.',
-        'Move the time with the slider or the arrow keys. In the round box, the Sun and the Moon at their real size, magnified; in the big sky, the horizon towards the Sun and its path during the eclipse. You can also press any point on the maps further down.') }));
-    // mapas: pulsar un punto
+      h('p', { class: 'ss-help', text: T('La hora se mueve con el deslizador o con las flechas del teclado. En el recuadro redondo, el Sol y la Luna a su tamaño real, ampliados; en el cielo grande, el horizonte hacia donde está el Sol y su camino durante el eclipse. En los mapas puedes pulsar un punto o, con el mapa enfocado, mover el punto con las flechas y elegirlo con Enter.',
+        'Move the time with the slider or the arrow keys. In the round box, the Sun and the Moon at their real size, magnified; in the big sky, the horizon towards the Sun and its path during the eclipse. On the maps you can press a point or, with the map focused, move the point with the arrow keys and choose it with Enter.') }));
+    // mapas: punto arbitrario con puntero o teclado
     Array.prototype.forEach.call(document.querySelectorAll('.ec-mapfig'), function (fig) {
       var svg = fig.querySelector('svg'); if (!svg || !D.mapa) return;
+      var M = D.mapa, kb = { region: 'main', lat: 0, lon: 0, ready: false };
+      function inside(box, lat, lon) { return lon >= box[0] && lon <= box[2] && lat >= box[1] && lat <= box[3]; }
+      function regionBox(region) { return region === 'inset' ? M.inset.box : M.box; }
+      function setKeyboardPoint(lat, lon, region) {
+        var box = regionBox(region), precision = 2;
+        kb.region = region;
+        kb.lat = clamp(lat, box[1], box[3]);
+        kb.lon = clamp(lon, box[0], box[2]);
+        kb.ready = true;
+        svg.setAttribute('data-kb-region', kb.region);
+        svg.setAttribute('data-kb-lat', kb.lat.toFixed(precision));
+        svg.setAttribute('data-kb-lon', kb.lon.toFixed(precision));
+      }
+      function seedKeyboardPoint() {
+        if (kb.ready) return;
+        var p = st.place;
+        if (p && inside(M.inset.box, p.lat, p.lon)) setKeyboardPoint(p.lat, p.lon, 'inset');
+        else if (p && inside(M.box, p.lat, p.lon)) setKeyboardPoint(p.lat, p.lon, 'main');
+        else setKeyboardPoint((M.box[1] + M.box[3]) / 2, (M.box[0] + M.box[2]) / 2, 'main');
+      }
+      function announceKeyboardPoint() {
+        say(T('Punto del mapa: ', 'Map point: ') + num(kb.lat, 2) + '°, ' + num(kb.lon, 2) + '°. ' +
+          T('Flechas para mover; Mayús más despacio; Home Península; End Canarias; Enter para elegir.',
+            'Arrow keys to move; Shift for smaller steps; Home mainland Spain; End Canary Islands; Enter to choose.'));
+      }
+      function chooseKeyboardPoint() {
+        addPoint(Math.round(kb.lat * 100) / 100, Math.round(kb.lon * 100) / 100, fig.getAttribute('data-map'));
+        stage.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth' });
+      }
       svg.classList.add('ec-map-live');
+      svg.setAttribute('tabindex', '0');
+      svg.setAttribute('aria-keyshortcuts', 'ArrowUp ArrowDown ArrowLeft ArrowRight Home End Enter');
+      var aria = svg.getAttribute('aria-label') || T('Mapa de eclipse', 'Eclipse map');
+      svg.setAttribute('aria-label', aria + '. ' + T('Usa las flechas para mover un punto y Enter para elegirlo. Home centra la Península y End Canarias.',
+        'Use the arrow keys to move a point and Enter to choose it. Home centres mainland Spain and End the Canary Islands.'));
+      svg.addEventListener('focus', function () { seedKeyboardPoint(); announceKeyboardPoint(); });
+      svg.addEventListener('keydown', function (ev) {
+        seedKeyboardPoint();
+        var step = ev.shiftKey ? 0.05 : 0.25, box;
+        if (ev.key === 'Home') {
+          ev.preventDefault(); box = M.box; setKeyboardPoint((box[1] + box[3]) / 2, (box[0] + box[2]) / 2, 'main'); announceKeyboardPoint(); return;
+        }
+        if (ev.key === 'End') {
+          ev.preventDefault(); box = M.inset.box; setKeyboardPoint((box[1] + box[3]) / 2, (box[0] + box[2]) / 2, 'inset'); announceKeyboardPoint(); return;
+        }
+        if (ev.key === 'Enter' || ev.key === ' ') {
+          ev.preventDefault(); chooseKeyboardPoint(); return;
+        }
+        if (ev.key === 'ArrowUp') kb.lat += step;
+        else if (ev.key === 'ArrowDown') kb.lat -= step;
+        else if (ev.key === 'ArrowRight') kb.lon += step;
+        else if (ev.key === 'ArrowLeft') kb.lon -= step;
+        else return;
+        ev.preventDefault();
+        box = regionBox(kb.region);
+        setKeyboardPoint(kb.lat, kb.lon, kb.region);
+        announceKeyboardPoint();
+      });
       svg.addEventListener('click', function (ev) {
-        var r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal, x = (ev.clientX - r.left) / r.width * vb.width, y = (ev.clientY - r.top) / r.height * vb.height, M = D.mapa, lat, lon, P;
-        var ins = M.inset; if (x >= ins.x && y >= ins.y) { P = ins; x -= ins.x; y -= ins.y; } else P = M;
-        var c = Math.cos((P.box[1] + P.box[3]) / 2 * DEG), kk = P.w / ((P.box[2] - P.box[0]) * c);
-        lon = P.box[0] + x / (c * kk); lat = P.box[3] - y / kk;
-        addPoint(Math.round(lat * 100) / 100, Math.round(lon * 100) / 100, fig.getAttribute('data-map'));
+        var r = svg.getBoundingClientRect(), vb = svg.viewBox.baseVal, x = (ev.clientX - r.left) / r.width * vb.width, y = (ev.clientY - r.top) / r.height * vb.height, lat, lon, P, region;
+        var ins = M.inset;
+        if (x >= ins.x && y >= ins.y) { P = ins; region = 'inset'; x -= ins.x; y -= ins.y; } else { P = M; region = 'main'; }
+        var cc = Math.cos((P.box[1] + P.box[3]) / 2 * DEG), kk = P.w / ((P.box[2] - P.box[0]) * cc);
+        lon = P.box[0] + x / (cc * kk); lat = P.box[3] - y / kk;
+        lat = Math.round(lat * 100) / 100; lon = Math.round(lon * 100) / 100;
+        setKeyboardPoint(lat, lon, region);
+        addPoint(lat, lon, fig.getAttribute('data-map'));
         stage.scrollIntoView({ behavior: reduce() ? 'auto' : 'smooth' });
       });
     });
-    cv.addEventListener('keydown', function () {});
   }
   function currentDate() { return st.ecl ? st.ecl.peak.time.date.toISOString().slice(0, 10) : '2027-08-02'; }
   function addPoint(lat, lon, date) {
