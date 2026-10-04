@@ -2,30 +2,307 @@
   "schema": "iris-green/sabik-dialogue-tests/v1",
   "language": "es",
   "cases": [
-    {"id":"es-001","text":"Hola, Sabik.","context":{},"expect":{"intent":"social.greeting","action":"respond","sources":0}},
-    {"id":"es-002","text":"Responde, Sabik.","context":{},"expect":{"intent":"social.attention","action":"respond","sources":0}},
-    {"id":"es-003","text":"¿Me oyes, Sabik?","context":{},"expect":{"intent":"social.attention","action":"respond","sources":0}},
-    {"id":"es-004","text":"Gracias, Sabik.","context":{},"expect":{"intent":"social.thanks","action":"respond","sources":0}},
-    {"id":"es-005","text":"Busca autismo.","context":{},"expect":{"intent":"search.topic","slots":{"topic":"autismo"},"next_prompt":"search.ask_aspect"}},
-    {"id":"es-006","text":"Necesito buscar autismo.","context":{},"expect":{"intent":"search.topic","slots":{"topic":"autismo"},"next_prompt":"search.ask_aspect"}},
-    {"id":"es-007","text":"Quiero saber sobre ansiedad.","context":{},"expect":{"intent":"search.topic","slots":{"topic":"ansiedad"},"next_prompt":"search.ask_aspect"}},
-    {"id":"es-008","text":"Información sobre TOC.","context":{},"expect":{"intent":"search.topic","slots":{"topic":"TOC"},"next_prompt":"search.ask_aspect"}},
-    {"id":"es-009","text":"¿Qué es el autismo?","context":{},"expect":{"intent":"information.definition","slots":{"topic":"autismo","aspect":"definition"},"action":"retrieve"}},
-    {"id":"es-010","text":"Señales","context":{"topic":"autismo"},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"signals"},"action":"retrieve"}},
-    {"id":"es-011","text":"Apoyos","context":{"topic":"autismo"},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"supports"},"action":"retrieve"}},
-    {"id":"es-012","text":"Valoración","context":{"topic":"autismo"},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"assessment"},"action":"retrieve"}},
-    {"id":"es-013","text":"Sensorial","context":{"topic":"autismo"},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"sensory"},"action":"retrieve"}},
-    {"id":"es-014","text":"Comunicación","context":{"topic":"autismo"},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"communication"},"action":"retrieve"}},
-    {"id":"es-015","text":"Señales de autismo","context":{},"expect":{"intent":"information.aspect","slots":{"topic":"autismo","aspect":"signals"},"action":"retrieve"}},
-    {"id":"es-016","text":"Apoyos para ansiedad","context":{},"expect":{"intent":"information.aspect","slots":{"topic":"ansiedad","aspect":"supports"},"action":"retrieve"}},
-    {"id":"es-017","text":"Repite","context":{},"expect":{"intent":"conversation.repeat","action":"repeat"}},
-    {"id":"es-018","text":"Detente","context":{},"expect":{"intent":"conversation.stop","action":"stop"}},
-    {"id":"es-019","text":"Sabik","context":{"topic":"autismo"},"expect":{"action":"listen_again","keep_topic":"autismo"}},
-    {"id":"es-020","text":"Tanik","context":{"topic":"autismo"},"expect":{"action":"listen_again","keep_topic":"autismo"}},
-    {"id":"es-021","text":"No, mejor apoyos","context":{"topic":"autismo","aspect":"signals"},"expect":{"keep_topic":"autismo","slots":{"aspect":"supports"}}},
-    {"id":"es-022","text":"Mejor ansiedad","context":{"topic":"autismo"},"expect":{"switch_topic":"ansiedad"}},
-    {"id":"es-023","text":"Necesito buscar sueño","context":{},"expect":{"intent":"search.topic","slots":{"topic":"sueño"},"next_prompt":"search.ask_aspect"}},
-    {"id":"es-024","text":"Qué ayuda con el ruido","context":{"topic":"autismo"},"expect":{"slots":{"topic":"autismo","aspect":"supports"},"action":"retrieve"}},
-    {"id":"es-025","text":"No lo sé","context":{"topic":"autismo","pending_slot":"aspect"},"expect":{"keep_topic":"autismo","next_prompt":"search.ask_aspect"}}
+    {
+      "id": "es-001",
+      "text": "Hola, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.greeting",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-002",
+      "text": "Responde, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-003",
+      "text": "¿Me oyes, Sabik?",
+      "context": {},
+      "expect": {
+        "intent": "social.attention",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-004",
+      "text": "Gracias, Sabik.",
+      "context": {},
+      "expect": {
+        "intent": "social.thanks",
+        "action": "respond",
+        "sources": 0
+      }
+    },
+    {
+      "id": "es-005",
+      "text": "Busca autismo.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "autismo"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-006",
+      "text": "Necesito buscar autismo.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "autismo"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-007",
+      "text": "Quiero saber sobre ansiedad.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "ansiedad"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-008",
+      "text": "Información sobre TOC.",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "TOC"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-009",
+      "text": "¿Qué es el autismo?",
+      "context": {},
+      "expect": {
+        "intent": "information.definition",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "definition"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-010",
+      "text": "Señales",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "signals"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-011",
+      "text": "Apoyos",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-012",
+      "text": "Valoración",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "assessment"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-013",
+      "text": "Sensorial",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "sensory"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-014",
+      "text": "Comunicación",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "communication"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-015",
+      "text": "Señales de autismo",
+      "context": {},
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "autismo",
+          "aspect": "signals"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-016",
+      "text": "Apoyos para ansiedad",
+      "context": {},
+      "expect": {
+        "intent": "information.aspect",
+        "slots": {
+          "topic": "ansiedad",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-017",
+      "text": "Repite",
+      "context": {},
+      "expect": {
+        "intent": "conversation.repeat",
+        "action": "repeat"
+      }
+    },
+    {
+      "id": "es-018",
+      "text": "Detente",
+      "context": {},
+      "expect": {
+        "intent": "conversation.stop",
+        "action": "stop"
+      }
+    },
+    {
+      "id": "es-019",
+      "text": "Sabik",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "action": "listen_again",
+        "keep_topic": "autismo"
+      }
+    },
+    {
+      "id": "es-020",
+      "text": "Tanik",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "action": "listen_again",
+        "keep_topic": "autismo"
+      }
+    },
+    {
+      "id": "es-021",
+      "text": "No, mejor apoyos",
+      "context": {
+        "topic": "autismo",
+        "aspect": "signals"
+      },
+      "expect": {
+        "keep_topic": "autismo",
+        "slots": {
+          "aspect": "supports"
+        }
+      }
+    },
+    {
+      "id": "es-022",
+      "text": "Mejor ansiedad",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "switch_topic": "ansiedad"
+      }
+    },
+    {
+      "id": "es-023",
+      "text": "Necesito buscar sueño",
+      "context": {},
+      "expect": {
+        "intent": "search.topic",
+        "slots": {
+          "topic": "sueño"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-024",
+      "text": "Qué ayuda con el ruido",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "slots": {
+          "topic": "autismo",
+          "aspect": "supports"
+        },
+        "action": "retrieve"
+      }
+    },
+    {
+      "id": "es-025",
+      "text": "No lo sé",
+      "context": {
+        "topic": "autismo"
+      },
+      "expect": {
+        "keep_topic": "autismo"
+      }
+    }
   ]
 }
