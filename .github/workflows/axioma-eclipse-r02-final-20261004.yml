@@ -1,0 +1,29 @@
+name: Axioma · Eclipses R02 final retest
+on:
+  push:
+    branches: ['axioma/a11y-retest-eclipse-final-20261004']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  eclipse-r02-final:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/build_site.py
+      - name: Axioma · Eclipses R02 final
+        run: python scripts/test_eclipse_canonical_r02_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: axioma-eclipse-r02-final
+          path: |
+            reports/eclipse-canonical-r02-integration/qa.json
+            reports/eclipse-canonical-r02-integration/*.png
+          retention-days: 14
