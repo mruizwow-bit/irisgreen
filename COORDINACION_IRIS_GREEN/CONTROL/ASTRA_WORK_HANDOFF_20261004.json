@@ -1,0 +1,36 @@
+{
+  "schema": "ASTRA_WORK_HANDOFF_20261004",
+  "date": "2026-10-04",
+  "status": "READY",
+  "irisgreen_main_head": "c20fcc73d61c6a965c1bfb28eea7139ec3284d1c",
+  "primary_active_issues": [
+    391,
+    389,
+    390,
+    332
+  ],
+  "top_priority": "ASTRA_REVIEW_MOTOR_CHILD_SAFETY_AFTER_FINAL_MARKER",
+  "markers": [
+    "ASTRA_WORK_MODE_RESUME_FROM_GITHUB_NOT_CHAT",
+    "ASTRA_TRAINING_EXPANDED_WITH_20261004_LEARNINGS",
+    "ASTRA_WORK_HANDOFF_20261004_READY"
+  ],
+  "pending": {
+    "child_safety": "Motor P0 implementation complete at checkpoint; final exact-HEAD CI/marker pending at last observation",
+    "sabik_home": "Motor centered hierarchy delivered; must reconcile with child safety before final HUMAN QA",
+    "patentability": "Formal Astra final re-pass after final Nube/Motor/Pulso/Vigia matrix not yet done",
+    "cielo": "Runtime blocked until Orion storyboard HUMAN QA",
+    "fish_block_10": "Replacement requested with 10 images but not yet packaged/replaced",
+    "fish_block_16": "Bad replacement revoked; later individual images are candidates until explicit confirmation"
+  },
+  "do_not": [
+    "RECONSTRUCT_FROM_CHAT",
+    "REOPEN_PUBLIC_PRODUCTION",
+    "REDESIGN_SABIK_IDENTITY",
+    "REPLACE_APPROVED_VOICE",
+    "18_PLUS_SELF_DECLARATION_UNLOCKS_RESTRICTED",
+    "CREATE_SECOND_MASTER_LIBRARY",
+    "CODE_NIGHT_SKY_BEFORE_STORYBOARD_HUMAN_QA",
+    "PROMOTE_PATENT_CANDIDATE_WITHOUT_FINAL_RED_TEAM"
+  ]
+}
