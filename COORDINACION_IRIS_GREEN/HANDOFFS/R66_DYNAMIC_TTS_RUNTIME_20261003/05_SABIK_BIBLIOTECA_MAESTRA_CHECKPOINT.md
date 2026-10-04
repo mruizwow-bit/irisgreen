@@ -42736,14 +42736,32 @@ ES: README R01/R02 reescritos para eliminar la mecánica de slot pendiente y fij
 EN: R01/R02 READMEs rewritten to remove pending-slot mechanics and establish the respond-first canonical rule.
 
 SHA:
-- R01 README · `4d3b985e0cf5ed1fbc96b79bba0ffcb3399e8f4d`
-- R02 README · `d407a0cc7c168e0e2f80e9699f291db5f6074ba5`
+- R01 README · `bcc6a523895718bac4c790d5738c42b109a49751`
+- R02 README · `2935c6d127c52b242b4af4db0c65f5b8faf85628`
 
 ESTADO: DOCUMENTATION_ALIGNED
 
 ES SIGUIENTE BLOQUE: sanear prompts interrogativos que siguen existiendo fuera de `pending_slot`: `search.no_result`, `correction.ask`, `conversation.new_topic`, `clarify.ambiguous` y `clarify.silence`.
 
 EN NEXT BLOCK: sanitise interrogative prompts that still exist outside `pending_slot`: `search.no_result`, `correction.ask`, `conversation.new_topic`, `clarify.ambiguous` and `clarify.silence`.
+
+## E02-ZERO-CHECK
+
+ES VALIDACIÓN SOBRE RUNTIME + MODELOS + VARIABLES + TESTS + README ACTIVOS:
+- `pending_slot`: 0;
+- `pendingSlot`: 0;
+- `setPendingSlot`: 0;
+- `action:"elicit"`: 0;
+- `required_slots`: 0.
+
+EN VALIDATION ACROSS ACTIVE RUNTIME + MODELS + VARIABLES + TESTS + READMES:
+- `pending_slot`: 0;
+- `pendingSlot`: 0;
+- `setPendingSlot`: 0;
+- `action:"elicit"`: 0;
+- `required_slots`: 0.
+
+ESTADO: ZERO_CHECK_PASS
 
 ESTADO: E02_COMPLETE
 
