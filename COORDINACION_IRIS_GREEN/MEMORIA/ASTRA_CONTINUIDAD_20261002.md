@@ -232,3 +232,36 @@ Memoria específica:
 
 Control:
 `COORDINACION_IRIS_GREEN/CONTROL/CIELO_V2_HUMAN_QA_VISUAL_REWORK_20261002.json`
+
+
+---
+
+## 2026-10-04 · CHILD SAFETY R01 · AGE GATE OBLIGATORIO
+
+Decisión explícita de María: los botones de edad dejan de ser optativos y seleccionar 18+ no puede desbloquear por sí solo contenido completo/restringido.
+
+Regla nueva:
+
+`AGE_SELECTION != ADULT_ACCESS_AUTHORIZATION`
+
+`MANDATORY_AGE_SELECTION + INDEPENDENT_ADULT_ASSURANCE + FAIL_CLOSED`
+
+Hallazgo técnico de Astra en `main`:
+- `assets/ig-audience.js` inicia en `GENERAL`;
+- `isAdult()` devuelve true cuando `current==='AGE_18_PLUS'`;
+- esa autodeclaración se propaga como `adult-explicit`;
+- los tests actuales aceptan que 18+ exponga `Ver información completa`.
+
+Esto queda superseded.
+
+Documentación canónica:
+- `COORDINACION_IRIS_GREEN/NORMATIVA/CHILD_SAFETY_AGE_ASSURANCE_R01.md`
+- `COORDINACION_IRIS_GREEN/CONTROL/CHILD_SAFETY_MANDATORY_AGE_GATE_R01_20261004.json`
+- `COORDINACION_IRIS_GREEN/CONTROL/CONTROL_MASTER_SYNC_DELTA_CHILD_SAFETY_R01_20261004.csv`
+- `COORDINACION_IRIS_GREEN/MEMORIA/CHILD_SAFETY_MANDATORY_AGE_GATE_R01_20261004.md`
+
+Implementación inmediata: Motor.
+Revisión: Axioma + Vigía + Lex.
+E2E: Nexo.
+Red-team: Astra.
+HUMAN QA final: María.
