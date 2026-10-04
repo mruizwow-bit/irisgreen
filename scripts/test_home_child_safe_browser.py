@@ -98,8 +98,8 @@ async def main():
   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
   need(await page.locator('[data-ig-home-safe]').count()==0 and await page.locator('[data-ig-home-adult]').count()==0,
        'Internal safety labels must not be exposed in Home')
-  need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain available for children')
-  need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain available for children')
+  need(await page.get_by_text('Tus intereses',exact=True).is_hidden(),'Unclassified Interests must remain fail-closed for children')
+  need(await page.get_by_text('Libros de Iris Green',exact=True).is_hidden(),'Unclassified Books must remain fail-closed for children')
   await page.get_by_role('button',name='18 años o más',exact=True).click()
   await page.evaluate("IGAudience.clear()");need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL not restored')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
