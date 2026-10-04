@@ -305,10 +305,14 @@ class Runtime{
   const ir=intro?intro.getBoundingClientRect():null;
   const stillOverlapsIntro=Boolean(ir&&finalBox.right>ir.left-pad&&finalBox.left<ir.right+pad&&finalBox.bottom>ir.top-pad&&finalBox.top<ir.bottom+pad);
   const outsideScene=finalBox.left<sceneRect.left-1||finalBox.right>sceneRect.right+1||finalBox.top<sceneRect.top-1||finalBox.bottom>sceneRect.bottom+1;
-  if(stillOverlapsIntro||outsideScene){
-   // At extreme text zoom on narrow screens the intro can consume the whole
-   // visual safe area. Constellation hints are redundant with the textual
-   // "in view" list, so omit the visual hint rather than covering content.
+  const blocksStarTarget=[...this.targets.querySelectorAll('.skyv2-star-target')].some(target=>{
+   const tr=target.getBoundingClientRect();
+   return finalBox.right>tr.left&&finalBox.left<tr.right&&finalBox.bottom>tr.top&&finalBox.top<tr.bottom;
+  });
+  if(stillOverlapsIntro||outsideScene||blocksStarTarget){
+   // Hints are secondary: the same constellation remains available in the
+   // textual "in view" list and the full-sky locator. Never let a label cover
+   // primary content or intercept a star's 44px touch target.
    button.remove();
    return false;
   }
