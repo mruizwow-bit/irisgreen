@@ -105,9 +105,11 @@ def search_contracts(root):
             y['summary_es']=SAFE[group]['es'][1];y['summary_en']=SAFE[group]['en'][1]
         intent.append(y)
     out=root/'assets/safety';out.mkdir(parents=True,exist_ok=True)
-    for name,obj in [('search-safe-default.json',safe),('search-intentional-safe.json',intent),('search-adult-full-catalog.json',rows)]:
+    adult_path=out/'search-adult-full-catalog.json'
+    if adult_path.exists(): adult_path.unlink()
+    for name,obj in [('search-safe-default.json',safe),('search-intentional-safe.json',intent)]:
         (out/name).write_text(json.dumps(obj,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-    return len(safe),len(intent),len(rows)
+    return len(safe),len(intent),0
 
 def incidental(root):
     routes={urlsplit(r[3]).path.rstrip('/') for r in S2}|{urlsplit(r[4]).path.rstrip('/') for r in S2};removed=0
