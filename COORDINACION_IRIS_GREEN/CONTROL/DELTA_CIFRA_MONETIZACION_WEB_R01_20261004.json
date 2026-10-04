@@ -1,0 +1,52 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "CIFRA-MONETIZACION-WEB-R01-20261004",
+  "date": "2026-10-04",
+  "alias": "Cifra",
+  "scope": "WEB_INFORMATION_FREE_RESOURCES_GAMES_DISCOVERY_CREATION_MONETIZATION",
+  "base_main": "6b1bf4c753c05f007f9f9ad9e8e7bde4fbf1e86e",
+  "branch": "cifra/monetizacion-web-r01-20261004",
+  "report": "COORDINACION_IRIS_GREEN/FINANZAS/CIFRA/ANALISIS_MONETIZACION_WEB_R01_20261004.md",
+  "report_commit": "d6880edf1f127585ea7f3832dadd3ebf0c7f5316",
+  "status": "CIFRA_MONETIZATION_ARCHITECTURE_PRICING_PROPOSAL_R01",
+  "product_change": false,
+  "proposal": {
+    "information": "FREE",
+    "resources_plus_eur": {
+      "monthly": 2.99,
+      "annual": 24.99
+    },
+    "games_plus_eur": {
+      "monthly": 3.99,
+      "annual": 29.99
+    },
+    "discovery_plus_eur": {
+      "monthly": 4.99,
+      "annual": 39.99
+    },
+    "creation_plus_eur": {
+      "monthly": 4.99,
+      "annual": 39.99
+    },
+    "all_access_eur": {
+      "monthly": 7.99,
+      "annual": 59.99
+    },
+    "optional_founder_annual_eur": 49.99
+  },
+  "naming": {
+    "interests": "Área de Descubrimiento",
+    "games": "Área de Juegos",
+    "resources": "Área de Recursos",
+    "workshop": "Área de Creación",
+    "quiet_space": "Espacio tranquilo"
+  },
+  "gates_before_implementation": [
+    "MARIA_PRODUCT_DECISION",
+    "LEX_CONSUMER_MINORS_PRIVACY_SUBSCRIPTION_REVIEW",
+    "AXIOMA_ACCESSIBILITY_REVIEW",
+    "CIFRA_COST_MARGIN_MODEL",
+    "BRUJULA_POSITIONING",
+    "TECH_IMPLEMENTATION_ESTIMATE"
+  ]
+}
