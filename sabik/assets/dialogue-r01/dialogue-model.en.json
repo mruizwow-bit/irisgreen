@@ -2,8 +2,16 @@
   "schema": "iris-green/sabik-dialogue-model/v1",
   "language": "en",
   "assistant_aliases": [
-    "sabik", "sabick", "savik", "sabyck",
-    "xavid", "xavik", "xabik", "savid", "tanik", "tanick"
+    "sabik",
+    "sabick",
+    "savik",
+    "sabyck",
+    "xavid",
+    "xavik",
+    "xabik",
+    "savid",
+    "tanik",
+    "tanick"
   ],
   "policies": {
     "one_question_per_turn": true,
@@ -48,7 +56,10 @@
         "^(?:i need to|i want to|i would like to|i'd like to)?\\s*(?:search(?: for)?|find|look up|learn about|get information about|know more about)\\s+(?<topic>.+)$",
         "^(?:search(?: for)?|find|look up|tell me about|information about)\\s+(?<topic>.+)$"
       ],
-      "required_slots": ["topic", "aspect"],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "when_missing": {
         "topic": "search.ask_topic",
         "aspect": "search.ask_aspect"
@@ -64,7 +75,9 @@
       "fixed_slots": {
         "aspect": "definition"
       },
-      "required_slots": ["topic"],
+      "required_slots": [
+        "topic"
+      ],
       "action": "retrieve"
     },
     {
@@ -73,7 +86,10 @@
       "patterns": [
         "^(?<aspect>signs|symptoms|traits|supports|support|assessment|evaluation|diagnosis|causes|sensory|communication|daily life|school|education|work|research)(?:\\s+(?:of|about|for)\\s+(?<topic>.+))?$"
       ],
-      "required_slots": ["topic", "aspect"],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "when_missing": {
         "topic": "search.ask_topic"
       },
@@ -99,15 +115,12 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hi. What do you need?",
-        "Hello. What do you need?",
-        "Hi. I'm listening. What do you need?",
-        "Hello. How can I help?"
+        "Hi.",
+        "Hello. I'm listening.",
+        "Hi. I'm here.",
+        "Hello."
       ],
-      "reprompt": [
-        "Tell me what you need.",
-        "I'm listening."
-      ]
+      "reprompt": []
     },
     "social.attention.response": {
       "initial": [
