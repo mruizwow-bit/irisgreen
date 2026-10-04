@@ -389,3 +389,73 @@ Crear una matriz exacta:
 para Juegos, Descubrimiento y Creación.
 
 No marcar Recursos, Información o Espacio tranquilo como premium en esa matriz.
+
+
+---
+
+# 14 · Subarquitectura FREE/PLUS por páginas separadas
+
+María decide que Juegos, Descubrimiento y Creación no mezclen contenido abierto y de pago en una única rejilla llena de candados.
+
+Patrón público:
+`AREA LANDING → PARA TODOS | PLUS`
+
+Nombres de navegación recomendados:
+
+### Juegos
+- `Juegos para todos`
+- `Juegos Plus`
+
+Rutas objetivo:
+- `/es/juegos/para-todos/`
+- `/es/juegos/plus/`
+- EN: `/en/games/for-everyone/`
+- EN: `/en/games/plus/`
+
+### Descubrimiento
+- `Descubrimiento para todos`
+- `Descubrimiento Plus`
+
+Rutas objetivo:
+- `/es/descubrimiento/para-todos/`
+- `/es/descubrimiento/plus/`
+- EN: `/en/discovery/for-everyone/`
+- EN: `/en/discovery/plus/`
+
+### Creación
+- `Creación para todos`
+- `Creación Plus`
+
+Rutas objetivo:
+- `/es/creacion/para-todos/`
+- `/es/creacion/plus/`
+- EN: `/en/creation/for-everyone/`
+- EN: `/en/creation/plus/`
+
+## Principios
+
+`PARA TODOS != CRIPPLED DEMO`
+
+La página "Para todos" contiene experiencias completas y útiles.
+
+`PLUS != LOCKED_CARDS_MIXED_IN_FREE_GRID`
+
+La página Plus contiene el catálogo/capacidades ampliadas de forma explícita.
+
+La portada de cada área explica ambas opciones sin presión comercial.
+
+Compra:
+`ADULT_ZONE_ONLY`
+
+Una persona menor puede ver que existe contenido Plus, pero no debe recibir un CTA de compra invasivo dentro de una experiencia.
+
+El botón de compra/suscripción se resuelve en la zona adulta/cuenta correspondiente.
+
+No usar:
+- candados repetidos en cada card de la página Para todos;
+- paywall a mitad de experiencia;
+- "prueba 3 veces y paga";
+- contadores artificiales;
+- mezcla visual confusa FREE/PLUS.
+
+Este patrón toma como referencia estructural la claridad de separación de Ayudas, no su diseño literal.
