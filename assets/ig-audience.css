@@ -1,7 +1,8 @@
 /* Child Safety R01 · fail closed before the age runtime has mounted.
    If JavaScript is disabled or the runtime fails, normal content stays hidden. */
-html:not([data-ig-age-runtime-ready="true"]) body main,
-html:not([data-ig-age-runtime-ready="true"]) body footer{display:none!important}
+html:not([data-ig-age-runtime-ready="true"]):not([data-ig-age-runtime-ready="false"]):not([data-ig-age-runtime-ready="pending"]) body[data-ig-r49="1"] main,
+html:not([data-ig-age-runtime-ready="true"]):not([data-ig-age-runtime-ready="false"]):not([data-ig-age-runtime-ready="pending"]) body main#main,
+html:not([data-ig-age-runtime-ready="true"]) body footer{display:none!important;visibility:hidden!important}
 .ig-age-nojs-message{width:min(calc(100% - 2rem),38rem);margin:clamp(5rem,12vh,8rem) auto 2rem;padding:clamp(1.2rem,4vw,2rem);border:1px solid var(--ig-separator,#687f94);border-radius:20px;background:var(--ig-bg-surface,#15304a);color:var(--ig-text,#eef4f8)}
 .ig-age-nojs-message h1,.ig-age-nojs-message p{margin:.25rem 0}.ig-age-nojs-message p{color:var(--ig-text-muted,#c9d5dd);line-height:1.55}
 
