@@ -54,6 +54,24 @@ def static_gate():
       'localized_external_names':True,
     }
 
+def contrast_ratio(page, foreground, background):
+    return page.evaluate("""([fgSel,bgSel]) => {
+      const parse = value => {
+        const m=String(value).match(/[\\d.]+/g);
+        if(!m||m.length<3) throw new Error('Unparseable colour '+value);
+        return m.slice(0,3).map(Number);
+      };
+      const lum = rgb => {
+        const c=rgb.map(v=>v/255).map(v=>v<=.04045?v/12.92:Math.pow((v+.055)/1.055,2.4));
+        return .2126*c[0]+.7152*c[1]+.0722*c[2];
+      };
+      const fg=document.querySelector(fgSel),bg=document.querySelector(bgSel);
+      if(!fg||!bg) throw new Error('Missing contrast node '+fgSel+' / '+bgSel);
+      const L1=lum(parse(getComputedStyle(fg).color));
+      const L2=lum(parse(getComputedStyle(bg).backgroundColor));
+      return (Math.max(L1,L2)+.05)/(Math.min(L1,L2)+.05);
+    }""",[foreground,background])
+
 def main():
     static=static_gate()
     manifest=json.loads(MANIFEST.read_text(encoding='utf-8'))
@@ -69,7 +87,7 @@ def main():
       with sync_playwright() as pw:
         browser=pw.chromium.launch()
         for lang,path in ROUTES.items():
-          for width in (390,1440):
+          for width in (320,390,1440):
             ctx=browser.new_context(viewport={'width':width,'height':900 if width==1440 else 844},has_touch=width<500)
             page=ctx.new_page()
             req=[];external=[];bad=[];errors=[]
@@ -83,6 +101,14 @@ def main():
             page.locator('#ec-type-explorer').wait_for(timeout=15000)
 
             assert page.locator('#ec-type-explorer [data-eclipse-type-key]').count()==6
+            # Chrome contrast must follow the global semantic theme instead of
+            # combining a hardcoded white card with DARK NAVY text tokens.
+            for theme in ('dark','light'):
+                page.evaluate("(v)=>document.documentElement.setAttribute('data-ig-theme',v)",theme)
+                page.wait_for_timeout(40)
+                assert contrast_ratio(page,'#ec-type-explorer h3','#ec-type-explorer')>=4.5,(lang,width,theme,'explorer title contrast')
+                assert contrast_ratio(page,'#ec-type-explorer-head p' if False else '#ec-type-explorer .ec-type-explorer-head p','#ec-type-explorer')>=4.5,(lang,width,theme,'explorer copy contrast')
+            page.evaluate("()=>document.documentElement.setAttribute('data-ig-theme','dark')")
             assert '/img/intereses/eclipses/canonical-r02/manifest.json' in req
             assert '/img/intereses/eclipses/canonical-r02/eclipse-type-visual-map.json' in req
 
@@ -107,6 +133,15 @@ def main():
                         words=('penumbral','parcial','total','final') if lang=='es' else ('penumbral','partial','totality','final')
                     assert all(w.lower() in seq_alt.lower() for w in words),(lang,key,seq_alt)
 
+            assert contrast_ratio(page,'#ec-type-explorer .ec-canonical figcaption','#ec-type-explorer')>=4.5,(lang,width,'figcaption contrast')
+            page.evaluate("()=>{document.documentElement.style.fontSize='200%'}")
+            page.wait_for_timeout(120)
+            assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+2"),(lang,width,'200% text horizontal overflow')
+            explorer_box=page.locator('#ec-type-explorer').bounding_box();assert explorer_box
+            assert explorer_box['x']>=-1 and explorer_box['x']+explorer_box['width']<=width+2,(lang,width,'200% explorer clipped',explorer_box)
+            page.evaluate("()=>{document.documentElement.style.fontSize=''}")
+            page.wait_for_timeout(80)
+
             # EXPLORE: recorrer tiempo; LOCATE: elegir otro eclipse; REVEAL: facts + canonical type visual.
             start_name='Start' if lang=='en' else 'Inicio'
             max_name='Maximum' if lang=='en' else 'Máximo'
@@ -130,7 +165,7 @@ def main():
             assert current_fig.count()==1
             assert current_fig.locator('.ec-canonical-img').get_attribute('alt')
 
-            if lang=='es':
+            if lang=='es' and width in (390,1440):
                 page.locator('#ec-type-explorer').screenshot(path=str(OUT/f'eclipse-r02-types-{width}.png'))
 
             assert not external,(lang,width,external)
@@ -181,7 +216,7 @@ def main():
       'summary':{
         'browser_cases':len(cases),
         'languages':['es','en'],
-        'widths':[390,1440],
+        'widths':[320,390,1440],
         'canonical_types':6,
         'didactic_sequences':2,
         'forced_colors':True,
@@ -192,6 +227,9 @@ def main():
         'localized_manifest_alt':True,
         'reduced_and_off_discrete_time':True,
         'sequence_phase_order_in_alt':True,
+        'semantic_theme_contrast':True,
+        'text_200_percent_reflow':True,
+        'map_arbitrary_point_keyboard_equivalent':'PENDING_MOTOR',
         'screenshots':['eclipse-r02-types-390.png','eclipse-r02-types-1440.png'],
       },
       'cases':cases,
