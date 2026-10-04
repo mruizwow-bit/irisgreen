@@ -1,11 +1,23 @@
-name: Idioma global · conservar ES EN
+name: Idioma global · main ES EN
 on:
   push:
-    branches: ['ajustes/idioma-global-20260907']
+    branches: [main]
     paths:
       - '.github/workflows/idioma-global.yml'
       - 'assets/interfaz-comun.js'
+      - 'assets/ig-r49-lang-bootstrap.js'
+      - 'assets/ig-r49-transversal.js'
+      - 'scripts/apply_r50_research_ui.py'
+      - 'scripts/apply_r50_support_ui.py'
+      - 'scripts/apply_r50_videos_ui.py'
+      - 'scripts/apply_r50_books_ui.py'
       - 'scripts/test_language_persistence.py'
+      - 'scripts/build_site.py'
+      - 'es/investigacion/index.html'
+      - 'es/tramites/directorio/index.html'
+      - 'es/videos/index.html'
+      - 'es/libros/index.html'
+      - 'en/**'
 permissions:
   contents: read
 concurrency:
@@ -17,8 +29,6 @@ jobs:
     timeout-minutes: 12
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
-        with:
-          ref: ajustes/idioma-global-20260907
       - name: Preparar Chromium
         run: |
           python3 -m venv /tmp/ig-language
