@@ -1,0 +1,50 @@
+{
+  "schema": "habitation_impossible_product_mechanic_study_r01",
+  "date": "2026-10-04",
+  "authority": "Maria",
+  "status": "STUDY_ACTIVE_NO_IMPLEMENTATION",
+  "current_decision": {
+    "core_idea": "KEEP",
+    "current_runtime_ui": "DISCARD",
+    "r06_1_renderer": "DO_NOT_REUSE_AS_PRODUCT",
+    "solver": "REFERENCE_ONLY_PENDING_RULE_MODEL_APPROVAL",
+    "claude_implementation": "STOP"
+  },
+  "actual_runtime_rules": {
+    "grid": "4x4x4",
+    "orientations": 4,
+    "floor_change": "ROTATE_COORDINATE_FRAME__PIECES_DO_NOT_AUTO_FALL",
+    "movable": [
+      "column",
+      "block"
+    ],
+    "immovable": [
+      "slab"
+    ],
+    "piece_move": "ONE_CELL_IN_CURRENT_FLOOR_PLANE_THEN_SETTLE",
+    "walkable": "EMPTY_AND_SUPPORTED",
+    "path_step": "CARDINAL_WITH_DZ_MINUS1_0_PLUS1",
+    "entry": "PROJECT_AND_DROP_TO_FIRST_WALKABLE",
+    "exit": "PROJECT_AND_REQUIRE_DIRECT_WALKABLE"
+  },
+  "unresolved": [
+    "MANUAL_PIECE_ROTATION_KEEP_OR_REMOVE",
+    "PHYSICAL_MODEL_NAMING_ORIENTATION_VS_GRAVITY",
+    "FINAL_SCENE_MANIPULATION_STORYBOARD"
+  ],
+  "interaction_target": {
+    "principle": "SCENE_IS_PRIMARY_CONTROLLER",
+    "orientation": "LARGE_ROOM_MINIATURE_OR_SCENE_ASSOCIATED_CONTROL",
+    "piece_move": "TAP_PIECE_THEN_TAP_VALID_DESTINATION",
+    "arrows": "KEYBOARD_EQUIVALENT_NOT_PRIMARY_UI",
+    "undo": true,
+    "reset": true
+  },
+  "onboarding": [
+    "ROOM1_ORIENTATION_ONLY_TWO_CHOICES",
+    "ROOM2_PIECE_ONLY_ONE_PIECE_TWO_OR_THREE_DESTINATIONS",
+    "ROOM3_COMBINE",
+    "ROOM4_OPEN"
+  ],
+  "next_gate": "HUMAN_APPROVE_MECHANIC_AND_INTERACTION_STORYBOARD_BEFORE_CODE"
+}
