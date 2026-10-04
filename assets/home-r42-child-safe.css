@@ -585,7 +585,16 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .ig-home-v4-age{gap:.4rem}
 .ig-home-v4 .ig-home-v4-age p{margin:0!important}
 .ig-home-v4-search:has(.ig-home-suggestions:empty) .ig-home-suggestions,.ig-home-v4-search .ig-home-results:empty{display:none}
-/* Motor · Sabik Home centered hierarchy R01 · Issue #389 */
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{display:flex;flex-direction:column;align-items:center}
+/* Motor · Sabik Home compact hierarchy R02 · Human QA 2026-10-04 */
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{
+  display:grid;
+  grid-template-columns:minmax(22rem,.82fr) minmax(28rem,1.18fr);
+  align-items:center;
+}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{aspect-ratio:1065/760;overflow:visible}
-@media(max-width:600px){.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{width:min(86vw,380px)}}
+@media(max-width:900px){
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{width:min(84vw,350px)}
+}
