@@ -268,12 +268,13 @@ class Runtime{
   this.canvas.setAttribute('aria-label',this.t.calculated+' '+(this.place.label[this.lang]||this.place.label.es)+'. '+cur.targets.length+' '+this.t.stars.toLowerCase()+'.');
  }
  placeConstellationLabel(button,x,y,w,h){
-  const pad=8;
-  button.style.left=(x/w*100)+'%';button.style.top=(y/h*100)+'%';
+  const pad=8,sceneRect=this.scene.getBoundingClientRect();
+  const actualW=Math.max(1,sceneRect.width),actualH=Math.max(1,sceneRect.height);
+  const rawX=x/w*actualW,rawY=y/h*actualH;
+  button.style.left=(rawX/actualW*100)+'%';button.style.top=(rawY/actualH*100)+'%';
   this.labels.append(button);
-  const sceneRect=this.scene.getBoundingClientRect(),box=button.getBoundingClientRect();
-  const halfW=box.width/2,halfH=box.height/2;
-  let cx=clamp(x,pad+halfW,w-pad-halfW),cy=clamp(y,pad+halfH,h-pad-halfH);
+  const box=button.getBoundingClientRect(),halfW=box.width/2,halfH=box.height/2;
+  let cx=clamp(rawX,pad+halfW,actualW-pad-halfW),cy=clamp(rawY,pad+halfH,actualH-pad-halfH);
   const intro=this.intro;
   if(intro){
    const ir=intro.getBoundingClientRect();
@@ -281,10 +282,10 @@ class Runtime{
    const top=ir.top-sceneRect.top-pad,bottom=ir.bottom-sceneRect.top+pad;
    const overlapsX=cx+halfW>left&&cx-halfW<right;
    const overlapsY=cy+halfH>top&&cy-halfH<bottom;
-   if(overlapsX&&overlapsY)cy=clamp(bottom+halfH,pad+halfH,h-pad-halfH);
+   if(overlapsX&&overlapsY)cy=clamp(bottom+halfH,pad+halfH,actualH-pad-halfH);
   }
-  button.style.left=(cx/w*100)+'%';button.style.top=(cy/h*100)+'%';
-  button.dataset.safeClamped=String(Math.abs(cx-x)>.5||Math.abs(cy-y)>.5);
+  button.style.left=(cx/actualW*100)+'%';button.style.top=(cy/actualH*100)+'%';
+  button.dataset.safeClamped=String(Math.abs(cx-rawX)>.5||Math.abs(cy-rawY)>.5);
  }
  renderTargets(cur){
   this.targets.replaceChildren();this.labels.replaceChildren();const r=this.scene.getBoundingClientRect(),w=Math.max(320,r.width),h=Math.max(420,r.height);
