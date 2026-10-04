@@ -630,3 +630,50 @@ Las capturas antiguas NO sustituyen la validación móvil del HTML R06 después 
 - Ritmo 320/1440;
 - Vida marina según inventario previo.
 
+
+
+---
+
+# 11 · Pecera · audio takeover OAI R01
+
+María rechaza la mezcla de Claude:
+`PECERA_R02_CLIP_40s_AUDIO_R2.mp4`
+
+Estado:
+`AUDIO_R2_HUMAN_QA_FAIL`
+`STOP_CLAUDE_PECERA_AUDIO_ITERATION`
+
+OAI crea una nueva prueba controlada de 40 s partiendo del audio original:
+
+`PECERA_R02_CLIP_40s_AUDIO_OAI_R01.mp4`
+SHA-256:
+`5ed16357b5b48d745506f799aed47b75dac29edfd76a189590c0e500a19ba451`
+
+Audio solo:
+`PECERA_AUDIO_OAI_R01.m4a`
+SHA-256:
+`f9705016b650512b2344671119fa21042e0b5de4c86f88bd72129a1fa8080f3b`
+
+Dirección:
+`LISTENER_POSITION = IN_FRONT_OF_AQUARIUM_GLASS`
+
+Construcción:
+- partir de audio original;
+- eliminar masa hueca/submarina;
+- preservar temporalidad/estéreo de burbujas y realzar presencia solo para altavoces pequeños;
+- bomba/filtro estable mediante ruido filtrado, no tono puro;
+- retorno superficial de agua muy discreto;
+- sin oleaje/LFO periódico.
+
+Medidas candidato:
+- 40.000 s;
+- ~−29.9 LUFS;
+- LRA ~1.5 LU;
+- true peak ~−12.3 dBFS;
+- faststart PASS;
+- elementary H.264 idéntico al clip visual original.
+
+Estado:
+`PECERA_AUDIO_OAI_R01_HUMAN_QA_REQUIRED`
+
+No producir 5 min antes de María.
