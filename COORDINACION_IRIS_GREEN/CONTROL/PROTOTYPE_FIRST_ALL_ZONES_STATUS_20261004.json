@@ -10,9 +10,8 @@
       "zone": "Juegos",
       "pattern": "discovery_search_game",
       "prototype": "Mapa del tesoro de casa",
-      "status": "R06_A11Y_PARITY_PASS__DOCUMENT_SHELL_RESTORE_REQUIRED",
+      "status": "TECHNICAL_BASE_READY_FOR_HUMAN_QA",
       "pending": [
-        "R06_1_DOCUMENT_SHELL_RESTORE",
         "HUMAN_QA_MARIA"
       ],
       "gate": "MAPA_TESORO_TECHNICAL_BASE_READY_FOR_HUMAN_QA"
@@ -31,9 +30,8 @@
       "zone": "Taller",
       "pattern": "guided_entry_to_free_creation",
       "prototype": "Ritmo · Tu primer ritmo",
-      "status": "R06_A11Y_PARITY_PASS__DOCUMENT_SHELL_RESTORE_REQUIRED",
+      "status": "TECHNICAL_BASE_READY_FOR_HUMAN_QA",
       "pending": [
-        "R06_1_DOCUMENT_SHELL_RESTORE",
         "HUMAN_QA_MARIA"
       ]
     },
@@ -139,7 +137,7 @@
     "Home/navegación global"
   ],
   "evidence": {
-    "capture_gaps": "EVIDENCE_CAPTURE_GAP__R06_MOBILE_REAL_VIEWPORT_RETEST_REQUIRED_AFTER_SHELL_RESTORE",
+    "capture_gaps": "EVIDENCE_CAPTURE_GAP_NON_PRODUCT_BLOCKER",
     "human_qa_global": "PENDING"
   },
   "continuity_rule": "READ_GITHUB_CANON_BEFORE_RESUME__DO_NOT_RECONSTRUCT_FROM_CHAT",
@@ -169,5 +167,33 @@
     "global_technical_gate": "HOLD",
     "required_next_gate": "R06_1_DOCUMENT_SHELL_RESTORE_AND_SEMANTIC_PARITY_PASS",
     "next_action": "restore_R05_document_shell_only_preserving_R06_a11y_fixes_then_retest_mobile_real_viewport"
+  },
+  "r06_1": {
+    "package": "PROTOTIPOS_IRIS_GREEN_R06_1_DOCUMENT_SHELL.zip",
+    "hashes": {
+      "mapa": "b08254b7d5bf3a566a3cceeb8c58f751723d35676a3db39bb30747ac12926243",
+      "habitacion": "c643e990726fd0a97c892410fdb8dd43e870b3631c2a3c54b482cb5f81f3c0a9",
+      "ritmo": "758113a6fd545fcec2ca60956aa869230f6f7e68d5b4300e1344bdaf948da03a",
+      "vida_marina": "78fc43ae40ab15a1f9c8d2b226ae89904d48a6eefa9fae8070a65e81c27e86f7"
+    },
+    "passes": [
+      "MAPA_R06_1_DOCUMENT_SHELL_RESTORE_PASS",
+      "RITMO_R06_1_DOCUMENT_SHELL_RESTORE_PASS",
+      "MAPA_ES_EN_A11Y_PARITY_PASS",
+      "RITMO_ES_EN_A11Y_PARITY_PASS",
+      "MAPA_TESORO_TECHNICAL_BASE_READY_FOR_HUMAN_QA",
+      "HABITACION_IMPOSIBLE_TECHNICAL_BASE_READY_FOR_HUMAN_QA",
+      "TALLER_RITMO_TECHNICAL_BASE_READY_FOR_HUMAN_QA",
+      "INTEREST_22_RUNTIME_BASE_READY",
+      "PROTOTYPES_TECHNICAL_BASE_READY_FOR_HUMAN_QA"
+    ],
+    "human_qa": "PENDING_MARIA",
+    "evidence_capture_gap": "OPEN_NON_PRODUCT_BLOCKER"
+  },
+  "resource_constraints": {
+    "motor": {
+      "status": "BUSY_WITH_SABIK_WEB",
+      "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_PROTOTYPE_INTEGRATION"
+    }
   }
 }
