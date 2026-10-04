@@ -7,6 +7,7 @@ on:
       - 'assets/interfaz-comun.js'
       - 'assets/ig-r49-lang-bootstrap.js'
       - 'assets/ig-r49-transversal.js'
+      - 'assets/preferencias-lectura.js'
       - 'scripts/apply_r50_research_ui.py'
       - 'scripts/apply_r50_support_ui.py'
       - 'scripts/apply_r50_videos_ui.py'
