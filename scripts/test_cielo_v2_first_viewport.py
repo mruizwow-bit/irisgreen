@@ -187,12 +187,14 @@ def main():
               first=page.locator('.skyv2-star-target').first
               first_name=first.get_attribute('data-star')
               box=first.bounding_box();assert box
-              px,py=box['x']+box['width']/2,box['y']+box['height']/2
               if width<500:
-                page.touchscreen.tap(px,py)
+                # Element-targeted tap remains a real touch action, but avoids
+                # stale raw coordinates after the 200% text reflow cycle.
+                first.tap(timeout=5000)
               else:
+                px,py=box['x']+box['width']/2,box['y']+box['height']/2
                 page.mouse.click(px,py)
-              page.wait_for_timeout(30)
+              page.wait_for_timeout(50)
               assert page.locator('.skyv2-info dl').count()==1
               assert page.locator('.skyv2-info').get_attribute('data-active')=='true'
               assert page.locator('.skyv2-info h2').text_content()==first_name,(lang,width,first_name,page.locator('.skyv2-info h2').text_content())
