@@ -31,7 +31,7 @@ Los únicos datos que pueden bloquear una acción son `required_parameters` expl
 ## Reglas
 
 1. Si puede responderse con la información disponible, se responde.
-2. No existe mecánica de `pending_slot`.
+2. No existe mecánica de hueco conversacional pendiente.
 3. No existe elicitation general para completar `topic`, `aspect` u otros rasgos de la persona.
 4. Una aclaración solo puede pedir un parámetro imprescindible de la acción actual.
 5. `topic` puede mantenerse durante la sesión para continuidad.
