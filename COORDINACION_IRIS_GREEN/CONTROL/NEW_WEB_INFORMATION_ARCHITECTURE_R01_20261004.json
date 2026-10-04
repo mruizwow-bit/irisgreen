@@ -1,0 +1,66 @@
+{
+  "schema": "iris_green_new_web_ia_r01",
+  "date": "2026-10-04",
+  "authority": "Maria",
+  "status": "NEW_WEB_INFORMATION_ARCHITECTURE_R01_ACTIVE",
+  "nav_target": [
+    "Inicio",
+    "Información",
+    "Recursos",
+    "Juegos",
+    "Descubrimiento",
+    "Creación",
+    "Espacio tranquilo"
+  ],
+  "sabik": "PERSISTENT_ASSISTANT_NOT_NAV_CATEGORY",
+  "areas": {
+    "information": {
+      "route_es": "/es/informacion/",
+      "route_en": "/en/information/",
+      "monetization": "FREE_ALWAYS"
+    },
+    "resources": {
+      "route_es": "/es/recursos/",
+      "route_en": "/en/resources/",
+      "rebuild_temp_es": "/es/nueva-web/recursos/",
+      "rebuild_temp_en": "/en/new-web/resources/",
+      "monetization": "FREEMIUM"
+    },
+    "games": {
+      "route_es": "/es/juegos/",
+      "route_en": "/en/games/",
+      "legacy_es": "/es/recursos/juegos/",
+      "legacy_en": "/en/resources/games/",
+      "monetization": "FREEMIUM"
+    },
+    "discovery": {
+      "route_es": "/es/descubrimiento/",
+      "route_en": "/en/discovery/",
+      "legacy_es": "/es/intereses/",
+      "monetization": "FREEMIUM"
+    },
+    "creation": {
+      "route_es": "/es/creacion/",
+      "route_en": "/en/creation/",
+      "legacy_es": "/es/taller/",
+      "monetization": "FREEMIUM"
+    },
+    "calm_space": {
+      "legacy_preserved": true,
+      "monetization": "FREE_ALWAYS",
+      "commercial_messages_inside": false
+    }
+  },
+  "rebuild": "PARALLEL_REBUILD_NO_CUTOVER",
+  "legacy_policy": "PRESERVE_FOR_ROLLBACK_UNTIL_POST_CUTOVER_QA",
+  "motor": {
+    "status": "BUSY_WITH_SABIK_WEB_ON_MAIN",
+    "rule": "DO_NOT_INTERRUPT_OR_OVERLAP_WRITES"
+  },
+  "payments": {
+    "issue": 387,
+    "architecture": "STRIPE_CHECKOUT_BILLING_PORTAL_WEBHOOKS_NETLIFY_FUNCTIONS",
+    "live_gate": "PAYMENTS_LIVE_MODE_AUTHORIZED_BY_MARIA"
+  },
+  "next": "GAMES_AREA_NEW_PAGE_PRODUCT_CONTRACT_R01"
+}
