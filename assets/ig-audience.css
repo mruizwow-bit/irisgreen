@@ -12,3 +12,15 @@ html[data-ig-audience="AGE_0_12"] [data-ig-audience-values]:not([data-ig-age-ban
 html[data-ig-audience="AGE_13_17"] [data-ig-audience-values]:not([data-ig-age-bands]):not([data-ig-audience-values~="TRANSVERSAL"]):not([data-ig-audience-values~="ADOLESCENCIA"]){display:none!important}
 body[data-ig-audience-blocked] main{display:none!important}.ig-audience-blocked-message{width:min(92%,54rem);margin:clamp(2rem,7vw,6rem) auto;padding:clamp(1.2rem,3vw,2rem);border:1px solid var(--ig-separator);border-radius:20px;background:var(--ig-bg-surface);color:var(--ig-text)}.ig-audience-blocked-message p{color:var(--ig-text-muted)}.ig-audience-blocked-message a{min-height:44px;display:inline-flex;align-items:center;padding:.55rem .85rem;border:1px solid var(--ig-border-control);border-radius:999px;color:var(--ig-link);text-decoration:none}
 @media(forced-colors:active){.ig-audience,.ig-audience button{border-color:CanvasText}.ig-audience button[aria-pressed=true],.ig-s2-full-button{background:Highlight;color:HighlightText;border-color:Highlight;forced-color-adjust:none}}
+
+/* Child Safety R01 · mandatory age selection. Global header stays above the gate
+   so language and accessibility remain available before selecting an age band. */
+body[data-ig-age-unset]{overflow:hidden}
+.ig-mandatory-age-gate{position:fixed;inset:0;z-index:850;display:grid;place-items:center;overflow:auto;padding:clamp(5rem,12vh,8rem) max(1rem,var(--ig-layout-gutter-small,1rem)) 1rem;background:var(--ig-bg-page,#0b1a2b);color:var(--ig-text,#fff)}
+.ig-mandatory-age-card{width:min(100%,38rem);display:grid;gap:1rem;padding:clamp(1.2rem,4vw,2rem);border:1px solid var(--ig-separator,#687f94);border-radius:20px;background:var(--ig-bg-surface,#fff);color:var(--ig-text,#172536);box-shadow:0 18px 60px rgba(0,0,0,.24)}
+.ig-mandatory-age-card h1,.ig-mandatory-age-card p{margin:0}.ig-mandatory-age-card p{color:var(--ig-text-muted,#44586b);line-height:1.55}
+.ig-mandatory-age-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}
+.ig-mandatory-age-options button{min-height:48px;padding:.7rem .8rem;border:1px solid var(--ig-border-control,#536b82);border-radius:12px;background:var(--ig-button-secondary-bg,#fff);color:var(--ig-button-secondary-fg,#172536);font:inherit;font-weight:700;cursor:pointer}
+.ig-mandatory-age-options button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media(max-width:520px){.ig-mandatory-age-options{grid-template-columns:1fr}.ig-mandatory-age-gate{align-items:start;padding-top:5rem}}
+@media(forced-colors:active){.ig-mandatory-age-card,.ig-mandatory-age-options button{border-color:CanvasText}.ig-mandatory-age-options button:focus-visible{outline-color:Highlight}}
