@@ -536,3 +536,97 @@ Cualquier agente que retome:
 5. NO reabre un KEEP sin finding nuevo;
 6. deja evidencia en GitHub.
 
+
+
+---
+
+# 10 · R06 semantic microfix · revisión independiente
+
+Paquete revisado:
+`PROTOTIPOS_IRIS_GREEN_R06_SEMANTIC_FIX.zip`
+
+SHA:
+- Mapa R06: `47d494b013691ca3cf990c8857e6f83593b1c3aa1a59d4ca20f3b6eff35ea509`
+- Habitación: `c643e990726fd0a97c892410fdb8dd43e870b3631c2a3c54b482cb5f81f3c0a9` = R05
+- Ritmo R06: `4d09487853a6096985727989991377ccbc97b5571c68436ada10dfd816a06194`
+- Vida marina: `78fc43ae40ab15a1f9c8d2b226ae89904d48a6eefa9fae8070a65e81c27e86f7` = R05
+
+## PASS confirmados
+
+Mapa:
+`MAPA_ES_EN_A11Y_PARITY_PASS`
+
+Ritmo:
+`RITMO_ES_EN_A11Y_PARITY_PASS`
+
+El diff R05→R06 es semántico/a11y:
+- diccionario a11y ES/EN;
+- wiring en `idioma()`;
+- options de movimiento;
+- sufijos dinámicos locked/target;
+- ids necesarios para regiones.
+
+Habitación:
+solver reproducido independientemente:
+- Sala 1 = 1 / 0 / 91 / 92;
+- Sala 2 = 0 / 3 / 94 / 97;
+- Sala 3 = 0 / 0 / 44 / 44;
+- Sala 4 = 0 / 10 / 282 / 292.
+
+`camino3.js`:
+`suelo 4 → bloque ← ← ↑`.
+
+## REGRESIÓN R06 · DOCUMENT SHELL
+
+Los dos HTML modificados en R06 —Mapa y Ritmo— perdieron accidentalmente respecto a R05:
+- `<html lang="es">`;
+- `<head>`;
+- `<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">`;
+- cierre `</html>`.
+
+El navegador puede reparar parte de la estructura implícitamente, pero la pérdida de `meta viewport` es material en móvil real y hace que las mediciones/capturas anteriores de 320/390 no sean evidencia válida del **R06 servido en dispositivo móvil**.
+
+Por tanto:
+`MAPA_R06_DOCUMENT_SHELL_REGRESSION`
+`RITMO_R06_DOCUMENT_SHELL_REGRESSION`
+
+No se acepta todavía:
+`PROTOTYPES_TECHNICAL_BASE_READY_FOR_HUMAN_QA`.
+
+## Microfix requerido
+
+Restaurar en Mapa y Ritmo únicamente el shell válido de R05:
+- doctype;
+- `<html lang="es">`;
+- `<head>`;
+- charset;
+- viewport;
+- title/style;
+- cierre de head/body/html conforme a la estructura previa.
+
+Preservar íntegramente los fixes semánticos R06.
+
+Después:
+1. validar HTML/DOM;
+2. repetir barrido ES/EN;
+3. comprobar 320/390/1440 con viewport real;
+4. 0 overflow;
+5. targets >=44;
+6. regresión funcional ya definida.
+
+Gate siguiente:
+`R06_1_DOCUMENT_SHELL_RESTORE_AND_SEMANTIC_PARITY_PASS`
+
+Solo entonces:
+`PROTOTYPES_TECHNICAL_BASE_READY_FOR_HUMAN_QA`.
+
+## Evidencia de capturas
+
+El ZIP conserva capturas antiguas R05 de Mapa a 320/1440 y nuevas R06 a 375.
+Las capturas antiguas NO sustituyen la validación móvil del HTML R06 después de perder viewport meta.
+
+`EVIDENCE_CAPTURE_GAP` permanece para:
+- R06 móvil real tras shell restore;
+- Ritmo 320/1440;
+- Vida marina según inventario previo.
+
