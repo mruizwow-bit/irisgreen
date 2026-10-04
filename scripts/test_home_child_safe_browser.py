@@ -11,15 +11,17 @@ async def capture(page,path,name,w,h):
  await page.set_viewport_size({'width':w,'height':h});await page.goto(BASE+path,wait_until='networkidle')
  need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),f'horizontal overflow {path} {w}')
  metrics=await page.evaluate("""() => {
-  const section=document.querySelector('.ig-home-v4-sabik'),visual=document.querySelector('#sabik-hologram'),composer=document.querySelector('.ig-home-v4-sabik-composer');
-  const sr=section.getBoundingClientRect(),vr=visual.getBoundingClientRect(),cr=composer.getBoundingClientRect();
-  return {sectionCenter:sr.left+sr.width/2,visualCenter:vr.left+vr.width/2,composerCenter:cr.left+cr.width/2,visualWidth:vr.width,composerWidth:cr.width};
+  const section=document.querySelector('.ig-home-v4-sabik'),widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget'),left=document.querySelector('.ig-home-v4-sabik-left'),right=document.querySelector('.ig-home-v4-sabik-right'),visual=document.querySelector('#sabik-hologram'),composer=document.querySelector('.ig-home-v4-sabik-composer');
+  const sr=section.getBoundingClientRect(),wr=widget.getBoundingClientRect(),lr=left.getBoundingClientRect(),rr=right.getBoundingClientRect(),vr=visual.getBoundingClientRect(),cr=composer.getBoundingClientRect(),wc=getComputedStyle(widget);
+  return {sectionWidth:sr.width,widgetWidth:wr.width,leftLeft:lr.left,leftRight:lr.right,rightLeft:rr.left,rightRight:rr.right,visualWidth:vr.width,composerWidth:cr.width,columns:wc.gridTemplateColumns,display:wc.display};
  }""")
- need(abs(metrics['visualCenter']-metrics['sectionCenter'])<=3,f'Sabik not centered {path} {w}: {metrics}')
- need(abs(metrics['composerCenter']-metrics['sectionCenter'])<=3,f'Sabik composer not centered {path} {w}: {metrics}')
- if w>=1000: need(360<=metrics['visualWidth']<=560,f'Sabik desktop size wrong {path} {w}: {metrics}')
- else: need(metrics['visualWidth']<=min(w*.86,380)+3,f'Sabik mobile size wrong {path} {w}: {metrics}')
- need(metrics['composerWidth']<=835,f'Sabik composer too wide {path} {w}: {metrics}')
+ if w>=1000:
+  need(metrics['display']=='grid' and metrics['rightLeft']>=metrics['leftRight']-4,f'Sabik desktop is not two-column {path} {w}: {metrics}')
+  need(300<=metrics['visualWidth']<=420,f'Sabik compact desktop size wrong {path} {w}: {metrics}')
+  need(metrics['composerWidth']<=metrics['rightRight']-metrics['rightLeft']+2,f'Sabik composer escapes right column {path} {w}: {metrics}')
+ else:
+  need(metrics['rightLeft']<=metrics['leftLeft']+4,f'Sabik mobile did not stack {path} {w}: {metrics}')
+  need(metrics['visualWidth']<=min(w*.84,380)+3,f'Sabik mobile size wrong {path} {w}: {metrics}')
  await page.screenshot(path=str(OUT/f'{name}-{w}x{h}.png'),full_page=True)
 async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'screenshots':[],'network':{},'checks':[]}
@@ -58,23 +60,23 @@ async def main():
   await page.set_viewport_size({'width':1440,'height':900})
   await page.wait_for_timeout(50)
   sabik_geom=await page.evaluate("""() => {
-    const section=document.querySelector('.ig-home-v4-sabik');
     const visual=document.querySelector('#sabik-hologram');
     const widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget');
+    const left=document.querySelector('.ig-home-v4-sabik-left');
+    const right=document.querySelector('.ig-home-v4-sabik-right');
     const composer=document.querySelector('.ig-home-v4-sabik-composer');
     const body=document.querySelector('#sabik-web-master');
-    const sr=section.getBoundingClientRect(),vr=visual.getBoundingClientRect(),cr=composer.getBoundingClientRect(),br=body.getBoundingClientRect(),wc=getComputedStyle(widget);
+    const vr=visual.getBoundingClientRect(),lr=left.getBoundingClientRect(),rr=right.getBoundingClientRect(),cr=composer.getBoundingClientRect(),br=body.getBoundingClientRect(),wc=getComputedStyle(widget);
     return {
-      width:vr.width,height:vr.height,display:wc.display,direction:wc.flexDirection,
-      sectionCenter:sr.left+sr.width/2,visualCenter:vr.left+vr.width/2,composerCenter:cr.left+cr.width/2,composerWidth:cr.width,
+      width:vr.width,height:vr.height,display:wc.display,columns:wc.gridTemplateColumns,
+      leftRight:lr.right,rightLeft:rr.left,composerWidth:cr.width,rightWidth:rr.width,
       bodyRatio:br.width/vr.width,bodyLeftRatio:(br.left-vr.left)/vr.width,
       layers:['.orbits-back','.core-rings','.core-light','.particles-front'].every(s=>Boolean(visual.querySelector(s)))
     };
   }""")
-  need(sabik_geom['display']=='flex' and sabik_geom['direction']=='column','Sabik Home must be one vertical experience '+repr(sabik_geom))
-  need(360<=sabik_geom['width']<=560,'Definitive Sabik visual is outside approved desktop scale '+repr(sabik_geom))
-  need(abs(sabik_geom['visualCenter']-sabik_geom['sectionCenter'])<=3,'Sabik visual is not centered '+repr(sabik_geom))
-  need(abs(sabik_geom['composerCenter']-sabik_geom['sectionCenter'])<=3 and sabik_geom['composerWidth']<=835,'Sabik composer is not centered/52rem '+repr(sabik_geom))
+  need(sabik_geom['display']=='grid' and sabik_geom['rightLeft']>=sabik_geom['leftRight']-4,'Sabik Home desktop must be compact two-column '+repr(sabik_geom))
+  need(300<=sabik_geom['width']<=420,'Definitive Sabik visual is outside compact desktop scale '+repr(sabik_geom))
+  need(sabik_geom['composerWidth']<=sabik_geom['rightWidth']+2,'Sabik composer escapes compact right column '+repr(sabik_geom))
   need(abs(sabik_geom['bodyRatio']-.64789)<.02 and abs(sabik_geom['bodyLeftRatio']-.16526)<.02,'Canonical Sabik body geometry was overridden '+repr(sabik_geom))
   need(sabik_geom['layers'],'Definitive Sabik layered visual missing '+repr(sabik_geom))
   need(await page.locator('#sabik-browse').count()==0,'Explore resources must not be inside Sabik')
@@ -157,6 +159,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-centered-hierarchy','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
