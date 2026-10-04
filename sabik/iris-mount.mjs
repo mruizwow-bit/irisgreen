@@ -81,7 +81,7 @@ async function mount(){
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing),speaking=Boolean(state?.speaking);
   const semantic=meta.semantic==='degraded'?'degraded':speaking?'speaking':listening?'listening':transcribing||busy?'processing':meta.semantic||'idle';
-  voiceButton.setAttribute('aria-pressed',String(voiceSessionActive));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSessionActive?strings().voiceOn:strings().voiceOff;
+  voiceButton.setAttribute('aria-pressed',String(voiceSessionActive));voiceState.textContent=semantic==='degraded'?strings().voiceError:listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSessionActive?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${voiceSessionActive?strings().voiceOn:strings().voiceOff}`);
   if(micButton)micButton.disabled=busy||transcribing;
   const stopRelevant=Boolean(voiceSessionActive||listening||transcribing||speaking||busy);
