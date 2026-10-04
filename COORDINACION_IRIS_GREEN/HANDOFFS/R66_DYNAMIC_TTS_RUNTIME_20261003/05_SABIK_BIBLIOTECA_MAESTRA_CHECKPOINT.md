@@ -42219,3 +42219,165 @@ ESTADO: BILINGUAL_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: recursos específicos, intereses y otros corpus estructurados de Iris Green.
+
+# 74. INTERESES · ESTRUCTURA EDITORIAL 2026-09-24 · TANDA 01
+
+FUENTE: `editorial/intereses/estructura-20260924.json` · rama `main` de Iris Green.
+
+SOURCE SHA: `79d44c3d7c2e4f443f4a46ed4244d935d779af08`
+
+ES POLÍTICA: Publicar cada tema recibido dentro de su grupo; omitir grupos vacíos. Retirar los cromos heredados del hub de intereses. Field Notebook pertenece a Intereses.
+
+EN POLICY: Publish each received topic under its group; omit empty groups. Retire legacy trading cards from the interests hub. Field Notebook belongs in Interests.
+
+ORIGEN ES: SOURCE_DERIVED
+
+ORIGEN EN: TRANSLATED_FROM_SOURCE
+
+---
+
+## INTEREST-GROUP-01
+
+ES NOMBRE: El cielo y el espacio
+
+EN NAME: The sky and space
+
+ES FILA 01: Cielo nocturno
+
+EN ROW 01: Night sky
+
+ES FILA 02: Todas las estrellas y constelaciones
+
+EN ROW 02: All stars and constellations
+
+ES FILA 03: Planetario en directo (hecho)
+
+EN ROW 03: Live planetarium (done)
+
+ES FILA 04: HYG, IAU, d3-celestial
+
+EN ROW 04: HYG, IAU, d3-celestial
+
+ES FILA 05: Planetas y sistema solar
+
+EN ROW 05: Planets and the Solar System
+
+ES FILA 06: Tamaños, órbitas, lunas, dónde están hoy
+
+EN ROW 06: Sizes, orbits, moons and where they are today
+
+ES FILA 07: Sistema solar a escala real que se recorre
+
+EN ROW 07: Walk-through Solar System at true scale
+
+ES FILA 08: Elementos del JPL; NASA (a confirmar)
+
+EN ROW 08: JPL elements; NASA (to be confirmed)
+
+ES FILA 09: Exoplanetas
+
+EN ROW 09: Exoplanets
+
+ES FILA 10: Todos los descubiertos, cómo se encontraron
+
+EN ROW 10: All discovered exoplanets and how they were found
+
+ES FILA 11: Mapa 3D de estrellas con planetas
+
+EN ROW 11: 3D map of stars with planets
+
+ES FILA 12: NASA Exoplanet Archive
+
+EN ROW 12: NASA Exoplanet Archive
+
+ES FILA 13: Eclipses
+
+EN ROW 13: Eclipses
+
+ES FILA 14: Cuándo y desde dónde se ven (España: 2026, 2027 y 2028)
+
+EN ROW 14: When and where they can be seen (Spain: 2026, 2027 and 2028)
+
+ES FILA 15: Simulador del eclipse desde tu ciudad
+
+EN ROW 15: Eclipse simulator from your city
+
+ES FILA 16: Cálculo propio con efemérides
+
+EN ROW 16: Custom calculation using ephemerides
+
+ES FILA 17: Lluvias de estrellas y meteoritos
+
+EN ROW 17: Meteor showers and meteorites
+
+ES FILA 18: Fechas, radiantes, meteoritos caídos en España
+
+EN ROW 18: Dates, radiants and meteorites that have fallen in Spain
+
+ES FILA 19: Cielo con el radiante y cuenta de meteoros
+
+EN ROW 19: Sky showing the radiant and meteor count
+
+ES FILA 20: Calendario IMO; Meteoritical Bulletin (a confirmar)
+
+EN ROW 20: IMO calendar; Meteoritical Bulletin (to be confirmed)
+
+ES FILA 21: Exploración espacial
+
+EN ROW 21: Space exploration
+
+ES FILA 22: Todas las misiones, cohetes y astronautas
+
+EN ROW 22: All missions, rockets and astronauts
+
+ES FILA 23: Línea del tiempo y cohetes a escala
+
+EN ROW 23: Timeline and rockets shown to scale
+
+ES FILA 24: Wikidata (CC0)
+
+EN ROW 24: Wikidata (CC0)
+
+ES FILA 25: Satélites y Estación Espacial
+
+EN ROW 25: Satellites and the International Space Station
+
+ES FILA 26: Cuándo pasa la estación sobre tu casa
+
+EN ROW 26: When the station passes over your home
+
+ES FILA 27: Paso por el cielo en el planetario
+
+EN ROW 27: Its path across the sky in the planetarium
+
+ES FILA 28: Órbitas públicas de CelesTrak (a confirmar)
+
+EN ROW 28: Public orbit data from CelesTrak (to be confirmed)
+
+ES RUTA 01: /es/intereses/cielo/
+
+EN PATH 01: /en/interests/night-sky/
+
+ES RUTA 02: /es/intereses/sistema-solar/
+
+EN PATH 02: /en/interests/solar-system/
+
+ES RUTA 03: /es/intereses/exoplanetas/
+
+EN PATH 03: /en/interests/exoplanets/
+
+ES NOTA DE RUTAS: Las tres rutas ES están declaradas en la fuente. Los pares EN se verificaron en las páginas publicadas mediante `hreflang="en"`.
+
+EN ROUTE NOTE: The three ES routes are declared in the source. The EN counterparts were verified from the published pages using `hreflang="en"`.
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## CONTROL DE PROGRESO · INTERESES · TANDA 01
+
+ES: Grupo editorial 01 incorporado con 28 filas de fuente, traducción EN y 3 pares de rutas publicadas.
+
+EN: Editorial group 01 added with 28 source rows, EN translation and 3 published route pairs.
+
+SIGUIENTE GRUPO: INTEREST-GROUP-02
