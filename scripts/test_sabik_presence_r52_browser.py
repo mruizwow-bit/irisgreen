@@ -112,14 +112,16 @@ try:
         # Reduced keeps functionality while shortening R37 finite motion.
         page.select_option("#sabik-motion-level", "REDUCIDO")
         page.dispatch_event("#sabik-motion-level", "change")
-        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true,semantic:'listening'}); }")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true,semantic:'idle'}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         reduced = page.evaluate("""() => {
           const a=document.querySelector('#sabik-web-master').getAnimations()[0];
           return {duration:a?.effect?.getTiming().duration,level:window.SabikWebPresentation.snapshot().level,
+                  state:document.querySelector('#sabik-hologram').dataset.webState,
                   motion:document.querySelector('#sabik-hologram').dataset.motion};
         }""")
         assert reduced["duration"] == 140 and reduced["level"] == "REDUCIDO", reduced
+        assert reduced["state"] == "PAUSA", reduced
         assert reduced["motion"] == "reduced", reduced
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
         evidence["motion"]["reduced"] = reduced
