@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>El mapa del tesoro de casa</title>
+<style>
+/* Juego de verdad: ESCONDER → PISTA → EXPLORAR → DESCARTAR/ENCONTRAR → PISTA → TESORO.
+   Buscar donde no está nunca es un error: descarta, da información y la partida avanza. */
+:root{
+  --fondo:#EFDFCB; --papel:#FFFCF7; --muro:#F6EADA; --suelo:#E4D2B9;
+  --tinta:#231A12; --tinta-2:#6B553D; --linea:#231A12;
+  --oro:#D99100; --descartada:#C9BBA8; --acento:#1F6F5C;
+  --s-literas:#B9A6E8; --s-grande:#8FC4E8; --s-balcon:#A2D98A; --s-pasillo:#E6D2A8;
+  --s-bano:#8FDCD4;    --s-salon:#F2C063;  --s-cocina:#F2A185; --s-entrada:#E3A8C6;
+  --sombra:5px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --fondo:#1A120C; --papel:#2B1F16; --muro:#3A2A1D; --suelo:#241A12;
+  --tinta:#F7EDE1; --tinta-2:#C9B49C; --linea:#F7EDE1; --descartada:#4A3A2B; --acento:#6FD9BE;
+  --s-literas:#43356B; --s-grande:#1F4A6B; --s-balcon:#2C5424; --s-pasillo:#53452C;
+  --s-bano:#1C5450;    --s-salon:#6B4C14;  --s-cocina:#6B3424; --s-entrada:#5E2C45;
+  color-scheme:dark; }}
+:root[data-theme="dark"]{
+  --fondo:#1A120C; --papel:#2B1F16; --muro:#3A2A1D; --suelo:#241A12;
+  --tinta:#F7EDE1; --tinta-2:#C9B49C; --linea:#F7EDE1; --descartada:#4A3A2B; --acento:#6FD9BE;
+  --s-literas:#43356B; --s-grande:#1F4A6B; --s-balcon:#2C5424; --s-pasillo:#53452C;
+  --s-bano:#1C5450;    --s-salon:#6B4C14;  --s-cocina:#6B3424; --s-entrada:#5E2C45;
+  color-scheme:dark; }
+:root[data-mov="none"]{ --sombra:0px }
+
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);overflow:hidden;
+  font:400 16px/1.4 "Atkinson Hyperlegible","Verdana",system-ui,sans-serif}
+.app{height:100%;max-width:820px;margin:0 auto;padding:8px 12px;padding-block:8px;
+  display:flex;flex-direction:column;gap:7px}
+header{flex:none;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+h1{font:700 18px/1.05 Georgia,"Times New Roman",serif;margin:0;flex:1 1 100%;white-space:nowrap}
+@media (min-width:660px){ h1{flex:1 1 auto} }
+.mini{min-width:44px;border:2px solid var(--linea);background:var(--papel);color:var(--tinta);border-radius:999px;
+  min-height:44px;padding:0 12px;font:700 13px inherit;cursor:pointer}
+select.mini{padding:0 8px}
+.mini:focus-visible,.hab:focus-visible,.gr button:focus-visible,.acc:focus-visible{
+  outline:4px solid var(--acento);outline-offset:2px}
+
+.gr{flex:none;display:flex;gap:6px}
+.gr button{flex:1;border:3px solid var(--linea);background:var(--papel);color:var(--tinta);
+  border-radius:12px;min-height:46px;font:700 14px inherit;cursor:pointer}
+.gr button[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+
+.pista{flex:none;border:3px solid var(--oro);border-radius:13px;background:var(--papel);padding:8px 11px}
+.pista b{display:block;font:700 11px inherit;letter-spacing:.09em;text-transform:uppercase;color:var(--oro)}
+.pista p{margin:2px 0 0;font-size:16px}
+.pista ol{margin:5px 0 0;padding-left:18px;font-size:13px;color:var(--tinta-2)}
+
+.casa{flex:1 1 auto;min-height:0;border:3px solid var(--linea);border-radius:16px;background:var(--suelo);
+  box-shadow:var(--sombra) var(--sombra) 0 var(--linea);display:grid;place-items:center;padding:6px}
+.casa svg{width:100%;height:100%;display:block}
+.hab{cursor:pointer}
+.hab .cuarto{fill:var(--sala,var(--muro));stroke:var(--linea);stroke-width:1.6;stroke-linejoin:round}
+.hab[data-est="fuera"] .cuarto{fill:var(--descartada)}
+.hab[data-est="tesoro"] .cuarto{fill:var(--oro)}
+.hab .mueble{fill:none;stroke:var(--tinta-2);stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.hab[data-est="fuera"] .mueble{opacity:.35}
+.hab .rot{font:700 3.6px "Atkinson Hyperlegible",Verdana,sans-serif;fill:var(--tinta)}
+.hab text,.hab .marca{pointer-events:none}
+.hab:hover .cuarto{stroke-width:2.8}
+
+.pie{flex:none;min-height:44px;display:flex;align-items:center;gap:8px}
+.pie p{margin:0;font-size:14px;color:var(--tinta-2);flex:1}
+.acc{border:3px solid var(--linea);background:var(--tinta);color:var(--papel);border-radius:999px;
+  min-height:44px;padding:0 14px;font:700 14px inherit;cursor:pointer;white-space:nowrap}
+.acc[hidden]{display:none}
+@media (forced-colors:active){ .hab[data-est="fuera"] .cuarto{fill:GrayText} .gr button{border:2px solid ButtonText} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <h1 id="t-tit">El mapa del tesoro de casa</h1>
+    <select class="mini" id="idioma" aria-label="Idioma / Language"><option value="es">ES</option><option value="en">EN</option></select>
+    <button class="mini" id="otra" type="button"></button>
+    <button class="mini" id="tema" type="button" aria-pressed="false" aria-label="Modo oscuro">◑</button>
+  </header>
+
+  <div class="gr" id="grupo-modo" role="group" aria-label="Modo">
+    <button type="button" id="m1" aria-pressed="true"></button>
+    <button type="button" id="m2" aria-pressed="false"></button>
+  </div>
+
+  <div class="pista"><b id="p-et"></b><p id="p-txt"></p><ol id="p-lista"></ol></div>
+
+  <div class="casa" id="casa"><svg id="plano" viewBox="0 0 100 128" role="group" aria-label="Plano de la casa"></svg></div>
+
+  <div class="pie">
+    <p id="aviso" role="status" aria-live="polite"></p>
+    <button class="acc" id="acc" hidden type="button"></button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  // id, nombre, x,y,w,h, mueble, grupo
+  var HAB=[
+    ['literas','Literas','Bunks',  3,  3,46,30,'M8 9h16M8 17h16M8 9v12M24 9v12M6 21h4M22 21h4','dormir'],
+    ['grande','Dormitorio','Bedroom',51,  3,46,30,'M7 16h18v6H7zM7 16v-4a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v4','dormir'],
+    ['pasillo','Pasillo','Hallway', 3, 35,60,26,'M24 9h14M34 6l4 3-4 3','paso'],
+    ['bano','Baño','Bathroom',     65, 35,32,26,'M9 8h12v4a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4zM12 8V5a2 2 0 0 1 4 0','agua'],
+    ['salon','Salón','Living room',  3, 63,46,32,'M8 18a3 3 0 0 1 6 0v4h10v-4a3 3 0 0 1 6 0v7H8zM10 25v4M28 25v4','estar'],
+    ['cocina','Cocina','Kitchen',  51, 63,46,32,'M7 17h12v7a4 4 0 0 1-4 4h-4a4 4 0 0 1-4-4zM10 13c0-2 2-2 2-4M15 13c0-2 2-2 2-4','agua'],
+    ['entrada','Entrada','Entrance', 3, 97,46,28,'M10 8h11v17H10zM18 17h1.6','paso'],
+    ['balcon','Balcón','Balcony',  51, 97,46,28,'M14 23V11M14 14c-4 0-6-3-6-6 4 0 6 3 6 6M14 17c4 0 6-3 6-6-4 0-6 3-6 6','fuera']
+  ];
+  var VEC={literas:['grande','pasillo'],grande:['literas','pasillo','bano'],
+    pasillo:['literas','grande','bano','salon','cocina'],bano:['grande','pasillo','cocina'],
+    salon:['pasillo','cocina','entrada'],cocina:['pasillo','bano','salon','balcon'],
+    entrada:['salon','balcon'],balcon:['cocina','entrada']};
+
+  var T={es:{tit:'El mapa del tesoro de casa',otra:'Jugar otra vez',
+      m1:'Yo solo',m2:'Dos personas',pistas:'Pistas',
+      a11y:{idioma:'Idioma',tema:'Modo oscuro',modo:'Modo',plano:'Plano de la casa'},
+      esconde:'Toca la habitación donde escondes el tesoro. La otra persona no debe mirar.',
+      busca:'Busca el tesoro. Toca una habitación.',
+      descartada:'Ahí no está. Esa habitación queda descartada.',
+      encontrado:'¡Lo encontraste! El tesoro estaba en',
+      quedan:'Quedan',hab:'habitaciones',listo:'Que busque la otra persona',escondido:'Tesoro escondido. Pasa el dispositivo a la otra persona.',empezar:'Empezar búsqueda',
+      c:{agua:'Está pegado a una habitación con agua.',noAgua:'No está pegado a ninguna habitación con agua.',
+         dormir:'Está donde alguien duerme.',noDormir:'No está donde se duerme.',
+         fuera:'Está fuera de la casa, pero sigue siendo casa.',noFuera:'No está fuera.',
+         paso:'Está en un sitio por el que solo se pasa.',noPaso:'No está en un sitio de paso.',
+         cocina:'No está donde se cocina.',arriba:'Está en la mitad de arriba del plano.',
+         abajo:'Está en la mitad de abajo del plano.',izq:'Está en el lado izquierdo.',der:'Está en el lado derecho.',
+         grande:'Es de las habitaciones grandes.',peque:'Es de las habitaciones pequeñas.'}},
+    en:{tit:'The house treasure map',otra:'Play again',
+      m1:'On my own',m2:'Two people',pistas:'Clues',
+      a11y:{idioma:'Language',tema:'Dark mode',modo:'Mode',plano:'House floor plan'},
+      esconde:'Tap the room where you hide the treasure. The other person must not look.',
+      busca:'Find the treasure. Tap a room.',
+      descartada:'Not there. That room is ruled out.',
+      encontrado:'You found it! The treasure was in',
+      quedan:'Left:',hab:'rooms',listo:'Let the other person search',escondido:'Treasure hidden. Pass the device to the other person.',empezar:'Start searching',
+      c:{agua:'It is next to a room with water.',noAgua:'It is not next to any room with water.',
+         dormir:'It is where someone sleeps.',noDormir:'It is not where anyone sleeps.',
+         fuera:'It is outside the house, but still the house.',noFuera:'It is not outside.',
+         paso:'It is somewhere you only pass through.',noPaso:'It is not a place you pass through.',
+         cocina:'It is not where the cooking happens.',arriba:'It is in the top half of the plan.',
+         abajo:'It is in the bottom half of the plan.',izq:'It is on the left side.',der:'It is on the right side.',
+         grande:'It is one of the big rooms.',peque:'It is one of the small rooms.'}}};
+  var lang='es', L=function(){return T[lang]};
+
+  var modo=1, fase='buscar', tesoro=null, fuera={}, pistas=[], usadas={};
+  var G=function(id){ return HAB.find(function(h){return h[0]===id}) };
+  var nom=function(id){ var h=G(id); return lang==='es'?h[1]:h[2]; };
+
+  // --- generador de pistas: cada una es cierta del tesoro y descarta algo ---
+  function reglas(){
+    var areaMedia=HAB.reduce(function(a,h){return a+h[5]*h[6]},0)/HAB.length;
+    return [
+      ['agua',   function(r){ return VEC[r].some(function(v){return G(v)[8]==='agua'}) }],
+      ['noAgua', function(r){ return !VEC[r].some(function(v){return G(v)[8]==='agua'}) }],
+      ['dormir', function(r){ return G(r)[8]==='dormir' }],
+      ['noDormir',function(r){ return G(r)[8]!=='dormir' }],
+      ['fuera',  function(r){ return G(r)[8]==='fuera' }],
+      ['noFuera',function(r){ return G(r)[8]!=='fuera' }],
+      ['paso',   function(r){ return G(r)[8]==='paso' }],
+      ['noPaso', function(r){ return G(r)[8]!=='paso' }],
+      ['cocina', function(r){ return r!=='cocina' }],
+      ['arriba', function(r){ return G(r)[4] < 60 }],
+      ['abajo',  function(r){ return G(r)[4] >= 60 }],
+      ['izq',    function(r){ return G(r)[3] < 50 }],
+      ['der',    function(r){ return G(r)[3] >= 50 }],
+      ['grande', function(r){ return G(r)[5]*G(r)[6] >= areaMedia }],
+      ['peque',  function(r){ return G(r)[5]*G(r)[6] <  areaMedia }]
+    ];
+  }
+  function candidatas(){ return HAB.map(function(h){return h[0]}).filter(function(r){return !fuera[r]}); }
+  // Divulgación progresiva: la primera pista debe DEJAR varias candidatas.
+  // Objetivo de candidatas restantes según el número de pista: 4, 2, 1…
+  function nuevaPista(){
+    var cand=candidatas();
+    var objetivo = pistas.length===0 ? 4 : (pistas.length===1 ? 2 : 1);
+    var mejor=null, mejorCoste=1e9;
+    reglas().forEach(function(p){
+      if(usadas[p[0]] || !p[1](tesoro)) return;
+      var quedan=cand.filter(function(r){ return p[1](r) }).length;
+      if(quedan<1) return;
+      if(pistas.length===0 && quedan<3) return;
+      if(quedan===cand.length) return;
+      var coste=Math.abs(quedan-objetivo);
+      if(coste<mejorCoste){ mejorCoste=coste; mejor=p[0]; }
+    });
+    if(!mejor && pistas.length===0){
+      var mx=0;
+      reglas().forEach(function(p){
+        if(usadas[p[0]] || !p[1](tesoro)) return;
+        var q=cand.filter(function(r){ return p[1](r) }).length;
+        if(q>mx && q<cand.length){ mx=q; mejor=p[0]; }
+      });
+    }
+    if(!mejor) return false;
+    usadas[mejor]=true; pistas.push(mejor); return true;
+  }
+
+  var nodos={};
+  function construye(){
+    var s2='';
+    HAB.forEach(function(h){
+      var id=h[0],x=h[3],y=h[4],w=h[5],ht=h[6];
+      s2+='<g class="hab" data-id="'+id+'" style="--sala:var(--s-'+id+')" tabindex="0" role="button">'+
+         '<rect class="cuarto" x="'+x+'" y="'+y+'" width="'+w+'" height="'+ht+'" rx="2.5"/>'+
+         '<g class="mueble" transform="translate('+(x+w/2-16)+','+(y+ht/2-15)+')"><path d="'+h[7]+'"/></g>'+
+         '<text class="rot" x="'+(x+3)+'" y="'+(y+6)+'"></text>'+
+         '<path class="marca aspa" d="M'+(x+w-13)+' '+(y+ht-13)+'l9 9M'+(x+w-4)+' '+(y+ht-13)+'l-9 9" '+
+           'stroke="currentColor" stroke-width="2" stroke-linecap="round" fill="none" opacity="0"/>'+
+         '<g class="marca cofre" transform="translate('+(x+w-16)+','+(y+ht-18)+')" opacity="0">'+
+           '<rect x="0" y="4" width="13" height="9" rx="1.5" fill="none" stroke="currentColor" stroke-width="2"/>'+
+           '<path d="M0 7h13M6.5 4V2" stroke="currentColor" stroke-width="2"/></g>'+
+         '</g>';
+    });
+    $('plano').innerHTML=s2;
+    [].forEach.call($('plano').querySelectorAll('.hab'),function(g){ nodos[g.dataset.id]=g; });
+  }
+  function pinta(){
+    HAB.forEach(function(h){
+      var id=h[0], g=nodos[id]; if(!g) return;
+      var est = fuera[id] ? 'fuera' : (fase==='fin' && id===tesoro ? 'tesoro' : '');
+      if(est) g.dataset.est=est; else delete g.dataset.est;
+      g.querySelector('.rot').textContent=nom(id).toUpperCase();
+      g.querySelector('.aspa').setAttribute('opacity', est==='fuera'?'1':'0');
+      g.querySelector('.cofre').setAttribute('opacity', est==='tesoro'?'1':'0');
+      g.setAttribute('aria-label', nom(id)+(est==='fuera'?' · '+(lang==='es'?'descartada':'ruled out'):''));
+      g.setAttribute('aria-disabled', String(est==='fuera'));
+    });
+    refresca();
+  }
+  function refresca(){
+    $('m1').setAttribute('aria-pressed',String(modo===1));
+    $('m2').setAttribute('aria-pressed',String(modo===2));
+    $('p-et').textContent=L().pistas;
+    if(fase==='esconder'){
+      $('p-txt').textContent=L().esconde; $('p-lista').innerHTML='';
+      $('aviso').textContent=''; $('acc').hidden=true; $('casa').hidden=false;
+    } else if(fase==='escondido'){
+      $('p-txt').textContent=L().escondido; $('p-lista').innerHTML='';
+      $('casa').hidden=true;
+      $('aviso').textContent=''; $('acc').hidden=false; $('acc').textContent=L().empezar;
+    } else if(fase==='fin'){
+      $('p-txt').textContent=L().encontrado+' '+nom(tesoro)+'.';
+      $('acc').hidden=false; $('acc').textContent=L().otra;
+    } else {
+      $('casa').hidden=false;
+      $('p-txt').textContent=L().busca;
+      $('p-lista').innerHTML=pistas.map(function(k){return '<li>'+L().c[k]+'</li>'}).join('');
+      $('acc').hidden=true;
+      $('aviso').textContent=L().quedan+' '+candidatas().length+' '+L().hab+'.';
+    }
+  }
+  function di(m){ var e=$('aviso'); e.textContent=''; setTimeout(function(){ e.textContent=m; },30); }
+
+  function empieza(){
+    fuera={}; pistas=[]; usadas={};
+    if(modo===1){ var c=HAB.map(function(h){return h[0]}); tesoro=c[Math.floor(Math.random()*c.length)];
+      fase='buscar'; nuevaPista(); }
+    else { tesoro=null; fase='esconder'; }
+    pinta();
+  }
+
+  function toca(id){
+    if(fase==='esconder'){ tesoro=id; fase='escondido'; pinta(); return; }
+    if(fase==='fin' || fuera[id]) return;
+    if(id===tesoro){ fase='fin'; pinta(); di(L().encontrado+' '+nom(id)+'.'); return; }
+    fuera[id]=true;
+    nuevaPista();
+    pinta();
+    di(L().descartada);
+  }
+
+  $('plano').addEventListener('click',function(e){ var g=e.target.closest('.hab'); if(g) toca(g.dataset.id); });
+  $('plano').addEventListener('keydown',function(e){
+    if(e.key!=='Enter'&&e.key!==' ') return;
+    var g=e.target.closest('.hab'); if(g){ e.preventDefault(); toca(g.dataset.id); } });
+  $('m1').addEventListener('click',function(){ modo=1; empieza(); });
+  $('m2').addEventListener('click',function(){ modo=2; empieza(); });
+  $('otra').addEventListener('click',empieza);
+  $('acc').addEventListener('click',function(){
+    if(fase==='escondido'){ fase='buscar'; nuevaPista(); pinta(); di(L().busca); return; }
+    empieza();
+  });
+  $('tema').addEventListener('click',function(){
+    var o=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',o?'light':'dark');
+    this.setAttribute('aria-pressed',String(!o)); });
+  $('idioma').addEventListener('change',function(){ lang=this.value; idioma(); });
+
+  function idioma(){
+    document.documentElement.lang=lang;
+    $('t-tit').textContent=L().tit; $('otra').textContent=L().otra;
+    $('m1').textContent=L().m1; $('m2').textContent=L().m2;
+    var A=L().a11y;
+    $('idioma').setAttribute('aria-label',A.idioma);
+    $('tema').setAttribute('aria-label',A.tema);
+    $('grupo-modo').setAttribute('aria-label',A.modo);
+    $('plano').setAttribute('aria-label',A.plano);
+    pinta();
+  }
+
+  window.__qa={reglas:reglas,candidatas:candidatas,HAB:HAB,
+    juega:function(t){ fuera={}; pistas=[]; usadas={}; tesoro=t; fase="buscar"; nuevaPista();
+      return {pista:pistas[0], quedan:HAB.map(function(h){return h[0]}).filter(function(r){
+        var p=reglas().find(function(x){return x[0]===pistas[0]}); return p && p[1](r); }).length}; }};
+  construye(); idioma(); empieza();
+})();
+</script>
+</body>
+</html>
