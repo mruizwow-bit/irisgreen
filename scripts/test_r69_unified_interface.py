@@ -73,7 +73,7 @@ def main()->None:
         need(s.count('data-ig-audience-stage=')==3,"Home public age buttons count !=3: "+p.as_posix())
         need('data-ig-audience-stage="GENERAL"' not in s,"GENERAL must not be a public Home age button: "+p.as_posix())
         need('data-ig-audience-stage="ALL_AGES"' not in s,"ALL_AGES must not be a public Home age button: "+p.as_posix())
-        need('ig-home-v4-safety-state' in s,"Home child-safe state is not visible: "+p.as_posix())
+        need('ig-home-v4-safety-state' not in s,"Internal child-safety state leaked into public Home: "+p.as_posix())
         need('/assets/ig-r49-lang-bootstrap.js' in s,"Home lacks first-paint R49 bootstrap: "+p.as_posix())
         need('/assets/ig-fonts.css' in s,"Home lacks local fonts: "+p.as_posix())
 
