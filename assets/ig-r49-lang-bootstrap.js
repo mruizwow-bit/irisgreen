@@ -16,9 +16,11 @@ try{
   document.documentElement.dataset.igAgeBand=age;
   document.documentElement.dataset.igSafetyMode=age==='AGE_18_PLUS'?'adult-explicit':'safe-by-default';
   var q=new URLSearchParams(location.search).get('lang');
-  if(q==='es'||q==='en'){
-    document.documentElement.lang=q;
-    localStorage.setItem('ig_lang',q);
+  var docLang=String(document.documentElement.lang||'').toLowerCase().split('-',1)[0];
+  var lang=(q==='es'||q==='en')?q:((docLang==='es'||docLang==='en')?docLang:null);
+  if(lang){
+    document.documentElement.lang=lang;
+    localStorage.setItem('ig_lang',lang);
   }
 }catch(_){}
 })();
