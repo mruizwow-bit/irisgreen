@@ -841,3 +841,40 @@ Futuro:
 → `ZONE_BY_ZONE_ATOMIC_CUTOVER`.
 
 Motor continúa Sabik Web sobre main y no se interrumpe.
+
+
+---
+
+# 16 · HUMAN QA producto · Mapa descartado / Habitación pasa a primer juego
+
+María prueba el producto real y descarta:
+`Mapa del tesoro de casa`
+
+Estado:
+`MAPA_TESORO_PRODUCT_CONCEPT_FAIL_DISCARDED`
+
+Motivo:
+la interacción se percibe como tocar una habitación y recibir confirmación/descarte. No aporta suficiente reto, decisión, curiosidad, sorpresa o deseo de repetir.
+
+Decisión:
+- no rework;
+- no nueva iteración;
+- no vuelve a la cola de Juegos;
+- se conserva únicamente como evidencia/prototipo histórico.
+
+Nuevo primer juego de la nueva Área de Juegos:
+`Habitación imposible`
+
+Regla:
+`ONE_GAME → USE → HUMAN_QA → FIX/FREEZE → NEXT_GAME`
+
+Montaje aislado:
+- rama `nexo/new-games-area-r01-20261004`;
+- ruta nueva `/es/juegos/habitacion-imposible/`;
+- Mapa retirado de la nueva superficie;
+- legacy antiguo no tocado.
+
+Estado:
+`HABITACION_IMPOSIBLE_FIRST_GAME_FOR_REAL_USE`
+
+No segundo juego hasta HUMAN QA María.
