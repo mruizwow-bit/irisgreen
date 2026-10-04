@@ -71,17 +71,17 @@ def sabik_home(en):
   </div>
 </div>
 <div class="ig-home-v4-sabik-right">
-  <div class="ig-home-v4-sabik-form-head"><label for="sabik-input" data-sabik-text="label">{t['label']}</label><button type="button" class="sabik-icon-button" id="sabik-toggle" aria-controls="sabik-widget-body" aria-expanded="true" data-sabik-text="hide">{t['hide']}</button></div>
+  <div class="ig-home-v4-sabik-form-head"><label for="sabik-input" data-sabik-text="label">{t['label']}</label></div>
   <div class="sabik-widget-body" id="sabik-widget-body">
-    <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" placeholder="{t['placeholder']}"></textarea><div class="sabik-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
+    <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" placeholder="{t['placeholder']}"></textarea><div class="sabik-actions sabik-primary-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
     <div id="sabik-results"></div>
-      <div class="ig-home-v4-sabik-controls">
-        <button class="sabik-button" id="sabik-expand" type="button" aria-pressed="false">{'Expand' if en else 'Ampliar'}</button>
-        <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false"><span data-sabik-text="voice">{t['voice']}</span>: <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button></div>
-        <div class="sabik-actions sabik-reset-actions"><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
-        <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select></div>
-      </div>
-      <a class="sabik-button" id="sabik-browse" href="{'/en/resources/' if en else '/es/recursos/'}" data-sabik-text="browse">{t['browse']}</a>
+  </div>
+  <div class="ig-home-v4-sabik-secondary-controls" role="group" aria-label="{'Sabik controls' if en else 'Controles de Sabik'}">
+    <button class="sabik-button" id="sabik-expand" type="button" aria-pressed="false">{'Expand' if en else 'Ampliar'}</button>
+    <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false"><span data-sabik-text="voice">{t['voice']}</span>: <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button></div>
+    <div class="sabik-actions sabik-reset-actions"><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
+    <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select></div>
+    <button type="button" class="sabik-icon-button" id="sabik-toggle" aria-controls="sabik-widget-body" aria-expanded="true" data-sabik-text="hide">{t['hide']}</button>
   </div>
 </div>
 </section></aside>'''
