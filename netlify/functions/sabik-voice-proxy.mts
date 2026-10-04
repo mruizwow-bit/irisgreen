@@ -9,6 +9,16 @@ const NO_STORE = {
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "no-referrer",
 };
+const EXPECTED_TTS = {
+  es: {
+    model_id: "SABIK_ES_MASTER_V1_ICL",
+    model_sha256: "38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c",
+  },
+  en: {
+    model_id: "SABIK_EN_MASTER_V2_ICL",
+    model_sha256: "38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c",
+  },
+};
 const MAX_REQUEST_BYTES = 8 * 1024 * 1024;
 const MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
 
@@ -18,6 +28,7 @@ function unavailable(status = 503) {
     headers:{...NO_STORE,"Content-Type":"application/json; charset=utf-8"},
   });
 }
+
 function privateOrigin() {
   const raw = String(Netlify.env.get("SABIK_VOICE_PRIVATE_ORIGIN") || "").trim();
   if (!raw) return null;
@@ -27,13 +38,59 @@ function privateOrigin() {
   return url.origin;
 }
 
-export default async (request) => {
+function validCapabilities(raw: any) {
+  if (!raw || raw.schema !== "iris-green/sabik-voice-runtime/v1") return false;
+  const privacy = raw.privacy || {};
+  if (privacy.no_store !== true || privacy.persist_audio !== false || privacy.persist_transcript !== false) return false;
+  const stt = raw.stt || {};
+  if (stt.self_hosted !== true || !Array.isArray(stt.languages) || !stt.languages.includes("es") || !stt.languages.includes("en")) return false;
+  for (const lang of ["es","en"] as const) {
+    const actual = raw.tts?.[lang];
+    const expected = EXPECTED_TTS[lang];
+    if (!actual || actual.self_hosted !== true || actual.model_id !== expected.model_id || actual.model_sha256 !== expected.model_sha256) return false;
+  }
+  return true;
+}
+
+async function verifiedCapabilities(origin: string) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), 5000);
+  try {
+    const response = await fetch(origin + "/sabik-voice/capabilities", {
+      method: "GET",
+      cache: "no-store",
+      signal: controller.signal,
+      headers: {Accept:"application/json"},
+    });
+    if (!response.ok) return null;
+    const type = response.headers.get("content-type") || "";
+    if (!/^application\/json(?:;|$)/i.test(type)) return null;
+    const payload = await response.json();
+    return validCapabilities(payload) ? payload : null;
+  } catch {
+    return null;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+export default async (request: Request) => {
   const url = new URL(request.url);
   const expectedMethod = ALLOWED.get(url.pathname);
   if (!expectedMethod || request.method !== expectedMethod || url.search) return unavailable(405);
 
   const origin = privateOrigin();
   if (!origin || Netlify.env.get("SABIK_VOICE_ENABLED") !== "true") return unavailable();
+
+  const capabilities = await verifiedCapabilities(origin);
+  if (!capabilities) return unavailable();
+
+  if (url.pathname === "/sabik-voice/capabilities") {
+    return new Response(JSON.stringify(capabilities), {
+      status: 200,
+      headers:{...NO_STORE,"Content-Type":"application/json; charset=utf-8"},
+    });
+  }
 
   let body;
   if (request.method !== "GET") {
