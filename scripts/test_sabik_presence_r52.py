@@ -28,8 +28,15 @@ for name, expected_blob in expected.items():
     blob = hashlib.sha1(b"blob " + str(len(data)).encode("ascii") + b"\0" + data).hexdigest()
     require(blob == expected_blob, f"Sabik current master changed: {name} -> {blob}")
 
-require('<img id="sabik-web-master" src="/sabik/assets/web-r01/web_presente.png?v=r69-20260930-3"' in panel,
-        "Current Sabik PRESENTE master is not mounted with cache-safe version")
+require('id="sabik-web-master"' in panel and '/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01' in panel,
+        "Current Sabik PRESENTE master is not mounted with definitive cache-safe version")
+for required_layer in (
+    '/sabik/definitive-r01/03_orbits_back.svg',
+    '/sabik/definitive-r01/04_core_rings.svg',
+    '/sabik/definitive-r01/05_core_light.svg',
+    '/sabik/definitive-r01/06_particles_front.svg',
+):
+    require(required_layer in panel, f"Definitive Sabik layer missing: {required_layer}")
 for forbidden in ("sabik-base-640.webp","sabik-orbits-back.svg","sabik-orbits-front.svg","sabik-orbit-layer","sabik-layered-avatar","sabikR69OrbitBack","sabikR69OrbitFront"):
     require(forbidden not in panel + css + js, f"Legacy Sabik donor leaked back in: {forbidden}")
 for required in ("sabik-current-presence","sabik-presence-motion","sabikR69SelfMotion","sabikR69SelfMotionReduced","dataset.renderActive"):
