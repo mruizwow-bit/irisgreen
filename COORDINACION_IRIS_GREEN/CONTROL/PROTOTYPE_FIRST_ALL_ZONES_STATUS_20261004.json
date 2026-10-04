@@ -215,5 +215,21 @@
       "RETIRE_LEGACY_ONLY_AFTER_POST_CUTOVER_QA"
     ],
     "motor_constraint": "BUSY_WITH_SABIK_WEB__DO_NOT_INTERRUPT"
-  }
+  },
+  "games_human_qa": {
+    "mapa-del-tesoro": {
+      "status": "PRODUCT_CONCEPT_FAIL_DISCARDED",
+      "reason": "LOW_COMPELLING_GAMEPLAY__PRESS_ROOM_AND_RECEIVE_CONFIRMATION_OR_DISCARD",
+      "rework": false,
+      "retained_as": "HISTORICAL_PROTOTYPE_EVIDENCE_ONLY"
+    },
+    "habitacion-imposible": {
+      "status": "FIRST_GAME_FOR_REAL_USE",
+      "branch": "nexo/new-games-area-r01-20261004",
+      "route": "/es/juegos/habitacion-imposible/",
+      "human_qa": "PENDING_MARIA"
+    }
+  },
+  "games_sequence": "ONE_GAME_USE_HUMAN_QA_FIX_OR_FREEZE_THEN_NEXT",
+  "next_game_blocked_until": "HABITACION_IMPOSIBLE_HUMAN_QA"
 }
