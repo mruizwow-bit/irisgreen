@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green.r59.exoplanets.b07-b10.final-patches.v1",
+  "date": "2026-10-04",
+  "owner": "Senda · R59",
+  "source_review_comment": 5967716428,
+  "marker": "EXOPLANETS_B07_B10_FINAL_PASS",
+  "patches": {
+    "B07": {
+      "marker": "B07_MANIFEST_SELF_HASH_FIX",
+      "masters_changed": false,
+      "master_count": 10,
+      "manifest_self_hash": false,
+      "zip_test": "PASS"
+    },
+    "B08": {
+      "marker": "B08_BD061339B_CONTROVERSIAL_METADATA_FIX",
+      "masters_changed": false,
+      "master_count": 10,
+      "planet": "BD-06 1339 b",
+      "controversial_status": true,
+      "catalog_status": "Confirmed Planet",
+      "ui_note_es": "Estado: confirmado en el catálogo · señal discutida en la literatura",
+      "source": "NASA Exoplanet Archive",
+      "zip_test": "PASS"
+    },
+    "B09": {
+      "marker": "B09_BEBOP4_MASS_LIMIT_FIX",
+      "masters_changed": false,
+      "master_count": 10,
+      "planet": "BEBOP-4 AB b",
+      "preferred_mass_display": "m sin i = 6643 ± 413 M⊕",
+      "preferred_mass_display_jupiter": "20.9 ± 1.3 M♃",
+      "upper_bound": "M < 8359 M⊕",
+      "upper_bound_jupiter": "M < 26.3 M♃",
+      "source": "NASA Exoplanet Archive · Triaud et al. 2025",
+      "zip_test": "PASS"
+    },
+    "B10": {
+      "status": "PASS_NO_PATCH_REQUIRED",
+      "masters_changed": false
+    }
+  },
+  "qa": {
+    "masters_byte_identical": "30/30",
+    "zip_tests": "3/3 PASS",
+    "no_rerender": true,
+    "manifest_self_hash_absent": true
+  },
+  "scientific_policy": "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
+  "status": "PASS"
+}
