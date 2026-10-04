@@ -4,6 +4,12 @@
   publish = "dist"
   command = "python3 scripts/build_site.py"
 
+# Production is published only by the explicit GitHub workflow after María's
+# MARIA_EXPLICIT_REOPEN authorization. Git-linked pushes to main must not create
+# an automatic production build/deploy. Manual CLI deploys remain available.
+[context.production]
+  ignore = "exit 0"
+
 # IMPORTANTE: main siempre construye el producto canónico mediante [build].
 # El mantenimiento público se publica con su workflow operativo independiente
 # y no sustituye el build del código fuente.
