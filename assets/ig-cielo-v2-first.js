@@ -301,7 +301,19 @@ class Runtime{
   }
   // One last rendered-box pass guarantees containment after any intro shift.
   changed=applyBounds()||changed;
+  const finalBox=button.getBoundingClientRect();
+  const ir=intro?intro.getBoundingClientRect():null;
+  const stillOverlapsIntro=Boolean(ir&&finalBox.right>ir.left-pad&&finalBox.left<ir.right+pad&&finalBox.bottom>ir.top-pad&&finalBox.top<ir.bottom+pad);
+  const outsideScene=finalBox.left<sceneRect.left-1||finalBox.right>sceneRect.right+1||finalBox.top<sceneRect.top-1||finalBox.bottom>sceneRect.bottom+1;
+  if(stillOverlapsIntro||outsideScene){
+   // At extreme text zoom on narrow screens the intro can consume the whole
+   // visual safe area. Constellation hints are redundant with the textual
+   // "in view" list, so omit the visual hint rather than covering content.
+   button.remove();
+   return false;
+  }
   button.dataset.safeClamped=String(changed);
+  return true;
  }
  renderTargets(cur){
   this.targets.replaceChildren();this.labels.replaceChildren();const r=this.scene.getBoundingClientRect(),w=Math.max(320,r.width),h=Math.max(420,r.height);
