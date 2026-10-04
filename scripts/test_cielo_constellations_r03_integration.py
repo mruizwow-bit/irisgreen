@@ -20,6 +20,25 @@ MANIFEST_SHA='b806c2f9135f03756a5695edc5e1d08dc3b21f4591e28944062292e0e205ef70'
 class Quiet(SimpleHTTPRequestHandler):
     def log_message(self,*args): pass
 
+def assert_labels_safe(page, lang, width, phase):
+    geom=page.evaluate("""() => {
+      const scene=document.querySelector('.skyv2-scene'),intro=document.querySelector('.skyv2-intro');
+      if(!scene)return null;
+      const s=scene.getBoundingClientRect(),i=intro?intro.getBoundingClientRect():null;
+      const rect=r=>({left:r.left,right:r.right,top:r.top,bottom:r.bottom,width:r.width,height:r.height});
+      return {scene:rect(s),intro:i?rect(i):null,labels:[...document.querySelectorAll('.skyv2-const-label')].map(e=>({text:e.textContent,rect:rect(e.getBoundingClientRect()),clamped:e.dataset.safeClamped||''}))};
+    }""")
+    assert geom,(lang,width,phase,'missing scene geometry')
+    s=geom['scene'];i=geom['intro']
+    for row in geom['labels']:
+        r=row['rect']
+        assert r['left']>=s['left']-1 and r['right']<=s['right']+1,(lang,width,phase,'label clipped horizontally',row,s)
+        assert r['top']>=s['top']-1 and r['bottom']<=s['bottom']+1,(lang,width,phase,'label clipped vertically',row,s)
+        if i:
+            overlap=not (r['right']<=i['left']+1 or i['right']<=r['left']+1 or r['bottom']<=i['top']+1 or i['bottom']<=r['top']+1)
+            assert not overlap,(lang,width,phase,'label overlaps intro/question',row,i)
+    return geom
+
 def static_gate():
     idx=json.loads((ROOT/INDEX.lstrip('/')).read_text(encoding='utf-8'))
     full=json.loads((ROOT/'es/intereses/cielo/cielo.json').read_text(encoding='utf-8'))
@@ -55,7 +74,7 @@ def main():
       with sync_playwright() as pw:
         browser=pw.chromium.launch()
         for lang,path in ROUTES.items():
-          for width in (390,1440):
+          for width in (320,390,1440):
             ctx=browser.new_context(viewport={'width':width,'height':900 if width==1440 else 844},has_touch=width<500)
             page=ctx.new_page()
             req=[];external=[];bad=[];errors=[]
@@ -92,6 +111,14 @@ def main():
                 assert 24<=state['targets']<=40,state
                 assert state['labels']<=6,state
 
+            assert_labels_safe(page,lang,width,'r03-default-text')
+            page.evaluate("()=>{document.documentElement.style.fontSize='200%'}")
+            page.wait_for_timeout(180)
+            assert_labels_safe(page,lang,width,'r03-text-200')
+            page.evaluate("()=>{document.documentElement.style.fontSize=''}")
+            page.wait_for_timeout(180)
+            assert_labels_safe(page,lang,width,'r03-text-restored')
+
             # LOCATE + REVEAL on one approved R03 constellation.
             sel=page.locator('.skyv2-constellation-select')
             sel.select_option('Ori')
@@ -126,7 +153,7 @@ def main():
             assert not errors,(lang,width,errors)
             assert page.evaluate("()=>document.documentElement.scrollWidth<=window.innerWidth+2"),(lang,width,'overflow')
 
-            if lang=='es':
+            if lang=='es' and width in (390,1440):
                 page.screenshot(path=str(OUT/f'cielo-r03-88-{width}.png'),full_page=False)
 
             cases.append({'lang':lang,'width':width,**state,'external':0,'http_errors':0,'js_errors':0,'explore_locate_reveal':True})
@@ -153,7 +180,7 @@ def main():
       'summary':{
         'browser_cases':len(cases),
         'languages':['es','en'],
-        'widths':[390,1440],
+        'widths':[320,390,1440],
         'constellations':88,
         'full_stars_local':5070,
         'mobile_visible_range':[120,260],
@@ -166,6 +193,8 @@ def main():
         'js_errors':0,
         'depth_eager_requests':0,
         'explore_locate_reveal':True,
+        'constellation_label_safe_zone':True,
+        'text_200_percent_label_safe_zone':True,
         'review_assets_not_cards':True,
         'screenshots':['cielo-r03-88-390.png','cielo-r03-88-1440.png'],
       },
