@@ -750,3 +750,61 @@ Gate:
 `RINCON_PECERA_R02_FULL_5MIN_AV_READY_FOR_MEDIA_QA`
 
 No integrar el clip 40 s como producto final.
+
+
+---
+
+# 14 · R06.1 · cierre técnico de los cuatro prototipos iniciales
+
+Paquete revisado:
+`PROTOTIPOS_IRIS_GREEN_R06_1_DOCUMENT_SHELL.zip`
+
+SHA-256:
+- Mapa: `b08254b7d5bf3a566a3cceeb8c58f751723d35676a3db39bb30747ac12926243`
+- Habitación: `c643e990726fd0a97c892410fdb8dd43e870b3631c2a3c54b482cb5f81f3c0a9`
+- Ritmo: `758113a6fd545fcec2ca60956aa869230f6f7e68d5b4300e1344bdaf948da03a`
+- Vida marina: `78fc43ae40ab15a1f9c8d2b226ae89904d48a6eefa9fae8070a65e81c27e86f7`
+
+Validación independiente:
+- Mapa y Ritmo recuperan `<html lang="es">`, `<head>`, viewport meta y `</html>`;
+- exactamente 1 viewport meta por fichero;
+- Habitación/Vida marina permanecen byte-identical;
+- solver reproducido:
+  - Sala 1 = 1/0/91/92;
+  - Sala 2 = 0/3/94/97;
+  - Sala 3 = 0/0/44/44;
+  - Sala 4 = 0/10/282/292;
+  - camino3 = `suelo 4 → bloque ← ← ↑`.
+
+Gates aceptados:
+`MAPA_R06_1_DOCUMENT_SHELL_RESTORE_PASS`
+`RITMO_R06_1_DOCUMENT_SHELL_RESTORE_PASS`
+`MAPA_ES_EN_A11Y_PARITY_PASS`
+`RITMO_ES_EN_A11Y_PARITY_PASS`
+`MAPA_TESORO_TECHNICAL_BASE_READY_FOR_HUMAN_QA`
+`HABITACION_IMPOSIBLE_TECHNICAL_BASE_READY_FOR_HUMAN_QA`
+`TALLER_RITMO_TECHNICAL_BASE_READY_FOR_HUMAN_QA`
+`INTEREST_22_RUNTIME_BASE_READY`
+`PROTOTYPES_TECHNICAL_BASE_READY_FOR_HUMAN_QA`
+
+No se emite:
+`HUMAN_QA_PASS`
+
+Sigue abierto:
+`EVIDENCE_CAPTURE_GAP`
+para capturas 320/1440 que el capturador no genera de forma fiable. Se mantiene como deuda de evidencia, no fallo de producto.
+
+## Recurso Motor
+
+María confirma que:
+`MOTOR = BUSY_WITH_SABIK_WEB`
+
+Regla:
+`DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_PROTOTYPE_INTEGRATION`
+
+Por tanto:
+- no handoff a Motor ahora;
+- no common player del Rincón ahora;
+- no integración de estos prototipos a escala;
+- primero HUMAN QA María + continuar mapa de prototipos por zonas.
+
