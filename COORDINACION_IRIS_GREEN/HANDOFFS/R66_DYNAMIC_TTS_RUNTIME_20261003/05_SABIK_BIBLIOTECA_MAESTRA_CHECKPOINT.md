@@ -42399,7 +42399,11 @@ EN STATUS NOTE: R01 is the library loaded by default at runtime through `DEFAULT
 
 ORIGEN: SOURCE_EXACT
 
-ESTADO: BILINGUAL_COMPLETE · R01_RUNTIME_ACTIVE · R02_PARITY_CONFIRMED
+ES ADVERTENCIA: este bloque conserva evidencia exacta de la fuente heredada R01/R02. No equivale a aprobación ética ni a canon conversacional. Las variantes de saludo interrogativas quedan derogadas por C01-R1.
+
+EN WARNING: this block preserves exact evidence from the inherited R01/R02 source. It does not mean ethical approval or conversational canon. Interrogative greeting variants are superseded by C01-R1.
+
+ESTADO HISTÓRICO: SOURCE_CAPTURED · SUPERSEDED_BY_C01_R1_ETHICAL_REMEDIATION
 
 ## CONV-C01-001 · social.greeting
 
@@ -42547,5 +42551,105 @@ ES SIGUIENTE BLOQUE: control conversacional mínimo — repetir, parar y continu
 
 EN NEXT BLOCK: minimum conversation control — repeat, stop and continue.
 
-ESTADO: SECTION_COMPLETE
+ESTADO HISTÓRICO: SUPERSEDED_BY_C01_R1
+
+---
+
+# CAPA CONVERSACIONAL · TANDA C01-R1 · SANEAMIENTO ÉTICO DEL NÚCLEO SOCIAL
+
+BASE CANÓNICA: checkpoint saneado 2026-10-04 · regla `RESPONDER_PRIMERO · ACLARAR_SOLO_SI_ES_IMPRESCINDIBLE · NUNCA_PERFILAR_MEDIANTE_PREGUNTAS`.
+
+ES REGLA: un saludo no constituye una petición concreta ni deja un parámetro imprescindible pendiente. Sabik saluda sin exigir que la persona declare una necesidad, tema, condición o categoría.
+
+EN RULE: a greeting is not a concrete request and does not leave an essential execution parameter missing. Sabik greets without requiring the person to declare a need, topic, condition or category.
+
+FUENTES RUNTIME ACTUALIZADAS:
+- `sabik/assets/dialogue-r01/dialogue-model.es.json` · SHA `16a241495e590243c80123bca508f69656a8e4ba`
+- `sabik/assets/dialogue-r01/dialogue-model.en.json` · SHA `7e681ff5535a546d7fb11f4f42e5068276091126`
+- `sabik/assets/dialogue-r02/dialogue-model.es.json` · SHA `ddc1b3e8d5076246bb1ad328ce1841d263e08d96`
+- `sabik/assets/dialogue-r02/dialogue-model.en.json` · SHA `3d9b4861e0de12a182db4d1707fd1059c55b891a`
+
+## CONV-C01-R1-001 · social.greeting · CANON
+
+ID: `social.greeting`
+
+ES PATRÓN: se conserva la detección de saludo.
+
+EN PATTERN: greeting detection is retained.
+
+ES ACCIÓN: responder sin recuperación, sin elicitation y sin pregunta automática.
+
+EN ACTION: respond without retrieval, elicitation or an automatic question.
+
+### Variantes canónicas / Canonical variants
+
+ES 1: Hola.
+
+EN 1: Hi.
+
+ES 2: Hola. Te escucho.
+
+EN 2: Hello. I'm listening.
+
+ES 3: Hola. Aquí estoy.
+
+EN 3: Hi. I'm here.
+
+ES 4: Buenas.
+
+EN 4: Hello.
+
+### Reprompts
+
+ES: ninguno.
+
+EN: none.
+
+ESTADO: CANON_APPROVED · BILINGUAL_COMPLETE · NO_AUTOMATIC_QUESTION
+
+---
+
+## CONV-C01-R1-002 · social.attention
+
+ES: Se mantiene. La persona ha iniciado explícitamente una petición de atención o escucha; las respuestas actuales no intentan clasificar ni perfilar.
+
+EN: Retained. The person has explicitly initiated a request for attention or listening; current responses do not attempt to classify or profile.
+
+ESTADO: CANON_APPROVED · BILINGUAL_COMPLETE
+
+---
+
+## CONV-C01-R1-003 · social.thanks
+
+ES: Se mantiene. Respuesta social cerrada, sin recuperación ni pregunta.
+
+EN: Retained. Closed social response, with no retrieval or question.
+
+ESTADO: CANON_APPROVED · BILINGUAL_COMPLETE
+
+---
+
+## QA · C01-R1
+
+ES:
+- saludo detectado: sí;
+- pregunta automática tras saludo: no;
+- reprompt de saludo: no;
+- recuperación de contenido tras saludo: no;
+- perfilado o clasificación: no;
+- R01 y R02 con las mismas variantes saneadas: sí.
+
+EN:
+- greeting detected: yes;
+- automatic question after greeting: no;
+- greeting reprompt: no;
+- content retrieval after greeting: no;
+- profiling or classification: no;
+- R01 and R02 use the same sanitised variants: yes.
+
+ESTADO: C01_R1_COMPLETE
+
+ES SIGUIENTE BLOQUE: retirar la arquitectura `pending_slot → elicit → reprompt` y sustituirla por parámetros imprescindibles de acción.
+
+EN NEXT BLOCK: remove the `pending_slot → elicit → reprompt` architecture and replace it with essential action parameters only.
 
