@@ -142,7 +142,7 @@ function syncMandatoryGate(){
  gate.querySelectorAll('[data-ig-mandatory-label]').forEach(function(btn){btn.textContent=copy[btn.getAttribute('data-ig-mandatory-label')];});
  syncPicker(gate);
 }
-function apply(){applyRoot();document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncDiscovery(document);syncPageGate();syncMandatoryGate();}
+function apply(){applyRoot();document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncDiscovery(document);syncPageGate();syncMandatoryGate();document.documentElement.dataset.igAgeRuntimeReady='true';}
 function dispatchChange(){window.dispatchEvent(new CustomEvent('ig:audience-change',{detail:{ageBand:selectedBand(),safetyMode:mode(),adultClaimed:isAdultClaimed(),adultAssurance:hasAdultAssurance()?'verified':'unverified'}}));}
 function set(value){
  var next=canonical(value);if(USER_AGE.indexOf(next)===-1)return false;
