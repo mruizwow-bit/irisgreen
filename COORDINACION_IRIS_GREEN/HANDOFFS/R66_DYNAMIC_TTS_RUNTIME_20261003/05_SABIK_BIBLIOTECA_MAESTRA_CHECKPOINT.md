@@ -42381,3 +42381,171 @@ ES: Grupo editorial 01 incorporado con 28 filas de fuente, traducción EN y 3 pa
 EN: Editorial group 01 added with 28 source rows, EN translation and 3 published route pairs.
 
 SIGUIENTE GRUPO: INTEREST-GROUP-02
+
+---
+
+# CAPA CONVERSACIONAL · TANDA C01 · NÚCLEO SOCIAL
+
+FUENTES:
+- `sabik/assets/dialogue-r01/dialogue-model.es.json` · SHA `0987a6805a9905336cdb251947c50eaa843a1a66`
+- `sabik/assets/dialogue-r01/dialogue-model.en.json` · SHA `569339f1c93281e552d70179d97bb4e1390adf52`
+- `sabik/assets/dialogue-r02/dialogue-model.es.json` · SHA `71f9c915feefdd352caa7c2ee4826cc96a0e8636`
+- `sabik/assets/dialogue-r02/dialogue-model.en.json` · SHA `869f5a44cb1532f2d31ae664839fbf7360b722d8`
+- `sabik/dialogue-library.mjs` · SHA `55e0b0e78382f363368c938c4a9699125475d5fc`
+
+ES NOTA DE ESTADO: R01 es la biblioteca cargada por defecto en runtime mediante `DEFAULT_BASE='./assets/dialogue-r01'`. En esta tanda, R01 y R02 contienen exactamente los mismos intents, patrones y prompts sociales. R02 se conserva como fuente de evolución, pero no se etiqueta como runtime activo.
+
+EN STATUS NOTE: R01 is the library loaded by default at runtime through `DEFAULT_BASE='./assets/dialogue-r01'`. In this batch, R01 and R02 contain exactly the same social intents, patterns and prompts. R02 is retained as an evolution source, but it is not labelled as the active runtime.
+
+ORIGEN: SOURCE_EXACT
+
+ESTADO: BILINGUAL_COMPLETE · R01_RUNTIME_ACTIVE · R02_PARITY_CONFIRMED
+
+## CONV-C01-001 · social.greeting
+
+ID: `social.greeting`
+
+ES ACCIÓN: responder sin recuperar contenido.
+
+EN ACTION: respond without content retrieval.
+
+PRIORIDAD / PRIORITY: `100`
+
+ES PATRÓN EXACTO: `^(?:hola|buenas|buenos dias|buenos días|buenas tardes|buenas noches)$`
+
+EN EXACT PATTERN: `^(?:hello|hi|hey|good morning|good afternoon|good evening)$`
+
+PROMPT: `social.greeting.response`
+
+### Variantes iniciales / Initial variants
+
+ES 1: Hola. ¿Qué necesitas?
+
+EN 1: Hi. What do you need?
+
+ES 2: Hola. Dime, ¿qué necesitas?
+
+EN 2: Hello. What do you need?
+
+ES 3: Hola. Te escucho. ¿Qué necesitas?
+
+EN 3: Hi. I'm listening. What do you need?
+
+ES 4: Hola. ¿En qué puedo ayudarte?
+
+EN 4: Hello. How can I help?
+
+### Reprompts
+
+ES 1: Dime qué necesitas.
+
+EN 1: Tell me what you need.
+
+ES 2: Te escucho.
+
+EN 2: I'm listening.
+
+ESTADO: SOURCE_EXACT · BILINGUAL_COMPLETE
+
+---
+
+## CONV-C01-002 · social.attention
+
+ID: `social.attention`
+
+ES ACCIÓN: responder sin recuperar contenido.
+
+EN ACTION: respond without content retrieval.
+
+PRIORIDAD / PRIORITY: `100`
+
+ES PATRÓN EXACTO: `^(?:responde|contesta|escucha|me oyes|me escuchas|estas ahi|estás ahí|sigues ahi|sigues ahí)$`
+
+EN EXACT PATTERN: `^(?:answer|respond|listen|can you hear me|are you there|are you listening)$`
+
+PROMPT: `social.attention.response`
+
+### Variantes iniciales / Initial variants
+
+ES 1: Sí. Te escucho.
+
+EN 1: Yes. I'm listening.
+
+ES 2: Aquí estoy. Te escucho.
+
+EN 2: I'm here. I'm listening.
+
+ES 3: Sí, dime.
+
+EN 3: Yes, go ahead.
+
+ES 4: Te escucho. Continúa.
+
+EN 4: I'm listening. Continue.
+
+### Reprompts
+
+ES 1: Te escucho.
+
+EN 1: I'm listening.
+
+ES 2: Dime.
+
+EN 2: Go ahead.
+
+ESTADO: SOURCE_EXACT · BILINGUAL_COMPLETE
+
+---
+
+## CONV-C01-003 · social.thanks
+
+ID: `social.thanks`
+
+ES ACCIÓN: responder sin recuperar contenido.
+
+EN ACTION: respond without content retrieval.
+
+PRIORIDAD / PRIORITY: `100`
+
+ES PATRÓN EXACTO: `^(?:gracias|muchas gracias|vale gracias|perfecto gracias)$`
+
+EN EXACT PATTERN: `^(?:thanks|thank you|thanks a lot|okay thanks)$`
+
+PROMPT: `social.thanks.response`
+
+### Variantes iniciales / Initial variants
+
+ES 1: De nada.
+
+EN 1: You're welcome.
+
+ES 2: Claro.
+
+EN 2: Of course.
+
+ES 3: Cuando quieras.
+
+EN 3: Any time.
+
+### Reprompts
+
+ES: La fuente no define reprompts para este intent.
+
+EN: The source defines no reprompts for this intent.
+
+ESTADO: SOURCE_EXACT · BILINGUAL_COMPLETE
+
+---
+
+## CONTROL DE PROGRESO · CAPA CONVERSACIONAL · C01
+
+ES: Incorporados 3 intents sociales, 3 patrones exactos por idioma, 11 variantes iniciales por idioma y 4 reprompts por idioma. No se ha normalizado ni reescrito el texto fuente.
+
+EN: Added 3 social intents, 3 exact patterns per language, 11 initial variants per language and 4 reprompts per language. Source wording has not been normalised or rewritten.
+
+ES SIGUIENTE BLOQUE: control conversacional mínimo — repetir, parar y continuar.
+
+EN NEXT BLOCK: minimum conversation control — repeat, stop and continue.
+
+ESTADO: SECTION_COMPLETE
+
