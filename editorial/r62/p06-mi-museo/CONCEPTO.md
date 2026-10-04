@@ -305,7 +305,7 @@ conservación, irá con su fuente y separada de lo que el juego calcula.
 ## Lo que sigue corto · primera vuelta E4 (04/10/2026)
 
 La lámina de trabajo `sala-trabajo.png` es una **primera vuelta**. En la medida
-de `scripts/test_r62_p05_p06.py`, P06 **pasa** las tres comprobaciones
+de `scripts/test_r62_pilotos.py`, P06 **pasa** las tres comprobaciones
 automáticas: el par de materiales más parecido —`banco` y `tarima`— queda a
 0,0306 sobre un mínimo de 0,030, ninguna casilla de color ocupa más del 9,9 %
 de la escena, y quitar la segunda fuente cambia la lámina en 0,0166. El gate

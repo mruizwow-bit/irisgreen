@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""R62 · P05 y P06 · lo que se puede medir del listón E4.
+"""R62 · pilotos P05, P06 y P07 · lo que se puede medir del listón E4.
 
 La referencia (`editorial/r62/REFERENCIA-E4.md`) dice que un «no» en cualquiera
 de sus preguntas fue, en P01, motivo de rework. Varias de ellas sólo las puede
@@ -21,7 +21,7 @@ sombra tiene penumbra, si la imperfección es desigual, si a 390 px es una
 composición propia, y si algo se parece a obra de terceros. Eso es revisión
 humana, y la serie entera la exige.
 
-Uso:  python3 scripts/test_r62_p05_p06.py
+Uso:  python3 scripts/test_r62_pilotos.py
 """
 from __future__ import annotations
 
@@ -35,6 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import ig_render_e4 as e4            # noqa: E402
 import r62_p05_render as p05         # noqa: E402
 import r62_p06_render as p06         # noqa: E402
+import r62_p07_render as p07         # noqa: E402
 
 # Lámina pequeña: lo que se mide son relaciones entre materiales y planitud,
 # y las dos sobreviven al tamaño. Medir a 1180×900 multiplica por seis el
@@ -269,6 +270,31 @@ def animales_visibles(img, buf, nombres):
     return filas
 
 
+def persiana_quita(mod):
+    """P07 · bajar la persiana tiene que **quitar** luz de la lámina.
+
+    Es la comprobación que P06 necesitó y no tenía: una señal de estado que
+    sólo suma no distingue encendido de apagado. Aquí el estado es cuántas
+    lamas quedan abiertas, y lo que tiene que pasar al bajarlas es que haya
+    menos superficie iluminada y menos luz total. Si bajar la persiana no
+    oscurece la lámina, el §11 —«se ve cuánta luz entra por las tiras»— no se
+    sostiene, por bien que esté escrito.
+    """
+    original = mod.LAMAS_ABIERTAS
+    medidas = {}
+    for abiertas in (mod.LAMAS, original, 1):
+        mod.LAMAS_ABIERTAS = abiertas
+        img, buf = _preparar(mod, (41, 71))
+        lum = img[buf.mask].mean(-1)
+        medidas[abiertas] = {'luz_media': round(float(lum.mean()), 4),
+                             'superficie_clara': round(float((lum > 0.42).mean()), 4)}
+    mod.LAMAS_ABIERTAS = original
+    orden = sorted(medidas)
+    baja = all(medidas[a]['luz_media'] < medidas[b]['luz_media']
+               for a, b in zip(orden, orden[1:]))
+    return {'por_lamas': medidas, 'baja_al_cerrar': baja}
+
+
 def causalidad_p05():
     """Mover el nudo tiene que cambiar quién viene. Si no, el §2 es un dibujo."""
     antes_z, antes = p05.Z_CEBO, p05.quien_viene()[0]
@@ -302,6 +328,9 @@ def main() -> int:
          ('limo', 'piedra', 'madera-hund', 'herbazal', 'junco', 'tabla', 'corcho'), 0.030, 1.10),
         ('P06', p06, (29, 67),
          ('yeso', 'tarima', 'laton', 'canto', 'barro', 'papel', 'banco'), 0.030, None),
+        ('P07', p07, (41, 71),
+         ('yeso', 'pino', 'mueble', 'lana', 'algodon', 'trapo', 'papel', 'mimbre',
+          'hoja', 'ceramica'), 0.030, None),
     ):
         img, buf = _preparar(mod, semillas)
         medias, texturas, pares = separacion_materiales(img, buf, materiales, banda)
@@ -350,6 +379,12 @@ def main() -> int:
                 elif d['contraste'] < 0.020:
                     fallos.append(f'P05: «{n}» está dibujado pero a {d["contraste"]:.4f} de '
                                   f'contraste con su entorno: no se ve')
+        if nombre == 'P07':
+            pers = persiana_quita(mod)
+            fila['persiana'] = pers
+            if not pers['baja_al_cerrar']:
+                fallos.append('P07: bajar la persiana no oscurece la lámina: la señal de '
+                              'estado suma pero no quita')
         informe[nombre] = fila
 
     informe['P05']['causalidad'] = causalidad_p05()
@@ -366,7 +401,7 @@ def main() -> int:
         'si algo puede confundirse con obra de terceros',
     ]
     informe['fallos'] = fallos
-    informe['gate'] = 'R62_P05_P06_E4_MEASURED_PASS' if not fallos else 'FAIL'
+    informe['gate'] = 'R62_PILOTOS_E4_MEASURED_PASS' if not fallos else 'FAIL'
     print(json.dumps(informe, ensure_ascii=False, indent=1))
     return 1 if fallos else 0
 

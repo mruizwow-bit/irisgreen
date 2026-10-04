@@ -332,7 +332,7 @@ ribera, irá con su fuente y separada de lo que el juego calcula.
 ## Lo que sigue corto · primera vuelta E4 (04/10/2026)
 
 La lámina de trabajo `orilla-trabajo.png` es una **primera vuelta**, no un PASS.
-`scripts/test_r62_p05_p06.py` devuelve **FAIL** y dice exactamente dónde.
+`scripts/test_r62_pilotos.py` devuelve **FAIL** y dice exactamente dónde.
 
 **Lo que sí está:** el plano partido se lee —aire arriba, columna de agua
 abajo—; las hojas de luz bajan desde la lámina y se apagan; las piedras tienen
