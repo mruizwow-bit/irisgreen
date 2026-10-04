@@ -53,9 +53,18 @@ Incluye:
 - pictogramas
 - herramientas prácticas de apoyo/autonomía
 
-Frontera:
-- core esencial/práctico = FREE
-- biblioteca extensa, packs, organización/exportación avanzada = PLUS
+Regla:
+`RESOURCES = FREE_ALWAYS`
+
+Todo el Área de Recursos permanece gratuita:
+- Tarjeta Iris
+- Rutinas visuales
+- Rutinas imprimibles
+- pictogramas
+- herramientas prácticas de apoyo/autonomía
+- bibliotecas, packs y ampliaciones de Recursos
+
+No existe Recursos Plus en la arquitectura aprobada por María.
 
 ### Área de Juegos
 Producto propio de primer nivel.
@@ -128,8 +137,10 @@ Stripe gestiona:
 - customer portal
 - webhooks
 
-Iris Green gestiona entitlements:
-`FREE / RESOURCES / GAMES / DISCOVERY / CREATION / FULL`
+Iris Green gestiona entitlements de producto:
+`FREE / GAMES / DISCOVERY / CREATION / FULL`
+
+`RESOURCES` no concede un nivel premium: Recursos es FREE_ALWAYS. Si Payments R01 conserva temporalmente un slug/variable RESOURCES por diseño previo, queda DEPRECATED/NO_PRODUCT hasta reconciliación del contrato de pagos.
 
 No codificar acceso por texto de producto/precio.
 
@@ -238,8 +249,18 @@ Las nuevas superficies deben evitar overlapping writes.
 ## 9 · Monetización y UX
 
 Regla de empresa propuesta:
-`KNOWLEDGE_RIGHTS_SAFETY_BASIC_SUPPORT = FREE`
-`EXTENSIVE_CATALOGS_PLAY_ADVANCED_TOOLS_CREATION_INTERACTIVE_EXPERIENCES = PREMIUM`
+`INFORMATION = FREE_ALWAYS`
+`RESOURCES = FREE_ALWAYS`
+`CALM_SPACE = FREE_ALWAYS`
+
+Solo se monetizan parcialmente:
+`GAMES / DISCOVERY / CREATION`
+
+Principio:
+`FREE_TIER = COMPLETE_USEFUL_PRODUCT`
+`PLUS = MORE_DEPTH_MORE_CATALOG_MORE_CAPABILITY`
+
+No se cobra por desbloquear una necesidad básica ni se usa una demo inútil como free tier.
 
 Compra:
 `ADULT_ZONE_ONLY`
@@ -301,3 +322,70 @@ No empezar todavía el HTML hasta aprobar el contrato de página:
 
 Siguiente documento:
 `GAMES_AREA_NEW_PAGE_PRODUCT_CONTRACT_R01`
+
+
+---
+
+# 13 · Corrección de monetización aprobada por María
+
+Decisión explícita:
+
+`INFORMATION = FREE_ALWAYS`
+`RESOURCES = FREE_ALWAYS`
+`CALM_SPACE = FREE_ALWAYS`
+
+Solo requieren clasificación FREE/PLUS:
+- Juegos
+- Descubrimiento
+- Creación
+
+## Juegos
+No fijar todavía número final sin auditar catálogo.
+
+Reglas:
+- algunos juegos completos deben estar disponibles gratis de forma permanente;
+- los juegos de autonomía/apoyo práctico pueden priorizar FREE;
+- una partida nunca se corta a mitad por paywall;
+- no vidas, energía, monedas o presión comercial;
+- PLUS = más catálogo, nuevas tandas y capacidades opcionales como favoritos/progreso si finalmente existen.
+
+## Descubrimiento
+La capa factual es siempre FREE:
+- hechos;
+- fuentes;
+- información;
+- imágenes/representaciones informativas;
+- listados básicos.
+
+Además, algunas experiencias interactivas completas deben ser FREE.
+No basta una demo de pocos segundos.
+
+PLUS se reserva para mayor profundidad:
+- mundos completos;
+- 3D avanzado;
+- simulaciones;
+- capas;
+- tiempo;
+- mapas profundos;
+- colecciones;
+- catálogos/expansiones extensas.
+
+## Creación
+Algunos estudios/herramientas deben ser completos y FREE.
+
+No ofrecer una herramienta artificialmente mutilada solo para empujar a compra.
+
+PLUS:
+- más estudios;
+- herramientas avanzadas;
+- proyectos;
+- exportaciones avanzadas;
+- capacidades profesionales/expandidas.
+
+## Siguiente decisión
+Crear una matriz exacta:
+`ITEM/FUNCTION → FREE | PLUS | FREE_CORE_PLUS_DEPTH`
+
+para Juegos, Descubrimiento y Creación.
+
+No marcar Recursos, Información o Espacio tranquilo como premium en esa matriz.
