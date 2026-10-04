@@ -25,6 +25,7 @@ on:
       - 'scripts/test_home_child_safe_browser.py'
       - 'scripts/build_site.py'
       - 'sabik/**'
+      - 'netlify/functions/sabik-voice-proxy.mts'
   workflow_dispatch:
 permissions:
   contents: read
