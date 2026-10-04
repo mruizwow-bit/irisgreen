@@ -1,7 +1,27 @@
-name: R69 unified interface recovery
+name: R69 unified interface main gate
 on:
   push:
-    branches: ['astra/r69-unified-interface-recovery-20260930']
+    branches: [main]
+    paths:
+      - '.github/workflows/r69-unified-interface.yml'
+      - 'assets/ig-r49-transversal.css'
+      - 'assets/ig-r49-transversal.js'
+      - 'assets/ig-r69-unified-ui.css'
+      - 'assets/home-r42-child-safe.css'
+      - 'assets/home-r42-child-safe.js'
+      - 'assets/ig-audience.js'
+      - 'assets/ig-audience.css'
+      - 'assets/controles-comunes.css'
+      - 'scripts/apply_home_r42.py'
+      - 'scripts/apply_r69_workshop_stable.py'
+      - 'scripts/apply_r69_global_cleanup.py'
+      - 'scripts/reorganize_activity_hubs.py'
+      - 'scripts/test_r69_unified_interface.py'
+      - 'scripts/test_r69_unified_interface_browser.py'
+      - 'scripts/test_r51_home_age_browser.py'
+      - 'scripts/test_r51_audience_filter_browser.py'
+      - 'scripts/build_site.py'
+      - 'sabik/**'
   workflow_dispatch:
 permissions:
   contents: read
