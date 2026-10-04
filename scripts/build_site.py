@@ -281,6 +281,8 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/fix_369_collection_headers.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # Prisma: Hojas del Taller conserva papel blanco, pero el chrome usa tokens y la pareja ES/EN es explícita.
     subprocess.run([sys.executable,str(ROOT/'scripts/test_workshop_sheets_tokens_hreflang.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    # #357: shared controls must stay on the global semantic token contract.
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_global_shared_controls_tokens.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
