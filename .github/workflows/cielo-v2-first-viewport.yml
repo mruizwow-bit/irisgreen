@@ -17,6 +17,7 @@ on:
       - 'assets/ig-eclipses.js'
       - 'img/intereses/eclipses/canonical-r02/**'
       - 'scripts/test_eclipse_canonical_r02_integration.py'
+      - 'scripts/test_workshop_sheets_tokens_hreflang.py'
       - '.github/workflows/cielo-v2-first-viewport.yml'
   workflow_dispatch:
 permissions:
