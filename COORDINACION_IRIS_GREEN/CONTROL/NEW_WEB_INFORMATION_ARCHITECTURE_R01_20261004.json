@@ -87,5 +87,43 @@
     "plus_rule": "MORE_DEPTH_MORE_CATALOG_MORE_CAPABILITY",
     "no_mid_experience_paywall": true,
     "adult_purchase_zone_only": true
+  },
+  "area_access_architecture": {
+    "pattern": "AREA_LANDING_TO_SEPARATE_FOR_EVERYONE_AND_PLUS_PAGES",
+    "labels_es": {
+      "free": "Para todos",
+      "plus": "Plus"
+    },
+    "labels_en": {
+      "free": "For everyone",
+      "plus": "Plus"
+    },
+    "areas": {
+      "games": {
+        "free_es": "/es/juegos/para-todos/",
+        "plus_es": "/es/juegos/plus/",
+        "free_en": "/en/games/for-everyone/",
+        "plus_en": "/en/games/plus/"
+      },
+      "discovery": {
+        "free_es": "/es/descubrimiento/para-todos/",
+        "plus_es": "/es/descubrimiento/plus/",
+        "free_en": "/en/discovery/for-everyone/",
+        "plus_en": "/en/discovery/plus/"
+      },
+      "creation": {
+        "free_es": "/es/creacion/para-todos/",
+        "plus_es": "/es/creacion/plus/",
+        "free_en": "/en/creation/for-everyone/",
+        "plus_en": "/en/creation/plus/"
+      }
+    },
+    "rules": [
+      "FOR_EVERYONE_IS_COMPLETE_USEFUL_PRODUCT",
+      "PLUS_IS_SEPARATE_CATALOG_AND_CAPABILITY_SPACE",
+      "NO_MIXED_LOCK_GRID_IN_FREE_PAGE",
+      "NO_MID_EXPERIENCE_PAYWALL",
+      "ADULT_PURCHASE_ZONE_ONLY"
+    ]
   }
 }
