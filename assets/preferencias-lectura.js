@@ -2,7 +2,8 @@
    Only presentation is persisted. Speech is always off on a new page. */
 (function (window, document) {
   'use strict';
-  if (/^\/es(?:\/|$)/.test(window.location.pathname)) { try { window.localStorage.removeItem('ig_lang'); } catch (_) {} }
+  // Language persistence is owned by ig-r49-lang-bootstrap.js.
+  // Reading preferences must never clear or rewrite the selected site language.
   if (window.IGPreferences) return;
   var KEY = 'ig-a11y', VERSION = 2, STEPS = [1, 1.15, 1.3, 1.5];
   var FLAGS = ['spacing', 'controls', 'contrast', 'guide', 'motion'];
