@@ -23,7 +23,10 @@ def need(v,msg):
  if not v: raise AssertionError(msg)
 
 def rule(css,selector):
- m=re.search(re.escape(selector)+r"\{([^}]*)\}",css,re.S)
+ # Match the selector as a complete rule head. Without the rule boundary,
+ # ".hoja-bar button" also matched the earlier combined rule
+ # ".btn-todo,.hoja-bar button", producing a false FAIL.
+ m=re.search(r"(?:^|})\s*"+re.escape(selector)+r"\{([^}]*)\}",css,re.S)
  need(m, "missing selector "+selector)
  return m.group(1)
 
