@@ -6,7 +6,7 @@
   "strategy": "ONE_GAME_AT_A_TIME__NO_LEGACY_CUTOVER",
   "new_routes": {
     "es_hub": "/es/juegos/",
-    "es_game": "/es/juegos/mapa-del-tesoro/"
+    "es_game": "/es/juegos/habitacion-imposible/"
   },
   "legacy_routes_preserved": {
     "es": "/es/recursos/juegos/",
@@ -26,5 +26,16 @@
   "cutover": "BLOCKED_UNTIL_HUMAN_QA_AND_FRESH_MAIN_RECONCILIATION",
   "reconciled_at_main_sha": "496dc10a9e791331aa43647c32aa74048c698584",
   "reconciliation_reason": "Motor/Sabik advanced main by 16 commits; branch rebuilt from live main preserving only isolated new files",
-  "preview_rebuild_trigger": "RECONCILED_HEAD_READY_20261004"
+  "preview_rebuild_trigger": "RECONCILED_HEAD_READY_20261004",
+  "first_game": {
+    "id": "habitacion-imposible",
+    "source": "R06.1 validated prototype",
+    "status": "HUMAN_QA_MARIA_PENDING"
+  },
+  "discarded_games": [
+    "mapa-del-tesoro"
+  ],
+  "discard_reason": {
+    "mapa-del-tesoro": "HUMAN_QA_PRODUCT_FAIL__NO_COMPELLING_GAMEPLAY__PRESS_ROOM_AND_RECEIVE_YES_NO_STYLE_FEEDBACK"
+  }
 }
