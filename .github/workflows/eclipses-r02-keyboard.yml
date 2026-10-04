@@ -1,0 +1,40 @@
+name: Motor · Eclipses R02 keyboard
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'assets/ig-eclipses.css'
+      - 'assets/ig-eclipses.js'
+      - 'img/intereses/eclipses/canonical-r02/**'
+      - 'scripts/test_eclipse_canonical_r02_integration.py'
+      - '.github/workflows/eclipses-r02-keyboard.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - name: Syntax
+        run: |
+          node --check assets/ig-eclipses.js
+          python -m py_compile scripts/test_eclipse_canonical_r02_integration.py
+      - name: Build canónico
+        run: python scripts/build_site.py
+      - name: QA Eclipses R02 keyboard
+        run: python scripts/test_eclipse_canonical_r02_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: eclipse-r02-keyboard
+          path: |
+            reports/eclipse-canonical-r02-integration/qa.json
+            reports/eclipse-canonical-r02-integration/*.png
+          retention-days: 14
