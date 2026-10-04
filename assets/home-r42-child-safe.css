@@ -227,7 +227,7 @@ html[data-ig-contrast="on"] .ig-home-header{
 }
 .ig-home-v4-sabik-left,.ig-home-v4-sabik-right{min-width:0;display:flex;flex-direction:column;gap:.45rem}
 .ig-home-v4-sabik-identity-row{display:flex;align-items:center;gap:.8rem}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:none}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:0 0 clamp(300px,24vw,360px);width:clamp(300px,24vw,360px);min-width:0}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{
   width:clamp(220px,18vw,300px);
   max-width:300px;
@@ -247,8 +247,9 @@ html[data-ig-contrast="on"] .ig-home-header{
 @media(max-width:760px){
   .ig-home-v4-sabik{width:100%}
   .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
-  .ig-home-v4-sabik-identity-row{justify-content:center}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:min(62vw,280px)}
+  .ig-home-v4-sabik-identity-row{flex-direction:column;align-items:center;justify-content:center;text-align:center}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:0 1 auto;width:min(62vw,280px)}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:100%}
 }
 
 
