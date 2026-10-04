@@ -84,8 +84,10 @@ async function mount(){
   voiceButton.setAttribute('aria-pressed',String(voiceSessionActive));voiceState.textContent=listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSessionActive?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${voiceSessionActive?strings().voiceOn:strings().voiceOff}`);
   if(micButton)micButton.disabled=busy||transcribing;
-  if(voiceStop)voiceStop.disabled=!(voiceSessionActive||listening||transcribing||speaking||busy);
-  if(voiceRepeat)voiceRepeat.disabled=!on||!state?.ttsAvailable||!state?.canRepeat;
+  const stopRelevant=Boolean(voiceSessionActive||listening||transcribing||speaking||busy);
+  if(voiceStop){voiceStop.hidden=!stopRelevant;voiceStop.disabled=!stopRelevant;}
+  const repeatRelevant=Boolean(on&&state?.ttsAvailable&&state?.canRepeat);
+  if(voiceRepeat){voiceRepeat.hidden=!repeatRelevant;voiceRepeat.disabled=!repeatRelevant;}
   if(voiceVolume)voiceVolume.disabled=!on||!state?.ttsAvailable;
   if(voiceRate)voiceRate.disabled=!on||!state?.ttsAvailable;
   window.SabikWebPresentation?.setVoiceActive(speaking);
@@ -204,7 +206,7 @@ async function mount(){
   }
   lang=nextLang;voice.setLanguage(lang);aside.lang=lang;announcement.lang=lang;
   aside.querySelectorAll('[data-sabik-text]').forEach(el=>{if(strings()[el.dataset.sabikText]!=null)el.textContent=strings()[el.dataset.sabikText];});
-  $('#sabik-toggle').textContent=$('#sabik-widget-body').hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;
+  const toggle=$('#sabik-toggle');if(toggle)toggle.textContent=$('#sabik-widget-body')?.hidden?strings().show:strings().hide;input.placeholder=strings().placeholder;
   const browse=$('#sabik-browse');if(browse)browse.href=lang==='en'?'/en/resources/':'/es/recursos/';
   const stateNode=aside.querySelector('.sabik-state');if(stateNode)stateNode.textContent=strings().available;
   const availability=$('#sabik-availability');if(availability)availability.textContent=strings().connected+(lang==='en'?' '+strings().spanish:'');
@@ -233,7 +235,7 @@ async function mount(){
  input.addEventListener('input',()=>{controls();if(input.value.trim())void visual('orientar',{force:true});});
  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();$('#sabik-form').requestSubmit();}});
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();endVoiceSession('cancel');busy=false;controls();void visual('pausa',{force:true,semantic:'idle'});input.focus();});
- $('#sabik-toggle').addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);$('#sabik-toggle').setAttribute('aria-expanded',String(!body.hidden));$('#sabik-toggle').textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();endVoiceSession('close');busy=false;controls();void present();}else visual('transicion');});
+ const toggle=$('#sabik-toggle');if(toggle)toggle.addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);toggle.setAttribute('aria-expanded',String(!body.hidden));toggle.textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();endVoiceSession('close');busy=false;controls();void present();}else visual('transicion');});
  voiceButton.addEventListener('click',async()=>{if(voiceSessionActive){endVoiceSession('voice-primary-stop');return;}voiceSessionActive=true;voiceButton.disabled=true;controls();try{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}}catch{voiceSessionActive=false;announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-primary'});controls();}});
  if(micButton)micButton.addEventListener('click',async()=>{voiceSessionActive=true;const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}controls();});
  if(voiceStop)voiceStop.addEventListener('click',()=>{conversation.cancel('voice-stop');connection?.disconnect();endVoiceSession('voice-stop');busy=false;controls();input.focus();});
