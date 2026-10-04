@@ -82,12 +82,19 @@ def render_config(old):
     assert isinstance(context,dict) and set(context)<= {'production'},'Contextos de Netlify no previstos'
     production=context.get('production')
     if production is not None:
-        assert isinstance(production,dict) and set(production)<= {'publish','command'},'Opciones de producción no previstas'
-        assert production.get('publish')=='maintenance-dist','Producción debe seguir cerrada en maintenance-dist'
-        assert production.get('command')=='python3 scripts/build_maintenance.py','Producción debe seguir usando build_maintenance.py'
+        assert isinstance(production,dict) and set(production)<= {'publish','command','ignore'},'Opciones de producción no previstas'
+        if 'ignore' in production:
+            assert set(production)=={'ignore'},'El bloqueo de auto-build no debe mezclar command/publish'
+            assert production.get('ignore')=='exit 0','El auto-build de producción debe quedar detenido'
+        else:
+            assert production.get('publish')=='maintenance-dist','Producción legacy debe seguir cerrada en maintenance-dist'
+            assert production.get('command')=='python3 scripts/build_maintenance.py','Producción legacy debe seguir usando build_maintenance.py'
     out=['# Iris Green · publicación de archivos públicos, no de la carpeta de trabajo.','[build]','  publish = "dist"','  command = "python3 scripts/build_site.py"','']
     if production is not None:
-        out+=['# Mientras la web pública está cerrada, producción publica únicamente el cartel de mantenimiento.','# Deploy previews y branch deploys siguen usando el build normal para poder revisar cambios.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
+        if 'ignore' in production:
+            out+=['# Production is published only by the explicit GitHub workflow after Maria authorization.','# Git-linked pushes to main do not build or publish production.','[context.production]','  ignore = '+json.dumps(production['ignore']),'']
+        else:
+            out+=['# Legacy maintenance context retained only when explicitly present.','[context.production]','  publish = '+json.dumps(production['publish']),'  command = '+json.dumps(production['command']),'']
     out+=['# Netlify normaliza las barras: no usar redirecciones hacia la misma ruta.','[build.processing.html]','  pretty_urls = true','']
     # Preserve explicit build environment settings, including PYTHON_VERSION.
     environment=data['build'].get('environment',{})
