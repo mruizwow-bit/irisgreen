@@ -195,5 +195,25 @@
       "status": "BUSY_WITH_SABIK_WEB",
       "rule": "DO_NOT_INTERRUPT_MOTOR_FOR_RINCON_OR_PROTOTYPE_INTEGRATION"
     }
+  },
+  "parallel_rebuild_strategy": {
+    "status": "PARALLEL_REBUILD_NO_CUTOVER",
+    "keep_current": [
+      "Rincón"
+    ],
+    "rebuild_parallel": [
+      "Juegos",
+      "Taller",
+      "Intereses y otras zonas aún por redefinir"
+    ],
+    "rules": [
+      "PRESERVE_LEGACY_FOR_ROLLBACK",
+      "NEW_ROUTES_AND_ASSETS_ISOLATED",
+      "NO_CANONICAL_ROUTE_REPLACEMENT_BEFORE_HUMAN_QA",
+      "RECONCILE_AGAINST_LIVE_MAIN_BEFORE_CUTOVER",
+      "ATOMIC_ZONE_BY_ZONE_CUTOVER",
+      "RETIRE_LEGACY_ONLY_AFTER_POST_CUTOVER_QA"
+    ],
+    "motor_constraint": "BUSY_WITH_SABIK_WEB__DO_NOT_INTERRUPT"
   }
 }
