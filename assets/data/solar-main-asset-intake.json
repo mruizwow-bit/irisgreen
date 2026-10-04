@@ -1,119 +1,98 @@
 {
-  "schema": "iris-green/solar-main-asset-intake/v1",
-  "date": "2026-10-03",
+  "schema": "iris-green/solar-main-asset-intake/v2",
+  "date": "2026-10-04",
   "product": "INTEREST_02_SOLAR_SYSTEM_MAIN",
   "upstream_visual_gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
-  "packaging_status": "PENDING_ATLAS_WEB_PACKAGE",
+  "packaging_status": "ATLAS_PACKAGE_READY",
+  "package_gate": "SOLAR_MAIN_10_PACKAGED_READY_FOR_RUNTIME",
   "integration_order": 2,
   "predecessor": "NIGHT_SKY_CONSTELLATIONS_88_RUNTIME_INTEGRATION_PASS",
   "interaction_contract": "EXPLORE_LOCATE_REVEAL",
+  "canonical_web_root": "/img/intereses/sistema-solar/first-party/r01/",
+  "package_library": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/SOLAR_MAIN_10/SOLAR_MAIN_10_RUNTIME_PACKAGE_R01.zip",
+  "package_sha256": "5273912a5a0aca3a0bfbe05ec4080b889f707cec503d0b221dc82b10d3740d0a",
   "runtime_keep": {
     "engine": "assets/ig-sistema-solar-3d.js",
     "shell": "assets/ig-sistema-solar.js",
-    "direct_manipulation": [
-      "drag_rotate",
-      "button_rotate",
-      "keyboard_rotate",
-      "button_zoom",
-      "keyboard_zoom",
-      "focused_wheel_zoom"
-    ],
-    "locate": [
-      "scene_pick",
-      "labels",
-      "go_to_select",
-      "previous_next"
-    ],
-    "reveal": [
-      "ss-now",
-      "full_entry_link",
-      "data_facts"
-    ],
     "lazy_3d_after_user_action": true
   },
   "visual_policy": {
-    "touch_visual_assets": false,
-    "use_old_donors_as_final": false,
-    "no_invented_paths": true,
-    "no_invented_hashes": true,
-    "canonical_master_contract": "1536x1536 PNG RGBA + alpha + embedded sRGB + transparent background",
-    "expected_packaging": [
-      "web_paths",
-      "sha256",
-      "manifest",
-      "provenance"
-    ]
+    "approved_masters_only": true,
+    "byte_identical": true,
+    "reencode": false,
+    "pixel_edits": false,
+    "canonical_master_contract": "1536x1536 PNG RGBA + alpha + embedded sRGB + transparent background"
   },
   "bodies": [
     {
       "id": "sol",
       "name_en": "Sun",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/sol.png",
+      "sha256": "8b060092d09e1100d1d7b4c7dd1b4db093894aba717d9cbc6fd6e066369beace"
     },
     {
       "id": "mercurio",
       "name_en": "Mercury",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/mercurio.png",
+      "sha256": "592e8f00fbaaece3f02221df3c65d93a50ba07c64473ae171522bd8c7910910f"
     },
     {
       "id": "venus",
       "name_en": "Venus",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/venus.png",
+      "sha256": "a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f"
     },
     {
       "id": "tierra",
       "name_en": "Earth",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/tierra.png",
+      "sha256": "d09773ebd0774121287370556e01d6d0ea57fa0d4d35295c121325e155c61cac"
     },
     {
       "id": "marte",
       "name_en": "Mars",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/marte.png",
+      "sha256": "2da051ee02e9583f1702409f126fd8b8a82810699af425f7e64d70e4474598e9"
     },
     {
       "id": "jupiter",
       "name_en": "Jupiter",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/jupiter.png",
+      "sha256": "379c6f0bec39afacc444a9807d01c1f732cfa668e1d5a3670cfc9e036de51a59"
     },
     {
       "id": "saturno",
       "name_en": "Saturn",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/saturno.png",
+      "sha256": "4b62485a38231ec47363db69208cda3cc94bc73430b21a8d6d579d38fbcc5631"
     },
     {
       "id": "urano",
       "name_en": "Uranus",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/urano.png",
+      "sha256": "2d4b6b6a262eb933130fc1fa1df5ba6d8aecb5c08ef7fec7d93786ac67b7b76f"
     },
     {
       "id": "neptuno",
       "name_en": "Neptune",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/neptuno.png",
+      "sha256": "9a85681f33eaca9448176a60b925cafbef2a6613960e58b562e66372071bf4cc"
     },
     {
       "id": "pluton",
       "name_en": "Pluto",
-      "asset_status": "pending_packaging",
-      "web_path": null,
-      "sha256": null
+      "asset_status": "packaged",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/pluton.png",
+      "sha256": "428fc88d8a86fe220f7ad53c34dae218fc1601404df8fe6f8b283d2c5f8c8844"
     }
   ]
 }
