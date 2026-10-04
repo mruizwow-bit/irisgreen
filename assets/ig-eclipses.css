@@ -16,7 +16,7 @@
 .ec-mapfig{margin:0 0 12px;display:flex;flex-direction:column;gap:6px}
 .ec-map{display:block;width:100%;height:auto;border:1px solid var(--line,#dfe6ef);border-radius:16px;background:#dce8f2}
 .ec-map-live{cursor:crosshair}
-.ec-mapwrap:focus-visible{outline:3px solid #5a49a8;outline-offset:2px}
+.ec-map-live:focus-visible,.ec-mapwrap:focus-visible{outline:3px solid var(--ig-focus-global,#5a49a8);outline-offset:3px}
 .ec-sea{fill:#dce8f2}
 .ec-land{fill:#f4f1ea;stroke:#9aa6b4;stroke-width:.6}
 .ec-es{fill:#fffdf6;stroke:#6d7a8a}
