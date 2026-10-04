@@ -36,10 +36,14 @@
     return {kind:'safe-variant',entry:entry};
   }
 
-  /* Full S2 solo ADULTEZ + acción explícita. Nunca una consecuencia de render/discovery. */
+  /* P0 R01: autodeclarar ADULTEZ nunca autoriza contenido restringido.
+     La assurance adulta será una señal independiente y server-side en P1.
+     Hasta entonces, todo S2 permanece SAFE_VARIANT_ONLY. */
+  function hasAdultAssurance(){ return false; }
+  function canAccessRestrictedAdultContent(){ return false; }
   function mayLoadFull(entry,opts){
-    opts=opts||{};
-    return isS2(entry)&&normAudience(opts.audience==null?current:opts.audience)==='adult'&&opts.explicitAction===true;
+    void entry; void opts;
+    return false;
   }
 
   function filterDiscovery(rows,audience){
@@ -82,6 +86,8 @@
     isS2:isS2,
     canDiscover:canDiscover,
     resolveIntent:resolveIntent,
+    hasAdultAssurance:hasAdultAssurance,
+    canAccessRestrictedAdultContent:canAccessRestrictedAdultContent,
     mayLoadFull:mayLoadFull,
     filterDiscovery:filterDiscovery,
     purgeFull:purgeFull,
