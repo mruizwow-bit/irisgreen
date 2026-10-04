@@ -42653,3 +42653,97 @@ ES SIGUIENTE BLOQUE: retirar la arquitectura `pending_slot → elicit → reprom
 
 EN NEXT BLOCK: remove the `pending_slot → elicit → reprompt` architecture and replace it with essential action parameters only.
 
+---
+
+# CAPA CONVERSACIONAL · REPARACIÓN ÉTICA E02 · ELIMINACIÓN DE ELICITATION GENERAL
+
+BASE CANÓNICA: checkpoint saneado 2026-10-04.
+
+ES OBJETIVO: eliminar del runtime activo la arquitectura `pending_slot → elicit → reprompt` que convertía contexto opcional como `aspect` en una obligación de respuesta para la persona.
+
+EN OBJECTIVE: remove from the active runtime the `pending_slot → elicit → reprompt` architecture that turned optional context such as `aspect` into a required response from the person.
+
+## E02-RUNTIME
+
+ES:
+- `sabik/dialogue-library.mjs` ya no contiene `pendingSlot`, `setPendingSlot` ni la acción general `elicit`;
+- el único bloqueo conversacional permitido por esta capa es `required_parameters`, destinado exclusivamente a parámetros imprescindibles de una acción concreta;
+- `conversation-core-r66.mjs` elimina la ejecución de `elicit` y los reprompts ligados a `pendingSlot`;
+- se conserva una vía explícita `need_parameter`, que falla cerrado si una acción declara un parámetro imprescindible pero no aporta su prompt.
+
+EN:
+- `sabik/dialogue-library.mjs` no longer contains `pendingSlot`, `setPendingSlot` or the general `elicit` action;
+- the only conversational blocker allowed by this layer is `required_parameters`, exclusively for essential parameters of a concrete action;
+- `conversation-core-r66.mjs` removes `elicit` execution and reprompts tied to `pendingSlot`;
+- an explicit `need_parameter` route remains and fails closed if an action declares an essential parameter without its prompt.
+
+RUNTIME SHA:
+- `sabik/dialogue-library.mjs` · `12d1ba1a15309e228b0ef24e47663cf558607e79`
+- `sabik/conversation-core-r66.mjs` · `a145a0e75fd8c8b97da872e18e6b97b3db7d2318`
+
+ESTADO: CANON_APPROVED · RESPOND_FIRST_ARCHITECTURE
+
+## E02-VARIABLES
+
+ES: `pending_slot` eliminado de R01 y R02.
+
+EN: `pending_slot` removed from R01 and R02.
+
+SHA:
+- R01 `dialogue-variables.json` · `9dc1ba9d1dfaaf89c1b5e4319adb1fccf6b95d4e`
+- R02 `dialogue-variables.json` · `1695b1add998d4be319264093659bbf2fff57a59`
+
+ESTADO: CANON_APPROVED
+
+## E02-MODELOS
+
+ES:
+- eliminados `required_slots` y `when_missing` de los intents R01/R02;
+- `topic` y `aspect` pasan a ser contexto útil, no campos que Sabik tenga que completar mediante preguntas;
+- políticas declarativas actualizadas a `respond_first`, `clarify_only_for_required_parameters` y `never_profile_through_questions`.
+
+EN:
+- `required_slots` and `when_missing` removed from R01/R02 intents;
+- `topic` and `aspect` are now useful context rather than fields Sabik must complete through questions;
+- declarative policies updated to `respond_first`, `clarify_only_for_required_parameters` and `never_profile_through_questions`.
+
+SHA:
+- R01 ES · `7d9f1baeea896b8b5545670286dfc870357de39d`
+- R01 EN · `c2954f48cb55a59db043f1aa7717d0252c144512`
+- R02 ES · `ebc41c7331ce1f73b1ed74873bb8125f82c33e8a`
+- R02 EN · `b5c006607323b8c21e8ca2bd71a8ad9ca5152d68`
+
+ESTADO: CANON_APPROVED
+
+## E02-QA
+
+ES: Los tests que antes exigían `pending_slot`, `search.ask_aspect` o `action:"elicit"` han sido convertidos para esperar respuesta/recuperación directa. Los casos donde la persona aporta espontáneamente un aspecto —por ejemplo `Señales` después de hablar de autismo— se conservan.
+
+EN: Tests that previously required `pending_slot`, `search.ask_aspect` or `action:"elicit"` now expect direct response/retrieval. Cases where the person spontaneously provides an aspect—for example `Signs` after discussing autism—are retained.
+
+SHA TESTS:
+- R01 ES · `1004480a8932d5964c6b02217cd0aa6a3b893343`
+- R01 EN · `f48b71236172fc6c9f0adcbbdff1aa36cd5611f3`
+- R02 ES · `e18aa1c051ccb0c292ad4fcb1fad0213b25c501e`
+- R02 EN · `c8a6f78c5b88c0d43a7e72a470fce7e4453ed84b`
+
+ESTADO: QA_EXPECTATION_SANITISED
+
+## E02-DOCUMENTACIÓN
+
+ES: README R01/R02 reescritos para eliminar la mecánica de slot pendiente y fijar la regla canónica de responder primero.
+
+EN: R01/R02 READMEs rewritten to remove pending-slot mechanics and establish the respond-first canonical rule.
+
+SHA:
+- R01 README · `4d3b985e0cf5ed1fbc96b79bba0ffcb3399e8f4d`
+- R02 README · `d407a0cc7c168e0e2f80e9699f291db5f6074ba5`
+
+ESTADO: DOCUMENTATION_ALIGNED
+
+ES SIGUIENTE BLOQUE: sanear prompts interrogativos que siguen existiendo fuera de `pending_slot`: `search.no_result`, `correction.ask`, `conversation.new_topic`, `clarify.ambiguous` y `clarify.silence`.
+
+EN NEXT BLOCK: sanitise interrogative prompts that still exist outside `pending_slot`: `search.no_result`, `correction.ask`, `conversation.new_topic`, `clarify.ambiguous` and `clarify.silence`.
+
+ESTADO: E02_COMPLETE
+
