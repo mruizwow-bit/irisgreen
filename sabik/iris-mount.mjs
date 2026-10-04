@@ -11,7 +11,7 @@ const TEXT={
   unavailable:'Sabik está disponible con las fuentes seguras locales de Iris Green.',
   available:'Sabik está disponible.',
   hide:'Ocultar',show:'Mostrar',
-  welcome:'Puedo ayudarte a buscar información.',conversationWelcome:'Puedes preguntarme por escrito o activar la voz. Respondo con información de Iris Green y te enseño las fuentes.',
+  welcome:'Puedo ayudarte a buscar información.',conversationWelcome:'Pregunta por escrito o por voz. Respondo con información de Iris Green y enseño las fuentes.',
   explanation:'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green. No invento una respuesta cuando no encuentro información suficiente.',
   connected:'Puedo responder con las fuentes de Iris Green. No hago diagnósticos.',
   label:'¿Qué necesitas?',help:'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.',send:'Enviar',
@@ -23,7 +23,7 @@ const TEXT={
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
   voice:'Hablar con Sabik',voiceOn:'Conversación activa',voiceOff:'Lista',mic:'Hablar',stopVoice:'Detener',repeat:'Repetir',
   volume:'Volumen',rate:'Velocidad',listening:'Escuchando',processing:'Procesando',speaking:'Hablando',
-  voiceHelp:'Pulsa «Hablar con Sabik» y habla. Sabik empezará a escuchar y enviará tu pregunta cuando termines. El audio no se guarda en Iris Green.',
+  voiceHelp:'Pulsa «Hablar con Sabik» y habla. Sabik escucha después de tu activación explícita. Iris Green no guarda el audio.',
   voiceReady:'Voz preparada.',voiceError:'La voz no se pudo activar.',micDenied:'No se pudo usar el micrófono. Puedes seguir escribiendo.',
   noSpeech:'No he detectado una consulta. Puedes intentarlo de nuevo o escribirla.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
   ttsUnavailable:'La voz dinámica de Sabik no está disponible ahora. La respuesta escrita sigue disponible.',sources:'Fuentes'
@@ -31,7 +31,7 @@ const TEXT={
  en:{
   subtitle:'Iris Green assistant',
   unavailable:'Sabik is available with Iris Green’s safe local sources.',available:'Sabik is available.',hide:'Hide',show:'Show',
-  welcome:'I can help you find information.',conversationWelcome:'You can ask me in writing or enable voice. I answer with Iris Green information and show the sources.',
+  welcome:'I can help you find information.',conversationWelcome:'Ask in writing or by voice. I answer with Iris Green information and show the sources.',
   explanation:'If the Cloud library is unavailable, I use Iris Green’s safe local index. I do not invent an answer when there is not enough information.',
   connected:"I can answer using Iris Green's sources. I don't make diagnoses.",
   label:'What do you need?',help:'Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.',send:'Send',
@@ -42,7 +42,7 @@ const TEXT={
   empty:'Write what you need.',spanish:'Some original sources are in Spanish.',
   voice:'Talk to Sabik',voiceOn:'Conversation active',voiceOff:'Ready',mic:'Speak',stopVoice:'Stop',repeat:'Repeat',
   volume:'Volume',rate:'Speed',listening:'Listening',processing:'Processing',speaking:'Speaking',
-  voiceHelp:'Press “Talk to Sabik” and speak. Sabik starts listening and sends your question when you finish. Iris Green does not store the audio.',
+  voiceHelp:'Press “Talk to Sabik” and speak. Sabik listens after your explicit activation. Iris Green does not store the audio.',
   voiceReady:'Voice ready.',voiceError:'Sabik voice could not be turned on.',micDenied:'The microphone could not be used. You can keep typing.',
   noSpeech:'I did not detect a query. You can try again or type it.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
   ttsUnavailable:'Sabik dynamic voice is not available right now. The written answer remains available.',sources:'Sources'
