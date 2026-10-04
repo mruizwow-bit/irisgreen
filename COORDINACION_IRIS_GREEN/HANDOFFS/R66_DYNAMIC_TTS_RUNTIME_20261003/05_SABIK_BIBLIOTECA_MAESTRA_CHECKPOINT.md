@@ -25195,3 +25195,1169 @@ ESTADO: BILINGUAL_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: catálogo de páginas de Taller / Workshop y Recursos / Resources.
+
+# 69. RECURSOS / RESOURCES · CATÁLOGO DE PORTADA
+
+FUENTE ES: `es/recursos/index.html` · SHA `1504f9a74ca20d7df3f69c89fd6f67141b29dcbe`.
+
+FUENTE EN: `en/resources/index.html` · SHA `cd8ad128991180eda11a36bdfa9c96183d7562ff`.
+
+ES REGLA: Se registran las herramientas y etapas visibles de la portada. Un elemento «Próximamente» se conserva como tal y no se trata como herramienta disponible.
+
+EN RULE: Visible tools and life-stage navigation from the index are recorded. A «Coming soon» item remains marked as such and is not treated as an available tool.
+
+## WEB-RESOURCE-001
+
+ES TÍTULO: Juegos
+
+EN TITLE: Games
+
+ES DESCRIPCIÓN: 297 juegos prácticos para situaciones cotidianas, sin tiempo ni puntuación.
+
+EN DESCRIPTION: 297 practical games for everyday situations, with no timer or score.
+
+ES RUTA: /es/recursos/juegos/
+
+EN PATH: /en/resources/games/
+
+ES ESTADO: AVAILABLE
+
+EN STATUS: AVAILABLE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-002
+
+ES TÍTULO: Rutinas visuales
+
+EN TITLE: Visual routines
+
+ES DESCRIPCIÓN: Usa una rutina preparada o construye la tuya para pantalla, A4, tira o Primero → Después.
+
+EN DESCRIPTION: Use a ready-made routine or build your own for screen, A4, strip or First → Then.
+
+ES RUTA: /es/recursos/rutinas-visuales/
+
+EN PATH: /en/resources/visual-routines/
+
+ES ESTADO: AVAILABLE
+
+EN STATUS: AVAILABLE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-003
+
+ES TÍTULO: Rutinas imprimibles
+
+EN TITLE: Printable routines
+
+ES DESCRIPCIÓN: Hojas A4 listas para imprimir: 109 rutinas, tarjetas para recortar, tableros y packs.
+
+EN DESCRIPTION: A4 sheets ready to print: 109 routines, cards to cut out, boards and packs.
+
+ES RUTA: /es/recursos/rutinas-imprimibles/
+
+EN PATH: /en/resources/printable-routines/
+
+ES ESTADO: AVAILABLE
+
+EN STATUS: AVAILABLE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-004
+
+ES TÍTULO: Tarjeta Iris
+
+EN TITLE: Iris Card
+
+ES DESCRIPCIÓN: Prepara un mensaje claro y enséñalo cuando necesites comunicar algo.
+
+EN DESCRIPTION: Prepare a clear message to show when you need to communicate something.
+
+ES RUTA: /es/recursos/tarjeta-iris/
+
+EN PATH: /en/resources/iris-card/
+
+ES ESTADO: AVAILABLE
+
+EN STATUS: AVAILABLE
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-005
+
+ES TÍTULO: Descargas visuales
+
+EN TITLE: Visual downloads
+
+ES DESCRIPCIÓN: Más materiales visuales gratuitos se añadirán aquí.
+
+EN DESCRIPTION: More free visual materials will be added here.
+
+ES RUTA: —
+
+EN PATH: —
+
+ES ESTADO: Próximamente
+
+EN STATUS: Coming soon
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-STAGE-001
+
+ES ETAPA: Infancia
+
+EN STAGE: Childhood
+
+ES DESCRIPCIÓN: Apoyos visuales y actividades cotidianas con instrucciones directas y espacio para practicar a tu ritmo.
+
+EN DESCRIPTION: Visual supports and everyday activities with direct instructions and room to practise at your own pace.
+
+ES ENLACES: Juegos → /es/recursos/juegos/#etapa-inf | Rutinas → /es/recursos/rutinas-imprimibles/#etapa-inf
+
+EN LINKS: Games → /en/resources/games/#etapa-inf | Routines → /en/resources/printable-routines/#etapa-inf
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-STAGE-002
+
+ES ETAPA: Adolescencia
+
+EN STAGE: Adolescence
+
+ES DESCRIPCIÓN: Organización, estudio, cambios de actividad, transporte, autocuidado y situaciones con más autonomía.
+
+EN DESCRIPTION: Organisation, study, transitions, transport, personal care and situations with growing independence.
+
+ES ENLACES: Juegos → /es/recursos/juegos/#etapa-ado | Rutinas → /es/recursos/rutinas-imprimibles/#etapa-ado
+
+EN LINKS: Games → /en/resources/games/#etapa-ado | Routines → /en/resources/printable-routines/#etapa-ado
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-STAGE-003
+
+ES ETAPA: Adultez
+
+EN STAGE: Adulthood
+
+ES DESCRIPCIÓN: Planificación, trabajo, hogar, compras, citas, transporte, descanso y otras tareas de la vida diaria.
+
+EN DESCRIPTION: Planning, work, home, shopping, appointments, transport, rest and other everyday tasks.
+
+ES ENLACES: Juegos → /es/recursos/juegos/#etapa-adu | Rutinas → /es/recursos/rutinas-imprimibles/#etapa-adu
+
+EN LINKS: Games → /en/resources/games/#etapa-adu | Routines → /en/resources/printable-routines/#etapa-adu
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-RESOURCE-STAGE-004
+
+ES ETAPA: Cualquier edad
+
+EN STAGE: Any age
+
+ES DESCRIPCIÓN: Recursos transversales que pueden servir en distintas etapas sin pedir edad, diagnóstico ni perfil.
+
+EN DESCRIPTION: Cross-stage resources that may be useful at different points in life, without asking for age, diagnosis or a profile.
+
+ES ENLACES: Juegos → /es/recursos/juegos/#etapa-todas | Rutinas → /es/recursos/rutinas-imprimibles/#etapa-todas
+
+EN LINKS: Games → /en/resources/games/#etapa-todas | Routines → /en/resources/printable-routines/#etapa-todas
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## QA · RECURSOS / RESOURCES
+
+- PRIMARY_RESOURCE_CARDS_ES_EN: 5/5
+- AVAILABLE_PRIMARY_TOOLS: 4
+- COMING_SOON_ITEMS: 1
+- LIFE_STAGE_NAVIGATION: 4/4
+- BILINGUAL_COMPLETE: PASS
+- STATUS: PASS
+
+---
+
+# 70. TALLER / WORKSHOP · CATÁLOGO DE 27 ESTUDIOS
+
+FUENTE ES: `es/taller/index.html` · SHA `502ffb2593f35cd7a629c24b33811fc658a0e6dd`.
+
+FUENTE EN: `en/workshop/index.html` · SHA `dc8e0eb2151247fc67595717423f34ae80c68db3`.
+
+ES REGLA: Los estudios se emparejan por `data-studio`, no por similitud del título. Se conservan perfil, audiencia, sensibilidad y modo de descubrimiento declarados en la portada.
+
+EN RULE: Studios are paired by `data-studio`, not by title similarity. Declared profile, audience, sensitivity and discovery mode are preserved.
+
+## WEB-WORKSHOP-STUDIO-001
+
+STUDIO_ID: programacion
+
+ES NOMBRE: Programación
+
+EN NAME: Coding
+
+ES DESCRIPCIÓN: Bloques, JavaScript y Python
+
+EN DESCRIPTION: Blocks, JavaScript and Python
+
+PROFILE_ID: codigo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/programacion/
+
+EN PATH: /en/workshop/coding/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-002
+
+STUDIO_ID: estructuras
+
+ES NOMBRE: Estructuras y puentes
+
+EN NAME: Structures and bridges
+
+ES DESCRIPCIÓN: Puentes y grúas con cálculo y física
+
+EN DESCRIPTION: Bridges and cranes with forces and physics
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/estructuras/
+
+EN PATH: /en/workshop/structures/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-003
+
+STUDIO_ID: ritmo
+
+ES NOMBRE: Ritmo y secuenciador
+
+EN NAME: Rhythm and sequencer
+
+ES DESCRIPCIÓN: Batería y pistas; WAV y MIDI
+
+EN DESCRIPTION: Drums and tracks; WAV and MIDI
+
+PROFILE_ID: tiempo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/ritmo/
+
+EN PATH: /en/workshop/rhythm-sequencer/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-004
+
+STUDIO_ID: pixel-art
+
+ES NOMBRE: Pixel art
+
+EN NAME: Pixel art
+
+ES DESCRIPCIÓN: Paletas, fotogramas, mosaico y GIF
+
+EN DESCRIPTION: Palettes, frames, tiling and GIF
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/pixel-art/
+
+EN PATH: /en/workshop/pixel-art/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-005
+
+STUDIO_ID: robotica
+
+ES NOMBRE: Robótica
+
+EN NAME: Robotics
+
+ES DESCRIPCIÓN: Un robot con sensores y su gemelo digital
+
+EN DESCRIPTION: A robot with sensors and its digital twin
+
+PROFILE_ID: codigo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/robotica/
+
+EN PATH: /en/workshop/robotics/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-006
+
+STUDIO_ID: videomapping
+
+ES NOMBRE: Videomapping
+
+EN NAME: Projection mapping
+
+ES DESCRIPCIÓN: Luz que encaja en objetos reales
+
+EN DESCRIPTION: Light that fits real objects
+
+PROFILE_ID: tiempo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/videomapping/
+
+EN PATH: /en/workshop/projection-mapping/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-007
+
+STUDIO_ID: videojuegos
+
+ES NOMBRE: Diseño de videojuegos
+
+EN NAME: Video game design
+
+ES DESCRIPCIÓN: Niveles con física; exporta tu juego
+
+EN DESCRIPTION: Levels with physics; export your game
+
+PROFILE_ID: codigo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/videojuegos/
+
+EN PATH: /en/workshop/video-game-design/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-008
+
+STUDIO_ID: modelado-3d
+
+ES NOMBRE: Modelado 3D
+
+EN NAME: 3D modelling
+
+ES DESCRIPCIÓN: Sólidos y huecos en milímetros; STL para imprimir
+
+EN DESCRIPTION: Solids and holes in millimetres; STL to print
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/modelado-3d/
+
+EN PATH: /en/workshop/3d-modelling/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-009
+
+STUDIO_ID: sintesis-sonido
+
+ES NOMBRE: Síntesis y paisajes sonoros
+
+EN NAME: Synthesis and soundscapes
+
+ES DESCRIPCIÓN: Osciladores, envolventes y efectos
+
+EN DESCRIPTION: Oscillators, envelopes and effects
+
+PROFILE_ID: tiempo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/sintesis-sonido/
+
+EN PATH: /en/workshop/synthesis-soundscapes/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-010
+
+STUDIO_ID: arquitectura
+
+ES NOMBRE: Arquitectura y planos
+
+EN NAME: Architecture and plans
+
+ES DESCRIPCIÓN: Planta y 3D a la vez, con paseo
+
+EN DESCRIPTION: Plan and 3D together, with a walk-through
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/arquitectura/
+
+EN PATH: /en/workshop/architecture-plans/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-011
+
+STUDIO_ID: diseno-grafico
+
+ES NOMBRE: Diseño gráfico
+
+EN NAME: Graphic design
+
+ES DESCRIPCIÓN: Carteles y publicaciones con revisión de contraste
+
+EN DESCRIPTION: Posters and posts with a contrast check
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/diseno-grafico/
+
+EN PATH: /en/workshop/graphic-design/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-012
+
+STUDIO_ID: composicion
+
+ES NOMBRE: Composición
+
+EN NAME: Composition
+
+ES DESCRIPCIÓN: Piano roll con acordes e instrumentos
+
+EN DESCRIPTION: Piano roll with chords and instruments
+
+PROFILE_ID: tiempo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/composicion/
+
+EN PATH: /en/workshop/composition/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-013
+
+STUDIO_ID: dibujo
+
+ES NOMBRE: Dibujo
+
+EN NAME: Drawing
+
+ES DESCRIPCIÓN: Capas, pinceles, simetría y perspectiva
+
+EN DESCRIPTION: Layers, brushes, symmetry and perspective
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/dibujo/
+
+EN PATH: /en/workshop/drawing/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-014
+
+STUDIO_ID: comic
+
+ES NOMBRE: Cómic y guion gráfico
+
+EN NAME: Comics and storyboards
+
+ES DESCRIPCIÓN: Viñetas, bocadillos y páginas
+
+EN DESCRIPTION: Panels, balloons and pages
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/comic/
+
+EN PATH: /en/workshop/comics-storyboarding/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-015
+
+STUDIO_ID: color
+
+ES NOMBRE: Color
+
+EN NAME: Colour
+
+ES DESCRIPCIÓN: Rueda, mezclas, contraste y paletas
+
+EN DESCRIPTION: Wheel, mixes, contrast and palettes
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/color/
+
+EN PATH: /en/workshop/colour/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-016
+
+STUDIO_ID: patrones
+
+ES NOMBRE: Patrones y arte generativo
+
+EN NAME: Patterns and generative art
+
+ES DESCRIPCIÓN: Repeticiones, simetrías y teselados
+
+EN DESCRIPTION: Repetition, symmetry and tessellation
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/patrones/
+
+EN PATH: /en/workshop/patterns-generative-art/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-017
+
+STUDIO_ID: fotografia
+
+ES NOMBRE: Fotografía y composición
+
+EN NAME: Photography and composition
+
+ES DESCRIPCIÓN: Encuadre y luz con tus fotos, sin subirlas
+
+EN DESCRIPTION: Framing and light with your photos, never uploaded
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/fotografia/
+
+EN PATH: /en/workshop/photography-composition/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-018
+
+STUDIO_ID: moda-textil
+
+ES NOMBRE: Moda y textil
+
+EN NAME: Fashion and textiles
+
+ES DESCRIPCIÓN: Patrones, tejidos y estampados
+
+EN DESCRIPTION: Patterns, fabrics and prints
+
+PROFILE_ID: lienzo
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/moda-textil/
+
+EN PATH: /en/workshop/fashion-textiles/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-019
+
+STUDIO_ID: maquinas
+
+ES NOMBRE: Máquinas e inventos
+
+EN NAME: Machines and inventions
+
+ES DESCRIPCIÓN: Engranajes, palancas, poleas y rampas
+
+EN DESCRIPTION: Gears, levers, pulleys and ramps
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/maquinas/
+
+EN PATH: /en/workshop/machines/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-020
+
+STUDIO_ID: circuitos
+
+ES NOMBRE: Circuitos
+
+EN NAME: Circuits
+
+ES DESCRIPCIÓN: Pilas, luces, interruptores y puertas lógicas
+
+EN DESCRIPTION: Batteries, lights, switches and logic gates
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/circuitos/
+
+EN PATH: /en/workshop/circuits/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-021
+
+STUDIO_ID: papiroflexia
+
+ES NOMBRE: Papiroflexia y poliedros
+
+EN NAME: Origami and polyhedra
+
+ES DESCRIPCIÓN: Pliegues y sólidos que se despliegan
+
+EN DESCRIPTION: Folds and solids that unfold
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/papiroflexia/
+
+EN PATH: /en/workshop/origami-polyhedra/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-022
+
+STUDIO_ID: simulaciones
+
+ES NOMBRE: Simulaciones
+
+EN NAME: Simulations
+
+ES DESCRIPCIÓN: Ecosistemas, tráfico y autómatas
+
+EN DESCRIPTION: Ecosystems, traffic and automata
+
+PROFILE_ID: construir
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/simulaciones/
+
+EN PATH: /en/workshop/simulations/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-023
+
+STUDIO_ID: escritura-restricciones
+
+ES NOMBRE: Escritura con restricciones
+
+EN NAME: Constraint writing
+
+ES DESCRIPCIÓN: Sin una letra, palabras contadas, formas poéticas
+
+EN DESCRIPTION: Missing letters, counted words, poetic forms
+
+PROFILE_ID: documento
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/escritura-restricciones/
+
+EN PATH: /en/workshop/constraint-writing/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-024
+
+STUDIO_ID: mundos
+
+ES NOMBRE: Mundos
+
+EN NAME: Worlds
+
+ES DESCRIPCIÓN: Mapas, especies, historia y personajes
+
+EN DESCRIPTION: Maps, species, history and characters
+
+PROFILE_ID: documento
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/mundos/
+
+EN PATH: /en/workshop/worlds/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-025
+
+STUDIO_ID: lenguas-inventadas
+
+ES NOMBRE: Lenguas inventadas
+
+EN NAME: Invented languages
+
+ES DESCRIPCIÓN: Sonidos, alfabeto, gramática y diccionario
+
+EN DESCRIPTION: Sounds, alphabet, grammar and dictionary
+
+PROFILE_ID: documento
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/lenguas-inventadas/
+
+EN PATH: /en/workshop/invented-languages/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-026
+
+STUDIO_ID: juegos-de-mesa
+
+ES NOMBRE: Juegos de mesa
+
+EN NAME: Board games
+
+ES DESCRIPCIÓN: Tablero, cartas y reglas para imprimir
+
+EN DESCRIPTION: Board, cards and printable rules
+
+PROFILE_ID: documento
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/juegos-de-mesa/
+
+EN PATH: /en/workshop/board-games/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-STUDIO-027
+
+STUDIO_ID: ideas
+
+ES NOMBRE: Ideas e inventos
+
+EN NAME: Ideas and inventions
+
+ES DESCRIPCIÓN: Laboratorio de ideas y SCAMPER
+
+EN DESCRIPTION: Idea lab and SCAMPER
+
+PROFILE_ID: documento
+
+AUDIENCE: ALL_AGES
+
+SENSITIVITY: S0_GENERAL
+
+DISCOVERY: NORMAL
+
+ES RUTA: /es/taller/ideas/
+
+EN PATH: /en/workshop/ideas/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+# 71. TALLER / WORKSHOP · CINCO FORMAS DE TRABAJAR
+
+## WEB-WORKSHOP-PROFILE-01
+
+PROFILE_ID: lienzo
+
+ES NOMBRE: Lienzo creativo
+
+EN NAME: Creative canvas
+
+ES DESCRIPCIÓN: Dibujar, componer y diseñar imágenes.
+
+EN DESCRIPTION: Draw, compose and design images.
+
+ES CONTEO DECLARADO: 8 estudios
+
+EN DECLARED COUNT: 8 studios
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-PROFILE-02
+
+PROFILE_ID: construir
+
+ES NOMBRE: Construir y probar
+
+EN NAME: Build and test
+
+ES DESCRIPCIÓN: Montar algo y comprobar si funciona.
+
+EN DESCRIPTION: Build something and test whether it works.
+
+ES CONTEO DECLARADO: 7 estudios
+
+EN DECLARED COUNT: 7 studios
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-PROFILE-03
+
+PROFILE_ID: tiempo
+
+ES NOMBRE: Línea de tiempo
+
+EN NAME: Timeline
+
+ES DESCRIPCIÓN: Música, sonido y luz que cambian con el tiempo.
+
+EN DESCRIPTION: Music, sound and light that change over time.
+
+ES CONTEO DECLARADO: 4 estudios
+
+EN DECLARED COUNT: 4 studios
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-PROFILE-04
+
+PROFILE_ID: codigo
+
+ES NOMBRE: Código y bloques
+
+EN NAME: Code and blocks
+
+ES DESCRIPCIÓN: Programar con bloques o con código real.
+
+EN DESCRIPTION: Program with blocks or real code.
+
+ES CONTEO DECLARADO: 3 estudios
+
+EN DECLARED COUNT: 3 studios
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-PROFILE-05
+
+PROFILE_ID: documento
+
+ES NOMBRE: Documento y conocimiento
+
+EN NAME: Documents and knowledge
+
+ES DESCRIPCIÓN: Escribir, inventar mundos, lenguas y juegos.
+
+EN DESCRIPTION: Write and invent worlds, languages and games.
+
+ES CONTEO DECLARADO: 5 estudios
+
+EN DECLARED COUNT: 5 studios
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## QA · TALLER / WORKSHOP · CATÁLOGO
+
+- UNIQUE_STUDIO_IDS_ES: 27/27
+- UNIQUE_STUDIO_IDS_EN: 27/27
+- ES_EN_STUDIO_PAIRING_BY_ID: 27/27
+- PROFILE_RECORDS_ES_EN: 5/5
+- SOURCE_AUDIENCE_PRESERVED: 27/27
+- SOURCE_SENSITIVITY_PRESERVED: 27/27
+- SOURCE_DISCOVERY_PRESERVED: 27/27
+- STATUS: PASS
+
+SIGUIENTE FASE: páginas individuales de Recursos y corpus de Juegos / rutinas.
