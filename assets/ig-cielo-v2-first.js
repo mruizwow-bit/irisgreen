@@ -270,22 +270,38 @@ class Runtime{
  placeConstellationLabel(button,x,y,w,h){
   const pad=8,sceneRect=this.scene.getBoundingClientRect();
   const actualW=Math.max(1,sceneRect.width),actualH=Math.max(1,sceneRect.height);
-  const rawX=x/w*actualW,rawY=y/h*actualH;
-  button.style.left=(rawX/actualW*100)+'%';button.style.top=(rawY/actualH*100)+'%';
+  let cx=x/w*actualW,cy=y/h*actualH;
+  button.style.left=cx+'px';button.style.top=cy+'px';
   this.labels.append(button);
-  const box=button.getBoundingClientRect(),halfW=box.width/2,halfH=box.height/2;
-  let cx=clamp(rawX,pad+halfW,actualW-pad-halfW),cy=clamp(rawY,pad+halfH,actualH-pad-halfH);
+
+  // Final clamp uses the browser's rendered bounding box. This absorbs
+  // sub-pixel rounding, text wrapping and the actual label container geometry.
+  const applyBounds=()=>{
+   const br=button.getBoundingClientRect();
+   let dx=0,dy=0;
+   const minL=sceneRect.left+pad,maxR=sceneRect.right-pad,minT=sceneRect.top+pad,maxB=sceneRect.bottom-pad;
+   if(br.left<minL)dx+=minL-br.left;
+   if(br.right>maxR)dx-=br.right-maxR;
+   if(br.top<minT)dy+=minT-br.top;
+   if(br.bottom>maxB)dy-=br.bottom-maxB;
+   cx+=dx;cy+=dy;button.style.left=cx+'px';button.style.top=cy+'px';
+   return Math.abs(dx)>.01||Math.abs(dy)>.01;
+  };
+  let changed=applyBounds();
+
   const intro=this.intro;
   if(intro){
-   const ir=intro.getBoundingClientRect();
-   const left=ir.left-sceneRect.left-pad,right=ir.right-sceneRect.left+pad;
-   const top=ir.top-sceneRect.top-pad,bottom=ir.bottom-sceneRect.top+pad;
-   const overlapsX=cx+halfW>left&&cx-halfW<right;
-   const overlapsY=cy+halfH>top&&cy-halfH<bottom;
-   if(overlapsX&&overlapsY)cy=clamp(bottom+halfH,pad+halfH,actualH-pad-halfH);
+   let br=button.getBoundingClientRect(),ir=intro.getBoundingClientRect();
+   const overlaps=br.right>ir.left-pad&&br.left<ir.right+pad&&br.bottom>ir.top-pad&&br.top<ir.bottom+pad;
+   if(overlaps){
+    cy+=ir.bottom+pad-br.top;
+    button.style.top=cy+'px';
+    changed=applyBounds()||changed;
+   }
   }
-  button.style.left=(cx/actualW*100)+'%';button.style.top=(cy/actualH*100)+'%';
-  button.dataset.safeClamped=String(Math.abs(cx-rawX)>.5||Math.abs(cy-rawY)>.5);
+  // One last rendered-box pass guarantees containment after any intro shift.
+  changed=applyBounds()||changed;
+  button.dataset.safeClamped=String(changed);
  }
  renderTargets(cur){
   this.targets.replaceChildren();this.labels.replaceChildren();const r=this.scene.getBoundingClientRect(),w=Math.max(320,r.width),h=Math.max(420,r.height);
