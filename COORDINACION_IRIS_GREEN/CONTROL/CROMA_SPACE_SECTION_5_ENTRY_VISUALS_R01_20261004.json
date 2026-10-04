@@ -2,7 +2,7 @@
   "id": "CROMA_SPACE_SECTION_5_ENTRY_VISUALS_R01_20261004",
   "owner": "CROMA",
   "date": "2026-10-04",
-  "state": "SPACE_SECTION_5_ENTRY_VISUALS_READY_FOR_REVIEW",
+  "state": "WAIT_HUMAN_REVIEW",
   "count": 5,
   "contract": "EXPLORE_LOCATE_REVEAL",
   "masters": {
@@ -29,7 +29,7 @@
     "exoplanet_no_named_surface_claim": "PASS",
     "eclipse_generic_representation": "PASS",
     "meteor_radiant_readable": "PASS",
-    "human_visual_review": "PENDING"
+    "human_visual_review": "WAIT_HUMAN_REVIEW"
   },
   "artifact_sha256": {
     "contact_sheet": "65e22b20e2d54e091ac1b4284149e2c4f549b211bcc2c8e72945ac24a807f1fa",
@@ -42,5 +42,14 @@
     "runtime": false,
     "frontend": false
   },
-  "next": "HUMAN_VISUAL_BATCH_REVIEW_THEN_ATLAS_PACKAGING_PRISMA_INTAKE"
+  "next": "WAIT_HUMAN_REVIEW",
+  "visual_lock": {
+    "redraw": false,
+    "regenerate": false,
+    "relight": false,
+    "recolor": false,
+    "rule": "NO_REGENERATE_UNLESS_MARIA_EXPLICITLY_REOPENS_VISUALS"
+  },
+  "future_batch_policy": "CROMA_MAY_START_NEW_VISUAL_BATCHES_ONLY_WITH_APPROVED_BRIEF",
+  "supersedes_next": "HUMAN_VISUAL_BATCH_REVIEW_THEN_ATLAS_PACKAGING_PRISMA_INTAKE"
 }
