@@ -42,12 +42,13 @@ def main():
  need(runtime['source_manifest_sha256']==g['source_manifest_sha256'],'runtime source mismatch')
  need(runtime['visible_by_filter']==g['totals']['visible_by_filter'],'runtime totals mismatch')
  need(set(runtime['taxonomy'])==ALLOWED and not(set(runtime['taxonomy'])&LEGACY),'runtime taxonomy mismatch')
- for name in ('search-safe-default.json','search-intentional-safe.json','search-adult-full-catalog.json'):
+ for name in ('search-safe-default.json','search-intentional-safe.json'):
   rows=json.loads((root/'assets/safety'/name).read_text(encoding='utf-8'))
   need(rows,'empty search contract '+name)
   for r in rows:
    need(r.get('age_bands') and set(r['age_bands'])<=ALLOWED,'search row missing canonical age '+name)
    need('audience' not in r,'legacy audience emitted by search contract '+name)
+ need(not (root/'assets/safety/search-adult-full-catalog.json').exists(),'adult-full search catalogue must not be public in P0')
  research=json.loads((root/'es/investigacion/estudios-textos.json').read_text(encoding='utf-8'))
  need(len(research)==120,'published research catalogue count mismatch')
  need(g['totals']['by_surface']['research']==132,'research matrix count mismatch')
