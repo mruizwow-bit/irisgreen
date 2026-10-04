@@ -23,10 +23,25 @@ Ambas:
 - no modifican Recursos.
 
 ## Primer juego
+`Habitación imposible`
+
+Fuente:
+`R06.1 validated prototype`
+
+Regla:
+se monta sin rediseño previo y María lo usa como producto real antes de autorizar el segundo juego.
+
+## Juego descartado
 `Mapa del tesoro de casa`
 
-Se monta desde el prototipo R06.1 validado.
-No rework previo a uso real.
+Resultado HUMAN QA:
+`MAPA_TESORO_PRODUCT_CONCEPT_FAIL_DISCARDED`
+
+Motivo:
+la interacción se percibe como pulsar una habitación y recibir confirmación/descarte; no genera suficiente decisión, reto, curiosidad ni deseo de repetir.
+
+No rework.
+No vuelve a la cola de Juegos.
 
 ## Legacy
 `/es/recursos/juegos/` y `/en/resources/games/` permanecen intactos como rollback.
