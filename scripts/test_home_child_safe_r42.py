@@ -14,6 +14,7 @@ def main():
  es=(root/'index.html').read_text(encoding='utf-8');en=(root/'en/index.html').read_text(encoding='utf-8')
  for txt,labels in [(es,['Buscar','Explora','Pregunta a Sabik','Información y recursos']),(en,['Search','Explore','Ask Sabik','Information and resources'])]:
   need('data-ig-home-version="v4"' in txt,'Home v4 marker missing')
+  need('data-ig-age-nojs' in txt,'Home no-JS age fallback missing')
   need('data-ig-r49="1"' in txt,'Home is not enrolled in the global shell')
   need(txt.count('data-ig-audience-picker')==1,'Home canonical age picker count !=1')
   need(txt.count('data-ig-audience-stage=')==3,'Home public age button count !=3')
@@ -74,6 +75,9 @@ def main():
  for api in ['isAdultClaimed','hasAdultAssurance','canAccessRestrictedAdultContent']:
   need(api in audience,'Adult claim/assurance API missing '+api)
  need("canAccessRestrictedAdultContent(){return false;}" in audience,'P0 adult assurance must fail closed')
+ need("igAgeRuntimeReady='true'" in audience,'age runtime does not explicitly release static fail-closed state')
+ age_css=(root/'assets/ig-audience.css').read_text(encoding='utf-8')
+ need('html:not([data-ig-age-runtime-ready="true"]) body main' in age_css,'no-JS main fail-closed CSS missing')
  print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
  print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':0,'s2_pages':protected*2},ensure_ascii=False))
 if __name__=='__main__': main()
