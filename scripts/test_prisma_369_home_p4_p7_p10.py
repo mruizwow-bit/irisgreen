@@ -26,8 +26,11 @@ def check(path,lang):
     standalone=('>Rutinas<' if lang=='es' else '>Routines<')
     need(standalone not in txt,prefix+' duplicate standalone routines card remains')
 
-    # Home keeps exactly four action cards in Explora.
-    need(txt.count('ig-home-v4-use-card')==4,prefix+' Explore action cards !=4')
+    # Interests and Books are universal top actions. Other product families may be replaced independently.
+    interests=('/en/interests/' if lang=='en' else '/es/intereses/')
+    books='/es/libros/?lang=en' if lang=='en' else '/es/libros/'
+    need(f'href="{interests}" data-ig-age-bands="ALL_AGES"' in txt,prefix+' Interests is not an ALL_AGES top action')
+    need(f'href="{books}" data-ig-age-bands="ALL_AGES"' in txt,prefix+' Books is not an ALL_AGES top action')
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True)
