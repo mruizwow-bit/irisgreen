@@ -1,0 +1,61 @@
+{
+  "schema": "iris-green.exoplanets-001-100-runtime-provenance.v1",
+  "date": "2026-10-04",
+  "owner": "ATLAS_A1",
+  "source_snapshot": "NASA Exoplanet Archive local snapshot 2026-09-24",
+  "source_complete_marker": "EXOPLANETS_001_100_ASSIGN_BY_PHYSICS_COMPLETE",
+  "source_complete_commit": "150c0275cee610cd916a86b37b23e7bb6b18dfce",
+  "source_batch_zips": [
+    {
+      "batch": "B03",
+      "zip": "EXOPLANETS_BATCH_03_DATA_AND_VISUAL_CORRECTION.zip",
+      "sha256": "dc48e2bde9b6afab06dbbd22b10a99a603d8c3d32b39e7dad9c974d6817b484b",
+      "masters": 10
+    },
+    {
+      "batch": "B04",
+      "zip": "EXOPLANETS_BATCH_04_ASSIGNMENT_SCIENTIFICALLY_VALIDATED.zip",
+      "sha256": "60b7a9a9fd058ca5156f4a1884a8838e3bb68bddee727fd4fe46df63304e5399",
+      "masters": 7
+    },
+    {
+      "batch": "B05",
+      "zip": "EXOPLANETS_BATCH_05_PASS_AFTER_UNKNOWN_APPEARANCE_FIX.zip",
+      "sha256": "1235af8bdf1fddbccc130bc9490360339a642290703ab7f592607ab462f8ed86",
+      "masters": 10
+    },
+    {
+      "batch": "B06",
+      "zip": "EXOPLANETS_BATCH_06_ASSIGN_BY_PHYSICS.zip",
+      "sha256": "28bc82dae8eb2b0457ca3b133a304f9ca8184b2d16eb749da2bee8c592be476e",
+      "masters": 10
+    },
+    {
+      "batch": "B07",
+      "zip": "EXOPLANETS_BATCH_07_MANIFEST_SELF_HASH_FIX.zip",
+      "sha256": "53c3b9057ba3b6ee30f997b89e066f81ae4a59d897c8977c3dfe80c23e614b43",
+      "masters": 10
+    },
+    {
+      "batch": "B08",
+      "zip": "EXOPLANETS_BATCH_08_BD061339B_CONTROVERSIAL_METADATA_FIX.zip",
+      "sha256": "6ebfa0b7f98700f188f73912afeb85bcd74c84b4024480465a8c73125e80975f",
+      "masters": 10
+    },
+    {
+      "batch": "B09",
+      "zip": "EXOPLANETS_BATCH_09_BEBOP4_MASS_LIMIT_FIX.zip",
+      "sha256": "cfde34a475dabafe837fc53261431674ce359f0058b79e5385894300db4fc7eb",
+      "masters": 10
+    },
+    {
+      "batch": "B10",
+      "zip": "EXOPLANETS_BATCH_10_ASSIGN_BY_PHYSICS.zip",
+      "sha256": "34bde7b98963fe8809b32d93282c2371f06ee5e9938f458b5a9acab323077336",
+      "masters": 10
+    }
+  ],
+  "b01_b02_status": "SOURCE_BYTES_NOT_LOCATED",
+  "atlas_action": "Packaged all recoverable final bytes B03–B10 byte-identically; did not substitute invalid earlier infographic/contact-sheet outputs for B01/B02.",
+  "art_changes": false
+}
