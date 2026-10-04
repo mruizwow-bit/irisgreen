@@ -4,43 +4,43 @@ Biblioteca declarativa de diálogo para Sabik.
 
 ## Principio
 
-El runtime no debe tratar cada transcripción como una búsqueda.
+El runtime no debe tratar cada transcripción como una búsqueda ni convertir la conversación en una entrevista de clasificación.
 
 Flujo:
 
-`STT → intent → slots → pending slot → prompt/reprompt → retrieval/action → response → TTS`
+`STT → intent → contexto explícito/parámetros → retrieval/action → response → TTS`
+
+Regla canónica:
+
+`RESPONDER_PRIMERO · ACLARAR_SOLO_SI_ES_IMPRESCINDIBLE · NUNCA_PERFILAR_MEDIANTE_PREGUNTAS`
 
 ## Archivos
 
 - `dialogue-model.es.json` — intents, patrones, prompts y reprompts ES.
 - `dialogue-model.en.json` — intents, patrones, prompts y reprompts EN.
-- `dialogue-variables.json` — definición canónica de slots y aspectos.
+- `dialogue-variables.json` — definición canónica de variables conversacionales.
 - `dialogue-tests.es.json` — casos de aceptación ES.
 - `dialogue-tests.en.json` — casos de aceptación EN.
 
-## Slots R01
+## Variables conversacionales
 
-- `topic`
-- `aspect`
-- `audience`
-- `language`
-- `input_mode`
-- `response_length`
-- `last_intent`
-- `pending_slot`
+`topic` y `aspect` son contexto útil cuando la persona los aporta o cuando pueden recuperarse del turno previo. No son campos que deban completarse mediante interrogatorio.
+
+Los únicos datos que pueden bloquear una acción son `required_parameters` explícitos y realmente imprescindibles para ejecutar una herramienta o acción concreta.
 
 ## Reglas
 
-1. Una pregunta por turno.
-2. Retrieval solo cuando estén completos los slots requeridos.
-3. `topic` se mantiene durante la sesión.
-4. Turnos sociales nunca llaman a retrieval.
-5. Prompts y reprompts son datos, no copy incrustado en el Core.
-6. Las variantes se rotan dentro de la sesión.
-7. Un fallo de comprensión no debe convertirse automáticamente en “no hay información”.
-8. Las fuentes se muestran separadas de la frase hablada.
-9. Memoria solo de sesión.
-10. No inferir emoción por tono de voz.
+1. Si puede responderse con la información disponible, se responde.
+2. No existe mecánica de `pending_slot`.
+3. No existe elicitation general para completar `topic`, `aspect` u otros rasgos de la persona.
+4. Una aclaración solo puede pedir un parámetro imprescindible de la acción actual.
+5. `topic` puede mantenerse durante la sesión para continuidad.
+6. Turnos sociales nunca llaman a retrieval.
+7. Prompts y reprompts son datos, no copy incrustado en el Core.
+8. Un fallo de comprensión no debe convertirse automáticamente en «no hay información».
+9. Las fuentes se muestran separadas de la frase hablada.
+10. Memoria solo de sesión por defecto.
+11. No inferir emoción, identidad, diagnóstico, estado cognitivo ni necesidad de apoyo mediante tono de voz, pausas o señales pasivas.
 
 ## Ejemplo
 
@@ -50,18 +50,11 @@ Entrada:
 Estado:
 `intent=search.topic`
 `topic=autismo`
-`pending_slot=aspect`
 
-Salida:
-una variante de `search.ask_aspect`.
-
-Siguiente entrada:
-`señales`
-
-Estado:
-`intent=information.aspect`
-`topic=autismo`
-`aspect=signals`
+Acción:
+`retrieve`
 
 Consulta:
-`autismo señales`.
+`autismo`
+
+Si después la persona escribe `señales`, el contexto puede acotar la consulta a `autismo señales`. Sabik no obliga a elegir ese aspecto antes de responder.
