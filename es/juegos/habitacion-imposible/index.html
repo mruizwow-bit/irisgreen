@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Habitación imposible</title>
+<style>
+/* Cuatro salas con progresión. Toda la interacción vive en botones reales FUERA
+   del SVG: el dibujo se repinta entero y nunca destruye el elemento con foco.
+   Móvil: objetivo → habitación → controles. */
+:root{
+  --fondo:#E7ECF2; --papel:#FFFFFF; --tinta:#13233A; --tinta-2:#55677E; --linea:#13233A;
+  --vacio-a:#5A5248; --vacio-b:#2A2621; --acento:#1F6F5C;
+  --sombra:4px; color-scheme:light;
+}
+@media (prefers-color-scheme:dark){ :root:not([data-theme="light"]){
+  --fondo:#0B1A2B; --papel:#16273D; --tinta:#EEF4F8; --tinta-2:#A9BCCE; --linea:#EEF4F8;
+  --vacio-a:#2F2B26; --vacio-b:#121011; --acento:#6FD9BE; color-scheme:dark; }}
+:root[data-theme="dark"]{
+  --fondo:#0B1A2B; --papel:#16273D; --tinta:#EEF4F8; --tinta-2:#A9BCCE; --linea:#EEF4F8;
+  --vacio-a:#2F2B26; --vacio-b:#121011; --acento:#6FD9BE; color-scheme:dark; }
+:root[data-mov="none"]{ --sombra:0px }
+
+*{box-sizing:border-box;min-width:0}
+html,body{height:100%}
+body{margin:0;background:var(--fondo);color:var(--tinta);overflow:hidden;
+  font:400 16px/1.4 "Atkinson Hyperlegible","Verdana",system-ui,sans-serif}
+.app{height:100%;max-width:900px;margin:0 auto;padding:8px 12px;padding-block:8px;
+  display:flex;flex-direction:column;gap:7px}
+header{flex:none;display:flex;align-items:center;gap:6px;flex-wrap:wrap}
+h1{font:700 18px/1.05 "Atkinson Hyperlegible",system-ui,sans-serif;margin:0;flex:1 1 100%;white-space:nowrap}
+@media (min-width:700px){ h1{flex:1 1 auto} }
+.mini{min-width:44px;border:2px solid var(--linea);background:var(--papel);color:var(--tinta);border-radius:999px;
+  min-height:44px;padding:0 12px;font:700 13px inherit;cursor:pointer}
+select.mini{padding:0 8px}
+.mini:focus-visible,.bt:focus-visible,.ok:focus-visible{outline:4px solid var(--acento);outline-offset:3px}
+
+.obj{flex:none;border:3px solid var(--acento);border-radius:13px;background:var(--papel);padding:8px 11px;font-size:15px}
+.obj b{display:block;font:700 12px inherit;letter-spacing:.09em;text-transform:uppercase;color:var(--acento)}
+
+.escena{flex:1 1 auto;min-height:110px;border:3px solid var(--linea);border-radius:14px;overflow:hidden;
+  background:radial-gradient(130% 100% at 36% 24%, var(--vacio-a), var(--vacio-b) 72%);display:grid;place-items:center}
+.escena svg{width:100%;height:100%;display:block;pointer-events:none}
+
+.ctrl{flex:none;display:flex;flex-direction:column;gap:6px}
+.grupo{display:flex;gap:6px;align-items:center}
+.grupo>.et{font:700 11px inherit;letter-spacing:.08em;text-transform:uppercase;color:var(--tinta-2);min-width:54px}
+.bt{flex:1;border:3px solid var(--linea);background:var(--papel);color:var(--tinta);border-radius:12px;
+  min-height:46px;min-width:46px;font:700 15px inherit;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;gap:4px}
+.bt[aria-pressed="true"]{background:var(--tinta);color:var(--papel)}
+.flechas{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;flex:1}
+.mini-cubo{width:22px;height:22px;flex:none}
+.pie{flex:none;display:flex;align-items:center;gap:8px;min-height:44px}
+.pie p{margin:0;font-size:14px;color:var(--tinta-2);flex:1}
+.ok{border:3px solid var(--acento);background:var(--acento);color:#fff;border-radius:999px;
+  min-height:44px;padding:0 14px;font:700 14px inherit;cursor:pointer;white-space:nowrap}
+:root[data-theme="dark"] .ok{color:#0B1A2B}
+.ok[hidden]{display:none}
+@media (forced-colors:active){ .bt{border:2px solid ButtonText} .bt[aria-pressed="true"]{background:Highlight} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} }
+</style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <h1 id="t-tit">Habitación imposible</h1>
+    <span class="mini" id="contador" style="cursor:default"></span>
+    <select class="mini" id="idioma" aria-label="Idioma / Language"><option value="es">ES</option><option value="en">EN</option></select>
+    <button class="mini" id="reiniciar" type="button"></button>
+    <button class="mini" id="tema" type="button" aria-pressed="false" aria-label="Modo oscuro">◑</button>
+  </header>
+
+  <div class="obj"><b id="o-et"></b><span id="o-txt"></span></div>
+
+  <div class="escena"><svg id="lienzo" viewBox="-112 -114 224 228" preserveAspectRatio="xMidYMid meet" role="img" aria-labelledby="o-txt"></svg></div>
+
+  <div class="ctrl">
+    <div class="grupo"><span class="et" id="et-suelo"></span><div class="flechas" id="suelos"></div></div>
+    <div class="grupo"><span class="et" id="et-pieza"></span>
+      <button class="bt" id="p-ant" type="button" aria-label="Pieza anterior">◀</button>
+      <button class="bt" id="p-nom" type="button" style="flex:2"></button>
+      <button class="bt" id="p-sig" type="button" aria-label="Pieza siguiente">▶</button>
+    </div>
+    <div class="grupo"><span class="et" id="et-mover"></span>
+      <div class="flechas">
+        <button class="bt" data-m="0,-1" type="button">↑</button>
+        <button class="bt" data-m="0,1"  type="button">↓</button>
+        <button class="bt" data-m="-1,0" type="button">←</button>
+        <button class="bt" data-m="1,0"  type="button">→</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="pie">
+    <p id="aviso" role="status" aria-live="polite"></p>
+    <button class="ok" id="siguiente" type="button" hidden></button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var S=4, M=S-1, TW=52, TH=26, ZH=26;
+  var ROT=[function(p){return [p[0],p[1],p[2]]},function(p){return [M-p[2],p[1],p[0]]},
+           function(p){return [p[0],p[2],M-p[1]]},function(p){return [M-p[0],p[1],M-p[2]]}];
+  var INV=[function(p){return [p[0],p[1],p[2]]},function(p){return [p[2],p[1],M-p[0]]},
+           function(p){return [p[0],M-p[2],p[1]]},function(p){return [M-p[0],p[1],M-p[2]]}];
+
+  // Salas calculadas con el solucionador. Cada una enseña una cosa y está comprobada:
+  // 1 solo girando · 2 girar nunca basta · 3 girar + mover · 4 cuatro soluciones.
+  var SALAS=[
+    {E:[0,2,0],X:[2,0,2],p:[['columna',1,0,3],['bloque',0,1,1],['losa',0,0,1]]},
+    {E:[0,2,0],X:[2,0,2],p:[['columna',0,1,2],['bloque',1,0,1],['losa',0,0,1]]},
+    {E:[0,2,0],X:[2,0,2],p:[['columna',0,0,2],['bloque',0,1,1],['losa',0,2,1]]},
+    {E:[0,2,0],X:[1,0,2],p:[['columna',2,0,2],['bloque',1,1,1],['losa',0,0,1]]}
+  ];
+
+  var T={es:{tit:'Habitación imposible',sala:'Sala',de:'de',rein:'Volver a empezar',
+      suelo:'Suelo',pieza:'Pieza',mover:'Mover',sig:'Sala siguiente',fin:'Volver a la 1',obj:'Objetivo',
+      dir:{'0,-1':'arriba','0,1':'abajo','-1,0':'a la izquierda','1,0':'a la derecha'},moverA:'Mover',
+      selec:'Pieza seleccionada',cambiar:'Cambiar pieza',ant:'Pieza anterior',sigP:'Pieza siguiente',etIdioma:'Idioma',etTema:'Modo oscuro',
+      objs:['Une la entrada con la salida cambiando qué cara de la sala hace de suelo.',
+            'Aquí girar no basta: hay que mover una pieza para poder subir.',
+            'Esta pide las dos cosas: cambiar el suelo y mover una pieza.',
+            'Abierta: hay más de una forma de unirlas. Elige la tuya.'],
+      piezas:{columna:'Columna',bloque:'Bloque',losa:'Losa'},
+      noLlega:'El camino no llega a la salida. Prueba otro suelo o mueve una pieza.',
+      llega:'Unidas: el recorrido va de la entrada a la salida.',
+      bloqueada:'Ahí no cabe.',
+      entra:'Entrada con marco claro, salida con marco de latón. La salida está en alto.'},
+    en:{tit:'Impossible room',sala:'Room',de:'of',rein:'Start again',
+      suelo:'Floor',pieza:'Piece',mover:'Move',sig:'Next room',fin:'Back to room 1',obj:'Goal',
+      dir:{'0,-1':'up','0,1':'down','-1,0':'left','1,0':'right'},moverA:'Move',
+      selec:'Selected piece',cambiar:'Change piece',ant:'Previous piece',sigP:'Next piece',etIdioma:'Language',etTema:'Dark mode',
+      objs:['Join the entrance to the exit by changing which face of the room is the floor.',
+            'Turning is not enough here: you have to move a piece to climb.',
+            'This one needs both: change the floor and move a piece.',
+            'Open: there is more than one way. Pick yours.'],
+      piezas:{columna:'Column',bloque:'Block',losa:'Slab'},
+      noLlega:'The path does not reach the exit. Try another floor or move a piece.',
+      llega:'Joined: the path runs from the entrance to the exit.',
+      bloqueada:'It does not fit there.',
+      entra:'Pale frame is the way in, brass frame the way out. The exit is up high.'}};
+  var lang='es', L=function(){return T[lang]};
+
+  var sala=0, piezas=[], suelo=0, sel=0, resuelto=false;
+  var $=function(id){return document.getElementById(id)};
+  var K=function(c){return c.join(',')};
+  var dentro=function(c){ return c.every(function(v){return v>=0&&v<S}) };
+
+  function carga(n){
+    sala=n; suelo=0; sel=0; resuelto=false;
+    piezas=SALAS[n].p.map(function(q){
+      var c=[]; for(var k=0;k<q[3];k++) c.push([q[1],q[2],k]);
+      return {id:q[0],cells:c};
+    });
+    $('siguiente').hidden=true;
+    pinta(); di(L().entra);
+  }
+  function di(m){ var e=$('aviso'); e.textContent=''; setTimeout(function(){ e.textContent=m; },30); }
+
+  function solidos(d,salvo){ var s={};
+    piezas.forEach(function(p,i){ if(i===salvo) return;
+      p.cells.forEach(function(c){ s[K(ROT[d](c))]=1; }); }); return s; }
+  function pisable(c,s){ return dentro(c)&&!s[K(c)]&&(c[2]===0||!!s[K([c[0],c[1],c[2]-1])]); }
+  function caer(p,s){ for(var z=p[2];z>=0;z--){ var c=[p[0],p[1],z]; if(pisable(c,s)) return c; } return null; }
+  function camino(){
+    var s=solidos(suelo), a=caer(ROT[suelo](SALAS[sala].E),s), b=ROT[suelo](SALAS[sala].X);
+    if(!a||!pisable(b,s)) return null;
+    var vis={}, q=[[a,[a]]]; vis[K(a)]=1;
+    var dirs=[[1,0],[-1,0],[0,1],[0,-1]];
+    while(q.length){ var it=q.shift(), c=it[0];
+      if(K(c)===K(b)) return it[1];
+      for(var i=0;i<4;i++) for(var dz=-1;dz<=1;dz++){
+        var n=[c[0]+dirs[i][0],c[1]+dirs[i][1],c[2]+dz];
+        if(pisable(n,s)&&!vis[K(n)]){ vis[K(n)]=1; q.push([n,it[1].concat([n])]); } } }
+    return null;
+  }
+
+  function iso(x,y,z){ return [(x-y)*TW/2,(x+y)*TH/2-z*ZH]; }
+  function quad(pts,fill,stroke,w){
+    return '<polygon points="'+pts.map(function(p){var q=iso(p[0],p[1],p[2]);return q[0].toFixed(1)+','+q[1].toFixed(1)}).join(' ')+
+      '" fill="'+fill+'"'+(stroke?' stroke="'+stroke+'" stroke-width="'+(w||.6)+'"':'')+'/>';
+  }
+  function cubo(x,y,z,t,d2,i2){
+    return quad([[x,y,z+1],[x+1,y,z+1],[x+1,y+1,z+1],[x,y+1,z+1]],t,'#00000022')+
+           quad([[x+1,y,z],[x+1,y+1,z],[x+1,y+1,z+1],[x+1,y,z+1]],d2,'#00000022')+
+           quad([[x,y+1,z],[x+1,y+1,z],[x+1,y+1,z+1],[x,y+1,z+1]],i2,'#00000022');
+  }
+
+  function pinta(){
+    var o=[], ruta=camino();
+    for(var x=0;x<S;x++) for(var y=0;y<S;y++)
+      o.push({d:x+y-.5, s:quad([[x,y,0],[x+1,y,0],[x+1,y+1,0],[x,y+1,0]],(x+y)%2?'#9D8F7B':'#A89A86','#00000033')});
+    for(var y2=0;y2<S;y2++) for(var z=0;z<S;z++)
+      o.push({d:-10, s:quad([[0,y2,z],[0,y2+1,z],[0,y2+1,z+1],[0,y2,z+1]],(y2+z)%2?'#8C7F6D':'#857968','#00000030')});
+    for(var x2=0;x2<S;x2++) for(var z2=0;z2<S;z2++)
+      o.push({d:-10, s:quad([[x2,0,z2],[x2+1,0,z2],[x2+1,0,z2+1],[x2,0,z2+1]],(x2+z2)%2?'#9A8C78':'#928573','#00000030')});
+
+    function vano(cel,borde){
+      var c=ROT[suelo](cel), pts;
+      if(c[0]===0) pts=[[0,c[1]+.1,c[2]+.08],[0,c[1]+.9,c[2]+.08],[0,c[1]+.9,c[2]+.96],[0,c[1]+.1,c[2]+.96]];
+      else if(c[1]===0) pts=[[c[0]+.1,0,c[2]+.08],[c[0]+.9,0,c[2]+.08],[c[0]+.9,0,c[2]+.96],[c[0]+.1,0,c[2]+.96]];
+      else { var q=iso(c[0]+.5,c[1]+.5,c[2]);
+        return {d:c[0]+c[1]+c[2]+.4,s:'<circle cx="'+q[0].toFixed(1)+'" cy="'+q[1].toFixed(1)+'" r="9" fill="#15110E" stroke="'+borde+'" stroke-width="3"/>'}; }
+      return {d:-9, s:quad(pts,'#15110E')+quad(pts,'none',borde,3)};
+    }
+    o.push(vano(SALAS[sala].E,'#E8DCC6')); o.push(vano(SALAS[sala].X,'#C9A227'));
+
+    piezas.forEach(function(p,i){
+      p.cells.map(function(c){return ROT[suelo](c)}).forEach(function(c){
+        var manip = p.id!=='losa';
+        var marco = (i===sel && manip) ? quad([[c[0],c[1],c[2]+1],[c[0]+1,c[1],c[2]+1],[c[0]+1,c[1]+1,c[2]+1],[c[0],c[1]+1,c[2]+1]],'none','#FFFFFF',2) : '';
+        o.push({d:c[0]+c[1]+c[2], s:cubo(c[0],c[1],c[2], manip?'#C8B99F':'#BFB49C', manip?'#8A7458':'#8E8068', manip?'#6D5742':'#736854')+marco});
+      });
+    });
+    if(ruta) ruta.forEach(function(c,k){
+      var base=quad([[c[0]+.08,c[1]+.08,c[2]],[c[0]+.92,c[1]+.08,c[2]],[c[0]+.92,c[1]+.92,c[2]],[c[0]+.08,c[1]+.92,c[2]]],'#B6C8D1','#00000022');
+      var a=iso(c[0]+.5,c[1]+.5,c[2]), b=ruta[k+1]?iso(ruta[k+1][0]+.5,ruta[k+1][1]+.5,ruta[k+1][2]):null;
+      o.push({d:c[0]+c[1]+c[2]+.35, s:base+(b?'<line x1="'+a[0].toFixed(1)+'" y1="'+a[1].toFixed(1)+'" x2="'+b[0].toFixed(1)+'" y2="'+b[1].toFixed(1)+'" stroke="#C9A227" stroke-width="3" stroke-linecap="round"/>':'')});
+    });
+    o.sort(function(a,b){return a.d-b.d});
+    $('lienzo').innerHTML=o.map(function(e){return e.s}).join('');
+
+    if(ruta && !resuelto){ resuelto=true; $('siguiente').hidden=false;
+      $('siguiente').textContent = sala<SALAS.length-1 ? L().sig : L().fin; di(L().llega); }
+    else if(!ruta && resuelto){ resuelto=false; $('siguiente').hidden=true; }
+    refresca();
+  }
+
+  function miniCubo(d){
+    var W=9,H=4.5,Z=4.5,f=function(x,y,z){return [(x-y)*W/2,(x+y)*H/2-z*Z]};
+    var car=[[[0,0,0],[2,0,0],[2,2,0],[0,2,0]],[[0,0,0],[0,2,0],[0,2,2],[0,0,2]],
+             [[0,2,0],[2,2,0],[2,2,2],[0,2,2]],[[0,0,2],[2,0,2],[2,2,2],[0,2,2]]];
+    var s='<svg class="mini-cubo" viewBox="-11 -13 22 24" aria-hidden="true">';
+    [[[0,0,2],[2,0,2],[2,2,2],[0,2,2]],[[2,0,0],[2,2,0],[2,2,2],[2,0,2]],[[0,2,0],[2,2,0],[2,2,2],[0,2,2]]]
+      .forEach(function(q,i){ s+='<polygon points="'+q.map(function(p){var o=f(p[0],p[1],p[2]);return o[0].toFixed(1)+','+o[1].toFixed(1)}).join(' ')+
+        '" fill="'+['#C8B99F','#8A7458','#6D5742'][i]+'" stroke="#00000033" stroke-width=".5"/>'; });
+    s+='<polygon points="'+car[d].map(function(p){var o=f(p[0],p[1],p[2]);return o[0].toFixed(1)+','+o[1].toFixed(1)}).join(' ')+
+       '" fill="currentColor" fill-opacity=".8" stroke="currentColor" stroke-width="1"/></svg>';
+    return s;
+  }
+
+  function construyeSuelos(){
+    var c=$('suelos'); c.innerHTML='';
+    for(var d=0;d<4;d++){
+      var b=document.createElement('button'); b.type='button'; b.className='bt'; b.dataset.d=d;
+      b.innerHTML=miniCubo(d)+'<span>'+(d+1)+'</span>';
+      b.setAttribute('aria-label',L().suelo+' '+(d+1));
+      b.addEventListener('click',function(){ suelo=+this.dataset.d; pinta(); });
+      c.appendChild(b);
+    }
+  }
+  function refresca(){
+    [].forEach.call($('suelos').children,function(b){ b.setAttribute('aria-pressed',String(+b.dataset.d===suelo)); });
+    if(piezas[sel]){
+      $("p-nom").textContent=L().piezas[piezas[sel].id];
+      $("p-nom").setAttribute("aria-label", L().selec+": "+L().piezas[piezas[sel].id]+". "+L().cambiar+".");
+    }
+    $("idioma").setAttribute("aria-label", L().etIdioma);
+    $("tema").setAttribute("aria-label", L().etTema);
+    $("p-ant").setAttribute("aria-label", L().ant);
+    $("p-sig").setAttribute("aria-label", L().sigP);
+    if(piezas[sel]) [].forEach.call(document.querySelectorAll("[data-m]"),function(b){
+      b.setAttribute("aria-label", L().moverA+" "+L().piezas[piezas[sel].id]+" "+L().dir[b.dataset.m]); });
+    $("siguiente").setAttribute("aria-label", $("siguiente").textContent || L().sig);
+    $('contador').textContent=L().sala+' '+(sala+1)+' '+L().de+' '+SALAS.length;
+    $('o-et').textContent=L().obj; $('o-txt').textContent=L().objs[sala];
+  }
+  function giraPieza(paso){
+    var n=piezas.length, i=sel, v=0;
+    do { i=(i+paso+n)%n; v++; } while(piezas[i].id==='losa' && v<n);
+    sel=i; pinta();
+  }
+  function mueve(dx,dy){
+    var cells=piezas[sel].cells.map(function(c){return ROT[suelo](c)});
+    var s=solidos(suelo,sel);
+    var nu=cells.map(function(c){return [c[0]+dx,c[1]+dy,c[2]]});
+    if(!nu.every(function(c){return dentro(c)&&!s[K(c)]})){ di(L().bloqueada); return; }
+    var f=0; while(nu.every(function(c){ var t=[c[0],c[1],c[2]-f-1]; return t[2]>=0 && !s[K(t)]; })) f++;
+    nu=nu.map(function(c){return [c[0],c[1],c[2]-f]});
+    piezas[sel].cells=nu.map(function(c){return INV[suelo](c)});
+    pinta();
+    if(!camino()) di(L().noLlega);
+  }
+
+  $('p-ant').addEventListener('click',function(){ giraPieza(-1); });
+  $('p-sig').addEventListener('click',function(){ giraPieza(1); });
+  $('p-nom').addEventListener('click',function(){ giraPieza(1); });
+  [].forEach.call(document.querySelectorAll('[data-m]'),function(b){
+    b.addEventListener('click',function(){ var m=this.dataset.m.split(','); mueve(+m[0],+m[1]); });
+    b.addEventListener('keydown',function(ev){
+      var m={ArrowUp:[0,-1],ArrowDown:[0,1],ArrowLeft:[-1,0],ArrowRight:[1,0]}[ev.key];
+      if(m){ ev.preventDefault(); mueve(m[0],m[1]); }      // Tab no se toca nunca
+    });
+  });
+  $('siguiente').addEventListener('click',function(){ carga(sala<SALAS.length-1?sala+1:0); });
+  $('reiniciar').addEventListener('click',function(){ carga(sala); });
+  $('tema').addEventListener('click',function(){
+    var o=document.documentElement.getAttribute('data-theme')==='dark';
+    document.documentElement.setAttribute('data-theme',o?'light':'dark');
+    this.setAttribute('aria-pressed',String(!o)); });
+  $('idioma').addEventListener('change',function(){ lang=this.value; idioma(); });
+
+  function idioma(){
+    document.documentElement.lang=lang;
+    $('t-tit').textContent=L().tit; $('reiniciar').textContent=L().rein;
+    $('et-suelo').textContent=L().suelo; $('et-pieza').textContent=L().pieza; $('et-mover').textContent=L().mover;
+    construyeSuelos(); if(piezas.length) pinta(); else refresca();
+  }
+
+  idioma(); carga(0);
+})();
+</script>
+
+</body>
+</html>
