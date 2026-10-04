@@ -302,15 +302,12 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hola. ¿Qué necesitas?",
-        "Hola. Dime, ¿qué necesitas?",
-        "Hola. Te escucho. ¿Qué necesitas?",
-        "Hola. ¿En qué puedo ayudarte?"
+        "Hola.",
+        "Hola. Te escucho.",
+        "Hola. Aquí estoy.",
+        "Buenas."
       ],
-      "reprompt": [
-        "Dime qué necesitas.",
-        "Te escucho."
-      ]
+      "reprompt": []
     },
     "social.attention.response": {
       "initial": [
