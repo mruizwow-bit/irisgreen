@@ -677,3 +677,50 @@ Estado:
 `PECERA_AUDIO_OAI_R01_HUMAN_QA_REQUIRED`
 
 No producir 5 min antes de María.
+
+
+---
+
+# 12 · Pecera · OAI audio R01 fail / R02 minimal
+
+María HUMAN QA:
+`OAI_AUDIO_R01_HUMAN_QA_FAIL_STRESSFUL_STEREO_BACKGROUND`
+
+Descripción:
+- fondo estéreo continuo;
+- sensación envolvente/estresante.
+
+Decisión:
+`REMOVE_ADDED_STEREO_BACKGROUND_LAYER`
+
+Nuevo candidato:
+`PECERA_R02_CLIP_40s_AUDIO_OAI_R02_BUBBLE_DOMINANT.mp4`
+SHA-256:
+`5b9ea28406ae024ca6ba0c68cff26d0052325d261988c86063d794da5bd9478f`
+
+Audio:
+`PECERA_AUDIO_OAI_R02_BUBBLE_DOMINANT.m4a`
+SHA-256:
+`a576f9f4e9c2b2ed42faa80099bd2d8763964b3bfbb7135863d1f2fb3989eb2f`
+
+Principio:
+- partir del audio original;
+- eliminar masa hueca grave;
+- no añadir cama estéreo continua;
+- estrechar imagen estéreo;
+- burbujas como elemento principal;
+- sin nueva bomba sintética;
+- sin retorno artificial;
+- sin LFO/oleaje.
+
+Medidas:
+- ~−30.5 LUFS;
+- LRA ~2.0 LU;
+- true peak ~−15.1 dBFS;
+- faststart PASS;
+- H.264 elemental idéntico al clip visual.
+
+Estado:
+`PECERA_AUDIO_OAI_R02_BUBBLE_DOMINANT_HUMAN_QA_REQUIRED`
+
+No 5 min antes de María.
