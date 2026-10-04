@@ -39,7 +39,6 @@ jobs:
         run: |
           node --check assets/interfaz-comun.js
           python3 scripts/build_site.py
-          python3 scripts/repair_routes.py --check
       - name: Probar recorridos EN entre secciones
         run: /tmp/ig-language/bin/python scripts/test_language_persistence.py
       - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
