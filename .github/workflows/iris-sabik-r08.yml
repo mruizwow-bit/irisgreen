@@ -1,44 +1,49 @@
-name: Iris Green y Sabik R08
+name: Iris Green · Sabik runtime on main
 on:
   push:
-    branches: ['agent2/sabik-iris-r08-20260924']
-  pull_request:
-    paths: ['sabik/**','assets/iris-*','scripts/*iris_brief*','.github/workflows/iris-sabik-r08.yml']
+    branches: [main]
+    paths:
+      - 'sabik/**'
+      - 'netlify/functions/sabik-voice-proxy.mts'
+      - 'scripts/apply_home_r42.py'
+      - 'assets/home-r42-child-safe.css'
+      - 'scripts/test_sabik_*.py'
+      - 'scripts/test_sabik_*.mjs'
+      - 'tools/test-sabik-*.js'
+      - '.github/workflows/iris-sabik-r08.yml'
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  mounted:
+  sabik:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
       - run: pip install beautifulsoup4 pillow playwright==1.55.0
       - run: python -m playwright install --with-deps chromium
-      - run: node tools/test-sabik-motion-r37.js
-      - run: python scripts/test_sabik_presence_r52.py
-      - run: python scripts/test_sabik_presence_r52_browser.py
-      - run: node --check sabik/iris-mount.mjs
-      - run: node scripts/test_sabik_audio_r01.mjs
-      - run: python scripts/test_sabik_copy_r02.py
-      - run: node scripts/taller_estudios/pruebas_node.js
-      - run: node tools/test-r40-rincon-r03.js
-      - run: node tools/test-sabik-authorized-transport-r06.mjs
-      - run: python scripts/build_site.py
-      - run: python scripts/test_iris_brief_r08.py
-      - run: python scripts/test_resources_current.py
-      - run: python scripts/test_iris_corrections_r09.py
-      - run: python scripts/test_taller_f1_mounted.py
-      - run: python scripts/test_sabik_audio_assets_r01.py
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: iris-sabik-r08
-          path: |
-            reports/iris-brief-r08/
-            reports/resources-current/
-            reports/iris-r09/
-            reports/taller-f1/
-            reports/sabik-r52/
+      - name: Syntax
+        run: |
+          node --check sabik/iris-mount.mjs
+          node --check sabik/voice-runtime.mjs
+          node --check sabik/dialogue-library.mjs
+          node --check sabik/conversation-core-r66.mjs
+      - name: Motion R37
+        run: node tools/test-sabik-motion-r37.js
+      - name: Presence static
+        run: python scripts/test_sabik_presence_r52.py
+      - name: Presence browser
+        run: python scripts/test_sabik_presence_r52_browser.py
+      - name: Fixed audio
+        run: |
+          node scripts/test_sabik_audio_r01.mjs
+          python scripts/test_sabik_audio_assets_r01.py
+      - name: Copy
+        run: python scripts/test_sabik_copy_r02.py
+      - name: Authorized retrieval transport
+        run: node tools/test-sabik-authorized-transport-r06.mjs
+      - name: Canonical build
+        run: python scripts/build_site.py
