@@ -46,6 +46,8 @@ def static_gate():
     assert 'TYPE_MANIFEST_URL' in js and 'TYPE_MAP_URL' in js
     assert 'title_es' in js and 'title_en' in js and 'alt_es' in js and 'alt_en' in js
     assert "map.fallback !== null" in js
+    assert "aria-keyshortcuts" in js and "data-kb-lat" in js and "data-kb-lon" in js
+    assert "ev.key === 'ArrowUp'" in js and "ev.key === 'Enter'" in js
     return {
       'canonical_assets':6,
       'sequences':2,
@@ -165,6 +167,30 @@ def main():
             assert current_fig.count()==1
             assert current_fig.locator('.ec-canonical-img').get_attribute('alt')
 
+            # Axioma finding: arbitrary map-point selection must have a keyboard equivalent.
+            if width==390:
+                map_svg=page.locator('.ec-mapfig svg').first
+                assert map_svg.get_attribute('tabindex')=='0',(lang,width,'map is not keyboard focusable')
+                shortcuts=map_svg.get_attribute('aria-keyshortcuts') or ''
+                for key in ('ArrowUp','ArrowDown','ArrowLeft','ArrowRight','Home','End','Enter'):
+                    assert key in shortcuts,(lang,width,'missing map shortcut',key,shortcuts)
+                map_svg.focus()
+                map_svg.press('End')
+                assert map_svg.get_attribute('data-kb-region')=='inset',(lang,width,'End did not select Canary inset')
+                lat0=float(map_svg.get_attribute('data-kb-lat'))
+                lon0=float(map_svg.get_attribute('data-kb-lon'))
+                map_svg.press('ArrowUp')
+                map_svg.press('ArrowRight')
+                lat1=float(map_svg.get_attribute('data-kb-lat'))
+                lon1=float(map_svg.get_attribute('data-kb-lon'))
+                assert lat1>lat0 and lon1>lon0,(lang,width,'arrow keys did not move map point',lat0,lon0,lat1,lon1)
+                map_svg.press('Enter')
+                page.wait_for_timeout(120)
+                assert page.locator('#ec-place').input_value()=='_',(lang,width,'keyboard map point was not applied')
+                chosen=page.locator('#ec-place option[value="_"]').inner_text()
+                expected='Chosen point' if lang=='en' else 'Punto elegido'
+                assert expected in chosen,(lang,width,'chosen point label missing',chosen)
+
             if lang=='es' and width in (390,1440):
                 page.locator('#ec-type-explorer').screenshot(path=str(OUT/f'eclipse-r02-types-{width}.png'))
 
@@ -229,7 +255,7 @@ def main():
         'sequence_phase_order_in_alt':True,
         'semantic_theme_contrast':True,
         'text_200_percent_reflow':True,
-        'map_arbitrary_point_keyboard_equivalent':'PENDING_MOTOR',
+        'map_arbitrary_point_keyboard_equivalent':True,
         'screenshots':['eclipse-r02-types-390.png','eclipse-r02-types-1440.png'],
       },
       'cases':cases,
