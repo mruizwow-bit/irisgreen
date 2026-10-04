@@ -1,0 +1,35 @@
+{
+  "schema": "habitation_room1_functional_storyboard_r01",
+  "date": "2026-10-04",
+  "status": "READY_FOR_PRISMA",
+  "implementation_blocked": true,
+  "lesson": "ROOM_ORIENTATION_ONLY",
+  "solver_truth": {
+    "orientation_1": false,
+    "orientation_2": true,
+    "orientation_3": false,
+    "orientation_4": false,
+    "exposed_in_room1": [
+      "orientation_1",
+      "orientation_2"
+    ]
+  },
+  "primary_interaction": "TAP_ROOM_ORIENTATION_MINIATURE",
+  "forbidden_primary_controls": [
+    "FLOOR_1_2_3_4",
+    "PIECE_PREV_NEXT",
+    "ARROW_MOVE_PAD"
+  ],
+  "frames": [
+    "ROOM1_F01_INITIAL",
+    "ROOM1_F02_ORIENTATION_SELECTED",
+    "ROOM1_F03_REORIENTED_PATH_CONNECTED",
+    "ROOM1_F04_SOLVED"
+  ],
+  "required_viewports": [
+    390,
+    1440
+  ],
+  "human_qa_before_room2": true,
+  "next_gate": "ROOM1_STORYBOARD_HUMAN_QA_PASS"
+}
