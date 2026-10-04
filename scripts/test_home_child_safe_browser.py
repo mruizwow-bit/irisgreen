@@ -10,6 +10,16 @@ def need(v,m):
 async def capture(page,path,name,w,h):
  await page.set_viewport_size({'width':w,'height':h});await page.goto(BASE+path,wait_until='networkidle')
  need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),f'horizontal overflow {path} {w}')
+ metrics=await page.evaluate("""() => {
+  const section=document.querySelector('.ig-home-v4-sabik'),visual=document.querySelector('#sabik-hologram'),composer=document.querySelector('.ig-home-v4-sabik-composer');
+  const sr=section.getBoundingClientRect(),vr=visual.getBoundingClientRect(),cr=composer.getBoundingClientRect();
+  return {sectionCenter:sr.left+sr.width/2,visualCenter:vr.left+vr.width/2,composerCenter:cr.left+cr.width/2,visualWidth:vr.width,composerWidth:cr.width};
+ }""")
+ need(abs(metrics['visualCenter']-metrics['sectionCenter'])<=3,f'Sabik not centered {path} {w}: {metrics}')
+ need(abs(metrics['composerCenter']-metrics['sectionCenter'])<=3,f'Sabik composer not centered {path} {w}: {metrics}')
+ if w>=1000: need(360<=metrics['visualWidth']<=560,f'Sabik desktop size wrong {path} {w}: {metrics}')
+ else: need(metrics['visualWidth']<=min(w*.86,380)+3,f'Sabik mobile size wrong {path} {w}: {metrics}')
+ need(metrics['composerWidth']<=835,f'Sabik composer too wide {path} {w}: {metrics}')
  await page.screenshot(path=str(OUT/f'{name}-{w}x{h}.png'),full_page=True)
 async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'screenshots':[],'network':{},'checks':[]}
@@ -17,7 +27,7 @@ async def main():
   browser=await p.chromium.launch();ctx=await browser.new_context();page=await ctx.new_page()
   await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate("localStorage.removeItem('ig-theme-2026'); sessionStorage.clear()")
   for path,name in [('/','home-v4-es'),('/en/','home-v4-en')]:
-   for w,h in [(1440,900),(390,844)]:
+   for w,h in [(1440,900),(390,844),(320,800)]:
     await capture(page,path,name,w,h);report['screenshots'].append(f'{name}-{w}x{h}.png')
   await page.set_viewport_size({'width':1440,'height':900})
   await page.goto(BASE+'/',wait_until='networkidle')
@@ -48,30 +58,47 @@ async def main():
   await page.set_viewport_size({'width':1440,'height':900})
   await page.wait_for_timeout(50)
   sabik_geom=await page.evaluate("""() => {
+    const section=document.querySelector('.ig-home-v4-sabik');
     const visual=document.querySelector('#sabik-hologram');
     const widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget');
-    const r=visual.getBoundingClientRect(), c=getComputedStyle(widget);
-    return {width:r.width,height:r.height,columns:c.gridTemplateColumns,widgetWidth:widget.getBoundingClientRect().width,
-      layers:['.orbits-back','.core-rings','.core-light','.particles-front'].every(s=>Boolean(visual.querySelector(s)))};
+    const composer=document.querySelector('.ig-home-v4-sabik-composer');
+    const body=document.querySelector('#sabik-web-master');
+    const sr=section.getBoundingClientRect(),vr=visual.getBoundingClientRect(),cr=composer.getBoundingClientRect(),br=body.getBoundingClientRect(),wc=getComputedStyle(widget);
+    return {
+      width:vr.width,height:vr.height,display:wc.display,direction:wc.flexDirection,
+      sectionCenter:sr.left+sr.width/2,visualCenter:vr.left+vr.width/2,composerCenter:cr.left+cr.width/2,composerWidth:cr.width,
+      bodyRatio:br.width/vr.width,bodyLeftRatio:(br.left-vr.left)/vr.width,
+      layers:['.orbits-back','.core-rings','.core-light','.particles-front'].every(s=>Boolean(visual.querySelector(s)))
+    };
   }""")
-  need(300<=sabik_geom['width']<=560,'Definitive Sabik visual is outside the Home product range '+repr(sabik_geom))
+  need(sabik_geom['display']=='flex' and sabik_geom['direction']=='column','Sabik Home must be one vertical experience '+repr(sabik_geom))
+  need(360<=sabik_geom['width']<=560,'Definitive Sabik visual is outside approved desktop scale '+repr(sabik_geom))
+  need(abs(sabik_geom['visualCenter']-sabik_geom['sectionCenter'])<=3,'Sabik visual is not centered '+repr(sabik_geom))
+  need(abs(sabik_geom['composerCenter']-sabik_geom['sectionCenter'])<=3 and sabik_geom['composerWidth']<=835,'Sabik composer is not centered/52rem '+repr(sabik_geom))
+  need(abs(sabik_geom['bodyRatio']-.64789)<.02 and abs(sabik_geom['bodyLeftRatio']-.16526)<.02,'Canonical Sabik body geometry was overridden '+repr(sabik_geom))
   need(sabik_geom['layers'],'Definitive Sabik layered visual missing '+repr(sabik_geom))
-  need(await page.locator('#sabik-settings-toggle').count()==0,'Sabik controls must not be hidden behind settings')
   need(await page.locator('#sabik-browse').count()==0,'Explore resources must not be inside Sabik')
   need(await page.locator('#sabik-submit').is_visible(),'Sabik primary send control missing')
-  for ctl in ['#sabik-expand','#sabik-voice','#sabik-voice-stop','#sabik-voice-repeat','#sabik-reset','#sabik-motion-level','#sabik-toggle']:
-   need(await page.locator(ctl).count()==1,'Sabik control missing: '+ctl)
-  await page.locator('#sabik-toggle').click();await page.wait_for_timeout(60)
-  need(await page.locator('#sabik-widget-body').is_hidden(),'Sabik body did not collapse')
-  need(await page.locator('#sabik-toggle').is_visible(),'Sabik show control disappeared while collapsed')
-  need(not await page.locator('#sabik-voice').is_visible(),'Secondary controls other than Show must collapse with Sabik')
-  await page.locator('#sabik-toggle').click();await page.wait_for_timeout(60)
-  need(await page.locator('#sabik-widget-body').is_visible(),'Sabik body did not reopen')
   voice_ctl=page.locator('#sabik-voice')
-  need(await voice_ctl.count()==1 and await voice_ctl.is_visible(),'Sabik voice control must be visible')
-  need(await page.locator('#sabik-reset').is_visible(),'Sabik reset control must be visible')
-  need(await page.locator('#sabik-motion-level').is_visible(),'Sabik motion selector must be visible')
+  need(await voice_ctl.count()==1 and await voice_ctl.is_visible(),'Sabik primary voice control missing')
+  for obsolete in ['#sabik-expand','#sabik-toggle','#sabik-low','#sabik-mic']:
+   need(await page.locator(obsolete).count()==0,'Obsolete Sabik Home control returned: '+obsolete)
+  need(await page.locator('#sabik-voice-stop').is_hidden(),'Stop must be contextual, not visible in idle')
+  need(await page.locator('#sabik-voice-repeat').is_hidden(),'Repeat must be contextual, not visible without repeatable speech')
+  options=page.locator('#sabik-options')
+  need(await options.count()==1 and await options.is_visible(),'Sabik options disclosure missing')
+  need(not await options.evaluate('(el)=>el.open'),'Sabik secondary options must start closed')
+  need(not await page.locator('#sabik-reset').is_visible(),'Reset must not compete with primary actions in idle')
+  need(not await page.locator('#sabik-motion-level').is_visible(),'Motion selector must be secondary in idle')
+  await page.locator('#sabik-options summary').click();await page.wait_for_timeout(50)
+  need(await options.evaluate('(el)=>el.open'),'Sabik options did not open')
+  need(await page.locator('#sabik-reset').is_visible(),'Sabik reset missing inside options')
+  need(await page.locator('#sabik-motion-level').is_visible(),'Sabik motion selector missing inside options')
+  need(await page.locator('#sabik-voice-volume').is_visible() and await page.locator('#sabik-voice-rate').is_visible(),'Sabik voice settings missing inside options')
   need(await page.locator('#sabik-motion-level option').evaluate_all("els=>els.map(e=>e.value)")==['NORMAL','REDUCIDO','SIN_MOVIMIENTO'],'Sabik motion levels missing')
+  targets=await page.evaluate("""() => ['#sabik-submit','#sabik-voice','#sabik-options summary','#sabik-reset','#sabik-motion-level'].map(s=>{const r=document.querySelector(s).getBoundingClientRect();return [s,r.width,r.height]})""")
+  need(all(h>=44 for _,_,h in targets),'Sabik target below 44px '+repr(targets))
+  await page.locator('#sabik-options summary').click();await page.wait_for_timeout(30)
   voice_requests=[]
   page.on('request',lambda r,arr=voice_requests:arr.append(r.url))
   await page.wait_for_timeout(120)
@@ -130,6 +157,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-conversational-controls','sabik-collapse-reopen','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-centered-hierarchy','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
