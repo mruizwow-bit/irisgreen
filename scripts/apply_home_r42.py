@@ -31,61 +31,96 @@ def sabik_home(en):
     t={
       'title':'Ask Sabik' if en else 'Pregunta a Sabik',
       'subtitle':'Iris Green assistant' if en else 'Asistente de Iris Green',
-      'conversation':'You can ask me in writing or by voice. I answer with Iris Green information and show the sources.' if en else 'Puedes preguntarme por escrito o por voz. Respondo con información de Iris Green y te enseño las fuentes.',
+      'conversation':'Ask in writing or by voice. I answer with Iris Green information and show the sources.' if en else 'Pregunta por escrito o por voz. Respondo con información de Iris Green y enseño las fuentes.',
       'explanation':"If the Cloud library is unavailable, I use Iris Green's safe local index." if en else 'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green.',
       'label':'What do you need?' if en else '¿Qué necesitas?',
-      'hide':'Hide' if en else 'Ocultar',
-      'help':'Up to 300 characters. Enter adds a new line; Ctrl+Enter sends.' if en else 'Hasta 300 caracteres. Enter añade una línea; Ctrl+Enter envía.',
+      'help':'Up to 300 characters. Ctrl+Enter sends.' if en else 'Hasta 300 caracteres. Ctrl+Enter envía.',
       'send':'Send' if en else 'Enviar',
       'cancel':'Cancel response' if en else 'Cancelar respuesta',
       'voice':'Talk to Sabik' if en else 'Hablar con Sabik',
       'voice_off':'Ready' if en else 'Lista',
-      'voice_help':'Press “Talk to Sabik” and speak. Sabik starts listening and sends your question when you finish. Iris Green does not store the audio.' if en else 'Pulsa «Hablar con Sabik» y habla. Sabik empezará a escuchar y enviará tu pregunta cuando termines. El audio no se guarda en Iris Green.',
-      'mic':'Speak' if en else 'Hablar',
+      'voice_help':'Press “Talk to Sabik” and speak. Sabik listens after your explicit activation. Iris Green does not store the audio.' if en else 'Pulsa «Hablar con Sabik» y habla. Sabik escucha después de tu activación explícita. Iris Green no guarda el audio.',
       'stop':'Stop' if en else 'Detener',
       'repeat':'Repeat' if en else 'Repetir',
       'volume':'Volume' if en else 'Volumen',
       'rate':'Speed' if en else 'Velocidad',
-      'low':'Turn off motion' if en else 'Desactivar movimiento',
       'reset':'Start again' if en else 'Empezar de nuevo',
       'motion':'Sabik motion' if en else 'Movimiento de Sabik',
       'normal':'Normal',
       'reduced':'Reduced' if en else 'Reducido',
       'still':'No motion' if en else 'Sin movimiento',
-      'motion_help':'Gentle continuous motion.' if en else 'Movimiento suave y continuo.',
-      'browse':'Explore resources' if en else 'Explorar los recursos',
+      'motion_help':'Choose how much motion Sabik uses.' if en else 'Elige cuánto movimiento utiliza Sabik.',
       'memory':'No history is saved between sessions.' if en else 'No se guarda el historial entre sesiones.',
       'limits':'Check important information against the sources. Sabik does not make diagnoses.' if en else 'Comprueba la información importante en las fuentes. Sabik no realiza diagnósticos.',
       'placeholder':'For example: noise drains me' if en else 'Por ejemplo: el ruido me agota',
+      'options':'Sabik options' if en else 'Opciones de Sabik',
+      'state_label':'Sabik status' if en else 'Estado de Sabik',
     }
     return f'''<aside class="sabik-panel ig-home-v4-sabik-panel" aria-labelledby="sabik-widget-title" data-connected="false">
 <section class="sabik-widget">
 <div id="sabik-announcement" class="sabik-sr-only" role="status" aria-live="polite" aria-atomic="true"></div>
-<div class="ig-home-v4-sabik-left">
-  <h2 id="sabik-widget-title">{t['title']}</h2>
-  <div class="ig-home-v4-sabik-identity-row">
-    <div class="sabik-web-presentation"><div class="sabik-hologram sabik-web-visual sabik-visual" id="sabik-hologram" aria-hidden="true" data-web-state="PRESENTE" data-state="idle" data-motion="normal"><span class="layer halo" aria-hidden="true"></span><img class="layer orbits orbits-back" src="/sabik/definitive-r01/03_orbits_back.svg" width="1065" height="760" alt=""><img id="sabik-web-master" class="body" src="/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01" width="690" height="642" alt=""><img class="layer core core-rings" src="/sabik/definitive-r01/04_core_rings.svg" width="1065" height="760" alt=""><img class="layer core core-light" src="/sabik/definitive-r01/05_core_light.svg" width="1065" height="760" alt=""><img class="layer particles particles-front" src="/sabik/definitive-r01/06_particles_front.svg" width="1065" height="760" alt=""></div></div>
-    <div class="sabik-identity">
-      <img class="sabik-wordmark" src="/sabik/assets/web-r01/SABIK_WORDMARK_T1_MASTER_R2.svg" width="198" height="38" alt="Sabik">
-      <p data-sabik-text="subtitle">{t['subtitle']}</p>
-      <p class="sabik-status" data-sabik-text="conversationWelcome">{t['conversation']}</p>
-      <p class="sabik-capability" id="sabik-availability" data-sabik-text="explanation">{t['explanation']}</p>
+<div class="ig-home-v4-sabik-center">
+  <h2 id="sabik-widget-title" class="ig-home-v4-sabik-title">{t['title']}</h2>
+  <div class="sabik-web-presentation">
+    <div class="sabik-hologram sabik-web-visual sabik-visual" id="sabik-hologram" aria-hidden="true" data-web-state="PRESENTE" data-state="idle" data-motion="normal">
+      <span class="layer halo" aria-hidden="true"></span>
+      <img class="layer orbits orbits-back" src="/sabik/definitive-r01/03_orbits_back.svg" width="1065" height="760" alt="">
+      <img id="sabik-web-master" class="body" src="/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01" width="690" height="642" alt="">
+      <img class="layer core core-rings" src="/sabik/definitive-r01/04_core_rings.svg" width="1065" height="760" alt="">
+      <img class="layer core core-light" src="/sabik/definitive-r01/05_core_light.svg" width="1065" height="760" alt="">
+      <img class="layer particles particles-front" src="/sabik/definitive-r01/06_particles_front.svg" width="1065" height="760" alt="">
     </div>
   </div>
-</div>
-<div class="ig-home-v4-sabik-right">
-  <div class="ig-home-v4-sabik-form-head"><label for="sabik-input" data-sabik-text="label">{t['label']}</label><button type="button" class="sabik-icon-button" id="sabik-toggle" aria-controls="sabik-widget-body" aria-expanded="true" data-sabik-text="hide">{t['hide']}</button></div>
-  <div class="sabik-widget-body" id="sabik-widget-body">
-    <form class="sabik-widget-form" id="sabik-form"><textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" aria-describedby="sabik-input-help sabik-availability" placeholder="{t['placeholder']}"></textarea><p id="sabik-input-help" data-sabik-text="help">{t['help']}</p><div class="sabik-actions"><button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button><button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button></div></form>
+  <div class="sabik-identity ig-home-v4-sabik-identity">
+    <img class="sabik-wordmark" src="/sabik/assets/web-r01/SABIK_WORDMARK_T1_MASTER_R2.svg" width="198" height="38" alt="Sabik">
+    <p data-sabik-text="subtitle">{t['subtitle']}</p>
+    <p class="sabik-status" data-sabik-text="conversationWelcome">{t['conversation']}</p>
+    <p class="sabik-capability sabik-sr-only" id="sabik-availability" data-sabik-text="explanation">{t['explanation']}</p>
+  </div>
+  <p class="sabik-turn-state"><span class="sabik-sr-only">{t['state_label']}: </span><span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></p>
+  <div class="sabik-widget-body ig-home-v4-sabik-composer" id="sabik-widget-body">
+    <form class="sabik-widget-form" id="sabik-form">
+      <label for="sabik-input" data-sabik-text="label">{t['label']}</label>
+      <textarea id="sabik-input" name="need" maxlength="300" rows="3" autocomplete="off" aria-describedby="sabik-input-help sabik-availability" placeholder="{t['placeholder']}"></textarea>
+      <p id="sabik-input-help" data-sabik-text="help">{t['help']}</p>
+      <div class="sabik-primary-actions">
+        <button class="sabik-button primary" id="sabik-submit" type="submit" disabled data-sabik-text="send">{t['send']}</button>
+        <button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false" aria-describedby="sabik-voice-help"><span data-sabik-text="voice">{t['voice']}</span></button>
+      </div>
+      <p id="sabik-voice-help" class="sabik-sr-only" data-sabik-text="voiceHelp">{t['voice_help']}</p>
+    </form>
+    <div class="sabik-context-actions" aria-live="polite">
+      <button class="sabik-button" id="sabik-cancel" type="button" hidden data-sabik-text="cancel">{t['cancel']}</button>
+      <button class="sabik-button" id="sabik-voice-stop" type="button" hidden disabled data-sabik-text="stopVoice">{t['stop']}</button>
+      <button class="sabik-button" id="sabik-voice-repeat" type="button" hidden disabled data-sabik-text="repeat">{t['repeat']}</button>
+    </div>
     <div id="sabik-results"></div>
-    <div class="ig-home-v4-sabik-controls">
-      <button class="sabik-button" id="sabik-expand" type="button" aria-pressed="false">{'Expand' if en else 'Ampliar'}</button>
-      <div class="sabik-voice-control"><button class="sabik-button sabik-voice-toggle" id="sabik-voice" type="button" aria-pressed="false" aria-describedby="sabik-voice-help"><span data-sabik-text="voice">{t['voice']}</span> · <span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></button><small id="sabik-voice-help" data-sabik-text="voiceHelp">{t['voice_help']}</small><div class="sabik-voice-actions"><button class="sabik-button" id="sabik-mic" type="button" hidden disabled data-sabik-text="mic">{t['mic']}</button><button class="sabik-button" id="sabik-voice-stop" type="button" disabled data-sabik-text="stopVoice">{t['stop']}</button><button class="sabik-button" id="sabik-voice-repeat" type="button" disabled data-sabik-text="repeat">{t['repeat']}</button></div><div class="sabik-voice-settings"><label for="sabik-voice-volume"><span data-sabik-text="volume">{t['volume']}</span><input id="sabik-voice-volume" type="range" min="0" max="1" step="0.05" value="1"></label><label for="sabik-voice-rate"><span data-sabik-text="rate">{t['rate']}</span><input id="sabik-voice-rate" type="range" min="0.6" max="1.6" step="0.1" value="1"></label></div></div>
-      <div class="sabik-actions sabik-reset-actions"><button class="sabik-button" id="sabik-low" type="button" aria-pressed="false" data-sabik-text="low">{t['low']}</button><button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button></div>
-      <div class="sabik-motion-control"><label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label><select id="sabik-motion-level" aria-describedby="sabik-motion-help"><option value="NORMAL" data-sabik-text="normal">{t['normal']}</option><option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option><option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option></select><small id="sabik-motion-help" data-sabik-text="motionHelp">{t['motion_help']}</small></div>
-    </div>
-    <div class="sabik-notes"><p class="sabik-memory-note" data-sabik-text="memory">{t['memory']}</p><p class="sabik-limits" data-sabik-text="limits">{t['limits']}</p></div>
   </div>
+  <details class="sabik-options" id="sabik-options">
+    <summary>{t['options']}</summary>
+    <div class="sabik-options-grid">
+      <div class="sabik-motion-control">
+        <label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label>
+        <select id="sabik-motion-level" aria-describedby="sabik-motion-help">
+          <option value="NORMAL" data-sabik-text="normal">{t['normal']}</option>
+          <option value="REDUCIDO" data-sabik-text="reduced">{t['reduced']}</option>
+          <option value="SIN_MOVIMIENTO" data-sabik-text="still">{t['still']}</option>
+        </select>
+        <small id="sabik-motion-help" data-sabik-text="motionHelp">{t['motion_help']}</small>
+      </div>
+      <div class="sabik-voice-settings">
+        <label for="sabik-voice-volume"><span data-sabik-text="volume">{t['volume']}</span><input id="sabik-voice-volume" type="range" min="0" max="1" step="0.05" value="1"></label>
+        <label for="sabik-voice-rate"><span data-sabik-text="rate">{t['rate']}</span><input id="sabik-voice-rate" type="range" min="0.6" max="1.6" step="0.1" value="1"></label>
+      </div>
+      <div class="sabik-actions sabik-reset-actions">
+        <button class="sabik-button" id="sabik-reset" type="button" data-sabik-text="reset">{t['reset']}</button>
+      </div>
+      <div class="sabik-notes">
+        <p class="sabik-memory-note" data-sabik-text="memory">{t['memory']}</p>
+        <p class="sabik-limits" data-sabik-text="limits">{t['limits']}</p>
+      </div>
+    </div>
+  </details>
 </div>
 </section></aside>'''
 
