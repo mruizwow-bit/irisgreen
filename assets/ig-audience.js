@@ -35,6 +35,7 @@ function childRouteBlocked(url){
 function selectedBand(){return USER_AGE.indexOf(current)!==-1?current:null;}
 var SAFE_UNCLASSIFIED_PREFIXES=Object.freeze([
  '/es/recursos','/en/resources','/es/taller','/en/workshop','/es/sitio-tranquilo','/en/quiet-space',
+ '/es/intereses','/en/interests','/es/libros',
  '/es/sobre-iris-green','/es/lectura-accesible','/es/privacidad','/en/privacy'
 ]);
 function strictSelectedView(){return current==='AGE_0_12'||current==='AGE_13_17';}
