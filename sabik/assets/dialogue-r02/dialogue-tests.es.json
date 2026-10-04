@@ -51,7 +51,7 @@
         "slots": {
           "topic": "autismo"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -63,7 +63,7 @@
         "slots": {
           "topic": "autismo"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -75,7 +75,7 @@
         "slots": {
           "topic": "ansiedad"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -87,7 +87,7 @@
         "slots": {
           "topic": "TOC"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -277,7 +277,7 @@
         "slots": {
           "topic": "sueño"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -298,12 +298,10 @@
       "id": "es-025",
       "text": "No lo sé",
       "context": {
-        "topic": "autismo",
-        "pending_slot": "aspect"
+        "topic": "autismo"
       },
       "expect": {
-        "keep_topic": "autismo",
-        "next_prompt": "search.ask_aspect"
+        "keep_topic": "autismo"
       }
     },
     {
@@ -344,11 +342,10 @@
       },
       "expect": {
         "intent": "conversation.correction_topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "ansiedad"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
@@ -360,11 +357,10 @@
       },
       "expect": {
         "intent": "conversation.correction_topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "ansiedad"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
@@ -514,13 +510,11 @@
       "id": "es-043",
       "text": "No lo sé",
       "context": {
-        "topic": "autismo",
-        "pending_slot": "aspect"
+        "topic": "autismo"
       },
       "expect": {
         "action": "fallback",
-        "keep_topic": "autismo",
-        "prompt": "search.ask_aspect"
+        "keep_topic": "autismo"
       }
     },
     {
@@ -597,11 +591,10 @@
       },
       "expect": {
         "intent": "conversation.change_topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "ansiedad"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
@@ -610,11 +603,10 @@
       "context": {},
       "expect": {
         "intent": "search.topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "sueño"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
