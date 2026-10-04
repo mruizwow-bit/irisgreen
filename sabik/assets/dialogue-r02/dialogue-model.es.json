@@ -15,11 +15,11 @@
     "tanick"
   ],
   "policies": {
-    "one_question_per_turn": true,
-    "confirm_only_when_material": true,
+    "respond_first": true,
+    "clarify_only_for_required_parameters": true,
+    "never_profile_through_questions": true,
     "prompt_selection": "session_cycle",
     "preserve_topic_across_followups": true,
-    "retrieve_only_when_required_slots_ready": true,
     "max_session_turns": 8
   },
   "intents": [
@@ -57,14 +57,6 @@
         "^(?:necesito|quiero|quisiera|me gustaria|me gustaría)?\\s*(?:buscar|encontrar|consultar|informarme sobre|informacion sobre|información sobre|saber(?: mas| más)? sobre)\\s+(?<topic>.+)$",
         "^(?:busca|buscar|buscame|búscame|encuentra|hablame de|háblame de)\\s+(?<topic>.+)$"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "topic": "search.ask_topic",
-        "aspect": "search.ask_aspect"
-      },
       "action": "retrieve"
     },
     {
@@ -76,9 +68,6 @@
       "fixed_slots": {
         "aspect": "definition"
       },
-      "required_slots": [
-        "topic"
-      ],
       "action": "retrieve"
     },
     {
@@ -88,13 +77,6 @@
         "^(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|colegio|escuela|trabajo|investigación|investigacion)(?:\\s+(?:de|del|sobre|para)\\s+(?<topic>.+))?$",
         "^(?:que ayuda|qué ayuda)(?:\\s+(?:con|para)\\s+.+)?$"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "topic": "search.ask_topic"
-      },
       "action": "retrieve"
     },
     {
@@ -102,10 +84,6 @@
       "priority": 96,
       "patterns": [
         "^(?:no[, ]*)?(?:mejor|prefiero)\\s+(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|investigación|investigacion)$"
-      ],
-      "required_slots": [
-        "topic",
-        "aspect"
       ],
       "action": "retrieve"
     },
@@ -118,13 +96,6 @@
       "clear_slots": [
         "aspect"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "aspect": "search.ask_aspect"
-      },
       "action": "retrieve"
     },
     {
@@ -153,10 +124,6 @@
       "fixed_slots": {
         "aspect": "comparison"
       },
-      "required_slots": [
-        "topic",
-        "compare_topic"
-      ],
       "action": "route",
       "capability": "iris_green"
     },
@@ -179,13 +146,6 @@
       "clear_slots": [
         "aspect"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "aspect": "search.ask_aspect"
-      },
       "action": "retrieve"
     },
     {
@@ -288,13 +248,6 @@
       ],
       "fixed_slots": {
         "aspect": "supports"
-      },
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "topic": "search.ask_topic"
       },
       "action": "retrieve"
     }
