@@ -50,6 +50,11 @@ async def main():
   need(await page.locator('main').get_attribute('inert') is not None,'normal experience not blocked before age selection')
   need(await page.get_by_role('button',name='Accesibilidad',exact=True).is_visible(),'accessibility must remain available before age selection')
   need(await page.locator('.ig-r49-lang').is_visible(),'language control must remain available before age selection')
+  need(await page.locator('.ig-r49-global-footer').get_attribute('inert') is not None,'footer remains focusable behind mandatory gate')
+  await page.get_by_role('button',name='Accesibilidad',exact=True).click()
+  need(await page.locator('#ig-r49-settings[open]').count()==1,'accessibility settings unavailable before age selection')
+  need(await page.get_by_role('button',name='Leer esta página',exact=True).count()==0,'page reading exposes hidden content before age selection')
+  await page.keyboard.press('Escape')
   need(await page.locator('[data-ig-r49-search]').is_hidden(),'global search must be unavailable before age selection')
   need(await page.locator('[data-ig-r49-more]').is_hidden(),'global navigation must be unavailable before age selection')
   blocked_requests=[];page.on('request',lambda r,arr=blocked_requests:arr.append(r.url))
@@ -224,6 +229,6 @@ async def main():
   report['network']['tampered_age_direct_full_status']=direct2.status
   print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','all-ages-direct-routes','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','no-page-reading-before-age','footer-inert-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','all-ages-direct-routes','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
