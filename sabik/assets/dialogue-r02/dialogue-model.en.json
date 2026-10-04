@@ -14,11 +14,11 @@
     "tanick"
   ],
   "policies": {
-    "one_question_per_turn": true,
-    "confirm_only_when_material": true,
+    "respond_first": true,
+    "clarify_only_for_required_parameters": true,
+    "never_profile_through_questions": true,
     "prompt_selection": "session_cycle",
     "preserve_topic_across_followups": true,
-    "retrieve_only_when_required_slots_ready": true,
     "max_session_turns": 8
   },
   "intents": [
@@ -56,14 +56,6 @@
         "^(?:i need to|i want to|i would like to|i'd like to)?\\s*(?:search(?: for)?|find|look up|learn about|get information about|know more about)\\s+(?<topic>.+)$",
         "^(?:search(?: for)?|find|look up|tell me about|information about)\\s+(?<topic>.+)$"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "topic": "search.ask_topic",
-        "aspect": "search.ask_aspect"
-      },
       "action": "retrieve"
     },
     {
@@ -76,9 +68,6 @@
       "fixed_slots": {
         "aspect": "definition"
       },
-      "required_slots": [
-        "topic"
-      ],
       "action": "retrieve"
     },
     {
@@ -87,13 +76,6 @@
       "patterns": [
         "^(?<aspect>signs|symptoms|traits|supports|support|assessment|evaluation|diagnosis|causes|sensory|communication|daily life|school|education|work|research)(?:\\s+(?:of|about|for)\\s+(?<topic>.+))?$"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "topic": "search.ask_topic"
-      },
       "action": "retrieve"
     },
     {
@@ -122,10 +104,6 @@
       "fixed_slots": {
         "aspect": "comparison"
       },
-      "required_slots": [
-        "topic",
-        "compare_topic"
-      ],
       "action": "route",
       "capability": "iris_green"
     },
@@ -147,13 +125,6 @@
       "clear_slots": [
         "aspect"
       ],
-      "required_slots": [
-        "topic",
-        "aspect"
-      ],
-      "when_missing": {
-        "aspect": "search.ask_aspect"
-      },
       "action": "retrieve"
     },
     {
