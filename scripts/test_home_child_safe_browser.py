@@ -98,8 +98,13 @@ async def main():
   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
   need(await page.locator('[data-ig-home-safe]').count()==0 and await page.locator('[data-ig-home-adult]').count()==0,
        'Internal safety labels must not be exposed in Home')
-  need(await page.get_by_text('Tus intereses',exact=True).is_hidden(),'Unclassified Interests must remain fail-closed for children')
-  need(await page.get_by_text('Libros de Iris Green',exact=True).is_hidden(),'Unclassified Books must remain fail-closed for children')
+  need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain visible for AGE_0_12')
+  need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain visible for AGE_0_12')
+  need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).is_visible(),'Sabik disappeared for AGE_0_12')
+  await page.get_by_role('button',name='13–17 años',exact=True).click()
+  need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain visible for AGE_13_17')
+  need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain visible for AGE_13_17')
+  need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).is_visible(),'Sabik disappeared for AGE_13_17')
   await page.get_by_role('button',name='18 años o más',exact=True).click()
   await page.evaluate("IGAudience.clear()");need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL not restored')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
@@ -125,6 +130,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-conversational-controls','sabik-collapse-reopen','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-conversational-controls','sabik-collapse-reopen','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
