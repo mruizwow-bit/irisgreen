@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """R42 A8 · build-time child safety for Iris Green public dist."""
 from __future__ import annotations
-import argparse, html, json, re
+import argparse, html, json, re, shutil
 from pathlib import Path
 from urllib.parse import urlsplit
 
@@ -47,10 +47,10 @@ def inject(text,library=False):
 def safe_article(r,lang):
     cid,_,group,_,_,tes,ten=r;title=ten if lang=='en' else tes;h,s,help_=SAFE[group][lang]
     start='Where to start' if lang=='en' else 'Por dónde empezar'
-    note=('The full version is never loaded automatically. Adults can request it explicitly after selecting Adults in “Content for…”.' if lang=='en' else 'La versión completa nunca se carga automáticamente. En Adultez puede solicitarse expresamente después de elegir «Contenido para…».')
+    note=('This page shows the safer version while restricted adult access is not independently verified.' if lang=='en' else 'Esta página muestra la versión segura mientras el acceso adulto restringido no esté verificado de forma independiente.')
     return f'<article class="ficha ig-s2-safe" data-ig-s2-safe data-ig-s2-id="{cid}"><h1>{html.escape(title)}</h1><p class="ig-safety-kicker">{html.escape(h)}</p><section class="sec"><p class="lede">{html.escape(s)}</p></section><section class="sec helps"><h2>{start}</h2><p>{html.escape(help_)}</p></section><div class="ig-s2-actions" data-ig-s2-actions></div><p class="ig-s2-note">{html.escape(note)}</p></article>'
 def protect_pages(root):
-    out=root/'assets/safety/full';out.mkdir(parents=True,exist_ok=True);n=0
+    n=0
     for r in S2:
         for lang,url in [('es',r[3]),('en',r[4])]:
             p=page(root,url)
@@ -124,7 +124,7 @@ def incidental(root):
 def research(root):
     data_path=root/'es/investigacion/estudios-textos.json'
     if not data_path.is_file():return 0
-    data=json.loads(data_path.read_text(encoding='utf-8'));out=root/'assets/safety/full';out.mkdir(parents=True,exist_ok=True);n=0
+    data=json.loads(data_path.read_text(encoding='utf-8'));n=0
     for x in data:
         num=int(x.get('n',0) or 0)
         if num not in RS:continue
@@ -133,7 +133,6 @@ def research(root):
             heading=x.get('heading_en' if lang=='en' else 'heading') or x.get('titleOrig','')
             paras=x.get('text_en' if lang=='en' else 'text') or [];means=x.get('means_en' if lang=='en' else 'means','');notp=x.get('notProven_en' if lang=='en' else 'notProven','')
             body=''.join(f'<p>{html.escape(str(v))}</p>' for v in paras)
-            (out/f'{cid}-{lang}.html').write_text(f'<h2>{html.escape(str(heading))}</h2>{body}<p>{html.escape(str(means))}</p><p>{html.escape(str(notp))}</p>',encoding='utf-8')
         es=SAFE[group]['es'];en=SAFE[group]['en'];x['text']=[es[1],es[2]];x['means']=es[1];x['notProven']=es[2];x['text_en']=[en[1],en[2]];x['means_en']=en[1];x['notProven_en']=en[2];x['ig_s2_id']=cid;n+=1
     for x in data:
         if int(x.get('n',0) or 0) in INTENTIONAL_RESEARCH:x['ig_intentional_only']=True
@@ -171,6 +170,8 @@ def catalogs(root):
         if p.is_file():p.write_text(inject(p.read_text(encoding='utf-8')),encoding='utf-8')
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('--root',type=Path,required=True);root=ap.parse_args().root.resolve()
+    public_full=root/'assets/safety/full'
+    if public_full.exists(): shutil.rmtree(public_full)
     safe,intent,adult=search_contracts(root);pages=protect_pages(root);removed=incidental(root);res=research(root);library(root);catalogs(root)
     print(json.dumps({'s2_pages':pages,'research_s2':res,'links_removed':removed,'search_safe':safe,'search_intentional':intent,'search_adult':adult}))
 if __name__=='__main__':main()
