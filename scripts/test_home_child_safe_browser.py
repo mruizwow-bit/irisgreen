@@ -152,13 +152,18 @@ async def main():
    need(await page.locator('[data-ig-s2-safe]').count()==1,'safe S2 shell missing '+band)
    need(await page.get_by_role('button',name='Ver información completa').count()==0,'full action exposed '+band)
    need(not any('/assets/safety/full/' in u for u in requests),'full S2 request '+band)
-  # 18+ exposes full action but fetches body only after explicit click.
+  # 18+ is a claim only: it never unlocks restricted full content.
   await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate("IGAudience.set('AGE_18_PLUS')")
   requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+s2,wait_until='networkidle')
-  full=page.get_by_role('button',name='Ver información completa');need(await full.count()==1,'18+ full action missing');need(not any('/assets/safety/full/' in u for u in requests),'full S2 prefetched for 18+')
-  await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
-  report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
+  need(await page.locator('[data-ig-s2-safe]').count()==1,'safe S2 shell missing AGE_18_PLUS')
+  need(await page.get_by_role('button',name='Ver información completa').count()==0,'18+ alone exposed restricted full action')
+  need(not any('/assets/safety/full/' in u for u in requests),'18+ alone requested restricted full content')
+  direct=await page.request.get(BASE+'/assets/safety/full/global-200-es.html')
+  need(direct.status()==404,'direct restricted full URL must fail closed, got '+str(direct.status()))
+  report['network']['adult_explicit_full_requests']=0
+  report['network']['direct_full_status']=direct.status()
+  print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
