@@ -1,0 +1,40 @@
+{
+  "schema": "iris-green-control-v1",
+  "id": "PRISMA_WEB_RECOVERY_BASE_20261004",
+  "owner": "Prisma A8",
+  "date": "2026-10-04",
+  "source_issue": 369,
+  "canonical_command_issue": 323,
+  "main_head_at_checkpoint": "4fc3d248ab487889cffc07e0d06777ae5740ed8a",
+  "governance": {
+    "integration_base": "main",
+    "cadence": "ONE_SMALL_BLOCK_MAIN_VERIFY_REPORT_NEXT",
+    "no_new_prisma_369_branches": true,
+    "production_maintenance_preserved": true
+  },
+  "recovery_status": {
+    "astra_reconciled_points": "#4-#37,#39-#48 including #46 as absorbed/do-not-duplicate unless regression",
+    "p0_outside_prisma": [
+      "#1/#3 R62 games special assembly",
+      "#2 Fósiles R2v4 Motor M7",
+      "#11 waits real games",
+      "Sabik R66 Nexo/HUMAN QA"
+    ],
+    "prisma_remaining": [
+      "#38 Cielo V2/R03 final safe-zone and interaction gate"
+    ],
+    "language_runtime": "PASS",
+    "eclipses_a11y": "PASS",
+    "canonical_build_family": "PASS_ON_RECENT_MAIN"
+  },
+  "evidence": {
+    "language_run": 37184131855,
+    "eclipse_keyboard_run": 37183701170,
+    "eclipse_axioma_run": 37183723530,
+    "cielo_current_run": 37184543905,
+    "cielo_current_commit": "4fc3d248ab487889cffc07e0d06777ae5740ed8a"
+  },
+  "next_gate": "CIELO_WORKFLOW_SUCCESS_THEN_AXIOMA_RETEST",
+  "vector_handoff": "PENDING_CIELO_GATE",
+  "status": "PRISMA_RECOVERY_BASE_PENDING_FINAL_CIELO_GATE"
+}
