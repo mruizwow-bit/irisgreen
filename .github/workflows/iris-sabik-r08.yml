@@ -41,6 +41,9 @@ jobs:
       - name: Fixed audio
         run: |
           node scripts/test_sabik_audio_r01.mjs
+          # The canonical WAVs are reconstructed from the verified archive during
+          # every production build. Materialize them before validating file hashes.
+          python scripts/materialize_sabik_audio_r01.py
           python scripts/test_sabik_audio_assets_r01.py
       - name: Copy
         run: python scripts/test_sabik_copy_r02.py
