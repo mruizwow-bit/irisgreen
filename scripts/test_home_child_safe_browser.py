@@ -169,10 +169,20 @@ async def main():
   need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain visible for AGE_0_12')
   need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain visible for AGE_0_12')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).is_visible(),'Sabik disappeared for AGE_0_12')
+  for route in ['/es/intereses/','/es/libros/']:
+   await page.goto(BASE+route,wait_until='domcontentloaded')
+   need(await page.locator('main').first.is_visible(),'ALL_AGES direct route blocked for AGE_0_12 '+route)
+   need(await page.locator('[data-ig-audience-blocked-message]').count()==0,'ALL_AGES age-block message shown for AGE_0_12 '+route)
+  await page.goto(BASE+'/',wait_until='networkidle')
   await page.get_by_role('button',name='13–17 años',exact=True).click()
   need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain visible for AGE_13_17')
   need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain visible for AGE_13_17')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).is_visible(),'Sabik disappeared for AGE_13_17')
+  for route in ['/es/intereses/','/es/libros/']:
+   await page.goto(BASE+route,wait_until='domcontentloaded')
+   need(await page.locator('main').first.is_visible(),'ALL_AGES direct route blocked for AGE_13_17 '+route)
+   need(await page.locator('[data-ig-audience-blocked-message]').count()==0,'ALL_AGES age-block message shown for AGE_13_17 '+route)
+  await page.goto(BASE+'/',wait_until='networkidle')
   await page.get_by_role('button',name='18 años o más',exact=True).click()
   need(await page.evaluate("IGAudience.isAdultClaimed()") is True,'18+ claim not recorded')
   need(await page.evaluate("IGAudience.hasAdultAssurance()") is False,'18+ claim incorrectly became adult assurance')
@@ -214,6 +224,6 @@ async def main():
   report['network']['tampered_age_direct_full_status']=direct2.status
   print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','all-ages-direct-routes','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
