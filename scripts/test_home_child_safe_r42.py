@@ -26,8 +26,11 @@ def main():
   need('class="ig-uh"' not in txt,'Legacy ig-uh header leaked into built Home')
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
-  for token in ['id="sabik-form"','id="sabik-voice"','id="sabik-motion-level"','id="sabik-reset"']:
+  for token in ['id="sabik-form"','id="sabik-submit"','id="sabik-expand"','id="sabik-voice"','id="sabik-motion-level"','id="sabik-reset"','id="sabik-toggle"']:
    need(token in txt,'Real Sabik control missing '+token)
+  need('class="sabik-actions sabik-primary-actions"' in txt,'Sabik primary action group missing')
+  need('class="ig-home-v4-sabik-secondary-controls"' in txt,'Sabik secondary controls group missing')
+  need('id="sabik-browse"' not in txt,'Explore resources must live outside the Sabik block')
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
  safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text());adult=json.loads((root/'assets/safety/search-adult-full-catalog.json').read_text())
