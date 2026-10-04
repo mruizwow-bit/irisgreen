@@ -94,6 +94,16 @@ try:
         assert "think" in processing["coreAnimation"], processing
         evidence["motion"]["processing"] = processing
 
+        page.evaluate("window.SabikWebPresentation.setSemanticState('degraded')")
+        degraded = page.evaluate("""() => ({
+          semantic:document.querySelector('#sabik-hologram').dataset.state,
+          orbitOpacity:Number(getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).opacity),
+          coreOpacity:Number(getComputedStyle(document.querySelector('#sabik-hologram .core-light')).opacity)
+        })""")
+        assert degraded["semantic"] == "degraded", degraded
+        assert degraded["orbitOpacity"] < 1 and degraded["coreOpacity"] < 1, degraded
+        evidence["motion"]["degraded"] = degraded
+
         page.evaluate("window.SabikWebPresentation.setVoiceActive(true)")
         speaking = page.evaluate("""() => ({
           semantic:document.querySelector('#sabik-hologram').dataset.state,
@@ -112,6 +122,15 @@ try:
         # Reduced keeps functionality while shortening R37 finite motion.
         page.select_option("#sabik-motion-level", "REDUCIDO")
         page.dispatch_event("#sabik-motion-level", "change")
+        page.evaluate("window.SabikWebPresentation.setSemanticState('processing')")
+        reduced_css = page.evaluate("""() => ({
+          motion:document.querySelector('#sabik-hologram').dataset.motion,
+          orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName,
+          coreAnimation:getComputedStyle(document.querySelector('#sabik-hologram .core-light')).animationName
+        })""")
+        assert reduced_css["motion"] == "reduced", reduced_css
+        assert reduced_css["orbitAnimation"] == "none" and reduced_css["coreAnimation"] == "none", reduced_css
+        evidence["motion"]["reduced_css"] = reduced_css
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true,semantic:'idle'}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         reduced = page.evaluate("""() => {
@@ -145,6 +164,35 @@ try:
         assert stopped["masterAnimations"] == 0, stopped
         assert stopped["orbitAnimation"] == "none" and stopped["bodyAnimation"] == "none", stopped
         evidence["motion"]["no_motion"] = stopped
+
+        page.evaluate("window.SabikWebPresentation.setVoiceActive(true)")
+        no_motion_voice = page.evaluate("""() => ({
+          semantic:document.querySelector('#sabik-hologram').dataset.state,
+          voice:document.querySelector('#sabik-hologram').dataset.voiceActive,
+          motion:document.querySelector('#sabik-hologram').dataset.motion,
+          bodyAnimation:getComputedStyle(document.querySelector('#sabik-web-master')).animationName,
+          coreAnimation:getComputedStyle(document.querySelector('#sabik-hologram .core-light')).animationName
+        })""")
+        assert no_motion_voice["semantic"] == "speaking" and no_motion_voice["voice"] == "true", no_motion_voice
+        assert no_motion_voice["motion"] == "none", no_motion_voice
+        assert no_motion_voice["bodyAnimation"] == "none" and no_motion_voice["coreAnimation"] == "none", no_motion_voice
+        page.evaluate("window.SabikWebPresentation.setVoiceActive(false)")
+        evidence["motion"]["no_motion_voice"] = no_motion_voice
+
+        page.select_option("#sabik-motion-level", "NORMAL")
+        page.dispatch_event("#sabik-motion-level", "change")
+        page.emulate_media(reduced_motion="reduce")
+        page.wait_for_timeout(80)
+        page.evaluate("window.SabikWebPresentation.refresh()")
+        prefers = page.evaluate("""() => ({
+          motion:document.querySelector('#sabik-hologram').dataset.motion,
+          level:window.SabikWebPresentation.snapshot().level,
+          orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName
+        })""")
+        assert prefers["motion"] == "reduced" and prefers["level"] == "REDUCIDO", prefers
+        assert prefers["orbitAnimation"] == "none", prefers
+        evidence["motion"]["prefers_reduced"] = prefers
+        page.emulate_media(reduced_motion="no-preference")
 
         for width,height in ((1920,1080),(1440,900),(390,844),(320,800)):
             page.set_viewport_size({"width":width,"height":height})
