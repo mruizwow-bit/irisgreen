@@ -162,6 +162,80 @@ def main() -> None:
         if len(owners) > 1:
             warnings.append({"type": "canonical_shared", "canonical": canonical, "routes": owners})
 
+    # Bilingual oracle: the public search inventory contains explicit ES/EN
+    # pairings for Conditions and Situations. Their hreflang relation is therefore
+    # mandatory, not optional. This closes the historical gap where a page with
+    # no alternate tags at all could still pass the generic reciprocity audit.
+    pair_inventory = root / "buscador.json"
+    declared_pairs_checked = 0
+    if not pair_inventory.is_file():
+        failures.append({"type": "bilingual_pair_inventory_missing", "path": "/buscador.json"})
+    else:
+        try:
+            rows = json.loads(pair_inventory.read_text(encoding="utf-8"))
+            expected_counts = {"Condición": 185, "Situación": 187}
+            for section, expected_count in expected_counts.items():
+                section_rows = [row for row in rows if row.get("s") == section]
+                if len(section_rows) != expected_count:
+                    failures.append({
+                        "type": "bilingual_pair_inventory_count",
+                        "section": section,
+                        "expected": expected_count,
+                        "actual": len(section_rows),
+                    })
+                seen_es, seen_en = set(), set()
+                for row in section_rows:
+                    en = row.get("en") or {}
+                    es_url, en_url = row.get("u"), en.get("u")
+                    if not es_url or not en_url:
+                        failures.append({
+                            "type": "bilingual_pair_incomplete",
+                            "section": section,
+                            "title": row.get("t"),
+                            "es": es_url,
+                            "en": en_url,
+                        })
+                        continue
+                    if es_url in seen_es or en_url in seen_en:
+                        failures.append({
+                            "type": "bilingual_pair_not_one_to_one",
+                            "section": section,
+                            "es": es_url,
+                            "en": en_url,
+                        })
+                        continue
+                    seen_es.add(es_url); seen_en.add(en_url)
+                    es_file, en_file = to_file(root, es_url), to_file(root, en_url)
+                    if not es_file or not es_file.is_file() or not en_file or not en_file.is_file():
+                        failures.append({
+                            "type": "bilingual_pair_target_missing",
+                            "section": section,
+                            "es": es_url,
+                            "en": en_url,
+                        })
+                        continue
+                    expected = {
+                        "es": SITE + urlsplit(es_url).path,
+                        "en": SITE + urlsplit(en_url).path,
+                        "x-default": SITE + urlsplit(es_url).path,
+                    }
+                    for side, path in (("es", es_file), ("en", en_file)):
+                        meta = parsed.get(path) or parse(path)
+                        got = dict(meta.alternates)
+                        subset = {k: got.get(k) for k in expected}
+                        if subset != expected:
+                            failures.append({
+                                "type": "declared_bilingual_pair_hreflang_missing_or_wrong",
+                                "section": section,
+                                "side": side,
+                                "route": public_path(root, path),
+                                "expected": expected,
+                                "actual": subset,
+                            })
+                    declared_pairs_checked += 1
+        except Exception as exc:
+            failures.append({"type": "bilingual_pair_inventory_invalid", "error": str(exc)})
+
     sitemap_path = root / "sitemap.xml"
     sitemap_urls: list[str] = []
     if not sitemap_path.is_file():
@@ -192,6 +266,7 @@ def main() -> None:
         "pages_with_canonical": sum(bool(m.canonical) for m in parsed.values()),
         "pages_with_hreflang": pages_with_hreflang,
         "reciprocal_language_links": reciprocal_pairs,
+        "declared_bilingual_pairs_checked": declared_pairs_checked,
         "sitemap_urls": len(sitemap_urls),
         "canonical_missing_allowed": sorted(CANONICAL_MISSING_ALLOWED),
         "failures": failures,
@@ -207,7 +282,7 @@ def main() -> None:
     }
     out = report_dir / "seo-idiomas.json"
     out.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({k: report[k] for k in ["html_pages", "pages_with_canonical", "pages_with_hreflang", "reciprocal_language_links", "sitemap_urls", "passed"]}, ensure_ascii=False))
+    print(json.dumps({k: report[k] for k in ["html_pages", "pages_with_canonical", "pages_with_hreflang", "reciprocal_language_links", "declared_bilingual_pairs_checked", "sitemap_urls", "passed"]}, ensure_ascii=False))
     if warnings:
         print(json.dumps({"warnings": len(warnings), "sample": warnings[:8]}, ensure_ascii=False))
     if failures:
