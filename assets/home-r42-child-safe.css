@@ -215,42 +215,158 @@ html[data-ig-contrast="on"] .ig-home-header{
 
 .ig-home-v4-sabik>.sabik-panel{width:100%;max-width:none;margin:0;padding:0;grid-column:auto}
 .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{
-  display:grid;
-  grid-template-columns:minmax(250px,.8fr) minmax(320px,1.2fr);
-  gap:1.1rem;
-  align-items:start;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  width:100%;
   padding:0;
   border:0;
   border-radius:0;
   background:transparent;
   box-shadow:none;
 }
-.ig-home-v4-sabik-left,.ig-home-v4-sabik-right{min-width:0;display:flex;flex-direction:column;gap:.45rem}
-.ig-home-v4-sabik-identity-row{display:flex;align-items:center;gap:.8rem}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:0 0 clamp(300px,24vw,360px);width:clamp(300px,24vw,360px);min-width:0}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{
-  width:clamp(220px,18vw,300px);
-  max-width:300px;
-  aspect-ratio:1;
-  margin:0;
+.ig-home-v4-sabik-center{
+  width:100%;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:clamp(.8rem,1.8vw,1.25rem);
+  text-align:center;
+}
+.ig-home-v4-sabik-title{width:100%;text-align:center}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{
+  width:clamp(360px,38vw,560px);
+  max-width:100%;
+  margin-inline:auto;
+}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{
+  width:100%;
+  max-width:none;
+  aspect-ratio:1065/760;
+  margin:0 auto;
   overflow:visible;
 }
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{width:100%;max-width:none;height:auto;transform-origin:50% 50%;opacity:1;visibility:visible}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{display:block;height:28px;width:auto}
-.ig-home-v4-sabik-form-head{display:flex;align-items:center;gap:.6rem}
-.ig-home-v4-sabik-form-head label{font-weight:700}
-.ig-home-v4 .ig-home-v4-sabik-panel #sabik-input{min-height:88px;height:88px;resize:vertical}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget-body{display:flex;flex-direction:column;gap:.45rem}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-actions{margin:.35rem 0}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-voice-control,
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-motion-control{margin:.35rem 0;padding:0;border:0;background:transparent}
-@media(max-width:760px){
-  .ig-home-v4-sabik{width:100%}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
-  .ig-home-v4-sabik-identity-row{flex-direction:column;align-items:center;justify-content:center;text-align:center}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{flex:0 1 auto;width:min(62vw,280px)}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:100%}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-web-master{
+  max-width:none;
+  opacity:1;
+  visibility:visible;
 }
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-wordmark{
+  display:block;
+  width:min(198px,70vw);
+  height:auto;
+  margin-inline:auto;
+}
+.ig-home-v4-sabik-identity{
+  width:min(100%,38rem);
+  margin-inline:auto;
+  text-align:center;
+}
+.ig-home-v4-sabik-identity p{margin:.25rem 0}
+.ig-home-v4 .sabik-status{font-size:1.05rem;line-height:1.55}
+.ig-home-v4 .sabik-turn-state{
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  margin:0;
+  padding:.4rem .8rem;
+  border:1px solid var(--ig-separator);
+  border-radius:999px;
+  color:var(--ig-text-muted);
+  background:var(--ig-bg-surface-soft);
+}
+.ig-home-v4-sabik-composer{
+  width:min(100%,52rem);
+  margin-inline:auto;
+  display:flex;
+  flex-direction:column;
+  gap:.65rem;
+  text-align:left;
+}
+.ig-home-v4 .ig-home-v4-sabik-panel #sabik-input{
+  width:100%;
+  min-height:112px;
+  resize:vertical;
+}
+.ig-home-v4 .sabik-primary-actions,
+.ig-home-v4 .sabik-context-actions{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:.65rem;
+  margin:.35rem 0 0;
+}
+.ig-home-v4 .sabik-primary-actions .sabik-button,
+.ig-home-v4 .sabik-context-actions .sabik-button{
+  min-height:44px;
+  padding:.68rem 1.1rem;
+  border-radius:999px;
+  font-weight:700;
+}
+.ig-home-v4 #sabik-submit,
+.ig-home-v4 #sabik-voice{min-width:10rem}
+.ig-home-v4 .sabik-options{
+  width:min(100%,52rem);
+  margin:.2rem auto 0;
+  border:1px solid var(--ig-separator);
+  border-radius:14px;
+  background:var(--ig-bg-surface-soft);
+  text-align:left;
+}
+.ig-home-v4 .sabik-options>summary{
+  min-height:44px;
+  display:flex;
+  align-items:center;
+  padding:.6rem .85rem;
+  font-weight:700;
+  cursor:pointer;
+}
+.ig-home-v4 .sabik-options-grid{
+  display:grid;
+  gap:1rem;
+  padding:0 .9rem .9rem;
+}
+.ig-home-v4 .sabik-motion-control{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:.3rem;
+  margin:0;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.ig-home-v4 .sabik-motion-control label{margin:0;font-size:.95rem;font-weight:700}
+.ig-home-v4 .sabik-motion-control select{
+  width:100%;
+  min-height:44px;
+  padding:.55rem 2.2rem .55rem .8rem;
+  border-radius:12px;
+}
+.ig-home-v4 .sabik-voice-settings{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1rem;
+  margin:0;
+}
+.ig-home-v4 .sabik-voice-settings label{display:grid;gap:.35rem;font-weight:700}
+.ig-home-v4 .sabik-voice-settings input[type=range]{width:100%;min-height:32px}
+.ig-home-v4 .sabik-reset-actions{justify-content:flex-start;margin:0}
+.ig-home-v4 .sabik-notes{margin:.2rem 0 0;padding-top:.8rem;text-align:left}
+.ig-home-v4 .sabik-notes p{margin:.25rem 0}
+@media(max-width:600px){
+  .ig-home-v4-sabik{width:100%}
+  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{width:min(86vw,380px)}
+  .ig-home-v4 .sabik-primary-actions,
+  .ig-home-v4 .sabik-context-actions{display:grid;grid-template-columns:1fr}
+  .ig-home-v4 #sabik-submit,
+  .ig-home-v4 #sabik-voice,
+  .ig-home-v4 .sabik-context-actions .sabik-button{width:100%}
+  .ig-home-v4 .sabik-voice-settings{grid-template-columns:1fr}
+}
+
 
 
 .ig-home-v4-footer{
@@ -376,10 +492,6 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 }
 @media(max-width:600px){
   .ig-home-header{align-items:flex-start}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual{width:clamp(88px,30vw,132px)}
-  .ig-home-v4-sabik-form-head{align-items:flex-start}
-
   .ig-home-tools{gap:.35rem}
   .ig-home-tools button,.ig-home-lang{padding-inline:.7rem}
   .ig-home-v4-wrap{padding-inline:1rem}
@@ -421,20 +533,6 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .sabik-actions{align-items:center;gap:.55rem}
 .ig-home-v4 .sabik-actions button{flex:0 0 auto!important;min-height:44px;padding:.62rem 1rem;border-radius:999px;font-weight:700}
 .ig-home-v4 #sabik-submit{min-width:7.25rem}
-.ig-home-v4 .ig-home-v4-sabik-secondary-controls{display:flex;flex-wrap:wrap;align-items:end;gap:.65rem;margin-top:.7rem;padding-top:.7rem;border-top:1px solid var(--ig-separator)}
-.ig-home-v4 .ig-home-v4-sabik-secondary-controls>.sabik-actions,
-.ig-home-v4 .ig-home-v4-sabik-secondary-controls>.sabik-voice-control,
-.ig-home-v4 .ig-home-v4-sabik-secondary-controls>.sabik-motion-control{margin:0!important;padding:0!important}
-.ig-home-v4 .sabik-voice-control{display:flex;align-items:center}
-.ig-home-v4 .sabik-voice-toggle{width:auto!important;min-width:0;padding:.62rem 1rem;border-radius:999px;background:var(--ig-bg-surface-soft)!important}
-.ig-home-v4 .sabik-motion-control{display:grid;grid-template-columns:1fr;gap:.25rem;min-width:11rem;max-width:15rem}
-.ig-home-v4 .sabik-motion-control label{margin:0;font-size:.92rem}
-.ig-home-v4 .sabik-motion-control select{width:100%;min-height:44px;padding:.55rem 2.2rem .55rem .8rem;border-radius:12px}
-.ig-home-v4 .sabik-icon-button{border-radius:999px;padding:.55rem .85rem}
-.ig-home-v4 .sabik-panel.is-collapsed .ig-home-v4-sabik-secondary-controls>:not(#sabik-toggle){display:none!important}
-.ig-home-v4 .sabik-panel.is-collapsed .ig-home-v4-sabik-secondary-controls{border-top:0;padding-top:0;margin-top:.35rem}
-@media(max-width:760px){.ig-home-v4-wrap{width:100%;padding-inline:1rem}.ig-home-v4 .ig-home-v4-sabik-secondary-controls{display:grid;grid-template-columns:1fr;align-items:stretch}.ig-home-v4 .sabik-motion-control{max-width:none}.ig-home-v4 .sabik-voice-toggle{width:100%!important}}
-
 .ig-home-v4-card[hidden]{display:none!important}
 
 
@@ -465,28 +563,7 @@ html[data-ig-theme="light"] .ig-home-v4 .sabik-wordmark{filter:none;opacity:1}
 .ig-home-v4 .ig-home-v4-age{gap:.4rem}
 .ig-home-v4 .ig-home-v4-age p{margin:0!important}
 .ig-home-v4-search:has(.ig-home-suggestions:empty) .ig-home-suggestions,.ig-home-v4-search .ig-home-results:empty{display:none}
-.ig-home-v4 .sabik-panel.is-expanded .sabik-widget{grid-template-columns:1fr}
-.ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-left{max-width:36rem;margin-inline:auto;width:100%}
-.ig-home-v4 .sabik-panel.is-expanded .ig-home-v4-sabik-right{width:100%}
-.ig-home-v4 .sabik-panel.is-expanded #sabik-input{min-height:10rem}
-
-/* Motor · Home reconciliation 2026-10-04 · one centered rail + definitive Sabik */
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{
-  grid-template-columns:minmax(22rem,.92fr) minmax(24rem,1.08fr);
-  align-items:center;
-}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{
-  width:min(100%,34rem);
-  max-width:34rem;
-  margin-inline:auto;
-}
-.ig-home-v4 .ig-home-v4-sabik-panel .sabik-identity{
-  align-self:center;
-}
-@media(max-width:1050px){
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{grid-template-columns:1fr}
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{max-width:30rem}
-}
-@media(max-width:600px){
-  .ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{width:min(100%,26rem)}
-}
+/* Motor · Sabik Home centered hierarchy R01 · Issue #389 */
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-widget{display:flex;flex-direction:column;align-items:center}
+.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-visual.sabik-visual{aspect-ratio:1065/760;overflow:visible}
+@media(max-width:600px){.ig-home-v4 .ig-home-v4-sabik-panel .sabik-web-presentation{width:min(86vw,380px)}}
