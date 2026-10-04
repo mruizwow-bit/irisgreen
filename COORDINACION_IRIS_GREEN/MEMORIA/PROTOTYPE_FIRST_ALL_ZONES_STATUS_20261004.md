@@ -808,3 +808,36 @@ Por tanto:
 - no integración de estos prototipos a escala;
 - primero HUMAN QA María + continuar mapa de prototipos por zonas.
 
+
+
+---
+
+# 15 · Estrategia de reconstrucción paralela por zonas
+
+María decide no seguir parcheando las superficies legacy que van a cambiar sustancialmente.
+
+KEEP:
+`RINCÓN = CURRENT_WORKING_BASE`
+
+El resto:
+`OLD_PRODUCTION_SURFACE = PRESERVE_FOR_ROLLBACK`
+`NEW_SURFACE = BUILD_IN_PARALLEL`
+
+Secuencia:
+`BASELINE → NUEVA RUTA AISLADA → PROTOTIPO → TECH QA → HUMAN QA → FREEZE → RECONCILE MAIN → ATOMIC CUTOVER → POST-CUTOVER QA → RETIRE LEGACY`
+
+Reglas:
+- no borrar legacy antes del cutover;
+- no sustituir rutas canónicas antes de HUMAN QA;
+- no depender de CSS/JS legacy salvo globales estables;
+- mantener rollback hasta producción validada;
+- retirar antiguas solo al final.
+
+Estado:
+`PARALLEL_REBUILD_NO_CUTOVER`
+
+Futuro:
+`PARALLEL_REBUILD_READY_FOR_CUTOVER`
+→ `ZONE_BY_ZONE_ATOMIC_CUTOVER`.
+
+Motor continúa Sabik Web sobre main y no se interrumpe.
