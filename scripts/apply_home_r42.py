@@ -77,7 +77,7 @@ def sabik_home(en):
     <p class="sabik-status" data-sabik-text="conversationWelcome">{t['conversation']}</p>
     <p class="sabik-capability sabik-sr-only" id="sabik-availability" data-sabik-text="explanation">{t['explanation']}</p>
   </div>
-  <p class="sabik-turn-state"><span class="sabik-sr-only">{t['state_label']}: </span><span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></p>
+  <p class="sabik-turn-state" role="status" aria-live="polite"><span class="sabik-sr-only">{t['state_label']}: </span><span id="sabik-voice-state" data-sabik-text="voiceOff">{t['voice_off']}</span></p>
   <div class="sabik-widget-body ig-home-v4-sabik-composer" id="sabik-widget-body">
     <form class="sabik-widget-form" id="sabik-form">
       <label for="sabik-input" data-sabik-text="label">{t['label']}</label>
@@ -97,7 +97,7 @@ def sabik_home(en):
     <div id="sabik-results"></div>
   </div>
   <details class="sabik-options" id="sabik-options">
-    <summary>{t['options']}</summary>
+    <summary data-sabik-text="options">{t['options']}</summary>
     <div class="sabik-options-grid">
       <div class="sabik-motion-control">
         <label for="sabik-motion-level" data-sabik-text="motion">{t['motion']}</label>
