@@ -87,16 +87,10 @@ export function createSabikConversation({
    return out;
   }
 
-  if(parsed?.action==='elicit'){
+  if(parsed?.action==='need_parameter'){
    const answer=dialogue?.prompt?.(parsed.promptKey,{slots:parsed.slots})||'';
-   const out=direct(answer,{raw,inputMode,locale,audience,kind:'clarify',intent:parsed.intent?.id||'',slots:parsed.slots||{}});
-   if(ticket===serial)controller=null;
-   return out;
-  }
-
-  if(parsed?.action==='fallback'&&parsed?.session?.pendingSlot&&parsed?.session?.promptKey){
-   const answer=dialogue?.prompt?.(parsed.session.promptKey,{reprompt:true,slots:parsed.slots})||'';
-   const out=direct(answer,{raw,inputMode,locale,audience,kind:'clarify',intent:parsed.session.intent||'',slots:parsed.slots||{}});
+   if(!answer)throw new Error('REQUIRED_PARAMETER_PROMPT_MISSING');
+   const out=direct(answer,{raw,inputMode,locale,audience,kind:'required-parameter',intent:parsed.intent?.id||'',slots:parsed.slots||{}});
    if(ticket===serial)controller=null;
    return out;
   }
