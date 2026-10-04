@@ -123,6 +123,7 @@ function mandatoryCopy(){
 function syncMandatoryGate(){
  var body=document.body;if(!body)return;
  var unset=ageUnset();body.toggleAttribute('data-ig-age-unset',unset);
+ body.querySelectorAll('footer').forEach(function(footer){footer.toggleAttribute('inert',unset);if(unset)footer.setAttribute('aria-hidden','true');else footer.removeAttribute('aria-hidden');});
  var gate=body.querySelector('[data-ig-mandatory-age-gate]');
  if(!unset){if(gate)gate.remove();return;}
  var copy=mandatoryCopy();
