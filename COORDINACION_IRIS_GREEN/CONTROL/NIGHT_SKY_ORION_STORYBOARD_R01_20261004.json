@@ -1,0 +1,24 @@
+{
+  "schema": "night_sky_orion_storyboard_r01",
+  "date": "2026-10-04",
+  "status": "READY_FOR_PRISMA",
+  "sky_model": "CURATED_OBSERVATION_PRESET",
+  "target": "ORION",
+  "preset_values": "TBD_FROM_ASTRONOMICAL_DATA_BEFORE_RUNTIME",
+  "reveal_contract": "NO_NAME_OR_CONSTELLATION_LINES_BEFORE_USER_LOCATES_BELT",
+  "frames": [
+    "SKY_ORION_F01_ENTRY",
+    "SKY_ORION_F02_ORIENTING",
+    "SKY_ORION_F03_BELT_VISIBLE",
+    "SKY_ORION_F04_PATTERN_LOCATED",
+    "SKY_ORION_F05_ORION_REVEALED",
+    "SKY_ORION_F06_DEPTH"
+  ],
+  "viewports": [
+    390,
+    1440
+  ],
+  "runtime_blocked": true,
+  "second_constellation_blocked": true,
+  "next_gate": "NIGHT_SKY_ORION_STORYBOARD_HUMAN_QA_PASS"
+}
