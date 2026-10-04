@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Taller · Ritmo · piloto UX</title>
+<style>
+:root{
+  color-scheme:dark light;
+  --bg:#071522;--panel:#10263a;--panel2:#17344d;--ink:#f4fbff;--muted:#b9cad7;
+  --line:#35536c;--mag:#ff5aa7;--vio:#a98cff;--cyan:#36d7d0;--amber:#ffbf4b;--coral:#ff795c;
+  --ok:#7fe0a1;--focus:#d9c8ff;--shadow:0 18px 50px rgba(0,0,0,.28);
+}
+html[data-theme="light"]{--bg:#eaf2f7;--panel:#fff;--panel2:#f4f8fb;--ink:#102c46;--muted:#435b70;--line:#b7cbd8;--focus:#5a49a8;--shadow:0 18px 40px rgba(35,69,96,.14)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--bg);color:var(--ink);font:500 17px/1.45 system-ui,-apple-system,Segoe UI,sans-serif}
+button{font:inherit;cursor:pointer}button:focus-visible{outline:4px solid var(--focus);outline-offset:3px}
+.top{display:flex;align-items:center;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);background:color-mix(in srgb,var(--panel) 90%,transparent);position:sticky;top:0;z-index:5}
+.brand{font-weight:900}.area{font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mag);font-weight:900}.top h1{font-size:1.1rem;margin:0}.spacer{flex:1}
+.top button{min-height:44px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--ink);padding:0 14px}
+.shell{max-width:1180px;margin:0 auto;padding:18px;display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:18px}
+.instrument,.challenge{border:1px solid var(--line);border-radius:24px;background:var(--panel);box-shadow:var(--shadow)}
+.instrument{padding:18px}.challenge{padding:18px;align-self:start;position:sticky;top:78px}
+.instrument-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.play{min-height:54px;border:0;border-radius:16px;background:linear-gradient(135deg,var(--mag),#ff7a59);color:#fff;font-weight:900;padding:0 24px;font-size:1.08rem}
+.stop{min-height:54px;border:1px solid var(--line);border-radius:16px;background:var(--panel2);color:var(--ink);font-weight:800;padding:0 20px}
+.legend{margin-left:auto;color:var(--muted);font-size:.92rem}
+.grid{display:grid;gap:12px}.row{display:grid;grid-template-columns:100px repeat(8,minmax(38px,1fr));gap:7px;align-items:center}
+.name{font-weight:900;padding:8px 10px;border-radius:12px;background:var(--panel2);border-left:6px solid var(--track)}
+.cell{aspect-ratio:1;min-height:44px;border-radius:12px;border:2px solid var(--line);background:color-mix(in srgb,var(--panel2) 88%,var(--track) 12%);position:relative;transition:.12s transform,.12s background,.12s box-shadow}
+.cell[aria-pressed="true"]{background:var(--track);border-color:var(--track);box-shadow:inset 0 0 0 2px rgba(255,255,255,.25)}
+.cell.playing{transform:translateY(-4px) scale(1.04);box-shadow:0 0 0 4px color-mix(in srgb,var(--track) 34%,transparent),0 0 24px color-mix(in srgb,var(--track) 45%,transparent)}
+.cell.target{border-style:dashed;border-color:var(--amber);box-shadow:0 0 0 5px color-mix(in srgb,var(--amber) 18%,transparent)}
+.cell.changed::after{content:"";position:absolute;right:4px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--ok);border:2px solid var(--panel)}
+.help{margin:14px 0 0;color:var(--muted)}.tools{display:none;margin-top:14px;gap:8px;flex-wrap:wrap}.tools.show{display:flex}
+.tools button,.more{min-height:46px;border:1px solid var(--line);border-radius:12px;background:var(--panel2);color:var(--ink);padding:0 14px;font-weight:800}
+.more{width:100%;margin-top:14px}
+.challenge .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mag);font-weight:900;margin:0 0 4px}
+.challenge h2{font-size:1.6rem;line-height:1.1;margin:0 0 8px}.challenge .sub{margin:0 0 14px;color:var(--muted)}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:8px}.step{display:grid;grid-template-columns:34px 1fr;gap:10px;padding:10px;border-radius:14px;border:1px solid transparent;opacity:.48}
+.step.active{opacity:1;background:color-mix(in srgb,var(--mag) 10%,var(--panel));border-color:color-mix(in srgb,var(--mag) 55%,var(--line))}
+.step.done{opacity:.78}.num{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--panel2);border:2px solid var(--line);font-weight:900}
+.step.active .num{background:var(--mag);border-color:var(--mag);color:#fff}.step.done .num{background:var(--ok);border-color:var(--ok);color:#071522}
+.step b{display:block}.step span{color:var(--muted);font-size:.93rem}
+.compare{display:none;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.compare.show{display:grid}
+.compare button,.check{min-height:48px;border-radius:14px;font-weight:900}.compare button{border:1px solid var(--line);background:var(--panel2);color:var(--ink)}.compare button.heard{box-shadow:inset 0 0 0 3px var(--cyan)}
+.check{width:100%;margin-top:12px;border:0;background:linear-gradient(135deg,var(--cyan),#4ca6ff);color:#052132}
+.status{min-height:3.3em;margin:12px 0 0;padding:10px 12px;border-radius:12px;background:var(--panel2);color:var(--muted)}.status.ok{color:var(--ink);border:1px solid var(--ok)}
+.dots{display:none}.finished{display:none;margin-top:12px;padding:14px;border-radius:16px;background:linear-gradient(135deg,color-mix(in srgb,var(--cyan) 18%,var(--panel)),color-mix(in srgb,var(--mag) 16%,var(--panel)));border:1px solid var(--line)}.finished.show{display:block}
+@media(max-width:820px){
+ .shell{grid-template-columns:1fr;padding:10px}.challenge{order:-1;position:static}.row{grid-template-columns:repeat(8,1fr);gap:5px}.name{grid-column:1/-1}.legend{display:none}
+ .steps .step{display:none}.steps .step.active{display:grid}.steps .step.done{display:none}.dots{display:flex;gap:7px;margin:8px 0}.dots i{width:9px;height:9px;border-radius:50%;background:var(--line)}.dots i.active{background:var(--mag)}.dots i.done{background:var(--ok)}
+}
+@media(max-width:430px){.shell{padding:8px}.instrument,.challenge{border-radius:18px}.instrument{padding:12px}.challenge{padding:12px}.cell{min-height:38px;border-radius:9px}.row{gap:4px}.play,.stop{flex:1;padding:0 10px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}.cell{transition:none!important}.cell.playing{transform:none}}
+</style>
+</head>
+<body>
+<header class="top"><div><div class="area">Taller · Sonido</div><h1>Ritmo</h1></div><div class="spacer"></div><button id="theme">Tema</button></header>
+<main class="shell">
+<section class="instrument" aria-label="Instrumento de ritmo">
+  <div class="instrument-head"><button class="play" id="play">▶ Escuchar</button><button class="stop" id="stop" disabled>■ Parar</button><span class="legend">Toca una casilla para encender o apagar un golpe.</span></div>
+  <div id="grid" class="grid"></div>
+  <p class="help" id="help">Primero escucha. Después te señalo una sola cosa para cambiar.</p>
+  <button class="more" id="more" hidden>Más herramientas</button>
+  <div class="tools" id="tools"><button>Tempo</button><button>Añadir pista</button><button>Volumen</button><button>Clips</button><button>Exportar</button></div>
+</section>
+<aside class="challenge" aria-label="Reto">
+  <p class="eyebrow">Reto 1 · puerta de entrada</p><h2>Tu primer ritmo</h2><p class="sub">No tienes que entender el panel. Haz tres cosas.</p>
+  <ol class="steps" id="steps">
+    <li class="step active" data-step="1"><span class="num">1</span><div><b>Escúchalo</b><span>Pulsa Escuchar. Solo escucha lo que ya hay.</span></div></li>
+    <li class="step" data-step="2"><span class="num">2</span><div><b>Cambia un golpe</b><span>Toca la casilla marcada y después vuelve a escuchar.</span></div></li>
+    <li class="step" data-step="3"><span class="num">3</span><div><b>Compara</b><span>Escucha Antes y Mi ritmo. No hay una respuesta correcta.</span></div></li>
+  </ol>
+  <div class="dots" id="dots"><i class="active"></i><i></i><i></i></div>
+  <div class="compare" id="compare"><button id="before">▶ Antes</button><button id="mine">▶ Mi ritmo</button></div>
+  <button class="check" id="check">Comprobar</button>
+  <p class="status" id="status" role="status">Empieza escuchando.</p>
+  <div class="finished" id="finished"><strong>Mira lo que has hecho.</strong><p>Has cambiado un patrón y has podido escuchar las dos versiones. Ahora ya puedes abrir más herramientas si quieres.</p></div>
+</aside>
+</main>
+<script>
+(function(){
+const tracks=[
+ {name:'Bombo',color:'#ff795c',f:68,p:[1,0,0,0,1,0,0,0]},
+ {name:'Caja',color:'#a98cff',f:190,p:[0,0,1,0,0,0,1,0]},
+ {name:'Charles',color:'#36d7d0',f:850,p:[1,0,1,0,1,0,1,0]}
+];
+const original=tracks.map(t=>t.p.slice()); const target={row:0,col:2};
+let step=1,changed=false,heardOriginal=false,heardModified=false,heardBefore=false,heardMine=false,timer=null,idx=0,ac=null;
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+function audio(){return ac||(ac=new (window.AudioContext||window.webkitAudioContext)())}
+function ping(f,d=.12){const a=audio(),o=a.createOscillator(),g=a.createGain();o.frequency.value=f;o.type=f>500?'square':'sine';g.gain.setValueAtTime(.0001,a.currentTime);g.gain.exponentialRampToValueAtTime(f>500?.07:.22,a.currentTime+.005);g.gain.exponentialRampToValueAtTime(.0001,a.currentTime+d);o.connect(g);g.connect(a.destination);o.start();o.stop(a.currentTime+d+.02)}
+function build(){
+ const grid=$('#grid');grid.innerHTML='';
+ tracks.forEach((t,r)=>{const row=document.createElement('div');row.className='row';row.style.setProperty('--track',t.color);
+  const n=document.createElement('div');n.className='name';n.textContent=t.name;row.appendChild(n);
+  t.p.forEach((v,c)=>{const b=document.createElement('button');b.className='cell';b.type='button';b.style.setProperty('--track',t.color);b.setAttribute('aria-pressed',v?'true':'false');b.setAttribute('aria-label',t.name+', golpe '+(c+1));b.dataset.r=r;b.dataset.c=c;
+    b.onclick=()=>cellClick(b,r,c);row.appendChild(b)});
+  grid.appendChild(row);
+ }); syncTarget();
+}
+function syncTarget(){ $$('.cell').forEach(b=>b.classList.remove('target')); if(step===2&&!changed){const b=$('.cell[data-r="'+target.row+'"][data-c="'+target.col+'"]');if(b)b.classList.add('target')}}
+function cellClick(b,r,c){
+ if(step===2 && (r!==target.row||c!==target.col)){ $('#status').textContent='Ahora toca solo la casilla con borde de puntos.'; return; }
+ const on=b.getAttribute('aria-pressed')==='true'; b.setAttribute('aria-pressed',on?'false':'true');tracks[r].p[c]=on?0:1;ping(tracks[r].f);
+ if(r===target.row&&c===target.col){changed=true;b.classList.remove('target');b.classList.add('changed');$('#status').textContent='Bien. Ahora vuelve a escuchar tu ritmo.'}
+}
+function pattern(useOriginal){return useOriginal?original:tracks.map(t=>t.p)}
+function playPattern(useOriginal,onDone){
+ stop(); let p=pattern(useOriginal); idx=0; $('#stop').disabled=false;
+ function tick(){ $$('.cell').forEach(b=>b.classList.remove('playing')); tracks.forEach((t,r)=>{const b=$('.cell[data-r="'+r+'"][data-c="'+idx+'"]');if(b)b.classList.add('playing');if(p[r][idx])ping(t.f,r===2?.06:.13)}); idx++; if(idx>=8){setTimeout(()=>{stop();onDone&&onDone()},180)}}
+ tick();timer=setInterval(()=>{if(idx<8)tick()},300);
+}
+function stop(){if(timer){clearInterval(timer);timer=null}$$('.cell').forEach(b=>b.classList.remove('playing'));$('#stop').disabled=true}
+function setStep(n){step=n;$$('.step').forEach(li=>{const s=+li.dataset.step;li.classList.toggle('active',s===n);li.classList.toggle('done',s<n)});$$('#dots i').forEach((d,i)=>{d.className=i+1<n?'done':i+1===n?'active':''});syncTarget();$('#compare').classList.toggle('show',n===3);$('#more').hidden=n<3}
+$('#play').onclick=()=>{const orig=step===1;playPattern(false,()=>{if(step===1){heardOriginal=true;setStep(2);$('#status').textContent='Ahora toca la casilla marcada.'}else if(step===2&&changed){heardModified=true;setStep(3);$('#status').textContent='Escucha las dos versiones para compararlas.'}})};
+$('#stop').onclick=stop;
+$('#before').onclick=()=>playPattern(true,()=>{heardBefore=true;$('#before').classList.add('heard');$('#status').textContent=heardMine?'Ya has oído las dos. Puedes comprobar.':'Ahora escucha Mi ritmo.'});
+$('#mine').onclick=()=>playPattern(false,()=>{heardMine=true;$('#mine').classList.add('heard');$('#status').textContent=heardBefore?'Ya has oído las dos. Puedes comprobar.':'Ahora escucha Antes.'});
+$('#check').onclick=()=>{
+ const st=$('#status');st.classList.remove('ok');
+ if(!heardOriginal){st.textContent='Primero pulsa Escuchar.';return}
+ if(!changed){st.textContent='Todavía no has cambiado la casilla marcada.';return}
+ if(!heardModified){st.textContent='Has cambiado el golpe. Ahora vuelve a escuchar tu ritmo.';return}
+ if(!(heardBefore&&heardMine)){st.textContent='Falta comparar Antes y Mi ritmo.';return}
+ st.textContent='Hecho. Has escuchado, cambiado y comparado.';st.classList.add('ok');$('#finished').classList.add('show');$('#more').hidden=false
+};
+$('#more').onclick=()=>{const t=$('#tools');t.classList.toggle('show');$('#more').textContent=t.classList.contains('show')?'Menos herramientas':'Más herramientas'};
+$('#theme').onclick=()=>{const h=document.documentElement;h.dataset.theme=h.dataset.theme==='light'?'dark':'light'};
+if(matchMedia&&matchMedia('(prefers-color-scheme: light)').matches)document.documentElement.dataset.theme='light';else document.documentElement.dataset.theme='dark';
+build();
+})();
+</script>
+</body></html>
