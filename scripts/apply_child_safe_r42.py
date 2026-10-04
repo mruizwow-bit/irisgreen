@@ -58,7 +58,6 @@ def protect_pages(root):
             text=p.read_text(encoding='utf-8');m=ARTICLE.search(text)
             if not m:raise ValueError(f'No article: {p}')
             full=re.sub(r'<article\b','<article data-ig-s2-full="true"',m.group(0),count=1,flags=re.I)
-            (out/f'{r[0]}-{lang}.html').write_text(full,encoding='utf-8')
             text=text[:m.start()]+safe_article(r,lang)+text[m.end():]
             p.write_text(inject(text),encoding='utf-8');n+=1
     return n
