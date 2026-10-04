@@ -107,7 +107,7 @@ def main():
                 page.evaluate("(v)=>document.documentElement.setAttribute('data-ig-theme',v)",theme)
                 page.wait_for_timeout(40)
                 assert contrast_ratio(page,'#ec-type-explorer h3','#ec-type-explorer')>=4.5,(lang,width,theme,'explorer title contrast')
-                assert contrast_ratio(page,'#ec-type-explorer-head p' if False else '#ec-type-explorer .ec-type-explorer-head p','#ec-type-explorer')>=4.5,(lang,width,theme,'explorer copy contrast')
+                assert contrast_ratio(page,'#ec-type-explorer .ec-type-explorer-head p','#ec-type-explorer')>=4.5,(lang,width,theme,'explorer copy contrast')
             page.evaluate("()=>document.documentElement.setAttribute('data-ig-theme','dark')")
             assert '/img/intereses/eclipses/canonical-r02/manifest.json' in req
             assert '/img/intereses/eclipses/canonical-r02/eclipse-type-visual-map.json' in req
