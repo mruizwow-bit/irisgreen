@@ -18,4 +18,10 @@
 @keyframes speak{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.08);opacity:1}}
 @keyframes speakBody{0%,100%{transform:scale(1)}50%{transform:scale(1.012)}}
 @media(prefers-reduced-motion:reduce){.sabik-visual *{animation:none!important;transition-duration:.18s!important}}
+.sabik-visual[data-motion="reduced"] *{animation:none!important;transition-duration:.18s!important}
+.sabik-visual[data-motion="reduced"][data-state="listening"] .core{transform:scale(.96);filter:brightness(1.08)}
+.sabik-visual[data-motion="reduced"][data-state="processing"] .orbits{transform:rotate(8deg)}
+.sabik-visual[data-motion="reduced"][data-state="processing"] .core{transform:scale(1.02);opacity:1}
+.sabik-visual[data-motion="reduced"][data-state="speaking"] .body{transform:scale(1.008)}
+.sabik-visual[data-motion="reduced"][data-state="speaking"] .core{transform:scale(1.06);opacity:1}
 .sabik-visual[data-motion="none"] *{animation:none!important;transition:none!important}
