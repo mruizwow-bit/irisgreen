@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green.solar-moons-true-gaps-batch10.v1",
+  "date": "2026-10-04",
+  "owner": "LUMEN_A7",
+  "status": "READY_FOR_REVIEW",
+  "gate": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_READY_FOR_REVIEW",
+  "assets": [
+    "Amaltea",
+    "Tebe",
+    "Metis",
+    "Adrastea",
+    "Hiperión",
+    "Febe",
+    "Jano",
+    "Epimeteo",
+    "Pan",
+    "Atlas"
+  ],
+  "contract": {
+    "width": 1536,
+    "height": 1536,
+    "format": "PNG RGBA",
+    "alpha": [
+      0,
+      255
+    ],
+    "srgb_icc": true,
+    "transparent": true,
+    "one_body_per_file": true
+  },
+  "contact_sheet": {
+    "filename": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_CONTACT_SHEET.png",
+    "sha256": "7ffe64bf248933443cea16c64fa63c681ef7895b32a87bae481e6e122347b577"
+  },
+  "alpha_qa": {
+    "filename": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_ALPHA_QA.png",
+    "sha256": "c46d5290114073de9d2461aa03c0084d82fe4f412ef1662984c910d4e55367ea",
+    "status": "PASS"
+  },
+  "zip": {
+    "filename": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_READY_FOR_REVIEW.zip",
+    "sha256": "414c8282a699646e3889cd48615288c75d8c5cbb76e42f61fc68cd7f02c83869"
+  },
+  "library": {
+    "path": "/Iris Green/First Party Visual/Solar Moons True Gaps Batch 10/",
+    "folder_created": true,
+    "binary_upload": "RETRY_REQUIRED_CONTAINER_SESSION_EXPIRED"
+  },
+  "scientific_guard": "LOW_OBSERVATIONAL_RESOLUTION_MEANS_LESS_DETAIL_NOT_MORE",
+  "next": "BATCH_REVIEW"
+}
