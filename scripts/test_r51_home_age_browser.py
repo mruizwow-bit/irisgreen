@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Iris Green · browser QA for the canonical four-profile safety model."""
+"""Iris Green · browser QA for three public age choices + internal GENERAL."""
 from __future__ import annotations
 import asyncio,json
 from pathlib import Path
@@ -41,15 +41,13 @@ async def verify(page,path,frags):
     await page.wait_for_function('window.IGAudience !== undefined')
     need(await page.locator('[data-ig-home-version="v4"]').count()==1,'Home v4 missing '+path)
 
-    # UI exposes exactly four user profiles. ALL_AGES remains content metadata only.
-    stage=page.locator('[data-ig-r49-stage]')
-    need(await stage.count()==1,'profile control missing '+path)
-    await stage.click()
-    picker=page.locator('#ig-r49-audience')
-    need(await picker.locator('[data-ig-audience-stage]').count()==4,'profile button count != 4 '+path)
-    need(await picker.locator('[data-ig-audience-stage="GENERAL"]').count()==1,'GENERAL profile missing '+path)
+    # GENERAL is the clean/default internal state, not a visible age choice.
+    # ALL_AGES remains content metadata only. Home exposes exactly 0–12 / 13–17 / 18+.
+    picker=page.locator('[data-ig-audience-picker]')
+    need(await picker.count()==1,'Home age picker missing '+path)
+    need(await picker.locator('[data-ig-audience-stage]').count()==3,'public age button count != 3 '+path)
+    need(await picker.locator('[data-ig-audience-stage="GENERAL"]').count()==0,'GENERAL exposed as a public age choice '+path)
     need(await picker.locator('[data-ig-audience-stage="ALL_AGES"]').count()==0,'ALL_AGES exposed as user profile '+path)
-    await page.keyboard.press('Escape')
 
     # Clean-load expectations for each target profile.
     expected_snapshots={}
