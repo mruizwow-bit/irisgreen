@@ -38264,3 +38264,3958 @@ ESTADO: BILINGUAL_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: 109 rutinas imprimibles bilingües.
+
+# 73. RECURSOS · RUTINAS IMPRIMIBLES / PRINTABLE ROUTINES
+
+FUENTE: `assets/data/r42-routine-download-manifest.json` · SHA `7f029cede31c4c90bd05990d4054f6b7fe950463`.
+
+SOURCE DATASET: `assets/data/rutinas-imprimibles-data.js` · blob `609b903e31c8ddc7db713bb39bb3be40b692e589`.
+
+ES CONTRATO DE DESCARGA: 109 rutinas válidas; descarga principal SVG_A4_CLIENT_GENERATED_SELF_CONTAINED; outputs adicionales PRINT · SAVE_AS_PDF · STEPS_SHEET · TICK_LIST · FRIDGE_STRIP · CUT_OUT_CARDS.
+
+EN DOWNLOAD CONTRACT: 109 valid routines; primary download SVG_A4_CLIENT_GENERATED_SELF_CONTAINED; additional outputs PRINT · SAVE_AS_PDF · STEPS_SHEET · TICK_LIST · FRIDGE_STRIP · CUT_OUT_CARDS.
+
+DECLARED_PICTOGRAM_LICENSE: CC BY-SA 4.0
+
+LICENSE_PIN_STATUS: PENDING_PROJECT_RECONCILIATION_PER_R42_BRIEF
+
+ARASAAC_USED: false
+
+## WEB-ROUTINE-001
+
+ROUTINE_ID: manana-para-salir
+
+ES TÍTULO: La mañana antes de salir
+
+EN TITLE: The morning before going out
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 8
+
+STEP_IDS: despertarse → levantarse → bano → dientes → vestirse → desayunar → cogermochila → salir
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-manana-para-salir
+
+EN PATH: /en/resources/printable-routines/#pack-manana-para-salir
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-002
+
+ROUTINE_ID: noche-antes-de-dormir
+
+ES TÍTULO: La noche antes de dormir
+
+EN TITLE: The evening before bed
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: cenar → dientes → ponerpijama → apagartele → lampara → apagardormir
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-noche-antes-de-dormir
+
+EN PATH: /en/resources/printable-routines/#pack-noche-antes-de-dormir
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-003
+
+ROUTINE_ID: lavarse-los-dientes
+
+ES TÍTULO: Lavarse los dientes
+
+EN TITLE: Brushing your teeth
+
+CONTEXT: higiene
+
+STAGES: inf · todas
+
+STEP_COUNT: 5
+
+STEP_IDS: cepillo → pasta → dientes → enjuagar → secarboca
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-lavarse-los-dientes
+
+EN PATH: /en/resources/printable-routines/#pack-lavarse-los-dientes
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-004
+
+ROUTINE_ID: lavarse-las-manos
+
+ES TÍTULO: Lavarse las manos
+
+EN TITLE: Washing your hands
+
+CONTEXT: higiene
+
+STAGES: inf · todas
+
+STEP_COUNT: 6
+
+STEP_IDS: grifo → jabon → frotar → aclarar → cerrarGrifo → secarManos
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-lavarse-las-manos
+
+EN PATH: /en/resources/printable-routines/#pack-lavarse-las-manos
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-005
+
+ROUTINE_ID: ducharse
+
+ES TÍTULO: Ducharse
+
+EN TITLE: Having a shower
+
+CONTEXT: higiene
+
+STAGES: todas
+
+STEP_COUNT: 8
+
+STEP_IDS: desvestirse → grifo → mojarse → gel → champu → aclararse → secartoalla → vestirse
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-ducharse
+
+EN PATH: /en/resources/printable-routines/#pack-ducharse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-006
+
+ROUTINE_ID: ir-al-bano
+
+ES TÍTULO: Ir al baño
+
+EN TITLE: Going to the toilet
+
+CONTEXT: higiene
+
+STAGES: inf
+
+STEP_COUNT: 5
+
+STEP_IDS: irBano → papelwc → tirarCadena → manos → secarManos
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-ir-al-bano
+
+EN PATH: /en/resources/printable-routines/#pack-ir-al-bano
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-007
+
+ROUTINE_ID: afeitarse
+
+ES TÍTULO: Afeitarse
+
+EN TITLE: Shaving
+
+CONTEXT: higiene
+
+STAGES: ado · adu
+
+STEP_COUNT: 4
+
+STEP_IDS: afeit1 → afeit2 → afeit3 → secarcara
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-afeitarse
+
+EN PATH: /en/resources/printable-routines/#pack-afeitarse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-008
+
+ROUTINE_ID: cortarse-las-unas
+
+ES TÍTULO: Cortarse las uñas
+
+EN TITLE: Cutting your nails
+
+CONTEXT: higiene
+
+STAGES: ado · adu
+
+STEP_COUNT: 3
+
+STEP_IDS: unas1 → unas2 → unas3
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-cortarse-las-unas
+
+EN PATH: /en/resources/printable-routines/#pack-cortarse-las-unas
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-009
+
+ROUTINE_ID: vestirse-para-la-lluvia
+
+ES TÍTULO: Vestirse para la lluvia
+
+EN TITLE: Dressing for rain
+
+CONTEXT: vestirse
+
+STAGES: inf · todas
+
+STEP_COUNT: 5
+
+STEP_IDS: lluvia → impermeable → botas → cogerparaguas → salir
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-vestirse-para-la-lluvia
+
+EN PATH: /en/resources/printable-routines/#pack-vestirse-para-la-lluvia
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-010
+
+ROUTINE_ID: atarse-los-cordones
+
+ES TÍTULO: Atarse los cordones
+
+EN TITLE: Tying your laces
+
+CONTEXT: vestirse
+
+STAGES: inf
+
+STEP_COUNT: 5
+
+STEP_IDS: cordA → cordB → cordC → cordD → cordE
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-atarse-los-cordones
+
+EN PATH: /en/resources/printable-routines/#pack-atarse-los-cordones
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-011
+
+ROUTINE_ID: abrochar-botones
+
+ES TÍTULO: Abrochar botones
+
+EN TITLE: Doing up buttons
+
+CONTEXT: vestirse
+
+STAGES: inf
+
+STEP_COUNT: 3
+
+STEP_IDS: bot1 → bot2 → bot3
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-abrochar-botones
+
+EN PATH: /en/resources/printable-routines/#pack-abrochar-botones
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-012
+
+ROUTINE_ID: preparar-la-mochila
+
+ES TÍTULO: Preparar la mochila
+
+EN TITLE: Packing your school bag
+
+CONTEXT: manana
+
+STAGES: inf · ado
+
+STEP_COUNT: 6
+
+STEP_IDS: mirarhorario → carpeta → estuche → comida → botella → cogermochila
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-preparar-la-mochila
+
+EN PATH: /en/resources/printable-routines/#pack-preparar-la-mochila
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-013
+
+ROUTINE_ID: la-noche-anterior
+
+ES TÍTULO: Dejarlo listo la noche anterior
+
+EN TITLE: Ready the night before
+
+CONTEXT: manana
+
+STAGES: ado · adu
+
+STEP_COUNT: 6
+
+STEP_IDS: ropaMañana → bolsoListo → cargarMovil → llavesSitio → comidaLista → alarma
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-la-noche-anterior
+
+EN PATH: /en/resources/printable-routines/#pack-la-noche-anterior
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-014
+
+ROUTINE_ID: desayuno-sencillo
+
+ES TÍTULO: Un desayuno sencillo
+
+EN TITLE: A simple breakfast
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: cuenco → cereales → echarleche → cogercuchara → desayunar
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-desayuno-sencillo
+
+EN PATH: /en/resources/printable-routines/#pack-desayuno-sencillo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-015
+
+ROUTINE_ID: preparar-un-bocadillo
+
+ES TÍTULO: Preparar un bocadillo
+
+EN TITLE: Making a sandwich
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: sacarpan → abrirpan → relleno → cerrarbocadillo → fiambrera
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-preparar-un-bocadillo
+
+EN PATH: /en/resources/printable-routines/#pack-preparar-un-bocadillo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-016
+
+ROUTINE_ID: cocinar-una-receta
+
+ES TÍTULO: Cocinar una receta
+
+EN TITLE: Cooking a recipe
+
+CONTEXT: comidas
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: receta → ingredientes → cocinar → servir → recogerCoc
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-cocinar-una-receta
+
+EN PATH: /en/resources/printable-routines/#pack-cocinar-una-receta
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-017
+
+ROUTINE_ID: poner-y-recoger-la-mesa
+
+ES TÍTULO: Poner y recoger la mesa
+
+EN TITLE: Setting and clearing the table
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: ponermesa → comer → recogermesa
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-poner-y-recoger-la-mesa
+
+EN PATH: /en/resources/printable-routines/#pack-poner-y-recoger-la-mesa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-018
+
+ROUTINE_ID: poner-la-lavadora
+
+ES TÍTULO: Poner la lavadora
+
+EN TITLE: Doing the washing
+
+CONTEXT: casa
+
+STAGES: ado · adu
+
+STEP_COUNT: 6
+
+STEP_IDS: separarRopa → lavmeter → lavdet → lavmarcha → tender → tender2
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-poner-la-lavadora
+
+EN PATH: /en/resources/printable-routines/#pack-poner-la-lavadora
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-019
+
+ROUTINE_ID: doblar-la-ropa
+
+ES TÍTULO: Doblar la ropa
+
+EN TITLE: Folding clothes
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: dob1 → dob2 → dob3 → monton → guardarArm
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-doblar-la-ropa
+
+EN PATH: /en/resources/printable-routines/#pack-doblar-la-ropa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-020
+
+ROUTINE_ID: limpiar-la-casa
+
+ES TÍTULO: Limpiar la casa por partes
+
+EN TITLE: Cleaning the house in parts
+
+CONTEXT: casa
+
+STAGES: adu
+
+STEP_COUNT: 5
+
+STEP_IDS: fregar → polvo → aspirar → baño2 → basura
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-limpiar-la-casa
+
+EN PATH: /en/resources/printable-routines/#pack-limpiar-la-casa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-021
+
+ROUTINE_ID: hacer-la-compra
+
+ES TÍTULO: Hacer la compra
+
+EN TITLE: Doing the shopping
+
+CONTEXT: salir
+
+STAGES: ado · adu
+
+STEP_COUNT: 7
+
+STEP_IDS: listaCompra → tienda → cesta2 → filacaja → pagar → guardarbolsa → guardarCompra
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-hacer-la-compra
+
+EN PATH: /en/resources/printable-routines/#pack-hacer-la-compra
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-022
+
+ROUTINE_ID: cruzar-la-calle
+
+ES TÍTULO: Cruzar la calle
+
+EN TITLE: Crossing the road
+
+CONTEXT: salir
+
+STAGES: inf · todas
+
+STEP_COUNT: 5
+
+STEP_IDS: llegarpaso → parar → semaforo → mirarlados → cruzar
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-cruzar-la-calle
+
+EN PATH: /en/resources/printable-routines/#pack-cruzar-la-calle
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-023
+
+ROUTINE_ID: ir-en-autobus
+
+ES TÍTULO: Ir en autobús
+
+EN TITLE: Taking the bus
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: casa → puerta → parada → bus → destino
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-ir-en-autobus
+
+EN PATH: /en/resources/printable-routines/#pack-ir-en-autobus
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-024
+
+ROUTINE_ID: coger-el-tren
+
+ES TÍTULO: Coger el tren
+
+EN TITLE: Taking the train
+
+CONTEXT: salir
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: validar → anden → subirTren → mirarParadas → bajarTren
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-coger-el-tren
+
+EN PATH: /en/resources/printable-routines/#pack-coger-el-tren
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-025
+
+ROUTINE_ID: ir-a-una-cita-medica
+
+ES TÍTULO: Ir a una cita médica
+
+EN TITLE: Going to a medical appointment
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: tarjetasan → casa → salaespera → consulta → tranquilo
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-ir-a-una-cita-medica
+
+EN PATH: /en/resources/printable-routines/#pack-ir-a-una-cita-medica
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-026
+
+ROUTINE_ID: hacer-una-llamada
+
+ES TÍTULO: Hacer una llamada
+
+EN TITLE: Making a phone call
+
+CONTEXT: cuidarse
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: apuntar → buscarNum → respirarLl → llamar → apuntarResp
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-hacer-una-llamada
+
+EN PATH: /en/resources/printable-routines/#pack-hacer-una-llamada
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-027
+
+ROUTINE_ID: responder-un-correo
+
+ES TÍTULO: Responder un correo
+
+EN TITLE: Answering an email
+
+CONTEXT: estudio
+
+STAGES: adu
+
+STEP_COUNT: 5
+
+STEP_IDS: leerCorreo → queDicen → escribirResp → revisar → enviar
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-responder-un-correo
+
+EN PATH: /en/resources/printable-routines/#pack-responder-un-correo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-028
+
+ROUTINE_ID: estudiar-por-partes
+
+ES TÍTULO: Estudiar por partes
+
+EN TITLE: Studying in parts
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: temario → trozos → estudiarTrozo → pausa → repasar
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-estudiar-por-partes
+
+EN PATH: /en/resources/printable-routines/#pack-estudiar-por-partes
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-029
+
+ROUTINE_ID: empezar-una-tarea
+
+ES TÍTULO: Empezar una tarea
+
+EN TITLE: Starting a task
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: mirarhorario → ordenarmesa → trozos → tareapeque → pausa
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-empezar-una-tarea
+
+EN PATH: /en/resources/printable-routines/#pack-empezar-una-tarea
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-030
+
+ROUTINE_ID: volver-a-casa
+
+ES TÍTULO: Volver a casa después de un día que agota
+
+EN TITLE: Getting home after an exhausting day
+
+CONTEXT: cuidarse
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: llegarCasa → quitarZap → silencio → cenarF → dormirTemprano
+
+EDITORIAL_SOURCE_ID: —
+
+EDITORIAL_SOURCE_STATUS: LEGACY_NO_ROUTINE_SOURCE_ID
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-volver-a-casa
+
+EN PATH: /en/resources/printable-routines/#pack-volver-a-casa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-031
+
+ROUTINE_ID: rutina-ponerse-y-quitarse-los-zapatos
+
+ES TÍTULO: Ponerse y quitarse los zapatos
+
+EN TITLE: Put on and take off shoes
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_AUT02_1 → R_AUT02_2 → R_AUT02_3 → R_AUT02_4 → R_AUT02_5
+
+EDITORIAL_SOURCE_ID: AUT-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-ponerse-y-quitarse-los-zapatos
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-ponerse-y-quitarse-los-zapatos
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-032
+
+ROUTINE_ID: rutina-subir-y-bajar-la-cremallera
+
+ES TÍTULO: Subir y bajar la cremallera
+
+EN TITLE: Do up and undo a zip
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_AUT04_1 → R_AUT04_2 → R_AUT04_3 → R_AUT04_4
+
+EDITORIAL_SOURCE_ID: AUT-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-subir-y-bajar-la-cremallera
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-subir-y-bajar-la-cremallera
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-033
+
+ROUTINE_ID: rutina-elegir-la-ropa
+
+ES TÍTULO: Elegir la ropa
+
+EN TITLE: Choose your clothes
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_AUT05_1 → R_AUT05_2 → R_AUT05_3 → R_AUT05_4 → R_AUT05_5 → R_AUT05_6
+
+EDITORIAL_SOURCE_ID: AUT-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-elegir-la-ropa
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-elegir-la-ropa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-034
+
+ROUTINE_ID: rutina-vestirse-por-orden
+
+ES TÍTULO: Vestirse por orden
+
+EN TITLE: Get dressed in order
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_AUT06_1 → R_AUT06_2 → R_AUT06_3 → R_AUT06_4 → R_AUT06_5 → R_AUT06_6
+
+EDITORIAL_SOURCE_ID: AUT-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-vestirse-por-orden
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-vestirse-por-orden
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-035
+
+ROUTINE_ID: rutina-preparar-la-ropa-del-dia-siguiente
+
+ES TÍTULO: Preparar la ropa del día siguiente
+
+EN TITLE: Lay out tomorrow's clothes
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_AUT07_1 → R_AUT07_2 → R_AUT07_3 → R_AUT07_4 → R_AUT07_5
+
+EDITORIAL_SOURCE_ID: AUT-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-la-ropa-del-dia-siguiente
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-la-ropa-del-dia-siguiente
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-036
+
+ROUTINE_ID: rutina-quitarse-la-ropa-y-dejarla-en-su-sitio
+
+ES TÍTULO: Quitarse la ropa y dejarla en su sitio
+
+EN TITLE: Undress and put clothes away
+
+CONTEXT: vestirse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_AUT08_1 → R_AUT08_2 → R_AUT08_3 → R_AUT08_4
+
+EDITORIAL_SOURCE_ID: AUT-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-quitarse-la-ropa-y-dejarla-en-su-sitio
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-quitarse-la-ropa-y-dejarla-en-su-sitio
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-037
+
+ROUTINE_ID: rutina-lavarse-el-pelo
+
+ES TÍTULO: Lavarse el pelo
+
+EN TITLE: Wash your hair
+
+CONTEXT: higiene
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_HIG03_1 → R_HIG03_2 → R_HIG03_3 → R_HIG03_4 → R_HIG03_5
+
+EDITORIAL_SOURCE_ID: HIG-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-lavarse-el-pelo
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-lavarse-el-pelo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-038
+
+ROUTINE_ID: rutina-secarse
+
+ES TÍTULO: Secarse
+
+EN TITLE: Dry yourself
+
+CONTEXT: higiene
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_HIG04_1 → R_HIG04_2 → R_HIG04_3 → R_HIG04_4 → R_HIG04_5
+
+EDITORIAL_SOURCE_ID: HIG-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-secarse
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-secarse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-039
+
+ROUTINE_ID: rutina-peinarse
+
+ES TÍTULO: Peinarse
+
+EN TITLE: Brush your hair
+
+CONTEXT: higiene
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_HIG05_1 → R_HIG05_2 → R_HIG05_3 → R_HIG05_4
+
+EDITORIAL_SOURCE_ID: HIG-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-peinarse
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-peinarse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-040
+
+ROUTINE_ID: rutina-cuidado-menstrual
+
+ES TÍTULO: Cuidado menstrual
+
+EN TITLE: Period care
+
+CONTEXT: higiene
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: R_HIG08_1 → R_HIG08_2 → R_HIG08_3 → R_HIG08_4 → R_HIG08_5
+
+EDITORIAL_SOURCE_ID: HIG-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-cuidado-menstrual
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-cuidado-menstrual
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-041
+
+ROUTINE_ID: rutina-afeitarse-o-cuidado-personal
+
+ES TÍTULO: Afeitarse o cuidado personal
+
+EN TITLE: Shave or personal grooming
+
+CONTEXT: higiene
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: R_HIG09_1 → R_HIG09_2 → R_HIG09_3 → R_HIG09_4 → R_HIG09_5
+
+EDITORIAL_SOURCE_ID: HIG-09
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-afeitarse-o-cuidado-personal
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-afeitarse-o-cuidado-personal
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-042
+
+ROUTINE_ID: rutina-usar-desodorante
+
+ES TÍTULO: Usar desodorante
+
+EN TITLE: Use deodorant
+
+CONTEXT: higiene
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: R_HIG11_1 → R_HIG11_2 → R_HIG11_3
+
+EDITORIAL_SOURCE_ID: HIG-11
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-usar-desodorante
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-usar-desodorante
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-043
+
+ROUTINE_ID: rutina-levantarse
+
+ES TÍTULO: Levantarse
+
+EN TITLE: Get up
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN01_1 → R_MAN01_2 → R_MAN01_3 → R_MAN01_4 → R_MAN01_5
+
+EDITORIAL_SOURCE_ID: MAN-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-levantarse
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-levantarse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-044
+
+ROUTINE_ID: rutina-desayunar
+
+ES TÍTULO: Desayunar
+
+EN TITLE: Have breakfast
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN02_1 → R_MAN02_2 → R_MAN02_3 → R_MAN02_4 → R_MAN02_5
+
+EDITORIAL_SOURCE_ID: MAN-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-desayunar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-desayunar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-045
+
+ROUTINE_ID: rutina-comprobar-llaves-telefono-y-documentos
+
+ES TÍTULO: Comprobar llaves, teléfono y documentos
+
+EN TITLE: Check keys, phone and documents
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN04_1 → R_MAN04_2 → R_MAN04_3 → R_MAN04_4 → R_MAN04_5
+
+EDITORIAL_SOURCE_ID: MAN-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-comprobar-llaves-telefono-y-documentos
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-comprobar-llaves-telefono-y-documentos
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-046
+
+ROUTINE_ID: rutina-ponerse-el-abrigo-y-salir
+
+ES TÍTULO: Ponerse el abrigo y salir
+
+EN TITLE: Put on your coat and leave
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN05_1 → R_MAN05_2 → R_MAN05_3 → R_MAN05_4 → R_MAN05_5
+
+EDITORIAL_SOURCE_ID: MAN-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-ponerse-el-abrigo-y-salir
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-ponerse-el-abrigo-y-salir
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-047
+
+ROUTINE_ID: rutina-salir-a-tiempo
+
+ES TÍTULO: Salir a tiempo
+
+EN TITLE: Leave on time
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN06_1 → R_MAN06_2 → R_MAN06_3 → R_MAN06_4 → R_MAN06_5
+
+EDITORIAL_SOURCE_ID: MAN-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-salir-a-tiempo
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-salir-a-tiempo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-048
+
+ROUTINE_ID: rutina-transicion-casa-escuela-o-trabajo
+
+ES TÍTULO: Transición casa → escuela o trabajo
+
+EN TITLE: Transition home → school or work
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_MAN07_1 → R_MAN07_2 → R_MAN07_3 → R_MAN07_4 → R_MAN07_5
+
+EDITORIAL_SOURCE_ID: MAN-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-transicion-casa-escuela-o-trabajo
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-transicion-casa-escuela-o-trabajo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-049
+
+ROUTINE_ID: rutina-preparar-un-desayuno-sencillo
+
+ES TÍTULO: Preparar un desayuno sencillo
+
+EN TITLE: Make a simple breakfast
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_COC01_1 → R_COC01_2 → R_COC01_3 → R_COC01_4 → R_COC01_5 → R_COC01_6
+
+EDITORIAL_SOURCE_ID: COC-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-un-desayuno-sencillo
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-un-desayuno-sencillo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-050
+
+ROUTINE_ID: rutina-poner-la-mesa
+
+ES TÍTULO: Poner la mesa
+
+EN TITLE: Set the table
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_COC03_1 → R_COC03_2 → R_COC03_3 → R_COC03_4 → R_COC03_5
+
+EDITORIAL_SOURCE_ID: COC-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-poner-la-mesa
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-poner-la-mesa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-051
+
+ROUTINE_ID: rutina-recoger-la-mesa
+
+ES TÍTULO: Recoger la mesa
+
+EN TITLE: Clear the table
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_COC04_1 → R_COC04_2 → R_COC04_3 → R_COC04_4
+
+EDITORIAL_SOURCE_ID: COC-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-recoger-la-mesa
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-recoger-la-mesa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-052
+
+ROUTINE_ID: rutina-lavar-los-platos
+
+ES TÍTULO: Lavar los platos
+
+EN TITLE: Wash up
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_COC05_1 → R_COC05_2 → R_COC05_3 → R_COC05_4 → R_COC05_5
+
+EDITORIAL_SOURCE_ID: COC-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-lavar-los-platos
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-lavar-los-platos
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-053
+
+ROUTINE_ID: rutina-guardar-la-comida
+
+ES TÍTULO: Guardar la comida
+
+EN TITLE: Put food away
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_COC06_1 → R_COC06_2 → R_COC06_3 → R_COC06_4
+
+EDITORIAL_SOURCE_ID: COC-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-guardar-la-comida
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-guardar-la-comida
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-054
+
+ROUTINE_ID: rutina-usar-el-microondas-con-seguridad
+
+ES TÍTULO: Usar el microondas con seguridad
+
+EN TITLE: Use the microwave safely
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_COC07_1 → R_COC07_2 → R_COC07_3 → R_COC07_4 → R_COC07_5 → R_COC07_6
+
+EDITORIAL_SOURCE_ID: COC-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-usar-el-microondas-con-seguridad
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-usar-el-microondas-con-seguridad
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-055
+
+ROUTINE_ID: rutina-seguir-una-receta-visual-sencilla
+
+ES TÍTULO: Seguir una receta visual sencilla
+
+EN TITLE: Follow a simple visual recipe
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_COC08_1 → R_COC08_2 → R_COC08_3 → R_COC08_4 → R_COC08_5
+
+EDITORIAL_SOURCE_ID: COC-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-seguir-una-receta-visual-sencilla
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-seguir-una-receta-visual-sencilla
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-056
+
+ROUTINE_ID: rutina-preparar-la-comida-para-llevar
+
+ES TÍTULO: Preparar la comida para llevar
+
+EN TITLE: Pack a packed lunch
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_COC09_1 → R_COC09_2 → R_COC09_3 → R_COC09_4 → R_COC09_5
+
+EDITORIAL_SOURCE_ID: COC-09
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-la-comida-para-llevar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-la-comida-para-llevar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-057
+
+ROUTINE_ID: rutina-beber-agua-a-lo-largo-del-dia
+
+ES TÍTULO: Beber agua a lo largo del día
+
+EN TITLE: Drink water through the day
+
+CONTEXT: comidas
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_COC10_1 → R_COC10_2 → R_COC10_3 → R_COC10_4
+
+EDITORIAL_SOURCE_ID: COC-10
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-beber-agua-a-lo-largo-del-dia
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-beber-agua-a-lo-largo-del-dia
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-058
+
+ROUTINE_ID: rutina-hacer-la-cama
+
+ES TÍTULO: Hacer la cama
+
+EN TITLE: Make the bed
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS01_1 → R_CAS01_2 → R_CAS01_3 → R_CAS01_4
+
+EDITORIAL_SOURCE_ID: CAS-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-hacer-la-cama
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-hacer-la-cama
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-059
+
+ROUTINE_ID: rutina-recoger-una-habitacion
+
+ES TÍTULO: Recoger una habitación
+
+EN TITLE: Tidy a room
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAS02_1 → R_CAS02_2 → R_CAS02_3 → R_CAS02_4 → R_CAS02_5
+
+EDITORIAL_SOURCE_ID: CAS-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-recoger-una-habitacion
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-recoger-una-habitacion
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-060
+
+ROUTINE_ID: rutina-clasificar-la-ropa
+
+ES TÍTULO: Clasificar la ropa
+
+EN TITLE: Sort the laundry
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS03_1 → R_CAS03_2 → R_CAS03_3 → R_CAS03_4
+
+EDITORIAL_SOURCE_ID: CAS-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-clasificar-la-ropa
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-clasificar-la-ropa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-061
+
+ROUTINE_ID: rutina-tender-la-ropa
+
+ES TÍTULO: Tender la ropa
+
+EN TITLE: Hang out the washing
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS05_1 → R_CAS05_2 → R_CAS05_3 → R_CAS05_4
+
+EDITORIAL_SOURCE_ID: CAS-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-tender-la-ropa
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-tender-la-ropa
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-062
+
+ROUTINE_ID: rutina-guardar-los-objetos-en-su-lugar
+
+ES TÍTULO: Guardar los objetos en su lugar
+
+EN TITLE: Put things back in their place
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: R_CAS07_1 → R_CAS07_2 → R_CAS07_3
+
+EDITORIAL_SOURCE_ID: CAS-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-guardar-los-objetos-en-su-lugar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-guardar-los-objetos-en-su-lugar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-063
+
+ROUTINE_ID: rutina-sacar-la-basura
+
+ES TÍTULO: Sacar la basura
+
+EN TITLE: Take out the rubbish
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS08_1 → R_CAS08_2 → R_CAS08_3 → R_CAS08_4
+
+EDITORIAL_SOURCE_ID: CAS-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-sacar-la-basura
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-sacar-la-basura
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-064
+
+ROUTINE_ID: rutina-separar-para-reciclar
+
+ES TÍTULO: Separar para reciclar
+
+EN TITLE: Sort the recycling
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAS09_1 → R_CAS09_2 → R_CAS09_3 → R_CAS09_4 → R_CAS09_5
+
+EDITORIAL_SOURCE_ID: CAS-09
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-separar-para-reciclar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-separar-para-reciclar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-065
+
+ROUTINE_ID: rutina-limpiar-una-superficie
+
+ES TÍTULO: Limpiar una superficie
+
+EN TITLE: Clean a surface
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS10_1 → R_CAS10_2 → R_CAS10_3 → R_CAS10_4
+
+EDITORIAL_SOURCE_ID: CAS-10
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-limpiar-una-superficie
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-limpiar-una-superficie
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-066
+
+ROUTINE_ID: rutina-pasar-la-aspiradora
+
+ES TÍTULO: Pasar la aspiradora
+
+EN TITLE: Vacuum
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS11_1 → R_CAS11_2 → R_CAS11_3 → R_CAS11_4
+
+EDITORIAL_SOURCE_ID: CAS-11
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-pasar-la-aspiradora
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-pasar-la-aspiradora
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-067
+
+ROUTINE_ID: rutina-regar-las-plantas
+
+ES TÍTULO: Regar las plantas
+
+EN TITLE: Water the plants
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: R_CAS12_1 → R_CAS12_2 → R_CAS12_3
+
+EDITORIAL_SOURCE_ID: CAS-12
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-regar-las-plantas
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-regar-las-plantas
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-068
+
+ROUTINE_ID: rutina-cuidar-a-un-animal-de-compania
+
+ES TÍTULO: Cuidar a un animal de compañía
+
+EN TITLE: Look after a pet
+
+CONTEXT: casa
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAS13_1 → R_CAS13_2 → R_CAS13_3 → R_CAS13_4
+
+EDITORIAL_SOURCE_ID: CAS-13
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-cuidar-a-un-animal-de-compania
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-cuidar-a-un-animal-de-compania
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-069
+
+ROUTINE_ID: rutina-preparar-el-escritorio
+
+ES TÍTULO: Preparar el escritorio
+
+EN TITLE: Set up your desk
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 4
+
+STEP_IDS: R_EST01_1 → R_EST01_2 → R_EST01_3 → R_EST01_4
+
+EDITORIAL_SOURCE_ID: EST-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-el-escritorio
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-el-escritorio
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-070
+
+ROUTINE_ID: rutina-dividir-una-tarea-grande
+
+ES TÍTULO: Dividir una tarea grande
+
+EN TITLE: Break a big task down
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: R_EST03_1 → R_EST03_2 → R_EST03_3 → R_EST03_4 → R_EST03_5
+
+EDITORIAL_SOURCE_ID: EST-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-dividir-una-tarea-grande
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-dividir-una-tarea-grande
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-071
+
+ROUTINE_ID: rutina-guardar-los-materiales
+
+ES TÍTULO: Guardar los materiales
+
+EN TITLE: Put your materials away
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 3
+
+STEP_IDS: R_EST04_1 → R_EST04_2 → R_EST04_3
+
+EDITORIAL_SOURCE_ID: EST-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-guardar-los-materiales
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-guardar-los-materiales
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-072
+
+ROUTINE_ID: rutina-entregar-una-tarea
+
+ES TÍTULO: Entregar una tarea
+
+EN TITLE: Hand in a task
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 4
+
+STEP_IDS: R_EST05_1 → R_EST05_2 → R_EST05_3 → R_EST05_4
+
+EDITORIAL_SOURCE_ID: EST-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-entregar-una-tarea
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-entregar-una-tarea
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-073
+
+ROUTINE_ID: rutina-transicion-descanso-trabajo
+
+ES TÍTULO: Transición descanso → trabajo
+
+EN TITLE: Transition break → work
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: R_EST06_1 → R_EST06_2 → R_EST06_3 → R_EST06_4 → R_EST06_5
+
+EDITORIAL_SOURCE_ID: EST-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-transicion-descanso-trabajo
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-transicion-descanso-trabajo
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-074
+
+ROUTINE_ID: rutina-pedir-una-adaptacion-o-ayuda
+
+ES TÍTULO: Pedir una adaptación o ayuda
+
+EN TITLE: Ask for an adjustment or help
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 4
+
+STEP_IDS: R_EST07_1 → R_EST07_2 → R_EST07_3 → R_EST07_4
+
+EDITORIAL_SOURCE_ID: EST-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-pedir-una-adaptacion-o-ayuda
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-pedir-una-adaptacion-o-ayuda
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-075
+
+ROUTINE_ID: rutina-seguir-un-horario-del-dia
+
+ES TÍTULO: Seguir un horario del día
+
+EN TITLE: Follow a day timetable
+
+CONTEXT: estudio
+
+STAGES: ado · adu
+
+STEP_COUNT: 5
+
+STEP_IDS: R_EST08_1 → R_EST08_2 → R_EST08_3 → R_EST08_4 → R_EST08_5
+
+EDITORIAL_SOURCE_ID: EST-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-seguir-un-horario-del-dia
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-seguir-un-horario-del-dia
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-076
+
+ROUTINE_ID: rutina-cruzar-por-el-paso-de-peatones
+
+ES TÍTULO: Cruzar por el paso de peatones
+
+EN TITLE: Cross at the crossing
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAL01_1 → R_CAL01_2 → R_CAL01_3 → R_CAL01_4 → R_CAL01_5
+
+EDITORIAL_SOURCE_ID: CAL-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-cruzar-por-el-paso-de-peatones
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-cruzar-por-el-paso-de-peatones
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-077
+
+ROUTINE_ID: rutina-esperar-el-turno
+
+ES TÍTULO: Esperar el turno
+
+EN TITLE: Wait your turn
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAL02_1 → R_CAL02_2 → R_CAL02_3 → R_CAL02_4
+
+EDITORIAL_SOURCE_ID: CAL-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-esperar-el-turno
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-esperar-el-turno
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-078
+
+ROUTINE_ID: rutina-usar-el-transporte-publico
+
+ES TÍTULO: Usar el transporte público
+
+EN TITLE: Use public transport
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_CAL03_1 → R_CAL03_2 → R_CAL03_3 → R_CAL03_4 → R_CAL03_5 → R_CAL03_6
+
+EDITORIAL_SOURCE_ID: CAL-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-usar-el-transporte-publico
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-usar-el-transporte-publico
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-079
+
+ROUTINE_ID: rutina-subir-y-bajar-del-autobus-o-metro
+
+ES TÍTULO: Subir y bajar del autobús o metro
+
+EN TITLE: Get on and off the bus or metro
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAL04_1 → R_CAL04_2 → R_CAL04_3 → R_CAL04_4 → R_CAL04_5
+
+EDITORIAL_SOURCE_ID: CAL-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-subir-y-bajar-del-autobus-o-metro
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-subir-y-bajar-del-autobus-o-metro
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-080
+
+ROUTINE_ID: rutina-comprar-en-una-tienda
+
+ES TÍTULO: Comprar en una tienda
+
+EN TITLE: Shop in a shop
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_CAL05_1 → R_CAL05_2 → R_CAL05_3 → R_CAL05_4 → R_CAL05_5 → R_CAL05_6
+
+EDITORIAL_SOURCE_ID: CAL-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-comprar-en-una-tienda
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-comprar-en-una-tienda
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-081
+
+ROUTINE_ID: rutina-pagar
+
+ES TÍTULO: Pagar
+
+EN TITLE: Pay
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAL06_1 → R_CAL06_2 → R_CAL06_3 → R_CAL06_4 → R_CAL06_5
+
+EDITORIAL_SOURCE_ID: CAL-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-pagar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-pagar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-082
+
+ROUTINE_ID: rutina-guardar-el-ticket-y-el-cambio
+
+ES TÍTULO: Guardar el ticket y el cambio
+
+EN TITLE: Keep the receipt and change
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: R_CAL07_1 → R_CAL07_2 → R_CAL07_3
+
+EDITORIAL_SOURCE_ID: CAL-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-guardar-el-ticket-y-el-cambio
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-guardar-el-ticket-y-el-cambio
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-083
+
+ROUTINE_ID: rutina-pedir-ayuda
+
+ES TÍTULO: Pedir ayuda
+
+EN TITLE: Ask for help
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAL08_1 → R_CAL08_2 → R_CAL08_3 → R_CAL08_4
+
+EDITORIAL_SOURCE_ID: CAL-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-pedir-ayuda
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-pedir-ayuda
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-084
+
+ROUTINE_ID: rutina-orientarse-en-un-lugar-conocido
+
+ES TÍTULO: Orientarse en un lugar conocido
+
+EN TITLE: Find your way in a familiar place
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_CAL09_1 → R_CAL09_2 → R_CAL09_3 → R_CAL09_4
+
+EDITORIAL_SOURCE_ID: CAL-09
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-orientarse-en-un-lugar-conocido
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-orientarse-en-un-lugar-conocido
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-085
+
+ROUTINE_ID: rutina-salir-del-sitio-cuando-hay-sobrecarga
+
+ES TÍTULO: Salir del sitio cuando hay sobrecarga
+
+EN TITLE: Leave when you are overloaded
+
+CONTEXT: salir
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_CAL11_1 → R_CAL11_2 → R_CAL11_3 → R_CAL11_4 → R_CAL11_5
+
+EDITORIAL_SOURCE_ID: CAL-11
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-salir-del-sitio-cuando-hay-sobrecarga
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-salir-del-sitio-cuando-hay-sobrecarga
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-086
+
+ROUTINE_ID: rutina-prepararse-para-salir
+
+ES TÍTULO: Prepararse para salir
+
+EN TITLE: Get ready to go out
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_TIE01_1 → R_TIE01_2 → R_TIE01_3 → R_TIE01_4
+
+EDITORIAL_SOURCE_ID: TIE-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-prepararse-para-salir
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-prepararse-para-salir
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-087
+
+ROUTINE_ID: rutina-terminar-una-actividad
+
+ES TÍTULO: Terminar una actividad
+
+EN TITLE: Finish an activity
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_TIE02_1 → R_TIE02_2 → R_TIE02_3 → R_TIE02_4
+
+EDITORIAL_SOURCE_ID: TIE-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-terminar-una-actividad
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-terminar-una-actividad
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-088
+
+ROUTINE_ID: rutina-cambiar-de-tarea
+
+ES TÍTULO: Cambiar de tarea
+
+EN TITLE: Switch task
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_TIE03_1 → R_TIE03_2 → R_TIE03_3 → R_TIE03_4 → R_TIE03_5
+
+EDITORIAL_SOURCE_ID: TIE-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-cambiar-de-tarea
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-cambiar-de-tarea
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-089
+
+ROUTINE_ID: rutina-esperar
+
+ES TÍTULO: Esperar
+
+EN TITLE: Wait
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_TIE04_1 → R_TIE04_2 → R_TIE04_3 → R_TIE04_4
+
+EDITORIAL_SOURCE_ID: TIE-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-esperar
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-esperar
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-090
+
+ROUTINE_ID: rutina-seguir-una-cuenta-atras-visual
+
+ES TÍTULO: Seguir una cuenta atrás visual
+
+EN TITLE: Follow a visual countdown
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_TIE05_1 → R_TIE05_2 → R_TIE05_3 → R_TIE05_4
+
+EDITORIAL_SOURCE_ID: TIE-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-seguir-una-cuenta-atras-visual
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-seguir-una-cuenta-atras-visual
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-091
+
+ROUTINE_ID: rutina-organizar-la-secuencia-de-la-tarde
+
+ES TÍTULO: Organizar la secuencia de la tarde
+
+EN TITLE: Plan the afternoon sequence
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_TIE06_1 → R_TIE06_2 → R_TIE06_3 → R_TIE06_4
+
+EDITORIAL_SOURCE_ID: TIE-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-organizar-la-secuencia-de-la-tarde
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-organizar-la-secuencia-de-la-tarde
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-092
+
+ROUTINE_ID: rutina-primero-despues
+
+ES TÍTULO: Primero → después
+
+EN TITLE: First → then
+
+CONTEXT: tiempo
+
+STAGES: todas
+
+STEP_COUNT: 2
+
+STEP_IDS: R_TIE07_1 → R_TIE07_2
+
+EDITORIAL_SOURCE_ID: TIE-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-primero-despues
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-primero-despues
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-093
+
+ROUTINE_ID: rutina-preparar-el-pijama
+
+ES TÍTULO: Preparar el pijama
+
+EN TITLE: Get your pyjamas ready
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 3
+
+STEP_IDS: R_NOC01_1 → R_NOC01_2 → R_NOC01_3
+
+EDITORIAL_SOURCE_ID: NOC-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-el-pijama
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-el-pijama
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-094
+
+ROUTINE_ID: rutina-higiene-nocturna
+
+ES TÍTULO: Higiene nocturna
+
+EN TITLE: Night-time hygiene
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_NOC02_1 → R_NOC02_2 → R_NOC02_3 → R_NOC02_4
+
+EDITORIAL_SOURCE_ID: NOC-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-higiene-nocturna
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-higiene-nocturna
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-095
+
+ROUTINE_ID: rutina-dejar-preparadas-las-cosas-del-dia-siguiente
+
+ES TÍTULO: Dejar preparadas las cosas del día siguiente
+
+EN TITLE: Get tomorrow's things ready
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_NOC03_1 → R_NOC03_2 → R_NOC03_3 → R_NOC03_4
+
+EDITORIAL_SOURCE_ID: NOC-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-dejar-preparadas-las-cosas-del-dia-siguiente
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-dejar-preparadas-las-cosas-del-dia-siguiente
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-096
+
+ROUTINE_ID: rutina-apagar-pantallas-y-luces
+
+ES TÍTULO: Apagar pantallas y luces
+
+EN TITLE: Turn off screens and lights
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_NOC04_1 → R_NOC04_2 → R_NOC04_3 → R_NOC04_4
+
+EDITORIAL_SOURCE_ID: NOC-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-apagar-pantallas-y-luces
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-apagar-pantallas-y-luces
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-097
+
+ROUTINE_ID: rutina-acostarse
+
+ES TÍTULO: Acostarse
+
+EN TITLE: Go to bed
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_NOC05_1 → R_NOC05_2 → R_NOC05_3 → R_NOC05_4
+
+EDITORIAL_SOURCE_ID: NOC-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-acostarse
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-acostarse
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-098
+
+ROUTINE_ID: rutina-preparar-el-ambiente-de-descanso
+
+ES TÍTULO: Preparar el ambiente de descanso
+
+EN TITLE: Set up a restful room
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_NOC06_1 → R_NOC06_2 → R_NOC06_3 → R_NOC06_4 → R_NOC06_5
+
+EDITORIAL_SOURCE_ID: NOC-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-preparar-el-ambiente-de-descanso
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-preparar-el-ambiente-de-descanso
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-099
+
+ROUTINE_ID: rutina-volver-a-la-cama-si-te-despiertas
+
+ES TÍTULO: Volver a la cama si te despiertas
+
+EN TITLE: Go back to bed if you wake up
+
+CONTEXT: manana
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_NOC07_1 → R_NOC07_2 → R_NOC07_3 → R_NOC07_4 → R_NOC07_5
+
+EDITORIAL_SOURCE_ID: NOC-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-volver-a-la-cama-si-te-despiertas
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-volver-a-la-cama-si-te-despiertas
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-100
+
+ROUTINE_ID: rutina-tomar-la-medicacion
+
+ES TÍTULO: Tomar la medicación
+
+EN TITLE: Take your medication
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_OTR01_1 → R_OTR01_2 → R_OTR01_3 → R_OTR01_4
+
+EDITORIAL_SOURCE_ID: OTR-01
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-tomar-la-medicacion
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-tomar-la-medicacion
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-101
+
+ROUTINE_ID: rutina-prepararse-para-el-dentista
+
+ES TÍTULO: Prepararse para el dentista
+
+EN TITLE: Get ready for the dentist
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 6
+
+STEP_IDS: R_OTR02_1 → R_OTR02_2 → R_OTR02_3 → R_OTR02_4 → R_OTR02_5 → R_OTR02_6
+
+EDITORIAL_SOURCE_ID: OTR-02
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-prepararse-para-el-dentista
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-prepararse-para-el-dentista
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-102
+
+ROUTINE_ID: rutina-cargar-el-telefono
+
+ES TÍTULO: Cargar el teléfono
+
+EN TITLE: Charge your phone
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_OTR03_1 → R_OTR03_2 → R_OTR03_3 → R_OTR03_4
+
+EDITORIAL_SOURCE_ID: OTR-03
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-cargar-el-telefono
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-cargar-el-telefono
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-103
+
+ROUTINE_ID: rutina-manejar-el-dinero-de-la-semana
+
+ES TÍTULO: Manejar el dinero de la semana
+
+EN TITLE: Manage the week's money
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_OTR04_1 → R_OTR04_2 → R_OTR04_3 → R_OTR04_4 → R_OTR04_5
+
+EDITORIAL_SOURCE_ID: OTR-04
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-manejar-el-dinero-de-la-semana
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-manejar-el-dinero-de-la-semana
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-104
+
+ROUTINE_ID: rutina-abrir-un-envase-dificil
+
+ES TÍTULO: Abrir un envase difícil
+
+EN TITLE: Open a tricky package
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_OTR05_1 → R_OTR05_2 → R_OTR05_3 → R_OTR05_4
+
+EDITORIAL_SOURCE_ID: OTR-05
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-abrir-un-envase-dificil
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-abrir-un-envase-dificil
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-105
+
+ROUTINE_ID: rutina-contestar-a-la-puerta-o-al-telefono
+
+ES TÍTULO: Contestar a la puerta o al teléfono
+
+EN TITLE: Answer the door or the phone
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_OTR06_1 → R_OTR06_2 → R_OTR06_3 → R_OTR06_4 → R_OTR06_5
+
+EDITORIAL_SOURCE_ID: OTR-06
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-contestar-a-la-puerta-o-al-telefono
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-contestar-a-la-puerta-o-al-telefono
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-106
+
+ROUTINE_ID: rutina-usar-una-lista-de-la-compra
+
+ES TÍTULO: Usar una lista de la compra
+
+EN TITLE: Use a shopping list
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_OTR07_1 → R_OTR07_2 → R_OTR07_3 → R_OTR07_4
+
+EDITORIAL_SOURCE_ID: OTR-07
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-usar-una-lista-de-la-compra
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-usar-una-lista-de-la-compra
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-107
+
+ROUTINE_ID: rutina-descansar-antes-de-agotarte
+
+ES TÍTULO: Descansar antes de agotarte
+
+EN TITLE: Rest before you crash
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_OTR08_1 → R_OTR08_2 → R_OTR08_3 → R_OTR08_4 → R_OTR08_5
+
+EDITORIAL_SOURCE_ID: OTR-08
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-descansar-antes-de-agotarte
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-descansar-antes-de-agotarte
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-108
+
+ROUTINE_ID: rutina-prepararse-para-un-cambio-previsto
+
+ES TÍTULO: Prepararse para un cambio previsto
+
+EN TITLE: Get ready for a planned change
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 5
+
+STEP_IDS: R_OTR09_1 → R_OTR09_2 → R_OTR09_3 → R_OTR09_4 → R_OTR09_5
+
+EDITORIAL_SOURCE_ID: OTR-09
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-prepararse-para-un-cambio-previsto
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-prepararse-para-un-cambio-previsto
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-ROUTINE-109
+
+ROUTINE_ID: rutina-recargar-el-abono-de-transporte
+
+ES TÍTULO: Recargar el abono de transporte
+
+EN TITLE: Top up your travel card
+
+CONTEXT: cuidarse
+
+STAGES: todas
+
+STEP_COUNT: 4
+
+STEP_IDS: R_OTR10_1 → R_OTR10_2 → R_OTR10_3 → R_OTR10_4
+
+EDITORIAL_SOURCE_ID: OTR-10
+
+EDITORIAL_SOURCE_STATUS: RECORDED
+
+ES RUTA: /es/recursos/rutinas-imprimibles/#pack-rutina-recargar-el-abono-de-transporte
+
+EN PATH: /en/resources/printable-routines/#pack-rutina-recargar-el-abono-de-transporte
+
+DOWNLOADABLE_SVG_A4: true
+
+WATERMARK: true
+
+PICTOGRAM_TRACEABILITY: CENTRAL_MANIFEST
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## QA · RUTINAS IMPRIMIBLES / PRINTABLE ROUTINES
+
+- SOURCE_RECORDS: 109/109
+- UNIQUE_ROUTINE_IDS: 109/109
+- ES_EN_TITLES: 109/109
+- ES_PUBLIC_ROUTES: 109/109
+- EN_PUBLIC_ROUTES: 109/109
+- DOWNLOADABLE_SVG_A4: 109/109
+- PICTOGRAM_TRACEABILITY_PRESENT: 109/109
+- EDITORIAL_SOURCE_STATUS_COUNTS: LEGACY_NO_ROUTINE_SOURCE_ID=30 · RECORDED=79
+- LICENSE_PIN_STATUS: PENDING_PROJECT_RECONCILIATION_PER_R42_BRIEF
+- STATUS: PASS
+
+SIGUIENTE FASE: recursos específicos, intereses y otros corpus estructurados de Iris Green.
