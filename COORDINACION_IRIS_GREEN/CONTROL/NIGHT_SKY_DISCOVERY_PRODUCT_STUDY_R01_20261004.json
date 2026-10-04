@@ -1,0 +1,45 @@
+{
+  "schema": "night_sky_discovery_product_study_r01",
+  "date": "2026-10-04",
+  "authority": "Maria",
+  "status": "STUDY_ACTIVE_NO_IMPLEMENTATION",
+  "source_of_truth": {
+    "runtime_existing": false,
+    "legacy_runtime_claims": "NOT_PRODUCT_SOURCE_OF_TRUTH",
+    "assets_and_data_reusable": true
+  },
+  "assets": {
+    "horizon": "ENTRY_ATMOSPHERIC_FOREGROUND",
+    "star_dataset": "CORE_DATA_BACKED_SKY",
+    "constellation_lines": "INFERENCE_REVEAL_OVERLAY",
+    "constellation_masters_88": "DEPTH_AFTER_IDENTIFICATION",
+    "atlas_guides": "DEPTH_OR_GUIDED_JOURNEY"
+  },
+  "canonical_loop": [
+    "ENTRY",
+    "ORIENT",
+    "OBSERVE_PATTERN",
+    "LOCATE",
+    "IDENTIFY",
+    "REVEAL",
+    "DEPTH_OPTIONAL"
+  ],
+  "first_prototype_candidate": {
+    "target": "ORION",
+    "pre_reveal_prompt": "FIND_THREE_BRIGHT_STARS_NEARLY_IN_LINE",
+    "reveal_after": "USER_EXAMINES_CORRECT_PATTERN",
+    "no_name_before_action": true
+  },
+  "unresolved": [
+    "SKY_MODEL_CURATED_PRESET_VS_LOCALIZED_REAL_SKY",
+    "FIRST_TARGET_FINAL_APPROVAL"
+  ],
+  "accessibility": {
+    "touch": "PAN_PLUS_BUTTON_EQUIVALENT",
+    "keyboard": "ARROWS_ZOOM_ENTER_ON_SINGLE_SKY_VIEWPORT",
+    "reduced": "SHORT_TRANSITIONS",
+    "none": "DISCRETE_ORIENTATION_STEPS",
+    "no_thousands_of_tabstops": true
+  },
+  "next_gate": "HUMAN_DECIDE_SKY_MODEL_AND_FIRST_TARGET"
+}
