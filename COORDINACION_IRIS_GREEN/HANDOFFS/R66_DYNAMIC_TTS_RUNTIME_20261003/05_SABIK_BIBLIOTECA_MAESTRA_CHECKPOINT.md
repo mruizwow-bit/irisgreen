@@ -19680,3 +19680,1014 @@ ESTADO: COLLECTION_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: continuar el mismo MD con el siguiente corpus complementario canónico, sin fragmentar la Biblioteca Maestra.
+
+# 66. TARJETA IRIS · VIDA DIARIA · «NECESITO / I NEED» · TANDA 1 RECUPERADA
+
+FUENTE: `editorial/tarjetas-necesito-vida-diaria.json` · rama `main` de Iris Green.
+
+ES NOTA DE FUENTE: Bloque «Necesito» de la Tarjeta Iris. Tanda 1 de 3: Vida diaria (48). Pendientes: Condiciones (180) y Situaciones (187).
+
+EN SOURCE NOTE: Iris Card «I need» block. Batch 1 of 3: Daily life (48). Pending: Conditions (180) and Situations (187).
+
+ES REGLA EDITORIAL: El título del bloque ya es «Necesito», así que el texto no lo repite. Máximo 2 frases y unas 14 palabras. Lectura clara: frases cortas, una idea por frase, verbos directos y palabras de todos los días. Todo en positivo: digo qué necesito. Sin etiquetas, defensas, abstracciones ni palabras vagas. Sin muletillas. La segunda frase no empieza por «Y». Evitar «a veces», «así», «luego», «cuando lo pida» y «un poco». No usar «Me ayuda».
+
+EN EDITORIAL RULE: The block title is already «I need», so the text does not repeat it. Maximum 2 sentences and about 14 words. Clear reading: short sentences, one idea per sentence, direct verbs and everyday words. State what is needed in positive terms. No labels, defences, abstract wording or vague words. No filler phrases. The second sentence does not start with «And». Avoid repeated stock phrases. Do not use «It helps me».
+
+ESTADO DE LA COLECCIÓN: BILINGUAL_COMPLETE
+
+## WEB-IRIS-DAILY-NEED-001
+
+ES TEMA: Abuso, explotación y relaciones seguras
+
+EN TOPIC: Abuse, exploitation and safe relationships
+
+ES NECESITO: Hablar contigo a solas. Explícame a quién debes avisar y por qué.
+
+EN I NEED: To talk to you in private. Tell me who you must inform and why.
+
+ES RUTA: /es/biblioteca/abuso-explotacion-y-relaciones-seguras/
+
+EN PATH: /en/everyday-life/abuse-exploitation-and-safe-relationships/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-002
+
+ES TEMA: Acoso, discriminación, racismo y cómo actuar
+
+EN TOPIC: Bullying, discrimination, racism and how to act
+
+ES NECESITO: Que apuntes lo que ha pasado. Dime después qué vais a hacer.
+
+EN I NEED: You to write down what happened. Tell me what you will do next.
+
+ES RUTA: /es/biblioteca/acoso-discriminacion-racismo-y-como-actuar/
+
+EN PATH: /en/everyday-life/bullying-discrimination-racism-and-how-to-act/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-003
+
+ES TEMA: Actividad física, deporte y piscina
+
+EN TOPIC: Physical activity, sport and swimming
+
+ES NECESITO: Saber antes qué vamos a hacer. Poder salir del agua en cualquier momento.
+
+EN I NEED: To know the plan in advance. To leave the water at any time.
+
+ES RUTA: /es/biblioteca/actividad-fisica-deporte-y-piscina/
+
+EN PATH: /en/everyday-life/physical-activity-sport-and-swimming/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-004
+
+ES TEMA: Ajustes razonables en el trabajo
+
+EN TOPIC: Reasonable adjustments at work
+
+ES NECESITO: Pedir un cambio en mi puesto. Recibir la respuesta por escrito.
+
+EN I NEED: To request a change at work. To receive the reply in writing.
+
+ES RUTA: /es/biblioteca/ajustes-razonables-en-el-trabajo/
+
+EN PATH: /en/everyday-life/reasonable-adjustments-at-work/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-005
+
+ES TEMA: Amistad, soledad, pertenencia y fatiga social
+
+EN TOPIC: Friendship, loneliness, belonging and social fatigue
+
+ES NECESITO: Tiempo para contestar. Prefiero quedar contigo en planes cortos.
+
+EN I NEED: Time to reply. I prefer spending time with you in short plans.
+
+ES RUTA: /es/biblioteca/amistad-soledad-pertenencia-y-fatiga-social/
+
+EN PATH: /en/everyday-life/friendship-loneliness-belonging-and-social-fatigue/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-006
+
+ES TEMA: ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica
+
+EN TOPIC: ARFID, eating disorders and pica: when everyday support needs clinical care
+
+ES NECESITO: Que un médico compruebe si como suficiente. Comer en un lugar tranquilo.
+
+EN I NEED: A doctor to check whether I am eating enough. To eat somewhere quiet.
+
+ES RUTA: /es/biblioteca/arfid-tca-y-pica-cuando-el-apoyo-cotidiano-necesita-atencion-clinica/
+
+EN PATH: /en/everyday-life/arfid-eating-disorders-and-pica-when-everyday-support-needs-clinical-care/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-007
+
+ES TEMA: Buscar trabajo siendo neurodivergente
+
+EN TOPIC: Looking for work as a neurodivergent person
+
+ES NECESITO: Ayuda para buscar trabajo. Yo decido qué información personal doy a cada empresa.
+
+EN I NEED: Help to find work. I decide what personal information I share with each employer.
+
+ES RUTA: /es/biblioteca/buscar-trabajo-siendo-neurodivergente/
+
+EN PATH: /en/everyday-life/looking-for-work-as-a-neurodivergent-person/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-008
+
+ES TEMA: Cine, teatro y museos con menos estímulos
+
+EN TOPIC: Cinema, theatre and museums with fewer stimuli
+
+ES NECESITO: Saber si hay sesiones con menos ruido y luz. Poder salir antes del final.
+
+EN I NEED: To know about quieter, dimmer sessions. To leave before the end.
+
+ES RUTA: /es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/
+
+EN PATH: /en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-009
+
+ES TEMA: Cocinar y seguridad doméstica
+
+EN TOPIC: Cooking and home safety
+
+ES NECESITO: Tener los pasos delante. Silencio mientras cocino.
+
+EN I NEED: The steps in front of me. Quiet while I cook.
+
+ES RUTA: /es/biblioteca/cocinar-y-seguridad-domestica/
+
+EN PATH: /en/everyday-life/cooking-and-home-safety/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-010
+
+ES TEMA: Colegio e instituto: apoyos, adaptaciones, asistencia y exámenes
+
+EN TOPIC: School and secondary school: support, adaptations, attendance and exams
+
+ES NECESITO: Mis apoyos por escrito. Poder usarlos también en los exámenes.
+
+EN I NEED: My support arrangements in writing. To use them in exams too.
+
+ES RUTA: /es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes/
+
+EN PATH: /en/everyday-life/school-and-secondary-school-support-adaptations-attendance-and-exams/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-011
+
+ES TEMA: Compras, recados y esperas
+
+EN TOPIC: Shopping, errands and waiting
+
+ES NECESITO: Una lista corta. Poder salir de la tienda en cualquier momento.
+
+EN I NEED: A short list. To leave the shop at any time.
+
+ES RUTA: /es/biblioteca/compras-recados-y-esperas/
+
+EN PATH: /en/everyday-life/shopping-errands-and-waiting/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-012
+
+ES TEMA: Comunicación sin habla, mutismo, apraxia, tartamudez y habla difícil
+
+EN TOPIC: Communication without speech, mutism, apraxia, stuttering and difficult speech
+
+ES NECESITO: Escribir o señalar si me cuesta hablar. Espera a que termine.
+
+EN I NEED: To write or point if speaking is hard. Wait until I finish.
+
+ES RUTA: /es/biblioteca/comunicacion-sin-habla-mutismo-apraxia-tartamudez-y-habla-dificil/
+
+EN PATH: /en/everyday-life/communication-without-speech-mutism-apraxia-stuttering-and-difficult-speech/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-013
+
+ES TEMA: Crisis de ansiedad, pánico y salud mental: qué hacer y dónde pedir ayuda
+
+EN TOPIC: Anxiety, panic and mental health crises: what to do and where to ask for help
+
+ES NECESITO: Un sitio tranquilo y pocas preguntas. Hablar de lo ocurrido más tarde.
+
+EN I NEED: A quiet place and few questions. To talk about what happened later.
+
+ES RUTA: /es/biblioteca/crisis-de-ansiedad-panico-y-salud-mental-que-hacer-y-donde-pedir-ayuda/
+
+EN PATH: /en/everyday-life/anxiety-panic-and-mental-health-crises-what-to-do-and-where-to-ask-for-help/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-014
+
+ES TEMA: Descanso, fatiga, masking y recuperación
+
+EN TOPIC: Rest, fatigue, masking and recovery
+
+ES NECESITO: Un rato a solas después de un día largo. Volver cuando haya descansado.
+
+EN I NEED: Time alone after a long day. To come back after resting.
+
+ES RUTA: /es/biblioteca/descanso-fatiga-masking-y-recuperacion/
+
+EN PATH: /en/everyday-life/rest-fatigue-masking-and-recovery/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-015
+
+ES TEMA: Diagnóstico tardío, autoaceptación, autodefensa y cómo pedir apoyos
+
+EN TOPIC: Late diagnosis, self-acceptance, self-advocacy and how to ask for support
+
+ES NECESITO: Decidir a quién cuento mi diagnóstico. Pedir apoyo cuando lo necesite.
+
+EN I NEED: To choose who I tell about my diagnosis. To ask for support when needed.
+
+ES RUTA: /es/biblioteca/diagnostico-tardio-autoaceptacion-autodefensa-y-como-pedir-apoyos/
+
+EN PATH: /en/everyday-life/late-diagnosis-self-acceptance-self-advocacy-and-how-to-ask-for-support/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-016
+
+ES TEMA: Dinero, contratos, formularios y trámites
+
+EN TOPIC: Money, contracts, forms and paperwork
+
+ES NECESITO: Una copia de los documentos. Tiempo para hacer preguntas con calma.
+
+EN I NEED: A copy of the documents. Time to ask questions calmly.
+
+ES RUTA: /es/biblioteca/dinero-contratos-formularios-y-tramites/
+
+EN PATH: /en/everyday-life/money-contracts-forms-and-paperwork/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-017
+
+ES TEMA: Discapacidad, dependencia, pobreza y acceso a apoyos
+
+EN TOPIC: Disability, dependency, poverty and access to support
+
+ES NECESITO: Saber qué ayudas me corresponden. Explícame cómo pedirlas.
+
+EN I NEED: To know what support I can get. Tell me how to apply.
+
+ES RUTA: /es/biblioteca/discapacidad-dependencia-pobreza-y-acceso-a-apoyos/
+
+EN PATH: /en/everyday-life/disability-dependency-poverty-and-access-to-support/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-018
+
+ES TEMA: Dolor, salud gastrointestinal y señales corporales
+
+EN TOPIC: Pain, gastrointestinal health and body signals
+
+ES NECESITO: Que me preguntes si tengo dolor. Puedo hablar menos o enfadarme más.
+
+EN I NEED: You to ask about pain. I may talk less or get upset.
+
+ES RUTA: /es/biblioteca/dolor-salud-gastrointestinal-y-senales-corporales/
+
+EN PATH: /en/everyday-life/pain-gastrointestinal-health-and-body-signals/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-019
+
+ES TEMA: El respiro familiar: qué es y cómo se pide
+
+EN TOPIC: Respite care: what it is and how to ask for it
+
+ES NECESITO: Unas horas de descanso. Dime qué ayuda hay en mi zona.
+
+EN I NEED: A few hours to rest. Tell me what support is available in my area.
+
+ES RUTA: /es/biblioteca/el-respiro-familiar-que-es-y-como-se-pide/
+
+EN PATH: /en/everyday-life/respite-care-what-it-is-and-how-to-ask-for-it/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-020
+
+ES TEMA: El sueño: qué observar y por dónde empezar
+
+EN TOPIC: Sleep: what to observe and where to start
+
+ES NECESITO: Apuntar cómo duermo durante dos semanas. Probar un cambio en mi rutina.
+
+EN I NEED: To record my sleep for two weeks. To try one routine change.
+
+ES RUTA: /es/biblioteca/el-sueno-que-observar-y-por-donde-empezar/
+
+EN PATH: /en/everyday-life/sleep-what-to-observe-and-where-to-start/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-021
+
+ES TEMA: Encontrar una asociación por condición y comunidad
+
+EN TOPIC: Finding an association by condition and community
+
+ES NECESITO: Ayuda para encontrar una asociación cerca de mi casa.
+
+EN I NEED: Help to find an organisation near my home.
+
+ES RUTA: /es/biblioteca/encontrar-una-asociacion-por-condicion-y-comunidad/
+
+EN PATH: /en/everyday-life/finding-an-association-by-condition-and-community/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-022
+
+ES TEMA: Epilepsia y otras crisis recurrentes: qué preparar
+
+EN TOPIC: Epilepsy and other recurrent seizures: what to prepare
+
+ES NECESITO: Que sepas cómo empiezan mis crisis y qué hacer si ocurre una.
+
+EN I NEED: You to know how my seizures start and what to do if one happens.
+
+ES RUTA: /es/biblioteca/epilepsia-y-otras-crisis-recurrentes-que-preparar/
+
+EN PATH: /en/everyday-life/epilepsy-and-other-recurrent-seizures-what-to-prepare/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-023
+
+ES TEMA: Estudiar en la universidad con apoyos
+
+EN TOPIC: Studying at university with support
+
+ES NECESITO: Hablar con el servicio de apoyo de mi universidad antes de empezar el curso.
+
+EN I NEED: To speak to my university support service before the course starts.
+
+ES RUTA: /es/biblioteca/estudiar-en-la-universidad-con-apoyos/
+
+EN PATH: /en/everyday-life/studying-at-university-with-support/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-024
+
+ES TEMA: Familia: cambios, hermanos, maternidad/paternidad y conciliación
+
+EN TOPIC: Family: changes, siblings, motherhood/fatherhood and work-life balance
+
+ES NECESITO: Saber qué va a cambiar y cuándo. Que me avises con tiempo.
+
+EN I NEED: To know what will change and when. You to tell me in advance.
+
+ES RUTA: /es/biblioteca/familia-cambios-hermanos-maternidad-paternidad-y-conciliacion/
+
+EN PATH: /en/everyday-life/family-changes-siblings-motherhood-fatherhood-and-work-life-balance/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-025
+
+ES TEMA: Herramientas gratuitas de comunicación y pictogramas
+
+EN TOPIC: Free communication tools and pictograms
+
+ES NECESITO: Usar dibujos o el móvil para decir lo que quiero. Tiempo para usarlos.
+
+EN I NEED: To use pictures or my mobile to communicate. Give me time to use them.
+
+ES RUTA: /es/biblioteca/herramientas-gratuitas-de-comunicacion-y-pictogramas/
+
+EN PATH: /en/everyday-life/free-communication-tools-and-pictograms/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-026
+
+ES TEMA: Higiene y autocuidado
+
+EN TOPIC: Hygiene and self-care
+
+ES NECESITO: Ducharme paso a paso. Tiempo para completar cada paso.
+
+EN I NEED: To shower step by step. Time to complete each step.
+
+ES RUTA: /es/biblioteca/higiene-y-autocuidado/
+
+EN PATH: /en/everyday-life/hygiene-and-self-care/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-027
+
+ES TEMA: Hospitalización, pruebas y procedimientos médicos
+
+EN TOPIC: Hospital stays, tests and medical procedures
+
+ES NECESITO: Saber dónde voy, cuánto dura y qué me harán. Recibir esa información por escrito.
+
+EN I NEED: To know where, how long and what will happen. To get that information in writing.
+
+ES RUTA: /es/biblioteca/hospitalizacion-pruebas-y-procedimientos-medicos/
+
+EN PATH: /en/everyday-life/hospital-stays-tests-and-medical-procedures/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-028
+
+ES TEMA: Interocepción, propiocepción y sistema vestibular en la vida diaria
+
+EN TOPIC: Interoception, proprioception and the vestibular system in everyday life
+
+ES NECESITO: Recordatorios para beber, comer e ir al baño. Me cuesta notar hambre y sed.
+
+EN I NEED: Reminders to drink, eat and use the toilet. I may notice hunger and thirst late.
+
+ES RUTA: /es/biblioteca/interocepcion-propiocepcion-y-sistema-vestibular-en-la-vida-diaria/
+
+EN PATH: /en/everyday-life/interoception-proprioception-and-the-vestibular-system-in-everyday-life/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-029
+
+ES TEMA: Ir al médico, al dentista o a urgencias
+
+EN TOPIC: Going to the doctor, the dentist or the emergency room
+
+ES NECESITO: Que me avises antes de tocarme. Saber qué vas a hacer.
+
+EN I NEED: You to tell me before touching me. To know what you are going to do.
+
+ES RUTA: /es/biblioteca/ir-al-medico-al-dentista-o-a-urgencias/
+
+EN PATH: /en/everyday-life/going-to-the-doctor-the-dentist-or-the-emergency-room/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-030
+
+ES TEMA: La beca del Ministerio para apoyo educativo (NEAE)
+
+EN TOPIC: The Ministry grant for educational support (NEAE)
+
+ES NECESITO: Ayuda con la solicitud de la beca. Presentarla dentro del plazo.
+
+EN I NEED: Help with the grant application. To submit it before the deadline.
+
+ES RUTA: /es/biblioteca/la-beca-del-ministerio-para-apoyo-educativo-neae/
+
+EN PATH: /en/everyday-life/the-ministry-grant-for-educational-support-neae/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-031
+
+ES TEMA: La comida, explicada desde los sentidos
+
+EN TOPIC: Food, explained through the senses
+
+ES NECESITO: Mi comida habitual. Probar un alimento nuevo cada vez.
+
+EN I NEED: My usual foods. To try one new food at a time.
+
+ES RUTA: /es/biblioteca/la-comida-explicada-desde-los-sentidos/
+
+EN PATH: /en/everyday-life/food-explained-through-the-senses/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-032
+
+ES TEMA: LGTBI+ y neurodiversidad: nombre, pronombres, identidad y atención respetuosa
+
+EN TOPIC: LGBTI+ and neurodiversity: name, pronouns, identity and respectful care
+
+ES NECESITO: Que uses mi nombre y mis pronombres. Pregúntame antes de contárselo a otra persona.
+
+EN I NEED: You to use my name and pronouns. Ask me before telling anyone else.
+
+ES RUTA: /es/biblioteca/lgtbi-y-neurodiversidad-nombre-pronombres-identidad-y-atencion-respetuosa/
+
+EN PATH: /en/everyday-life/lgbti-and-neurodiversity-name-pronouns-identity-and-respectful-care/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-033
+
+ES TEMA: Los apoyos legales al cumplir 18 años
+
+EN TOPIC: Legal support when turning 18
+
+ES NECESITO: Saber qué apoyos tengo al cumplir 18 años y quién toma cada decisión.
+
+EN I NEED: To know what support I have at 18 and who makes each decision.
+
+ES RUTA: /es/biblioteca/los-apoyos-legales-al-cumplir-18-anos/
+
+EN PATH: /en/everyday-life/legal-support-when-turning-18/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-034
+
+ES TEMA: Menstruación, menopausia y salud sexual
+
+EN TOPIC: Menstruation, menopause and sexual health
+
+ES NECESITO: Compresas o tampones en varios sitios. Probar otros productos que me resulten cómodos.
+
+EN I NEED: Pads or tampons in several places. To try other products that feel comfortable.
+
+ES RUTA: /es/biblioteca/menstruacion-menopausia-y-salud-sexual/
+
+EN PATH: /en/everyday-life/menstruation-menopause-and-sexual-health/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-035
+
+ES TEMA: Ocio, arte, música, animales y naturaleza
+
+EN TOPIC: Leisure, art, music, animals and nature
+
+ES NECESITO: Tiempo para hacer las actividades que disfruto.
+
+EN I NEED: Time for activities I enjoy.
+
+ES RUTA: /es/biblioteca/ocio-arte-musica-animales-y-naturaleza/
+
+EN PATH: /en/everyday-life/leisure-art-music-animals-and-nature/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-036
+
+ES TEMA: Organización, planificación, funciones ejecutivas y tareas diarias
+
+EN TOPIC: Organisation, planning, executive functions and daily tasks
+
+ES NECESITO: Que dividas la tarea en pasos pequeños. Empezar por el primero.
+
+EN I NEED: You to break the task into small steps. To start with the first one.
+
+ES RUTA: /es/biblioteca/organizacion-planificacion-funciones-ejecutivas-y-tareas-diarias/
+
+EN PATH: /en/everyday-life/organisation-planning-executive-functions-and-daily-tasks/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-037
+
+ES TEMA: Pareja, conflictos, límites y consentimiento
+
+EN TOPIC: Relationships, conflict, boundaries and consent
+
+ES NECESITO: Hablar de mis límites y de mi tiempo a solas. Acordar cómo respetarlos.
+
+EN I NEED: To talk about my boundaries and time alone. To agree how to respect them.
+
+ES RUTA: /es/biblioteca/pareja-conflictos-limites-y-consentimiento/
+
+EN PATH: /en/everyday-life/relationships-conflict-boundaries-and-consent/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-038
+
+ES TEMA: Perros de asistencia: qué reconoce la ley
+
+EN TOPIC: Assistance dogs: what the law recognises
+
+ES NECESITO: Poder entrar con mi perro de asistencia. Que respeten mi derecho de acceso.
+
+EN I NEED: To enter with my assistance dog. To have my right of access respected.
+
+ES RUTA: /es/biblioteca/perros-de-asistencia-que-reconoce-la-ley/
+
+EN PATH: /en/everyday-life/assistance-dogs-what-the-law-recognises/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-039
+
+ES TEMA: Regulación emocional, rumiación, rechazo, culpa y perfeccionismo
+
+EN TOPIC: Emotional regulation, rumination, rejection, guilt and perfectionism
+
+ES NECESITO: Que me pidas menos cosas ahora. Más tarde hablamos de lo que ha pasado.
+
+EN I NEED: You to ask less of me now. We can talk about what happened later.
+
+ES RUTA: /es/biblioteca/regulacion-emocional-rumiacion-rechazo-culpa-y-perfeccionismo/
+
+EN PATH: /en/everyday-life/emotional-regulation-rumination-rejection-guilt-and-perfectionism/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-040
+
+ES TEMA: Restaurantes y comer fuera
+
+EN TOPIC: Restaurants and eating out
+
+ES NECESITO: Ver el menú antes. Poder preguntar qué lleva cada plato.
+
+EN I NEED: To see the menu in advance. To ask what is in each dish.
+
+ES RUTA: /es/biblioteca/restaurantes-y-comer-fuera/
+
+EN PATH: /en/everyday-life/restaurants-and-eating-out/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-041
+
+ES TEMA: Sacarse el carné siendo neurodivergente
+
+EN TOPIC: Getting a driving licence as a neurodivergent person
+
+ES NECESITO: Instrucciones claras en el examen. Más tiempo para responder.
+
+EN I NEED: Clear instructions in the driving test. More time to answer.
+
+ES RUTA: /es/biblioteca/sacarse-el-carne-siendo-neurodivergente/
+
+EN PATH: /en/everyday-life/getting-a-driving-licence-as-a-neurodivergent-person/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-042
+
+ES TEMA: Seguridad online, privacidad, outing y ciberacoso
+
+EN TOPIC: Online safety, privacy, outing and cyberbullying
+
+ES NECESITO: Ayuda para revisar quién puede ver mis publicaciones y datos en internet.
+
+EN I NEED: Help to check who can see my posts and personal information online.
+
+ES RUTA: /es/biblioteca/seguridad-online-privacidad-outing-y-ciberacoso/
+
+EN PATH: /en/everyday-life/online-safety-privacy-outing-and-cyberbullying/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-043
+
+ES TEMA: Sexualidad y educación sexual accesible
+
+EN TOPIC: Sexuality and accessible sex education
+
+ES NECESITO: Que me hables de sexo con palabras claras. Explícame cada palabra nueva.
+
+EN I NEED: You to talk about sex using clear words. Explain every new word to me.
+
+ES RUTA: /es/biblioteca/sexualidad-y-educacion-sexual-accesible/
+
+EN PATH: /en/everyday-life/sexuality-and-accessible-sex-education/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-044
+
+ES TEMA: Si una persona vulnerable desaparece: qué preparar y qué hacer
+
+EN TOPIC: If a vulnerable person goes missing: what to prepare and what to do
+
+ES NECESITO: Tener una foto reciente y los datos básicos de la persona por si desaparece.
+
+EN I NEED: A recent photo and the person's basic details, ready in case they go missing.
+
+ES RUTA: /es/biblioteca/si-una-persona-vulnerable-desaparece-que-preparar-y-que-hacer/
+
+EN PATH: /en/everyday-life/if-a-vulnerable-person-goes-missing-what-to-prepare-and-what-to-do/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-045
+
+ES TEMA: Sobrecarga sensorial, hiperacusia, misofonía y procesamiento auditivo
+
+EN TOPIC: Sensory overload, hyperacusis, misophonia and auditory processing
+
+ES NECESITO: Llevar cascos. Poder salir si el ruido es demasiado fuerte.
+
+EN I NEED: To wear headphones. To leave if the noise becomes too loud.
+
+ES RUTA: /es/biblioteca/sobrecarga-sensorial-hiperacusia-misofonia-y-procesamiento-auditivo/
+
+EN PATH: /en/everyday-life/sensory-overload-hyperacusis-misophonia-and-auditory-processing/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-046
+
+ES TEMA: Transporte público y desplazamientos
+
+EN TOPIC: Public transport and getting around
+
+ES NECESITO: Preparar la ruta antes de salir. Saber qué hacer si cambia la ruta.
+
+EN I NEED: To plan the route before leaving. To know what to do if it changes.
+
+ES RUTA: /es/biblioteca/transporte-publico-y-desplazamientos/
+
+EN PATH: /en/everyday-life/public-transport-and-getting-around/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-047
+
+ES TEMA: Viajar en avión con una discapacidad no visible
+
+EN TOPIC: Flying with a non-visible disability
+
+ES NECESITO: Llevar mi cordón del girasol. Que el personal sepa que puedo necesitar apoyo.
+
+EN I NEED: My sunflower lanyard. Staff to know that I may need support.
+
+ES RUTA: /es/biblioteca/viajar-en-avion-con-una-discapacidad-no-visible/
+
+EN PATH: /en/everyday-life/flying-with-a-non-visible-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-048
+
+ES TEMA: Vivienda, convivencia, autonomía y apoyos en casa
+
+EN TOPIC: Housing, living together, autonomy and support at home
+
+ES NECESITO: Un sitio en casa con poco ruido y poca luz.
+
+EN I NEED: A place at home with low noise and low light.
+
+ES RUTA: /es/biblioteca/vivienda-convivencia-autonomia-y-apoyos-en-casa/
+
+EN PATH: /en/everyday-life/housing-living-together-autonomy-and-support-at-home/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## CIERRE · TARJETA IRIS «NECESITO / I NEED» · FUENTES CANÓNICAS
+
+ES: Vida diaria completa: 48/48.
+
+EN: Daily-life entries complete: 48/48.
+
+ES: Condiciones presentes en la fuente: 180/180.
+
+EN: Condition entries present in the source: 180/180.
+
+ES: Situaciones completas: 187/187.
+
+EN: Situation entries complete: 187/187.
+
+ES TOTAL CANÓNICO: 415/415.
+
+EN CANONICAL TOTAL: 415/415.
+
+NOTA: La colección de condiciones sigue documentando cinco temas del catálogo sin microcopy «Necesito» en esa fuente; no se inventan.
+
+ESTADO: COLLECTION_COMPLETE
+
+---
+
+## QA · TARJETA IRIS «NECESITO / I NEED» · TOTAL
+
+- DAILY_LIFE_SOURCE: 48/48
+- CONDITIONS_SOURCE: 180/180
+- SITUATIONS_SOURCE: 187/187
+- CANONICAL_SOURCE_TOTAL: 415/415
+- DAILY_LIFE_ES_EN_MAPPING: 48/48
+- DAILY_LIFE_UNIQUE_ES_ROUTES: 48/48
+- DAILY_LIFE_UNIQUE_EN_ROUTES: 48/48
+- STATUS: PASS
+
+SIGUIENTE FASE: corpus complementario de herramientas, recursos, microcopy restante y fragmentos ES/EN.
