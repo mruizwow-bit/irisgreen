@@ -71,12 +71,10 @@ async def main():
   await home_stage(page,'Todas las edades',{'Condiciones':True,'Situaciones':True,'Vida diaria':True,'Datos':False,'Investigación':False,'Ayudas y trámites':False})
   await set_stage(page,'AGE_0_12')
   await page.goto(BASE+'/',wait_until='networkidle')
-  need(await page.locator('[data-ig-home-safe]').is_visible(),'child-safe status not visible')
-  need(await page.locator('[data-ig-home-adult]').is_hidden(),'adult status leaked into child view')
+  need(await page.locator('[data-ig-home-safe]').count()==0 and await page.locator('[data-ig-home-adult]').count()==0,
+       'Internal age-safety implementation must not be exposed as Home copy')
   await page.evaluate("IGAudience.set('AGE_18_PLUS')");await page.wait_for_timeout(50)
-  need(await page.locator('[data-ig-home-safe]').is_hidden(),'safe status leaked into adult view')
-  need(await page.locator('[data-ig-home-adult]').is_visible(),'adult explicit status missing')
-  report['checks'].append('home-safety-state-exclusive')
+  report['checks'].append('home-safety-internal-not-labelled')
   report['checks'].append('home-canonical-surface-gates')
   adult_path='/es/neurodiversidad/condiciones/menopausia/'
   await gate(page,adult_path,False,'GENERAL')
