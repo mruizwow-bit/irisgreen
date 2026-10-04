@@ -1,0 +1,100 @@
+{
+  "schema": "iris_green_prototype_first_all_zones_status_v1",
+  "date": "2026-10-04",
+  "owner": "Nexo",
+  "global_gate": "PROTOTYPE_FIRST_ALL_ZONES_GATE_ACTIVE",
+  "scale_build_status": "BLOCKED_UNTIL_ALL_ZONES_PROTOTYPE_FOUNDATION_HUMAN_QA_PASS",
+  "global_future_gate": "ALL_ZONES_PROTOTYPE_FOUNDATION_HUMAN_QA_PASS",
+  "current_prototypes": [
+    {
+      "zone": "Juegos",
+      "pattern": "discovery_search_game",
+      "prototype": "Mapa del tesoro de casa",
+      "status": "FUNCTIONAL_FREEZE",
+      "pending": [
+        "R06_ES_EN_A11Y_PARITY_MICROFIX",
+        "HUMAN_QA_MARIA"
+      ],
+      "gate": "MAPA_TESORO_TECHNICAL_BASE_READY_FOR_HUMAN_QA"
+    },
+    {
+      "zone": "Juegos",
+      "pattern": "spatial_causal_puzzle",
+      "prototype": "Habitación imposible",
+      "status": "TECHNICAL_BASE_READY_FOR_HUMAN_QA",
+      "gates": [
+        "HABITACION_RUNTIME_SOLVER_REPRODUCIBLE_PASS"
+      ],
+      "human_qa": "PENDING"
+    },
+    {
+      "zone": "Taller",
+      "pattern": "guided_entry_to_free_creation",
+      "prototype": "Ritmo · Tu primer ritmo",
+      "status": "FUNCTIONAL_FREEZE",
+      "pending": [
+        "R06_ES_EN_A11Y_PARITY_MICROFIX",
+        "HUMAN_QA_MARIA"
+      ]
+    },
+    {
+      "zone": "Intereses",
+      "pattern": "explore_discover_register",
+      "prototype": "Vida marina",
+      "status": "RUNTIME_BASE_READY",
+      "blockers": [
+        "REEF_REAL_ASSETS_BLOCKED",
+        "DEEP_SEA_REAL_ASSETS_PENDING",
+        "FACTUAL_HOLD_PRAYA_DUBIA_ZONE"
+      ],
+      "scale": "NONLINEAR_DISPLAY_SCALE"
+    },
+    {
+      "zone": "Rincón",
+      "pattern": "relaxing_audiovisual_video",
+      "prototype": "Pecera / Acuario R02",
+      "status": "VISUAL_KEEP_CANDIDATE_FOR_HUMAN_QA",
+      "sound_product": {
+        "default": "SOUND_ON_AFTER_USER_ACTIVATION",
+        "control": "Quitar sonido / Poner sonido",
+        "pending": [
+          "SOUND_ICON_STATE_FIX",
+          "VOLUME_ZERO_RESTORE",
+          "ES_EN_PARITY",
+          "README_SINGLE_SOURCE",
+          "FASTSTART"
+        ]
+      },
+      "soundscape": {
+        "bubbles": "KEEP",
+        "remove": "SUBMERGED_HOLLOW_AMBIENCE",
+        "listener_position": "IN_FRONT_OF_AQUARIUM_GLASS",
+        "new_test": "PECERA_AUDIO_R03_EXTERIOR_40s",
+        "human_gate": "PECERA_AUDIO_EXTERIOR_HUMAN_QA_PASS"
+      },
+      "music": {
+        "music_01": "HUMAN_QA_FAIL_NO_PERCEIVED_MELODY",
+        "music_02": "HUMAN_QA_FAIL_RINCON_MUSICAL_DIRECTION",
+        "claude_composition": "STOP",
+        "next_owner": "MUSIC_EXPERT",
+        "gate": "RINCON_MUSIC_HANDOFF_TO_MUSIC_EXPERT_READY"
+      }
+    }
+  ],
+  "remaining_zone_patterns_inventory_status": "INCOMPLETE",
+  "candidate_remaining_patterns": [
+    "Rutinas",
+    "Recursos/soporte",
+    "Datos/consulta",
+    "Investigación",
+    "Ayudas/trámites",
+    "Libros/muestra/compra",
+    "Sabik/conversación",
+    "Home/navegación global"
+  ],
+  "evidence": {
+    "capture_gaps": "EVIDENCE_CAPTURE_GAP_NOT_PRODUCT_FAIL",
+    "human_qa_global": "PENDING"
+  },
+  "continuity_rule": "READ_GITHUB_CANON_BEFORE_RESUME__DO_NOT_RECONSTRUCT_FROM_CHAT"
+}
