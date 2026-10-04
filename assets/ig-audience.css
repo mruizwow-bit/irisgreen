@@ -1,3 +1,10 @@
+/* Child Safety R01 · fail closed before the age runtime has mounted.
+   If JavaScript is disabled or the runtime fails, normal content stays hidden. */
+html:not([data-ig-age-runtime-ready="true"]) body main,
+html:not([data-ig-age-runtime-ready="true"]) body footer{display:none!important}
+.ig-age-nojs-message{width:min(calc(100% - 2rem),38rem);margin:clamp(5rem,12vh,8rem) auto 2rem;padding:clamp(1.2rem,4vw,2rem);border:1px solid var(--ig-separator,#687f94);border-radius:20px;background:var(--ig-bg-surface,#15304a);color:var(--ig-text,#eef4f8)}
+.ig-age-nojs-message h1,.ig-age-nojs-message p{margin:.25rem 0}.ig-age-nojs-message p{color:var(--ig-text-muted,#c9d5dd);line-height:1.55}
+
 .ig-audience{display:grid;gap:.7rem;padding:0;background:transparent;color:var(--ig-text)}
 .ig-audience-title{margin:0;font-weight:700}.ig-audience-options{display:flex;flex-wrap:wrap;gap:.5rem}.ig-audience button{min-height:44px;padding:.55rem .9rem;border:1px solid var(--ig-border-control);border-radius:999px;background:var(--ig-button-secondary-bg);color:var(--ig-button-secondary-fg);font:inherit;font-weight:700;cursor:pointer}
 .ig-audience button[aria-pressed=true]{background:var(--ig-button-primary-bg);color:var(--ig-button-primary-fg);border-color:var(--ig-button-primary-bg)}.ig-audience-note,.ig-audience-status{margin:0;color:var(--ig-text-muted);font-size:.92rem}.ig-audience-status{font-weight:700}
