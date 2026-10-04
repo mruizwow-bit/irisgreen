@@ -20691,3 +20691,2184 @@ ESTADO: COLLECTION_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: corpus complementario de herramientas, recursos, microcopy restante y fragmentos ES/EN.
+
+# 67. CORPUS WEB · DATOS / DATA · FUENTE ESTRUCTURADA
+
+FUENTE ES: `es/datos/datos.json` · rama `main`.
+
+FUENTE EN: `en/data/data.json` · rama `main`.
+
+ES REGLA: Se preserva el contenido factual de la fuente y su contexto temporal/metodológico. Los registros con `status=borrador` quedan capturados para la Biblioteca Maestra, pero no se promueven a producción.
+
+EN RULE: Source facts and their temporal/methodological context are preserved. Records with `status=borrador` are captured for the Master Library but are not promoted to production.
+
+ESTADO DE CAPTURA: EN_PROGRESO
+
+## WEB-DATA-001
+
+ES TÍTULO: Autismo
+
+EN TITLE: Autism
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: En 2021 se estimó que 61,8 millones de personas —aproximadamente 1 de cada 127— eran autistas en el mundo. Es una estimación modelizada del Global Burden of Disease 2021, no un recuento de diagnósticos. La OMS utiliza actualmente esta cifra y advierte de que la prevalencia observada varía mucho entre estudios y sigue siendo desconocida en numerosos países de ingresos bajos y medios.
+
+EN SUMMARY: In 2021, an estimated 61.8 million people —approximately 1 in every 127— were autistic worldwide. This is a modelled estimate from Global Burden of Disease 2021, not a count of diagnoses. WHO currently uses this figure and notes that observed prevalence varies widely between studies and remains unknown in many low- and middle-income countries.
+
+ES REFERENCIA TEMPORAL: 2021 · 2025; OMS actualiza la ficha en 2025.
+
+EN TIME REFERENCE: 2021 · 2025; WHO updates the fact sheet in 2025.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: personas autistas estimadas en 2021
+
+EN POPULATION / SCOPE: autistic people estimated in 2021
+
+ES FUENTES: OMS · Autism · actualización 17-09-2025 · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | OMS · Autismo, versión en español · https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders | PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/
+
+EN SOURCES: WHO · Autism · update 17-09-2025 · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | WHO · Autism, Spanish version · https://www.who.int/es/news-room/fact-sheets/detail/autism-spectrum-disorders | PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/
+
+ES RUTA: /es/datos/autismo/
+
+EN PATH: /en/data/autism/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-002
+
+ES TÍTULO: Autismo: diferencias por sexo en la estimación mundial
+
+EN TITLE: Autism: sex differences in the global estimate
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: El modelo mundial GBD 2021 estimó 1.064,7 personas autistas por cada 100.000 varones y 508,1 por cada 100.000 mujeres. Son estimaciones epidemiológicas modelizadas y no equivalen a la proporción de diagnósticos registrada por los servicios sanitarios o educativos.
+
+EN SUMMARY: The GBD 2021 global model estimated 1,064.7 autistic people per 100,000 males and 508.1 per 100,000 females. These are modelled epidemiological estimates and are not equivalent to the proportion of diagnoses recorded by health or education services.
+
+ES REFERENCIA TEMPORAL: 2021 · GBD 2021 / publicación científica 2025.
+
+EN TIME REFERENCE: 2021 · GBD 2021 / scientific publication 2025.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: prevalencia estandarizada por edad en varones
+
+EN POPULATION / SCOPE: age-standardised prevalence in males
+
+ES FUENTES: OMS · Autism · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/ | Loomes, Hull & Mandy · systematic review/meta-analysis · https://pubmed.ncbi.nlm.nih.gov/28545751/
+
+EN SOURCES: WHO · Autism · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/ | Loomes, Hull & Mandy · systematic review/meta-analysis · https://pubmed.ncbi.nlm.nih.gov/28545751/
+
+ES RUTA: /es/datos/autismo-diferencias-por-sexo-en-la-estimacion-mundial/
+
+EN PATH: /en/data/autism-sex-differences-in-the-global-estimate/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-003
+
+ES TÍTULO: Autismo: carga de salud poblacional
+
+EN TITLE: Autism: population health burden
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: En 2021, el modelo Global Burden of Disease estimó 11,5 millones de DALYs asociados al autismo. Esta medida sirve para estudiar carga de salud a escala poblacional; no describe la experiencia, la calidad de vida ni las necesidades individuales de una persona autista.
+
+EN SUMMARY: In 2021, the Global Burden of Disease model estimated 11.5 million DALYs associated with autism. This measure is used to study population-level health burden; it does not describe the experience, quality of life or individual needs of an autistic person.
+
+ES REFERENCIA TEMPORAL: 2021 · GBD 2021 / publicación científica 2025.
+
+EN TIME REFERENCE: 2021 · GBD 2021 / scientific publication 2025.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Población del modelo GBD para 2021, no un recuento de personas
+
+EN POPULATION / SCOPE: GBD model population for 2021, not a count of people
+
+ES FUENTES: PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/
+
+EN SOURCES: PubMed · GBD 2021 autism · https://pubmed.ncbi.nlm.nih.gov/39709974/
+
+ES RUTA: /es/datos/autismo-carga-de-salud-poblacional/
+
+EN PATH: /en/data/autism-population-health-burden/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-004
+
+ES TÍTULO: Discapacidad del desarrollo en niños y jóvenes
+
+EN TITLE: Developmental disability in children and young people
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: En 2019, aproximadamente 317 millones de niños y jóvenes en el mundo vivían con condiciones de salud que contribuyen a una discapacidad del desarrollo. El informe conjunto de OMS y UNICEF señala además barreras sanitarias, estigma, prejuicio y exclusión social.
+
+EN SUMMARY: In 2019, approximately 317 million children and young people worldwide were living with health conditions that contribute to developmental disability. The joint WHO and UNICEF report also points to barriers in healthcare, stigma, prejudice and social exclusion.
+
+ES REFERENCIA TEMPORAL: 2019 · OMS/UNICEF, 2023.
+
+EN TIME REFERENCE: 2019 · WHO/UNICEF, 2023.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: niños, adolescentes y jóvenes afectados en 2019
+
+EN POPULATION / SCOPE: children, adolescents and young people affected in 2019
+
+ES FUENTES: OMS · 15-09-2023 · https://www.who.int/news/item/15-09-2023-new-reports-highlights-neglected-health-needs-of-children-with-developmental-disabilities
+
+EN SOURCES: WHO · 15-09-2023 · https://www.who.int/news/item/15-09-2023-new-reports-highlights-neglected-health-needs-of-children-with-developmental-disabilities
+
+ES RUTA: /es/datos/discapacidad-del-desarrollo-en-ninos-y-jovenes/
+
+EN PATH: /en/data/developmental-disability-in-children-and-young-people/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-005
+
+ES TÍTULO: Por qué faltan datos comparables sobre desarrollo
+
+EN TITLE: Why comparable developmental data are missing
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: No todas las cifras llamadas «mundiales» representan de la misma forma a todas las regiones. Una revisión internacional de 2023 concluyó que, para varias discapacidades del desarrollo, la cobertura geográfica era insuficiente y los métodos demasiado heterogéneos para considerar las estimaciones plenamente representativas del planeta.
+
+EN SUMMARY: Not all figures described as ‘global’ represent every region in the same way. A 2023 international review concluded that, for several developmental disabilities, geographical coverage was insufficient and methods were too heterogeneous for the estimates to be considered fully representative of the planet.
+
+ES REFERENCIA TEMPORAL: revisiones incluidas hasta la publicación · revisión paraguas, 2023.
+
+EN TIME REFERENCE: reviews included up to publication · umbrella review, 2023.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Estudios de países de ingresos altos, con métodos distintos entre sí
+
+EN POPULATION / SCOPE: Studies from high-income countries, using methods that differ from one another
+
+ES FUENTES: PubMed · Global prevalence of developmental disabilities in children and adolescents · https://pubmed.ncbi.nlm.nih.gov/36891340/
+
+EN SOURCES: PubMed · Global prevalence of developmental disabilities in children and adolescents · https://pubmed.ncbi.nlm.nih.gov/36891340/
+
+ES RUTA: /es/datos/por-que-faltan-datos-comparables-sobre-desarrollo/
+
+EN PATH: /en/data/why-comparable-developmental-data-are-missing/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-006
+
+ES TÍTULO: TDAH en niños y adolescentes
+
+EN TITLE: ADHD in children and adolescents
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Una revisión paraguas internacional que reunió 588 estudios y más de 3,27 millones de participantes estimó una prevalencia agrupada de TDAH del 8,0 % en niños y adolescentes. La cifra fue del 10 % en niños y del 5 % en niñas.
+
+EN SUMMARY: An international umbrella review bringing together 588 studies and more than 3.27 million participants estimated a pooled ADHD prevalence of 8.0% in children and adolescents. The figure was 10% in boys and 5% in girls.
+
+ES REFERENCIA TEMPORAL: estudios incluidos en la revisión publicada en 2023 · revisión paraguas, 2023.
+
+EN TIME REFERENCE: studies included in the review published in 2023 · umbrella review, 2023.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: prevalencia agrupada en una revisión paraguas internacional
+
+EN POPULATION / SCOPE: pooled prevalence in an international umbrella review
+
+ES FUENTES: PubMed · PMID 37495084 · https://pubmed.ncbi.nlm.nih.gov/37495084/
+
+EN SOURCES: PubMed · PMID 37495084 · https://pubmed.ncbi.nlm.nih.gov/37495084/
+
+ES RUTA: /es/datos/tdah-en-ninos-y-adolescentes/
+
+EN PATH: /en/data/adhd-in-children-and-adolescents/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-007
+
+ES TÍTULO: TDAH en adultos
+
+EN TITLE: ADHD in adults
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Un metaanálisis internacional estimó para 2020 una prevalencia del 2,58 % de TDAH adulto persistente desde la infancia, equivalente a unos 139,84 millones de adultos. Cuando se utilizó una definición de TDAH adulto sintomático sin exigir demostrar inicio infantil, la estimación fue del 6,76 %, unos 366,33 millones. Son definiciones diferentes y no deben presentarse como una sola cifra.
+
+EN SUMMARY: An international meta-analysis estimated a 2020 prevalence of 2.58% for adult ADHD persisting from childhood, equivalent to about 139.84 million adults. When a definition of symptomatic adult ADHD was used without requiring proof of childhood onset, the estimate was 6.76%, about 366.33 million. These are different definitions and should not be presented as a single figure.
+
+ES REFERENCIA TEMPORAL: estructura demográfica mundial de 2020 · metaanálisis, 2021.
+
+EN TIME REFERENCE: global demographic structure in 2020 · meta-analysis, 2021.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: TDAH adulto persistente desde la infancia
+
+EN POPULATION / SCOPE: adult ADHD persisting from childhood
+
+ES FUENTES: PubMed · PMID 33692893 · https://pubmed.ncbi.nlm.nih.gov/33692893/
+
+EN SOURCES: PubMed · PMID 33692893 · https://pubmed.ncbi.nlm.nih.gov/33692893/
+
+ES RUTA: /es/datos/tdah-en-adultos/
+
+EN PATH: /en/data/adhd-in-adults/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-008
+
+ES TÍTULO: Dislexia del desarrollo
+
+EN TITLE: Developmental dyslexia
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Un metaanálisis internacional estimó que la dislexia del desarrollo afecta aproximadamente al 7,1 % del alumnado de Primaria. En el conjunto analizado no se encontraron diferencias significativas entre sistemas de escritura alfabéticos y logográficos.
+
+EN SUMMARY: An international meta-analysis estimated that developmental dyslexia affects approximately 7.1% of primary-school pupils. In the analysed body of evidence, no significant differences were found between alphabetic and logographic writing systems.
+
+ES REFERENCIA TEMPORAL: estudios incluidos hasta 2021 · metaanálisis, 2022.
+
+EN TIME REFERENCE: studies included up to 2021 · meta-analysis, 2022.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: prevalencia agrupada en alumnado de Primaria
+
+EN POPULATION / SCOPE: pooled prevalence in primary-school pupils
+
+ES FUENTES: PubMed · PMID 35204003 · https://pubmed.ncbi.nlm.nih.gov/35204003/
+
+EN SOURCES: PubMed · PMID 35204003 · https://pubmed.ncbi.nlm.nih.gov/35204003/
+
+ES RUTA: /es/datos/dislexia-del-desarrollo/
+
+EN PATH: /en/data/developmental-dyslexia/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-009
+
+ES TÍTULO: Trastorno del desarrollo de la coordinación
+
+EN TITLE: Developmental coordination disorder
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Una revisión sistemática y metaanálisis publicada en 2024 estimó una prevalencia agrupada del 5 % de trastorno del desarrollo de la coordinación en población infantil general. La variación entre estudios fue elevada, por lo que la cifra debe leerse como síntesis científica y no como una tasa idéntica para todos los países.
+
+EN SUMMARY: A systematic review and meta-analysis published in 2024 estimated a pooled prevalence of 5% for developmental coordination disorder in the general child population. Variation between studies was high, so the figure should be read as a scientific synthesis and not as an identical rate for all countries.
+
+ES REFERENCIA TEMPORAL: estudios incluidos hasta 2023 · metaanálisis, 2024.
+
+EN TIME REFERENCE: studies included up to 2023 · meta-analysis, 2024.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: prevalencia agrupada en niños
+
+EN POPULATION / SCOPE: pooled prevalence in children
+
+ES FUENTES: PubMed · PMID 39391054 · https://pubmed.ncbi.nlm.nih.gov/39391054/
+
+EN SOURCES: PubMed · PMID 39391054 · https://pubmed.ncbi.nlm.nih.gov/39391054/
+
+ES RUTA: /es/datos/trastorno-del-desarrollo-de-la-coordinacion/
+
+EN PATH: /en/data/developmental-coordination-disorder/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-010
+
+ES TÍTULO: Síndrome de Tourette: prevalencia estimada e identificación
+
+EN TITLE: Tourette syndrome: estimated prevalence and identification
+
+ES TERRITORIO: Mundo / EE. UU.
+
+EN TERRITORY: World / U.S.
+
+ES RESUMEN: El síndrome de Tourette muestra bien la diferencia entre prevalencia estimada e identificación registrada. El CDC resume estudios que sitúan la prevalencia en torno al 0,6 % infantil, mientras que el diagnóstico declarado por progenitores en Estados Unidos fue menor.
+
+EN SUMMARY: Tourette syndrome clearly shows the difference between estimated prevalence and recorded identification. CDC summarises studies placing childhood prevalence at around 0.6%, while parent-reported diagnosis in the United States was lower.
+
+ES REFERENCIA TEMPORAL: síntesis de estudios; diagnóstico declarado en EE. UU. 2016–2019 · CDC, actualización 27-03-2026.
+
+EN TIME REFERENCE: synthesis of studies; parent-reported diagnosis in the U.S. 2016–2019 · CDC, update 27-03-2026.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: Las dos cifras no comparten denominador: la de diagnóstico declarado es de 3 a 17 años; la de estudios no acota edad
+
+EN POPULATION / SCOPE: The two figures do not share a denominator: the parent-reported diagnosis figure is for ages 3 to 17; the studies figure does not restrict age
+
+ES FUENTES: CDC · Data and Statistics on Tourette Syndrome · actualización 27-03-2026 · https://www.cdc.gov/tourette-syndrome/data/
+
+EN SOURCES: CDC · Data and Statistics on Tourette Syndrome · update 27-03-2026 · https://www.cdc.gov/tourette-syndrome/data/
+
+ES RUTA: /es/datos/sindrome-de-tourette-prevalencia-estimada-e-identificacion/
+
+EN PATH: /en/data/tourette-syndrome-estimated-prevalence-and-identification/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-011
+
+ES TÍTULO: Trastorno del desarrollo del lenguaje: un estudio poblacional de referencia
+
+EN TITLE: Developmental language disorder: a reference population study
+
+ES TERRITORIO: Reino Unido
+
+EN TERRITORY: United Kingdom
+
+ES RESUMEN: Para el trastorno del desarrollo del lenguaje no se ha seleccionado una prevalencia mundial única. Esta página utiliza un estudio poblacional británico de referencia para mostrar una cifra sólida con población y método definidos, sin convertirla en una estimación global.
+
+EN SUMMARY: For developmental language disorder, no single global prevalence has been selected. This page uses a reference British population study to show a robust figure with defined population and method, without turning it into a global estimate.
+
+ES REFERENCIA TEMPORAL: muestra de niños al entrar en la escuela · estudio poblacional británico, 2016.
+
+EN TIME REFERENCE: sample of children entering school · British population study, 2016.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Niños al entrar en la escuela, muestra poblacional británica, 2016
+
+EN POPULATION / SCOPE: Children entering school, British population sample, 2016
+
+ES FUENTES: Norbury et al., 2016 · https://doi.org/10.1111/jcpp.12573
+
+EN SOURCES: Norbury et al., 2016 · https://doi.org/10.1111/jcpp.12573
+
+ES RUTA: /es/datos/trastorno-del-desarrollo-del-lenguaje-un-estudio-poblacional-de-referencia/
+
+EN PATH: /en/data/developmental-language-disorder-a-reference-population-study/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-012
+
+ES TÍTULO: Discalculia y disgrafía: por qué no damos una cifra mundial única
+
+EN TITLE: Dyscalculia and dysgraphia: why we do not give a single global figure
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: La literatura usa definiciones, pruebas, edades y umbrales diferentes. Existen rangos ampliamente repetidos, pero la búsqueda realizada para esta ampliación no encontró una estimación internacional reciente con una solidez comparable a las seleccionadas para TDAH, dislexia o trastorno del desarrollo de la coordinación.
+
+EN SUMMARY: The literature uses different definitions, tests, ages and thresholds. Widely repeated ranges exist, but the search carried out for this expansion did not find a recent international estimate with robustness comparable to the sources selected for ADHD, dyslexia or developmental coordination disorder.
+
+ES REFERENCIA TEMPORAL: sin año único: no existe una cifra mundial seleccionada · revisión editorial de fuentes, 2026.
+
+EN TIME REFERENCE: no single year: no selected global figure exists · editorial review of sources, 2026.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Sin cifra única
+
+EN POPULATION / SCOPE: No single figure
+
+ES FUENTES: —
+
+EN SOURCES: —
+
+ES RUTA: /es/datos/discalculia-y-disgrafia-por-que-no-damos-una-cifra-mundial-unica/
+
+EN PATH: /en/data/dyscalculia-and-dysgraphia-why-we-do-not-give-a-single-global-figure/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-013
+
+ES TÍTULO: Trastornos de ansiedad
+
+EN TITLE: Anxiety disorders
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Los trastornos de ansiedad son los trastornos mentales más comunes del mundo. La OMS estima que en 2021 afectaban a 359 millones de personas, incluidas 72 millones de personas menores de edad, y que alrededor del 27,6 % de quienes necesitan tratamiento lo reciben.
+
+EN SUMMARY: Anxiety disorders are the most common mental disorders worldwide. WHO estimates that in 2021 they affected 359 million people, including 72 million minors, and that around 27.6% of those who need treatment receive it.
+
+ES REFERENCIA TEMPORAL: 2021 · OMS, actualización 08-09-2025.
+
+EN TIME REFERENCE: 2021 · WHO, update 08-09-2025.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: personas con un trastorno de ansiedad en 2021
+
+EN POPULATION / SCOPE: people with an anxiety disorder in 2021
+
+ES FUENTES: OMS · Trastornos de ansiedad · 08-09-2025 · https://www.who.int/es/news-room/fact-sheets/detail/anxiety-disorders
+
+EN SOURCES: WHO · Anxiety disorders · 08-09-2025 · https://www.who.int/es/news-room/fact-sheets/detail/anxiety-disorders
+
+ES RUTA: /es/datos/trastornos-de-ansiedad/
+
+EN PATH: /en/data/anxiety-disorders/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-014
+
+ES TÍTULO: TOC
+
+EN TITLE: OCD
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: No existe una única cifra de prevalencia mundial del TOC independiente del criterio diagnóstico. Un estudio internacional publicado en 2026 estimó una prevalencia a lo largo de la vida de entre 2,28 % y 3,21 %, según el sistema diagnóstico utilizado.
+
+EN SUMMARY: There is no single global prevalence figure for OCD independent of diagnostic criteria. An international study published in 2026 estimated lifetime prevalence between 2.28% and 3.21%, depending on the diagnostic system used.
+
+ES REFERENCIA TEMPORAL: estudios hasta 2025 · estudio de modelización, 08-07-2026.
+
+EN TIME REFERENCE: studies up to 2025 · modelling study, 08-07-2026.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Prevalencia a lo largo de la vida, por sistema diagnóstico
+
+EN POPULATION / SCOPE: Lifetime prevalence, by diagnostic system
+
+ES FUENTES: PubMed · PMID 42415255 · 08-07-2026 · https://pubmed.ncbi.nlm.nih.gov/42415255/ | DOI · https://doi.org/10.1176/appi.ajp.20250944
+
+EN SOURCES: PubMed · PMID 42415255 · 08-07-2026 · https://pubmed.ncbi.nlm.nih.gov/42415255/ | DOI · https://doi.org/10.1176/appi.ajp.20250944
+
+ES RUTA: /es/datos/toc/
+
+EN PATH: /en/data/ocd/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-015
+
+ES TÍTULO: Autismo y salud mental: coexistencia, no equivalencia
+
+EN TITLE: Autism and mental health: coexistence, not equivalence
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Un metaanálisis de 2019 que reunió 96 estudios en sus análisis calculó las siguientes prevalencias agrupadas entre personas autistas:
+
+EN SUMMARY: A 2019 meta-analysis that included 96 studies in its analyses calculated the following pooled prevalences among autistic people:
+
+ES REFERENCIA TEMPORAL: estudios incluidos en metaanálisis publicado en 2019 · Lai et al., 2019.
+
+EN TIME REFERENCE: studies included in a meta-analysis published in 2019 · Lai et al., 2019.
+
+ES MÉTODO: Síntesis científica internacional
+
+EN METHOD: International scientific synthesis
+
+ES POBLACIÓN / ALCANCE: Muestras de personas autistas
+
+EN POPULATION / SCOPE: Samples of autistic people
+
+ES FUENTES: Lai et al., *The Lancet Psychiatry*, 2019 · https://pubmed.ncbi.nlm.nih.gov/31447415/
+
+EN SOURCES: Lai et al., *The Lancet Psychiatry*, 2019 · https://pubmed.ncbi.nlm.nih.gov/31447415/
+
+ES RUTA: /es/datos/autismo-y-salud-mental-coexistencia-no-equivalencia/
+
+EN PATH: /en/data/autism-and-mental-health-coexistence-not-equivalence/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-016
+
+ES TÍTULO: Discapacidad significativa
+
+EN TITLE: Significant disability
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Más de 1.300 millones de personas —alrededor del 16 % de la población mundial, 1 de cada 6— viven con una discapacidad significativa.
+
+EN SUMMARY: More than 1.3 billion people —around 16% of the world population, 1 in 6— live with a significant disability.
+
+ES REFERENCIA TEMPORAL: estimación mundial vigente · OMS Europa, actualización 10-08-2026.
+
+EN TIME REFERENCE: current global estimate · WHO Europe, update 10-08-2026.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: personas
+
+EN POPULATION / SCOPE: people
+
+ES FUENTES: OMS · Disability · 10-08-2026 · https://www.who.int/europe/news-room/fact-sheets/item/disability | OMS · Disability and health · https://www.who.int/news-room/fact-sheets/detail/disability-and-health
+
+EN SOURCES: WHO · Disability · 10-08-2026 · https://www.who.int/europe/news-room/fact-sheets/item/disability | WHO · Disability and health · https://www.who.int/news-room/fact-sheets/detail/disability-and-health
+
+ES RUTA: /es/datos/discapacidad-significativa/
+
+EN PATH: /en/data/significant-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-017
+
+ES TÍTULO: Desigualdad en salud asociada a discapacidad
+
+EN TITLE: Health inequality associated with disability
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Las diferencias de salud asociadas a la discapacidad no se explican únicamente por las condiciones de base. La OMS identifica barreras sanitarias, transporte inaccesible, pobreza, estigma y exclusión de la educación y el empleo como factores que producen desigualdad evitable.
+
+EN SUMMARY: Health differences associated with disability are not explained only by underlying conditions. WHO identifies health-service barriers, inaccessible transport, poverty, stigma and exclusion from education and employment as factors that produce avoidable inequality.
+
+ES REFERENCIA TEMPORAL: evidencia internacional reunida por OMS · OMS / informe mundial de equidad; actualización 2026.
+
+EN TIME REFERENCE: international evidence gathered by WHO · WHO / global equity report; 2026 update.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: Comparación entre personas con y sin discapacidad; evidencia internacional reunida por la OMS, sin denominador poblacional único
+
+EN POPULATION / SCOPE: Comparison between people with and without disability; international evidence gathered by WHO, without a single population denominator
+
+ES FUENTES: OMS · Disability · 10-08-2026 · https://www.who.int/europe/news-room/fact-sheets/item/disability | OMS · Disability and health · https://www.who.int/news-room/fact-sheets/detail/disability-and-health | OMS · Global report on health equity for persons with disabilities · https://www.who.int/publications/i/item/9789240063600
+
+EN SOURCES: WHO · Disability · 10-08-2026 · https://www.who.int/europe/news-room/fact-sheets/item/disability | WHO · Disability and health · https://www.who.int/news-room/fact-sheets/detail/disability-and-health | WHO · Global report on health equity for persons with disabilities · https://www.who.int/publications/i/item/9789240063600
+
+ES RUTA: /es/datos/desigualdad-en-salud-asociada-a-discapacidad/
+
+EN PATH: /en/data/health-inequality-associated-with-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-018
+
+ES TÍTULO: Niños con discapacidad
+
+EN TITLE: Children with disabilities
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Casi 240 millones de niños —aproximadamente 1 de cada 10— viven con alguna discapacidad en el mundo. El análisis de UNICEF utiliza un enfoque funcional amplio y no equivale a contar diagnósticos médicos.
+
+EN SUMMARY: Almost 240 million children —approximately 1 in 10— live with a disability worldwide. UNICEF’s analysis uses a broad functional approach and is not equivalent to counting medical diagnoses.
+
+ES REFERENCIA TEMPORAL: estimación base de UNICEF; página activa en 2026 · UNICEF.
+
+EN TIME REFERENCE: UNICEF baseline estimate; page active in 2026 · UNICEF.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: Niños y adolescentes del mundo, medidos con el módulo de funcionamiento infantil de UNICEF y el Washington Group, que se aplica de 2 a 17 años
+
+EN POPULATION / SCOPE: Children and adolescents worldwide, measured with UNICEF and Washington Group’s child functioning module, which is applied from ages 2 to 17
+
+ES FUENTES: UNICEF Data · Children with disabilities · https://data.unicef.org/topic/child-disability/overview/ | UNICEF · informe Seen, Counted, Included · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+EN SOURCES: UNICEF Data · Children with disabilities · https://data.unicef.org/topic/child-disability/overview/ | UNICEF · Seen, Counted, Included report · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+ES RUTA: /es/datos/ninos-con-discapacidad/
+
+EN PATH: /en/data/children-with-disabilities/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-019
+
+ES TÍTULO: Educación y discapacidad infantil
+
+EN TITLE: Education and childhood disability
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: La brecha no termina en entrar en la escuela. UNICEF encontró que los niños con discapacidad eran 42 % menos propensos a alcanzar competencias fundamentales de lectura y aritmética, además de presentar mayor probabilidad de estar fuera del sistema educativo en todas las etapas analizadas.
+
+EN SUMMARY: The gap does not end with entering school. UNICEF found that children with disabilities were 42% less likely to achieve foundational reading and numeracy skills, as well as being more likely to be out of education at every stage analysed.
+
+ES REFERENCIA TEMPORAL: análisis internacional de UNICEF · UNICEF, 10-11-2021.
+
+EN TIME REFERENCE: UNICEF international analysis · UNICEF, 10-11-2021.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: Niños con discapacidad comparados con niños sin discapacidad; las cuatro cifras son diferencias relativas
+
+EN POPULATION / SCOPE: Children with disabilities compared with children without disabilities; the four figures are relative differences
+
+ES FUENTES: UNICEF · 10-11-2021 · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+EN SOURCES: UNICEF · 10-11-2021 · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+ES RUTA: /es/datos/educacion-y-discapacidad-infantil/
+
+EN PATH: /en/data/education-and-childhood-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-020
+
+ES TÍTULO: Bienestar, discriminación y violencia en la infancia con discapacidad
+
+EN TITLE: Wellbeing, discrimination and violence in childhood disability
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Las desigualdades también aparecen fuera del aula. UNICEF encontró mayor frecuencia de discriminación, infelicidad y castigo corporal grave entre niños con discapacidad y menor acceso a estimulación temprana y cuidados receptivos.
+
+EN SUMMARY: Inequalities also appear outside the classroom. UNICEF found higher frequencies of discrimination, unhappiness and severe corporal punishment among children with disabilities, and lower access to early stimulation and responsive care.
+
+ES REFERENCIA TEMPORAL: análisis internacional de UNICEF · UNICEF, 10-11-2021.
+
+EN TIME REFERENCE: UNICEF international analysis · UNICEF, 10-11-2021.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: Diferencias relativas entre grupos, no tasas de toda la infancia con discapacidad
+
+EN POPULATION / SCOPE: Relative differences between groups, not rates for all children with disabilities
+
+ES FUENTES: UNICEF · Seen, Counted, Included · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+EN SOURCES: UNICEF · Seen, Counted, Included · https://www.unicef.org/press-releases/nearly-240-million-children-disabilities-around-world-unicefs-most-comprehensive
+
+ES RUTA: /es/datos/bienestar-discriminacion-y-violencia-en-la-infancia-con-discapacidad/
+
+EN PATH: /en/data/wellbeing-discrimination-and-violence-in-childhood-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-021
+
+ES TÍTULO: Tecnología y productos de apoyo
+
+EN TITLE: Technology and assistive products
+
+ES TERRITORIO: Mundo
+
+EN TERRITORY: World
+
+ES RESUMEN: Más de 2.500 millones de personas necesitan al menos un producto de apoyo. Casi 1.000 millones carecen del acceso que necesitan, y la OMS estima que la necesidad mundial superará los 3.500 millones de personas en 2050.
+
+EN SUMMARY: More than 2.5 billion people need at least one assistive product. Nearly 1 billion lack the access they need, and WHO estimates that global need will exceed 3.5 billion people by 2050.
+
+ES REFERENCIA TEMPORAL: base 2021–2022; proyección 2050 · OMS/UNICEF; ficha OMS 02-01-2024.
+
+EN TIME REFERENCE: 2021–2022 baseline; 2050 projection · WHO/UNICEF; WHO fact sheet 02-01-2024.
+
+ES MÉTODO: Organismo internacional
+
+EN METHOD: International organisation
+
+ES POBLACIÓN / ALCANCE: personas necesitan uno o más productos de apoyo
+
+EN POPULATION / SCOPE: people need one or more assistive products
+
+ES FUENTES: OMS · Assistive technology · 02-01-2024 · https://www.who.int/news-room/fact-sheets/detail/assistive-technology | OMS/UNICEF · Global Report on Assistive Technology · https://www.who.int/news/item/16-05-2022-almost-one-billion-children-and-adults-with-disabilities-and-older-persons-in-need-of-assistive-technology-denied-access--according-to-new-report
+
+EN SOURCES: WHO · Assistive technology · 02-01-2024 · https://www.who.int/news-room/fact-sheets/detail/assistive-technology | WHO/UNICEF · Global Report on Assistive Technology · https://www.who.int/news/item/16-05-2022-almost-one-billion-children-and-adults-with-disabilities-and-older-persons-in-need-of-assistive-technology-denied-access--according-to-new-report
+
+ES RUTA: /es/datos/tecnologia-y-productos-de-apoyo/
+
+EN PATH: /en/data/technology-and-assistive-products/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-022
+
+ES TÍTULO: Empleo y discapacidad
+
+EN TITLE: Employment and disability
+
+ES TERRITORIO: 61 países
+
+EN TERRITORY: 61 countries
+
+ES RESUMEN: En una comparación de ILOSTAT basada en 61 países, alrededor de un tercio de las personas con discapacidad en edad laboral estaba empleada, aproximadamente la mitad de la proporción observada entre personas sin discapacidad. La cifra es una media internacional no ponderada, no una tasa mundial única.
+
+EN SUMMARY: In an ILOSTAT comparison based on 61 countries, around one third of working-age persons with disabilities were employed, approximately half the proportion observed among persons without disabilities. The figure is an unweighted international average, not a single global rate.
+
+ES REFERENCIA TEMPORAL: múltiples años en 61 países · ILOSTAT, 13-06-2022.
+
+EN TIME REFERENCE: multiple years in 61 countries · ILOSTAT, 13-06-2022.
+
+ES MÉTODO: Organización Internacional del Trabajo / comparación internacional
+
+EN METHOD: International Labour Organization / international comparison
+
+ES POBLACIÓN / ALCANCE: Personas con y sin discapacidad en 61 países
+
+EN POPULATION / SCOPE: Persons with and without disabilities in 61 countries
+
+ES FUENTES: ILOSTAT · 13-06-2022 · https://ilostat.ilo.org/blog/new-ilo-database-highlights-labour-market-challenges-of-persons-with-disabilities/
+
+EN SOURCES: ILOSTAT · 13-06-2022 · https://ilostat.ilo.org/blog/new-ilo-database-highlights-labour-market-challenges-of-persons-with-disabilities/
+
+ES RUTA: /es/datos/empleo-y-discapacidad/
+
+EN PATH: /en/data/employment-and-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-023
+
+ES TÍTULO: Brecha salarial y discapacidad
+
+EN TITLE: Pay gap and disability
+
+ES TERRITORIO: 30 países
+
+EN TERRITORY: 30 countries
+
+ES RESUMEN: La brecha salarial asociada a discapacidad no se limita al acceso al empleo. Un estudio internacional de la OIT encontró una diferencia media en salario por hora incluso después de considerar variables como edad, educación y ocupación.
+
+EN SUMMARY: The pay gap associated with disability is not limited to access to employment. An international ILO study found an average difference in hourly pay even after taking variables such as age, education and occupation into account.
+
+ES REFERENCIA TEMPORAL: submuestra internacional de 30 países · OIT Working Paper 124, 27-08-2024.
+
+EN TIME REFERENCE: international subsample of 30 countries · ILO Working Paper 124, 27-08-2024.
+
+ES MÉTODO: Organización Internacional del Trabajo / comparación internacional
+
+EN METHOD: International Labour Organization / international comparison
+
+ES POBLACIÓN / ALCANCE: Salario por hora de trabajadores con y sin discapacidad, submuestra internacional
+
+EN POPULATION / SCOPE: Hourly wages of workers with and without disabilities, international subsample
+
+ES FUENTES: OIT · Working Paper 124 · 27-08-2024 · https://www.ilo.org/publications/study-employment-and-wage-outcomes-people-disabilities | OIT · resumen 28-08-2024 · https://www.ilo.org/resource/news/new-ilo-working-paper-exposes-significant-disability-wage-gap
+
+EN SOURCES: ILO · Working Paper 124 · 27-08-2024 · https://www.ilo.org/publications/study-employment-and-wage-outcomes-people-disabilities | ILO · summary 28-08-2024 · https://www.ilo.org/resource/news/new-ilo-working-paper-exposes-significant-disability-wage-gap
+
+ES RUTA: /es/datos/brecha-salarial-y-discapacidad/
+
+EN PATH: /en/data/pay-gap-and-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-024
+
+ES TÍTULO: Brecha de empleo asociada a discapacidad
+
+EN TITLE: Employment gap associated with disability
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: En la Unión Europea, la brecha de empleo entre personas con y sin discapacidad fue de 24,2 puntos porcentuales en la última actualización publicada por Eurostat en mayo de 2026.
+
+EN SUMMARY: In the European Union, the employment gap between persons with and without disabilities was 24.2 percentage points in the latest update published by Eurostat in May 2026.
+
+ES REFERENCIA TEMPORAL: última serie disponible en la actualización de 2026 · Eurostat, 29-05-2026.
+
+EN TIME REFERENCE: latest available series in the 2026 update · Eurostat, 29-05-2026.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Tasa de empleo de personas con discapacidad frente a personas sin discapacidad
+
+EN POPULATION / SCOPE: Employment rate of persons with disabilities compared with persons without disabilities
+
+ES FUENTES: Eurostat · 29-05-2026 · https://ec.europa.eu/eurostat/web/products-eurostat-news/w/wdn-20260529-1
+
+EN SOURCES: Eurostat · 29-05-2026 · https://ec.europa.eu/eurostat/web/products-eurostat-news/w/wdn-20260529-1
+
+ES RUTA: /es/datos/brecha-de-empleo-asociada-a-discapacidad/
+
+EN PATH: /en/data/employment-gap-associated-with-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-025
+
+ES TÍTULO: Participación laboral y discapacidad
+
+EN TITLE: Labour-force participation and disability
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: Participar en el mercado laboral significa estar trabajando o buscando trabajo. En la Unión Europea, los datos de 2024 muestran una diferencia amplia entre personas con y sin discapacidad, y una participación especialmente baja entre quienes tienen una discapacidad grave.
+
+EN SUMMARY: Participating in the labour market means either working or looking for work. In the European Union, 2024 data show a wide difference between persons with and without disabilities, and especially low participation among people with severe disabilities.
+
+ES REFERENCIA TEMPORAL: 2024 · Comisión Europea, ESDE 2025.
+
+EN TIME REFERENCE: 2024 · European Commission, ESDE 2025.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Población activa: fuera de la población activa no equivale a desempleo
+
+EN POPULATION / SCOPE: Labour force: being outside the labour force is not the same as unemployment
+
+ES FUENTES: Comisión Europea · Employment and Social Developments in Europe 2025, capítulo 2 · https://ec.europa.eu/employment_social/employment_analysis/esde/2025/Chapter%202.html
+
+EN SOURCES: European Commission · Employment and Social Developments in Europe 2025, chapter 2 · https://ec.europa.eu/employment_social/employment_analysis/esde/2025/Chapter%202.html
+
+ES RUTA: /es/datos/participacion-laboral-y-discapacidad/
+
+EN PATH: /en/data/labour-force-participation-and-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-026
+
+ES TÍTULO: Abandono temprano de educación y formación
+
+EN TITLE: Early leaving from education and training
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: En 2024, el 44,2 % de los jóvenes de 18 a 24 años con discapacidad grave eran personas que habían abandonado tempranamente la educación o la formación, frente al 8,0 % de los jóvenes sin discapacidad.
+
+EN SUMMARY: In 2024, 44.2% of young people aged 18 to 24 with severe disabilities were early leavers from education or training, compared with 8.0% of young people without disabilities.
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat, 13-11-2025.
+
+EN TIME REFERENCE: 2024 · Eurostat, 13-11-2025.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Jóvenes de 18 a 24 años
+
+EN POPULATION / SCOPE: Young people aged 18 to 24
+
+ES FUENTES: Eurostat · 13-11-2025 · https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20251113-1
+
+EN SOURCES: Eurostat · 13-11-2025 · https://ec.europa.eu/eurostat/en/web/products-eurostat-news/w/ddn-20251113-1
+
+ES RUTA: /es/datos/abandono-temprano-de-educacion-y-formacion/
+
+EN PATH: /en/data/early-leaving-from-education-and-training/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-027
+
+ES TÍTULO: Jóvenes fuera del empleo, la educación y la formación
+
+EN TITLE: Young people not in employment, education or training
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: Datos de 2024, población de 15 a 29 años:
+
+EN SUMMARY: 2024 data, population aged 15 to 29:
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat.
+
+EN TIME REFERENCE: 2024 · Eurostat.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Jóvenes de 15 a 29 años
+
+EN POPULATION / SCOPE: Young people aged 15 to 29
+
+ES FUENTES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+EN SOURCES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+ES RUTA: /es/datos/jovenes-fuera-del-empleo-la-educacion-y-la-formacion/
+
+EN PATH: /en/data/young-people-not-in-employment-education-or-training/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-028
+
+ES TÍTULO: Educación superior y discapacidad
+
+EN TITLE: Higher education and disability
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: Datos de 2024, población de 25 a 34 años:
+
+EN SUMMARY: 2024 data, population aged 25 to 34:
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat.
+
+EN TIME REFERENCE: 2024 · Eurostat.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Personas de 25 a 34 años, con y sin discapacidad
+
+EN POPULATION / SCOPE: Persons aged 25 to 34, with and without disabilities
+
+ES FUENTES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+EN SOURCES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+ES RUTA: /es/datos/educacion-superior-y-discapacidad/
+
+EN PATH: /en/data/higher-education-and-disability/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-029
+
+ES TÍTULO: Formación a lo largo de la vida
+
+EN TITLE: Lifelong learning
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: En 2024, entre personas de 25 a 64 años:
+
+EN SUMMARY: In 2024, among persons aged 25 to 64:
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat.
+
+EN TIME REFERENCE: 2024 · Eurostat.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Adultos de 25 a 64 años, cuatro semanas anteriores
+
+EN POPULATION / SCOPE: Adults aged 25 to 64, previous four weeks
+
+ES FUENTES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+EN SOURCES: Eurostat · Disability statistics – access to education and training · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/140942.pdf
+
+ES RUTA: /es/datos/formacion-a-lo-largo-de-la-vida/
+
+EN PATH: /en/data/lifelong-learning/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-030
+
+ES TÍTULO: Pobreza y exclusión social
+
+EN TITLE: Poverty and social exclusion
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: En la UE, las personas con discapacidad presentan una mayor exposición a la pobreza y la exclusión social. En 2024, el 28,8 % estaba en riesgo de pobreza o exclusión social, frente al 17,9 % de las personas sin limitación de actividad.
+
+EN SUMMARY: In the EU, persons with disabilities are more exposed to poverty and social exclusion. In 2024, 28.8% were at risk of poverty or social exclusion, compared with 17.9% of persons without activity limitation.
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat.
+
+EN TIME REFERENCE: 2024 · Eurostat.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Población de 16 años o más de la Unión Europea, 2024
+
+EN POPULATION / SCOPE: Population aged 16 or over in the European Union, 2024
+
+ES FUENTES: Eurostat · Disability statistics – poverty and income inequalities · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/34425.pdf
+
+EN SOURCES: Eurostat · Disability statistics – poverty and income inequalities · https://ec.europa.eu/eurostat/statistics-explained/SEPDF/cache/34425.pdf
+
+ES RUTA: /es/datos/pobreza-y-exclusion-social/
+
+EN PATH: /en/data/poverty-and-social-exclusion/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-031
+
+ES TÍTULO: Discriminación percibida en la vida cotidiana
+
+EN TITLE: Perceived discrimination in everyday life
+
+ES TERRITORIO: Unión Europea
+
+EN TERRITORY: European Union
+
+ES RESUMEN: En la UE, la discriminación percibida por las personas con discapacidad fue más frecuente en todos los ámbitos analizados por Eurostat en 2024, desde los servicios públicos hasta la vivienda y las instituciones educativas.
+
+EN SUMMARY: In the EU, perceived discrimination among persons with disabilities was more frequent in every area analysed by Eurostat in 2024, from public services to housing and educational institutions.
+
+ES REFERENCIA TEMPORAL: 2024 · Eurostat, 04-05-2026.
+
+EN TIME REFERENCE: 2024 · Eurostat, 04-05-2026.
+
+ES MÉTODO: Estadística oficial de la Unión Europea
+
+EN METHOD: Official European Union statistics
+
+ES POBLACIÓN / ALCANCE: Personas con y sin discapacidad; no son denuncias ni resoluciones judiciales
+
+EN POPULATION / SCOPE: Persons with and without disabilities; these are not complaints or court decisions
+
+ES FUENTES: Eurostat · 04-05-2026 · https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260504-1
+
+EN SOURCES: Eurostat · 04-05-2026 · https://ec.europa.eu/eurostat/web/products-eurostat-news/w/edn-20260504-1
+
+ES RUTA: /es/datos/discriminacion-percibida-en-la-vida-cotidiana/
+
+EN PATH: /en/data/perceived-discrimination-in-everyday-life/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-032
+
+ES TÍTULO: Autismo identificado en niños de 8 años
+
+EN TITLE: Autism identified in 8-year-old children
+
+ES TERRITORIO: Estados Unidos
+
+EN TERRITORY: United States
+
+ES RESUMEN: En 2022, la red ADDM del CDC identificó autismo en 32,2 de cada 1.000 niños de 8 años —aproximadamente 1 de cada 31— en 16 comunidades estadounidenses. Es uno de los datos más citados sobre autismo y también uno de los que más se descontextualizan.
+
+EN SUMMARY: In 2022, CDC’s ADDM Network identified autism in 32.2 per 1,000 8-year-old children —approximately 1 in 31— in 16 U.S. communities. It is one of the most cited autism data points and also one of the most often taken out of context.
+
+ES REFERENCIA TEMPORAL: 2022 · CDC MMWR publicado en 2025.
+
+EN TIME REFERENCE: 2022 · CDC MMWR published in 2025.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: Niños de 8 años en comunidades concretas, no encuesta nacional de todas las edades
+
+EN POPULATION / SCOPE: 8-year-old children in specific communities, not a national survey of all ages
+
+ES FUENTES: CDC · Data and Statistics on Autism · https://www.cdc.gov/autism/data-research/ | CDC MMWR 2025, datos 2022 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+EN SOURCES: CDC · Data and Statistics on Autism · https://www.cdc.gov/autism/data-research/ | CDC MMWR 2025, 2022 data · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+ES RUTA: /es/datos/autismo-identificado-en-ninos-de-8-anos/
+
+EN PATH: /en/data/autism-identified-in-8-year-old-children/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-033
+
+ES TÍTULO: Diferencia por sexo en identificación de autismo
+
+EN TITLE: Sex difference in autism identification
+
+ES TERRITORIO: Estados Unidos
+
+EN TERRITORY: United States
+
+ES RESUMEN: En los datos ADDM 2022 de niños de 8 años:
+
+EN SUMMARY: In the ADDM 2022 data for 8-year-old children:
+
+ES REFERENCIA TEMPORAL: 2022 · CDC MMWR publicado en 2025.
+
+EN TIME REFERENCE: 2022 · CDC MMWR published in 2025.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022
+
+EN POPULATION / SCOPE: 8-year-old children in the 16 surveillance sites of the ADDM Network, 2022
+
+ES FUENTES: CDC MMWR · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+EN SOURCES: CDC MMWR · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+ES RUTA: /es/datos/diferencia-por-sexo-en-identificacion-de-autismo/
+
+EN PATH: /en/data/sex-difference-in-autism-identification/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-034
+
+ES TÍTULO: Edad del diagnóstico de autismo documentado
+
+EN TITLE: Age of documented autism diagnosis
+
+ES TERRITORIO: Estados Unidos
+
+EN TERRITORY: United States
+
+ES RESUMEN: La edad a la que aparece documentado un diagnóstico ayuda a estudiar el acceso a evaluación e identificación. En la vigilancia ADDM 2022, la mediana del diagnóstico más temprano conocido fue de 47 meses entre los niños con información diagnóstica disponible.
+
+EN SUMMARY: The age at which a diagnosis appears in records helps study access to assessment and identification. In ADDM 2022 surveillance, the median earliest known diagnosis was 47 months among children with diagnostic information available.
+
+ES REFERENCIA TEMPORAL: 2022 · CDC MMWR publicado en 2025.
+
+EN TIME REFERENCE: 2022 · CDC MMWR published in 2025.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: Niños de 8 años en los 16 sitios de vigilancia de la red ADDM, 2022; la mediana de 47 meses solo entre los que tenían un diagnóstico documentado
+
+EN POPULATION / SCOPE: 8-year-old children in the 16 surveillance sites of the ADDM Network, 2022; the 47-month median only among those with a documented diagnosis
+
+ES FUENTES: CDC MMWR 2025, tabla 4 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+EN SOURCES: CDC MMWR 2025, table 4 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+ES RUTA: /es/datos/edad-del-diagnostico-de-autismo-documentado/
+
+EN PATH: /en/data/age-of-documented-autism-diagnosis/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-035
+
+ES TÍTULO: Autismo y discapacidad intelectual en ADDM
+
+EN TITLE: Autism and intellectual disability in ADDM
+
+ES TERRITORIO: Estados Unidos
+
+EN TERRITORY: United States
+
+ES RESUMEN: Entre los niños autistas de 8 años que tenían información cognitiva disponible:
+
+EN SUMMARY: Among autistic 8-year-old children who had cognitive information available:
+
+ES REFERENCIA TEMPORAL: 2022 · CDC MMWR publicado en 2025.
+
+EN TIME REFERENCE: 2022 · CDC MMWR published in 2025.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: El 61,4 % de los niños identificados, los que tenían esa información disponible
+
+EN POPULATION / SCOPE: The 61.4% of identified children who had that information available
+
+ES FUENTES: CDC MMWR 2025 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+EN SOURCES: CDC MMWR 2025 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm
+
+ES RUTA: /es/datos/autismo-y-discapacidad-intelectual-en-addm/
+
+EN PATH: /en/data/autism-and-intellectual-disability-in-addm/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-036
+
+ES TÍTULO: TDAH infantil
+
+EN TITLE: Childhood ADHD
+
+ES TERRITORIO: Estados Unidos
+
+EN TERRITORY: United States
+
+ES RESUMEN: Datos de la National Survey of Children’s Health 2022:
+
+EN SUMMARY: Data from the 2022 National Survey of Children’s Health:
+
+ES REFERENCIA TEMPORAL: 2022 · National Survey of Children’s Health / CDC, publicación 2024.
+
+EN TIME REFERENCE: 2022 · National Survey of Children’s Health / CDC, publication 2024.
+
+ES MÉTODO: Estadística o vigilancia oficial de Estados Unidos
+
+EN METHOD: Official United States statistics or surveillance
+
+ES POBLACIÓN / ALCANCE: Niños y adolescentes de 3 a 17 años en Estados Unidos, diagnóstico declarado por progenitores, 2022
+
+EN POPULATION / SCOPE: Children and adolescents aged 3 to 17 in the United States, parent-reported diagnosis, 2022
+
+ES FUENTES: CDC Stacks / Danielson et al. · https://stacks.cdc.gov/view/cdc/160350
+
+EN SOURCES: CDC Stacks / Danielson et al. · https://stacks.cdc.gov/view/cdc/160350
+
+ES RUTA: /es/datos/tdah-infantil/
+
+EN PATH: /en/data/childhood-adhd/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-037
+
+ES TÍTULO: Empleo y autismo
+
+EN TITLE: Employment and autism
+
+ES TERRITORIO: Reino Unido
+
+EN TERRITORY: United Kingdom
+
+ES RESUMEN: En el Reino Unido, la Buckland Review de 2024 señaló que solo alrededor de 3 de cada 10 personas autistas en edad laboral estaban empleadas, frente a aproximadamente 5 de cada 10 personas con discapacidad y 8 de cada 10 personas sin discapacidad.
+
+EN SUMMARY: In the United Kingdom, the 2024 Buckland Review stated that only around 3 in 10 autistic people of working age were employed, compared with approximately 5 in 10 disabled people and 8 in 10 non-disabled people.
+
+ES REFERENCIA TEMPORAL: principalmente 2021/22–2022/23 · Buckland Review, 28-02-2024.
+
+EN TIME REFERENCE: mainly 2021/22–2022/23 · Buckland Review, 28-02-2024.
+
+ES MÉTODO: Revisión y datos oficiales del Reino Unido
+
+EN METHOD: United Kingdom review and official data
+
+ES POBLACIÓN / ALCANCE: Personas autistas en edad laboral, frente a personas con discapacidad en conjunto y sin discapacidad
+
+EN POPULATION / SCOPE: Autistic people of working age, compared with disabled people overall and non-disabled people
+
+ES FUENTES: GOV.UK · Buckland Review · 28-02-2024 · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+EN SOURCES: GOV.UK · Buckland Review · 28-02-2024 · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+ES RUTA: /es/datos/empleo-y-autismo/
+
+EN PATH: /en/data/employment-and-autism-united-kingdom/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-038
+
+ES TÍTULO: Brecha salarial en autismo
+
+EN TITLE: Autism pay gap
+
+ES TERRITORIO: Reino Unido
+
+EN TERRITORY: United Kingdom
+
+ES RESUMEN: La Buckland Review cita datos de la Office for National Statistics según los cuales las personas autistas presentaban la mayor brecha salarial de los grupos de discapacidad analizados.
+
+EN SUMMARY: The Buckland Review cites Office for National Statistics data according to which autistic people had the largest pay gap among the disability groups analysed.
+
+ES REFERENCIA TEMPORAL: datos ONS citados por la Buckland Review · Buckland Review, 28-02-2024.
+
+EN TIME REFERENCE: ONS data cited by the Buckland Review · Buckland Review, 28-02-2024.
+
+ES MÉTODO: Revisión y datos oficiales del Reino Unido
+
+EN METHOD: United Kingdom review and official data
+
+ES POBLACIÓN / ALCANCE: Personas autistas ocupadas frente a personas no discapacitadas ocupadas en Reino Unido; comparación relativa
+
+EN POPULATION / SCOPE: Employed autistic people compared with employed non-disabled people in the United Kingdom; relative comparison
+
+ES FUENTES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+EN SOURCES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+ES RUTA: /es/datos/brecha-salarial-en-autismo/
+
+EN PATH: /en/data/autism-pay-gap/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-039
+
+ES TÍTULO: Graduados autistas
+
+EN TITLE: Autistic graduates
+
+ES TERRITORIO: Reino Unido
+
+EN TERRITORY: United Kingdom
+
+ES RESUMEN: Datos de 2022 citados por la Buckland Review:
+
+EN SUMMARY: 2022 data cited by the Buckland Review:
+
+ES REFERENCIA TEMPORAL: 2022 · Buckland Review, 2024.
+
+EN TIME REFERENCE: 2022 · Buckland Review, 2024.
+
+ES MÉTODO: Revisión y datos oficiales del Reino Unido
+
+EN METHOD: United Kingdom review and official data
+
+ES POBLACIÓN / ALCANCE: Graduados autistas del Reino Unido, quince meses después de graduarse, 2022
+
+EN POPULATION / SCOPE: Autistic graduates in the United Kingdom, fifteen months after graduation, 2022
+
+ES FUENTES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+EN SOURCES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+ES RUTA: /es/datos/graduados-autistas/
+
+EN PATH: /en/data/autistic-graduates/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-040
+
+ES TÍTULO: Revelar el diagnóstico y pedir ajustes en el trabajo
+
+EN TITLE: Disclosing a diagnosis and asking for adjustments at work
+
+ES TERRITORIO: Reino Unido
+
+EN TERRITORY: United Kingdom
+
+ES RESUMEN: La Buckland Review incorpora resultados del Diverse Minds Employment Survey:
+
+EN SUMMARY: The Buckland Review includes results from the Diverse Minds Employment Survey:
+
+ES REFERENCIA TEMPORAL: Diverse Minds Employment Survey citado por la Buckland Review · Buckland Review, 2024.
+
+EN TIME REFERENCE: Diverse Minds Employment Survey cited by the Buckland Review · Buckland Review, 2024.
+
+ES MÉTODO: Revisión y datos oficiales del Reino Unido
+
+EN METHOD: United Kingdom review and official data
+
+ES POBLACIÓN / ALCANCE: Muestra de encuesta, no censo nacional
+
+EN POPULATION / SCOPE: Survey sample, not a national census
+
+ES FUENTES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+EN SOURCES: GOV.UK · Buckland Review · https://www.gov.uk/government/publications/the-buckland-review-of-autism-employment-report-and-recommendations/the-buckland-review-of-autism-employment-report-and-recommendations
+
+ES RUTA: /es/datos/revelar-el-diagnostico-y-pedir-ajustes-en-el-trabajo/
+
+EN PATH: /en/data/disclosing-a-diagnosis-and-asking-for-adjustments-at-work/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-041
+
+ES TÍTULO: Autismo en la población
+
+EN TITLE: Autism in the population
+
+ES TERRITORIO: Australia
+
+EN TERRITORY: Australia
+
+ES RESUMEN: Australian Bureau of Statistics · Survey of Disability, Ageing and Carers 2022:
+
+EN SUMMARY: Australian Bureau of Statistics · Survey of Disability, Ageing and Carers 2022:
+
+ES REFERENCIA TEMPORAL: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+EN TIME REFERENCE: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+ES MÉTODO: Estadística oficial de Australia
+
+EN METHOD: Official statistics from Australia
+
+ES POBLACIÓN / ALCANCE: Todas las edades, con desglose por sexo y edad; comparación entre rondas de la encuesta
+
+EN POPULATION / SCOPE: All ages, with breakdown by sex and age; comparison between survey rounds
+
+ES FUENTES: Australian Bureau of Statistics · Autism in Australia, 2022 · publicado 11-10-2024 · https://www.abs.gov.au/articles/autism-australia-2022
+
+EN SOURCES: Australian Bureau of Statistics · Autism in Australia, 2022 · published 11-10-2024 · https://www.abs.gov.au/articles/autism-australia-2022
+
+ES RUTA: /es/datos/autismo-en-la-poblacion/
+
+EN PATH: /en/data/autism-in-the-population/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-042
+
+ES TÍTULO: Necesidad de apoyo
+
+EN TITLE: Support needs
+
+ES TERRITORIO: Australia
+
+EN TERRITORY: Australia
+
+ES RESUMEN: En la encuesta australiana 2022:
+
+EN SUMMARY: In the 2022 Australian survey:
+
+ES REFERENCIA TEMPORAL: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+EN TIME REFERENCE: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+ES MÉTODO: Estadística oficial de Australia
+
+EN METHOD: Official statistics from Australia
+
+ES POBLACIÓN / ALCANCE: Personas autistas que viven en hogares, todas las edades, Australia, 2022
+
+EN POPULATION / SCOPE: Autistic people living in households, all ages, Australia, 2022
+
+ES FUENTES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022 | Versión en lenguaje claro · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+EN SOURCES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022 | Plain-language version · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+ES RUTA: /es/datos/necesidad-de-apoyo/
+
+EN PATH: /en/data/support-needs/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-043
+
+ES TÍTULO: Educación y autismo
+
+EN TITLE: Education and autism
+
+ES TERRITORIO: Australia
+
+EN TERRITORY: Australia
+
+ES RESUMEN: Entre personas autistas de 15 años o más que vivían en hogares:
+
+EN SUMMARY: Among autistic people aged 15 or over living in households:
+
+ES REFERENCIA TEMPORAL: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+EN TIME REFERENCE: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+ES MÉTODO: Estadística oficial de Australia
+
+EN METHOD: Official statistics from Australia
+
+ES POBLACIÓN / ALCANCE: Dos poblaciones: personas autistas de 15 años o más en hogares, y de 5 a 20 años escolarizadas
+
+EN POPULATION / SCOPE: Two populations: autistic people aged 15 or over in households, and school pupils aged 5 to 20
+
+ES FUENTES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+EN SOURCES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+ES RUTA: /es/datos/educacion-y-autismo/
+
+EN PATH: /en/data/education-and-autism/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-044
+
+ES TÍTULO: Empleo y autismo
+
+EN TITLE: Employment and autism
+
+ES TERRITORIO: Australia
+
+EN TERRITORY: Australia
+
+ES RESUMEN: Entre personas autistas de 15 a 64 años que vivían en hogares:
+
+EN SUMMARY: Among autistic people aged 15 to 64 living in households:
+
+ES REFERENCIA TEMPORAL: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+EN TIME REFERENCE: 2022 · Australian Bureau of Statistics, 11-10-2024.
+
+ES MÉTODO: Estadística oficial de Australia
+
+EN METHOD: Official statistics from Australia
+
+ES POBLACIÓN / ALCANCE: Personas autistas de 15 a 64 años que viven en hogares, Australia, 2022
+
+EN POPULATION / SCOPE: Autistic people aged 15 to 64 living in households, Australia, 2022
+
+ES FUENTES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+EN SOURCES: ABS · Autism in Australia, 2022 · https://www.abs.gov.au/articles/autism-australia-2022/autism-australia-2022-key-findings-plain-language
+
+ES RUTA: /es/datos/empleo-y-autismo-australia/
+
+EN PATH: /en/data/employment-and-autism-australia/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-045
+
+ES TÍTULO: Autismo en niños y jóvenes
+
+EN TITLE: Autism in children and young people
+
+ES TERRITORIO: Canadá
+
+EN TERRITORY: Canada
+
+ES RESUMEN: La estimación nacional más reciente que el Gobierno de Canadá seguía utilizando en su Framework for Autism procede de la Canadian Health Survey on Children and Youth 2019.
+
+EN SUMMARY: The most recent national estimate that the Government of Canada was still using in its Framework for Autism comes from the 2019 Canadian Health Survey on Children and Youth.
+
+ES REFERENCIA TEMPORAL: 2019 · PHAC; sigue como referencia en Framework for Autism in Canada.
+
+EN TIME REFERENCE: 2019 · PHAC; still used as a reference in the Framework for Autism in Canada.
+
+ES MÉTODO: Estadística oficial de Canadá
+
+EN METHOD: Official statistics from Canada
+
+ES POBLACIÓN / ALCANCE: Niños y jóvenes de 1 a 17 años
+
+EN POPULATION / SCOPE: Children and young people aged 1 to 17
+
+ES FUENTES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html | Framework for Autism in Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/framework-autism-canada.html
+
+EN SOURCES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html | Framework for Autism in Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/framework-autism-canada.html
+
+ES RUTA: /es/datos/autismo-en-ninos-y-jovenes/
+
+EN PATH: /en/data/autism-in-children-and-young-people/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-046
+
+ES TÍTULO: Edad de diagnóstico
+
+EN TITLE: Age at diagnosis
+
+ES TERRITORIO: Canadá
+
+EN TERRITORY: Canada
+
+ES RESUMEN: Entre los niños y jóvenes autistas de la encuesta canadiense:
+
+EN SUMMARY: Among autistic children and young people in the Canadian survey:
+
+ES REFERENCIA TEMPORAL: 2019 · PHAC.
+
+EN TIME REFERENCE: 2019 · PHAC.
+
+ES MÉTODO: Estadística oficial de Canadá
+
+EN METHOD: Official statistics from Canada
+
+ES POBLACIÓN / ALCANCE: Niños y jóvenes autistas incluidos en la encuesta canadiense de 2019
+
+EN POPULATION / SCOPE: Autistic children and young people included in the 2019 Canadian survey
+
+ES FUENTES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+EN SOURCES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+ES RUTA: /es/datos/edad-de-diagnostico/
+
+EN PATH: /en/data/age-at-diagnosis/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-047
+
+ES TÍTULO: Salud general y mental
+
+EN TITLE: General and mental health
+
+ES TERRITORIO: Canadá
+
+EN TERRITORY: Canada
+
+ES RESUMEN: Entre niños y jóvenes autistas:
+
+EN SUMMARY: Among autistic children and young people:
+
+ES REFERENCIA TEMPORAL: 2019 · PHAC.
+
+EN TIME REFERENCE: 2019 · PHAC.
+
+ES MÉTODO: Estadística oficial de Canadá
+
+EN METHOD: Official statistics from Canada
+
+ES POBLACIÓN / ALCANCE: Comparación entre grupos, no recuento de diagnósticos
+
+EN POPULATION / SCOPE: Comparison between groups, not a count of diagnoses
+
+ES FUENTES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+EN SOURCES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+ES RUTA: /es/datos/salud-general-y-mental/
+
+EN PATH: /en/data/general-and-mental-health/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-048
+
+ES TÍTULO: Condiciones coexistentes y necesidades educativas
+
+EN TITLE: Coexisting conditions and educational needs
+
+ES TERRITORIO: Canadá
+
+EN TERRITORY: Canada
+
+ES RESUMEN: Entre niños y jóvenes autistas:
+
+EN SUMMARY: Among autistic children and young people:
+
+ES REFERENCIA TEMPORAL: 2019 · PHAC.
+
+EN TIME REFERENCE: 2019 · PHAC.
+
+ES MÉTODO: Estadística oficial de Canadá
+
+EN METHOD: Official statistics from Canada
+
+ES POBLACIÓN / ALCANCE: Cada porcentaje tiene su propio denominador
+
+EN POPULATION / SCOPE: Each percentage has its own denominator
+
+ES FUENTES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+EN SOURCES: Public Health Agency of Canada · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html
+
+ES RUTA: /es/datos/condiciones-coexistentes-y-necesidades-educativas/
+
+EN PATH: /en/data/coexisting-conditions-and-educational-needs/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## WEB-DATA-049
+
+ES TÍTULO: Cuatro cifras de autismo que no miden lo mismo
+
+EN TITLE: Four autism figures that do not measure the same thing
+
+ES TERRITORIO: Comparativa internacional
+
+EN TERRITORY: International comparison
+
+ES RESUMEN: No es un ranking de prevalencia. Cada país usa edades, fuentes y métodos distintos. Una cifra más alta puede reflejar mejor identificación, diferente cobertura, distinta edad de la población, mayor acceso al diagnóstico o una metodología diferente.
+
+EN SUMMARY: This is not a prevalence ranking. Each country uses different ages, sources and methods. A higher figure may reflect better identification, different coverage, a different age group, greater access to diagnosis or a different methodology.
+
+ES REFERENCIA TEMPORAL: 2021 / 2022 / 2019 / 2022, según la fuente · comparación metodológica preparada en 2026.
+
+EN TIME REFERENCE: 2021 / 2022 / 2019 / 2022, depending on the source · methodological comparison prepared in 2026.
+
+ES MÉTODO: Comparación metodológica de fuentes oficiales y modelizadas
+
+EN METHOD: Methodological comparison of official and modelled sources
+
+ES POBLACIÓN / ALCANCE: Cada cifra lleva el suyo en la tabla
+
+EN POPULATION / SCOPE: Each figure has its own denominator in the table
+
+ES FUENTES: Mundo · OMS / GBD 2021 · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | EE. UU. · CDC ADDM 2022 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm | Canadá · PHAC / CHSCY 2019 · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html | Australia · ABS SDAC 2022 · https://www.abs.gov.au/articles/autism-australia-2022
+
+EN SOURCES: World · WHO / GBD 2021 · https://www.who.int/news-room/fact-sheets/detail/autism-spectrum-disorders | U.S. · CDC ADDM 2022 · https://www.cdc.gov/mmwr/volumes/74/ss/ss7402a1.htm | Canada · PHAC / CHSCY 2019 · https://www.canada.ca/en/public-health/services/publications/diseases-conditions/autism-spectrum-disorder-canadian-health-survey-children-youth-2019.html | Australia · ABS SDAC 2022 · https://www.abs.gov.au/articles/autism-australia-2022
+
+ES RUTA: /es/datos/cuatro-cifras-de-autismo-que-no-miden-lo-mismo/
+
+EN PATH: /en/data/four-autism-figures-that-do-not-measure-the-same-thing/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO FUENTE ES: BORRADOR
+
+EN SOURCE STATUS: BORRADOR
+
+ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCTION
+
+---
+
+## QA · CORPUS DATOS / DATA
+
+- ES_RECORDS: 49/49
+- EN_RECORDS: 49/49
+- NUMERIC_ALIGNMENT: 49/49
+- BILINGUAL_COMPLETE: 49/49
+- SOURCE_STATUS_PRESERVED: 49/49
+- SOURCE_PROVENANCE_PRESENT: 49/49
+- PRODUCTION_PROMOTION: 0 while source status remains BORRADOR
+- STATUS: PASS
+
+SIGUIENTE FASE: Taller / Workshop y recursos bilingües.
