@@ -77,7 +77,7 @@ def main():
  need("canAccessRestrictedAdultContent(){return false;}" in audience,'P0 adult assurance must fail closed')
  need("igAgeRuntimeReady='true'" in audience,'age runtime does not explicitly release static fail-closed state')
  age_css=(root/'assets/ig-audience.css').read_text(encoding='utf-8')
- need('html:not([data-ig-age-runtime-ready="true"]) body main' in age_css,'no-JS main fail-closed CSS missing')
+ need('data-ig-age-runtime-ready="pending"]) body[data-ig-r49="1"] main' in age_css,'no-JS main fail-closed CSS precedence missing')
  print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
  print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':0,'s2_pages':protected*2},ensure_ascii=False))
 if __name__=='__main__': main()
