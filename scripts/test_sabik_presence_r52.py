@@ -6,6 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 panel = (ROOT / "sabik/iris-panel.html").read_text(encoding="utf-8")
 css = (ROOT / "sabik/iris-mount.css").read_text(encoding="utf-8")
+layered_css = (ROOT / "sabik/definitive-r01/sabik-layered.css").read_text(encoding="utf-8")
 js = (ROOT / "sabik/sabik-web-r01.js").read_text(encoding="utf-8")
 motion = (ROOT / "sabik/sabik-motion-r37.js").read_text(encoding="utf-8")
 mount = (ROOT / "sabik/iris-mount.mjs").read_text(encoding="utf-8")
@@ -47,13 +48,26 @@ require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
 # R37 is the motion system that must be preserved.
 for marker in ("SabikMotionR37", "TOKENS", "iterations: 1", "duration: 0"):
     require(marker in motion + js, f"Missing R37 marker: {marker}")
-for marker in ("controller.setSabikState('presente'", "force:true", "static:true", "newImage()", "/sabik/assets/web-r01/web_", "ASSET_VERSION","sabik-presence-motion"):
-    require(marker in js.replace(" ", ""), f"Missing current-master runtime marker: {marker}")
+
+# Definitive R01 presentation: one approved body master plus the approved layered nucleus/orbits.
+compact = js.replace(" ", "")
+for marker in (
+    "constBODY='/sabik/assets/web-r01/web_presente.png?v=sabik-definitive-r01'",
+    "newImage()",
+    "controller.setSabikState('presente'",
+    "force:true",
+    "static:true",
+    "setSemanticState",
+    "SABIK_DEFINITIVE_LAYER_MISSING",
+):
+    require(marker in compact, f"Missing definitive Sabik runtime marker: {marker}")
+for marker in (".orbits-back", ".core-rings", ".core-light", ".particles-front"):
+    require(marker in js + layered_css, f"Missing definitive layered marker: {marker}")
 require("requestAnimationFrame" not in motion + js, "R37 must not become continuous RAF motion")
 require("setInterval" not in motion + js, "R37 must not become loop motion")
-require("sabikMeasuredPrecession" not in css, "Historical donor keyframe name returned")
-require("sabikPresenceWave" not in css, "Historical donor presence keyframe name returned")
-require("sabikVoiceRipple" not in css, "Historical donor voice keyframe name returned")
+require("sabikMeasuredPrecession" not in css + layered_css, "Historical donor keyframe name returned")
+require("sabikPresenceWave" not in css + layered_css, "Historical donor presence keyframe name returned")
+require("sabikVoiceRipple" not in css + layered_css, "Historical donor voice keyframe name returned")
 require("'.webp'" not in publisher, "R08 publisher still carries the old donor WebP")
 
 # Voice integration may signal activity, but it must not replace the current visual identity.
