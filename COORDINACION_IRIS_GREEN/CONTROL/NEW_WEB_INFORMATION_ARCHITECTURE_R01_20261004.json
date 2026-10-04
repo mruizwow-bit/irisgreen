@@ -24,26 +24,27 @@
       "route_en": "/en/resources/",
       "rebuild_temp_es": "/es/nueva-web/recursos/",
       "rebuild_temp_en": "/en/new-web/resources/",
-      "monetization": "FREEMIUM"
+      "monetization": "FREE_ALWAYS",
+      "premium": false
     },
     "games": {
       "route_es": "/es/juegos/",
       "route_en": "/en/games/",
       "legacy_es": "/es/recursos/juegos/",
       "legacy_en": "/en/resources/games/",
-      "monetization": "FREEMIUM"
+      "monetization": "FREE_PLUS"
     },
     "discovery": {
       "route_es": "/es/descubrimiento/",
       "route_en": "/en/discovery/",
       "legacy_es": "/es/intereses/",
-      "monetization": "FREEMIUM"
+      "monetization": "FREE_PLUS"
     },
     "creation": {
       "route_es": "/es/creacion/",
       "route_en": "/en/creation/",
       "legacy_es": "/es/taller/",
-      "monetization": "FREEMIUM"
+      "monetization": "FREE_PLUS"
     },
     "calm_space": {
       "legacy_preserved": true,
@@ -60,7 +61,31 @@
   "payments": {
     "issue": 387,
     "architecture": "STRIPE_CHECKOUT_BILLING_PORTAL_WEBHOOKS_NETLIFY_FUNCTIONS",
-    "live_gate": "PAYMENTS_LIVE_MODE_AUTHORIZED_BY_MARIA"
+    "live_gate": "PAYMENTS_LIVE_MODE_AUTHORIZED_BY_MARIA",
+    "entitlements_target": [
+      "FREE",
+      "GAMES",
+      "DISCOVERY",
+      "CREATION",
+      "FULL"
+    ],
+    "resources_entitlement": "DEPRECATED_NO_PREMIUM_PRODUCT"
   },
-  "next": "GAMES_AREA_NEW_PAGE_PRODUCT_CONTRACT_R01"
+  "next": "FREE_PLUS_MATRIX_GAMES_DISCOVERY_CREATION_R01",
+  "monetization_policy": {
+    "free_always": [
+      "Información",
+      "Recursos",
+      "Espacio tranquilo"
+    ],
+    "classify_free_plus": [
+      "Juegos",
+      "Descubrimiento",
+      "Creación"
+    ],
+    "free_tier_rule": "COMPLETE_USEFUL_PRODUCT_NOT_CRIPPLED_DEMO",
+    "plus_rule": "MORE_DEPTH_MORE_CATALOG_MORE_CAPABILITY",
+    "no_mid_experience_paywall": true,
+    "adult_purchase_zone_only": true
+  }
 }
