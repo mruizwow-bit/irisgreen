@@ -88,7 +88,7 @@
           "final_5min_render": "BLOCKED_UNTIL_HUMAN_QA_MARIA"
         },
         "oai_audio_r02": {
-          "status": "HUMAN_QA_REQUIRED",
+          "status": "HUMAN_QA_PASS_TO_FULL_RENDER",
           "video": "PECERA_R02_CLIP_40s_AUDIO_OAI_R02_BUBBLE_DOMINANT.mp4",
           "video_sha256": "5b9ea28406ae024ca6ba0c68cff26d0052325d261988c86063d794da5bd9478f",
           "audio": "PECERA_AUDIO_OAI_R02_BUBBLE_DOMINANT.m4a",
@@ -108,6 +108,22 @@
         "claude_composition": "STOP",
         "next_owner": "MUSIC_EXPERT",
         "gate": "RINCON_MUSIC_HANDOFF_TO_MUSIC_EXPERT_READY"
+      },
+      "full_5min": {
+        "status": "AUTHORIZED",
+        "requirements": {
+          "visual": "R02_BLUE_FULL_300S_NO_LOOP",
+          "audio": "OAI_R02_BUBBLE_DOMINANT_FULL_300S_NO_40S_LOOP",
+          "mux": "H264_AAC_FASTSTART",
+          "qa_before_integration": true
+        },
+        "gate": "RINCON_PECERA_R02_FULL_5MIN_AV_READY_FOR_MEDIA_QA",
+        "next_after_gate": [
+          "ECO_FINAL_MEDIA_QA",
+          "MOTOR_COMMON_PLAYER_INTEGRATION",
+          "AXIOMA",
+          "HUMAN_QA_MARIA_FINAL"
+        ]
       }
     }
   ],
