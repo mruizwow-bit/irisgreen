@@ -27,7 +27,18 @@ async def main():
  OUT.mkdir(parents=True,exist_ok=True);report={'screenshots':[],'network':{},'checks':[]}
  async with async_playwright() as p:
   browser=await p.chromium.launch();ctx=await browser.new_context();page=await ctx.new_page()
-  await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate("localStorage.removeItem('ig-theme-2026'); sessionStorage.clear()")
+  await page.goto(BASE+'/',wait_until='networkidle');await page.evaluate("localStorage.removeItem('ig-theme-2026'); sessionStorage.clear(); IGAudience.clear()")
+  need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_UNSET','fresh session must start AGE_UNSET')
+  mandatory=page.locator('[data-ig-mandatory-age-gate]')
+  need(await mandatory.count()==1 and await mandatory.is_visible(),'mandatory age gate missing on fresh session')
+  need(await page.locator('main').get_attribute('inert') is not None,'normal experience not blocked before age selection')
+  need(await page.get_by_role('button',name='Accesibilidad',exact=True).is_visible(),'accessibility must remain available before age selection')
+  need(await page.locator('.ig-r49-lang').is_visible(),'language control must remain available before age selection')
+  await page.keyboard.press('Escape');need(await mandatory.count()==1,'Escape bypassed mandatory age gate')
+  need(await mandatory.locator('[data-ig-audience-stage]').count()==3,'mandatory gate must expose exactly three age choices')
+  await mandatory.locator('[data-ig-audience-stage="AGE_18_PLUS"]').click()
+  need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_18_PLUS','mandatory age selection did not apply')
+  need(await page.locator('[data-ig-mandatory-age-gate]').count()==0,'mandatory gate remained after valid selection')
   for path,name in [('/','home-v4-es'),('/en/','home-v4-en')]:
    for w,h in [(1440,900),(390,844),(320,800)]:
     await capture(page,path,name,w,h);report['screenshots'].append(f'{name}-{w}x{h}.png')
@@ -135,18 +146,20 @@ async def main():
   need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain visible for AGE_13_17')
   need(await page.get_by_role('heading',name='Pregunta a Sabik',exact=True).is_visible(),'Sabik disappeared for AGE_13_17')
   await page.get_by_role('button',name='18 años o más',exact=True).click()
-  await page.evaluate("IGAudience.clear()");need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL not restored')
+  need(await page.evaluate("IGAudience.isAdultClaimed()") is True,'18+ claim not recorded')
+  need(await page.evaluate("IGAudience.hasAdultAssurance()") is False,'18+ claim incorrectly became adult assurance')
+  need(await page.evaluate("IGAudience.canAccessRestrictedAdultContent()") is False,'18+ claim unlocked restricted content')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
   req=[];page.on('request',lambda r:req.append(r.url));q=page.locator('#ig-home-q');await q.fill('anorexia');await page.wait_for_timeout(500)
   need(await page.locator('[data-ig-home-suggestions]').get_by_text('Anorexia nerviosa',exact=False).count()==0,'S2 leaked into autocomplete')
   await page.locator('[data-ig-home-search] button[type=submit]').click();await page.wait_for_timeout(700)
   need(await page.locator('[data-ig-home-results]').get_by_text('Anorexia nerviosa',exact=False).count()>0,'intentional safe S2 result missing')
   need(not any('/assets/safety/full/' in u for u in req),'full S2 requested by Home search')
-  # Deep link safety remains fail-closed for GENERAL and 0–12.
+  # Deep link safety remains fail-closed for AGE_UNSET and under-18 bands.
   s2='/es/neurodiversidad/condiciones/anorexia-nerviosa/'
-  for band in ['GENERAL','AGE_0_12','AGE_13_17']:
+  for band in ['AGE_UNSET','AGE_0_12','AGE_13_17']:
    await page.goto(BASE+'/',wait_until='networkidle')
-   if band=='GENERAL': await page.evaluate('IGAudience.clear()')
+   if band=='AGE_UNSET': await page.evaluate('IGAudience.clear()')
    else: await page.evaluate('(b)=>IGAudience.set(b)',band)
    requests=[];page.on('request',lambda r,arr=requests:arr.append(r.url));await page.goto(BASE+s2,wait_until='networkidle')
    need(await page.locator('[data-ig-s2-safe]').count()==1,'safe S2 shell missing '+band)
@@ -164,6 +177,6 @@ async def main():
   report['network']['direct_full_status']=direct.status()
   print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
