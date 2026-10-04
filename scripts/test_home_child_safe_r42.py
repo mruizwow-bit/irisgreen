@@ -27,8 +27,13 @@ def main():
   need('class="ig-uh"' not in txt,'Legacy ig-uh header leaked into built Home')
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
-  for token in ['id="sabik-form"','id="sabik-submit"','id="sabik-expand"','id="sabik-voice"','id="sabik-voice-stop"','id="sabik-voice-repeat"','id="sabik-motion-level"','id="sabik-reset"','id="sabik-toggle"']:
+  for token in ['id="sabik-form"','id="sabik-submit"','id="sabik-voice"','id="sabik-voice-stop"','id="sabik-voice-repeat"','id="sabik-motion-level"','id="sabik-reset"','id="sabik-options"']:
    need(token in txt,'Real Sabik control missing '+token)
+  for obsolete in ['id="sabik-expand"','id="sabik-toggle"','id="sabik-low"','id="sabik-mic"']:
+   need(obsolete not in txt,'Obsolete Sabik Home control returned '+obsolete)
+  need('class="ig-home-v4-sabik-center"' in txt,'Centered Sabik Home hierarchy missing')
+  need('class="sabik-primary-actions"' in txt,'Sabik primary-action hierarchy missing')
+  need('>Opciones de Sabik<' in txt or '>Sabik options<' in txt,'Sabik options disclosure missing')
   for layer in ['orbits-back','core-rings','core-light','particles-front']:
    need(layer in txt,'Definitive Sabik layer missing '+layer)
   need('id="sabik-browse"' not in txt,'Explore resources must live outside the Sabik block')
