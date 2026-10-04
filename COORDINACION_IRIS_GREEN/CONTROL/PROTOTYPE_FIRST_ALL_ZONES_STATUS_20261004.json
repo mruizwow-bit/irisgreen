@@ -10,9 +10,9 @@
       "zone": "Juegos",
       "pattern": "discovery_search_game",
       "prototype": "Mapa del tesoro de casa",
-      "status": "FUNCTIONAL_FREEZE",
+      "status": "R06_A11Y_PARITY_PASS__DOCUMENT_SHELL_RESTORE_REQUIRED",
       "pending": [
-        "R06_ES_EN_A11Y_PARITY_MICROFIX",
+        "R06_1_DOCUMENT_SHELL_RESTORE",
         "HUMAN_QA_MARIA"
       ],
       "gate": "MAPA_TESORO_TECHNICAL_BASE_READY_FOR_HUMAN_QA"
@@ -31,9 +31,9 @@
       "zone": "Taller",
       "pattern": "guided_entry_to_free_creation",
       "prototype": "Ritmo · Tu primer ritmo",
-      "status": "FUNCTIONAL_FREEZE",
+      "status": "R06_A11Y_PARITY_PASS__DOCUMENT_SHELL_RESTORE_REQUIRED",
       "pending": [
-        "R06_ES_EN_A11Y_PARITY_MICROFIX",
+        "R06_1_DOCUMENT_SHELL_RESTORE",
         "HUMAN_QA_MARIA"
       ]
     },
@@ -93,8 +93,35 @@
     "Home/navegación global"
   ],
   "evidence": {
-    "capture_gaps": "EVIDENCE_CAPTURE_GAP_NOT_PRODUCT_FAIL",
+    "capture_gaps": "EVIDENCE_CAPTURE_GAP__R06_MOBILE_REAL_VIEWPORT_RETEST_REQUIRED_AFTER_SHELL_RESTORE",
     "human_qa_global": "PENDING"
   },
-  "continuity_rule": "READ_GITHUB_CANON_BEFORE_RESUME__DO_NOT_RECONSTRUCT_FROM_CHAT"
+  "continuity_rule": "READ_GITHUB_CANON_BEFORE_RESUME__DO_NOT_RECONSTRUCT_FROM_CHAT",
+  "r06_semantic_fix": {
+    "package": "PROTOTIPOS_IRIS_GREEN_R06_SEMANTIC_FIX.zip",
+    "hashes": {
+      "mapa": "47d494b013691ca3cf990c8857e6f83593b1c3aa1a59d4ca20f3b6eff35ea509",
+      "habitacion": "c643e990726fd0a97c892410fdb8dd43e870b3631c2a3c54b482cb5f81f3c0a9",
+      "ritmo": "4d09487853a6096985727989991377ccbc97b5571c68436ada10dfd816a06194",
+      "vida_marina": "78fc43ae40ab15a1f9c8d2b226ae89904d48a6eefa9fae8070a65e81c27e86f7"
+    },
+    "passes": [
+      "MAPA_ES_EN_A11Y_PARITY_PASS",
+      "RITMO_ES_EN_A11Y_PARITY_PASS",
+      "HABITACION_RUNTIME_SOLVER_REPRODUCIBLE_PASS"
+    ],
+    "regression": [
+      "MAPA_R06_DOCUMENT_SHELL_REGRESSION",
+      "RITMO_R06_DOCUMENT_SHELL_REGRESSION"
+    ],
+    "regression_details": [
+      "missing_html_element",
+      "missing_head_element",
+      "missing_viewport_meta",
+      "missing_html_close"
+    ],
+    "global_technical_gate": "HOLD",
+    "required_next_gate": "R06_1_DOCUMENT_SHELL_RESTORE_AND_SEMANTIC_PARITY_PASS",
+    "next_action": "restore_R05_document_shell_only_preserving_R06_a11y_fixes_then_retest_mobile_real_viewport"
+  }
 }
