@@ -265,3 +265,31 @@ Revisión: Axioma + Vigía + Lex.
 E2E: Nexo.
 Red-team: Astra.
 HUMAN QA final: María.
+
+
+---
+
+## 2026-10-04 · HANDOFF A WORK · FORMACIÓN ASTRA R02
+
+María traslada Astra a Work.
+
+Formación canónica creada:
+- `COORDINACION_IRIS_GREEN/FORMACION/ASTRA/00_IDENTIDAD_Y_PUESTO.md`
+- `COORDINACION_IRIS_GREEN/FORMACION/ASTRA/01_PLAN_FORMACION.md`
+- `COORDINACION_IRIS_GREEN/FORMACION/ASTRA/02_APRENDIZAJE_APLICADO_20261004.md`
+
+Handoff de reanudación:
+- `COORDINACION_IRIS_GREEN/HANDOFFS/ASTRA_WORK_20261004/01_ESTADO_Y_REANUDACION.md`
+
+Control:
+- `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_WORK_HANDOFF_20261004.json`
+
+Prioridad al entrar en Work:
+1. releer main vivo;
+2. revisar #391 child safety tras marker Motor;
+3. reconciliar #389 Sabik centered hierarchy + #391 safety;
+4. no cerrar HUMAN QA por CI;
+5. mantener pendiente el formal Astra final re-pass de patentabilidad R02 en repo privado NEA.
+
+Regla:
+`ASTRA_WORK_MODE_RESUME_FROM_GITHUB_NOT_CHAT`
