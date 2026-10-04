@@ -2,8 +2,17 @@
   "schema": "iris-green/sabik-dialogue-model/v1",
   "language": "es",
   "assistant_aliases": [
-    "sabik", "sábik", "savik", "sabick", "sabyck",
-    "xavid", "xavik", "xabik", "savid", "tanik", "tanick"
+    "sabik",
+    "sábik",
+    "savik",
+    "sabick",
+    "sabyck",
+    "xavid",
+    "xavik",
+    "xabik",
+    "savid",
+    "tanik",
+    "tanick"
   ],
   "policies": {
     "one_question_per_turn": true,
@@ -48,7 +57,10 @@
         "^(?:necesito|quiero|quisiera|me gustaria|me gustaría)?\\s*(?:buscar|encontrar|consultar|informarme sobre|informacion sobre|información sobre|saber(?: mas| más)? sobre)\\s+(?<topic>.+)$",
         "^(?:busca|buscar|buscame|búscame|encuentra|hablame de|háblame de)\\s+(?<topic>.+)$"
       ],
-      "required_slots": ["topic", "aspect"],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "when_missing": {
         "topic": "search.ask_topic",
         "aspect": "search.ask_aspect"
@@ -64,7 +76,9 @@
       "fixed_slots": {
         "aspect": "definition"
       },
-      "required_slots": ["topic"],
+      "required_slots": [
+        "topic"
+      ],
       "action": "retrieve"
     },
     {
@@ -73,7 +87,10 @@
       "patterns": [
         "^(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|colegio|escuela|trabajo|investigación|investigacion)(?:\\s+(?:de|del|sobre|para)\\s+(?<topic>.+))?$"
       ],
-      "required_slots": ["topic", "aspect"],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "when_missing": {
         "topic": "search.ask_topic"
       },
@@ -85,7 +102,10 @@
       "patterns": [
         "^(?:no[, ]*)?(?:mejor|prefiero)\\s+(?<aspect>señales|senales|síntomas|sintomas|rasgos|apoyos|ayudas|valoración|valoracion|evaluación|evaluacion|diagnóstico|diagnostico|causas|sensorial|comunicación|comunicacion|vida diaria|investigación|investigacion)$"
       ],
-      "required_slots": ["topic", "aspect"],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "action": "retrieve"
     },
     {
@@ -94,8 +114,13 @@
       "patterns": [
         "^(?:no[, ]*)?(?:mejor|cambia a|cambiar a|prefiero)\\s+(?<topic>.+)$"
       ],
-      "clear_slots": ["aspect"],
-      "required_slots": ["topic", "aspect"],
+      "clear_slots": [
+        "aspect"
+      ],
+      "required_slots": [
+        "topic",
+        "aspect"
+      ],
       "when_missing": {
         "aspect": "search.ask_aspect"
       },
@@ -121,15 +146,12 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hola. ¿Qué necesitas?",
-        "Hola. Dime, ¿qué necesitas?",
-        "Hola. Te escucho. ¿Qué necesitas?",
-        "Hola. ¿En qué puedo ayudarte?"
+        "Hola.",
+        "Hola. Te escucho.",
+        "Hola. Aquí estoy.",
+        "Buenas."
       ],
-      "reprompt": [
-        "Dime qué necesitas.",
-        "Te escucho."
-      ]
+      "reprompt": []
     },
     "social.attention.response": {
       "initial": [
