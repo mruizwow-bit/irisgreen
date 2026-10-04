@@ -23,8 +23,8 @@ for text in fixed_expected: assert text in joined, text
 # R67 supersedes the old "retrieval unavailable" product surface.
 conversation_expected=[
  'Sabik está disponible.','Sabik is available.',
- 'Puedes preguntarme por escrito o activar la voz. Respondo con información de Iris Green y te enseño las fuentes.',
- 'You can ask me in writing or enable voice. I answer with Iris Green information and show the sources.',
+ 'Pregunta por escrito o por voz. Respondo con información de Iris Green y enseño las fuentes.',
+ 'Ask in writing or by voice. I answer with Iris Green information and show the sources.',
  'Si la biblioteca Cloud no responde, uso el índice seguro local de Iris Green.',
  "If the Cloud library is unavailable, I use Iris Green’s safe local index.",
  'No se guarda el historial entre sesiones.','No history is saved between sessions.',
