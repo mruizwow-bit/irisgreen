@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1065" height="760" viewBox="0 0 1065 760">
+<defs><radialGradient id="rg"><stop offset="0" stop-color="#faffff" stop-opacity=".9"/><stop offset=".15" stop-color="#39dfff" stop-opacity=".78"/><stop offset=".52" stop-color="#1a84ff" stop-opacity=".35"/><stop offset="1" stop-color="#0b3f9a" stop-opacity="0"/></radialGradient><filter id="g"><feGaussianBlur stdDeviation="1.4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter></defs>
+<circle cx="530" cy="359" r="122" fill="url(#rg)" opacity=".72"/>
+<g fill="none" filter="url(#g)">
+<circle cx="530" cy="359" r="46" stroke="#dfffff" stroke-opacity=".82" stroke-width="2"/>
+<circle cx="530" cy="359" r="62" stroke="#78eaff" stroke-opacity=".68" stroke-width="1.5"/>
+<circle cx="530" cy="359" r="78" stroke="#73c9ff" stroke-opacity=".52" stroke-width="1.2"/>
+<circle cx="530" cy="359" r="96" stroke="#65c3ff" stroke-opacity=".42" stroke-width="1.1" stroke-dasharray="2 5"/>
+<circle cx="530" cy="359" r="118" stroke="#4ac6ff" stroke-opacity=".35" stroke-width="1"/>
+<circle cx="530" cy="359" r="142" stroke="#42b7ff" stroke-opacity=".24" stroke-width=".9" stroke-dasharray="1 6"/>
+</g></svg>

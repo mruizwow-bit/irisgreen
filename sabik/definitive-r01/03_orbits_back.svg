@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1065" height="760" viewBox="0 0 1065 760">
+<defs><filter id="glow"><feGaussianBlur stdDeviation="2.1" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter><linearGradient id="s" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#35cfff" stop-opacity=".18"/><stop offset=".5" stop-color="#79e8ff" stop-opacity=".78"/><stop offset="1" stop-color="#2688ff" stop-opacity=".20"/></linearGradient></defs>
+<g fill="none" stroke="url(#s)" filter="url(#glow)" stroke-linecap="round">
+<ellipse cx="530" cy="359" rx="470" ry="276" stroke-width="1.4" transform="rotate(-7 530 359)"/>
+<ellipse cx="530" cy="359" rx="426" ry="331" stroke-width="1" transform="rotate(9 530 359)"/>
+<ellipse cx="530" cy="359" rx="387" ry="246" stroke-width="1" transform="rotate(-17 530 359)"/>
+<ellipse cx="530" cy="359" rx="318" ry="210" stroke-width=".9" transform="rotate(5 530 359)"/>
+<ellipse cx="530" cy="359" rx="452" ry="305" stroke="#45dfff" stroke-opacity=".58" stroke-width="1.1" stroke-dasharray="1 10" transform="rotate(3 530 359)"/>
+</g></svg>
