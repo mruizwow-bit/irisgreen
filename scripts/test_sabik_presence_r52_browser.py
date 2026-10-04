@@ -115,7 +115,8 @@ try:
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true,semantic:'idle'}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         reduced = page.evaluate("""() => {
-          const a=document.querySelector('#sabik-web-master').getAnimations()[0];
+          const animations=document.querySelector('#sabik-web-master').getAnimations();
+          const a=animations.find(x=>{const t=x.effect?.getTiming?.();return Number(t?.duration)<=1000&&Number(t?.iterations)===1;});
           return {duration:a?.effect?.getTiming().duration,level:window.SabikWebPresentation.snapshot().level,
                   state:document.querySelector('#sabik-hologram').dataset.webState,
                   motion:document.querySelector('#sabik-hologram').dataset.motion};
