@@ -52,6 +52,10 @@ jobs:
           node --check assets/musica.js
           node --check sabik/sabik-motion-r37.js
           node --check sabik/sabik-web-r01.js
+          node --check sabik/iris-mount.mjs
+          node --check sabik/conversation-core-r66.mjs
+          node --check sabik/dialogue-library.mjs
+          node --check sabik/voice-runtime.mjs
           python scripts/test_home_v4_css_integrity.py --root .
       - name: Build unified artifact
         run: python scripts/build_site.py
