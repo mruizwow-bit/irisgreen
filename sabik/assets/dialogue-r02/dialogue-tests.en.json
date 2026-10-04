@@ -51,7 +51,7 @@
         "slots": {
           "topic": "autism"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -63,7 +63,7 @@
         "slots": {
           "topic": "autism"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -75,7 +75,7 @@
         "slots": {
           "topic": "anxiety"
         },
-        "next_prompt": "search.ask_aspect"
+        "action": "retrieve"
       }
     },
     {
@@ -257,11 +257,10 @@
       },
       "expect": {
         "intent": "conversation.correction_topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "anxiety"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
@@ -433,13 +432,11 @@
       "id": "en-037",
       "text": "I don't know",
       "context": {
-        "topic": "autism",
-        "pending_slot": "aspect"
+        "topic": "autism"
       },
       "expect": {
         "action": "fallback",
-        "keep_topic": "autism",
-        "prompt": "search.ask_aspect"
+        "keep_topic": "autism"
       }
     },
     {
@@ -497,11 +494,10 @@
       "context": {},
       "expect": {
         "intent": "search.topic",
-        "action": "elicit",
+        "action": "retrieve",
         "slots": {
           "topic": "anxiety"
-        },
-        "prompt": "search.ask_aspect"
+        }
       }
     },
     {
