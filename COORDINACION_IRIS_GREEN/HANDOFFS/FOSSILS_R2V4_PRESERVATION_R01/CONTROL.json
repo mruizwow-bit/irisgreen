@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green.atlas.fossils-r2v4-preservation.v1",
+  "date": "2026-10-04",
+  "owner": "ATLAS_A1",
+  "marker": "ATLAS_FOSSILS_R2V4_PRESERVATION_SEPARATION_PASS",
+  "status": "PRESERVED_KEEP_SOURCE__NOT_RUNTIME_READY_NOMINAL_QA_PENDING",
+  "canonical_r2v4": {
+    "file": "FOSILES_PILOTO_R2v4_PARA_SUBIR_3.zip",
+    "bytes": 2132654,
+    "sha256": "e321b32d4d2a9d16c4df6a99da7e956543ceba5b0666919e6b8e48adac7a4ff1",
+    "internal_manifest": "fosiles-r2/MANIFEST.sha256",
+    "internal_manifest_sha256": "26c2c621bf7be16135ca692a8c90eef9b05554ac3bbf1e5910ad5df744addfdc",
+    "manifest_hash_entries": 78,
+    "manifest_hash_pass": 78,
+    "manifest_hash_fail": 0
+  },
+  "evidence": {
+    "captures": {
+      "file": "FOSILES_R2v4_CAPTURAS_3.zip",
+      "sha256": "38e274848e0e8b3d75b5a2083b9ff1bdb90237071df9194fbe7dfbb45ea71688"
+    },
+    "governance": {
+      "file": "FOSILES_R2v4_GOBERNANZA_3.md",
+      "sha256": "a2d135f02dc2cc278899a65b1c16f319e94316babb3ccdb5d245c350d0fe403c"
+    },
+    "report": {
+      "file": "FOSILES_R2v4_INFORME_3.md",
+      "sha256": "66b7515e75246c7a6150a6500a9f0610ceeefa3427a951ca4c2ca790311c673a"
+    }
+  },
+  "historical_r2v3": {
+    "file": "FOSILES_PILOTO_R2v3_PARA_SUBIR_1.zip",
+    "sha256": "6339303a7ff36ee43d82aedcd4119539cc2daadf7e568183a98203ebfd529caf",
+    "disposition": "HISTORICAL_SUPERSEDED_DO_NOT_INTEGRATE"
+  },
+  "r2v3_to_r2v4_delta": {
+    "byte_identical_shared_files": 73,
+    "r2v4_only_files": 6,
+    "changed_shared_files": 7
+  },
+  "separation": {
+    "r2v4": "KEEP_PRODUCT_SOURCE",
+    "r2v3": "HISTORICAL_ONLY",
+    "f01_plus": "NEW_EXPANSION_SEPARATE_LINEAGE"
+  },
+  "runtime_ready": false,
+  "runtime_blocker": "KNOWN_NOMINAL_QA_INTEGRATION_REPAIR_REMAINS_OUTSIDE_ATLAS",
+  "runtime_code_changed": false,
+  "art_changed": false,
+  "main_changed": false
+}
