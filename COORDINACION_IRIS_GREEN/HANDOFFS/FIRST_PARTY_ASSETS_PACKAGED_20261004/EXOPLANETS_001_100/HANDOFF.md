@@ -54,3 +54,24 @@ copy byte-identical → hash → consolidated manifest → contact-sheet QA → 
 No runtime integration.
 No main.
 No deploy.
+
+
+## Source recovery audit · confirmed
+
+Atlas repeated the B01/B02 recovery pass before freezing the blocker.
+
+Marker:
+`ATLAS_EXOPLANETS_B01_B02_SOURCE_RECOVERY_AUDIT_CONFIRMED`
+
+Evidence:
+`SOURCE_RECOVERY_AUDIT.md`
+
+Independent verification of the preserved partial package:
+- 115 ZIP entries;
+- 114/114 SHA256SUMS entries recomputed PASS;
+- 77/77 runtime PNG = 1536×1536 RGBA + embedded sRGB ICC + alpha 0–255;
+- coverage = 77 PACKAGED + 3 scientific HOLD + 20 B01/B02 source-blocked.
+
+The blocker is therefore confirmed as a **source/provenance gap**, not a packaging corruption.
+
+Final gate remains intentionally unissued until authoritative B01/B02 clean-master bytes + mapping are recovered.
