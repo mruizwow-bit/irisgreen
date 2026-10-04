@@ -73,7 +73,7 @@ require("'.webp'" not in publisher, "R08 publisher still carries the old donor W
 # Voice integration may signal activity, but it must not replace the current visual identity.
 require("setVoiceActive" in js, "A2 voice compatibility hook is missing")
 require("dataset.voiceActive" in js, "Voice hook must stay presentation-neutral")
-require("setVoiceActive(playing)" in mount, "A2 voice runtime is no longer wired to the presentation hook")
+require("setVoiceActive(speaking)" in mount, "Conversational voice runtime is no longer wired to the presentation hook")
 
 # B3 transitions remain finite, while the measured orbit layers provide living presence.
 require("Movimiento suave y continuo." in panel + mount,
