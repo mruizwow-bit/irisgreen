@@ -1,0 +1,93 @@
+{
+  "schema": "nexo_work_handoff_20261004_v1",
+  "date": "2026-10-04",
+  "branch": "nexo/work-handoff-20261004",
+  "base_main_sha": "c20fcc73d61c6a965c1bfb28eea7139ec3284d1c",
+  "must_fetch_live_main_before_write": true,
+  "role": "Technical Resilience & Systems Reliability Lead",
+  "principles": [
+    "COMPONENT_PASS_NE_SYSTEM_PASS",
+    "TECHNICAL_PASS_NE_PRODUCT_PASS",
+    "ONE_EXPERIENCE_USE_HUMAN_QA_THEN_NEXT",
+    "READ_GITHUB_CANON_DO_NOT_RECONSTRUCT_FROM_CHAT"
+  ],
+  "active_constraints": {
+    "motor": "BUSY_WITH_SABIK_WEB_ON_MAIN__DO_NOT_INTERRUPT",
+    "claude_habitation": "STOP",
+    "scale_build": "BLOCKED_BY_PROTOTYPE_FIRST"
+  },
+  "games": {
+    "map": "DISCARDED_PRODUCT_CONCEPT_FAIL",
+    "habitation": {
+      "core": "KEEP",
+      "runtime_r06_1": "DISCARD_UI",
+      "room1_storyboard": "READY_FOR_PRISMA",
+      "code": "BLOCKED",
+      "next_gate": "ROOM1_STORYBOARD_HUMAN_QA_PASS"
+    }
+  },
+  "creation": {
+    "rhythm_r06_1": "TECHNICAL_PASS_ONLY",
+    "product_human_qa": "PENDING",
+    "scale": "BLOCKED"
+  },
+  "discovery": {
+    "contract": "SEMANTIC_ACTION_TO_OBSERVABLE_CONSEQUENCE_TO_INFERENCE_TO_REVEAL_TO_DEPTH",
+    "sky": {
+      "product": "NEW_FROM_ZERO",
+      "first_target": "ORION",
+      "model": "CURATED_OBSERVATION_PRESET",
+      "storyboard": "READY_FOR_PRISMA",
+      "code": "BLOCKED",
+      "next_gate": "NIGHT_SKY_ORION_STORYBOARD_HUMAN_QA_PASS"
+    },
+    "marine": {
+      "previous_runtime": "REFERENCE_ONLY",
+      "product_reaudit_required": true,
+      "praya": "FACTUAL_HOLD"
+    }
+  },
+  "calm_space": {
+    "aquarium": {
+      "visual": "R02_BLUE_KEEP",
+      "audio_oai_r02": "HUMAN_QA_PASS_TO_FULL_RENDER",
+      "next": "FULL_5MIN_R02_PLUS_OAI_R02",
+      "gate": "RINCON_PECERA_R02_FULL_5MIN_AV_READY_FOR_MEDIA_QA",
+      "after": [
+        "ECO_FINAL_MEDIA_QA",
+        "WAIT_MOTOR_COMMON_PLAYER",
+        "AXIOMA",
+        "HUMAN_QA_MARIA_FINAL"
+      ]
+    },
+    "music": "STOP_CLAUDE__HANDOFF_MUSIC_EXPERT"
+  },
+  "web_architecture": {
+    "nav": [
+      "Inicio",
+      "Información",
+      "Recursos",
+      "Juegos",
+      "Descubrimiento",
+      "Creación",
+      "Espacio tranquilo"
+    ],
+    "free_always": [
+      "Información",
+      "Recursos",
+      "Espacio tranquilo"
+    ],
+    "free_plus": [
+      "Juegos",
+      "Descubrimiento",
+      "Creación"
+    ],
+    "subpattern": "AREA_LANDING_TO_PARA_TODOS_OR_PLUS",
+    "rebuild": "PARALLEL_REBUILD_NO_CUTOVER"
+  },
+  "payments": {
+    "issue": 387,
+    "architecture": "STRIPE_CHECKOUT_BILLING_PORTAL_SIGNED_WEBHOOKS_NETLIFY_FUNCTIONS",
+    "live": "BLOCKED_UNTIL_TEST_E2E_AND_MARIA_AUTH"
+  }
+}
