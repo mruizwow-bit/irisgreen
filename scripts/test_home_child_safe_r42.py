@@ -19,18 +19,22 @@ def main():
   need(txt.count('data-ig-audience-stage=')==3,'Home public age button count !=3')
   need('data-ig-audience-stage="GENERAL"' not in txt,'GENERAL must not be a public age button')
   need('data-ig-audience-stage="ALL_AGES"' not in txt,'ALL_AGES must not be a public age button')
-  need('ig-home-v4-safety-state' in txt,'Home child-safe status missing')
+  need('ig-home-v4-safety-state' not in txt,'Internal safety must not be exposed as visible Home status')
+  need('Protección infantil' not in txt and 'Child-safe protection' not in txt,'Child-safe implementation label leaked into public Home')
   for label in labels: need(label in txt,'Home v4 missing '+label)
   for asset in ['/assets/ig-global-ui-tokens-2026.css','/assets/ig-theme.js','/assets/ig-audience.js','/assets/buscador-comun.js','/assets/home-r42-child-safe.js','/assets/ig-r49-transversal.css','/assets/ig-r49-transversal.js','/sabik/sabik-motion-r37.js','/sabik/sabik-web-r01.js','/sabik/iris-mount.mjs']:
    need(txt.count(asset)==1,'Home v4 asset count !=1: '+asset)
   need('class="ig-uh"' not in txt,'Legacy ig-uh header leaked into built Home')
   for forbidden in ['Empieza por lo que necesitas.','Start with what you need.','Infancia','Adolescencia','Adultez','Cualquier edad','Children</button>','Teenagers</button>','Adults</button>','Any age</button>','image-slot.js','<image-slot']:
    need(forbidden not in txt,'Legacy/donor placeholder leaked: '+forbidden)
-  for token in ['id="sabik-form"','id="sabik-submit"','id="sabik-expand"','id="sabik-voice"','id="sabik-motion-level"','id="sabik-reset"','id="sabik-toggle"']:
+  for token in ['id="sabik-form"','id="sabik-submit"','id="sabik-expand"','id="sabik-voice"','id="sabik-voice-stop"','id="sabik-voice-repeat"','id="sabik-motion-level"','id="sabik-reset"','id="sabik-toggle"']:
    need(token in txt,'Real Sabik control missing '+token)
-  need('class="sabik-actions sabik-primary-actions"' in txt,'Sabik primary action group missing')
-  need('class="ig-home-v4-sabik-secondary-controls"' in txt,'Sabik secondary controls group missing')
+  for layer in ['orbits-back','core-rings','core-light','particles-front']:
+   need(layer in txt,'Definitive Sabik layer missing '+layer)
   need('id="sabik-browse"' not in txt,'Explore resources must live outside the Sabik block')
+  need('/sabik/definitive-r01/sabik-layered.css' in txt,'Definitive Sabik stylesheet missing')
+  need('href="/es/intereses/"' in txt or 'href="/en/interests/"' in txt,'Interests must be in Home top actions')
+  need('href="/es/libros/' in txt,'Books must be in Home top actions')
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
  safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text());adult=json.loads((root/'assets/safety/search-adult-full-catalog.json').read_text())
