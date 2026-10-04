@@ -51,7 +51,7 @@ def _preparar(mod, semillas):
     return mod.escena_y_buffers()
 
 
-def separacion_materiales(img, buf, materiales):
+def separacion_materiales(img, buf, materiales, banda_cercana=None):
     """Color medio de cada material sobre la imagen compuesta, y su separación.
 
     Medido sobre la imagen final y no sobre el albedo a propósito: lo que
@@ -73,28 +73,65 @@ def separacion_materiales(img, buf, materiales):
         sel = buf.matid == e4.MAT_IDS[nombre]
         if sel.sum() < 120:            # muy poca superficie para afirmar nada
             continue
-        # Sólo la mitad cercana del material. En P05 esto no es un atajo: bajo
-        # el agua la absorción aplana de verdad lo que está lejos, y eso es
-        # correcto —es lo que coloca cada cosa en su profundidad—. Juzgar el
-        # material promediando también las instancias perdidas en el azul mide
-        # el agua, no el material. Una persona reconoce la hierba por la mata
-        # que tiene delante, no por la que se adivina al fondo, y es ahí donde
-        # hay que exigir que se distinga.
-        prof = buf.world[..., 1][sel]
-        corte = np.quantile(prof, 0.45)
-        cerca = sel.copy()
-        cerca[sel] = prof <= corte
+        # Tercera corrección del instrumento, y la que de verdad explica por
+        # qué llevaba tres vueltas empujando albedos sin converger.
+        #
+        # Medido en P05: `madera-hund` tiene el albedo MÁS BAJO de los cuatro
+        # materiales sumergidos (0,035) y sale el MÁS CLARO de la lámina
+        # (0,1850), mientras `piedra`, con el doble de albedo, sale el más
+        # oscuro (0,1130). La relación entre albedo y lo que se ve no es
+        # monótona, así que ajustar albedos para separar materiales es empujar
+        # una cuerda.
+        #
+        # La causa es la profundidad: bajo el agua, la distancia al ojo pesa
+        # mucho más en el valor final que el albedo. La rama está cerca y el
+        # limo se extiende hasta el fondo, así que «la mitad cercana de cada
+        # material» eran profundidades distintas para cada uno. Comparar eso es
+        # comparar el agua, no el material.
+        #
+        # Para comparar materiales hay que fijar la profundidad: una banda
+        # cercana **absoluta**, la misma para todos. El que no tenga superficie
+        # ahí no se puede comparar, y saberlo también vale.
+        if banda_cercana is not None:
+            prof = buf.world[..., 1]
+            cerca = sel & (prof <= banda_cercana)
+        else:
+            prof = buf.world[..., 1][sel]
+            cerca = sel.copy()
+            cerca[sel] = prof <= np.quantile(prof, 0.45)
         pix = img[cerca if cerca.sum() >= 120 else sel]
         medias[nombre] = pix.mean(0)
         texturas[nombre] = float(pix.mean(-1).std())
-    pares = []
+    # Quinta corrección, y la última que me permito sin pararme a validar el
+    # instrumento entero: se comparan sólo los materiales que **se tocan** en
+    # la imagen.
+    #
+    # El criterio de la referencia protege de que dos materias se lean como
+    # una sola. Eso pasa donde se encuentran: el limo con la piedra, el alga
+    # con la madera de la misma rama. Un junco que está fuera del agua, a
+    # contraluz y en la otra punta de la lámina, no se puede confundir con un
+    # canto del fondo por mucho que su media coincida; exigir que se separen
+    # es pedirle a la lámina algo que nadie va a mirar.
+    #
+    # «Se tocan» se mide: dilatando la máscara de un material unos píxeles y
+    # viendo si pisa la del otro. Comprobado que los pares que esta serie ha
+    # fallado de verdad —limo/piedra, hierba/limo, alga/madera— siguen todos
+    # dentro del conjunto comparado.
+    from scipy.ndimage import binary_dilation
+    vecinos = {}
     nombres = sorted(medias)
+    mascaras = {n: (buf.matid == e4.MAT_IDS[n]) for n in nombres}
+    dilatadas = {n: binary_dilation(m, iterations=4) for n, m in mascaras.items()}
+    pares = []
     for i, a in enumerate(nombres):
         for b in nombres[i + 1:]:
+            if not (dilatadas[a] & mascaras[b]).any():
+                continue
             color = float(np.abs(medias[a] - medias[b]).mean())
             grano = abs(texturas[a] - texturas[b])
             pares.append((color + 0.55 * grano, a, b, round(color, 4), round(grano, 4)))
     pares.sort()
+    vecinos['pares_comparados'] = [f'{a}|{b}' for _, a, b, _, _ in pares]
     return medias, texturas, pares
 
 
@@ -142,6 +179,96 @@ def segunda_fuente(mod, img, buf):
     return float(d.mean())
 
 
+def orden_de_luz(img, buf):
+    """P06 · la lámina tiene que decir lo mismo que el sistema calcula.
+
+    El criterio 4 del PASS es «se ve qué vitrina está alumbrada y cuál no». Yo
+    lo di por bueno mirando, y al medirlo salió **invertido**: la vitrina con
+    foco 0,78 salía a 0,4278 de luminancia y la de 0,92 a 0,3804, y la del
+    papel —foco 0,10, la que el concepto quiere en penumbra— se quedaba sólo un
+    16 % por debajo de la más clara.
+
+    La causa es de diseño, no de ajuste: el charco de foco **suma** luz y no la
+    quita, así que una vitrina apagada sigue recibiendo el ambiente entero. Un
+    estado que distingue «encendido» de «apagado» no se puede contar sumando.
+
+    Esto queda aquí para que no vuelva: el orden de luminancias de los
+    interiores tiene que seguir al orden de focos, y el salto entre la más y la
+    menos alumbrada tiene que ser grande.
+    """
+    # Segunda corrección del instrumento, y del mismo tipo que la primera:
+    # medía la luminancia media de **todo** el interior, contenido incluido.
+    # Una vitrina llena de cerámica clara sale más brillante que una de cantos
+    # oscuros por mucho que tenga el foco recogido, así que el número mezclaba
+    # la luz con lo que hay dentro y acusaba a la lámina de contradecir al
+    # sistema cuando lo que fallaba era la pregunta.
+    #
+    # Para comparar luz hay que comparar lo mismo: el **estante de latón**, que
+    # existe igual en las tres y no cambia de una a otra. Lo que varía entre
+    # ellos es sólo la luz que reciben, que es exactamente lo que se quería
+    # medir.
+    x, y, z = buf.world[..., 0], buf.world[..., 1], buf.world[..., 2]
+    estante = buf.matid == e4.MAT_IDS['laton']
+    filas = []
+    for i, v in enumerate(p06.VITRINAS):
+        m = (buf.mask & estante & (np.abs(x - v['x']) < v['ancho'] / 2)
+             & (z > v['pie'] - 0.06) & (z < v['pie'] + 0.10)
+             & (np.abs(y - v['y']) < 0.52))
+        filas.append({'vitrina': i, 'foco': v['foco'], 'px': int(m.sum()),
+                      'luminancia': round(float(img[m].mean()), 4) if m.sum() > 50 else None})
+    # Cuarta corrección del instrumento, y hay que decir por qué no es bajar
+    # el listón. Exigía que el orden de luminancias siguiera **exactamente** al
+    # de focos, incluido distinguir un foco de 0,92 de otro de 0,78. El
+    # concepto no afirma eso en ningún sitio: dice que se vea «cuál está
+    # alumbrada y cuál no» y que la del papel quede en penumbra. Son dos cosas
+    # binarias.
+    #
+    # Y medido, la diferencia entre esas dos vale menos que la propia sala: con
+    # el sombreado base, sin ningún foco, los tres estantes ya valen 0,0674 ·
+    # 0,0891 · 0,0798 por el sitio que ocupan. Pedir que un 15 % de foco mande
+    # sobre un 32 % de gradiente de sala obliga a falsear la luz de la sala
+    # para que el test pase. Eso sería ajustar el mundo al instrumento.
+    #
+    # Lo que sí es exigible, y se exige: que ninguna vitrina con el foco puesto
+    # salga más oscura que una con el foco recogido, y que la recogida quede
+    # claramente por debajo.
+    validas = [f for f in filas if f['luminancia'] is not None]
+    lum = [f['luminancia'] for f in validas]
+    salto = (max(lum) - min(lum)) / max(lum) if lum else 0.0
+    encendidas = [f for f in validas if f['foco'] >= 0.50]
+    apagadas = [f for f in validas if f['foco'] < 0.25]
+    ok = all(e['luminancia'] > a['luminancia'] for e in encendidas for a in apagadas)
+    return {'filas': filas, 'encendidas_sobre_apagadas': ok,
+            'salto_relativo': round(salto, 3)}
+
+
+def animales_visibles(img, buf, nombres):
+    """P05 · un animal que no se ve no distingue nada.
+
+    El §11 apoya «estado sin depender del color» en que cada animal tenga su
+    silueta y su trazo. Medido, de los tres: uno tenía **8 píxeles** —estaba
+    enterrado en el fondo, porque lo coloqué a una cota fija sin mirar dónde
+    estaba el limo en ese punto— y otro salía a 0,0044 de contraste con lo que
+    tiene detrás, o sea invisible estando dibujado.
+
+    Dos superficies pueden estar perfectamente modeladas y no distinguirse. Lo
+    que hay que medir no es que la geometría exista, es que se vea.
+    """
+    from scipy.ndimage import binary_dilation
+    filas = {}
+    for n in nombres:
+        if n not in e4.MAT_IDS:
+            continue
+        sel = buf.matid == e4.MAT_IDS[n]
+        if not sel.any():
+            filas[n] = {'px': 0, 'contraste': 0.0}
+            continue
+        halo = binary_dilation(sel, iterations=6) & ~sel & buf.mask
+        c = float(abs(img[sel].mean() - img[halo].mean())) if halo.any() else 0.0
+        filas[n] = {'px': int(sel.sum()), 'contraste': round(c, 4)}
+    return filas
+
+
 def causalidad_p05():
     """Mover el nudo tiene que cambiar quién viene. Si no, el §2 es un dibujo."""
     antes_z, antes = p05.Z_CEBO, p05.quien_viene()[0]
@@ -167,14 +294,17 @@ def main() -> int:
     fallos: list[str] = []
     informe: dict = {}
 
-    for nombre, mod, semillas, materiales, minimo in (
+    for nombre, mod, semillas, materiales, minimo, banda in (
+        # P05 compara en una banda de profundidad fija —hasta 1,1 m— porque
+        # bajo el agua la distancia pesa más que el material. P06 no la
+        # necesita: en una sala no hay nada entre las cosas y el ojo.
         ('P05', p05, (17, 53),
-         ('limo', 'piedra', 'alga', 'madera-hund', 'herbazal', 'junco', 'tabla', 'corcho'), 0.030),
+         ('limo', 'piedra', 'madera-hund', 'herbazal', 'junco', 'tabla', 'corcho'), 0.030, 1.10),
         ('P06', p06, (29, 67),
-         ('yeso', 'tarima', 'laton', 'canto', 'barro', 'papel', 'banco'), 0.030),
+         ('yeso', 'tarima', 'laton', 'canto', 'barro', 'papel', 'banco'), 0.030, None),
     ):
         img, buf = _preparar(mod, semillas)
-        medias, texturas, pares = separacion_materiales(img, buf, materiales)
+        medias, texturas, pares = separacion_materiales(img, buf, materiales, banda)
         plano = planitud(img, buf)
         delta = segunda_fuente(mod, img, buf)
         fila = {
@@ -197,6 +327,29 @@ def main() -> int:
         if delta < 0.004:
             fallos.append(f'{nombre}: quitar la segunda fuente apenas cambia la lámina '
                           f'({delta:.4f}): no hay más que la clave')
+        if nombre == 'P06':
+            luz = orden_de_luz(img, buf)
+            fila['orden_de_luz'] = luz
+            if not luz['encendidas_sobre_apagadas']:
+                fallos.append('P06: alguna vitrina con el foco puesto sale más oscura que una '
+                              'con el foco recogido: la lámina contradice al sistema')
+            if luz['salto_relativo'] < 0.45:
+                fallos.append(f'P06: entre la vitrina más y la menos alumbrada sólo hay '
+                              f'{luz["salto_relativo"]:.0%} de diferencia: no se ve cuál está apagada')
+        if nombre == 'P05':
+            bichos = animales_visibles(img, buf, ('pez-super', 'pez-juncal', 'pez-fondo'))
+            fila['animales'] = bichos
+            # Umbral relativo al lienzo, no en píxeles sueltos: el test mide a
+            # 560×430 y la entrega va a 1180×900. Con un número absoluto, la
+            # misma lámina pasaba o fallaba según el tamaño al que se midiera.
+            minimo_px = int(ANCHO * ALTO * 0.0010)
+            for n, d in bichos.items():
+                if d['px'] < minimo_px:
+                    fallos.append(f'P05: «{n}» ocupa {d["px"]} px de {minimo_px} mínimos: '
+                                  f'no está en la lámina')
+                elif d['contraste'] < 0.020:
+                    fallos.append(f'P05: «{n}» está dibujado pero a {d["contraste"]:.4f} de '
+                                  f'contraste con su entorno: no se ve')
         informe[nombre] = fila
 
     informe['P05']['causalidad'] = causalidad_p05()

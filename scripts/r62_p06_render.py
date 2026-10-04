@@ -249,7 +249,12 @@ def vitrinas(buf):
             elif mat == 'barro':
                 _pieza(buf, 'barro', px, v['y'], zs, 0.21, 0.25, tumbada=frag > 0.32)
             else:
-                _pieza(buf, 'canto', px, v['y'], zs, 0.17, 0.115)
+                # Tres cantos idénticos se leen como patrón y no como uso, que
+                # es literalmente lo que la referencia señala. La variación
+                # sale de un hash del sitio, así que es determinista.
+                h = (np.sin(i * 12.9898 + sitio * 78.233) * 43758.5453) % 1.0
+                _pieza(buf, 'canto', px + (h - 0.5) * 0.035, v['y'] + (h - 0.5) * 0.06,
+                       zs, 0.145 + 0.055 * h, 0.092 + 0.048 * (1.0 - h))
 
         # Aquí se pintaba la luna frontal como un cuadrilátero de material
         # 'vidrio'. Este rasterizador es opaco: lo que se pinta delante tapa, y
@@ -261,18 +266,44 @@ def vitrinas(buf):
         # delata por el canto y por un reflejo tendido. Así que la luna no se
         # pinta: quedan los cantos, que son geometría de verdad, y el reflejo
         # se compone después sobre la zona de la urna.
-        # el canto del vidrio: es lo que lo delata, más que el reflejo
+        # El canto del vidrio: es lo que delata una luna, más que el reflejo.
+        # Con cantos sólo en las dos aristas delanteras la caja no cerraba y la
+        # vitrina se leía como una mesa con dosel: cuatro patas, un tablero y
+        # un marco flotando encima. Una urna cierra por seis aristas visibles,
+        # las cuatro verticales y los dos travesaños del frente.
+        zt, za = v['pie'], v['pie'] + v['alto']
         for cx in (x0, x0 + v['ancho'] - 0.012):
-            blit_quad(buf, [(cx, y0 - 0.002, v['pie']), (cx + 0.012, y0 - 0.002, v['pie']),
-                            (cx + 0.012, y0 - 0.002, v['pie'] + v['alto']),
-                            (cx, y0 - 0.002, v['pie'] + v['alto'])], 'canto-v', 1.0)
+            for cy in (y0 - 0.002, y0 + 0.565):
+                blit_quad(buf, [(cx, cy, zt), (cx + 0.012, cy, zt),
+                                (cx + 0.012, cy, za), (cx, cy, za)], 'canto-v', 1.0)
+        for cz in (zt, za - 0.012):
+            blit_quad(buf, [(x0, y0 - 0.002, cz), (x0 + v['ancho'], y0 - 0.002, cz),
+                            (x0 + v['ancho'], y0 - 0.002, cz + 0.012),
+                            (x0, y0 - 0.002, cz + 0.012)], 'canto-v', 1.0)
 
 
 def colocando(buf):
-    """La pieza suspendida sobre su hueco. El anillo punteado va en vector."""
+    """La pieza suspendida sobre su hueco.
+
+    Sin la sombra en el estante y sin la vertical de caída, una pieza en el
+    aire se lee como una pieza más apoyada en algo: en la vuelta anterior
+    parecía posada sobre el marco. Las dos señales son la convención que P02 y
+    P03 ya tienen, y son geometría, no color. El anillo punteado del destino
+    va en la capa vectorial.
+    """
     v = VITRINAS[COLOCANDO['vitrina']]
     px = v['x'] + (COLOCANDO['sitio'] - 1) * (v['ancho'] * 0.30)
-    z = v['pie'] + 0.055 + COLOCANDO['alto']
+    zs = v['pie'] + 0.055
+    z = zs + COLOCANDO['alto']
+    # la huella en el estante, desplazada hacia donde cae la luz
+    blit_quad(buf, [(px - 0.14, v['y'] - 0.11, zs + 0.002), (px + 0.14, v['y'] - 0.11, zs + 0.002),
+                    (px + 0.14, v['y'] + 0.11, zs + 0.002), (px - 0.14, v['y'] + 0.11, zs + 0.002)],
+              'soporte', 0.30,
+              alpha=lambda u, v_: ((u - 0.52) ** 2 / 0.25 + (v_ - 0.5) ** 2 / 0.25) < 0.88)
+    # la vertical de caída
+    blit_quad(buf, [(px - 0.004, v['y'] + 0.10, zs), (px + 0.004, v['y'] + 0.10, zs),
+                    (px + 0.004, v['y'] + 0.10, z - 0.05), (px - 0.004, v['y'] + 0.10, z - 0.05)],
+              'soporte', 0.55)
     _pieza(buf, COLOCANDO['material'], px, v['y'], z, 0.17, 0.115)
 
 
@@ -324,18 +355,48 @@ def focos_y_vidrio(lit, buf):
     x, y, z = buf.world[..., 0], buf.world[..., 1], buf.world[..., 2]
     out = lit.copy()
 
-    # charcos de foco sobre cada estante y sus piezas
+    # Charcos de foco. Y antes del charco, la atenuación: ésta es la
+    # corrección de fondo de esta vuelta.
+    #
+    # El charco sólo **sumaba** luz, así que una vitrina con el foco recogido
+    # seguía recibiendo el ambiente entero de la sala y salía casi tan clara
+    # como una alumbrada. Medido: con focos 0,92 · 0,78 · 0,10 las luminancias
+    # salían 0,3804 · 0,4278 · 0,3218, o sea el **orden invertido** en las dos
+    # primeras y sólo un 33 % entre la más y la menos alumbrada. La lámina
+    # contradecía lo que el sistema calcula, que es peor que no enseñarlo.
+    #
+    # Un estado que distingue «encendido» de «apagado» no se puede contar
+    # sumando: hay que quitar en el apagado. El interior de cada urna se
+    # atenúa con su propio foco antes de recibir su charco.
     for i, v in enumerate(VITRINAS):
         fuerza = max(luz_en(i, s) for s in range(3))
-        d = np.sqrt(((x - v['x']) / (v['ancho'] * 0.62)) ** 2
-                    + ((y - v['y']) / 0.40) ** 2)
+        urna = (buf.mask & (np.abs(x - v['x']) < v['ancho'] / 2)
+                & (z > v['pie']) & (z < v['pie'] + v['alto'])
+                & (np.abs(y - v['y']) < 0.52))
+        # Dos números medidos, no elegidos a ojo.
+        #
+        # Uno: la sala **ya** ordena mal los estantes antes de que haya focos.
+        # Sólo con el sombreado base valen 0,0674 · 0,0891 · 0,0798, o sea que
+        # la vitrina del medio sale la más clara por dónde está, no por su luz.
+        # Para que el foco mande, tiene que dominar esa dispersión de 0,022, y
+        # para eso la atenuación va con exponente: lo apagado se apaga de
+        # verdad.
+        #
+        # Dos: el charco se normalizaba por el **ancho de cada urna**, así que
+        # una vitrina más ancha recogía más charco y el aporte salía igual en
+        # las dos primeras —+0,0525 contra +0,0532— cuando sus focos son 0,99 y
+        # 0,85. Un charco de foco no mide la vitrina, mide el foco: radio
+        # absoluto.
+        atenua = 0.06 + 0.94 * fuerza ** 1.4
+        out = np.where(urna[..., None], out * atenua, out)
+        d = np.sqrt(((x - v['x']) / 0.42) ** 2 + ((y - v['y']) / 0.34) ** 2)
         alto = np.clip(1.0 - np.abs(z - (v['pie'] + 0.16)) / 0.44, 0, 1)
         charco = np.clip(1.0 - d, 0, 1) ** 2.4 * alto * buf.mask
         # A 0,55 el charco era un foco de quirófano: las nueve piezas salían
         # blancas y el canto, el barro y el papel dejaban de distinguirse, que
         # es el criterio 3 del PASS. Un foco de vitrina alumbra, no borra.
         out = out + (np.array([0.96, 0.94, 0.98], np.float32)[None, None, :]
-                     * (charco * fuerza * 0.20)[..., None])
+                     * (charco * fuerza * 0.90)[..., None])
 
     # la lama de claraboya: se ve en el aire y cae en la tarima
     s = x + z * 0.54                       # la lama, inclinada como la luz
