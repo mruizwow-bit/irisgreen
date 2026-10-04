@@ -61,10 +61,13 @@ async function mount(){
  let voice,lastLanguage=lang;
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
+ function ageBand(){return window.IGAudience?.get?.()||'AGE_UNSET';}
+ function ageSelected(){return ['AGE_0_12','AGE_13_17','AGE_18_PLUS'].includes(ageBand());}
+ function restrictedAdultAccess(){return Boolean(window.IGAudience?.canAccessRestrictedAdultContent?.());}
  function clearVoiceResume(){if(voiceResumeTimer){window.clearTimeout(voiceResumeTimer);voiceResumeTimer=0;}}
  function resumeVoiceSoon(delay=700){
   clearVoiceResume();
-  if(!voiceSessionActive)return;
+  if(!voiceSessionActive||!ageSelected())return;
   voiceResumeTimer=window.setTimeout(()=>{
    voiceResumeTimer=0;
    const s=voice.getState();
@@ -150,7 +153,8 @@ async function mount(){
   });
  }
  async function retrieve(request,{signal}={}){
-  if(connection && !['AGE_0_12','AGE_13_17'].includes(window.IGAudience?.get?.())){
+  if(!ageSelected())return Object.freeze({library_version:'irisgreen-age-unset',candidates:Object.freeze([]),groups:Object.freeze([]),source_language:lang});
+  if(connection && restrictedAdultAccess()){
    try{
     await Promise.race([connection.connect(lang),timeout(1500,signal)]);
     const envelope=await cloudQuery({query:request.query,limit:6},{signal});
@@ -213,12 +217,13 @@ async function mount(){
   syncVoice(voice.getState(),{reason:'translate'});controls();
  }
  async function submitQuery(q,inputMode){
-   voiceTurn=inputMode==='voice';
+  if(!ageSelected()){voiceTurn=false;announcement.textContent=lang==='en'?'Choose an age group before using Sabik.':'Elige una edad antes de usar Sabik.';return Object.freeze({kind:'age-gate-blocked'});}
+  voiceTurn=inputMode==='voice';
   q=String(q||'').trim();
   if(!q){void visual('orientar',{force:true,semantic:'idle'});say(strings().empty,{voiceId:'sabik.input.empty'});input.focus();return;}
   voice.cancelSpeech({emitState:false});busy=true;controls();announcement.textContent=strings().processing;
   try{
-   return await conversation.submitTurn(q,{inputMode,locale:lang,audience:window.IGAudience?.get?.()||'GENERAL',explicitIntent:true});
+   return await conversation.submitTurn(q,{inputMode,locale:lang,audience:ageBand(),explicitIntent:true});
   }catch(error){
    if(error?.name!=='AbortError'){root.dataset.retrievalState='error';say(strings().error);}
   }finally{busy=false;controls();}
@@ -236,8 +241,8 @@ async function mount(){
  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();$('#sabik-form').requestSubmit();}});
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();endVoiceSession('cancel');busy=false;controls();void visual('pausa',{force:true,semantic:'idle'});input.focus();});
  const toggle=$('#sabik-toggle');if(toggle)toggle.addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);toggle.setAttribute('aria-expanded',String(!body.hidden));toggle.textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();endVoiceSession('close');busy=false;controls();void present();}else visual('transicion');});
- voiceButton.addEventListener('click',async()=>{if(voiceSessionActive){endVoiceSession('voice-primary-stop');return;}voiceSessionActive=true;voiceButton.disabled=true;controls();try{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}}catch{voiceSessionActive=false;announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-primary'});controls();}});
- if(micButton)micButton.addEventListener('click',async()=>{voiceSessionActive=true;const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}controls();});
+ voiceButton.addEventListener('click',async()=>{if(!ageSelected()){announcement.textContent=lang==='en'?'Choose an age group before using Sabik.':'Elige una edad antes de usar Sabik.';return;}if(voiceSessionActive){endVoiceSession('voice-primary-stop');return;}voiceSessionActive=true;voiceButton.disabled=true;controls();try{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}}catch{voiceSessionActive=false;announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;syncVoice(voice.getState(),{reason:'voice-primary'});controls();}});
+ if(micButton)micButton.addEventListener('click',async()=>{if(!ageSelected())return;voiceSessionActive=true;const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}controls();});
  if(voiceStop)voiceStop.addEventListener('click',()=>{conversation.cancel('voice-stop');connection?.disconnect();endVoiceSession('voice-stop');busy=false;controls();input.focus();});
  if(voiceRepeat)voiceRepeat.addEventListener('click',()=>{void voice.repeat();});
  if(voiceVolume)voiceVolume.addEventListener('input',()=>voice.setVolume(voiceVolume.value));
