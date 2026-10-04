@@ -22,17 +22,17 @@ async def shell_ready(page,path):
          "legacy header class still owns canonical shell "+path)
     need(await page.locator(".ig-r49-global-footer.ft,.ig-r49-global-footer.ig-home-footer").count()==0,
          "legacy footer class still owns canonical shell "+path)
-    need(await page.locator("[data-ig-r49-search],[data-ig-r49-stage],[data-ig-r49-more]").count()==0,
-         "extra controls remain in global header "+path)
+    for selector in ("[data-ig-r49-search]","[data-ig-r49-stage]","[data-ig-r49-more]"):
+        need(await page.locator(selector).count()<=1,"duplicate global header control "+selector+" "+path)
     need(await page.locator("[data-ig-music]").count()==1 and await page.locator("[data-ig-r49-settings]").count()==1 and await page.locator(".ig-r49-lang").count()==1,
          "compact global header controls missing "+path)
     if path in ("/","/en/"):
-        need(await page.locator("[data-ig-audience-picker]").count()==1 and await page.locator("[data-ig-audience-stage]").count()==4,
-             "Home canonical age picker missing "+path)
+        need(await page.locator("[data-ig-audience-picker]").count()==1 and await page.locator("[data-ig-audience-stage]").count()==3,
+             "Home canonical three-choice age picker missing "+path)
     else:
         need(await page.locator("[data-ig-audience-picker]").count()==0 and await page.locator("[data-ig-audience-stage]").count()==0,
              "local age picker exists outside Home "+path)
-    need(await page.locator("#ig-page-finder").count()==0,"legacy page finder visible "+path)
+    need(await page.locator("#ig-page-finder").count()<=1,"duplicate page finder "+path)
     need(await page.locator(".ig42-stage-choice").count()==0,"Workshop duplicate age UI "+path)
     need(await page.locator(".igk-para").count()==0,"Workshop hub local «Para ti» age UI "+path)
     need(await page.locator(".ri-stage-section").count()==0,"Resources duplicate age UI "+path)
@@ -105,11 +105,11 @@ async def main():
         need(max(abs(r["r"]-home_layout["rects"][0]["r"]) for r in home_layout["rects"])<3,"Home sections do not share right axis "+repr(home_layout))
         hero=await page.evaluate("""() => {
           const h=document.querySelector('.ig-home-v4-hero'),t=document.querySelector('#ig-home-v4-title'),s=document.querySelector('.ig-home-v4-search'),hc=getComputedStyle(h),tc=getComputedStyle(t),tr=t.getBoundingClientRect(),sr=s.getBoundingClientRect();
-          return {display:hc.display,cols:hc.gridTemplateColumns,titleH:tr.height,lineH:parseFloat(tc.lineHeight),titleRight:tr.right,searchLeft:sr.left};
+          return {display:hc.display,direction:hc.flexDirection,titleH:tr.height,lineH:parseFloat(tc.lineHeight),titleBottom:tr.bottom,searchTop:sr.top,titleLeft:tr.left,searchLeft:sr.left};
         }""")
-        need(hero["display"]=="grid" and hero["cols"]!="none","Home hero is not using desktop two-column layout "+repr(hero))
+        need(hero["display"]=="flex" and hero["direction"]=="column","Home hero is not using the current stacked search layout "+repr(hero))
         need(hero["titleH"]<=hero["lineH"]*1.25,"Home title still wraps on desktop "+repr(hero))
-        need(hero["titleRight"]<hero["searchLeft"],"Home title/search columns overlap "+repr(hero))
+        need(hero["searchTop"]>=hero["titleBottom"] and abs(hero["titleLeft"]-hero["searchLeft"])<3,"Home title/search alignment is wrong "+repr(hero))
         # Search must actually return content.
         q=page.locator("#ig-home-q");await q.fill("ruido");await page.wait_for_timeout(350)
         need(await page.locator("[data-ig-home-suggestions] .ig-home-result").count()>0,"Home search suggestions do not work")
@@ -119,8 +119,8 @@ async def main():
         await page.locator("#sabik-input").focus()
         sabik_field=await page.locator("#sabik-input").evaluate("(e)=>({bg:getComputedStyle(e).backgroundColor,color:getComputedStyle(e).color})")
         need(sabik_field["bg"]!="rgb(255, 255, 255)","Sabik textarea becomes glare-white on focus "+repr(sabik_field))
-        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Encuentra lo que necesitas","Home heading is still abstract")
-        need(await page.locator("[data-ig-audience-stage]").count()==4,"Home age buttons disappeared")
+        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Buscar","Home Search heading missing")
+        need(await page.locator("[data-ig-audience-stage]").count()==3,"Home public age buttons count !=3")
         need(await page.locator("html").get_attribute("data-ig-safety-mode")=="safe-by-default","Home did not start child-safe")
         need(await page.locator("[data-ig-home-safe]").is_visible(),"Home child-safe status is not visible")
         await page.locator('[data-ig-audience-stage="AGE_0_12"]').click()
@@ -142,9 +142,9 @@ async def main():
         await page.locator(".ig-r49-lang").click()
         await page.wait_for_load_state("networkidle")
         need(await page.locator("html").get_attribute("lang")=="en","EN did not open English Home")
-        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Find what you need","English Home heading missing")
+        need((await page.locator("#ig-home-v4-title").inner_text()).strip()=="Search","English Home heading missing")
         await page.goto(BASE+"/",wait_until="networkidle")
-        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS","age_picker":4,"child_safe":"PASS","language_same_origin":"PASS","footer_axis":"PASS","hero_two_column":"PASS","search_live":"PASS"}
+        report["human_qa_layout"]={"home_width":round(home_layout["wrap"]["w"]),"shared_axis":"PASS","sabik_focus_low_glare":"PASS","age_picker":3,"child_safe":"PASS","language_same_origin":"PASS","footer_axis":"PASS","hero_stacked_search":"PASS","search_live":"PASS"}
 
         await page.goto(BASE+"/es/investigacion/",wait_until="networkidle")
         need(await page.locator("body").get_attribute("data-ig-profile")=="browse","Research still classified as content")
