@@ -61,7 +61,7 @@ def main():
   need('data-ig-s2-safe' in txt,'Full S2 not replaced '+url)
   need('data-ig-s2-safe-page' in txt,'Safe S2 page marker missing '+url)
   need('prefetch' not in txt.lower() and 'preload' not in txt.lower(),'S2 prefetch/preload found '+url)
-  full=root/'assets/safety/full'/f'{cid}-es.html';need(full.is_file(),'Missing full S2 chunk '+cid);need(full.read_text(encoding='utf-8') not in txt,'Full S2 body leaked '+cid)
+  full=root/'assets/safety/full'/f'{cid}-es.html';need(not full.exists(),'Restricted full S2 chunk published '+cid)
  need(protected==9,'Expected 9 existing S2 page records')
  theme=(root/'assets/ig-global-ui-tokens-2026.css').read_text(encoding='utf-8')
  for token in ['--ig-bg-page:#0B1A2B','--ig-bg-surface:#15304A','--ig-bg-surface-soft:#1D3D5C','--ig-text:#EEF4F8','html[data-ig-theme="light"]']:
@@ -69,7 +69,11 @@ def main():
  audience=(root/'assets/ig-audience.js').read_text(encoding='utf-8')
  for old in ["current='children'","current='teenagers'","current='adults'","current='any'"]:
   need(old not in audience,'Legacy age taxonomy emitted '+old)
- for canonical in ['AGE_0_12','AGE_13_17','AGE_18_PLUS','ALL_AGES','GENERAL']:
+ for canonical in ['AGE_UNSET','AGE_0_12','AGE_13_17','AGE_18_PLUS','ALL_AGES']:
   need(canonical in audience,'Canonical age state missing '+canonical)
+ for api in ['isAdultClaimed','hasAdultAssurance','canAccessRestrictedAdultContent']:
+  need(api in audience,'Adult claim/assurance API missing '+api)
+ need("canAccessRestrictedAdultContent(){return false;}" in audience,'P0 adult assurance must fail closed')
+ print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
  print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':len(adult),'s2_pages':protected*2},ensure_ascii=False))
 if __name__=='__main__': main()
