@@ -200,7 +200,7 @@ async def main():
   need(await page.get_by_role('button',name='Ver información completa').count()==0,'18+ alone exposed restricted full action')
   need(not any('/assets/safety/full/' in u for u in requests),'18+ alone requested restricted full content')
   direct=await page.request.get(BASE+'/assets/safety/full/global-200-es.html')
-  need(direct.status()==404,'direct restricted full URL must fail closed, got '+str(direct.status()))
+  need(direct.status==404,'direct restricted full URL must fail closed, got '+str(direct.status))
   await page.goto(BASE+'/',wait_until='networkidle')
   await page.evaluate("sessionStorage.setItem('ig-age-band-v2','AGE_18_PLUS')")
   await page.reload(wait_until='networkidle')
@@ -208,10 +208,10 @@ async def main():
   need(await page.evaluate("IGAudience.isAdultClaimed()") is True,'stored AGE_18_PLUS did not remain a claim')
   need(await page.evaluate("IGAudience.canAccessRestrictedAdultContent()") is False,'sessionStorage AGE_18_PLUS unlocked restricted content')
   direct2=await page.request.get(BASE+'/assets/safety/full/global-200-es.html')
-  need(direct2.status()==404,'sessionStorage AGE_18_PLUS made direct full URL available')
+  need(direct2.status==404,'sessionStorage AGE_18_PLUS made direct full URL available')
   report['network']['adult_explicit_full_requests']=0
-  report['network']['direct_full_status']=direct.status()
-  report['network']['tampered_age_direct_full_status']=direct2.status()
+  report['network']['direct_full_status']=direct.status
+  report['network']['tampered_age_direct_full_status']=direct2.status
   print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
   await browser.close()
  report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
