@@ -48,27 +48,26 @@ async def main():
   await page.set_viewport_size({'width':1440,'height':900})
   await page.wait_for_timeout(50)
   sabik_geom=await page.evaluate("""() => {
-    const img=document.querySelector('#sabik-web-master');
+    const visual=document.querySelector('#sabik-hologram');
     const widget=document.querySelector('.ig-home-v4-sabik-panel .sabik-widget');
-    const r=img.getBoundingClientRect(), c=getComputedStyle(widget);
-    return {width:r.width,height:r.height,columns:c.gridTemplateColumns,widgetWidth:widget.getBoundingClientRect().width};
+    const r=visual.getBoundingClientRect(), c=getComputedStyle(widget);
+    return {width:r.width,height:r.height,columns:c.gridTemplateColumns,widgetWidth:widget.getBoundingClientRect().width,
+      layers:['.orbits-back','.core-rings','.core-light','.particles-front'].every(s=>Boolean(visual.querySelector(s)))};
   }""")
-  need(220<=sabik_geom['width']<=305,'Sabik visual is outside the current Home product range '+repr(sabik_geom))
-  need(len([x for x in sabik_geom['columns'].split(' ') if x])>=2,'Sabik desktop donor must render as two columns '+repr(sabik_geom))
+  need(300<=sabik_geom['width']<=560,'Definitive Sabik visual is outside the Home product range '+repr(sabik_geom))
+  need(sabik_geom['layers'],'Definitive Sabik layered visual missing '+repr(sabik_geom))
   need(await page.locator('#sabik-settings-toggle').count()==0,'Sabik controls must not be hidden behind settings')
-  secondary=page.get_by_role('group',name='Controles de Sabik',exact=True)
-  need(await secondary.count()==1 and await secondary.is_visible(),'Sabik secondary controls group missing')
-  for ctl in ['#sabik-expand','#sabik-voice','#sabik-reset','#sabik-motion-level','#sabik-toggle']:
-   need(await secondary.locator(ctl).count()==1,'Sabik secondary control is outside the group: '+ctl)
   need(await page.locator('#sabik-browse').count()==0,'Explore resources must not be inside Sabik')
-  need(await page.locator('#sabik-submit').evaluate("e=>Boolean(e.closest('.sabik-primary-actions'))"),'Send is not in the Sabik primary action group')
+  need(await page.locator('#sabik-submit').is_visible(),'Sabik primary send control missing')
+  for ctl in ['#sabik-expand','#sabik-voice','#sabik-voice-stop','#sabik-voice-repeat','#sabik-reset','#sabik-motion-level','#sabik-toggle']:
+   need(await page.locator(ctl).count()==1,'Sabik control missing: '+ctl)
   await page.locator('#sabik-toggle').click();await page.wait_for_timeout(60)
   need(await page.locator('#sabik-widget-body').is_hidden(),'Sabik body did not collapse')
   need(await page.locator('#sabik-toggle').is_visible(),'Sabik show control disappeared while collapsed')
   need(not await page.locator('#sabik-voice').is_visible(),'Secondary controls other than Show must collapse with Sabik')
   await page.locator('#sabik-toggle').click();await page.wait_for_timeout(60)
   need(await page.locator('#sabik-widget-body').is_visible(),'Sabik body did not reopen')
-  voice_ctl=page.get_by_role('button',name='Voz de Sabik: Desactivada',exact=False)
+  voice_ctl=page.locator('#sabik-voice')
   need(await voice_ctl.count()==1 and await voice_ctl.is_visible(),'Sabik voice control must be visible')
   need(await page.locator('#sabik-reset').is_visible(),'Sabik reset control must be visible')
   need(await page.locator('#sabik-motion-level').is_visible(),'Sabik motion selector must be visible')
@@ -76,15 +75,15 @@ async def main():
   voice_requests=[]
   page.on('request',lambda r,arr=voice_requests:arr.append(r.url))
   await page.wait_for_timeout(120)
-  need(not any('/sabik/assets/audio-r01/' in u and u.endswith('.wav') for u in voice_requests),'Sabik WAV requested before explicit voice activation')
-  await page.locator('#sabik-voice').click()
+  need(not any('/sabik-voice/' in u for u in voice_requests),'Voice service requested before explicit user activation')
+  await voice_ctl.click()
   await page.wait_for_timeout(650)
-  need(any('/sabik/assets/audio-r01/es/sabik__welcome.wav' in u for u in voice_requests),'Sabik welcome WAV not requested after explicit voice activation')
-  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='true','Sabik voice did not remain enabled after successful playback start')
-  await page.locator('#sabik-voice').click()
-  await page.wait_for_timeout(80)
-  need(await page.locator('#sabik-voice').get_attribute('aria-pressed')=='false','Sabik voice did not turn off')
-  report['network']['sabik_welcome_requests']=sum('/sabik/assets/audio-r01/es/sabik__welcome.wav' in u for u in voice_requests)
+  # Local QA has no private voice host: client must fail soft to text, never substitute browser TTS.
+  need(any('/sabik-voice/capabilities' in u for u in voice_requests),'Voice capability check did not start after explicit activation')
+  need(await page.locator('#sabik-input').is_enabled(),'Text input became unavailable after voice backend failure')
+  need(await page.evaluate("()=>!('speechSynthesis' in window) || !document.documentElement.outerHTML.includes('SpeechSynthesisUtterance')"),
+       'Sabik must not inject browser/system TTS as fallback')
+  report['network']['sabik_voice_capability_requests']=sum('/sabik-voice/capabilities' in u for u in voice_requests)
   # Theme alternative lives inside Accessibility and persists globally.
   await page.get_by_role('button',name='Accesibilidad',exact=True).click()
   await page.get_by_role('button',name='Claro',exact=True).click();need(await page.locator('html').get_attribute('data-ig-theme')=='light','LIGHT alternative did not apply')
@@ -97,13 +96,11 @@ async def main():
   need(await page.locator('[data-ig-audience-stage="ALL_AGES"]').count()==0,'ALL_AGES must not be a user profile')
   await page.get_by_role('button',name='0–12 años',exact=True).click()
   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_0_12','canonical AGE_0_12 not emitted')
-  need(await page.locator('[data-ig-home-safe]').is_visible(),'child-safe state not visible')
-  need(await page.locator('[data-ig-home-adult]').is_hidden(),'adult state leaked into child view')
-  need(await page.get_by_text('Tus intereses',exact=True).is_hidden(),'unclassified Interests remains visible in child view')
-  need(await page.get_by_text('Libros de Iris Green',exact=True).is_hidden(),'unclassified Books remains visible in child view')
+  need(await page.locator('[data-ig-home-safe]').count()==0 and await page.locator('[data-ig-home-adult]').count()==0,
+       'Internal safety labels must not be exposed in Home')
+  need(await page.get_by_text('Tus intereses',exact=True).is_visible(),'Interests must remain available for children')
+  need(await page.get_by_text('Libros de Iris Green',exact=True).is_visible(),'Books must remain available for children')
   await page.get_by_role('button',name='18 años o más',exact=True).click()
-  need(await page.locator('[data-ig-home-safe]').is_hidden(),'child-safe state leaked into adult view')
-  need(await page.locator('[data-ig-home-adult]').is_visible(),'adult explicit state missing')
   await page.evaluate("IGAudience.clear()");need(await page.locator('html').get_attribute('data-ig-audience')=='GENERAL','GENERAL not restored')
   # Safe autocomplete never receives S2; intentional search may show its safe result.
   req=[];page.on('request',lambda r:req.append(r.url));q=page.locator('#ig-home-q');await q.fill('anorexia');await page.wait_for_timeout(500)
@@ -128,6 +125,6 @@ async def main():
   await full.click();await page.wait_for_timeout(700);need(any('/assets/safety/full/global-200-es.html' in u for u in requests),'explicit full S2 chunk not requested')
   report['network']['adult_explicit_full_requests']=sum('/assets/safety/full/global-200-es.html' in u for u in requests)
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-donor-proportion','sabik-primary-secondary-hierarchy','sabik-collapse-reopen','sabik-voice-live-request','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-visible-fail-closed','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-conversational-controls','sabik-collapse-reopen','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','three-public-age-buttons','canonical-age-internal-safety-no-label','ES-EN-1440-390','autocomplete-safe','intentional-safe-search','deep-link-safe','adult-explicit-full-only']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
