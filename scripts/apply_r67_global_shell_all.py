@@ -38,6 +38,12 @@ def route_for(path,root):
  if rel.endswith("/index.html"): return "/"+rel[:-10]
  return "/"+rel
 
+def age_nojs(route):
+ en=route.startswith("/en/")
+ title="JavaScript is required to choose an age group safely." if en else "JavaScript es necesario para elegir la edad de forma segura."
+ body="Age selection is required before normal content can be shown. Enable JavaScript and reload this page." if en else "La selección de edad es obligatoria antes de mostrar el contenido normal. Activa JavaScript y vuelve a cargar esta página."
+ return f'<noscript><section class="ig-age-nojs-message" data-ig-age-nojs role="status"><h1>{title}</h1><p>{body}</p></section></noscript>'
+
 def profile(route):
  work=("/taller/","/workshop/","/sitio-tranquilo/","/quiet-space/","/recursos/juegos/","/resources/games/","/tarjeta-iris/","/iris-card/")
  if any(x in route for x in work): return "workspace"
@@ -80,6 +86,9 @@ def apply_one(path,root):
   for k,v in (("data-ig-r49","1"),("data-ig-profile",prof),("data-ig-materials","r42"),("data-ig-r49-owner","R67_GLOBAL")):
    attrs=set_attr(attrs,k,v)
  after=before[:m.start()]+"<body"+attrs+">"+before[m.end():]
+ if 'data-ig-age-nojs' not in after:
+  bm=BODY_RE.search(after)
+  after=after[:bm.end()]+age_nojs(route)+after[bm.end():]
  mm=MAIN_RE.search(after)
  if mm and not re.search(r'\bid=["\']',mm.group(1),re.I):
   ma=mm.group(1).rstrip()+' id="main"'
