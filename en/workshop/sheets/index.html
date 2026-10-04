@@ -6,6 +6,7 @@
 <title>The workshop sheets to print · Iris Green</title>
 <meta name="description" content="Twelve A4 workshop sheets, ready to print: nine-square grid, four panels, field notebook, blank map, board, collection, rhythm and more.">
 <link rel="canonical" href="https://irisgreen.eu/en/workshop/sheets/">
+<link rel="alternate" hreflang="es" href="https://irisgreen.eu/es/taller/hojas/"><link rel="alternate" hreflang="en" href="https://irisgreen.eu/en/workshop/sheets/"><link rel="alternate" hreflang="x-default" href="https://irisgreen.eu/es/taller/hojas/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="The workshop sheets to print — Iris Green">
 <meta property="og:locale" content="en_GB">
@@ -17,24 +18,24 @@
 <link rel="stylesheet" href="../../../assets/controles-comunes.css">
 <link rel="stylesheet" href="../../../assets/preferencias-lectura.css">
 <style>
-  main.hojas{max-width:1120px!important;margin:0 auto!important;padding:36px 28px 72px!important;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:#17395c;font-size:18px;line-height:1.6}
+  main.hojas{max-width:1120px!important;margin:0 auto!important;padding:36px 28px 72px!important;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;color:var(--ig-text,#17395c);font-size:18px;line-height:1.6}
   main.hojas h1{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:clamp(32px,4vw,50px);line-height:1.07;letter-spacing:-.02em;margin:0 0 12px}
   main.hojas .crumb{margin:0 0 10px;font-size:16px}
-  main.hojas .lede{margin:0 0 20px;max-width:44em;color:#435268;text-wrap:pretty}
+  main.hojas .lede{margin:0 0 20px;max-width:44em;color:var(--ig-text-muted,#435268);text-wrap:pretty}
   main.hojas .acciones{margin:0 0 26px}
   .btn-todo,.hoja-bar button{font:inherit;display:inline-flex;align-items:center;gap:9px;cursor:pointer}
-  .btn-todo{background:#17395c;color:#fff;border:0;border-radius:999px;padding:13px 22px;font-size:17px;min-height:48px}
-  .btn-todo:hover{background:#122c48}
+  .btn-todo{background:var(--ig-button-primary-bg,#17395c);color:var(--ig-button-primary-fg,#eef4f8);border:1px solid var(--ig-button-primary-bg,#17395c);border-radius:999px;padding:13px 22px;font-size:17px;min-height:48px}
+  .btn-todo:hover{background:var(--ig-button-primary-bg,#17395c)}
   .indice{margin:0 0 34px}
   .indice ol{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0}
-  .indice a{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 16px;background:#fff;border:1px solid rgba(23,57,92,.16);border-radius:999px;color:#17395c!important;text-decoration:none!important;font-size:16px}
-  .indice a:hover{border-color:#17395c;background:rgba(31,95,139,.06)}
-  .indice .code,.hoja-bar .code{font-weight:700;letter-spacing:.06em;color:#5a49a8;font-size:15px}
+  .indice a{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:0 16px;background:var(--ig-button-secondary-bg,var(--ig-bg-surface,#fff));border:1px solid var(--ig-border-control,#7a869d);border-radius:999px;color:var(--ig-button-secondary-fg,var(--ig-text,#17395c))!important;text-decoration:none!important;font-size:16px}
+  .indice a:hover{border-color:var(--ig-border-control,#7a869d);background:var(--ig-bg-surface-soft,#eef2f6)}
+  .indice .code,.hoja-bar .code{font-weight:700;letter-spacing:.06em;color:var(--ig-accent,#5a49a8);font-size:15px}
   .hoja-bloque{margin:0 0 40px}
   .hoja-bar{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin:0 0 10px}
   .hoja-bar h2{font-family:'Newsreader',Georgia,serif;font-weight:400;font-size:26px;margin:0}
-  .hoja-bar button{margin-left:auto;background:#fff;color:#1f5f8b;border:1px solid rgba(31,95,139,.4);border-radius:999px;padding:11px 18px;font-size:16px;min-height:46px}
-  .hoja-bar button:hover{background:#1f5f8b;color:#fff;border-color:#1f5f8b}
+  .hoja-bar button{margin-left:auto;background:var(--ig-button-secondary-bg,var(--ig-bg-surface,#fff));color:var(--ig-button-secondary-fg,var(--ig-text,#17395c));border:1px solid var(--ig-border-control,#7a869d);border-radius:999px;padding:11px 18px;font-size:16px;min-height:46px}
+  .hoja-bar button:hover{background:var(--ig-button-primary-bg,#17395c);color:var(--ig-button-primary-fg,#eef4f8);border-color:var(--ig-button-primary-bg,#17395c)}
   .hoja{--line:#b9afa1;position:relative;width:100%;max-width:210mm;aspect-ratio:210/297;background:#fff;border:1px solid rgba(23,57,92,.16);box-shadow:0 22px 44px -34px rgba(23,57,92,.6);container-type:inline-size;overflow:hidden}
   .hoja .inner{position:absolute;inset:5.05% 7.14%;display:flex;flex-direction:column}
   .hoja .h{margin:0 0 2.6cqw}
@@ -60,8 +61,8 @@
   .paso .num{font-family:'Newsreader',Georgia,serif;font-size:2.6cqw;color:#7d766a;width:5cqw;text-align:right;flex:none}
   .ritmo{display:grid;grid-template-columns:repeat(8,1fr);gap:1.6cqw}
   .ritmo .cel{aspect-ratio:1}
-  .langs button.lang{font:inherit;cursor:pointer;min-height:44px;min-width:48px;padding:0 13px;border-radius:999px;background:#fff;border:1px solid rgba(23,57,92,.18);color:#17395c;font-weight:700;font-size:15px}
-  .langs button.lang.on{background:#17395c;color:#fff;border-color:#17395c}
+  .langs button.lang{font:inherit;cursor:pointer;min-height:44px;min-width:48px;padding:0 13px;border-radius:999px;background:var(--ig-button-secondary-bg,var(--ig-bg-surface,#fff));border:1px solid var(--ig-border-control,#7a869d);color:var(--ig-button-secondary-fg,var(--ig-text,#17395c));font-weight:700;font-size:15px}
+  .langs button.lang.on{background:var(--ig-button-primary-bg,#17395c);color:var(--ig-button-primary-fg,#eef4f8);border-color:var(--ig-button-primary-bg,#17395c)}
   @media(max-width:700px){main.hojas{font-size:17px;padding:26px 18px 60px!important}.hoja-bar button{margin-left:0}}
   @media print{
     @page{size:A4;margin:0}
