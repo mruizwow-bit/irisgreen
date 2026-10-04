@@ -1,0 +1,75 @@
+name: Axioma · A11Y retest Cielo 88 Eclipses
+on:
+  push:
+    branches: ['axioma/a11y-retest-cielo88-eclipse-20261004']
+  workflow_dispatch:
+permissions:
+  contents: read
+
+jobs:
+  cielo-v2:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/build_cielo_v2_first_view.py --check
+      - run: python scripts/build_site.py
+      - name: Axioma · Cielo V2
+        run: python scripts/test_cielo_v2_first_viewport.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: axioma-cielo-v2
+          path: |
+            reports/cielo-v2-first-viewport/qa.json
+            reports/cielo-v2-first-viewport/*.png
+          retention-days: 14
+
+  constellations-88:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/build_site.py
+      - name: Axioma · 88 constelaciones
+        run: python scripts/test_cielo_constellations_r03_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: axioma-constellations-88
+          path: |
+            reports/cielo-constellations-r03/qa.json
+            reports/cielo-constellations-r03/*.png
+          retention-days: 14
+
+  eclipse-r02:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/build_site.py
+      - name: Axioma · Eclipses R02
+        run: python scripts/test_eclipse_canonical_r02_integration.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: axioma-eclipse-r02
+          path: |
+            reports/eclipse-canonical-r02-integration/qa.json
+            reports/eclipse-canonical-r02-integration/*.png
+          retention-days: 14
