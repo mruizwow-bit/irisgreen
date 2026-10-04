@@ -74,7 +74,7 @@
         "claude_audio_r2": "HUMAN_QA_FAIL_WORSE_THAN_REFERENCE",
         "claude_audio_iteration": "STOP",
         "oai_audio_r01": {
-          "status": "HUMAN_QA_REQUIRED",
+          "status": "HUMAN_QA_FAIL_STRESSFUL_STEREO_BACKGROUND",
           "video": "PECERA_R02_CLIP_40s_AUDIO_OAI_R01.mp4",
           "video_sha256": "5ed16357b5b48d745506f799aed47b75dac29edfd76a189590c0e500a19ba451",
           "audio": "PECERA_AUDIO_OAI_R01.m4a",
@@ -85,6 +85,20 @@
           "faststart": true,
           "video_stream_identity": "PASS",
           "listener_position": "IN_FRONT_OF_AQUARIUM_GLASS",
+          "final_5min_render": "BLOCKED_UNTIL_HUMAN_QA_MARIA"
+        },
+        "oai_audio_r02": {
+          "status": "HUMAN_QA_REQUIRED",
+          "video": "PECERA_R02_CLIP_40s_AUDIO_OAI_R02_BUBBLE_DOMINANT.mp4",
+          "video_sha256": "5b9ea28406ae024ca6ba0c68cff26d0052325d261988c86063d794da5bd9478f",
+          "audio": "PECERA_AUDIO_OAI_R02_BUBBLE_DOMINANT.m4a",
+          "audio_sha256": "a576f9f4e9c2b2ed42faa80099bd2d8763964b3bfbb7135863d1f2fb3989eb2f",
+          "construction": "ORIGINAL_AUDIO_HIGH_PASS__NO_ADDED_STEREO_BACKGROUND__NARROW_STEREO__BUBBLE_DOMINANT",
+          "integrated_lufs": -30.5,
+          "lra_lu": 2,
+          "true_peak_dbfs": -15.1,
+          "faststart": true,
+          "video_stream_identity": "PASS",
           "final_5min_render": "BLOCKED_UNTIL_HUMAN_QA_MARIA"
         }
       },
