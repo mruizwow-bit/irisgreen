@@ -4,6 +4,9 @@ on:
     branches: [nexo/new-games-area-r01-20261004]
     paths: ['es/juegos/**', 'assets/habitacion-room1/**', 'assets/games-new-r01.css', '.github/workflows/nexo-room1-review.yml']
   workflow_dispatch:
+concurrency:
+  group: nexo-room1-review
+  cancel-in-progress: true
 permissions:
   contents: read
 jobs:

@@ -25,7 +25,7 @@ Revisión visual screenshot móvil 390 realizada.
 No constituye conformidad WCAG ni PASS Axioma de implementación.
 
 ## Límite material
-Este montaje es un prototipo interactivo basado en escenas estáticas aprobadas; NO es un render de reorientación física ni usa un solver geométrico. Arriba conduce al estado conectado; las otras elecciones al no conectado. No declarar la mecánica física final validada desde este montaje.
+Este montaje es un prototipo interactivo basado en escenas estáticas aprobadas; NO es un render de reorientación física. El solver geométrico canónico calcula la conectividad después de cada orientación; la ilustración utiliza ventanas estáticas del storyboard. No declarar la mecánica física final validada desde este montaje.
 Se necesita HUMAN QA del montaje y decisión sobre representación física antes de declarar producto final.
 
 ## Publicación
