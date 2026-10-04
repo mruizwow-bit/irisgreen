@@ -50,6 +50,11 @@ def main():
                 page.on('console',lambda msg,bag=console_errors:bag.append(msg.text) if msg.type=='error' or 'Content Security Policy' in msg.text or 'Refused to' in msg.text else None)
                 try:
                     page.goto(base+route,wait_until='domcontentloaded');page.locator('#dc-root').wait_for(state='attached')
+                    page.wait_for_function("() => window.IGAudience !== undefined")
+                    if page.evaluate("IGAudience.get()") == "AGE_UNSET":
+                        if page.locator("[data-ig-mandatory-age-gate]").count()!=1: raise AssertionError('mandatory age gate missing before DC runtime check')
+                        if page.locator('main h1:visible').count()!=0: raise AssertionError('DC content visible before mandatory age selection')
+                        if page.evaluate("IGAudience.set('AGE_18_PLUS')") is not True: raise AssertionError('valid age band rejected before DC runtime check')
                     h1=page.locator('main h1').first;h1.wait_for(state='visible');title=h1.inner_text().strip()
                     if not title or '{{' in title:raise AssertionError(f'h1 sin resolver: {title!r}')
                     if page.locator('.sc-logic-error, .sc-placeholder-error').count():raise AssertionError('el runtime ha mostrado un error de lógica/placeholder')
