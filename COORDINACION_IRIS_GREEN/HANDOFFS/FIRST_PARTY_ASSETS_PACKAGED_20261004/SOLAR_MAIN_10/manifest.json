@@ -1,0 +1,97 @@
+{
+  "schema": "iris-green.solar-main-runtime-package.v1",
+  "date": "2026-10-04",
+  "owner": "ATLAS_A1",
+  "source_gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+  "package_gate": "SOLAR_MAIN_10_PACKAGED_READY_FOR_RUNTIME",
+  "package_library": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/SOLAR_MAIN_10/SOLAR_MAIN_10_RUNTIME_PACKAGE_R01.zip",
+  "package_sha256": "5273912a5a0aca3a0bfbe05ec4080b889f707cec503d0b221dc82b10d3740d0a",
+  "canonical_web_root": "/img/intereses/sistema-solar/first-party/r01/",
+  "runtime_assets": [
+    {
+      "index": 1,
+      "id": "sol",
+      "name_en": "Sun",
+      "sha256": "8b060092d09e1100d1d7b4c7dd1b4db093894aba717d9cbc6fd6e066369beace",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/sol.png"
+    },
+    {
+      "index": 2,
+      "id": "mercurio",
+      "name_en": "Mercury",
+      "sha256": "592e8f00fbaaece3f02221df3c65d93a50ba07c64473ae171522bd8c7910910f",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/mercurio.png"
+    },
+    {
+      "index": 3,
+      "id": "venus",
+      "name_en": "Venus",
+      "sha256": "a1311f3f14ba14454964924d06c97f9b92ea6e3d8bf1cbf8bfed40f9a26cbc3f",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/venus.png"
+    },
+    {
+      "index": 4,
+      "id": "tierra",
+      "name_en": "Earth",
+      "sha256": "d09773ebd0774121287370556e01d6d0ea57fa0d4d35295c121325e155c61cac",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/tierra.png"
+    },
+    {
+      "index": 5,
+      "id": "marte",
+      "name_en": "Mars",
+      "sha256": "2da051ee02e9583f1702409f126fd8b8a82810699af425f7e64d70e4474598e9",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/marte.png"
+    },
+    {
+      "index": 6,
+      "id": "jupiter",
+      "name_en": "Jupiter",
+      "sha256": "379c6f0bec39afacc444a9807d01c1f732cfa668e1d5a3670cfc9e036de51a59",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/jupiter.png"
+    },
+    {
+      "index": 7,
+      "id": "saturno",
+      "name_en": "Saturn",
+      "sha256": "4b62485a38231ec47363db69208cda3cc94bc73430b21a8d6d579d38fbcc5631",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/saturno.png"
+    },
+    {
+      "index": 8,
+      "id": "urano",
+      "name_en": "Uranus",
+      "sha256": "2d4b6b6a262eb933130fc1fa1df5ba6d8aecb5c08ef7fec7d93786ac67b7b76f",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/urano.png"
+    },
+    {
+      "index": 9,
+      "id": "neptuno",
+      "name_en": "Neptune",
+      "sha256": "9a85681f33eaca9448176a60b925cafbef2a6613960e58b562e66372071bf4cc",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/neptuno.png"
+    },
+    {
+      "index": 10,
+      "id": "pluton",
+      "name_en": "Pluto",
+      "sha256": "428fc88d8a86fe220f7ad53c34dae218fc1601404df8fe6f8b283d2c5f8c8844",
+      "web_path": "/img/intereses/sistema-solar/first-party/r01/pluton.png"
+    }
+  ],
+  "technical_contract": {
+    "count": 10,
+    "width": 1536,
+    "height": 1536,
+    "mode": "RGBA",
+    "alpha": "0-255",
+    "srgb_icc": true,
+    "transparent_background": true,
+    "byte_identical": true
+  },
+  "integration": {
+    "prepared_for": "Motor solar-main intake",
+    "runtime_code_changed": false,
+    "main_changed": false
+  }
+}
