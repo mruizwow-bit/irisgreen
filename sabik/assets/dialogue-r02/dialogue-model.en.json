@@ -262,15 +262,12 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hi. What do you need?",
-        "Hello. What do you need?",
-        "Hi. I'm listening. What do you need?",
-        "Hello. How can I help?"
+        "Hi.",
+        "Hello. I'm listening.",
+        "Hi. I'm here.",
+        "Hello."
       ],
-      "reprompt": [
-        "Tell me what you need.",
-        "I'm listening."
-      ]
+      "reprompt": []
     },
     "social.attention.response": {
       "initial": [
