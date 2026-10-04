@@ -24,3 +24,4 @@ body[data-ig-age-unset]{overflow:hidden}
 .ig-mandatory-age-options button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
 @media(max-width:520px){.ig-mandatory-age-options{grid-template-columns:1fr}.ig-mandatory-age-gate{align-items:start;padding-top:5rem}}
 @media(forced-colors:active){.ig-mandatory-age-card,.ig-mandatory-age-options button{border-color:CanvasText}.ig-mandatory-age-options button:focus-visible{outline-color:Highlight}}
+body[data-ig-age-unset] :is([data-ig-r49-search],[data-ig-r49-more],[data-ig-music]){display:none!important}
