@@ -21,7 +21,7 @@ Esta decisión sustituye el onboarding anterior de dos miniaturas por cuatro ori
 ## Evidencia
 Prueba Chromium del montaje local 320/390/1440: PASS.
 Comprobados enlace desde Juegos, tres elecciones no conectadas, elección Arriba conectada, salida, reinicio, idioma, Space/Enter, conservación de foco, tamaños de targets, ausencia de overflow y errores JS, reduced-motion/forced-colors.
-Revisión visual screenshot móvil 390 realizada.
+Revisión visual screenshot móvil 390 realizada. Retest con texto al 200% en 320/390/1440 PASS de overflow; corregido ancho del selector de idioma y separación del indicador selected.
 No constituye conformidad WCAG ni PASS Axioma de implementación.
 
 ## Límite material
