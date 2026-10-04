@@ -30,9 +30,10 @@ try:
   # Shared bilingual surfaces intentionally keep their /es/ route and derive EN
   # from the persisted language state. Separate surfaces use their native /en/ route.
   dynamic=[
-   '/',
-   '/es/videos/','/es/investigacion/','/es/tramites/directorio/','/es/libros/','/es/recursos/juegos/','/es/taller/',
-   '/en/neurodiversity/conditions/','/en/situations/','/en/everyday-life/','/en/data/','/en/resources/','/en/interests/','/en/workshop/','/en/quiet-space/'
+   '/en/',
+   '/en/neurodiversity/conditions/','/en/situations/','/en/everyday-life/',
+   '/es/investigacion/?lang=en','/es/tramites/directorio/?lang=en','/es/videos/?lang=en','/es/libros/?lang=en',
+   '/en/data/','/en/resources/','/en/interests/','/en/workshop/','/en/quiet-space/'
   ]
   for width in [1440,390,320]:
    ctx=browser.new_context(viewport={'width':width,'height':900});page=ctx.new_page();page.set_default_timeout(8000)
