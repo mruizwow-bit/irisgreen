@@ -19,7 +19,7 @@ SURFACE_ROOTS={
  'research':('/es/investigacion/','/en/research/'),
  'support_directory':('/es/tramites/','/es/tramites/directorio/','/en/support-directory/'),
 }
-SEARCH_FILES=('search-safe-default.json','search-intentional-safe.json','search-adult-full-catalog.json')
+SEARCH_FILES=('search-safe-default.json','search-intentional-safe.json')
 
 def set_attr(attrs,name,value):
  pat=ATTR_RE(name)
