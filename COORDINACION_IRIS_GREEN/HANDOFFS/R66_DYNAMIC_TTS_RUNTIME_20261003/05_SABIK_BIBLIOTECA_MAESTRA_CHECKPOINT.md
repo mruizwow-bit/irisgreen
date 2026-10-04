@@ -42219,3 +42219,221 @@ ESTADO: BILINGUAL_COMPLETE
 - STATUS: PASS
 
 SIGUIENTE FASE: recursos específicos, intereses y otros corpus estructurados de Iris Green.
+
+# 66. TARJETA IRIS · VIDA DIARIA · «NECESITO / I NEED»
+
+FUENTE: `editorial/tarjetas-necesito-vida-diaria.json` · rama `main` de Iris Green.
+
+ES NOTA DE FUENTE: Bloque «Necesito» de la Tarjeta Iris. Tanda 1 de 3: Vida diaria (48).
+
+EN SOURCE NOTE: Iris Card «I need» block. Batch 1 of 3: Daily life (48).
+
+ESTADO DE LA COLECCIÓN: EN_PROGRESO
+
+## WEB-IRIS-DAILY-NEED-001
+
+ES TEMA: Abuso, explotación y relaciones seguras
+
+EN TOPIC: Abuse, exploitation and safe relationships
+
+ES NECESITO: Hablar contigo a solas. Explícame a quién debes avisar y por qué.
+
+EN I NEED: To talk to you in private. Tell me who you must inform and why.
+
+ES RUTA: /es/biblioteca/abuso-explotacion-y-relaciones-seguras/
+
+EN PATH: /en/everyday-life/abuse-exploitation-and-safe-relationships/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-002
+
+ES TEMA: Acoso, discriminación, racismo y cómo actuar
+
+EN TOPIC: Bullying, discrimination, racism and how to act
+
+ES NECESITO: Que apuntes lo que ha pasado. Dime después qué vais a hacer.
+
+EN I NEED: You to write down what happened. Tell me what you will do next.
+
+ES RUTA: /es/biblioteca/acoso-discriminacion-racismo-y-como-actuar/
+
+EN PATH: /en/everyday-life/bullying-discrimination-racism-and-how-to-act/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-003
+
+ES TEMA: Actividad física, deporte y piscina
+
+EN TOPIC: Physical activity, sport and swimming
+
+ES NECESITO: Saber antes qué vamos a hacer. Poder salir del agua en cualquier momento.
+
+EN I NEED: To know the plan in advance. To leave the water at any time.
+
+ES RUTA: /es/biblioteca/actividad-fisica-deporte-y-piscina/
+
+EN PATH: /en/everyday-life/physical-activity-sport-and-swimming/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-004
+
+ES TEMA: Ajustes razonables en el trabajo
+
+EN TOPIC: Reasonable adjustments at work
+
+ES NECESITO: Pedir un cambio en mi puesto. Recibir la respuesta por escrito.
+
+EN I NEED: To request a change at work. To receive the reply in writing.
+
+ES RUTA: /es/biblioteca/ajustes-razonables-en-el-trabajo/
+
+EN PATH: /en/everyday-life/reasonable-adjustments-at-work/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-005
+
+ES TEMA: Amistad, soledad, pertenencia y fatiga social
+
+EN TOPIC: Friendship, loneliness, belonging and social fatigue
+
+ES NECESITO: Tiempo para contestar. Prefiero quedar contigo en planes cortos.
+
+EN I NEED: Time to reply. I prefer spending time with you in short plans.
+
+ES RUTA: /es/biblioteca/amistad-soledad-pertenencia-y-fatiga-social/
+
+EN PATH: /en/everyday-life/friendship-loneliness-belonging-and-social-fatigue/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-006
+
+ES TEMA: ARFID, TCA y pica: cuándo el apoyo cotidiano necesita atención clínica
+
+EN TOPIC: ARFID, eating disorders and pica: when everyday support needs clinical care
+
+ES NECESITO: Que un médico compruebe si como suficiente. Comer en un lugar tranquilo.
+
+EN I NEED: A doctor to check whether I am eating enough. To eat somewhere quiet.
+
+ES RUTA: /es/biblioteca/arfid-tca-y-pica-cuando-el-apoyo-cotidiano-necesita-atencion-clinica/
+
+EN PATH: /en/everyday-life/arfid-eating-disorders-and-pica-when-everyday-support-needs-clinical-care/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-007
+
+ES TEMA: Buscar trabajo siendo neurodivergente
+
+EN TOPIC: Looking for work as a neurodivergent person
+
+ES NECESITO: Ayuda para buscar trabajo. Yo decido qué información personal doy a cada empresa.
+
+EN I NEED: Help to find work. I decide what personal information I share with each employer.
+
+ES RUTA: /es/biblioteca/buscar-trabajo-siendo-neurodivergente/
+
+EN PATH: /en/everyday-life/looking-for-work-as-a-neurodivergent-person/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-008
+
+ES TEMA: Cine, teatro y museos con menos estímulos
+
+EN TOPIC: Cinema, theatre and museums with fewer stimuli
+
+ES NECESITO: Saber si hay sesiones con menos ruido y luz. Poder salir antes del final.
+
+EN I NEED: To know about quieter, dimmer sessions. To leave before the end.
+
+ES RUTA: /es/biblioteca/cine-teatro-y-museos-con-menos-estimulos/
+
+EN PATH: /en/everyday-life/cinema-theatre-and-museums-with-fewer-stimuli/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-009
+
+ES TEMA: Cocinar y seguridad doméstica
+
+EN TOPIC: Cooking and home safety
+
+ES NECESITO: Tener los pasos delante. Silencio mientras cocino.
+
+EN I NEED: The steps in front of me. Quiet while I cook.
+
+ES RUTA: /es/biblioteca/cocinar-y-seguridad-domestica/
+
+EN PATH: /en/everyday-life/cooking-and-home-safety/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-IRIS-DAILY-NEED-010
+
+ES TEMA: Colegio e instituto: apoyos, adaptaciones, asistencia y exámenes
+
+EN TOPIC: School and secondary school: support, adaptations, attendance and exams
+
+ES NECESITO: Mis apoyos por escrito. Poder usarlos también en los exámenes.
+
+EN I NEED: My support arrangements in writing. To use them in exams too.
+
+ES RUTA: /es/biblioteca/colegio-e-instituto-apoyos-adaptaciones-asistencia-y-examenes/
+
+EN PATH: /en/everyday-life/school-and-secondary-school-support-adaptations-attendance-and-exams/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## CONTROL DE PROGRESO · VIDA DIARIA «NECESITO» 001–010
+
+ES: Vida diaria «Necesito» incorporada: 10/48.
+
+EN: Daily-life «I need» entries added: 10/48.
+
+SIGUIENTE REGISTRO: WEB-IRIS-DAILY-NEED-011
