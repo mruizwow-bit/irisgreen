@@ -84,7 +84,15 @@
   "partial_package": {
     "library": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/EXOPLANETS_001_100/EXOPLANETS_021_100_RUNTIME_PACKAGE_PARTIAL_R01.zip",
     "sha256": "66155ef5c32ffb00b3b9af64cd1126e5a74596317a327933808d5baf2d6a74ae",
-    "bytes": 171597371
+    "bytes": 171597371,
+    "independent_verification": {
+      "zip_entries": 115,
+      "sha256sum_entries": 114,
+      "sha256sum_pass": 114,
+      "sha256sum_fail": 0,
+      "runtime_png_masters": 77,
+      "png_1536x1536_rgba_srgb_alpha_0_255_pass": 77
+    }
   },
   "policy": [
     "ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY",
@@ -93,5 +101,13 @@
     "NO_AI_GENERATED_SCIENTIFIC_DATA"
   ],
   "runtime_code_changed": false,
-  "main_changed": false
+  "main_changed": false,
+  "recovery_audit": {
+    "marker": "ATLAS_EXOPLANETS_B01_B02_SOURCE_RECOVERY_AUDIT_CONFIRMED",
+    "file": "COORDINACION_IRIS_GREEN/HANDOFFS/FIRST_PARTY_ASSETS_PACKAGED_20261004/EXOPLANETS_001_100/SOURCE_RECOVERY_AUDIT.md",
+    "result": "B01_B02_CANONICAL_CLEAN_MASTER_BYTES_NOT_LOCATED_IN_ACCESSIBLE_AUTHORITATIVE_SURFACES",
+    "library_exact_folder_checked": "/Iris Green/First Party Visual/Exoplanets/",
+    "atlas_handoff_folder_checked": "/Iris Green/Handoffs/Atlas/FIRST_PARTY_ASSETS_PACKAGED_READY_FOR_RUNTIME/EXOPLANETS_001_100/",
+    "final_gate_emitted": false
+  }
 }
