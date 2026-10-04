@@ -35,7 +35,7 @@ def main():
   need('/sabik/definitive-r01/sabik-layered.css' in txt,'Definitive Sabik stylesheet missing')
   need('href="/es/intereses/"' in txt or 'href="/en/interests/"' in txt,'Interests must be in Home top actions')
   need('href="/es/libros/' in txt,'Books must be in Home top actions')
-  if 'lang="en"' in txt:
+  if '<html lang="en">' in txt[:120]:
    need('href="/en/interests/" data-ig-age-bands="ALL_AGES"' in txt,'Interests must stay ALL_AGES in EN Home')
    need('href="/es/libros/?lang=en" data-ig-age-bands="ALL_AGES"' in txt,'Books must stay ALL_AGES in EN Home')
   else:
