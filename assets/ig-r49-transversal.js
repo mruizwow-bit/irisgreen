@@ -150,7 +150,7 @@ function openSettings(trigger){
  down.addEventListener('click',function(){W.IGPreferences.step(-1);out.textContent=Math.round(W.IGPreferences.get().scale*100)+'%';});up.addEventListener('click',function(){W.IGPreferences.step(1);out.textContent=Math.round(W.IGPreferences.get().scale*100)+'%';});
  row.append(h('strong',{text:tr().size}),down,out,up);box.appendChild(row);
  ['spacing','controls','contrast','guide','motion'].forEach(function(k){prefToggle(k,tr()[k],box);});
- if(W.speechSynthesis){
+ if(W.speechSynthesis&&(!W.IGAudience||W.IGAudience.get()!=='AGE_UNSET')){
   var speak=h('button',{type:'button',class:'ig-r49-settings-toggle','aria-pressed':'false',text:tr().speak});
   speak.addEventListener('click',function(){var on=speak.getAttribute('aria-pressed')==='true';W.speechSynthesis.cancel();W.IGPreferences.setSpeech(false);if(on){speak.setAttribute('aria-pressed','false');speak.textContent=tr().speak;return;}var main=D.querySelector('main');if(!main)return;var u=new SpeechSynthesisUtterance(main.innerText.slice(0,12000));u.lang=en()?'en-GB':'es-ES';u.rate=.95;u.onend=function(){speak.setAttribute('aria-pressed','false');speak.textContent=tr().speak;W.IGPreferences.setSpeech(false);};W.IGPreferences.setSpeech(true);W.speechSynthesis.speak(u);speak.setAttribute('aria-pressed','true');speak.textContent=tr().stopSpeak;});box.appendChild(speak);
  }
