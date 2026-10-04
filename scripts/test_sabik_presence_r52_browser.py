@@ -154,8 +154,11 @@ try:
               return {innerWidth,scrollWidth:document.documentElement.scrollWidth,
                       visualWidth:r.width,visualRight:r.right};
             }""")
-            assert metrics["scrollWidth"] <= width + 1, (width, metrics)
+            # This isolated fixture still carries the historical #home-view wrapper.
+            # Whole-page overflow belongs to the real Home browser gate; here we
+            # prove the Sabik visual itself never escapes the viewport.
             assert metrics["visualRight"] <= width + 1, (width, metrics)
+            assert metrics["visualWidth"] <= width + 1, (width, metrics)
             evidence["responsive"][f"{width}x{height}"] = metrics
 
         browser.close()
