@@ -67,7 +67,7 @@ html[data-ig-contrast="on"] .ig-home-header{
 }
 .ig-home-v4-main{
   min-width:0;
-  width:min(100%,88rem);
+  width:100%;
   margin-inline:auto;
   display:flex;
   flex-direction:column;
