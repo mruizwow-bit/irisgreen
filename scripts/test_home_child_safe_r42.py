@@ -35,6 +35,12 @@ def main():
   need('/sabik/definitive-r01/sabik-layered.css' in txt,'Definitive Sabik stylesheet missing')
   need('href="/es/intereses/"' in txt or 'href="/en/interests/"' in txt,'Interests must be in Home top actions')
   need('href="/es/libros/' in txt,'Books must be in Home top actions')
+  if 'lang="en"' in txt:
+   need('href="/en/interests/" data-ig-age-bands="ALL_AGES"' in txt,'Interests must stay ALL_AGES in EN Home')
+   need('href="/es/libros/?lang=en" data-ig-age-bands="ALL_AGES"' in txt,'Books must stay ALL_AGES in EN Home')
+  else:
+   need('href="/es/intereses/" data-ig-age-bands="ALL_AGES"' in txt,'Interests must stay ALL_AGES in ES Home')
+   need('href="/es/libros/" data-ig-age-bands="ALL_AGES"' in txt,'Books must stay ALL_AGES in ES Home')
   need(txt.count('data-ig-media-status="pending"')==13,'Expected 13 donor media slots without invented imagery')
   need('data-ig-theme-choice="dark"' in txt and 'data-ig-theme-choice="light"' in txt,'Global theme alternatives missing')
  safe=json.loads((root/'assets/safety/search-safe-default.json').read_text());intent=json.loads((root/'assets/safety/search-intentional-safe.json').read_text());adult=json.loads((root/'assets/safety/search-adult-full-catalog.json').read_text())
