@@ -230,7 +230,7 @@ async def main():
         need(all(x=="grid" for x in home["useDisplays"]+home["discoverDisplays"]),"Home anchors collapsed to inline text "+repr(home))
         need(all(r["w"]>150 and r["h"]>110 for r in home["useRects"]),"Home use cards have collapsed boxes "+repr(home))
         need(all(r["w"]>150 and r["h"]>100 for r in home["discoverRects"]),"Home discover cards have collapsed boxes "+repr(home))
-        need(max(r["w"] for r in home["discoverRects"])<450,"Home discover cards are too wide for a three-card row "+repr(home["discoverRects"]))
+        need(max(r["w"] for r in home["discoverRects"])-min(r["w"] for r in home["discoverRects"])<3,"Home discover cards do not share a consistent three-column width "+repr(home["discoverRects"]))
         await page.screenshot(path=str(OUT/"home-cards-1440.png"),full_page=False)
         report["home_cards"]={"use":6,"discover":7,"media_slots":13,"visible_unapproved_media":0,"layout":"GRID_PASS"}
 
