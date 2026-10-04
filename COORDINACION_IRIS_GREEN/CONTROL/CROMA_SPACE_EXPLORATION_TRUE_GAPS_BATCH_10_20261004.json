@@ -1,0 +1,52 @@
+{
+  "id": "CROMA_SPACE_EXPLORATION_TRUE_GAPS_BATCH_10_20261004",
+  "owner": "CROMA",
+  "date": "2026-10-04",
+  "state": "SPACE_EXPLORATION_TRUE_GAPS_BATCH_10_READY_FOR_REVIEW",
+  "count": 10,
+  "classification": "REPRESENTATION",
+  "entries": [
+    "Sputnik 1",
+    "Vostok 1",
+    "Saturn V",
+    "Apollo Lunar Module",
+    "Voyager",
+    "Space Shuttle Orbiter",
+    "Cassini–Huygens",
+    "Curiosity",
+    "Perseverance + Ingenuity",
+    "James Webb Space Telescope"
+  ],
+  "masters": {
+    "size": "1536x1536",
+    "format": "PNG",
+    "mode": "RGBA",
+    "icc": "sRGB embedded",
+    "transparent_background": true,
+    "text_baked_in": false,
+    "logos_baked_in": false,
+    "flags_baked_in": false,
+    "planet_or_space_background": false
+  },
+  "qa": {
+    "technical_10_of_10": "PASS",
+    "unique_hashes": "PASS",
+    "contact_sheet": "PASS",
+    "zip_integrity": "PASS",
+    "historical_variant_fidelity": "PENDING_HUMAN_FACTUAL_REVIEW",
+    "human_visual_review": "PENDING"
+  },
+  "artifact_sha256": {
+    "zip": "73825f0b9c267cc02ddf499cd6cccf39feb3ae954df5bedd5332ec50031aed5f",
+    "contact_sheet": "0a2abadac2ae5f4d31ff65d159ca9d35ff3475d810940b3c4e0e5a21728782c1",
+    "manifest": "229446c5eaf75aa251e309399c8566c3faaf43f5d532ea7f00267f2fce86d302",
+    "qa": "68021b1fdb8f781eb2095c4f805a57fef9af9540fda17fafb8415cf3d52ffc6a"
+  },
+  "integration": {
+    "main": false,
+    "runtime": false,
+    "frontend": false,
+    "atlas_packaging": false
+  },
+  "next": "HUMAN_FACTUAL_AND_VISUAL_BATCH_REVIEW"
+}
