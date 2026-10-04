@@ -228,7 +228,22 @@ async def main():
   report['network']['direct_full_status']=direct.status
   report['network']['tampered_age_direct_full_status']=direct2.status
   print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
+
+  # JavaScript failure/disabled must fail closed before any normal content is exposed.
+  nojs_ctx=await browser.new_context(java_script_enabled=False,viewport={'width':390,'height':844})
+  nojs_page=await nojs_ctx.new_page()
+  await nojs_page.goto(BASE+'/',wait_until='load')
+  need(await nojs_page.locator('[data-ig-age-nojs]').is_visible(),'Home no-JS age notice missing')
+  need(await nojs_page.locator('main').is_hidden(),'Home content exposed when JavaScript is unavailable')
+  need(await nojs_page.locator('footer').is_hidden(),'Home footer exposed when JavaScript is unavailable')
+  await nojs_page.goto(BASE+'/es/neurodiversidad/condiciones/anorexia-nerviosa/',wait_until='load')
+  need(await nojs_page.locator('[data-ig-age-nojs]').is_visible(),'S2 direct route no-JS age notice missing')
+  need(await nojs_page.locator('main').is_hidden(),'S2 direct content exposed when JavaScript is unavailable')
+  await nojs_page.goto(BASE+'/en/',wait_until='load')
+  need('JavaScript is required' in (await nojs_page.locator('[data-ig-age-nojs]').inner_text()),'English no-JS age notice missing')
+  await nojs_ctx.close()
+  print('MANDATORY_AGE_GATE_JS_FAILURE_FAIL_CLOSED_PASS')
   await browser.close()
- report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','no-page-reading-before-age','footer-inert-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','all-ages-direct-routes','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed']
+ report['checks']=['v4-structure','hero-search-live','sabik-definitive-layered-visual','sabik-compact-two-column','sabik-primary-actions','sabik-contextual-controls','sabik-options-disclosure','sabik-voice-explicit-capability-check','css-render-integrity','dark-navy-default','light-alternative','mandatory-age-gate','age-unset-blocks-main','language-accessibility-before-age','no-page-reading-before-age','footer-inert-before-age','three-public-age-buttons','canonical-age-internal-safety-no-label','all-ages-interests-books','all-ages-direct-routes','sabik-visible-across-age','ES-EN-1440-390-320','autocomplete-safe','intentional-safe-search','deep-link-safe','age-18-plus-safe-only','direct-full-url-fail-closed','js-failure-fail-closed']
  (OUT/'browser.json').write_text(json.dumps(report,ensure_ascii=False,indent=2)+'\n',encoding='utf-8');print(json.dumps(report,ensure_ascii=False))
 if __name__=='__main__': asyncio.run(main())
