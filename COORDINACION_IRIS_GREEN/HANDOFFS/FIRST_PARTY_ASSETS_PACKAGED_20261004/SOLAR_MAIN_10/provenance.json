@@ -1,0 +1,24 @@
+{
+  "schema": "iris-green.solar-main-runtime-provenance.v1",
+  "date": "2026-10-04",
+  "owner": "ATLAS_A1",
+  "visual_owner": "LUMEN_A7",
+  "source_gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+  "source_commit": "25853db0971627af6ffcdb5edb90b0503f171226",
+  "source_library": "/Iris Green/First Party Visual/Solar Foundation Final/",
+  "classification": "REPRESENTATION",
+  "art_status": "KEEP_LOCKED",
+  "atlas_changes": {
+    "pixels": false,
+    "reencode": false,
+    "recolor": false,
+    "geometry": false
+  },
+  "qa": [
+    "1536x1536",
+    "PNG_RGBA",
+    "ALPHA_0_255",
+    "SRGB_ICC",
+    "BLACK_WHITE_MID_GRAY_PASS"
+  ]
+}
