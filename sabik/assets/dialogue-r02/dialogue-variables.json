@@ -295,10 +295,6 @@
       "type": "string",
       "persist": "session"
     },
-    "pending_slot": {
-      "type": "string",
-      "persist": "session"
-    },
     "last_topic": {
       "type": "string",
       "persist": "session",
