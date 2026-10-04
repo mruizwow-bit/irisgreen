@@ -15,7 +15,7 @@
 #sabik-input:focus-visible,.sabik-panel select:focus-visible,.sabik-panel button:focus-visible{outline:3px solid var(--ig-focus);outline-offset:3px}
 .sabik-actions{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0}.sabik-actions button{flex:1 1 auto;min-height:44px}.sabik-icon-button{min-height:44px}
 .sabik-voice-control{margin:16px 0;padding:12px;border:1px solid var(--ig-separator);border-radius:14px;background:var(--ig-bg-surface-soft)}
-.sabik-voice-toggle{width:100%;min-height:44px}.sabik-voice-control small{display:block;margin-top:7px;color:var(--ig-text-muted);line-height:1.45}
+.sabik-voice-toggle{width:100%;min-height:44px}.sabik-voice-control small{display:block;margin-top:7px;color:var(--ig-text-muted);line-height:1.45}.sabik-voice-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:12px}.sabik-voice-actions .sabik-button{min-height:44px}.sabik-voice-settings{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}.sabik-voice-settings label{display:grid;gap:6px;font-weight:700}.sabik-voice-settings input[type=range]{width:100%;min-height:32px;accent-color:var(--ig-accent)}
 .sabik-motion-control{margin:18px 0}.sabik-motion-control label{display:block;font-weight:700;margin-bottom:6px}.sabik-motion-control select{width:100%;font:inherit;padding:10px;min-height:44px;border:1px solid var(--ig-border-control);border-radius:12px;background:var(--ig-bg-surface-soft);color:var(--ig-text)}.sabik-motion-control small{display:block;margin-top:6px}
 .sabik-notes{border-top:1px solid var(--ig-separator);margin-top:18px;padding-top:12px}.sabik-retrieval-list{list-style:none;margin:0;padding:0}.sabik-retrieval-result{margin:14px 0;padding:14px;border:1px solid var(--ig-separator);border-radius:14px;background:var(--ig-bg-surface-soft)}.sabik-retrieval-link{font-weight:700}.sabik-retrieval-snippet{font-size:1rem;line-height:1.6}.sabik-retrieval-citation{margin-block:12px}.sabik-panel a{color:var(--ig-link);text-underline-offset:3px}.sabik-sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:1100px){#home-view{grid-template-columns:minmax(0,1fr) minmax(290px,340px);gap:22px}.sabik-widget{padding:18px}#home-view .featured-grid,#home-view .small-grid{grid-template-columns:1fr 1fr}}
@@ -71,3 +71,5 @@ html[data-ig-motion="off"] .sabik-current-presence .sabik-presence-motion{
 @media(prefers-reduced-motion:reduce){
  .sabik-current-presence .sabik-presence-motion{animation-name:sabikR69SelfMotionReduced;animation-duration:10s}
 }
+
+@media(max-width:420px){.sabik-voice-actions,.sabik-voice-settings{grid-template-columns:1fr}.sabik-voice-actions{gap:6px}}
