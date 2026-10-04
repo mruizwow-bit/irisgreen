@@ -202,9 +202,14 @@ class Runtime{
   meta.append(metaPanel);side.append(meta);
 
   const shell=d.createElement('div');shell.className='skyv2-shell';shell.append(scene,side);this.root.append(shell);this.scene=scene;
+  this.intro=this.root.closest('.skyv2-stage')?.querySelector('.skyv2-intro')||d.querySelector('.skyv2-intro');
   this.root.dataset.ready='true';
 
-  if('ResizeObserver' in global){this.resizeObserver=new ResizeObserver(()=>this.render());this.resizeObserver.observe(scene);}else global.addEventListener('resize',this._resize=()=>this.render());
+  if('ResizeObserver' in global){
+   this.resizeObserver=new ResizeObserver(()=>this.render());
+   this.resizeObserver.observe(scene);
+   if(this.intro)this.resizeObserver.observe(this.intro);
+  }else global.addEventListener('resize',this._resize=()=>this.render());
  }
  setTheme(theme){if(!THEMES.has(theme))return false;this.theme=theme;this.root.dataset.theme=theme;this.root.querySelectorAll('[data-theme]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.theme===theme)));return true}
  setMotion(mode){if(!MOTION.has(mode))return false;this.motion=mode;this.root.dataset.motion=mode;if(this.animation){cancelAnimationFrame(this.animation);this.animation=null;}this.render();return true}
@@ -262,10 +267,29 @@ class Runtime{
   const cur=this.draw();if(!cur)return;this.renderTargets(cur);this.renderLists(cur);this.renderInfo(cur);
   this.canvas.setAttribute('aria-label',this.t.calculated+' '+(this.place.label[this.lang]||this.place.label.es)+'. '+cur.targets.length+' '+this.t.stars.toLowerCase()+'.');
  }
+ placeConstellationLabel(button,x,y,w,h){
+  const pad=8;
+  button.style.left=(x/w*100)+'%';button.style.top=(y/h*100)+'%';
+  this.labels.append(button);
+  const sceneRect=this.scene.getBoundingClientRect(),box=button.getBoundingClientRect();
+  const halfW=box.width/2,halfH=box.height/2;
+  let cx=clamp(x,pad+halfW,w-pad-halfW),cy=clamp(y,pad+halfH,h-pad-halfH);
+  const intro=this.intro;
+  if(intro){
+   const ir=intro.getBoundingClientRect();
+   const left=ir.left-sceneRect.left-pad,right=ir.right-sceneRect.left+pad;
+   const top=ir.top-sceneRect.top-pad,bottom=ir.bottom-sceneRect.top+pad;
+   const overlapsX=cx+halfW>left&&cx-halfW<right;
+   const overlapsY=cy+halfH>top&&cy-halfH<bottom;
+   if(overlapsX&&overlapsY)cy=clamp(bottom+halfH,pad+halfH,h-pad-halfH);
+  }
+  button.style.left=(cx/w*100)+'%';button.style.top=(cy/h*100)+'%';
+  button.dataset.safeClamped=String(Math.abs(cx-x)>.5||Math.abs(cy-y)>.5);
+ }
  renderTargets(cur){
   this.targets.replaceChildren();this.labels.replaceChildren();const r=this.scene.getBoundingClientRect(),w=Math.max(320,r.width),h=Math.max(420,r.height);
   for(const x of cur.targets){const b=document.createElement('button');b.type='button';b.className='skyv2-star-target';b.style.left=(x.q.x/w*100)+'%';b.style.top=(x.q.y/h*100)+'%';b.dataset.star=(x.s.name||x.s.designation);b.setAttribute('aria-label',(x.s.name||x.s.designation||this.t.star)+' · '+this.t.magnitude+' '+x.s.mag.toFixed(2));b.addEventListener('click',ev=>{let pick=x;if(ev.detail!==0&&Number.isFinite(ev.clientX)&&Number.isFinite(ev.clientY)){const rr=this.targets.getBoundingClientRect(),px=(ev.clientX-rr.left)*(w/Math.max(1,rr.width)),py=(ev.clientY-rr.top)*(h/Math.max(1,rr.height));let best=Infinity;for(const candidate of cur.targets){const dx=candidate.q.x-px,dy=candidate.q.y-py,d2=dx*dx+dy*dy;if(d2<best){best=d2;pick=candidate;}}}this.selected={type:'star',value:pick};this.renderInfo(cur);});this.targets.append(b);}
-  if(this.hints){for(const item of cur.cons){const pts=item.arr.map(x=>x.q),x=pts.reduce((a,p)=>a+p.x,0)/pts.length,y=pts.reduce((a,p)=>a+p.y,0)/pts.length;const b=document.createElement('button');b.type='button';b.className='skyv2-const-label';b.style.left=(x/w*100)+'%';b.style.top=(y/h*100)+'%';b.textContent=this.lang==='en'?item.c.latin:item.c.es;b.dataset.constellation=item.c.abbr;b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});this.labels.append(b);}}
+  if(this.hints){for(const item of cur.cons){const pts=item.arr.map(x=>x.q),x=pts.reduce((a,p)=>a+p.x,0)/pts.length,y=pts.reduce((a,p)=>a+p.y,0)/pts.length;const b=document.createElement('button');b.type='button';b.className='skyv2-const-label';b.textContent=this.lang==='en'?item.c.latin:item.c.es;b.dataset.constellation=item.c.abbr;b.addEventListener('click',()=>{this.selected={type:'constellation',value:item};this.renderInfo(cur);});this.placeConstellationLabel(b,x,y,w,h);}}
  }
  renderLists(cur){
   this.constList.replaceChildren();this.starList.replaceChildren();this.planetList.replaceChildren();
