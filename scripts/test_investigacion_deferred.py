@@ -68,6 +68,11 @@ def delayed_language(browser):
         en.click()
     assert "lang=en" in page.url, page.url
     assert page.evaluate("document.documentElement.lang") == "en"
+    page.wait_for_function("() => window.IGAudience !== undefined")
+    assert page.evaluate("IGAudience.get()") == "AGE_UNSET"
+    assert page.locator("[data-ig-mandatory-age-gate]").count() == 1
+    assert page.locator("main article:visible").count() == 0
+    assert page.evaluate("IGAudience.set('AGE_18_PLUS')") is True
     page.wait_for_function("() => document.querySelectorAll('main article').length > 0")
     first = page.locator("main article h2").first.inner_text().strip()
     expected = (DATA[0].get("heading_en") or "").strip()
@@ -105,6 +110,9 @@ def failed_json(browser):
     errors = []
     page.on("pageerror", lambda exc: errors.append(str(exc)))
     page.goto(BASE + "/es/investigacion/", wait_until="domcontentloaded")
+    page.wait_for_function("() => window.IGAudience !== undefined")
+    assert page.evaluate("IGAudience.get()") == "AGE_UNSET"
+    assert page.evaluate("IGAudience.set('AGE_18_PLUS')") is True
     status = page.locator("[data-ig-investigacion-error]")
     status.wait_for(state="visible")
     text = status.inner_text().strip()
