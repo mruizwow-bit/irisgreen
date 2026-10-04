@@ -15,9 +15,6 @@
 [build.environment]
   "PYTHON_VERSION" = "3.12"
 
-[functions]
-  directory = "netlify/functions"
-
 [[headers]]
   for = "/mantenimiento/*"
   [headers.values]
