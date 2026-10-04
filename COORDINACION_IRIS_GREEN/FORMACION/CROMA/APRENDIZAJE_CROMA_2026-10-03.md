@@ -495,3 +495,17 @@ Lecciones:
 5. la normalización técnica se realiza después del HUMAN KEEP para no reabrir arte aprobado.
 
 Esta práctica aporta evidencia a: brief real, E4 visual review, master/handoff y factual-separation. No cierra por sí sola las prácticas responsive/ES-EN/a11y/interacción ni el examen interno pendiente, por lo que el estado global de formación NO se eleva artificialmente a PASS.
+
+
+## 18 · Práctica real · Space Section 5 Entry Visuals · 2026-10-04
+
+Croma ejecutó una tanda completa de dirección visual de producto:
+- cinco entradas distintas bajo un único lenguaje visual;
+- separación entre identidad de familia y repetición de plantilla;
+- masters 1536² sRGB;
+- cero copy horneado para preservar ES/EN;
+- epistemología visual diferenciada entre Cielo, Sistema Solar, Exoplanetas, Eclipses y Meteoros;
+- handoff preparado para shell existente de Prisma;
+- gate conservador `READY_FOR_REVIEW`, sin inflar a HUMAN PASS.
+
+La práctica refuerza E4, jerarquía, consistencia de familia, asset mastering y handoff. No sustituye las prácticas pendientes de interacción accesible/ES-EN implementado en componente ni el examen interno.
