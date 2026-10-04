@@ -22872,3 +22872,2326 @@ ESTADO BIBLIOTECA: BILINGUAL_COMPLETE · SOURCE_CAPTURED_BORRADOR · NOT_PRODUCT
 - STATUS: PASS
 
 SIGUIENTE FASE: Taller / Workshop y recursos bilingües.
+
+# 68. TALLER / WORKSHOP · BANCO DE RETOS BILINGÜE
+
+FUENTE: `es/taller/taller-retos.json` · rama `main`.
+
+ES REGLA: Se conserva el contenido bilingüe de la fuente. Los códigos `mesa` y `dur` se registran tal cual, sin inferir aquí su significado.
+
+EN RULE: The bilingual source content is preserved. `mesa` and `dur` codes are stored as-is, without inferring their meaning here.
+
+## WEB-WORKSHOP-CHALLENGE-001
+
+ES TÍTULO: Diez veces lo mismo
+
+EN TITLE: Ten times the same thing
+
+ES RETO: Dibuja el mismo objeto diez veces en una hoja. Cambia una cosa en cada dibujo.
+
+EN CHALLENGE: Draw the same object ten times on one sheet. Change one thing in each drawing.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Hazlo con diez fotos del mismo objeto, moviendo tú una cosa cada vez.
+
+EN ALTERNATIVE: Do it with ten photos of the same object, moving one thing each time.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-002
+
+ES TÍTULO: Sin mirar el papel
+
+EN TITLE: Without looking at the paper
+
+ES RETO: Mira el objeto todo el rato y dibuja sin mirar la hoja. Sale torcido. Ese es el juego.
+
+EN CHALLENGE: Look at the object the whole time and draw without looking at the sheet. It comes out crooked. That is the game.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Dibuja con los ojos cerrados y luego mira.
+
+EN ALTERNATIVE: Draw with your eyes closed and look afterwards.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-003
+
+ES TÍTULO: La criatura de tres partes
+
+EN TITLE: The three-part creature
+
+ES RETO: Junta una parte de un animal, una de una máquina y una de una planta. Ponle nombre.
+
+EN CHALLENGE: Join a part of an animal, a part of a machine and a part of a plant. Give it a name.
+
+ES NECESITAS: Papel y color
+
+EN YOU NEED: Paper and colour
+
+ES OTRA OPCIÓN: Recorta las tres partes de revistas y pégalas.
+
+EN ALTERNATIVE: Cut the three parts out of magazines and glue them.
+
+MESA_CODE: 0
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-004
+
+ES TÍTULO: Los colores cambiados
+
+EN TITLE: The swapped colours
+
+ES RETO: Dibuja algo conocido con los colores que no le tocan: un limón azul, un cielo naranja.
+
+EN CHALLENGE: Draw something familiar in the wrong colours: a blue lemon, an orange sky.
+
+ES NECESITAS: Papel y color
+
+EN YOU NEED: Paper and colour
+
+ES OTRA OPCIÓN: Hazlo con filtros en el móvil sobre una foto tuya.
+
+EN ALTERNATIVE: Do it with phone filters on a photo of yours.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-005
+
+ES TÍTULO: Tal como está
+
+EN TITLE: Exactly as it is
+
+ES RETO: Copia una zapatilla, un mando o una taza. Con la arruga, la mancha y el cable enredado.
+
+EN CHALLENGE: Copy a trainer, a remote or a mug. With the crease, the stain and the tangled cable.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Dibuja solo el contorno, sin detalles.
+
+EN ALTERNATIVE: Draw the outline only, no details.
+
+MESA_CODE: 0
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-006
+
+ES TÍTULO: La misma escena, tres tamaños
+
+EN TITLE: The same scene, three sizes
+
+ES RETO: Dibuja lo mismo tres veces: muy pequeño, mediano y ocupando toda la hoja.
+
+EN CHALLENGE: Draw the same thing three times: very small, medium and filling the whole sheet.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Usa tres papeles de tamaños distintos.
+
+EN ALTERNATIVE: Use three sheets of different sizes.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-007
+
+ES TÍTULO: Cinco frases y una foto
+
+EN TITLE: Five sentences and a photo
+
+ES RETO: Haz una foto de algo de hoy. Escribe cinco frases sobre ella. Ni una más.
+
+EN CHALLENGE: Take a photo of something from today. Write five sentences about it. Not one more.
+
+ES NECESITAS: Móvil y papel
+
+EN YOU NEED: Phone and paper
+
+ES OTRA OPCIÓN: Grábate diciendo las cinco frases.
+
+EN ALTERNATIVE: Record yourself saying the five sentences.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-008
+
+ES TÍTULO: La lista de lo que no existe
+
+EN TITLE: The list of what does not exist
+
+ES RETO: Escribe quince cosas que no existen: un electrodoméstico, un animal, una asignatura, un día de la semana.
+
+EN CHALLENGE: Write fifteen things that do not exist: an appliance, an animal, a school subject, a day of the week.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Dilas en voz alta y que otra persona las apunte.
+
+EN ALTERNATIVE: Say them out loud and have someone else write them down.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-009
+
+ES TÍTULO: El día contado por la mochila
+
+EN TITLE: The day told by the backpack
+
+ES RETO: Un objeto tuyo cuenta cómo ha ido el día. Habla el objeto, no tú.
+
+EN CHALLENGE: An object of yours tells how the day went. The object speaks, not you.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Grábalo como si fuera un audio de la mochila.
+
+EN ALTERNATIVE: Record it as if it were an audio from the backpack.
+
+MESA_CODE: 1
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-010
+
+ES TÍTULO: Cuatro viñetas sin palabras
+
+EN TITLE: Four panels with no words
+
+ES RETO: Una historia entera en cuatro dibujos. Nadie habla.
+
+EN CHALLENGE: A whole story in four drawings. Nobody speaks.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Hazlo con cuatro fotos puestas en orden.
+
+EN ALTERNATIVE: Do it with four photos put in order.
+
+MESA_CODE: 1
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-011
+
+ES TÍTULO: La misma historia, dos versiones
+
+EN TITLE: The same story, two versions
+
+ES RETO: Un hecho pequeño contado por dos personas distintas. Cambia lo que cada una cuenta.
+
+EN CHALLENGE: One small event told by two different people. What each one tells changes.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Cuéntalas en voz alta y compara.
+
+EN ALTERNATIVE: Tell them out loud and compare.
+
+MESA_CODE: 1
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-012
+
+ES TÍTULO: Instrucciones exactas
+
+EN TITLE: Exact instructions
+
+ES RETO: Escribe cómo se ata un cordón, paso por paso, para alguien que nunca lo ha visto. Prueba si funcionan.
+
+EN CHALLENGE: Write how to tie a shoelace, step by step, for someone who has never seen it. Test whether they work.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Grábalo en vídeo diciendo cada paso.
+
+EN ALTERNATIVE: Record it on video saying each step.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-013
+
+ES TÍTULO: El puente de papel
+
+EN TITLE: The paper bridge
+
+ES RETO: Haz un puente entre dos libros que aguante un tercer libro encima. Solo con folios.
+
+EN CHALLENGE: Make a bridge between two books that holds a third book on top. Sheets of paper only.
+
+ES NECESITAS: Folios
+
+EN YOU NEED: Sheets of paper
+
+ES OTRA OPCIÓN: Hazlo con cartón de una caja.
+
+EN ALTERNATIVE: Do it with cardboard from a box.
+
+MESA_CODE: 2
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-014
+
+ES TÍTULO: La caja de zapatos
+
+EN TITLE: The shoebox
+
+ES RETO: Convierte una caja en una sala pequeña. Con suelo, luz y algo que se mueva.
+
+EN CHALLENGE: Turn a box into a small room of its own. With a floor, a light and something that moves.
+
+ES NECESITAS: Caja, cartón y tijeras
+
+EN YOU NEED: Box, cardboard and scissors
+
+ES OTRA OPCIÓN: Móntala con lo que hay sin cortar nada.
+
+EN ALTERNATIVE: Build it with what is there without cutting anything.
+
+MESA_CODE: 2
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-015
+
+ES TÍTULO: La torre sin pegamento
+
+EN TITLE: The tower with no glue
+
+ES RETO: Sube todo lo que puedas apilando y encajando. Sin cinta, sin cola.
+
+EN CHALLENGE: Go as high as you can by stacking and slotting. No tape, no glue.
+
+ES NECESITAS: Lo que haya
+
+EN YOU NEED: Whatever is around
+
+ES OTRA OPCIÓN: Hazla tumbada, a lo largo del suelo.
+
+EN ALTERNATIVE: Build it lying down, along the floor.
+
+MESA_CODE: 2
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-016
+
+ES TÍTULO: Algo que se mueva
+
+EN TITLE: Something that moves
+
+ES RETO: Una pinza, una goma y un palo. Que empuje, levante o lance.
+
+EN CHALLENGE: A peg, a rubber band and a stick. Make it push, lift or launch.
+
+ES NECESITAS: Materiales sueltos
+
+EN YOU NEED: Loose materials
+
+ES OTRA OPCIÓN: Dibuja el mecanismo y explica cómo se movería.
+
+EN ALTERNATIVE: Draw the mechanism and explain how it would move.
+
+MESA_CODE: 2
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-017
+
+ES TÍTULO: A escala
+
+EN TITLE: To scale
+
+ES RETO: Construye un mueble pequeño para un muñeco, un coche o una figura. Que se sostenga de verdad.
+
+EN CHALLENGE: Build a small piece of furniture for a doll, a car or a figure. It has to really hold.
+
+ES NECESITAS: Cartón
+
+EN YOU NEED: Cardboard
+
+ES OTRA OPCIÓN: Hazlo con plastilina o con masa de sal.
+
+EN ALTERNATIVE: Do it with plasticine or salt dough.
+
+MESA_CODE: 2
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-018
+
+ES TÍTULO: La máquina que no sirve para nada
+
+EN TITLE: The machine that is good for nothing
+
+ES RETO: Una máquina con manivela, cuerda o rampa cuyo único fin es funcionar.
+
+EN CHALLENGE: A machine with a crank, a string or a ramp whose only purpose is to work.
+
+ES NECESITAS: Lo que haya
+
+EN YOU NEED: Whatever is around
+
+ES OTRA OPCIÓN: Dibújala con todas sus piezas numeradas.
+
+EN ALTERNATIVE: Draw it with all its parts numbered.
+
+MESA_CODE: 2
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-019
+
+ES TÍTULO: Cinco sonidos cerca
+
+EN TITLE: Five sounds nearby
+
+ES RETO: Graba cinco sonidos que suenen donde estés ahora. Que otra persona los adivine.
+
+EN CHALLENGE: Record five sounds happening where you are right now. Let somebody else guess them.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Imítalos con la boca y que los adivinen igual.
+
+EN ALTERNATIVE: Imitate them with your mouth and have them guessed anyway.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-020
+
+ES TÍTULO: Un ritmo con tres cosas
+
+EN TITLE: A rhythm with three things
+
+ES RETO: Elige tres objetos que suenen distinto. Haz un ritmo de ocho golpes y repítelo.
+
+EN CHALLENGE: Pick three objects that sound different. Make a rhythm of eight beats and repeat it.
+
+ES NECESITAS: Tres objetos
+
+EN YOU NEED: Three objects
+
+ES OTRA OPCIÓN: Hazlo con palmas, chasquidos y pies.
+
+EN ALTERNATIVE: Do it with claps, clicks and feet.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-021
+
+ES TÍTULO: Un minuto de calle
+
+EN TITLE: One minute of street
+
+ES RETO: Graba un minuto por la ventana. Escúchalo entero y apunta todo lo que se oye.
+
+EN CHALLENGE: Record one minute out of the window. Listen to all of it and write down everything you hear.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Escucha un minuto sin grabar y apunta después.
+
+EN ALTERNATIVE: Listen for one minute without recording and write it down afterwards.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-022
+
+ES TÍTULO: Tres notas
+
+EN TITLE: Three notes
+
+ES RETO: Inventa una melodía corta usando solo tres notas. Repítela hasta que te la sepas.
+
+EN CHALLENGE: Invent a short tune using only three notes. Repeat it until you know it.
+
+ES NECESITAS: Voz, teclado o app
+
+EN YOU NEED: Voice, keyboard or app
+
+ES OTRA OPCIÓN: Hazla con tres vasos con agua a distinta altura.
+
+EN ALTERNATIVE: Do it with three glasses filled to different heights.
+
+MESA_CODE: 3
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-023
+
+ES TÍTULO: El mapa sonoro
+
+EN TITLE: The sound map
+
+ES RETO: Dibuja desde arriba el sitio donde estés y marca dónde suena cada cosa. No hace falta que se reconozca: vale un plano inventado.
+
+EN CHALLENGE: Draw the place you are in from above and mark where each thing sounds. It does not have to be recognisable: an invented plan works.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Dilo en voz alta señalando con el dedo.
+
+EN ALTERNATIVE: Say it out loud, pointing with your finger.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-024
+
+ES TÍTULO: Tu voz grabada
+
+EN TITLE: Your recorded voice
+
+ES RETO: Graba un trozo leído o contado. Escúchalo. Grábalo otra vez cambiando algo.
+
+EN CHALLENGE: Record a bit read or told. Listen to it. Record it again changing something.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Grábalo sin escucharlo después y guárdalo para otro día.
+
+EN ALTERNATIVE: Record it without listening afterwards and keep it for another day.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-025
+
+ES TÍTULO: El mismo sitio, diez horas
+
+EN TITLE: The same place, ten hours
+
+ES RETO: Diez fotos del mismo rincón a lo largo del día. Ponlas en fila.
+
+EN CHALLENGE: Ten photos of the same corner through the day. Lay them out in a row.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Dibuja el mismo rincón tres veces en tres momentos.
+
+EN ALTERNATIVE: Draw the same corner three times at three moments.
+
+MESA_CODE: 4
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-026
+
+ES TÍTULO: La colección de una sola cosa
+
+EN TITLE: The collection of one single thing
+
+ES RETO: Fotografía veinte puertas, veinte manchas o veinte matrículas de tu calle.
+
+EN CHALLENGE: Photograph twenty doors, twenty stains or twenty number plates on your street.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Dibuja diez en vez de fotografiar veinte.
+
+EN ALTERNATIVE: Draw ten instead of photographing twenty.
+
+MESA_CODE: 4
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-027
+
+ES TÍTULO: El cuaderno de un metro cuadrado
+
+EN TITLE: The one-square-metre notebook
+
+ES RETO: Elige un metro cuadrado que puedas mirar cinco días: una maceta, un trozo de acera, un rincón del parque. Apunta lo que pasa ahí.
+
+EN CHALLENGE: Pick a square metre you can look at for five days: a plant pot, a bit of pavement, a corner of a park. Note what happens there.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Haz una foto diaria del mismo cuadrado.
+
+EN ALTERNATIVE: Take one photo a day of the same square.
+
+MESA_CODE: 4
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-028
+
+ES TÍTULO: La misma forma en veinte sitios
+
+EN TITLE: The same shape in twenty places
+
+ES RETO: Busca círculos donde vayas: por la calle, en el transporte, en una tienda. Cuéntalos. Dibuja los raros.
+
+EN CHALLENGE: Look for circles wherever you go: in the street, on transport, in a shop. Count them. Draw the odd ones.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Busca un color en vez de una forma.
+
+EN ALTERNATIVE: Look for a colour instead of a shape.
+
+MESA_CODE: 4
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-029
+
+ES TÍTULO: Fotografiar la luz
+
+EN TITLE: Photographing the light
+
+ES RETO: No fotografíes el objeto: fotografía la sombra, el reflejo o la raya de sol en la pared.
+
+EN CHALLENGE: Do not photograph the object: photograph the shadow, the reflection or the stripe of sun on the wall.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Dibuja solo la sombra de un objeto.
+
+EN ALTERNATIVE: Draw only the shadow of an object.
+
+MESA_CODE: 4
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-030
+
+ES TÍTULO: Veinte cosas por color
+
+EN TITLE: Twenty things by colour
+
+ES RETO: Reúne veinte objetos, ordénalos por color y haz una foto desde arriba.
+
+EN CHALLENGE: Gather twenty objects, sort them by colour and take a photo from above.
+
+ES NECESITAS: Objetos y móvil
+
+EN YOU NEED: Objects and phone
+
+ES OTRA OPCIÓN: Ordénalos por tamaño o por ruido que hacen.
+
+EN ALTERNATIVE: Sort them by size or by the noise they make.
+
+MESA_CODE: 4
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-031
+
+ES TÍTULO: Seis casillas
+
+EN TITLE: Six squares
+
+ES RETO: Inventa un juego de mesa de seis casillas con tres reglas. Juégalo una vez y cambia una regla.
+
+EN CHALLENGE: Invent a board game of six squares with three rules. Play it once and change one rule.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Dicta las reglas y que otra persona dibuje el tablero.
+
+EN ALTERNATIVE: Dictate the rules and have someone else draw the board.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-032
+
+ES TÍTULO: Un sitio que no existe
+
+EN TITLE: A place that does not exist
+
+ES RETO: Dibuja el mapa: la costa, tres pueblos, un río y los nombres.
+
+EN CHALLENGE: Draw the map: the coast, three villages, a river and the names.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Descríbelo en voz alta con todos los nombres y apúntalos.
+
+EN ALTERNATIVE: Describe it out loud with all the names and write them down.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-033
+
+ES TÍTULO: Diez letras nuevas
+
+EN TITLE: Ten new letters
+
+ES RETO: Inventa un alfabeto de diez signos. Escribe tu nombre con él.
+
+EN CHALLENGE: Invent an alphabet of ten signs. Write your name with it.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Usa diez gestos con la mano en vez de signos escritos.
+
+EN ALTERNATIVE: Use ten hand gestures instead of written signs.
+
+MESA_CODE: 5
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-034
+
+ES TÍTULO: Un deporte de mesa
+
+EN TITLE: A tabletop sport
+
+ES RETO: Reglas nuevas con lo que tengas encima de la mesa. Cómo se gana, cómo se pierde, qué está prohibido.
+
+EN CHALLENGE: New rules using whatever is on the table. How you win, how you lose, what is not allowed.
+
+ES NECESITAS: Lo que haya
+
+EN YOU NEED: Whatever is around
+
+ES OTRA OPCIÓN: Adapta un juego que ya conozcas cambiando tres reglas.
+
+EN ALTERNATIVE: Adapt a game you already know by changing three rules.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-035
+
+ES TÍTULO: Una moneda
+
+EN TITLE: A coin
+
+ES RETO: Invéntala: cómo se llama, cuánto vale y qué se compra con una.
+
+EN CHALLENGE: Invent it: what it is called, what it is worth and what one buys.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Dibújala en plastilina o en cartón.
+
+EN ALTERNATIVE: Model it in plasticine or cardboard.
+
+MESA_CODE: 5
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-036
+
+ES TÍTULO: Un código
+
+EN TITLE: A code
+
+ES RETO: Inventa una manera de escribir mensajes. Manda uno a alguien de confianza y dale la clave aparte.
+
+EN CHALLENGE: Invent a way of writing messages. Send one to somebody you trust and give them the key separately.
+
+ES NECESITAS: Papel
+
+EN YOU NEED: Paper
+
+ES OTRA OPCIÓN: Haz el código con colores en vez de con letras.
+
+EN ALTERNATIVE: Make the code with colours instead of letters.
+
+MESA_CODE: 5
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-037
+
+ES TÍTULO: Cada vez con menos líneas
+
+EN TITLE: Fewer lines each time
+
+ES RETO: Coge un objeto de la mesa y dibújalo seis veces. Cada vez, con menos líneas que la anterior. La sexta puede ser una sola línea.
+
+EN CHALLENGE: Take an object from the table and draw it six times. Each time with fewer lines than before. The sixth can be a single line.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Recórtalo en papel seis veces, cada vez más pequeño.
+
+EN ALTERNATIVE: Cut it out of paper six times, smaller each time.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-038
+
+ES TÍTULO: La mano que no usas
+
+EN TITLE: The hand you do not use
+
+ES RETO: Dibuja lo que quieras con la mano con la que no escribes. Sale distinto, y eso es el reto.
+
+EN CHALLENGE: Draw whatever you like with the hand you do not write with. It comes out different, and that is the point.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Sujeta el lápiz con las dos manos a la vez: sale igual de torcido, que es de lo que va el reto.
+
+EN ALTERNATIVE: Hold the pencil with both hands at once: it comes out just as wobbly, which is what the challenge is about.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-039
+
+ES TÍTULO: Lo que hay dentro de la mancha
+
+EN TITLE: What is inside the blot
+
+ES RETO: Echa una mancha de color con mucha agua y espera a que seque. Mírala y dibuja encima solo lo que hayas encontrado dentro.
+
+EN CHALLENGE: Put down a blot of colour with plenty of water and let it dry. Look at it and draw over it only what you found inside.
+
+ES NECESITAS: Papel, agua y color
+
+EN YOU NEED: Paper, water and colour
+
+ES OTRA OPCIÓN: Usa una mancha de otro día, o una de la pared, del suelo o de una piedra.
+
+EN ALTERNATIVE: Use a blot from another day, or one on a wall, a floor or a stone.
+
+MESA_CODE: 0
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-040
+
+ES TÍTULO: Diez títulos y ningún libro
+
+EN TITLE: Ten titles and no books
+
+ES RETO: Escribe diez títulos de libros que no existen. Solo los títulos: los libros no hay que escribirlos.
+
+EN CHALLENGE: Write ten titles of books that do not exist. Titles only: the books do not have to be written.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Dilos en voz alta y grábalos con el móvil.
+
+EN ALTERNATIVE: Say them out loud and record them on your phone.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-041
+
+ES TÍTULO: Lo que había en la mesa
+
+EN TITLE: What was on the table
+
+ES RETO: Mira una mesa cualquiera durante un minuto. Tápala con un paño. Escribe todo lo que había.
+
+EN CHALLENGE: Look at any table for a minute. Cover it with a cloth. Write down everything that was there.
+
+ES NECESITAS: Un paño y algo para apuntar
+
+EN YOU NEED: A cloth and something to note with
+
+ES OTRA OPCIÓN: Dilo en voz alta, o hazle una foto antes y señala después.
+
+EN ALTERNATIVE: Say it out loud, or photograph it first and point afterwards.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-042
+
+ES TÍTULO: Una frase que crece
+
+EN TITLE: A sentence that grows
+
+ES RETO: Empieza con tres palabras. En la línea siguiente, las mismas más una. Sigue hasta que no te quepa en la hoja.
+
+EN CHALLENGE: Start with three words. On the next line, the same plus one. Keep going until it will not fit on the page.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Hazlo hablando, con alguien que repita la frase entera cada vez.
+
+EN ALTERNATIVE: Do it out loud, with someone repeating the whole sentence each time.
+
+MESA_CODE: 1
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-043
+
+ES TÍTULO: El hueco de debajo
+
+EN TITLE: The gap underneath
+
+ES RETO: Construye algo que sostenga un objeto por encima de la mesa, con el hueco vacío debajo. Que se pueda pasar la mano por ese hueco.
+
+EN CHALLENGE: Build something that holds an object above the table, with an empty gap underneath. Your hand has to fit through the gap.
+
+ES NECESITAS: Papel, cartón, cinta
+
+EN YOU NEED: Paper, card, tape
+
+ES OTRA OPCIÓN: Usa cartón de una caja, que se dobla solo y aguanta más.
+
+EN ALTERNATIVE: Use card from a box: it folds by itself and holds more.
+
+MESA_CODE: 2
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-044
+
+ES TÍTULO: La torre de una mano
+
+EN TITLE: The one-handed tower
+
+ES RETO: Construye lo más alto que puedas usando una sola mano. La otra se queda quieta.
+
+EN CHALLENGE: Build as high as you can using one hand only. The other stays still.
+
+ES NECESITAS: Lo que tengas alrededor
+
+EN YOU NEED: Whatever is around you
+
+ES OTRA OPCIÓN: Construye en el suelo, con las piezas alrededor y sin tener que estirarte.
+
+EN ALTERNATIVE: Build on the floor, with the pieces around you and no need to stretch.
+
+MESA_CODE: 2
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-045
+
+ES TÍTULO: Un refugio para una cosa pequeña
+
+EN TITLE: A shelter for one small thing
+
+ES RETO: Elige un objeto pequeño. Mídelo. Hazle un refugio a su medida, con una puerta por donde entre y salga.
+
+EN CHALLENGE: Pick a small object. Measure it. Make it a shelter to its size, with a door it can go in and out of.
+
+ES NECESITAS: Cartón, tijeras, regla
+
+EN YOU NEED: Card, scissors, ruler
+
+ES OTRA OPCIÓN: Dile las medidas a alguien y que te corte las piezas; el montaje es tuyo.
+
+EN ALTERNATIVE: Give someone the measurements and let them cut the pieces; the building is yours.
+
+MESA_CODE: 2
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-046
+
+ES TÍTULO: El sonido más bajo
+
+EN TITLE: The quietest sound
+
+ES RETO: Quédate quieto y busca el sonido más bajo que puedas oír ahora mismo. Ponle nombre.
+
+EN CHALLENGE: Stay still and look for the quietest sound you can hear right now. Give it a name.
+
+ES NECESITAS: Nada
+
+EN YOU NEED: Nothing
+
+ES OTRA OPCIÓN: Apoya la mano en la mesa y busca la vibración más pequeña que notes. Es el mismo reto sin sonido.
+
+EN ALTERNATIVE: Rest your hand on the table and look for the smallest vibration you can feel. Same challenge without sound.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-047
+
+ES TÍTULO: El ritmo de doce pasos
+
+EN TITLE: The twelve-step rhythm
+
+ES RETO: Camina doce pasos marcando un ritmo con los pies. Hazlo tres veces igual. A la cuarta, cámbialo.
+
+EN CHALLENGE: Walk twelve steps marking a rhythm with your feet. Do it the same three times. On the fourth, change it.
+
+ES NECESITAS: Nada
+
+EN YOU NEED: Nothing
+
+ES OTRA OPCIÓN: Hazlo con la mano en la mesa, sentado.
+
+EN ALTERNATIVE: Do it with your hand on the table, sitting down.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-048
+
+ES TÍTULO: Tres sonidos con un vaso
+
+EN TITLE: Three sounds with a glass
+
+ES RETO: Un vaso, una cuchara y algo que suene dentro: arroz, monedas, agua. Consigue tres sonidos distintos.
+
+EN CHALLENGE: A glass, a spoon and something that rattles inside: rice, coins, water. Get three different sounds.
+
+ES NECESITAS: Un vaso y una cuchara
+
+EN YOU NEED: A glass and a spoon
+
+ES OTRA OPCIÓN: Hazlos con la boca, sin coger nada.
+
+EN ALTERNATIVE: Make them with your mouth, picking nothing up.
+
+MESA_CODE: 3
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-049
+
+ES TÍTULO: Del revés
+
+EN TITLE: Upside down
+
+ES RETO: Coge una foto o un dibujo y ponlo boca abajo. Mira qué ves ahora que antes no veías.
+
+EN CHALLENGE: Take a photo or a drawing and turn it upside down. Look at what you see now that you did not see before.
+
+ES NECESITAS: Una foto o un dibujo
+
+EN YOU NEED: A photo or a drawing
+
+ES OTRA OPCIÓN: Gira el móvil con la foto en pantalla.
+
+EN ALTERNATIVE: Turn your phone round with the photo on screen.
+
+MESA_CODE: 4
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-050
+
+ES TÍTULO: Lo que cabe en el agujero
+
+EN TITLE: What fits in the hole
+
+ES RETO: Hazle un agujero pequeño a un papel. Mira por él y quédate solo con lo que cabe dentro.
+
+EN CHALLENGE: Make a small hole in a piece of paper. Look through it and keep only what fits inside.
+
+ES NECESITAS: Un papel
+
+EN YOU NEED: A piece of paper
+
+ES OTRA OPCIÓN: Haz el hueco con los dedos, sin recortar nada.
+
+EN ALTERNATIVE: Make the gap with your fingers, cutting nothing.
+
+MESA_CODE: 4
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-051
+
+ES TÍTULO: Lo más pequeño que veas
+
+EN TITLE: The smallest thing in sight
+
+ES RETO: Busca la cosa más pequeña que tengas a la vista. Mírala un rato largo y apunta tres cosas que no habías visto.
+
+EN CHALLENGE: Find the smallest thing you can see. Look at it for a good while and note three things you had not seen.
+
+ES NECESITAS: Algo para apuntar
+
+EN YOU NEED: Something to note with
+
+ES OTRA OPCIÓN: Hazle una foto de cerca y míralas en la pantalla.
+
+EN ALTERNATIVE: Take a close photo and look at them on the screen.
+
+MESA_CODE: 4
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-052
+
+ES TÍTULO: El segundo uso
+
+EN TITLE: The second use
+
+ES RETO: Coge lo primero que tengas delante. Invéntale un segundo uso que no tenga nada que ver con el primero.
+
+EN CHALLENGE: Take the first thing in front of you. Invent a second use for it, with nothing to do with the first.
+
+ES NECESITAS: Nada
+
+EN YOU NEED: Nothing
+
+ES OTRA OPCIÓN: Dilo en voz alta y que alguien lo apunte.
+
+EN ALTERNATIVE: Say it out loud and let someone write it down.
+
+MESA_CODE: 5
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-053
+
+ES TÍTULO: Una regla nueva
+
+EN TITLE: One new rule
+
+ES RETO: Elige un juego que ya conozcas. Cámbiale una regla, solo una. Juega una partida con la regla nueva.
+
+EN CHALLENGE: Pick a game you already know. Change one rule, only one. Play a round with the new rule.
+
+ES NECESITAS: Un juego que ya tengas
+
+EN YOU NEED: A game you already have
+
+ES OTRA OPCIÓN: Cambia la regla de un juego de cartas, que se explica en una frase.
+
+EN ALTERNATIVE: Change the rule of a card game: it takes one sentence to explain.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-054
+
+ES TÍTULO: El animal que falta
+
+EN TITLE: The missing animal
+
+ES RETO: Invéntate un animal que viva en una biblioteca. Decide qué come, dónde duerme y de qué se esconde.
+
+EN CHALLENGE: Invent an animal that lives in a library. Decide what it eats, where it sleeps and what it hides from.
+
+ES NECESITAS: Nada
+
+EN YOU NEED: Nothing
+
+ES OTRA OPCIÓN: Cuéntalo, dibújalo o constrúyelo, como te salga mejor.
+
+EN ALTERNATIVE: Tell it, draw it or build it, whichever works better for you.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-055
+
+ES TÍTULO: El cuaderno de una sola cosa
+
+EN TITLE: The one-thing notebook
+
+ES RETO: Elige una cosa que puedas dibujar durante varios días: una planta, una taza, tu propia mano. Dibújala una vez al día durante cinco días, en la misma hoja.
+
+EN CHALLENGE: Pick one thing you can draw over several days: a plant, a mug, your own hand. Draw it once a day for five days, on the same sheet.
+
+ES NECESITAS: Una hoja grande y lápiz
+
+EN YOU NEED: A large sheet and a pencil
+
+ES OTRA OPCIÓN: Hazle una foto al día y ponlas juntas al final.
+
+EN ALTERNATIVE: Take one photo a day and put them side by side at the end.
+
+MESA_CODE: 0
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-056
+
+ES TÍTULO: Cien palabras y ni una más
+
+EN TITLE: A hundred words and not one more
+
+ES RETO: Cuenta algo que te pasó en exactamente cien palabras. Ni noventa y nueve ni ciento una. Lo difícil es lo que hay que quitar.
+
+EN CHALLENGE: Tell something that happened to you in exactly a hundred words. Not ninety-nine, not a hundred and one. The hard part is what has to go.
+
+ES NECESITAS: Papel y lápiz, o el móvil
+
+EN YOU NEED: Paper and pencil, or your phone
+
+ES OTRA OPCIÓN: Cuéntalo en voz alta y que alguien vaya contando las palabras contigo.
+
+EN ALTERNATIVE: Tell it out loud and let somebody count the words along with you.
+
+MESA_CODE: 1
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-057
+
+ES TÍTULO: El mismo minuto, cinco días
+
+EN TITLE: The same minute, five days
+
+ES RETO: Graba un minuto de sonido a la misma hora durante cinco días, en el mismo sitio. Escúchalos seguidos al final y apunta qué cambia.
+
+EN CHALLENGE: Record one minute of sound at the same time for five days, in the same place. Listen to them one after another at the end and note what changes.
+
+ES NECESITAS: Algo que grabe
+
+EN YOU NEED: Something that records
+
+ES OTRA OPCIÓN: Apunta en un papel lo que oyes cada día, sin grabar nada, y compara las cinco listas.
+
+EN ALTERNATIVE: Write down what you hear each day, with no recording, and compare the five lists.
+
+MESA_CODE: 3
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-058
+
+ES TÍTULO: Un idioma de diez palabras
+
+EN TITLE: A ten-word language
+
+ES RETO: Invéntate un idioma que solo tenga diez palabras. Decide cuáles son y escribe tres frases con ellas. Lo interesante es qué no se puede decir.
+
+EN CHALLENGE: Invent a language with only ten words. Decide which ten and write three sentences with them. The interesting part is what cannot be said.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Que sean diez gestos en vez de diez palabras.
+
+EN ALTERNATIVE: Make them ten gestures instead of ten words.
+
+MESA_CODE: 5
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-059
+
+ES TÍTULO: El objeto de espaldas
+
+EN TITLE: The object from behind
+
+ES RETO: Elige algo que tengas delante y dibújalo por detrás, como si lo hubieras girado. No lo gires.
+
+EN CHALLENGE: Pick something in front of you and draw its back, as if you had turned it round. Do not turn it.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Gíralo al terminar y compara.
+
+EN ALTERNATIVE: Turn it round at the end and compare.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-060
+
+ES TÍTULO: Una hoja, cuarenta trozos
+
+EN TITLE: One sheet, forty pieces
+
+ES RETO: Dobla un folio hasta hacer cuarenta casillas. Dibuja algo distinto en cada una. Pueden ser rayas.
+
+EN CHALLENGE: Fold a sheet into forty squares. Draw something different in each one. Lines count.
+
+ES NECESITAS: Un folio
+
+EN YOU NEED: One sheet
+
+ES OTRA OPCIÓN: Rellena solo las casillas de los bordes.
+
+EN ALTERNATIVE: Fill only the squares along the edges.
+
+MESA_CODE: 0
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-061
+
+ES TÍTULO: Con la hoja de pie
+
+EN TITLE: With the sheet upright
+
+ES RETO: Pega el papel en la pared y dibuja de pie. El brazo entero se mueve distinto que la muñeca.
+
+EN CHALLENGE: Tape the paper to the wall and draw standing up. The whole arm moves differently from the wrist.
+
+ES NECESITAS: Papel, cinta y pared
+
+EN YOU NEED: Paper, tape and a wall
+
+ES OTRA OPCIÓN: Dibuja con el papel en el suelo, agachado.
+
+EN ALTERNATIVE: Draw with the paper on the floor, crouching.
+
+MESA_CODE: 0
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-062
+
+ES TÍTULO: El final primero
+
+EN TITLE: The ending first
+
+ES RETO: Escribe la última frase de una historia. Después escribe las tres que van justo antes.
+
+EN CHALLENGE: Write the last sentence of a story. Then write the three that come just before it.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Dale la última frase a alguien y que escriba él las tres.
+
+EN ALTERNATIVE: Give the last sentence to someone else and let them write the three.
+
+MESA_CODE: 1
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-063
+
+ES TÍTULO: El manual de algo que ya sabes
+
+EN TITLE: A manual for something you already know
+
+ES RETO: Escribe las instrucciones de algo que haces sin pensar: atarte los cordones, hacerte un bocadillo, encender la consola. Paso a paso, sin saltarte ninguno.
+
+EN CHALLENGE: Write the instructions for something you do without thinking: tying your laces, making a sandwich, switching on the console. Step by step, skipping none.
+
+ES NECESITAS: Papel o móvil
+
+EN YOU NEED: Paper or phone
+
+ES OTRA OPCIÓN: Dáselas a alguien y que las siga al pie de la letra.
+
+EN ALTERNATIVE: Give them to someone and have them follow every word.
+
+MESA_CODE: 1
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-064
+
+ES TÍTULO: Que ruede
+
+EN TITLE: Make it roll
+
+ES RETO: Haz algo que ruede desde la punta de un libro hasta el suelo sin caerse por el camino.
+
+EN CHALLENGE: Build something that rolls from the edge of a book to the floor without falling over on the way.
+
+ES NECESITAS: Cartón, tapones, cinta
+
+EN YOU NEED: Cardboard, bottle caps, tape
+
+ES OTRA OPCIÓN: Que ruede lo más despacio posible.
+
+EN ALTERNATIVE: Make it roll as slowly as possible.
+
+MESA_CODE: 2
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-065
+
+ES TÍTULO: La casa de una cuchara
+
+EN TITLE: A house for a spoon
+
+ES RETO: Construye una casa para una cuchara. Con puerta, con ventana y con sitio para dormir.
+
+EN CHALLENGE: Build a house for a spoon. With a door, a window and somewhere to sleep.
+
+ES NECESITAS: Cajas y cinta
+
+EN YOU NEED: Boxes and tape
+
+ES OTRA OPCIÓN: Hazla para dos cucharas que no se hablan.
+
+EN ALTERNATIVE: Build it for two spoons that are not speaking.
+
+MESA_CODE: 2
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-066
+
+ES TÍTULO: Lo mismo, tres veces mejor
+
+EN TITLE: The same thing, three times better
+
+ES RETO: Construye algo sencillo. Deshazlo y vuelve a hacerlo. Y otra vez. Guarda las tres versiones juntas.
+
+EN CHALLENGE: Build something simple. Take it apart and build it again. And again. Keep the three versions together.
+
+ES NECESITAS: Lo que tengas
+
+EN YOU NEED: Whatever you have
+
+ES OTRA OPCIÓN: Que la tercera use la mitad de material que la primera.
+
+EN ALTERNATIVE: Make the third one use half the material of the first.
+
+MESA_CODE: 2
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-067
+
+ES TÍTULO: El mismo sitio con los ojos cerrados
+
+EN TITLE: The same place with your eyes closed
+
+ES RETO: Siéntate donde estés y cierra los ojos dos minutos. Después escribe todo lo que has oído, por orden de cerca a lejos.
+
+EN CHALLENGE: Sit where you are and close your eyes for two minutes. Then write everything you heard, from nearest to furthest.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Repítelo en el mismo sitio a otra hora.
+
+EN ALTERNATIVE: Repeat it in the same place at another time of day.
+
+MESA_CODE: 3
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-068
+
+ES TÍTULO: Una escalera con una sola cosa
+
+EN TITLE: A ladder from a single thing
+
+ES RETO: Coge un objeto y saca de él cinco sonidos distintos, del más grave al más agudo. Grábalos en ese orden.
+
+EN CHALLENGE: Take one object and get five different sounds out of it, from lowest to highest. Record them in that order.
+
+ES NECESITAS: Un objeto y el móvil
+
+EN YOU NEED: An object and your phone
+
+ES OTRA OPCIÓN: Que los cinco salgan de un vaso con agua, cambiando el nivel.
+
+EN ALTERNATIVE: Get all five from a glass of water, changing the level.
+
+MESA_CODE: 3
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-069
+
+ES TÍTULO: Diez veces la misma esquina
+
+EN TITLE: Ten times the same corner
+
+ES RETO: Elige una esquina de tu casa y hazle diez fotos sin moverte del sitio. Cambia solo hacia dónde miras.
+
+EN CHALLENGE: Pick a corner of your home and take ten photos without moving from the spot. Change only where you point.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Hazlas todas a la altura del suelo.
+
+EN ALTERNATIVE: Take them all at floor level.
+
+MESA_CODE: 4
+
+DURATION_CODE: 0
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-070
+
+ES TÍTULO: El catálogo de las manos
+
+EN TITLE: A catalogue of hands
+
+ES RETO: Fotografía diez manos haciendo diez cosas distintas. Valen las tuyas.
+
+EN CHALLENGE: Photograph ten hands doing ten different things. Your own count.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Que en ninguna se vea la cara de nadie.
+
+EN ALTERNATIVE: Make sure no face appears in any of them.
+
+MESA_CODE: 4
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-071
+
+ES TÍTULO: Lo que cambia sin que se note
+
+EN TITLE: What changes without showing
+
+ES RETO: Elige algo que tarde días en cambiar: una planta, una obra en la calle, la luz de una ventana. Hazle una foto al día durante una semana.
+
+EN CHALLENGE: Pick something that takes days to change: a plant, roadworks, the light in a window. Take one photo a day for a week.
+
+ES NECESITAS: Móvil
+
+EN YOU NEED: Phone
+
+ES OTRA OPCIÓN: Ponlas después una al lado de otra.
+
+EN ALTERNATIVE: Put them side by side afterwards.
+
+MESA_CODE: 4
+
+DURATION_CODE: 2
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## WEB-WORKSHOP-CHALLENGE-072
+
+ES TÍTULO: El museo de una cosa
+
+EN TITLE: A museum of one thing
+
+ES RETO: Inventa un museo entero dedicado a un solo objeto corriente. Escribe los nombres de sus cinco salas.
+
+EN CHALLENGE: Invent a whole museum devoted to one ordinary object. Write the names of its five rooms.
+
+ES NECESITAS: Papel y lápiz
+
+EN YOU NEED: Paper and pencil
+
+ES OTRA OPCIÓN: Dibuja el plano y pon dónde está la salida.
+
+EN ALTERNATIVE: Draw the floor plan and mark the way out.
+
+MESA_CODE: 5
+
+DURATION_CODE: 1
+
+ES RUTA BASE: /es/taller/
+
+EN BASE PATH: /en/workshop/
+
+ORIGEN: SOURCE_DERIVED
+
+ESTADO: BILINGUAL_COMPLETE
+
+---
+
+## QA · TALLER / WORKSHOP · RETOS
+
+- SOURCE_RECORDS: 72/72
+- ES_COMPLETE: 72/72
+- EN_COMPLETE: 72/72
+- BILINGUAL_COMPLETE: 72/72
+- RAW_CODES_PRESERVED: 72/72
+- STATUS: PASS
+
+SIGUIENTE FASE: catálogo de páginas de Taller / Workshop y Recursos / Resources.
