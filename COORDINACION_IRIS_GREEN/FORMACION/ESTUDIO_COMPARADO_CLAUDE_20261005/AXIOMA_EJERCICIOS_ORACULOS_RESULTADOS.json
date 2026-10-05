@@ -1,0 +1,99 @@
+{
+  "schema": "iris-green.axioma.study-counterexamples.2026-10-05.v1",
+  "purpose": "Independent learning exercise requested by María. Isolated copies only; no product mutation.",
+  "bases": {
+    "cielo": {
+      "file": "CIELO_ORION_INTERACTIVO_R01(1).zip",
+      "sha256": "2e036ce4c3e3984be09d2c0ba630470f2129be49738960ec070bffa756d0026c"
+    },
+    "peces": {
+      "file": "descubrimiento-peces-R02_1_2_1.zip",
+      "sha256": "a5a39e5d5de8369cfb0bf392dbeab6d20c66720128c094b5261517466f729717"
+    },
+    "web": {
+      "file": "DESCUBRIMIENTO_AREA_NAVEGABLE_R01_1.zip",
+      "sha256": "d0ef4877a09e892cf219afdb90089a44cad83b181544b2f70df7972c815b04e3"
+    },
+    "construction": {
+      "file": "PRISMA_CONSTRUCTION_PLAYABLE_R01.zip",
+      "sha256": "e2370c5e6e71177412f66623077e8f66fc47b03b98985a40b6e89fb59b958b2a"
+    }
+  },
+  "exercises": [
+    {
+      "id": "AX-EX-01",
+      "domain": "CIELO",
+      "question": "Can a test that proves reticle recognition + keyboard route pass while the natural mouse action is absent?",
+      "observed": {
+        "reticle_recognition": true,
+        "stage_before_direct_star_click": "observando",
+        "stage_after_direct_star_click": "observando",
+        "stage_after_keyboard_enter": "localizada"
+      },
+      "old_oracle": "Recognition succeeds when the belt enters the central recognition region and Enter is used.",
+      "old_oracle_result": "PASS",
+      "broad_promise_violated": "A person can point/select the visible sky directly with the mouse/touch when that is the spontaneous gesture.",
+      "improved_oracle": "Direct-point task oracle: click/tap on a visible target under current pan/zoom must select/localize without camera jump; drag remains pan.",
+      "improved_oracle_result_on_historical_base": "FAIL"
+    },
+    {
+      "id": "AX-EX-02",
+      "domain": "WEB",
+      "question": "Can horizontal scrollWidth pass while content is visibly clipped at 200% text?",
+      "fixture": {
+        "viewport_width": 320,
+        "document_scrollWidth": 320,
+        "clipped_element_scrollHeight": 497,
+        "clipped_element_clientHeight": 68,
+        "overflow": "hidden"
+      },
+      "old_oracle": "document.scrollWidth <= innerWidth",
+      "old_oracle_result": "PASS",
+      "broad_promise_violated": "200% text has no loss of content.",
+      "improved_oracle": "REFLOW_INTERNAL_CLIP_ORACLE: horizontal document fit + visible descendants with overflow hidden/clip must have scrollHeight<=clientHeight and scrollWidth<=clientWidth.",
+      "improved_oracle_result": "FAIL"
+    },
+    {
+      "id": "AX-EX-03",
+      "domain": "PECES",
+      "question": "Can a large pixel-difference score pass while the subject does not read as swimming?",
+      "fixture": {
+        "changed_pixels": 5261,
+        "centroid_displacement_px": 0.044
+      },
+      "old_oracle": "pixel changes exceed threshold",
+      "old_oracle_result": "PASS",
+      "broad_promise_violated": "The animal visibly swims/moves through the scene rather than only flickering/deforming.",
+      "improved_oracle": "Temporal-coherence oracle: require meaningful centroid/pose trajectory over time plus bounded deformation; supplement with perceptual review.",
+      "improved_oracle_result": "FAIL"
+    },
+    {
+      "id": "AX-EX-04",
+      "domain": "CONSTRUCCION",
+      "question": "Can logical z=3 pass while height is not represented visually?",
+      "observed": {
+        "state_z": 3,
+        "flat_renderer_visible_y_delta_z1_z3_px": 0,
+        "isolated_projected_renderer_delta_px": 56
+      },
+      "old_oracle": "final player.z == 3",
+      "old_oracle_result": "PASS",
+      "broad_promise_violated": "The player/world visibly communicates vertical ascent/volume.",
+      "improved_oracle": "SPATIAL_Z_VISIBILITY_ORACLE: same x/y across levels must produce defined projected displacement/occlusion or equivalent visible depth cue.",
+      "improved_oracle_result_on_flat_renderer": "FAIL",
+      "improved_oracle_result_on_projected_fixture": "PASS"
+    }
+  ],
+  "improved_oracles": [
+    {
+      "id": "REFLOW_INTERNAL_CLIP_ORACLE",
+      "demonstrated": true,
+      "catches": "Internal vertical/horizontal clipping that document-level scrollWidth misses."
+    },
+    {
+      "id": "SPATIAL_Z_VISIBILITY_ORACLE",
+      "demonstrated": true,
+      "catches": "Logical altitude/state changes that have no visible spatial consequence."
+    }
+  ]
+}
