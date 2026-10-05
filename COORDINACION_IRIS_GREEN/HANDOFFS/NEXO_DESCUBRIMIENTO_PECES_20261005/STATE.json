@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 323,
-  "status": "NEXO_MARINE_R02_1_KEEP_DIRECTION_TARGETED_SWIM_PATCH_REQUIRED",
+  "status": "NEXO_MARINE_R02_1_2_KEEP_TWO_RESIDUAL_FIXES_REQUIRED",
   "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
@@ -31,7 +31,7 @@
     "library_version": 2
   },
   "next": [
-    "CLAUDE_TARGETED_SWIM_PATCH",
+    "CLAUDE_TWO_RESIDUAL_FIXES",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
@@ -48,16 +48,18 @@
     "fonts_in_package": true
   },
   "runtime_independently_browser_verified": false,
-  "review_file": "REVIEW_CLAUDE_MARINE_R02_1.md",
-  "review_commit": "ad64f60d2980fec03ec3ee96cd623feadcc04b81",
+  "review_file": "REVIEW_CLAUDE_MARINE_R02_1_2.md",
+  "review_commit": "fd565fad2168f361a59f8afed6a1b718a5ec46ed",
   "received_artifact": {
-    "filename": "descubrimiento-peces-R02_1.zip",
-    "library_file_id": "libfile_07bfb788779081918d54c32b56d8fbc8",
-    "bytes": 27368422,
-    "sha256": "85e2c612063d775459fe3e02561170fb2b4c82a38b2f9f96ba1e07b24a4d2c5f",
-    "manifest_verified": "72/72",
+    "filename": "descubrimiento-peces-R02_1_2.zip",
+    "library_file_id": "libfile_284d86b2bc2481918a6a81912049f8c3",
+    "bytes": 27738954,
+    "sha256": "4598a1153cbcc2741560d30a7e41c5c0828cba508f767abee512ecdfe5ed2392",
+    "files": 75,
+    "manifest_verified": "74/74",
     "js_syntax": "4/4",
-    "animal_pngs_unchanged": "26/26"
+    "animal_pngs_unchanged": "26/26",
+    "pure_function_tests_independently_executed": "6/6"
   },
   "source_asset_provenance": {
     "atlas_original_six": "6/6 binaries identical to canonical Atlas copies",
@@ -67,10 +69,8 @@
     "new_pngs_verified_against_source_manifest": "26/26"
   },
   "patch_required": [
-    "P01: turning stuck at +/-0.08; pause must preserve exact orientation and deformation instead of flattening sprite",
-    "P02: REDUCED must implement smaller movement per order rather than identical animal stillness to NONE",
-    "P03: accessible frame-and-illuminate action must announce camera and zoom effects",
-    "Carry forward candidate text/position/locale update in place; cache-clearing part is present"
+    "A: Pausar/Examinar must cancel pending animCam at visible camera position, including when already paused; test pan and zoom",
+    "B: pintarCandidatos must update language/position text in place for same >=2 IDs without recreating focused nodes"
   ],
   "factual_owners": [
     "Senda",
@@ -78,31 +78,19 @@
   ],
   "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation",
   "previous_received_artifact": {
-    "filename": "descubrimiento-peces-R01-rev1.zip",
-    "library_file_id": "libfile_054f148fe0b48191ba09f9112d8429bc",
-    "bytes": 26507379,
-    "sha256": "600a6acffa7bf02b1270f74678a892ef3e5bb9163263099fed4cf33951ec9bd7",
-    "manifest_verified": "69/69",
-    "files": 70,
-    "png_pairs": 13,
-    "default_scene_animals": 3,
-    "test_scene_animals": 13,
-    "modoEquipo": true
+    "filename": "descubrimiento-peces-R02_1.zip",
+    "library_file_id": "libfile_07bfb788779081918d54c32b56d8fbc8",
+    "bytes": 27368422,
+    "sha256": "85e2c612063d775459fe3e02561170fb2b4c82a38b2f9f96ba1e07b24a4d2c5f",
+    "manifest_verified": "72/72",
+    "js_syntax": "4/4",
+    "animal_pngs_unchanged": "26/26"
   },
   "previous_patch_code_review": "Zone-specific membership, persistent signal nodes/action guard, visible samples, viewer CSS and Atlas provenance changes confirmed. Browser retest pending.",
   "independent_candidate_cache_check": {
-    "method": "Original function extracted and run in Node with minimal DOM double; not browser QA",
-    "sequence": "2 candidates -> 0 -> same 2",
-    "buttons": [
-      2,
-      0,
-      0
-    ],
-    "expected_buttons": [
-      2,
-      0,
-      2
-    ]
+    "scope": "multiple-candidate buttons",
+    "status": "SAME_ID_TEXT_UPDATE_STILL_FAILS",
+    "details": "signal-list tests do not cover pintarCandidatos"
   },
   "design_canvas_is_separate_runtime": true,
   "product_feedback": {
@@ -127,26 +115,39 @@
   ],
   "superseded_constraint": "Original prohibition on animated animals superseded for this prototype by Maria; no automatic camera or decorative audiovisual effects authorized",
   "video": {
-    "filename": "descubrimiento-peces-R02_1.mp4",
-    "library_file_id": "libfile_474de85bf1488191bcf08cf7d55a46a2",
-    "sha256": "540faeb43c15ef1360da4c51284b57ddc4c7b5e37c4c5d0bd21b5472f0027512",
-    "duration_seconds": 32.64,
-    "bytes": 874115,
+    "filename": "descubrimiento-peces-R02_1_2.mp4",
+    "library_file_id": "libfile_0bae6795a1608191bf9c11090601b4d2",
+    "bytes": 1240230,
+    "sha256": "4cdfaff0dbe46dbea7478ea1aa792980543afdd471ff19485e4daaa70b10a79f",
+    "duration_seconds": 39.08,
     "identical_to_internal_video": true,
-    "review": "sampled frames inspected, not continuous perceptual or browser QA"
+    "review": "frames at 8 and 24 seconds inspected; not continuous perceptual or browser QA"
   },
   "maria_latest_feedback": "este tambien ha mejorado bastante",
   "independent_logic_checks": {
+    "method": "Original extracted functions in Node with controlled RAF/minimal DOM; no browser",
     "turn_180_steps": {
       "target": -1,
-      "actual": 0.08
+      "actual": -1
     },
-    "pause_same_time": {
-      "scale_before": 0.08,
-      "scale_after": -1,
-      "draw_calls_before": 15,
-      "draw_calls_after": 1
+    "pause_during_pan": {
+      "x_at_pause": 0.5666666666666667,
+      "x_final": 0.8,
+      "pending_after_pause": 1,
+      "paused": true
     },
-    "method": "Original extracted functions in Node, not browser execution"
-  }
+    "multiple_candidates_same_ids": {
+      "before": "Examinar animal izquierda",
+      "after_language_and_position_change": "Examinar animal izquierda",
+      "expected": "Updated English/right text; stable nodes"
+    }
+  },
+  "patch_keep": [
+    "turn crosses zero; completes in 94 steps",
+    "pause retains body wave and orientation in code",
+    "REDUCED path 30%, wave amplitude 45%, wave frequency 60%",
+    "explicit frame-and-light label and announcement",
+    "stable accessible signal-list nodes",
+    "same navigation, scene and animal assets"
+  ]
 }
