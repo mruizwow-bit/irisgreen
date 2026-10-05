@@ -44,7 +44,9 @@ async function routeA() {
   await key(page, "b"); await key(page, "ArrowRight");
   await key(page, "b"); await key(page, "2"); await key(page, "ArrowRight"); await key(page, "Enter");
   await key(page, "1"); await key(page, "Enter");
-  await key(page, "PageDown"); await key(page, "Delete");
+  await page.locator("#height-down").click();
+  await page.locator("#remove-btn").click();
+  await page.locator("#scene").focus();
   let s = await getState(page);
   assert(s.pieces.some(p => p.type === "block" && p.x === 5 && p.y === 3 && p.z === 0), "A: dependent block removal was not blocked");
   await key(page, "1"); await key(page, "ArrowRight"); await key(page, "Enter");
