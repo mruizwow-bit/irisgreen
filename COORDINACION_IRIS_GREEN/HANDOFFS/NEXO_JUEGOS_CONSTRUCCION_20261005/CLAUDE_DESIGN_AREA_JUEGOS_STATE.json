@@ -2,7 +2,7 @@
   "date": "2026-10-05",
   "coordinator": "Nexo",
   "issue": 369,
-  "status": "NEXO_CLAUDE_DESIGN_GAMES_NAVY_R01_PATCH_REQUIRED",
+  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_1_EXPORT_PATCH_REQUIRED",
   "recipient": "Claude Design",
   "scope": [
     "Games area landing",
@@ -18,8 +18,8 @@
     "axioma": "QA"
   },
   "next": [
-    "CLAUDE_DESIGN_BOUNDED_PATCH",
-    "RENDERED_DELIVERY_REVIEW",
+    "CLAUDE_DESIGN_EXPORT_PATCH",
+    "REPRODUCIBLE_DELIVERY_VERIFICATION",
     "AXIOMA_REVIEW",
     "HUMAN_QA_MARIA"
   ],
@@ -28,21 +28,35 @@
   "main_changes_authorized": false,
   "agent_contacted": false,
   "notes": "Scope = Claude Design Games area visual delivery only. Editable canvas HTML received; no game runtime delivered. External agent not activated. Prisma Construction playable prototype authorization remains separate and valid.",
-  "review_file": "REVIEW_CLAUDE_DESIGN_NAVY_R01.md",
-  "review_commit": "3e956c536454630b93a907bd2b8db39558a5892a",
+  "review_file": "REVIEW_CLAUDE_DESIGN_R01_1_EXPORT.md",
+  "review_commit": "98f9fbff6b0a00b43b281615103b9712a1a94154",
   "artifact": {
-    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01(1).zip",
-    "bytes": 64762,
-    "sha256": "33a2b0eccf4cd75b0260a5607ff23291daa262850265d07ae62387a96159b28c",
+    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_1(1).zip",
+    "bytes": 6231027,
+    "sha256": "f74425dc8604327ae309e37fabb3ad8a6ad10f4d21605bb3fa6aa70dda3dcf3d",
+    "library_file_id": "libfile_a429283aa424819180ceed85341b80f2",
     "editable_frames": 18,
-    "png_exports": 0
+    "png_exports": 18
   },
   "validation": {
     "zip_integrity": "PASS",
-    "method": "STATIC_SOURCE_REVIEW",
+    "method": "STATIC_SOURCE_REVIEW_AND_FOUR_PNG_VISUAL_SAMPLES",
     "browser_rendered": false,
     "visual_pass": false,
-    "canon_palette": "CORRECTED_IN_SOURCE",
-    "typography": "FAMILIES_CORRECTED_PACKAGING_AND_LINE_HEIGHT_PENDING"
+    "visual_samples": [
+      "J01_390",
+      "J01_320",
+      "S01_390",
+      "S04_1440"
+    ],
+    "visual_direction": "KEEP",
+    "canon_palette": "CORRECTED",
+    "typography": "FAMILIES_AND_LINE_HEIGHT_CORRECTED_EXPORT_LINKS_PENDING",
+    "export_findings": [
+      "18 HTML files missing opening style tag",
+      "18 HTML files still reference session blob fonts",
+      "18 HTML files reference absent support.js"
+    ],
+    "png_color_metadata": "NO_EMBEDDED_ICC_OR_SRGB_CHUNK"
   }
 }
