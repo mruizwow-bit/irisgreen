@@ -126,13 +126,13 @@ function mandatoryCopy(){
   body:'Choose one option to continue. We do not ask for your date of birth, identity or diagnosis.',
   a:'Ages 0–12',b:'Ages 13–17',c:'Ages 18+',
   privacyNote:'We use your age group only to adapt the experience and apply appropriate safety measures. We do not use it for advertising. Choosing “Ages 18+” is a self-declaration: it does not verify adulthood or unlock restricted content by itself.',
-  privacy:'Privacy',ageInfo:'How we use age'
+  privacy:'Privacy',ageInfo:'How we use age',childSafety:'Child protection'
  }:{
   title:'¿Qué edad tienes?',
   body:'Elige una opción para continuar. No pedimos fecha de nacimiento, identidad ni diagnóstico.',
   a:'0–12 años',b:'13–17 años',c:'18 años o más',
   privacyNote:'Usamos tu grupo de edad solo para adaptar la experiencia y aplicar las medidas de seguridad adecuadas. No lo usamos para publicidad. Elegir «18 años o más» es una autodeclaración: no verifica la mayoría de edad ni desbloquea por sí sola contenido restringido.',
-  privacy:'Privacidad',ageInfo:'Cómo usamos la edad'
+  privacy:'Privacidad',ageInfo:'Cómo usamos la edad',childSafety:'Protección de menores'
  };
 }
 function syncMandatoryGate(){
@@ -153,7 +153,8 @@ function syncMandatoryGate(){
   var links=document.createElement('nav');links.className='ig-mandatory-age-links';links.setAttribute('aria-label','Age and privacy information');
   var privacy=document.createElement('a');privacy.setAttribute('data-ig-age-privacy-link','');
   var ageInfo=document.createElement('a');ageInfo.setAttribute('data-ig-age-info-link','');
-  links.append(privacy,ageInfo);
+  var childSafety=document.createElement('a');childSafety.setAttribute('data-ig-age-child-link','');
+  links.append(privacy,ageInfo,childSafety);
   card.append(title,note,pick,legal,links);gate.appendChild(card);body.appendChild(gate);mount(gate);
   requestAnimationFrame(function(){var first=gate.querySelector('button');if(first)first.focus({preventScroll:true});});
  }
@@ -162,9 +163,12 @@ function syncMandatoryGate(){
  gate.querySelectorAll('[data-ig-mandatory-label]').forEach(function(btn){btn.textContent=copy[btn.getAttribute('data-ig-mandatory-label')];});
  gate.querySelector('[data-ig-mandatory-age-privacy]').textContent=copy.privacyNote;
  var isEn=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
- var privacy=gate.querySelector('[data-ig-age-privacy-link]'),ageInfo=gate.querySelector('[data-ig-age-info-link]');
- privacy.textContent=copy.privacy;privacy.href=isEn?'/en/privacy/':'/es/privacidad/';
- ageInfo.textContent=copy.ageInfo;ageInfo.href=(isEn?'/en/privacy/':'/es/privacidad/')+'#age';
+ var privacy=gate.querySelector('[data-ig-age-privacy-link]'),ageInfo=gate.querySelector('[data-ig-age-info-link]'),childSafety=gate.querySelector('[data-ig-age-child-link]');
+ var privacyBase=isEn?'/en/privacy/':'/es/privacidad/';
+ gate.querySelector('.ig-mandatory-age-links').setAttribute('aria-label',isEn?'Age, privacy and child protection':'Edad, privacidad y protección de menores');
+ privacy.textContent=copy.privacy;privacy.href=privacyBase;
+ ageInfo.textContent=copy.ageInfo;ageInfo.href=privacyBase+'#age';
+ childSafety.textContent=copy.childSafety;childSafety.href=privacyBase+'#children';
  syncPicker(gate);
 }
 function apply(){applyRoot();document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncDiscovery(document);syncPageGate();syncMandatoryGate();document.documentElement.dataset.igAgeRuntimeReady='true';}
