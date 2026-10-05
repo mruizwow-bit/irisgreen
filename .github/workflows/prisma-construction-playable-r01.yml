@@ -1,0 +1,38 @@
+name: Prisma Construction Playable R01
+on:
+  push:
+    branches:
+      - prisma/construction-r01-storyboard-r02-20261005
+    paths:
+      - 'prototypes/construction-playable-r01/**'
+      - 'scripts/package_prisma_construction_playable_r01.py'
+      - '.github/workflows/prisma-construction-playable-r01.yml'
+      - 'COORDINACION_IRIS_GREEN/HANDOFFS/PRISMA_CONSTRUCTION_PLAYABLE_R01_20261005/**'
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: JavaScript syntax
+        run: node --check prototypes/construction-playable-r01/game.js
+      - name: Build standalone ZIP
+        run: python scripts/package_prisma_construction_playable_r01.py
+      - name: Verify package
+        run: |
+          sha256sum -c PRISMA_CONSTRUCTION_PLAYABLE_R01.sha256
+          unzip -t PRISMA_CONSTRUCTION_PLAYABLE_R01.zip
+          unzip -l PRISMA_CONSTRUCTION_PLAYABLE_R01.zip
+      - name: Upload playable prototype
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRISMA_CONSTRUCTION_PLAYABLE_R01
+          path: |
+            PRISMA_CONSTRUCTION_PLAYABLE_R01.zip
+            PRISMA_CONSTRUCTION_PLAYABLE_R01.sha256
+          if-no-files-found: error
+          retention-days: 30

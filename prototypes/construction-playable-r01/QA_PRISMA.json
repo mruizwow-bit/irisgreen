@@ -1,0 +1,72 @@
+{
+  "schema": "iris-green.prisma.construction-playable-r01.qa.v1",
+  "date": "2026-10-05",
+  "source_order_comment": 5996165622,
+  "branch": "prisma/construction-r01-storyboard-r02-20261005",
+  "local_runtime": {
+    "browser": "Google Chrome headless",
+    "route_A": {
+      "result": "PASS",
+      "inventory_after_terrace": {
+        "wood": 15,
+        "stone": 11
+      },
+      "freeMode": true,
+      "player": {
+        "x": 10,
+        "y": 1,
+        "z": 3
+      },
+      "dependent_remove_blocked": true,
+      "undo_refund_pass": true
+    },
+    "route_B": {
+      "result": "PASS",
+      "inventory_after_terrace": {
+        "wood": 15,
+        "stone": 10
+      },
+      "freeMode": true,
+      "player": {
+        "x": 10,
+        "y": 1,
+        "z": 3
+      }
+    },
+    "responsive": [
+      {
+        "width": 320,
+        "overflow": false,
+        "min_target_px": 44
+      },
+      {
+        "width": 390,
+        "overflow": false,
+        "min_target_px": 44
+      },
+      {
+        "width": 1440,
+        "overflow": false,
+        "min_target_px": 44
+      }
+    ],
+    "forced_colors": "PASS_SMOKE",
+    "motion": [
+      "normal",
+      "reduced",
+      "none"
+    ],
+    "save_reload": {
+      "result": "PASS",
+      "wood": 24,
+      "player": {
+        "x": 1,
+        "y": 5,
+        "z": 1
+      }
+    },
+    "console_errors": 0
+  },
+  "next_gate": "PRISMA_CONSTRUCTION_PLAYABLE_R01_READY_FOR_AXIOMA",
+  "human_qa": false
+}

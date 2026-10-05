@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Juegos · El taller de las islas · Iris Green</title>
+<link rel="stylesheet" href="game.css">
+</head>
+<body>
+<a class="skip" href="#game">Ir al juego</a>
+<header class="site-head">
+  <div>
+    <p class="eyebrow">Juegos · prototipo aislado</p>
+    <h1>El taller de las islas</h1>
+  </div>
+  <div class="head-actions">
+    <button id="help-btn" type="button">Ayuda</button>
+    <button id="pause-btn" type="button">Pausa</button>
+  </div>
+</header>
+
+<main id="game" class="game-shell" tabindex="-1">
+  <section class="status-bar" aria-label="Estado de la partida">
+    <div class="objective-wrap">
+      <span class="status-label">Objetivo</span>
+      <p id="objective">La caja de herramientas está al otro lado. Construye un camino para llegar.</p>
+    </div>
+    <div class="inventory" aria-label="Inventario">
+      <span><b id="wood-count">0</b> madera</span>
+      <span><b id="stone-count">0</b> piedra</span>
+      <span id="stairs-state">Escalera bloqueada</span>
+    </div>
+  </section>
+
+  <section class="play-area" aria-label="Escena de juego">
+    <div class="scene-wrap">
+      <canvas id="scene" width="960" height="640" tabindex="0"
+        role="img"
+        aria-describedby="scene-desc cell-desc"></canvas>
+      <p id="scene-desc" class="sr-only">
+        Escenario de construcción con taller a la izquierda, dos rutas sobre el canal,
+        caja de herramientas a la derecha y terraza elevada.
+      </p>
+      <div class="mode-badge" aria-live="off">Modo: <b id="mode-name">Recorrer</b></div>
+    </div>
+
+    <aside class="info-panel" aria-label="Información de la casilla">
+      <div>
+        <span class="status-label">Posición</span>
+        <p id="player-desc">Inicio · z1</p>
+      </div>
+      <div>
+        <span class="status-label">Casilla seleccionada</span>
+        <p id="cell-desc">Sin cursor de construcción.</p>
+      </div>
+      <div>
+        <span class="status-label">Pieza</span>
+        <p id="piece-desc">Plataforma · 1 madera</p>
+      </div>
+      <div id="save-note" class="save-note">Guardado local disponible.</div>
+    </aside>
+  </section>
+
+  <section class="controls" aria-label="Controles">
+    <div class="mode-controls" role="group" aria-label="Modo">
+      <button id="roam-mode" class="mode active" type="button" aria-pressed="true">Recorrer</button>
+      <button id="build-mode" class="mode" type="button" aria-pressed="false">Construir</button>
+    </div>
+
+    <div class="piece-controls" id="piece-controls" role="group" aria-label="Pieza de construcción" hidden>
+      <button type="button" data-piece="platform" aria-pressed="true"><b>Plataforma</b><span>1 madera</span></button>
+      <button type="button" data-piece="block" aria-pressed="false"><b>Bloque</b><span>1 piedra</span></button>
+      <button type="button" data-piece="stair" aria-pressed="false" id="stair-piece" disabled><b>Escalera</b><span>2 madera</span></button>
+    </div>
+
+    <div class="touch-grid" aria-label="Movimiento">
+      <span></span><button type="button" data-dir="N" aria-label="Arriba">↑</button><span></span>
+      <button type="button" data-dir="W" aria-label="Izquierda">←</button>
+      <button type="button" id="primary-action" aria-label="Interactuar">Acción</button>
+      <button type="button" data-dir="E" aria-label="Derecha">→</button>
+      <span></span><button type="button" data-dir="S" aria-label="Abajo">↓</button><span></span>
+    </div>
+
+    <div class="build-actions" id="build-actions" hidden>
+      <button id="place-btn" type="button">Colocar</button>
+      <button id="rotate-btn" type="button">Girar</button>
+      <button id="height-up" type="button">Altura +</button>
+      <button id="height-down" type="button">Altura −</button>
+      <button id="remove-btn" type="button">Retirar</button>
+      <button id="undo-btn" type="button">Deshacer</button>
+      <button id="cancel-btn" type="button">Cancelar</button>
+    </div>
+
+    <div class="settings-row">
+      <label>Movimiento
+        <select id="motion">
+          <option value="normal">Normal</option>
+          <option value="reduced">Reducido</option>
+          <option value="none">Sin movimiento</option>
+        </select>
+      </label>
+      <button id="new-game-btn" type="button">Nueva partida</button>
+    </div>
+  </section>
+
+  <p id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true">
+    Recoge la madera y la piedra del taller para empezar.
+  </p>
+</main>
+
+<dialog id="start-dialog">
+  <form method="dialog" class="dialog-card">
+    <p class="eyebrow">Juegos</p>
+    <h2>El taller de las islas</h2>
+    <p>Construye un camino, cruza el canal y llega a la terraza. Sin tiempo y sin daño.</p>
+    <div class="dialog-actions">
+      <button id="continue-btn" value="continue" type="submit">Continuar</button>
+      <button id="start-new-btn" value="new" type="submit">Nueva partida</button>
+    </div>
+    <p id="start-save-note" class="save-note"></p>
+  </form>
+</dialog>
+
+<dialog id="help-dialog">
+  <form method="dialog" class="dialog-card wide">
+    <h2>Cómo jugar</h2>
+    <p><b>Recorrer:</b> flechas o WASD para moverte. Enter o Espacio para interactuar.</p>
+    <p><b>Construir:</b> B cambia de modo. Flechas/WASD mueven el cursor. 1/2/3 eligen pieza. Enter o Espacio coloca. R gira. PageUp/PageDown cambia altura. Supr retira. Ctrl+Z deshace. Escape cancela.</p>
+    <p>Todos los controles tienen botones visibles. El agua bloquea el paso, pero no hace daño.</p>
+    <button value="close" type="submit">Cerrar</button>
+  </form>
+</dialog>
+
+<dialog id="pause-dialog">
+  <form method="dialog" class="dialog-card">
+    <h2>Pausa</h2>
+    <p>La partida se guarda automáticamente cuando el navegador permite almacenamiento local.</p>
+    <div class="dialog-actions">
+      <button value="resume" type="submit">Continuar</button>
+      <button id="pause-help" value="help" type="submit">Ayuda</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="confirm-new-dialog">
+  <form method="dialog" class="dialog-card">
+    <h2>¿Empezar una partida nueva?</h2>
+    <p>Se sustituirá la partida guardada de este prototipo.</p>
+    <div class="dialog-actions">
+      <button value="cancel" type="submit">Cancelar</button>
+      <button id="confirm-new" value="confirm" type="submit">Sí, empezar de nuevo</button>
+    </div>
+  </form>
+</dialog>
+
+<script src="game.js"></script>
+</body>
+</html>

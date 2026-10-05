@@ -1,0 +1,38 @@
+{
+  "schema": "iris-green-handoff-v1",
+  "date": "2026-10-05",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "source_order_comment": 5996165622,
+  "branch": "prisma/construction-r01-storyboard-r02-20261005",
+  "gate": "PRISMA_CONSTRUCTION_PLAYABLE_R01_LOCAL_QA_PASS_WAIT_ARTIFACT",
+  "status": "LOCAL_RUNTIME_PASS_PENDING_GITHUB_ARTIFACT",
+  "main_modified": false,
+  "production": false,
+  "entry": "prototypes/construction-playable-r01/juegos.html",
+  "package": "PRISMA_CONSTRUCTION_PLAYABLE_R01.zip",
+  "local_sha256": "279885845aa93e53b41686c6324f029871659d6e61c8e365415782bd1cd9a65e",
+  "qa": {
+    "route_A": "PASS",
+    "route_B": "PASS",
+    "dependent_remove": "PASS",
+    "undo": "PASS",
+    "stairs_terrace_free": "PASS",
+    "responsive_320_390_1440": "PASS",
+    "min_target_px": 44,
+    "forced_colors_smoke": "PASS",
+    "motion": [
+      "normal",
+      "reduced",
+      "none"
+    ],
+    "save_reload": "PASS",
+    "extracted_zip_file_open": "PASS",
+    "runtime_errors": 0
+  },
+  "next": [
+    "GITHUB_ARTIFACT",
+    "AXIOMA_RUNTIME_QA",
+    "HUMAN_QA_MARIA_IF_AXIOMA_PASS"
+  ]
+}
