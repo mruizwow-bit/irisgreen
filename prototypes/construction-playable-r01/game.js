@@ -365,6 +365,7 @@
     if (type === "platform") state.cursor.z = routeAt(state.cursor.x, state.cursor.y) ? 1 : Math.max(1, state.cursor.z);
     if (type === "stair" && !state.freeMode) state.cursor.z = Math.max(1, Math.min(2, state.cursor.z));
     update();
+    liveAnnounce(`Pieza: ${pieceDescription()}. ${cursorDescription()}`);
   }
 
   function toggleMode(next) {
@@ -374,6 +375,7 @@
     }
     saveGame();
     update();
+    liveAnnounce(state.mode === "build" ? `Modo Construir. ${cursorDescription()}` : `Modo Recorrer. Posición: ${playerLocationText()}.`);
     canvas.focus();
   }
 
@@ -383,17 +385,20 @@
     state.cursor.x = Math.max(0, Math.min(COLS - 1, state.cursor.x + d.dx));
     state.cursor.y = Math.max(0, Math.min(ROWS - 1, state.cursor.y + d.dy));
     update();
+    liveAnnounce(cursorDescription());
   }
 
   function setCursorHeight(delta) {
     state.cursor.z = Math.max(0, Math.min(4, state.cursor.z + delta));
     update();
+    liveAnnounce(cursorDescription());
   }
 
   function rotatePiece() {
     const order = ["N", "E", "S", "W"];
     state.orientation = order[(order.indexOf(state.orientation) + 1) % order.length];
     update();
+    liveAnnounce(`Orientación ${state.orientation}. ${cursorDescription()}`);
   }
 
   function movePlayer(dir) {
@@ -435,12 +440,12 @@
   }
 
   function afterMove() {
-    if (!state.freeMode && state.player.x === TERRACE_ENTRY.x && state.player.y === TERRACE_ENTRY.y && state.player.z === TERRACE_ENTRY.z) {
-      state.freeMode = true;
-      announce("Parcela abierta. Ahora tienes materiales ilimitados y puedes seguir construyendo.", "good");
-    }
+    const openedNow = !state.freeMode && state.player.x === TERRACE_ENTRY.x && state.player.y === TERRACE_ENTRY.y && state.player.z === TERRACE_ENTRY.z;
+    if (openedNow) state.freeMode = true;
     saveGame();
     update();
+    if (openedNow) announce("Parcela abierta. Ahora tienes materiales ilimitados y puedes seguir construyendo.", "good");
+    else liveAnnounce(`Posición: ${playerLocationText()}.`);
   }
 
   function near(a, b, distance = 1) {
@@ -525,10 +530,15 @@
     return `${c.label} · ${cost}${orient}`;
   }
 
+  function liveAnnounce(message) {
+    gameLive.textContent = message;
+  }
+
   function announce(message, kind = "info") {
     clearTimeout(lastFeedbackTimer);
     feedback.textContent = message;
     feedback.className = `feedback ${kind === "bad" ? "bad" : kind === "info" ? "info" : ""} changed`;
+    liveAnnounce(message);
     lastFeedbackTimer = setTimeout(() => feedback.classList.remove("changed"), 450);
   }
 
@@ -631,7 +641,7 @@
     });
     $("stair-piece").disabled = !state.stairsUnlocked;
     $("undo-btn").disabled = history.length === 0;
-    $("primary-action").textContent = state.mode === "roam" ? "Acción" : "Colocar";
+    $("primary-action").textContent = state.mode === "roam" ? "●" : "✓";
     $("primary-action").setAttribute("aria-label", state.mode === "roam" ? "Interactuar" : "Colocar pieza");
   }
 
@@ -701,9 +711,7 @@
     for (const route of Object.values(ROUTES)) {
       for (let x = 3; x <= 7; x++) {
         if (state.mode === "build") strokeCell(x, route.y, "rgba(255,255,255,.55)", 1, [6, 5]);
-        drawText(`C${x - 2}`, x * CELL + CELL / 2, route.y * CELL + CELL - 8, {
-          align: "center", color: "rgba(255,255,255,.82)", font: "700 12px system-ui"
-        });
+        // C1–C5 are provided by #cell-desc and announced while moving the cursor.
       }
     }
 
@@ -853,6 +861,7 @@
     state.cursor.x = Math.max(0, Math.min(COLS - 1, Math.floor(px / CELL)));
     state.cursor.y = Math.max(0, Math.min(ROWS - 1, Math.floor(py / CELL)));
     update();
+    liveAnnounce(cursorDescription());
   });
 
   document.addEventListener("keydown", (event) => {
