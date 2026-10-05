@@ -328,6 +328,14 @@ html[data-ig-contrast="on"] .ig-home-header{
   border-radius:999px;
   font-weight:700;
 }
+.ig-home-v4 .sabik-feedback{
+  min-height:1.5rem;
+  margin:.05rem 0 0;
+  color:var(--ig-text-muted);
+  font-size:.92rem;
+  line-height:1.4;
+}
+.ig-home-v4 .sabik-feedback:empty{min-height:0;margin:0}
 .ig-home-v4 .sabik-options{
   width:100%;
   margin:.1rem 0 0;
