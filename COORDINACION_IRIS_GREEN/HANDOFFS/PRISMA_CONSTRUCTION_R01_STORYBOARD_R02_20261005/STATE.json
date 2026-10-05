@@ -5,11 +5,30 @@
   "issue": 369,
   "branch": "prisma/construction-r01-storyboard-r02-20261005",
   "base_main": "827d17e5efe39280368a0d73a6c88596a1d3b0e9",
-  "gate": "PRISMA_CONSTRUCTION_R01_STORYBOARD_READY_FOR_AXIOMA",
-  "status": "PACKAGE_ACCESSIBLE_READY_FOR_AXIOMA",
+  "gate": "PRISMA_CONSTRUCTION_R01_R02_PATCH_READY_FOR_AXIOMA_RETEST",
+  "status": "PATCH_PACKAGE_ACCESSIBLE_READY_FOR_AXIOMA_RETEST",
   "main_modified": false,
   "code": false,
-  "logic": {
+  "runtime": false,
+  "source_axioma_review": {
+    "gate": "AXIOMA_CONSTRUCTION_R01_R02_REWORK_REQUIRED",
+    "commit": "09c652d54e1a82068cd6e134d0eda594be9b6ee3",
+    "audited_package_sha256": "5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e"
+  },
+  "nexo_patch_order": {
+    "commit": "6bab8ebf9c740de8beb527c112c1eb0b85bab82e",
+    "items": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08"
+    ]
+  },
+  "preserved_logic": {
     "support_max_platforms_from_solid": 2,
     "cursor_reach_cells": 2,
     "block_auto_climb": false,
@@ -25,10 +44,8 @@
       "stair_wood": 2
     },
     "invalid_consumes": false,
-    "remove_refunds": true
-  },
-  "solutions": {
-    "A": {
+    "remove_refunds": true,
+    "solution_A": {
       "route": "R1",
       "platforms": [
         1,
@@ -46,7 +63,7 @@
         "stairs": 0
       }
     },
-    "B": {
+    "solution_B": {
       "route": "R2",
       "platforms": [
         1,
@@ -66,26 +83,47 @@
       }
     }
   },
-  "player": {
-    "target": "user-supplied female 3D FBX",
-    "storyboard_proxy": "neutro_brin.png"
+  "patch": {
+    "build_commit": "e54acc4f44c030daa7fd2c3706fededb134763ca",
+    "filename": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.zip",
+    "sha256": "7fbca66968681a463d3035de30b5c9c80a839318f7b79f5e8f58e830e2f9bad7",
+    "github_actions_run_id": 37305550352,
+    "github_actions_run_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37305550352",
+    "artifact_id": 11343313636,
+    "artifact_name": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08",
+    "artifact_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37305550352/artifacts/11343313636",
+    "artifact_digest": "sha256:4c370aa1192d6b72be1d560b3a2b3bcfe3b5b075446c86245e70752cc2c06c61",
+    "artifact_expires_at": "2026-11-04T11:51:17Z",
+    "library_path": "/Iris Green/Handoffs/Prisma/PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08/PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.zip",
+    "files_generated": 36,
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "qa_pass": true,
+    "zip_integrity_pass": true,
+    "sha256sum_pass": true,
+    "visual_inspection": [
+      "CONTACT_SHEET_CONSTRUCTION_R02_PATCH_320.png",
+      "CONTACT_SHEET_CONSTRUCTION_R02_PATCH_1440.png",
+      "CONSTRUCTION_R02_PATCH_MICRO_REMOVE_UNDO_390.png"
+    ]
   },
-  "package": {
-    "filename": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip",
-    "sha256": "5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e",
-    "github_actions_run_id": 37302920832,
-    "github_actions_run_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832",
-    "artifact_id": 11342176274,
-    "artifact_name": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02",
-    "artifact_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832/artifacts/11342176274",
-    "artifact_digest": "sha256:b469c8df6e389b60698987947943dd92d8d4d60de4ec28e5ee5d4e7eb8788526",
-    "artifact_expires_at": "2026-11-04T11:26:42Z",
-    "files_generated": 22,
-    "verified": true
+  "p01_p08": {
+    "P01": "1440 feedback safe area / no clipping",
+    "P02": "six 320 frames",
+    "P03": "touch buttons drawn as targets",
+    "P04": "mobile targets >=44x44; mode switch height 48",
+    "P05": "selected persistent + independent focus outline",
+    "P06": "normal text contrast corrected and measured >=4.5:1",
+    "P07": "dependency-blocked removal + valid action + undo/restoration",
+    "P08": "NORMAL/REDUCED/NONE + forced-colors matrix"
   },
   "next": [
-    "AXIOMA_REVIEW",
-    "HUMAN_QA_MARIA"
+    "AXIOMA_RETEST_P01_P08",
+    "HUMAN_QA_MARIA_IF_AXIOMA_PASS"
   ],
+  "expected_axioma_gate_not_yet_obtained": "AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA",
   "stop_before_code": true
 }
