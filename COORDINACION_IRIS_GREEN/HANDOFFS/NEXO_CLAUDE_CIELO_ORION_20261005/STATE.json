@@ -4,14 +4,14 @@
   "owner": "Nexo",
   "issue": 323,
   "recipient": "Claude Design",
-  "status": "CLAUDE_SKY_ORION_PROTOTYPE_ORDER_READY",
+  "status": "NEXO_SKY_ORION_R01_RECEIVED_TARGETED_PATCH_REQUIRED",
   "authorization": "Maria explicitly requests Claude to build isolated sky prototype on 2026-10-05",
   "order_commit": "ee7bc6764c3229990f43c0c1aa79ccf831f42098",
   "memory_commit": "96bcee980fed6e91543173f84f878932fd2362f7",
   "main_read": "1f4ab8b0ffe4edef5c466da0e8c21729b6664531",
   "prototype_html_css_js_authorized": true,
   "previous_storyboard_no_code_gate": "SUPERSEDED_ONLY_FOR_THIS_ISOLATED_PROTOTYPE",
-  "runtime_implemented": false,
+  "runtime_implemented": true,
   "human_qa_pass": false,
   "main_changes_authorized": false,
   "public_deploy_authorized": false,
@@ -41,11 +41,47 @@
     "contains_executable_prototype": false
   },
   "next": [
-    "MARIA_HANDOFF_PACKAGE_TO_CLAUDE",
-    "CLAUDE_INTERACTIVE_ZIP",
-    "NEXO_REVIEW",
-    "AXIOMA_RUNTIME_QA",
+    "CLAUDE_TARGETED_PATCH",
+    "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
-  "external_agent_started": false
+  "external_agent_started": false,
+  "runtime_independently_browser_verified": false,
+  "review_file": "REVIEW_CIELO_ORION_INTERACTIVO_R01.md",
+  "review_commit": "d8c0cb1c78b86f4d014653a250e1994e80983c70",
+  "received_artifact": {
+    "filename": "CIELO_ORION_INTERACTIVO_R01.zip",
+    "library_file_id": "libfile_28e4e444a1408191b3f1154261ef8095",
+    "bytes": 6795305,
+    "sha256": "1e33f4ba03e22670fb56444e34a4709f147e374ef0cb935ef8b08ff561604931",
+    "files": 42,
+    "manifest_verified": "41/41",
+    "js_syntax": "5/5",
+    "embedded_fonts_identical": "3/3",
+    "source_json_and_assets_identical": true
+  },
+  "orientation": {
+    "invert_x": true,
+    "invert_y": true,
+    "convention": "north-up sky view",
+    "betelgeuse_left_above_rigel_verified": true,
+    "source_json_unchanged": true,
+    "storyboard_mirror_not_preserved": true
+  },
+  "patch_required": [
+    "P01: cancel pending camera animation at current visible position before identifying; deterministic original-function test confirms camera moves after identification",
+    "P02: preserve deliberate keyboard focus when successful Examinar button becomes hidden; browser retest pending",
+    "P03: compact mobile options/spacing without shrinking canon text or targets; consistent viewport metric and 200% reflow"
+  ],
+  "delivered_tests": {
+    "author": "Claude",
+    "reported": "33/33",
+    "independent_browser_rerun": false,
+    "limitations": [
+      "hardcoded package/browser paths",
+      "camera teleported by LLEVAR fixture",
+      "synthetic keyboard/focus/DOM click in sequence",
+      "movement test measures started rather than completed transition"
+    ]
+  }
 }
