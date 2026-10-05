@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 323,
-  "status": "NEXO_MARINE_R01_REV1_REVIEWED_CANDIDATE_CACHE_PATCH_REQUIRED",
+  "status": "NEXO_MARINE_R02_PRODUCT_REWORK_SWIMMING_NAVIGATION_CONTROLS",
   "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
@@ -31,7 +31,7 @@
     "library_version": 2
   },
   "next": [
-    "CLAUDE_CANDIDATE_CACHE_PATCH",
+    "CLAUDE_R02_SWIMMING_NAVIGATION_CONTROLS_AND_CACHE_PATCH",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
@@ -102,5 +102,26 @@
       2
     ]
   },
-  "design_canvas_is_separate_runtime": true
+  "design_canvas_is_separate_runtime": true,
+  "product_feedback": {
+    "owner": "Maria",
+    "date": "2026-10-05",
+    "quotes": [
+      "tienen que nadar y los tres botones y las flechas son para lo mismo",
+      "la pantalla se tiene que poder mover de alguna forma tambien, sino solo salen los peces que llegan a ese trozo de pantalla"
+    ],
+    "screenshot_library_id": "libfile_ff41cf3cb03c81919c9287e3c583defc",
+    "runtime_identity_of_screenshot": "UNCONFIRMED",
+    "product_accepted": false
+  },
+  "product_order_file": "ORDEN_CLAUDE_NATACION_CONTROLES_R02.md",
+  "product_order_commit": "e6a17542c2039c6c48de76ce3581c2aa948ae845",
+  "product_required": [
+    "Visible articulated swimming in NORMAL; pause and REDUCED/NONE equivalence",
+    "Navigable world beyond initial viewport; drag and camera arrows plus zoom",
+    "Separate pointer/tap light aiming from drag/arrow camera pan; no duplicate main controls",
+    "Collapsible accessible exploration route with stable focus and neutral signals",
+    "Exact executable ZIP demonstrating movement and navigation, not screenshots or another canvas runtime"
+  ],
+  "superseded_constraint": "Original prohibition on animated animals superseded for this prototype by Maria; no automatic camera or decorative audiovisual effects authorized"
 }
