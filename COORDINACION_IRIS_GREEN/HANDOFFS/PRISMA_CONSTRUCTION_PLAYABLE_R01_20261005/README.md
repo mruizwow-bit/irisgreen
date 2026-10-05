@@ -5,8 +5,8 @@ Issue: #369
 Orden: comentario `5996165622`  
 Rama: `prisma/construction-r01-storyboard-r02-20261005`
 
-Estado local:
-`PRISMA_CONSTRUCTION_PLAYABLE_R01_LOCAL_QA_PASS_WAIT_ARTIFACT`
+Estado:
+`PRISMA_CONSTRUCTION_PLAYABLE_R01_READY_FOR_AXIOMA`
 
 ## Qué se ha montado
 
@@ -92,18 +92,37 @@ PASS:
 - Deshacer no persiste tras recarga; la partida sí;
 - modo libre limitado a la misma cuadrícula/reglas del prototipo.
 
-## Paquete local previo a CI
+## Artifact GitHub Actions
 
+Commit:
+`29a8770f235e75cd99a8758a07f06923acb99b7d`
+
+Run:
+`37326606367 · SUCCESS`
+
+Artifact:
+`PRISMA_CONSTRUCTION_PLAYABLE_R01`
+
+Artifact ID:
+`11351693774`
+
+ZIP jugable interno:
 `PRISMA_CONSTRUCTION_PLAYABLE_R01.zip`
 
-SHA-256 local actual:
-`279885845aa93e53b41686c6324f029871659d6e61c8e365415782bd1cd9a65e`
+SHA-256 del ZIP jugable:
+`ef30977cc5327c0b17fb42b2d03a54827e5f130ae12bf5cf349ec08b47d38f87`
 
-El SHA final se registrará desde el artifact de GitHub Actions del commit exacto.
+Digest del contenedor GitHub:
+`sha256:a8357d92e169158cff533aeb9398b8f66c60dc49ce2ea395a7d0785dd7b88a57`
+
+Entrada tras extraer:
+`juegos.html`
+
+No necesita servidor ni instalación.
 
 ## Siguiente
 
-`PRISMA COMMIT/ARTIFACT → AXIOMA QA RUNTIME → HUMAN QA MARÍA JUGANDO`
+`AXIOMA QA RUNTIME → HUMAN QA MARÍA JUGANDO`
 
 No se declara:
 - `AXIOMA_CONSTRUCTION_PLAYABLE_R01_READY_FOR_HUMAN_QA`;
