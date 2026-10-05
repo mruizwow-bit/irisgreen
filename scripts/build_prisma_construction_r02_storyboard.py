@@ -61,7 +61,7 @@ def player(d,x,y,s):
     d.line((x+10*s,y-16*s,x+19*s,y+3*s),fill=skin,width=max(2,int(3*s)))
     d.ellipse((x-11*s,y+27*s,x-1*s,y+34*s),fill=(92,65,42,255)); d.ellipse((x+1*s,y+27*s,x+11*s,y+34*s),fill=(92,65,42,255))
 
-def scene(w,h,state):
+def scene(w,h,state,hide_legacy_material_labels=False):
     im=water(w,h); d=ImageDraw.Draw(im,"RGBA")
     left=[(12,h*.28),(w*.30,h*.20),(w*.34,h*.79),(w*.05,h*.89)]
     right=[(w*.66,h*.21),(w-12,h*.17),(w-22,h*.89),(w*.62,h*.80)]
@@ -78,8 +78,9 @@ def scene(w,h,state):
     for i in range(4): d.rounded_rectangle((mx+i*11,my-i*2,mx+42+i*11,my+13-i*2),4,fill=WOOD,outline=WOODD)
     sx=w*.26
     for i in range(4): d.rectangle((sx+i*12,my-5-(i%2)*7,sx+25+i*12,my+15-(i%2)*7),fill=STONE,outline=ROCKD)
-    d.text((mx,my+22),"Madera",font=F(max(9,int(w*.0105)),True),fill=TEXT)
-    d.text((sx,my+22),"Piedra",font=F(max(9,int(w*.0105)),True),fill=TEXT)
+    if not hide_legacy_material_labels:
+        d.text((mx,my+22),"Madera",font=F(max(9,int(w*.0105)),True),fill=TEXT)
+        d.text((sx,my+22),"Piedra",font=F(max(9,int(w*.0105)),True),fill=TEXT)
     tx,ty=w*.77,h*.13
     poly(d,[(tx-72,ty+20),(tx+110,ty),(tx+128,ty+78),(tx-58,ty+96)],(196,161,106,255),(94,69,43,255),2)
     d.text((tx-24,ty+32),"Terraza",font=F(max(10,int(w*.011)),True),fill=(14,71,61,255))
