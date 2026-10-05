@@ -314,3 +314,10 @@ Bloque 10 sigue sin correspondencia inequívoca de sustituciones; Bloque 16 revo
 María aclara: continuar prototipo Mar con selección actual; no incorporar ni probar todos los peces ahora. Hallazgo de transparencia queda para comprobar durante pruebas del prototipo, no como bloqueo previo ni orden de ampliar alcance. Las cuatro parejas quedan preparadas.
 
 A petición de terminar fósil pendiente se intentó F02-04 Acanthostega con referencia anatómica ToL de J. Clack, figura 5. Tres generaciones inspeccionadas: primera ambigua; segunda y tercera con siete dedos reconocibles. Rechazadas, sin sustituir original ni declarar cierre. Control: COORDINACION_IRIS_GREEN/CONTROL/FOSILES_ACANTHOSTEGA_20261005.json. Generar una imagen no acredita exactitud anatómica.
+
+
+## 2026-10-05 · Entrega ZIP Cielo y Vida marina
+
+Se han preparado y guardado ZIP separados: CIELO_IMAGENES_Y_FICHAS_20261005.zip (462 archivos visuales únicos) y VIDA_MARINA_IMAGENES_Y_FICHAS_20261005.zip (652). Incluyen catálogo HTML, inventario CSV/JSON, fuentes y procedencia; versiones y formatos no equivalen a especies. Control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_ZIPS_CIELO_VIDA_MARINA_20261005.json`.
+
+Los datos ausentes quedan señalados; no hay nueva aprobación científica. El fichero corregido pez-gota-luz.png está truncado y queda excluido con incidencia; original 19_14_53-1 conservado. Exoplanetas 001–020 no recuperados y HOLD 032/033/040. B16 sigue revocado, B10 pendiente. Prioridad prototipo intacta, sin cambios en runtime o producción.
