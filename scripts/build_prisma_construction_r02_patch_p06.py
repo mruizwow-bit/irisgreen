@@ -119,7 +119,7 @@ def _plus12_badge_box(d,w,h,font):
     return _clamp_box((ex-5,ey+19,ex-5+bw,ey+19+bh),8,w-8)
 
 def patched_scene(w,h,state):
-    im=scene(w,h,state)
+    im=scene(w,h,state,hide_legacy_material_labels=True)
     d=ImageDraw.Draw(im,"RGBA")
     L,R=w*.33,w*.64
     ys={"R1":h*.39,"R2":h*.56}
@@ -303,10 +303,31 @@ def frame(vp,state):
     patched_toolbar(ImageDraw.Draw(art,"RGBA"),w,h,state)
     return art
 
+def _inside_box(x,y,box):
+    return box[0] <= x < box[2] and box[1] <= y < box[3]
+
+def _legacy_material_residual_pixels(w,h,state,wood_box,stone_box):
+    control=scene(w,h,state,hide_legacy_material_labels=False).convert("RGBA")
+    clean=scene(w,h,state,hide_legacy_material_labels=True).convert("RGBA")
+    final=patched_scene(w,h,state).convert("RGBA")
+    cp=control.load(); bp=clean.load(); fp=final.load()
+    residual=0
+    changed=0
+    for y in range(h):
+        for x in range(w):
+            if cp[x,y] != bp[x,y]:
+                changed += 1
+                if not (_inside_box(x,y,wood_box) or _inside_box(x,y,stone_box)):
+                    if fp[x,y] == cp[x,y] and fp[x,y] != bp[x,y]:
+                        residual += 1
+    assert changed > 0, (w,h,state,"legacy mask unexpectedly empty")
+    return residual,changed
+
 def verify_p06_geometry():
-    result={"criterion":"P06 scoped retest","viewports":{}}
+    result={"criterion":"P06 legacy materials scoped retest","viewports":{}}
     all_overlap_zero=True
     all_parcel_inside=True
+    all_legacy_hidden=True
     for vp in (320,390,1440):
         w,h=dims(vp)
         scene_h=h-toolbar_h(vp)
@@ -318,26 +339,37 @@ def verify_p06_geometry():
         parcel_free=_parcel_badge_box(measure,w,scene_h,small,"Parcela libre",6)
         inside=lambda b: b[0] >= 8 and b[2] <= w-8 and b[1] >= 0 and b[3] <= scene_h
         plus_box=_plus12_badge_box(measure,w,scene_h,small)
+        legacy_states={}
+        for state in range(1,7):
+            residual,mask_pixels=_legacy_material_residual_pixels(w,scene_h,state,wood_box,stone_box)
+            legacy_states[f"F{state:02d}"]={
+                "legacy_mask_pixels":mask_pixels,
+                "residual_pixels_outside_new_badges":residual,
+                "legacy_material_labels_visible":residual != 0
+            }
+            all_legacy_hidden = all_legacy_hidden and residual == 0
         all_overlap_zero = all_overlap_zero and overlap == 0
         all_parcel_inside = all_parcel_inside and inside(parcel_blocked) and inside(parcel_free)
         result["viewports"][str(vp)]={
             "material_badges":{"madera":list(wood_box),"piedra":list(stone_box),"overlap_area":overlap},
+            "legacy_material_labels":legacy_states,
             "parcel":{"blocked":list(parcel_blocked),"free":list(parcel_free),"blocked_inside":inside(parcel_blocked),"free_inside":inside(parcel_free)},
             "plus12_piedra":{"box":list(plus_box),"contrast":CONTRAST["plus12_stone_text_on_badge"],
                                "overlap_with_blocked_parcel":_boxes_overlap(plus_box,parcel_blocked),
                                "overlap_with_free_parcel":_boxes_overlap(plus_box,parcel_free)}
         }
     result["material_badges_overlap"]=0 if all_overlap_zero else 1
+    result["legacy_material_labels_visible"]=not all_legacy_hidden
     result["parcel_badge_inside_bounds"]=bool(all_parcel_inside)
     result["plus12_piedra_contrast"]=CONTRAST["plus12_stone_text_on_badge"]
     assert result["material_badges_overlap"] == 0
+    assert result["legacy_material_labels_visible"] is False
     assert result["parcel_badge_inside_bounds"] is True
     assert result["plus12_piedra_contrast"] >= 4.5
     for v in result["viewports"].values():
         assert v["plus12_piedra"]["overlap_with_blocked_parcel"] == 0
         assert v["plus12_piedra"]["overlap_with_free_parcel"] == 0
     return result
-
 NAMES=["F01_OBJETIVO","F02_RECOGIDA","F03_PREVIEW","F04_PROBLEMA","F05_CORRECCION_CRUCE","F06_ESCALERAS_TERRAZA_LIBRE"]
 for vp in (320,390,1440):
     for i,n in enumerate(NAMES,1):
@@ -443,7 +475,7 @@ Alcance único: corregir las tres incidencias P06 del retest de Axioma. P01–P0
 
 | ID | Corrección | Evidencia |
 |---|---|---|
-| P06-A | Madera/Piedra separados por ancho real + gap explícito | F01–F06 320/390/1440; P06_ASSERTIONS.json: material_badges_overlap=0 |
+| P06-A | Labels legacy Madera/Piedra omitidas desde el generador base solo para el patch; badges nuevos conservados | F01–F06 320/390/1440; P06_ASSERTIONS.json: material_badges_overlap=0 y legacy_material_labels_visible=false |
 | P06-B | Parcela bloqueada/libre clamped con margen interior | F01–F05 bloqueada + F06 libre, 320/390/1440; parcel_badge_inside_bounds=true |
 | P06-C | +12 piedra sobre badge oscuro contrastante | F05/F06 320/390/1440; CONTRAST_MEASUREMENTS.json + P06_ASSERTIONS.json >=4.5:1 |
 
@@ -472,7 +504,7 @@ evidence = {
   "p03":["CONSTRUCTION_R02_PATCH_F03_PREVIEW_320.png","CONSTRUCTION_R02_PATCH_F03_PREVIEW_390.png"],
   "p04":["CONSTRUCTION_R02_PATCH_F03_PREVIEW_320.png","CONSTRUCTION_R02_PATCH_F03_PREVIEW_390.png"],
   "p05":["CONSTRUCTION_R02_PATCH_F03_PREVIEW_320.png","CONSTRUCTION_R02_PATCH_F03_PREVIEW_390.png"],
-  "p06":["P06_ASSERTIONS.json","CONTRAST_MEASUREMENTS.json","PATCH_P06_RESULT.md","CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_320.png","CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_390.png","CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_320.png","CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_390.png"],
+  "p06":["P06_ASSERTIONS.json","CONTRAST_MEASUREMENTS.json","PATCH_P06_RESULT.md","CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_320.png","CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_390.png","CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_1440.png","CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_320.png","CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_390.png","CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_1440.png"],
   "p07":["CONSTRUCTION_R02_PATCH_MICRO_REMOVE_UNDO_320.png","CONSTRUCTION_R02_PATCH_MICRO_REMOVE_UNDO_390.png","CONSTRUCTION_R02_PATCH_MICRO_REMOVE_UNDO_1440.png"],
   "p08":["MOTION_FORCED_COLORS_MATRIX.md"]
 }
@@ -493,7 +525,7 @@ P02: F01–F06 nuevos a 320.
 P03: controles touch dibujados como targets: D-pad, colocar, girar, Z+/Z−, retirar, deshacer, cancelar.
 P04: target mínimo interno 44×44; Recorrer/Construir = 48 px alto.
 P05: selected = check + borde persistente; focus = outline independiente. F03 demuestra Plataforma selected con Bloque focused.
-P06: R1/R2 y labels de arena usan badges/texto con contraste >=4.5:1; medición en CONTRAST_MEASUREMENTS.json.
+P06: labels legacy Madera/Piedra omitidas desde origen solo en este patch; badges sin solapamiento; parcela y +12 piedra conservan los PASS previos. P06_ASSERTIONS.json verifica legacy_material_labels_visible=false en F01–F06 para 320/390/1440.
 P07: microsecuencia retirada/dependencias/deshacer en 320/390/1440.
 P08: matriz NORMAL/REDUCED/NONE + forced-colors.
 
@@ -547,8 +579,8 @@ manifest={
   "schema":"iris-green.prisma.construction-r02-patch-p06.v1",
   "issue":369,
   "source_audited_zip_sha256":"5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e",
-  "source_axioma_review_commit":"09c652d54e1a82068cd6e134d0eda594be9b6ee3",
-  "nexo_order_commit":"b2de0163116a6f9fd49eec7dde5d0dc3155d4339",
+  "source_axioma_review_commit":"a4a79358fe5ccc10630876d30d8fccced9c8debe",
+  "nexo_order_commit":"8cc0f569fee5891736df9cc782d1bf1ddc9e015d",
   "status":"PRISMA_CONSTRUCTION_R01_R02_P06_PATCH_READY_FOR_AXIOMA_RETEST",
   "viewports":[320,390,1440],
   "frames_per_viewport":6,
