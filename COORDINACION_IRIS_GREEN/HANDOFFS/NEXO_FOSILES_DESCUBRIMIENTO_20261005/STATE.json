@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-05",
+  "status": "PRODUCT_DEFINITION_PROPOSED_FOR_MARIA",
+  "definition": "01_DEFINICION_PRODUCTO_R01.md",
+  "definition_commit": "0c0ac6acf0d4b2ee0ceb93e6c4f441da805eade5",
+  "base": "R2v4_KEEP",
+  "base_zip_sha256": "e321b32d4d2a9d16c4df6a99da7e956543ceba5b0666919e6b8e48adac7a4ff1",
+  "base_binary_read_this_task": false,
+  "github_documentation_read": true,
+  "planned_catalog_units": 64,
+  "available_approved_catalog_count": "NOT_REVALIDATED_THIS_TASK",
+  "known_pending": "F02-04 Acanthostega REWORK_REQUIRED per main control",
+  "interaction": [
+    "EXPLORE",
+    "LOCATE",
+    "CLEAR_LOCAL_COVER",
+    "OBSERVE",
+    "IDENTIFY",
+    "DOCUMENT",
+    "DEPTH"
+  ],
+  "runtime_authorized_by_this_document": false,
+  "main_modified": false,
+  "assets_modified": false,
+  "next": "Revisión de definición y encargo concreto de prototipo basado en R2v4"
+}
