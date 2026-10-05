@@ -1,0 +1,51 @@
+{
+  "schema": "iris-green-handoff-v1",
+  "date": "2026-10-05",
+  "owner": "Nexo",
+  "issue": 323,
+  "recipient": "Claude Design",
+  "status": "CLAUDE_SKY_ORION_PROTOTYPE_ORDER_READY",
+  "authorization": "Maria explicitly requests Claude to build isolated sky prototype on 2026-10-05",
+  "order_commit": "ee7bc6764c3229990f43c0c1aa79ccf831f42098",
+  "memory_commit": "96bcee980fed6e91543173f84f878932fd2362f7",
+  "main_read": "1f4ab8b0ffe4edef5c466da0e8c21729b6664531",
+  "prototype_html_css_js_authorized": true,
+  "previous_storyboard_no_code_gate": "SUPERSEDED_ONLY_FOR_THIS_ISOLATED_PROTOTYPE",
+  "runtime_implemented": false,
+  "human_qa_pass": false,
+  "main_changes_authorized": false,
+  "public_deploy_authorized": false,
+  "second_constellation_authorized": false,
+  "theme": "NAVY_ONLY",
+  "background": "#0B1A2B",
+  "body_font": "Atkinson Hyperlegible",
+  "heading_font": "Newsreader",
+  "contract": "EXPLORE_LOCATE_REVEAL_NO_REVEAL_BEFORE_SEMANTIC_USER_ACTION",
+  "observation_model": "CURATED_OBSERVATION_PRESET",
+  "assets": {
+    "stars": 161,
+    "json_git_blob": "5b51b3d3c2eef4b4d6dace225a43568f1cec3abd",
+    "horizon": "B00_RGBA_2560x768",
+    "depth": "EXISTING_PRISMA_REFERENCE_ONLY_AFTER_IDENTIFICATION",
+    "storyboard": "R02 recovered Library copy; 19/19 internal hashes verified",
+    "fonts": "3 local WOFF2 matching live main plus licenses",
+    "pixel_changes": false
+  },
+  "package": {
+    "filename": "CLAUDE_CIELO_ORION_PROTOTIPO_R01.zip",
+    "library_file_id": "libfile_ac52ce7e4fb0819192bef2f2e9108bb7",
+    "file_id": "file_00000000fc308210940089b58771953c",
+    "bytes": 8376735,
+    "sha256": "d503e9edfb431ca5b3cde5f5679673585d88792e0efe99d5baada0f5e4a21f6d",
+    "files": 36,
+    "contains_executable_prototype": false
+  },
+  "next": [
+    "MARIA_HANDOFF_PACKAGE_TO_CLAUDE",
+    "CLAUDE_INTERACTIVE_ZIP",
+    "NEXO_REVIEW",
+    "AXIOMA_RUNTIME_QA",
+    "MARIA_HUMAN_QA"
+  ],
+  "external_agent_started": false
+}
