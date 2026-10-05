@@ -1,0 +1,53 @@
+{
+  "schema": "iris-green.prisma-study-v1",
+  "date": "2026-10-05",
+  "owner": "Prisma A8",
+  "branch": "prisma/formacion-estudio-claude-20261005",
+  "status": "PRISMA_STUDY_AND_TRANSFER_COMPLETE",
+  "methodology_note": "Nexo reports were opened while locating the order; primary binary/code evidence and Prisma executions are explicitly separated, so the report is not claimed as blind-independent.",
+  "primary_packages": {
+    "cielo": "2e036ce4c3e3984be09d2c0ba630470f2129be49738960ec070bffa756d0026c",
+    "peces": "a5a39e5d5de8369cfb0bf392dbeab6d20c66720128c094b5261517466f729717",
+    "descubrimiento_web": "d0ef4877a09e892cf219afdb90089a44cad83b181544b2f70df7972c815b04e3",
+    "claude_games_visual": "6dc3e7e94804357f85daaf538a65a27a1afbc60e0498f92ee492324db6fa2af5",
+    "prisma_construction": "e2370c5e6e71177412f66623077e8f66fc47b03b98985a40b6e89fb59b958b2a"
+  },
+  "own_execution": {
+    "cielo_geometry": {
+      "result": "PASS",
+      "viewports": 3,
+      "inverse_roundtrips": 27
+    },
+    "peces_pure_node": {
+      "result": "PASS",
+      "checks": "6/6"
+    },
+    "descubrimiento_browser": {
+      "result": "BLOCKED_BY_HARNESS_POLICY",
+      "note": "Chromium in this session blocks file:// and localhost. Code read directly; no independent browser PASS claimed."
+    },
+    "claude_games_verifier": {
+      "result": "PASS",
+      "checks": "16/16"
+    },
+    "transfer_exercises": {
+      "result": "PASS",
+      "browser": "Chrome",
+      "spatial_projection_error_max": 0,
+      "catalog_reflow": [
+        320,
+        390,
+        1440
+      ],
+      "catalog_text_200_percent": "PASS"
+    },
+    "catalog_portable": {
+      "result": "PASS",
+      "sha256": "4e458e495306ae2ece119f5cb2514f55fed04c3efe1f355048e519c1d20a8909"
+    }
+  },
+  "conclusion": "The main gap was application/representation: rules and accessibility logic were solid, but Construction's logical world was not perceptually materialized. Training must focus on world-view-screen projection/picking, time/cancellation, gesture intent, runtime canon, and product oracles.",
+  "main_modified": false,
+  "production_modified": false,
+  "next": "Nexo may synthesize Prisma/Axioma/Nexo studies; no product change is implied by this training branch."
+}
