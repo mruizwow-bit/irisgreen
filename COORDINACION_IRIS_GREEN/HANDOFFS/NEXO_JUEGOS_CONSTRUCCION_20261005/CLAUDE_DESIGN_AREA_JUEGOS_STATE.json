@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-05",
+  "coordinator": "Nexo",
+  "issue": 369,
+  "status": "ORDER_PREPARED_FOR_USER_HANDOFF",
+  "recipient": "Claude Design",
+  "scope": [
+    "Games area landing",
+    "For everyone catalog design",
+    "Plus catalog design"
+  ],
+  "order_file": "ORDEN_CLAUDE_DESIGN_AREA_JUEGOS_R01.md",
+  "order_commit": "328722824a98f2c734defbcecdb0b5d846c71fa6",
+  "role_clarification": {
+    "claude_rincon": "Pecera full 5 minutes",
+    "claude_design": "Games and web design; current brief = Games area surface",
+    "prisma": "Construction storyboard patch",
+    "axioma": "QA"
+  },
+  "next": [
+    "CLAUDE_DESIGN_VISUAL_DELIVERY",
+    "NEXO_REVIEW",
+    "AXIOMA_REVIEW",
+    "HUMAN_QA_MARIA"
+  ],
+  "html_authorized": false,
+  "game_runtime_authorized": false,
+  "main_changes_authorized": false,
+  "agent_contacted": false,
+  "notes": "Brief prepared and registered for María to hand to external Claude Design; no external agent activated."
+}
