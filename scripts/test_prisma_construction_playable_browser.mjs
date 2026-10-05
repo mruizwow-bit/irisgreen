@@ -157,6 +157,7 @@ async function reflowAndA11y(width, height) {
   });
   assert(roamMetrics.scrollWidth <= width, width + ": 200% horizontal overflow " + JSON.stringify(roamMetrics));
   assert(roamMetrics.clipped.length === 0, width + ": 200% clipped controls " + JSON.stringify(roamMetrics.clipped));
+  assert(roamMetrics.offenders.length === 0, width + ": 200% internal overflow " + JSON.stringify(roamMetrics.offenders));
   await page.locator("#build-mode").click();
   const buildMetrics = await page.evaluate(() => {
     const visible = [...document.querySelectorAll("button,select")].filter(el => el.offsetParent !== null);
@@ -176,6 +177,7 @@ async function reflowAndA11y(width, height) {
   });
   assert(buildMetrics.scrollWidth <= width, width + ": build 200% horizontal overflow " + JSON.stringify(buildMetrics));
   assert(buildMetrics.clipped.length === 0, width + ": build 200% clipped controls " + JSON.stringify(buildMetrics.clipped));
+  assert(buildMetrics.offenders.length === 0, width + ": build 200% internal overflow " + JSON.stringify(buildMetrics.offenders));
   assert(buildMetrics.minHeight >= 44, width + ": target below 44 at 200%");
   assert(runtimeErrors.length === 0, width + ": runtime errors");
   results.tests["a11y_" + width] = { result: "PASS", canvasName: name, liveAfterMove, liveAfterCursor, roamMetrics, buildMetrics };
