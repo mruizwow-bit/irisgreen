@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="dark"><title>Fósiles · Iris Green</title><link rel="stylesheet" href="assets/fonts.css"><link rel="stylesheet" href="style.css"></head>
+<body>
+<a class="skip" href="#scene">Ir a la exploración</a>
+<header class="brandbar"><span class="brand">Iris Green<span class="brand-dot" aria-hidden="true">·</span></span><span data-t="area">Descubrimiento</span><div class="header-actions"><button id="lang" aria-label="Switch to English">EN</button><button id="collection"><span data-t="collection">Mis hallazgos</span> <span id="count">0</span></button><button id="help" data-t="help">Ayuda</button></div></header>
+<main>
+<div class="intro"><div><p class="eyebrow" data-t="eyebrow">FÓSILES · CUADERNO DE EXPLORACIÓN</p><h1 data-t="title">Lo que la roca guarda.</h1><p class="lead" data-t="intro">Explora. Despeja un indicio. Descubre su historia.</p></div><p class="edition" data-t="edition">14 piezas por descubrir<br>Una mirada al pasado</p></div>
+<div class="workspace">
+<aside class="sectors"><h2 data-t="sectors">Sectores</h2><p class="muted small" data-t="sectorsNote">Escenas de distintas épocas</p><nav id="sectorNav" aria-label="Sectores de exploración"></nav><label class="mobile-sector" for="sectorSelect" data-t="sectorLabel">Cambiar de sector</label><select id="sectorSelect" class="mobile-sector"></select><p class="curated" data-t="curated">Colección didáctica. Las piezas no proceden de un mismo yacimiento.</p></aside>
+<section class="exploration" aria-labelledby="sectorTitle">
+<div class="scene-title"><div><p id="sectorAge" class="eyebrow"></p><h2 id="sectorTitle"></h2></div><span id="sectorCount" class="muted small"></span></div>
+<div id="viewport" class="viewport"><canvas id="scene" tabindex="0" role="group" aria-label="Superficie de roca explorable" aria-describedby="sceneInstructions">Tu navegador necesita Canvas para mostrar esta exploración.</canvas><div id="loading" class="loading" role="status">Preparando la superficie…</div><span id="modeBadge" class="mode-badge" aria-hidden="true">EXPLORAR</span><div class="zoom"><button id="zoomOut" aria-label="Alejar">−</button><output id="zoomValue" aria-label="Ampliación">100 %</output><button id="zoomIn" aria-label="Acercar">+</button><button id="fit" aria-label="Ver sector completo">⤢</button></div></div>
+<div class="toolbar"><div class="modes" role="group" aria-label="Herramienta"><button id="explore" aria-pressed="true" data-t="explore">Explorar</button><button id="brush" aria-pressed="false" data-t="brush">Despejar</button></div><button id="step" data-t="step">Despejar esta zona</button><button id="examine" class="primary" data-t="examine">Examinar</button></div>
+<p id="sceneInstructions" class="instructions"></p>
+<div class="under-scene"><button id="nextClue" data-t="nextClue">Acercar al siguiente indicio</button><label><span data-t="motion">Movimiento</span> <select id="motion"><option value="normal">Normal</option><option value="reduced">Reducido</option><option value="none">Ninguno</option></select></label></div>
+<div id="status" class="status" aria-live="polite" aria-atomic="true"></div>
+<details class="accessible"><summary data-t="clues">Indicios y exploración por pasos</summary><p data-t="cluesHelp">Elige un indicio para acercarte. Retira cobertura por pasos y examina lo que aparece.</p><div id="clueList"></div></details>
+</section>
+<aside id="fieldnote" class="fieldnote" aria-labelledby="noteTitle"><p class="eyebrow" id="noteKicker"></p><h2 id="noteTitle"></h2><p id="noteText"></p><div id="noteDetails"></div><div class="note-actions"><button id="continueBrush" data-t="continueBrush">Seguir despejando</button><button id="depth" class="primary" hidden data-t="depth">Observar de cerca</button><button id="save" hidden data-t="save">Añadir a mis hallazgos</button></div><div class="note-bottom"><span class="line-icon" aria-hidden="true">◌</span><p data-t="noteBottom">Lo descubierto permanece. Puedes irte y volver a esta misma roca.</p></div></aside>
+</div>
+<footer><span data-t="footer">Representaciones de Iris Green · No son especímenes de museo</span><button id="credits" data-t="credits">Sobre las imágenes y los datos</button></footer>
+</main>
+<dialog id="dialog" aria-labelledby="dialogTitle"><div class="dialog-head"><h2 id="dialogTitle"></h2><button id="closeDialog" data-t="close">Cerrar</button></div><div id="dialogBody"></div></dialog>
+<noscript><p class="status">Activa JavaScript para explorar los fósiles. Los datos originales están incluidos en la carpeta procedencia.</p></noscript>
+<script src="assets/data.js"></script><script src="model.js"></script><script src="app.js"></script>
+</body></html>
