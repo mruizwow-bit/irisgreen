@@ -18,13 +18,15 @@
     "axioma": "QA"
   },
   "next": [
+    "PRISMA_NAVIGABLE_GAMES_AREA_AND_EXISTING_GAME_ASSEMBLY",
+    "AXIOMA_INTEGRATED_RUNTIME_CHECK",
     "HUMAN_QA_MARIA"
   ],
-  "html_authorized": false,
+  "html_authorized": true,
   "game_runtime_authorized": false,
   "main_changes_authorized": false,
   "agent_contacted": false,
-  "notes": "Scope = Claude Design Games area visual delivery only. Editable canvas HTML received; no game runtime delivered. External agent not activated. Prisma Construction playable prototype authorization remains separate and valid.",
+  "notes": "Visual gate retained; Maria now authorizes navigable Games area assembly and connection of existing Construction runtime for human testing. Prisma assembles/integrates; Claude Design builds Discovery area interface. No main/public deploy authorization. Existing runtime must be identified by current hash/gate, not recreated.",
   "review_file": "REVIEW_CLAUDE_DESIGN_R01_3_FRAME_INTEGRATED.md",
   "review_commit": "6be03f086186fbc3e5507cdf402f588bf215ed8e",
   "artifact": {
@@ -97,5 +99,13 @@
     "verified_against_canonical_report": true
   },
   "human_qa_pass": false,
-  "public_deploy_authorized": false
+  "public_deploy_authorized": false,
+  "integration_order": {
+    "path": "COORDINACION_IRIS_GREEN/HANDOFFS/NEXO_MONTAJE_AREAS_20261005/ORDEN_PRISMA_JUEGOS_DESCUBRIMIENTO.md",
+    "commit": "a5de649cae27e3bf235ca15c9e61099c2bd662b9",
+    "owner": "Prisma",
+    "purpose": "Games landing + For everyone + Plus + existing Construction route for human QA",
+    "discovery_interface_owner": "Claude Design",
+    "discovery_interface_order_commit": "6c2170874269cff439fe44bf2e70218b2c25a69c"
+  }
 }
