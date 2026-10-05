@@ -8,7 +8,7 @@ OUT=ROOT/"artifacts"/"construction-playable-r01"
 ZIP=ROOT/"PRISMA_CONSTRUCTION_PLAYABLE_R01.zip"
 SHA=ROOT/"PRISMA_CONSTRUCTION_PLAYABLE_R01.sha256"
 
-FILES=["juegos.html","game.css","game.js","README.md","QA_PRISMA.json"]
+FILES=["juegos.html","game.css","game.js","README.md","QA_PRISMA.json","QA_BROWSER.json"]
 if OUT.exists():
     shutil.rmtree(OUT)
 OUT.mkdir(parents=True)
