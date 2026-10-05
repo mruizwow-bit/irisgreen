@@ -40,6 +40,9 @@ Una biblioteca rica y un runtime que carga imágenes no acreditan Descubrimiento
 El gate de packaging protege los binarios, no valida automáticamente taxonomía, hábitat, escala científica o diversión.
 La orden de entrega debe incluir archivos reales accesibles para un agente externo: GitHub/Library IDs solos no bastan para Claude.
 
+## Actualización posterior de María
+María informa de más animales en producción y de 40 pendientes por terminar. No se ha inferido el total ni auditado los nuevos binarios. Autoriza comenzar ya: motor, interfaz, álbum, estructura de Arrecife/descenso y catálogo por manifest; seis PNG incluidos como muestra de prueba, sin límite de tres en el motor. Ingesta incremental por hábitat validado sin esperar a acabar toda la producción.
+
 ## Plan
 1 Nexo: orden, estado y paquete de seis assets exactos.
 2 María entrega el paquete a Claude; su activación no se presume.
