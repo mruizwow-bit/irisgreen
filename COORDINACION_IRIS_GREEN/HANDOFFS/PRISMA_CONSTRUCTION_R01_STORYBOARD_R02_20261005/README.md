@@ -203,8 +203,7 @@ Mismos IDs con sufijo `_1440.png`.
 ZIP de entrega:
 `PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip`
 
-SHA-256 ZIP:
-`2526a0c4e3523b1a3d470882759978ec64b19c1dac725e0d326529e570359032`
+SHA-256 ZIP:\n`5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e`
 
 ## Asset inventory
 
@@ -233,3 +232,27 @@ Provisional:
 `AXIOMA REVIEW → HUMAN QA MARÍA`
 
 No código antes de ambos.
+
+
+## GitHub artifact
+
+Run:
+https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832
+
+Artifact:
+`PRISMA_CONSTRUCTION_R01_STORYBOARD_R02`
+
+Artifact ID:
+`11342176274`
+
+Artifact UI:
+https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832/artifacts/11342176274
+
+Run status:
+`37302920832 · SUCCESS`
+
+Contents generated and verified in GitHub Actions:
+- 22 storyboard/support files inside the package source;
+- ZIP SHA-256: `5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e`;
+- `sha256sum -c` PASS;
+- artifact expires 2026-11-04 unless retained/copied elsewhere.
