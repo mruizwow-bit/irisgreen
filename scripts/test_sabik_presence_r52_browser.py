@@ -80,11 +80,18 @@ try:
         assert "web_presente.png?v=sabik-definitive-r01" in normal["src"], normal
         assert normal["duration"] == 380 and normal["iterations"] == 1, normal
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
+        page.evaluate("() => { void window.SabikWebPresentation.setSabikState('presente',{force:true,static:true,semantic:'idle'}); }")
+        page.wait_for_timeout(80)
         normal_presence = page.evaluate("""() => ({
           rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
-          rootDuration:getComputedStyle(document.querySelector('#sabik-hologram')).animationDuration
+          rootTransform:getComputedStyle(document.querySelector('#sabik-hologram')).transform,
+          bodyAnimation:getComputedStyle(document.querySelector('#sabik-web-master')).animationName,
+          orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName
         })""")
-        assert "sabikR69SelfMotion" in normal_presence["rootAnimation"], normal_presence
+        assert normal_presence["rootAnimation"] == "none", normal_presence
+        assert normal_presence["rootTransform"] in ("none","matrix(1, 0, 0, 1, 0, 0)"), normal_presence
+        assert "breathe" in normal_presence["bodyAnimation"], normal_presence
+        assert "orbit" in normal_presence["orbitAnimation"], normal_presence
         evidence["motion"]["normal_orientar"] = normal
         evidence["motion"]["normal_presence"] = normal_presence
 
@@ -132,11 +139,13 @@ try:
         reduced_css = page.evaluate("""() => ({
           motion:document.querySelector('#sabik-hologram').dataset.motion,
           rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
+          rootTransform:getComputedStyle(document.querySelector('#sabik-hologram')).transform,
           orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName,
           coreAnimation:getComputedStyle(document.querySelector('#sabik-hologram .core-light')).animationName
         })""")
         assert reduced_css["motion"] == "reduced", reduced_css
-        assert "sabikR69SelfMotionReduced" in reduced_css["rootAnimation"], reduced_css
+        assert reduced_css["rootAnimation"] == "none", reduced_css
+        assert reduced_css["rootTransform"] in ("none","matrix(1, 0, 0, 1, 0, 0)"), reduced_css
         assert reduced_css["orbitAnimation"] == "none", reduced_css
         assert "thinkReduced" in reduced_css["coreAnimation"], reduced_css
         evidence["motion"]["reduced_css"] = reduced_css
@@ -201,10 +210,12 @@ try:
           motion:document.querySelector('#sabik-hologram').dataset.motion,
           level:window.SabikWebPresentation.snapshot().level,
           rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
+          rootTransform:getComputedStyle(document.querySelector('#sabik-hologram')).transform,
           orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName
         })""")
         assert prefers["motion"] == "reduced" and prefers["level"] == "REDUCIDO", prefers
-        assert "sabikR69SelfMotionReduced" in prefers["rootAnimation"], prefers
+        assert prefers["rootAnimation"] == "none", prefers
+        assert prefers["rootTransform"] in ("none","matrix(1, 0, 0, 1, 0, 0)"), prefers
         assert prefers["orbitAnimation"] == "none", prefers
         evidence["motion"]["prefers_reduced"] = prefers
         page.emulate_media(reduced_motion="no-preference")
