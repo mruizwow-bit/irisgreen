@@ -71,7 +71,8 @@ try:
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('orientar',{force:true,semantic:'listening'}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
         normal = page.evaluate("""() => {
-          const m=document.querySelector('#sabik-web-master'),a=m.getAnimations()[0],v=document.querySelector('#sabik-hologram');
+          const m=document.querySelector('#sabik-web-master'),v=document.querySelector('#sabik-hologram');
+          const a=m.getAnimations().find(x=>{const t=x.effect?.getTiming?.();return Number(t?.duration)===380&&Number(t?.iterations)===1;});
           return {state:v.dataset.webState,semantic:v.dataset.state,src:m.getAttribute('src'),
                   duration:a?.effect?.getTiming().duration,iterations:a?.effect?.getTiming().iterations};
         }""")
