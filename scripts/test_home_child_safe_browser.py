@@ -31,6 +31,12 @@ async def main():
   need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_UNSET','fresh session must start AGE_UNSET')
   mandatory=page.locator('[data-ig-mandatory-age-gate]')
   need(await mandatory.count()==1 and await mandatory.is_visible(),'mandatory age gate missing on fresh session')
+  legal=(await mandatory.locator('[data-ig-mandatory-age-privacy]').text_content()) or ''
+  need('Usamos tu grupo de edad solo para adaptar la experiencia' in legal,'short age/privacy notice missing')
+  need('autodeclaración' in legal and 'no verifica la mayoría de edad' in legal,'18+ self-declaration notice missing')
+  need(await mandatory.locator('[data-ig-age-privacy-link]').get_attribute('href')=='/es/privacidad/','privacy link missing')
+  need(await mandatory.locator('[data-ig-age-info-link]').get_attribute('href')=='/es/privacidad/#age','age info link missing')
+  need(await mandatory.locator('[data-ig-age-child-link]').get_attribute('href')=='/es/privacidad/#children','child protection link missing')
   for w,h in [(1440,900),(390,844),(320,800)]:
    await page.set_viewport_size({'width':w,'height':h});await page.wait_for_timeout(30)
    need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'mandatory age gate overflow '+str(w))
@@ -40,9 +46,30 @@ async def main():
   first=mandatory.locator('[data-ig-audience-stage="AGE_0_12"]');second=mandatory.locator('[data-ig-audience-stage="AGE_13_17"]')
   await first.focus();await page.keyboard.press('Tab')
   need(await second.evaluate('(el)=>document.activeElement===el'),'mandatory age gate keyboard order failed')
+
+  # Transparency information must be readable before selecting age without opening normal app functions.
+  await page.goto(BASE+'/es/privacidad/#age',wait_until='networkidle')
+  need(await page.locator('html').get_attribute('data-ig-audience')=='AGE_UNSET','privacy page changed age selection')
+  need(await page.locator('[data-ig-mandatory-age-gate]').count()==0,'mandatory gate covers pre-age privacy information')
+  need(await page.locator('body').get_attribute('data-ig-pre-age-info') is not None,'pre-age privacy state missing')
+  need(await page.locator('main').get_attribute('inert') is None,'privacy main is inert before age')
+  need(await page.get_by_role('heading',name='Cómo usamos la edad',exact=True).is_visible(),'age transparency section unavailable before age')
+  need(await page.get_by_role('heading',name='Protección de menores',exact=True).is_visible(),'child protection section unavailable before age')
+  need(await page.locator('[data-ig-r49-search]').is_hidden(),'search opened while reading pre-age privacy')
+  need(await page.locator('[data-ig-r49-more]').is_hidden(),'navigation opened while reading pre-age privacy')
+  need(await page.locator('[data-ig-music]').is_hidden(),'music opened while reading pre-age privacy')
+  print('AGE_GATE_SHORT_PRIVACY_NOTICE_REQUIRED')
+  print('AGE_SELECTION_PURPOSE_LIMITED_TO_SAFETY_AND_ADAPTATION')
+  print('NO_DATE_OF_BIRTH_REQUIRED_FOR_AGE_BAND_SELECTION')
+  print('AGE_18_PLUS_SELF_DECLARATION_IS_NOT_ADULT_ASSURANCE')
+
   await page.goto(BASE+'/en/',wait_until='networkidle')
   mandatory=page.locator('[data-ig-mandatory-age-gate]')
   need(await page.get_by_role('heading',name='What is your age group?',exact=True).is_visible(),'English mandatory age gate copy missing')
+  en_legal=(await mandatory.locator('[data-ig-mandatory-age-privacy]').text_content()) or ''
+  need('We use your age group only to adapt the experience' in en_legal,'English age/privacy notice missing')
+  need('self-declaration' in en_legal and 'does not verify adulthood' in en_legal,'English 18+ self-declaration notice missing')
+  need(await mandatory.locator('[data-ig-age-info-link]').get_attribute('href')=='/en/privacy/#age','English age info link missing')
   need(await page.evaluate('document.documentElement.scrollWidth<=innerWidth+1'),'English mandatory age gate overflow')
   await page.screenshot(path=str(OUT/'age-gate-en-320x800.png'),full_page=True)
   await page.set_viewport_size({'width':1440,'height':900});await page.goto(BASE+'/',wait_until='networkidle')
