@@ -1,3 +1,39 @@
+## CANON OBLIGATORIO · SOLO NAVY · CORRECCIÓN DE MARÍA 2026-10-05
+María ya ha enviado este canon a Claude. No reenviar otra orden ni asumir que los tokens siguen pendientes.
+Este apartado prevalece sobre cualquier mención anterior a LIGHT/NAVY, tema claro, tokens provisionales o elección libre de marca. Solo NAVY; sin selector de tema.
+| Elemento | Valor |
+|---|---|
+| Fondo general de toda la página | #0B1A2B |
+| Tarjetas y paneles | #15304A |
+| Superficie secundaria | #1D3D5C |
+| Texto principal | #EEF4F8 |
+| Texto secundario | #C9D5DD |
+| Enlaces | #9FDCEA |
+| Acento y foco | #C3B8FF |
+| Bordes de controles | #8494A8 |
+| Separadores | #2A4460 |
+| Botón principal | fondo #DCE8F2; texto #0B1A2B |
+| Cuerpo | "IG Zero","Atkinson Hyperlegible",system-ui,sans-serif; 1rem; line-height 1.6 |
+| Títulos | Newsreader,Georgia,serif; peso 600; line-height 1.2 |
+| Título principal de portada | Newsreader; peso 400; clamp(2.5rem,4.6vw,3.5rem); line-height 1.06 |
+| Introducción | Atkinson Hyperlegible; 1.18rem; line-height 1.58 |
+
+1rem equivale a 16 px solo con base estándar. Título de portada 40–56 px e introducción 18.88 px con esa base. No impedir zoom ni preferencias de Lectura.
+IG Zero sustituye exclusivamente U+0030 por una fuente local para conservar el cero sin barra; no cambia la identidad de Atkinson.
+No Bricolage, paleta verde/crema derivada del nombre, logotipo inventado ni familia tipográfica nueva.
+Los archivos de fuentes se sirven localmente, no desde Google Fonts. Newsreader y Atkinson ya existen en assets/fonts/ del repositorio.
+No reemplazar el marco global ni duplicar cabecera, Lectura, idiomas o footer. El módulo se adapta a Iris Green.
+Forced-colors y preferencias accesibles prevalecen sobre colores de marca.
+En Peces, el agua/iluminación interna conserva su función; el fondo de página, paneles y controles siguen NAVY. No convertir el escenario en el fondo de toda la web.
+
+Autoridad: valores exactos aportados por María en este chat el 2026-10-05, tras revisar la entrega de Claude.
+Base comprobada: assets/ig-global-ui-tokens-2026.css, assets/ig-fonts.css, assets/site-v23.css, docs/IRIS_GREEN_BRIEF_R08.md; main 52d2b1df5f08c8f8bcf07d0fbefee7b3ece4f95a.
+Diferencia deliberada: el token general de botón principal leído en main es #315774; para ESTA ENTREGA María fija #DCE8F2/#0B1A2B. El título de portada también sigue su instrucción expresa. No cambiar el CSS de producción como efecto de este encargo.
+Incidencia de coordinación: el README de CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01 declara que faltaba el canon y creó tokens provisionales. Nexo debe incluir canon exacto en cada handoff de diseño. No es tarea pendiente de María.
+
+
+---
+
 # CLAUDE · DESCUBRIMIENTO · VIDA MARINA Y PECES · PROTOTIPO R01
 Fecha: 2026-10-05 · Coordinación Nexo · Issue #323
 Estado: orden lista para entregar a Claude; no implica ejecución ni aprobación de producto.
@@ -173,7 +209,7 @@ No loops de peces, nieve, burbujas, pulsos luminosos ni música automática en n
 320/390: una columna; cabecera breve; escena primero; controles debajo, con opción ampliar escena. Objetivo de diseño: escena >=65% del primer viewport útil con controles compactos, sin sacrificar tamaño de targets. Detalles largos bajan o abren panel. No dos columnas.
 1440: escena predominante, controles discretos; panel factual lateral al identificar, sin tapar al objetivo.
 A 200% de texto el contenido debe poder fluir; permitir scroll vertical sin recorte ni controles flotantes superpuestos. Priorizar reflow sobre porcentaje de escena.
-LIGHT/NAVY afectan interfaz; no eliminar la oscuridad de la experiencia.
+Solo NAVY según canon adjunto; no eliminar la oscuridad funcional de la experiencia.
 No crear otro age gate. Si el prototipo no recibe perfil global, usar ALL_AGES. Si lo recibe: AGE_0_12 una criatura accesible por campo, AGE_13_17 dos/tres, AGE_18_PLUS y ALL_AGES las tres disponibles; mismas herramientas y hechos. No pedir fecha de nacimiento ni guardar edad.
 
 ## 9. Álbum y estados técnicos
