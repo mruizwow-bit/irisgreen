@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-05",
+  "canonical": "00_REGISTRO_CANONICO.md",
+  "record_commit": "3eeb426f803eff60c61d139870825a674fdef753",
+  "lane": "CONSTRUCTION",
+  "status": "BRIEF_AND_ORDERS_RECORDED",
+  "previous_room_human_qa": "FAIL",
+  "storyboard": "PENDING_PRISMA",
+  "axioma": "PENDING_STORYBOARD",
+  "human_qa": "PENDING",
+  "code_authorized": false,
+  "main_changed": false,
+  "blockers": [
+    "Sequential bridge placement and cursor reach",
+    "Vertical traversal versus stair utility",
+    "Exact terrain coordinates and material solution costs"
+  ],
+  "pairs": "BACKLOG",
+  "next": "Prisma storyboard and mechanics reconciliation"
+}
