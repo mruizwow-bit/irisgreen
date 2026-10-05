@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 369,
-  "status": "HUMAN_QA_MARIA_PENDING",
+  "status": "PLAYABLE_PROTOTYPE_ORDER_RECORDED",
   "gate": "AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA",
   "qa_commit": "8ab82d7bef0054c46ae365be3ea62494a5970060",
   "qa_comment": 5995945476,
@@ -18,14 +18,16 @@
     "validated_materials_costs_support_reach"
   ],
   "patch_items": [],
-  "order_file": "ORDEN_PRISMA_PATCH_P06.md",
-  "order_commit": "2dec08c2bd92e0e9c0e84b33dd286fb896e344c3",
+  "order_file": "ORDEN_PRISMA_PROTOTIPO_JUGABLE_R01.md",
+  "order_commit": "9d299041ca62352c26e4806991fefee7bcc1b10d",
   "next": [
-    "HUMAN_QA_MARIA"
+    "PRISMA_IMPLEMENT_PLAYABLE_PROTOTYPE",
+    "AXIOMA_RUNTIME_QA",
+    "HUMAN_QA_MARIA_PLAYING"
   ],
   "human_qa_pass": false,
-  "code_authorized": false,
-  "runtime_authorized": false,
+  "code_authorized": true,
+  "runtime_authorized": true,
   "main_changes_authorized": false,
   "passed_items": [
     "P01",
@@ -39,6 +41,10 @@
   ],
   "build_commit": "73cb445388895978caa598320cf9cf06ed426ba5",
   "prisma_record_head": "21c8c0f633beafc672b3caa3ad31b0cc84bcb86c",
-  "human_qa_status": "PENDING",
-  "deploy_authorized": false
+  "human_qa_status": "PENDING_PLAYABLE_BUILD_AND_AXIOMA_RUNTIME_QA",
+  "deploy_authorized": false,
+  "authorization_scope": "Isolated Construction playable prototype requested by Maria 2026-10-05; not production or main",
+  "authorization_reason": "User cannot test a game through standalone PNGs; needs mounted playable game",
+  "runtime_implemented": false,
+  "agent_activation_confirmed": false
 }
