@@ -293,3 +293,17 @@ Prioridad al entrar en Work:
 
 Regla:
 `ASTRA_WORK_MODE_RESUME_FROM_GITHUB_NOT_CHAT`
+
+
+## 2026-10-05 · Mar 22 · correcciones ejecutadas por Astra
+
+María autoriza resolver directamente, sin convertirla en mensajera. Entregadas cuatro parejas PNG luz/oscuro: pepino abisal, sifonóforo, pez gota y ctenóforo. Oscuros derivados por ajuste RGB; alfa idéntico por pareja; lado mayor 1400 px y sRGB asignado. Originales preservados. No regenerar por defectos corregibles por transformación determinista.
+
+Paquete: `MAR22_CUATRO_PAREJAS_QA_20261005.zip`, Library `libfile_02629013b13c81919066ee27060d2a59`.
+
+Estado y continuación: `COORDINACION_IRIS_GREEN/HANDOFFS/MAR22_CORRECCIONES_20261005/ESTADO.md`.
+Control y hashes: `COORDINACION_IRIS_GREEN/CONTROL/MAR22_CORRECCIONES_20261005.json`.
+
+Inspeccionado prototipo R02_1_2: no contiene estas cuatro parejas. Seis tests de funciones puras pasan; QA gráfica no ejecutada porque falta Chromium y la descarga falló. Composición source-over necesita revisión para alfa semitransparente. NO runtime PASS, NO factual PASS, NO HUMAN QA, NO integración pública.
+
+Bloque 10 sigue sin correspondencia inequívoca de sustituciones; Bloque 16 revocado sigue excluido, sin reemplazo confirmado. Bloque 15 válido conservado. Auditoría existente de 301 registros es cribado, no 301 especies validadas. No crear otra biblioteca maestra. Continuar revisiones científicas y manifiesto existentes.
