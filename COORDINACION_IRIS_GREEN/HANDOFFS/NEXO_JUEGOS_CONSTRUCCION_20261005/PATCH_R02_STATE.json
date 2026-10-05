@@ -3,28 +3,24 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 369,
-  "status": "P06_LEGACY_MATERIALS_PATCH_REQUIRED",
-  "gate": "AXIOMA_CONSTRUCTION_R01_R02_P06_REWORK_REQUIRED",
-  "qa_commit": "a4a79358fe5ccc10630876d30d8fccced9c8debe",
-  "qa_comment": 5995409728,
+  "status": "HUMAN_QA_MARIA_PENDING",
+  "gate": "AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA",
+  "qa_commit": "8ab82d7bef0054c46ae365be3ea62494a5970060",
+  "qa_comment": 5995945476,
   "package_access": "RESOLVED",
-  "artifact_id": 11347511815,
-  "run_id": 37314984917,
-  "audited_zip_sha256": "93cd3d40d24a1d34a262d5cedb91de57f5546d72ac7748c1cb3589c2c3107905",
+  "artifact_id": 11348661943,
+  "run_id": 37318454037,
+  "audited_zip_sha256": "f2d4503945e96941b51f953ed8e3fa6decbf6d5dfe6e53acfa71f6c484082853",
   "evidence_attribution": "Axioma audited package; Nexo read canonical review and delivery record",
   "preserve": [
     "concept",
     "solutions_A_B",
     "validated_materials_costs_support_reach"
   ],
-  "patch_items": [
-    "P06_A_legacy_material_labels_visible_1440"
-  ],
+  "patch_items": [],
   "order_file": "ORDEN_PRISMA_PATCH_P06.md",
-  "order_commit": "8cc0f569fee5891736df9cc782d1bf1ddc9e015d",
+  "order_commit": "2dec08c2bd92e0e9c0e84b33dd286fb896e344c3",
   "next": [
-    "PRISMA_PATCH_P06_LEGACY_MATERIALS",
-    "AXIOMA_RETEST_VISUAL_ACOTADO",
     "HUMAN_QA_MARIA"
   ],
   "human_qa_pass": false,
@@ -37,10 +33,12 @@
     "P03",
     "P04",
     "P05",
+    "P06",
     "P07",
-    "P08",
-    "P06_B",
-    "P06_C",
-    "P06_A_badge_geometry"
-  ]
+    "P08"
+  ],
+  "build_commit": "73cb445388895978caa598320cf9cf06ed426ba5",
+  "prisma_record_head": "21c8c0f633beafc672b3caa3ad31b0cc84bcb86c",
+  "human_qa_status": "PENDING",
+  "deploy_authorized": false
 }
