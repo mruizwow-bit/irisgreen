@@ -40,12 +40,13 @@ for required_layer in (
     require(required_layer in panel, f"Definitive Sabik layer missing: {required_layer}")
 for forbidden in ("sabik-base-640.webp","sabik-orbits-back.svg","sabik-orbits-front.svg","sabik-orbit-layer","sabik-layered-avatar","sabikR69OrbitBack","sabikR69OrbitFront"):
     require(forbidden not in panel + css + js, f"Legacy Sabik donor leaked back in: {forbidden}")
-for required in ("sabik-web-visual[data-motion=\"normal\"]","sabik-web-visual[data-motion=\"reduced\"]","sabik-web-visual[data-motion=\"none\"]","sabikR69SelfMotion","sabikR69SelfMotionReduced","dataset.renderActive"):
-    require(required in css + js, f"Current Sabik self-motion marker missing: {required}")
-for forbidden in ("sabik-current-presence","sabik-presence-motion"):
-    require(forbidden not in css + js + panel, f"Dead Sabik motion wrapper returned: {forbidden}")
-require("breatheReduced" in layered_css and "thinkReduced" in layered_css and "speakReduced" in layered_css and "speakBodyReduced" in layered_css,
-        "Reduced Sabik semantic micro-motion is missing")
+require("dataset.renderActive" in js, "Sabik render activity marker missing")
+for forbidden in ("sabik-current-presence","sabik-presence-motion","sabikR69SelfMotion","sabikR69SelfMotionReduced","translate3d("):
+    require(forbidden not in css, f"Whole-Sabik sticker motion returned: {forbidden}")
+require(".sabik-web-visual{" in css and "transform:none" in css,
+        "Sabik visual root must remain spatially anchored")
+for required in ("breathe","orbit","think","speak","speakBody","breatheReduced","thinkReduced","speakReduced","speakBodyReduced"):
+    require(required in layered_css, f"Layered Sabik motion missing: {required}")
 require('.sabik-visual[data-motion="none"] *{animation:none!important;transition:none!important;transform:none!important}' in layered_css,
         "No-motion must freeze all layered transforms")
 require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
