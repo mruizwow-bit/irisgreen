@@ -1,0 +1,37 @@
+name: Prisma Construction R02 Artifact
+on:
+  push:
+    branches:
+      - prisma/construction-r01-storyboard-r02-20261005
+    paths:
+      - 'scripts/build_prisma_construction_r02_storyboard.py'
+      - '.github/workflows/prisma-construction-r02-artifact.yml'
+  workflow_dispatch:
+
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install Pillow
+        run: python -m pip install 'Pillow==11.3.0'
+      - name: Build storyboard package
+        run: python scripts/build_prisma_construction_r02_storyboard.py
+      - name: Verify package
+        run: |
+          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip
+          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.sha256
+          sha256sum -c PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.sha256
+          unzip -l PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip
+      - name: Upload storyboard ZIP
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRISMA_CONSTRUCTION_R01_STORYBOARD_R02
+          path: |
+            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip
+            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.sha256
+          if-no-files-found: error
+          retention-days: 30
