@@ -148,7 +148,11 @@ async function reflowAndA11y(width, height) {
       clipped: visible.filter(el => {
         const r = el.getBoundingClientRect();
         return r.left < -1 || r.right > innerWidth + 1 || el.scrollWidth > el.clientWidth + 2;
-      }).map(el => el.id || el.getAttribute("aria-label") || el.textContent.trim())
+      }).map(el => el.id || el.getAttribute("aria-label") || el.textContent.trim()),
+      offenders: [...document.querySelectorAll("body *")].filter(el => el.offsetParent !== null && !el.classList.contains("sr-only") && !el.classList.contains("skip")).map(el => {
+        const r = el.getBoundingClientRect();
+        return { tag: el.tagName, id: el.id, className: String(el.className || ""), left: r.left, right: r.right, width: r.width, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth };
+      }).filter(x => x.left < -1 || x.right > innerWidth + 1 || x.scrollWidth > x.clientWidth + 2).slice(0,20)
     };
   });
   assert(roamMetrics.scrollWidth <= width, width + ": 200% horizontal overflow " + JSON.stringify(roamMetrics));
@@ -163,7 +167,11 @@ async function reflowAndA11y(width, height) {
       clipped: visible.filter(el => {
         const r = el.getBoundingClientRect();
         return r.left < -1 || r.right > innerWidth + 1 || el.scrollWidth > el.clientWidth + 2;
-      }).map(el => el.id || el.getAttribute("aria-label") || el.textContent.trim())
+      }).map(el => el.id || el.getAttribute("aria-label") || el.textContent.trim()),
+      offenders: [...document.querySelectorAll("body *")].filter(el => el.offsetParent !== null && !el.classList.contains("sr-only") && !el.classList.contains("skip")).map(el => {
+        const r = el.getBoundingClientRect();
+        return { tag: el.tagName, id: el.id, className: String(el.className || ""), left: r.left, right: r.right, width: r.width, scrollWidth: el.scrollWidth, clientWidth: el.clientWidth };
+      }).filter(x => x.left < -1 || x.right > innerWidth + 1 || x.scrollWidth > x.clientWidth + 2).slice(0,20)
     };
   });
   assert(buildMetrics.scrollWidth <= width, width + ": build 200% horizontal overflow " + JSON.stringify(buildMetrics));
