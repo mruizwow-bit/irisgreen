@@ -1,0 +1,48 @@
+{
+  "fecha": "2026-10-05",
+  "responsable": "Astra",
+  "peticion": "ZIP separados de imágenes Cielo y Vida marina con fichas",
+  "paquetes": {
+    "CIELO": {
+      "imagenes_unicas": 462,
+      "entradas_fuente": 636,
+      "no_legibles": [],
+      "zip": "/workspace/scratch/7d0c72646fdb/entrega_imagenes/CIELO_IMAGENES_Y_FICHAS_20261005.zip",
+      "bytes": 436633975
+    },
+    "VIDA_MARINA": {
+      "imagenes_unicas": 652,
+      "entradas_fuente": 680,
+      "no_legibles": [
+        {
+          "archivo": "/workspace/scratch/7d0c72646fdb/package_extracted/MAR22_CUATRO_PAREJAS_QA_20261005/assets/pez-gota-luz.png",
+          "error": "image file is truncated"
+        }
+      ],
+      "zip": "/workspace/scratch/7d0c72646fdb/entrega_imagenes/VIDA_MARINA_IMAGENES_Y_FICHAS_20261005.zip",
+      "bytes": 372364804
+    }
+  },
+  "library_ids": {
+    "CIELO": "libfile_decd3735d2a08191a05406ebfdbce5a0",
+    "VIDA_MARINA": "libfile_4cd741590bb48191bb2e43af7172194d"
+  },
+  "contenido": [
+    "Imágenes originales deduplicadas por SHA256",
+    "INVENTARIO.csv",
+    "INVENTARIO.json",
+    "CATALOGO.html",
+    "LEEME.md",
+    "INCIDENCIAS.json",
+    "Documentación original"
+  ],
+  "validacion": "Imágenes raster decodificadas; ZIP CRC comprobado. Sin nueva aprobación visual, anatómica ni científica.",
+  "limites": [
+    "462/652 son archivos, no especies: incluyen formatos, versiones y planchas",
+    "Nombres/descripciones no documentados señalados; no se infiere taxón del orden de tanda",
+    "Cielo: paquete exoplanetas 001-020 ausente; HOLD 032/033/040",
+    "Vida marina: corrección pez-gota-luz.png truncada excluida; original 19_14_53-1 incluido",
+    "B16 revocado; B10 sustitución pendiente",
+    "No cambia runtime ni producción; prioridad prototipo"
+  ]
+}
