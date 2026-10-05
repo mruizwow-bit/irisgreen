@@ -2,7 +2,7 @@
   "date": "2026-10-05",
   "coordinator": "Nexo",
   "issue": 369,
-  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_2_EXPORT_VERIFIED_READY_FOR_AXIOMA",
+  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_3_FRAME_INTEGRATED_READY_FOR_AXIOMA",
   "recipient": "Claude Design",
   "scope": [
     "Games area landing",
@@ -18,8 +18,7 @@
     "axioma": "QA"
   },
   "next": [
-    "CLAUDE_INCORPORATE_SUPPLIED_F01",
-    "AXIOMA_AREA_REVIEW",
+    "AXIOMA_AREA_REVIEW_EXACT_R01_3_ZIP",
     "HUMAN_QA_MARIA"
   ],
   "html_authorized": false,
@@ -27,36 +26,37 @@
   "main_changes_authorized": false,
   "agent_contacted": false,
   "notes": "Scope = Claude Design Games area visual delivery only. Editable canvas HTML received; no game runtime delivered. External agent not activated. Prisma Construction playable prototype authorization remains separate and valid.",
-  "review_file": "REVIEW_CLAUDE_DESIGN_R01_2_EXPORT_CLOSED.md",
-  "review_commit": "fcdd34a1a08f80ce42bdea212d31c781c5dfc075",
+  "review_file": "REVIEW_CLAUDE_DESIGN_R01_3_FRAME_INTEGRATED.md",
+  "review_commit": "6be03f086186fbc3e5507cdf402f588bf215ed8e",
   "artifact": {
-    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_2.zip",
-    "bytes": 6758672,
-    "sha256": "aa6b3598904b3bcaf38067e4370489145c3092fd18a8ff50b671907946977e12",
-    "library_file_id": "libfile_2fc7015efba08191ae4be87376d30a31",
-    "files": 68,
+    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_3.zip",
+    "bytes": 7750089,
+    "sha256": "6dc3e7e94804357f85daaf538a65a27a1afbc60e0498f92ee492324db6fa2af5",
+    "library_file_id": "libfile_8398f67e6ac481919e0b29806df3e903",
+    "files": 75,
     "editable_frames": 18,
     "portable_frames": 18,
     "png_exports": 18
   },
   "validation": {
     "zip_integrity": "PASS",
-    "hashes_txt": "67/67",
-    "manifest_hashes": "66/66",
+    "hashes_txt": "74/74",
+    "manifest_hashes": "73/73",
     "export_structure": "VERIFIED",
     "style_blocks": "36/36 BALANCED",
     "portable_font_paths": "ALL_EXIST",
     "portable_external_renderer_dependency": false,
     "png_color_metadata": "18/18 ICC_sRGB_gAMA_cHRM",
-    "method": "STATIC_SOURCE_AND_BINARY_VERIFICATION_WITH_TWO_PNG_SAMPLES",
+    "method": "STATIC_SOURCE_BINARY_AND_DELIVERED_PNG_REVIEW; verifier overflow test reads author render evidence",
     "browser_rendered": false,
     "claude_render_evidence_received": true,
     "visual_pass": false,
     "visual_samples": [
       "J01_320",
-      "S04_1440"
+      "J01_1440"
     ],
-    "visual_direction": "KEEP"
+    "visual_direction": "KEEP",
+    "delivery_verifier_independently_run": "16/16"
   },
   "construction_image_handoff": {
     "filename": "CLAUDE_DESIGN_FRAME_CONSTRUCCION_APROBADO.zip",
@@ -71,6 +71,19 @@
       "F01_320"
     ],
     "pixel_changes": false,
-    "status": "SUPPLIED_FOR_USER_HANDOFF_NOT_YET_INCORPORATED"
-  }
+    "status": "INCORPORATED_3_OF_3_SOURCE_BINARIES_IDENTICAL"
+  },
+  "previous_artifact": {
+    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_2.zip",
+    "bytes": 6758672,
+    "sha256": "aa6b3598904b3bcaf38067e4370489145c3092fd18a8ff50b671907946977e12",
+    "library_file_id": "libfile_2fc7015efba08191ae4be87376d30a31",
+    "files": 68,
+    "editable_frames": 18,
+    "portable_frames": 18,
+    "png_exports": 18
+  },
+  "human_qa_observations": [
+    "At 320 first Enter CTA remains below initial viewport; assess discoverability with scroll, no extra redesign ordered"
+  ]
 }
