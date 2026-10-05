@@ -449,11 +449,32 @@ La diferencia más importante es esta:
 
 Parte del conocimiento ya estaba en mi formación. El fallo fue no usarlo como criterio de diseño y de parada.
 
-Lo que debo demostrar ahora no es que puedo repetir esta frase. Debo transferirlo a dos ejercicios aislados:
-1. dos alturas + pieza + personaje + picking directo;
-2. catálogo fluido a partir de un frame, con canon local y exportación limpia.
+Lo que debía demostrar no era que podía repetir esta frase, sino transferirla. Los dos ejercicios ya están ejecutados y documentados en `EJERCICIOS_PRISMA/RESULTADOS.md`.
+
+### Transferencia demostrada
+
+1. **Dos alturas + pieza + personaje + picking directo**
+   - proyección e inversa: 3/3 muestras, error máximo 0;
+   - picking usa los mismos polígonos proyectados que el dibujo;
+   - preview de rampa con orientación/apoyo;
+   - colocación;
+   - recorrido bajo → rampa → alto;
+   - personaje final en `{x:4,y:0,z:1}`.
+
+2. **Catálogo fluido desde frame**
+   - una única fuente de datos;
+   - canon/fuentes locales;
+   - rutas reales y retorno;
+   - estado vacío recuperable;
+   - 320/390/1440 + texto 200 % sin overflow;
+   - primer intento falló a 320/200 %, se diagnosticó min-content/flex y se corrigió;
+   - exportación portable desde fuente;
+   - ZIP extraído por `file://`, fuentes locales cargadas y 0 errores.
+
+Gate de aprendizaje:
+`PRISMA_CLAUDE_STUDY_TRANSFER_EXERCISES_PASS`
 
 Estado:
-`PRISMA_STUDY_REPORT_COMPLETE_EXERCISES_PENDING`
+`PRISMA_STUDY_AND_TRANSFER_COMPLETE`
 
 `NO MAIN · NO PRODUCCIÓN · NO SABIK`
