@@ -43,12 +43,13 @@ export function createSabikConversationalVoice({
  fixedVoiceFactory=createSabikVoice,
  onState=()=>{},
  onTranscript=()=>{},
- onError=()=>{}
+ onError=()=>{},
+ onEnergy=()=>{}
 }={}){
  if(typeof fetchImpl!=='function')throw new TypeError('SABIK_VOICE_FETCH_REQUIRED');
  let lang=language(initialLanguage),enabled=false,capability=null,capabilityPromise=null;
  let stream=null,recorder=null,chunks=[],captureTimer=0,vadTimer=0,vadContext=null,vadSource=null,vadAnalyser=null,sttController=null,ttsController=null,audio=null,audioUrl='';
- let playbackContext=null,playbackGain=null,playbackSource=null;
+ let playbackContext=null,playbackGain=null,playbackAnalyser=null,playbackSource=null,energyFrame=0,energyData=null,energySmoothed=0;
  let listening=false,transcribing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
 
@@ -98,11 +99,41 @@ export function createSabikConversationalVoice({
   }catch{clearVad();}
  }
  function revoke(){if(audioUrl){try{host.URL?.revokeObjectURL?.(audioUrl);}catch{}audioUrl='';}}
+ function stopEnergy(){
+  if(energyFrame){try{host.cancelAnimationFrame?.(energyFrame);}catch{}energyFrame=0;}
+  energySmoothed=0;
+  try{onEnergy(0,{active:false});}catch{}
+ }
+ function startEnergy(){
+  if(!playbackAnalyser)return;
+  stopEnergy();
+  energyData=new Uint8Array(playbackAnalyser.fftSize);
+  try{onEnergy(0,{active:true});}catch{}
+  const raf=host.requestAnimationFrame?.bind(host);
+  const later=fn=>raf?raf(fn):(host.setTimeout?.(fn,33)||0);
+  const tick=()=>{
+   if(!speaking||!playbackAnalyser)return stopEnergy();
+   playbackAnalyser.getByteTimeDomainData(energyData);
+   let sum=0;
+   for(const n of energyData){const x=(n-128)/128;sum+=x*x;}
+   const rms=Math.sqrt(sum/energyData.length);
+   const normalized=clamp((rms-.008)/.16,0,1);
+   energySmoothed=energySmoothed*.7+normalized*.3;
+   try{onEnergy(energySmoothed,{active:true,rms});}catch{}
+   energyFrame=later(tick);
+  };
+  energyFrame=later(tick);
+ }
  function ensurePlaybackUnlocked(){
   const AC=host.AudioContext||host.webkitAudioContext;
   if(typeof AC!=='function')return false;
   try{
-   if(!playbackContext){playbackContext=new AC();playbackGain=playbackContext.createGain();playbackGain.gain.value=volume;playbackGain.connect(playbackContext.destination);}
+   if(!playbackContext){
+    playbackContext=new AC();
+    playbackGain=playbackContext.createGain();playbackGain.gain.value=volume;
+    playbackAnalyser=playbackContext.createAnalyser();playbackAnalyser.fftSize=512;playbackAnalyser.smoothingTimeConstant=.65;
+    playbackAnalyser.connect(playbackGain);playbackGain.connect(playbackContext.destination);
+   }
    if(playbackContext.state==='suspended')void playbackContext.resume();
    return true;
   }catch{return false;}
@@ -147,7 +178,7 @@ export function createSabikConversationalVoice({
    try{audio.pause();audio.removeAttribute?.('src');audio.load?.();}catch{}
    audio=null;
   }
-  revoke();speaking=false;
+  revoke();speaking=false;stopEnergy();
   if(emitState)emit({reason:'speech-stop'});
  }
  function cancelSpeech({emitState=true}={}){
@@ -290,10 +321,10 @@ export function createSabikConversationalVoice({
       if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
       result=await new Promise(resolve=>{
        let settled=false;
-       const source=playbackContext.createBufferSource();playbackSource=source;source.buffer=buffer;source.playbackRate.value=rate;source.connect(playbackGain);
-       const finish=status=>{if(settled)return;settled=true;if(playbackSource===source)playbackSource=null;try{source.disconnect();}catch{}speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+       const source=playbackContext.createBufferSource();playbackSource=source;source.buffer=buffer;source.playbackRate.value=rate;source.connect(playbackAnalyser||playbackGain);
+       const finish=status=>{if(settled)return;settled=true;if(playbackSource===source)playbackSource=null;try{source.disconnect();}catch{}speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
        source.onended=()=>finish('ended');
-       try{speaking=true;emit({semantic:'speaking',reason:'audio-context-playing',part:index+1,parts:parts.length});source.start(0);}catch{finish('play-error');}
+       try{speaking=true;emit({semantic:'speaking',reason:'audio-context-playing',part:index+1,parts:parts.length});startEnergy();source.start(0);}catch{finish('play-error');}
       });
      }catch{result='play-error';}
     }else{
@@ -301,7 +332,7 @@ export function createSabikConversationalVoice({
      audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
      result=await new Promise(resolve=>{
       let settled=false;
-      const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+      const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
       player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing',part:index+1,parts:parts.length});},{once:true});
       player.addEventListener?.('ended',()=>finish('ended'),{once:true});
       player.addEventListener?.('error',()=>finish('play-error'),{once:true});
