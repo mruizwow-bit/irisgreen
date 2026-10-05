@@ -4,7 +4,7 @@
   "owner": "Nexo",
   "issue": 323,
   "status": "CLAUDE_ORDER_READY_FOR_USER_HANDOFF",
-  "order_commit": "554e3c4bd255d5d7d8847ab8c38c93520501041b",
+  "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
   "runtime_implemented": false,
@@ -26,8 +26,9 @@
   "source_asset_hashes_verified": "6/6",
   "package": {
     "filename": "CLAUDE_DESCUBRIMIENTO_PECES_R01.zip",
-    "sha256": "c211fb9ed6a4570ee5518447312011f35803ebbf8f8b662b5efa98d1c7c1055c",
-    "library_file_id": "libfile_26240862ecec8191ac6c7b3eccbb80af"
+    "sha256": "dcb808a405125dd41e7b7f42f1092a1c984baa1ef4161bf536601674f5f933c7",
+    "library_file_id": "libfile_26240862ecec8191ac6c7b3eccbb80af",
+    "library_version": 2
   },
   "next": [
     "MARIA_HANDOFF_TO_CLAUDE",
@@ -35,5 +36,17 @@
     "NEXO_REVIEW",
     "AXIOMA_RUNTIME_QA",
     "MARIA_HUMAN_QA"
-  ]
+  ],
+  "visual_canon": {
+    "theme": "NAVY_ONLY",
+    "source": "Maria explicit values 2026-10-05",
+    "page": "#0B1A2B",
+    "text": "#EEF4F8",
+    "primary_button": "#DCE8F2",
+    "primary_button_text": "#0B1A2B",
+    "title_font": "Newsreader",
+    "body_font": "Atkinson Hyperlegible",
+    "theme_switch": false,
+    "fonts_in_package": true
+  }
 }
