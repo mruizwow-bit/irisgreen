@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 323,
-  "status": "NEXO_MARINE_R02_PRODUCT_REWORK_SWIMMING_NAVIGATION_CONTROLS",
+  "status": "NEXO_MARINE_R02_1_KEEP_DIRECTION_TARGETED_SWIM_PATCH_REQUIRED",
   "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
@@ -31,7 +31,7 @@
     "library_version": 2
   },
   "next": [
-    "CLAUDE_R02_SWIMMING_NAVIGATION_CONTROLS_AND_CACHE_PATCH",
+    "CLAUDE_TARGETED_SWIM_PATCH",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
@@ -48,9 +48,36 @@
     "fonts_in_package": true
   },
   "runtime_independently_browser_verified": false,
-  "review_file": "REVIEW_CLAUDE_MARINE_R01_REV1.md",
-  "review_commit": "970c0eadae6c6405d6b0efa23b934b06252e5e08",
+  "review_file": "REVIEW_CLAUDE_MARINE_R02_1.md",
+  "review_commit": "ad64f60d2980fec03ec3ee96cd623feadcc04b81",
   "received_artifact": {
+    "filename": "descubrimiento-peces-R02_1.zip",
+    "library_file_id": "libfile_07bfb788779081918d54c32b56d8fbc8",
+    "bytes": 27368422,
+    "sha256": "85e2c612063d775459fe3e02561170fb2b4c82a38b2f9f96ba1e07b24a4d2c5f",
+    "manifest_verified": "72/72",
+    "js_syntax": "4/4",
+    "animal_pngs_unchanged": "26/26"
+  },
+  "source_asset_provenance": {
+    "atlas_original_six": "6/6 binaries identical to canonical Atlas copies",
+    "atlas_manifest_blob_sha": "406d96066a0764c85faa4c906b1847f4b897f8b5",
+    "new_13_pairs": "PRIVATE_TEST_CANDIDATE_NOT_FINAL_REPLACEMENT_APPROVAL",
+    "source_78_hash_check": "78 source entries listed; 26 PNG independently compared; 52 other-format binaries absent from runtime ZIP",
+    "new_pngs_verified_against_source_manifest": "26/26"
+  },
+  "patch_required": [
+    "P01: turning stuck at +/-0.08; pause must preserve exact orientation and deformation instead of flattening sprite",
+    "P02: REDUCED must implement smaller movement per order rather than identical animal stillness to NONE",
+    "P03: accessible frame-and-illuminate action must announce camera and zoom effects",
+    "Carry forward candidate text/position/locale update in place; cache-clearing part is present"
+  ],
+  "factual_owners": [
+    "Senda",
+    "Astra"
+  ],
+  "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation",
+  "previous_received_artifact": {
     "filename": "descubrimiento-peces-R01-rev1.zip",
     "library_file_id": "libfile_054f148fe0b48191ba09f9112d8429bc",
     "bytes": 26507379,
@@ -61,31 +88,6 @@
     "default_scene_animals": 3,
     "test_scene_animals": 13,
     "modoEquipo": true
-  },
-  "source_asset_provenance": {
-    "atlas_original_six": "6/6 binaries identical to canonical Atlas copies",
-    "atlas_manifest_blob_sha": "406d96066a0764c85faa4c906b1847f4b897f8b5",
-    "new_13_pairs": "PRIVATE_TEST_CANDIDATE_NOT_FINAL_REPLACEMENT_APPROVAL",
-    "source_78_hash_check": "78 source entries listed; 26 PNG independently compared; 52 other-format binaries absent from runtime ZIP",
-    "new_pngs_verified_against_source_manifest": "26/26"
-  },
-  "patch_required": [
-    "pintarCandidatos clears DOM but retains data-firma: same multi-candidate set cannot recreate buttons; invalidate cache/reconcile nodes and refresh neutral labels without losing focus"
-  ],
-  "factual_owners": [
-    "Senda",
-    "Astra"
-  ],
-  "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation",
-  "previous_received_artifact": {
-    "filename": "descubrimiento-peces-R01.zip",
-    "library_file_id": "libfile_9d7dc20814548191b3d08473a14b6600",
-    "bytes": 22874197,
-    "sha256": "2b30dd503014b0885c597b5644815a9431c8a00826eb28839e04e5aa78573429",
-    "manifest_verified": "54/54",
-    "png_pairs": 13,
-    "default_scene_animals": 3,
-    "test_scene_animals": 13
   },
   "previous_patch_code_review": "Zone-specific membership, persistent signal nodes/action guard, visible samples, viewer CSS and Atlas provenance changes confirmed. Browser retest pending.",
   "independent_candidate_cache_check": {
@@ -123,5 +125,28 @@
     "Collapsible accessible exploration route with stable focus and neutral signals",
     "Exact executable ZIP demonstrating movement and navigation, not screenshots or another canvas runtime"
   ],
-  "superseded_constraint": "Original prohibition on animated animals superseded for this prototype by Maria; no automatic camera or decorative audiovisual effects authorized"
+  "superseded_constraint": "Original prohibition on animated animals superseded for this prototype by Maria; no automatic camera or decorative audiovisual effects authorized",
+  "video": {
+    "filename": "descubrimiento-peces-R02_1.mp4",
+    "library_file_id": "libfile_474de85bf1488191bcf08cf7d55a46a2",
+    "sha256": "540faeb43c15ef1360da4c51284b57ddc4c7b5e37c4c5d0bd21b5472f0027512",
+    "duration_seconds": 32.64,
+    "bytes": 874115,
+    "identical_to_internal_video": true,
+    "review": "sampled frames inspected, not continuous perceptual or browser QA"
+  },
+  "maria_latest_feedback": "este tambien ha mejorado bastante",
+  "independent_logic_checks": {
+    "turn_180_steps": {
+      "target": -1,
+      "actual": 0.08
+    },
+    "pause_same_time": {
+      "scale_before": 0.08,
+      "scale_after": -1,
+      "draw_calls_before": 15,
+      "draw_calls_after": 1
+    },
+    "method": "Original extracted functions in Node, not browser execution"
+  }
 }
