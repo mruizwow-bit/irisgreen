@@ -23,7 +23,8 @@ body[data-ig-audience-blocked] main{display:none!important}.ig-audience-blocked-
 
 /* Child Safety R01 · mandatory age selection. Global header stays above the gate
    so language and accessibility remain available before selecting an age band. */
-body[data-ig-age-unset]{overflow:hidden}
+body[data-ig-age-unset]:not([data-ig-pre-age-info]){overflow:hidden}
+body[data-ig-age-unset][data-ig-pre-age-info]{overflow:auto}
 .ig-mandatory-age-gate{position:fixed;inset:0;z-index:850;display:grid;place-items:center;overflow:auto;padding:clamp(5rem,12vh,8rem) max(1rem,var(--ig-layout-gutter-small,1rem)) 1rem;background:var(--ig-bg-page,#0b1a2b);color:var(--ig-text,#fff)}
 .ig-mandatory-age-card{width:min(100%,38rem);display:grid;gap:1rem;padding:clamp(1.2rem,4vw,2rem);border:1px solid var(--ig-separator,#687f94);border-radius:20px;background:var(--ig-bg-surface,#fff);color:var(--ig-text,#172536);box-shadow:0 18px 60px rgba(0,0,0,.24)}
 .ig-mandatory-age-card h1,.ig-mandatory-age-card p{margin:0}.ig-mandatory-age-card p{color:var(--ig-text-muted,#44586b);line-height:1.55}
