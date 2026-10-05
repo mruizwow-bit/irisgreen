@@ -1,7 +1,7 @@
 import {createRetrievalQuery} from './retrieval-bridge.browser.mjs';
 import {createAuthorizedTransport} from './authorized-transport.mjs';
 import {connectionConfig,sealedLibrary} from './mount-config.mjs';
-import {createSabikConversationalVoice} from './voice-runtime.mjs';
+import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r07';
 import {createSabikConversation} from './conversation-core-r66.mjs';
 import {loadDialogueLibrary} from './dialogue-library.mjs';
 
