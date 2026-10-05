@@ -2,7 +2,7 @@
   "date": "2026-10-05",
   "coordinator": "Nexo",
   "issue": 369,
-  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_3_FRAME_INTEGRATED_READY_FOR_AXIOMA",
+  "status": "AXIOMA_GAMES_AREA_VISUAL_R01_3_READY_FOR_HUMAN_QA",
   "recipient": "Claude Design",
   "scope": [
     "Games area landing",
@@ -18,7 +18,6 @@
     "axioma": "QA"
   },
   "next": [
-    "AXIOMA_AREA_REVIEW_EXACT_R01_3_ZIP",
     "HUMAN_QA_MARIA"
   ],
   "html_authorized": false,
@@ -50,13 +49,15 @@
     "method": "STATIC_SOURCE_BINARY_AND_DELIVERED_PNG_REVIEW; verifier overflow test reads author render evidence",
     "browser_rendered": false,
     "claude_render_evidence_received": true,
-    "visual_pass": false,
+    "visual_pass": true,
     "visual_samples": [
       "J01_320",
       "J01_1440"
     ],
     "visual_direction": "KEEP",
-    "delivery_verifier_independently_run": "16/16"
+    "delivery_verifier_independently_run": "16/16",
+    "visual_pass_author": "Axioma",
+    "visual_pass_scope": "Design and specification only; human QA pending"
   },
   "construction_image_handoff": {
     "filename": "CLAUDE_DESIGN_FRAME_CONSTRUCCION_APROBADO.zip",
@@ -84,6 +85,17 @@
     "png_exports": 18
   },
   "human_qa_observations": [
-    "At 320 first Enter CTA remains below initial viewport; assess discoverability with scroll, no extra redesign ordered"
-  ]
+    "GAMES_J01_320_CTA_DISCOVERABILITY_HUMAN_CHECK: open 320 naturally; observe whether Maria scrolls and finds Entrar without searching deliberately. Axioma marks non-blocking; reopen only J01_320 vertical hierarchy if difficulty is reported."
+  ],
+  "axioma_review": {
+    "gate": "AXIOMA_GAMES_AREA_VISUAL_R01_3_READY_FOR_HUMAN_QA",
+    "commit": "b29cd2a639ac8c1a72f8375ce0a23bd4633285fd",
+    "file": "COORDINACION_IRIS_GREEN/HANDOFFS/AXIOMA_GAMES_AREA_VISUAL_R01_3_20261005/REVIEW_HUMAN_QA_READY.md",
+    "issue_comment": 5999451551,
+    "artifact_sha256": "6dc3e7e94804357f85daaf538a65a27a1afbc60e0498f92ee492324db6fa2af5",
+    "scope": "VISUAL_DESIGN_AND_SPECIFICATION; NOT_RUNTIME_ACCESSIBILITY_CONFORMANCE",
+    "verified_against_canonical_report": true
+  },
+  "human_qa_pass": false,
+  "public_deploy_authorized": false
 }
