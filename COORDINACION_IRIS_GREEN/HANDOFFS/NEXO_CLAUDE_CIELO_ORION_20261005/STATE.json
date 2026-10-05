@@ -4,7 +4,7 @@
   "owner": "Nexo",
   "issue": 323,
   "recipient": "Claude Design",
-  "status": "NEXO_SKY_ORION_R01_RECEIVED_TARGETED_PATCH_REQUIRED",
+  "status": "NEXO_SKY_ORION_R01_PATCH_READY_FOR_AXIOMA",
   "authorization": "Maria explicitly requests Claude to build isolated sky prototype on 2026-10-05",
   "order_commit": "ee7bc6764c3229990f43c0c1aa79ccf831f42098",
   "memory_commit": "96bcee980fed6e91543173f84f878932fd2362f7",
@@ -41,23 +41,22 @@
     "contains_executable_prototype": false
   },
   "next": [
-    "CLAUDE_TARGETED_PATCH",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
   "external_agent_started": false,
   "runtime_independently_browser_verified": false,
-  "review_file": "REVIEW_CIELO_ORION_INTERACTIVO_R01.md",
-  "review_commit": "d8c0cb1c78b86f4d014653a250e1994e80983c70",
+  "review_file": "REVIEW_CIELO_ORION_INTERACTIVO_R01_PATCH.md",
+  "review_commit": "420bb3992805dba5ed5ced911d38a4e67be25cd2",
   "received_artifact": {
-    "filename": "CIELO_ORION_INTERACTIVO_R01.zip",
-    "library_file_id": "libfile_28e4e444a1408191b3f1154261ef8095",
-    "bytes": 6795305,
-    "sha256": "1e33f4ba03e22670fb56444e34a4709f147e374ef0cb935ef8b08ff561604931",
+    "filename": "CIELO_ORION_INTERACTIVO_R01(1).zip",
+    "library_file_id": "libfile_d950b1c4f6bc8191a470f80a1e97f08b",
+    "file_id": "file_00000000bb408243947998afad97f0b2",
+    "bytes": 6874681,
+    "sha256": "2e036ce4c3e3984be09d2c0ba630470f2129be49738960ec070bffa756d0026c",
     "files": 42,
     "manifest_verified": "41/41",
-    "js_syntax": "5/5",
-    "embedded_fonts_identical": "3/3",
+    "js_syntax": "6/6 including test runner",
     "source_json_and_assets_identical": true
   },
   "orientation": {
@@ -68,20 +67,32 @@
     "source_json_unchanged": true,
     "storyboard_mirror_not_preserved": true
   },
-  "patch_required": [
-    "P01: cancel pending camera animation at current visible position before identifying; deterministic original-function test confirms camera moves after identification",
-    "P02: preserve deliberate keyboard focus when successful Examinar button becomes hidden; browser retest pending",
-    "P03: compact mobile options/spacing without shrinking canon text or targets; consistent viewport metric and 200% reflow"
-  ],
+  "patch_required": [],
   "delivered_tests": {
     "author": "Claude",
-    "reported": "33/33",
+    "reported": "41/41",
     "independent_browser_rerun": false,
     "limitations": [
-      "hardcoded package/browser paths",
-      "camera teleported by LLEVAR fixture",
-      "synthetic keyboard/focus/DOM click in sequence",
-      "movement test measures started rather than completed transition"
+      "T15a is unsuccessful initial-area pan examination, not successful identification or zoom",
+      "T15b checks reset, not reveal in transit",
+      "200% root font size is not browser zoom",
+      "screen reader, physical touch, Firefox/Safari and low-end hardware not verified"
     ]
+  },
+  "previous_received_artifact": {
+    "filename": "CIELO_ORION_INTERACTIVO_R01.zip",
+    "library_file_id": "libfile_28e4e444a1408191b3f1154261ef8095",
+    "bytes": 6795305,
+    "sha256": "1e33f4ba03e22670fb56444e34a4709f147e374ef0cb935ef8b08ff561604931",
+    "files": 42,
+    "manifest_verified": "41/41",
+    "js_syntax": "5/5",
+    "embedded_fonts_identical": "3/3",
+    "source_json_and_assets_identical": true
+  },
+  "patch_receipt": {
+    "P01": "Implemented; original-function Node cancellation check 4/4 with mocked DOM/geometry; browser retest pending",
+    "P02": "Origin-aware focus implemented; author real-keyboard evidence; independent browser pending",
+    "P03": "Mobile composition updated; canon unchanged; 320 scroll to Examinar for human evaluation"
   }
 }
