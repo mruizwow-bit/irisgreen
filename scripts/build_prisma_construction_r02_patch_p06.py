@@ -104,10 +104,13 @@ def _material_badge_boxes(d,w,h,font):
     y=my+17
     return (left,y,left+mw,y+mh),(left+mw+gap,y,left+mw+gap+sw,y+sh)
 
-def _parcel_badge_box(d,w,h,font,label):
+def _parcel_badge_box(d,w,h,font,label,state=None):
     fx,fy=w*.87,h*.59
     bw,bh=_badge_size(d,label,font,pad_x=9,height=25)
-    box=(fx-bw/2,fy+48,fx+bw/2,fy+48+bh)
+    # F05/F06 include +12 piedra at its original text position; place parcel status
+    # one row lower so both labels remain fully readable.
+    y=fy+(78 if state in (5,6) else 48)
+    box=(fx-bw/2,y,fx+bw/2,y+bh)
     return _clamp_box(box,8,w-8)
 
 def _plus12_badge_box(d,w,h,font):
@@ -131,11 +134,18 @@ def patched_scene(w,h,state):
     bx,by=w*.77,h*.39
     badge(d,(bx-42,by+36,bx+43,by+60),"Caja",small)
     label="Parcela libre" if state==6 else "Parcela bloqueada"
-    parcel_box=_parcel_badge_box(d,w,h,small,label)
+    # Mask the legacy low-contrast parcel label drawn by the audited base before
+    # placing the corrected P06 badge. This keeps the patch local and avoids duplicate copy.
+    fx,fy=w*.87,h*.59
+    legacy_font=F(max(9,int(w*.0105)),True)
+    legacy_box=d.textbbox((fx-50,fy+51),label,font=legacy_font)
+    d.rectangle((legacy_box[0]-2,legacy_box[1]-2,legacy_box[2]+2,legacy_box[3]+2),fill=SAND)
+    parcel_box=_parcel_badge_box(d,w,h,small,label,state)
     assert parcel_box[0] >= 8 and parcel_box[2] <= w-8
     badge(d,parcel_box,label,small)
     if state in (5,6):
         plus_box=_plus12_badge_box(d,w,h,small)
+        assert _boxes_overlap(plus_box,parcel_box)==0
         badge(d,plus_box,"+12 piedra",small)
     return im
 
@@ -304,8 +314,8 @@ def verify_p06_geometry():
         small=F(max(8,int(w*.009)),True)
         wood_box,stone_box=_material_badge_boxes(measure,w,scene_h,small)
         overlap=_boxes_overlap(wood_box,stone_box)
-        parcel_blocked=_parcel_badge_box(measure,w,scene_h,small,"Parcela bloqueada")
-        parcel_free=_parcel_badge_box(measure,w,scene_h,small,"Parcela libre")
+        parcel_blocked=_parcel_badge_box(measure,w,scene_h,small,"Parcela bloqueada",5)
+        parcel_free=_parcel_badge_box(measure,w,scene_h,small,"Parcela libre",6)
         inside=lambda b: b[0] >= 8 and b[2] <= w-8 and b[1] >= 0 and b[3] <= scene_h
         plus_box=_plus12_badge_box(measure,w,scene_h,small)
         all_overlap_zero = all_overlap_zero and overlap == 0
@@ -313,7 +323,9 @@ def verify_p06_geometry():
         result["viewports"][str(vp)]={
             "material_badges":{"madera":list(wood_box),"piedra":list(stone_box),"overlap_area":overlap},
             "parcel":{"blocked":list(parcel_blocked),"free":list(parcel_free),"blocked_inside":inside(parcel_blocked),"free_inside":inside(parcel_free)},
-            "plus12_piedra":{"box":list(plus_box),"contrast":CONTRAST["plus12_stone_text_on_badge"]}
+            "plus12_piedra":{"box":list(plus_box),"contrast":CONTRAST["plus12_stone_text_on_badge"],
+                               "overlap_with_blocked_parcel":_boxes_overlap(plus_box,parcel_blocked),
+                               "overlap_with_free_parcel":_boxes_overlap(plus_box,parcel_free)}
         }
     result["material_badges_overlap"]=0 if all_overlap_zero else 1
     result["parcel_badge_inside_bounds"]=bool(all_parcel_inside)
@@ -321,6 +333,9 @@ def verify_p06_geometry():
     assert result["material_badges_overlap"] == 0
     assert result["parcel_badge_inside_bounds"] is True
     assert result["plus12_piedra_contrast"] >= 4.5
+    for v in result["viewports"].values():
+        assert v["plus12_piedra"]["overlap_with_blocked_parcel"] == 0
+        assert v["plus12_piedra"]["overlap_with_free_parcel"] == 0
     return result
 
 NAMES=["F01_OBJETIVO","F02_RECOGIDA","F03_PREVIEW","F04_PROBLEMA","F05_CORRECCION_CRUCE","F06_ESCALERAS_TERRAZA_LIBRE"]
