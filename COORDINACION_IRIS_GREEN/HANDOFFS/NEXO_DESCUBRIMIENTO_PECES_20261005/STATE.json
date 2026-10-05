@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 323,
-  "status": "NEXO_MARINE_R01_RECEIVED_TARGETED_PATCH_REQUIRED",
+  "status": "NEXO_MARINE_R01_REV1_REVIEWED_CANDIDATE_CACHE_PATCH_REQUIRED",
   "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
@@ -31,7 +31,7 @@
     "library_version": 2
   },
   "next": [
-    "CLAUDE_TARGETED_PATCH",
+    "CLAUDE_CANDIDATE_CACHE_PATCH",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
     "MARIA_HUMAN_QA"
   ],
@@ -48,9 +48,36 @@
     "fonts_in_package": true
   },
   "runtime_independently_browser_verified": false,
-  "review_file": "REVIEW_CLAUDE_MARINE_R01_INGESTA_Y_RUNTIME.md",
-  "review_commit": "06f5953c55dd5937e76325ccaeb486bd75208381",
+  "review_file": "REVIEW_CLAUDE_MARINE_R01_REV1.md",
+  "review_commit": "970c0eadae6c6405d6b0efa23b934b06252e5e08",
   "received_artifact": {
+    "filename": "descubrimiento-peces-R01-rev1.zip",
+    "library_file_id": "libfile_054f148fe0b48191ba09f9112d8429bc",
+    "bytes": 26507379,
+    "sha256": "600a6acffa7bf02b1270f74678a892ef3e5bb9163263099fed4cf33951ec9bd7",
+    "manifest_verified": "69/69",
+    "files": 70,
+    "png_pairs": 13,
+    "default_scene_animals": 3,
+    "test_scene_animals": 13,
+    "modoEquipo": true
+  },
+  "source_asset_provenance": {
+    "atlas_original_six": "6/6 binaries identical to canonical Atlas copies",
+    "atlas_manifest_blob_sha": "406d96066a0764c85faa4c906b1847f4b897f8b5",
+    "new_13_pairs": "PRIVATE_TEST_CANDIDATE_NOT_FINAL_REPLACEMENT_APPROVAL",
+    "source_78_hash_check": "78 source entries listed; 26 PNG independently compared; 52 other-format binaries absent from runtime ZIP",
+    "new_pngs_verified_against_source_manifest": "26/26"
+  },
+  "patch_required": [
+    "pintarCandidatos clears DOM but retains data-firma: same multi-candidate set cannot recreate buttons; invalidate cache/reconcile nodes and refresh neutral labels without losing focus"
+  ],
+  "factual_owners": [
+    "Senda",
+    "Astra"
+  ],
+  "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation",
+  "previous_received_artifact": {
     "filename": "descubrimiento-peces-R01.zip",
     "library_file_id": "libfile_9d7dc20814548191b3d08473a14b6600",
     "bytes": 22874197,
@@ -60,20 +87,20 @@
     "default_scene_animals": 3,
     "test_scene_animals": 13
   },
-  "source_asset_provenance": {
-    "atlas_original_six": "6/6 verified against Atlas manifest; 1400x1000 documented packaging",
-    "atlas_manifest_blob_sha": "406d96066a0764c85faa4c906b1847f4b897f8b5",
-    "new_13_pairs": "PRIVATE_TEST_CANDIDATE_NOT_FINAL_REPLACEMENT_APPROVAL",
-    "source_78_hash_check": "REPORTED_BY_CLAUDE_NOT_INDEPENDENTLY_REPEATED"
+  "previous_patch_code_review": "Zone-specific membership, persistent signal nodes/action guard, visible samples, viewer CSS and Atlas provenance changes confirmed. Browser retest pending.",
+  "independent_candidate_cache_check": {
+    "method": "Original function extracted and run in Node with minimal DOM double; not browser QA",
+    "sequence": "2 candidates -> 0 -> same 2",
+    "buttons": [
+      2,
+      0,
+      0
+    ],
+    "expected_buttons": [
+      2,
+      0,
+      2
+    ]
   },
-  "patch_required": [
-    "Correct boolean-only scene activation instructions and zone-specific membership",
-    "Preserve keyboard focus when rebuilding signal and album controls",
-    "Correct Atlas provenance in intake and README"
-  ],
-  "factual_owners": [
-    "Senda",
-    "Astra"
-  ],
-  "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation"
+  "design_canvas_is_separate_runtime": true
 }
