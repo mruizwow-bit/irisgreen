@@ -45,10 +45,14 @@ for forbidden in ("sabik-current-presence","sabik-presence-motion","sabikR69Self
     require(forbidden not in css, f"Whole-Sabik sticker motion returned: {forbidden}")
 require(".sabik-web-visual{" in css and "transform:none" in css,
         "Sabik visual root must remain spatially anchored")
-for required in ("breathe","orbit","think","speak","speakBody","breatheReduced","thinkReduced","speakReduced","speakBodyReduced"):
+for required in ("breathe","orbit","coreIdle","listenBody","listenCore","processingBody","think","speak","speakBody","breatheReduced","coreReduced","thinkReduced","speakReduced","speakBodyReduced","sabikVoiceWave"):
     require(required in layered_css, f"Layered Sabik motion missing: {required}")
-require('.sabik-visual[data-motion="none"] *{animation:none!important;transition:none!important;transform:none!important}' in layered_css,
-        "No-motion must freeze all layered transforms")
+for marker in ("sabik-core-waves","sabik-core-wave-a","sabik-core-wave-b","sabik-core-wave-c"):
+    require(marker in panel, f"Audio-reactive Sabik wave markup missing: {marker}")
+for marker in ("data-audio-reactive","--sabik-core-live-scale","--sabik-wave-opacity","onEnergy:syncVoiceEnergy"):
+    require(marker in mount + layered_css, f"Audio-reactive Sabik energy bridge missing: {marker}")
+require('.sabik-visual[data-motion="none"] *' in layered_css and 'animation:none!important' in layered_css and 'scale:1!important' in layered_css and 'rotate:0deg!important' in layered_css,
+        "No-motion must freeze transform, scale and rotation")
 require(not (ROOT / "sabik/assets/sabik-base-640.webp").exists(),
         "Old donor WebP must not remain in the correction branch")
 
@@ -81,6 +85,9 @@ require("'.webp'" not in publisher, "R08 publisher still carries the old donor W
 require("setVoiceActive" in js, "A2 voice compatibility hook is missing")
 require("dataset.voiceActive" in js, "Voice hook must stay presentation-neutral")
 require("setVoiceActive(speaking)" in mount, "Conversational voice runtime is no longer wired to the presentation hook")
+voice_runtime=(ROOT/'sabik/voice-runtime.mjs').read_text(encoding='utf-8')
+for marker in ("createAnalyser","getByteTimeDomainData","onEnergy","startEnergy","stopEnergy"):
+    require(marker in voice_runtime, f"Real TTS energy analysis missing: {marker}")
 
 # B3 transitions remain finite, while the measured orbit layers provide living presence.
 require("Movimiento suave y continuo." in panel + mount,
