@@ -51,7 +51,7 @@ const TEXT={
 
 async function mount(){
  const aside=document.querySelector('.sabik-panel');if(!aside)return;
- const $=s=>aside.querySelector(s),input=$('#sabik-input'),announcement=$('#sabik-announcement'),root=$('#sabik-results'),voiceButton=$('#sabik-voice'),voiceState=$('#sabik-voice-state'),micButton=$('#sabik-mic'),voiceStop=$('#sabik-voice-stop'),voiceRepeat=$('#sabik-voice-repeat'),voiceVolume=$('#sabik-voice-volume'),voiceRate=$('#sabik-voice-rate');
+ const $=s=>aside.querySelector(s),input=$('#sabik-input'),announcement=$('#sabik-announcement'),root=$('#sabik-results'),visualRoot=$('#sabik-hologram'),voiceButton=$('#sabik-voice'),voiceState=$('#sabik-voice-state'),micButton=$('#sabik-mic'),voiceStop=$('#sabik-voice-stop'),voiceRepeat=$('#sabik-voice-repeat'),voiceVolume=$('#sabik-voice-volume'),voiceRate=$('#sabik-voice-rate');
  const connection=connectionConfig.enabled?createAuthorizedTransport({cloudOrigin:connectionConfig.cloudOrigin}):null;
  const cloudQuery=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
  let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false,voiceSessionActive=false,voiceResumeTimer=0;
@@ -80,6 +80,18 @@ async function mount(){
  function voiceMessage(code){
   const key={MICROPHONE_DENIED:'micDenied',MICROPHONE_UNAVAILABLE:'micDenied',MICROPHONE_ERROR:'micDenied',STT_UNAVAILABLE:'sttUnavailable',STT_ERROR:'sttUnavailable',STT_EMPTY:'noSpeech',STT_EMPTY_AUDIO:'noSpeech',VOICE_SERVICE_UNAVAILABLE:'voiceError',TTS_ERROR:'ttsUnavailable',TTS_PLAYBACK_ERROR:'ttsUnavailable'}[code]||'voiceError';
   announcement.textContent=strings()[key];
+ }
+ function syncVoiceEnergy(value,meta={}){
+  if(!visualRoot)return;
+  const energy=Math.max(0,Math.min(1,Number(value)||0));
+  if(meta.active)visualRoot.dataset.audioReactive='true';
+  else delete visualRoot.dataset.audioReactive;
+  visualRoot.style.setProperty('--sabik-core-live-scale',(1+energy*.12).toFixed(3));
+  visualRoot.style.setProperty('--sabik-ring-live-scale',(1+energy*.055).toFixed(3));
+  visualRoot.style.setProperty('--sabik-core-live-opacity',(.9+energy*.1).toFixed(3));
+  visualRoot.style.setProperty('--sabik-wave-opacity',Math.min(.72,.10+energy*.62).toFixed(3));
+  visualRoot.style.setProperty('--sabik-wave-scale',(1+energy*.7).toFixed(3));
+  visualRoot.style.setProperty('--sabik-halo-live-opacity',(.26+energy*.38).toFixed(3));
  }
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing),speaking=Boolean(state?.speaking);
@@ -110,7 +122,8 @@ async function mount(){
   initialLanguage:lang,
   onState:syncVoice,
   onTranscript:voiceTranscript,
-  onError:voiceMessage
+  onError:voiceMessage,
+  onEnergy:syncVoiceEnergy
  });
 
  async function speakFixed(id,text,options={}){
