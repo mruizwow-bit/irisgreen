@@ -1,0 +1,82 @@
+{
+  "schema": "iris-green-handoff-v1",
+  "date": "2026-10-05",
+  "owner": "Prisma A8",
+  "issue": 369,
+  "branch": "prisma/construction-r01-storyboard-r02-20261005",
+  "base_main": "827d17e5efe39280368a0d73a6c88596a1d3b0e9",
+  "gate": "PRISMA_CONSTRUCTION_R01_STORYBOARD_READY_FOR_AXIOMA",
+  "status": "READY_FOR_AXIOMA",
+  "main_modified": false,
+  "code": false,
+  "logic": {
+    "support_max_platforms_from_solid": 2,
+    "cursor_reach_cells": 2,
+    "block_auto_climb": false,
+    "stairs_required_for_vertical_transition": true,
+    "initial_materials": {
+      "wood": 24,
+      "stone": 12
+    },
+    "post_canal_extra_stone": 12,
+    "costs": {
+      "platform_wood": 1,
+      "block_stone": 1,
+      "stair_wood": 2
+    },
+    "invalid_consumes": false,
+    "remove_refunds": true
+  },
+  "solutions": {
+    "A": {
+      "route": "R1",
+      "platforms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "blocks": [
+        3
+      ],
+      "cost": {
+        "wood": 5,
+        "stone": 1,
+        "stairs": 0
+      }
+    },
+    "B": {
+      "route": "R2",
+      "platforms": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "blocks": [
+        2,
+        4
+      ],
+      "cost": {
+        "wood": 5,
+        "stone": 2,
+        "stairs": 0
+      }
+    }
+  },
+  "player": {
+    "target": "user-supplied female 3D FBX",
+    "storyboard_proxy": "neutro_brin.png"
+  },
+  "package": {
+    "filename": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip",
+    "sha256": "2526a0c4e3523b1a3d470882759978ec64b19c1dac725e0d326529e570359032"
+  },
+  "next": [
+    "AXIOMA_REVIEW",
+    "HUMAN_QA_MARIA"
+  ],
+  "stop_before_code": true
+}
