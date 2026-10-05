@@ -25,7 +25,7 @@ const TEXT={
   volume:'Volumen',rate:'Velocidad',listening:'Escuchando',processing:'Procesando',speaking:'Hablando',
   voiceHelp:'Pulsa «Hablar con Sabik» y habla. Sabik escucha después de tu activación explícita. Iris Green no guarda el audio.',
   voiceReady:'Voz preparada.',voiceError:'La voz no se pudo activar.',micDenied:'No se pudo usar el micrófono. Puedes seguir escribiendo.',
-  noSpeech:'No he detectado una consulta. Puedes intentarlo de nuevo o escribirla.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
+  noSpeech:'No he oído suficiente voz. Puedes intentarlo de nuevo o escribir la consulta.',audioUnreadable:'No he podido entender el audio. Prueba a hablar de nuevo o escribe la consulta.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
   ttsUnavailable:'La voz dinámica de Sabik no está disponible ahora. La respuesta escrita sigue disponible.',sources:'Fuentes',options:'Opciones de Sabik'
  },
  en:{
@@ -44,7 +44,7 @@ const TEXT={
   volume:'Volume',rate:'Speed',listening:'Listening',processing:'Processing',speaking:'Speaking',
   voiceHelp:'Press “Talk to Sabik” and speak. Sabik listens after your explicit activation. Iris Green does not store the audio.',
   voiceReady:'Voice ready.',voiceError:'Sabik voice could not be turned on.',micDenied:'The microphone could not be used. You can keep typing.',
-  noSpeech:'I did not detect a query. You can try again or type it.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
+  noSpeech:'I did not hear enough speech. You can try again or type your question.',audioUnreadable:'I could not understand the audio. Try speaking again or type your question.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
   ttsUnavailable:'Sabik dynamic voice is not available right now. The written answer remains available.',sources:'Sources',options:'Sabik options'
  }
 };
@@ -78,7 +78,7 @@ async function mount(){
   voiceSessionActive=false;voiceTurn=false;clearVoiceResume();voice.stopAll(reason);controls();
  }
  function voiceMessage(code){
-  const key={MICROPHONE_DENIED:'micDenied',MICROPHONE_UNAVAILABLE:'micDenied',MICROPHONE_ERROR:'micDenied',STT_UNAVAILABLE:'sttUnavailable',STT_ERROR:'sttUnavailable',STT_EMPTY:'noSpeech',STT_EMPTY_AUDIO:'noSpeech',VOICE_SERVICE_UNAVAILABLE:'voiceError',TTS_ERROR:'ttsUnavailable',TTS_PLAYBACK_ERROR:'ttsUnavailable'}[code]||'voiceError';
+  const key={MICROPHONE_DENIED:'micDenied',MICROPHONE_UNAVAILABLE:'micDenied',MICROPHONE_ERROR:'micDenied',STT_UNAVAILABLE:'sttUnavailable',STT_ERROR:'sttUnavailable',STT_EMPTY:'noSpeech',STT_EMPTY_AUDIO:'noSpeech',STT_AUDIO_DECODE_ERROR:'audioUnreadable',VOICE_SERVICE_UNAVAILABLE:'voiceError',TTS_ERROR:'ttsUnavailable',TTS_PLAYBACK_ERROR:'ttsUnavailable'}[code]||'voiceError';
   announcement.textContent=strings()[key];
  }
  function syncVoiceEnergy(value,meta={}){
