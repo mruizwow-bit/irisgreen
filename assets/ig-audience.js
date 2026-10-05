@@ -137,10 +137,12 @@ function mandatoryCopy(){
 }
 function syncMandatoryGate(){
  var body=document.body;if(!body)return;
- var unset=ageUnset()&&!preAgeInfoRouteAllowed(normalizedPagePath());body.toggleAttribute('data-ig-age-unset',unset);
- body.querySelectorAll('footer').forEach(function(footer){footer.toggleAttribute('inert',unset);if(unset)footer.setAttribute('aria-hidden','true');else footer.removeAttribute('aria-hidden');});
+ var ageMissing=ageUnset(),preAgeInfo=ageMissing&&preAgeInfoRouteAllowed(normalizedPagePath()),gateRequired=ageMissing&&!preAgeInfo;
+ body.toggleAttribute('data-ig-age-unset',ageMissing);
+ body.toggleAttribute('data-ig-pre-age-info',preAgeInfo);
+ body.querySelectorAll('footer').forEach(function(footer){footer.toggleAttribute('inert',gateRequired);if(gateRequired)footer.setAttribute('aria-hidden','true');else footer.removeAttribute('aria-hidden');});
  var gate=body.querySelector('[data-ig-mandatory-age-gate]');
- if(!unset){if(gate)gate.remove();return;}
+ if(!gateRequired){if(gate)gate.remove();return;}
  var copy=mandatoryCopy();
  if(!gate){
   gate=document.createElement('section');gate.className='ig-mandatory-age-gate';gate.setAttribute('data-ig-mandatory-age-gate','');gate.setAttribute('role','region');gate.setAttribute('aria-labelledby','ig-mandatory-age-title');
