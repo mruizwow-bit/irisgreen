@@ -92,11 +92,16 @@ def check_permissions_policy(value: str) -> dict[str, str]:
         raise AssertionError(
             "Permissions-Policy ha perdido restricciones revisadas: " + ", ".join(missing)
         )
-    weakened = sorted(name for name in REQUIRED_PERMISSIONS if directives[name] != "()")
-    if weakened:
+    for name in ("camera", "geolocation", "payment"):
+        if directives[name] != "()":
+            raise AssertionError(
+                "Permissions-Policy permite una capacidad que debe seguir desactivada: "
+                + f"{name}={directives[name]}"
+            )
+    if directives["microphone"] != "(self)":
         raise AssertionError(
-            "Permissions-Policy permite capacidades que estaban desactivadas: "
-            + ", ".join(f"{name}={directives[name]}" for name in weakened)
+            "Permissions-Policy debe permitir micrófono únicamente same-origin para Sabik: "
+            + f"microphone={directives['microphone']}"
         )
     return directives
 
