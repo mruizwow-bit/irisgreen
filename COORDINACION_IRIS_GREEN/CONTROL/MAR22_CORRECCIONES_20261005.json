@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-05",
+  "owner": "Astra",
+  "issues": [
+    390,
+    323
+  ],
+  "package": {
+    "name": "MAR22_CUATRO_PAREJAS_QA_20261005.zip",
+    "library_file_id": "libfile_02629013b13c81919066ee27060d2a59"
+  },
+  "pairs": [
+    {
+      "id": "pepino-abisal",
+      "source": "Imagen de ChatGPT 5 oct 2026, 19_08_20-6.png",
+      "source_sha256": "3a9afcfbc517884ca0538ab7e876f992f81ffab22e27f39e9a73872bb269be5e",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1400,
+        1400
+      ],
+      "color_profile": "sRGB assigned; original profile absent",
+      "alpha_identical": true,
+      "dark_rgb_factor": 0.06,
+      "desaturated_dark": false,
+      "state": "TECHNICAL_PAIR_READY_SCIENTIFIC_REVIEW_PENDING",
+      "files": {
+        "luz": {
+          "file": "assets/pepino-abisal-luz.png",
+          "sha256": "d5645801b549f2e3ac1ecd62f614f941ecb404564847977960758825aae0c781"
+        },
+        "oscuro": {
+          "file": "assets/pepino-abisal-oscuro.png",
+          "sha256": "a17120ce68f1e583f79bb169020a234d01d2199bc2c915b2b4cfaa1ead1cecc9"
+        }
+      }
+    },
+    {
+      "id": "sifonoforo",
+      "source": "Imagen de ChatGPT 5 oct 2026, 19_08_23-9.png",
+      "source_sha256": "d7924fcecbe62f397df2e8df9531799286bf6811e3194bf1060ce50f6aff505e",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1400,
+        1400
+      ],
+      "color_profile": "sRGB assigned; original profile absent",
+      "alpha_identical": true,
+      "dark_rgb_factor": 0.06,
+      "desaturated_dark": false,
+      "state": "TECHNICAL_PAIR_READY_SCIENTIFIC_REVIEW_PENDING",
+      "files": {
+        "luz": {
+          "file": "assets/sifonoforo-luz.png",
+          "sha256": "c9ef1a304189f07487d3005aead2ad11432f81729bb6d086dab6173c0d0019bb"
+        },
+        "oscuro": {
+          "file": "assets/sifonoforo-oscuro.png",
+          "sha256": "e6a549753b021eede281370edba1824954e5a05da1e726c1b3ffae501cdae193"
+        }
+      }
+    },
+    {
+      "id": "pez-gota",
+      "source": "Imagen de ChatGPT 5 oct 2026, 19_14_53-1.png",
+      "source_sha256": "730ee29f9afb1572b57f4a50ebb89447a58ef5559cabbc985ae106d3b76103fd",
+      "source_dimensions": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        1400,
+        1400
+      ],
+      "color_profile": "sRGB assigned; original profile absent",
+      "alpha_identical": true,
+      "dark_rgb_factor": 0.06,
+      "desaturated_dark": false,
+      "state": "TECHNICAL_PAIR_READY_SCIENTIFIC_REVIEW_PENDING",
+      "files": {
+        "luz": {
+          "file": "assets/pez-gota-luz.png",
+          "sha256": "dbca8005e684bd444180c17eae9c83652892b73e0369fe6140f22c99a92abd13"
+        },
+        "oscuro": {
+          "file": "assets/pez-gota-oscuro.png",
+          "sha256": "729126f58f54cdd8369588f04b9f81dd067a4d817fc6c4fbfa7f29697d4ab37e"
+        }
+      }
+    },
+    {
+      "id": "ctenoforo",
+      "source": "Imagen de ChatGPT 5 oct 2026, 16_54_34-5.png",
+      "source_sha256": "057e52049215b070c7b04590b80b2b60f0813e91b5fbc11e37c90c4acd963871",
+      "source_dimensions": [
+        1122,
+        1402
+      ],
+      "dimensions": [
+        1120,
+        1400
+      ],
+      "color_profile": "sRGB assigned; original profile absent",
+      "alpha_identical": true,
+      "dark_rgb_factor": 0.06,
+      "desaturated_dark": true,
+      "state": "TECHNICAL_PAIR_READY_SCIENTIFIC_REVIEW_PENDING",
+      "files": {
+        "luz": {
+          "file": "assets/ctenoforo-luz.png",
+          "sha256": "45c15b0efa40fb6520d70e70f107cf10585691b7b0fc9570ca580958a39b8fbc"
+        },
+        "oscuro": {
+          "file": "assets/ctenoforo-oscuro.png",
+          "sha256": "8b3455d6810de356902433169a38314c0da3cc8bfe2ffdbc6dfaab1b5947a3e4"
+        }
+      }
+    }
+  ],
+  "runtime": {
+    "status": "BLOCKED_NOT_RUN",
+    "reason": "Chromium unavailable; download invalid",
+    "pure_function_tests_passed": 6,
+    "alpha_composition": "REVIEW_REQUIRED",
+    "integrated": false
+  },
+  "block10": "REPLACEMENT_MAPPING_UNRESOLVED",
+  "block16": "REVOKED_NO_CONFIRMED_REPLACEMENT",
+  "scientific_review": "PARTIAL_NOT_PASS",
+  "human_qa": "PENDING",
+  "production_changed": false
+}
