@@ -297,6 +297,8 @@ body[data-ig-r49="1"].ig-home-r42 .ig-r49-footer-inner{
   width:100%;
   max-width:none;
   margin-inline:0;
+  box-sizing:border-box;
+  padding:1rem clamp(1rem,2.2vw,2.5rem) 1.1rem;
 }
 
 /* Responsive shared header and compact footer. */
