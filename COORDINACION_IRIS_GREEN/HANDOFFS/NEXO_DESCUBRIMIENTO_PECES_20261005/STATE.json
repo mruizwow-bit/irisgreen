@@ -3,7 +3,7 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 323,
-  "status": "NEXO_MARINE_R02_1_2_KEEP_TWO_RESIDUAL_FIXES_REQUIRED",
+  "status": "NEXO_MARINE_R02_1_2_1_PATCH_READY_FOR_AXIOMA",
   "order_commit": "95fd563fb80744fb3ca793ff63571ebf7757e3c8",
   "audit_commit": "d8b256385a45c32b66bacbb8a0c40e22e14f2d66",
   "main_read": "3c44abc43e10c1adfc9486cb396f35fcd64e373d",
@@ -19,7 +19,7 @@
   ],
   "first_functional_fixture": "3 mesopelagic animals / 6 exact approved PNG",
   "catalog_limit": null,
-  "user_reported_assets_remaining": 40,
+  "user_reported_assets_remaining": 0,
   "user_report_is_total_catalog": false,
   "wait_for_all_assets": false,
   "architecture": "Manifest-driven incremental habitat/zone intake; stable species IDs; lazy scenes",
@@ -31,9 +31,9 @@
     "library_version": 2
   },
   "next": [
-    "CLAUDE_TWO_RESIDUAL_FIXES",
     "AXIOMA_EXACT_ZIP_RUNTIME_QA",
-    "MARIA_HUMAN_QA"
+    "MARIA_HUMAN_QA",
+    "PRISMA_INTEGRATION_AND_APPROVED_CATALOG_EXPANSION"
   ],
   "visual_canon": {
     "theme": "NAVY_ONLY",
@@ -48,15 +48,17 @@
     "fonts_in_package": true
   },
   "runtime_independently_browser_verified": false,
-  "review_file": "REVIEW_CLAUDE_MARINE_R02_1_2.md",
-  "review_commit": "fd565fad2168f361a59f8afed6a1b718a5ec46ed",
+  "review_file": "REVIEW_CLAUDE_MARINE_R02_1_2_1.md",
+  "review_commit": "fa1b17c750265823b460d8cecc7c45b7a162fa53",
   "received_artifact": {
-    "filename": "descubrimiento-peces-R02_1_2.zip",
-    "library_file_id": "libfile_284d86b2bc2481918a6a81912049f8c3",
-    "bytes": 27738954,
-    "sha256": "4598a1153cbcc2741560d30a7e41c5c0828cba508f767abee512ecdfe5ed2392",
-    "files": 75,
-    "manifest_verified": "74/74",
+    "filename": "descubrimiento-peces-R02_1_2_1.zip",
+    "internal_version": "R02_1_2",
+    "library_file_id": "libfile_342c41a079e88191af22e39aed69ceb5",
+    "file_id": "file_000000002ad08210b4a0d5bca50da7e5",
+    "bytes": 27807530,
+    "sha256": "a5a39e5d5de8369cfb0bf392dbeab6d20c66720128c094b5261517466f729717",
+    "files": 77,
+    "manifest_verified": "76/76",
     "js_syntax": "4/4",
     "animal_pngs_unchanged": "26/26",
     "pure_function_tests_independently_executed": "6/6"
@@ -68,29 +70,28 @@
     "source_78_hash_check": "78 source entries listed; 26 PNG independently compared; 52 other-format binaries absent from runtime ZIP",
     "new_pngs_verified_against_source_manifest": "26/26"
   },
-  "patch_required": [
-    "A: Pausar/Examinar must cancel pending animCam at visible camera position, including when already paused; test pan and zoom",
-    "B: pintarCandidatos must update language/position text in place for same >=2 IDs without recreating focused nodes"
-  ],
+  "patch_required": [],
   "factual_owners": [
     "Senda",
     "Astra"
   ],
   "parallel_factual_work": "Senda/Astra reconcile 13 ID/asset/taxon/habitat/zone records with sources; no bulk activation",
   "previous_received_artifact": {
-    "filename": "descubrimiento-peces-R02_1.zip",
-    "library_file_id": "libfile_07bfb788779081918d54c32b56d8fbc8",
-    "bytes": 27368422,
-    "sha256": "85e2c612063d775459fe3e02561170fb2b4c82a38b2f9f96ba1e07b24a4d2c5f",
-    "manifest_verified": "72/72",
+    "filename": "descubrimiento-peces-R02_1_2.zip",
+    "library_file_id": "libfile_284d86b2bc2481918a6a81912049f8c3",
+    "bytes": 27738954,
+    "sha256": "4598a1153cbcc2741560d30a7e41c5c0828cba508f767abee512ecdfe5ed2392",
+    "files": 75,
+    "manifest_verified": "74/74",
     "js_syntax": "4/4",
-    "animal_pngs_unchanged": "26/26"
+    "animal_pngs_unchanged": "26/26",
+    "pure_function_tests_independently_executed": "6/6"
   },
   "previous_patch_code_review": "Zone-specific membership, persistent signal nodes/action guard, visible samples, viewer CSS and Atlas provenance changes confirmed. Browser retest pending.",
   "independent_candidate_cache_check": {
     "scope": "multiple-candidate buttons",
-    "status": "SAME_ID_TEXT_UPDATE_STILL_FAILS",
-    "details": "signal-list tests do not cover pintarCandidatos"
+    "status": "CLOSED_AT_LOGIC_RETEST",
+    "browser_focus_retest_pending": true
   },
   "design_canvas_is_separate_runtime": true,
   "product_feedback": {
@@ -115,32 +116,21 @@
   ],
   "superseded_constraint": "Original prohibition on animated animals superseded for this prototype by Maria; no automatic camera or decorative audiovisual effects authorized",
   "video": {
-    "filename": "descubrimiento-peces-R02_1_2.mp4",
-    "library_file_id": "libfile_0bae6795a1608191bf9c11090601b4d2",
-    "bytes": 1240230,
-    "sha256": "4cdfaff0dbe46dbea7478ea1aa792980543afdd471ff19485e4daaa70b10a79f",
-    "duration_seconds": 39.08,
+    "filename": "descubrimiento-peces-R02_1_2_1.mp4",
+    "library_file_id": "libfile_f1a6b634f04881918e82565c36b99879",
+    "bytes": 1307269,
+    "sha256": "d47f5d4d520328657112a8410409bffb09b18290e9aeed6290c07b6e314b26ad",
+    "duration_seconds": 40.16,
     "identical_to_internal_video": true,
-    "review": "frames at 8 and 24 seconds inspected; not continuous perceptual or browser QA"
+    "review": "identity and metadata verified; no perceptual PASS"
   },
   "maria_latest_feedback": "este tambien ha mejorado bastante",
   "independent_logic_checks": {
-    "method": "Original extracted functions in Node with controlled RAF/minimal DOM; no browser",
-    "turn_180_steps": {
-      "target": -1,
-      "actual": -1
-    },
-    "pause_during_pan": {
-      "x_at_pause": 0.5666666666666667,
-      "x_final": 0.8,
-      "pending_after_pause": 1,
-      "paused": true
-    },
-    "multiple_candidates_same_ids": {
-      "before": "Examinar animal izquierda",
-      "after_language_and_position_change": "Examinar animal izquierda",
-      "expected": "Updated English/right text; stable nodes"
-    }
+    "method": "Original extracted functions in Node with controlled RAF/minimal DOM; not browser QA",
+    "camera_interruption": "6/6 pan/zoom × pause/already paused/freeze; current pose retained and resume does not resurrect destination",
+    "multiple_candidates": "Same two nodes update ES→EN and left→right text and aria-label",
+    "candidate_sequence": "2→0→2 PASS",
+    "pure_function_suite": "6/6 PASS"
   },
   "patch_keep": [
     "turn crosses zero; completes in 94 steps",
@@ -149,5 +139,18 @@
     "explicit frame-and-light label and announcement",
     "stable accessible signal-list nodes",
     "same navigation, scene and animal assets"
-  ]
+  ],
+  "previous_user_reported_assets_remaining": 40,
+  "user_assets_update": {
+    "date": "2026-10-05",
+    "statement": "Maria reports all Sky and Marine images complete",
+    "scope": "production availability; manifest/asset/factual validation remains distinct"
+  },
+  "integration": {
+    "interface_owner": "Claude Design",
+    "interface_order_commit": "6c2170874269cff439fe44bf2e70218b2c25a69c",
+    "integration_owner": "Prisma",
+    "assembly_order_commit": "a5de649cae27e3bf235ca15c9e61099c2bd662b9",
+    "catalog_expansion": "after prototype validation using approved manifests and correct habitat/zone assignments"
+  }
 }
