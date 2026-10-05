@@ -3,6 +3,28 @@ Fecha: 2026-10-05 · Coordinación Nexo · Issue #323
 Estado: orden lista para entregar a Claude; no implica ejecución ni aprobación de producto.
 Este documento es autosuficiente y se entrega con los seis PNG aprobados.
 
+## ACTUALIZACIÓN DE MARÍA · CATÁLOGO EN PRODUCCIÓN
+María confirma que hay más animales y que solo le quedan **40 por terminar**. Ese número describe trabajo pendiente comunicado por María, no el total del catálogo ni cuarenta assets ya disponibles.
+**Claude puede empezar ahora, sin esperar al final de la producción visual.**
+Los seis PNG incluidos constituyen una muestra verificada para probar luz/observación. No constituyen el catálogo completo ni un límite de tres animales.
+Construir desde el inicio el sistema ampliable de Arrecife y Bajar al fondo, sus entradas, visor, álbum y carga por hábitat/tramo. Activar experiencias y encuentros cuando exista su paquete factual/visual; no presentar zonas vacías como acabadas.
+La prueba funcional inicial del haz usa los tres animales suministrados, pero el código no debe tener validateSpeciesCount===3 ni listas fijas incrustadas en componentes.
+Arrecife se puede preparar en estructura, navegación, composición por capas y mecánica de cámara/oclusión durante este encargo. Poblar su primer escenario al recibir un subset compatible verificado. No esperar a los cuarenta últimos ni inventar especies para rellenarlo.
+La restricción de no escalar sin HUMAN QA se refiere a producir/publicar nuevas experiencias completas y a copiar el patrón a otras áreas; no impide preparar ahora el sistema ampliable ni recibir los assets que María está terminando.
+
+### Contrato de incorporación por lotes
+Manifest de catálogo versionado, una entrada por animal:
+id estable; commonName es/en; taxon y nivel taxonómico; habitat; region con fuente si se usa; experience=reef|depth; zone; assets de luz/oscuro o imagen única según necesidad; dimensiones y hash; longitud y su definición si está validada; pistas de observación; descripción breve; sources; factualStatus; visualStatus; enabled.
+Configurar escenas aparte: sceneId, tipo, animales compatibles, posiciones/oclusión, referencia de escala y estado ready.
+No derivar profundidad de un nombre de archivo ni de la carpeta; no exigir luz/oscuro a peces de arrecife si no necesitan ese gesto.
+No exigir un segundo PNG a un archivo único sin necesidad validada: Arrecife usa la imagen normal y oclusión del entorno; descenso requiere el estado oscuro o una solución de representación revisada, no inventar bioluminiscencia.
+Separar datos, motor e interfaz; añadir un animal implica añadir assets y manifest, no cambiar el motor.
+Carga lazy por escena; virtualizar/paginar álbum grande si hace falta; no descargar todo el catálogo al entrar.
+Guardar hallazgos por IDs estables, sin perderlos por cambios de orden o nuevas tandas.
+Entrada sin binario o sin hábitat validado queda fuera de escenas públicas, registrada en el informe de intake; el resto sigue funcionando.
+Probar incorporación de un cuarto registro mediante fixture técnico identificado como fixture y retirado de la entrega pública, sin crear un animal ficticio visible.
+Aceptación adicional: incorporar un lote nuevo no rompe nombres, escenas existentes, escala, máscara, álbum ni rendimiento inicial.
+
 ## 1. Encargo y resultado esperado
 Diseña e implementa una experiencia interactiva de Descubrimiento que María pueda abrir y utilizar. La primera entrega ejecutable es **Bajar al fondo · Tramo mesopelágico** con tres animales, linterna espacial real, observación, identificación y álbum funcional.
 No entregar solo pantallas, un vídeo, un carrusel o hotspots que abren fichas sin explorar.
@@ -28,7 +50,7 @@ Dos experiencias con interacciones propias:
 | Bajar al fondo | Descender por tramos y orientar una linterna | Menos luz ambiental; el haz descubre parcialmente cuerpos y deja de mostrarlos al apartarse | Relacionar forma, luz propia y profundidad |
 
 Compartir el sistema de álbum, ayuda y accesibilidad; mantener hábitats separados. No juntar peces de agua dulce, arrecife y profundidades en una pecera.
-La implementación inmediata se limita al tramo mesopelágico, porque hay seis binarios aprobados verificables. Arrecife queda diseñado en apartado 12 para el siguiente bloque, sin producir otra experiencia a la vez.
+La implementación inmediata se limita al tramo mesopelágico, porque hay seis binarios aprobados verificables. Arrecife queda definido en apartado 12 y se prepara como estructura ampliable ahora; su primera escena se puebla al recibir assets y compatibilidad factual, sin esperar a que finalice todo el catálogo.
 
 ## 3. Qué se ha auditado y qué se conserva
 Fuentes del repositorio irisgreen, main leído en 3c44abc43e10c1adfc9486cb396f35fcd64e373d:
@@ -213,7 +235,7 @@ Nexo revisa → Axioma comprueba interacción/accesibilidad → María usa el pr
 HUMAN QA: ¿entiende que ella revela el animal?, ¿nota oscuridad al apartar luz?, ¿observa antes de leer?, ¿quiere seguir explorando?
 Sin HUMAN QA no ampliar cinco zonas ni aplicar este patrón al resto de Descubrimiento.
 
-## 12. Diseño de Arrecife para el siguiente bloque (NO implementar ahora)
+## 12. Diseño de Arrecife · preparar sistema ahora y poblar por lotes validados
 Entrada directamente a una escena amplia de arrecife con roca/coral como referencias, no a treinta tarjetas.
 Mover encuadre y zoom permite mirar entre formas; un animal visible parcialmente mantiene ubicación al acercarse.
 Gesto: **desplazar → advertir patrón/silueta → acercarse → examinar → identificar → registrar**.
@@ -221,7 +243,7 @@ La causa es cambio de punto de observación/encuadre y oclusión, no una lintern
 Rasgos a buscar salen de la ilustración: bandas, cuerpo aplanado, hocico alargado. No “Busca al pez X” con nombre-respuesta antes de hallarlo.
 No disparar fotos para ganar puntos ni capturar/alimentar animales. El álbum guarda observaciones.
 No nadado autónomo ni parallax infinito. Las transformaciones siguen la acción del usuario.
-Primera muestra futura: 3–5 especies compatibles dentro de una escena curada. Debe existir mapa factual de región/microhábitat y assets inspeccionados antes de seleccionarlas.
+Primera muestra de Arrecife cuando se reciba el lote: 3–5 especies compatibles dentro de una escena curada. Debe existir mapa factual de región/microhábitat y assets inspeccionados antes de seleccionarlas.
 El INDICE.csv mezcla “Arrecife tropical” e “Indo-Pacífico y Asia”; esas categorías no prueban que todas las especies compartan arrecife. No asumir convivencia por carpeta o color.
 Fondo sin fauna horneada que el usuario intente seleccionar sin respuesta. Corales existentes se reutilizan si su procedencia/uso es válido; si falta ambiente, registrar el asset necesario, no generar todo el catálogo.
 Álbum separado por hábitat, interoperable con profundidad; no asignar una especie de arrecife a abisal/hadal para llenar huecos.
