@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-05",
+  "owner": "Nexo",
+  "authorization": "EXPANSION_AUTHORIZED_BY_MARIA",
+  "user_report": "Cielo y Vida marina corregidos; avanzar con descubrimientos completos",
+  "corrected_runtime_hashes": {
+    "cielo": null,
+    "vida_marina": null
+  },
+  "artifact_identity_status": "AWAITING_CORRECTED_RUNTIME_DELIVERIES_NOT_A_BLOCK_TO_PLANNING",
+  "scope": [
+    "Cielo nocturno: 88 constelaciones y contenido existente",
+    "Vida marina: inventario completo de objetos unicos por ambiente",
+    "Area Descubrimiento: navegacion fichas informacion progreso ES_EN"
+  ],
+  "implementation_owner": "Claude Design",
+  "asset_handoff_owner": "Astra",
+  "independent_qa": "Axioma",
+  "commercial_assignment": "PENDING_NO_INVENTED_ASSIGNMENT",
+  "human_qa": "EXPANSION_REQUESTED_NOT_GLOBAL_PRODUCT_PASS",
+  "known_marine_delta": "MAR22_CUATRO_PAREJAS_QA_20261005.zip",
+  "no_main": true,
+  "no_public_deploy": true,
+  "sabik_owner": "Motor",
+  "orders": [
+    "COORDINACION_IRIS_GREEN/HANDOFFS/NEXO_DESCUBRIMIENTOS_COMPLETOS_20261005/ORDEN_CLAUDE_DESCUBRIMIENTOS_COMPLETOS_R01.md",
+    "COORDINACION_IRIS_GREEN/HANDOFFS/NEXO_DESCUBRIMIENTOS_COMPLETOS_20261005/ORDEN_ASTRA_PAQUETES_COMPLETOS_R01.md"
+  ]
+}
