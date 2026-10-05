@@ -26,6 +26,7 @@
   const canvas = $("scene");
   const ctx = canvas.getContext("2d", { alpha: false });
   const feedback = $("feedback");
+  const gameLive = $("game-live");
   const startDialog = $("start-dialog");
   const helpDialog = $("help-dialog");
   const pauseDialog = $("pause-dialog");
@@ -763,7 +764,7 @@
       ctx.fillStyle = "#969b99";
       ctx.fillRect(r.x + 15, r.y + 23, 50, 45);
       ctx.strokeStyle = "#565d5b"; ctx.lineWidth = 3; ctx.strokeRect(r.x + 15, r.y + 23, 50, 45);
-      drawText(`B z${p.z}`, r.x + CELL / 2, r.y + 18, { align: "center", color: "#263637", font: "700 11px system-ui" });
+      // Block type and z are exposed through #cell-desc / #game-live, not canvas microtext.
     } else if (p.type === "platform") {
       ctx.fillStyle = "#ad6b30";
       ctx.fillRect(r.x + 7, r.y + 26, 66, 28);
