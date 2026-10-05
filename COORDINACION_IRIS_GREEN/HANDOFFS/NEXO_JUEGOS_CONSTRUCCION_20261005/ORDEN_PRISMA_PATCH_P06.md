@@ -1,41 +1,35 @@
-# NEXO → PRISMA · CONSTRUCCIÓN R02 · SOLO PATCH P06
-Fecha: 2026-10-05 · Issue #369
+# NEXO → PRISMA · CONSTRUCCIÓN R02 · PATCH P06-LEGACY-MATERIALS
+Actualizado: 2026-10-05 · Issue #369
 
-Fuente: [retest Axioma](https://github.com/mruizwow-bit/irisgreen/blob/e0a93506ec60a023cdd467bee7629c60b1abdd3a/COORDINACION_IRIS_GREEN/HANDOFFS/AXIOMA_CONSTRUCTION_R01_R02_20261005/RETEST_PATCH_P01_P08.md).
-Comentario: https://github.com/mruizwow-bit/irisgreen/issues/369#issuecomment-5994380359
+## Fuente y estado
+Informe Axioma: https://github.com/mruizwow-bit/irisgreen/blob/a4a79358fe5ccc10630876d30d8fccced9c8debe/COORDINACION_IRIS_GREEN/HANDOFFS/AXIOMA_CONSTRUCTION_R01_R02_20261005/RETEST_P06_FINAL_ARTIFACT.md
+Comentario: https://github.com/mruizwow-bit/irisgreen/issues/369#issuecomment-5995409728
 
-## Estado vigente
-`AXIOMA_CONSTRUCTION_R01_R02_PATCH_REWORK_REQUIRED`.
-P01, P02, P03, P04, P05, P07 y P08 pasan dentro del alcance de storyboard/especificación indicado por Axioma. P06 es el único pendiente.
-Esta orden reduce el alcance de ORDEN_PRISMA_PATCH_R02_POST_AXIOMA.md; no repetir los ocho puntos.
-Conservar concepto, A/B, costes, apoyo/alcance, player proxy, modelo touch y matriz de movimiento.
+Gate vigente: `AXIOMA_CONSTRUCTION_R01_R02_P06_REWORK_REQUIRED`.
+Artifact auditado por Axioma: `11347511815`; run `37314984917`; build `2696d6a694661815f46cb1edef20bc111818a144`.
+ZIP SHA-256: `93cd3d40d24a1d34a262d5cedb91de57f5546d72ac7748c1cb3589c2c3107905`.
+Nexo ha leído el informe; las verificaciones del artifact y los PASS corresponden a Axioma.
 
-Evidencia auditada por Axioma: artifact `11343313636`, run `37305550352`, patch commit `e54acc4f44c030daa7fd2c3706fededb134763ca`, HEAD de estado `760b7137034516c4cd1bde995dbbcb0a853f0d98`.
-ZIP verificado: `7fbca66968681a463d3035de30b5c9c80a839318f7b79f5e8f58e830e2f9bad7`.
-36/36 archivos y 30/30 PNG RGBA con ICC, según el informe. Nexo ha leído ese informe; no atribuye a esta recepción una nueva inspección binaria propia.
+Cerrados: P01–P05, P07–P08, P06-B (parcela) y P06-C (+12 piedra, 12.12:1).
+P06-A: geometría de badges PASS en 320/390/1440; único residuo = texto antiguo Madera/Piedra visible detrás en 1440.
+Esta actualización sustituye el alcance anterior de tres correcciones: ahora solo procede eliminar ese residuo.
 
-## Corrección exacta
-Trabajar sobre HEAD vivo de la rama existente `prisma/construction-r01-storyboard-r02-20261005`.
+## Orden exacta
+En la rama existente `prisma/construction-r01-storyboard-r02-20261005`, leer HEAD vivo y:
+1. Eliminar/enmascarar por completo las labels legacy Madera y Piedra de la base antes de dibujar los badges nuevos, igual que se resolvió el texto legacy de parcela. Si el generador permite omitir esas labels en origen, usar esa opción local. Conservar escena y badges aprobados; no tapar el residuo ampliando indiscriminadamente los badges.
+2. Verificar al menos:
+   - `CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_1440.png`;
+   - `CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_1440.png`.
+   Inspeccionar las demás apariciones afectadas por la misma capa en 320/390/1440.
+3. Añadir assertion/evidencia `legacy_material_labels_visible == false`, respaldada por inspección de los PNG finales. `material_badges_overlap == 0` por sí sola no cubre este defecto. No dar PASS mediante una constante sin comprobación.
+4. Exportar el patch, actualizar manifest/hashes y publicar en #369 enlace accesible al nuevo artifact, commit/HEAD, hash nuevo y relación de frames comprobados.
 
-1. **Madera/Piedra:** recolocar las dos badges para que sus rectángulos completos, incluido texto, no se solapen en 320/390. Usar ancho real del texto y separación explícita; evitar que un cambio tape escena, controles u otra etiqueta.
-2. **Parcela bloqueada/libre:** mantener ambas variantes completas dentro del área visible de escena en 320/390, con margen interior. Calcular ancho real y limitar la posición a los límites disponibles, sin truncar el estado.
-3. **+12 piedra:** aplicar badge contrastante o texto oscuro sobre superficie clara en F05/F06 y cualquier otra aparición. Alcanzar >=4.5:1 según el criterio de Axioma y registrar ese par real en CONTRAST_MEASUREMENTS.json.
+No rehacer concepto, soluciones A/B, controles, foco, matriz de movimiento ni los puntos cerrados. Retest limitado al residuo y a comprobar que su eliminación no daña las regiones afectadas.
 
-## Evidencia y retest acotado
-Añadir/verificar los tres controles pedidos por Axioma:
-- `material_badges_overlap == 0`;
-- `parcel_badge_inside_bounds == true`;
-- `+12 piedra contrast >= 4.5:1`.
-
-Comprobar 320/390/1440 en las apariciones afectadas, incluidas las dos variantes bloqueada/libre. Entregar PNG finales para inspección visual además de las mediciones; comprobar que el cambio local conserva controles, foco y feedback ya aprobados. No reabrir la matriz completa sin una regresión concreta.
-
-Publicar en #369 el paquete patch accesible, commit/HEAD, nuevo SHA-256, manifest actualizado y tabla P06-A/B/C → frame/archivo → evidencia. Conservar trazabilidad al patch anterior y no reutilizar su hash para los bytes nuevos.
-
-## Secuencia y límites
-PATCH P06 → AXIOMA RETEST P06 → HUMAN QA MARÍA.
-El gate READY_FOR_HUMAN_QA sigue pendiente.
-`NO CODE · NO RUNTIME · NO MAIN`: esta orden corrige/exporta storyboard; no autoriza implementar el juego ni desplegarlo.
-Orión conserva su propia línea en #323.
+## Secuencia
+PATCH P06-LEGACY-MATERIALS → AXIOMA RETEST VISUAL ACOTADO → HUMAN QA MARÍA.
+No aplicar READY_FOR_HUMAN_QA al artifact final mientras persista el residuo.
+`NO CODE · NO RUNTIME · NO MAIN`: corrección/exportación de storyboard, sin implementación del juego ni despliegue.
 
 ## Memoria
-El bloqueo de acceso está resuelto. Siete puntos están cerrados por el retest; queda solo layout/contraste de tres etiquetas. La mejora de contraste debe comprobarse junto con encaje y solapamientos en cada viewport, porque añadir fondos puede introducir recortes nuevos.
+Acceso al paquete resuelto. Todos los bloqueantes anteriores están cerrados salvo las dos labels legacy. La ausencia de solapamiento entre badges no demuestra que el texto subyacente haya desaparecido: verificar la composición final, no solo la geometría de la capa nueva.
