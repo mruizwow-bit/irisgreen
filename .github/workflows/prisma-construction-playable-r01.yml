@@ -6,6 +6,7 @@ on:
     paths:
       - 'prototypes/construction-playable-r01/**'
       - 'scripts/package_prisma_construction_playable_r01.py'
+      - 'scripts/test_prisma_construction_playable_browser.mjs'
       - '.github/workflows/prisma-construction-playable-r01.yml'
       - 'COORDINACION_IRIS_GREEN/HANDOFFS/PRISMA_CONSTRUCTION_PLAYABLE_R01_20261005/**'
   workflow_dispatch:
