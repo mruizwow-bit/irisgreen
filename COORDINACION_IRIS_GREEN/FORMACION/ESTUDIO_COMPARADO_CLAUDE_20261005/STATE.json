@@ -1,0 +1,79 @@
+{
+  "schema": "iris-green.learning-study.v1",
+  "date": "2026-10-05",
+  "purpose": "Aprender de código Claude y contrastar formación; no buscar culpables",
+  "branch": "nexo/new-games-area-r01-20261004",
+  "scope": [
+    "CIELO",
+    "PECES",
+    "WEBS"
+  ],
+  "nexo": {
+    "status": "STUDIES_WRITTEN_FOR_IDENTIFIED_BASELINES",
+    "reports": [
+      {
+        "file": "NEXO_CIELO.md",
+        "commit_sha": "05fe41860f7b9f39d2bfaf6b2e94b3d62c818d7d"
+      },
+      {
+        "file": "NEXO_PECES.md",
+        "commit_sha": "ee36902c5e48d01708f6ceefbef9549e1bcc76e1"
+      },
+      {
+        "file": "NEXO_WEBS_Y_CONSTRUCCION.md",
+        "commit_sha": "532a849d136cc97c1f6393f8ac6ee12053f3c29b"
+      },
+      {
+        "file": "NEXO_COMPARACION_FORMACION.md",
+        "commit_sha": "65b1ce3e5a0747522f8f00e1e3332d0b10f794fe"
+      },
+      {
+        "file": "sky-learning-probe.js",
+        "commit_sha": "bb64951af38eff4f6fa24a94e4bccb72855c4952"
+      },
+      {
+        "file": "SKY_PROBE_RESULT.json",
+        "commit_sha": "7fa240be5911e93d54f2e11506020e75b5040e4b"
+      },
+      {
+        "file": "PACKAGE_COMPARISON.json",
+        "commit_sha": "5efc103952d8a20f305e1e0cb3229c467fb29fc8"
+      }
+    ],
+    "browser_executed": false,
+    "new_product_gate": false
+  },
+  "prisma": {
+    "status": "ASSIGNMENT_PUBLISHED_NOT_CONFIRMED_STARTED",
+    "order": "01_ORDEN_PRISMA_ESTUDIO.md",
+    "expected": "PRISMA_ESTUDIO_INDEPENDIENTE.md"
+  },
+  "axioma": {
+    "status": "ASSIGNMENT_PUBLISHED_NOT_CONFIRMED_STARTED",
+    "order": "02_ORDEN_AXIOMA_ESTUDIO.md",
+    "expected": "AXIOMA_ESTUDIO_INDEPENDIENTE.md",
+    "curriculum": "TO_BE_LOCATED_BY_AXIOMA"
+  },
+  "registration": [
+    {
+      "issue": 350,
+      "comment": 6000891585
+    },
+    {
+      "issue": 369,
+      "comment": 6000891887
+    },
+    {
+      "issue": 323,
+      "comment": 6000892191
+    }
+  ],
+  "constraints": {
+    "main_modified": false,
+    "public_deploy": false,
+    "product_runtime_modified": false,
+    "latest_user_corrections_preserved": true,
+    "content_expansion_blocked": false
+  },
+  "next": "Recibir estudios independientes y ejercicios; comparar conclusiones y registrar aprendizaje demostrado"
+}
