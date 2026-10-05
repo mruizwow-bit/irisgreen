@@ -6,7 +6,7 @@
   "branch": "prisma/construction-r01-storyboard-r02-20261005",
   "base_main": "827d17e5efe39280368a0d73a6c88596a1d3b0e9",
   "gate": "PRISMA_CONSTRUCTION_R01_STORYBOARD_READY_FOR_AXIOMA",
-  "status": "READY_FOR_AXIOMA",
+  "status": "PACKAGE_ACCESSIBLE_READY_FOR_AXIOMA",
   "main_modified": false,
   "code": false,
   "logic": {
@@ -72,7 +72,16 @@
   },
   "package": {
     "filename": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02.zip",
-    "sha256": "2526a0c4e3523b1a3d470882759978ec64b19c1dac725e0d326529e570359032"
+    "sha256": "5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e",
+    "github_actions_run_id": 37302920832,
+    "github_actions_run_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832",
+    "artifact_id": 11342176274,
+    "artifact_name": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02",
+    "artifact_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37302920832/artifacts/11342176274",
+    "artifact_digest": "sha256:b469c8df6e389b60698987947943dd92d8d4d60de4ec28e5ee5d4e7eb8788526",
+    "artifact_expires_at": "2026-11-04T11:26:42Z",
+    "files_generated": 22,
+    "verified": true
   },
   "next": [
     "AXIOMA_REVIEW",
