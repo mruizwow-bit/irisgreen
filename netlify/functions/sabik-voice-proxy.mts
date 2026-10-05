@@ -21,6 +21,8 @@ const EXPECTED_TTS = {
 };
 const MAX_REQUEST_BYTES = 8 * 1024 * 1024;
 const MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
+const REVIEW_HOST = "main-review--irisgreen-home.netlify.app";
+const REVIEW_PRIVATE_ORIGIN = "https://sublime-ripe-authorized-climb.trycloudflare.com";
 
 function unavailable(status = 503) {
   return new Response(JSON.stringify({error:"voice_unavailable"}), {
@@ -29,13 +31,19 @@ function unavailable(status = 503) {
   });
 }
 
-function privateOrigin() {
-  const raw = String(Netlify.env.get("SABIK_VOICE_PRIVATE_ORIGIN") || "").trim();
+function privateOrigin(requestUrl: URL) {
+  let raw = String(Netlify.env.get("SABIK_VOICE_PRIVATE_ORIGIN") || "").trim();
+  if (!raw && requestUrl.hostname === REVIEW_HOST) raw = REVIEW_PRIVATE_ORIGIN;
   if (!raw) return null;
   let url;
   try { url = new URL(raw); } catch { return null; }
   if (url.protocol !== "https:" || url.username || url.password || url.search || url.hash) return null;
   return url.origin;
+}
+
+function voiceEnabled(requestUrl: URL) {
+  if (Netlify.env.get("SABIK_VOICE_ENABLED") === "true") return true;
+  return requestUrl.hostname === REVIEW_HOST;
 }
 
 function validCapabilities(raw: any) {
@@ -79,8 +87,8 @@ export default async (request: Request) => {
   const expectedMethod = ALLOWED.get(url.pathname);
   if (!expectedMethod || request.method !== expectedMethod || url.search) return unavailable(405);
 
-  const origin = privateOrigin();
-  if (!origin || Netlify.env.get("SABIK_VOICE_ENABLED") !== "true") return unavailable();
+  const origin = privateOrigin(url);
+  if (!origin || !voiceEnabled(url)) return unavailable();
 
   const capabilities = await verifiedCapabilities(origin);
   if (!capabilities) return unavailable();
