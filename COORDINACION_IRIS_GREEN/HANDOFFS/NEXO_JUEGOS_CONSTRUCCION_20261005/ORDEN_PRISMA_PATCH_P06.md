@@ -1,3 +1,5 @@
+> ACTUALIZACIÓN POSTERIOR DE MARÍA (2026-10-05): P06 sigue cerrado. Se autoriza código/runtime del prototipo aislado para poder probar el juego. La secuencia vigente es Prisma prototipo jugable → Axioma QA runtime → HUMAN QA María jugando. Véase [orden completa](ORDEN_PRISMA_PROTOTIPO_JUGABLE_R01.md), commit 9d299041ca62352c26e4806991fefee7bcc1b10d. NO MAIN / NO PRODUCCIÓN. Los STOP NO CODE / NO RUNTIME de abajo son históricos y quedan sustituidos en este alcance.
+
 # CIERRE VIGENTE · P06 CERRADO · HUMAN QA MARÍA PENDIENTE
 Actualizado: 2026-10-05 · Issue #369
 
