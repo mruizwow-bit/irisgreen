@@ -40,6 +40,9 @@ var SAFE_UNCLASSIFIED_PREFIXES=Object.freeze([
 ]);
 function strictSelectedView(){return current==='AGE_0_12'||current==='AGE_13_17';}
 function normalizedPagePath(){return routeKey(location.href).split('#')[0];}
+function preAgeInfoRouteAllowed(path){
+ return path==='/es/privacidad'||path==='/en/privacy';
+}
 function unclassifiedRouteAllowed(path){
  if(path==='/'||path==='/en')return true;
  return SAFE_UNCLASSIFIED_PREFIXES.some(function(prefix){return path===prefix||path.indexOf(prefix+'/')===0;});
@@ -102,7 +105,7 @@ function syncPageGate(){
  var body=document.body;if(!body)return;
  var canonicalBands=body.getAttribute('data-ig-page-age-bands'),legacy=body.getAttribute('data-ig-page-audience'),path=normalizedPagePath();
  var hasSafeS2=Boolean(body.querySelector('[data-ig-s2-safe]'));
- var blocked=ageUnset()?true:childRouteBlocked(location.href)?true:hasSafeS2?false:(canonicalBands!==null?!allowedAgeBands(canonicalBands):(legacy?!allowedAudience(legacy):(strictSelectedView()&&!unclassifiedRouteAllowed(path))));
+ var blocked=ageUnset()?!preAgeInfoRouteAllowed(path):childRouteBlocked(location.href)?true:hasSafeS2?false:(canonicalBands!==null?!allowedAgeBands(canonicalBands):(legacy?!allowedAudience(legacy):(strictSelectedView()&&!unclassifiedRouteAllowed(path))));
  body.toggleAttribute('data-ig-audience-blocked',blocked);
  body.querySelectorAll('main').forEach(function(main){main.toggleAttribute('inert',blocked);if(blocked)main.setAttribute('aria-hidden','true');else main.removeAttribute('aria-hidden');});
  var gate=body.querySelector('[data-ig-audience-blocked-message]');
@@ -118,11 +121,23 @@ function syncPageGate(){
 }
 function mandatoryCopy(){
  var en=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
- return en?{title:'What is your age group?',body:'Choose one option to continue. We do not ask for your date of birth, identity or diagnosis.',a:'Ages 0–12',b:'Ages 13–17',c:'Ages 18+'}:{title:'¿Qué edad tienes?',body:'Elige una opción para continuar. No pedimos fecha de nacimiento, identidad ni diagnóstico.',a:'0–12 años',b:'13–17 años',c:'18 años o más'};
+ return en?{
+  title:'What is your age group?',
+  body:'Choose one option to continue. We do not ask for your date of birth, identity or diagnosis.',
+  a:'Ages 0–12',b:'Ages 13–17',c:'Ages 18+',
+  privacyNote:'We use your age group only to adapt the experience and apply appropriate safety measures. We do not use it for advertising. Choosing “Ages 18+” is a self-declaration: it does not verify adulthood or unlock restricted content by itself.',
+  privacy:'Privacy',ageInfo:'How we use age'
+ }:{
+  title:'¿Qué edad tienes?',
+  body:'Elige una opción para continuar. No pedimos fecha de nacimiento, identidad ni diagnóstico.',
+  a:'0–12 años',b:'13–17 años',c:'18 años o más',
+  privacyNote:'Usamos tu grupo de edad solo para adaptar la experiencia y aplicar las medidas de seguridad adecuadas. No lo usamos para publicidad. Elegir «18 años o más» es una autodeclaración: no verifica la mayoría de edad ni desbloquea por sí sola contenido restringido.',
+  privacy:'Privacidad',ageInfo:'Cómo usamos la edad'
+ };
 }
 function syncMandatoryGate(){
  var body=document.body;if(!body)return;
- var unset=ageUnset();body.toggleAttribute('data-ig-age-unset',unset);
+ var unset=ageUnset()&&!preAgeInfoRouteAllowed(normalizedPagePath());body.toggleAttribute('data-ig-age-unset',unset);
  body.querySelectorAll('footer').forEach(function(footer){footer.toggleAttribute('inert',unset);if(unset)footer.setAttribute('aria-hidden','true');else footer.removeAttribute('aria-hidden');});
  var gate=body.querySelector('[data-ig-mandatory-age-gate]');
  if(!unset){if(gate)gate.remove();return;}
@@ -134,12 +149,22 @@ function syncMandatoryGate(){
   var note=document.createElement('p');note.setAttribute('data-ig-mandatory-age-note','');
   var pick=document.createElement('div');pick.className='ig-mandatory-age-options';pick.setAttribute('data-ig-audience-picker','');
   [['AGE_0_12','a'],['AGE_13_17','b'],['AGE_18_PLUS','c']].forEach(function(item){var btn=document.createElement('button');btn.type='button';btn.setAttribute('data-ig-audience-stage',item[0]);btn.setAttribute('aria-pressed','false');btn.setAttribute('data-ig-mandatory-label',item[1]);pick.appendChild(btn);});
-  card.append(title,note,pick);gate.appendChild(card);body.appendChild(gate);mount(gate);
+  var legal=document.createElement('p');legal.className='ig-mandatory-age-privacy';legal.setAttribute('data-ig-mandatory-age-privacy','');
+  var links=document.createElement('nav');links.className='ig-mandatory-age-links';links.setAttribute('aria-label','Age and privacy information');
+  var privacy=document.createElement('a');privacy.setAttribute('data-ig-age-privacy-link','');
+  var ageInfo=document.createElement('a');ageInfo.setAttribute('data-ig-age-info-link','');
+  links.append(privacy,ageInfo);
+  card.append(title,note,pick,legal,links);gate.appendChild(card);body.appendChild(gate);mount(gate);
   requestAnimationFrame(function(){var first=gate.querySelector('button');if(first)first.focus({preventScroll:true});});
  }
  gate.querySelector('#ig-mandatory-age-title').textContent=copy.title;
  gate.querySelector('[data-ig-mandatory-age-note]').textContent=copy.body;
  gate.querySelectorAll('[data-ig-mandatory-label]').forEach(function(btn){btn.textContent=copy[btn.getAttribute('data-ig-mandatory-label')];});
+ gate.querySelector('[data-ig-mandatory-age-privacy]').textContent=copy.privacyNote;
+ var isEn=String(document.documentElement.lang||'').toLowerCase().indexOf('en')===0;
+ var privacy=gate.querySelector('[data-ig-age-privacy-link]'),ageInfo=gate.querySelector('[data-ig-age-info-link]');
+ privacy.textContent=copy.privacy;privacy.href=isEn?'/en/privacy/':'/es/privacidad/';
+ ageInfo.textContent=copy.ageInfo;ageInfo.href=(isEn?'/en/privacy/':'/es/privacidad/')+'#age';
  syncPicker(gate);
 }
 function apply(){applyRoot();document.querySelectorAll('[data-ig-audience-picker]').forEach(syncPicker);syncDiscovery(document);syncPageGate();syncMandatoryGate();document.documentElement.dataset.igAgeRuntimeReady='true';}
@@ -169,6 +194,6 @@ function observeBody(){
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){mount();apply();observeBody();},{once:true});else{mount();apply();observeBody();}
 new MutationObserver(function(){apply();}).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});
 window.IGAudience=Object.freeze({
- get:function(){return current;},set:set,clear:clear,mode:mode,isAdult:isAdult,isAdultClaimed:isAdultClaimed,hasAdultAssurance:hasAdultAssurance,canAccessRestrictedAdultContent:canAccessRestrictedAdultContent,isSafe:function(){return !canAccessRestrictedAdultContent();},selectedBand:selectedBand,allowedAgeBands:allowedAgeBands,allowedAudience:allowedAudience,loadAgeMatrix:loadAgeMatrix,ageBandsForUrl:ageBandsForUrl,allowedUrl:allowedUrl,childRouteBlocked:childRouteBlocked,routeKey:routeKey,mount:mount,refresh:apply,canonical:canonical
+ get:function(){return current;},set:set,clear:clear,mode:mode,isAdult:isAdult,isAdultClaimed:isAdultClaimed,hasAdultAssurance:hasAdultAssurance,canAccessRestrictedAdultContent:canAccessRestrictedAdultContent,isSafe:function(){return !canAccessRestrictedAdultContent();},selectedBand:selectedBand,allowedAgeBands:allowedAgeBands,allowedAudience:allowedAudience,loadAgeMatrix:loadAgeMatrix,ageBandsForUrl:ageBandsForUrl,allowedUrl:allowedUrl,childRouteBlocked:childRouteBlocked,routeKey:routeKey,preAgeInfoRouteAllowed:preAgeInfoRouteAllowed,mount:mount,refresh:apply,canonical:canonical
 });
 })();
