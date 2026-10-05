@@ -75,9 +75,23 @@ def main():
  for api in ['isAdultClaimed','hasAdultAssurance','canAccessRestrictedAdultContent']:
   need(api in audience,'Adult claim/assurance API missing '+api)
  need("canAccessRestrictedAdultContent(){return false;}" in audience,'P0 adult assurance must fail closed')
+ need("preAgeInfoRouteAllowed" in audience,'pre-age privacy route contract missing')
+ for marker in ["privacyNote","How we use age","Cómo usamos la edad","Child protection","Protección de menores"]:
+  need(marker in audience,'age transparency copy missing '+marker)
+ es_priv=(root/'es/privacidad/index.html').read_text(encoding='utf-8')
+ en_priv=(root/'en/privacy/index.html').read_text(encoding='utf-8')
+ for txt,markers in [
+  (es_priv,['id="age"','id="children"','Cómo usamos la edad','autodeclaración','No pedimos tu fecha de nacimiento','Protección de menores']),
+  (en_priv,['id="age"','id="children"','How we use age','self-declaration','We do not ask for your date of birth','Child protection'])
+ ]:
+  for marker in markers: need(marker in txt,'privacy age transparency missing '+marker)
  need("igAgeRuntimeReady='true'" in audience,'age runtime does not explicitly release static fail-closed state')
  age_css=(root/'assets/ig-audience.css').read_text(encoding='utf-8')
  need('data-ig-age-runtime-ready="pending"]) body[data-ig-r49="1"] main' in age_css,'no-JS main fail-closed CSS precedence missing')
+ print('AGE_GATE_SHORT_PRIVACY_NOTICE_REQUIRED')
+ print('AGE_SELECTION_PURPOSE_LIMITED_TO_SAFETY_AND_ADAPTATION')
+ print('NO_DATE_OF_BIRTH_REQUIRED_FOR_AGE_BAND_SELECTION')
+ print('AGE_18_PLUS_SELF_DECLARATION_IS_NOT_ADULT_ASSURANCE')
  print('AGE_BUTTON_18_PLUS_ALONE_NEVER_UNLOCKS_RESTRICTED_CONTENT')
  print(json.dumps({'home_v4':'PASS','dark_navy_default':'PASS','light_alternative':'PASS','canonical_age':'PASS','safe_search':len(safe),'intentional_s2':len(intent),'adult_catalog':0,'s2_pages':protected*2},ensure_ascii=False))
 if __name__=='__main__': main()
