@@ -307,3 +307,10 @@ Control y hashes: `COORDINACION_IRIS_GREEN/CONTROL/MAR22_CORRECCIONES_20261005.j
 Inspeccionado prototipo R02_1_2: no contiene estas cuatro parejas. Seis tests de funciones puras pasan; QA gráfica no ejecutada porque falta Chromium y la descarga falló. Composición source-over necesita revisión para alfa semitransparente. NO runtime PASS, NO factual PASS, NO HUMAN QA, NO integración pública.
 
 Bloque 10 sigue sin correspondencia inequívoca de sustituciones; Bloque 16 revocado sigue excluido, sin reemplazo confirmado. Bloque 15 válido conservado. Auditoría existente de 301 registros es cribado, no 301 especies validadas. No crear otra biblioteca maestra. Continuar revisiones científicas y manifiesto existentes.
+
+
+## 2026-10-05 · precisión de alcance y fósil F02-04
+
+María aclara: continuar prototipo Mar con selección actual; no incorporar ni probar todos los peces ahora. Hallazgo de transparencia queda para comprobar durante pruebas del prototipo, no como bloqueo previo ni orden de ampliar alcance. Las cuatro parejas quedan preparadas.
+
+A petición de terminar fósil pendiente se intentó F02-04 Acanthostega con referencia anatómica ToL de J. Clack, figura 5. Tres generaciones inspeccionadas: primera ambigua; segunda y tercera con siete dedos reconocibles. Rechazadas, sin sustituir original ni declarar cierre. Control: COORDINACION_IRIS_GREEN/CONTROL/FOSILES_ACANTHOSTEGA_20261005.json. Generar una imagen no acredita exactitud anatómica.
