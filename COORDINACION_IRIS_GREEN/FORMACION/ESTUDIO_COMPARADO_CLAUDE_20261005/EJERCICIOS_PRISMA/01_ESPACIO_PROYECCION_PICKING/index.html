@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prisma · Ejercicio 01 · Proyección y picking</title>
+<style>
+:root{--navy:#0b1a2b;--paper:#f5f1e8;--ink:#153247;--line:#7892a2;--focus:#111}
+*{box-sizing:border-box}body{margin:0;font:18px/1.45 system-ui,sans-serif;background:#eaf3f7;color:var(--ink)}
+main{max-width:1100px;margin:auto;padding:16px}.head{background:var(--navy);color:#fff;padding:16px;border-radius:16px}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:16px;margin-top:16px}.scene{min-width:0}
+canvas{display:block;width:100%;height:auto;background:#bde6ef;border:2px solid var(--navy);border-radius:16px;touch-action:manipulation}
+.panel{display:grid;gap:10px;align-content:start}.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px}
+.actions{display:flex;flex-wrap:wrap;gap:8px}.actions button{min-height:44px;min-width:44px;padding:8px 12px}
+button:focus-visible,canvas:focus-visible{outline:3px solid var(--focus);outline-offset:3px}.good{color:#176a40}.bad{color:#982a38}
+@media(max-width:720px){.grid{grid-template-columns:1fr}.panel{grid-template-columns:1fr 1fr}.panel .wide{grid-column:1/-1}}
+@media(max-width:390px){.panel{grid-template-columns:1fr}.panel .wide{grid-column:auto}}
+</style>
+</head>
+<body>
+<main>
+  <div class="head">
+    <h1>Ejercicio 01 · La altura tiene que verse</h1>
+    <p>Dos niveles, una rampa y un personaje. No es un juego de producto.</p>
+  </div>
+  <div class="grid">
+    <div class="scene">
+      <canvas id="world" width="760" height="520" tabindex="0"
+        aria-label="Escena isométrica de práctica con plataforma baja, plataforma alta y hueco para una rampa"
+        aria-describedby="instructions selection-status"></canvas>
+    </div>
+    <aside class="panel">
+      <div class="card"><b>Personaje</b><p id="player-status"></p></div>
+      <div class="card"><b>Superficie seleccionada</b><p id="selection-status"></p></div>
+      <div class="card"><b>Preview</b><p id="preview-status"></p></div>
+      <div class="card wide">
+        <b>Acciones</b>
+        <div class="actions">
+          <button id="prev" type="button">◀ superficie</button>
+          <button id="next" type="button">superficie ▶</button>
+          <button id="rotate" type="button">Girar</button>
+          <button id="place" type="button">Colocar rampa</button>
+          <button id="walk" type="button">Recorrer</button>
+          <button id="reset" type="button">Reiniciar</button>
+        </div>
+      </div>
+      <p id="instructions" class="card wide">Puntero: selecciona una superficie visible. Teclado: ←/→ cambia selección, R gira, Enter coloca, Espacio recorre.</p>
+      <p id="live" role="status" aria-live="polite" class="card wide"></p>
+    </aside>
+  </div>
+</main>
+<script src="exercise.js"></script>
+</body>
+</html>
