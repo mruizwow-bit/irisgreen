@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-05",
+  "asset": "F02-04",
+  "taxon": "Acanthostega gunnari",
+  "status": "REWORK_REQUIRED",
+  "reference": "https://tolweb.org/Acanthostega/15016",
+  "reference_figure": 5,
+  "attempts": [
+    {
+      "file": "exec-ddde6a8a-d7bd-4ce8-ad80-467306af873b.png",
+      "result": "Ambiguous multiple branches; rejected"
+    },
+    {
+      "file": "exec-efa1c9aa-b1ac-4406-ab38-b64d71efcc63.png",
+      "result": "Seven recognizable digits; rejected"
+    },
+    {
+      "file": "exec-ff406695-c577-4354-9dc6-7cbde6225ae0.png",
+      "result": "Seven recognizable digits remain; rejected"
+    }
+  ],
+  "original_replaced": false,
+  "scientific_approval": false,
+  "note": "No claim that remaining fossil inventory is closed. User request to finish singular pending fossil interpreted as F02-04 from latest correction sequence."
+}
