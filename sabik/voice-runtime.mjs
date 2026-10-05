@@ -228,6 +228,14 @@ export function createSabikConversationalVoice({
    const response=await fetchImpl(endpoint(endpointBase,'/transcribe'),{
     method:'POST',body:form,cache:'no-store',credentials:'same-origin',signal:controller.signal,headers:{Accept:'application/json'}
    });
+   if(!response?.ok){
+    let detail='';
+    try{detail=String((await response.clone().json())?.detail||'');}catch{}
+    if(detail==='STT_EMPTY')throw failure('STT_EMPTY');
+    if(detail==='STT_AUDIO_DECODE_ERROR')throw failure('STT_AUDIO_DECODE_ERROR');
+    if(detail==='STT_BACKEND_ERROR'||detail.startsWith('STT_'))throw failure('STT_ERROR');
+    throw failure('STT_HTTP_'+String(response?.status||0));
+   }
    const data=await jsonNoStore(response);
    if(ticket!==serial||controller.signal.aborted)return;
    const text=cleanText(data?.text);
