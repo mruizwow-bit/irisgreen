@@ -30,6 +30,9 @@ body[data-ig-age-unset]{overflow:hidden}
 .ig-mandatory-age-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.65rem}
 .ig-mandatory-age-options button{min-height:48px;padding:.7rem .8rem;border:1px solid var(--ig-border-control,#536b82);border-radius:12px;background:var(--ig-button-secondary-bg,#fff);color:var(--ig-button-secondary-fg,#172536);font:inherit;font-weight:700;cursor:pointer}
 .ig-mandatory-age-options button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.ig-mandatory-age-privacy{padding-top:.15rem;font-size:.9rem}
+.ig-mandatory-age-links{display:flex;flex-wrap:wrap;gap:.45rem .85rem;align-items:center}
+.ig-mandatory-age-links a{min-height:44px;display:inline-flex;align-items:center;color:var(--ig-link,#176e87);font-weight:700;text-underline-offset:3px}
 @media(max-width:520px){.ig-mandatory-age-options{grid-template-columns:1fr}.ig-mandatory-age-gate{align-items:start;padding-top:5rem}}
 @media(forced-colors:active){.ig-mandatory-age-card,.ig-mandatory-age-options button{border-color:CanvasText}.ig-mandatory-age-options button:focus-visible{outline-color:Highlight}}
 body[data-ig-age-unset] :is([data-ig-r49-search],[data-ig-r49-more],[data-ig-music]){display:none!important}
