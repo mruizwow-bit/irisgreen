@@ -2,7 +2,7 @@
   "date": "2026-10-05",
   "coordinator": "Nexo",
   "issue": 369,
-  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_1_EXPORT_PATCH_REQUIRED",
+  "status": "NEXO_CLAUDE_DESIGN_GAMES_R01_2_EXPORT_VERIFIED_READY_FOR_AXIOMA",
   "recipient": "Claude Design",
   "scope": [
     "Games area landing",
@@ -18,9 +18,8 @@
     "axioma": "QA"
   },
   "next": [
-    "CLAUDE_DESIGN_EXPORT_PATCH",
-    "REPRODUCIBLE_DELIVERY_VERIFICATION",
-    "AXIOMA_REVIEW",
+    "CLAUDE_INCORPORATE_SUPPLIED_F01",
+    "AXIOMA_AREA_REVIEW",
     "HUMAN_QA_MARIA"
   ],
   "html_authorized": false,
@@ -28,35 +27,50 @@
   "main_changes_authorized": false,
   "agent_contacted": false,
   "notes": "Scope = Claude Design Games area visual delivery only. Editable canvas HTML received; no game runtime delivered. External agent not activated. Prisma Construction playable prototype authorization remains separate and valid.",
-  "review_file": "REVIEW_CLAUDE_DESIGN_R01_1_EXPORT.md",
-  "review_commit": "98f9fbff6b0a00b43b281615103b9712a1a94154",
+  "review_file": "REVIEW_CLAUDE_DESIGN_R01_2_EXPORT_CLOSED.md",
+  "review_commit": "fcdd34a1a08f80ce42bdea212d31c781c5dfc075",
   "artifact": {
-    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_1(1).zip",
-    "bytes": 6231027,
-    "sha256": "f74425dc8604327ae309e37fabb3ad8a6ad10f4d21605bb3fa6aa70dda3dcf3d",
-    "library_file_id": "libfile_a429283aa424819180ceed85341b80f2",
+    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_2.zip",
+    "bytes": 6758672,
+    "sha256": "aa6b3598904b3bcaf38067e4370489145c3092fd18a8ff50b671907946977e12",
+    "library_file_id": "libfile_2fc7015efba08191ae4be87376d30a31",
+    "files": 68,
     "editable_frames": 18,
+    "portable_frames": 18,
     "png_exports": 18
   },
   "validation": {
     "zip_integrity": "PASS",
-    "method": "STATIC_SOURCE_REVIEW_AND_FOUR_PNG_VISUAL_SAMPLES",
+    "hashes_txt": "67/67",
+    "manifest_hashes": "66/66",
+    "export_structure": "VERIFIED",
+    "style_blocks": "36/36 BALANCED",
+    "portable_font_paths": "ALL_EXIST",
+    "portable_external_renderer_dependency": false,
+    "png_color_metadata": "18/18 ICC_sRGB_gAMA_cHRM",
+    "method": "STATIC_SOURCE_AND_BINARY_VERIFICATION_WITH_TWO_PNG_SAMPLES",
     "browser_rendered": false,
+    "claude_render_evidence_received": true,
     "visual_pass": false,
     "visual_samples": [
-      "J01_390",
       "J01_320",
-      "S01_390",
       "S04_1440"
     ],
-    "visual_direction": "KEEP",
-    "canon_palette": "CORRECTED",
-    "typography": "FAMILIES_AND_LINE_HEIGHT_CORRECTED_EXPORT_LINKS_PENDING",
-    "export_findings": [
-      "18 HTML files missing opening style tag",
-      "18 HTML files still reference session blob fonts",
-      "18 HTML files reference absent support.js"
+    "visual_direction": "KEEP"
+  },
+  "construction_image_handoff": {
+    "filename": "CLAUDE_DESIGN_FRAME_CONSTRUCCION_APROBADO.zip",
+    "library_file_id": "libfile_aa514eff11cc8191b07dc5469934fb0a",
+    "sha256": "5ff1f43c51f10b547b0348a57978a24b3802b3892a2ec17a3c0880bcf9cb28be",
+    "source_artifact": 11348661943,
+    "source_inner_zip_sha256": "f2d4503945e96941b51f953ed8e3fa6decbf6d5dfe6e53acfa71f6c484082853",
+    "source_hashes_verified": "37/37",
+    "frames": [
+      "F01_1440",
+      "F01_390",
+      "F01_320"
     ],
-    "png_color_metadata": "NO_EMBEDDED_ICC_OR_SRGB_CHUNK"
+    "pixel_changes": false,
+    "status": "SUPPLIED_FOR_USER_HANDOFF_NOT_YET_INCORPORATED"
   }
 }
