@@ -6,7 +6,7 @@ Base: descubrimiento-peces-R01-rev1.zip, SHA256 600a6acffa7bf02b1270f74678a892ef
 
 ## Decisión de producto de María
 
-María observa que sólo se mueve la luz y exige: «tienen que nadar y los tres botones y las flechas son para lo mismo».
+María observa que sólo se mueve la luz y exige: «tienen que nadar y los tres botones y las flechas son para lo mismo». Añade: «la pantalla se tiene que poder mover de alguna forma también, sino solo salen los peces que llegan a ese trozo de pantalla». Natación y navegación del entorno son requisitos independientes y obligatorios.
 
 Evidencia: captura image(20261005-155647).png, Biblioteca libfile_ff41cf3cb03c81919c9287e3c583defc. Se ven cuatro flechas junto a «Acerca la luz a una señal» y tres filas «Orientar luz aquí», con posición duplicada dentro de cada fila. Una captura fija no demuestra movimiento o ausencia de movimiento; esa observación procede del uso reportado por María. No está confirmada la identidad del runtime de la captura. El canvas Design y el ZIP son implementaciones diferentes.
 
@@ -14,7 +14,7 @@ Nexo asume la limitación del encargo anterior: excluía peces animados. Esta or
 
 ## Experiencia que debe construirse
 
-Entrar en una escena donde los animales nadan, dirigir la luz, observar una parte del cuerpo y decidir Examinar. Identidad y profundidad aparecen después de esa acción. Se mantienen álbum, conocimiento persistente y regreso a la exploración.
+Entrar en una escena donde los animales nadan, recorrer el entorno moviendo la vista, dirigir la luz, observar una parte del cuerpo y decidir Examinar. Identidad y profundidad aparecen después de esa acción. Se mantienen álbum, conocimiento persistente y regreso a la exploración.
 
 Comenzar con los tres encuentros existentes. No esperar más imágenes, ni ampliar a trece en meso-01. No mezclar hábitats ni presentar asignaciones heredadas como revalidadas.
 
@@ -45,11 +45,24 @@ Respetar la preferencia de movimiento existente. Sin música, destellos, lluvia 
 Las cuatro flechas de la captura y los tres botones Orientar luz aquí controlan la misma luz: dirección incremental frente a apuntado directo. No describir esas flechas como cámara. El ZIP tiene además controles Vista; eso no demuestra que existan o funcionen en el canvas fotografiado.
 
 Flujo principal:
-- Puntero/toque en escena: orientar luz.
-- Un único grupo compacto de flechas llamado «Luz», alternativa a puntero y toque.
+- Puntero sin arrastrar / toque breve en escena: orientar luz.
+- Arrastrar sobre la escena con ratón o dedo: desplazar la vista del entorno. Distinguir tap de arrastre mediante umbral de movimiento; durante el arrastre no disparar apuntado ni Examinar. Al terminar no producir un salto de luz causado por interpretar el mismo gesto como toque.
+- Un único grupo principal de cuatro flechas llamado «Mover vista»: alternativa accesible al arrastre. Las flechas del teclado también desplazan la vista sólo cuando la escena tiene el foco; no capturar el teclado fuera de ella.
+- Zoom +/− y «Volver al inicio» para recuperar orientación. Sin obligar a pellizcar o usar rueda.
 - Examinar: acción semántica sobre un encuentro visible e iluminado.
 - Pausar/reanudar: movimiento de los animales.
-- Si se conserva cámara/zoom, agruparlos bajo «Vista» y comprobar que realmente cambian el encuadre. No duplicar grupos que ejecutan la misma acción ni dejar botones sin efecto. La cámara permanece bajo control de la persona.
+- Cámara/zoom son obligatorios. Los botones Vista cambian realmente el encuadre, no orientan la luz. No dejar controles sin efecto ni duplicar crucetas en el flujo principal.
+
+### Entorno navegable obligatorio
+
+El mundo tiene extensión mayor que el viewport inicial, con contenido alcanzable más allá de él. En 320, 390 y 1440 se debe poder salir de la vista inicial sin depender de que un animal nade hasta ella. No basta ampliar la misma captura ni desplazar el bloque HTML dentro de la página.
+
+- Separar coordenadas del mundo, cámara y posiciones locales de los animales. Pan y zoom cambian la vista; la natación cambia a cada animal dentro del mismo mundo. No reiniciar trayectorias, descubrimientos o álbum al mover la cámara.
+- El encuadre inicial y los límites deben dejar recorrido útil en ambos ejes. Una flecha al límite debe comunicar ese límite; no parecer averiada.
+- La cámara permanece donde la coloca la persona; no sigue automáticamente a los peces. Se puede buscar, detenerse, iluminar y examinar.
+- Al abrir/cerrar profundidad, conservar cámara, zoom, luz y estado de descubrimiento. Volver al inicio reencuadra explícitamente, sin borrar progreso.
+- Ofrecer una referencia espacial discreta y neutral que permita orientarse, sin mapa que revele identidades o rutas hacia animales.
+- Con REDUCED/NONE, la vista sigue siendo navegable mediante cambios cortos/discretos. NONE desactiva animación, no la posibilidad de recorrer el entorno.
 
 La alternativa «Explorar con controles» debe ser un panel desplegable accesible desde el inicio, cerrado por defecto en el flujo visual. Mantener sus señales y acciones equivalentes para teclado/lector de pantalla; no eliminarla por ser una alternativa al control espacial.
 - Eliminar la repetición del texto de posición dentro de cada fila.
@@ -87,10 +100,11 @@ Conservar fuentes locales y separación de datos/motor/interfaz.
 
 Entregar prototipo ejecutable actualizado, ZIP con SHA256 y manifest, y una grabación corta tomada de ESE runtime que muestre:
 1. Inicio y natación sin mover el puntero.
-2. Luz sobre cuerpos que cambian de posición, sin desregistro luz/oscuro.
-3. Examinar → pausa legible → profundidad → continuar.
-4. Pausa manual, REDUCED y NONE.
-5. Vía espacial y vía alternativa con foco estable.
+2. Recorrer desde la vista inicial una zona que estaba fuera de pantalla mediante arrastre y mediante flechas; regresar sin reiniciar el mundo. Probar también zoom.
+3. Luz sobre cuerpos que cambian de posición, sin desregistro luz/oscuro.
+4. Examinar → pausa legible → profundidad → continuar, conservando encuadre.
+5. Pausa manual, REDUCED y NONE, con navegación disponible en todos.
+6. Vía espacial y vía alternativa con foco estable; tap y arrastre no se confunden.
 
 La grabación demuestra comportamiento, no sustituye el ejecutable. No ofrecer una animación del canvas como evidencia del ZIP si son runtimes distintos. No basta otra tanda de capturas.
 
@@ -98,7 +112,7 @@ Incluir el patch de candidatos de #323 comentario 5998066305 y sus transiciones 
 
 Axioma: QA del ZIP exacto, registro de ambos estados del asset durante natación, foco, examinable actual, reanudación, 320/390/1440, texto 200% y controles con funciones comprobables. Validación factual Senda/Astra continúa en paralelo.
 
-María: comprobar que ve animales nadar, entiende cómo explorar y puede detenerse a observarlos. La corrección técnica por sí sola no emite aprobación de producto.
+María: comprobar que ve animales nadar, puede recorrer zonas fuera de la vista inicial sin esperar a que lleguen peces, entiende los controles y puede detenerse a observar. La corrección técnica por sí sola no emite aprobación de producto.
 
 Secuencia: CLAUDE IMPLEMENTA R02 → AXIOMA RUNTIME → HUMAN QA MARÍA.
 Prototipo aislado autorizado. NO MAIN · NO PUBLIC DEPLOY.
