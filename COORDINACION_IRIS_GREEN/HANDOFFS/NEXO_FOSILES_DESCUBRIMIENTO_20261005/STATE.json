@@ -1,26 +1,46 @@
 {
   "date": "2026-10-05",
-  "status": "PRODUCT_DEFINITION_PROPOSED_FOR_MARIA",
+  "status": "NEXO_FOSSILS_PRACTICE_R01_DELIVERED_BROWSER_QA_PENDING",
+  "author": "NEXO",
+  "scope": "INDEPENDENT_PRACTICE_14_EXISTING_FOSSILS",
   "definition": "01_DEFINICION_PRODUCTO_R01.md",
-  "definition_commit": "0c0ac6acf0d4b2ee0ceb93e6c4f441da805eade5",
-  "base": "R2v4_KEEP",
+  "delivery": "02_PRACTICA_NEXO_R01_ENTREGA.md",
+  "source_directory": "PRACTICA_NEXO_R01",
   "base_zip_sha256": "e321b32d4d2a9d16c4df6a99da7e956543ceba5b0666919e6b8e48adac7a4ff1",
-  "base_binary_read_this_task": false,
-  "github_documentation_read": true,
-  "planned_catalog_units": 64,
-  "available_approved_catalog_count": "NOT_REVALIDATED_THIS_TASK",
-  "known_pending": "F02-04 Acanthostega REWORK_REQUIRED per main control",
-  "interaction": [
-    "EXPLORE",
-    "LOCATE",
-    "CLEAR_LOCAL_COVER",
-    "OBSERVE",
-    "IDENTIFY",
-    "DOCUMENT",
-    "DEPTH"
-  ],
-  "runtime_authorized_by_this_document": false,
+  "base_binary_read_this_task": true,
+  "fossils_count": 14,
+  "fossils_assets_unchanged": 14,
+  "archive": "NEXO_FOSILES_PRACTICA_R01.zip",
+  "archive_sha256": "21a6663524368ad2322f06e405d6af1417e42b21925d4a2123c9c29934ae668c",
+  "archive_bytes": 2779143,
+  "archive_files": 56,
+  "verified_hashes": 55,
+  "library_file_id": "libfile_71238c4ebf908191b64d61e273126d26",
+  "runtime_authorized_by_user": true,
+  "model_tests": "6/6",
+  "simulated_dom_test": {
+    "scene_sizes": [
+      [
+        286,
+        360
+      ],
+      [
+        356,
+        464
+      ],
+      [
+        850,
+        560
+      ]
+    ],
+    "finds_reachable_per_size": 14,
+    "is_browser": false
+  },
+  "browser_qa": "NOT_RUN_CONTROL_BROWSER_UNAVAILABLE",
+  "product_pass": false,
+  "human_qa": "PENDING",
   "main_modified": false,
-  "assets_modified": false,
-  "next": "Revisión de definición y encargo concreto de prototipo basado en R2v4"
+  "public_deploy": false,
+  "other_authors_practices": "NOT_EXECUTED_BY_NEXO",
+  "next": "Real browser test, then María product review"
 }
