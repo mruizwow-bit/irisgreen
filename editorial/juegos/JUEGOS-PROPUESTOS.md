@@ -2,8 +2,11 @@
 
 Fecha: 05/10/2026 · Autoría: Claude · Decide: María
 
-**Segunda versión.** La primera listaba siete juegos. María: «eso no son
-juegos», y tenía razón. Contados con la vara de verdad, **son juegos dos**. Los
+**Tercera versión.** La primera listaba siete juegos. María: «eso no son
+juegos», y tenía razón. La segunda los corrigió pero se dejó fuera la familia
+que María había pedido expresamente al ver el tótem del museo —busca la
+pareja y sus hermanas—, que ahora es el §2. Y corrige de paso una afirmación
+mía que era falsa: no es verdad que ninguna de las 297 sea un juego. Contados con la vara de verdad, **son juegos dos**. Los
 otros cinco eran juguetes con una tabla de «objetivo / reglas / feedback»
 encima, que es precisamente lo que el encargo prohíbe: paneles disfrazados.
 
@@ -31,21 +34,82 @@ de origen: escribí los siete pilotos bajo «sin prisa, sin puntos, sin fracaso�
 y de paso me cargué el desafío, que es otra cosa. Se puede tener un problema
 que resolver sin tener prisa por resolverlo. Habitación imposible lo demuestra.
 
-### Lo que ya existe y por qué no entra
+### Lo que ya existe · corrección
 
-El catálogo actual tiene **297 piezas** llamadas «juegos». Medido sobre
-`assets/data/juegos-iris-data.js`: sus nueve categorías son ámbitos de la vida
-diaria —Mañana y noche 43, Casa 42, Higiene 36, Salir 36, Comidas 31, Cuidarse
-30, Estudio 29, Vestirse 25, Tiempo 25— y sus cinco tipos son **ordenar pasos,
-elegir, clasificar, planificar, memoria**.
+En la versión anterior escribí que **ninguna** de las 297 piezas del catálogo
+era un juego. Me pasé, y la cuenta por familia de mecánica lo demuestra. Medido
+sobre `assets/data/juegos-iris-data.js`:
 
-Nueve ámbitos domésticos y cinco operaciones de ficha. Por la vara del §1,
-ninguna de las 297 es un juego: son ejercicios de pictograma. Hacen su trabajo;
-sólo no son esto.
+| Familia | Cuántas |
+|---|---|
+| Ordena los pasos | **98** |
+| ¿Qué viene ahora? / ¿Qué va primero? | **60** |
+| ¿Qué falta? | 36 |
+| **Memoria · busca la pareja** | **11** |
+| El intruso | 3 |
+| Otras | 89 |
+
+194 de 297 son ordenar y secuenciar: eso sí son fichas de pictograma, y los
+títulos lo dicen solos —«Ordena: atarse los cordones», «¿Qué viene ahora? ·
+Lavarse los dientes»—.
+
+Pero **busca la pareja ya está construido once veces, y esa mecánica sí pasa la
+vara**: hay un problema, se ve el todavía-no, hay jugadas y el sistema sabe
+cuándo acabaste. Lo que las convierte en ficha no es la mecánica, **es el
+contenido**: las once son *Memoria de la higiene, del baño, de la ropa, de la
+cocina, antes de salir, de casa, para salir, del escritorio, de planes, de
+cosas útiles*. La misma mecánica, con un lince, una bandera y piezas de una
+colección, era un juego en el tótem del museo.
+
+Esa es la conclusión que importa de este apartado: **hay mecánica de juego
+construida y enterrada bajo contenido de pictograma.**
 
 ---
 
-## 2 · Son juegos · 2
+## 2 · Familia de juegos inmediatos
+
+Los que se entienden en diez segundos y se juegan sin que nadie explique nada.
+Son los que María pidió al ver el tótem del museo, y son una familia de pleno
+derecho, no una nota al pie de los juegos de sala.
+
+**La regla que los gobierna, y es la única que importa aquí:** la mecánica ya
+funciona —lleva siglos funcionando—, así que lo único que hay que acertar es el
+**contenido**. Y el contenido tiene que ser interesante por sí mismo: bichos,
+piedras, instrumentos, hojas, piezas de una colección, trastos de un taller.
+**Nunca cepillos de dientes.** En cuanto el contenido es una rutina doméstica,
+el juego se convierte en la lección que la rutina quería enseñar.
+
+| | Qué es | Existe hoy | Qué hace falta |
+|---|---|---|---|
+| **F1 · Busca la pareja** | destapar dos y recordar | **sí, ×11, con contenido doméstico** | tandas de contenido que apetezca mirar. Cero trabajo de motor |
+| **F2 · ¿Qué falta aquí?** | una escena con algo quitado | sí, ×36, como ficha de rutina | lo mismo: escena rica en vez de secuencia de pasos |
+| **F3 · Encuentra las diferencias** | dos láminas casi iguales | **no existe** | mecánica nueva, sencilla. Y tenemos las láminas |
+| **F4 · Busca y encuentra** | hallar cosas escondidas en una escena cargada | **no existe** | **el que más rendimiento da**: nuestras láminas E4 ya son escenas cargadas de objetos |
+| **F5 · El intruso** | cuál no pega, y por qué | sí, ×3 | con contenido abstracto —formas, materiales— deja de ser clasificación de rutina |
+| **F6 · Sigue la serie** | qué viene en el patrón | no, como juego | patrones visuales o sonoros, no secuencias de tareas |
+| **F7 · Parejas por regla** | no se emparejan iguales: se emparejan **por una regla** que hay que descubrir | no existe | la vuelta de tuerca de F1: convierte memoria en deducción |
+| **F8 · Memoria de sonidos** | las parejas suenan, no se ven | no existe | variante accesible de F1; y es nueva en el sector |
+
+### Por qué F4 es el siguiente a construir
+
+«Busca y encuentra» pide una escena bonita y llena de cosas. **Ya tenemos
+cuatro**: la habitación imposible, el terrario, la sala de rutas de luz y el
+rincón del refugio, todas generadas con semilla fija y todas con decenas de
+objetos colocados. Convertirlas en un juego de buscar es pedirle al generador
+la lista de qué hay y dónde —que la tiene, porque las coloca él— y poner encima
+una capa vectorial.
+
+Es el único juego de esta lista que se puede tener **sin dibujar nada nuevo**.
+
+### Lo que esta familia no lleva
+
+Ni cronómetro, ni puntuación, ni rachas. La dificultad se sube donde se tiene
+que subir: **más piezas y piezas más parecidas entre sí**. Eso es progresión
+de verdad y no necesita un número.
+
+---
+
+## 3 · Son juegos · 2
 
 ### J01 · Habitación imposible
 
@@ -79,7 +143,7 @@ Estado: concepto completo y láminas, pasado por dos vueltas de QA humano.
 
 ---
 
-## 3 · No son juegos todavía · 5
+## 4 · No son juegos todavía · 5
 
 A los cinco les falta **lo mismo**: un problema que el sistema plantee y sepa
 reconocer resuelto. Los cinco tienen ya el sistema modelado, que es la parte
@@ -100,7 +164,7 @@ el juego.
 
 ---
 
-## 4 · Los de sala
+## 5 · Los de sala
 
 Para una pantalla pública, con contenido del sitio que la pone. Plan en
 `editorial/juegos-en-sala/PLAN.md`.
@@ -113,7 +177,7 @@ Para una pantalla pública, con contenido del sitio que la pone. Plan en
 
 ---
 
-## 5 · Lo que no es un juego y no pasa nada
+## 6 · Lo que no es un juego y no pasa nada
 
 **Mapa del tesoro de casa** (prototipo 1 del paquete). Marcas qué habitaciones
 te calman y cuáles te cargan. Está bien hecho y sirve, pero no hay nada sin
@@ -125,7 +189,7 @@ estropearía, y su listón es otro.
 
 ---
 
-## 6 · Lo que hay que decidir
+## 7 · Lo que hay que decidir
 
 1. **¿Se aprueban las cinco conversiones del §3?** Son cinco encargos nuevos
    sobre sistemas ya modelados: no hay que rehacer la mecánica, hay que
@@ -135,12 +199,18 @@ estropearía, y su listón es otro.
    nuevas*, J01 y J03 ya la tienen y los demás la tendrían con la conversión.
    Si significa otra cosa, dilo antes de la auditoría.
 
-Mientras tanto, la cuenta honrada de este documento es: **dos juegos, cinco
-sistemas esperando un problema, y 297 fichas que no son esto.**
+3. **¿Se arranca por F4 · Busca y encuentra?** Es el único que no necesita
+   dibujo nuevo: las escenas ya están generadas y el generador sabe qué puso y
+   dónde.
+
+Mientras tanto, la cuenta honrada de este documento es: **dos juegos grandes
+terminados de concebir, cinco sistemas esperando un problema, ocho juegos
+inmediatos de los que tres ya tienen mecánica construida, y 194 fichas de
+ordenar que son otra cosa.**
 
 ---
 
-## 7 · Dónde está cada cosa
+## 8 · Dónde está cada cosa
 
 | | Concepto | Generador | Estado de lámina |
 |---|---|---|---|
