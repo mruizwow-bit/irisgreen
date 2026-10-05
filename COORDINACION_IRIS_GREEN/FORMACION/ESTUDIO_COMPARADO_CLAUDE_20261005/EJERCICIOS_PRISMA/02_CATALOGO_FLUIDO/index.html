@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Prisma · Ejercicio 02 · Catálogo fluido</title>
+<link rel="stylesheet" href="styles.css">
+<script src="catalogo-data.js" defer></script>
+<script src="app.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="shell">
+    <p class="eyebrow">Prisma · ejercicio de transferencia</p>
+    <h1>Descubrimiento</h1>
+    <p>Un frame se convierte en una página fluida: datos, rutas y estados reales.</p>
+  </div>
+</header>
+<main>
+  <div class="toolbar">
+    <label>Filtrar catálogo
+      <input id="filter" type="search" autocomplete="off" placeholder="Cielo, peces…">
+    </label>
+    <button id="clear" type="button">Mostrar todo</button>
+  </div>
+  <p id="summary" aria-live="polite"></p>
+  <ul id="catalog" class="cards" aria-label="Experiencias"></ul>
+  <div id="empty" class="empty" hidden>
+    <h2>Sin resultados</h2>
+    <p>No hay entradas que coincidan. El estado vacío no deja a la persona atrapada.</p>
+    <button id="empty-reset" type="button">Volver al catálogo completo</button>
+  </div>
+</main>
+</body>
+</html>
