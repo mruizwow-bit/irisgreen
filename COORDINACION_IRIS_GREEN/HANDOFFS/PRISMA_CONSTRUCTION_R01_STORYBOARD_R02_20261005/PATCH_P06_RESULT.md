@@ -1,47 +1,75 @@
-# PRISMA · CONSTRUCCIÓN R02 · PATCH P06 FINAL
+# PRISMA · CONSTRUCCIÓN R02 · PATCH P06-LEGACY-MATERIALS
 
 Fecha: 2026-10-05  
 Issue: #369  
-Orden: comentario 5994665692  
-Estado: `PRISMA_CONSTRUCTION_R01_R02_P06_PATCH_READY_FOR_AXIOMA_RETEST`
+Orden: comentario `5995462455`  
+Estado: `PRISMA_CONSTRUCTION_R01_R02_P06_LEGACY_MATERIALS_READY_FOR_AXIOMA_RETEST`
 
 ## Alcance
 
-Solo P06. P01–P05 y P07–P08 permanecen aprobados y no se reabren.
+Únicamente el residuo de **Madera/Piedra** detectado por Axioma.
 
-## Correcciones
+P06-B, P06-C y P01–P05/P07–P08 permanecen cerrados. No se reabren concepto, soluciones A/B, costes, apoyo/alcance, controles, foco, motion ni player proxy.
 
-| ID | Corrección | Evidencia |
-|---|---|---|
-| P06-A | Madera/Piedra calculadas por ancho real y gap explícito | `P06_ASSERTIONS.json`: `material_badges_overlap = 0` en 320/390/1440 |
-| P06-B | Parcela bloqueada/libre clamped, completa y separada de `+12 piedra` | `parcel_badge_inside_bounds = true`; overlap con `+12 piedra` = 0 en 320/390/1440 |
-| P06-C | `+12 piedra` en badge oscuro | contraste medido `12.12:1` en `CONTRAST_MEASUREMENTS.json` |
+## Corrección
 
-El texto legacy de parcela del R02 base se enmascara dentro del patch para evitar duplicado y reaparición del contraste bajo. No se modifica el R02 base.
+El generador base conserva su comportamiento por defecto, pero incorpora una opción local:
+`hide_legacy_material_labels=False`.
 
-## Artifact
+El patch P06 la activa únicamente para su render:
+`hide_legacy_material_labels=True`.
 
-Run: `37314984917 · SUCCESS`  
-Artifact ID: `11347511815`  
-Artifact: `PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06`  
-ZIP: `PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip`  
-SHA-256 ZIP: `93cd3d40d24a1d34a262d5cedb91de57f5546d72ac7748c1cb3589c2c3107905`  
-Digest contenedor GitHub: `sha256:2927ad27b210c42755c04880cd7f926ffe50464b4b1ed20e4aacbf6baa0257fd`
+Así las labels antiguas **Madera** y **Piedra** no se dibujan desde origen antes de los badges nuevos. No se amplían los badges para ocultarlas.
 
-Build commit: `2696d6a694661815f46cb1edef20bc111818a144`
+## Evidencia pixel-a-pixel
 
-## Verificación
+`P06_ASSERTIONS.json` compara:
+- base con labels legacy;
+- base limpia sin labels;
+- PNG final del patch.
 
-- workflow SUCCESS;
-- ZIP test PASS;
-- 38 archivos internos;
-- 320 / 390 / 1440;
-- inspección visual específica F05 390 y F06 320;
-- concepto, soluciones A/B, costes, apoyo/alcance, player proxy, touch, foco/selected y matriz de movimiento sin cambios.
+Resultado:
+- `legacy_material_labels_visible = false`;
+- residual máximo fuera de los badges nuevos = **0 píxeles**;
+- F01–F06 comprobados;
+- 320 / 390 / 1440 comprobados.
+
+Se conservan además:
+- `material_badges_overlap = 0`;
+- `parcel_badge_inside_bounds = true`;
+- `+12 piedra = 12.12:1`.
+
+## Inspección visual final
+
+Revisados explícitamente:
+- `CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_1440.png`;
+- `CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_1440.png`;
+- `CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_390.png`;
+- `CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_320.png`.
+
+No se observan restos de los textos legacy Madera/Piedra ni regresiones en los badges ya aprobados.
+
+## Artifact final
+
+Build commit: `73cb445388895978caa598320cf9cf06ed426ba5`  
+Opción base local: `a7299e088eac4d9af9faf6b15e3d568fa64749fa`
+
+Run: `37318454037 · SUCCESS`  
+Artifact ID: `11348661943`  
+Artifact: `PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06`
+
+ZIP interno:
+`PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip`
+
+SHA-256 ZIP:
+`f2d4503945e96941b51f953ed8e3fa6decbf6d5dfe6e53acfa71f6c484082853`
+
+Digest contenedor GitHub:
+`sha256:5a75aedda48f6d33850ada6cc6f2f83d8fe881edca6bfd8d164bd121f7fb6890`
 
 ## Siguiente
 
-`AXIOMA RETEST P06 → HUMAN QA MARÍA`
+`AXIOMA RETEST VISUAL ACOTADO → HUMAN QA MARÍA`
 
 El gate `AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA` todavía no se declara.
 
