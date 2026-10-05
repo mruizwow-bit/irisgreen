@@ -21,8 +21,8 @@ const EXPECTED_TTS = {
 };
 const MAX_REQUEST_BYTES = 8 * 1024 * 1024;
 const MAX_RESPONSE_BYTES = 8 * 1024 * 1024;
-const REVIEW_HOST = "main-review--irisgreen-home.netlify.app";
 const REVIEW_PRIVATE_ORIGIN = "https://sublime-ripe-authorized-climb.trycloudflare.com";
+const EXPECTED_SITE_NAME = "irisgreen-home";
 
 function unavailable(status = 503) {
   return new Response(JSON.stringify({error:"voice_unavailable"}), {
@@ -31,9 +31,14 @@ function unavailable(status = 503) {
   });
 }
 
-function privateOrigin(requestUrl: URL) {
+function reviewFallbackAllowed(context: any) {
+  return context?.deploy?.context === "branch-deploy"
+    && String(Netlify.env.get("SITE_NAME") || "") === EXPECTED_SITE_NAME;
+}
+
+function privateOrigin(context: any) {
   let raw = String(Netlify.env.get("SABIK_VOICE_PRIVATE_ORIGIN") || "").trim();
-  if (!raw && requestUrl.hostname === REVIEW_HOST) raw = REVIEW_PRIVATE_ORIGIN;
+  if (!raw && reviewFallbackAllowed(context)) raw = REVIEW_PRIVATE_ORIGIN;
   if (!raw) return null;
   let url;
   try { url = new URL(raw); } catch { return null; }
@@ -41,9 +46,9 @@ function privateOrigin(requestUrl: URL) {
   return url.origin;
 }
 
-function voiceEnabled(requestUrl: URL) {
+function voiceEnabled(context: any) {
   if (Netlify.env.get("SABIK_VOICE_ENABLED") === "true") return true;
-  return requestUrl.hostname === REVIEW_HOST;
+  return reviewFallbackAllowed(context);
 }
 
 function validCapabilities(raw: any) {
@@ -82,13 +87,13 @@ async function verifiedCapabilities(origin: string) {
   }
 }
 
-export default async (request: Request) => {
+export default async (request: Request, context: any) => {
   const url = new URL(request.url);
   const expectedMethod = ALLOWED.get(url.pathname);
   if (!expectedMethod || request.method !== expectedMethod || url.search) return unavailable(405);
 
-  const origin = privateOrigin(url);
-  if (!origin || !voiceEnabled(url)) return unavailable();
+  const origin = privateOrigin(context);
+  if (!origin || !voiceEnabled(context)) return unavailable();
 
   const capabilities = await verifiedCapabilities(origin);
   if (!capabilities) return unavailable();
