@@ -1,7 +1,18 @@
 # NEXO · Juegos reales · Construcción R01 · Registro canónico
 Fecha: 2026-10-05, Europe/Madrid. Issue #369.
-Estado: BRIEF_AND_WORK_ORDERS_RECORDED; storyboard, runtime y HUMAN QA pendientes.
+Estado vigente: PLAYABLE_PROTOTYPE_ORDER_RECORDED; storyboard QA PASS, runtime y HUMAN QA jugando pendientes.
 Registro consolidado de memoria, diseño, órdenes, planificación y criterios. GitHub es fuente canónica.
+## ACTUALIZACIÓN VIGENTE · 2026-10-05 · PROTOTIPO JUGABLE AUTORIZADO
+María corrige: no puede probar un juego con PNG sueltos; necesita que esté montado.
+Storyboard R02: 8/8 PASS de Axioma, artifact 11348661943, informe commit 8ab82d7bef0054c46ae365be3ea62494a5970060.
+**Siguiente: Prisma implementa prototipo jugable aislado → Axioma QA runtime → HUMAN QA María jugando.**
+La parada antes de código y la exigencia de HUMAN QA visual previa de los apartados históricos quedan sustituidas para este alcance por autorización explícita de María. HUMAN QA no es PASS todavía. NO MAIN / NO PRODUCCIÓN.
+Orden completa: [ORDEN_PRISMA_PROTOTIPO_JUGABLE_R01.md](ORDEN_PRISMA_PROTOTIPO_JUGABLE_R01.md), commit 9d299041ca62352c26e4806991fefee7bcc1b10d.
+Entrega exigida: página/ZIP de juego controlable, no carrusel de PNG; abrir, moverse, construir, cruzar, corregir, usar escaleras y entrar en parcela libre.
+Las reglas reconciliadas R02 (rutas C1–C5, apoyos A C3 / B C2+C4, alcance 2, sin autoescalada) prevalecen sobre las propuestas iniciales de abajo.
+Aprendizaje: Nexo confundió revisión de storyboard con prueba de juego. Para valorar interacción y diversión hace falta una build jugable. Preservar diseño aprobado y obtener evidencia runtime.
+Estado: orden publicada; implementación y activación del agente pendientes de evidencia.
+
 ## 1. Decisiones de María y memoria
 María rechazó la Habitación imposible montada: elegir una flecha y revelar una respuesta no resultó un juego divertido. HUMAN QA FAIL invalida su avance como producto aunque hubiera PASS técnico/storyboard. No continuar rework del runtime anterior.
 Mapa del tesoro permanece DISCARD. No rescatarlo por parecido visual.
