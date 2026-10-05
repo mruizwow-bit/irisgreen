@@ -1,3 +1,35 @@
+# CIERRE VIGENTE · P06 CERRADO · HUMAN QA MARÍA PENDIENTE
+Actualizado: 2026-10-05 · Issue #369
+
+La orden de patch que se conserva debajo queda **completada**. No ejecutar más correcciones salvo un nuevo defecto documentado.
+
+Gate Axioma: `AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA`.
+P01–P08: **8/8 PASS**, según el retest visual final de Axioma.
+Informe: https://github.com/mruizwow-bit/irisgreen/blob/8ab82d7bef0054c46ae365be3ea62494a5970060/COORDINACION_IRIS_GREEN/HANDOFFS/AXIOMA_CONSTRUCTION_R01_R02_20261005/RETEST_VISUAL_FINAL_P06_HUMAN_QA_READY.md
+Registro: https://github.com/mruizwow-bit/irisgreen/issues/369#issuecomment-5995945476
+
+Paquete exacto para HUMAN QA:
+- Artifact: https://github.com/mruizwow-bit/irisgreen/actions/runs/37318454037/artifacts/11348661943
+- Build: `73cb445388895978caa598320cf9cf06ed426ba5`.
+- HEAD de registro Prisma: `21c8c0f633beafc672b3caa3ad31b0cc84bcb86c`.
+- ZIP SHA-256: `f2d4503945e96941b51f953ed8e3fa6decbf6d5dfe6e53acfa71f6c484082853`.
+- Manifest 37/37; 30 PNG con ICC. Labels legacy ausentes; overlap 0; +12 piedra 12.12:1.
+
+Nexo ha leído el informe canónico; la inspección visual y binaria corresponde a Axioma.
+
+## Siguiente acción
+María revisa el storyboard exacto, en móvil y escritorio: si entiende el objetivo, cómo construir y cruzar, qué significa un error, cómo corregir/deshacer y si la propuesta le invita a jugar. Registrar su decisión y comentarios sobre este mismo paquete.
+Esta revisión visual no demuestra todavía que el juego sea divertido en ejecución.
+HUMAN QA sigue pendiente: no inferir su PASS del gate técnico.
+`NO CODE · NO RUNTIME · NO MAIN` (sin deploy).
+
+## Memoria de cierre
+La geometría correcta de una capa nueva no basta: hay que inspeccionar la composición final y eliminar labels antiguas. P06 queda resuelto en el artifact citado; conservar los puntos aprobados.
+
+---
+
+## Orden histórica completada
+
 # NEXO → PRISMA · CONSTRUCCIÓN R02 · PATCH P06-LEGACY-MATERIALS
 Actualizado: 2026-10-05 · Issue #369
 
