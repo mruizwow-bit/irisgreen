@@ -5,8 +5,8 @@
   "issue": 369,
   "branch": "prisma/construction-r01-storyboard-r02-20261005",
   "base_main": "827d17e5efe39280368a0d73a6c88596a1d3b0e9",
-  "gate": "PRISMA_CONSTRUCTION_R01_R02_PATCH_READY_FOR_AXIOMA_RETEST",
-  "status": "PATCH_PACKAGE_ACCESSIBLE_READY_FOR_AXIOMA_RETEST",
+  "gate": "PRISMA_CONSTRUCTION_R01_R02_P06_PATCH_READY_FOR_AXIOMA_RETEST",
+  "status": "P06_PATCH_PACKAGE_ACCESSIBLE_READY_FOR_AXIOMA_RETEST",
   "main_modified": false,
   "code": false,
   "runtime": false,
@@ -116,14 +116,70 @@
     "P03": "touch buttons drawn as targets",
     "P04": "mobile targets >=44x44; mode switch height 48",
     "P05": "selected persistent + independent focus outline",
-    "P06": "normal text contrast corrected and measured >=4.5:1",
+    "P06": "follow-up patched: material badges separated; parcel status fully in-bounds; +12 stone contrast 12.12:1",
     "P07": "dependency-blocked removal + valid action + undo/restoration",
     "P08": "NORMAL/REDUCED/NONE + forced-colors matrix"
   },
   "next": [
-    "AXIOMA_RETEST_P01_P08",
+    "AXIOMA_RETEST_P06",
     "HUMAN_QA_MARIA_IF_AXIOMA_PASS"
   ],
   "expected_axioma_gate_not_yet_obtained": "AXIOMA_CONSTRUCTION_R01_R02_STORYBOARD_READY_FOR_HUMAN_QA",
-  "stop_before_code": true
+  "stop_before_code": true,
+  "source_axioma_retest": {
+    "gate": "AXIOMA_CONSTRUCTION_R01_R02_PATCH_REWORK_REQUIRED",
+    "commit": "e0a93506ec60a023cdd467bee7629c60b1abdd3a",
+    "audited_patch_sha256": "7fbca66968681a463d3035de30b5c9c80a839318f7b79f5e8f58e830e2f9bad7",
+    "passed": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P07",
+      "P08"
+    ],
+    "pending": [
+      "P06"
+    ]
+  },
+  "nexo_p06_order": {
+    "comment_id": 5994665692,
+    "commit": "b2de0163116a6f9fd49eec7dde5d0dc3155d4339",
+    "scope": [
+      "material_badges_overlap",
+      "parcel_badge_bounds",
+      "plus12_stone_contrast"
+    ]
+  },
+  "p06_patch": {
+    "build_commit": "2696d6a694661815f46cb1edef20bc111818a144",
+    "filename": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip",
+    "sha256": "93cd3d40d24a1d34a262d5cedb91de57f5546d72ac7748c1cb3589c2c3107905",
+    "github_actions_run_id": 37314984917,
+    "github_actions_run_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37314984917",
+    "artifact_id": 11347511815,
+    "artifact_name": "PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06",
+    "artifact_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37314984917/artifacts/11347511815",
+    "artifact_digest": "sha256:2927ad27b210c42755c04880cd7f926ffe50464b4b1ed20e4aacbf6baa0257fd",
+    "artifact_expires_at": "2026-11-04T13:12:43Z",
+    "files_generated": 38,
+    "viewports": [
+      320,
+      390,
+      1440
+    ],
+    "zip_integrity_pass": true,
+    "qa_pass": true,
+    "visual_inspection": [
+      "CONSTRUCTION_R02_PATCH_F05_CORRECCION_CRUCE_390.png",
+      "CONSTRUCTION_R02_PATCH_F06_ESCALERAS_TERRAZA_LIBRE_320.png"
+    ],
+    "assertions": {
+      "material_badges_overlap": 0,
+      "parcel_badge_inside_bounds": true,
+      "plus12_piedra_contrast": 12.12,
+      "plus12_vs_parcel_overlap": 0
+    }
+  }
 }
