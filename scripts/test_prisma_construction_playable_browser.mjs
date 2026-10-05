@@ -23,6 +23,9 @@ const openGame = async (width, height) => {
   page.on("requestfailed", r => failedRequests.push(r.url()));
   await page.goto(pathToFileURL(GAME).href);
   await page.locator("#start-new-btn").click();
+  if (await page.locator("#confirm-new-dialog").evaluate(el => el.open)) {
+    await page.locator("#confirm-new").click();
+  }
   await page.locator("#scene").focus();
   return { context, page, runtimeErrors, failedRequests };
 };
