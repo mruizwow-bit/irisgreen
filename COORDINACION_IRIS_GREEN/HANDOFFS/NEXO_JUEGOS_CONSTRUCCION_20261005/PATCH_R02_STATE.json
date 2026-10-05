@@ -3,14 +3,14 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 369,
-  "status": "PATCH_REQUIRED",
-  "gate": "AXIOMA_CONSTRUCTION_R01_R02_REWORK_REQUIRED",
-  "qa_commit": "09c652d54e1a82068cd6e134d0eda594be9b6ee3",
-  "qa_comment": 5993677720,
+  "status": "P06_PATCH_REQUIRED",
+  "gate": "AXIOMA_CONSTRUCTION_R01_R02_PATCH_REWORK_REQUIRED",
+  "qa_commit": "e0a93506ec60a023cdd467bee7629c60b1abdd3a",
+  "qa_comment": 5994380359,
   "package_access": "RESOLVED",
-  "artifact_id": 11342176274,
-  "run_id": 37302920832,
-  "audited_zip_sha256": "5aa0705b2a186681f223ab50d019ae1c1d167b2f66464001c1d8b2b08c282c1e",
+  "artifact_id": 11343313636,
+  "run_id": 37305550352,
+  "audited_zip_sha256": "7fbca66968681a463d3035de30b5c9c80a839318f7b79f5e8f58e830e2f9bad7",
   "evidence_attribution": "Axioma audited package; Nexo read canonical review and delivery record",
   "preserve": [
     "concept",
@@ -18,24 +18,28 @@
     "validated_materials_costs_support_reach"
   ],
   "patch_items": [
-    "P01_feedback_clipping_1440",
-    "P02_frames_320",
-    "P03_touch_controls",
-    "P04_targets_44",
-    "P05_focus_selected",
-    "P06_label_contrast",
-    "P07_dependencies_undo",
-    "P08_motion_forced_colors"
+    "P06_A_material_badges_overlap",
+    "P06_B_parcel_badge_bounds",
+    "P06_C_plus_12_stone_contrast"
   ],
-  "order_file": "ORDEN_PRISMA_PATCH_R02_POST_AXIOMA.md",
-  "order_commit": "6bab8ebf9c740de8beb527c112c1eb0b85bab82e",
+  "order_file": "ORDEN_PRISMA_PATCH_P06.md",
+  "order_commit": "b2de0163116a6f9fd49eec7dde5d0dc3155d4339",
   "next": [
-    "PRISMA_PATCH_R02",
-    "AXIOMA_RETEST",
+    "PRISMA_PATCH_P06",
+    "AXIOMA_RETEST_P06",
     "HUMAN_QA_MARIA"
   ],
   "human_qa_pass": false,
   "code_authorized": false,
   "runtime_authorized": false,
-  "main_changes_authorized": false
+  "main_changes_authorized": false,
+  "passed_items": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P07",
+    "P08"
+  ]
 }
