@@ -20,6 +20,12 @@ jobs:
           python-version: '3.12'
       - name: JavaScript syntax
         run: node --check prototypes/construction-playable-r01/game.js
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Browser QA
+        run: node scripts/test_prisma_construction_playable_browser.mjs
       - name: Build standalone ZIP
         run: python scripts/package_prisma_construction_playable_r01.py
       - name: Verify package
@@ -34,5 +40,6 @@ jobs:
           path: |
             PRISMA_CONSTRUCTION_PLAYABLE_R01.zip
             PRISMA_CONSTRUCTION_PLAYABLE_R01.sha256
+            prototypes/construction-playable-r01/QA_BROWSER.json
           if-no-files-found: error
           retention-days: 30
