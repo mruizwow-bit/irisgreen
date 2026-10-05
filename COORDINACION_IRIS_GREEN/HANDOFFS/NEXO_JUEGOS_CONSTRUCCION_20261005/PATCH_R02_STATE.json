@@ -3,14 +3,14 @@
   "date": "2026-10-05",
   "owner": "Nexo",
   "issue": 369,
-  "status": "P06_PATCH_REQUIRED",
-  "gate": "AXIOMA_CONSTRUCTION_R01_R02_PATCH_REWORK_REQUIRED",
-  "qa_commit": "e0a93506ec60a023cdd467bee7629c60b1abdd3a",
-  "qa_comment": 5994380359,
+  "status": "P06_LEGACY_MATERIALS_PATCH_REQUIRED",
+  "gate": "AXIOMA_CONSTRUCTION_R01_R02_P06_REWORK_REQUIRED",
+  "qa_commit": "a4a79358fe5ccc10630876d30d8fccced9c8debe",
+  "qa_comment": 5995409728,
   "package_access": "RESOLVED",
-  "artifact_id": 11343313636,
-  "run_id": 37305550352,
-  "audited_zip_sha256": "7fbca66968681a463d3035de30b5c9c80a839318f7b79f5e8f58e830e2f9bad7",
+  "artifact_id": 11347511815,
+  "run_id": 37314984917,
+  "audited_zip_sha256": "93cd3d40d24a1d34a262d5cedb91de57f5546d72ac7748c1cb3589c2c3107905",
   "evidence_attribution": "Axioma audited package; Nexo read canonical review and delivery record",
   "preserve": [
     "concept",
@@ -18,15 +18,13 @@
     "validated_materials_costs_support_reach"
   ],
   "patch_items": [
-    "P06_A_material_badges_overlap",
-    "P06_B_parcel_badge_bounds",
-    "P06_C_plus_12_stone_contrast"
+    "P06_A_legacy_material_labels_visible_1440"
   ],
   "order_file": "ORDEN_PRISMA_PATCH_P06.md",
-  "order_commit": "b2de0163116a6f9fd49eec7dde5d0dc3155d4339",
+  "order_commit": "8cc0f569fee5891736df9cc782d1bf1ddc9e015d",
   "next": [
-    "PRISMA_PATCH_P06",
-    "AXIOMA_RETEST_P06",
+    "PRISMA_PATCH_P06_LEGACY_MATERIALS",
+    "AXIOMA_RETEST_VISUAL_ACOTADO",
     "HUMAN_QA_MARIA"
   ],
   "human_qa_pass": false,
@@ -40,6 +38,9 @@
     "P04",
     "P05",
     "P07",
-    "P08"
+    "P08",
+    "P06_B",
+    "P06_C",
+    "P06_A_badge_geometry"
   ]
 }
