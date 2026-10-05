@@ -80,7 +80,13 @@ try:
         assert "web_presente.png?v=sabik-definitive-r01" in normal["src"], normal
         assert normal["duration"] == 380 and normal["iterations"] == 1, normal
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === false")
+        normal_presence = page.evaluate("""() => ({
+          rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
+          rootDuration:getComputedStyle(document.querySelector('#sabik-hologram')).animationDuration
+        })""")
+        assert "sabikR69SelfMotion" in normal_presence["rootAnimation"], normal_presence
         evidence["motion"]["normal_orientar"] = normal
+        evidence["motion"]["normal_presence"] = normal_presence
 
         # Processing and speaking are semantic layered states; identity stays the same.
         page.evaluate("window.SabikWebPresentation.setSemanticState('processing')")
@@ -125,11 +131,14 @@ try:
         page.evaluate("window.SabikWebPresentation.setSemanticState('processing')")
         reduced_css = page.evaluate("""() => ({
           motion:document.querySelector('#sabik-hologram').dataset.motion,
+          rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
           orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName,
           coreAnimation:getComputedStyle(document.querySelector('#sabik-hologram .core-light')).animationName
         })""")
         assert reduced_css["motion"] == "reduced", reduced_css
-        assert reduced_css["orbitAnimation"] == "none" and reduced_css["coreAnimation"] == "none", reduced_css
+        assert "sabikR69SelfMotionReduced" in reduced_css["rootAnimation"], reduced_css
+        assert reduced_css["orbitAnimation"] == "none", reduced_css
+        assert "thinkReduced" in reduced_css["coreAnimation"], reduced_css
         evidence["motion"]["reduced_css"] = reduced_css
         page.evaluate("() => { void window.SabikWebPresentation.setSabikState('pausa',{force:true,semantic:'idle'}); }")
         page.wait_for_function("window.SabikWebPresentation.snapshot().active === true")
@@ -155,12 +164,16 @@ try:
           active:window.SabikWebPresentation.snapshot().active,
           level:window.SabikWebPresentation.snapshot().level,
           motion:document.querySelector('#sabik-hologram').dataset.motion,
+          rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
+          rootTransform:getComputedStyle(document.querySelector('#sabik-hologram')).transform,
           masterAnimations:document.querySelector('#sabik-web-master').getAnimations().length,
           orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName,
           bodyAnimation:getComputedStyle(document.querySelector('#sabik-web-master')).animationName
         })""")
         assert stopped["active"] is False and stopped["level"] == "SIN_MOVIMIENTO", stopped
         assert stopped["motion"] == "none", stopped
+        assert stopped["rootAnimation"] == "none", stopped
+        assert stopped["rootTransform"] in ("none","matrix(1, 0, 0, 1, 0, 0)"), stopped
         assert stopped["masterAnimations"] == 0, stopped
         assert stopped["orbitAnimation"] == "none" and stopped["bodyAnimation"] == "none", stopped
         evidence["motion"]["no_motion"] = stopped
@@ -187,9 +200,11 @@ try:
         prefers = page.evaluate("""() => ({
           motion:document.querySelector('#sabik-hologram').dataset.motion,
           level:window.SabikWebPresentation.snapshot().level,
+          rootAnimation:getComputedStyle(document.querySelector('#sabik-hologram')).animationName,
           orbitAnimation:getComputedStyle(document.querySelector('#sabik-hologram .orbits-back')).animationName
         })""")
         assert prefers["motion"] == "reduced" and prefers["level"] == "REDUCIDO", prefers
+        assert "sabikR69SelfMotionReduced" in prefers["rootAnimation"], prefers
         assert prefers["orbitAnimation"] == "none", prefers
         evidence["motion"]["prefers_reduced"] = prefers
         page.emulate_media(reduced_motion="no-preference")
