@@ -35,41 +35,35 @@ main#main:has(>#home-view){width:100%!important;max-width:none!important;margin:
 @media(max-width:850px){#home-view{display:block}.sabik-web-visual{max-width:260px}}
 
 
-/* R69 HUMAN QA · current Sabik moves itself. No legacy orbit donor. */
-.sabik-web-visual.sabik-current-presence{
+/* Sabik presence motion · wired to the real visual root used by Home.
+   NORMAL stays visibly alive; REDUCIDO keeps a slow micro-presence;
+   SIN_MOVIMIENTO is the only fully static mode. */
+.sabik-web-visual{
  --sabik-self-speed:5.6s;
- position:relative;isolation:isolate;overflow:visible;aspect-ratio:1;background:transparent
+ transform-origin:49.765% 47.237%
 }
-.sabik-current-presence .sabik-presence-motion{
- display:grid;place-items:center;width:100%;height:100%;transform-origin:50% 56%;
+.sabik-web-visual[data-motion="normal"][data-render-active="true"]{
  animation:sabikR69SelfMotion var(--sabik-self-speed) ease-in-out infinite
 }
-.sabik-current-presence #sabik-web-master.sabik-avatar-base{
- display:block;width:100%;height:auto;max-width:none;object-fit:contain;clip-path:none;opacity:1;visibility:visible
+.sabik-web-visual[data-motion="normal"][data-state="listening"]{--sabik-self-speed:4.6s}
+.sabik-web-visual[data-motion="normal"][data-state="processing"]{--sabik-self-speed:3.8s}
+.sabik-web-visual[data-motion="normal"][data-state="degraded"]{--sabik-self-speed:7.8s}
+.sabik-web-visual[data-motion="normal"][data-state="speaking"]{--sabik-self-speed:2.7s}
+.sabik-web-visual[data-motion="reduced"][data-render-active="true"]{
+ animation:sabikR69SelfMotionReduced 10s ease-in-out infinite
 }
-.sabik-current-presence[data-web-state="ORIENTAR"]{--sabik-self-speed:4.6s}
-.sabik-current-presence[data-web-state="TRANSICION"]{--sabik-self-speed:3.8s}
-.sabik-current-presence[data-web-state="PAUSA"]{--sabik-self-speed:7.8s}
-.sabik-current-presence[data-web-state="CONFIRMAR"]{--sabik-self-speed:3.2s}
-.sabik-current-presence[data-voice-active="true"]{--sabik-self-speed:2.7s}
-.sabik-current-presence[data-motion-level="REDUCIDO"] .sabik-presence-motion{
- animation-name:sabikR69SelfMotionReduced;animation-duration:10s
-}
-.sabik-current-presence[data-motion-level="SIN_MOVIMIENTO"] .sabik-presence-motion,
-html[data-ig-motion="off"] .sabik-current-presence .sabik-presence-motion{
+.sabik-web-visual[data-motion="none"],
+html[data-ig-motion="off"] .sabik-web-visual{
  animation:none!important;transform:none!important
 }
-.sabik-current-presence[data-render-active="false"] .sabik-presence-motion{animation-play-state:paused!important}
+.sabik-web-visual[data-render-active="false"]{animation-play-state:paused!important}
 @keyframes sabikR69SelfMotion{
  0%,100%{transform:translate3d(-1.6%,1.15%,0) rotate(-1.15deg) scale(.99)}
  50%{transform:translate3d(1.8%,-1.45%,0) rotate(1.25deg) scale(1.018)}
 }
 @keyframes sabikR69SelfMotionReduced{
- 0%,100%{transform:translate3d(-.35%,.3%,0) scale(.998)}
- 50%{transform:translate3d(.4%,-.35%,0) scale(1.003)}
-}
-@media(prefers-reduced-motion:reduce){
- .sabik-current-presence .sabik-presence-motion{animation-name:sabikR69SelfMotionReduced;animation-duration:10s}
+ 0%,100%{transform:translate3d(-.2%,.16%,0) scale(.999)}
+ 50%{transform:translate3d(.22%,-.18%,0) scale(1.002)}
 }
 
 @media(max-width:420px){.sabik-voice-actions,.sabik-voice-settings{grid-template-columns:1fr}.sabik-voice-actions{gap:6px}}
