@@ -1,0 +1,31 @@
+{
+  "id": "CROMA_FOSSILS_ASTRA_REVIEW_EXECUTION_20261005",
+  "owner": "CROMA",
+  "state": "FOSSILS_ASTRA_REVIEW_EXECUTION_IN_PROGRESS",
+  "normalized_candidates": 40,
+  "normalization": {
+    "size": "1536x1536",
+    "mode": "RGBA",
+    "icc": "sRGB embedded",
+    "resampling": false,
+    "alpha_cleanup_threshold": 3
+  },
+  "astra_states": {
+    "CONSERVAR_CANDIDATA": 21,
+    "CORREGIR": 3,
+    "AJUSTAR_AL_BRIEF": 3,
+    "VALIDACION_DIRIGIDA": 13
+  },
+  "active_rework": {
+    "F04": 10,
+    "corrections": ["F01-04 Opabinia","F01-06 Graptolito","F02-04 Acanthostega"],
+    "brief_adjustments": ["F01-09 Crinoideo","F02-10 Mesosaurus","F05-01 Australopithecus afarensis"]
+  },
+  "excluded": {
+    "F01_OLD_ZIP": "ARCHIVE_REFERENCE_ONLY",
+    "OLD_COLLAGE": "ARCHIVE_REFERENCE_ONLY",
+    "F06": "REJECTED_EXTENSION_OUTSIDE_ORIGINAL_64",
+    "F07": "NON_CANONICAL_EXTENSION_DO_NOT_COUNT"
+  },
+  "human_qa": "PENDING"
+}
