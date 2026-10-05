@@ -37,10 +37,16 @@
     <div class="scene-wrap">
       <canvas id="scene" width="960" height="640" tabindex="0"
         role="img"
-        aria-describedby="scene-desc cell-desc"></canvas>
+        aria-label="Tablero de construcción de El taller de las islas"
+        aria-describedby="scene-desc scene-instructions cell-desc"
+        aria-keyshortcuts="ArrowUp ArrowRight ArrowDown ArrowLeft W A S D Enter Space B"></canvas>
       <p id="scene-desc" class="sr-only">
         Escenario de construcción con taller a la izquierda, dos rutas sobre el canal,
         caja de herramientas a la derecha y terraza elevada.
+      </p>
+      <p id="scene-instructions" class="sr-only">
+        Usa flechas o WASD para moverte. B cambia entre Recorrer y Construir.
+        En Construir, mueve el cursor con flechas o WASD y usa Enter o Espacio para colocar.
       </p>
       <div class="mode-badge" aria-live="off">Modo: <b id="mode-name">Recorrer</b></div>
     </div>
@@ -104,9 +110,10 @@
     </div>
   </section>
 
-  <p id="feedback" class="feedback" role="status" aria-live="polite" aria-atomic="true">
+  <p id="feedback" class="feedback">
     Recoge la madera y la piedra del taller para empezar.
   </p>
+  <p id="game-live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
 </main>
 
 <dialog id="start-dialog">
