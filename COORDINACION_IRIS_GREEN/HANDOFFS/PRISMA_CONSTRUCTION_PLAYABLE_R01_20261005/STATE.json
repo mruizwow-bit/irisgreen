@@ -5,13 +5,12 @@
   "issue": 369,
   "source_order_comment": 5996165622,
   "branch": "prisma/construction-r01-storyboard-r02-20261005",
-  "gate": "PRISMA_CONSTRUCTION_PLAYABLE_R01_LOCAL_QA_PASS_WAIT_ARTIFACT",
-  "status": "LOCAL_RUNTIME_PASS_PENDING_GITHUB_ARTIFACT",
+  "gate": "PRISMA_CONSTRUCTION_PLAYABLE_R01_READY_FOR_AXIOMA",
+  "status": "PLAYABLE_ARTIFACT_ACCESSIBLE_READY_FOR_AXIOMA_RUNTIME_QA",
   "main_modified": false,
   "production": false,
   "entry": "prototypes/construction-playable-r01/juegos.html",
   "package": "PRISMA_CONSTRUCTION_PLAYABLE_R01.zip",
-  "local_sha256": "279885845aa93e53b41686c6324f029871659d6e61c8e365415782bd1cd9a65e",
   "qa": {
     "route_A": "PASS",
     "route_B": "PASS",
@@ -31,8 +30,18 @@
     "runtime_errors": 0
   },
   "next": [
-    "GITHUB_ARTIFACT",
     "AXIOMA_RUNTIME_QA",
     "HUMAN_QA_MARIA_IF_AXIOMA_PASS"
-  ]
+  ],
+  "commit": "29a8770f235e75cd99a8758a07f06923acb99b7d",
+  "artifact": {
+    "run_id": 37326606367,
+    "run_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37326606367",
+    "artifact_id": 11351693774,
+    "artifact_name": "PRISMA_CONSTRUCTION_PLAYABLE_R01",
+    "artifact_url": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37326606367/artifacts/11351693774",
+    "artifact_digest": "sha256:a8357d92e169158cff533aeb9398b8f66c60dc49ce2ea395a7d0785dd7b88a57",
+    "inner_zip_sha256": "ef30977cc5327c0b17fb42b2d03a54827e5f130ae12bf5cf349ec08b47d38f87",
+    "expires_at": "2026-11-04T14:40:58Z"
+  }
 }
