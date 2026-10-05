@@ -1,10 +1,10 @@
-name: Prisma Construction R02 Patch P01-P08
+name: Prisma Construction R02 Patch P06
 on:
   push:
     branches:
       - prisma/construction-r01-storyboard-r02-20261005
     paths:
-      - 'scripts/build_prisma_construction_r02_patch_p01_p08.py'
+      - 'scripts/build_prisma_construction_r02_patch_p06.py'
       - '.github/workflows/prisma-construction-r02-artifact.yml'
   workflow_dispatch:
 
@@ -18,20 +18,20 @@ jobs:
           python-version: '3.12'
       - name: Install Pillow
         run: python -m pip install 'Pillow==11.3.0'
-      - name: Build audited base plus P01-P08 patch
-        run: python scripts/build_prisma_construction_r02_patch_p01_p08.py
+      - name: Build scoped P06 follow-up patch
+        run: python scripts/build_prisma_construction_r02_patch_p06.py
       - name: Verify patch package
         run: |
-          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.zip
-          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.sha256
-          sha256sum -c PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.sha256
-          unzip -l PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.zip
+          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip
+          test -f PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.sha256
+          sha256sum -c PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.sha256
+          unzip -l PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip
       - name: Upload patch ZIP
         uses: actions/upload-artifact@v4
         with:
-          name: PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08
+          name: PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06
           path: |
-            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.zip
-            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P01_P08.sha256
+            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.zip
+            PRISMA_CONSTRUCTION_R01_STORYBOARD_R02_PATCH_P06.sha256
           if-no-files-found: error
           retention-days: 30
