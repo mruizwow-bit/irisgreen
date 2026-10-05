@@ -72,35 +72,57 @@ async function routeA() {
 }
 
 async function routeB() {
-  const { context, page, runtimeErrors, failedRequests } = await openGame(1440, 900);
-  await collectInitial(page);
-  await key(page, "ArrowUp"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "2"); await key(page, "ArrowRight"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "1"); await key(page, "ArrowLeft"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "2"); await key(page, "ArrowRight"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "1"); await key(page, "ArrowLeft"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight"); await key(page, "ArrowRight");
-  let s = await getState(page);
-  assert(s.player.x === 8 && s.player.y === 5, "B: did not cross R2");
-  assert(s.inventory.wood === 19 && s.inventory.stone === 10, "B: bridge cost mismatch");
-  await key(page, "ArrowUp"); await key(page, "ArrowUp"); await key(page, "Enter"); await key(page, "ArrowRight");
-  await key(page, "b"); await key(page, "3"); await key(page, "ArrowRight"); await key(page, "Enter");
-  await key(page, "PageUp"); await key(page, "ArrowUp"); await key(page, "Enter");
-  await key(page, "b"); await key(page, "ArrowRight"); await key(page, "ArrowUp"); await key(page, "ArrowUp");
-  s = await getState(page);
-  assert(s.freeMode && s.player.z === 3, "B: terrace/free mode failed");
+  const { context, page, runtimeErrors, failedRequests } = await openGame(320, 720);
+  const dir = async value => { await page.locator(`[data-dir="${value}"]`).click(); await page.waitForTimeout(8); };
+  const action = async () => { await page.locator("#primary-action").click(); await page.waitForTimeout(8); };
+  const build = async () => { await page.locator("#build-mode").click(); await page.waitForTimeout(8); };
+  const roam = async () => { await page.locator("#roam-mode").click(); await page.waitForTimeout(8); };
+  const piece = async type => { await page.locator(`[data-piece="${type}"]`).click(); await page.waitForTimeout(8); };
+  const place = async () => { await page.locator("#place-btn").click(); await page.waitForTimeout(8); };
+
+  // Collect initial materials and align with R2.
+  await dir("S"); await dir("S"); await action();
+  await dir("S"); await action();
+  await dir("N"); await dir("E");
+
+  // B2 support at C2, then P1/P2.
+  await build(); await piece("block"); await dir("E"); await dir("E"); await place();
+  await piece("platform"); await dir("W"); await place();
+  await roam(); await dir("E");
+  await build(); await dir("E"); await place();
+  await roam(); await dir("E");
+
+  // B4 support at C4, then P3/P4/P5.
+  await build(); await piece("block"); await dir("E"); await dir("E"); await place();
+  await piece("platform"); await dir("W"); await place();
+  await roam(); await dir("E");
+  await build(); await dir("E"); await place();
+  await roam(); await dir("E");
+  await build(); await dir("E"); await place();
+  await roam(); await dir("E"); await dir("E");
+
+  let state = await getState(page);
+  assert(state.player.x === 8 && state.player.y === 5, "B: did not cross R2");
+  assert(state.inventory.wood === 19 && state.inventory.stone === 10, "B: bridge cost mismatch");
+  assert(state.pieces.filter(p => p.type === "block").length === 2, "B: support count mismatch");
+
+  // Open toolbox.
+  await dir("N"); await dir("N"); await action();
+  state = await getState(page);
+  assert(state.boxOpened && state.stairsUnlocked, "B: toolbox/stairs unlock failed");
+  await dir("E");
+
+  // Build and climb the two stairs with touch controls.
+  await build(); await piece("stair"); await dir("E"); await place();
+  await page.locator("#height-up").click(); await dir("N"); await place();
+  await roam(); await dir("E"); await dir("N"); await dir("N");
+
+  state = await getState(page);
+  assert(state.freeMode && state.player.x === 10 && state.player.y === 1 && state.player.z === 3, "B: terrace/free mode failed");
   assert(runtimeErrors.length === 0 && failedRequests.length === 0, "B: runtime/resource errors");
-  results.tests.route_B = { result: "PASS", inventory: s.inventory, player: s.player, pieces: s.pieces.length };
+  results.tests.route_B = { result: "PASS", input: "touch/buttons", inventory: state.inventory, player: state.player, pieces: state.pieces.length };
   await context.close();
 }
-
 async function reflowAndA11y(width, height) {
   const { context, page, runtimeErrors } = await openGame(width, height);
   const name = await page.locator("#scene").getAttribute("aria-label");
