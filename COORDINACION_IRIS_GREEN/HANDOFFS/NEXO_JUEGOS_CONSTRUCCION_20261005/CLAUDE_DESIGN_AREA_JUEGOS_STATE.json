@@ -2,7 +2,7 @@
   "date": "2026-10-05",
   "coordinator": "Nexo",
   "issue": 369,
-  "status": "ORDER_PREPARED_FOR_USER_HANDOFF",
+  "status": "NEXO_CLAUDE_DESIGN_GAMES_NAVY_R01_PATCH_REQUIRED",
   "recipient": "Claude Design",
   "scope": [
     "Games area landing",
@@ -10,16 +10,16 @@
     "Plus catalog design"
   ],
   "order_file": "ORDEN_CLAUDE_DESIGN_AREA_JUEGOS_R01.md",
-  "order_commit": "328722824a98f2c734defbcecdb0b5d846c71fa6",
+  "order_commit": "b32904e29bc2a4e7d0a0de40231290411ea9a128",
   "role_clarification": {
     "claude_rincon": "Pecera full 5 minutes",
     "claude_design": "Games and web design; current brief = Games area surface",
-    "prisma": "Construction storyboard patch",
+    "prisma": "Construction isolated playable prototype, separately authorized",
     "axioma": "QA"
   },
   "next": [
-    "CLAUDE_DESIGN_VISUAL_DELIVERY",
-    "NEXO_REVIEW",
+    "CLAUDE_DESIGN_BOUNDED_PATCH",
+    "RENDERED_DELIVERY_REVIEW",
     "AXIOMA_REVIEW",
     "HUMAN_QA_MARIA"
   ],
@@ -27,5 +27,22 @@
   "game_runtime_authorized": false,
   "main_changes_authorized": false,
   "agent_contacted": false,
-  "notes": "Brief prepared and registered for María to hand to external Claude Design; no external agent activated."
+  "notes": "Scope = Claude Design Games area visual delivery only. Editable canvas HTML received; no game runtime delivered. External agent not activated. Prisma Construction playable prototype authorization remains separate and valid.",
+  "review_file": "REVIEW_CLAUDE_DESIGN_NAVY_R01.md",
+  "review_commit": "3e956c536454630b93a907bd2b8db39558a5892a",
+  "artifact": {
+    "filename": "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01(1).zip",
+    "bytes": 64762,
+    "sha256": "33a2b0eccf4cd75b0260a5607ff23291daa262850265d07ae62387a96159b28c",
+    "editable_frames": 18,
+    "png_exports": 0
+  },
+  "validation": {
+    "zip_integrity": "PASS",
+    "method": "STATIC_SOURCE_REVIEW",
+    "browser_rendered": false,
+    "visual_pass": false,
+    "canon_palette": "CORRECTED_IN_SOURCE",
+    "typography": "FAMILIES_CORRECTED_PACKAGING_AND_LINE_HEIGHT_PENDING"
+  }
 }
