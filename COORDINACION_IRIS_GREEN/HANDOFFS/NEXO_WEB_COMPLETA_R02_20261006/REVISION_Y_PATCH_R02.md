@@ -112,3 +112,16 @@ Fuentes técnicas contrastadas para estos matices:
 - https://www.w3.org/WAI/tutorials/images/decision-tree/
 - https://www.w3.org/WAI/tutorials/images/decorative/
 - https://web.dev/learn/performance/lazy-load-images-and-iframe-elements
+
+
+## Incorporación Axioma · mismo patch consolidado
+Revisión remitida por María: #369 comentario6014091277.
+Gate: AXIOMA_WEB_R02_KEEP_ARCHITECTURE_AND_REAL_IMAGE_HOME__PATCH_REQUIRED_BEFORE_HUMAN_QA.
+Axioma informa revisión del ZIP exacto f4e2dd62…b4281,192/192 hashes,191/191 manifest,18/18 procedencia y regeneración56 páginas sin diferencias. Informa contraste de16 assets atribuidos al commit4893d3c y su tamaño registrado; no convertir comprobación de existencia/tamaño en comparación de hashes contra ese commit si no se documentó.
+Coincide con el KEEP y los defectos ya consolidados; no genera otra implementación ni un nuevo rediseño.
+Precisiones que el ejecutor debe cubrir en el mismo patch:
+- Migas: Axioma registra27 páginasES+27EN. Retirar desde fuente y comprobar derivados en ambos idiomas, manteniendo navegación/retornos pertinentes.
+- Documentación: incluir página pública Accesibilidad además de MANIFEST/README. En sobre.html retirar «Contenido de esta sección pendiente de redactar con María» del flujo público; redactar sólo contenido confirmado o retirar bloque pendiente. No inventar biografía, compromisos ni servicios.
+- Mulberry: LICENCIA-MULBERRY.txt es aviso+enlace, no texto completo. Corregir la promesa del README (o adjuntar texto íntegro si ese fuera el entregable), conservando atribución/licencia existente. Axioma aporta https://mulberrysymbols.org/ como fuente; esta actualización no es dictamen jurídico ni revalidación independiente de derechos.
+- «47/47» permanece como resultado del banco del autor con su alcance: no se invalida aritméticamente por no probar clipping vertical ni se eleva a conformidad global.
+Secuencia ratificada: PATCH R02 → RETEST NEXO → PRECHECK AXIOMA → HUMAN QA MARÍA. NO MAIN · NO PUBLIC DEPLOY · NO REGENERAR MASTERS.
