@@ -29,6 +29,15 @@ def materialize(root):
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(bundle.read(item))
 
+    # Keep the site's font and final compatibility stylesheet on every document.
+    # Area-specific styles own the delivered layouts; no second application shell is mounted.
+    for base in (root/'es/juegos', root/'es/descubrimiento'):
+        for page in base.rglob('*.html'):
+            text = page.read_text(encoding='utf-8')
+            text = text.replace('<head>', '<head><link rel="stylesheet" href="/assets/ig-fonts.css">', 1)
+            text = text.replace('</head>', '<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css"></head>', 1)
+            page.write_text(text, encoding='utf-8')
+
     # Keep old deep links usable; only the primary Home entry changes destination.
     home = root / 'index.html'
     text = home.read_text(encoding='utf-8')
