@@ -35,8 +35,13 @@ def validate(root):
     assert not errors, '\n'.join(errors)
     home = (root/'index.html').read_text(encoding='utf-8')
     assert 'href="/es/juegos/"' in home and 'href="/es/descubrimiento/"' in home
-    for path in ('es/juegos/construccion/index.html', 'es/descubrimiento/cielo/index.html', 'es/descubrimiento/vida-marina/index.html'):
+    for path in ('es/juegos/construccion/index.html', 'es/descubrimiento/cielo-explorar/index.html', 'es/descubrimiento/vida-marina/index.html'):
         assert 'ig-experience-return' in (root/path).read_text(encoding='utf-8'), path
+    # Netlify canonicalizes .html and trailing slashes: a file and a directory
+    # with the same stem make the exploration link loop back to its detail.
+    for page in pages:
+        if page.name != 'index.html':
+            assert not (page.with_suffix('')/'index.html').exists(), f'Pretty URL collision: {page}'
     assert not (root/'editorial').exists(), 'Editorial sources must never be published'
     print(f'Interactive areas: {len(pages)} pages, links, runtime assets and returns verified.')
 

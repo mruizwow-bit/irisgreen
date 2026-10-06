@@ -25,7 +25,10 @@ def materialize(root):
                     raise ValueError('Unexpected source route')
                 if item.is_dir():
                     continue
-                path = root.joinpath(*relative.parts)
+                # Netlify Pretty URLs makes cielo.html and cielo/index.html
+                # collide. Give the playable experience its own route.
+                destination = item.filename.replace('es/descubrimiento/cielo/', 'es/descubrimiento/cielo-explorar/', 1)
+                path = root.joinpath(*PurePosixPath(destination).parts)
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_bytes(bundle.read(item))
 
@@ -34,6 +37,7 @@ def materialize(root):
     for base in (root/'es/juegos', root/'es/descubrimiento'):
         for page in base.rglob('*.html'):
             text = page.read_text(encoding='utf-8')
+            text = text.replace('href="cielo/"', 'href="cielo-explorar/"')
             route = '/' + page.relative_to(root).as_posix().removesuffix('index.html')
             text = text.replace('<head>', '<head><link rel="canonical" href="https://irisgreen.eu' + route + '">', 1)
             text = text.replace('<head>', '<head><link rel="stylesheet" href="/assets/ig-fonts.css">', 1)
@@ -41,11 +45,11 @@ def materialize(root):
             page.write_text(text, encoding='utf-8')
 
     # Make the delivered fixed storage key visible to the privacy auditor.
-    config = (root/'es/descubrimiento/cielo/js/config.js').read_text(encoding='utf-8')
+    config = (root/'es/descubrimiento/cielo-explorar/js/config.js').read_text(encoding='utf-8')
     key = re.search(r"CLAVE_GUARDADO:\s*'([^']+)'", config).group(1)
     if key != 'iris-green.cielo-nocturno.r01':
         raise ValueError('Review the new sky storage key and privacy notice')
-    interface = root/'es/descubrimiento/cielo/js/interfaz.js'
+    interface = root/'es/descubrimiento/cielo-explorar/js/interfaz.js'
     interface.write_text(interface.read_text(encoding='utf-8').replace('CFG.CLAVE_GUARDADO', repr(key)), encoding='utf-8')
 
     # These runtimes save only game/exploration state locally. Document their
