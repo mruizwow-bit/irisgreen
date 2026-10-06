@@ -207,3 +207,21 @@ La competencia se mantiene mediante:
 - actualización de fuentes;
 - simulaciones;
 - revisión del runbook.
+
+
+## Práctica 6 · Transferencia y autorrevisión de Descubrimiento · 2026-10-06
+
+Referencia: [formación aplicada R03](07_FORMACION_APLICADA_R03_20261006.md). Ejercicio propio: Fósiles con 14 assets existentes. Resultado real: SELF_REVIEW_REWORK_REQUIRED, no examen aprobado.
+
+Aprendizajes comprobados: siete comportamientos problemáticos reproducidos; anclajes anatómicos genéricos detectados; el banco inicial demostraba finalización pero no coherencia de cada gesto.
+
+Para la siguiente revisión, una vez recibidas las respuestas independientes:
+1. Explicar cada acción: intención, entrada, estado, consecuencia y contexto conservado.
+2. Probar que el objetivo visible y el punto seleccionado coinciden con la acción.
+3. Probar una única decisión de preparación para botón, examen y mensaje.
+4. Revisar anclajes individualmente; un asset intacto no valida etiquetas nuevas.
+5. Usar un contraejemplo que falle con la R01; no cambiar la aserción para obtener verde.
+6. Separar evidencia estática, fixture, navegador y observación de producto.
+7. Valorar repetición y encontrabilidad en caparazón, espina y ala, sin convertir la experiencia en test escolar.
+
+Ejercicios de giro a distintas tasas, cancelación asíncrona, foco y reflow definidos en R03 siguen pendientes cuando no hay ejecución registrada. No dar por realizados ejercicios por haber escrito su procedimiento.
