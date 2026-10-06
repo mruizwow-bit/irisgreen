@@ -1,0 +1,16 @@
+{
+  "method": "Original Three r149 and delivered geometry functions in Node; no WebGL rendering",
+  "revision": "149",
+  "vera": {
+    "meshes": 21,
+    "triangles": 3126
+  },
+  "terrainTriangles": 1024,
+  "waterMaterialVertexColors": false,
+  "terrainHeight3Edge": {
+    "grassColorFromY": 1.22,
+    "grassColorToY": 3,
+    "soilColorFromY": 1,
+    "soilColorToY": 1.22
+  }
+}
