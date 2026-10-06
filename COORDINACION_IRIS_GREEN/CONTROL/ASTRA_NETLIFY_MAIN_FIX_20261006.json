@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-06",
+  "request": "Pues arreglalo, todo en main recuerda",
+  "commit": "4a91de8617f8c0c08d8d8867db1b2405fac7997e",
+  "branch": "main",
+  "file": ".github/workflows/publicar-main-review-netlify.yml",
+  "changes": [
+    "workflow_dispatch solo permitido desde refs/heads/main",
+    "checkout explícito de main y SHA construido real",
+    "concurrency para serializar actualizaciones del alias",
+    "CLI fijada 27.11.1 y Node 22",
+    "autodespliegue al cambiar el workflow",
+    "resumen con deploy ID, URL y SHA"
+  ],
+  "validation": "YAML parseado y scripts bash -n PASS; despliegue real en ejecución",
+  "run": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37420417204",
+  "public_maintenance_preserved": true,
+  "voice_fixed": false,
+  "notes": "La captura de Cancelled refleja el ignore deliberado. No se interpreta 'todo en main' como reapertura pública: MAINTENANCE_ACTIVE.txt mantiene la web cerrada hasta autorización expresa. Fallo CSP observado ya en commit documental previo; no atribuir a este workflow."
+}
