@@ -12,6 +12,7 @@ function stripAssistant(text,model){
  const aliases=(model?.assistant_aliases||[]).map(escapeRegExp);
  if(!aliases.length)return q;
  const names='(?:'+aliases.join('|')+')';
+ q=q.replace(new RegExp('^(hola|buenas|hello|hi|hey)[,\\s]+'+names+'\\b[\\s,.:;!?¡¿-]*','iu'),'$1 ');
  q=q.replace(new RegExp('^'+names+'\\b[\\s,.:;!?¡¿-]*','iu'),'');
  q=q.replace(new RegExp('[\\s,.:;!?¡¿-]*'+names+'\\b[\\s,.:;!?¡¿-]*$','iu'),'');
  return clean(q);
@@ -65,7 +66,7 @@ export function createDialogueLibrary({model,variables}={}){
 
  function classify(text){
   const stripped=stripAssistant(text,model);
-  const candidate=clean(stripped).replace(/^[¿¡?!.,;:\s]+|[¿¡?!.,;:\s]+$/g,'');
+  const candidate=clean(stripped).replace(/[¿¡]/g,'').replace(/^[?!.,;:\s]+|[?!.,;:\s]+$/g,'');
   const intents=[...(model?.intents||[])].sort((a,b)=>(b.priority||0)-(a.priority||0));
   for(const intent of intents){
    for(const pattern of intent.patterns||[]){

@@ -1,10 +1,33 @@
 import {createSabikVoice} from './audio-r01.mjs';
+import {DIALOGUE_AUDIO} from './dialogue-audio.mjs?v=sabik-r10';
 
 const MODEL={
  es:{locale:'es',ttsLanguage:'Spanish',ttsId:'SABIK_ES_MASTER_V1_ICL',ttsSha:'38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c'},
  en:{locale:'en',ttsLanguage:'English',ttsId:'SABIK_EN_MASTER_V2_ICL',ttsSha:'38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c'}
 };
 const MAX_CAPTURE_MS=12000;
+
+export function speechParts(value){
+ const parts=[];let current='';
+ for(const word of cleanText(value).split(/\s+/)){
+  const limit=parts.length?160:85;
+  if(current&&(current+' '+word).length>limit){parts.push(current);current=word;}else current=(current+' '+word).trim();
+  if(/[.!?]$/.test(current)){parts.push(current);current='';}
+ }
+ if(current)parts.push(current);return parts;
+}
+export async function voiceRequest(fetcher,url,options={},milliseconds=12000){
+ const controller=new AbortController(),abort=()=>controller.abort();
+ options.signal?.addEventListener('abort',abort,{once:true});
+ if(options.signal?.aborted)abort();
+ const timer=setTimeout(abort,milliseconds);
+ try{
+  const response=await fetcher(url,{...options,signal:controller.signal});
+  // Include response-body transfer in the deadline.
+  const bytes=await response.arrayBuffer();
+  return new Response(bytes,{status:response.status,headers:response.headers});
+ }finally{clearTimeout(timer);options.signal?.removeEventListener('abort',abort);}
+}
 
 function language(value){return String(value||'').toLowerCase().startsWith('en')?'en':'es';}
 function clamp(value,min,max){const n=Number(value);return Number.isFinite(n)?Math.max(min,Math.min(max,n)):min;}
@@ -50,8 +73,9 @@ export function createSabikConversationalVoice({
  let lang=language(initialLanguage),enabled=false,capability=null,capabilityPromise=null;
  let stream=null,recorder=null,chunks=[],captureTimer=0,vadTimer=0,vadContext=null,vadSource=null,vadAnalyser=null,sttController=null,ttsController=null,audio=null,audioUrl='';
  let playbackContext=null,playbackGain=null,playbackAnalyser=null,playbackSource=null,energyFrame=0,energyData=null,energySmoothed=0;
- let listening=false,transcribing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
+ let listening=false,transcribing=false,preparing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
+ let finishPlayback=null;
 
  const fixed=fixedVoiceFactory({
   initialLanguage:lang,
@@ -60,15 +84,15 @@ export function createSabikConversationalVoice({
 
  function state(){
   return Object.freeze({
-   enabled,language:lang,listening,transcribing,speaking:speaking||fixedPlaying,
+   enabled,language:lang,listening,transcribing,preparing,speaking:speaking||fixedPlaying,
    serviceReady:Boolean(capability),serviceStatus:capability?'ready':capabilityPromise?'checking':'unknown',
-   sttAvailable:Boolean(capability?.stt),ttsAvailable:Boolean(capability?.tts?.[lang]),
+   sttAvailable:Boolean(capability?.stt),ttsAvailable:enabled,
    volume,rate,canRepeat:Boolean(lastText),lastTranscript
   });
  }
  function semantic(){
   if(listening)return'listening';
-  if(transcribing)return'processing';
+  if(transcribing||preparing)return'processing';
   if(speaking||fixedPlaying)return'speaking';
   return'idle';
  }
@@ -178,7 +202,8 @@ export function createSabikConversationalVoice({
    try{audio.pause();audio.removeAttribute?.('src');audio.load?.();}catch{}
    audio=null;
   }
-  revoke();speaking=false;stopEnergy();
+  finishPlayback?.('cancelled');finishPlayback=null;
+  revoke();speaking=false;preparing=false;stopEnergy();
   if(emitState)emit({reason:'speech-stop'});
  }
  function cancelSpeech({emitState=true}={}){
@@ -190,7 +215,7 @@ export function createSabikConversationalVoice({
   serial+=1;stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});emit({reason});
  }
 
- async function setEnabled(next){
+ async function setEnabled(next,{playbackOnly=false}={}){
   const value=Boolean(next);
   // Unlock during the click gesture, before capability/network awaits.
   if(value)ensurePlaybackUnlocked();
@@ -199,6 +224,7 @@ export function createSabikConversationalVoice({
    try{await fixed.setEnabled(false);}catch{}fixedReady=false;
    return state();
   }
+  if(playbackOnly){enabled=true;emit({reason:'playback-enabled'});return state();}
   try{
    await capabilities();
    try{await fixed.setEnabled(true);fixedReady=true;}catch{fixedReady=false;}
@@ -227,7 +253,7 @@ export function createSabikConversationalVoice({
   const controller=new AbortController();sttController=controller;
   try{
    const form=new FormData();form.append('audio',blob,'turn.'+(blob.type.includes('ogg')?'ogg':'webm'));form.append('locale',lang);
-   const response=await fetchImpl(endpoint(endpointBase,'/transcribe'),{
+   const response=await voiceRequest(fetchImpl,endpoint(endpointBase,'/transcribe'),{
     method:'POST',body:form,cache:'no-store',credentials:'same-origin',signal:controller.signal,headers:{Accept:'application/json'}
    });
    if(!response?.ok){
@@ -257,6 +283,7 @@ export function createSabikConversationalVoice({
   if(!enabled){
    const s=await setEnabled(true);if(!s.enabled)return Object.freeze({status:'unavailable'});
   }
+  if(!capability){try{await capabilities();}catch{issue('STT_UNAVAILABLE');return Object.freeze({status:'unavailable'});}}
   if(!capability?.stt){issue('STT_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   if(!host?.navigator?.mediaDevices?.getUserMedia||!host?.MediaRecorder){issue('MICROPHONE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});
@@ -297,25 +324,18 @@ export function createSabikConversationalVoice({
 
  async function speak(text,{remember=true}={}){
   const value=cleanText(text);if(!enabled||!value)return Object.freeze({status:'disabled'});
-  try{await capabilities();}catch(error){issue(error?.code||'VOICE_SERVICE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   cancelSpeech({emitState:false});
   if(remember)lastText=value;
-  const pieces=value.split(/(?<=[.!?])\s+/).map(cleanText).filter(Boolean),parts=[];
-  for(const piece of pieces){
-   if(piece.length<=180){parts.push(piece);continue;}
-   const words=piece.split(/\s+/);let current='';
-   for(const word of words){
-    const next=(current+' '+word).trim();
-    if(current&&next.length>180){parts.push(current);current=word;}else current=next;
-   }
-   if(current)parts.push(current);
-  }
-  if(!parts.length)parts.push(value);
+  const fixedEntry=DIALOGUE_AUDIO.find(row=>row.locale===lang&&row.text===value);
+  const parts=fixedEntry?[value]:speechParts(value);
   const ticket=++serial,controller=new AbortController();ttsController=controller;
+  preparing=true;emit({reason:'speech-preparing'});
   try{
+   if(!fixedEntry)await capabilities();
    for(let index=0;index<parts.length;index++){
     if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
-    const response=await fetchImpl(endpoint(endpointBase,'/synthesize'),{
+    preparing=true;emit({reason:'speech-preparing'});
+    const response=fixedEntry?await voiceRequest(fetchImpl,fixedEntry.url,{credentials:'same-origin',signal:controller.signal},5000):await voiceRequest(fetchImpl,endpoint(endpointBase,'/synthesize'),{
      method:'POST',cache:'no-store',credentials:'same-origin',signal:controller.signal,
      headers:{'Content-Type':'application/json',Accept:'audio/wav'},
      body:JSON.stringify({text:parts[index],locale:lang,model_id:MODEL[lang].ttsId})
@@ -323,6 +343,11 @@ export function createSabikConversationalVoice({
     if(!response.ok)throw failure('TTS_HTTP_'+response.status);
     if(!/^audio\/(?:wav|x-wav|wave)(?:;|$)/i.test(response.headers?.get?.('content-type')||''))throw failure('TTS_BAD_MEDIA');
     const blob=await response.blob();if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
+    if(fixedEntry){
+     const digest=await globalThis.crypto.subtle.digest('SHA-256',await blob.arrayBuffer());
+     if([...new Uint8Array(digest)].map(v=>v.toString(16).padStart(2,'0')).join('')!==fixedEntry.sha256)throw failure('TTS_BAD_MEDIA');
+    }
+    preparing=false;
     let result;
     if(ensurePlaybackUnlocked()&&playbackContext&&playbackGain){
      try{
@@ -332,7 +357,8 @@ export function createSabikConversationalVoice({
       result=await new Promise(resolve=>{
        let settled=false;
        const source=playbackContext.createBufferSource();playbackSource=source;source.buffer=buffer;source.playbackRate.value=rate;source.connect(playbackAnalyser||playbackGain);
-       const finish=status=>{if(settled)return;settled=true;if(playbackSource===source)playbackSource=null;try{source.disconnect();}catch{}speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+       const finish=status=>{if(settled)return;settled=true;finishPlayback=null;if(playbackSource===source)playbackSource=null;try{source.disconnect();}catch{}speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+       finishPlayback=finish;
        source.onended=()=>finish('ended');
        try{speaking=true;emit({semantic:'speaking',reason:'audio-context-playing',part:index+1,parts:parts.length});startEnergy();source.start(0);}catch{finish('play-error');}
       });
@@ -342,20 +368,22 @@ export function createSabikConversationalVoice({
      audioUrl=host.URL.createObjectURL(blob);const player=new AudioCtor();audio=player;player.preload='none';player.src=audioUrl;player.volume=volume;player.playbackRate=rate;
      result=await new Promise(resolve=>{
       let settled=false;
-      const finish=status=>{if(settled)return;settled=true;if(audio===player)audio=null;revoke();speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+      const finish=status=>{if(settled)return;settled=true;finishPlayback=null;if(audio===player)audio=null;revoke();speaking=false;stopEnergy();emit({reason:'speech-'+status,part:index+1,parts:parts.length});resolve(status);};
+      finishPlayback=finish;
       player.addEventListener?.('playing',()=>{if(ticket!==serial){try{player.pause();}catch{}return;}speaking=true;emit({semantic:'speaking',reason:'audio-playing',part:index+1,parts:parts.length});},{once:true});
       player.addEventListener?.('ended',()=>finish('ended'),{once:true});
       player.addEventListener?.('error',()=>finish('play-error'),{once:true});
       Promise.resolve(player.play()).catch(()=>finish('play-error'));
      });
     }
+    if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
     if(result!=='ended'){if(result==='play-error')issue('TTS_PLAYBACK_ERROR');return Object.freeze({status:result,language:lang,model_id:MODEL[lang].ttsId});}
    }
    return Object.freeze({status:'ended',language:lang,model_id:MODEL[lang].ttsId,parts:parts.length});
   }catch(error){
    if(ticket!==serial||controller.signal.aborted)return Object.freeze({status:'cancelled'});
    ttsController=null;issue(error?.code||'TTS_ERROR');return Object.freeze({status:'error'});
-  }finally{if(ticket===serial)ttsController=null;}
+  }finally{if(ticket===serial){ttsController=null;preparing=false;emit({reason:'speech-complete'});}}
  }
  function repeat(){return lastText?speak(lastText,{remember:false}):Promise.resolve(Object.freeze({status:'empty'}));}
 

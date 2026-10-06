@@ -24,10 +24,23 @@
   },
   "intents": [
     {
+      "id": "social.identity",
+      "priority": 109,
+      "patterns": [
+        "^(?:quien|quién) eres$",
+        "^(?:que|qué) (?:puedes hacer|haces|sabes hacer)$",
+        "^(?:ayuda|ayudame|ayúdame)$"
+      ],
+      "action": "respond",
+      "prompt": "social.identity.response"
+    },
+    {
       "id": "social.greeting",
       "priority": 100,
       "patterns": [
-        "^(?:hola|buenas|buenos dias|buenos días|buenas tardes|buenas noches)$"
+        "^(?:hola|buenas|buenos dias|buenos días|buenas tardes|buenas noches)$",
+        "^(?:hola|buenas)(?:[, !]+(?:como|cómo) est[aá]s)?$",
+        "^(?:como|cómo) est[aá]s$"
       ],
       "prompt": "social.greeting.response",
       "action": "respond"
@@ -255,30 +268,19 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hola.",
-        "Hola. Te escucho.",
-        "Hola. Aquí estoy.",
-        "Buenas."
+        "Hola. Te escucho."
       ],
       "reprompt": []
     },
     "social.attention.response": {
       "initial": [
-        "Sí. Te escucho.",
-        "Aquí estoy. Te escucho.",
-        "Sí, dime.",
-        "Te escucho. Continúa."
+        "Sí, te escucho."
       ],
-      "reprompt": [
-        "Te escucho.",
-        "Dime."
-      ]
+      "reprompt": []
     },
     "social.thanks.response": {
       "initial": [
-        "De nada.",
-        "Claro.",
-        "Cuando quieras."
+        "De nada."
       ],
       "reprompt": []
     },
@@ -394,6 +396,18 @@
         "¿Puedes repetirlo?",
         "Dímelo otra vez, por favor."
       ]
+    },
+    "social.identity.response": {
+      "initial": [
+        "Soy Sabik, el asistente de Iris Green. Puedo ayudarte a consultar sus contenidos."
+      ],
+      "reprompt": []
+    },
+    "capability.unavailable": {
+      "initial": [
+        "Esa función todavía no está conectada. Puedo ayudarte a consultar los contenidos de Iris Green."
+      ],
+      "reprompt": []
     }
   }
 }

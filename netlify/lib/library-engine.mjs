@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {queryTerms} from '../../sabik/query-relevance.mjs';
 
 const BANDS = ['AGE_0_12','AGE_13_17','AGE_18_PLUS'];
 const terms = text => [...new Set(text.normalize('NFKD').replace(/\p{M}/gu,'').toLowerCase().match(/[\p{L}\p{N}]+/gu)||[])];
@@ -26,7 +27,7 @@ export function searchLibrary(rows, request, version) {
      typeof request.query!=='string'||!request.query.trim()||request.query.length>300||
      !BANDS.includes(request.ageBand)||!['es','en'].includes(request.locale)||
      request.version!==version||!Number.isInteger(request.limit)||request.limit<1||request.limit>6) throw new Error('invalid_request');
-  const query=terms(request.query).filter(x=>!STOP.has(x));
+  const query=queryTerms(request.query);
   const hits=[];
   // Filter before ranking; self-declared adulthood never authorizes S2 content.
   for(const row of rows){
@@ -34,7 +35,7 @@ export function searchLibrary(rows, request, version) {
        !row.age_bands.some(b=>b==='ALL_AGES'||b===request.ageBand)) continue;
     const title=terms(row.title), body=terms(row.text+' '+row.heading);
     const score=query.reduce((sum,t)=>sum+(title.includes(t)?400:0)+(body.includes(t)?100:0),0);
-    if(score) hits.push({row,score});
+    if(score&&query.filter(t=>title.includes(t)||body.includes(t)).length>=Math.ceil(query.length*.65)) hits.push({row,score});
   }
   hits.sort((a,b)=>b.score-a.score||(a.row.id<b.row.id?-1:1));
   return hits.slice(0,request.limit).map(({row,score})=>({library_version:version,
