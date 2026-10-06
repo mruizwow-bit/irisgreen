@@ -1078,3 +1078,35 @@ Esta formación debe seguir creciendo con:
 No considerar aprendizaje “cerrado” por haber escrito el documento.
 
 `NO MAIN · NO PRODUCCIÓN`
+
+
+---
+
+# 35. Incremento · Cielo R02 · evidencia astronómica vs tolerancia motora
+
+Aprendizaje nuevo tras repetir 65/65 pruebas de Cielo R02 y ejecutar probes adversos:
+
+**Cambiar el denominador a “sólo puntos visibles” no basta para hacer equivalente el reconocimiento entre viewports si la zona de evidencia sigue definida por un radio CSS-px.**
+
+Contraejemplo real:
+- mismo punto del cielo;
+- misma cámara inicial;
+- 320 → identifica Andrómeda;
+- 1440 → ninguno.
+
+Por tanto separar siempre:
+- `INPUT_TOLERANCE_PX`: comodidad motora;
+- `EVIDENCE_APERTURE`: regla geométrica/astronómica.
+
+Además:
+- no normalizar falta de evidencia hasta convertir 1/1 o 2/2 en “patrón completo”;
+- definir mínimo de evidencia semántica por patrón/subpatrón;
+- añadir tests negativos y de equivalencia entre viewports;
+- reachability no sustituye specificity;
+- una matriz positiva de 88 objetivos no detecta falsos positivos en cielo vacío.
+
+Gate añadido:
+`SAME_SKY_EVIDENCE_320_390_1440`
+
+Anti-patrón añadido:
+**no usar el mismo radio CSS para target motor y significado científico/perceptual de la evidencia.**
