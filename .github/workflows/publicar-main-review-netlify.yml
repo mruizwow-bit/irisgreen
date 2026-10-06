@@ -139,7 +139,6 @@ jobs:
 
           npx -y netlify-cli@27.11.1 deploy \
             --no-build \
-            --context=branch-deploy \
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
