@@ -1,0 +1,109 @@
+{
+  "method": "Original JS in isolated Node fixtures; native Canvas only for pair-transform test; no native DOM/browser",
+  "gestures": {
+    "slow1300ms": [
+      [
+        0.31,
+        0.22
+      ]
+    ],
+    "cancel": [],
+    "twoQuietContacts": [
+      [
+        0.8,
+        0.5
+      ]
+    ]
+  },
+  "enterTwoCandidates": [],
+  "otherFocusedThenOneCandidate": {
+    "hidden": true,
+    "focusTransferCalls": 0,
+    "note": "Source/fixture confirms hide without transfer; browser focus outcome not tested"
+  },
+  "turnAtEqualElapsedSeconds": [
+    {
+      "hz": 30,
+      "giroAfter1s": -0.6335757134372489
+    },
+    {
+      "hz": 60,
+      "giroAfter1s": -0.9328666211084894
+    },
+    {
+      "hz": 120,
+      "giroAfter1s": -1
+    }
+  ],
+  "noneTransition": {
+    "before": {
+      "position": {
+        "x": 2282.14414735743,
+        "y": 604.8231745745485,
+        "vx": 23.48968540628373
+      },
+      "giro": -1
+    },
+    "after": {
+      "position": {
+        "x": 2282.14414735743,
+        "y": 604.8231745745485,
+        "vx": 0
+      },
+      "giro": 1
+    },
+    "note": "Constructed valid paused pose; no state claim about a browser route"
+  },
+  "waveChange": [
+    {
+      "id": "prof-pez-hacha",
+      "normal": 0,
+      "reduced": 0,
+      "none": 0
+    },
+    {
+      "id": "prof-pez-linterna",
+      "normal": -0.00836912980279066,
+      "reduced": -0.009484120267435323,
+      "none": 0
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "normal": -5.621639330743157,
+      "reduced": -2.7133545722530235,
+      "none": 0
+    }
+  ],
+  "registrationOriginalDraw": [
+    {
+      "id": "prof-pez-hacha",
+      "giro": 1,
+      "iou": 0.9888410383306765
+    },
+    {
+      "id": "prof-pez-hacha",
+      "giro": -1,
+      "iou": 0.9774581114840142
+    },
+    {
+      "id": "prof-pez-linterna",
+      "giro": 1,
+      "iou": 0.9817972611619804
+    },
+    {
+      "id": "prof-pez-linterna",
+      "giro": -1,
+      "iou": 0.9817972611619804
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "giro": 1,
+      "iou": 0.9640179755516007
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "giro": -1,
+      "iou": 0.8055367802659423
+    }
+  ]
+}
