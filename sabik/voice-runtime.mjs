@@ -76,6 +76,7 @@ export function createSabikConversationalVoice({
  let listening=false,transcribing=false,preparing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
  let finishPlayback=null;
+ let keepMicrophone=false,captureHeard=false,vadAvailable=false;
 
  const fixed=fixedVoiceFactory({
   initialLanguage:lang,
@@ -109,14 +110,15 @@ export function createSabikConversationalVoice({
   const AC=host.AudioContext||host.webkitAudioContext;if(typeof AC!=='function'||!stream)return;
   try{
    const ctx=new AC();vadContext=ctx;vadSource=ctx.createMediaStreamSource(stream);vadAnalyser=ctx.createAnalyser();vadAnalyser.fftSize=512;vadAnalyser.smoothingTimeConstant=.15;vadSource.connect(vadAnalyser);void ctx.resume?.();
-   const data=new Uint8Array(vadAnalyser.fftSize),started=(host.performance?.now?.()??Date.now());let heard=false,lastVoice=started;
+   vadAvailable=true;
+   const data=new Uint8Array(vadAnalyser.fftSize),started=(host.performance?.now?.()??Date.now());let lastVoice=started;
    const tick=()=>{
     if(ticket!==serial||recorder!==current||!listening)return clearVad();
     vadAnalyser.getByteTimeDomainData(data);let sum=0;
     for(const n of data){const x=(n-128)/128;sum+=x*x;}
     const rms=Math.sqrt(sum/data.length),now=(host.performance?.now?.()??Date.now());
-    if(rms>.018){heard=true;lastVoice=now;}
-    if(heard&&now-lastVoice>1100&&now-started>700){stopListening();return;}
+    if(rms>.018){captureHeard=true;lastVoice=now;}
+    if(captureHeard&&now-lastVoice>1100&&now-started>700){stopListening();return;}
     vadTimer=host.setTimeout?.(tick,100)||0;
    };
    vadTimer=host.setTimeout?.(tick,120)||0;
@@ -177,7 +179,7 @@ export function createSabikConversationalVoice({
   return capabilityPromise;
  }
 
- function stopRecorder({discard=true}={}){
+ function stopRecorder({discard=true,release=true}={}){
   clearTimer();
   if(recorder){
    const current=recorder;recorder=null;
@@ -186,7 +188,7 @@ export function createSabikConversationalVoice({
     if(current.state&&current.state!=='inactive')current.stop();
    }catch{}
   }
-  closeStream();
+  if(release)closeStream();else clearVad();
   if(discard)chunks=[];
   listening=false;
  }
@@ -212,7 +214,7 @@ export function createSabikConversationalVoice({
   if(emitState)emit({reason:'speech-stop'});
  }
  function stopAll(reason='cancelled'){
-  serial+=1;stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});emit({reason});
+  keepMicrophone=false;serial+=1;stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});emit({reason});
  }
 
  async function setEnabled(next,{playbackOnly=false}={}){
@@ -278,28 +280,39 @@ export function createSabikConversationalVoice({
   }
  }
 
- async function startListening(){
+ async function startListening({keepStream=false}={}){
+  const startingTicket=serial;
   ensurePlaybackUnlocked();
   if(!enabled){
    const s=await setEnabled(true);if(!s.enabled)return Object.freeze({status:'unavailable'});
   }
   if(!capability){try{await capabilities();}catch{issue('STT_UNAVAILABLE');return Object.freeze({status:'unavailable'});}}
+  if(startingTicket!==serial)return Object.freeze({status:'stale'});
   if(!capability?.stt){issue('STT_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
   if(!host?.navigator?.mediaDevices?.getUserMedia||!host?.MediaRecorder){issue('MICROPHONE_UNAVAILABLE');return Object.freeze({status:'unavailable'});}
-  stopRecorder({discard:true});cancelStt();cancelSpeech({emitState:false});
+  keepMicrophone=keepStream;
+  stopRecorder({discard:true,release:!keepStream});cancelStt();cancelSpeech({emitState:false});
   const ticket=++serial;
   try{
-   stream=await host.navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true},video:false});
-   if(ticket!==serial){closeStream();return Object.freeze({status:'stale'});}
+   if(!stream||stream.getTracks().some(track=>track.readyState==='ended')){
+    closeStream();
+    const acquired=await host.navigator.mediaDevices.getUserMedia({audio:{channelCount:1,echoCancellation:true,noiseSuppression:true,autoGainControl:true},video:false});
+    if(ticket!==serial){for(const track of acquired.getTracks())track.stop();return Object.freeze({status:'stale'});}
+    stream=acquired;
+   }
+   for(const track of stream.getTracks())track.enabled=true;
    const mime=chooseMime(host),MR=host.MediaRecorder;
    recorder=mime?new MR(stream,{mimeType:mime}):new MR(stream);chunks=[];
-   const current=recorder;
+   const current=recorder;captureHeard=false;vadAvailable=false;
    current.ondataavailable=event=>{if(ticket===serial&&event.data?.size)chunks.push(event.data);};
    current.onerror=()=>{if(ticket===serial){stopRecorder({discard:true});issue('MICROPHONE_ERROR');}};
     current.onstart=()=>{if(ticket===serial){listening=true;emit({semantic:'listening',reason:'capture-start'});startVad(current,ticket);}};
    current.onstop=()=>{
     if(ticket!==serial)return;
-    const type=current.mimeType||mime||'audio/webm',blob=new Blob(chunks,{type});chunks=[];closeStream();listening=false;
+    const silence=vadAvailable&&!captureHeard;
+    const type=current.mimeType||mime||'audio/webm',blob=new Blob(chunks,{type});chunks=[];clearVad();listening=false;
+    if(keepMicrophone){for(const track of stream?.getTracks()||[])track.enabled=false;}else closeStream();
+    if(silence){issue('CAPTURE_SILENCE');return;}
     if(!blob.size){issue('STT_EMPTY_AUDIO');return;}
     void transcribe(blob,ticket);
    };
@@ -320,7 +333,7 @@ export function createSabikConversationalVoice({
   try{if(current.state!=='inactive')current.stop();else current.onstop?.();}catch{closeStream();chunks=[];issue('MICROPHONE_ERROR');}
   return Object.freeze({status:'transcribing'});
  }
- function cancelListening(){serial+=1;stopRecorder({discard:true});cancelStt();emit({reason:'capture-cancel'});}
+ function cancelListening(){serial+=1;stopRecorder({discard:true,release:!keepMicrophone});for(const track of stream?.getTracks()||[])track.enabled=false;cancelStt();emit({reason:'capture-cancel'});}
 
  async function speak(text,{remember=true}={}){
   const value=cleanText(text);if(!enabled||!value)return Object.freeze({status:'disabled'});

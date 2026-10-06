@@ -1,7 +1,8 @@
 import {createRetrievalQuery} from './retrieval-bridge.browser.mjs';
 import {createAuthorizedTransport} from './authorized-transport.mjs';
 import {connectionConfig,sealedLibrary} from './mount-config.mjs';
-import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r10';
+import {createVoiceSession,endsVoiceConversation} from './voice-session.mjs?v=sabik-r11';
+import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r11';
 import {createSabikConversation} from './conversation-core-r66.mjs?v=sabik-r10';
 import {createDialogueLibrary} from './dialogue-library.mjs?v=sabik-r10';
 import {DIALOGUE_DATA} from './dialogue-data.mjs?v=sabik-r10';
@@ -25,9 +26,9 @@ const TEXT={
   empty:'Escribe qué necesitas.',spanish:'Algunas fuentes originales están en español.',
   voice:'Hablar con Sabik',voiceOn:'Conversación activa',voiceOff:'Lista',connecting:'Conectando…',mic:'Hablar',stopVoice:'Detener',repeat:'Repetir',
   volume:'Volumen',rate:'Velocidad',listening:'Escuchando',processing:'Procesando',speaking:'Hablando',
-  voiceHelp:'Pulsa «Hablar con Sabik» y habla. Sabik escucha después de tu activación explícita. Iris Green no guarda el audio.',
+  voiceHelp:'Pulsa «Hablar con Sabik». La conversación continúa tras cada respuesta y durante las pausas, hasta que pulses «Detener» o te despidas. Iris Green no guarda el audio.',
   voiceReady:'Voz preparada.',voiceError:'La voz no se pudo activar.',micDenied:'No se pudo usar el micrófono. Puedes seguir escribiendo.',
-  noSpeech:'No he oído suficiente voz. Puedes intentarlo de nuevo o escribir la consulta.',audioUnreadable:'No he podido entender el audio. Prueba a hablar de nuevo o escribe la consulta.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
+  noSpeech:'No he oído suficiente voz. Sigo escuchando.',audioUnreadable:'No he podido entender el audio. Prueba a hablar de nuevo o escribe la consulta.',sttUnavailable:'El reconocimiento de voz de Sabik no está disponible ahora. Puedes seguir escribiendo.',
   ttsUnavailable:'La voz dinámica de Sabik no está disponible ahora. La respuesta escrita sigue disponible.',sources:'Fuentes',options:'Opciones de Sabik'
  },
  en:{
@@ -44,7 +45,7 @@ const TEXT={
   empty:'Write what you need.',spanish:'Some original sources are in Spanish.',
   voice:'Talk to Sabik',voiceOn:'Conversation active',voiceOff:'Ready',connecting:'Connecting…',mic:'Speak',stopVoice:'Stop',repeat:'Repeat',
   volume:'Volume',rate:'Speed',listening:'Listening',processing:'Processing',speaking:'Speaking',
-  voiceHelp:'Press “Talk to Sabik” and speak. Sabik listens after your explicit activation. Iris Green does not store the audio.',
+  voiceHelp:'Press “Talk to Sabik”. The conversation continues after each answer and during pauses until you press “Stop” or say goodbye. Iris Green does not store the audio.',
   voiceReady:'Voice ready.',voiceError:'Sabik voice could not be turned on.',micDenied:'The microphone could not be used. You can keep typing.',
   noSpeech:'I did not hear enough speech. You can try again or type your question.',audioUnreadable:'I could not understand the audio. Try speaking again or type your question.',sttUnavailable:'Sabik speech recognition is not available right now. You can keep typing.',
   ttsUnavailable:'Sabik dynamic voice is not available right now. The written answer remains available.',sources:'Sources',options:'Sabik options'
@@ -57,29 +58,22 @@ async function mount(){
  const connection=connectionConfig.enabled?createAuthorizedTransport({cloudOrigin:connectionConfig.cloudOrigin}):null;
  const cloudQuery=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
  let reviewedBinding=null;
- let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false,voiceSessionActive=false,voiceResumeTimer=0;
+ let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options),present=()=>visual('presente',{force:true});
  const dialogues=Object.fromEntries(['es','en'].map(code=>[code,createDialogueLibrary({model:DIALOGUE_DATA[code],variables:DIALOGUE_DATA.variables})]));
- let voice,lastLanguage=lang;
+ let voice,voiceSession,lastLanguage=lang;
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
  function ageBand(){return window.IGAudience?.get?.()||'AGE_UNSET';}
  function ageSelected(){return ['AGE_0_12','AGE_13_17','AGE_18_PLUS'].includes(ageBand());}
  function restrictedAdultAccess(){return Boolean(window.IGAudience?.canAccessRestrictedAdultContent?.());}
- function clearVoiceResume(){if(voiceResumeTimer){window.clearTimeout(voiceResumeTimer);voiceResumeTimer=0;}}
- function resumeVoiceSoon(delay=700){
-  clearVoiceResume();
-  if(!voiceSessionActive||!ageSelected())return;
-  voiceResumeTimer=window.setTimeout(()=>{
-   voiceResumeTimer=0;
-   const s=voice.getState();
-   if(voiceSessionActive&&!busy&&!s.speaking&&!s.listening&&!s.transcribing)void voice.startListening();
-  },delay);
- }
+ function clearVoiceResume(){voiceSession?.clear();}
  function endVoiceSession(reason='voice-session-stop'){
-  voiceSessionActive=false;voiceTurn=false;clearVoiceResume();voice.stopAll(reason);controls();
+  voiceTurn=false;voiceSession.stop(reason);controls();
  }
  function voiceMessage(code){
+  voiceSession?.handleError(code);
+  if(code==='CAPTURE_SILENCE')return;
   const key={MICROPHONE_DENIED:'micDenied',MICROPHONE_UNAVAILABLE:'micDenied',MICROPHONE_ERROR:'micDenied',STT_UNAVAILABLE:'sttUnavailable',STT_ERROR:'sttUnavailable',STT_EMPTY:'noSpeech',STT_EMPTY_AUDIO:'noSpeech',STT_AUDIO_DECODE_ERROR:'audioUnreadable',VOICE_SERVICE_UNAVAILABLE:'voiceError',TTS_ERROR:'ttsUnavailable',TTS_PLAYBACK_ERROR:'ttsUnavailable'}[code]||'voiceError';
   announcement.textContent=strings()[key];
  }
@@ -99,10 +93,10 @@ async function mount(){
  function syncVoice(state,meta={}){
   const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing||state?.preparing),speaking=Boolean(state?.speaking);
   const semantic=meta.semantic==='degraded'?'degraded':speaking?'speaking':listening?'listening':transcribing||busy?'processing':meta.semantic||'idle';
-  voiceButton.setAttribute('aria-pressed',String(voiceSessionActive));voiceState.textContent=semantic==='degraded'?strings().voiceError:listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSessionActive?strings().voiceOn:strings().voiceOff;
-  voiceButton.setAttribute('aria-label',`${strings().voice}: ${voiceSessionActive?strings().voiceOn:strings().voiceOff}`);
+  voiceButton.setAttribute('aria-pressed',String(voiceSession?.active));voiceState.textContent=semantic==='degraded'?strings().voiceError:listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSession?.active?strings().voiceOn:strings().voiceOff;
+  voiceButton.setAttribute('aria-label',`${strings().voice}: ${voiceSession?.active?strings().voiceOn:strings().voiceOff}`);
   if(micButton)micButton.disabled=busy||transcribing;
-  const stopRelevant=Boolean(voiceSessionActive||listening||transcribing||speaking||busy);
+  const stopRelevant=Boolean(voiceSession?.active||listening||transcribing||speaking||busy);
   if(voiceStop){voiceStop.hidden=!stopRelevant;voiceStop.disabled=!stopRelevant;}
   const repeatRelevant=Boolean(on&&state?.ttsAvailable&&state?.canRepeat);
   if(voiceRepeat){voiceRepeat.hidden=!repeatRelevant;voiceRepeat.disabled=!repeatRelevant;}
@@ -116,9 +110,13 @@ async function mount(){
   else void visual('presente',{force:true,semantic:'idle',reason:meta.reason||'voice-idle'});
  }
  async function voiceTranscript(text){
+  if(!voiceSession.active)return;
+  if(endsVoiceConversation(text)){endVoiceSession('spoken-goodbye');announcement.textContent=lang==='en'?'Conversation ended.':'Conversación terminada.';return;}
   input.value=text;controls();
   const result=await submitQuery(text,'voice');
-  if(result?.kind==='listen-again'){voiceTurn=false;resumeVoiceSoon();}
+  if(result?.kind==='stop'){endVoiceSession('spoken-stop');return result;}
+  if(result?.kind==='repeat'){voiceTurn=false;await voiceSession.playback(()=>voice.repeat());}
+  else if(voiceTurn){voiceTurn=false;voiceSession.resume();}
   return result;
  }
  voice=createSabikConversationalVoice({
@@ -128,6 +126,8 @@ async function mount(){
   onError:voiceMessage,
   onEnergy:syncVoiceEnergy
  });
+
+ voiceSession=createVoiceSession({getVoice:()=>voice,canListen:()=>ageSelected()&&!busy,onChange:()=>controls(),host:window});
 
  async function speakFixed(id,text,options={}){
   if(!id||!voiceEnabled())return {status:'disabled'};
@@ -213,15 +213,13 @@ async function mount(){
    try{
     const ready=await voice.setEnabled(true,{playbackOnly:true});
     if(!listen.isConnected||answerLanguage!==lang||!ageSelected())return;
-    if(ready.enabled)await voice.speak(answer);
+    if(ready.enabled)await voiceSession.playback(()=>voice.speak(answer));
    }finally{listen.disabled=false;listen.removeAttribute('aria-busy');}
   });
   section.appendChild(listen);
   if(voiceTurn&&voiceEnabled()){
    voiceTurn=false;
-   void voice.speak(answer).then(result=>{
-    if(voiceSessionActive&&result?.status==='ended')resumeVoiceSoon();
-   });
+   void voiceSession.playback(()=>voice.speak(answer));
   }
  }
  function renderSources(sources){
@@ -255,7 +253,7 @@ async function mount(){
  function translate(){
   const nextLang=document.documentElement.lang.startsWith('en')?'en':'es';
   if(nextLang!==lastLanguage){
-   conversation.reset();connection?.disconnect();voiceSessionActive=false;clearVoiceResume();voice.stopAll('language-change');root.replaceChildren();delete root.dataset.retrievalState;input.value='';busy=false;
+   conversation.reset();connection?.disconnect();voiceSession.stop('language-change');root.replaceChildren();delete root.dataset.retrievalState;input.value='';busy=false;
    lastLanguage=nextLang;
   }
   lang=nextLang;voice.setLanguage(lang);aside.lang=lang;announcement.lang=lang;
@@ -291,10 +289,14 @@ async function mount(){
  input.addEventListener('keydown',e=>{if(e.key==='Enter'&&(e.ctrlKey||e.metaKey)){e.preventDefault();$('#sabik-form').requestSubmit();}});
  $('#sabik-cancel').addEventListener('click',()=>{conversation.cancel('user');connection?.disconnect();endVoiceSession('cancel');busy=false;controls();void visual('pausa',{force:true,semantic:'idle'});input.focus();});
  const toggle=$('#sabik-toggle');if(toggle)toggle.addEventListener('click',()=>{const body=$('#sabik-widget-body');body.hidden=!body.hidden;aside.classList.toggle('is-collapsed',body.hidden);toggle.setAttribute('aria-expanded',String(!body.hidden));toggle.textContent=body.hidden?strings().show:strings().hide;if(body.hidden){conversation.cancel('close');connection?.disconnect();endVoiceSession('close');busy=false;controls();void present();}else visual('transicion');});
- voiceButton.addEventListener('click',async()=>{if(!ageSelected()){announcement.textContent=lang==='en'?'Choose an age group before using Sabik.':'Elige una edad antes de usar Sabik.';return;}if(voiceSessionActive){endVoiceSession('voice-primary-stop');return;}voiceSessionActive=true;voiceButton.disabled=true;voiceButton.setAttribute('aria-busy','true');voiceState.textContent=strings().connecting;announcement.textContent=strings().connecting;controls();voiceState.textContent=strings().connecting;try{const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}}catch{voiceSessionActive=false;announcement.textContent=strings().voiceError;void visual('pausa',{force:true,semantic:'degraded'});}finally{voiceButton.disabled=false;voiceButton.removeAttribute('aria-busy');syncVoice(voice.getState(),{reason:'voice-primary'});controls();}});
- if(micButton)micButton.addEventListener('click',async()=>{if(!ageSelected())return;voiceSessionActive=true;const result=await voice.startListening();if(result.status==='unavailable'||result.status==='error'){voiceSessionActive=false;announcement.textContent=strings().sttUnavailable;}controls();});
+ voiceButton.addEventListener('click',()=>{
+  if(!ageSelected()){announcement.textContent=lang==='en'?'Choose an age group before using Sabik.':'Elige una edad antes de usar Sabik.';return;}
+  if(voiceSession.active){endVoiceSession('voice-primary-stop');return;}
+  announcement.textContent=strings().connecting;void voiceSession.start();
+ });
+ if(micButton)micButton.addEventListener('click',()=>{if(ageSelected())void voiceSession.start();});
  if(voiceStop)voiceStop.addEventListener('click',()=>{conversation.cancel('voice-stop');connection?.disconnect();endVoiceSession('voice-stop');busy=false;controls();input.focus();});
- if(voiceRepeat)voiceRepeat.addEventListener('click',()=>{void voice.repeat();});
+ if(voiceRepeat)voiceRepeat.addEventListener('click',()=>{void voiceSession.playback(()=>voice.repeat());});
  if(voiceVolume)voiceVolume.addEventListener('input',()=>voice.setVolume(voiceVolume.value));
  if(voiceRate)voiceRate.addEventListener('input',()=>voice.setRate(voiceRate.value));
  const low=$('#sabik-low');if(low)low.addEventListener('click',()=>{const motion=$('#sabik-motion-level');motion.value='SIN_MOVIMIENTO';low.setAttribute('aria-pressed','true');motion.dispatchEvent(new Event('change',{bubbles:true}));});
@@ -302,7 +304,7 @@ async function mount(){
  $('#sabik-reset').addEventListener('click',()=>{conversation.reset();connection?.disconnect();endVoiceSession('reset');input.value='';root.replaceChildren();delete root.dataset.retrievalState;busy=false;controls();say(strings().cleared,{voiceId:'sabik.reset.confirmation'});visual('transicion');input.focus();});
  window.addEventListener('ig:audience-change',()=>{conversation.reset();connection?.disconnect();endVoiceSession('audience-change');busy=false;input.value='';root.replaceChildren();delete root.dataset.retrievalState;controls();void present();});
  window.addEventListener('pagehide',()=>{conversation.cancel('pagehide');connection?.disconnect();endVoiceSession('pagehide');});
- aside.addEventListener('keydown',event=>{if(event.key==='Escape'&&(voiceSessionActive||busy||voice.getState().listening||voice.getState().speaking)){event.preventDefault();conversation.cancel('escape');connection?.disconnect();endVoiceSession('escape');busy=false;controls();input.focus();}});
+ aside.addEventListener('keydown',event=>{if(event.key==='Escape'&&(voiceSession?.active||busy||voice.getState().listening||voice.getState().speaking)){event.preventDefault();conversation.cancel('escape');connection?.disconnect();endVoiceSession('escape');busy=false;controls();input.focus();}});
  new MutationObserver(translate).observe(document.documentElement,{attributes:true,attributeFilter:['lang']});translate();
 }
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else mount();
