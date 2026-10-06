@@ -1,0 +1,209 @@
+{
+  "alcance": "Motor y listeners originales en fixtures Node; sin DOM/navegador/touch físico",
+  "segundoContacto": {
+    "acciones": [
+      {
+        "origen": "puntero",
+        "punto": {
+          "x": 300,
+          "y": 100
+        }
+      }
+    ],
+    "nota": "Secuencia sintética de dos contactos quietos; demuestra acción no suprimida. No se afirma prueba de pinch físico."
+  },
+  "estrellaOculta": {
+    "con": "CMa",
+    "pantalla": {
+      "x": 500,
+      "y": 570
+    },
+    "horizonte": {
+      "x": 0,
+      "y": 516,
+      "w": 1000,
+      "h": 88.00000000000001
+    },
+    "abreFicha": true
+  },
+  "descripcion": {
+    "cuentaEstrellaBajoHorizonte": true,
+    "nota": "estrellasEnZona no comparte filtro de horizonte/oclusión de examinar"
+  },
+  "zoomCentral": {
+    "antes": {
+      "x": 800,
+      "y": 400
+    },
+    "despues": {
+      "x": 875,
+      "y": 425
+    },
+    "desplazamiento": 79.05694150420949,
+    "nota": "Cálculo del motor coherente con ampliar(); propuesta UX, no fallo de conformidad"
+  },
+  "procedenciaDatos": {
+    "campos": [
+      {
+        "id": "campo-01",
+        "nombre": "Campo 01 · Cielo del norte",
+        "ids": [
+          "Dra",
+          "Cyg",
+          "Cam",
+          "And",
+          "Cas",
+          "Cep",
+          "UMi",
+          "Lac"
+        ]
+      },
+      {
+        "id": "campo-02",
+        "nombre": "Campo 02 · Norte medio",
+        "ids": [
+          "UMa",
+          "Leo",
+          "Lyn",
+          "Cnc",
+          "LMi"
+        ]
+      },
+      {
+        "id": "campo-03",
+        "nombre": "Campo 03 · Norte medio",
+        "ids": [
+          "Psc",
+          "Tau",
+          "Aur",
+          "Per",
+          "Ari",
+          "Tri"
+        ]
+      },
+      {
+        "id": "campo-04",
+        "nombre": "Campo 04 · Norte medio",
+        "ids": [
+          "Vir",
+          "Boo",
+          "CVn",
+          "Com",
+          "CrB"
+        ]
+      },
+      {
+        "id": "campo-05",
+        "nombre": "Campo 05 · Norte medio",
+        "ids": [
+          "Her",
+          "Aql",
+          "Lyr",
+          "Vul",
+          "Sge"
+        ]
+      },
+      {
+        "id": "campo-06",
+        "nombre": "Campo 06 · Cerca del ecuador",
+        "ids": [
+          "Ori",
+          "Gem",
+          "Mon",
+          "CMa",
+          "Lep",
+          "CMi"
+        ]
+      },
+      {
+        "id": "campo-07",
+        "nombre": "Campo 07 · Cerca del ecuador",
+        "ids": [
+          "Peg",
+          "Aqr",
+          "Cap",
+          "PsA",
+          "Del",
+          "Equ"
+        ]
+      },
+      {
+        "id": "campo-08",
+        "nombre": "Campo 08 · Sur medio",
+        "ids": [
+          "Oph",
+          "Ser",
+          "Lib",
+          "Sco",
+          "Lup",
+          "Sct"
+        ]
+      },
+      {
+        "id": "campo-09",
+        "nombre": "Campo 09 · Sur medio",
+        "ids": [
+          "Cet",
+          "Eri",
+          "Scl",
+          "Phe",
+          "For"
+        ]
+      },
+      {
+        "id": "campo-10",
+        "nombre": "Campo 10 · Sur medio",
+        "ids": [
+          "Hya",
+          "Cen",
+          "Vel",
+          "Sex",
+          "Crt",
+          "Ant",
+          "Pyx",
+          "Crv",
+          "Cru"
+        ]
+      },
+      {
+        "id": "campo-11",
+        "nombre": "Campo 11 · Cielo del sur",
+        "ids": [
+          "Sgr",
+          "Pav",
+          "Gru",
+          "Ind",
+          "Tuc",
+          "Oct",
+          "Tel",
+          "Ara",
+          "Mic",
+          "Aps",
+          "Nor",
+          "CrA",
+          "TrA",
+          "Cir"
+        ]
+      },
+      {
+        "id": "campo-12",
+        "nombre": "Campo 12 · Cielo del sur",
+        "ids": [
+          "Pup",
+          "Car",
+          "Col",
+          "Hor",
+          "Pic",
+          "Hyi",
+          "Dor",
+          "Men",
+          "Vol",
+          "Mus",
+          "Cha",
+          "Cae",
+          "Ret"
+        ]
+      }
+    ]
+  }
+}
