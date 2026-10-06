@@ -1,0 +1,192 @@
+{
+  "scope": "Structural binary checks, not animation rendering or independent skinning replay",
+  "hashes": {
+    "Vera-reparada-web.glb": true,
+    "Vera-reparada.glb": true,
+    "clips-antes-despues.png": true,
+    "saludo-detalle.png": true,
+    "seleccion-bolso-y-correa.png": true
+  },
+  "Vera-reparada.glb": {
+    "bytes": 13575664,
+    "header_valid": true,
+    "vertices": 12734,
+    "triangles": 15116,
+    "bones": 24,
+    "clips": [
+      {
+        "name": "Big_Wave_Hello",
+        "duration": 5.333333492279053
+      },
+      {
+        "name": "Chair_Sit_Idle_F",
+        "duration": 11.333333015441895
+      },
+      {
+        "name": "Collect_Object",
+        "duration": 6.0
+      },
+      {
+        "name": "CrouchLookAroundBow",
+        "duration": 5.833333492279053
+      },
+      {
+        "name": "Female_Bend_Over_Pick_Up_Inspect",
+        "duration": 3.8333332538604736
+      },
+      {
+        "name": "Female_Crouch_Pick_Fruit_Basket_Stand",
+        "duration": 7.083333492279053
+      },
+      {
+        "name": "Female_Stand_Pick_Fruit_Basket",
+        "duration": 6.166666507720947
+      },
+      {
+        "name": "Idle_11",
+        "duration": 1.875
+      },
+      {
+        "name": "Look_Around_Dumbfounded",
+        "duration": 6.333333492279053
+      },
+      {
+        "name": "Pull_Radish",
+        "duration": 4.708333492279053
+      },
+      {
+        "name": "Running",
+        "duration": 0.625
+      },
+      {
+        "name": "Sit_Cross_Legged",
+        "duration": 9.541666984558105
+      },
+      {
+        "name": "Sit_to_Stand_Transition_F",
+        "duration": 4.708333492279053
+      },
+      {
+        "name": "Sitting_Clap",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "Stand_to_Sit_Transition_M",
+        "duration": 4.75
+      },
+      {
+        "name": "Talk_Passionately",
+        "duration": 10.25
+      },
+      {
+        "name": "Walking",
+        "duration": 1.0
+      },
+      {
+        "name": "Wave_for_Help_3",
+        "duration": 3.1666667461395264
+      },
+      {
+        "name": "sleep",
+        "duration": 5.708333492279053
+      }
+    ],
+    "weight_sum_max_error": 2.384185791015625e-07,
+    "weights_finite_nonnegative": true,
+    "joint_indices_valid": true
+  },
+  "Vera-reparada-web.glb": {
+    "bytes": 2399516,
+    "header_valid": true,
+    "vertices": 12734,
+    "triangles": 15116,
+    "bones": 24,
+    "clips": [
+      {
+        "name": "Big_Wave_Hello",
+        "duration": 5.333333492279053
+      },
+      {
+        "name": "Chair_Sit_Idle_F",
+        "duration": 11.333333015441895
+      },
+      {
+        "name": "Collect_Object",
+        "duration": 6.0
+      },
+      {
+        "name": "CrouchLookAroundBow",
+        "duration": 5.833333492279053
+      },
+      {
+        "name": "Female_Bend_Over_Pick_Up_Inspect",
+        "duration": 3.8333332538604736
+      },
+      {
+        "name": "Female_Crouch_Pick_Fruit_Basket_Stand",
+        "duration": 7.083333492279053
+      },
+      {
+        "name": "Female_Stand_Pick_Fruit_Basket",
+        "duration": 6.166666507720947
+      },
+      {
+        "name": "Idle_11",
+        "duration": 1.875
+      },
+      {
+        "name": "Look_Around_Dumbfounded",
+        "duration": 6.333333492279053
+      },
+      {
+        "name": "Pull_Radish",
+        "duration": 4.708333492279053
+      },
+      {
+        "name": "Running",
+        "duration": 0.625
+      },
+      {
+        "name": "Sit_Cross_Legged",
+        "duration": 9.541666984558105
+      },
+      {
+        "name": "Sit_to_Stand_Transition_F",
+        "duration": 4.708333492279053
+      },
+      {
+        "name": "Sitting_Clap",
+        "duration": 3.3333332538604736
+      },
+      {
+        "name": "Stand_to_Sit_Transition_M",
+        "duration": 4.75
+      },
+      {
+        "name": "Talk_Passionately",
+        "duration": 10.25
+      },
+      {
+        "name": "Walking",
+        "duration": 1.0
+      },
+      {
+        "name": "Wave_for_Help_3",
+        "duration": 3.1666667461395264
+      },
+      {
+        "name": "sleep",
+        "duration": 5.708333492279053
+      }
+    ],
+    "weight_sum_max_error": 2.384185791015625e-07,
+    "weights_finite_nonnegative": true,
+    "joint_indices_valid": true
+  },
+  "full_web_accessors_identical": true,
+  "full_web_animation_definitions_identical": true,
+  "declared_frame_sum": {
+    "original": 3059,
+    "reparada": 3059
+  }
+}
