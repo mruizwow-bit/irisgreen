@@ -87,3 +87,54 @@ Solo usar cuando:
 - límites declarados.
 
 No equivale a certificación externa.
+
+## Prácticas añadidas · 06/10/2026
+
+13. **Diseño de oráculos y contraejemplos**  
+    Elegir cuatro tests existentes. Para cada uno: promesa, assertion real, punto ciego y contraejemplo que pase el test violando la promesa.  
+    PASS: al menos dos oráculos mejorados detectan el defecto.
+
+14. **Reflow interno**  
+    Crear fixture con document.scrollWidth correcto pero clipping interno vertical/horizontal.  
+    PASS: `REFLOW_INTERNAL_CLIP_ORACLE` falla el fixture defectuoso y pasa el corregido.
+
+15. **Representación espacial**  
+    Crear fixture con z lógico correcto pero sin cue visual de altura.  
+    PASS: `SPATIAL_Z_VISIBILITY_ORACLE` distingue renderer plano/proyectado.
+
+16. **Invariantes de interacción**  
+    Definir y probar: target visible, target semántico, mensaje consistente, control con efecto y paridad modo/copy.  
+    PASS: `TEST_INVARIANTS_BEFORE_SUCCESS_PATHS`.
+
+17. **QA temporal/perceptual**  
+    Comparar una animación que cambia muchos píxeles pero no se desplaza coherentemente con otra que sí mantiene trayectoria/pose.  
+    PASS: explicar por qué el primer oráculo no prueba la promesa perceptual.
+
+18. **Observables científicos**  
+    Para tres assets: separar body context, observable feature y reveal fact; validar región/landmarks, registro local y perceptibilidad humana pendiente.  
+    PASS: ninguna anotación se deriva automáticamente de una caja genérica.
+
+19. **Primera tarea experta**  
+    Ejecutar una superficie sin manual y registrar: intención, primera acción, consecuencia, confusión, recuperación y salida.  
+    PASS: los blockers obvios se corrigen antes de HUMAN QA.
+
+20. **Clasificación de evidencia/entregable**  
+    Clasificar ejemplos como VISUAL_SPEC, STATIC_REVIEW, NAVIGABLE_PROTOTYPE, INTERACTIVE_RUNTIME o INTEGRATED_PRODUCT.  
+    PASS: no promover evidencia de una clase a otra sin prueba.
+
+## Preguntas añadidas al examen
+
+21. ¿Qué es el oracle problem y por qué importa en QA de producto?
+22. ¿Cómo puede un test real con input real usar un oráculo equivocado?
+23. ¿Qué diferencia hay entre coverage y specificity?
+24. ¿Qué diferencia hay entre estado lógico y representación perceptible?
+25. ¿Qué debe probarse en una transición de cámara/animación además del estado final?
+26. ¿Por qué un IoU global alto puede ocultar un fallo local importante?
+27. ¿Qué diferencia hay entre body context, observable feature y reveal fact?
+28. ¿Por qué un asset aprobado no valida automáticamente una anotación?
+29. ¿Qué debe ocurrir antes de enviar una primera tarea a HUMAN QA?
+30. ¿Qué diferencia existe entre un frame responsive y evidencia real de reflow runtime?
+31. ¿Cómo se prueba que un control visible tiene un efecto real?
+32. ¿Qué información debe preservar un overlay además de su apariencia?
+33. ¿Qué riesgos aparecen al escalar una mecánica idéntica a 200+ objetos?
+34. ¿Por qué una sola sesión de usuario no equivale a conformidad ni representatividad poblacional?
