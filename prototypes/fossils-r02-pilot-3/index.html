@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta name="robots" content="noindex,nofollow">
+<title>Fósiles · Piloto R02 · Iris Green</title>
+<link rel="stylesheet" href="assets/fonts.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#scene">Ir a la escena</a>
+<header class="topbar">
+  <div class="brand">Iris Green <span aria-hidden="true">·</span> Descubrimiento</div>
+  <div class="top-actions">
+    <button id="lang" type="button" aria-label="Switch to English">EN</button>
+    <button id="journalBtn" type="button">Cuaderno <span id="journalCount">0</span>/3</button>
+    <button id="helpBtn" type="button">Ayuda</button>
+  </div>
+</header>
+<main>
+  <section class="experience-head" aria-labelledby="title">
+    <div>
+      <p class="eyebrow" id="kicker">FÓSILES · PILOTO DE OBSERVACIÓN</p>
+      <h1 id="title">Haz visible un detalle de la roca.</h1>
+      <p id="lead">Observa el indicio, despeja exactamente donde señalas y mira qué forma aparece.</p>
+    </div>
+    <div class="encounter-switcher">
+      <label for="encounter">Encuentro</label>
+      <select id="encounter"></select>
+    </div>
+  </section>
+
+  <section class="workspace">
+    <div class="scene-column">
+      <div class="scene-meta">
+        <div>
+          <p class="eyebrow" id="encounterStep">1 DE 3</p>
+          <h2 id="encounterTitle">Una forma segmentada</h2>
+        </div>
+        <p id="encounterClue" class="clue">Hay un borde y varias líneas repetidas bajo la cobertura.</p>
+      </div>
+
+      <div id="viewport" class="viewport">
+        <canvas id="scene" width="960" height="640" tabindex="0" role="group"
+          aria-label="Superficie de roca para explorar"
+          aria-describedby="sceneHelp sceneState">Tu navegador necesita Canvas.</canvas>
+        <div class="scene-badge" id="modeBadge">EXPLORAR</div>
+        <div class="scene-tools" aria-label="Vista">
+          <button id="zoomOut" type="button" aria-label="Alejar">−</button>
+          <output id="zoomValue" aria-label="Ampliación">100 %</output>
+          <button id="zoomIn" type="button" aria-label="Acercar">+</button>
+          <button id="fit" type="button" aria-label="Reencuadrar fósil">⤢</button>
+        </div>
+      </div>
+
+      <div class="primary-tools">
+        <div class="modes" role="group" aria-label="Modo de interacción">
+          <button id="exploreMode" type="button" aria-pressed="true">Explorar</button>
+          <button id="brushMode" type="button" aria-pressed="false">Despejar</button>
+        </div>
+        <button id="clearPoint" type="button">Despejar zona señalada</button>
+        <button id="observe" type="button" class="primary">Observar detalle</button>
+      </div>
+
+      <div class="context-row">
+        <button id="guide" type="button">Guiarme al siguiente detalle</button>
+        <button id="identify" type="button" class="primary">Revelar contexto</button>
+      </div>
+
+      <p id="sceneHelp" class="scene-help">Toca un indicio para señalarlo. En Explorar puedes arrastrar la roca; en Despejar actúas sólo sobre la zona señalada.</p>
+      <div id="sceneState" class="status" role="status" aria-live="polite" aria-atomic="true"></div>
+    </div>
+
+    <aside class="observation" aria-labelledby="observationTitle">
+      <p class="eyebrow" id="observationKicker">OBSERVACIÓN</p>
+      <h2 id="observationTitle">Todavía no has despejado un rasgo.</h2>
+      <p id="observationText">Selecciona una zona del indicio y deja aparecer una forma legible.</p>
+      <ul id="observedList"></ul>
+      <div id="identityBlock" hidden>
+        <hr>
+        <p class="eyebrow">CONTEXTO REVELADO</p>
+        <h3 id="identityName"></h3>
+        <p id="identityText"></p>
+        <p id="identityLimit" class="muted"></p>
+        <div class="observation-actions">
+          <button id="depthBtn" type="button">Observar de cerca</button>
+          <button id="nextBtn" type="button" class="primary">Siguiente encuentro</button>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <details class="secondary-info">
+    <summary>Sobre esta preparación digital</summary>
+    <p id="simulationCopy">La cobertura es una simplificación interactiva para observar la representación. No reproduce un procedimiento profesional de preparación fósil.</p>
+    <button id="sourcesBtn" type="button">Fuentes y límites</button>
+  </details>
+</main>
+
+<dialog id="dialog" aria-labelledby="dialogTitle">
+  <div class="dialog-head">
+    <h2 id="dialogTitle"></h2>
+    <button id="closeDialog" type="button">Cerrar</button>
+  </div>
+  <div id="dialogBody"></div>
+</dialog>
+
+<p id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+<script src="assets/base-data-r01.js"></script>
+<script src="pilot-data.js"></script>
+<script src="model.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
