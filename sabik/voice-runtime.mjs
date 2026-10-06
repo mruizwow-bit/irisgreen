@@ -76,7 +76,7 @@ export function createSabikConversationalVoice({
  let listening=false,transcribing=false,preparing=false,speaking=false,lastText='',lastTranscript='',volume=1,rate=1,serial=0;
  let fixedPlaying=false,fixedReady=false;
  let finishPlayback=null;
- let keepMicrophone=false,captureHeard=false,vadAvailable=false;
+ let keepMicrophone=false,captureHeard=false,vadAvailable=false,vadOwnContext=false;
 
  const fixed=fixedVoiceFactory({
   initialLanguage:lang,
@@ -103,13 +103,16 @@ export function createSabikConversationalVoice({
  function clearVad(){
   if(vadTimer){host.clearTimeout?.(vadTimer);vadTimer=0;}
   try{vadSource?.disconnect?.();}catch{}vadSource=null;vadAnalyser=null;
-  if(vadContext){try{void vadContext.close?.();}catch{}vadContext=null;}
+  if(vadContext&&vadOwnContext){try{void vadContext.close?.();}catch{}}
+  vadContext=null;vadOwnContext=false;
  }
  function closeStream(){clearVad();if(stream){for(const track of stream.getTracks?.()||[]){try{track.stop();}catch{}}stream=null;}}
  function startVad(current,ticket){
   const AC=host.AudioContext||host.webkitAudioContext;if(typeof AC!=='function'||!stream)return;
   try{
-   const ctx=new AC();vadContext=ctx;vadSource=ctx.createMediaStreamSource(stream);vadAnalyser=ctx.createAnalyser();vadAnalyser.fftSize=512;vadAnalyser.smoothingTimeConstant=.15;vadSource.connect(vadAnalyser);void ctx.resume?.();
+   // Reuse the context unlocked by the user's click. A fresh context after the
+   // permission/network awaits can be suspended and miss the end of speech.
+   const ctx=playbackContext||new AC();vadContext=ctx;vadOwnContext=ctx!==playbackContext;vadSource=ctx.createMediaStreamSource(stream);vadAnalyser=ctx.createAnalyser();vadAnalyser.fftSize=512;vadAnalyser.smoothingTimeConstant=.15;vadSource.connect(vadAnalyser);void ctx.resume?.();
    vadAvailable=true;
    const data=new Uint8Array(vadAnalyser.fftSize),started=(host.performance?.now?.()??Date.now());let lastVoice=started;
    const tick=()=>{
@@ -118,7 +121,7 @@ export function createSabikConversationalVoice({
     for(const n of data){const x=(n-128)/128;sum+=x*x;}
     const rms=Math.sqrt(sum/data.length),now=(host.performance?.now?.()??Date.now());
     if(rms>.018){captureHeard=true;lastVoice=now;}
-    if(captureHeard&&now-lastVoice>1100&&now-started>700){stopListening();return;}
+    if(captureHeard&&now-lastVoice>750&&now-started>700){stopListening();return;}
     vadTimer=host.setTimeout?.(tick,100)||0;
    };
    vadTimer=host.setTimeout?.(tick,120)||0;

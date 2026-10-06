@@ -22,6 +22,19 @@ test('common words cannot turn an unrelated question into a medical answer',asyn
  const d=dialogue('es'),core=createSabikConversation({getDialogue:()=>d,retrieve:async()=>({candidates:[{title:'Dentista',snippet:'Puedes pedir una pausa y hablar con el dentista.',url:'/es/neurodiversidad/condiciones/dentista/'}]})});
  const result=await core.submitTurn('capital de Francia',{locale:'es'});assert.equal(result.sources.length,0);assert.doesNotMatch(result.answer,/dentista/i);
 });
+
+test('the reported Hola Sabic transcript and name variants answer locally, without retrieval',async()=>{
+ for(const locale of ['es','en']){
+  const d=dialogue(locale),core=createSabikConversation({getDialogue:()=>d,retrieve:()=>{throw new Error('greetings must not search');}});
+  for(const alias of DIALOGUE_DATA[locale].assistant_aliases){
+   const query=locale==='es'?`¡Hola, ${alias}!`:`Hello, ${alias}.`;
+   assert.equal((await core.submitTurn(query,{locale})).answer,locale==='es'?'Hola. Te escucho.':"Hello. I'm here to help.");
+  }
+ }
+ const d=dialogue('es');assert.equal(d.classify('Hola, Sabic.').intent.id,'social.greeting');
+ assert.equal(d.classify('¡Hola, Sabic, cómo estás!').intent.id,'social.greeting');
+ assert.notEqual(d.classify('Hola, Sabic, quiero información sobre ruido').action,'respond');
+});
 test('situation descriptions are attributed, broad one-word queries are not personal claims',async()=>{
  const d=dialogue('es'),rows=[{title:'Me despierta el ruido',snippet:'Me despierta cualquier ruido por la noche.',url:'/es/situaciones/ruido/'},{title:'Ruido en clase',snippet:'El ruido en clase.',url:'/es/situaciones/clase/'}];
  const core=createSabikConversation({getDialogue:()=>d,retrieve:async()=>({candidates:rows})});
@@ -56,7 +69,7 @@ function voiceHarness({vad=false,permission}={}){
  const track={enabled:true,readyState:'live',stop(){this.readyState='ended';}},stream={getTracks:()=>[track]};
  class Recorder{static isTypeSupported(){return true;}constructor(){this.state='inactive';this.mimeType='audio/webm';recorders.push(this);}start(){this.state='recording';this.onstart?.();}stop(){this.state='inactive';this.ondataavailable?.({data:new Blob(['fixture'])});this.onstop?.();}}
  class Audio{callbacks={};addEventListener(k,v){this.callbacks[k]=v;}play(){this.callbacks.playing?.();queueMicrotask(()=>this.callbacks.ended?.());return Promise.resolve();}pause(){}removeAttribute(){}load(){}}
- class SilentContext{createMediaStreamSource(){return{connect(){},disconnect(){}};}createAnalyser(){return{fftSize:512,getByteTimeDomainData(data){data.fill(128);}};}resume(){}close(){}}
+ class SilentContext{createMediaStreamSource(){return{connect(){},disconnect(){}};}createAnalyser(){return{fftSize:512,getByteTimeDomainData(data){data.fill(vad==='speech'&&timer.performance.now()<500?138:128);}};}resume(){}close(){}}
  const sha='38fc7fc51c5e776e840414b6fd443962e9411b9654888fd7913e4da643cb857c';
  const capabilities={schema:'iris-green/sabik-voice-runtime/v1',privacy:{no_store:true,persist_audio:false,persist_transcript:false},stt:{self_hosted:true,languages:['es','en']},tts:{es:{self_hosted:true,model_id:'SABIK_ES_MASTER_V1_ICL',model_sha256:sha},en:{self_hosted:true,model_id:'SABIK_EN_MASTER_V2_ICL',model_sha256:sha}}};
  const host={...timer,Audio,URL,MediaRecorder:Recorder,navigator:{mediaDevices:{async getUserMedia(){requests++;return permission?permission:stream;}}},...(vad?{AudioContext:SilentContext}:{})};
@@ -91,6 +104,12 @@ test('a minute of silence keeps the session listening and sends no blank audio t
  assert.equal(h.session.active,true);assert.equal(h.voice.getState().listening,true);assert.equal(h.requests,1);assert.equal(h.sttCalls,0);
  assert.ok(h.recorders.length>=5);h.session.stop();assert.equal(h.track.readyState,'ended');
  await h.timer.advance(60000);assert.equal(h.voice.getState().listening,false);
+});
+
+test('a short spoken greeting is transcribed after the speech pause instead of the 12 second cap',async()=>{
+ const h=voiceHarness({vad:'speech'});h.queue.push('Hola, Sabic.');await h.session.start();
+ await h.timer.advance(1400);await until(()=>h.transcripts.length===1);
+ assert.equal(h.transcripts[0],'Hola, Sabic.');assert.equal(h.sttCalls,1);h.session.stop();
 });
 
 test('stop cancels a pending microphone request and cannot reopen it later',async()=>{
