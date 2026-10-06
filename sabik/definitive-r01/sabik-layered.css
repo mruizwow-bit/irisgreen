@@ -15,8 +15,15 @@
 .sabik-visual .body{
  position:absolute;left:16.526%;top:1.053%;width:64.789%;height:84.474%;
  object-fit:contain;pointer-events:none;transform-origin:51.304% 54.673%;
- animation:breathe 7.5s ease-in-out infinite
+ animation:none!important;transform:none!important;translate:none!important;scale:1!important;rotate:0deg!important
 }
+.sabik-body-flow{
+ position:absolute;left:16.526%;top:1.053%;width:64.789%;height:84.474%;
+ pointer-events:none;transform-origin:51.304% 54.673%;
+ animation:bodyBreath 7.5s ease-in-out infinite
+}
+.sabik-visual[data-body-flow="ready"] #sabik-web-master{visibility:hidden!important}
+@keyframes bodyBreath{0%,100%{scale:1}50%{scale:1.025}}
 .sabik-visual .orbits{
  transform-box:fill-box;transform-origin:center;
  animation:orbit 26s linear infinite
@@ -47,13 +54,10 @@
 .sabik-core-wave-b{width:8.6%}
 .sabik-core-wave-c{width:9.8%}
 
-.sabik-visual[data-state="listening"] .body{animation:listenBody 3.2s ease-in-out infinite}
 .sabik-visual[data-state="listening"] .orbits{animation-duration:18s}
 .sabik-visual[data-state="listening"] .core-light{animation:listenCore 1.8s ease-in-out infinite;filter:brightness(1.08)}
-.sabik-visual[data-state="processing"] .body{animation:processingBody 2.8s ease-in-out infinite}
 .sabik-visual[data-state="processing"] .orbits{animation-duration:8.5s}
 .sabik-visual[data-state="processing"] .core-light{animation:think 1.8s ease-in-out infinite}
-.sabik-visual[data-state="speaking"] .body{animation:speakBody 2.4s ease-in-out infinite}
 .sabik-visual[data-state="speaking"] .orbits{animation-duration:12s}
 .sabik-visual[data-state="speaking"]:not([data-audio-reactive="true"]) .core-light{animation:speak 1.35s ease-in-out infinite}
 .sabik-visual[data-state="speaking"]:not([data-audio-reactive="true"]) .core-rings{animation:speakRings 1.8s ease-in-out infinite}
@@ -74,34 +78,25 @@
 .sabik-visual[data-state="degraded"] .orbits{opacity:.35;animation-duration:34s}
 .sabik-visual[data-state="degraded"] .core-light{opacity:.58;animation:coreDegraded 7s ease-in-out infinite}
 
-@keyframes breathe{0%,100%{scale:1;translate:0 0;rotate:-.5deg}50%{scale:1.025;translate:0 -2%;rotate:.5deg}}
 @keyframes orbit{to{rotate:360deg}}
 @keyframes coreIdle{0%,100%{scale:.85;opacity:.8}50%{scale:1.5;opacity:1}}
 @keyframes coreRingIdle{0%,100%{scale:.9;opacity:.65}50%{scale:1.25;opacity:1}}
 @keyframes particles{0%,100%{opacity:.72}50%{opacity:1}}
-@keyframes listenBody{0%,100%{scale:1;translate:0 0;rotate:-.5deg}50%{scale:1.025;translate:0 -1.5%;rotate:.5deg}}
 @keyframes listenCore{0%,100%{scale:.9;opacity:.85}50%{scale:1.5;opacity:1}}
-@keyframes processingBody{0%,100%{scale:1;rotate:-1deg}50%{scale:1.025;rotate:1deg}}
 @keyframes think{0%,100%{scale:.9;opacity:.86}50%{scale:1.55;opacity:1}}
 @keyframes speak{0%,100%{scale:1;opacity:.9}50%{scale:2.1;opacity:1}}
 @keyframes speakRings{0%,100%{scale:1;opacity:.78}50%{scale:1.65;opacity:1}}
-@keyframes speakBody{0%,100%{scale:1;translate:0 0;rotate:-.7deg}50%{scale:1.035;translate:0 -1.5%;rotate:.7deg}}
 @keyframes coreDegraded{0%,100%{scale:.97;opacity:.5}50%{scale:.99;opacity:.62}}
 @keyframes sabikVoiceWave{0%{scale:.62;opacity:var(--sabik-wave-opacity,.12)}70%{opacity:.08}100%{scale:3.2;opacity:0}}
 
-@keyframes breatheReduced{0%,100%{scale:1}50%{scale:1.003}}
 @keyframes coreReduced{0%,100%{scale:.995;opacity:.9}50%{scale:1.01;opacity:1}}
 @keyframes thinkReduced{0%,100%{scale:.995;opacity:.94}50%{scale:1.015;opacity:1}}
 @keyframes speakReduced{0%,100%{scale:1;opacity:.96}50%{scale:1.035;opacity:1}}
-@keyframes speakBodyReduced{0%,100%{scale:1}50%{scale:1.006}}
 
 .sabik-visual[data-motion="reduced"] *{animation:none!important;transition-duration:.18s!important}
-.sabik-visual[data-motion="reduced"] .body{animation:breatheReduced 10s ease-in-out infinite!important}
 .sabik-visual[data-motion="reduced"] .core-light{animation:coreReduced 6.5s ease-in-out infinite!important}
-.sabik-visual[data-motion="reduced"][data-state="listening"] .body{animation:breatheReduced 7s ease-in-out infinite!important}
 .sabik-visual[data-motion="reduced"][data-state="listening"] .core-light{animation:coreReduced 4.5s ease-in-out infinite!important;filter:brightness(1.04)}
 .sabik-visual[data-motion="reduced"][data-state="processing"] .core-light{animation:thinkReduced 3s ease-in-out infinite!important}
-.sabik-visual[data-motion="reduced"][data-state="speaking"] .body{animation:speakBodyReduced 3.6s ease-in-out infinite!important}
 .sabik-visual[data-motion="reduced"][data-state="speaking"]:not([data-audio-reactive="true"]) .core-light{animation:speakReduced 2.4s ease-in-out infinite!important}
 .sabik-visual[data-motion="reduced"][data-state="speaking"][data-audio-reactive="true"] .core-light{
  animation:none!important;scale:var(--sabik-core-live-scale,1);opacity:var(--sabik-core-live-opacity,.9)
