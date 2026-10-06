@@ -3,12 +3,13 @@ export const BODY_PIVOT=Object.freeze([330/642,351/642]);
 export function bodyPoint(u,v,phase,strength=1){
  const x=u-BODY_PIVOT[0],y=v-BODY_PIVOT[1],r=Math.hypot(x,y);
  const t=Math.max(0,Math.min(1,(r-.065)/.38)),falloff=t*t*(3-2*t);
- const weight=falloff*strength;
- const twist=(Math.sin(phase+y*3)*.24+Math.sin(phase*.73+x*3)*.07)*weight;
- const stretch=1+Math.sin(phase*1.13+y*3-x*1.5)*.11*weight;
+ // Keep flexion near the tips and bounded so the original silhouette survives.
+ const weight=falloff*Math.max(0,Math.min(1.1,strength));
+ const twist=(Math.sin(phase+y*3)*.032+Math.sin(phase*.73+x*3)*.012)*weight;
+ const stretch=1+Math.sin(phase*1.13+y*3-x*1.5)*.016*weight;
  const c=Math.cos(twist),s=Math.sin(twist);
  return [BODY_PIVOT[0]+(x*c-y*s)*stretch,
-  BODY_PIVOT[1]+(x*s+y*c)*(1-Math.sin(phase*.91+x*3)*.075*weight)];
+  BODY_PIVOT[1]+(x*s+y*c)*(1-Math.sin(phase*.91+x*3)*.012*weight)];
 }
 
 export function createBodyMesh(columns=28,rows=28){
@@ -30,12 +31,13 @@ async function mountBody(visual){
  const program=gl.createProgram();
  try{
   const vs=shader(gl.VERTEX_SHADER,'attribute vec2 position;attribute vec2 uv;varying vec2 tex;void main(){tex=uv;gl_Position=vec4(position,0.,1.);}');
-  const fs=shader(gl.FRAGMENT_SHADER,'precision mediump float;varying vec2 tex;uniform sampler2D art;void main(){gl_FragColor=texture2D(art,tex);}');
+  const fs=shader(gl.FRAGMENT_SHADER,'precision mediump float;varying vec2 tex;uniform sampler2D art;uniform float shinePhase;uniform float shineStrength;void main(){vec4 color=texture2D(art,tex);float light=1.+shineStrength*(.5+.5*sin(tex.y*5.-tex.x*3.+shinePhase));gl_FragColor=vec4(min(color.rgb*light,vec3(color.a)),color.a);}');
   gl.attachShader(program,vs);gl.attachShader(program,fs);gl.linkProgram(program);gl.deleteShader(vs);gl.deleteShader(fs);
   if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw new Error('BODY_PROGRAM');
   await master.decode();
  }catch{gl.deleteProgram(program);return;}
  gl.useProgram(program);
+ const shinePhase=gl.getUniformLocation(program,'shinePhase'),shineStrength=gl.getUniformLocation(program,'shineStrength');
  const mesh=createBodyMesh(),positions=new Float32Array(mesh.uv.length),buffers=[];
  function attribute(name,data,usage){const b=gl.createBuffer();buffers.push(b);gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,data,usage);const location=gl.getAttribLocation(program,name);gl.enableVertexAttribArray(location);gl.vertexAttribPointer(location,2,gl.FLOAT,false,0,0);return b;}
  attribute('uv',mesh.uv,gl.STATIC_DRAW);const positionBuffer=attribute('position',positions,gl.DYNAMIC_DRAW);
@@ -53,9 +55,10 @@ async function mountBody(visual){
   const dt=last?Math.min((now-last)/1000,.06):0;last=now;
   const reduced=mode()==='reduced',speaking=visual.dataset.state==='speaking';
   const energy=Math.max(0,Math.min(1,(parseFloat(visual.style.getPropertyValue('--sabik-core-live-scale'))-1)/1.15||0));
-  const target=reduced?.16:speaking?1.2+energy*.25:visual.dataset.state==='listening'?1.05:1;
-  strength+=(target-strength)*Math.min(1,dt*4);
-  phase+=dt*(reduced?.45:speaking?1.2:.8);
+  const target=reduced?.12:speaking?.8+energy*.25:visual.dataset.state==='listening'?.85:.65;
+  strength+=(target-strength)*Math.min(1,dt*2.5);
+  phase+=dt*(reduced?.25:speaking?.6:.42);
+  gl.uniform1f(shinePhase,phase);gl.uniform1f(shineStrength,reduced?.003:.012+(speaking?energy*.018:0));
   canvas.hidden=false;
   const pixelRatio=Math.min(window.devicePixelRatio||1,2),w=Math.round(canvas.clientWidth*pixelRatio),h=Math.round(canvas.clientHeight*pixelRatio);
   if(w&&h&&(canvas.width!==w||canvas.height!==h)){canvas.width=w;canvas.height=h;gl.viewport(0,0,w,h);}

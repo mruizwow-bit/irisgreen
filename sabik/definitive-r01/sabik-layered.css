@@ -1,5 +1,6 @@
 .sabik-visual{
  position:relative;width:min(100%,1065px);aspect-ratio:1065/760;isolation:isolate;
+ overflow:hidden!important;
  transform-origin:49.765% 47.237%;
  --sabik-core-live-scale:1;
  --sabik-ring-live-scale:1;
@@ -25,8 +26,9 @@
 .sabik-visual[data-body-flow="ready"] #sabik-web-master{visibility:hidden!important}
 @keyframes bodyBreath{0%,100%{scale:1}50%{scale:1.025}}
 .sabik-visual .orbits{
- transform-box:fill-box;transform-origin:center;
- animation:orbit 26s linear infinite
+ transform-box:view-box;transform-origin:49.765% 47.237%;
+ transform:scale(.92);opacity:.76;transition:opacity .8s ease;
+ animation:orbitDrift 28s ease-in-out infinite
 }
 .sabik-visual .core{
  transform-box:fill-box;transform-origin:49.765% 47.237%
@@ -54,11 +56,11 @@
 .sabik-core-wave-b{width:8.6%}
 .sabik-core-wave-c{width:9.8%}
 
-.sabik-visual[data-state="listening"] .orbits{animation-duration:18s}
+.sabik-visual[data-state="listening"] .orbits{opacity:.88}
 .sabik-visual[data-state="listening"] .core-light{animation:listenCore 1.8s ease-in-out infinite;filter:brightness(1.08)}
-.sabik-visual[data-state="processing"] .orbits{animation-duration:8.5s}
+.sabik-visual[data-state="processing"] .orbits{opacity:.8}
 .sabik-visual[data-state="processing"] .core-light{animation:think 1.8s ease-in-out infinite}
-.sabik-visual[data-state="speaking"] .orbits{animation-duration:12s}
+.sabik-visual[data-state="speaking"] .orbits{opacity:.9}
 .sabik-visual[data-state="speaking"]:not([data-audio-reactive="true"]) .core-light{animation:speak 1.35s ease-in-out infinite}
 .sabik-visual[data-state="speaking"]:not([data-audio-reactive="true"]) .core-rings{animation:speakRings 1.8s ease-in-out infinite}
 
@@ -75,10 +77,10 @@
 .sabik-visual[data-state="speaking"][data-audio-reactive="true"] .sabik-core-wave-b{animation-delay:-.45s}
 .sabik-visual[data-state="speaking"][data-audio-reactive="true"] .sabik-core-wave-c{animation-delay:-.9s}
 
-.sabik-visual[data-state="degraded"] .orbits{opacity:.35;animation-duration:34s}
+.sabik-visual[data-state="degraded"] .orbits{opacity:.35}
 .sabik-visual[data-state="degraded"] .core-light{opacity:.58;animation:coreDegraded 7s ease-in-out infinite}
 
-@keyframes orbit{to{rotate:360deg}}
+@keyframes orbitDrift{0%,100%{rotate:-2deg}50%{rotate:2deg}}
 @keyframes coreIdle{0%,100%{scale:.85;opacity:.8}50%{scale:1.5;opacity:1}}
 @keyframes coreRingIdle{0%,100%{scale:.9;opacity:.65}50%{scale:1.25;opacity:1}}
 @keyframes particles{0%,100%{opacity:.72}50%{opacity:1}}
