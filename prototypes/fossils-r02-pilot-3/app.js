@@ -50,11 +50,10 @@ function render(){
  const r=M.imageRect(im,W,H,state().cam);ctx.save();ctx.globalAlpha=.98;ctx.drawImage(im,r.x,r.y,r.w,r.h);ctx.restore();drawCover(im,r);
  if(state().point){const q=M.toScreen(state().point.x,state().point.y,im,W,H,state().cam);ctx.save();ctx.strokeStyle="#C3B8FF";ctx.lineWidth=3;ctx.beginPath();ctx.arc(q.x,q.y,15,0,Math.PI*2);ctx.stroke();ctx.beginPath();ctx.moveTo(q.x-22,q.y);ctx.lineTo(q.x+22,q.y);ctx.moveTo(q.x,q.y-22);ctx.lineTo(q.x,q.y+22);ctx.stroke();ctx.restore()}
  if(guideZone&&Date.now()<guideUntil){const ev=evaluation(),z=ev.zones.find(x=>x.id===guideZone);if(z){const rr=rectForZone(z,im);ctx.save();ctx.setLineDash([9,6]);ctx.strokeStyle="#FFD59A";ctx.lineWidth=4;ctx.strokeRect(rr.x,rr.y,rr.w,rr.h);ctx.restore()}}
- const ev=evaluation();for(const z of ev.zones.filter(z=>state().observed.has(z.id)&&z.visible)){const rr=rectForZone(z,im);ctx.save();ctx.strokeStyle="#A9E7C4";ctx.lineWidth=2;ctx.strokeRect(rr.x,rr.y,rr.w,rr.h);ctx.restore()}
 }
 function resize(){const r=$("viewport").getBoundingClientRect(),d=Math.min(devicePixelRatio||1,2);W=Math.max(1,Math.round(r.width));H=Math.max(1,Math.round(r.height));cv.width=Math.round(W*d);cv.height=Math.round(H*d);cv.style.width=W+"px";cv.style.height=H+"px";ctx.setTransform(d,0,0,d,0,0);render()}
 function updateObservation(){
- const ev=evaluation(),s=state();$("observedList").replaceChildren();
+ const ev=evaluation(),s=state();$("journalCount").textContent=journal.size;$("observedList").replaceChildren();
  const visibleObserved=ev.zones.filter(z=>s.observed.has(z.id));
  if(!visibleObserved.length){$("observationKicker").textContent=tr("observation");$("observationTitle").textContent=tr("noneTitle");$("observationText").textContent=tr("noneText")}else{
    $("observationKicker").textContent=tr("observation");$("observationTitle").textContent=visibleObserved.length===1?tx(visibleObserved[0].label):(lang==="es"?"Dos detalles conectados":"Two connected details");$("observationText").textContent=tx(visibleObserved.at(-1).observation);
