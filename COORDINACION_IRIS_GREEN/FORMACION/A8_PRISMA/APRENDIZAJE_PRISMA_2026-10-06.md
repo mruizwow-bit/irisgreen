@@ -1110,3 +1110,87 @@ Gate añadido:
 
 Anti-patrón añadido:
 **no usar el mismo radio CSS para target motor y significado científico/perceptual de la evidencia.**
+
+
+---
+
+# 36. Incremento · Vida marina R06.1 · tests no vacíos, tamaño aparente y claims operativos
+
+Aprendizaje nuevo tras revisar R06.1:
+
+## Un PASS no puede aceptar “no se alcanzó el caso”
+Anti-patrón detectado:
+```
+pasos === 0 || ratioCambios < umbral
+```
+
+Si el test pretende probar histéresis y `pasos===0`, la prueba NO ejerció histéresis.
+
+Nuevo gate:
+`TEST_PRECONDITION_MUST_BE_TRUE`.
+
+Una prueba debe:
+1. demostrar que alcanzó su precondición;
+2. sólo después medir el comportamiento.
+
+## El nombre del test forma parte de la evidencia
+No llamar `DOS-CANDIDATOS-REALES` a una prueba con fixture.
+
+Usar:
+- `PRODUCT_REAL`;
+- `FIXTURE`;
+- `INJECTED_STATE`;
+
+en nombre/metadata.
+
+## QA debe aislar el nodo exacto
+Buscar una frase en todo un contenedor no demuestra que la fila correcta la tenga.
+
+Usar:
+- ids estables;
+- `data-animal-id`;
+- selector exacto;
+- assertion sobre el control/row objetivo.
+
+## Tamaño aparente no es una sola diagonal
+Un observable puede tener:
+- diagonal 54 px;
+- grosor sólo 6 px.
+
+Para rasgos finos:
+- ancho;
+- alto/grosor;
+- separación;
+- tamaño de puntos;
+
+pueden importar más que una diagonal.
+
+No aprobar un `minimumApparentExtentPx` universal antes de HUMAN QA.
+
+## Nombres de parámetros deben decir qué miden
+Si una prueba mide sólo x:
+`periodoHorizontal`,
+no `periodo` de trayectoria completa.
+
+El contrato nominal debe coincidir con el oracle.
+
+## Fuentes por afirmación deben estar enlazadas al dato
+Un sidecar `FUENTES_POR_AFIRMACION.md` no basta si:
+- `sourceTrait` sigue `heredado-sin-revalidar`;
+- no hay `claimId`.
+
+Cada afirmación factual operativa debe tener:
+- claimId;
+- factualStatus;
+- fuente/alcance trazable.
+
+## “Dentro de un cuerpo” debe significar containment si se afirma así
+Distancia ≤2 px a muestras corporales es una aproximación, no containment real.
+
+Antes de escalar a formas complejas:
+- alpha hit-test;
+- distance field;
+- o tolerancia basada en densidad/escala.
+
+Gate actualizado:
+`R06_1_KEEP_CORE__PATCH_QA_ORACLES_AND_HUMAN_VISIBILITY_BEFORE_SCALE`.
