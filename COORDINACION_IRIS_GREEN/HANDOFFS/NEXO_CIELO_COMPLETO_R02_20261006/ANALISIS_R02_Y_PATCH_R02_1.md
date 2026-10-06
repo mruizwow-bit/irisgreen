@@ -90,3 +90,55 @@ Conservar R02 y ejecutar R02-N01 a N06; resolver los casos concretos de N07 y co
 Entregar ZIP patch con versión inequívoca, hashes, changelog por hallazgo, pruebas separadas por tipo y vídeo: clic directo fuera del centro → localizar → revelar → ficha → volver → siguiente patrón. Incluir tramo móvil pinch→un dedo y carga/cierre adversos.
 Gate de entrega esperado: CLAUDE_SKY_R02_1_PATCH_READY_FOR_REVIEW (todavía NO emitido).
 Después revisión técnica/Axioma y HUMAN QA María. No main, deploy ni expansión a cielo continuo dentro de este patch.
+
+
+## Consolidación Nexo + Prisma + Axioma · actualización 2026-10-06
+Esta sección incorpora nueva evidencia sin sustituir ni cerrar N01–N08. Es la instrucción operativa vigente para R02.1 junto con los apartados anteriores. No son órdenes alternativas.
+
+Fuentes leídas por Nexo:
+- Prisma: PRISMA_REVISION_CIELO_COMPLETO_R02_20261006.md, commit d1086f84d136936d0004f69fc75ba76266efc79c, #323 comentario6012887949.
+- Axioma: #323 comentario6012932552.
+Prisma informa repetición independiente 65/65 en Chromium. Nexo no ha repetido esos bancos en esta actualización. Ese resultado no cubre los contraejemplos nuevos ni declara conformidad global o HUMAN QA.
+Los porcentajes del probe Prisma (medianas53,15%/34,10%/12,675%) describen aceptación del motor en sus muestras, NO error humano, ni por sí solos una comparación controlada sobre idénticas regiones del cielo.
+
+### CIE-I03 · prioridad de cierre de evidencia
+Separar INPUT_TOLERANCE_PX (adquisición cómoda por ratón/touch) de EVIDENCE_APERTURE_ANGULAR (región semántica del cielo). No resolverlo reduciendo únicamente el círculo CSS.
+La tolerancia de entrada no puede aportar estrellas adicionales ni cambiar el mínimo del patrón. Registrar punto señalado, objetivo adquirido, apertura y puntos que sustentan la identificación. Definir unidades y política de zoom explícitas; no dejar que tamaño del viewport determine la evidencia.
+
+Contraejemplo Prisma que debe incorporarse al banco:
+campo-01, u=-0.2528696238395023, v=0.3067919550947542.
+En R02: 320×568, pantalla(76.31,296.98), identifica Andrómeda; 1440×900, pantalla(463.67,615.58), ninguno.
+Reutilizar cámara/datos de la reproducción canónica y proyectar la misma coordenada, no copiar píxeles entre pantallas.
+
+Gates de retest:
+- SAME_SKY_EVIDENCE_320_390_1440: mismo punto/cámara/apertura y MISMA evidencia efectivamente visible deben producir misma decisión. Si cambia visibilidad real por horizonte, recorte u oclusión, registrar esa diferencia y devolver evidencia insuficiente cuando corresponda; no forzar identificación contando lo oculto.
+- LOW_EVIDENCE_NEVER_IDENTIFIES: 1/3 y2/3 del cinturón no identifican tres alineadas. Subpatrones de otras figuras requieren contrato propio; no imponer tres a todo.
+- La identificación y sus marcadores/copy consumen los mismos IDs visibles aceptados.
+- Apertura definida como radio o diámetro angular, contrastada con inversa geométrica en centro y bordes. No basta monotonicidad con zoom.
+- Casos congelados antes de ejecutar; conservar negativos, ambiguos y resultados incorrectos sin buscar otro encuadre hasta acertar.
+
+### Continuidad del descubrimiento
+Recalcular y guardar el próximo objetivo al hallar, pero separar ese estado interno del objetivo mostrado.
+Durante localizar/revelar/leer profundidad se mantiene el contexto del hallazgo actual. Mostrar la siguiente pista al volver deliberadamente a explorar/Continuar, no mediante temporizador ni mientras arriba se anuncia el descubrimiento anterior.
+No bloquear la exploración libre ni obligar a leer la ficha. Hallazgos fuera de orden siguen funcionando.
+
+### Foco y confirmación · añadidos Axioma
+- SCREEN_TRANSITION_FOCUS_ORACLE: destino explícito y visible al entrar en portada, zonas y escena; retorno al activador si aún existe o alternativa estable. Comprobar activeElement inmediatamente después de transición, sin tabular hasta esconder el fallo.
+- RESIZE_FOCUS_STABILITY_ORACLE: conservar nodos/acción enfocada al cambiar tamaño/orientación con ficha, fuentes, estrella o confirmación abiertos. No reconstruir el panel perdiendo foco; si un elemento desaparece, elegir destino lógico y anunciar sólo lo necesario.
+- Borrar hallazgos: decisión de producto para este patch, confirmación modal breve con nombre accesible, foco inicial en Cancelar, Escape cancela, fondo inerte durante apertura y retorno al activador. No convertir las fichas informativas en modales por esta decisión.
+- Axioma prueba navegador y AT reales; registrar combinaciones y pendientes. Emulación touch no equivale a teléfono ni prueba con lector. APG/COGA se registran como guía; no emitir FAIL jurídico a partir de un patrón recomendado.
+
+### Movimiento · política explícita del patch
+Sin elección propia guardada, respetar preferencia del sistema: reduce→REDUCED; sin reduce→NORMAL. NONE siempre disponible como elección explícita. Observar cambios del sistema mientras se siga ese valor por defecto; la elección explícita de María/usuario prevalece.
+Cambiar modo conserva cámara y contexto; NONE cancela interpolaciones en la posición visible. El valor90ms no se aprueba perceptualmente sólo por ser corto. Mantener pendiente la valoración humana de REDUCED; no afirmar que WCAG AA impone NONE universalmente.
+
+### Decisión canónica de portada y alcance
+Primera visita: Empezar a explorar / Start exploring. Orión no se nombra antes de localizar el cinturón. Volver a Orión sólo cuando ya se ha descubierto. Esto ratifica la corrección de Nexo anterior; no queda pendiente de una nueva votación ni es fallo de Claude.
+Clic/tap directo sigue como interacción principal; Examinar zona central se presenta como vía de teclado/alternativa comprensible, sin obligar al ratón a perseguir una retícula ni ocultar la alternativa a quien la necesite.
+Mantener NAVY, datos y assets, 88 alcanzables, pistas piloto perceptuales y todos los arreglos N01–N08. Cielo continuo entre dos campos va después.
+
+### Entrega y cierre
+Claude entrega un solo ZIP R02.1 con hash, changelog y matriz N01–N08 + CIE-I03 + foco/continuidad/movimiento. Cada fila identifica evidencia y pendientes; no retirar pruebas para ocultar contratos incumplidos.
+Secuencia: patch → retest independiente Nexo/Prisma → Axioma browser/AT → HUMAN QA María → prototipo de continuidad entre dos campos.
+No hay PASS nuevo. NO MAIN · NO DEPLOY · NO ASSET REWORK.
+El comentario normativo de Axioma se conserva atribuido a su autor. Esta actualización no verifica publicaciones/harmonización de normas ni decide aplicabilidad jurídica; esa conclusión corresponde a Lex.
