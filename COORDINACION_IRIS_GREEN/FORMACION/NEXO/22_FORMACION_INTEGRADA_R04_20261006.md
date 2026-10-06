@@ -163,3 +163,14 @@ Revisión del ZIP de bolso reparado, SHA baa6e602228d58c18facdfebc9249948e7ad9e8
 - Una reconversión por el mismo conversor comprueba repetibilidad; una comparación independiente con FBX requiere declarar evaluador, poses y método.
 - Selección por color/luminancia es específica de la textura y su iluminación. Verificar orientación UV primero y entregar IDs/selección visual. No usar umbral global como regla para ropa futura.
 - Siguiente patch acotado: selección de falda revisable, pesos por tramo real, límites de costura, clips completos y transiciones. Conservar master y derivado útil; no pedir nueva generación Meshy mientras la reparación localizada sea viable.
+
+## 18 · Web R02: integridad no es encuadre ni integración
+Revisión d136022e0efd25bd62b5c5cc54df98e49771e693, HANDOFFS/NEXO_WEB_COMPLETA_R02_20261006/REVISION_Y_PATCH_R02.md. ZIP f4e2dd62a4f92fcf1e4ea12d7bd7cb8d8496768ad6eab416bea1f47b4d0b4281.
+- 192/192 hashes,191/191 manifest,18/18 procedencia;56 páginas regeneradas idénticas. Demuestran integridad/reproducibilidad, no utilidad ni conexiones de experiencias.
+- Cover3/2 sobre lámina3/4 corta la mitad de su altura: en la captura desaparece la cabeza del ave. Conservar bytes y proporción no garantiza conservar el sujeto. Medir/inspeccionar el encuadre final y diferenciar ilustración de espécimen y escena editorial.
+- Una referencia histórica READY_FOR_HUMAN_QA no autoriza describirla como juego3D actual aprobado. Imagen y alt pueden revelar Orión antes del contrato de descubrimiento.
+- Un menú puede dejar el foco en Cerrar oculto al cambiar breakpoint. Admitir BODY como éxito vuelve débil el oráculo. Fixture Node prueba rama lógica; navegador/AT queda separado.
+- Capturar error de localStorage y seguir anunciando «guardado» es una promesa falsa reproducible. Separar aplicación temporal y persistencia efectiva.
+- scrollWidth no encuentra clipping vertical. Una prueba global debe nombrar su alcance real: ejes, elementos y estados incluidos.
+- Falta de asset no es falta de runtime; representación del tema no garantiza que ese animal esté en la escena. Reconciliar manifest tras incorporar archivos.
+- No trasladar debates del equipo al copy público ni convertir contratos futuros de guardado/Plus en funciones presentes. Diseño navegable, experiencia conectada y HUMAN QA son entregables distintos.
