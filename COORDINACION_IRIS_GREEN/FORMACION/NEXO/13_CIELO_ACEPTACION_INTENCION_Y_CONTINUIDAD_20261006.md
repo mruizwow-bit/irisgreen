@@ -16,3 +16,15 @@ Aprendizajes:
 - Nueva investigación no sustituye defectos ya reproducidos: conservar matriz acumulativa y atribución.
 
 No runtime/main/deploy. Propuestas y fixtures sin navegador ni HUMAN QA.
+
+## Ampliación tras Prisma
+Informe canónico leído: 9e93a637376681a056c0bfe4d015a1c866a5be44.
+Propuesta conjunta: PROPUESTA_CONSOLIDADA_CLAUDE_CIELO_R02.md, commit bb53dc1f820d35770b00188ae1db2196c3e461f4.
+
+- Confirmé en datos 88 pistas, 47 textos únicos y 21 textos repetidos.
+- Gate de pista única debe ser semántico: no basta comparar strings ni describir ramificaciones invisibles antes del reveal.
+- Si se descubre otra constelación, registrar hallazgo y mantener pista aún pendiente; contador se actualiza en ambos casos.
+- «Lo reconociste por» atribuye comprensión no observada; usar descripción del rasgo, sin afirmar pensamiento humano.
+- Comparar misma evidencia visible entre pantallas; nunca contar anclas ocultas para imponer resultado idéntico.
+- Fuente de diferencias de probes: Prisma declara muestreo sobre horizonte y medianas; Nexo rectángulo total y medias. No promediar ambos ni convertirlos en error humano.
+- Ayuda avanzada voluntaria: no inferir incapacidad de tardanza ni introducirla automáticamente tras un temporizador.
