@@ -67,7 +67,6 @@ async function mount(){
  function ageBand(){return window.IGAudience?.get?.()||'AGE_UNSET';}
  function ageSelected(){return ['AGE_0_12','AGE_13_17','AGE_18_PLUS'].includes(ageBand());}
  function restrictedAdultAccess(){return Boolean(window.IGAudience?.canAccessRestrictedAdultContent?.());}
- function clearVoiceResume(){voiceSession?.clear();}
  function endVoiceSession(reason='voice-session-stop'){
   voiceTurn=false;voiceSession.stop(reason);controls();
  }
@@ -269,12 +268,13 @@ async function mount(){
   voiceTurn=inputMode==='voice';
   q=String(q||'').trim();
   if(!q){void visual('orientar',{force:true,semantic:'idle'});say(strings().empty,{voiceId:'sabik.input.empty'});input.focus();return;}
+  if(inputMode!=='voice'&&voiceSession.active)voice.cancelListening();
   voice.cancelSpeech({emitState:false});busy=true;controls();announcement.textContent=strings().processing;
   try{
    return await conversation.submitTurn(q,{inputMode,locale:lang,audience:ageBand(),explicitIntent:true});
   }catch(error){
    if(error?.name!=='AbortError'){root.dataset.retrievalState='error';say(strings().error);}
-  }finally{busy=false;controls();}
+  }finally{busy=false;controls();if(inputMode!=='voice')voiceSession.resume();}
  }
  async function submit(event){
   event.preventDefault();return submitQuery(input.value,'text');

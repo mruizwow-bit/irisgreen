@@ -312,7 +312,7 @@ export function createSabikConversationalVoice({
     const silence=vadAvailable&&!captureHeard;
     const type=current.mimeType||mime||'audio/webm',blob=new Blob(chunks,{type});chunks=[];clearVad();listening=false;
     if(keepMicrophone){for(const track of stream?.getTracks()||[])track.enabled=false;}else closeStream();
-    if(silence){issue('CAPTURE_SILENCE');return;}
+    if(silence){onError('CAPTURE_SILENCE',{language:lang});emit({reason:'capture-silence'});return;}
     if(!blob.size){issue('STT_EMPTY_AUDIO');return;}
     void transcribe(blob,ticket);
    };
