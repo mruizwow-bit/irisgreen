@@ -264,3 +264,103 @@ Vigilar:
 
 Cadena profesional:
 `SOURCE → VERSION → STATUS → APPLICABILITY → TEST → EVIDENCE → REVIEW`.
+
+## 19 · Ingeniería de oráculos para sistemas interactivos
+
+Objetivo:
+aprender a diseñar pruebas cuya aserción corresponda exactamente con la promesa del producto.
+
+Dominar:
+- oracle problem;
+- invariantes;
+- contraejemplos;
+- model-based/metamorphic/differential testing;
+- partial/human oracles;
+- alcance real de una assertion.
+
+Cadena:
+`PROMISE → OBSERVABLE → INVARIANT → ORACLE → COUNTEREXAMPLE → EVIDENCE`.
+
+Regla:
+el nombre de una prueba no puede prometer más que su oráculo.
+
+## 20 · QA de interacción espacial
+
+Dominar progresivamente:
+- coordinate transforms;
+- pan/zoom;
+- hit testing;
+- click vs drag;
+- picking;
+- projection;
+- occlusion;
+- z/height representation;
+- camera invariants;
+- render space vs interaction space.
+
+Aplicación:
+Cielo, mapas, canvas/WebGL, drag/drop, Vida marina, Construcción y cualquier mundo espacial.
+
+## 21 · QA temporal y perceptual
+
+Dominar:
+- continuidad temporal;
+- pose/camera/time/input/focus;
+- phase continuity;
+- trayectorias;
+- velocidad/aceleración;
+- deformación;
+- motion profiles;
+- revisión perceptual humana.
+
+Regla:
+`PIXELS_CHANGED != MOTION_QUALITY`.
+
+## 22 · Primera tarea y observación humana
+
+Añadir revisión experta previa:
+`FIRST_TASK_EXPERT_REVIEW_REQUIRED`.
+
+Después, cuando proceda:
+`INTENT → FIRST_ACTION → PERCEIVED_CONSEQUENCE → INTERPRETATION → RECOVERY`.
+
+Evitar priming innecesario.
+
+La evidencia de una persona complementa estándares/pruebas; no sustituye conformidad ni representa por sí sola a toda la población.
+
+## 23 · Grounding de anotaciones científicas
+
+Para contenido científico/educativo:
+
+`SOURCE_TRAIT → REPRESENTATION → GEOMETRY → LOCAL_QA → HUMAN_PERCEPTIBILITY`.
+
+Reglas:
+- asset aprobado != anotación aprobada;
+- heurística de luminancia != anatomía validada;
+- dato factual != decisión de representación;
+- unknown/hold cuando falta sustento.
+
+## 24 · Escalado responsable de patrones interactivos
+
+Antes de escalar de 3–10 objetos a decenas/cientos:
+- validar morfologías representativas;
+- validar interacción;
+- validar datos/observables;
+- probar móvil real;
+- medir rendimiento;
+- revisar perceptibilidad;
+- probar HUMAN first-use.
+
+No:
+`PROTOTYPE_PASS → MASS_SCALE`.
+
+## 25 · Formación continua aplicada
+
+Cada incidente/rework material debe alimentar:
+- aprendizaje fechado;
+- runbook;
+- práctica;
+- oráculo/regresión cuando sea automatizable.
+
+Referencia:
+`APRENDIZAJE_AXIOMA_2026-10-06.md`.
