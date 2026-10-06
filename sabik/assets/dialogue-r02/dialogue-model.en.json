@@ -23,10 +23,21 @@
   },
   "intents": [
     {
+      "id": "social.identity",
+      "priority": 109,
+      "patterns": [
+        "^(?:who are you|what can you do|what do you do|help|help me)$"
+      ],
+      "action": "respond",
+      "prompt": "social.identity.response"
+    },
+    {
       "id": "social.greeting",
       "priority": 100,
       "patterns": [
-        "^(?:hello|hi|hey|good morning|good afternoon|good evening)$"
+        "^(?:hello|hi|hey|good morning|good afternoon|good evening)$",
+        "^(?:hi|hello|hey)(?:[, !]+how are you)?$",
+        "^how are you$"
       ],
       "prompt": "social.greeting.response",
       "action": "respond"
@@ -233,30 +244,19 @@
   "prompts": {
     "social.greeting.response": {
       "initial": [
-        "Hi.",
-        "Hello. I'm listening.",
-        "Hi. I'm here.",
-        "Hello."
+        "Hello. I'm here to help."
       ],
       "reprompt": []
     },
     "social.attention.response": {
       "initial": [
-        "Yes. I'm listening.",
-        "I'm here. I'm listening.",
-        "Yes, go ahead.",
-        "I'm listening. Continue."
+        "Yes, I'm listening."
       ],
-      "reprompt": [
-        "I'm listening.",
-        "Go ahead."
-      ]
+      "reprompt": []
     },
     "social.thanks.response": {
       "initial": [
-        "You're welcome.",
-        "Of course.",
-        "Any time."
+        "You're welcome."
       ],
       "reprompt": []
     },
@@ -372,6 +372,18 @@
         "Can you repeat it?",
         "Please say it again."
       ]
+    },
+    "social.identity.response": {
+      "initial": [
+        "I'm the Iris Green assistant. I can help you explore its content."
+      ],
+      "reprompt": []
+    },
+    "capability.unavailable": {
+      "initial": [
+        "That feature is not connected yet. I can help you explore Iris Green content."
+      ],
+      "reprompt": []
     }
   }
 }
