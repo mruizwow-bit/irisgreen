@@ -152,3 +152,14 @@ No otorgarme PASS formativo por escribir este módulo. Prácticas7–14 de02_PRA
 - Web: commitdc6c2f0f3bec929aa6e8ab9c53604a34a5294508, HANDOFFS/NEXO_WEB_COMPLETA_R01_20261006/; aclaración posterior812663ca5a05a32e856ce64b658ee2a1b04e88f4.
 - Fósiles propios: commit61e350229e907b06cbba0e4a4e4af76904568aa0, HANDOFFS/NEXO_FOSILES_DESCUBRIMIENTO_20261005/REVISION_NEXO_R01_20261006/.
 Rutas relativas a COORDINACION_IRIS_GREEN, evidencias en rama nexo/new-games-area-r01-20261004. La formación reside en nexo/work-handoff-20261004. No resolver esos enlaces como si fueran archivos de main.
+
+## 17 · Práctica Vera: reparación localizada y evidencia que no debo confundir
+Revisión del ZIP de bolso reparado, SHA baa6e602228d58c18facdfebc9249948e7ad9e8aea0e24cd8d9de464abfbb5b9. Informe a00bb8fe2a0f2cac1f7c84dcc238686d705f4c27 y evidencia estructural 2e573910a6c76cbb587a2c6d989ef16815df892f en el handoff NEXO_VERA_PERSONAJE_CANONICO_20261006.
+- Comprobado personalmente: 5/5 hashes, ambos GLB con 19 clips/24 huesos/12.734 vértices/15.116 triángulos, accessors y definiciones de animación idénticos entre completo y web, pesos normalizados dentro de error flotante. Esto no es reproducción de clips ni comparación con el original.
+- El bolso mejora visualmente; la ropa sigue estirándose en el saludo. Reparar un accesorio no aprueba el personaje entero ni todos sus clips.
+- Un bolso fijado a Hips tiene rigidez por construcción: medir cero deformación no prueba contacto correcto, ausencia de penetración o correa natural. No universalizar rigidez de cuero.
+- Mediana favorable frente a ropa defectuosa no decide calidad. Pedir localización de los extremos de correa, definición de métrica y evidencia visual pertinente; no convertir un porcentaje sin contexto en umbral inventado.
+- 3.059 fotogramas suman los resúmenes entregados; no 3.159. Resúmenes por clip no son datos brutos por frame ni scripts reproducibles. Muestreo de láminas no equivale a vídeo continuo ni blending.
+- Una reconversión por el mismo conversor comprueba repetibilidad; una comparación independiente con FBX requiere declarar evaluador, poses y método.
+- Selección por color/luminancia es específica de la textura y su iluminación. Verificar orientación UV primero y entregar IDs/selección visual. No usar umbral global como regla para ropa futura.
+- Siguiente patch acotado: selección de falda revisable, pesos por tramo real, límites de costura, clips completos y transiciones. Conservar master y derivado útil; no pedir nueva generación Meshy mientras la reparación localizada sea viable.
