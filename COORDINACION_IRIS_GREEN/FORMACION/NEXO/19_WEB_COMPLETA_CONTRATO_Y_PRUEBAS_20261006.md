@@ -17,3 +17,9 @@ Informe: COORDINACION_IRIS_GREEN/HANDOFFS/NEXO_WEB_COMPLETA_R01_20261006/ANALISI
 Inspección fuente/capturas entregadas + Node VM con dobles mínimos. No navegador propio, lector ni dispositivo físico. No elevar evidencia del autor a verificación independiente.
 Referencias: W3C Understanding Reflow, Target Size Minimum y APG Breadcrumb enlazadas en el informe.
 Regla de próxima revisión: contrato → rutas reales → acciones → recuperación → estados/idiomas/dispositivos → valor humano. No inferir PRODUCT_PASS desde TECHNICAL_PASS.
+
+
+## Aclaración posterior de María incorporada a formación
+La regla2 anterior evita reconstrucciones por reflejo, pero NO limita este encargo: María pidió expresamente un diseño NUEVO de toda la web alineado con Juegos/Descubrimiento y con imágenes en home. Conservar canon y código reutilizable no congela composición.
+Fuente: HANDOFFS/NEXO_WEB_COMPLETA_R01_20261006/ACLARACION_MARIA_REDISENO_COMPLETO.md, commit812663ca5a05a32e856ce64b658ee2a1b04e88f4.
+Recursos=pictogramas; Juegos=juegos y Construcción; Descubrimiento sustituye Intereses; Creación sustituye Taller. Eliminar duplicidad de navegación preservando contenido y futura compatibilidad deURLs. Inicio no es séptima área.
