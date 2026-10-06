@@ -14,7 +14,10 @@ COORDINACION_IRIS_GREEN/HANDOFFS/AXIOMA_DESCUBRIMIENTO_PECES_R06_20261006/REVIEW
 Nexo: carpeta COORDINACION_IRIS_GREEN/HANDOFFS/NEXO_MARINE_R06_20261006/,
 RETEST_R06_Y_PATCH_ACOTADO.md, retest.cjs y RETEST_RESULTS.json, commit de evidencia c046c7919dcfcb3eed56ddc0717341cce6efd3bf.
 
-Esta orden reconcilia ambos informes. El KEEP de fase de Axioma se refiere a continuidad de pose. NO cierra la nueva regresión de trayectoria reproducida por Nexo sobre el mismo hash. No repetir R05 ni rehacer el motor.
+Prisma: commit 47cc3f5906d320c06343b550790b6548f4a20b9e,
+COORDINACION_IRIS_GREEN/FORMACION/ESTUDIO_COMPARADO_CLAUDE_20261005/PRISMA_REVISION_MARINE_R06_OBSERVABLES_20261006.md.
+
+Esta orden reconcilia los tres informes. El KEEP de fase de Axioma se refiere a continuidad de pose. NO cierra la nueva regresión de trayectoria reproducida por Nexo sobre el mismo hash. No repetir R05 ni rehacer el motor.
 
 ## KEEP
 Máscara/composición alfa, registro global aplicado, cámara, gestos directos, cancelación, precisión de puntero, confirmación contextual, event.repeat, foco, reanuncio, separación Movimiento/Vida ambiental y ajustes de reflow.
@@ -61,7 +64,7 @@ humanVisibilityQA sigue PENDING hasta revisión humana. La pregunta permite señ
 ## E · Revisión de los observables existentes
 Hacha: mantener el contorno como representación propuesta; revisar visualmente el par en esa región. Hasta cierre, estado explícito PROVISIONAL_ACTIVE_FOR_PROTOTYPE. No escalarlo como patrón aprobado por justificar el IoU con grosor de línea.
 Linterna: revisión visual de los 24 centros sobre ambos assets para excluir ojos/reflejos/brillos ajenos a las hileras pretendidas. Clasificar como ASSET_DERIVED_REPRESENTATION. Detección por luminancia no valida anatomía.
-Mantener procedencia factual heredada/sin revalidar. La revisión visual del dibujo tampoco verifica taxón, talla o hábitat.
+Mantener procedencia factual heredada/sin revalidar hasta completar la revisión por afirmación de §I. La revisión visual del dibujo tampoco verifica taxón, talla o hábitat.
 
 ## F · Evidencia portable y entrega
 Hacer que scripts reciban rutas reales del paquete extraído. Quitar dependencia obligatoria de /opt/pw-browsers/chromium; admitir navegador Playwright instalado y override opcional.
@@ -73,3 +76,33 @@ Gate de entrega: CLAUDE_MARINE_R06_1_PATCH_READY_FOR_REVIEW.
 Secuencia: RETEST TÉCNICO (incluida trayectoria) → AXIOMA PRECHECK PERCEPTUAL → HUMAN VISIBILITY QA → DECIDIR UMBRALES → IMPLEMENTAR MICROESCENA.
 Puede avanzar el inventario y diseño de microescena en paralelo como documentación; no multiplicar todavía esta plantilla a 200+ especies.
 STOP antes de main o despliegue.
+
+## G · Tamaño aparente y región significativa (incorporación de Prisma)
+La fracción iluminada no basta para demostrar perceptibilidad. Añadir a la evidencia tamaño proyectado del observable en píxeles CSS, zoom, viewport y DPR, distinguiéndolo del tamaño del animal y de píxeles del bitmap.
+Preparar tamaños grande/medio/pequeño y casos límite a 320/390/1440. Registrar también el tamaño visible efectivo: una caja extensa no garantiza que sus puntos o trazos sean distinguibles.
+minimumApparentExtentPx es un parámetro candidato a calibrar, no un número aprobado. Antes de HUMAN VISIBILITY QA permanecerá pendiente, sin introducir un bloqueo arbitrario de 40/60/80 px. Registrar cómo se mide para cada familia de rasgo; no imponer un único tamaño global.
+Si la revisión humana justifica un mínimo, implementarlo y retestarlo después, con ayuda contextual como «Acércate un poco para observar este detalle» y vía equivalente de zoom/encuadre.
+Hacha: incluir adversos con cola/aletas iluminadas y tronco insuficiente. Evaluar si el contorno completo permite aprobar sin percibir la forma pretendida. Si ocurre, limitar la geometría al tronco que define el rasgo y repetir registro local y pruebas. No recortar para mejorar IoU ni cambiar la silueta por mera preferencia.
+Linterna: comparar varios tamaños y revisar manualmente los 24 centros; no sugerir la respuesta en la pregunta humana.
+No declarar PASS automático por porcentaje, extensión en pantalla o fuente zoológica.
+
+## H · Selección por intención y contexto estable
+Separar elegibilidad, elección del objetivo y confirmación. Un score nunca hace elegible a un animal bloqueado.
+La intención explícita prevalece: click/tap sobre cuerpo o indicio seleccionable → ese objetivo; elección deliberada mediante «Otro animal» o vía accesible → conservar ese id mientras siga siendo válido. No revelar el nombre antes de identificarlo.
+Si el gesto no identifica inequívocamente un objetivo, proponer por proximidad espacial al punto señalado, después calidad observable y contexto corporal como desempate. Comparar distancias contra geometría visible; evitar que el centroide de un animal grande desvíe una pulsación hecha sobre otro.
+Este orden es una propuesta de interacción que debe probarse, no una ponderación científica ya validada. En solapamientos ambiguos, permitir elegir sin examen automático.
+No reordenar la selección en cada fotograma por cambios pequeños de fracción. Señalar claramente cuál está seleccionado sin depender sólo del color; mantener foco y equivalencia de teclado.
+Pruebas: señalar el animal pequeño junto al grande más iluminado; solapamiento; dos candidatos que intercambian fracciones mientras nadan; elección con «Otro animal»; desaparición del elegido; cancelación; teclado sin puntero.
+Confirmación: invalidar ante cambio deliberado de objetivo o cambio relevante de contexto que haga equívoca la señal (pérdida de elegibilidad, nuevo encuadre/luz, descripción espacial ya incorrecta). Conservar la protección de event.repeat.
+NO introducir por defecto una cuenta atrás ni caducidad de pocos segundos: penalizaría a quien necesita más tiempo. El simple nado no debe provocar un ciclo infinito de reanuncios. Estabilizar la escena al elegir, o mantener seguimiento visual inequívoco; documentar y probar la opción sin romper la pausa manual.
+Probar una confirmación lenta sin cambios relevantes, y otra después de un cambio real de contexto. Distinguir resultado esperado de evidencia efectivamente ejecutada.
+
+## I · Fuentes por afirmación, con alcance explícito
+Asociar cada revealFact y rasgo factual a claimId, texto ES/EN, taxón/alcance, URL, fecha de consulta y estado de revisión. Mantener separada la decisión de representación del dato zoológico.
+Fuentes contrastadas el 2026-10-06:
+- https://www.mbari.org/animal/glass-squid/ — Cranchiidae; transparencia/camuflaje a nivel de familia. No valida la anatomía del PNG ni el registro de brazos.
+- https://ocean.si.edu/ocean-life/fish/lanternfish — ejemplo Diaphus sp. con fotóforos ventrales. No valida automáticamente los 24 puntos ni características de cualquier especie de la familia.
+- https://www.montereybayaquarium.org/animals-the-ocean/animals-a-to-z/hatchetfish — página de Sternoptyx obscura, con órganos luminosos ventrales. No usarla por sí sola para dar por documentada la frase «pequeña hacha» o la orientación de ojos: localizar la fuente que respalde esa afirmación.
+No copiar talla, profundidad o distribución de una especie de referencia a un asset identificado sólo por nombre común. Resolver el taxón o mantener la afirmación pendiente y expresada al alcance que la fuente sostenga.
+El registro visual, la validación factual y HUMAN VISIBILITY QA son estados independientes.
+Estas incorporaciones amplían la misma orden R06.1; no crean un encargo paralelo ni reabren el diseño general. Sigue vigente la secuencia y el STOP de §F.
