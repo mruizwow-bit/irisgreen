@@ -119,7 +119,7 @@ export default async (request: Request, context: any) => {
   if (accept) headers.set("accept", accept);
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 60000);
+  const timer = setTimeout(() => controller.abort(), 12000);
   try {
     const upstream = await fetch(origin + url.pathname, {
       method: request.method,
