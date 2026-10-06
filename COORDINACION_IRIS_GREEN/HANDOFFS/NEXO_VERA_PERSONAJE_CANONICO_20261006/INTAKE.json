@@ -1,0 +1,276 @@
+{
+  "zip_sha256": "f6077ae03b4ba7a22d99b9e6d52886c6423bf28efacde04e82111e45e18e8979",
+  "zip_bytes": 116238784,
+  "files": [
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_Character_output.fbx",
+      "bytes": 28731388,
+      "sha256": "8362d9e4645101ed2dc9b4558845b88560a45127b4b9cec8e8b093cb378e9fbb",
+      "fbx_version": 7400,
+      "animation_stacks": [
+        [
+          909506545,
+          "Armature|Armature|clip0|baselayer\u0000\u0001AnimStack",
+          ""
+        ]
+      ],
+      "animation_layers": [
+        [
+          19734436,
+          "Armature|Armature|clip0|baselayer\u0000\u0001AnimLayer",
+          ""
+        ]
+      ],
+      "animation_curves": 225,
+      "animation_curve_nodes": 75
+    },
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_Meshy_AI_Meshy_Merged_Animations.fbx",
+      "bytes": 32570780,
+      "sha256": "f4b6ff501f266097343d2201f9d911f7f4ef417a0454846f6f77cc3aa800906d",
+      "fbx_version": 7400,
+      "animation_stacks": [
+        [
+          619034476,
+          "Big_Wave_Hello\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          402099347,
+          "Chair_Sit_Idle_F\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          399447303,
+          "Collect_Object\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          52919108,
+          "CrouchLookAroundBow\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          357317853,
+          "Female_Bend_Over_Pick_Up_Inspect\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          284119332,
+          "Female_Crouch_Pick_Fruit_Basket_Stand\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          978863533,
+          "Female_Stand_Pick_Fruit_Basket\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          503058825,
+          "Idle_11\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          829015285,
+          "Look_Around_Dumbfounded\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          689115746,
+          "Pull_Radish\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          666468038,
+          "Running\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          959692304,
+          "Sit_Cross_Legged\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          646105771,
+          "Sit_to_Stand_Transition_F\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          367861039,
+          "Sitting_Clap\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          152958819,
+          "Stand_to_Sit_Transition_M\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          418170205,
+          "Talk_Passionately\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          660362278,
+          "Walking\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          535648373,
+          "Wave_for_Help_3\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          198640563,
+          "sleep\u0000\u0001AnimStack",
+          ""
+        ],
+        [
+          310967426,
+          "Character_output.fbx\u0000\u0001AnimStack",
+          ""
+        ]
+      ],
+      "animation_layers": [
+        [
+          224682243,
+          "Big_Wave_Hello\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          111324456,
+          "Chair_Sit_Idle_F\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          702632130,
+          "Collect_Object\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          316741146,
+          "CrouchLookAroundBow\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          2797445,
+          "Female_Bend_Over_Pick_Up_Inspect\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          226014795,
+          "Female_Crouch_Pick_Fruit_Basket_Stand\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          118434043,
+          "Female_Stand_Pick_Fruit_Basket\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          542359332,
+          "Idle_11\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          877284306,
+          "Look_Around_Dumbfounded\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          591362696,
+          "Pull_Radish\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          853083426,
+          "Running\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          510329173,
+          "Sit_Cross_Legged\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          392025145,
+          "Sit_to_Stand_Transition_F\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          362631079,
+          "Sitting_Clap\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          865075067,
+          "Stand_to_Sit_Transition_M\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          790172232,
+          "Talk_Passionately\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          554674806,
+          "Walking\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          213059726,
+          "Wave_for_Help_3\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          426521435,
+          "sleep\u0000\u0001AnimLayer",
+          ""
+        ],
+        [
+          336697766,
+          "Character_output.fbx\u0000\u0001AnimLayer",
+          ""
+        ]
+      ],
+      "animation_curves": 4500,
+      "animation_curve_nodes": 1500
+    },
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_texture_0.png",
+      "bytes": 27753852,
+      "sha256": "5729a2d5d0e4e46ae8653522a2ae71102f21f30b1bbb2578aa5f0c2c22aa1769",
+      "dimensions": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_texture_0_metallic.png",
+      "bytes": 6895,
+      "sha256": "830e7f413d47d44070deac46417f2d5ea0df3bc5c2796d1d186fdf1121184202",
+      "dimensions": [
+        2048,
+        2048
+      ]
+    },
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_texture_0_normal.png",
+      "bytes": 28561540,
+      "sha256": "6cfb1a73a90126f1d34adbb46b4e65cb2c619878a5129cfb27586ca6e914d5f9",
+      "dimensions": [
+        4096,
+        4096
+      ]
+    },
+    {
+      "name": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_texture_0_roughness.png",
+      "bytes": 1010152,
+      "sha256": "3095b3b48e6b971d35a93f5d5de2fed9b7b31acdeda3ae7bcda7a7814c5c6dc3",
+      "dimensions": [
+        2048,
+        2048
+      ]
+    }
+  ]
+}
