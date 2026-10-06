@@ -30,3 +30,15 @@ Método: motor original en Node VM, carga/dibujo simulados, reloj controlado. No
 18. Extensión total del observable, cuerpo útil y extensión efectivamente visible son métricas diferentes. No usar caja de sprite como perceptibilidad.
 19. Conservar el núcleo y corregir evidencia también es progreso. No convertir nuevos findings en rediseño ni declarar formación dominada por documentarla.
 La regresión temporal R06 queda cerrada en este retest lógico. Permanecen pendientes browser/AT, casos de selección/evidencia y HUMAN VISIBILITY QA; puede avanzar diseño documental de microescena.
+
+
+## Contraste Prisma R06.1 · ampliación
+Fuente leída:12f99a55a5eeeb879e04a3342a8cb2b20f5cf354. Orden unificada:8c2cfbe49dbfe97fd88a051c260839769f728152, HANDOFFS/NEXO_MARINE_R06_1_20261006/RETEST_Y_PATCH_ACOTADO.md.
+20. Una diagonal grande no garantiza un detalle legible: linterna53,9×6,3px en evidencia Prisma. Registrar ambos ejes visibles y diámetro/separación si son puntos; calibrar después con personas.
+21. El oráculo debe comprobar la entidad exacta. Una frase presente en toda la lista no acredita el estado de la fila del calamar. Identificadores estables y fallo explícito si falta el objetivo.
+22. Medir componente horizontal no verifica ciclo2D. Nombrar periodoHorizontal/periodoVertical o documentar derivación; preservar rutas correctas.
+23. Fuente por afirmación requiere vínculo operativo claimId+estado+alcance y verificador contra el registro; un sidecar aislado deriva.
+24. Proximidad a muestras no equivale a pertenencia a silueta. Registrar aproximación, casos de frontera y límites antes de cambiar arquitectura.
+25. Reconciliar revisiones antes de convertirlas en órdenes: cero casos en un barrido no elimina un contraejemplo; KEEP parcial no cierra gaps distintos.
+26. No reducir por accidente la futura microescena variada al banco de tres animales. Inventario documental puede avanzar, con hábitats compatibles, mientras se cierra el gate perceptual.
+Estos puntos incorporan revisión ajena atribuida; no se presentan como nuevas reproducciones propias ni nueva validación humana.
