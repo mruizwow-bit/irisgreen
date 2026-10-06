@@ -1,0 +1,13 @@
+const fs=require('fs'),vm=require('vm'),path=require('path');
+const root=path.resolve(process.argv[2]||'construction-3d-review-20261006/ig3d');
+const c={console:{warn(){},log(){}},Math};c.window=c;vm.createContext(c);
+for(const p of ['vendor/three.min.js','js/config.js','js/world.js'])vm.runInContext(fs.readFileSync(path.join(root,p),'utf8'),c);
+let s=fs.readFileSync(path.join(root,'js/escena3d.js'),'utf8').replace('global.Escena3D = Escena3D;', 'global.Escena3D = Escena3D; global.REVIEW_GEOMETRY={Malla:Malla,pieza:piezaEnMalla,vera:crearVera};');
+vm.runInContext(s,c);
+const T=c.THREE, g=c.REVIEW_GEOMETRY.vera();let meshes=0,triangles=0;
+g.traverse(o=>{if(o.isMesh){meshes++;triangles+=(o.geometry.index?o.geometry.index.count:o.geometry.attributes.position.count)/3}});
+const w=new c.World(),scene={w,terreno:{geometry:new T.BufferGeometry()}};
+c.Escena3D.prototype.construirTerreno.call(scene);
+const water=vm.runInContext("new THREE.MeshLambertMaterial({color:new THREE.Color('#2E7FA6').convertSRGBToLinear(),transparent:true,opacity:0.8,depthWrite:false})",c);
+const result={method:'Original Three r149 and delivered geometry functions in Node; no WebGL rendering',revision:T.REVISION,vera:{meshes,triangles},terrainTriangles:scene.terreno.geometry.attributes.position.count/3,waterMaterialVertexColors:water.vertexColors,terrainHeight3Edge:{grassColorFromY:Math.min(3,1+0.22),grassColorToY:3,soilColorFromY:1,soilColorToY:Math.min(3,1+0.22)}};
+fs.writeFileSync('construction-3d-review-20261006/GEOMETRY_RESULTS.json',JSON.stringify(result,null,2));console.log(JSON.stringify(result,null,2));
