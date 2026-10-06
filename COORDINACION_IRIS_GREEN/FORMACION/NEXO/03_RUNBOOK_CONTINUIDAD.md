@@ -335,3 +335,33 @@ Antes de describir una entrega como lista: contrastar la acción anunciada con s
 Para Fósiles, decisión de María: conservar R01 exacta y esperar las respuestas de Prisma y Axioma. Estado de implementación: REWORK_REQUIRED; coordinación: WAIT_INDEPENDENT_REVIEWS_BEFORE_R02. No modificar el prototipo durante esa espera. La autorrevisión de Nexo no constituye consenso ni revisión de terceros.
 
 Cuando lleguen: identificar versión/hash y método de cada revisión; comparar hallazgo/evidencia/límite; acordar cambios; registrar aprendizaje aplicable en formación y la acción verificable en el plan de trabajo. No limitar la continuidad a enlazar un comentario.
+
+
+## 17 · R04 · Procedimiento operativo aprendido el2026-10-06
+Entrada de formación: [README.md](README.md) → [módulo22](22_FORMACION_INTEGRADA_R04_20261006.md). Después leer orden/issue vivo y artefacto exacto; las notas formativas antiguas no son autorización de ejecución ni estado actual.
+
+Antes de diseñar:
+- Definir propósito, acción principal, consecuencia y retorno. Confirmar área canónica y mandato posterior de María.
+- Elegir una experiencia completa que ponga a prueba el concepto; no prometer un catálogo por tener assets.
+- Diferenciar requisitos de proyecto, fuentes científicas, representación y decisiones aún por validar.
+
+Antes de revisar:
+- Leer bytes entregados, hash y cambios; preservar base. Separar pruebas del autor de las propias.
+- Trazar gesto → selección → estado → render/visibilidad → feedback → continuidad.
+- Fijar casos antes de ver el resultado. Revisar interacciones entre funciones, no sólo cada función aislada.
+- Ante discrepancia entre revisores, comparar caso/método/versiones. Mantener cierres válidos y añadir el defecto nuevo.
+
+Antes de ordenar:
+- Clasificar KEEP / defecto reproducido / hipótesis / propuesta / bloqueo externo.
+- Dar patch acotado con criterio de cierre. No exigir reconstrucción salvo mandato o causa demostrada.
+- Reconciliar copy y contrato: mi error «Empezar por Orión» se corrige en la orden, no se imputa al ejecutor.
+- Identificar qué archivo y acceso necesita Claude; no dar por entregado un enlace inaccesible.
+
+Antes de cerrar:
+- No elevar fixture a navegador, navegador emulado a dispositivo físico ni métrica a percepción.
+- Registrar resultados negativos, huecos de cobertura y estado humano pendiente.
+- Actualizar formación, plan/práctica afectada e índice, además del informe.
+- Documentación/orden subida no equivale a patch implementado, agente avisado, merge o release.
+- Para integración posterior, fetch de main vivo, drift check y rollback según autorización vigente. Este módulo no autoriza despliegue.
+
+La espera de Fósiles descrita en §16 corresponde a aquel momento; usar la orden posterior aplicable sin borrar la historia.
