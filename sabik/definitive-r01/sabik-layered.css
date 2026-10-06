@@ -73,17 +73,17 @@
 .sabik-visual[data-state="degraded"] .orbits{opacity:.35;animation-duration:34s}
 .sabik-visual[data-state="degraded"] .core-light{opacity:.58;animation:coreDegraded 7s ease-in-out infinite}
 
-@keyframes breathe{0%,100%{scale:1}50%{scale:1.008}}
+@keyframes breathe{0%,100%{scale:1;translate:0 0;rotate:-.5deg}50%{scale:1.025;translate:0 -2%;rotate:.5deg}}
 @keyframes orbit{to{rotate:360deg}}
-@keyframes coreIdle{0%,100%{scale:.985;opacity:.82}50%{scale:1.018;opacity:1}}
+@keyframes coreIdle{0%,100%{scale:.94;opacity:.75}50%{scale:1.12;opacity:1}}
 @keyframes particles{0%,100%{opacity:.72}50%{opacity:1}}
-@keyframes listenBody{0%,100%{scale:.986}50%{scale:.995}}
+@keyframes listenBody{0%,100%{scale:1;translate:0 0;rotate:-.5deg}50%{scale:1.025;translate:0 -1.5%;rotate:.5deg}}
 @keyframes listenCore{0%,100%{scale:.95;opacity:.88}50%{scale:1.015;opacity:1}}
-@keyframes processingBody{0%,100%{scale:.994}50%{scale:1.006}}
+@keyframes processingBody{0%,100%{scale:1;rotate:-1deg}50%{scale:1.025;rotate:1deg}}
 @keyframes think{0%,100%{scale:.98;opacity:.86}50%{scale:1.045;opacity:1}}
 @keyframes speak{0%,100%{scale:1;opacity:.9}50%{scale:1.08;opacity:1}}
 @keyframes speakRings{0%,100%{scale:.99;opacity:.78}50%{scale:1.045;opacity:1}}
-@keyframes speakBody{0%,100%{scale:1}50%{scale:1.012}}
+@keyframes speakBody{0%,100%{scale:1;translate:0 0;rotate:-.7deg}50%{scale:1.035;translate:0 -1.5%;rotate:.7deg}}
 @keyframes coreDegraded{0%,100%{scale:.97;opacity:.5}50%{scale:.99;opacity:.62}}
 @keyframes sabikVoiceWave{0%{scale:.62;opacity:var(--sabik-wave-opacity,.12)}70%{opacity:.08}100%{scale:3.2;opacity:0}}
 
@@ -114,7 +114,7 @@
 .sabik-visual[data-motion="none"] *,
 html[data-ig-motion="off"] .sabik-visual *{
  animation:none!important;transition:none!important;transform:none!important;
- scale:1!important;rotate:0deg!important
+ scale:1!important;rotate:0deg!important;translate:none!important
 }
 .sabik-visual[data-motion="none"] .sabik-core-wave,
 html[data-ig-motion="off"] .sabik-visual .sabik-core-wave{opacity:0!important}
