@@ -225,3 +225,22 @@ Para la siguiente revisión, una vez recibidas las respuestas independientes:
 7. Valorar repetición y encontrabilidad en caparazón, espina y ala, sin convertir la experiencia en test escolar.
 
 Ejercicios de giro a distintas tasas, cancelación asíncrona, foco y reflow definidos en R03 siguen pendientes cuando no hay ejecución registrada. No dar por realizados ejercicios por haber escrito su procedimiento.
+
+
+## Prácticas7–14 · Transferencia R04 · 2026-10-06
+Estado inicial de TODAS: PENDIENTE_DE_EJECUCIÓN_Y_REVISIÓN. Los fallos de origen sí tienen reproducciones; eso no aprueba la corrección futura.
+
+| Práctica | Trabajo y contraejemplo | Criterio de salida y método |
+|---|---|---|
+| 7 · Evidencia semántica | Cinturón1/3,2/3,3/3; hacha cola sin tronco; fósil con losa despejada pero rasgo oculto | Predicado único y mínimo propio por patrón; marcadores/mensaje usan lo visible. Motor + captura del estado + revisión humana. |
+| 8 · Intención | Clic sobre objeto pequeño junto a grande; elección explícita, candidato que desaparece | Caso fijado antes del resultado, sin buscar encuadre ganador. Elegido/foco/contexto coherentes por ratón y teclado real. |
+| 9 · Tiempo y gesto | Cambiar perfiles en fase avanzada; seguir un periodo; pinch→un dedo; cancelar | Centro/pose/fase/cámara continuos, velocidad coherente a tiempos iguales; fixtures primero y teléfono real para gesto. |
+| 10 · Asíncronía y restore | FichasA/B con llegada invertida, cerrar mientras carga, recargar tras pan, save malformado | Ninguna respuesta vieja reaparece; estado persistido válido; carga fallida conserva partida. Navegador con retrasos controlados. |
+| 11 · Construcción útil | Dos puentes/refugios válidos, retirar apoyo, deshacer con Vera encima; colocar/quitar para engañar contador | La obra abre acceso y puede usarse; no éxito con parcela vacía; invariantes de personaje/inventario/ocupación. Partida real y fixtures. |
+| 12 · Vera | Idle/caminar/correr/girar/recoger/escalera con los clips reales | Identidad, escala, bucles, pies y root motion coherentes. Reproducción visual; no PASS por nombresFBX. |
+| 13 · Web completa | Seis áreas, home con imágenes, rutas, reset de vacío, cambio ES/EN y texto200% con panel abierto | Mandato de rediseño cumplido, sin Intereses/Taller duplicados ni rutinas sustituyendo Juegos; browser/layout + HUMAN QA. |
+| 14 · Mundo y percepción | Microescena con tres consecuencias diferentes; NONE equivalente; escucha de media exacta cuando corresponda | María entiende qué hacer y cómo continuar; nota diferencias sin presión. Registrar observaciones sin inventar aprobación o preferencias universales. |
+
+Para cada ejercicio entregar: base/hash, hipótesis, caso negativo, resultado esperado, resultado observado, método, límite y siguiente decisión. Sólo pruebas relevantes al riesgo; no una batería ornamental.
+Pregunta de transferencia: explicar cómo un fallo propio de Fósiles anticipa un fallo de Cielo o Peces y demostrar la prevención en código. Repetir el concepto no es suficiente.
+Evaluación independiente: Axioma/Prisma según encargo y María para HUMAN QA; esta formación no les atribuye revisión ya realizada.
