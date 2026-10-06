@@ -192,6 +192,8 @@ export function createSabikConversationalVoice({
 
  async function setEnabled(next){
   const value=Boolean(next);
+  // Unlock during the click gesture, before capability/network awaits.
+  if(value)ensurePlaybackUnlocked();
   if(!value){
    enabled=false;stopAll('voice-disabled');
    try{await fixed.setEnabled(false);}catch{}fixedReady=false;
