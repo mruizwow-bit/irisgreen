@@ -206,6 +206,46 @@ Añadir un gate:
 
 ---
 
+## 5b. Contraejemplo directo: mismo punto del cielo, distinto resultado
+
+Además del probe aleatorio, Prisma buscó una **misma coordenada del campo** proyectada en dos viewports.
+
+Campo:
+`campo-01`
+
+Coordenada:
+```
+u = -0.2528696238395023
+v =  0.3067919550947542
+```
+
+### 320×568
+- screen: `(76.31, 296.98)`
+- `coincide = true`
+- `resultado = intencion`
+- constelación elegida: `And`
+- radio CSS: `88 px`
+- apertura reportada: `17°`
+- mejor candidato: `5/5` puntos visibles dentro.
+
+### 1440×900
+Misma coordenada astronómica:
+- screen: `(463.67, 615.58)`
+- `coincide = false`
+- `resultado = ninguno`
+- radio CSS: `123 px`
+- apertura reportada: `7.1°`.
+
+Esto es una reproducción directa de que:
+
+`SAME_SKY_POINT + SAME_INITIAL_CAMERA != SAME_RECOGNITION_SEMANTICS`
+
+No depende de elegir otro punto con el ratón.
+
+La corrección de CIE-I03 debe considerarse cerrada sólo cuando este tipo de contraprueba deje de existir o el motor devuelva explícitamente `evidencia_insuficiente` por una diferencia física real de visibilidad.
+
+---
+
 # 6. P1 · La fórmula de apertura angular no mide lo que parece decir
 
 En centro:
