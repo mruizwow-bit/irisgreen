@@ -321,3 +321,10 @@ A petición de terminar fósil pendiente se intentó F02-04 Acanthostega con ref
 Se han preparado y guardado ZIP separados: CIELO_IMAGENES_Y_FICHAS_20261005.zip (462 archivos visuales únicos) y VIDA_MARINA_IMAGENES_Y_FICHAS_20261005.zip (652). Incluyen catálogo HTML, inventario CSV/JSON, fuentes y procedencia; versiones y formatos no equivalen a especies. Control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_ZIPS_CIELO_VIDA_MARINA_20261005.json`.
 
 Los datos ausentes quedan señalados; no hay nueva aprobación científica. El fichero corregido pez-gota-luz.png está truncado y queda excluido con incidencia; original 19_14_53-1 conservado. Exoplanetas 001–020 no recuperados y HOLD 032/033/040. B16 sigue revocado, B10 pendiente. Prioridad prototipo intacta, sin cambios en runtime o producción.
+
+
+## 2026-10-06 · Aves: ampliación y prompts de producción
+
+Por orden de María, continuar ilustraciones tras Cielo, Vida marina y Fósiles. Las 36 aves del banco no son el alcance final. Preparada primera ampliación a 100 especies distintas (36 base preservadas + 64 nuevas), en 10 tandas de 10, con 100 prompts completos individuales. Documento: `COORDINACION_IRIS_GREEN/HANDOFFS/ASTRA_AVES_100_20261006/INVENTARIO_Y_PROMPTS.md`; control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_AVES_AMPLIACION_100_20261006.json`.
+
+Entrega ZIP con MD, diez TXT de tandas, CSV/JSON y fuentes/cambios. Estado: PROMPTS PREPARADOS, no imágenes generadas ni QA científico global. Conservar originales aprobados. Un ave completa por PNG, alfa real, sin texto ni escenario horneado; NAVY separado en interfaz. Variantes de sexo/edad/plumaje no cuentan como especies nuevas. No bloquear prototipo esperando las 100 ni cambiar runtime/producción.
