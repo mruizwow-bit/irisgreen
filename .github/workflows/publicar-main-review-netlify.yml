@@ -38,6 +38,58 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Desactivar builds Git duplicados y conservar mantenimiento
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+        run: |
+          python3 - <<'PY'
+          import json, os, urllib.request, urllib.error
+          from pathlib import Path
+          site_id = os.environ["SITE_ID"]
+          token = next((os.environ.get(key) for key in ("NETLIFY_AUTH_TOKEN", "NETLIFY_TOKEN", "NETLIFY_ACCESS_TOKEN") if os.environ.get(key)), None)
+          if not token:
+              raise SystemExit("Falta credencial Netlify")
+          url = "https://api.netlify.com/api/v1/sites/" + site_id
+          def request(method="GET", payload=None):
+              req = urllib.request.Request(url, method=method, headers={"Authorization": "Bearer " + token, "Content-Type": "application/json"}, data=json.dumps(payload).encode() if payload is not None else None)
+              try:
+                  with urllib.request.urlopen(req, timeout=45) as response:
+                      return json.load(response)
+              except urllib.error.HTTPError as error:
+                  raise SystemExit(f"Netlify {method}: HTTP {error.code}") from None
+          before = request()
+          if before.get("id") != site_id:
+              raise SystemExit("Site inesperado")
+          published = before.get("published_deploy") or {}
+          if not published.get("locked") or "maintenance" not in published.get("title", "").lower():
+              raise SystemExit("Producción no está bloqueada en mantenimiento; no modificar configuración")
+          if (before.get("build_settings") or {}).get("stop_builds") is not True:
+              request("PATCH", {"build_settings": {"stop_builds": True}})
+          after = request()
+          if (after.get("build_settings") or {}).get("stop_builds") is not True:
+              raise SystemExit("No se pudo verificar stop_builds=true")
+          current = after.get("published_deploy") or {}
+          if current.get("id") != published.get("id") or current.get("locked") is not True:
+              raise SystemExit("Producción cambió durante la operación; revisar")
+          for key in ("password", "password_context", "sso_login", "sso_login_context"):
+              if before.get(key) != after.get(key):
+                  raise SystemExit("Cambió una protección de acceso; revisar")
+          before_build = dict(before.get("build_settings") or {})
+          after_build = dict(after.get("build_settings") or {})
+          before_build.pop("stop_builds", None)
+          after_build.pop("stop_builds", None)
+          if before_build != after_build:
+              raise SystemExit("Cambió otra configuración de build; revisar")
+          Path("/tmp/irisgreen-production-before-review.txt").write_text(published["id"])
+          print("NETLIFY_GIT_BUILDS_STOPPED=true")
+          print("PUBLIC_MAINTENANCE_PRESERVED=" + published["id"])
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("## Flujo único de revisión\n\nNetlify Git builds: detenidos. GitHub Actions construye main y actualiza el alias existente main-review. Producción bloqueada en mantenimiento.\n")
+          PY
+
       - name: Construir main canónico
         run: python3 scripts/build_site.py
 
@@ -57,6 +109,7 @@ jobs:
           fi
 
           npx -y netlify-cli@27.11.1 deploy \
+            --no-build \
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
