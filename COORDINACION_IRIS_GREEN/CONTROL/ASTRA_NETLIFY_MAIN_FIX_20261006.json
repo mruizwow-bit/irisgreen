@@ -12,9 +12,15 @@
     "autodespliegue al cambiar el workflow",
     "resumen con deploy ID, URL y SHA"
   ],
-  "validation": "YAML parseado y scripts bash -n PASS; despliegue real en ejecución",
+  "validation": "YAML/shell PASS; GitHub Actions 37420417204 SUCCESS; Netlify deploy ready confirmado por API.",
   "run": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37420417204",
   "public_maintenance_preserved": true,
   "voice_fixed": false,
-  "notes": "La captura de Cancelled refleja el ignore deliberado. No se interpreta 'todo en main' como reapertura pública: MAINTENANCE_ACTIVE.txt mantiene la web cerrada hasta autorización expresa. Fallo CSP observado ya en commit documental previo; no atribuir a este workflow."
+  "notes": "La captura de Cancelled refleja el ignore deliberado. No se interpreta 'todo en main' como reapertura pública: MAINTENANCE_ACTIVE.txt mantiene la web cerrada hasta autorización expresa. Fallo CSP observado ya en commit documental previo; no atribuir a este workflow.",
+  "deploy_id": "6ac48c4882a472c42cfb01bd",
+  "deployed_source_sha": "4a91de8617f8c0c08d8d8867db1b2405fac7997e",
+  "functions": [
+    "sabik-voice-proxy"
+  ],
+  "review_url": "https://main-review--irisgreen-home.netlify.app"
 }
