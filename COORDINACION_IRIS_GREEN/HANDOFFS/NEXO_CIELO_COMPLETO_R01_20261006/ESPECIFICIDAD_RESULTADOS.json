@@ -1,0 +1,552 @@
+{
+  "method": {
+    "engine": "original js/motor.js",
+    "seed": 20261006,
+    "n": 4000,
+    "camera": "u=0,v=0,zoom=1.35; ajustada por motor",
+    "exclude": {},
+    "sampling": "uniforme sobre rectángulo total W×H",
+    "occlusion": "horizonte del motor; sin controles ni panel",
+    "meaning": "proporción aceptada, NO errores contra una verdad-terreno de intención",
+    "limitations": "sin navegador, no distribución real de gestos; dimensiones de probe Axioma no medición nueva"
+  },
+  "models": [
+    {
+      "W": 296,
+      "H": 352,
+      "radius": 88,
+      "mean": 0.8427708333333334,
+      "median": 0.84975,
+      "min": 0.69,
+      "max": 0.95875,
+      "fields": [
+        {
+          "id": "campo-01",
+          "accepted": 3835,
+          "rate": 0.95875,
+          "aboveHorizonRate": 0.9844020797227037,
+          "candidates": {
+            "Lac": 561,
+            "Cas": 468,
+            "And": 292,
+            "Cam": 566,
+            "Cyg": 528,
+            "Dra": 481,
+            "UMi": 551,
+            "Cep": 388
+          }
+        },
+        {
+          "id": "campo-02",
+          "accepted": 3399,
+          "rate": 0.84975,
+          "aboveHorizonRate": 0.9362445414847161,
+          "candidates": {
+            "LMi": 328,
+            "UMa": 897,
+            "Lyn": 739,
+            "Leo": 782,
+            "Cnc": 653
+          }
+        },
+        {
+          "id": "campo-03",
+          "accepted": 3399,
+          "rate": 0.84975,
+          "aboveHorizonRate": 0.8970032004655223,
+          "candidates": {
+            "Ari": 501,
+            "Per": 742,
+            "Tau": 893,
+            "Aur": 548,
+            "Tri": 338,
+            "Psc": 377
+          }
+        },
+        {
+          "id": "campo-04",
+          "accepted": 2853,
+          "rate": 0.71325,
+          "aboveHorizonRate": 0.7491359447004609,
+          "candidates": {
+            "Vir": 679,
+            "CVn": 562,
+            "CrB": 486,
+            "Boo": 766,
+            "Com": 360
+          }
+        },
+        {
+          "id": "campo-05",
+          "accepted": 2760,
+          "rate": 0.69,
+          "aboveHorizonRate": 0.7411050043390223,
+          "candidates": {
+            "Lyr": 522,
+            "Aql": 805,
+            "Her": 829,
+            "Vul": 373,
+            "Sge": 231
+          }
+        },
+        {
+          "id": "campo-06",
+          "accepted": 3098,
+          "rate": 0.7745,
+          "aboveHorizonRate": 0.8015267175572519,
+          "candidates": {
+            "CMa": 718,
+            "Gem": 690,
+            "Mon": 319,
+            "Lep": 502,
+            "Ori": 429,
+            "CMi": 440
+          }
+        },
+        {
+          "id": "campo-07",
+          "accepted": 3587,
+          "rate": 0.89675,
+          "aboveHorizonRate": 0.9312354312354313,
+          "candidates": {
+            "Del": 605,
+            "Peg": 690,
+            "Aqr": 604,
+            "Cap": 798,
+            "PsA": 602,
+            "Equ": 288
+          }
+        },
+        {
+          "id": "campo-08",
+          "accepted": 3310,
+          "rate": 0.8275,
+          "aboveHorizonRate": 0.8513788098693759,
+          "candidates": {
+            "Sco": 698,
+            "Oph": 667,
+            "Lup": 487,
+            "Lib": 579,
+            "Ser": 512,
+            "Sct": 367
+          }
+        },
+        {
+          "id": "campo-09",
+          "accepted": 3240,
+          "rate": 0.81,
+          "aboveHorizonRate": 0.866957787481805,
+          "candidates": {
+            "Eri": 701,
+            "Cet": 1029,
+            "Scl": 418,
+            "Phe": 660,
+            "For": 432
+          }
+        },
+        {
+          "id": "campo-10",
+          "accepted": 3621,
+          "rate": 0.90525,
+          "aboveHorizonRate": 0.9250645994832042,
+          "candidates": {
+            "Crv": 511,
+            "Vel": 614,
+            "Cen": 698,
+            "Ant": 304,
+            "Crt": 462,
+            "Sex": 576,
+            "Pyx": 349,
+            "Hya": 107
+          }
+        },
+        {
+          "id": "campo-11",
+          "accepted": 3716,
+          "rate": 0.929,
+          "aboveHorizonRate": 0.97520184544406,
+          "candidates": {
+            "Tel": 254,
+            "Ind": 210,
+            "Sgr": 485,
+            "Cir": 251,
+            "Nor": 233,
+            "Mic": 471,
+            "Oct": 251,
+            "Tuc": 449,
+            "Pav": 232,
+            "CrA": 204,
+            "Aps": 297,
+            "TrA": 94,
+            "Gru": 144,
+            "Ara": 141
+          }
+        },
+        {
+          "id": "campo-12",
+          "accepted": 3635,
+          "rate": 0.90875,
+          "aboveHorizonRate": 0.9705457695639619,
+          "candidates": {
+            "Cha": 318,
+            "Hyi": 448,
+            "Mus": 356,
+            "Pic": 238,
+            "Col": 308,
+            "Vol": 210,
+            "Hor": 361,
+            "Pup": 390,
+            "Car": 306,
+            "Men": 169,
+            "Dor": 85,
+            "Cae": 362,
+            "Ret": 84
+          }
+        }
+      ]
+    },
+    {
+      "W": 366,
+      "H": 523,
+      "radius": 88,
+      "mean": 0.6189583333333332,
+      "median": 0.611,
+      "min": 0.44375,
+      "max": 0.7965,
+      "fields": [
+        {
+          "id": "campo-01",
+          "accepted": 2921,
+          "rate": 0.73025,
+          "aboveHorizonRate": 0.8020743301642178,
+          "candidates": {
+            "Cas": 420,
+            "Cep": 514,
+            "Lac": 426,
+            "Cam": 345,
+            "And": 119,
+            "UMi": 582,
+            "Cyg": 417,
+            "Dra": 98
+          }
+        },
+        {
+          "id": "campo-02",
+          "accepted": 2297,
+          "rate": 0.57425,
+          "aboveHorizonRate": 0.6671507406331687,
+          "candidates": {
+            "Cnc": 452,
+            "LMi": 339,
+            "Lyn": 508,
+            "UMa": 596,
+            "Leo": 402
+          }
+        },
+        {
+          "id": "campo-03",
+          "accepted": 2403,
+          "rate": 0.60075,
+          "aboveHorizonRate": 0.6962547920967266,
+          "candidates": {
+            "Aur": 333,
+            "Ari": 334,
+            "Tau": 597,
+            "Per": 693,
+            "Psc": 210,
+            "Tri": 236
+          }
+        },
+        {
+          "id": "campo-04",
+          "accepted": 1775,
+          "rate": 0.44375,
+          "aboveHorizonRate": 0.5150431933273756,
+          "candidates": {
+            "CVn": 334,
+            "CrB": 344,
+            "Vir": 317,
+            "Boo": 638,
+            "Com": 142
+          }
+        },
+        {
+          "id": "campo-05",
+          "accepted": 1841,
+          "rate": 0.46025,
+          "aboveHorizonRate": 0.5219540564117476,
+          "candidates": {
+            "Her": 465,
+            "Sge": 192,
+            "Lyr": 438,
+            "Vul": 257,
+            "Aql": 489
+          }
+        },
+        {
+          "id": "campo-06",
+          "accepted": 2564,
+          "rate": 0.641,
+          "aboveHorizonRate": 0.7098175499565595,
+          "candidates": {
+            "Gem": 636,
+            "Mon": 342,
+            "CMa": 531,
+            "CMi": 335,
+            "Lep": 407,
+            "Ori": 313
+          }
+        },
+        {
+          "id": "campo-07",
+          "accepted": 2874,
+          "rate": 0.7185,
+          "aboveHorizonRate": 0.757080291970803,
+          "candidates": {
+            "Peg": 503,
+            "Del": 374,
+            "PsA": 562,
+            "Cap": 661,
+            "Aqr": 460,
+            "Equ": 314
+          }
+        },
+        {
+          "id": "campo-08",
+          "accepted": 2231,
+          "rate": 0.55775,
+          "aboveHorizonRate": 0.6013824884792627,
+          "candidates": {
+            "Oph": 526,
+            "Ser": 422,
+            "Lib": 381,
+            "Lup": 389,
+            "Sco": 513
+          }
+        },
+        {
+          "id": "campo-09",
+          "accepted": 2021,
+          "rate": 0.50525,
+          "aboveHorizonRate": 0.5720081135902637,
+          "candidates": {
+            "Eri": 618,
+            "Phe": 423,
+            "Cet": 720,
+            "Scl": 73,
+            "For": 187
+          }
+        },
+        {
+          "id": "campo-10",
+          "accepted": 2485,
+          "rate": 0.62125,
+          "aboveHorizonRate": 0.6779953917050692,
+          "candidates": {
+            "Sex": 351,
+            "Vel": 561,
+            "Cen": 417,
+            "Crv": 315,
+            "Crt": 476,
+            "Pyx": 169,
+            "Hya": 87,
+            "Ant": 109
+          }
+        },
+        {
+          "id": "campo-11",
+          "accepted": 3112,
+          "rate": 0.778,
+          "aboveHorizonRate": 0.8802204176334106,
+          "candidates": {
+            "Sgr": 387,
+            "Cir": 121,
+            "Tel": 216,
+            "CrA": 249,
+            "Mic": 365,
+            "Oct": 117,
+            "Pav": 314,
+            "Tuc": 379,
+            "Ara": 187,
+            "TrA": 148,
+            "Ind": 265,
+            "Nor": 126,
+            "Aps": 238
+          }
+        },
+        {
+          "id": "campo-12",
+          "accepted": 3186,
+          "rate": 0.7965,
+          "aboveHorizonRate": 0.8571838256380843,
+          "candidates": {
+            "Men": 171,
+            "Pup": 301,
+            "Vol": 272,
+            "Cae": 310,
+            "Cha": 296,
+            "Hyi": 305,
+            "Pic": 146,
+            "Car": 196,
+            "Dor": 185,
+            "Mus": 309,
+            "Col": 368,
+            "Ret": 105,
+            "Hor": 222
+          }
+        }
+      ]
+    },
+    {
+      "W": 1408,
+      "H": 558,
+      "radius": 106,
+      "mean": 0.09581250000000001,
+      "median": 0.074875,
+      "min": 0.0015,
+      "max": 0.2785,
+      "fields": [
+        {
+          "id": "campo-01",
+          "accepted": 436,
+          "rate": 0.109,
+          "aboveHorizonRate": 0.11671554252199413,
+          "candidates": {
+            "Cas": 140,
+            "Cep": 296
+          }
+        },
+        {
+          "id": "campo-02",
+          "accepted": 256,
+          "rate": 0.064,
+          "aboveHorizonRate": 0.0661467359907568,
+          "candidates": {
+            "LMi": 152,
+            "Leo": 61,
+            "Lyn": 43
+          }
+        },
+        {
+          "id": "campo-03",
+          "accepted": 316,
+          "rate": 0.079,
+          "aboveHorizonRate": 0.09127671865973426,
+          "candidates": {
+            "Ari": 79,
+            "Per": 162,
+            "Tri": 44,
+            "Aur": 31
+          }
+        },
+        {
+          "id": "campo-04",
+          "accepted": 266,
+          "rate": 0.0665,
+          "aboveHorizonRate": 0.0778688524590164,
+          "candidates": {
+            "CrB": 188,
+            "CVn": 77,
+            "Boo": 1
+          }
+        },
+        {
+          "id": "campo-05",
+          "accepted": 370,
+          "rate": 0.0925,
+          "aboveHorizonRate": 0.10784027980180705,
+          "candidates": {
+            "Lyr": 127,
+            "Sge": 140,
+            "Vul": 103
+          }
+        },
+        {
+          "id": "campo-06",
+          "accepted": 338,
+          "rate": 0.0845,
+          "aboveHorizonRate": 0.09794262532599246,
+          "candidates": {
+            "CMi": 100,
+            "Mon": 115,
+            "Ori": 123
+          }
+        },
+        {
+          "id": "campo-07",
+          "accepted": 163,
+          "rate": 0.04075,
+          "aboveHorizonRate": 0.04768870684610883,
+          "candidates": {
+            "Equ": 90,
+            "Aqr": 73
+          }
+        },
+        {
+          "id": "campo-08",
+          "accepted": 219,
+          "rate": 0.05475,
+          "aboveHorizonRate": 0.061873388713835575,
+          "candidates": {
+            "Sco": 39,
+            "Sct": 140,
+            "Lib": 40
+          }
+        },
+        {
+          "id": "campo-09",
+          "accepted": 6,
+          "rate": 0.0015,
+          "aboveHorizonRate": 0.0017341040462427746,
+          "candidates": {
+            "Eri": 6
+          }
+        },
+        {
+          "id": "campo-10",
+          "accepted": 283,
+          "rate": 0.07075,
+          "aboveHorizonRate": 0.08243518788231867,
+          "candidates": {
+            "Crt": 140,
+            "Crv": 113,
+            "Pyx": 30
+          }
+        },
+        {
+          "id": "campo-11",
+          "accepted": 1114,
+          "rate": 0.2785,
+          "aboveHorizonRate": 0.3233410942956927,
+          "candidates": {
+            "Gru": 313,
+            "Ind": 93,
+            "Pav": 273,
+            "Ara": 202,
+            "Nor": 123,
+            "Tel": 93,
+            "Tuc": 17
+          }
+        },
+        {
+          "id": "campo-12",
+          "accepted": 832,
+          "rate": 0.208,
+          "aboveHorizonRate": 0.23140252866803881,
+          "candidates": {
+            "Ret": 127,
+            "Men": 113,
+            "Hyi": 144,
+            "Vol": 139,
+            "Hor": 166,
+            "Dor": 143
+          }
+        }
+      ]
+    }
+  ],
+  "clues": {
+    "total": 88,
+    "starMagnitudeTemplate": 32
+  }
+}
