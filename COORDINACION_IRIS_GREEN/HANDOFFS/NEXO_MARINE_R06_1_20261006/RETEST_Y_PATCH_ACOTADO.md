@@ -73,3 +73,28 @@ Las mediciones de tronco (3/595 casos bajo0,5) no deciden perceptibilidad: mante
 3. Entregar patch e interno con hash, trazabilidad, matriz y resultados que distingan PASS/NO_EJECUTADO/PENDING.
 4. Retest independiente y precheck Axioma del material perceptual; después HUMAN VISIBILITY QA. No pedir a María revisar93 capturas defectuosas o repetidas: seleccionar matriz representativa correcta.
 Inventario y diseño documental de microescena pueden avanzar ya. Implementación/escala de plantilla sigue pendiente; sin main ni despliegue.
+
+
+## Consolidación con Prisma · 2026-10-06
+Fuente leída: PRISMA_REVISION_MARINE_R06_1_20261006.md, commit12f99a55a5eeeb879e04a3342a8cb2b20f5cf354, #323 comentario6013658799.
+Esta ampliación se integra en la MISMA orden. Conserva R061-N01–N05 y sus reproducciones; no crea un encargo alternativo ni declara nuevo PASS.
+
+### Nuevos criterios que incorpora el patch
+1. **Tamaño del detalle, no sólo diagonal.** Prisma registra linterna examinable con observable de53,9×6,3px. Una diagonal~54px oculta que la hilera mide sólo~6px de alto. Añadir a la clave ancho/alto visibles y, según el observable, diámetro/separación de puntos o extensión del contorno. No confundir el alto de la caja con el grosor real de cada fotóforo. Mantener mínimos PENDING/null hasta prueba humana, sin inventar un escalar universal.
+2. **BLOQUEADO-COPY por fila.** Añadir identificador estable de animal a la fila de señales y comprobar exactamente la del calamar. Fallar si falta la fila o el identificador; no concatenar toda la lista como fallback. Cubrir ES/EN y activación de la ayuda guiada, no sólo presencia de una frase.
+3. **Nombres honestos de pruebas.** Renombrar DOS-CANDIDATOS-REALES a DOS-CANDIDATOS-FIXTURE cuando rehabilita al calamar. Añadir un caso separado con hacha+linterna sin modificar datos, basado en R061-N01. HISTERESIS requiere muestra efectiva y casos que crucen/no crucen el margen; pasos>0 por sí solo tampoco demuestra la propiedad.
+4. **Contrato temporal preciso.**31/24/38s describen la componente horizontal; la vertical usa0,73 veces ese periodo. No es una nueva regresión ni exige rediseñar la ruta. Documentar ambas componentes en segundos y hacer el nombre inequívoco; si se renombra a periodoHorizontal, mantener lectura compatible del campo antiguo y actualizar consumidores/pruebas. No prometer retorno de la trayectoria2D completa tras un periodo horizontal.
+5. **Fuente enlazada al dato operativo.** Cada sourceTrait factual y revealFact necesita claimId estable, estado y alcance; el registro de afirmaciones debe resolverlo. Incluir hacha/silueta, linterna/hileras y cuerpo-alargado; no basta sidecar con URLs. Para afirmación sin fuente, usar registro PENDING explícito y tratamiento editorial coherente; no promoverla a validada. Verificador de integridad: IDs ausentes/duplicados/referencias rotas y contradicción de estados entre datos/sidecar. No exigir corroboración zoológica a una decisión puramente visual que esté declarada como representación.
+6. **Límite del hit-test.** d<=2px respecto a muestras no significa interior exacto de silueta. Corregir documentación y añadir casos de bordes, zonas transparentes, apéndices y dos elegibles a varias escalas. No cambiar todo el motor de selección preventivamente: conservar aproximación si satisface casos pertinentes; adoptar máscara u otra geometría si se demuestra fallo. No usar puntos ocultos como evidencia de intención.
+
+### Reconciliación de las diferencias
+- «0 solapes en19.208 posiciones» se conserva como resultado de ESE barrido del autor, no ley del producto. R061-N01 ya aporta contraejemplo lógico independiente a6s con los dos peces. Está pendiente reproducción browser; no borrarlo por repetir el texto anterior.
+- El KEEP de selección se limita a la incorporación de elección explícita. No cierra fallback espacial pendiente ni prueba de histéresis vacía.
+- El KEEP de validación cubre datos actuales y rechazo de geometría marcada inválida. No cierra el fixture incoherente ni ausencia del validador entregable de N04.
+- La nueva revisión humana debe usar capturas/clave sincronizadas según N03. No usar caso065 actual para calibrar.
+
+### HUMAN VISIBILITY y microescena
+Preparar una selección breve y representativa de hacha/linterna: tamaños grande/medio/pequeño, ambos lados del umbral y adversos relevantes, sin nombres/copy sugerente. Pregunta abierta que permita señalar o describir; sin cronómetro ni terminología obligatoria. La valoración de María es evidencia de esta prueba, no estudio universal de todas las personas.
+Conservar la posibilidad de revisar ejemplos frontera correctos mientras se arregla el paquete, pero no emitir HUMAN_VISIBILITY_PASS global con material inconsistente.
+Inventario/diseño de microescena pueden avanzar AHORA como documentación. El banco actual conserva los tres animales; no confundirlo con la futura microescena variada de hábitat ni limitar permanentemente el producto a esos tres. Los nuevos encuentros requieren assets/datos compatibles y variantes de descubrimiento sustentadas. No colocar peces profundos en arrecife somero para reutilizarlos.
+Secuencia vigente: patch técnico y de evidencia → retest/precheck Axioma → HUMAN VISIBILITY hacha/linterna → calibración si procede → microescena viva. NO MAIN · NO DEPLOY · NO ESCALA200+.
