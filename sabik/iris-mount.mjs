@@ -231,7 +231,12 @@ async function mount(){
   const list=document.createElement('ol');list.className='sabik-source-list sabik-retrieval-list';
   for(const source of sources){
    const li=document.createElement('li');li.className='sabik-retrieval-result';
-   const a=document.createElement('a');a.className='sabik-retrieval-link';a.href=source.url;a.textContent=source.title||source.heading||source.url;li.appendChild(a);list.appendChild(li);
+   const a=document.createElement('a');a.className='sabik-retrieval-link';a.href=source.url;
+   if(location.origin==='https://main-review--irisgreen-home.netlify.app'){
+    const destination=new URL(a.href);
+    if(destination.origin==='https://irisgreen.eu')a.href=destination.pathname+destination.search+destination.hash;
+   }
+   a.textContent=source.title||source.heading||source.url;li.appendChild(a);list.appendChild(li);
   }
   section.append(h,list);
  }
