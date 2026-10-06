@@ -911,6 +911,159 @@ no HUMAN QA todavía.
 
 ---
 
+# 34. Cielo R02 · aprendizaje adicional
+
+La revisión del ZIP R02 confirma una lección importante:
+
+## Denominador visible no basta
+
+Cambiar de:
+`puntos totales`
+a:
+`puntos visibles`
+
+evita penalizar por contenido oculto, pero puede crear otro error:
+
+si sólo queda 1 punto visible:
+`1/1 = 100 %`.
+
+Eso no significa que el patrón semántico esté observado.
+
+Principio:
+**la oclusión puede reducir evidencia disponible, pero no reducir automáticamente la evidencia semántica necesaria.**
+
+Para patrones:
+- definir subpatrón mínimo observable;
+- si no hay evidencia suficiente visible, pedir reencuadre;
+- no “aprobar” porque todo lo poco visible está dentro.
+
+## Input tolerance ≠ evidence aperture
+
+Un target cómodo en CSS px puede crecer en móvil.
+
+La apertura astronómica no debe crecer con él.
+
+En R02, mismo campo/zoom:
+- 320: ~8,8° reportados;
+- 390: ~6,0°;
+- 1440: ~3,7°.
+
+Y un probe adverso sobre el ZIP exacto mostró mucha más aceptación de taps aleatorios en móvil que desktop.
+
+Nuevo gate:
+`SAME_SKY_EVIDENCE_320_390_1440`.
+
+## Reachability ≠ specificity
+
+Una prueba que busca:
+- varios zooms;
+- varios centros;
+- hasta encontrar uno que funciona
+
+demuestra:
+`se puede alcanzar`.
+
+No demuestra:
+`la selección es específica`.
+
+Separar suites:
+- reachability;
+- specificity/negatives;
+- viewport equivalence;
+- perception.
+
+## Data uniqueness ≠ perceptual clue
+
+R02 consiguió 88/88 pistas únicas dentro de su campo por valores.
+
+Pero 53/88 dependen de magnitud numérica exacta.
+
+Una diferencia de datos no es necesariamente una diferencia observable.
+
+Pista primaria:
+- forma;
+- brillo relativo;
+- relación espacial;
+- star-hopping.
+
+Magnitud exacta:
+- profundidad.
+
+## Async resources necesitan identidad propia
+
+Un token global de navegación no basta para:
+- ficha A → ficha B;
+- cerrar ficha mientras carga;
+- abrir otro panel en el mismo campo.
+
+Cada recurso asíncrono necesita:
+- request-id;
+- contexto esperado;
+- invalidación explícita.
+
+## Una visibilidad compartida
+
+Patrón, marcador, estrella individual y descripción deben consultar la misma función de:
+- viewport;
+- horizonte;
+- UI occluders.
+
+No volver a tener:
+`motor ve 1 estrella → overlay marca 2`.
+
+## Métricas visuales deben nombrar el denominador
+
+`canvasHeight / viewportHeight`
+no equivale a:
+`intersección visible del cielo en first paint`.
+
+Nombrar exactamente:
+- altura del componente;
+- visible intersection;
+- área útil.
+
+No usar la métrica más favorable como sinónimo de experiencia.
+
+## Errores de coordinación se atribuyen correctamente
+
+El storyboard original prohibía nombrar Orión antes del hallazgo.
+
+La propuesta consolidada posterior pidió literalmente:
+`Empezar por Orión`.
+
+Claude obedeció esa orden.
+
+Principio:
+**no atribuir al implementador una contradicción introducida por coordinación.**
+
+Corrección:
+`Empezar a explorar`
+antes del hallazgo;
+`Volver a Orión`
+después.
+
+---
+
+# 35. Anti-patrones añadidos tras Cielo R02
+
+21. Reducir el requisito semántico porque parte del patrón quedó oculta.
+22. Usar el mismo radio CSS para comodidad de input y evidencia del dominio.
+23. Llamar “apertura real” a una magnitud sin definir radio/diámetro/extensión.
+24. Confundir unicidad de datos con pista perceptible.
+25. Usar una prueba de búsqueda/optimización como prueba de precisión.
+26. Tener filtros de visibilidad distintos entre patrón, marcador y objeto individual.
+27. Dar por persistido un estado porque existe en memoria pero no se escribió.
+28. Confiar en versión de save sin validar forma/finitud de datos.
+29. Atribuir al implementador un fallo originado por instrucciones contradictorias.
+
+---
+
+# 36. Fuente interna añadida
+
+- `FORMACION/ESTUDIO_COMPARADO_CLAUDE_20261005/PRISMA_REVISION_CIELO_COMPLETO_R02_20261006.md`
+
+---
+
 # 34. Gate de formación
 
 `PRISMA_A8_INCREMENTAL_TRAINING_20261006_UPDATED`
