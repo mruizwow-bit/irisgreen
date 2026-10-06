@@ -1,6 +1,6 @@
 {
-  "date": "2026-10-05",
-  "status": "NEXO_FOSSILS_PRACTICE_R01_DELIVERED_BROWSER_QA_PENDING",
+  "date": "2026-10-06",
+  "status": "NEXO_FOSSILS_PRACTICE_R01_SELF_REVIEW_REWORK_REQUIRED",
   "author": "NEXO",
   "scope": "INDEPENDENT_PRACTICE_14_EXISTING_FOSSILS",
   "definition": "01_DEFINICION_PRODUCTO_R01.md",
@@ -42,5 +42,15 @@
   "main_modified": false,
   "public_deploy": false,
   "other_authors_practices": "NOT_EXECUTED_BY_NEXO",
-  "next": "Real browser test, then María product review"
+  "next": "Corregir coherencia de preparación, objetivo visible, correspondencia punto/acción, anclajes y feedback; probar navegador antes de revisión de producto.",
+  "self_review": {
+    "report": "REVISION_NEXO_R01_20261006/ANALISIS_NEXO_R01.md",
+    "evidence": "REVISION_NEXO_R01_20261006/REPRODUCTIONS.json",
+    "reproductions": 7,
+    "method": "Minimal DOM + native Canvas + read-only state hook; not browser QA",
+    "source_unchanged": true,
+    "anatomical_anchor_generation": "GENERIC_UNVALIDATED_REQUIRES_PIECE_SPECIFIC_REVIEW",
+    "product_judgment": "REWORK",
+    "reviewer": "NEXO_SELF_REVIEW"
+  }
 }
