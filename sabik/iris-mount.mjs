@@ -1,9 +1,10 @@
 import {createRetrievalQuery} from './retrieval-bridge.browser.mjs';
 import {createAuthorizedTransport} from './authorized-transport.mjs';
 import {connectionConfig,sealedLibrary} from './mount-config.mjs';
-import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r08';
-import {createSabikConversation} from './conversation-core-r66.mjs';
-import {loadDialogueLibrary} from './dialogue-library.mjs';
+import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r10';
+import {createSabikConversation} from './conversation-core-r66.mjs?v=sabik-r10';
+import {createDialogueLibrary} from './dialogue-library.mjs?v=sabik-r10';
+import {DIALOGUE_DATA} from './dialogue-data.mjs?v=sabik-r10';
 import {retrieveReviewedLibrary} from './library-client.mjs';
 
 const TEXT={
@@ -58,8 +59,7 @@ async function mount(){
  let reviewedBinding=null;
  let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false,voiceSessionActive=false,voiceResumeTimer=0;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options),present=()=>visual('presente',{force:true});
- const dialogues={es:null,en:null};
- await Promise.all(['es','en'].map(async code=>{try{dialogues[code]=await loadDialogueLibrary({language:code,base:'/sabik/assets/dialogue-r02'});}catch{dialogues[code]=null;}}));
+ const dialogues=Object.fromEntries(['es','en'].map(code=>[code,createDialogueLibrary({model:DIALOGUE_DATA[code],variables:DIALOGUE_DATA.variables})]));
  let voice,lastLanguage=lang;
 
  function voiceEnabled(){return Boolean(voice?.getState().enabled);}
@@ -88,15 +88,16 @@ async function mount(){
   const energy=Math.max(0,Math.min(1,Number(value)||0));
   if(meta.active)visualRoot.dataset.audioReactive='true';
   else delete visualRoot.dataset.audioReactive;
-  visualRoot.style.setProperty('--sabik-core-live-scale',(1+energy*.12).toFixed(3));
-  visualRoot.style.setProperty('--sabik-ring-live-scale',(1+energy*.055).toFixed(3));
+  const reduced=visualRoot.dataset.motion!=='normal';
+  visualRoot.style.setProperty('--sabik-core-live-scale',(1+energy*(reduced?.06:.38)).toFixed(3));
+  visualRoot.style.setProperty('--sabik-ring-live-scale',(1+energy*(reduced?.025:.16)).toFixed(3));
   visualRoot.style.setProperty('--sabik-core-live-opacity',(.9+energy*.1).toFixed(3));
   visualRoot.style.setProperty('--sabik-wave-opacity',Math.min(.72,.10+energy*.62).toFixed(3));
   visualRoot.style.setProperty('--sabik-wave-scale',(1+energy*.7).toFixed(3));
   visualRoot.style.setProperty('--sabik-halo-live-opacity',(.26+energy*.38).toFixed(3));
  }
  function syncVoice(state,meta={}){
-  const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing),speaking=Boolean(state?.speaking);
+  const on=Boolean(state?.enabled??voiceEnabled()),listening=Boolean(state?.listening),transcribing=Boolean(state?.transcribing||state?.preparing),speaking=Boolean(state?.speaking);
   const semantic=meta.semantic==='degraded'?'degraded':speaking?'speaking':listening?'listening':transcribing||busy?'processing':meta.semantic||'idle';
   voiceButton.setAttribute('aria-pressed',String(voiceSessionActive));voiceState.textContent=semantic==='degraded'?strings().voiceError:listening?strings().listening:speaking?strings().speaking:transcribing||busy?strings().processing:voiceSessionActive?strings().voiceOn:strings().voiceOff;
   voiceButton.setAttribute('aria-label',`${strings().voice}: ${voiceSessionActive?strings().voiceOn:strings().voiceOff}`);
@@ -210,7 +211,7 @@ async function mount(){
    const answerLanguage=lang;
    listen.disabled=true;listen.setAttribute('aria-busy','true');
    try{
-    const ready=await voice.setEnabled(true);
+    const ready=await voice.setEnabled(true,{playbackOnly:true});
     if(!listen.isConnected||answerLanguage!==lang||!ageSelected())return;
     if(ready.enabled)await voice.speak(answer);
    }finally{listen.disabled=false;listen.removeAttribute('aria-busy');}
