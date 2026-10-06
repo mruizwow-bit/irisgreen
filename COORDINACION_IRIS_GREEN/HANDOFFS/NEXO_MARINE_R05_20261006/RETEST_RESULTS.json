@@ -1,0 +1,92 @@
+{
+  "method": "Delivered functions in Node fixtures and native Canvas, not browser or HUMAN QA",
+  "pose": [
+    {
+      "id": "prof-pez-hacha",
+      "centerDisplacement": 0,
+      "giroBefore": -1,
+      "giroAfter": -1,
+      "maxStripYJumpAt400px": 9.783147449020447
+    },
+    {
+      "id": "prof-pez-linterna",
+      "centerDisplacement": 0,
+      "giroBefore": -1,
+      "giroAfter": -1,
+      "maxStripYJumpAt400px": 24.410524127607072
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "centerDisplacement": 0,
+      "giroBefore": -1,
+      "giroAfter": -1,
+      "maxStripYJumpAt400px": 19.830449353339993
+    }
+  ],
+  "turnDt": [
+    {
+      "hz": 30,
+      "giroAfter1s": -0.943768680502056
+    },
+    {
+      "hz": 60,
+      "giroAfter1s": -0.9437686805020561
+    },
+    {
+      "hz": 120,
+      "giroAfter1s": -0.943768680502056
+    }
+  ],
+  "multipleExitAndReturn": [
+    [
+      "announce",
+      "2 signals chosen a"
+    ],
+    [
+      "announce",
+      "none"
+    ],
+    [
+      "examine",
+      "b"
+    ]
+  ],
+  "focusTransfer": {
+    "calls": 1,
+    "otherHidden": true,
+    "targetMain": true
+  },
+  "twoQuietContacts": [],
+  "registration": [
+    {
+      "id": "prof-pez-hacha",
+      "giro": 1,
+      "iou": 0.9888367755125995
+    },
+    {
+      "id": "prof-pez-hacha",
+      "giro": -1,
+      "iou": 0.9888367755125995
+    },
+    {
+      "id": "prof-pez-linterna",
+      "giro": 1,
+      "iou": 0.9817985000615791
+    },
+    {
+      "id": "prof-pez-linterna",
+      "giro": -1,
+      "iou": 0.9817985000615791
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "giro": 1,
+      "iou": 0.9639400122283822
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "giro": -1,
+      "iou": 0.9639400122283822
+    }
+  ]
+}
