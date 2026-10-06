@@ -1,0 +1,50 @@
+{
+  "method": "Original app.js executed in Node VM with minimal DOM doubles. Not a rendered or native-input test.",
+  "checks": [
+    {
+      "id": "COUNT_LABEL",
+      "observed": "9 fichas",
+      "expected": "9 juegos"
+    },
+    {
+      "id": "EMPTY_RESET_UNBOUND",
+      "emptyVisible": true,
+      "firstHasClick": true,
+      "secondHasClick": false
+    },
+    {
+      "id": "TOP_RESET_WORKS",
+      "visible": 9
+    },
+    {
+      "id": "MALFORMED_QUERY",
+      "threw": true,
+      "error": "URIError",
+      "message": "URI malformed"
+    },
+    {
+      "id": "ACTUAL_RESET_NODES",
+      "page": "buscar",
+      "count": 2,
+      "handlerUsesFirstOnly": true
+    },
+    {
+      "id": "ACTUAL_RESET_NODES",
+      "page": "condiciones",
+      "count": 2,
+      "handlerUsesFirstOnly": true
+    },
+    {
+      "id": "ACTUAL_RESET_NODES",
+      "page": "juegos",
+      "count": 2,
+      "handlerUsesFirstOnly": true
+    },
+    {
+      "id": "ACTUAL_RESET_NODES",
+      "page": "situaciones",
+      "count": 2,
+      "handlerUsesFirstOnly": true
+    }
+  ]
+}
