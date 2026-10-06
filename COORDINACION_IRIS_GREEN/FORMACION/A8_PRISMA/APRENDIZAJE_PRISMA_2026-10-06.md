@@ -1194,3 +1194,143 @@ Antes de escalar a formas complejas:
 
 Gate actualizado:
 `R06_1_KEEP_CORE__PATCH_QA_ORACLES_AND_HUMAN_VISIBILITY_BEFORE_SCALE`.
+
+
+---
+
+# 37. Incremento · Web R02 · asset existente ≠ asset aprobado
+
+Aprendizaje nuevo tras revisar `IRIS_GREEN_WEB_R02`.
+
+## Cadena visual obligatoria
+
+No tratar:
+`archivo presente en repo`
+
+como:
+`imagen aprobada para esa superficie`.
+
+Nueva cadena:
+
+`ASSET_EXISTS → SUBJECT_VERIFIED → RIGHTS_KNOWN → ASSIGNMENT_APPROVED → ROLE/ALT_CORRECT → PRODUCT_STATE_CURRENT`
+
+## Nombres de archivo no son semántica
+
+Caso real:
+`vineta-lavanda.webp` contiene dos dados.
+
+Los alts, búsqueda, catálogo y asignación no deben derivarse del filename sin verificación visual.
+
+Estados nuevos de asset:
+- SUBJECT_VERIFIED;
+- NAME_CONTENT_MISMATCH;
+- PLACEHOLDER_DO_NOT_USE;
+- APPROVED;
+- PROVISIONAL;
+- DECORATIVE/MOOD;
+- PREVIEW;
+- QA_ONLY.
+
+## Provenance ≠ approval
+
+Registrar por asset:
+- fuente/path;
+- hash;
+- autor/origen;
+- rights/licencia;
+- visualSubject;
+- approvedFor;
+- gate;
+- role;
+- alt ES/EN;
+- focalPoint;
+- current/provisional.
+
+## Alt oracle correcto
+
+Anti-patrón:
+`ALT_NON_EMPTY_FOR_ALL_IMAGES`.
+
+Una imagen dentro de un enlace con texto suficiente puede ser redundante y necesitar:
+`alt=""`.
+
+Gate:
+`ALT_APPROPRIATE_FOR_IMAGE_ROLE`.
+
+No aumentar verbosidad de enlaces para “pasar” un test.
+
+## Spoiler parity
+
+Una imagen/alt no debe revelar a usuarios no visuales algo que la experiencia visual pretende ocultar, ni viceversa.
+
+Cielo/Orión:
+la web debe seguir la decisión canónica del onboarding, no resolverla indirectamente a través del alt.
+
+Gate:
+`VISUAL_NONVISUAL_SPOILER_PARITY`.
+
+## Design preview ≠ runtime screenshot
+
+Un storyboard aprobado:
+- puede ser un preview válido;
+- no debe llamarse captura/escena real del runtime.
+
+Estado recomendado:
+`APPROVED_DESIGN_PREVIEW`.
+
+Actualizar cuando exista runtime visual aprobado.
+
+## Imagen real ≠ imagen de experiencia
+
+Una hoja de otoño puede ser:
+`MOOD_ART_FOR_QUIET_AREA`.
+
+No se convierte por eso en:
+`RINCON_ART`
+ni
+`PECERA_ART`.
+
+El copy/documentación debe nombrar la categoría exacta.
+
+## Licencias
+
+Un aviso + URL a una licencia no es “el texto completo de la licencia”.
+
+Usar wording exacto.
+
+Lex cierra obligaciones jurídicas.
+
+## Performance visual
+
+Un master aprobado no tiene que descargarse entero en cada miniatura.
+
+Conservar master y generar derivados:
+- thumbnails;
+- srcset;
+- focal crops;
+
+con trazabilidad.
+
+Añadir:
+- loading lazy bajo fold;
+- decoding async cuando proceda.
+
+## Claims de producción
+
+Promesas como:
+- “sin seguimiento”;
+- “no se envía a ninguna parte”;
+
+deben revalidarse al integrar:
+- analytics;
+- Sabik;
+- pagos;
+- logging;
+- CDN;
+- terceros.
+
+Gate:
+`PRODUCTION_PRIVACY_CLAIMS_REVALIDATED`.
+
+Gate de aprendizaje actualizado:
+`PRISMA_A8_INCREMENTAL_TRAINING_20261006_UPDATED_WEB_ASSET_GOVERNANCE`.
