@@ -328,3 +328,10 @@ Los datos ausentes quedan señalados; no hay nueva aprobación científica. El f
 Por orden de María, continuar ilustraciones tras Cielo, Vida marina y Fósiles. Las 36 aves del banco no son el alcance final. Preparada primera ampliación a 100 especies distintas (36 base preservadas + 64 nuevas), en 10 tandas de 10, con 100 prompts completos individuales. Documento: `COORDINACION_IRIS_GREEN/HANDOFFS/ASTRA_AVES_100_20261006/INVENTARIO_Y_PROMPTS.md`; control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_AVES_AMPLIACION_100_20261006.json`.
 
 Entrega ZIP con MD, diez TXT de tandas, CSV/JSON y fuentes/cambios. Estado: PROMPTS PREPARADOS, no imágenes generadas ni QA científico global. Conservar originales aprobados. Un ave completa por PNG, alfa real, sin texto ni escenario horneado; NAVY separado en interfaz. Variantes de sexo/edad/plumaje no cuentan como especies nuevas. No bloquear prototipo esperando las 100 ni cambiar runtime/producción.
+
+
+## 2026-10-06 · Netlify: flujo de revisión exclusivamente desde main
+
+Por orden de María, corregido `.github/workflows/publicar-main-review-netlify.yml` directamente en main, commit `4a91de8`: guard de rama, checkout main, SHA real construido, serialización del alias, CLI 27.11.1/Node 22, resumen deploy ID/URL/SHA y autodespliegue de cambios en workflow. YAML/shell verificados. Ejecución real: https://github.com/mruizwow-bit/irisgreen/actions/runs/37420417204. Control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_NETLIFY_MAIN_FIX_20261006.json`.
+
+Mantenimiento público y lock conservados conforme MAINTENANCE_ACTIVE.txt. Los Cancelled Git-linked se explican por ignore=exit 0. No declarar corregida la voz por corregir trazabilidad del deploy. Existe fallo CSP previo en 5af12ca; diagnóstico separado.
