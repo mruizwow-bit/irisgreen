@@ -335,3 +335,14 @@ Entrega ZIP con MD, diez TXT de tandas, CSV/JSON y fuentes/cambios. Estado: PROM
 Por orden de María, corregido `.github/workflows/publicar-main-review-netlify.yml` directamente en main, commit `4a91de8`: guard de rama, checkout main, SHA real construido, serialización del alias, CLI 27.11.1/Node 22, resumen deploy ID/URL/SHA y autodespliegue de cambios en workflow. YAML/shell verificados. Ejecución real: https://github.com/mruizwow-bit/irisgreen/actions/runs/37420417204. Control: `COORDINACION_IRIS_GREEN/CONTROL/ASTRA_NETLIFY_MAIN_FIX_20261006.json`.
 
 Mantenimiento público y lock conservados conforme MAINTENANCE_ACTIVE.txt. Los Cancelled Git-linked se explican por ignore=exit 0. No declarar corregida la voz por corregir trazabilidad del deploy. Existe fallo CSP previo en 5af12ca; diagnóstico separado.
+
+
+## 2026-10-06 · Corrección del disparador duplicado de Netlify
+
+María reitera expresamente: NO publicar main en la web pública; eliminar carriles duplicados. Se conserva una sola fuente main y el alias protegido existente main-review. No crear ramas, sitios ni aliases adicionales.
+
+Commits b107cbb y 2380e29 en el workflow existente: API Netlify PATCH build_settings.stop_builds=true, lectura posterior obligatoria, comprobación de producción bloqueada en mantenimiento y de protecciones de acceso; deploy CLI --no-build para subir el dist construido una sola vez por GitHub Actions. ignore=exit 0 se conserva como defensa si alguien reactiva builds Git.
+
+Primera ejecución 37424315663: PATCH y verificación stop_builds/producción/acceso superados; detenida por comparación global de build_settings. Segunda 37424416202 excluye updated_at del control y está en verificación. Estado final consultable en CONTROL/ASTRA_NETLIFY_MAIN_FIX_20261006.json. No equiparar este trabajo con voz E2E, CSP ni HUMAN QA.
+
+El acceso operativo utiliza la credencial ya configurada en GitHub Actions; no se extrae ni imprime. El conector Netlify disponible no expone updateSite y el navegador separado no tenía sesión; eso no equivale a falta general de acceso al proyecto.
