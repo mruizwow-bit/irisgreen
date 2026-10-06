@@ -8,7 +8,7 @@ function escapeRegExp(value){return String(value).replace(/[.*+?^${}()|[\]\\]/g,
 function compile(pattern){try{return new RegExp(pattern,'iu');}catch{return null;}}
 
 function stripAssistant(text,model){
- let q=clean(text);
+ let q=clean(text).replace(/^[¿¡\s]+/,'');
  const aliases=(model?.assistant_aliases||[]).map(escapeRegExp);
  if(!aliases.length)return q;
  const names='(?:'+aliases.join('|')+')';
