@@ -44,8 +44,8 @@ def validate_result(deploy, site, sha, production_id):
         raise ValueError("Review alias changed")
     functions = [item.get("n", item.get("name")) if isinstance(item, dict) else item
                  for item in (deploy.get("available_functions") or [])]
-    if "sabik-voice-proxy" not in functions:
-        raise ValueError("Voice proxy missing from deploy")
+    if not {"sabik-voice-proxy", "sabik-library"}.issubset(functions):
+        raise ValueError("Sabik voice or library function missing from deploy")
     published = site.get("published_deploy") or {}
     if site.get("id") != SITE_ID or published.get("id") != production_id:
         raise ValueError("Public production deploy changed")

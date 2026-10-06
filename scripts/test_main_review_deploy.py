@@ -8,7 +8,7 @@ class ReviewDeployTests(unittest.TestCase):
         self.sha = "a" * 40
         self.deploy = {"site_id": SITE_ID, "state": "ready", "context": "branch-deploy",
                        "branch": "main-review", "title": f"Iris Green canonical main review {self.sha}",
-                       "deploy_ssl_url": REVIEW_URL, "available_functions": [{"n": "sabik-voice-proxy"}]}
+                       "deploy_ssl_url": REVIEW_URL, "available_functions": [{"n": "sabik-voice-proxy"}, {"n": "sabik-library"}]}
         self.site = {"id": SITE_ID, "sso_login": True, "sso_login_context": "non_production",
                      "published_deploy": {"id": "maintenance-id", "locked": True, "title": "Public maintenance"}}
 
