@@ -1,0 +1,87 @@
+{
+  "method": "Node VM, original functions with mocked DOM/render and explicit fixtures; no browser or physical touch",
+  "orionOneVisible": {
+    "cam": {
+      "u": 0.20413270940170938,
+      "v": -0.15589466666666665,
+      "zoom": 6
+    },
+    "punto": {
+      "x": 388,
+      "y": 530.4
+    },
+    "resultado": "unico",
+    "mejor": {
+      "abbr": "Ori",
+      "dentro": 1,
+      "visibles": 1,
+      "total": 3,
+      "proporcion_visible": 1,
+      "distancia": 0,
+      "especial": true
+    },
+    "interfaceMessage": {
+      "tipo": "cinturon",
+      "abbr": "Ori",
+      "n": 2
+    },
+    "marked": 2
+  },
+  "lateDetailAfterClose": {
+    "panel": "ficha",
+    "abbr": "Ori"
+  },
+  "detailOutOfOrder": {
+    "panel": "ficha",
+    "abbr": "Ori"
+  },
+  "objectiveOutsideOrder": "Ori",
+  "objectiveAfterOri": "Gem",
+  "pinchToOneFinger": {
+    "before": {
+      "u": -0.03448197892642335,
+      "v": -0.04205670872337536,
+      "zoom": 1.89
+    },
+    "after": {
+      "u": 0.001130556686112262,
+      "v": -0.04205670872337536,
+      "zoom": 1.89
+    },
+    "physicalMovePx": 1,
+    "worldShiftPx": 21
+  },
+  "cameraPersistence": {
+    "memory": {
+      "u": 0.13888888888888887,
+      "v": 0,
+      "zoom": 1.35
+    },
+    "saved": {
+      "u": 0,
+      "v": 0,
+      "zoom": 1.35
+    }
+  },
+  "invalidSavedCamera": {
+    "camera": {
+      "u": "bad",
+      "v": null,
+      "zoom": "bad"
+    },
+    "projected": {
+      "x": null,
+      "y": null
+    }
+  },
+  "clues": {
+    "total": 88,
+    "uniqueES": 63,
+    "magnitudeClues": 53
+  },
+  "angularAtProjectionCenter": {
+    "reportedDegrees": 6,
+    "radiusDegreesFromOwnInverse": 11.927367500987488,
+    "diameterDegreesFromOwnInverse": 23.854735001974976
+  }
+}
