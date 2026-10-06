@@ -1,0 +1,175 @@
+{
+  "method": "Node VM, unmodified delivered functions with explicit state fixtures; no rendered/native input or human test",
+  "transitions": [
+    {
+      "id": "prof-pez-hacha",
+      "from": "normal",
+      "to": "reducido",
+      "centerJump": 0,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-pez-hacha",
+      "from": "reducido",
+      "to": "ninguno",
+      "centerJump": 0,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-pez-hacha",
+      "from": "ninguno",
+      "to": "normal",
+      "centerJump": 0,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-pez-linterna",
+      "from": "normal",
+      "to": "reducido",
+      "centerJump": 1.1368683772161603e-13,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-pez-linterna",
+      "from": "reducido",
+      "to": "ninguno",
+      "centerJump": 1.1368683772161603e-13,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-pez-linterna",
+      "from": "ninguno",
+      "to": "normal",
+      "centerJump": 0,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "from": "normal",
+      "to": "reducido",
+      "centerJump": 4.547473508864641e-13,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "from": "reducido",
+      "to": "ninguno",
+      "centerJump": 4.547473508864641e-13,
+      "waveJump": 0,
+      "turnJump": 0
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "from": "ninguno",
+      "to": "normal",
+      "centerJump": 0,
+      "waveJump": 0,
+      "turnJump": 0
+    }
+  ],
+  "trajectory": [
+    {
+      "id": "prof-pez-hacha",
+      "declaredPeriodSec": 31,
+      "effectiveHorizontalPeriodSec": 4.946480955382194,
+      "wavePhaseAlsoUsedAsRouteOffset": true,
+      "nominalMaxWorldSpeed": 60.80501910173793,
+      "measuredMaxWorldSpeed": 381.06289985067974,
+      "maxVelocityError": 320.2619288034175
+    },
+    {
+      "id": "prof-pez-linterna",
+      "declaredPeriodSec": 24,
+      "effectiveHorizontalPeriodSec": 5.762807333004804,
+      "wavePhaseAlsoUsedAsRouteOffset": true,
+      "nominalMaxWorldSpeed": 68.06784082777885,
+      "measuredMaxWorldSpeed": 283.47393661689694,
+      "maxVelocityError": 215.4097939469119
+    },
+    {
+      "id": "prof-calamar-cristal",
+      "declaredPeriodSec": 38,
+      "effectiveHorizontalPeriodSec": 12.183870624256746,
+      "wavePhaseAlsoUsedAsRouteOffset": true,
+      "nominalMaxWorldSpeed": 54.564503983401664,
+      "measuredMaxWorldSpeed": 170.17935223128916,
+      "maxVelocityError": 115.61571751532074
+    }
+  ],
+  "confirmation": [
+    [
+      "announce",
+      "2 signals chosen a"
+    ],
+    [
+      "announce",
+      "2 signals chosen b"
+    ],
+    [
+      "examine",
+      "b"
+    ]
+  ],
+  "gates": {
+    "inactiveObservable": {
+      "id": "fixture",
+      "contextoCorporal": 0.4,
+      "fraccion": 0.4,
+      "observables": [
+        {
+          "id": "blocked",
+          "fraccion": 0,
+          "activo": false,
+          "cumple": false
+        }
+      ],
+      "examinable": true,
+      "cerca": false,
+      "centro": {
+        "x": 10,
+        "y": 10
+      },
+      "recuadro": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+      },
+      "enVista": true
+    },
+    "activeEmptyGeometry": {
+      "id": "fixture",
+      "contextoCorporal": 0.4,
+      "fraccion": 0.4,
+      "observables": [
+        {
+          "id": "empty",
+          "fraccion": 1,
+          "activo": true,
+          "cumple": true
+        }
+      ],
+      "examinable": true,
+      "cerca": false,
+      "centro": {
+        "x": 10,
+        "y": 10
+      },
+      "recuadro": {
+        "x": 0,
+        "y": 0,
+        "w": 100,
+        "h": 100
+      },
+      "enVista": true
+    }
+  },
+  "schemaBodyContextRead": false
+}
