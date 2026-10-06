@@ -1,0 +1,908 @@
+{
+  "alcance": "Datos, motor y funciones/eventos originales en fixtures Node; sin navegador ni DOM nativo",
+  "campos": 12,
+  "coberturaArchivos": {
+    "constelaciones": 88,
+    "fichas": 88,
+    "svg": 88,
+    "png": 88
+  },
+  "coberturaGeometrica": {
+    "identificables": 88,
+    "total": 88,
+    "nota": "Cámara posicionada por código; no recorridos humanos ni identificación persistida",
+    "detalle": [
+      {
+        "campo": "campo-01",
+        "abbr": "Dra",
+        "camara": {
+          "u": 0.274079,
+          "v": -0.197321,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "Cyg",
+        "camara": {
+          "u": 0.3976265555555556,
+          "v": 0.39787677777777775,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "Cam",
+        "camara": {
+          "u": -0.43560512500000004,
+          "v": -0.44647637500000004,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "And",
+        "camara": {
+          "u": -0.5178737647058824,
+          "v": 0.38072035294117645,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "Cas",
+        "camara": {
+          "u": -0.3488628,
+          "v": 0.0069188,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "Cep",
+        "camara": {
+          "u": 0.030959000000000007,
+          "v": 0.06828830000000001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "UMi",
+        "camara": {
+          "u": 0.181959,
+          "v": -0.4023217142857143,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-01",
+        "abbr": "Lac",
+        "camara": {
+          "u": -0.06010011111111112,
+          "v": 0.3915276666666667,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-02",
+        "abbr": "UMa",
+        "camara": {
+          "u": -0.18293410000000004,
+          "v": -0.32732870000000003,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-02",
+        "abbr": "Leo",
+        "camara": {
+          "u": -0.18988366666666667,
+          "v": 0.2641396666666667,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-02",
+        "abbr": "Lyn",
+        "camara": {
+          "u": 0.2688965714285715,
+          "v": -0.25546014285714286,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-02",
+        "abbr": "Cnc",
+        "camara": {
+          "u": 0.28113679999999996,
+          "v": 0.2836128,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-02",
+        "abbr": "LMi",
+        "camara": {
+          "u": -0.10744459999999997,
+          "v": -0.011552999999999999,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Psc",
+        "camara": {
+          "u": 0.482211,
+          "v": 0.097937,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Tau",
+        "camara": {
+          "u": -0.300841,
+          "v": 0.2448973333333333,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Aur",
+        "camara": {
+          "u": -0.44974455555555565,
+          "v": -0.28483055555555553,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Per",
+        "camara": {
+          "u": -0.048125,
+          "v": -0.27238191304347825,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Ari",
+        "camara": {
+          "u": 0.23210424999999998,
+          "v": 0.107992,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-03",
+        "abbr": "Tri",
+        "camara": {
+          "u": 0.22641199999999997,
+          "v": -0.07021299999999998,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-04",
+        "abbr": "Vir",
+        "camara": {
+          "u": 0.18335884615384612,
+          "v": 0.482962923076923,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-04",
+        "abbr": "Boo",
+        "camara": {
+          "u": -0.081449,
+          "v": 0.14231,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-04",
+        "abbr": "CVn",
+        "camara": {
+          "u": 0.2404515,
+          "v": -0.23949749999999997,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-04",
+        "abbr": "Com",
+        "camara": {
+          "u": 0.23579499999999998,
+          "v": 0.034130333333333325,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-04",
+        "abbr": "CrB",
+        "camara": {
+          "u": -0.41808171428571433,
+          "v": -0.05836000000000001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-05",
+        "abbr": "Her",
+        "camara": {
+          "u": 0.40931811764705883,
+          "v": -0.2224827647058823,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-05",
+        "abbr": "Aql",
+        "camara": {
+          "u": -0.209305625,
+          "v": 0.316993375,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-05",
+        "abbr": "Lyr",
+        "camara": {
+          "u": 0.014273166666666668,
+          "v": -0.23541950000000003,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-05",
+        "abbr": "Vul",
+        "camara": {
+          "u": -0.2149318,
+          "v": -0.0483054,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-05",
+        "abbr": "Sge",
+        "camara": {
+          "u": -0.22610750000000002,
+          "v": 0.0724755,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "Ori",
+        "camara": {
+          "u": 0.28783633333333336,
+          "v": -0.02426866666666667,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "Gem",
+        "camara": {
+          "u": -0.08756725,
+          "v": -0.45761133333333337,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "Mon",
+        "camara": {
+          "u": -0.05582811111111109,
+          "v": -0.04084988888888889,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "CMa",
+        "camara": {
+          "u": -0.05165581818181817,
+          "v": 0.35004790909090905,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "Lep",
+        "camara": {
+          "u": 0.2879232727272727,
+          "v": 0.2664717272727273,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-06",
+        "abbr": "CMi",
+        "camara": {
+          "u": -0.225096,
+          "v": -0.1647825,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "Peg",
+        "camara": {
+          "u": -0.27886785714285717,
+          "v": -0.44383335714285715,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "Aqr",
+        "camara": {
+          "u": -0.19289726666666668,
+          "v": 0.08343126666666668,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "Cap",
+        "camara": {
+          "u": 0.1624501,
+          "v": 0.26659720000000003,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "PsA",
+        "camara": {
+          "u": -0.19180475,
+          "v": 0.5014572500000001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "Del",
+        "camara": {
+          "u": 0.2573222,
+          "v": -0.32586420000000005,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-07",
+        "abbr": "Equ",
+        "camara": {
+          "u": 0.11192200000000001,
+          "v": -0.21394499999999997,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Oph",
+        "camara": {
+          "u": -0.034824,
+          "v": -0.133809,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Ser",
+        "camara": {
+          "u": 0.197473,
+          "v": -0.604389,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Lib",
+        "camara": {
+          "u": 0.2820425,
+          "v": 0.05551066666666666,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Sco",
+        "camara": {
+          "u": -0.07445635714285716,
+          "v": 0.2723960714285714,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Lup",
+        "camara": {
+          "u": 0.20592316666666666,
+          "v": 0.4271975833333333,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-08",
+        "abbr": "Sct",
+        "camara": {
+          "u": -0.5736567499999999,
+          "v": -0.1198755,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-09",
+        "abbr": "Cet",
+        "camara": {
+          "u": -0.221029,
+          "v": -0.526768,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-09",
+        "abbr": "Eri",
+        "camara": {
+          "u": -0.619558,
+          "v": -0.291914,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-09",
+        "abbr": "Scl",
+        "camara": {
+          "u": 0.44961075,
+          "v": 0.16177425,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-09",
+        "abbr": "Phe",
+        "camara": {
+          "u": 0.17877316666666665,
+          "v": 0.38056550000000006,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-09",
+        "abbr": "For",
+        "camara": {
+          "u": -0.173134,
+          "v": 0.07612666666666666,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Hya",
+        "camara": {
+          "u": 0.647139,
+          "v": -0.650001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Cen",
+        "camara": {
+          "u": -0.42086468750000006,
+          "v": 0.4054831875,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Vel",
+        "camara": {
+          "u": 0.255831625,
+          "v": 0.33327925,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Sex",
+        "camara": {
+          "u": 0.19435075000000002,
+          "v": -0.50905075,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Crt",
+        "camara": {
+          "u": -0.12753177777777774,
+          "v": -0.2654891111111111,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Ant",
+        "camara": {
+          "u": 0.140989,
+          "v": 0.06249566666666667,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Pyx",
+        "camara": {
+          "u": 0.5124555,
+          "v": 0.1301265,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Crv",
+        "camara": {
+          "u": -0.3418846,
+          "v": -0.16264059999999997,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-10",
+        "abbr": "Cru",
+        "camara": {
+          "u": -0.21571125,
+          "v": 0.5286102500000001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Sgr",
+        "camara": {
+          "u": 0.044555919999999985,
+          "v": -0.60295628,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Pav",
+        "camara": {
+          "u": -0.0227737,
+          "v": 0.0824522,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Gru",
+        "camara": {
+          "u": -0.5634458888888889,
+          "v": -0.08931877777777779,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Ind",
+        "camara": {
+          "u": -0.28380839999999996,
+          "v": -0.0801478,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Tuc",
+        "camara": {
+          "u": -0.42454050000000004,
+          "v": 0.26745233333333335,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Oct",
+        "camara": {
+          "u": -0.04960699999999999,
+          "v": 0.40154300000000004,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Tel",
+        "camara": {
+          "u": 0.15714133333333333,
+          "v": -0.23858833333333337,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Ara",
+        "camara": {
+          "u": 0.285453,
+          "v": -0.032146,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Mic",
+        "camara": {
+          "u": -0.3954592,
+          "v": -0.36601779999999995,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Aps",
+        "camara": {
+          "u": 0.14729899999999999,
+          "v": 0.36490374999999997,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Nor",
+        "camara": {
+          "u": 0.5038335,
+          "v": -0.06299225,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "CrA",
+        "camara": {
+          "u": 0.049239375,
+          "v": -0.37746024999999994,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "TrA",
+        "camara": {
+          "u": 0.299565,
+          "v": 0.224046,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-11",
+        "abbr": "Cir",
+        "camara": {
+          "u": 0.4502376666666667,
+          "v": 0.22793000000000005,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Pup",
+        "camara": {
+          "u": -0.4647062727272728,
+          "v": -0.5276497272727273,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Car",
+        "camara": {
+          "u": -0.40232623529411765,
+          "v": 0.09355400000000001,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Col",
+        "camara": {
+          "u": -0.021645400000000002,
+          "v": -0.5358807999999999,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Hor",
+        "camara": {
+          "u": 0.39073416666666666,
+          "v": -0.08622066666666668,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Pic",
+        "camara": {
+          "u": -0.04452899999999999,
+          "v": -0.17049866666666666,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Hyi",
+        "camara": {
+          "u": 0.2810075,
+          "v": 0.1946895,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Dor",
+        "camara": {
+          "u": 0.09032916666666667,
+          "v": -0.11306516666666666,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Men",
+        "camara": {
+          "u": 0.027132,
+          "v": 0.1419345,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Vol",
+        "camara": {
+          "u": -0.20979,
+          "v": 0.09145879999999999,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Mus",
+        "camara": {
+          "u": -0.3778313333333334,
+          "v": 0.4728141666666666,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Cha",
+        "camara": {
+          "u": -0.1826286,
+          "v": 0.363036,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Cae",
+        "camara": {
+          "u": 0.21639075000000002,
+          "v": -0.447315,
+          "zoom": 0.85
+        }
+      },
+      {
+        "campo": "campo-12",
+        "abbr": "Ret",
+        "camara": {
+          "u": 0.20532775,
+          "v": -0.03427175,
+          "zoom": 0.85
+        }
+      }
+    ]
+  },
+  "pistaTrasHallazgo": {
+    "constelacion": "Dra",
+    "descubierta": true,
+    "objetivoDespues": "Dra",
+    "antes": "Busca una estrella clara de magnitud 2.2 con un trazo de puntos más débiles a su lado. Quedan 8 por encontrar en este campo.",
+    "despues": "Busca una estrella clara de magnitud 2.2 con un trazo de puntos más débiles a su lado. Quedan 8 por encontrar en este campo.",
+    "defectoReproducido": true
+  },
+  "puntero": {
+    "hoverNoAcciona": true,
+    "clicUsaCoordenadaReal": true,
+    "arrastreNoExamina": true,
+    "tecladoActivoTrasClic": false
+  },
+  "cabeceraEstatica": {
+    "htmlContienePistaOrion": true,
+    "nota": "aplicarIdioma traduce data-t; abrirCampo solo actualiza objetivo-campo, no esta cabecera"
+  },
+  "pistasIdenticasMismoCampo": [
+    {
+      "campo": "campo-02",
+      "abbrs": [
+        "Cnc",
+        "LMi"
+      ],
+      "pista": "Busca un trazo tenue de 5 puntos en una zona mediana; aquí no hay estrellas muy brillantes."
+    },
+    {
+      "campo": "campo-07",
+      "abbrs": [
+        "Aqr",
+        "Cap"
+      ],
+      "pista": "Busca una estrella clara de magnitud 2.9 con un trazo de puntos más débiles a su lado."
+    },
+    {
+      "campo": "campo-11",
+      "abbrs": [
+        "Ind",
+        "Mic"
+      ],
+      "pista": "Busca un trazo tenue de 5 puntos en una zona mediana; aquí no hay estrellas muy brillantes."
+    },
+    {
+      "campo": "campo-11",
+      "abbrs": [
+        "Tel",
+        "Cir"
+      ],
+      "pista": "Busca un trazo tenue de 3 puntos en una zona pequeña; aquí no hay estrellas muy brillantes."
+    },
+    {
+      "campo": "campo-11",
+      "abbrs": [
+        "Aps",
+        "Nor"
+      ],
+      "pista": "Busca un trazo tenue de 4 puntos en una zona pequeña; aquí no hay estrellas muy brillantes."
+    },
+    {
+      "campo": "campo-12",
+      "abbrs": [
+        "Hor",
+        "Dor"
+      ],
+      "pista": "Busca un trazo tenue de 6 puntos en una zona mediana; aquí no hay estrellas muy brillantes."
+    },
+    {
+      "campo": "campo-12",
+      "abbrs": [
+        "Men",
+        "Cae",
+        "Ret"
+      ],
+      "pista": "Busca un trazo tenue de 4 puntos en una zona pequeña; aquí no hay estrellas muy brillantes."
+    }
+  ],
+  "cargaFueraDeOrden": {
+    "campoId": "campo-02",
+    "campoMeta": "campo-02",
+    "figurasVisibles": [
+      "Dra",
+      "Cyg",
+      "Cam",
+      "And",
+      "Cas",
+      "Cep",
+      "UMi",
+      "Lac"
+    ],
+    "deberianSer": [
+      "UMa",
+      "Leo",
+      "Lyn",
+      "Cnc",
+      "LMi"
+    ],
+    "defectoReproducido": true
+  }
+}
