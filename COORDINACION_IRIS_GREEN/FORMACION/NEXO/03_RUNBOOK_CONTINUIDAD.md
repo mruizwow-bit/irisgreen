@@ -324,3 +324,14 @@ Antes de terminar una sesión Nexo debe dejar:
 Objetivo:
 
 **la continuidad del sistema no puede depender de la memoria de un chat.**
+
+
+## 16 · Incorporación R03 · 2026-10-06 · Continuidad del aprendizaje
+
+Leer [07_FORMACION_APLICADA_R03_20261006.md](07_FORMACION_APLICADA_R03_20261006.md) al retomar trabajo interactivo. El módulo conecta estudios, reproducciones, límites y prácticas pendientes.
+
+Antes de describir una entrega como lista: contrastar la acción anunciada con su efecto, objetivo visible, selección vigente, fuente semántica de anotaciones, cancelación, foco y mensaje final. Elegir una prueba adecuada a cada afirmación; no transformar un fixture en QA de navegador ni hashes en evidencia de producto.
+
+Para Fósiles, decisión de María: conservar R01 exacta y esperar las respuestas de Prisma y Axioma. Estado de implementación: REWORK_REQUIRED; coordinación: WAIT_INDEPENDENT_REVIEWS_BEFORE_R02. No modificar el prototipo durante esa espera. La autorrevisión de Nexo no constituye consenso ni revisión de terceros.
+
+Cuando lleguen: identificar versión/hash y método de cada revisión; comparar hallazgo/evidencia/límite; acordar cambios; registrar aprendizaje aplicable en formación y la acción verificable en el plan de trabajo. No limitar la continuidad a enlazar un comentario.
