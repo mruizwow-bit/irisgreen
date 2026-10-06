@@ -10,18 +10,30 @@ on:
       - 'scripts/build_maintenance.py'
       - '.github/workflows/publicar-mantenimiento-netlify.yml'
       - '.github/workflows/publicar-produccion-netlify.yml'
-      - '.github/workflows/publicar-main-review-netlify.yml'
   workflow_dispatch:
 
 permissions:
   contents: read
 
+concurrency:
+  group: irisgreen-main-review
+  cancel-in-progress: false
+
 jobs:
   main-review:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          ref: main
+      - name: Identificar commit de main
+        id: source
+        run: echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -35,6 +47,7 @@ jobs:
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
           NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
           SITE_ID: 40042464-343c-4587-b6b7-f6159836e291
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
         run: |
           set -euo pipefail
           TOKEN="${NETLIFY_AUTH_TOKEN:-${NETLIFY_TOKEN:-$NETLIFY_ACCESS_TOKEN}}"
@@ -43,11 +56,27 @@ jobs:
             exit 1
           fi
 
-          npx -y netlify-cli@latest deploy \
+          npx -y netlify-cli@27.11.1 deploy \
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
             --alias=main-review \
-            --message="Iris Green canonical main review ${GITHUB_SHA}"
+            --message="Iris Green canonical main review ${SOURCE_SHA}" \
+            --json > /tmp/irisgreen-main-review-deploy.json
 
-          echo "MAIN_REVIEW_ALIAS=main-review"
+          python3 - <<'PY'
+          import json, os
+          from pathlib import Path
+          result = json.loads(Path("/tmp/irisgreen-main-review-deploy.json").read_text())
+          deploy_id = result.get("deploy_id")
+          if not deploy_id:
+              raise SystemExit("Netlify no devolvió un deploy_id: no declarar publicación verificada")
+          with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
+              summary.write("## Revisión de main\n\n")
+              summary.write(f"- Rama fuente: main\n- Commit construido: {os.environ['SOURCE_SHA']}\n")
+              summary.write(f"- Deploy Netlify: {deploy_id}\n")
+              summary.write("- URL: https://main-review--irisgreen-home.netlify.app\n")
+              summary.write("- Destino: revisión protegida; producción continúa en mantenimiento.\n")
+          print(f"MAIN_REVIEW_DEPLOY_ID={deploy_id}")
+          print(f"MAIN_REVIEW_SOURCE_SHA={os.environ['SOURCE_SHA']}")
+          PY
