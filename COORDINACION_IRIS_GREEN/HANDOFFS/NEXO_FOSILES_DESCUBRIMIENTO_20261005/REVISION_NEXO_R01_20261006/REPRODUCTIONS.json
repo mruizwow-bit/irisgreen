@@ -1,0 +1,59 @@
+{
+  "artifact_sha256": "21a6663524368ad2322f06e405d6af1417e42b21925d4a2123c9c29934ae668c",
+  "method": "Original JS with read-only observation hook; minimal simulated DOM, native Canvas; not browser QA",
+  "evidence": [
+    {
+      "id": "R00_FALSE_READY_AT_FULL_SAMPLE_COVERAGE",
+      "coverage": 1,
+      "visible_features": 1,
+      "announced": "Hay suficientes detalles visibles. Puedes examinar el hallazgo.",
+      "examine_status": "Aún hay detalles cubiertos. Sigue despejando alrededor de la forma."
+    },
+    {
+      "id": "R03_READY_MESSAGE_OVERWRITTEN",
+      "clicks": 29,
+      "note": "Ya puedes observar los detalles",
+      "status": "Se ha retirado cobertura en la zona elegida."
+    },
+    {
+      "id": "R01_EXAMINE_OFFSCREEN",
+      "piece": "trilobites",
+      "right_edge_screen_x": -295.32173913043493,
+      "identity_revealed": "Trilobites"
+    },
+    {
+      "id": "R02_BRUSH_OFFSCREEN",
+      "target": "plateosaurus",
+      "point_screen": {
+        "x": 1564.9999999999993,
+        "y": 621.9999999999995
+      },
+      "scene": [
+        850,
+        560
+      ],
+      "mask_cells_changed": 80
+    },
+    {
+      "id": "R04_LANGUAGE_WRONG_MODE_INSTRUCTION",
+      "mode": "brush",
+      "status": "Drag to explore the rock. Click to select a clue; then uncover it."
+    },
+    {
+      "id": "R05_THIS_AREA_MOVES_ELSEWHERE",
+      "selected_point": {
+        "x": 1378,
+        "y": 777.4
+      },
+      "cleared_point": {
+        "x": 1157.5,
+        "y": 580.21686
+      },
+      "world_distance": 295.8064243728652
+    },
+    {
+      "id": "R06_MOTION_CONTROL_NO_BEHAVIOR",
+      "implementation": "onchange only clears gesture and schedules a redraw; modes unused by interaction"
+    }
+  ]
+}
