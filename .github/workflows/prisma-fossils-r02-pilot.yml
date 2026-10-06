@@ -1,0 +1,55 @@
+name: Prisma Fossils R02 Pilot 3
+on:
+  push:
+    branches:
+      - prisma/fosiles-r02-piloto-3-20261006
+    paths:
+      - 'prototypes/fossils-r02-pilot-3/**'
+      - 'scripts/package_fossils_r02.py'
+      - 'scripts/test_fossils_r02_browser.mjs'
+      - '.github/workflows/prisma-fossils-r02-pilot.yml'
+  workflow_dispatch:
+
+jobs:
+  qa-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: JavaScript syntax
+        run: |
+          node --check prototypes/fossils-r02-pilot-3/model.js
+          node --check prototypes/fossils-r02-pilot-3/pilot-data.js
+          node --check prototypes/fossils-r02-pilot-3/app.js
+          node --check scripts/test_fossils_r02_browser.mjs
+      - name: Prepare standalone runtime
+        run: python scripts/package_fossils_r02.py prepare
+      - name: Install browser QA
+        run: |
+          npm install --no-save playwright@1.63.0
+          npx playwright install --with-deps chromium
+      - name: Browser QA
+        run: node scripts/test_fossils_r02_browser.mjs
+      - name: Finalize ZIP
+        run: python scripts/package_fossils_r02.py finalize
+      - name: Verify ZIP and hash
+        run: |
+          sha256sum -c PRISMA_FOSILES_R02_PILOTO_3.sha256
+          unzip -t PRISMA_FOSILES_R02_PILOTO_3.zip
+          unzip -l PRISMA_FOSILES_R02_PILOTO_3.zip
+      - name: Upload executable artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: PRISMA_FOSILES_R02_PILOTO_3
+          path: |
+            PRISMA_FOSILES_R02_PILOTO_3.zip
+            PRISMA_FOSILES_R02_PILOTO_3.sha256
+            artifacts/PRISMA_FOSILES_R02_PILOTO_3/QA_BROWSER.json
+            artifacts/PRISMA_FOSILES_R02_PILOTO_3/evidence/*.png
+          if-no-files-found: error
+          retention-days: 30
