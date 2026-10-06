@@ -1,0 +1,46 @@
+{
+  "metodo": "Datos leídos y handlers originales ejecutados en fixture Node, sin DOM nativo",
+  "catalogo": 16,
+  "modoEquipo": true,
+  "escenas": [
+    {
+      "id": "meso-01",
+      "slots": 3,
+      "soloModoEquipo": false
+    },
+    {
+      "id": "lote-profundidad-01",
+      "slots": 13,
+      "soloModoEquipo": true
+    },
+    {
+      "id": "parejas-tecnicas-01",
+      "slots": 3,
+      "soloModoEquipo": true
+    }
+  ],
+  "gestos": {
+    "clic100ms": [
+      [
+        0.3,
+        0.4166666666666667
+      ]
+    ],
+    "clic500ms": [],
+    "cancelacion100ms": [
+      [
+        0.3,
+        0.4166666666666667
+      ]
+    ]
+  },
+  "diagnostico": {
+    "cancelacionConfirmaLuz": true,
+    "clicLentoSinArrastreDescartado": true
+  },
+  "fuentesCodigo": [
+    "app/datos.js: gestos/escenas/catalogo",
+    "app/interfaz.js: conectarEscena/soltar",
+    "app/motor.js: fondo/posicionMundo/dibujarDeformado/evaluar/cargarEscena"
+  ]
+}
