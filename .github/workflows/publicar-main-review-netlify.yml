@@ -98,6 +98,11 @@ jobs:
       - name: Construir main canónico
         run: python3 scripts/build_site.py
 
+      - name: Instalar y probar biblioteca privada
+        run: |
+          npm ci --ignore-scripts
+          node --test scripts/test_sabik_library.mjs
+
       - name: Registrar procedencia y comprobar que main sigue vigente
         id: current
         env:

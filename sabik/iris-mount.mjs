@@ -4,6 +4,7 @@ import {connectionConfig,sealedLibrary} from './mount-config.mjs';
 import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r08';
 import {createSabikConversation} from './conversation-core-r66.mjs';
 import {loadDialogueLibrary} from './dialogue-library.mjs';
+import {retrieveReviewedLibrary} from './library-client.mjs';
 
 const TEXT={
  es:{
@@ -54,6 +55,7 @@ async function mount(){
  const $=s=>aside.querySelector(s),input=$('#sabik-input'),announcement=$('#sabik-announcement'),root=$('#sabik-results'),visualRoot=$('#sabik-hologram'),voiceButton=$('#sabik-voice'),voiceState=$('#sabik-voice-state'),micButton=$('#sabik-mic'),voiceStop=$('#sabik-voice-stop'),voiceRepeat=$('#sabik-voice-repeat'),voiceVolume=$('#sabik-voice-volume'),voiceRate=$('#sabik-voice-rate');
  const connection=connectionConfig.enabled?createAuthorizedTransport({cloudOrigin:connectionConfig.cloudOrigin}):null;
  const cloudQuery=createRetrievalQuery({transport:connection?.transport||(()=>Promise.reject(new Error('LIBRARY_UNAVAILABLE'))),library:sealedLibrary});
+ let reviewedBinding=null;
  let lang=document.documentElement.lang.startsWith('en')?'en':'es',busy=false,voiceTurn=false,voiceSessionActive=false,voiceResumeTimer=0;
  const strings=()=>TEXT[lang],visual=(state,options)=>window.SabikWebPresentation?.setSabikState(state,options),present=()=>visual('presente',{force:true});
  const dialogues={es:null,en:null};
@@ -167,6 +169,20 @@ async function mount(){
  }
  async function retrieve(request,{signal}={}){
   if(!ageSelected())return Object.freeze({library_version:'irisgreen-age-unset',candidates:Object.freeze([]),groups:Object.freeze([]),source_language:lang});
+  if(location.origin==='https://main-review--irisgreen-home.netlify.app'){
+   try{
+    if(!reviewedBinding){
+     const response=await fetch('/sabik/library-binding.json',{cache:'no-store',signal});
+     if(!response.ok)throw new Error('LIBRARY_UNAVAILABLE');
+     reviewedBinding=await response.json();
+    }
+    const envelope=await retrieveReviewedLibrary({query:request.query,locale:lang,ageBand:ageBand(),limit:6},{signal,binding:reviewedBinding});
+    if(envelope.candidates.length){
+     root.dataset.librarySource='cloud';root.dataset.libraryVersion=envelope.library_version;
+     return envelope;
+    }
+   }catch(error){if(signal?.aborted||error?.name==='AbortError')throw error;}
+  }
   if(connection && restrictedAdultAccess()){
    try{
     await Promise.race([connection.connect(lang),timeout(1500,signal)]);
@@ -177,6 +193,7 @@ async function mount(){
     if(signal?.aborted||error?.name==='AbortError')throw error;
    }
   }
+  root.dataset.librarySource='local';root.dataset.libraryVersion='irisgreen-local-safe-r67';
   return localRetrieve(request,{signal});
  }
 
@@ -214,7 +231,12 @@ async function mount(){
   const list=document.createElement('ol');list.className='sabik-source-list sabik-retrieval-list';
   for(const source of sources){
    const li=document.createElement('li');li.className='sabik-retrieval-result';
-   const a=document.createElement('a');a.className='sabik-retrieval-link';a.href=source.url;a.textContent=source.title||source.heading||source.url;li.appendChild(a);list.appendChild(li);
+   const a=document.createElement('a');a.className='sabik-retrieval-link';a.href=source.url;
+   if(location.origin==='https://main-review--irisgreen-home.netlify.app'){
+    const destination=new URL(a.href);
+    if(destination.origin==='https://irisgreen.eu')a.href=destination.pathname+destination.search+destination.hash;
+   }
+   a.textContent=source.title||source.heading||source.url;li.appendChild(a);list.appendChild(li);
   }
   section.append(h,list);
  }
