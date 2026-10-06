@@ -1,0 +1,55 @@
+{
+  "schema": "iris-green.axioma.sky-r02.specificity-probe.v1",
+  "date": "2026-10-06",
+  "package": {
+    "file": "DESCUBRIMIENTO_CIELO_COMPLETO_R02_1(2).zip",
+    "sha256": "581368ff4b2db0208274f3d8cca65f4973b64a4038e4c15b209a8591cd814cfa",
+    "sha256sum_entries": 328,
+    "sha256sum_pass": 328
+  },
+  "method": {
+    "type": "independent exact-engine grid probe; not browser QA",
+    "engine": "Delivered js/config.js + js/motor.js + delivered 12 field files executed in Node",
+    "click_sampling": "12 px regular grid over initial camera; no UI occluders except motor horizon",
+    "caveat": "An accepted blind point is not automatically a scientifically false result. This probe measures selectivity/brute-force resistance of the current recognition rule, complementing C18 coverage."
+  },
+  "results": [
+    {
+      "nominal_viewport": "320x568",
+      "scene_px": [
+        296,
+        420
+      ],
+      "mean_identification_rate": 0.4785,
+      "mean_ambiguous_rate": 0.1225,
+      "mean_non_none_rate": 0.601,
+      "min_field_identification_rate": 0.3109,
+      "max_field_identification_rate": 0.6343
+    },
+    {
+      "nominal_viewport": "390x844",
+      "scene_px": [
+        366,
+        625
+      ],
+      "mean_identification_rate": 0.3087,
+      "mean_ambiguous_rate": 0.0249,
+      "mean_non_none_rate": 0.3336,
+      "min_field_identification_rate": 0.1212,
+      "max_field_identification_rate": 0.5122
+    },
+    {
+      "nominal_viewport": "1440x900",
+      "scene_px": [
+        1408,
+        648
+      ],
+      "mean_identification_rate": 0.1283,
+      "mean_ambiguous_rate": 0.0009,
+      "mean_non_none_rate": 0.1292,
+      "min_field_identification_rate": 0.0051,
+      "max_field_identification_rate": 0.3121
+    }
+  ],
+  "conclusion": "R02 improves R01 substantially, but fixed min radius 88 px remains disproportionately permissive on narrow viewports. Coverage/intention QA should be complemented with blind-click/specificity QA."
+}
