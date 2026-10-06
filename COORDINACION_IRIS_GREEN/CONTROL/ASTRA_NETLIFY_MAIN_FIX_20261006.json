@@ -22,5 +22,24 @@
   "functions": [
     "sabik-voice-proxy"
   ],
-  "review_url": "https://main-review--irisgreen-home.netlify.app"
+  "review_url": "https://main-review--irisgreen-home.netlify.app",
+  "followup": {
+    "request": "Eliminar carriles duplicados sin publicar main al público",
+    "status": "SINGLE_REVIEW_FLOW_VERIFIED",
+    "commits": [
+      "b107cbb84920dfa552b2fe980d69c407899f32c3",
+      "2380e291c61b84dcbc78e6e7e281f03a97632966"
+    ],
+    "netlify_git_builds_stopped": true,
+    "run": "https://github.com/mruizwow-bit/irisgreen/actions/runs/37424416202",
+    "run_conclusion": "success",
+    "deploy_id": "6ac496d11b964d4f69541d64",
+    "deploy_state": "ready",
+    "source_sha": "2380e291c61b84dcbc78e6e7e281f03a97632966",
+    "public_deploy_id": "6ac10ad8410eb14391e44656",
+    "public_maintenance_locked": true,
+    "review_sso_preserved": true,
+    "new_branches_or_sites_or_aliases": 0,
+    "notes": "Único flujo activo de revisión: main → GitHub Actions → alias protegido existente main-review. CLI --no-build. Netlify conserva el historial de Cancelled anterior. No voz E2E ni CSP ni HUMAN QA certificados."
+  }
 }
