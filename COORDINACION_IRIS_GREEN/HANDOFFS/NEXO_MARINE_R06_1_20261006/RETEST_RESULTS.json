@@ -1,0 +1,294 @@
+{
+  "method": "Original motor.js executed in Node VM with drawing no-ops, Image load stub and manual clock. Real delivered data unless fixture declared. NOT browser/render/perceptual QA.",
+  "ids": [
+    "prof-calamar-cristal",
+    "prof-pez-linterna",
+    "prof-pez-hacha"
+  ],
+  "periods": [
+    {
+      "hz": 30,
+      "periods": {
+        "prof-pez-hacha": 31.000000000000476,
+        "prof-calamar-cristal": 38.000000000001265,
+        "prof-pez-linterna": 24.000000000000796
+      }
+    },
+    {
+      "hz": 60,
+      "periods": {
+        "prof-pez-hacha": 31.00000000000112,
+        "prof-calamar-cristal": 38.00000000000204,
+        "prof-pez-linterna": 24.00000000000136
+      }
+    },
+    {
+      "hz": 120,
+      "periods": {
+        "prof-pez-hacha": 31.00000000000144,
+        "prof-calamar-cristal": 37.999999999991154,
+        "prof-pez-linterna": 23.999999999994554
+      }
+    }
+  ],
+  "transitions": [
+    {
+      "mode": "reducido",
+      "maxPositionJump": 4.547473508864641e-13,
+      "maxWaveJump": 0
+    },
+    {
+      "mode": "ninguno",
+      "maxPositionJump": 4.547473508864641e-13,
+      "maxWaveJump": 0
+    },
+    {
+      "mode": "normal",
+      "maxPositionJump": 0,
+      "maxWaveJump": 0
+    }
+  ],
+  "squid": {
+    "cases": 342,
+    "examinable": 0
+  },
+  "selectionFixtures": {
+    "two": {
+      "x": 0.5399999999999999,
+      "y": 0.1,
+      "med": {
+        "todos": [
+          {
+            "id": "prof-pez-hacha",
+            "contextoCorporal": 0.9134615384615384,
+            "fraccion": 0.9134615384615384,
+            "observables": [
+              {
+                "id": "silueta-alta",
+                "fraccion": 0.775,
+                "activo": true,
+                "geometriaValida": true,
+                "cumple": true
+              }
+            ],
+            "estadoRequisito": "exigido",
+            "examinable": true,
+            "cerca": false,
+            "bloqueado": false,
+            "centro": {
+              "x": 563.1496221284076,
+              "y": 229.22167401638157
+            },
+            "recuadro": {
+              "x": 504.53533972998935,
+              "y": 183.96687587742906,
+              "w": 91.87540242988484,
+              "h": 91.87540242988484
+            },
+            "enVista": true
+          },
+          {
+            "id": "prof-pez-linterna",
+            "contextoCorporal": 0.7269230769230769,
+            "fraccion": 0.7269230769230769,
+            "observables": [
+              {
+                "id": "hileras-ventrales",
+                "fraccion": 0.671875,
+                "activo": true,
+                "geometriaValida": true,
+                "cumple": true
+              }
+            ],
+            "estadoRequisito": "exigido",
+            "examinable": true,
+            "cerca": false,
+            "bloqueado": false,
+            "centro": {
+              "x": 809.1019821263649,
+              "y": 213.7879725194061
+            },
+            "recuadro": {
+              "x": 765.6174344921831,
+              "y": 154.84069242964225,
+              "w": 119.48371066657059,
+              "h": 119.48371066657059
+            },
+            "enVista": true
+          },
+          {
+            "id": "prof-calamar-cristal",
+            "contextoCorporal": 0.032692307692307694,
+            "fraccion": 0.032692307692307694,
+            "observables": [
+              {
+                "id": "brazos-al-frente",
+                "fraccion": 0.30625,
+                "activo": false,
+                "geometriaValida": true,
+                "cumple": false
+              }
+            ],
+            "estadoRequisito": "bloqueado",
+            "examinable": false,
+            "cerca": false,
+            "bloqueado": false,
+            "centro": {
+              "x": 864.3220739065941,
+              "y": 132.79308180370992
+            },
+            "recuadro": {
+              "x": 841.2680859944189,
+              "y": 21.58974321807844,
+              "w": 300.4352583418763,
+              "h": 300.4352583418763
+            },
+            "enVista": true
+          }
+        ],
+        "examinables": [
+          {
+            "id": "prof-pez-hacha",
+            "contextoCorporal": 0.9134615384615384,
+            "fraccion": 0.9134615384615384,
+            "observables": [
+              {
+                "id": "silueta-alta",
+                "fraccion": 0.775,
+                "activo": true,
+                "geometriaValida": true,
+                "cumple": true
+              }
+            ],
+            "estadoRequisito": "exigido",
+            "examinable": true,
+            "cerca": false,
+            "bloqueado": false,
+            "centro": {
+              "x": 563.1496221284076,
+              "y": 229.22167401638157
+            },
+            "recuadro": {
+              "x": 504.53533972998935,
+              "y": 183.96687587742906,
+              "w": 91.87540242988484,
+              "h": 91.87540242988484
+            },
+            "enVista": true
+          },
+          {
+            "id": "prof-pez-linterna",
+            "contextoCorporal": 0.7269230769230769,
+            "fraccion": 0.7269230769230769,
+            "observables": [
+              {
+                "id": "hileras-ventrales",
+                "fraccion": 0.671875,
+                "activo": true,
+                "geometriaValida": true,
+                "cumple": true
+              }
+            ],
+            "estadoRequisito": "exigido",
+            "examinable": true,
+            "cerca": false,
+            "bloqueado": false,
+            "centro": {
+              "x": 809.1019821263649,
+              "y": 213.7879725194061
+            },
+            "recuadro": {
+              "x": 765.6174344921831,
+              "y": 154.84069242964225,
+              "w": 119.48371066657059,
+              "h": 119.48371066657059
+            },
+            "enVista": true
+          }
+        ],
+        "candidatoId": "prof-pez-hacha",
+        "cercanos": []
+      }
+    },
+    "hysteresis": {
+      "initial": "prof-pez-hacha",
+      "ex": [
+        {
+          "id": "prof-pez-hacha",
+          "fraction": 0.9134615384615384
+        },
+        {
+          "id": "prof-pez-linterna",
+          "fraction": 0.7269230769230769
+        }
+      ]
+    }
+  },
+  "perAnimalThreshold": [
+    {
+      "fraction": 0.6423076923076924,
+      "examinable": false
+    }
+  ],
+  "productOverlap": {
+    "time": 6,
+    "camera": {
+      "x": 0.25,
+      "y": 0.5,
+      "zoom": 1
+    },
+    "light": {
+      "x": 0.3,
+      "y": 0.2
+    },
+    "giros": {
+      "prof-calamar-cristal": 1,
+      "prof-pez-linterna": 1,
+      "prof-pez-hacha": -1
+    },
+    "candidates": [
+      {
+        "id": "prof-pez-hacha",
+        "body": 1,
+        "obs": 1
+      },
+      {
+        "id": "prof-pez-linterna",
+        "body": 0.8365384615384616,
+        "obs": 0.85
+      }
+    ],
+    "selected": "prof-pez-hacha"
+  },
+  "invalidSchemaFixture": {
+    "state": {
+      "id": "prof-pez-linterna",
+      "contextoCorporal": 0.9326923076923077,
+      "fraccion": 0.9326923076923077,
+      "observables": [
+        {
+          "id": "hileras-ventrales",
+          "fraccion": 1,
+          "activo": false,
+          "geometriaValida": true,
+          "cumple": true
+        }
+      ],
+      "estadoRequisito": "exigido",
+      "examinable": true,
+      "cerca": false,
+      "bloqueado": false,
+      "centro": {
+        "x": 633.8765344801839,
+        "y": 265.71070111354936
+      },
+      "recuadro": {
+        "x": 506.1587167581257,
+        "y": 127.86521018439399,
+        "w": 267.68524333618177,
+        "h": 267.68524333618177
+      },
+      "enVista": true
+    }
+  }
+}
