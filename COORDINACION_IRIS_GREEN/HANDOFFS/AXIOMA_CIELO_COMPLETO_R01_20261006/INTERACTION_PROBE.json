@@ -1,0 +1,109 @@
+{
+  "schema": "iris-green.axioma.sky-complete-r01.interaction-probe.v1",
+  "date": "2026-10-06",
+  "package": {
+    "file": "DESCUBRIMIENTO_CIELO_COMPLETO_R01(2).zip",
+    "sha256": "eaa15fcc98157f4d7f26c874a74d9d50bc8bc63061ca81067c56b66f01512bd6",
+    "manifest_hashes": "320/320 PASS"
+  },
+  "method": {
+    "type": "static/simulation probe, not browser QA",
+    "source": "Delivered projected field coordinates + exact R01 recognition formula/config",
+    "recognition": {
+      "zone_fraction": 0.19,
+      "min_px": 88,
+      "max_px": 150,
+      "fraction_min": 0.3,
+      "advantage_min": 1.5,
+      "zoom_initial": 1.35
+    },
+    "caveat": "Random click success means the current formula accepts some constellation at the sampled point; it is a brute-force/specificity indicator, not a claim that each accepted zone is scientifically false."
+  },
+  "clue_analysis": {
+    "constellations": 88,
+    "normalized_template_families": 10,
+    "most_common_template": {
+      "template": "Busca una estrella clara de magnitud N con un trazo de puntos más débiles a su lado.",
+      "count": 31
+    },
+    "exact_duplicate_clues_within_same_field": [
+      {
+        "field": "campo-02",
+        "constellations": [
+          "Cnc",
+          "LMi"
+        ]
+      },
+      {
+        "field": "campo-07",
+        "constellations": [
+          "Aqr",
+          "Cap"
+        ]
+      },
+      {
+        "field": "campo-11",
+        "constellations": [
+          "Ind",
+          "Mic"
+        ]
+      },
+      {
+        "field": "campo-11",
+        "constellations": [
+          "Tel",
+          "Cir"
+        ]
+      },
+      {
+        "field": "campo-11",
+        "constellations": [
+          "Aps",
+          "Nor"
+        ]
+      },
+      {
+        "field": "campo-12",
+        "constellations": [
+          "Hor",
+          "Dor"
+        ]
+      },
+      {
+        "field": "campo-12",
+        "constellations": [
+          "Men",
+          "Cae",
+          "Ret"
+        ]
+      }
+    ]
+  },
+  "blind_click_probe": [
+    {
+      "viewport_model": "320 capture sky ≈296×352",
+      "zone_radius_px": 88,
+      "mean_accept_rate": 0.879,
+      "median_accept_rate": 0.883,
+      "min_field_rate": 0.747,
+      "max_field_rate": 0.987
+    },
+    {
+      "viewport_model": "390 capture sky ≈366×523",
+      "zone_radius_px": 88,
+      "mean_accept_rate": 0.693,
+      "median_accept_rate": 0.7,
+      "min_field_rate": 0.523,
+      "max_field_rate": 0.889
+    },
+    {
+      "viewport_model": "1440 capture sky ≈1408×558",
+      "zone_radius_px": 106,
+      "mean_accept_rate": 0.111,
+      "median_accept_rate": 0.099,
+      "min_field_rate": 0.002,
+      "max_field_rate": 0.301
+    }
+  ],
+  "main_conclusion": "The fixed 88 px minimum examination radius becomes disproportionately large on mobile. The current C18 coverage oracle proves reachability of all 88, not specificity against blind/random clicks."
+}
