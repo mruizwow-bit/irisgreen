@@ -42,7 +42,7 @@
   "main_modified": false,
   "public_deploy": false,
   "other_authors_practices": "NOT_EXECUTED_BY_NEXO",
-  "next": "Corregir coherencia de preparación, objetivo visible, correspondencia punto/acción, anclajes y feedback; probar navegador antes de revisión de producto.",
+  "next": "Esperar respuestas independientes de Prisma/Axioma, comparar evidencias y acordar mejoras con María; mantener R01 intacta hasta esa síntesis.",
   "self_review": {
     "report": "REVISION_NEXO_R01_20261006/ANALISIS_NEXO_R01.md",
     "evidence": "REVISION_NEXO_R01_20261006/REPRODUCTIONS.json",
@@ -52,5 +52,7 @@
     "anatomical_anchor_generation": "GENERIC_UNVALIDATED_REQUIRES_PIECE_SPECIFIC_REVIEW",
     "product_judgment": "REWORK",
     "reviewer": "NEXO_SELF_REVIEW"
-  }
+  },
+  "coordination_status": "WAIT_INDEPENDENT_REVIEWS_BEFORE_R02",
+  "training": "https://github.com/mruizwow-bit/irisgreen/blob/e319c0af755695a831232ef38e75a65b241b05f3/COORDINACION_IRIS_GREEN/FORMACION/NEXO/07_FORMACION_APLICADA_R03_20261006.md"
 }
