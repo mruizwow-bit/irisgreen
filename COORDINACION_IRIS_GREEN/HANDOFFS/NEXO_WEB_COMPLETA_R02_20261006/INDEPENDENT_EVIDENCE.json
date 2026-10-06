@@ -1,0 +1,156 @@
+{
+  "INDEPENDENT_CHECKS.json": {
+    "hashes": {
+      "count": 192,
+      "pass": 192
+    },
+    "manifest": {
+      "count": 191,
+      "pass": 191
+    },
+    "images": {
+      "creacion-taller.webp": {
+        "size": [
+          1600,
+          900
+        ],
+        "bytes": 369684
+      },
+      "creacion-mesa-construir.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 367600
+      },
+      "descubrimiento-carbonero.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 139028
+      },
+      "descubrimiento-caballito.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 187694
+      },
+      "construccion-vado-1440.png": {
+        "size": [
+          1440,
+          900
+        ],
+        "bytes": 41025
+      },
+      "creacion-mesa-dibujar.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 398662
+      },
+      "descubrimiento-amapola.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 145878
+      },
+      "creacion-mesa-inventar.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 442176
+      },
+      "descubrimiento-amatista.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 241558
+      },
+      "informacion-mapa.webp": {
+        "size": [
+          1254,
+          1254
+        ],
+        "bytes": 144742
+      },
+      "creacion-mesa-sonidos.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 463566
+      },
+      "construccion-vado-390.png": {
+        "size": [
+          390,
+          844
+        ],
+        "bytes": 20656
+      },
+      "tranquilo-hoja.webp": {
+        "size": [
+          1254,
+          1254
+        ],
+        "bytes": 185448
+      },
+      "creacion-mesa-mirar.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 445584
+      },
+      "creacion-mesa-escribir.webp": {
+        "size": [
+          1448,
+          1086
+        ],
+        "bytes": 425632
+      },
+      "descubrimiento-denario.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 239436
+      },
+      "descubrimiento-orion.webp": {
+        "size": [
+          1086,
+          1448
+        ],
+        "bytes": 18008
+      }
+    },
+    "regeneration": {
+      "exit": 0,
+      "stdout": "56 páginas generadas (28 ES + 28 EN)\nsin href=\"#\", un h1 por página, imágenes con alt, sin texto de producción, ES/EN a la par\n",
+      "changed": []
+    },
+    "scope": "Independent integrity, image dimensions, generator repeatability. No independent browser run of author 47 checks."
+  },
+  "PROBE_RESULTS.json": {
+    "scope": "Original app.js executed in Node VM with minimal DOM fixture; not browser or AT QA.",
+    "resize": {
+      "focusBefore": "menu-close",
+      "focusAfter": "menu-close",
+      "focusedControlHidden": true
+    },
+    "storage": {
+      "writeThrows": true,
+      "message": "Ajuste guardado en este navegador."
+    }
+  },
+  "LINK_CHECK.json": {
+    "pages": 56,
+    "missing_local_targets": [],
+    "scope": "Static file existence, not successful runtime navigation"
+  }
+}
