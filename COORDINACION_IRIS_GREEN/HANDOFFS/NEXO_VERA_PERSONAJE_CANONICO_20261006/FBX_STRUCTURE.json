@@ -1,0 +1,111 @@
+[
+  {
+    "file": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_Character_output.fbx",
+    "meshes": [
+      {
+        "name": "char1",
+        "vertices": 7572,
+        "indices": 45348,
+        "polygons": 15116,
+        "triangles_if_fan": 15116,
+        "max_face_vertices": 3
+      }
+    ],
+    "bones": [
+      "Hips",
+      "LeftUpLeg",
+      "LeftLeg",
+      "LeftFoot",
+      "LeftToeBase",
+      "RightUpLeg",
+      "RightLeg",
+      "RightFoot",
+      "RightToeBase",
+      "Spine02",
+      "Spine01",
+      "Spine",
+      "LeftShoulder",
+      "LeftArm",
+      "LeftForeArm",
+      "LeftHand",
+      "RightShoulder",
+      "RightArm",
+      "RightForeArm",
+      "RightHand",
+      "neck",
+      "Head",
+      "head_end",
+      "headfront"
+    ],
+    "skin_deformers": 1,
+    "clusters": 24,
+    "clips": [
+      "Armature|Armature|clip0|baselayer"
+    ],
+    "bone_count": 24
+  },
+  {
+    "file": "Meshy_AI_Cream_Lace_Daydream_biped/Meshy_AI_Cream_Lace_Daydream_biped_Meshy_AI_Meshy_Merged_Animations.fbx",
+    "meshes": [
+      {
+        "name": "char1",
+        "vertices": 7572,
+        "indices": 45348,
+        "polygons": 15116,
+        "triangles_if_fan": 15116,
+        "max_face_vertices": 3
+      }
+    ],
+    "bones": [
+      "Hips",
+      "LeftUpLeg",
+      "LeftLeg",
+      "LeftFoot",
+      "LeftToeBase",
+      "RightUpLeg",
+      "RightLeg",
+      "RightFoot",
+      "RightToeBase",
+      "Spine02",
+      "Spine01",
+      "Spine",
+      "LeftShoulder",
+      "LeftArm",
+      "LeftForeArm",
+      "LeftHand",
+      "RightShoulder",
+      "RightArm",
+      "RightForeArm",
+      "RightHand",
+      "neck",
+      "Head",
+      "head_end",
+      "headfront"
+    ],
+    "skin_deformers": 1,
+    "clusters": 24,
+    "clips": [
+      "Big_Wave_Hello",
+      "Chair_Sit_Idle_F",
+      "Collect_Object",
+      "CrouchLookAroundBow",
+      "Female_Bend_Over_Pick_Up_Inspect",
+      "Female_Crouch_Pick_Fruit_Basket_Stand",
+      "Female_Stand_Pick_Fruit_Basket",
+      "Idle_11",
+      "Look_Around_Dumbfounded",
+      "Pull_Radish",
+      "Running",
+      "Sit_Cross_Legged",
+      "Sit_to_Stand_Transition_F",
+      "Sitting_Clap",
+      "Stand_to_Sit_Transition_M",
+      "Talk_Passionately",
+      "Walking",
+      "Wave_for_Help_3",
+      "sleep",
+      "Character_output.fbx"
+    ],
+    "bone_count": 24
+  }
+]
