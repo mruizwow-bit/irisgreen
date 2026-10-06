@@ -76,3 +76,39 @@ Entregar ZIP nuevo, hashes, capturas de mismos anchos y casos reparados. Separar
 2. Conexión de runtimes y contenido real, cada cual con su gate.
 3. HUMAN QA María sobre recorridos realmente disponibles.
 La web completa conectada todavía no está entregada; una carcasa navegable puede revisarse sin fingir esas conexiones.
+
+
+## Consolidación con Prisma · orden vigente del patch · 2026-10-06
+Entrada: conclusiones de Prisma trasladadas íntegramente por María en esta conversación. Se integran con la revisión anterior, no son un rediseño ni una orden alternativa.
+Estado conjunto: PATCH_REQUIRED_BEFORE_HUMAN_QA.
+Gate Prisma comunicado: WEB_R02_KEEP_NAVIGATION_CORE__ASSET_ASSIGNMENT_A11Y_ALT_AND_PRODUCT_STATUS_PATCH_REQUIRED.
+Conservar arquitectura, componentes, seis áreas, NAVY, ES/EN, sitio.json, buscador/filtros, perfiles de movimiento, responsive y procedencia. No volver a construir la web desde cero. NO MAIN · NO PUBLIC DEPLOY.
+
+### Decisiones y aceptación
+1. **Encuadres y dimensiones.** Especímenes/constelaciones/monedas y storyboard íntegros mediante contain o proporción natural. Cover sólo si el encuadre preserva el contenido pertinente. Corregir width/height de Construcción. Revisar cabeza de ave, flor, mineral y moneda en320/390/1440. Masters intactos.
+2. **Asignación semántica.** Registro con subjectVerified, role, assignmentStatus, approvedFor, gate, license, alt por idioma y focalPoint cuando haya recorte; además sourceRef y hash. Distinguir rol del archivo y rol de cada colocación: la misma imagen puede ser informativa en ficha y redundante en un enlace. Campos desconocidos explícitos; no rellenar PASS por estar en el repositorio. Filename no decide sujeto.
+3. **Cielo.** Puerta neutra de exploración, sin figura/nombre de Orión anticipados tampoco en alt. EXPLORE→LOCATE→REVEAL. Reutilizar material existente apropiado; no generar estrellas ni alterar masters.
+4. **Construcción.** Precisión sobre APPROVED_DESIGN_PREVIEW: el gate disponible del artifact11348661943 es READY_FOR_HUMAN_QA, no HUMAN QA PASS. Registrar DESIGN_PREVIEW / HUMAN_QA_PENDING; no añadir APPROVED sin evidencia de esa aprobación concreta. No es captura del juego3D final. Sustituir por captura del runtime3D cuando exista y se revise; no detener el resto del patch por esperar esa imagen.
+5. **Disponibilidad/copy.** Estado por experiencia antes del CTA: disponible, vista previa o en preparación, según entrega conectada real. No prometer explorar/guardar/deshacer/privacidad sin respaldo operativo. Conservar retorno contextual por tema en página pendiente. Sin debates internos en sobre.html ni páginas públicas. Sabik se trabaja aparte; no modificarlo como parte de este patch.
+6. **Migas.** Retirar Inicio › … / Home › … desde generador y plantillas, regenerar ES/EN y quitar espacio reservado. El código generar.py:migas confirma su presencia. La atribución de regresión ya cerrada en#369 procede del informe recibido de Prisma; no se ha reconstruido aquí ese historial. Es decisión de producto para esta web, no prohibición universal de breadcrumbs. Conservar navegación global, título y aria-current; no quitar retornos útiles de experiencias.
+7. **Menú/foco.** Resize con menú abierto hacia escritorio debe dejar foco en destino visible y lógico. Probar desde Cerrar y utilidades que desaparecen. BODY no es PASS; conservar cerrar/Escape/tabulación.
+8. **Persistencia/movimiento.** Mensaje guardado sólo tras setItem exitoso. Si falla, ajuste temporal y aviso honesto. Preferencia mostrada debe coincidir con efectiva (sistema/usuario); no prometer control de runtimes aún desconectados.
+9. **Alt por función.** ALT_APPROPRIATE_FOR_IMAGE_ROLE sustituye obligación indiscriminada de alt no vacío. Redundante dentro de enlace con nombre suficiente: alt="". Imagen que aporta información: alternativa pertinente. Imagen única de un control: nombre de acción/destino. Probar nombre accesible completo, no sólo presencia de atributo.
+10. **QA200%.** Añadir contraejemplos de clipping vertical y overflow:clip, cabecera, menú y estados abiertos; foco visible y targets del canon44×44 con excepciones justificadas, sin eximir por cualquier texto vecino. Conservar alcance limitado de las pruebas previas y separar fixtures, navegador y AT. No inventar PASS dispositivo físico.
+11. **Documentación.** Un registro operativo de disponibilidad/asignación alimenta derivados. Reconciliar README, MANIFEST, PROCEDENCIA y texto público; eliminar pendientes resueltos sin borrar los reales. La regeneración debe seguir siendo reproducible.
+12. **Lenguaje.** En esta entrega describir el enfoque como lenguaje claro / plain language. No afirmar Easy Read/Lectura Fácil ni conformidad con ISO sólo por una etiqueta: esas afirmaciones requieren evidencia específica. Verificado en fuente: generar.py, sitio.json y lectura-accesible contienen Easy reading. Corregir ambos idiomas de manera coherente sin renombrar rutas y romper enlaces innecesariamente.
+13. **Carga.** Recuento propio:56 páginas finales,48 img sin loading ni decoding. El96 de Prisma puede incluir plantillas; no atribuir96 a páginas finales sin reconciliar inventario. Aplicar loading=lazy a imágenes fuera de primera pantalla; NO a imagen principal/LCP ni indiscriminadamente a puertas visibles inicialmente. decoding=async donde resulte adecuado no equivale a lazy ni garantiza mejora. Derivados/thumbnails/srcset si reducen transferencia, dimensiones/sizes correctos, relación con master y hashes; originales intactos. Probar primera carga y scroll; no fijar número de img lazy como oráculo de rendimiento.
+14. **Plus.** Conservar ámbito Para todos/Plus en registro. Sin reparto, beneficios, precios ni checkout inventados; presentación pendiente discreta cuando sea necesaria, sin CTA comercial. Ocultar el reclamo comercial hasta decisión correspondiente; no bloquear contenidos disponibles por ausencia de esa decisión.
+15. **Espacio tranquilo/Creación.** Hoja=mood art del área, no Pecera/Rincón. Mesas=taller general, no captura de Ritmo. Reconciliar assets existentes del proyecto antes de pedir nuevos; mantener pendientes de representación específica explícitos, sin rediseñar áreas dentro del patch.
+
+### Procedencia, prioridades y entrega
+mapa/Mulberry/Orión/taller/hoja/láminas: referencias del repositorio4893d3c según paquete.
+construccion-vado-1440.png y390.png: storyboardR02, run37318454037, artifact11348661943. No todo viene del commit de septiembre.
+Primero encuadres/asignación/estados y defectos menú/persistencia; después lenguaje, documentación y carga, verificando el conjunto. Mantener mejoras de composición señaladas arriba; no inventar otros temas ni eliminar Fósiles del inventario por copiar sólo las cuatro láminas antiguas.
+Entregar un ZIP patch con versión inequívoca, SHA256, changelog ligado a los15 puntos, estados/dependencias reales y capturas comparables. Mantener documentación interna separada del flujo público.
+Secuencia: PATCH → NEXO RETEST → AXIOMA PRECHECK → HUMAN QA MARÍA. Este registro no ejecuta ni aprueba el patch. Unificar el encargo para el ejecutor asignado; no dos implementaciones simultáneas.
+
+Fuentes técnicas contrastadas para estos matices:
+- https://www.w3.org/WAI/tutorials/images/decision-tree/
+- https://www.w3.org/WAI/tutorials/images/decorative/
+- https://web.dev/learn/performance/lazy-load-images-and-iframe-elements
