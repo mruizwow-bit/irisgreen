@@ -169,3 +169,157 @@ No:
 
 Si detecta un fallo:
 describir requisito + evidencia + corrección mínima esperada y devolver al owner correspondiente.
+
+## 18 · PROMESA → ORÁCULO → CONTRAEJEMPLO · 06/10/2026
+
+Para superficies interactivas, antes de emitir PASS:
+
+1. PROMESA: qué afirma realmente el producto.
+2. OBSERVABLE: qué conducta demostraría esa promesa.
+3. INVARIANTE: qué nunca debe ocurrir.
+4. ORÁCULO: qué condición decide PASS/FAIL.
+5. CONTRAEJEMPLO: cómo podría pasar el test y fallar la promesa.
+6. EVIDENCIA: automática/manual/perceptual/humana.
+7. LÍMITE: qué sigue sin probar.
+
+Prohibido:
+`TEST_NAME → PASS → PROMISE_PASS`.
+
+## 19 · First-task expert gate
+
+Antes de HUMAN QA de una experiencia nueva:
+
+`FIRST_TASK_EXPERT_REVIEW_REQUIRED`
+
+Responder sin manual:
+- ¿dónde estoy?
+- ¿qué puedo hacer?
+- ¿qué haría primero?
+- ¿esa primera acción funciona?
+- ¿qué cambió?
+- ¿puedo recuperarme?
+- ¿cómo salgo/vuelvo?
+
+Si Axioma/owner detecta un blocker obvio, corregir antes de pedir a María que lo descubra.
+
+## 20 · Invariantes de interacción
+
+Antes de success paths, comprobar cuando aplique:
+
+- `TARGET_VISIBILITY_INVARIANT`
+- `SEMANTIC_TARGET_CONSISTENCY`
+- `STATE_MESSAGE_CONSISTENCY`
+- `MODE_COPY_PARITY`
+- `CONTROL_EFFECT_ORACLE`
+- `ANNOTATION_GROUNDING_ORACLE`
+
+Regla:
+`TEST_INVARIANTS_BEFORE_SUCCESS_PATHS`.
+
+## 21 · Spatial interaction QA
+
+Para canvas/mapas/cielo/mundos:
+
+- render space;
+- interaction space;
+- pan/zoom;
+- hit testing;
+- click vs drag;
+- pointercancel;
+- picking;
+- projection;
+- camera continuity;
+- z/height cues;
+- offscreen targets.
+
+Regla:
+`MODEL_STATE → RENDER_MAPPING → PERCEIVED_CONSEQUENCE`.
+
+## 22 · Temporal/perceptual QA
+
+No cerrar movimiento por estado final únicamente.
+
+Comprobar:
+- fase;
+- saltos de transición;
+- pose;
+- trayectoria;
+- cámara;
+- velocidad/amplitud;
+- NONE sin movimiento continuo;
+- continuidad de foco/input.
+
+Regla:
+`PIXELS_CHANGED != PERCEPTUAL_MOTION_PASS`.
+
+## 23 · Reflow ampliado
+
+No basta:
+`document.scrollWidth <= innerWidth`.
+
+Añadir:
+`REFLOW_INTERNAL_CLIP_ORACLE`
+
+Comprobar:
+- overflow documento;
+- clipping interno;
+- texto 200%;
+- dialogs;
+- grids/listas dinámicas;
+- overlays;
+- controles y contenido tapado.
+
+## 24 · Observables científicos
+
+Cuando una interacción dependa de un rasgo:
+
+Separar:
+- body context;
+- observable feature;
+- reveal fact.
+
+Comprobar:
+- grounding factual;
+- geometría;
+- registro local;
+- perceptibilidad humana.
+
+Nuevos estados:
+- VERIFIED;
+- PROVISIONAL;
+- HOLD / BLOCKED;
+- UNKNOWN.
+
+Un rasgo bloqueado no se convierte automáticamente en regla satisfecha.
+
+## 25 · Clases de evidencia y paquetes
+
+Clasificar:
+- VISUAL_SPEC;
+- STATIC_REVIEW;
+- NAVIGABLE_PROTOTYPE;
+- INTERACTIVE_RUNTIME;
+- INTEGRATED_PRODUCT.
+
+No confundir:
+- screenshots con runtime;
+- portable con navegable;
+- artifact SUCCESS con browser QA;
+- container SHA con ZIP interno;
+- payload reproducible con ZIP bit-reproducible.
+
+## 26 · Gate de escala
+
+Antes de replicar un patrón a decenas/cientos:
+
+`SMALL_REPRESENTATIVE_SAMPLE → EXPERT_QA → PERCEPTUAL_QA → HUMAN_FIRST_USE → PERFORMANCE → SCALE_DECISION`
+
+No:
+`ONE_PROTOTYPE_PASS → MASS_SCALE`.
+
+Si el contenido es científico, añadir:
+`FACTUAL_MATRIX → OBSERVABLES → SOURCES → HOLD/VERIFIED`.
+
+## Regla final ampliada
+
+**Axioma no valida sólo que el sistema llegue al estado correcto. Valida, dentro del alcance probado, que la persona pueda provocar, percibir y comprender la consecuencia prometida, y que el oráculo utilizado mida realmente esa promesa.**
