@@ -8,6 +8,8 @@ var T={
  en:{home:'Home',conditions:'Conditions',situations:'Situations',daily:'Everyday life',research:'Research',resources:'Pictograms and visual supports',support:'Support',data:'Data',videos:'Videos',books:'Books',workshop:'The workshop',interests:'Your interests',quiet:'Quiet space',search:'Search',content:'Content',settings:'Accessibility',music:'Music',more:'Explore',language:'ES',searchTitle:'Search Iris Green',searchPh:'Write what you need',noResults:'No results. Try different words.',results:'results',safe:'Safer version for this view',stageTitle:'Content for…',children:'Ages 0–12',teenagers:'Ages 13–17',adults:'Ages 18+',any:'All ages',defaultStage:'Age',stageNote:'We do not ask for date of birth, identity, diagnosis or an account. Your choice lasts only for this session.',settingsTitle:'Accessibility and reading',theme:'Theme',dark:'Dark navy',light:'Light',size:'Text size',spacing:'More spacing',controls:'Bigger controls',contrast:'More contrast',guide:'Reading guide',motion:'Reduce motion',speak:'Read this page',stopSpeak:'Stop reading',reset:'Reset',close:'Close',about:'About Iris Green',accessibility:'Accessibility and reading',privacy:'Privacy',allNav:'Explore Iris Green'}
 };
 function tr(){return en()?T.en:T.es;}
+T.es.games='Juegos';T.en.games='Games (Español)';
+T.es.discovery='Descubrimiento';T.en.discovery='Discovery (Español)';
 function h(tag,attrs){
  var n=D.createElement(tag);attrs=attrs||{};
  Object.keys(attrs).forEach(function(k){var v=attrs[k];if(v==null)return;if(k==='text')n.textContent=v;else if(k==='class')n.className=v;else if(k==='html')n.innerHTML=v;else n.setAttribute(k,String(v));});
@@ -21,6 +23,8 @@ function routeData(){
   {k:'daily',href:E?'/en/everyday-life/':'/es/biblioteca/'},
   {k:'research',href:'/es/investigacion/'+q},
   {k:'resources',href:E?'/en/resources/':'/es/recursos/'},
+  {k:'games',href:'/es/juegos/'},
+  {k:'discovery',href:'/es/descubrimiento/'},
   {k:'support',href:'/es/tramites/directorio/'+q},
   {k:'data',href:E?'/en/data/':'/es/datos/'},
   {k:'videos',href:'/es/videos/'+q},

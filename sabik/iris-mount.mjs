@@ -1,7 +1,7 @@
 import {createRetrievalQuery} from './retrieval-bridge.browser.mjs';
 import {createAuthorizedTransport} from './authorized-transport.mjs';
 import {connectionConfig,sealedLibrary} from './mount-config.mjs';
-import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r07';
+import {createSabikConversationalVoice} from './voice-runtime.mjs?v=sabik-voice-r08';
 import {createSabikConversation} from './conversation-core-r66.mjs';
 import {loadDialogueLibrary} from './dialogue-library.mjs';
 
@@ -185,6 +185,20 @@ async function mount(){
   root.replaceChildren();root.dataset.retrievalState='results';
   const section=document.createElement('section');section.className='sabik-retrieval-results sabik-conversation';
   const p=document.createElement('p');p.className='sabik-conversation-answer';p.textContent=answer;section.appendChild(p);root.appendChild(section);
+  const listen=document.createElement('button');listen.type='button';listen.className='sabik-button';
+  listen.textContent=lang==='en'?'Listen to answer':'Escuchar respuesta';
+  listen.addEventListener('click',async()=>{
+   if(!ageSelected()||busy)return;
+   // Playback is an explicit action and never requests microphone access.
+   const answerLanguage=lang;
+   listen.disabled=true;listen.setAttribute('aria-busy','true');
+   try{
+    const ready=await voice.setEnabled(true);
+    if(!listen.isConnected||answerLanguage!==lang||!ageSelected())return;
+    if(ready.enabled)await voice.speak(answer);
+   }finally{listen.disabled=false;listen.removeAttribute('aria-busy');}
+  });
+  section.appendChild(listen);
   if(voiceTurn&&voiceEnabled()){
    voiceTurn=false;
    void voice.speak(answer).then(result=>{

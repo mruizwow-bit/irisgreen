@@ -1,0 +1,14 @@
+{
+  "description": "Runtime sources mounted from delivered packages; public production remains maintenance.",
+  "sources": [
+    "DESCUBRIMIENTO_AREA_NAVEGABLE_R01_1.zip",
+    "DESCUBRIMIENTO_CIELO_COMPLETO_R02.zip",
+    "IRIS_GREEN_PRUEBAS_20261005/CONSTRUCCION",
+    "IRIS_GREEN_PRUEBAS_20261005/descubrimiento-peces",
+    "CLAUDE_DESIGN_JUEGOS_AREA_VISUAL_R01_3.zip"
+  ],
+  "files": {
+    "interactive-areas-web.zip": "afc00c8627d4db50925b2a8fd7cee355bc1c4e3532cf6e4efbad255c13fd20e6",
+    "marine-discovery-web.zip": "4489a894f90a2076f78c96ce14cb6184887cd8c0633e36e3417a1b1593418fd9"
+  }
+}

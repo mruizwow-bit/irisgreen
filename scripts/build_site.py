@@ -285,6 +285,11 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/test_global_shared_controls_tokens.py'),'--root',str(dst)],cwd=ROOT,check=True)
     subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
+    # Mount the delivered areas after legacy adapters, which otherwise replace their layouts.
+    subprocess.run([sys.executable,str(ROOT/'scripts/materialize_interactive_areas.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_interactive_areas.py'),'--root',str(dst)],cwd=ROOT,check=True)
+    subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
+
     files=sorted(p.relative_to(dst).as_posix() for p in dst.rglob('*') if p.is_file())
     assert not any(p.startswith(('scripts/','reports/','editorial/','pt-br/','.github/','_audit/')) for p in files)
     out=ROOT/'reports/routes';out.mkdir(parents=True,exist_ok=True)

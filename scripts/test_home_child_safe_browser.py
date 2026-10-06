@@ -117,7 +117,9 @@ async def main():
   need(await page.locator('[data-ig-music]').count()==1 and await page.locator('[data-ig-r49-settings]').count()==1 and await page.locator('.ig-r49-lang').count()==1,'Home compact header missing')
   need(await page.locator('html').get_attribute('data-ig-theme')=='dark','Home does not start DARK NAVY')
   need(await page.locator('body').get_attribute('data-ig-home-version')=='v4','v4 body marker missing')
-  need(await page.locator('[data-ig-media-status="pending"]').count()==13,'unapproved media slots were invented/removed')
+  # The new Discovery entry intentionally adds one card with no invented image.
+  need(await page.locator('[data-ig-media-status="pending"]').count()==14,'unexpected Home media slot count')
+  need(await page.locator('.ig-home-v4-use-grid a[href="/es/descubrimiento/"]').count()==1,'Discovery Home entry missing or duplicated')
   visual=await page.evaluate("""() => {
     const pick=s=>{const e=document.querySelector(s),c=e&&getComputedStyle(e);return e?{display:c.display,bg:c.backgroundColor,cols:c.gridTemplateColumns,width:e.getBoundingClientRect().width}:null};
     return {body:getComputedStyle(document.body).backgroundColor,use:pick('.ig-home-v4-use-grid'),card:pick('.ig-home-v4-card'),sabik:pick('.ig-home-v4-sabik'),discover:pick('.ig-home-v4-discover-grid'),footer:pick('.ig-home-v4-footer')};

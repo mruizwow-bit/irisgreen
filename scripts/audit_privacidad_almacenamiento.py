@@ -20,6 +20,12 @@ from pathlib import Path
 # no se amplía este inventario solo para hacer pasar CI.
 ALLOWED_STORAGE = {
     "localStorage": {
+        # Delivered Games/Discovery runtimes: game progress/settings, sky
+        # discoveries/view, and opt-in marine album. No network transmission.
+        # Persistence and deletion reviewed in both built privacy notices.
+        "irisgreen.construction-playable-r01.v1": {"getItem", "setItem"},
+        "iris-green.cielo-nocturno.r01": {"getItem", "setItem", "removeItem"},
+        "ig-descubrimiento-peces-r01": {"getItem", "setItem", "removeItem"},
         # Exoplanetas R12: favoritos y planetas conocidos; acción explícita,
         # solo navegador, exportación y borrado. Aviso público ES/EN revisado.
         "ig-exoplanetas-coleccion": {"getItem", "setItem", "removeItem"},
@@ -254,4 +260,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-
