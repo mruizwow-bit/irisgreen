@@ -31,8 +31,8 @@ window.PRISMA_FOSSILS_PILOT = Object.freeze({
       initialReveal: [{x:0.50,y:0.61,r:0.055}],
       requiredZones: ["spine","junction"],
       zones: [
-        {id:"spine",rect:[0.40,0.15,0.60,0.59],minSamples:3,samples:[[0.46,0.34],[0.50,0.30],[0.50,0.37],[0.50,0.44],[0.54,0.37]],label:{es:"Prolongación estrecha",en:"Narrow projection"},observation:{es:"Se hace visible una prolongación ósea muy larga y estrecha.",en:"A very long, narrow bony projection becomes visible."}},
-        {id:"junction",rect:[0.30,0.62,0.70,0.82],minSamples:3,samples:[[0.44,0.69],[0.50,0.69],[0.56,0.69],[0.44,0.75],[0.50,0.75],[0.56,0.75]],label:{es:"Continuidad con la base",en:"Continuity with the base"},observation:{es:"Más abajo se ve que esa prolongación continúa hasta una base vertebral más ancha; no son dos piezas separadas.",en:"Lower down, the projection can be seen continuing into a broader vertebral base; they are not two separate pieces."}}
+        {id:"spine",rect:[0.40,0.15,0.60,0.59],guide:[0.50,0.37],minSamples:3,samples:[[0.46,0.34],[0.50,0.30],[0.50,0.37],[0.50,0.44],[0.54,0.37]],label:{es:"Prolongación estrecha",en:"Narrow projection"},observation:{es:"Se hace visible una prolongación ósea muy larga y estrecha.",en:"A very long, narrow bony projection becomes visible."}},
+        {id:"junction",rect:[0.30,0.62,0.70,0.82],guide:[0.50,0.72],minSamples:3,samples:[[0.44,0.69],[0.50,0.69],[0.56,0.69],[0.44,0.75],[0.50,0.75],[0.56,0.75]],label:{es:"Continuidad con la base",en:"Continuity with the base"},observation:{es:"Más abajo se ve que esa prolongación continúa hasta una base vertebral más ancha; no son dos piezas separadas.",en:"Lower down, the projection can be seen continuing into a broader vertebral base; they are not two separate pieces."}}
       ],
       identity:{
         name:{es:"Dimetrodon",en:"Dimetrodon"},
@@ -51,8 +51,8 @@ window.PRISMA_FOSSILS_PILOT = Object.freeze({
       initialReveal: [{x:0.12,y:0.50,r:0.050}],
       requiredZones: ["outline","veins"],
       zones: [
-        {id:"outline",rect:[0.11,0.32,0.89,0.70],minSamples:3,samples:[[0.17,0.46],[0.20,0.43],[0.20,0.50],[0.20,0.57],[0.23,0.50]],label:{es:"Contorno de la impresión",en:"Outline of the impression"},observation:{es:"La roca conserva una impresión alargada con el contorno de un ala.",en:"The rock preserves an elongated impression with the outline of a wing."}},
-        {id:"veins",rect:[0.24,0.39,0.72,0.62],minSamples:4,samples:[[0.40,0.46],[0.46,0.46],[0.52,0.46],[0.40,0.54],[0.46,0.54],[0.52,0.54]],label:{es:"Red de líneas internas",en:"Network of internal lines"},observation:{es:"Dentro de la impresión se distingue una red de líneas finas compatible con la venación representada del ala.",en:"Inside the impression, a network of fine lines is visible, consistent with the represented wing venation."}}
+        {id:"outline",rect:[0.11,0.32,0.89,0.70],guide:[0.20,0.50],minSamples:3,samples:[[0.17,0.46],[0.20,0.43],[0.20,0.50],[0.20,0.57],[0.23,0.50]],label:{es:"Contorno de la impresión",en:"Outline of the impression"},observation:{es:"La roca conserva una impresión alargada con el contorno de un ala.",en:"The rock preserves an elongated impression with the outline of a wing."}},
+        {id:"veins",rect:[0.24,0.39,0.72,0.62],guide:[0.46,0.50],minSamples:4,samples:[[0.40,0.46],[0.46,0.46],[0.52,0.46],[0.40,0.54],[0.46,0.54],[0.52,0.54]],label:{es:"Red de líneas internas",en:"Network of internal lines"},observation:{es:"Dentro de la impresión se distingue una red de líneas finas compatible con la venación representada del ala.",en:"Inside the impression, a network of fine lines is visible, consistent with the represented wing venation."}}
       ],
       identity:{
         name:{es:"Meganeura",en:"Meganeura"},
