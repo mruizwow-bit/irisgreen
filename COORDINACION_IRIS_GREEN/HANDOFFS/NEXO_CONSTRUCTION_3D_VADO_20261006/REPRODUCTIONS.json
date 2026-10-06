@@ -1,0 +1,87 @@
+{
+  "method": "Original JS in Node VM, explicit constructed states, no browser or GPU",
+  "results": [
+    {
+      "id": "manifest",
+      "total": 30,
+      "valid": 30
+    },
+    {
+      "id": "K01_enter_on_save_button",
+      "prevented": true,
+      "placed": [
+        "6,3,7"
+      ],
+      "stone": 19
+    },
+    {
+      "id": "K02_arrow_on_movement_radio",
+      "prevented": true
+    },
+    {
+      "id": "U01_undo_under_feet",
+      "before": {
+        "x": 6.5,
+        "y": 4,
+        "z": 7.5,
+        "pieces": 1
+      },
+      "normalRemoval": {
+        "ok": false,
+        "motivo": "Estás de pie encima. Apártate antes de retirarla."
+      },
+      "undo": {
+        "ok": true,
+        "motivo": "Deshecho: se ha quitado el bloque."
+      },
+      "after": {
+        "y": 4,
+        "ground": 3,
+        "pieces": 0
+      }
+    },
+    {
+      "id": "P01_shift_click_side",
+      "pointed": "6,3,7",
+      "remaining": [
+        "6,3,7"
+      ],
+      "lastMessage": [
+        "Bloque retirado; material devuelto.",
+        "bien"
+      ]
+    },
+    {
+      "id": "S01_failed_load_mutates_world",
+      "before": 1,
+      "result": {
+        "ok": false,
+        "motivo": "No se ha podido leer la partida guardada."
+      },
+      "after": 0
+    },
+    {
+      "id": "G01_final_goal_empty_plot",
+      "placements": 3,
+      "removals": 3,
+      "pieces": 0,
+      "complete": true
+    },
+    {
+      "id": "I01_resource_range_ignores_height",
+      "y": 9,
+      "nodeGround": 3,
+      "target": {
+        "tipo": "nodo",
+        "nodo": {
+          "id": "n0",
+          "tipo": "madera",
+          "x": 3,
+          "z": 3,
+          "cantidad": 6,
+          "tomado": false
+        }
+      }
+    }
+  ]
+}
