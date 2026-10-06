@@ -92,10 +92,37 @@ jobs:
               summary.write("## Flujo único de revisión\n\nNetlify Git builds: detenidos. GitHub Actions construye main y actualiza el alias existente main-review. Producción bloqueada en mantenimiento.\n")
           PY
 
+      - name: Probar verificaciones del despliegue
+        run: python3 -m unittest discover -s scripts -p test_main_review_deploy.py -v
+
       - name: Construir main canónico
         run: python3 scripts/build_site.py
 
+      - name: Registrar procedencia y comprobar que main sigue vigente
+        id: current
+        env:
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+        run: |
+          set -euo pipefail
+          python3 scripts/check_main_review_deploy.py record
+          git fetch --depth=1 origin main
+          # Los mismos cambios documentales que no disparan el workflow tampoco
+          # invalidan un build. Cualquier cambio del producto exige el nuevo build.
+          if git diff --quiet "$SOURCE_SHA" origin/main -- . \
+            ':!COORDINACION_IRIS_GREEN/**' ':!MAINTENANCE_ACTIVE.txt' \
+            ':!assets/maintenance.html' ':!scripts/build_maintenance.py' \
+            ':!.github/workflows/publicar-mantenimiento-netlify.yml' \
+            ':!.github/workflows/publicar-produccion-netlify.yml'; then
+            echo "publish=true" >> "$GITHUB_OUTPUT"
+          else
+            status=$?
+            if [ "$status" -ne 1 ]; then exit "$status"; fi
+            echo "publish=false" >> "$GITHUB_OUTPUT"
+            echo "Main avanzó durante el build: se conserva la revisión anterior hasta el siguiente build." >> "$GITHUB_STEP_SUMMARY"
+          fi
+
       - name: Publicar única superficie estable de revisión
+        if: steps.current.outputs.publish == 'true'
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
@@ -112,6 +139,7 @@ jobs:
 
           npx -y netlify-cli@27.11.1 deploy \
             --no-build \
+            --context=branch-deploy \
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
@@ -135,3 +163,21 @@ jobs:
           print(f"MAIN_REVIEW_DEPLOY_ID={deploy_id}")
           print(f"MAIN_REVIEW_SOURCE_SHA={os.environ['SOURCE_SHA']}")
           PY
+
+      - name: Verificar deploy listo, procedencia y mantenimiento público
+        if: steps.current.outputs.publish == 'true'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_TOKEN: ${{ secrets.NETLIFY_TOKEN }}
+          NETLIFY_ACCESS_TOKEN: ${{ secrets.NETLIFY_ACCESS_TOKEN }}
+          SOURCE_SHA: ${{ steps.source.outputs.sha }}
+        run: python3 scripts/check_main_review_deploy.py verify
+
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: main-review-deploy-evidence
+          path: |
+            dist/deploy-source.json
+            /tmp/irisgreen-main-review-verification.json
+          retention-days: 14
