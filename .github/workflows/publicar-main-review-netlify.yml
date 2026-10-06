@@ -101,7 +101,7 @@ jobs:
       - name: Instalar y probar biblioteca privada
         run: |
           npm ci --ignore-scripts
-          node --test scripts/test_sabik_library.mjs scripts/test_sabik_conversation.mjs
+          node --test scripts/test_sabik_library.mjs scripts/test_sabik_conversation.mjs scripts/test_sabik_body_flow.mjs
 
       - name: Registrar procedencia y comprobar que main sigue vigente
         id: current
