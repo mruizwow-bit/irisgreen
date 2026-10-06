@@ -1,0 +1,70 @@
+{
+  "schema": "iris-green.prisma.fossils-r02-pilot-3-handoff.v1",
+  "date": "2026-10-06",
+  "issue": 323,
+  "order_comment_id": 6010670288,
+  "gate": "PRISMA_FOSSILS_R02_PILOT_3_EXECUTABLE_READY_FOR_AXIOMA",
+  "branch": "prisma/fosiles-r02-piloto-3-20261006",
+  "runtime_build_commit": "be7c36076381a6a91aa83df30c1379db8918c415",
+  "main_modified": false,
+  "public_deploy": false,
+  "sabik_modified": false,
+  "base": {
+    "archive": "NEXO_FOSILES_PRACTICA_R01.zip",
+    "sha256": "21a6663524368ad2322f06e405d6af1417e42b21925d4a2123c9c29934ae668c"
+  },
+  "artifact": {
+    "run_id": 37426798610,
+    "run_conclusion": "success",
+    "artifact_id": 11394214546,
+    "artifact_name": "PRISMA_FOSILES_R02_PILOTO_3",
+    "artifact_digest": "sha256:25b41e91721a46207b6a0966220b125d4d596e98835486880e0255ec764f3191",
+    "executable_zip": "PRISMA_FOSILES_R02_PILOTO_3.zip",
+    "executable_zip_bytes": 1241325,
+    "executable_zip_sha256": "af3c5cd5f884787076508f6aa6a04385821cc2c0062d2632fa94a59b9fba62b7",
+    "total_files": 36,
+    "manifest_entries": 35,
+    "manifest_hash_mismatches": 0,
+    "preserved_fossil_assets": 14
+  },
+  "qa": {
+    "browser": "Chromium via Playwright in GitHub Actions + local Chrome check",
+    "result": "PASS",
+    "routes": {
+      "trilobite": "PASS_MOUSE_DIRECT",
+      "dimetrodon": "PASS_SINGLE_POINTER_NO_DRAG",
+      "meganeura": "PASS_KEYBOARD_DOM"
+    },
+    "regressions": {
+      "R01_offscreen": "PASS",
+      "R02_keyboard_visible": "PASS",
+      "R04_language_mode": "PASS",
+      "R05_same_point": "PASS",
+      "R06_no_inert_motion_selector": "PASS",
+      "pointercancel": "PASS"
+    },
+    "accessibility": {
+      "tab_space": "PASS",
+      "forced_colors_smoke": "PASS",
+      "viewports": [
+        320,
+        390,
+        1440
+      ],
+      "text_200_percent": "PASS",
+      "min_target_px": 44
+    }
+  },
+  "limitations": [
+    "no real screen reader",
+    "no physical phone",
+    "no Safari or Firefox",
+    "no HUMAN QA",
+    "only 3 of 14 encounters implemented"
+  ],
+  "next": [
+    "AXIOMA_INDEPENDENT_REVIEW",
+    "HUMAN_QA_MARIA_IF_AXIOMA_PASS",
+    "DECIDE_EXTENSION_TO_14"
+  ]
+}
