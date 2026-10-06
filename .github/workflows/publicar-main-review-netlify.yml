@@ -79,10 +79,12 @@ jobs:
                   raise SystemExit("Cambió una protección de acceso; revisar")
           before_build = dict(before.get("build_settings") or {})
           after_build = dict(after.get("build_settings") or {})
-          before_build.pop("stop_builds", None)
-          after_build.pop("stop_builds", None)
+          for metadata_key in ("stop_builds", "updated_at"):
+              before_build.pop(metadata_key, None)
+              after_build.pop(metadata_key, None)
           if before_build != after_build:
-              raise SystemExit("Cambió otra configuración de build; revisar")
+              changed_keys = sorted(key for key in before_build.keys() | after_build.keys() if before_build.get(key) != after_build.get(key))
+              raise SystemExit("Cambió otra configuración de build; revisar campos: " + ", ".join(changed_keys))
           Path("/tmp/irisgreen-production-before-review.txt").write_text(published["id"])
           print("NETLIFY_GIT_BUILDS_STOPPED=true")
           print("PUBLIC_MAINTENANCE_PRESERVED=" + published["id"])
