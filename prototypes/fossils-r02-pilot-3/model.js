@@ -15,7 +15,7 @@ function evaluate(encounter,strokes,img,W,H,cam){
   const zones=encounter.zones.map(zone=>{
     const cleared=zone.samples.filter(s=>sampleClear(strokes,{x:s[0],y:s[1]})).length;
     const onScreen=zone.samples.filter(s=>sampleOnScreen(s,img,W,H,cam)).length;
-    const center=[(zone.rect[0]+zone.rect[2])/2,(zone.rect[1]+zone.rect[3])/2];
+    const center=zone.guide||[(zone.rect[0]+zone.rect[2])/2,(zone.rect[1]+zone.rect[3])/2];
     const centerVisible=sampleOnScreen(center,img,W,H,cam,18);
     const revealed=cleared>=zone.minSamples;
     const visible=revealed&&centerVisible&&onScreen>=Math.ceil(zone.samples.length*.6);
