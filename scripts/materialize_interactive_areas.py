@@ -34,9 +34,31 @@ def materialize(root):
     for base in (root/'es/juegos', root/'es/descubrimiento'):
         for page in base.rglob('*.html'):
             text = page.read_text(encoding='utf-8')
+            route = '/' + page.relative_to(root).as_posix().removesuffix('index.html')
+            text = text.replace('<head>', '<head><link rel="canonical" href="https://irisgreen.eu' + route + '">', 1)
             text = text.replace('<head>', '<head><link rel="stylesheet" href="/assets/ig-fonts.css">', 1)
             text = text.replace('</head>', '<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css"></head>', 1)
             page.write_text(text, encoding='utf-8')
+
+    # Make the delivered fixed storage key visible to the privacy auditor.
+    config = (root/'es/descubrimiento/cielo/js/config.js').read_text(encoding='utf-8')
+    key = re.search(r"CLAVE_GUARDADO:\s*'([^']+)'", config).group(1)
+    if key != 'iris-green.cielo-nocturno.r01':
+        raise ValueError('Review the new sky storage key and privacy notice')
+    interface = root/'es/descubrimiento/cielo/js/interfaz.js'
+    interface.write_text(interface.read_text(encoding='utf-8').replace('CFG.CLAVE_GUARDADO', repr(key)), encoding='utf-8')
+
+    # These runtimes save only game/exploration state locally. Document their
+    # actual persistence and deletion controls in both existing privacy pages.
+    notices = {
+        'es/privacidad/index.html': '<h2>Guardado de Juegos y Descubrimiento</h2><p>El taller de las islas guarda automáticamente la partida y sus ajustes en este navegador. Una nueva partida sustituye ese progreso. Cielo nocturno guarda tus hallazgos y la vista de exploración; puedes borrarlos desde el propio cielo. Vida marina guarda el álbum, las especies examinadas y el idioma solo cuando activas el guardado; al desactivarlo se borra esa copia. Estos datos no se envían a Iris Green. También puedes eliminarlos borrando los datos de irisgreen.eu en la configuración del navegador.</p>',
+        'en/privacy/index.html': '<h2>Games and Discovery saves</h2><p>The island workshop automatically saves your game and settings in this browser. Starting a new game replaces that progress. Night sky saves discoveries and the exploration view; you can erase them within the sky experience. Marine life saves the album, examined species and language only when you enable saving; disabling it deletes that copy. These data are not sent to Iris Green. You can also remove them by clearing irisgreen.eu site data in your browser settings.</p>',
+    }
+    for rel, notice in notices.items():
+        page = root/rel
+        text = page.read_text(encoding='utf-8')
+        text = re.sub(r'<section id="interactive-storage-notice">.*?</section>', '', text, flags=re.S)
+        page.write_text(text.replace('</main>', '<section id="interactive-storage-notice">' + notice + '</section></main>', 1), encoding='utf-8')
 
     # Keep old deep links usable; only the primary Home entry changes destination.
     home = root / 'index.html'
