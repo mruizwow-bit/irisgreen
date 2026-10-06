@@ -314,3 +314,12 @@ Nexo debe poder responder, ante cualquier cambio o incidente:
 Foundation operativa completada el 30/09/2026.
 
 Formación continua abierta: la fiabilidad no se considera un conocimiento cerrado.
+
+
+## Ampliación R03 · 2026-10-06 · Formación aplicada desde práctica real
+
+Lectura incorporada: [07_FORMACION_APLICADA_R03_20261006.md](07_FORMACION_APLICADA_R03_20261006.md). Consolida el estudio de Cielo, Peces, webs y Construcción, y mi autorrevisión de Fósiles.
+
+Capacidades añadidas al plan: transformaciones/picking coherentes con lo visible; cámara/selección/tiempo/pose/foco separados; cancelación y reconciliación; semántica de anotaciones sobre assets; interacción con consecuencia observable; oráculos de prueba que puedan refutar el resultado; distinción entre fixture y navegador.
+
+Estado: conocimiento leído y parcialmente practicado; corrección de Fósiles, QA de navegador y calidad de producto pendientes de demostrar. No equivale a aprobar el ejercicio. Siguiente paso acordado con María: preservar R01, esperar respuestas independientes de Prisma y Axioma, comparar evidencias y acordar mejoras antes de implementar R02.
