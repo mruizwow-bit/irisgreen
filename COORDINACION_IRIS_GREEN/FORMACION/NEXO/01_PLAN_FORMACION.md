@@ -323,3 +323,22 @@ Lectura incorporada: [07_FORMACION_APLICADA_R03_20261006.md](07_FORMACION_APLICA
 Capacidades añadidas al plan: transformaciones/picking coherentes con lo visible; cámara/selección/tiempo/pose/foco separados; cancelación y reconciliación; semántica de anotaciones sobre assets; interacción con consecuencia observable; oráculos de prueba que puedan refutar el resultado; distinción entre fixture y navegador.
 
 Estado: conocimiento leído y parcialmente practicado; corrección de Fósiles, QA de navegador y calidad de producto pendientes de demostrar. No equivale a aprobar el ejercicio. Siguiente paso acordado con María: preservar R01, esperar respuestas independientes de Prisma y Axioma, comparar evidencias y acordar mejoras antes de implementar R02.
+
+
+## Ampliación R04 · 2026-10-06 · Aprendizaje integrado y transferencia
+Lectura: [22_FORMACION_INTEGRADA_R04_20261006.md](22_FORMACION_INTEGRADA_R04_20261006.md). Índice completo: [README.md](README.md).
+Añade capacidades con salida verificable:
+1. Traducir propósito de área a acción y consecuencia; distinguir Juego, Descubrimiento, Creación y Recurso.
+2. Diseñar observables con contexto, mínimo semántico, registro local, tamaño aparente y fuente por afirmación.
+3. Separar selección por intención, disponibilidad y confirmación contextual sin presión temporal.
+4. Mantener invariantes en transiciones: pose/fase/ruta, camera/gesture, foco/DOM y cargas/paneles.
+5. Persistir y recuperar estado validado, con operaciones atómicas y compatibilidad declarada.
+6. Crear juego de construcción útil y preparar personaje animado sin confundir inventario con validación visual.
+7. Diseñar arquitectura web y composición según mandato actual, reutilizando canon y contenido sin duplicar áreas.
+8. Elegir evidencia por pregunta: alcanzabilidad, precisión, percepción, integridad y satisfacción requieren métodos distintos.
+9. Coordinar entregas reproducibles y corregir mis propias órdenes contradictorias.
+10. Transferir aprendizaje entre Cielo, Peces y Fósiles mediante una práctica propia que pueda fallar.
+
+Estado de cada capacidad: DOCUMENTADA / REPRODUCIDA_PARCIALMENTE / APLICADA_EN_PATCH / REVISADA_EN_RUNTIME / HUMAN_QA, con evidencia y límites. No ascender por acumular documentos.
+Orden de práctica: corregir defectos reproducidos → probar invariantes → revisión perceptual/uso → piloto de microescena → transferencia y escala. El inventario/diseño puede avanzar mientras se resuelve el motor.
+Prácticas7–14 añadidas al examen. Los estados antiguos de espera son fotografías históricas: consultar orden viva antes de ejecutar.
