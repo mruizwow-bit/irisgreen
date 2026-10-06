@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-06",
+  "owner": "Astra",
+  "interest": "17 · Aves",
+  "status": "INVENTORY_AND_PROMPTS_PREPARED_NOT_IMAGES",
+  "counts": {
+    "base": 36,
+    "new": 64,
+    "total_distinct_taxa": 100,
+    "batches": 10,
+    "prompts": 100
+  },
+  "scope": "Primera ampliación extensible. No límite de catálogo ni confirmación de PNG ya creados.",
+  "canonical_document": "COORDINACION_IRIS_GREEN/HANDOFFS/ASTRA_AVES_100_20261006/INVENTARIO_Y_PROMPTS.md",
+  "zip": "AVES_100_PROMPTS_10_TANDAS_20261006.zip",
+  "sha256": "4b13b48a50f65f8742d3a7bcfd867a0878b4b41782100f7f2791bd8557a07b9d",
+  "source_base": "BANCO_ESPECIES.json · libfile_99f2ccfa23ec8191864814941ab37d5c",
+  "production": "Un PNG individual por especie. Transparencia real; NAVY se añade en escena. Reutilizar aprobados. Sexo/edad/plumaje/pose definidos por encargo; variantes no cuentan como especies.",
+  "validation": "100 IDs/taxones/archivos únicos, diez prompts autónomos por tanda, integridad ZIP. Comprobaciones ornitológicas puntuales; no QA científica completa ni imágenes generadas.",
+  "runtime_changed": false
+}
