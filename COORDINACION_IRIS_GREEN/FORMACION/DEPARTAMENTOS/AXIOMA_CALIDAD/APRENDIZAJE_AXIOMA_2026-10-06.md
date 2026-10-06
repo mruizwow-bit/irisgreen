@@ -152,3 +152,109 @@ En Intereses:
 `KEEP CORE → PATCH ACOTADO → RETEST INDEPENDIENTE → AXIOMA PRECHECK → HUMAN QA → ESCALA`.
 
 No regenerar assets aprobados para corregir lógica, semántica o evidencia cuando el defecto no está en el asset.
+
+
+## Addendum · R06.1 · retest browser real en IrisGreen
+
+Entorno:
+- dispositivo autorizado IrisGreen;
+- Chrome real mediante Chrome DevTools Protocol;
+- artifact público SHA-256 `8a96259b802176dd6e1aeb30b838586d5c36bd27be5ff83d160786e8a0a2fcc7`;
+- artifact interno SHA-256 `07949fbc4d430187654e8791d5b716b6dbe97abc6dcbe110f269f15a368de441`.
+
+### Regla nueva · oráculos no vacíos
+
+`0 CASOS OBSERVADOS != IMPOSIBLE`.
+
+Un test de histéresis, conflicto, error o ambigüedad no puede dar PASS porque la precondición no apareció.
+Debe demostrar primero:
+`PRECONDITION_REACHED > 0`
+y después evaluar el comportamiento.
+
+Separar siempre:
+- estado alcanzable con datos reales de producto;
+- fixture sintético declarado;
+- ausencia de casos en una muestra;
+- imposibilidad demostrada.
+
+R06.1 contenía un PASS vacuo de histéresis con `pasos === 0 || ratio < 0.25`.
+Nexo halló después un solape real. Axioma lo reprodujo en Chrome:
+- hacha + linterna examinables simultáneamente;
+- muestra independiente posterior: 537 posiciones con dos candidatos;
+- 60 cambios de candidato;
+- ratio 11,17 %.
+
+Conclusión:
+- el mecanismo de histéresis conserva buena dirección en esta sonda;
+- el test original no demuestra nada y debe exigir `pasos > 0`;
+- la afirmación “el producto no puede tener dos candidatos” queda retirada.
+
+### Confirmación con conflicto real
+
+En el solape real:
+1. primer Enter informa que hay dos señales y cuál está elegida;
+2. no revela identidad;
+3. seis segundos después, segundo Enter sigue siendo válido;
+4. identifica el elegido;
+5. el foco pasa a `Ver de cerca`.
+
+La confirmación contextual sin timeout arbitrario queda KEEP por evidencia de navegador real.
+Los fixtures siguen siendo útiles para bordes sintéticos, pero no deben sustituir un caso real alcanzable cuando existe.
+
+### Browser targeted PASS confirmado
+
+Axioma reprodujo independientemente:
+- periodos horizontales 31 / 24 / 38 s a 30, 60 y 120 Hz;
+- transición de modo sin salto perceptible de posición/pose;
+- calamar visible pero 0 examinable;
+- selección explícita del hacha aunque otro cuerpo visible sea mucho mayor;
+- storage de versión futura no sobrescribe bytes;
+- texto 200 % sin overflow horizontal en 320/390/1440;
+- controles visibles >=44 px en esa sonda;
+- 0 excepciones Runtime y 0 errores de Log;
+- diálogo nativo: foco inicial dentro y retorno al trigger.
+
+Esto es un retest dirigido de Axioma, no una repetición del `29/29` del autor ni un PASS de AT.
+
+### Findings reproducidos en browser
+
+1. Calamar bloqueado:
+   tras `Encuadrar e iluminar`, el estado anuncia genéricamente `Acerca la luz a una señal` aunque la acción acaba de centrar e iluminar.
+   Debe explicar la causa real: identificación no disponible.
+
+2. `aria-disabled=true`:
+   `Examinar este animal` sigue ejecutando una acción/feedback mientras expone estado deshabilitado.
+   Semántica y comportamiento deben coincidir.
+
+3. Storage futuro:
+   el checkbox puede quedar marcado en modo read-only;
+   los bytes no se sobrescriben correctamente;
+   pero la UI anuncia `Hallazgos guardados en este dispositivo`.
+   Nunca anunciar éxito de escritura si no hubo escritura.
+
+### Perceptibilidad humana
+
+El umbral geométrico 50 % no se convierte en umbral perceptual.
+En revisión visual preliminar, casos justo por debajo y justo por encima de 50 % pueden seguir mostrando el rasgo.
+Para rasgos finos importa ancho/alto efectivo, no sólo diagonal.
+
+Mantener:
+`humanVisibilityQA=PENDING`
+`minimumApparentExtentPx=null`
+
+La HUMAN VISIBILITY QA debe estar separada de nombre/copy, incluir casos frontera/adversariales y no calibrarse sobre una clave/captura inconsistente.
+
+### Escala
+
+Antes de convertir R06.1 en plantilla de 200+:
+- corregir los oráculos vacíos;
+- usar selector estable por animal en QA;
+- nombrar explícitamente periodo horizontal/vertical;
+- conectar claims/sourceTrait/claimId;
+- documentar que el hit-test por muestras es aproximación, no containment geométrico exacto;
+- corregir la inconsistencia de clave/captura 065;
+- cerrar feedback/ARIA/storage;
+- ejecutar HUMAN VISIBILITY QA.
+
+Regla:
+`KEEP CORE → R06.1a PATCH → RETEST TÉCNICO → AXIOMA PRECHECK → HUMAN VISIBILITY QA → UMBRALES → MICROESCENA`.
