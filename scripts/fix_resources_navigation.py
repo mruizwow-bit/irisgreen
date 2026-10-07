@@ -12,10 +12,7 @@ import re
 from pathlib import Path
 
 CHILDREN = (
-    '/es/recursos/juegos/',
-    '/es/recursos/rutinas-visuales/',
     '/es/recursos/rutinas-imprimibles/',
-    '/es/recursos/tarjeta-iris/',
 )
 
 
@@ -59,7 +56,7 @@ def run(root: Path) -> dict:
     for child in CHILDREN:
         assert f'href="{child}"' in hub_text, f'El índice de Recursos no enlaza {child}'
 
-    for child in ('/en/resources/', '/en/resources/games/', '/en/resources/visual-routines/', '/en/resources/printable-routines/'):
+    for child in ('/en/resources/', '/en/resources/printable-routines/'):
         assert (root / child.strip('/') / 'index.html').is_file(), child
     changed_headers = 0
     for path in sorted(root.rglob('*.html')):
