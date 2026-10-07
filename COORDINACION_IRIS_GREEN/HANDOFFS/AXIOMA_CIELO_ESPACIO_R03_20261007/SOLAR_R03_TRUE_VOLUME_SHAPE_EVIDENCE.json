@@ -1,0 +1,82 @@
+{
+  "schema": "iris-green.solar-r03-shape-patch.v1",
+  "date": "2026-10-07",
+  "gate": "SOLAR_R03_TRUE_VOLUME_SHAPE_DATA_PASS",
+  "renderer_contract": {
+    "data_copy_only": true,
+    "visible_facts_unchanged": true,
+    "geometry": "SphereGeometry with ejes scaling; Haumea pre-existing ellipsoid",
+    "primary_ring": "Saturn RingGeometry",
+    "scale_modes": [
+      "clara",
+      "real"
+    ]
+  },
+  "bodies": [
+    {
+      "id": "mercurio",
+      "equatorial_diameter_km": 4881,
+      "polar_diameter_km": 4876.6,
+      "model_diameter_km": 4879.4,
+      "flattening": 0.0009
+    },
+    {
+      "id": "venus",
+      "equatorial_diameter_km": 12103.6,
+      "polar_diameter_km": 12103.6,
+      "model_diameter_km": 12103.6,
+      "flattening": 0
+    },
+    {
+      "id": "tierra",
+      "equatorial_diameter_km": 12756.274,
+      "polar_diameter_km": 12713.504,
+      "model_diameter_km": 12742,
+      "flattening": 0.003353
+    },
+    {
+      "id": "marte",
+      "equatorial_diameter_km": 6792.4,
+      "polar_diameter_km": 6752.4,
+      "model_diameter_km": 6779,
+      "flattening": 0.00589
+    },
+    {
+      "id": "jupiter",
+      "equatorial_diameter_km": 142984,
+      "polar_diameter_km": 133708,
+      "model_diameter_km": 139822,
+      "flattening": 0.06487
+    },
+    {
+      "id": "saturno",
+      "equatorial_diameter_km": 120536,
+      "polar_diameter_km": 108728,
+      "model_diameter_km": 116464,
+      "flattening": 0.09796
+    },
+    {
+      "id": "urano",
+      "equatorial_diameter_km": 51118,
+      "polar_diameter_km": 49946,
+      "model_diameter_km": 50724,
+      "flattening": 0.02293
+    },
+    {
+      "id": "neptuno",
+      "equatorial_diameter_km": 49528,
+      "polar_diameter_km": 48682,
+      "model_diameter_km": 49244,
+      "flattening": 0.01708
+    }
+  ],
+  "source": "NASA/NSSDCA Planetary Fact Sheets; same factual family already declared as nasa_fs in sistema-solar.json",
+  "commits": {
+    "data": "20d150c466cb0ca9f5769c9c10a0b8f6c1deb49c",
+    "loader": "6dc077ce4a71419a6e3888edce8302ddc673643d"
+  },
+  "open_findings": [
+    "Jupiter/Uranus/Neptune ring systems are factual but not rendered by current 3D bundle.",
+    "Dwarf-planet recreated surfaces are deferred to B03."
+  ]
+}
