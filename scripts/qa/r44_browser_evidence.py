@@ -90,8 +90,26 @@ with sync_playwright() as p:
   c07['failure']=str(error)
  (OUT/'c07-runtime.json').write_text(json.dumps(c07,ensure_ascii=False,indent=2))
  page.close()
+ # Every invitation must reach the declared starting state. This checks routing
+ # and engine start IDs; it deliberately does not certify the challenge itself.
+ invitations=json.loads((ROOT/'assets/data/r44-creative-invitations.json').read_text())
+ invite_rows=[]
+ for item in invitations:
+  page=browser.new_page(viewport={'width':390,'height':844})
+  row={'id':item['id'],'page':item['page'],'start':item['start'],'passed':False}
+  try:
+   page.goto('http://127.0.0.1:8765/es/taller/'+item['page']+'/?invitation='+item['id'],wait_until='networkidle',timeout=30000)
+   page.wait_for_function("id => document.getElementById('igt-app')?.dataset.r44Invitation === id",item['id'],timeout=20000)
+   state=page.evaluate("() => {const a=document.getElementById('igt-app');return {ready:a.dataset.igsReady,start:a.dataset.r44Invitation}}")
+   assert state['ready']=='true'
+   assert state['start']==item['id']
+   row['passed']=True
+  except Exception as error:
+   row['failure']=str(error)
+  invite_rows.append(row);page.close()
+ (OUT/'invitation-starts.json').write_text(json.dumps(invite_rows,ensure_ascii=False,indent=2))
  browser.close()
 server.shutdown()
 failed=[r for r in rows if not r['runtime_ready'] or r['errors'] or r.get('layout',{}).get('overflow')]
 print(f'{len(rows)} initial views; {len(failed)} runtime/layout failures. Acceptance NOT_ASSESSED.')
-raise SystemExit(bool(failed) or not file_result['passed'] or not c07['passed'])
+raise SystemExit(bool(failed) or not file_result['passed'] or not c07['passed'] or any(not r['passed'] for r in invite_rows))
