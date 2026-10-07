@@ -4,8 +4,8 @@ import re, json, sys
 if len(sys.argv) != 2:
     raise SystemExit('uso: python apply_r031.py <ruta_paquete_R03>')
 root = Path(sys.argv[1])
-A=root/'app'/'animales3d.js'; P=root/'app'/'piloto3d.js'; D=root/'app'/'datos3d.js'; E=root/'app'/'escena3d.js'
-for f in (A,P,D,E):
+A=root/'app'/'animales3d.js'; P=root/'app'/'piloto3d.js'; D=root/'app'/'datos3d.js'; E=root/'app'/'escena3d.js'; I=root/'app'/'i18n3d.js'
+for f in (A,P,D,E,I):
     if not f.exists(): raise SystemExit(f'falta {f}')
 
 s=A.read_text(encoding='utf-8')
@@ -312,4 +312,17 @@ s=re.sub(r"\nconst VERT = `.*?`;\n\nconst FRAG = `.*?`;\n", "\n", s, count=1, fl
 s=s.replace('export function crearAnimal(a, texOscuro, texLuz) {','export function crearAnimal(a) {')
 s=s.replace('  /* R03: los PNG ya no son el cuerpo. Se conservan como referencia/auxiliar;\n     el sujeto del mundo es geometría volumétrica procedural reproducible. */','  /* R03.1: geometría volumétrica procedural; PNG solo referencia/procedencia. */')
 E.write_text(s,encoding='utf-8')
+
+s=I.read_text(encoding='utf-8')
+s=s.replace('Vida marina 3D R03','Vida marina 3D R03.1')
+s=s.replace('Marine life 3D R03','Marine life 3D R03.1')
+s=s.replace('Escena ilustrada · PNG sobre planos, no modelos 3D','Escena 3D · animales volumétricos procedurales')
+s=s.replace('Illustrated scene · PNGs on planes, not 3D models','3D scene · procedural volumetric animals')
+s=re.sub(r"avisoPiloto: 'Piloto para probar la arquitectura\..*?',",
+         "avisoPiloto: 'R03.1 usa cuerpos volumétricos procedurales generados dentro del runtime. No usa modelos 3D externos ni PNG como cuerpo. El mundo y las condiciones de observación se conservan.',",
+         s,count=1)
+s=re.sub(r"avisoPiloto: 'A pilot to test the architecture\..*?',",
+         "avisoPiloto: 'R03.1 uses procedural volumetric bodies generated inside the runtime. It uses no external 3D models and no PNG as the body. The world and observation conditions are preserved.',",
+         s,count=1)
+I.write_text(s,encoding='utf-8')
 print('R03.1_PATCH_APPLIED')
