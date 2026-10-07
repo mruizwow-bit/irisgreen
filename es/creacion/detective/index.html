@@ -5,7 +5,7 @@
 <title>Detective · Creación · Iris Green</title>
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://irisgreen.eu/es/creacion/detective/">
-<link rel="stylesheet" href="/assets/detective-game-first.css">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css"><link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r42-r02-1"><link rel="stylesheet" href="/assets/detective-game-first.css">
 </head>
 <body>
 <a class="dg-skip" href="#main">Ir al juego</a>
@@ -28,19 +28,19 @@
 <div class="dg-levels" role="group" aria-label="Intensidad">
 <button type="button" data-level="0" aria-pressed="false">Suave</button><button type="button" data-level="1" aria-pressed="true">Media</button><button type="button" data-level="2" aria-pressed="false">Alta</button>
 </div>
-<button id="dg-try" type="button" class="dg-primary">Probar cambio</button>
+<div class="dg-hypothesis-wrap"><p>Antes de probar, puedes hacer una hipótesis:</p><div class="dg-hypothesis" role="group" aria-label="Hipótesis sobre el efecto"><button type="button" data-hypothesis="calm" aria-pressed="false">Me calma</button><button type="button" data-hypothesis="activate" aria-pressed="false">Me activa</button><button type="button" data-hypothesis="depends" aria-pressed="false">Depende</button></div></div><button id="dg-try" type="button" class="dg-primary">Probar cambio</button>
 </div>
 <div class="dg-status" id="dg-status" role="status" aria-live="polite"></div>
 <div class="dg-signal"><span>Cuerpo</span><div class="dg-meter" role="meter" aria-label="Señal corporal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-body"></span></div></div>
 <div class="dg-signal"><span>Respiración</span><div class="dg-meter" role="meter" aria-label="Señal de respiración" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-breath"></span></div></div>
 <div class="dg-signal"><span>Atención</span><div class="dg-meter" role="meter" aria-label="Señal de atención" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-attention"></span></div></div>
-<div class="dg-actions"><button id="dg-reset" type="button">Otra escena</button><button id="dg-resolve" type="button" disabled>Resolver escena</button></div>
+<div class="dg-actions"><button id="dg-undo" type="button" disabled>Deshacer cambio</button><button id="dg-reset" type="button">Otra escena</button><button id="dg-resolve" type="button" disabled>Resolver escena</button></div>
 <p id="dg-help" class="dg-help"></p>
 </aside>
 </div>
 <noscript><p>Este vertical slice necesita JavaScript. No guarda perfiles ni datos personales.</p></noscript>
 </main>
 <footer class="dg-foot">IRIS GREEN · Creación GAME_FIRST · vertical slice · no producción</footer>
-<script src="/assets/vendor/taller/three.js"></script>
+<script src="/assets/preferencias-lectura.js"></script><script src="/assets/vendor/taller/three.js"></script>
 <script defer src="/assets/detective-game-first.js"></script>
 </body></html>
