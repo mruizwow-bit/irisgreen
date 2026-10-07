@@ -82,7 +82,12 @@ if 'function cuerpoSecciones' not in s:
   const g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
   g.setIndex(idx); g.computeVertexNormals(); g.computeBoundingSphere();
-  return addMesh(parent,g,material,[0,0,0],[0,0,0],[1,1,1],role);
+  const mesh=addMesh(parent,g,material,[0,0,0],[0,0,0],[1,1,1],role);
+  mesh.userData.sectionBody=true;
+  mesh.userData.sectionCount=sections.length;
+  mesh.userData.radialSegments=radial;
+  mesh.userData.sectionProfile=sections.map(q=>({x:q.x,cy:q.cy||0,ryTop:q.ryTop??q.ry,ryBottom:q.ryBottom??q.ry,rz:q.rz}));
+  return mesh;
 }
 '''
     s=s[:i]+fn+s[i:]
