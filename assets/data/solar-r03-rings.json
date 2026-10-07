@@ -1,0 +1,164 @@
+{
+  "schema": "iris-green.solar-r03.rings.v1",
+  "date": "2026-10-07",
+  "representation": "PROCEDURAL_RING_GEOMETRY__VISIBILITY_BOOSTED_NOT_PHOTOMETRIC",
+  "rules": {
+    "geometry": "inner/outer radii are physical km divided by documented equatorial radius; ring plane follows the body's rotational equator",
+    "opacity": "display aid only; not derived as a photometric prediction",
+    "texture": "none for Jupiter/Uranus/Neptune; Saturn keeps its existing documented texture",
+    "arcs": "Neptune Adams arcs are not synthesized in R03 foundation",
+    "selection": "rings are visual context; planet mesh remains the selection target"
+  },
+  "sources": {
+    "jupiter": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupringfact.html",
+    "uranus": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranringfact.html",
+    "neptune": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/nepringfact.html"
+  },
+  "bodies": {
+    "jupiter": {
+      "equatorial_radius_km": 71492,
+      "color": "#b9aa96",
+      "bands": [
+        {
+          "name": "Halo",
+          "inner_km": 89400,
+          "outer_km": 123000,
+          "opacity": 0.018
+        },
+        {
+          "name": "Main Ring",
+          "inner_km": 123000,
+          "outer_km": 128940,
+          "opacity": 0.09
+        },
+        {
+          "name": "Amalthea Gossamer",
+          "inner_km": 128940,
+          "outer_km": 181350,
+          "opacity": 0.012
+        },
+        {
+          "name": "Thebe Gossamer",
+          "inner_km": 181350,
+          "outer_km": 221900,
+          "opacity": 0.01
+        },
+        {
+          "name": "Thebe Extension",
+          "inner_km": 221900,
+          "outer_km": 280000,
+          "opacity": 0.007
+        }
+      ]
+    },
+    "urano": {
+      "equatorial_radius_km": 25559,
+      "color": "#9fc7ca",
+      "bands": [
+        {
+          "name": "6",
+          "radius_km": 41837,
+          "representative_width_km": 1.5,
+          "opacity": 0.06
+        },
+        {
+          "name": "5",
+          "radius_km": 42234,
+          "representative_width_km": 2,
+          "opacity": 0.065
+        },
+        {
+          "name": "4",
+          "radius_km": 42571,
+          "representative_width_km": 2,
+          "opacity": 0.06
+        },
+        {
+          "name": "Alpha",
+          "radius_km": 44718,
+          "representative_width_km": 7,
+          "opacity": 0.065
+        },
+        {
+          "name": "Beta",
+          "radius_km": 45661,
+          "representative_width_km": 8,
+          "opacity": 0.065
+        },
+        {
+          "name": "Eta",
+          "radius_km": 47176,
+          "representative_width_km": 1.6,
+          "opacity": 0.06
+        },
+        {
+          "name": "Gamma",
+          "radius_km": 47627,
+          "representative_width_km": 2.5,
+          "opacity": 0.06
+        },
+        {
+          "name": "Delta",
+          "radius_km": 48300,
+          "representative_width_km": 5,
+          "opacity": 0.065
+        },
+        {
+          "name": "Lambda",
+          "radius_km": 50024,
+          "representative_width_km": 2,
+          "opacity": 0.04
+        },
+        {
+          "name": "Epsilon",
+          "radius_km": 51149,
+          "representative_width_km": 58,
+          "opacity": 0.12
+        },
+        {
+          "name": "R/2003 U 2",
+          "radius_km": 67300,
+          "representative_width_km": 3800,
+          "opacity": 0.006
+        },
+        {
+          "name": "R/2003 U 1",
+          "radius_km": 97700,
+          "representative_width_km": 17000,
+          "opacity": 0.004
+        }
+      ]
+    },
+    "neptuno": {
+      "equatorial_radius_km": 24766,
+      "color": "#91a8c5",
+      "bands": [
+        {
+          "name": "Galle",
+          "radius_km": 41900,
+          "representative_width_km": 2000,
+          "opacity": 0.012
+        },
+        {
+          "name": "LeVerrier",
+          "radius_km": 53200,
+          "representative_width_km": 100,
+          "opacity": 0.055,
+          "note": "NASA width <100 km; R03 uses the published upper bound for geometry"
+        },
+        {
+          "name": "Lassell",
+          "radius_km": 53200,
+          "representative_width_km": 4000,
+          "opacity": 0.008
+        },
+        {
+          "name": "Adams",
+          "radius_km": 62933,
+          "representative_width_km": 15,
+          "opacity": 0.075
+        }
+      ]
+    }
+  }
+}
