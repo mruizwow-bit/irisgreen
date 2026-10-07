@@ -83,6 +83,18 @@
       "status": "NASA_FACT_SHEET_1_BAR",
       "mean_radius_km": 24622,
       "renderer_diameter_km": 49244
+    },
+    "haumea": {
+      "axes_source": "sistema-solar.json / Ortiz et al. 2017",
+      "ejes_km": [
+        2322,
+        1704,
+        1026
+      ],
+      "renderer_diameter_km": 1595.241315021318,
+      "mean_radius_km": 797.620657510659,
+      "status": "EXISTING_TRIAXIAL_AXES__GEOMETRIC_MEAN_NORMALIZATION",
+      "note": "Renderer-only normalization so the existing triaxial axes reproduce semiaxes 1161/852/513 km exactly; canonical factual diameter remains unchanged."
     }
   },
   "not_overridden": {
