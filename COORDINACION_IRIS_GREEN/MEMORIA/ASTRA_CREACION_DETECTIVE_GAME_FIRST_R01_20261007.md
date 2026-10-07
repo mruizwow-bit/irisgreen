@@ -159,6 +159,6 @@ No escala a mÃ¡s escenas antes de HUMAN QA / siguiente gate.
 
 ## Gate
 
-`ASTRA_DETECTIVE_GAME_FIRST_R01_READY_FOR_HUMAN_QA`
+`DETECTIVE_GAME_FIRST_VERTICAL_SLICE_READY_FOR_NEXO`
 
-Este gate significa **candidato de Astra listo para HUMAN QA de MarÃ­a**. Astra mantiene el ownership de construcciÃ³n y correcciÃ³n hasta ese punto; no se delega a Nexo.
+Este gate significa **vertical slice de Astra ejecutado y listo para el siguiente gate técnico de Nexo**. Astra mantiene el ownership de correcciones de producto hasta HUMAN QA; Nexo no sustituye la construcción de Astra.
