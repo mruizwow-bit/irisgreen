@@ -1,0 +1,58 @@
+{
+  "schema": "iris-green.solar-r03.shape-oracle.v1",
+  "date": "2026-10-07",
+  "formula": "renderer_radius_axis = mean_radius_km * full_axis_diameter_km / cbrt(axis_x*axis_z*axis_y)",
+  "pass_threshold_km": 1,
+  "rows": [
+    {
+      "id": "tierra",
+      "equatorial_target_km": 6378.137,
+      "polar_target_km": 6356.752,
+      "renderer_equatorial_km": 6378.136314206715,
+      "renderer_polar_km": 6356.751316506085,
+      "max_abs_error_km": 0.000686
+    },
+    {
+      "id": "marte",
+      "equatorial_target_km": 3396.2,
+      "polar_target_km": 3376.2,
+      "renderer_equatorial_km": 3396.179756355188,
+      "renderer_polar_km": 3376.1798755686905,
+      "max_abs_error_km": 0.020244
+    },
+    {
+      "id": "jupiter",
+      "equatorial_target_km": 71492,
+      "polar_target_km": 66854,
+      "renderer_equatorial_km": 71491.68461883639,
+      "renderer_polar_km": 66853.70507899747,
+      "max_abs_error_km": 0.315382
+    },
+    {
+      "id": "saturno",
+      "equatorial_target_km": 60268,
+      "polar_target_km": 54364,
+      "renderer_equatorial_km": 60268.00722164743,
+      "renderer_polar_km": 54364.00651419727,
+      "max_abs_error_km": 0.007222
+    },
+    {
+      "id": "urano",
+      "equatorial_target_km": 25559,
+      "polar_target_km": 24973,
+      "renderer_equatorial_km": 25558.844269176854,
+      "renderer_polar_km": 24972.847839671096,
+      "max_abs_error_km": 0.155731
+    },
+    {
+      "id": "neptuno",
+      "equatorial_target_km": 24764,
+      "polar_target_km": 24341,
+      "renderer_equatorial_km": 24763.80943360194,
+      "renderer_polar_km": 24340.81268871365,
+      "max_abs_error_km": 0.190567
+    }
+  ],
+  "result": "PASS",
+  "note": "The canonical factual JSON remains unchanged. Overrides are applied only to a cloned payload passed to the 3D renderer."
+}
