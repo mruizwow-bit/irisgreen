@@ -40,3 +40,14 @@ EVIDENCIA POSTERIOR:
   rechazada. Esto no certifica E18/E21/E43.
 - Eliminado autoplay inicial de videomapping y actualizado el selector de
   movimiento en simulaciones. Quedan los demás motores por comprobar.
+
+ÚLTIMA VERIFICACIÓN:
+Commit e607eb8f3d2c198f6fad139fef29d9f42b98265a.
+Run https://github.com/mruizwow-bit/irisgreen/actions/runs/37623915226
+Artefacto 11482524580: 54 capturas + runtime.json + file-roundtrip.json.
+54 vistas: 0 errores JS, 0 desbordamientos horizontales, 54 arranques.
+M9: cargar un fichero de Ritmo conserva modo, pistas y tempo (PASS).
+Planck: scripts/qa/r44_physics.cjs pasa y rechaza mutación de gravedad.
+La primera acción útil con consecuencia no está certificada por esas pruebas.
+Las 13 comprobaciones y las 49 mecánicas siguen pendientes de cierre.
+Las correcciones posteriores a la primera captura están incluidas en este run.
