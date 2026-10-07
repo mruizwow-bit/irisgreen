@@ -103,13 +103,13 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/cada-cerebro-su-camino"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/cada-cerebro-su-camino/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/es/recursos/juegos/cada-cerebro-su-camino/*"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/cada-cerebro-su-camino/"
   status = 301
   force = true
 
@@ -247,13 +247,13 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/la-maquina-de-empezar"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/la-maquina-de-empezar/"
   status = 301
   force = true
 
 [[redirects]]
   from = "/es/recursos/juegos/la-maquina-de-empezar/*"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/la-maquina-de-empezar/"
   status = 301
   force = true
 
