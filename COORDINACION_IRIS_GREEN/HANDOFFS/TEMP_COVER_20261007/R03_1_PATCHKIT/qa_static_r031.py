@@ -38,6 +38,7 @@ if src.exists():
  ok('SOURCE_R031_VERSION',sd.get('version')=='vida-marina-3D-R03.1')
 ok('TAXON_SCOPE','PROVISIONAL_3D_REPRESENTATION' in A and 'Myctophum punctatum' in A and 'Teuthowenia pellucida' in A)
 ok('SQUID_8_ARMS_2_TENTACLES',"for(let i=0;i<8;i++)" in A and "'tentacle'" in A and "'tentacle-club'" in A)
+ok('SQUID_LATERAL_FINS',"function finPatch" in A and "'mantle-fin-lateral'" in A)
 ok('SQUID_3_PHOTOPHORES_PER_EYE',"'ocular-photophore'" in A and "for(const side of [-1,1])" in A)
 ok('LANTERN_PECTORAL_ADIPOSE',"'pectoral-fin'" in A and "'adipose-fin'" in A)
 ok('LANTERN_PHOTOPHORE_SERIES',all(x in A for x in ["'photophore-AOa'","'photophore-AOp'","'photophore-Prc'","'photophore-Pol'"]))
