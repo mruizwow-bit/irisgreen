@@ -166,6 +166,33 @@ if 'release3D' in d:
  d['release3D']['version']='R03.1'; d['release3D']['direccion']='WORLD_FIRST · SCENE_AS_PRIMARY_INTERFACE · TRUE_VOLUME_CORE_ANIMALS'
 D.write_text('window.IG_DATOS = '+json.dumps(d,ensure_ascii=False,separators=(',',':'))+';\n',encoding='utf-8')
 
+# ---------- source of truth R03.1 ----------
+proc=root/'procedencia'; proc.mkdir(exist_ok=True)
+source=proc/'datos3d-R03.1-source.json'
+source.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+legacy=proc/'gen_datos3d_r02_historical.py'
+gen=proc/'gen_datos3d.py'
+if gen.exists() and not legacy.exists():
+    gen.replace(legacy)
+generator = """from pathlib import Path
+import json, sys
+HERE=Path(__file__).resolve().parent
+ROOT=HERE.parent
+SRC=HERE/'datos3d-R03.1-source.json'
+OUT=ROOT/'app'/'datos3d.js'
+if not SRC.exists(): raise SystemExit('falta source R03.1')
+d=json.loads(SRC.read_text(encoding='utf-8'))
+render='window.IG_DATOS = '+json.dumps(d,ensure_ascii=False,separators=(',',':'))+';\\n'
+if '--verificar' in sys.argv:
+    if not OUT.exists() or OUT.read_text(encoding='utf-8')!=render:
+        raise SystemExit('R03.1 DATA SOURCE MISMATCH')
+    print('R03.1 DATA SOURCE PASS')
+else:
+    OUT.write_text(render,encoding='utf-8')
+    print('R03.1 DATA REGENERATED')
+"""
+gen.write_text(generator,encoding='utf-8')
+
 (root/'README.md').write_text('# Vida marina 3D · R03.1 · True volume core animals\n\nMundo WORLD_FIRST heredado de R02. Animales centrales = cuerpos volumétricos procedurales. Peces por secciones variables; raycast real; orientación por trayectoria; revelado por fragmento; PNG solo referencia/procedencia/ficha.\n\nArgyropelecus PROVISIONAL; Myctophum punctatum y Teuthowenia pellucida candidatos factuales.\n\nNO MAIN · NO DEPLOY · NO SCALE 200+.\n',encoding='utf-8')
 (root/'KEEP_CHANGE.md').write_text('# R02 → R03.1 · KEEP / CHANGE\n\nKEEP: mundo/cámara/talud/partículas/haz/múltiples candidatos/NORMAL-REDUCED-NONE/ES-EN/calamar bloqueado.\n\nCHANGE: billboards→volumen; camera-facing→trayectoria; plano+alfa→raycast real; luz por centro→luz por fragmento; perfil extruido→secciones variables; PNG runtime→PNG referencia.\n',encoding='utf-8')
 (root/'LEEME_INTERNO.md').write_text('# Vida marina 3D R03.1 · notas internas\n\nGrosor no equivale a morfología 3D. R03.1 usa secciones variables y revelado por superficie. Argyropelecus sigue provisional; longitudes sin validar; calamar con observable bloqueado.\n',encoding='utf-8')
