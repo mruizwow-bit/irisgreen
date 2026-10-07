@@ -1,0 +1,95 @@
+{
+  "schema": "iris-green.solar-r03.donor-lock.v1",
+  "date": "2026-10-07",
+  "branch": "axioma/cielo-espacio-r03-20261007",
+  "runtime_files": [
+    {
+      "path": "assets/ig-sistema-solar-3d.js",
+      "blob_sha": "b6e6b158124f45b497b5e1f547e779f335775655",
+      "size_bytes": 596781
+    },
+    {
+      "path": "assets/ig-sistema-solar.js",
+      "blob_sha": "05d8bbc0d00c7715f3b96352cfef0d4a10287513",
+      "size_bytes": 44721
+    },
+    {
+      "path": "assets/ig-sistema-solar.css",
+      "blob_sha": "d2020a549fce19a1bd4511160b52e7da514713ee",
+      "size_bytes": 6087
+    },
+    {
+      "path": "es/intereses/sistema-solar/sistema-solar.json",
+      "blob_sha": "72802030e6df20db4ce8eebbd23eb03ecc9437cd",
+      "size_bytes": 62859
+    },
+    {
+      "path": "es/intereses/sistema-solar/cielo-fondo.json",
+      "blob_sha": "601a61f67a34dcd8a483d4dca88cc6cd53587694",
+      "size_bytes": 411894
+    }
+  ],
+  "textures": [
+    {
+      "path": "img/intereses/sistema-solar/tex/sol.webp",
+      "blob_sha": "e8f8f01128b8a2f073a5d2b30e777527af25e73e",
+      "size_bytes": 198174
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/mercurio.webp",
+      "blob_sha": "5e09f90bc6d938eca3f5e87a4fb025130a51798a",
+      "size_bytes": 112926
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/venus.webp",
+      "blob_sha": "00d6ab6f498eb7b4ed88a1f0376735ec8eeb635b",
+      "size_bytes": 5132
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/tierra-dia.webp",
+      "blob_sha": "e06df78f7f5696d6dc898b6ed6e296c04aeab57c",
+      "size_bytes": 136622
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/tierra-noche.webp",
+      "blob_sha": "775a60157fd33edbd7e54800b9c8632d6f5f5243",
+      "size_bytes": 67880
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/tierra-relieve-nubes.webp",
+      "blob_sha": "d5768b5086eccce024d8c8eaf15af3abe5277694",
+      "size_bytes": 240380
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/marte.webp",
+      "blob_sha": "234da265c65ca236ce4757a378ace7fd958d9aec",
+      "size_bytes": 16492
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/jupiter.webp",
+      "blob_sha": "fccd41ec4762228d7a80be8caaa28ed7bcff3e9b",
+      "size_bytes": 99696
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/saturno.webp",
+      "blob_sha": "47bbafef41459f2d95ebb9a907186eb3e5c61280",
+      "size_bytes": 26762
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/anillos-saturno.png",
+      "blob_sha": "d2ce9a0c07cd7e21b85abd8efb6d2a18764ad10b",
+      "size_bytes": 5661
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/urano.webp",
+      "blob_sha": "4d57f0c5f1fd3024d9187f67430c313e438eca85",
+      "size_bytes": 2748
+    },
+    {
+      "path": "img/intereses/sistema-solar/tex/neptuno.webp",
+      "blob_sha": "b9fab7585eb04b749eb06bbc49d0ccf72087a744",
+      "size_bytes": 14404
+    }
+  ],
+  "note": "These GitHub blob SHAs lock the donor bytes. R03 must not silently replace the true-volume core or textures without an explicit evidence-backed change."
+}
