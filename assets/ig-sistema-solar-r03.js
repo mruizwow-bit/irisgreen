@@ -10,7 +10,7 @@
   var KEY = 'ig-sistema-solar-coleccion';
   var MARCA = 'IRIS GREEN · irisgreen.eu';
   var R = Math.PI / 180, AU = 149597870.7;
-  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null;
+  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null, R03_RINGS = null;
   var reduce = function () { return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || document.documentElement.getAttribute('data-ig-motion') === 'off' || document.documentElement.getAttribute('data-ig-system-motion') === 'reduce'; };
 
   /* ---------- utilidades ---------- */
@@ -488,6 +488,48 @@
     return d3;
   }
 
+  function ringBounds(b) {
+    if (typeof b.inner_km === 'number' && typeof b.outer_km === 'number') return [b.inner_km, b.outer_km];
+    var w = typeof b.representative_width_km === 'number' ? b.representative_width_km : 0;
+    return [b.radius_km - w / 2, b.radius_km + w / 2];
+  }
+  function mountR03Rings() {
+    var dbg = window.__IGSS, spec = R03_RINGS && R03_RINGS.bodies;
+    if (!dbg || !dbg.BY || !spec || !dbg.BY.saturno || !dbg.BY.saturno.ring) return false;
+    var sat = dbg.BY.saturno, RingGeometry = sat.ring.geometry.constructor;
+    var Mesh = sat.ring.constructor, side = sat.ring.material.side;
+    ['jupiter','urano','neptuno'].forEach(function (id) {
+      var body = dbg.BY[id], def = spec[id];
+      if (!body || !body.mesh || !def || body.r03Rings) return;
+      body.r03Rings = [];
+      def.bands.forEach(function (b) {
+        var bounds = ringBounds(b), inner = bounds[0] / def.equatorial_radius_km, outer = bounds[1] / def.equatorial_radius_km;
+        if (!(outer > inner && inner > 1)) return;
+        var Material = body.mesh.material.constructor;
+        var mat = new Material({ color: def.color, transparent: true, opacity: b.opacity,
+          side: side, depthWrite: false, roughness: 1, metalness: 0 });
+        var mesh = new Mesh(new RingGeometry(inner, outer, 192, 1), mat);
+        mesh.rotation.x = -Math.PI / 2;
+        mesh.frustumCulled = false;
+        mesh.userData.r03Ring = { body: id, name: b.name, representation: R03_RINGS.representation };
+        body.spin.add(mesh);
+        body.r03Rings.push(mesh);
+      });
+    });
+    syncR03RingScale();
+    return true;
+  }
+  function syncR03RingScale() {
+    var dbg = window.__IGSS;
+    if (!dbg || !dbg.BY) return;
+    ['saturno','jupiter','urano','neptuno'].forEach(function (id) {
+      var b = dbg.BY[id]; if (!b || !b.mesh) return;
+      var eqScale = b.mesh.scale.x || 1;
+      if (id === 'saturno' && b.ring) b.ring.scale.setScalar(eqScale);
+      (b.r03Rings || []).forEach(function (r) { r.scale.setScalar(eqScale); });
+    });
+  }
+
   function start(d) {
     D = d;
     D.cuerpos.forEach(function (c) { BY[c.id] = c; });
@@ -505,6 +547,7 @@
     launch.addEventListener('click', function () {
       launch.disabled = true;
       launch.textContent = T('Cargando vista…', 'Loading view…');
+      window.__IGSS_DEBUG = true;
       var script = document.createElement('script');
       script.src = '/assets/ig-sistema-solar-3d.js';
       script.onload = function () {
@@ -514,7 +557,13 @@
       var D3 = dataFor3D();
       VIEW = window.IGSistemaSolar3D.start(D3, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
         date: function () { return now; }, img: function (f) { return '/img/intereses/sistema-solar/' + f; } });
-      if (VIEW) onTime(now, false);
+      if (VIEW) {
+        mountR03Rings();
+        var rawSetScale = VIEW.setScale;
+        VIEW.setScale = function (mode) { rawSetScale.call(VIEW, mode); syncR03RingScale(); };
+        VIEW.rotate(0, 0);
+        onTime(now, false);
+      }
     } else fail();
 
         if (stage.classList.contains('cn-live')) {
@@ -535,8 +584,9 @@
   Promise.all([
     fetch('/es/intereses/sistema-solar/sistema-solar.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }),
     fetch('/es/intereses/sistema-solar/cielo-fondo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
-    fetch('/assets/data/solar-r03-shape-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; start(res[0]); }).catch(function () {
+    fetch('/assets/data/solar-r03-shape-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch('/assets/data/solar-r03-rings.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; R03_RINGS = res[3]; start(res[0]); }).catch(function () {
     var p = view && view.querySelector('.cn-stage-nojs'); if (p) p.textContent = T('No se han podido cargar los datos. Las fichas y las tablas de abajo siguen disponibles.', 'The data could not be loaded. The entries and tables below are still available.');
   });
 })();
