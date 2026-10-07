@@ -54,5 +54,28 @@
     }
   ],
   "result": "PASS",
-  "note": "The canonical factual JSON remains unchanged. Overrides are applied only to a cloned payload passed to the 3D renderer."
+  "note": "The canonical factual JSON remains unchanged. Overrides are applied only to a cloned payload passed to the 3D renderer. Haumea uses the geometric-mean full diameter derived from its existing triaxial axes, so its three source axes are reproduced exactly in the renderer clone.",
+  "triaxial_rows": [
+    {
+      "id": "haumea",
+      "source_axes_km": [
+        2322,
+        1704,
+        1026
+      ],
+      "target_semiaxes_km": [
+        1161,
+        852,
+        513
+      ],
+      "renderer_normalization_diameter_km": 1595.241315021318,
+      "renderer_semiaxes_km": [
+        1161,
+        852,
+        513
+      ],
+      "max_abs_error_km": 0,
+      "result": "PASS"
+    }
+  ]
 }
