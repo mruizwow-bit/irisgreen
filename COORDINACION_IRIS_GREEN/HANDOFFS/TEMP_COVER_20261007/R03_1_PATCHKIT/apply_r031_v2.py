@@ -61,6 +61,20 @@ if 'vIGWorld' not in s:
     s,n=re.subn(pat,repl,s,count=1,flags=re.S)
     if n!=1: raise SystemExit('no encuentro const mat')
 
+if 'function finPatch' not in s:
+    marker='function brazoCurvo'
+    i=s.find(marker)
+    if i<0: raise SystemExit('no encuentro brazoCurvo para insertar finPatch')
+    fn=r'''function finPatch(parent, material, pts, role='fin'){
+  const g=new THREE.BufferGeometry();
+  g.setAttribute('position',new THREE.Float32BufferAttribute(pts.flat(),3));
+  g.setIndex([0,1,2,0,2,3]);
+  g.computeVertexNormals();
+  return addMesh(parent,g,material,[0,0,0],[0,0,0],[1,1,1],role);
+}
+'''
+    s=s[:i]+fn+s[i:]
+
 if 'function cuerpoSecciones' not in s:
     marker='function brazoCurvo'
     i=s.find(marker)
@@ -187,6 +201,22 @@ if "'adipose-fin'" not in s:
     if n!=1: raise SystemExit('no encuentro inserción estable de aletas en pez linterna')
 
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
+
+# Teuthowenia pellucida: aletas terminales-laterales con inserción sobre manto.
+# Sustituye las dos aletas triangulares antiguas orientadas en Y por superficies
+# laterales en ±Z, más próximas a la morfología del taxón.
+if "'mantle-fin-lateral'" not in s:
+    old_fins=r"""  fin\(root,armMat,\[\[L\*0\.38,0,0\],\[L\*0\.62,L\*0\.22,0\],\[L\*0\.46,L\*0\.02,0\]\],'mantle-fin'\);\n  fin\(root,armMat,\[\[L\*0\.38,0,0\],\[L\*0\.62,-L\*0\.22,0\],\[L\*0\.46,-L\*0\.02,0\]\],'mantle-fin'\);"""
+    new_fins=r'''  for(const side of [-1,1]){
+    finPatch(root,armMat,[
+      [L*0.24,0,side*L*0.17],
+      [L*0.43,0,side*L*0.31],
+      [L*0.64,0,side*L*0.15],
+      [L*0.43,0,side*L*0.11]
+    ],'mantle-fin-lateral');
+  }'''
+    s,n=re.subn(old_fins,new_fins,s,count=1)
+    if n!=1: raise SystemExit('no encuentro aletas antiguas de Teuthowenia')
 
 # Teuthowenia pellucida: 8 brazos + 2 tentáculos; brazos agrupados hacia delante.
 if "'tentacle-club'" not in s:
