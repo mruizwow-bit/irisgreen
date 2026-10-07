@@ -11,8 +11,8 @@
   "new_challenges_certified": 0,
   "acceptance_checks_required": 13,
   "acceptance_checks_certified": 0,
-  "runtime_evidence_run": 37623915226,
-  "runtime_evidence_commit": "e607eb8f3d2c198f6fad139fef29d9f42b98265a",
+  "runtime_evidence_run": 37653503023,
+  "runtime_evidence_commit": "4c24dcc091c8b903e47d8ee1ffb641eaccbaea1e",
   "runtime_views": 54,
   "runtime_errors": 0,
   "horizontal_overflow_views": 0,
@@ -24,12 +24,19 @@
     "Implement and run 13 acceptance oracles with observed failing mutations",
     "Human QA before Nexo gates"
   ],
-  "runtime_artifact_id": 11482524580,
+  "runtime_artifact_id": 11496878541,
   "m9_rhythm_file_roundtrip": "PASS",
   "physics_local_test": "PASS_WITH_GRAVITY_MUTATION_REJECTED",
   "c07": {
-    "state": "IMPLEMENTED_AWAITING_BROWSER_QA",
+    "state": "BROWSER_OBSERVED_NOT_ACCEPTED",
     "scope": "Circular-orbit transit simulation; inclination, radius, cadence and detector noise; CSV/PNG/mission sheet exports",
-    "local_evidence": "r44_transit.cjs: geometry, finite exposure, validation and Kepler scaling; 4 mutations rejected"
+    "local_evidence": "r44_transit.cjs: geometry, finite exposure, validation and Kepler scaling; 4 mutations rejected",
+    "browser_evidence": "Run 37653503023: C07 starts and Observa una órbita renders the transit output at 390 px."
+  },
+  "invitation_start_routes": "57/57 PASS in remote browser (route and ready state only)",
+  "x06": {
+    "state": "BROWSER_OBSERVED_NOT_ACCEPTED",
+    "scope": "Instrumento visual-sonoro de Composición; el medidor AudioWorklet responde al audio tras gesto; exportación PNG del lienzo visible, además de WAV/MIDI.",
+    "browser_evidence": "Run 37653503023 downloads visual-instrumento-*.png through Opciones on X06."
   }
 }

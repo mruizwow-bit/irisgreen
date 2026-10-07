@@ -8,9 +8,10 @@ carga de fichero sin persistencia nueva; nombres ES/EN de la portada.
 
 La tabla contiene 57 referencias (49 nuevas y 8 anteriores), NO 57 mecánicas
 certificadas. Los presets existentes son puntos de partida; no demuestran
-cumplimiento de cada reto. C07 carece de simulación de tránsito: se ha retirado
-el enlace incorrecto al ecosistema. X06/X07 tienen títulos reconciliados con
-la matriz, pero sus capacidades completas siguen pendientes de verificación.
+cumplimiento de cada reto. C07 dispone ahora de una simulación de tránsito circular explícitamente limitada;
+no debe volver a enlazarse al ecosistema. X06 dispone de exportación PNG del
+instrumento visible, además de WAV/MIDI. Ambos tienen evidencia de navegador
+específica, pero no están aceptados ni sustituyen QA humana.
 
 NO PROBADO:
 - Nueve motores completos contra el blueprint.
@@ -52,8 +53,16 @@ La primera acción útil con consecuencia no está certificada por esas pruebas.
 Las 13 comprobaciones y las 49 mecánicas siguen pendientes de cierre.
 Las correcciones posteriores a la primera captura están incluidas en este run.
 
-C07 IMPLEMENTATION (unverified in browser at this checkpoint):
+C07 IMPLEMENTATION (observed in browser; not acceptance):
 - `assets/ig-suite-transit.js` uses a documented circular-orbit model with finite-exposure averaging.
 - Parameters: orbital radius, planet/star radius ratio, inclination, cadence, noise and starting phase.
 - A transit happens only while the planet is in front of the star; no claim is made that the values are a real system.
 - Local calculation test rejects four injected faults: wrong depth, lost inclination, occultation behind the star, and loss of exposure integration.
+
+
+EVIDENCIA ESPECÍFICA POSTERIOR (run 37653503023, commit 4c24dcc091c8b903e47d8ee1ffb641eaccbaea1e):
+- 54 vistas iniciales ES/EN a 1440/390/320: 0 errores JS, 0 overflow.
+- 57/57 invitaciones alcanzan la ruta solicitada y estado ready. Esto valida ruta/arranque, no la mecánica completa.
+- C07: arranca y «Observar una órbita» produce salida a 390 px; la geometría y cuatro mutaciones negativas se prueban en r44_transit.cjs.
+- X06: desde Opciones descarga un PNG del instrumento visible. Sigue pendiente QA humana de comprensión/sonido y los criterios globales.
+- Artefacto 11496878541. Este resultado NO convierte los retos ni las 13 comprobaciones en PASS.
