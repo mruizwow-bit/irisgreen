@@ -1,0 +1,68 @@
+{
+  "schema": "iris-green.meteoros-r03.static-oracle.v1",
+  "date": "2026-10-07",
+  "gate": "METEOR_SHOWERS_R03_STATIC_ORACLE_PASS",
+  "source": {
+    "atlas_commit": "69199a98e75db50bfdd171b7b3538f2b546b13b7",
+    "source_zip_sha256": "3397e8bb41fa5209861f0652c5e95ea888ade5be708bfc83e4b9f013fb60efa4",
+    "package_gate": "METEOR_SHOWERS_10_PACKAGED_READY_FOR_RUNTIME"
+  },
+  "atlas_identity": {
+    "count": 11,
+    "result": "PASS",
+    "note": "10 PNG + factual JSON are the same Git blobs as the Atlas runtime package; no re-encoding or pixel change."
+  },
+  "factual": {
+    "showers": 10,
+    "unique_codes": 10,
+    "valid_radiants": true,
+    "positive_zhr": true,
+    "positive_velocity": true,
+    "min_pairwise_radiant_separation_deg": 15.288,
+    "min_pair": [
+      "ETA",
+      "SDA"
+    ]
+  },
+  "runtime": {
+    "js_syntax": "PASS",
+    "local_data_only": true,
+    "external_runtime_fetch": false,
+    "star_catalogue": "/es/intereses/cielo/cielo.json · <= magnitude 5.6",
+    "semantic_locate_radius_deg": 7,
+    "all_initial_radiants_in_view": true,
+    "initial_offset_separation_deg": {
+      "QUA": 15.058,
+      "LYR": 18.992,
+      "ETA": 23.137,
+      "SDA": 22.675,
+      "PER": 12.832,
+      "ORI": 21.937,
+      "STA (basis)": 22.09,
+      "LEO": 21.107,
+      "GEM": 19.18,
+      "URS": 7.838
+    },
+    "motion_modes": [
+      "NORMAL",
+      "REDUCED",
+      "NONE"
+    ],
+    "geometry": "Radiant is REAL_DATA RA/Dec. Meteor trails are deterministic REPRESENTATION great-circle directions radiating from that vector.",
+    "zhr_policy": "ZHR is reveal data only; trail count is not a literal simultaneous ZHR depiction."
+  },
+  "pages": {
+    "es": true,
+    "en": true,
+    "robots": "noindex,nofollow"
+  },
+  "pending": [
+    "BROWSER_REAL_320_390_1440",
+    "TEXT_200",
+    "FORCED_COLORS_BROWSER",
+    "TOUCH_PHYSICAL",
+    "AT_REAL",
+    "HUMAN_QA"
+  ],
+  "result": "PASS_STATIC_ONLY"
+}
