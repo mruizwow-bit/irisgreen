@@ -126,7 +126,7 @@ s=s.replace('emissiveIntensity:2.4,roughness:0.2});','emissiveIntensity:2.4,roug
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
 
 # Teuthowenia pellucida: 8 brazos + 2 tentáculos; brazos agrupados hacia delante.
-if "role='tentacle'" not in s and "role=\'tentacle\'" not in s:
+if "'tentacle-club'" not in s:
     arm_pat=r"""  for\(let i=0;i<8;i\+\+\)\{.*?\n  \}"""
     arm_repl=r'''  for(let i=0;i<8;i++){
     const ang=(i/8)*Math.PI*2;
