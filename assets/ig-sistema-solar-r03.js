@@ -473,17 +473,23 @@
   }
 
   /* ---------- arranque ---------- */
-  function start(d) {
-    D = d;
+  function dataFor3D() {
+    var d3 = JSON.parse(JSON.stringify(D));
     if (R03_SHAPES && R03_SHAPES.bodies) {
-      D.cuerpos.forEach(function (c) {
+      d3.cuerpos.forEach(function (c) {
         var q = R03_SHAPES.bodies[c.id];
-        if (q && q.ejes_km && q.ejes_km.length === 3) {
-          c.datos.ejes = q.ejes_km.slice();
-          c.r03_shape_source = q.status || 'R03_SHAPE_OVERRIDE';
-        }
+        if (!q || !q.ejes_km || q.ejes_km.length !== 3) return;
+        c.datos.ejes = q.ejes_km.slice();
+        if (typeof q.renderer_diameter_km === 'number') c.datos.diametro = q.renderer_diameter_km;
+        c.r03_shape_source = q.status || 'R03_SHAPE_OVERRIDE';
       });
     }
+    d3.fondo = FONDO;
+    return d3;
+  }
+
+  function start(d) {
+    D = d;
     D.cuerpos.forEach(function (c) { BY[c.id] = c; });
     D.lunas.forEach(function (m) { MOONS[m.id] = m; });
     ALL = ['mercurio', 'venus', 'tierra', 'marte', 'jupiter', 'saturno', 'urano', 'neptuno', 'ceres', 'pluton', 'haumea', 'makemake', 'eris'].concat(ORDER.filter(function (k) { return MOONS[k]; }));
@@ -505,8 +511,8 @@
       var canGL = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } })();
     if (window.IGSistemaSolar3D && canGL) {
       buildUI();
-      D.fondo = FONDO;
-      VIEW = window.IGSistemaSolar3D.start(D, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
+      var D3 = dataFor3D();
+      VIEW = window.IGSistemaSolar3D.start(D3, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
         date: function () { return now; }, img: function (f) { return '/img/intereses/sistema-solar/' + f; } });
       if (VIEW) onTime(now, false);
     } else fail();
