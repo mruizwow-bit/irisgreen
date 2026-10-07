@@ -81,6 +81,7 @@ with sync_playwright() as p:
   before=page.locator('.igs-toolbar button').filter(has_text='Observar una órbita')
   before.click()
   page.wait_for_timeout(300)
+  page.screenshot(path=str(OUT/'C07-es-390-observed.png'),full_page=True)
   state=page.evaluate("""() => {const a=document.getElementById('igt-app');const d=a.igCreative.engine.serialize();return {model:d.model,rows:d.transit,chart:a.querySelector('canvas').width}}""")
   assert state['model']=='transit'
   assert state['chart']>0
