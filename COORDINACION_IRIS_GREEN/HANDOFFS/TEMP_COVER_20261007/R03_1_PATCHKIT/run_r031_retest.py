@@ -56,6 +56,16 @@ def run(cmd,**kw):
     return subprocess.run(list(map(str,cmd)),check=True,**kw)
 
 run([sys.executable,kit/'apply_r031_v2.py',work])
+run([sys.executable,'-m','py_compile',
+     kit/'apply_r031_v2.py',kit/'qa_static_r031.py',kit/'qa_idempotence_r031.py',
+     kit/'package_r031.py',kit/'qa_package_determinism_r031.py',
+     kit/'analyze_light_evidence_r031.py',kit/'make_contact_r031.py'])
+run(['node','--check',kit/'qa_browser_r031.js'])
+run(['node','--check',kit/'capture_light_evidence_r031.js'])
+run(['node','--check',kit/'capture_model_views_r031.js'])
+run(['node','--check',work/'app'/'animales3d.js'])
+run(['node','--check',work/'app'/'escena3d.js'])
+run(['node','--check',work/'app'/'piloto3d.js'])
 run([sys.executable,kit/'qa_static_r031.py',work])
 run([sys.executable,work/'procedencia'/'gen_datos3d.py','--verificar'])
 run([sys.executable,kit/'qa_idempotence_r031.py',work,kit/'apply_r031_v2.py'])
@@ -90,6 +100,7 @@ finally:
     try: server.wait(timeout=3)
     except subprocess.TimeoutExpired: server.kill()
 
+run([sys.executable,kit/'qa_package_determinism_r031.py',work,kit/'package_r031.py'])
 zip_path=out/'VIDA_MARINA_3D_R03_1.zip'
 cp=run([sys.executable,kit/'package_r031.py',work,zip_path],capture_output=True,text=True)
 print(cp.stdout)
