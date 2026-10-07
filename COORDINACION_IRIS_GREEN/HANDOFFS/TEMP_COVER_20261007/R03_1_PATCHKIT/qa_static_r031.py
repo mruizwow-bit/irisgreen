@@ -17,9 +17,12 @@ ok('NO_GLOBAL_CENTER_REVEAL','valorMascara(m.position)' not in P)
 ok('NO_CAMERA_FACING_ROOT','Math.atan2(E.camara.position.x - m.position.x' not in P and '.lookAt(E.camara' not in P)
 ok('NO_ACTIVE_BILLBOARDS_DATA','"billboards"' not in D)
 E=(root/'app'/'escena3d.js').read_text(encoding='utf-8')
-active_js=A+'\n'+P+'\n'+E
+I=(root/'app'/'i18n3d.js').read_text(encoding='utf-8')
+active_js=A+'\n'+P+'\n'+E+'\n'+I
 ok('NO_DEAD_BILLBOARD_SHADERS',all(x not in E for x in ['const VERT =','const FRAG =','mapOscuro','mapLuz']))
 ok('ACTIVE_CODE_NO_BILLBOARD_CLAIMS',all(x not in active_js.lower() for x in ['png sobre planos','no son modelos 3d','camera-facing planes']))
+ok('PUBLIC_I18N_R031','R03.1' in I and 'animales volumétricos procedurales' in I and 'procedural volumetric animals' in I)
+ok('PUBLIC_I18N_NO_BILLBOARD',all(x not in I.lower() for x in ['png sobre planos','pngs on planes','not 3d models']))
 ok('R031_VERSION','vida-marina-3D-R03.1' in D)
 proc=root/'procedencia'
 src=proc/'datos3d-R03.1-source.json'
