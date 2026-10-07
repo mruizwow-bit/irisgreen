@@ -1,0 +1,20 @@
+{
+  "schema": "iris-green.cielo-r04.experience.v1",
+  "date": "2026-10-07",
+  "entry": {
+    "route_id": "anclas",
+    "offset_ra_hours": 1.35,
+    "offset_dec_deg": 15,
+    "declaration": "Desvío de encuadre para no resolver el primer patrón al entrar; es dato de experiencia, no horizonte local."
+  },
+  "air_depth": {
+    "start_relative_y": 0.56,
+    "max_attenuation": 0.55,
+    "warm_tint": "#F0C6A0",
+    "declaration": "Gradiente perceptual de encuadre; no es masa de aire calculada."
+  },
+  "perceptual_ground": {
+    "relative_height": 0.115,
+    "declaration": "Silueta genérica inferior; no representa un lugar ni un horizonte astronómico calculado."
+  }
+}
