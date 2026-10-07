@@ -10,7 +10,7 @@
   var KEY = 'ig-sistema-solar-coleccion';
   var MARCA = 'IRIS GREEN · irisgreen.eu';
   var R = Math.PI / 180, AU = 149597870.7;
-  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null, R03_RINGS = null, R03_APPEARANCE = null;
+  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null, R03_RINGS = null, R03_APPEARANCE = null, R03_MOON_SHAPES = null;
   var reduce = function () { return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || document.documentElement.getAttribute('data-ig-motion') === 'off' || document.documentElement.getAttribute('data-ig-system-motion') === 'reduce'; };
 
   /* ---------- utilidades ---------- */
@@ -493,6 +493,17 @@
         c.r03_appearance = a.representation;
       });
     }
+    if (R03_MOON_SHAPES && R03_MOON_SHAPES.bodies) {
+      d3.lunas.forEach(function (m) {
+        var q = R03_MOON_SHAPES.bodies[m.id];
+        if (!q) return;
+        m.r03EjesKm = q.ejes_km.slice();
+        m.r03RadiusKm = q.renderer_radius_km;
+        m.r03Color = parseInt(String(q.color || '#888888').replace('#', ''), 16);
+        m.r03_shape_source = q.source;
+        m.r03_representation = q.representation;
+      });
+    }
     d3.fondo = FONDO;
     return d3;
   }
@@ -595,8 +606,9 @@
     fetch('/es/intereses/sistema-solar/cielo-fondo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
     fetch('/assets/data/solar-r03-shape-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
     fetch('/assets/data/solar-r03-rings.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-    fetch('/assets/data/solar-r03-appearance-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; R03_RINGS = res[3]; R03_APPEARANCE = res[4]; start(res[0]); }).catch(function () {
+    fetch('/assets/data/solar-r03-appearance-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch('/assets/data/solar-r03-irregular-moon-shapes.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; R03_RINGS = res[3]; R03_APPEARANCE = res[4]; R03_MOON_SHAPES = res[5]; start(res[0]); }).catch(function () {
     var p = view && view.querySelector('.cn-stage-nojs'); if (p) p.textContent = T('No se han podido cargar los datos. Las fichas y las tablas de abajo siguen disponibles.', 'The data could not be loaded. The entries and tables below are still available.');
   });
 })();
