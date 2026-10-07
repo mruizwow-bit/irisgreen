@@ -97,9 +97,15 @@ with sync_playwright() as p:
  try:
   page.goto('http://127.0.0.1:8765/es/taller/composicion/?invitation=X06',wait_until='networkidle')
   page.wait_for_function("() => document.getElementById('igt-app')?.dataset.r44Invitation === 'X06'",timeout=20000)
-  page.locator('.ig-r42-file-trigger').click()
+  export_button=page.get_by_role('button',name='Exportar visual (PNG)',exact=True)
+  # Con shell R42 va dentro de Archivo; sin shell permanece visible en la barra del proyecto.
+  if not export_button.is_visible():
+   trigger=page.locator('.ig-r42-file-trigger')
+   assert trigger.is_visible(),'Export menu is not reachable'
+   trigger.click()
+  assert export_button.is_visible(),'Visual export is not visible or reachable'
   with page.expect_download(timeout=15000) as download_info:
-   page.get_by_role('button',name='Exportar visual (PNG)',exact=True).click()
+   export_button.click()
   download=download_info.value
   assert download.suggested_filename.endswith('.png'),download.suggested_filename
   x06['filename']=download.suggested_filename
