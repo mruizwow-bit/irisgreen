@@ -369,7 +369,11 @@ def hub_actions(lang):
     routes = {}
     for name in SUITE:
         mod = importlib.import_module('taller_suite.' + name)
-        routes[mod.ENGINE] = BASE[lang] + mod.SLUG[lang] + '/'
+        route = BASE[lang] + mod.SLUG[lang] + '/'
+        if mod.ENGINE not in routes or getattr(mod, 'MODE', None) == 'compose':
+            routes[mod.ENGINE] = route
+        if getattr(mod, 'MODE', None):
+            routes[mod.ENGINE + ':' + mod.MODE] = route
     en = lang == 'en'
     draw = BASE[lang] + ('drawing/' if en else 'dibujo/')
     words = ('Make something', 'Continue project', 'Try an invitation', 'Create freely') if en else ('Crear algo', 'Continuar proyecto', 'Probar una invitación', 'Crear libremente')

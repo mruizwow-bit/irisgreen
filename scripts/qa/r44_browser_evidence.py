@@ -49,8 +49,30 @@ with sync_playwright() as p:
     rows.append(row)
     (OUT/'runtime.json').write_text(json.dumps(rows,ensure_ascii=False,indent=2))
     page.close()
+ # Check the file handoff for the shared music engine: rhythm must not open as synthesis.
+ page=browser.new_page(viewport={'width':390,'height':844})
+ file_result={'check':'M9 rhythm file round trip','passed':False}
+ try:
+  page.goto('http://127.0.0.1:8765/es/taller/ritmo/',wait_until='networkidle')
+  page.wait_for_selector('[data-r44-entry="true"]')
+  project=page.evaluate("() => ({formato:'iris-green-taller',estudio:'musica',modo:'rhythm',version:1,datos:document.getElementById('igt-app').igCreative.engine.serialize()})")
+  page.goto('http://127.0.0.1:8765/es/taller/',wait_until='networkidle')
+  with page.expect_file_chooser() as chooser:
+   page.locator('#r44-continue').click()
+  chooser.value.set_files({'name':'roundtrip.igtaller.json','mimeType':'application/json','buffer':json.dumps(project).encode()})
+  page.locator('iframe.r44-project-frame:not([hidden])').wait_for(timeout=30000)
+  frame=page.locator('iframe.r44-project-frame').element_handle().content_frame()
+  actual=frame.evaluate("() => {const a=document.getElementById('igt-app');return {mode:a.dataset.igsMode,data:a.igCreative.engine.serialize()}}")
+  assert actual['mode']=='rhythm',actual['mode']
+  assert actual['data']['tracks']==project['datos']['tracks']
+  assert actual['data']['bpm']==project['datos']['bpm']
+  file_result['passed']=True
+ except Exception as error:
+  file_result['failure']=str(error)
+ (OUT/'file-roundtrip.json').write_text(json.dumps(file_result,ensure_ascii=False,indent=2))
+ page.close()
  browser.close()
 server.shutdown()
 failed=[r for r in rows if not r['runtime_ready'] or r['errors'] or r.get('layout',{}).get('overflow')]
 print(f'{len(rows)} initial views; {len(failed)} runtime/layout failures. Acceptance NOT_ASSESSED.')
-raise SystemExit(bool(failed))
+raise SystemExit(bool(failed) or not file_result['passed'])

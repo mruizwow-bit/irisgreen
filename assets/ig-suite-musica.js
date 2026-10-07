@@ -845,7 +845,7 @@
           var wasPlaying = playing; if (playing) stopPlay();
           var keepVoices = S.tracks.length === st.tracks.length && S.tracks.every(function (x, i) { return x.id === st.tracks[i].id && x.kind === st.tracks[i].kind && x.preset === st.tracks[i].preset && JSON.stringify(x.inst) === JSON.stringify(st.tracks[i].inst); });
           S = { v: 1, bpm: st.bpm, bars: st.bars, loop: st.loop.slice(), grid: st.grid, tracks: JSON.parse(JSON.stringify(st.tracks)) }; seq = Math.max(seq, st.seq || 0);
-          selTrack = st.sel && trackById(st.sel[0]) ? st.sel[0] : S.tracks[0].id; selClip = st.sel && clipById(st.sel[1]) ? st.sel[1] : null; selNotes = [];
+          selTrack = st.sel && trackById(st.sel[0]) ? st.sel[0] : (S.tracks[0] ? S.tracks[0].id : null); selClip = st.sel && clipById(st.sel[1]) ? st.sel[1] : null; selNotes = [];
           if (!keepVoices) rebuildVoices(); else applyMix();
           renderSide(); requestRender();
         },
@@ -863,3 +863,4 @@
     }
   }
 })(window);
+

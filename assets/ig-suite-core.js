@@ -661,7 +661,7 @@
 
     function projectName() { return (def.fileBase || engineId) + '-' + stamp(); }
     function saveProject() {
-      var data = { formato: 'iris-green-taller', estudio: engineId, version: def.version || 1, datos: engine.serialize() };
+      var data = { formato: 'iris-green-taller', estudio: engineId, modo: app.dataset.igsMode || null, version: def.version || 1, datos: engine.serialize() };
       download(new Blob([JSON.stringify(data, null, 1)], { type: 'application/json' }), projectName() + '.igtaller.json');
       setDirty(false); announce(t('saved'));
     }

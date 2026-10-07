@@ -26,7 +26,8 @@
       const frame = document.createElement('iframe');
       frame.className = 'r44-project-frame';
       frame.title = en ? 'Your project' : 'Tu proyecto';
-      frame.src = routes[project.estudio];
+      const modeKey=project.estudio + ':' + project.modo;
+      frame.src = Object.hasOwn(routes,modeKey) ? routes[modeKey] : routes[project.estudio];
       frame.hidden = true;
       const fail = () => { frame.remove(); button.disabled = false; say('No se ha podido abrir. El archivo original sigue intacto.', 'Could not open. Your original file is unchanged.'); };
       const timeout = setTimeout(fail, 30000);
