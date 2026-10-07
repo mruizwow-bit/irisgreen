@@ -1,0 +1,93 @@
+{
+  "schema": "iris-green.solar-b03-r03-volume-contract.v1",
+  "date": "2026-10-07",
+  "gate": "SOLAR_B03_R03_TRUE_VOLUME_CORE_PASS_STATIC__BROWSER_HUMAN_PENDING",
+  "factual_gate": "SOLAR_B03_DWARF_MOONS_FACTUAL_BRIEF_PASS",
+  "visual_gate": "SOLAR_B03_DWARF_MOONS_10_MASTERS_FINAL_PASS",
+  "art_locked": true,
+  "principles": {
+    "true_volume": true,
+    "no_final_billboards": true,
+    "visual_master_not_equal_global_surface_map": true,
+    "unknown_surface_detail": "DO_NOT_INVENT_DETAIL",
+    "canonical_data_mutated": false
+  },
+  "bodies": [
+    {
+      "id": "ceres",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_DAWN_DERIVED_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "haumea",
+      "geometry": "TRIAXIAL_2322x1704x1026_KM",
+      "surface": "UNIFORM_NEUTRAL__UNKNOWN_SURFACE_REPRESENTATION",
+      "texture_disabled_in_r03": true,
+      "status": "KEEP_SHAPE__SURFACE_NEUTRALIZED"
+    },
+    {
+      "id": "makemake",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "UNIFORM_REDDISH_BROWN__LOW_DETAIL_REPRESENTATION",
+      "texture_disabled_in_r03": true,
+      "status": "KEEP_VOLUME__SURFACE_NEUTRALIZED"
+    },
+    {
+      "id": "eris",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "UNIFORM_NEUTRAL__LOW_CONFIDENCE_ICY_ROCKY_REPRESENTATION",
+      "texture_disabled_in_r03": true,
+      "status": "KEEP_VOLUME__SURFACE_NEUTRALIZED"
+    },
+    {
+      "id": "luna",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "io",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "europa",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "ganimedes",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "titan",
+      "geometry": "SPHERE_VOLUME_PLUS_ATMOSPHERE_EFFECT",
+      "surface": "VISIBLE_LIGHT_HAZE_TEXTURE_KEEP",
+      "status": "KEEP"
+    },
+    {
+      "id": "encelado",
+      "geometry": "SPHERE_VOLUME",
+      "surface": "DOCUMENTED_CASSINI_DERIVED_TEXTURE_KEEP",
+      "status": "KEEP_BASE_NO_PLUME"
+    }
+  ],
+  "runtime": {
+    "bundle": "assets/ig-sistema-solar-3d-r03.js",
+    "controller": "assets/ig-sistema-solar-r03.js",
+    "appearance_overrides": "assets/data/solar-r03-appearance-overrides.json",
+    "shape_overrides": "assets/data/solar-r03-shape-overrides.json"
+  },
+  "pending": [
+    "hardware WebGL browser retest",
+    "HUMAN QA shape/texture/orientation",
+    "physical phone and AT",
+    "Haumea ring as separate factual context if added",
+    "next lunar true-gap batch irregular geometry"
+  ]
+}
