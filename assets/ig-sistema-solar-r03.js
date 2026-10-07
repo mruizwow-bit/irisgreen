@@ -128,8 +128,10 @@
   var ui_ = {};
   var SPEEDS = [[3600, T('1 hora por segundo', '1 hour per second')], [86400, T('1 día por segundo', '1 day per second')], [604800, T('1 semana por segundo', '1 week per second')],
     [2629800, T('1 mes por segundo', '1 month per second')], [31557600, T('1 año por segundo', '1 year per second')]];
-  var ORDER = ['interior', 'sistema', 'exterior', 'sol', 'mercurio', 'venus', 'tierra', 'luna', 'marte', 'fobos', 'deimos', 'ceres', 'jupiter', 'io', 'europa', 'ganimedes', 'calisto',
-    'saturno', 'mimas', 'encelado', 'tetis', 'dione', 'rea', 'titan', 'japeto', 'urano', 'miranda', 'ariel', 'umbriel', 'titania', 'oberon', 'neptuno', 'triton', 'pluton', 'caronte', 'haumea', 'makemake', 'eris'];
+  var ORDER = ['interior', 'sistema', 'exterior', 'sol', 'mercurio', 'venus', 'tierra', 'luna', 'marte', 'fobos', 'deimos', 'ceres',
+    'jupiter', 'metis', 'adrastea', 'amaltea', 'tebe', 'io', 'europa', 'ganimedes', 'calisto',
+    'saturno', 'pan', 'atlas', 'jano', 'epimeteo', 'mimas', 'encelado', 'tetis', 'dione', 'rea', 'titan', 'hiperion', 'japeto', 'febe',
+    'urano', 'miranda', 'ariel', 'umbriel', 'titania', 'oberon', 'neptuno', 'triton', 'pluton', 'caronte', 'haumea', 'makemake', 'eris'];
   var VIEWS = { interior: T('Los planetas interiores', 'The inner planets'), sistema: T('Hasta Júpiter y Saturno', 'Out to Jupiter and Saturn'), exterior: T('Todo el sistema solar', 'The whole Solar System') };
   function label(o) {
     var el = h('span', { class: 'ss-lbl' + (o.kind === 'luna' ? ' ss-lbl-moon' : '') + (o.kind === 'enano' ? ' ss-lbl-dwarf' : ''), text: nameOf(o.id) });
