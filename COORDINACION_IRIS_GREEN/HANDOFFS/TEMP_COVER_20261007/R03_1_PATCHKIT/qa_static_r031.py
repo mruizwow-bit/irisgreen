@@ -15,6 +15,18 @@ ok('NO_GLOBAL_CENTER_REVEAL','valorMascara(m.position)' not in P)
 ok('NO_CAMERA_FACING_ROOT','Math.atan2(E.camara.position.x - m.position.x' not in P and '.lookAt(E.camara' not in P)
 ok('NO_ACTIVE_BILLBOARDS_DATA','"billboards"' not in D)
 ok('R031_VERSION','vida-marina-3D-R03.1' in D)
+proc=root/'procedencia'
+src=proc/'datos3d-R03.1-source.json'
+gen=proc/'gen_datos3d.py'
+legacy=proc/'gen_datos3d_r02_historical.py'
+ok('R031_SOURCE_JSON',src.exists())
+ok('R031_GENERATOR',gen.exists() and 'R03.1 DATA SOURCE PASS' in gen.read_text(encoding='utf-8'))
+ok('R02_GENERATOR_HISTORICAL',legacy.exists() or not (proc/'gen_datos3d.py').exists(),str(legacy))
+if src.exists():
+ import json
+ sd=json.loads(src.read_text(encoding='utf-8'))
+ ok('SOURCE_NO_BILLBOARDS','billboards' not in sd)
+ ok('SOURCE_R031_VERSION',sd.get('version')=='vida-marina-3D-R03.1')
 ok('TAXON_SCOPE','PROVISIONAL_3D_REPRESENTATION' in A and 'Myctophum punctatum' in A and 'Teuthowenia pellucida' in A)
 for name in ['README.md','KEEP_CHANGE.md','LEEME_INTERNO.md']:
  s=(root/name).read_text(encoding='utf-8').lower()
