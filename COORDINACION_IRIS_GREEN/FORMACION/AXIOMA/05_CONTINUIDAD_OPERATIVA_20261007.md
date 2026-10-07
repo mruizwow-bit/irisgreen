@@ -53,10 +53,22 @@ Hallazgos aprendidos:
 - fallback del archivo descargado debe verificarse realmente;
 - copy debe pasar lenguaje claro.
 
+### Runtime 3D first-party
+
+Aprendizajes activos:
+- el three.js vendorizado del proyecto expone WebGPURenderer, no asumir WebGLRenderer;
+- WebGPURenderer se inicializa con await renderer.init() antes del primer render;
+- el tema de escena debe seguir html[data-ig-theme], igual que la interfaz;
+- CSP self-only: no introducir CDN ni URLs absolutas externas;
+- el fallback visible no debe ocultar la causa técnica: guardar error para depuración;
+- producción y HTML descargable se prueban como superficies distintas;
+- niebla, color y contraste deben apoyar lectura espacial, no borrar la escena;
+- ISO 24495-1 se aplica a toda la superficie ES/EN, no sólo a una frase.
+
 ## Arranque de siguiente chat
 
 1. leer 00_EMPIEZA_AQUI;
-2. leer R01;
+2. leer R01 y R02;
 3. leer continuidad;
 4. comprobar última normativa;
 5. comprobar último HUMAN QA;
