@@ -72,6 +72,10 @@ for(const tc of cases){
 
  const raycast=await canvasRaycast(page,tc.touch);
  if(!raycast)throw new Error(tc.name+': canvas pointer/touch raycast did not select an object');
+ if(tc.width<=850){
+  await page.locator('#dg-mobile-objects').tap();
+  if(await page.locator('#dg-panel').getAttribute('data-mobile-open')!=='false')throw new Error(tc.name+': mobile sheet did not close after canvas selection');
+ }
 
  await page.locator('[data-pick="light"]').click();
  await page.locator('[data-level="2"]').click();
