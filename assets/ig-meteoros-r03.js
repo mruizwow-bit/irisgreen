@@ -268,22 +268,43 @@
       }
       updateDesc();
     }
+    function dateText(v){
+      if(lang==='es')return v;
+      return String(v).replace(/\\bdic\\b/g,'Dec').replace(/\\bene\\b/g,'Jan').replace(/\\babr\\b/g,'Apr')
+        .replace(/\\bmay\\b/g,'May').replace(/\\bjul\\b/g,'Jul').replace(/\\bago\\b/g,'Aug')
+        .replace(/\\boct\\b/g,'Oct').replace(/\\bnov\\b/g,'Nov').replace(/rama sur/g,'southern branch');
+    }
+    function parentStatus(s){
+      if(lang==='en')return s.parent_status;
+      var v=s.parent_status||'';
+      if(v==='established')return'establecida';
+      if(v==='established/commonly associated')return'establecida / asociación comúnmente aceptada';
+      if(v.indexOf('suspected')>=0)return'sospechada; la asociación no se trata como cerrada';
+      if(v.indexOf('Southern Taurids')>=0)return'establecida para las Táuridas del Sur / complejo Táuridas';
+      return v;
+    }
+    function parentNote(s){
+      if(lang==='es')return s.parent_note||s.data_basis_note||'';
+      if(s.id===4)return'AMS/NASA list 96P/Machholz as suspected; JPL SSD lists P/2008 Y12 (SOHO).';
+      if(s.id===7)return'The public “Taurids” scene is grouped; the quantitative row uses the southern branch as a single reference so two radiants/peaks are not merged.';
+      return'';
+    }
     function fact(dl,a,b){dl.append(h('dt',{text:a}),h('dd',{text:b===undefined||b===null?'—':String(b)}))}
     function revealCurrent(){
-      if(!state.localized)return;var s=shower(),name=lang==='es'?s.name_es:s.name_en;
+      if(!state.localized)return;var s=shower(),name=lang==='es'?s.name_es:s.name_en,wasFound=!!state.found[s.iau_code];
       state.revealed=true;state.found[s.iau_code]=true;save();updateUI();
       panel.replaceChildren();
       panel.append(h('div',{class:'met-actions'},h('span',{class:'met-chip',text:L.real}),h('span',{class:'met-chip',text:L.rep})));
       panel.append(h('h2',{text:name}));
       var grid=h('div',{class:'met-reveal-grid'}),img=h('img',{class:'met-reveal-img',src:'/img/intereses/meteoros/r01/'+s.file,alt:L.imageAlt(name),loading:'lazy',decoding:'async'});
-      var dl=h('dl',{class:'met-facts'});fact(dl,L.name,name+' · '+s.iau_code);fact(dl,L.period,s.activity_period_2026);fact(dl,L.peak,s.peak_2026);
-      fact(dl,L.zhr,s.zhr);fact(dl,L.speed,s.velocity_km_s+' km/s');fact(dl,L.radiant,s.radiant_ra+' · '+s.radiant_dec);fact(dl,L.parent,s.parent_body);fact(dl,L.status,s.parent_status);
-      var info=h('div',{},dl,h('p',{class:'met-note',text:L.zhrNote}));
-      if(s.parent_note)info.append(h('p',{class:'met-note',text:s.parent_note}));
+      var dl=h('dl',{class:'met-facts'});fact(dl,L.name,name+' · '+s.iau_code);fact(dl,L.period,dateText(s.activity_period_2026));fact(dl,L.peak,dateText(s.peak_2026));
+      fact(dl,L.zhr,s.zhr);fact(dl,L.speed,s.velocity_km_s+' km/s');fact(dl,L.radiant,s.radiant_ra+' · '+s.radiant_dec);fact(dl,L.parent,s.parent_body);fact(dl,L.status,parentStatus(s));
+      var info=h('div',{},dl,h('p',{class:'met-note',text:L.zhrNote})),pnote=parentNote(s);
+      if(pnote)info.append(h('p',{class:'met-note',text:pnote}));
       if(/suspected|not treated as settled/i.test(s.parent_status||''))info.append(h('p',{class:'met-note',text:L.parentCaveat}));
       grid.append(img,info);panel.append(grid,h('h3',{text:L.sources}),h('p',{class:'met-note',text:L.sourceText}),h('p',{class:'met-epistemic',text:L.epistemic}),
         h('div',{class:'met-actions'},h('button',{type:'button',class:'met-btn met-btn-primary',text:L.next,on:{click:function(){setIndex(state.i+1);stage.focus()}}})));
-      panel.hidden=false;wrap.classList.add('has-panel');status.textContent=(state.found[s.iau_code]?L.already:'')||'';draw();
+      panel.hidden=false;wrap.classList.add('has-panel');status.textContent=wasFound?L.already:'';draw();
     }
     reveal.addEventListener('click',revealCurrent);
     describe.addEventListener('click',function(){state.describe=!state.describe;describe.setAttribute('aria-pressed',String(state.describe));desc.hidden=!state.describe;updateDesc()});
@@ -291,7 +312,7 @@
 
     var start=null;
     function point(ev){var r=canvas.getBoundingClientRect();return{x:ev.clientX-r.left,y:ev.clientY-r.top}}
-    canvas.addEventListener('pointerdown',function(ev){if(ev.button!==undefined&&ev.button!==0)return;start={x:ev.clientX,y:ev.clientY,lastX:ev.clientX,lastY:ev.clientY,moved:false};try{canvas.setPointerCapture(ev.pointerId)}catch(e){}});
+    canvas.addEventListener('pointerdown',function(ev){if(ev.button!==undefined&&ev.button!==0)return;try{stage.focus({preventScroll:true})}catch(e){stage.focus()}start={x:ev.clientX,y:ev.clientY,lastX:ev.clientX,lastY:ev.clientY,moved:false};try{canvas.setPointerCapture(ev.pointerId)}catch(e){}});
     canvas.addEventListener('pointermove',function(ev){
       if(!start)return;var dx=ev.clientX-start.lastX,dy=ev.clientY-start.lastY;start.lastX=ev.clientX;start.lastY=ev.clientY;
       if(Math.hypot(ev.clientX-start.x,ev.clientY-start.y)>6)start.moved=true;
@@ -316,7 +337,8 @@
       fetch('/es/intereses/cielo/cielo.json',{credentials:'same-origin'}).then(function(r){if(!r.ok)throw Error('sky '+r.status);return r.json()})
     ]).then(function(a){
       state.showers=a[0].showers||[];state.stars=starRows(a[1]);state.i=state.showers.length?state.i%state.showers.length:0;resetCamera();updateUI();syncRAF();
-      ro=new ResizeObserver(function(){draw();updateDesc()});ro.observe(stage);
+      if('ResizeObserver' in g){ro=new ResizeObserver(function(){draw();updateDesc()});ro.observe(stage)}
+      else g.addEventListener('resize',function(){draw();updateDesc()});
     }).catch(function(){status.textContent=L.loadFail;objective.textContent=L.loadFail});
 
     document.addEventListener('visibilitychange',syncRAF);
