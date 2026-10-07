@@ -126,14 +126,14 @@ s=s.replace('emissiveIntensity:2.4,roughness:0.2});','emissiveIntensity:2.4,roug
 
 # Myctophum punctatum: añadir pectorales pareadas y aleta adiposa si faltan.
 if "'adipose-fin'" not in s:
-    lantern_tail=r"""(function makeLantern\(a,L\)\{.*?)(  const tail=new THREE\.Group\(\); tail\.position\.set\(-L\*0\.48,0,0\); root\.add\(tail\);)"""
+    lantern_photo=r"""(function makeLantern\(a,L\)\{.*?)(  const photo=mat\(0xb7efff,\{emissive:0x6bcbe8,emissiveIntensity:2\.4,roughness:0\.2,noReveal:true\}\);)"""
     fin_block=r'''\1  /* Pectorales pareadas cerca del opérculo y pequeña adiposa posterior. */
   fin(root,finMat,[[L*0.22,-L*0.01,L*0.085],[L*0.04,-L*0.08,L*0.18],[L*0.06,L*0.025,L*0.10]],'pectoral-fin');
   fin(root,finMat,[[L*0.22,-L*0.01,-L*0.085],[L*0.04,-L*0.08,-L*0.18],[L*0.06,L*0.025,-L*0.10]],'pectoral-fin');
   fin(root,finMat,[[-L*0.30,L*0.075,0],[-L*0.38,L*0.145,0],[-L*0.42,L*0.065,0]],'adipose-fin');
 \2'''
-    s,n=re.subn(lantern_tail,fin_block,s,count=1,flags=re.S)
-    if n!=1: raise SystemExit('no encuentro inserción de aletas en pez linterna')
+    s,n=re.subn(lantern_photo,fin_block,s,count=1,flags=re.S)
+    if n!=1: raise SystemExit('no encuentro inserción estable de aletas en pez linterna')
 
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
 
