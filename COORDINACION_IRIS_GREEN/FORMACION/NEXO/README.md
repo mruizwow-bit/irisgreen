@@ -1,10 +1,10 @@
 # Nexo · Entrada e índice de formación
-Actualizado: 2026-10-06 · Issue [#350](https://github.com/mruizwow-bit/irisgreen/issues/350).
+Actualizado: 2026-10-07 · Issue [#350](https://github.com/mruizwow-bit/irisgreen/issues/350).
 Rama de esta formación: `nexo/work-handoff-20261004`. GitHub conserva fuentes, decisiones y evidencia; los estados de entregas se consultan en sus issues/órdenes vivas.
 
 ## Leer primero
 1. [Identidad y puesto](00_IDENTIDAD_Y_PUESTO.md).
-2. [Formación integrada R04](22_FORMACION_INTEGRADA_R04_20261006.md): síntesis de todos los aprendizajes recientes, límites y cambios de criterio.
+2. [Formación aplicada R05](23_FORMACION_APLICADA_R05_20261007.md): aprendizaje operativo de Cielo 3D, Vida marina 3D, El Vado, Mar y Creación; leer después [R04](22_FORMACION_INTEGRADA_R04_20261006.md) cuando haga falta el contexto anterior.
 3. [Plan](01_PLAN_FORMACION.md), [prácticas y examen](02_PRACTICAS_Y_EXAMEN.md) y [runbook](03_RUNBOOK_CONTINUIDAD.md).
 4. Módulo específico de la tarea y evidencia exacta del artefacto.
 5. Orden/issue vivo antes de actuar; una nota histórica no sustituye una decisión posterior de María.
@@ -15,7 +15,8 @@ Rama de esta formación: `nexo/work-handoff-20261004`. GitHub conserva fuentes, 
 - Fixture no es navegador; emulación no es teléfono físico.
 - Integridad no es calidad perceptual ni valor de producto.
 - HUMAN QA permanece pendiente hasta evidencia de María.
-- R04 actualiza método y precedencias; no revalida versiones antiguas de normas ni da certificación.
+- R05 actualiza método y precedencias; no revalida versiones antiguas de normas ni da certificación.
+- Una dirección elegida por HUMAN QA puede cerrarse sin equivaler a PASS global; no reabrir comparación sin nueva evidencia.
 - Las prácticas7–14 están definidas, no ejecutadas por escribirlas.
 - No main ni deploy como efecto de esta actualización.
 
@@ -39,6 +40,7 @@ Los estados de espera de Fósiles en documentos antiguos son históricos: leer l
 - [06 ESTUDIO EXTENDIDO R02 20261004.md](06_ESTUDIO_EXTENDIDO_R02_20261004.md)
 - [07 FORMACION APLICADA R03 20261006.md](07_FORMACION_APLICADA_R03_20261006.md)
 - [22 FORMACION INTEGRADA R04 20261006.md](22_FORMACION_INTEGRADA_R04_20261006.md)
+- [23 FORMACION APLICADA R05 20261007.md](23_FORMACION_APLICADA_R05_20261007.md)
 
 ## Cielo
 
@@ -68,7 +70,18 @@ Los estados de espera de Fósiles en documentos antiguos son históricos: leer l
 - [APRENDIZAJE NEXO 2026-09-30.md](APRENDIZAJE_NEXO_2026-09-30.md)
 - [APRENDIZAJE NEXO 2026-10-04.md](APRENDIZAJE_NEXO_2026-10-04.md)
 - [APRENDIZAJE NEXO 2026-10-06.md](APRENDIZAJE_NEXO_2026-10-06.md)
+- [APRENDIZAJE NEXO 2026-10-07.md](APRENDIZAJE_NEXO_2026-10-07.md)
 
 ## Evidencia y autoría
 R04 enlaza commits de informes y reproducciones de Nexo y atribuye aportaciones de Prisma/Axioma/Claude. Las evidencias de producto están en `nexo/new-games-area-r01-20261004`; no asumir que rutas de esa rama existen en main.
 No afirmar Slack, entrega directa a Claude o revisión independiente sin haber ejecutado/documentado esa acción.
+
+## Reglas añadidas el 2026-10-07
+- PRODUCT_DIRECTION_SELECTED != FULL_PRODUCT_PASS.
+- 0 casos observados != imposibilidad.
+- Evidencia semántica debe existir en el render.
+- Schema futuro detectado -> preservar bytes / sesión temporal.
+- 3D sólo cuando aporta significado espacial.
+- Un motor con sistemas correctos puede seguir siendo demo técnica.
+- Rework proporcional a la evidencia más fuerte y reciente.
+- Creation is learned through consequence.
