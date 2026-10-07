@@ -85,3 +85,24 @@ Rasgos incorporados:
 
 Reserva:
 el patrón exacto de fotóforos sigue siendo una representación de trabajo. La identificación específica depende de su disposición precisa y no se declara cerrada hasta revisión factual/visual.
+
+
+## Argyropelecus · rasgos seguros a nivel de género
+
+Fuentes:
+
+- Frontiers · mesopelagic hatchetfishes with tubular eyes:
+  https://www.frontiersin.org/journals/ecology-and-evolution/articles/10.3389/fevo.2016.00025/full
+- Australian Museum · Giant Hatchetfish / Argyropelecus:
+  https://australian.museum/learn/animals/fishes/giant-hatchetfish-argyropelecus-gigas/
+- Fishes of the Southern Ocean · genus Argyropelecus:
+  https://www.vliz.be/imisdocs/publications/390266.pdf
+
+Rasgos usados:
+- ojos tubulares grandes y dirigidos dorsalmente;
+- cuerpo corto/profundo y muy comprimido;
+- lámina ósea anterior a la dorsal como carácter del género;
+- fotóforos ventrales.
+
+Reserva:
+no se fijan recuentos de radios, patrón exacto de fotóforos, espinas ni proporciones específicas hasta cerrar especie.
