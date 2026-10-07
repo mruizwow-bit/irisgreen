@@ -30,6 +30,8 @@ if src.exists():
  ok('SOURCE_NO_BILLBOARDS','billboards' not in sd)
  ok('SOURCE_R031_VERSION',sd.get('version')=='vida-marina-3D-R03.1')
 ok('TAXON_SCOPE','PROVISIONAL_3D_REPRESENTATION' in A and 'Myctophum punctatum' in A and 'Teuthowenia pellucida' in A)
+ok('SQUID_8_ARMS_2_TENTACLES',"for(let i=0;i<8;i++)" in A and "'tentacle'" in A and "'tentacle-club'" in A)
+ok('SQUID_3_PHOTOPHORES_PER_EYE',"'ocular-photophore'" in A and "for(const side of [-1,1])" in A)
 for name in ['README.md','KEEP_CHANGE.md','LEEME_INTERNO.md']:
  s=(root/name).read_text(encoding='utf-8').lower()
  ok('DOC_'+name.upper().replace('.','_'),'png sobre planos' not in s and 'no son modelos 3d' not in s,name)
