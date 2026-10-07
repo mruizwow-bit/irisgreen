@@ -153,6 +153,105 @@ Separar:
 
 Cuando una representación no sea a escala real, declararlo.
 
+
+
+## 5A. Regla volumétrica · aprendida de Vida marina
+
+La experiencia Cielo y Espacio no puede repetir el límite de Vida marina:
+
+`WORLD_3D = TRUE` no basta si el objeto principal sigue siendo una lámina.
+
+Regla:
+
+`TRUE_3D_WHERE_OBJECT_HAS_REAL_VOLUME`
+
+### No convertir en volumen lo que no corresponde
+
+Las constelaciones:
+- siguen siendo patrones angulares;
+- estrellas + líneas/figuras;
+- no se extruyen;
+- no se convierten en “objetos sólidos” ficticios.
+
+### Volumen 3D real obligatorio
+
+Cuando el objeto físico tiene volumen y se explora espacialmente:
+- Sol;
+- Mercurio;
+- Venus;
+- Tierra;
+- Marte;
+- Júpiter;
+- Saturno;
+- Urano;
+- Neptuno;
+- lunas;
+- planetas enanos;
+- asteroides/cometas si entran como cuerpos explorables.
+
+No usar como solución final:
+- PNG sobre `PlaneGeometry`;
+- billboard orientado a cámara;
+- dos planos cruzados;
+- extrusión falsa de una imagen;
+- curvar una lámina para fingir volumen;
+- mantener siempre el objeto de frente.
+
+Debe existir:
+- silueta coherente desde frontal/lateral/oblicuo;
+- iluminación sobre geometría real;
+- rotación real;
+- oclusión real;
+- selección/raycast sobre volumen.
+
+### Exoplanetas
+
+El volumen geométrico puede representarse cuando el radio/tamaño está suficientemente respaldado.
+
+La apariencia superficial NO se inventa.
+
+Mantener:
+- `UNKNOWN_APPEARANCE_REPRESENTATION`;
+- `HOLD_NO_SAFE_VISUAL_ASSIGNMENT`;
+- `ASSIGN_BY_PHYSICS_NOT_AESTHETIC_SIMILARITY`.
+
+Si el color/superficie es desconocido:
+- geometría neutra;
+- representación declarada;
+- no textura ficticia presentada como factual.
+
+### Meteoros
+
+No son billboards de “estrella fugaz”.
+
+La experiencia debe representar:
+- trayectoria 3D coherente;
+- radiante;
+- dirección;
+- relación espacial con el observador.
+
+El asset ilustrado puede seguir usándose en ficha/contexto, pero no sustituye la trayectoria espacial del fenómeno.
+
+### Eclipses
+
+Los seis assets didácticos existentes siguen KEEP.
+
+No rehacerlos por esta regla.
+
+Si se añade una simulación espacial:
+- geometría Sol–Tierra–Luna coherente;
+- separar claramente `SIMULATION` de asset didáctico;
+- no invalidar los visuals canónicos aprobados.
+
+### Gate interno previo a escalar cuerpos
+
+Antes de integrar catálogo amplio:
+- validar Sol + 1 planeta rocoso + 1 gigante gaseoso + 1 luna en 3D real;
+- después aplicar el pipeline al resto.
+
+Esto NO reabre la dirección general del producto; valida el pipeline volumétrico.
+
+
 ## 6. Lunas y planetas enanos
 
 Integrar el bloque B03 después del Sistema Solar principal.
