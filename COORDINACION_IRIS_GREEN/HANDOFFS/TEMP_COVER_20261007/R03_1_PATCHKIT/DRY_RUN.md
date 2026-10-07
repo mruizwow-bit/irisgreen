@@ -1,39 +1,43 @@
-# R03.1 patchkit dry-run
+# R03.1 patchkit · non-hardware self-test
 
-Probado contra un fixture sintético que reproduce la base **R03 true-volume** relevante para el patch.
+Resultado reproducible del bloque no dependiente de GPU:
 
-Secuencia ejecutada:
+- `qa_static_r031.py`: **23 PASA · 0 FALLA**
+- `gen_datos3d.py --verificar`: **R03.1 DATA SOURCE PASS**
+- `qa_idempotence_r031.py`: segunda aplicación con **0 added · 0 removed · 0 changed**
+- `R03.1 IDEMPOTENCE PASS`
+- Python compile: PASS
+- JS `node --check`: PASS
+- ZIP integrity: PASS
+- manifest interno: 12 entradas
 
-1. aplicar `apply_r031_v2.py`;
-2. ejecutar `qa_static_r031.py`;
-3. ejecutar `procedencia/gen_datos3d.py --verificar`;
-4. guardar hashes completos;
-5. aplicar el mismo patch por segunda vez;
-6. repetir QA y verificación;
-7. comparar hashes primera/segunda aplicación;
-8. `node --check` sobre los JS modificados.
+Patchkit exportado:
+`R03_1_PATCHKIT_v2.zip`
 
-Resultado antes de añadir los dos checks de topología estática:
+SHA-256:
+`d7351cae556c648230e845202e9b6b956087194aefe11e6b8110b98a3b11c82a`
 
-`18 PASA · 0 FALLA`
+Defectos detectados y corregidos antes del runtime real:
 
-Además:
+1. tapas ausentes en cuerpos por secciones;
+2. source-of-truth R03.1 sin generador propio;
+3. guard no idempotente de tentáculos;
+4. calamar incompleto: faltaban dos tentáculos;
+5. fotóforos oculares incompletos en Teuthowenia;
+6. Myctophum sin pectorales/adiposa explícitas;
+7. evidencia luminosa contaminada por entorno;
+8. dependencia PNG innecesaria del arranque;
+9. revelado global por centro en vez de por superficie;
+10. anclaje frágil para insertar las aletas del linterna.
 
-- `R03.1 DATA SOURCE PASS`;
-- `IDEMPOTENCE_PASS`;
-- `JS_SYNTAX_PASS`;
-- segunda aplicación: **0 archivos añadidos, 0 eliminados, 0 hashes cambiados**.
-
-Durante el self-test se detectó y corrigió una fragilidad del generador local de prueba relacionada con el escape de nueva línea. El patch canónico usa el escape correcto para producir un `gen_datos3d.py` válido.
-
-El oracle de navegador queda preparado para comprobar adicionalmente:
-
+El oracle de navegador exige además:
 - secciones variables;
 - mallas seccionales cerradas;
-- raycast real;
-- ausencia de PNG en arranque;
-- raíz no camera-facing;
-- no teletransporte;
-- bloqueo de calamar.
-
-La ejecución WebGL/GPU real sigue reservada al runtime servido.
+- 8 brazos + 2 tentáculos + 2 clubs;
+- 6 fotóforos oculares;
+- 2 pectorales + 1 adiposa en Myctophum;
+- raycast volumétrico;
+- PNG no cargado en arranque;
+- root no camera-facing;
+- cambio de setting sin teletransporte;
+- bloqueo de calamar preservado.
