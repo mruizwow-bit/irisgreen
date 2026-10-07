@@ -13,6 +13,8 @@
   if(!shell)return;
   app.dataset.r44Entry='true';
   shell.classList.add('r44-creative');
+  const code=app.querySelector('.igs-code');
+  if(code && api.ctx.viewport.parentNode===code.parentNode)code.parentNode.insertBefore(api.ctx.viewport,code);
   const dock=document.createElement('div');dock.className='r44-dock';dock.setAttribute('aria-label',text('Crear','Create'));
   const undo=document.querySelector('.igs-undo'),redo=document.querySelector('.igs-redo');
   if(undo)dock.append(undo);if(redo)dock.append(redo);

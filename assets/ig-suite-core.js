@@ -684,7 +684,7 @@
     var newDlg = dialog(t('startFrom'), { wide: true });
     function openNew(trigger) {
       clear(newDlg.body);
-      
+
       var list = h('ul', { class: 'igs-starts' });
       var starts = (def.starts ? def.starts(ctx) : []).slice();
       starts.sort(function (a, b) { return (b.para === PARA ? 1 : 0) - (a.para === PARA ? 1 : 0); });
@@ -801,10 +801,10 @@
         app.dataset.igsReady = 'true';
         app.igCreative = { engine: engine, ctx: ctx,
           replaceProject: function (apply, label) {
-            var previous=engine.serialize(), oldReset=ctx.resetHistory;
-            ctx.resetHistory=function () {};
+            var previous=JSON.parse(JSON.stringify(engine.serialize())), oldReset=ctx.resetHistory, oldCommit=ctx.commit;
+            ctx.resetHistory=function () {}; ctx.commit=function () {};
             try { apply(); } catch(err) { engine.restore(previous); throw err; }
-            finally { ctx.resetHistory=oldReset; }
+            finally { ctx.resetHistory=oldReset; ctx.commit=oldCommit; }
             ctx.commit(label); ctx.announce(label);
           }, starts: function () { return def.starts ? def.starts(ctx) : []; } };
         if (engine.start) engine.start(def.initialStart ? def.initialStart(PARA) : 'empty');
