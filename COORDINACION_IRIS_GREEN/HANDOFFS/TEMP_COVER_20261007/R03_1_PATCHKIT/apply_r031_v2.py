@@ -231,6 +231,11 @@ if n not in (0,1): raise SystemExit('fotóforos calamar ambiguos')
 A.write_text(s,encoding='utf-8')
 
 s=P.read_text(encoding='utf-8')
+s=re.sub(r'/\* piloto3d\.js.*?\*/',
+'''/* piloto3d.js — montaje e interacción de Vida marina 3D R03.1.
+   Selección directa sobre geometría volumétrica real. La luz, contexto corporal
+   y observables comparten el mismo mundo; el calamar conserva su bloqueo factual. */''',
+s,count=1,flags=re.S)
 s=s.replace('let E = null, raycaster = null, alfas = {};','let E = null, raycaster = null;')
 s=re.sub(r"/\* ---------- carga ---------- \*/.*?/\* ---------- máscara del haz, la misma fórmula que en 2D ---------- \*/",
 '''/* ---------- carga ----------
