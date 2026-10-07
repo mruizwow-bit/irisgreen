@@ -5,7 +5,7 @@
 <title>Detective · Creation · Iris Green</title>
 <meta name="robots" content="noindex,follow">
 <link rel="canonical" href="https://irisgreen.eu/en/creation/detective/">
-<link rel="stylesheet" href="/assets/detective-game-first.css">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css"><link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r42-r02-1"><link rel="stylesheet" href="/assets/detective-game-first.css">
 </head>
 <body>
 <a class="dg-skip" href="#main">Skip to game</a>
@@ -28,19 +28,19 @@
 <div class="dg-levels" role="group" aria-label="Intensity">
 <button type="button" data-level="0" aria-pressed="false">Low</button><button type="button" data-level="1" aria-pressed="true">Medium</button><button type="button" data-level="2" aria-pressed="false">High</button>
 </div>
-<button id="dg-try" type="button" class="dg-primary">Try change</button>
+<div class="dg-hypothesis-wrap"><p>Before testing, you can make a hypothesis:</p><div class="dg-hypothesis" role="group" aria-label="Hypothesis about the effect"><button type="button" data-hypothesis="calm" aria-pressed="false">Calms me</button><button type="button" data-hypothesis="activate" aria-pressed="false">Activates me</button><button type="button" data-hypothesis="depends" aria-pressed="false">It depends</button></div></div><button id="dg-try" type="button" class="dg-primary">Try change</button>
 </div>
 <div class="dg-status" id="dg-status" role="status" aria-live="polite"></div>
 <div class="dg-signal"><span>Body</span><div class="dg-meter" role="meter" aria-label="Body signal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-body"></span></div></div>
 <div class="dg-signal"><span>Breathing</span><div class="dg-meter" role="meter" aria-label="Breathing signal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-breath"></span></div></div>
 <div class="dg-signal"><span>Attention</span><div class="dg-meter" role="meter" aria-label="Attention signal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-attention"></span></div></div>
-<div class="dg-actions"><button id="dg-reset" type="button">New scene</button><button id="dg-resolve" type="button" disabled>Resolve scene</button></div>
+<div class="dg-actions"><button id="dg-undo" type="button" disabled>Undo change</button><button id="dg-reset" type="button">New scene</button><button id="dg-resolve" type="button" disabled>Resolve scene</button></div>
 <p id="dg-help" class="dg-help"></p>
 </aside>
 </div>
 <noscript><p>This vertical slice needs JavaScript. It stores no profiles or personal data.</p></noscript>
 </main>
 <footer class="dg-foot">IRIS GREEN · Creation GAME_FIRST · vertical slice · not production</footer>
-<script src="/assets/vendor/taller/three.js"></script>
+<script src="/assets/preferencias-lectura.js"></script><script src="/assets/vendor/taller/three.js"></script>
 <script defer src="/assets/detective-game-first.js"></script>
 </body></html>
