@@ -9,7 +9,7 @@ Fecha: 30/09/2026 · actualización Croma: 03/10/2026
 | María | Dirección General · Fundadora · Product Owner | Dirección | Dirección; no requiere carpeta de agente |
 | Aura | Technical Program Manager & Knowledge Operations Lead | Jefatura | FORMACION/AURA/ |
 | Astra | Jefe de Equipo · Calidad de Producto & Arquitectura | Dirección | FORMACION/ASTRA/ · identidad + plan R01 + equipo R01; prácticas/examen pendientes |
-| Nexo | Jefe de Equipo · Continuidad Técnica & Sistemas | Dirección | PLAN DETALLADO PENDIENTE |
+| Nexo | Jefe de Equipo · Continuidad Técnica & Sistemas | Dirección | FORMACION/NEXO/ · identidad + aprendizaje operativo 2026-10-07; plan detallado pendiente |
 | Orbe | Jefatura 4 de reserva | Dirección | no activar todavía |
 
 ## Producto & Tecnología
