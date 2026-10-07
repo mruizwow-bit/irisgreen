@@ -122,7 +122,8 @@ s=s.replace("eye(root,L*0.38,L*0.18,L*0.07,L*0.055);","eyeUp(root,L*0.38,L*0.18,
 s=s.replace("eye(root,L*0.38,L*0.18,-L*0.07,L*0.055);","eyeUp(root,L*0.38,L*0.18,-L*0.07,L*0.055);")
 if "'dorsal-blade'" not in s:
     hatchet_fin=r"""(function makeHatchet\(a,L\)\{.*?const finMat=.*?;\n)"""
-    blade=r'''\1  fin(root,dark,[[-L*0.05,L*0.20,0],[-L*0.16,L*0.43,0],[-L*0.24,L*0.22,0]],'dorsal-blade');
+    blade=r'''\1  const bladeMat=mat(0x26343a,{roughness:0.44,side:THREE.DoubleSide});
+  fin(root,bladeMat,[[-L*0.05,L*0.20,0],[-L*0.16,L*0.43,0],[-L*0.24,L*0.22,0]],'dorsal-blade');
 '''
     s,n=re.subn(hatchet_fin,blade,s,count=1,flags=re.S)
     if n!=1: raise SystemExit('no encuentro inserción de dorsal blade en Argyropelecus')
