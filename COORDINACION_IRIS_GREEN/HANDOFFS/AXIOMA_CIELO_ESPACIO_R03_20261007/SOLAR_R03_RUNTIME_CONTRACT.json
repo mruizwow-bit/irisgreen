@@ -1,0 +1,136 @@
+{
+  "schema": "iris-green.solar-r03.runtime-contract.v1",
+  "date": "2026-10-07",
+  "owner": "AXIOMA_TEMP_COVER_CIELO_ESPACIO_R03",
+  "source_runtime": "assets/ig-sistema-solar-3d.js",
+  "source_data": "es/intereses/sistema-solar/sistema-solar.json",
+  "gate": "SOLAR_R03_TRUE_VOLUME_CORE_KEEP__TARGETED_HARDENING_REQUIRED",
+  "rules": {
+    "true_3d": "TRUE_3D_WHERE_OBJECT_HAS_REAL_VOLUME",
+    "no_final_billboards": true,
+    "unknown_appearance": "UNKNOWN_APPEARANCE_REPRESENTATION",
+    "no_invented_surface": true,
+    "first_party_masters_role": "VISUAL_REFERENCE_AND_PRODUCT_2D_ASSETS__NOT_AUTOMATIC_EQUIRECTANGULAR_TEXTURES"
+  },
+  "runtime": {
+    "engine": "three.js 0.186.0 local bundle",
+    "body_geometry": "SphereGeometry",
+    "planet_segments": {
+      "width": 96,
+      "height": 48
+    },
+    "moon_segments": {
+      "width": 48,
+      "height": 24
+    },
+    "saturn_rings": "RingGeometry",
+    "selection": "raycast_against_mesh_geometry",
+    "scales": [
+      "clara",
+      "real"
+    ],
+    "orbits": "JPL approximate elements 1800-2050 + MPC for minor bodies",
+    "rotation": "IAU/WGCCRE rotational elements from sistema-solar.json"
+  },
+  "bodies": [
+    {
+      "id": "sol",
+      "geometry": "sphere",
+      "texture": "tex/sol.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_MODEL",
+      "special": [
+        "self-lit material",
+        "volumetric glow sprite"
+      ]
+    },
+    {
+      "id": "mercurio",
+      "geometry": "sphere",
+      "texture": "tex/mercurio.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER"
+    },
+    {
+      "id": "venus",
+      "geometry": "sphere",
+      "texture": "tex/venus.webp",
+      "texture_status": "DOCUMENTED_ATMOSPHERE_MAP",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER"
+    },
+    {
+      "id": "tierra",
+      "geometry": "sphere",
+      "texture": "tex/tierra-dia.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER",
+      "special": [
+        "day/night shader",
+        "separate cloud shell",
+        "relief/cloud map"
+      ]
+    },
+    {
+      "id": "marte",
+      "geometry": "sphere",
+      "texture": "tex/marte.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER"
+    },
+    {
+      "id": "jupiter",
+      "geometry": "sphere",
+      "texture": "tex/jupiter.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER",
+      "rings_data": true,
+      "rings_rendered": false
+    },
+    {
+      "id": "saturno",
+      "geometry": "sphere",
+      "texture": "tex/saturno.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER",
+      "rings_data": true,
+      "rings_rendered": true,
+      "rings_geometry": "RingGeometry",
+      "rings_texture": "tex/anillos-saturno.png",
+      "rings_radius_km": [
+        74658,
+        136780
+      ]
+    },
+    {
+      "id": "urano",
+      "geometry": "sphere",
+      "texture": "tex/urano.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER",
+      "rings_data": true,
+      "rings_rendered": false
+    },
+    {
+      "id": "neptuno",
+      "geometry": "sphere",
+      "texture": "tex/neptuno.webp",
+      "texture_status": "DOCUMENTED",
+      "shape_status": "SPHERE_APPROXIMATION_FROM_MEAN_DIAMETER",
+      "rings_data": true,
+      "rings_rendered": false
+    }
+  ],
+  "locked_visual_masters": {
+    "gate": "SOLAR_FOUNDATION_FINAL_10_MASTERS_PASS",
+    "count": 10,
+    "human_qa": "MARIA",
+    "art_locked": true
+  },
+  "targeted_gaps": [
+    "No equatorial/polar axes in current source for the eight planets; current volume is spherical approximation.",
+    "Jupiter, Uranus and Neptune are marked as ringed in data but their ring systems are not rendered.",
+    "Need independent browser/performance/accessibility retest on the R03 branch.",
+    "Need HUMAN QA of volume, orientation, texture alignment, scale modes and controls."
+  ],
+  "decision": "KEEP_EXISTING_TRUE_VOLUME_CORE__DO_NOT_REBUILD_FROM_ZERO"
+}
