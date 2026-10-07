@@ -10,6 +10,19 @@ for f in (A,P,D,E,I):
 
 s=A.read_text(encoding='utf-8')
 
+# Teuthowenia: ojos grandes orientados anteroventralmente (-X, -Y).
+if 'function eyeSquid' not in s:
+    eye_marker=r"""function eye\(parent, x,y,z,r=0\.012\)\{.*?\n\}"""
+    eye_match=re.search(eye_marker,s,flags=re.S)
+    if eye_match:
+        squid_eye=r'''function eyeSquid(parent, x,y,z,r=0.012){
+  const white=mat(0xb8cad6,{roughness:0.30});
+  const dark=mat(0x03070a,{roughness:0.16});
+  sphere(parent,white,[x,y,z],[r*2.25,r*2.10,r*1.80],'eye-anteroventral',20);
+  sphere(parent,dark,[x-r*0.92,y-r*0.42,z],[r*0.82,r*0.72,r*0.68],'eye-anteroventral-pupil',16);
+}'''
+        s=s[:eye_match.end()]+"\n"+squid_eye+s[eye_match.end():]
+
 # Argyropelecus: helper de ojo tubular orientado dorsalmente.
 if 'function eyeUp' not in s:
     eye_marker=r"""function eye\(parent, x,y,z,r=0\.012\)\{.*?\n\}"""
@@ -201,6 +214,12 @@ if "'adipose-fin'" not in s:
     if n!=1: raise SystemExit('no encuentro inserción estable de aletas en pez linterna')
 
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
+
+# Teuthowenia: sustituir ojos genéricos por ojos anteroventrales.
+# Solo dentro de makeSquid para no alterar peces.
+s=re.sub(r"(function makeSquid\(a,L\)\{.*?)(  eye\(root,-L\*0\.27,L\*0\.06,L\*0\.115,L\*0\.045\);\n  eye\(root,-L\*0\.27,L\*0\.06,-L\*0\.115,L\*0\.045\);)",
+         r"\1  eyeSquid(root,-L*0.27,L*0.06,L*0.115,L*0.045);\n  eyeSquid(root,-L*0.27,L*0.06,-L*0.115,L*0.045);",
+         s,count=1,flags=re.S)
 
 # Teuthowenia pellucida: manto cónico por secciones, no elipsoide.
 if "cuerpoSecciones(root,mantleMat" not in s:
