@@ -215,6 +215,10 @@ if "'adipose-fin'" not in s:
 
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
 
+# Teuthowenia: la cabeza es tejido translúcido, no parte del paquete de órganos.
+s=s.replace("sphere(root,organMat,[-L*0.22,0,0],[L*0.22,L*0.20,L*0.20],'head',24);",
+            "sphere(root,armMat,[-L*0.22,0,0],[L*0.22,L*0.20,L*0.20],'head',24);")
+
 # Teuthowenia: sustituir ojos genéricos por ojos anteroventrales.
 # Solo dentro de makeSquid para no alterar peces.
 s=re.sub(r"(function makeSquid\(a,L\)\{.*?)(  eye\(root,-L\*0\.27,L\*0\.06,L\*0\.115,L\*0\.045\);\n  eye\(root,-L\*0\.27,L\*0\.06,-L\*0\.115,L\*0\.045\);)",
