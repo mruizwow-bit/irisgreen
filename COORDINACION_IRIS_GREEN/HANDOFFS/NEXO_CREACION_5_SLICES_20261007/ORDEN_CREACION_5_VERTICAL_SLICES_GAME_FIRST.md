@@ -36,7 +36,7 @@ Slices autorizados:
 2. Construir → Estructuras
 3. Tiempo y sonido → Ritmo
 4. Código y sistemas → Robótica
-5. Historias y mundos → Mundos
+5. Historias y mundos → Escritura con restricciones
 
 ## 3. Contrato común de entrada
 
@@ -44,6 +44,17 @@ Cada slice debe ofrecer desde el principio:
 
 - `Empezar con una misión`
 - `Crear libremente`
+
+**Ambas entradas usan el MISMO motor, el MISMO modelo de proyecto y el MISMO estado.**
+
+Lo creado durante la misión continúa directamente en modo libre con:
+- el mismo undo/redo;
+- las mismas capas/objetos/datos;
+- el mismo guardado;
+- la misma exportación;
+- la misma representación accesible.
+
+No se permite demo/tutorial separada que luego salte a otro editor.
 
 La misión:
 - NO enseña botones;
@@ -205,37 +216,66 @@ Debe probar:
 
 No editor vacío esperando conocimiento previo.
 
-## 9. Slice 5 · Mundos
+## 9. Slice 5 · Escritura con restricciones
 
 Núcleo:
-documental/estructural.
+**documento real**.
 
-NO convertir escribir en caminar por un mundo 3D.
+Este slice existe precisamente para demostrar que GAME_FIRST no implica 3D ni escena espacial.
 
-Situación inicial:
-- lugar;
-- dos personajes;
-- conflicto incompleto.
+Entrada:
+un texto/situación breve con una restricción creativa comprensible.
 
-La persona puede modificar:
-- lugar;
-- relación;
-- regla del mundo;
-- personaje;
-- acontecimiento.
+Ejemplos de misión válidos:
+- reescribe una escena sin usar una palabra concreta;
+- cambia el punto de vista y observa cómo cambia la historia;
+- conserva tres hechos pero cambia el tono;
+- escribe una versión con longitud máxima;
+- resuelve una contradicción manteniendo ciertas condiciones.
 
-La representación debe cambiar.
+La persona debe poder:
+- escribir;
+- editar;
+- reorganizar;
+- comparar versiones;
+- ver claramente qué cambió;
+- continuar libremente en el mismo documento.
 
-Puede haber:
-- mapa;
-- preview visual;
-- conexiones;
-- estructura.
+El feedback puede mostrar:
+- estructura;
+- restricciones cumplidas/no cumplidas;
+- longitud;
+- diferencias entre versiones;
+- consecuencias narrativas/estructurales.
+
+NO:
+- gamificar con puntos;
+- convertir el documento en paseo 3D;
+- sustituir escritura por tarjetas cerradas;
+- bloquear creación libre tras la misión.
+
+Artefacto final:
+- documento exportable real.
 
 Debe demostrar:
-`CORRECT_MEDIUM_PER_STUDIO`.
+`GAME_FIRST_WITHOUT_3D · CORRECT_MEDIUM_PER_STUDIO`.
 
-## 10. 3D · regla definitiva
+## 10. HUB creativo · prototipo paralelo, no puerta obligatoria
+
+El HUB puede prototiparse en paralelo como un único espacio ligero con cinco zonas, pero NO es prerequisito para usar Creación.
+
+Debe existir siempre acceso directo equivalente mediante:
+- lista;
+- búsqueda;
+- teclado;
+- deep link;
+- modo NONE.
+
+No cargar 27 escenas WebGL para representar 27 estudios.
+
+El HUB no bloquea los cinco slices ni la futura entrada directa a cada estudio.
+
+## 11. 3D · regla definitiva
 
 `3D_FOR_SPATIAL_MEANING`
 
@@ -250,7 +290,7 @@ NO forzar 3D en:
 
 Preview/escena 3D puede existir si aporta, pero no sustituye el medio correcto.
 
-## 11. Modelo de proyecto común · KEEP
+## 12. Modelo de proyecto común · KEEP
 
 No tocar este principio de #308.
 
@@ -267,7 +307,7 @@ Del mismo estado deben derivar:
 
 La vía visual y la accesible modifican el MISMO proyecto.
 
-## 12. Edad / etapa
+## 13. Edad / etapa
 
 No infantilizar.
 
@@ -293,7 +333,7 @@ Consumir taxonomía canónica vigente:
 - AGE_18_PLUS
 - ALL_AGES
 
-## 13. Accesibilidad
+## 14. Accesibilidad
 
 Obligatorio en los cinco:
 - teclado;
@@ -309,7 +349,7 @@ Obligatorio en los cinco:
 - guardado/exportación comprensibles;
 - sin interfaz accesible paralela.
 
-## 14. HUMAN QA
+## 15. HUMAN QA
 
 Sin explicar antes la interfaz, comprobar:
 
@@ -325,7 +365,7 @@ Sin explicar antes la interfaz, comprobar:
 Si mira paneles todo el tiempo:
 FAIL de producto.
 
-## 15. Después de las cinco
+## 16. Después de las cinco
 
 NO reconstruir automáticamente 22 estudios.
 
@@ -352,13 +392,13 @@ Después clasificar cada estudio de los 27:
 
 No rehacer por uniformidad.
 
-## 16. Gates individuales
+## 17. Gates individuales
 
 - `CREACION_SLICE_DRAWING_READY_FOR_HUMAN_QA`
 - `CREACION_SLICE_STRUCTURES_READY_FOR_HUMAN_QA`
 - `CREACION_SLICE_RHYTHM_READY_FOR_HUMAN_QA`
 - `CREACION_SLICE_ROBOTICS_READY_FOR_HUMAN_QA`
-- `CREACION_SLICE_WORLDS_READY_FOR_HUMAN_QA`
+- `CREACION_SLICE_WRITING_CONSTRAINTS_READY_FOR_HUMAN_QA`
 
 Gate conjunto:
 
