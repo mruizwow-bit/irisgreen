@@ -1,0 +1,34 @@
+{
+  "schema": "iris-green.solar-r03.appearance-overrides.v1",
+  "date": "2026-10-07",
+  "rules": {
+    "purpose": "Prevent low-confidence or explicitly imagined surface maps from being presented as observed global cartography in the 3D runtime.",
+    "texture_assets_preserved": true,
+    "canonical_data_unchanged": true,
+    "render_scope_only": true,
+    "no_false_surface_detail": true
+  },
+  "bodies": {
+    "haumea": {
+      "representation": "UNKNOWN_SURFACE_REPRESENTATION",
+      "texture_policy": "DISABLE_IMAGINED_MAP_IN_R03_3D",
+      "color": "#d9dbd7",
+      "rationale": "NASA: elongated body, probably rocky with an icy coating; very little is known about the surface.",
+      "source": "https://science.nasa.gov/dwarf-planets/haumea/"
+    },
+    "makemake": {
+      "representation": "LOW_DETAIL_REDDISH_ICY_REPRESENTATION",
+      "texture_policy": "DISABLE_COMPUTER_DRAWN_GLOBAL_MAP_IN_R03_3D",
+      "color": "#a47766",
+      "rationale": "NASA: surface details are poorly resolved, but global appearance is reddish-brown and methane/ethane ices are detected.",
+      "source": "https://science.nasa.gov/dwarf-planets/makemake/"
+    },
+    "eris": {
+      "representation": "LOW_CONFIDENCE_ICY_ROCKY_REPRESENTATION",
+      "texture_policy": "DISABLE_IMAGINED_MAP_IN_R03_3D",
+      "color": "#d8d8d4",
+      "rationale": "NASA: very little is known about internal structure; surface is likely rocky and Pluto-like. R03 does not invent a map.",
+      "source": "https://science.nasa.gov/dwarf-planets/eris/"
+    }
+  }
+}
