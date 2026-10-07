@@ -202,6 +202,23 @@ if "'adipose-fin'" not in s:
 
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
 
+# Teuthowenia pellucida: manto cónico por secciones, no elipsoide.
+if "cuerpoSecciones(root,mantleMat" not in s:
+    mantle_old=r"""  const mantle=sphere\(root,mantleMat,\[L\*0\.10,0,0\],\[L\*0\.72,L\*0\.30,L\*0\.30\],'mantle',36\);"""
+    mantle_new=r'''  const mantle=cuerpoSecciones(root,mantleMat,[
+    {x:-L*0.13,ry:L*0.245,rz:L*0.245},
+    {x:-L*0.03,ry:L*0.300,rz:L*0.300},
+    {x: L*0.14,ry:L*0.285,rz:L*0.285},
+    {x: L*0.32,ry:L*0.235,rz:L*0.235},
+    {x: L*0.48,ry:L*0.150,rz:L*0.150},
+    {x: L*0.60,ry:L*0.055,rz:L*0.055}
+  ],28,'mantle');'''
+    s,n=re.subn(mantle_old,mantle_new,s,count=1)
+    if n!=1: raise SystemExit('no encuentro manto elipsoidal Teuthowenia')
+# La pulsación del manto cambia diámetro, no longitud.
+s=s.replace("mantle.scale.x=1+Math.sin(phase*Math.PI*2)*0.035*amp;",
+            "const pulse=1-Math.sin(phase*Math.PI*2)*0.035*amp; mantle.scale.y=pulse; mantle.scale.z=pulse; mantle.scale.x=1;")
+
 # Teuthowenia pellucida: aletas terminales-laterales con inserción sobre manto.
 # Sustituye las dos aletas triangulares antiguas orientadas en Y por superficies
 # laterales en ±Z, más próximas a la morfología del taxón.
