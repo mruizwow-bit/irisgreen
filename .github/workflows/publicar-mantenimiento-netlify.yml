@@ -69,3 +69,4 @@ jobs:
             "https://api.netlify.com/api/v1/deploys/$NEW_ID/lock" >/tmp/netlify-lock.json
 
           echo "PUBLIC_MAINTENANCE_DEPLOYED=$NEW_ID"
+# trigger maintenance 2026-10-07T20:11+02:00
