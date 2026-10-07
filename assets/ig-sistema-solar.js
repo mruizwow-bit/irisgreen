@@ -496,21 +496,8 @@
       var canGL = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } })();
     if (window.IGSistemaSolar3D && canGL) {
       buildUI();
-      /* R03: las fichas conservan el diámetro ecuatorial publicado. El renderer
-         recibe una copia con radio volumétrico + ejes para representar la forma
-         física sin deformar los datos que se muestran en texto. */
-      var D3 = JSON.parse(JSON.stringify(D));
-      D3.cuerpos.forEach(function (c) {
-        if (c.datos && c.datos.diametro_modelo) c.datos.diametro = c.datos.diametro_modelo;
-        /* Una cartografía marcada como recreación no se convierte en
-           "superficie observada" sólo por envolver una esfera 3D. */
-        if (c.recreacion) {
-          c.tex = null;
-          c.representacion_3d = 'UNKNOWN_APPEARANCE_REPRESENTATION';
-        }
-      });
-      D3.fondo = FONDO;
-      VIEW = window.IGSistemaSolar3D.start(D3, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
+      D.fondo = FONDO;
+      VIEW = window.IGSistemaSolar3D.start(D, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
         date: function () { return now; }, img: function (f) { return '/img/intereses/sistema-solar/' + f; } });
       if (VIEW) onTime(now, false);
     } else fail();
