@@ -23,6 +23,7 @@ jobs:
       - run: pip install playwright==1.55.0
       - run: python -m playwright install --with-deps chromium
       - run: python scripts/build_taller_suite.py
+      - run: node scripts/qa/r44_transit.cjs && python scripts/qa/r44_invitation_manifest.py
       - run: python scripts/qa/r44_browser_evidence.py
       - uses: actions/upload-artifact@v4
         if: always()
