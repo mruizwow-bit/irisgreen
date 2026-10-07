@@ -365,3 +365,43 @@ Antes de cerrar:
 - Para integración posterior, fetch de main vivo, drift check y rollback según autorización vigente. Este módulo no autoriza despliegue.
 
 La espera de Fósiles descrita en §16 corresponde a aquel momento; usar la orden posterior aplicable sin borrar la historia.
+
+
+## 18 · R05 · Reglas operativas añadidas el 2026-10-07
+
+### Antes de pedir rework
+- comparar artefactos exactos;
+- identificar defecto reproducible;
+- separar percepción de defecto técnico;
+- conservar KEEP;
+- usar la evidencia más reciente para reducir o ampliar alcance;
+- superseder explícitamente una orden anterior si cambió el diagnóstico.
+
+### Antes de aprobar un oracle
+- verificar que la precondición ocurrió;
+- fallar con 0 casos si se pretendía medir esa condición;
+- separar fixture, navegador y producto real;
+- registrar qué pregunta responde y cuál no.
+
+### Ante schema futuro
+- no importar datos incompatibles;
+- no sobrescribirlos;
+- sesión temporal/solo lectura;
+- no anunciar guardado sin escritura.
+
+### Ante una elección humana de dirección
+- registrar qué pregunta quedó cerrada;
+- no reabrir comparación sin evidencia nueva;
+- mantener pendientes técnicos/perceptuales separados;
+- no confundir preferencia de producto con conformidad global.
+
+### Ante escalado de catálogo
+- comprobar arquitectura humana además de arquitectura técnica;
+- diseñar rutas/agrupaciones antes de multiplicar contenido;
+- probar casos extremos antes de generalizar reglas.
+
+### Ante Creación/Juegos
+- evaluar causalidad y consecuencia, no cantidad de controles;
+- misión y modo libre deben compartir proyecto/estado;
+- no usar UI para prescribir toda la solución;
+- 3D sólo si mejora significado espacial.
