@@ -5,11 +5,14 @@
     "axes": "NASA fact-sheet values are radii/semiaxes in km",
     "renderer_radius": "geometric mean of the three semiaxes; existing renderer normalization then reproduces all three semiaxes exactly",
     "surface": "No generated PNG is treated as a global observed map. R03 foundation uses low-information global color until a suitable mapped texture exists.",
-    "visual_masters": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_READY_FOR_REVIEW assets remain representation references, not automatic sphere textures."
+    "visual_masters": "SOLAR_MOONS_TRUE_GAPS_BATCH_10_READY_FOR_REVIEW assets remain representation references, not automatic sphere textures.",
+    "scope": "R03 shape-hardening covers true-gap moons plus existing selected moons where authoritative semiaxes are available and materially useful."
   },
   "sources": {
     "jovian": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/joviansatfact.html",
-    "saturnian": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturniansatfact.html"
+    "saturnian": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturniansatfact.html",
+    "mars": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+    "uranian": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uraniansatfact.html"
   },
   "bodies": {
     "amaltea": {
@@ -181,6 +184,176 @@
       "color": "#aaa69a",
       "representation": "TRIAXIAL_VOLUME__GLOBAL_COLOR_ONLY_NOT_CARTOGRAPHY",
       "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "fobos": {
+      "parent": "marte",
+      "semiaxes_km": [
+        13,
+        11.4,
+        9.1
+      ],
+      "ejes_km": [
+        26,
+        22.8,
+        18.2
+      ],
+      "renderer_radius_km": 11.04832731313149,
+      "color": "#77716c",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_MARS_FACT_SHEET"
+    },
+    "deimos": {
+      "parent": "marte",
+      "semiaxes_km": [
+        7.8,
+        6,
+        5.1
+      ],
+      "ejes_km": [
+        15.6,
+        12,
+        10.2
+      ],
+      "renderer_radius_km": 6.203050874487247,
+      "color": "#817a72",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_MARS_FACT_SHEET"
+    },
+    "mimas": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        208,
+        197,
+        191
+      ],
+      "ejes_km": [
+        416,
+        394,
+        382
+      ],
+      "renderer_radius_km": 198.54287640225613,
+      "color": "#b8b5aa",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "encelado": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        257,
+        251,
+        248
+      ],
+      "ejes_km": [
+        514,
+        502,
+        496
+      ],
+      "renderer_radius_km": 251.97232416310536,
+      "color": "#deded8",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "tetis": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        538,
+        528,
+        526
+      ],
+      "ejes_km": [
+        1076,
+        1056,
+        1052
+      ],
+      "renderer_radius_km": 530.6408102797363,
+      "color": "#c8c5bc",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "dione": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        563,
+        561,
+        560
+      ],
+      "ejes_km": [
+        1126,
+        1122,
+        1120
+      ],
+      "renderer_radius_km": 561.3319485236676,
+      "color": "#bbb8b0",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "rea": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        765,
+        763,
+        762
+      ],
+      "ejes_km": [
+        1530,
+        1526,
+        1524
+      ],
+      "renderer_radius_km": 763.3323148328781,
+      "color": "#b3b0a8",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "japeto": {
+      "parent": "saturno",
+      "semiaxes_km": [
+        746,
+        746,
+        712
+      ],
+      "ejes_km": [
+        1492,
+        1492,
+        1424
+      ],
+      "renderer_radius_km": 734.4899925002169,
+      "color": "#8e887f",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_SATURNIAN_SATELLITE_FACT_SHEET"
+    },
+    "miranda": {
+      "parent": "urano",
+      "semiaxes_km": [
+        240,
+        234.2,
+        232.9
+      ],
+      "ejes_km": [
+        480,
+        468.4,
+        465.8
+      ],
+      "renderer_radius_km": 235.67989734197357,
+      "color": "#a5a5a0",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_URANIAN_SATELLITE_FACT_SHEET"
+    },
+    "ariel": {
+      "parent": "urano",
+      "semiaxes_km": [
+        581.1,
+        577.9,
+        577.7
+      ],
+      "ejes_km": [
+        1162.2,
+        1155.8,
+        1155.4
+      ],
+      "renderer_radius_km": 578.8979066892539,
+      "color": "#aaa9a3",
+      "representation": "TRIAXIAL_VOLUME__EXISTING_TEXTURE_WHEN_DOCUMENTED",
+      "source": "NASA_NSSDCA_URANIAN_SATELLITE_FACT_SHEET"
     }
   }
 }
