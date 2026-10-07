@@ -28,3 +28,15 @@ y Python modificados. No equivalen a aceptación funcional.
 Navegador local: no instalado; descarga Playwright fallida (archivo truncado).
 Se prepara GitHub Actions sin despliegue para capturar 54 vistas iniciales
 (9 motores, ES/EN, anchos 1440/390/320) y reportar errores/overflow.
+
+EVIDENCIA POSTERIOR:
+- Run 37622268552 sobre 73419d51380b84e08d7fa0dcbbb79d8ba88c28c1:
+  54 vistas iniciales, sin errores JS ni overflow horizontal. Artefacto
+  r44-runtime-evidence 11482896165. NO son 13 criterios aprobados.
+- La inspección visual detectó el título «Estudio de dibujo» y una regla móvil
+  heredada que impedía envolver controles. Corregidos después de ese run;
+  necesitan una nueva captura del commit que los contenga.
+- Planck: prueba local de caída/contacto/raycast; mutación de gravedad a cero
+  rechazada. Esto no certifica E18/E21/E43.
+- Eliminado autoplay inicial de videomapping y actualizado el selector de
+  movimiento en simulaciones. Quedan los demás motores por comprobar.

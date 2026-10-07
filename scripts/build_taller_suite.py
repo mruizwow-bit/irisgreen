@@ -11,6 +11,7 @@ import html
 import importlib
 import json
 import pathlib
+import re
 import sys
 from pathlib import Path
 
@@ -68,13 +69,29 @@ def para(text: str) -> str:
     return ''.join(f'<p>{e(p)}</p>' for p in str(text).split('\n\n') if p.strip())
 
 
+def creation_text(value):
+    if isinstance(value, dict):
+        return {k: creation_text(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [creation_text(v) for v in value]
+    if isinstance(value, tuple):
+        return tuple(creation_text(v) for v in value)
+    if not isinstance(value, str) or value.startswith('/') or '://' in value:
+        return value
+    value = re.sub(r'^Estudio de (.+)$', lambda m: m[1][0].upper() + m[1][1:], value)
+    value = re.sub(r'\bestudios\b', 'espacios', value, flags=re.I)
+    value = re.sub(r'\bestudio\b', 'espacio', value, flags=re.I)
+    value = re.sub(r'\bstudios\b', 'creative spaces', value, flags=re.I)
+    return re.sub(r'\bstudio\b', 'creative space', value, flags=re.I)
+
+
 def page(mod, lang: str) -> str:
-    c = mod.PAGE[lang]
-    t = comun.T[lang]
+    c = creation_text(mod.PAGE[lang])
+    t = creation_text(comun.T[lang])
     other_lang = 'en' if lang == 'es' else 'es'
     url = BASE[lang] + mod.SLUG[lang] + '/'
     other = BASE[other_lang] + mod.SLUG[other_lang] + '/'
-    strings = dict(mod.STRINGS[lang])
+    strings = creation_text(dict(mod.STRINGS[lang]))
     strings['canvasRole'] = t['canvasRole']
     data = json.dumps(strings, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     make = ''.join(f'<li>{e(x)}</li>' for x in c['make'])

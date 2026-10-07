@@ -1203,7 +1203,12 @@
       eco: [['eselect', 'toolInspect', 'select'], ['addrabbit', 'toolAddRabbit', 'circle'], ['addfox', 'toolAddFox', 'triangle']],
       lv: [['lvpoint', 'toolStartPoint', 'select']]
     };
-    function runClick() { if (stepMode) advance(10); else togglePlay(); }
+    function runClick() { if (stepMode || ctx.reducedMotion()) advance(10); else togglePlay(); }
+    root.addEventListener('ig:motion-change', function () {
+      stepMode = ctx.reducedMotion();
+      if (stepMode) stop(true);
+      applyModelTools(); renderInspector();
+    });
     function buildTools() {
       var list = [];
       runBtn = ctx.button(t('start'), { icon: 'play', class: 'igs-primary', keys: 'P', onClick: runClick });
@@ -1309,3 +1314,4 @@
     };
   }
 })(window);
+

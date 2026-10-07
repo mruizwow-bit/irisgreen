@@ -44,6 +44,9 @@
    api.replaceProject(()=>api.engine.start(r.start),en?r.en:r.es);
    app.dataset.r44Invitation=r.id;invitation.open=false;api.ctx.viewport.focus();
   }));});
+  const requested=new URLSearchParams(location.search).get('invitation');
+  const chosen=entries.find(r=>r.id===requested && r.start);
+  if(chosen){api.replaceProject(()=>api.engine.start(chosen.start),en?chosen.en:chosen.es);app.dataset.r44Invitation=chosen.id;}
   // The action is the real existing tool, never an overlay pretending to edit.
   app.querySelectorAll('.igs-toolbar button').forEach(b=>{if(!b.disabled && b.offsetParent!==null && !b.dataset.tool && !b.classList.contains('igs-more'))b.dataset.r44Action='true';});
  }

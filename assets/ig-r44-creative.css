@@ -38,3 +38,10 @@ body[data-ig-r44-creative="true"] .r44-creative{--r42-surface:var(--ig-bg-surfac
 @media(prefers-reduced-motion:reduce){.r44-creative *{animation:none!important;transition:none!important;scroll-behavior:auto!important;}}
 html[data-ig-motion="off"] .r44-creative *,html[data-ig-motion="reduced"] .r44-creative *{animation:none!important;transition:none!important;}
 @media(forced-colors:active){.r44-creative,.r44-dock,.r44-creative button,.r44-creative select{background:Canvas;color:CanvasText;border-color:ButtonText;}.r44-creative :focus-visible{outline-color:Highlight;}}
+
+/* Outrank the legacy mobile toolbar without changing its DOM/control order. */
+body[data-ig-r44-creative="true"] .r44-creative .igs-viewport{height:clamp(250px,55vh,600px);min-height:250px;}
+body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar{position:relative;bottom:auto;display:flex;flex-wrap:wrap;overflow:visible;}
+body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar .igs-primary{order:0;}
+body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar button{min-width:44px;min-height:44px;}
+@media(max-width:600px){body[data-ig-r44-creative="true"] .r44-creative .igs-viewport{height:42vh;min-height:220px;}}

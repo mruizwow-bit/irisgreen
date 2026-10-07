@@ -1,0 +1,27 @@
+{
+  "state": "IN_PROGRESS_NOT_ACCEPTED",
+  "owner": "Astra",
+  "authority": "ORDEN_CREACION_R44_GPT.md",
+  "blueprint_commit": "91fb93ea6780ad72e310aa3a0b4713e0f0a7d7f5",
+  "branch": "astra/r44-creation-20261007",
+  "main_modified": false,
+  "deployed": false,
+  "new_challenges_required": 49,
+  "existing_challenges_to_review": 8,
+  "new_challenges_certified": 0,
+  "acceptance_checks_required": 13,
+  "acceptance_checks_certified": 0,
+  "runtime_evidence_run": 37622268552,
+  "runtime_evidence_commit": "73419d51380b84e08d7fa0dcbbb79d8ba88c28c1",
+  "runtime_views": 54,
+  "runtime_errors": 0,
+  "horizontal_overflow_views": 0,
+  "next": [
+    "Review captures after title and toolbar fixes",
+    "Audit all 49 mechanics and their exported artifacts against the matrix",
+    "Implement missing mechanics, including C07 transit simulation",
+    "Complete motion controls across all engines",
+    "Implement and run 13 acceptance oracles with observed failing mutations",
+    "Human QA before Nexo gates"
+  ]
+}

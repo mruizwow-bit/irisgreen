@@ -42,7 +42,7 @@
     frameEl.appendChild(fsHint);
     ctx.viewport.appendChild(frameEl);
     ctx.viewport.classList.add('igm-viewport');
-    var player = new root.IGMap.Player(stage, S, { assets: assets, playing: !ctx.reducedMotion() });
+    var player = new root.IGMap.Player(stage, S, { assets: assets, playing: false });
 
     function fitFrame() {
       if (D.fullscreenElement === frameEl) { frameEl.style.width = ''; frameEl.style.height = ''; return; }
@@ -355,7 +355,7 @@
           'var A={"16:9":16/9,"16:10":1.6,"4:3":4/3}[SHOW.aspect]||16/9;' +
           'function fit(){if(document.fullscreenElement===fr){fr.style.width="";fr.style.height="";return;}var w=Math.min(fr.parentNode.clientWidth,innerHeight*0.7*A);fr.style.width=w+"px";fr.style.height=(w/A)+"px";}' +
           'var pending=Object.keys(SHOW.media||{}).map(function(k){return new Promise(function(r){var im=new Image();im.onload=function(){assets.images[k]=im;r();};im.onerror=r;im.src=SHOW.media[k].data;});});' +
-          'Promise.all(pending).then(function(){fit();pl=new IGMap.Player(st,SHOW,{assets:assets,playing:!matchMedia("(prefers-reduced-motion: reduce)").matches});' +
+          'Promise.all(pending).then(function(){fit();pl=new IGMap.Player(st,SHOW,{assets:assets,playing:false});' +
           'document.getElementById("play").setAttribute("aria-pressed",String(pl.isPlaying()));});' +
           'addEventListener("resize",fit);' +
           'document.getElementById("full").addEventListener("click",function(){fr.requestFullscreen&&fr.requestFullscreen().then(function(){fr.focus();}).catch(function(){});});' +
