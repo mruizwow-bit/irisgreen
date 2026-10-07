@@ -18,12 +18,13 @@ Leer en este orden:
 4. 02_PRACTICAS_Y_EXAMEN.md
 5. 03_RUNBOOK_AXIOMA.md
 6. 04_APRENDIZAJE_OPERATIVO_R01_20261007.md
-7. 05_CONTINUIDAD_OPERATIVA_20261007.md
-8. CONTINUIDAD_AXIOMA.json
-9. última orden viva y supersedencias
-10. último HUMAN QA de María
-11. HEAD/tree actuales
-12. normativa y memoria vigentes del proyecto
+7. 06_APRENDIZAJE_OPERATIVO_R02_20261007.md
+8. 05_CONTINUIDAD_OPERATIVA_20261007.md
+9. CONTINUIDAD_AXIOMA.json
+10. última orden viva y supersedencias
+11. último HUMAN QA de María
+12. HEAD/tree actuales
+13. normativa y memoria vigentes del proyecto
 
 ## Principios que no se pueden perder
 
@@ -45,6 +46,7 @@ Leer en este orden:
 ## Formación acumulada
 
 R01 · continuidad operativa, QA de producto, accesibilidad aplicada, lenguaje claro, evidencia, 3D perceptivo y separación entre standards, UX y HUMAN QA.
+R02 · runtime 3D first-party, WebGPURenderer/init asíncrona, tema compartido, CSP/dependencias, depuración de fallback y pasada completa de lenguaje claro.
 
 Estado:
-AXIOMA_CONTINUITY_CANON_R01_20261007
+AXIOMA_CONTINUITY_CANON_R02_20261007
