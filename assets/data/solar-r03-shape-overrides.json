@@ -1,0 +1,81 @@
+{
+  "schema": "iris-green.solar-r03.shape-overrides.v1",
+  "date": "2026-10-07",
+  "scope": "R03 prototype only; does not alter canonical sistema-solar.json",
+  "convention": "ejes_km = [equatorial_diameter_x, equatorial_diameter_z, polar_diameter_y]; consumed by existing ig-sistema-solar-3d.js ellipsoid scaling",
+  "sources": {
+    "earth": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
+    "mars": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
+    "jupiter": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/jupiterfact.html",
+    "saturn": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturnfact.html",
+    "uranus": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/uranusfact.html",
+    "neptune": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/neptunefact.html"
+  },
+  "bodies": {
+    "tierra": {
+      "equatorial_radius_km": 6378.137,
+      "polar_radius_km": 6356.752,
+      "ejes_km": [
+        12756.274,
+        12756.274,
+        12713.504
+      ],
+      "status": "NASA_FACT_SHEET"
+    },
+    "marte": {
+      "equatorial_radius_km": 3396.2,
+      "polar_radius_km": 3376.2,
+      "ejes_km": [
+        6792.4,
+        6792.4,
+        6752.4
+      ],
+      "status": "NASA_FACT_SHEET"
+    },
+    "jupiter": {
+      "equatorial_radius_km": 71492,
+      "polar_radius_km": 66854,
+      "ejes_km": [
+        142984,
+        142984,
+        133708
+      ],
+      "status": "NASA_FACT_SHEET_1_BAR"
+    },
+    "saturno": {
+      "equatorial_radius_km": 60268,
+      "polar_radius_km": 54364,
+      "ejes_km": [
+        120536,
+        120536,
+        108728
+      ],
+      "status": "NASA_FACT_SHEET_1_BAR"
+    },
+    "urano": {
+      "equatorial_radius_km": 25559,
+      "polar_radius_km": 24973,
+      "ejes_km": [
+        51118,
+        51118,
+        49946
+      ],
+      "status": "NASA_FACT_SHEET_1_BAR"
+    },
+    "neptuno": {
+      "equatorial_radius_km": 24764,
+      "polar_radius_km": 24341,
+      "ejes_km": [
+        49528,
+        49528,
+        48682
+      ],
+      "status": "NASA_FACT_SHEET_1_BAR"
+    }
+  },
+  "not_overridden": {
+    "sol": "sphere retained; no R03 shape override in this slice",
+    "mercurio": "sphere retained; polar-axis override not introduced without selected polar-radius source",
+    "venus": "sphere retained; no meaningful R03 flattening override introduced"
+  }
+}
