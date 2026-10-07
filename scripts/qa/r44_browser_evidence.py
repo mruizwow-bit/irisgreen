@@ -71,8 +71,27 @@ with sync_playwright() as p:
   file_result['failure']=str(error)
  (OUT/'file-roundtrip.json').write_text(json.dumps(file_result,ensure_ascii=False,indent=2))
  page.close()
+ # C07 must load the transit start and invoke its observation action.
+ # Geometry and parameter consequences have separate mutation tests.
+ page=browser.new_page(viewport={'width':390,'height':844})
+ c07={'check':'C07 transit invitation: start and observation','passed':False}
+ try:
+  page.goto('http://127.0.0.1:8765/es/taller/simulaciones/?invitation=C07',wait_until='networkidle')
+  page.wait_for_function("() => document.getElementById('igt-app')?.dataset.r44Invitation === 'C07'",timeout=20000)
+  before=page.locator('.igs-toolbar button').filter(has_text='Observar una órbita')
+  before.click()
+  page.wait_for_timeout(300)
+  state=page.evaluate("""() => {const a=document.getElementById('igt-app');const d=a.igCreative.engine.serialize();return {model:d.model,rows:d.transit,chart:a.querySelector('canvas').width}}""")
+  assert state['model']=='transit'
+  assert state['chart']>0
+  # The curve is rendered from the model. The computed module has its own mutation tests.
+  c07['passed']=True
+ except Exception as error:
+  c07['failure']=str(error)
+ (OUT/'c07-runtime.json').write_text(json.dumps(c07,ensure_ascii=False,indent=2))
+ page.close()
  browser.close()
 server.shutdown()
 failed=[r for r in rows if not r['runtime_ready'] or r['errors'] or r.get('layout',{}).get('overflow')]
 print(f'{len(rows)} initial views; {len(failed)} runtime/layout failures. Acceptance NOT_ASSESSED.')
-raise SystemExit(bool(failed) or not file_result['passed'])
+raise SystemExit(bool(failed) or not file_result['passed'] or not c07['passed'])
