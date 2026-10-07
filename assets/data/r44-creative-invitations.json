@@ -447,7 +447,7 @@
     "start": "song-ambient",
     "es": "Un instrumento que ves y oyes",
     "en": "An instrument you can see and hear",
-    "verification": "NOT_VERIFIED"
+    "verification": "BROWSER_OBSERVED_NOT_ACCEPTED"
   },
   {
     "id": "X07",
@@ -510,6 +510,6 @@
     "start": "transit",
     "es": "Encontrar un planeta",
     "en": "Finding a planet",
-    "verification": "IMPLEMENTED_AWAITING_BROWSER_QA"
+    "verification": "BROWSER_OBSERVED_NOT_ACCEPTED"
   }
 ]
