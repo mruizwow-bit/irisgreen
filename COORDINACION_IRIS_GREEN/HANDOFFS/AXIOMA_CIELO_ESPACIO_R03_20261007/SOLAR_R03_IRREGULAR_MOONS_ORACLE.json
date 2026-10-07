@@ -1,0 +1,165 @@
+{
+  "schema": "iris-green.solar-r03.irregular-moon-shape-oracle.v1",
+  "date": "2026-10-07",
+  "result": "PASS",
+  "assertions": {
+    "bundle_syntax": true,
+    "controller_syntax": true,
+    "all_10_in_r03_bundle": true,
+    "canonical_data_unmutated": true,
+    "es_uses_r03": true,
+    "en_uses_r03": true
+  },
+  "rows": [
+    {
+      "id": "amaltea",
+      "target_semiaxes_km": [
+        125,
+        73,
+        64
+      ],
+      "renderer_semiaxes_km": [
+        125,
+        73,
+        64
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "tebe",
+      "target_semiaxes_km": [
+        58,
+        49,
+        42
+      ],
+      "renderer_semiaxes_km": [
+        58,
+        49,
+        42
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "metis",
+      "target_semiaxes_km": [
+        30,
+        20,
+        17
+      ],
+      "renderer_semiaxes_km": [
+        30,
+        20,
+        17
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "adrastea",
+      "target_semiaxes_km": [
+        10,
+        8,
+        7
+      ],
+      "renderer_semiaxes_km": [
+        10,
+        8,
+        7
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "hiperion",
+      "target_semiaxes_km": [
+        180,
+        133,
+        103
+      ],
+      "renderer_semiaxes_km": [
+        180,
+        133,
+        103
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "febe",
+      "target_semiaxes_km": [
+        109,
+        109,
+        102
+      ],
+      "renderer_semiaxes_km": [
+        109,
+        109,
+        102
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "jano",
+      "target_semiaxes_km": [
+        102,
+        93,
+        76
+      ],
+      "renderer_semiaxes_km": [
+        102,
+        93,
+        76
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "epimeteo",
+      "target_semiaxes_km": [
+        65,
+        57,
+        53
+      ],
+      "renderer_semiaxes_km": [
+        65,
+        57,
+        53
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "pan",
+      "target_semiaxes_km": [
+        17,
+        16,
+        10
+      ],
+      "renderer_semiaxes_km": [
+        17,
+        16,
+        10
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "atlas",
+      "target_semiaxes_km": [
+        20,
+        18,
+        9
+      ],
+      "renderer_semiaxes_km": [
+        20,
+        18,
+        9
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    }
+  ]
+}
