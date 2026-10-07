@@ -1,0 +1,146 @@
+{
+  "schema": "iris-green.solar-r04.physics.v1",
+  "date": "2026-10-07",
+  "flattening": {
+    "source": "ORDEN_CIELO_Y_ESPACIO_R04_GPT.md §4.1; values backed by published planetary figure data",
+    "bodies": {
+      "jupiter": {
+        "f": 0.06487
+      },
+      "saturno": {
+        "f": 0.09796
+      },
+      "urano": {
+        "f": 0.02293
+      },
+      "neptuno": {
+        "f": 0.01708
+      },
+      "marte": {
+        "f": 0.00589
+      },
+      "tierra": {
+        "f": 0.00335
+      }
+    },
+    "rest": 0
+  },
+  "moon_phase": {
+    "epoch_jd": 2451545,
+    "method": "mean orbital phase M(d)=M0+360*(JD-epoch)/period; representation consistent with drawn orbit, not a high-fidelity ephemeris",
+    "source": "JPL Planetary Satellite Mean Elements / inherited mean periods",
+    "textured_21": {
+      "luna": {
+        "M0_deg": 135.27,
+        "period_days": 27.322,
+        "method": "mean-elements"
+      },
+      "fobos": {
+        "M0_deg": 189.7,
+        "period_days": 0.3187,
+        "method": "mean-elements"
+      },
+      "deimos": {
+        "M0_deg": 205,
+        "period_days": 1.2625,
+        "method": "mean-elements"
+      },
+      "io": {
+        "M0_deg": 330.9,
+        "period_days": 1.762732,
+        "method": "mean-elements"
+      },
+      "europa": {
+        "M0_deg": 345.4,
+        "period_days": 3.525463,
+        "method": "mean-elements"
+      },
+      "ganimedes": {
+        "M0_deg": 324.8,
+        "period_days": 7.155588,
+        "method": "mean-elements"
+      },
+      "calisto": {
+        "M0_deg": 87.4,
+        "period_days": 16.69044,
+        "method": "mean-elements"
+      },
+      "mimas": {
+        "M0_deg": 275.3,
+        "period_days": 0.942422,
+        "method": "mean-elements"
+      },
+      "encelado": {
+        "M0_deg": 57,
+        "period_days": 1.370218,
+        "method": "mean-elements"
+      },
+      "tetis": {
+        "M0_deg": 0,
+        "period_days": 1.887802,
+        "method": "mean-elements"
+      },
+      "dione": {
+        "M0_deg": 212,
+        "period_days": 2.736916,
+        "method": "mean-elements"
+      },
+      "rea": {
+        "M0_deg": 31.5,
+        "period_days": 4.517503,
+        "method": "mean-elements"
+      },
+      "titan": {
+        "M0_deg": 11.7,
+        "period_days": 15.945448,
+        "method": "mean-elements"
+      },
+      "japeto": {
+        "M0_deg": 74.8,
+        "period_days": 79.331002,
+        "method": "mean-elements"
+      },
+      "miranda": {
+        "M0_deg": 73,
+        "period_days": 1.413479,
+        "method": "mean-elements"
+      },
+      "ariel": {
+        "M0_deg": 193.5,
+        "period_days": 2.520379,
+        "method": "mean-elements"
+      },
+      "umbriel": {
+        "M0_deg": 253,
+        "period_days": 4.144177,
+        "method": "mean-elements"
+      },
+      "titania": {
+        "M0_deg": 68.1,
+        "period_days": 8.705869,
+        "method": "mean-elements"
+      },
+      "oberon": {
+        "M0_deg": 143.6,
+        "period_days": 13.463237,
+        "method": "mean-elements"
+      },
+      "triton": {
+        "M0_deg": 63,
+        "period_days": 5.876994,
+        "retrograde": true,
+        "method": "mean-elements"
+      },
+      "caronte": {
+        "M0_deg": 304.1,
+        "period_days": 6.387222,
+        "method": "mean-elements"
+      }
+    }
+  },
+  "mutual_shadows": {
+    "scope": "around/focused-body view only",
+    "statement": "Shadows are geometrically consistent with the positions being drawn. They are a representation, not a prediction of a real transit.",
+    "general_system_view": false
+  }
+}
