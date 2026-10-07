@@ -8,7 +8,7 @@ en:{scene:"Scene 01 · Vera's room",choose:'Look around and select an object.',l
 }[lang];
 var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
 var motionMode=reduce?'reduced':'normal', animating=false;
-var levels={light:1,sound:1,texture:1}, selected=null, solved=false, tested=false;
+var levels={light:1,sound:1,texture:1}, previousLevels=null, selected=null, hypothesis=null, solved=false, tested=false;
 var profile=randomProfile();
 var panel={
 title:document.getElementById('dg-selection-title'),box:document.getElementById('dg-object'),status:document.getElementById('dg-status'),
@@ -81,9 +81,11 @@ function buildBlanket(){
 }
 function wireControls(){
  document.querySelectorAll('[data-pick]').forEach(function(b){b.addEventListener('click',function(){select(b.dataset.pick)})});
- document.querySelectorAll('[data-level]').forEach(function(b){b.addEventListener('click',function(){if(!selected)return;levels[selected]=+b.dataset.level;document.querySelectorAll('[data-level]').forEach(function(x){x.setAttribute('aria-pressed',String(+x.dataset.level===levels[selected]))});tested=false;panel.status.textContent=T.observe;render()})});
+ document.querySelectorAll('[data-level]').forEach(function(b){b.addEventListener('click',function(){if(!selected)return;previousLevels={light:levels.light,sound:levels.sound,texture:levels.texture};levels[selected]=+b.dataset.level;document.getElementById('dg-undo').disabled=false;document.querySelectorAll('[data-level]').forEach(function(x){x.setAttribute('aria-pressed',String(+x.dataset.level===levels[selected]))});tested=false;panel.status.textContent=T.observe;render()})});
+ document.querySelectorAll('[data-hypothesis]').forEach(function(b){b.addEventListener('click',function(){hypothesis=b.dataset.hypothesis;document.querySelectorAll('[data-hypothesis]').forEach(function(x){x.setAttribute('aria-pressed',String(x===b))})})});
  document.getElementById('dg-try').addEventListener('click',function(){if(!selected)return;tested=true;updateResult()});
- document.getElementById('dg-reset').addEventListener('click',function(){profile=randomProfile();levels={light:1,sound:1,texture:1};selected=null;tested=false;solved=false;panel.box.hidden=true;panel.resolve.disabled=true;panel.status.textContent=T.start;document.querySelectorAll('[data-pick]').forEach(function(x){x.setAttribute('aria-pressed','false')});resetVera();render()});
+ document.getElementById('dg-undo').addEventListener('click',function(){if(!previousLevels)return;levels={light:previousLevels.light,sound:previousLevels.sound,texture:previousLevels.texture};previousLevels=null;this.disabled=true;tested=false;panel.resolve.disabled=true;panel.status.textContent=T.observe;if(selected){document.querySelectorAll('[data-level]').forEach(function(x){x.setAttribute('aria-pressed',String(+x.dataset.level===levels[selected]))})}resetVera();updateEnvironment();render()});
+ document.getElementById('dg-reset').addEventListener('click',function(){profile=randomProfile();levels={light:1,sound:1,texture:1};previousLevels=null;selected=null;hypothesis=null;tested=false;solved=false;panel.box.hidden=true;panel.resolve.disabled=true;document.getElementById('dg-undo').disabled=true;panel.status.textContent=T.start;document.querySelectorAll('[data-pick],[data-hypothesis]').forEach(function(x){x.setAttribute('aria-pressed','false')});resetVera();render()});
  document.getElementById('dg-motion').addEventListener('click',cycleMotion);
  panel.resolve.addEventListener('click',function(){if(panel.resolve.disabled)return;solved=true;panel.status.textContent=T.solved;panel.resolve.disabled=true;render()});
 }
@@ -95,7 +97,7 @@ function updateResult(){
  var dl=Math.abs(levels.light-profile.light),ds=Math.abs(levels.sound-profile.sound),dt=Math.abs(levels.texture-profile.texture);
  var body=Math.max(12,100-(dt*34+ds*15)), breath=Math.max(12,100-(ds*34+dl*17)), attention=Math.max(12,100-(dl*34+dt*14));
  setMeter(panel.body,body);setMeter(panel.breath,breath);setMeter(panel.attention,attention);
- var ok=body>=66&&breath>=66&&attention>=66; panel.resolve.disabled=!ok;panel.status.textContent=ok?T.good:T.close;
+ var ok=body>=66&&breath>=66&&attention>=66; panel.resolve.disabled=!ok;var outcome=(body>=66&&breath>=66&&attention>=66)?'calm':(body<50&&breath<50&&attention<50)?'activate':'depends';var labels=lang==='es'?{calm:'Me calma',activate:'Me activa',depends:'Depende'}:{calm:'Calms me',activate:'Activates me',depends:'It depends'};var base=ok?T.good:T.close;panel.status.textContent=base+' '+(lang==='es'?'Resultado de esta escena: ':'Result in this scene: ')+labels[outcome]+'.'+(hypothesis?(lang==='es'?' Tu hipótesis: ':' Your hypothesis: ')+labels[hypothesis]+'.':'');
  poseVera(body,breath,attention);updateEnvironment();render()
 }
 function setMeter(el,n){el.style.width=n+'%';el.parentElement.setAttribute('aria-valuenow',String(Math.round(n)))}
