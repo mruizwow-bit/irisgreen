@@ -298,6 +298,11 @@ photo_repl=r'''  const photo=mat(0xcffcff,{emissive:0x86dfe9,emissiveIntensity:2
   }'''
 s,n=re.subn(photo_pat,photo_repl,s,count=1,flags=re.S)
 if n not in (0,1): raise SystemExit('fotóforos calamar ambiguos')
+# Metadata de eje anterior para evidencia morfológica reproducible.
+if 'anteriorSignX' not in s:
+    marker="root.userData.largoCuerpoM=L;"
+    if marker not in s: raise SystemExit('no encuentro metadata root de animal')
+    s=s.replace(marker,marker+"\n  root.userData.anteriorSignX=(a.id==='prof-calamar-cristal' ? -1 : 1);",1)
 A.write_text(s,encoding='utf-8')
 
 s=P.read_text(encoding='utf-8')
