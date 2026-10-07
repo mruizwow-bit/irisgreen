@@ -148,6 +148,33 @@ s=s.replace('emissiveIntensity:1.8,roughness:0.25});','emissiveIntensity:1.8,rou
 s=s.replace('emissiveIntensity:2.4,roughness:0.2});','emissiveIntensity:2.4,roughness:0.2,noReveal:true});')
 
 # Myctophum punctatum: añadir pectorales pareadas y aleta adiposa si faltan.
+# Myctophum punctatum: sustituir la rejilla genérica por series diagnósticas
+# principales respaldadas: AO 8+9, dos Prc y un Pol.
+if "'photophore-AOa'" not in s:
+    generic=r"""  const photo=mat\(0xb7efff,\{emissive:0x6bcbe8,emissiveIntensity:2\.4,roughness:0\.2,noReveal:true\}\);\n  const rows=\[-0\.11,-0\.04,0\.04\];\n  rows\.forEach\(\(ry,ri\)=>\{ for\(let i=0;i<6;i\+\+\)\{ const x=L\*\(0\.30-i\*0\.11\); sphere\(root,photo,\[x,L\*ry,\(ri%2\?1:-1\)\*L\*0\.115\],\[L\*0\.018,L\*0\.018,L\*0\.014\],'photophore',8\); \}\}\);"""
+    diagnostic=r'''  const photo=mat(0xb7efff,{emissive:0x6bcbe8,emissiveIntensity:2.4,roughness:0.2,noReveal:true});
+  /* AOa: 8 anteriores; AOp: 9 posteriores. Distribución longitudinal
+     pedagógica, no coordenadas morfométricas. */
+  for(let i=0;i<8;i++){
+    const x=L*(0.30-i*0.075);
+    sphere(root,photo,[x,-L*0.115,L*0.105],[L*0.018,L*0.018,L*0.014],'photophore-AOa',8);
+    sphere(root,photo,[x,-L*0.115,-L*0.105],[L*0.018,L*0.018,L*0.014],'photophore-AOa',8);
+  }
+  for(let i=0;i<9;i++){
+    const x=L*(-0.02-i*0.052);
+    const y=-L*(0.105-(i>=3?0.030:0));
+    sphere(root,photo,[x,y,L*0.105],[L*0.017,L*0.017,L*0.013],'photophore-AOp',8);
+    sphere(root,photo,[x,y,-L*0.105],[L*0.017,L*0.017,L*0.013],'photophore-AOp',8);
+  }
+  /* Dos Prc próximos al pedúnculo y un Pol anterior a la adiposa. */
+  for(const side of [-1,1]){
+    sphere(root,photo,[-L*0.405,-L*0.035,side*L*0.090],[L*0.017,L*0.017,L*0.013],'photophore-Prc',8);
+    sphere(root,photo,[-L*0.455,L*0.005,side*L*0.078],[L*0.016,L*0.016,L*0.012],'photophore-Prc',8);
+    sphere(root,photo,[-L*0.255,L*0.035,side*L*0.095],[L*0.017,L*0.017,L*0.013],'photophore-Pol',8);
+  }'''
+    s,n=re.subn(generic,diagnostic,s,count=1,flags=re.S)
+    if n!=1: raise SystemExit('no encuentro rejilla genérica de fotóforos Myctophum')
+
 if "'adipose-fin'" not in s:
     lantern_photo=r"""(function makeLantern\(a,L\)\{.*?)(  const photo=mat\(0xb7efff,\{emissive:0x6bcbe8,emissiveIntensity:2\.4,roughness:0\.2,noReveal:true\}\);)"""
     fin_block=r'''\1  /* Pectorales pareadas cerca del opérculo y pequeña adiposa posterior. */
