@@ -51,6 +51,8 @@ const pend=(id,n)=>R.push({id,estado:'PENDIENTE',nota:n});
  ok('CALAMAR_8_BRAZOS_2_TENTACULOS',squidMorph.arm===8&&squidMorph.tentacle===2&&squidMorph['tentacle-club']===2,JSON.stringify(squidMorph));
  ok('CALAMAR_6_FOTOFOROS_OCULARES',squidMorph['ocular-photophore']===6,JSON.stringify(squidMorph));
  ok('CALAMAR_ALETAS_LATERALES',squidMorph['mantle-fin-lateral']===2&&squidMorph['mantle-fin']===0,JSON.stringify(squidMorph));
+ const squidMantle=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-calamar-cristal');let m=null;if(r)r.traverse(o=>{if(o.isMesh&&o.userData&&o.userData.sectionBody&&o.userData.role==='mantle')m=o;});if(!m)return null;const prof=m.userData.sectionProfile||[];return{sections:prof.length,first:prof[0]&&prof[0].rz,max:Math.max(...prof.map(q=>q.rz)),last:prof[prof.length-1]&&prof[prof.length-1].rz,scale:m.scale.toArray()};});
+ ok('CALAMAR_MANTO_CONICO',squidMantle&&squidMantle.sections>=6&&squidMantle.last<squidMantle.max*0.35&&Math.abs(squidMantle.scale[0]-1)<1e-9,JSON.stringify(squidMantle));
  const lanternFins=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'pectoral-fin':0,'adipose-fin':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
  ok('LINTERNA_ALETAS_ESPECIFICAS',lanternFins['pectoral-fin']===2&&lanternFins['adipose-fin']===1,JSON.stringify(lanternFins));
  const lanternPhoto=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'photophore-AOa':0,'photophore-AOp':0,'photophore-Prc':0,'photophore-Pol':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
