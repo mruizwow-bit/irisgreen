@@ -63,3 +63,25 @@ La morfología final sigue sujeta a HUMAN_QA visual y revisión factual de propo
 `MODEL_ONLY_WHAT_SOURCE_SCOPE_SUPPORTS`
 
 No usar el detalle procedural como excusa para aumentar el alcance factual de una fuente.
+
+
+## Myctophum punctatum · detalles usados en R03.1
+
+Fuentes adicionales:
+
+- FishBase · Myctophum punctatum:
+  https://www.fishbase.se/summary/Myctophum-punctatum
+- Denton & Adams · landmarks sobre Myctophum punctatum:
+  https://faculty.sites.iastate.edu/dcadams/files/inline-files/2015-evol-denton-adams.pdf
+- NCFishes / FAO synthesis:
+  https://ncfishes.com/marine-fishes-of-north-carolina/myctophum-punctatum/
+
+Rasgos incorporados:
+- cuerpo alargado;
+- ojo grande;
+- aletas pectorales pareadas;
+- aleta adiposa posterior;
+- fotóforos como rasgo diagnóstico general.
+
+Reserva:
+el patrón exacto de fotóforos sigue siendo una representación de trabajo. La identificación específica depende de su disposición precisa y no se declara cerrada hasta revisión factual/visual.
