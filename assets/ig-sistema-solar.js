@@ -502,6 +502,12 @@
       var D3 = JSON.parse(JSON.stringify(D));
       D3.cuerpos.forEach(function (c) {
         if (c.datos && c.datos.diametro_modelo) c.datos.diametro = c.datos.diametro_modelo;
+        /* Una cartografía marcada como recreación no se convierte en
+           "superficie observada" sólo por envolver una esfera 3D. */
+        if (c.recreacion) {
+          c.tex = null;
+          c.representacion_3d = 'UNKNOWN_APPEARANCE_REPRESENTATION';
+        }
       });
       D3.fondo = FONDO;
       VIEW = window.IGSistemaSolar3D.start(D3, { EN: EN, T: T, host: view, labels: labels, reduce: reduce, fail: fail, label: label, onFocus: onFocus, onTime: onTime,
