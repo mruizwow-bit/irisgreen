@@ -25,7 +25,7 @@ PROFILES = [
     ('construir', 'Construir y probar', 'Build and test', 'Montar algo y comprobar si funciona.', 'Build something and test whether it works.'),
     ('tiempo', 'Línea de tiempo', 'Timeline', 'Música, sonido y luz que cambian con el tiempo.', 'Music, sound and light that change over time.'),
     ('codigo', 'Código y bloques', 'Code and blocks', 'Programar con bloques o con código real.', 'Program with blocks or real code.'),
-    ('documento', 'Documento y conocimiento', 'Documents and knowledge', 'Escribir, inventar mundos, lenguas y juegos.', 'Write and invent worlds, languages and games.'),
+    ('documento', 'Inventar y contar', 'Invent and tell', 'Escribir, inventar mundos, lenguas y juegos.', 'Write and invent worlds, languages and games.'),
 ]
 
 # slug ES, slug EN, perfil, nombre ES, nombre EN, frase ES, frase EN, nuevo
@@ -51,7 +51,7 @@ STUDIOS = [
     ('videomapping', 'projection-mapping', 'tiempo', 'Videomapping', 'Projection mapping', 'Luz que encaja en objetos reales', 'Light that fits real objects', True),
     ('programacion', 'coding', 'codigo', 'Programación', 'Coding', 'Bloques, JavaScript y Python', 'Blocks, JavaScript and Python', False),
     ('robotica', 'robotics', 'codigo', 'Robótica', 'Robotics', 'Un robot con sensores y su gemelo digital', 'A robot with sensors and its digital twin', False),
-    ('videojuegos', 'video-game-design', 'codigo', 'Diseño de videojuegos', 'Video game design', 'Niveles con física; exporta tu juego', 'Levels with physics; export your game', False),
+    ('videojuegos', 'video-game-design', 'codigo', 'Diseño de videojuegos', 'Video game design', 'Escenarios con física; exporta tu juego', 'Scenes with physics; export your game', False),
     ('escritura-restricciones', 'constraint-writing', 'documento', 'Escritura con restricciones', 'Constraint writing', 'Sin una letra, palabras contadas, formas poéticas', 'Missing letters, counted words, poetic forms', False),
     ('mundos', 'worlds', 'documento', 'Mundos', 'Worlds', 'Mapas, especies, historia y personajes', 'Maps, species, history and characters', False),
     ('lenguas-inventadas', 'invented-languages', 'documento', 'Lenguas inventadas', 'Invented languages', 'Sonidos, alfabeto, gramática y diccionario', 'Sounds, alphabet, grammar and dictionary', False),
@@ -65,36 +65,36 @@ SUGGEST = {'': ['programacion', 'estructuras', 'ritmo'], 'infancia': ['pixel-art
 
 T = {
     'es': {
-        'title': 'El taller', 'meta': 'El taller de Iris Green: 27 estudios para crear en el navegador, sin puntuaciones y sin subir nada. Dibujo, 3D, música, código, robótica, videojuegos, escritura y más.',
-        'lede': 'Crea imágenes, música, construcciones, código e historias. Aquí están los 27 estudios, agrupados por lo que quieres hacer.',
+        'title': 'Crea algo', 'meta': 'El taller de Iris Green: 27 formas de crear para crear en el navegador, sin puntuaciones y sin subir nada. Dibujo, 3D, música, código, robótica, videojuegos, escritura y más.',
+        'lede': 'Crea imágenes, música, construcciones, código e historias. Aquí están los 27 formas de crear, agrupados por lo que quieres hacer.',
         'note': '',
         'para': 'Para ti', 'paraOpts': [('', 'Cualquier edad'), ('infancia', 'Infancia'), ('adolescencia', 'Adolescencia'), ('adultez', 'Adultez')], 'paraKey': 'para',
         'paraHelp': 'Cambia los ejemplos de partida. No se guarda y no quita herramientas.',
-        'search': 'Buscar un estudio', 'searchPh': 'Por ejemplo: 3D, música, robot…',
-        'start': 'Para empezar', 'startCta': 'Empezar', 'all': 'Todos los estudios', 'allFilter': 'Todos', 'filters': 'Filtrar por tipo de estudio',
-        'new': 'Nuevo', 'count': '{n} estudios', 'none': 'Ningún estudio coincide con «{q}».', 'clear': 'Quitar la búsqueda',
+        'search': 'Buscar qué crear', 'searchPh': 'Por ejemplo: 3D, música, robot…',
+        'start': 'Para empezar', 'startCta': 'Empezar', 'all': 'Todas las herramientas', 'allFilter': 'Todos', 'filters': 'Filtrar por herramienta',
+        'new': 'Nuevo', 'count': '{n} herramientas', 'none': 'Ninguna herramienta coincide con «{q}».', 'clear': 'Quitar la búsqueda',
         'collection': 'Tus proyectos', 'collectionH': 'Guardar y abrir',
-        'collectionP': 'Para conservar un proyecto, abre Archivo dentro del estudio y elige «Guardar proyecto». Para retomarlo otro día, usa Archivo → Abrir.',
-        'skip': 'Saltar a los estudios',
-        'profiles': 'Cinco formas de trabajar', 'profileCta': 'Ver los estudios', 'profileCount': '{n} estudios',
+        'collectionP': 'Para conservar un proyecto, abre Opciones dentro de la herramienta y elige «Guardar proyecto». Para retomarlo otro día, usa Continuar proyecto o bien Opciones → Abrir.',
+        'skip': 'Saltar a las herramientas',
+        'profiles': 'Cinco formas de trabajar', 'profileCta': 'Ver las herramientas', 'profileCount': '{n} herramientas',
         'continueT': 'Seguir donde estabas', 'continueCta': 'Volver a {name}',
-        'allOpen': 'Ver los 27 estudios', 'allClose': 'Cerrar', 'allDialog': 'Todos los estudios',
+        'allOpen': 'Ver los 27 formas de crear', 'allClose': 'Cerrar', 'allDialog': 'Todas las herramientas',
     },
     'en': {
-        'title': 'The workshop', 'meta': 'Iris Green’s workshop: 27 studios to create in the browser, with no scores and nothing uploaded. Drawing, 3D, music, code, robotics, video games, writing and more.',
-        'lede': 'Create images, music, structures, code and stories. Browse all 27 studios, grouped by what you want to make.',
+        'title': 'Make something', 'meta': 'Iris Green’s workshop: 27 ways to create to create in the browser, with no scores and nothing uploaded. Drawing, 3D, music, code, robotics, video games, writing and more.',
+        'lede': 'Create images, music, structures, code and stories. Browse all 27 ways to create, grouped by what you want to make.',
         'note': '',
         'para': 'For you', 'paraOpts': [('', 'Any age'), ('childhood', 'Childhood'), ('adolescence', 'Adolescence'), ('adulthood', 'Adulthood')], 'paraKey': 'for',
         'paraHelp': 'Changes the starting examples. Nothing is saved and no tools are taken away.',
-        'search': 'Find a studio', 'searchPh': 'For example: 3D, music, robot…',
-        'start': 'Good places to start', 'startCta': 'Start', 'all': 'All studios', 'allFilter': 'All', 'filters': 'Filter by kind of studio',
-        'new': 'New', 'count': '{n} studios', 'none': 'No studio matches “{q}”.', 'clear': 'Clear the search',
+        'search': 'Find something to create', 'searchPh': 'For example: 3D, music, robot…',
+        'start': 'Good places to start', 'startCta': 'Start', 'all': 'All tools', 'allFilter': 'All', 'filters': 'Filter by tool',
+        'new': 'New', 'count': '{n} tools', 'none': 'No tool matches “{q}”.', 'clear': 'Clear the search',
         'collection': 'Your projects', 'collectionH': 'Save and open',
-        'collectionP': 'To keep a project, open File in the studio and choose “Save project”. To carry on another day, use File → Open.',
-        'skip': 'Skip to the studios',
-        'profiles': 'Five ways of working', 'profileCta': 'See the studios', 'profileCount': '{n} studios',
+        'collectionP': 'To keep a project, open Options in the tool and choose “Save project”. To carry on another day, use Continue project or Options → Open.',
+        'skip': 'Skip to the tools',
+        'profiles': 'Five ways of working', 'profileCta': 'See the tools', 'profileCount': '{n} tools',
         'continueT': 'Carry on where you were', 'continueCta': 'Back to {name}',
-        'allOpen': 'See all 27 studios', 'allClose': 'Close', 'allDialog': 'All studios',
+        'allOpen': 'See all 27 ways to create', 'allClose': 'Close', 'allDialog': 'All tools',
     },
 }
 STAGE_MAP = {'infancia': 'childhood', 'adolescencia': 'adolescence', 'adultez': 'adulthood'}
@@ -324,7 +324,7 @@ def page(lang: str) -> str:
         '<link href="/assets/site-v23.css" rel="stylesheet"><link rel="stylesheet" href="/assets/ajustes-interfaz.css"/><link rel="stylesheet" href="/assets/controles-comunes.css"/><link rel="stylesheet" href="/assets/preferencias-lectura.css">'
         f'<link rel="stylesheet" href="/assets/ig-global-ui-tokens-2026.css?v={V}">'
         f'<link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r42-r02-1">'
-        f'<link rel="stylesheet" href="/assets/ig-suite-launcher.css?v={V}"></head>'
+        f'<link rel="stylesheet" href="/assets/ig-suite-launcher.css?v={V}"><link rel="stylesheet" href="/assets/ig-r44-hub.css"></head>'
     )
     body = (
         '<body data-ig-taller-launcher="true" data-ig-no-page-finder="true" data-ig-materials="r42"'
@@ -338,6 +338,7 @@ def page(lang: str) -> str:
         + f'<div class="igk-search-row"><input id="igk-q" type="search" autocomplete="off" placeholder="{e(t["searchPh"])}" aria-describedby="igk-status" aria-controls="igk-all">'
         + f'<button type="button" class="igk-clear" hidden aria-label="{e(t["clear"])}">×</button></div></div>'
         + f'<button type="button" class="igk-all-btn" data-open-profile="" hidden>{e(t["allOpen"])}</button></div></header>'
+        + hub_actions(lang)
         # 3 · seguir donde estabas (solo en esta sesión: se resuelve con el referente, sin guardar nada)
         + f'<section class="igk-continue" aria-labelledby="igk-cont-t" hidden><h2 id="igk-cont-t" class="igk-h2">{e(t["continueT"])}</h2><p class="igk-cont-slot"></p></section>'
         # 4 · tres propuestas para empezar
@@ -356,9 +357,30 @@ def page(lang: str) -> str:
                       'base': BASE[lang]}, ensure_ascii=False).replace('</', '<\\/') + '</script>'
         + '<script defer src="/assets/lectura-accesible.js"></script><script defer src="/assets/interfaz-comun.js"></script><script defer src="/assets/musica.js"></script>'
         + f'<script defer src="/assets/ig-childsafe.js?v={V}"></script>'
-        + f'<script defer src="/assets/ig-suite-launcher.js?v={V}"></script></body></html>\n'
+        + f'<script defer src="/assets/ig-suite-launcher.js?v={V}"></script><script defer src="/assets/ig-r44-hub.js"></script></body></html>\n'
     )
     return head + body
+
+
+def hub_actions(lang):
+    import importlib
+    # Derive routing from the engine declarations, never from untrusted file paths.
+    from build_taller_suite import SUITE
+    routes = {}
+    for name in SUITE:
+        mod = importlib.import_module('taller_suite.' + name)
+        routes[mod.ENGINE] = BASE[lang] + mod.SLUG[lang] + '/'
+    en = lang == 'en'
+    draw = BASE[lang] + ('drawing/' if en else 'dibujo/')
+    words = ('Make something', 'Continue project', 'Try an invitation', 'Create freely') if en else ('Crear algo', 'Continuar proyecto', 'Probar una invitación', 'Crear libremente')
+    return ('<nav class="r44-hub-actions" aria-label="' + words[0] + '">'
+            + '<a href="' + draw + '">' + words[0] + '</a>'
+            + '<button type="button" id="r44-continue">' + words[1] + '</button>'
+            + '<a href="' + draw + '?invitation=E02">' + words[2] + '</a>'
+            + '<a href="#igk-all">' + words[3] + '</a></nav>'
+            + '<p id="r44-file-status" role="status" aria-live="polite"></p>'
+            + '<script type="application/json" id="r44-project-routes">'
+            + json.dumps(routes, ensure_ascii=False).replace('</', '<\\/') + '</script>')
 
 
 def main() -> None:
@@ -368,3 +390,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+

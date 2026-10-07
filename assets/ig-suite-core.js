@@ -21,7 +21,7 @@
       tools: 'Herramientas', moreTools: 'Más herramientas', fewerTools: 'Menos herramientas',
       properties: 'Propiedades', nothingSelected: 'No hay nada seleccionado. Elige un elemento en el lienzo o en la lista Estructura.',
       loading: 'Preparando el estudio…', loadError: 'No se ha podido preparar el estudio. Recarga la página para intentarlo de nuevo.',
-      ready: 'Estudio listo.', saved: 'Proyecto guardado en tu dispositivo como archivo.',
+      ready: 'Ya puedes crear.', saved: 'Proyecto guardado en tu dispositivo como archivo.',
       opened: 'Proyecto abierto.', openError: 'Ese archivo no es un proyecto de este estudio o está dañado.',
       tooBig: 'El archivo es demasiado grande (máximo 8 MB).', undone: 'Deshecho: ', redone: 'Rehecho: ',
       nothingToUndo: 'No hay nada que deshacer.', nothingToRedo: 'No hay nada que rehacer.',
@@ -48,7 +48,7 @@
       tools: 'Tools', moreTools: 'More tools', fewerTools: 'Fewer tools',
       properties: 'Properties', nothingSelected: 'Nothing is selected. Choose an item on the canvas or in the Structure list.',
       loading: 'Getting the studio ready…', loadError: 'The studio could not be prepared. Reload the page to try again.',
-      ready: 'Studio ready.', saved: 'Project saved on your device as a file.',
+      ready: 'Ready to create.', saved: 'Project saved on your device as a file.',
       opened: 'Project opened.', openError: 'That file is not a project from this studio, or it is damaged.',
       tooBig: 'The file is too large (8 MB maximum).', undone: 'Undone: ', redone: 'Redone: ',
       nothingToUndo: 'Nothing to undo.', nothingToRedo: 'Nothing to redo.',
@@ -269,7 +269,7 @@
 
   /* ---------- Carga diferida de bibliotecas (solo en el estudio que las usa) ---------- */
   var LIBS = {
-    pixi: ['pixi.js'], planck: ['planck.js'], rapier: ['rapier2d.js'], three: ['three.js'], tone: ['tone.js'],
+    pixi: ['pixi.js'], planck: ['planck.js'], three: ['three.js'], tone: ['tone.js'],
     blockly: ['blockly.js', 'blockly-msg-' + LANG + '.js', 'blockly-msg-extra.js'], codemirror: ['codemirror.js'], acorn: ['acorn.js']
   };
   var loaded = {};
@@ -558,7 +558,7 @@
     var ctx = { t: t, fmt: fmt, num: num, lang: LANG, para: PARA, h: h, icon: icon, button: button, fields: fields, clear: clear,
       announce: announce, download: download, stamp: stamp, pickFile: pickFile, rng: rng, svgText: svgText, printPages: printPages, svgToPng: svgToPng, parseSVG: parseSVG, keepFocus: keepFocus, canvasWithCredit: canvasWithCredit, canvasBlob: canvasBlob,
       View2D: View2D, attachViewGestures: attachViewGestures, dialog: dialog, load: load, studio: engineId, studioName: studioName,
-      reducedMotion: function () { return D.documentElement.dataset.igMotion === 'off' || (root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches); },
+      reducedMotion: function () { return ['off', 'reduced'].indexOf(D.documentElement.dataset.igMotion) >= 0 || (root.matchMedia && root.matchMedia('(prefers-reduced-motion: reduce)').matches); },
       tech: { renderer: null, physics: null, audio: null } };
     root.addEventListener('ig:audience-change', function () { PARA=readPara();ctx.para=PARA;root.IGSuite.para=PARA; });
 
@@ -674,7 +674,7 @@
           if (!data || data.formato !== 'iris-green-taller' || data.estudio !== engineId || !data.datos || !engine.validate(data.datos)) {
             announce(t('openError')); ctx.setStatus(t('openError')); return;
           }
-          engine.restore(data.datos); ctx.resetHistory(); setDirty(false, 'ig:project-opened'); announce(t('opened')); ctx.setStatus(t('opened'));
+          app.igCreative.replaceProject(function () { engine.restore(data.datos); }, t('opened')); setDirty(false, 'ig:project-opened'); announce(t('opened')); ctx.setStatus(t('opened'));
         });
       });
     }
@@ -684,14 +684,14 @@
     var newDlg = dialog(t('startFrom'), { wide: true });
     function openNew(trigger) {
       clear(newDlg.body);
-      newDlg.body.appendChild(h('p', { class: 'igs-note', text: t('replaceWarn') }));
+      
       var list = h('ul', { class: 'igs-starts' });
       var starts = (def.starts ? def.starts(ctx) : []).slice();
       starts.sort(function (a, b) { return (b.para === PARA ? 1 : 0) - (a.para === PARA ? 1 : 0); });
       [{ id: 'empty', title: t('emptyProject'), desc: t('emptyProjectDesc') }].concat(starts).forEach(function (s) {
         var b = h('button', { type: 'button', class: 'igs-start' }, h('strong', { text: s.title }), h('span', { text: s.desc || '' }));
         b.addEventListener('click', function () {
-          newDlg.close(); engine.start(s.id); ctx.resetHistory(); setDirty(false, null); announce(s.title);
+          newDlg.close(); app.igCreative.replaceProject(function () { engine.start(s.id); }, s.title); setDirty(true);
         });
         list.appendChild(h('li', null, b));
       });
@@ -799,6 +799,14 @@
         updateUndo();
         loading.remove();
         app.dataset.igsReady = 'true';
+        app.igCreative = { engine: engine, ctx: ctx,
+          replaceProject: function (apply, label) {
+            var previous=engine.serialize(), oldReset=ctx.resetHistory;
+            ctx.resetHistory=function () {};
+            try { apply(); } catch(err) { engine.restore(previous); throw err; }
+            finally { ctx.resetHistory=oldReset; }
+            ctx.commit(label); ctx.announce(label);
+          }, starts: function () { return def.starts ? def.starts(ctx) : []; } };
         if (engine.start) engine.start(def.initialStart ? def.initialStart(PARA) : 'empty');
         ctx.resetHistory(); setDirty(false, null);
         ctx.command('new', t('newProject') + '…', t('startFrom'), function () { openNew(newBtn); });
@@ -838,3 +846,4 @@
   if (D.readyState !== 'complete') D.addEventListener('DOMContentLoaded', mountStudio, { once: true });
   else root.setTimeout(mountStudio, 0);
 })(window, document);
+

@@ -94,11 +94,13 @@ def page(mod, lang: str) -> str:
     # Espacio de nombres propio; no toca el taller-retos.json heredado.
     r44_id = R44_RETOS.get(mod.SLUG['es'], '')
     r44_attr = f' data-r44-reto="{r44_id}"' if r44_id else ''
-    if r44_id:
-        styles += f'<link rel="stylesheet" href="/assets/ig-r44-retos.css?v={ASSET_V}">'
-        scripts += f'<script defer src="/assets/ig-r44-retos.js?v={ASSET_V}"></script>'
     # Protección infantil (R42 Child Safety): metadatos del modelo aprobado audience / sensitivity / discovery.
     # Los estudios son contenido general para cualquier edad; la etapa solo cambia ejemplos.
+    styles += '<link rel="stylesheet" href="/assets/ig-global-ui-tokens-2026.css"><link rel="stylesheet" href="/assets/ig-r44-creative.css">'
+    scripts += '<script defer src="/assets/ig-r44-creative.js"></script>'
+    invitations = json.loads((ROOT / 'assets/data/r44-creative-invitations.json').read_text())
+    invitation_data = json.dumps([r for r in invitations if r['page'] == mod.SLUG['es']], ensure_ascii=False).replace('</', '<\\/')
+    scripts += '<script type="application/json" id="r44-invitations">' + invitation_data + '</script>'
     safety = getattr(mod, 'SAFETY', {'audience': 'TRANSVERSAL', 'sensitivity': 'S0_GENERAL', 'discovery': 'NORMAL'})
     head = (
         f'<!DOCTYPE html><html lang="{lang}"><head><script src="/assets/preferencias-lectura.js"></script>'
@@ -118,7 +120,7 @@ def page(mod, lang: str) -> str:
         '</head>'
     )
     body = (
-        f'<body data-ig-r42-pilot="true" data-ig-r42-family="workshop" data-ig-materials="r42" data-ig-suite="{mod.ENGINE}"'
+        f'<body data-ig-r44-creative="true" data-ig-r42-pilot="true" data-ig-r42-family="workshop" data-ig-materials="r42" data-ig-suite="{mod.ENGINE}"'
         f' data-ig-audience="{safety["audience"]}" data-ig-sensitivity="{safety["sensitivity"]}" data-ig-discovery="{safety["discovery"]}"'
         f' data-ig-storage="tab-memory">' + HEADER[lang].replace('{other}', other)
         + f'<main id="main" class="igx igt igs-page" data-lang="{lang}">'
@@ -164,3 +166,4 @@ def main() -> None:
 
 if __name__ == '__main__':
     main()
+

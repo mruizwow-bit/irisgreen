@@ -1,0 +1,516 @@
+[
+  {
+    "id": "E01",
+    "page": "dibujo",
+    "motor": "M1",
+    "start": "landscape",
+    "es": "Una línea sin levantar el lápiz",
+    "en": "One continuous line",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E02",
+    "page": "dibujo",
+    "motor": "M1",
+    "start": "sphere",
+    "es": "Luz en tres tonos",
+    "en": "Light in three tones",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E03",
+    "page": "dibujo",
+    "motor": "M1",
+    "start": "street",
+    "es": "Diez piezas con tus reglas",
+    "en": "Ten pieces with your rules",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E04",
+    "page": "diseno-grafico",
+    "motor": "M1",
+    "start": "poster",
+    "es": "Un cartel visto desde lejos",
+    "en": "A poster seen from afar",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E05",
+    "page": "diseno-grafico",
+    "motor": "M1",
+    "start": "post",
+    "es": "Una idea en tres formas",
+    "en": "One idea in three forms",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E06",
+    "page": "pixel-art",
+    "motor": "M1",
+    "start": "tile",
+    "es": "Una baldosa que continúa",
+    "en": "A tile that continues",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E07",
+    "page": "pixel-art",
+    "motor": "M1",
+    "start": "ball",
+    "es": "Seis fotogramas que pesan",
+    "en": "Six frames with weight",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E08",
+    "page": "comic",
+    "motor": "M1",
+    "start": "strip",
+    "es": "Una historia sin diálogo",
+    "en": "A story without dialogue",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E09",
+    "page": "color",
+    "motor": "M1",
+    "start": "game",
+    "es": "Colores, formas y patrones",
+    "en": "Colours, shapes and patterns",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E10",
+    "page": "color",
+    "motor": "M1",
+    "start": "daynight",
+    "es": "La misma escena de día y de noche",
+    "en": "The same scene by day and night",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E11",
+    "page": "patrones",
+    "motor": "M1",
+    "start": "seventeen",
+    "es": "Diecisiete formas de repetir",
+    "en": "Seventeen ways to repeat",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E12",
+    "page": "patrones",
+    "motor": "M1",
+    "start": "ownfractal",
+    "es": "Una planta con tus reglas",
+    "en": "A plant with your rules",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E13",
+    "page": "fotografia",
+    "motor": "M1",
+    "start": "ten",
+    "es": "Diez encuadres de lo mismo",
+    "en": "Ten views of the same thing",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E14",
+    "page": "fotografia",
+    "motor": "M1",
+    "start": "colour",
+    "es": "Lo que viaja con una foto",
+    "en": "What travels with a photo",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E15",
+    "page": "moda-textil",
+    "motor": "M1",
+    "start": "motif",
+    "es": "Un motivo, muchos estampados",
+    "en": "One motif, many patterns",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E16",
+    "page": "moda-textil",
+    "motor": "M1",
+    "start": "tote",
+    "es": "Una bolsa donde cabe",
+    "en": "A bag that fits",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E17",
+    "page": "estructuras",
+    "motor": "M2",
+    "start": "river-car",
+    "es": "Un puente para el camión",
+    "en": "A bridge for the truck",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E18",
+    "page": "arquitectura",
+    "motor": "M2",
+    "start": "accessible",
+    "es": "Una casa donde puedes girar",
+    "en": "A house with room to turn",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E19",
+    "page": "modelado-3d",
+    "motor": "M2",
+    "start": "box",
+    "es": "Una pieza para imprimir",
+    "en": "A piece to print",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E20",
+    "page": "maquinas",
+    "motor": "M2",
+    "start": "clock",
+    "es": "Un reloj que da la hora",
+    "en": "A clock that tells the time",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E21",
+    "page": "maquinas",
+    "motor": "M2",
+    "start": "chain",
+    "es": "Diez pasos que se empujan",
+    "en": "Ten steps that push each other",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E22",
+    "page": "circuitos",
+    "motor": "M3",
+    "start": "traffic",
+    "es": "Un semáforo a tu manera",
+    "en": "A traffic light your way",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E23",
+    "page": "circuitos",
+    "motor": "M3",
+    "start": "adder",
+    "es": "Sumar con interruptores",
+    "en": "Adding with switches",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E24",
+    "page": "papiroflexia",
+    "motor": "M2",
+    "start": "icosa",
+    "es": "Un icosaedro en tu mesa",
+    "en": "An icosahedron on your table",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E25",
+    "page": "papiroflexia",
+    "motor": "M2",
+    "start": "sonobe",
+    "es": "Un cubo de seis piezas",
+    "en": "A cube from six pieces",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E26",
+    "page": "simulaciones",
+    "motor": "M3",
+    "start": "phantom",
+    "es": "Un atasco sin obstáculo",
+    "en": "A traffic jam without an obstacle",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E27",
+    "page": "simulaciones",
+    "motor": "M3",
+    "start": "ecobalance",
+    "es": "Un ecosistema que cambia",
+    "en": "A changing ecosystem",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E28",
+    "page": "escritura-restricciones",
+    "motor": "M5",
+    "start": "micro50",
+    "es": "Cincuenta palabras",
+    "en": "Fifty words",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E29",
+    "page": "escritura-restricciones",
+    "motor": "M5",
+    "start": "lipo",
+    "es": "Un texto sin la letra e",
+    "en": "A text without the letter e",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E30",
+    "page": "mundos",
+    "motor": "M6",
+    "start": "island",
+    "es": "Una isla con tres especies",
+    "en": "An island with three species",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E31",
+    "page": "mundos",
+    "motor": "M6",
+    "start": "calendar",
+    "es": "Un calendario diferente",
+    "en": "A different calendar",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E32",
+    "page": "lenguas-inventadas",
+    "motor": "M5",
+    "start": "secret",
+    "es": "Veinte signos para inventar",
+    "en": "Twenty signs to invent",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E33",
+    "page": "lenguas-inventadas",
+    "motor": "M5",
+    "start": "full",
+    "es": "Cien palabras para empezar",
+    "en": "A hundred words to begin",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E34",
+    "page": "juegos-de-mesa",
+    "motor": "M7",
+    "start": "two",
+    "es": "Un juego para dos",
+    "en": "A game for two",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E35",
+    "page": "juegos-de-mesa",
+    "motor": "M7",
+    "start": "race",
+    "es": "¿Quién empieza esta vez?",
+    "en": "Who starts this time?",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E36",
+    "page": "ideas",
+    "motor": "M5",
+    "start": "sprint",
+    "es": "Ocho ideas para mezclar",
+    "en": "Eight ideas to mix",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E37",
+    "page": "ideas",
+    "motor": "M5",
+    "start": "brief",
+    "es": "Un invento con presupuesto",
+    "en": "An invention with a budget",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E38",
+    "page": "ritmo",
+    "motor": "M4",
+    "start": "beat-first",
+    "es": "Un ritmo propio",
+    "en": "Your own rhythm",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E39",
+    "page": "composicion",
+    "motor": "M4",
+    "start": "song-pop",
+    "es": "Una melodía con tres acordes",
+    "en": "A melody with three chords",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E40",
+    "page": "sintesis-sonido",
+    "motor": "M4",
+    "start": "synth-pad",
+    "es": "Un sonido que no existía",
+    "en": "A sound that did not exist",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E41",
+    "page": "videomapping",
+    "motor": "M4",
+    "start": "box",
+    "es": "Luz sobre un objeto",
+    "en": "Light on an object",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E42",
+    "page": "programacion",
+    "motor": "M8",
+    "start": "star",
+    "es": "Dos caminos para lo mismo",
+    "en": "Two ways to the same thing",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E43",
+    "page": "robotica",
+    "motor": "M3",
+    "start": "line",
+    "es": "Un robot siguiendo una línea",
+    "en": "A robot following a line",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "E44",
+    "page": "videojuegos",
+    "motor": "M8",
+    "start": "first",
+    "es": "Un juego que puedes cambiar",
+    "en": "A game you can change",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X01",
+    "page": "videojuegos",
+    "motor": "M8",
+    "start": "platformer",
+    "es": "Un videojuego con todo tuyo",
+    "en": "A video game of your own",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X02",
+    "page": "comic",
+    "motor": "M1",
+    "start": "page",
+    "es": "Del cómic al cartel",
+    "en": "From comic to poster",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X03",
+    "page": "arquitectura",
+    "motor": "M2",
+    "start": "house",
+    "es": "Una casa que se sostiene",
+    "en": "A house that stands",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X04",
+    "page": "mundos",
+    "motor": "M6",
+    "start": "atlas",
+    "es": "Un mundo con su lengua",
+    "en": "A world with its language",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X05",
+    "page": "juegos-de-mesa",
+    "motor": "M7",
+    "start": "cards",
+    "es": "Un juego para imprimir y probar",
+    "en": "A game to print and try",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X06",
+    "page": "composicion",
+    "motor": "M4",
+    "start": "song-ambient",
+    "es": "Un instrumento que ves y oyes",
+    "en": "An instrument you can see and hear",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X07",
+    "page": "diseno-grafico",
+    "motor": "M1",
+    "start": "poster",
+    "es": "Una explicación que se entiende a la primera",
+    "en": "An explanation that lands first time",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "X08",
+    "page": "maquinas",
+    "motor": "M2",
+    "start": "train",
+    "es": "Una máquina para montar",
+    "en": "A machine to build",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "C02",
+    "page": "composicion",
+    "motor": "M4",
+    "start": "song-bells",
+    "es": "Un motivo que se transforma",
+    "en": "A motif that transforms",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "C03",
+    "page": "escritura-restricciones",
+    "motor": "M5",
+    "start": "three",
+    "es": "Una historia en distintos momentos",
+    "en": "A story at different moments",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "C04",
+    "page": "composicion",
+    "motor": "M4",
+    "start": "song-pop",
+    "es": "Un gesto musical propio",
+    "en": "A musical gesture of your own",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "C05",
+    "page": "arquitectura",
+    "motor": "M2",
+    "start": "house",
+    "es": "Geometría que sostiene",
+    "en": "Geometry that holds",
+    "verification": "NOT_VERIFIED"
+  },
+  {
+    "id": "C07",
+    "page": "simulaciones",
+    "motor": "M3",
+    "start": null,
+    "es": "Encontrar un planeta",
+    "en": "Finding a planet",
+    "verification": "NOT_IMPLEMENTED",
+    "reason": "Transit simulation missing; ecosystem seed is not equivalent."
+  }
+]

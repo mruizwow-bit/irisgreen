@@ -1,0 +1,30 @@
+R44 · CHECKPOINT DE TRABAJO · 2026-10-07
+NO ES ENTREGA FINAL · NO GATE · NO MAIN · NO DEPLOY
+
+Implementación parcial sobre main 3db93944d631cf62c305d6a61d2f202148dddff2.
+Cambios: backend Planck exclusivo; entrada progresiva con Opciones; conservar
+Deshacer al abrir/cambiar proyecto; recuperar capas/piezas en el dock; hub con
+carga de fichero sin persistencia nueva; nombres ES/EN de la portada.
+
+La tabla contiene 57 referencias (49 nuevas y 8 anteriores), NO 57 mecánicas
+certificadas. Los presets existentes son puntos de partida; no demuestran
+cumplimiento de cada reto. C07 carece de simulación de tránsito: se ha retirado
+el enlace incorrecto al ecosistema. X06/X07 tienen títulos reconciliados con
+la matriz, pero sus capacidades completas siguen pendientes de verificación.
+
+NO PROBADO:
+- Nueve motores completos contra el blueprint.
+- Mecánica y artefacto final de los 49 retos; revisión completa de los 8 previos.
+- Normal/Reducido/Sin movimiento para bucles JS de todos los motores.
+- Teclado/touch equivalentes y acción útil con consecuencia observable.
+- Trece criterios con mutaciones. El arnés runtime añadido NO los sustituye.
+- 200% zoom, forced-colors y oráculo móvil de cinco señales.
+- Round trip de los ficheros en los 27 motores.
+- Chrome canónico medido, traducción completa de todos los textos internos.
+- QA humana de comprensión en diez segundos.
+
+Pruebas locales hechas: regeneración de las 56 páginas; sintaxis de JavaScript
+y Python modificados. No equivalen a aceptación funcional.
+Navegador local: no instalado; descarga Playwright fallida (archivo truncado).
+Se prepara GitHub Actions sin despliegue para capturar 54 vistas iniciales
+(9 motores, ES/EN, anchos 1440/390/320) y reportar errores/overflow.

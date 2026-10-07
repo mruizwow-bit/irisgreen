@@ -1,0 +1,7 @@
+.r44-hub-actions{display:flex;flex-wrap:wrap;gap:12px;margin-block:12px;}
+.r44-hub-actions a,.r44-hub-actions button{box-sizing:border-box;display:inline-flex;align-items:center;min-height:44px;padding:10px 16px;border:1px solid var(--ig-border-control);border-radius:10px;background:var(--ig-button-secondary-bg);color:var(--ig-button-secondary-fg);font:inherit;}
+.r44-hub-actions :focus-visible{outline:3px solid var(--ig-focus-global);outline-offset:3px;}
+.r44-project-frame{position:fixed;inset:0;width:100%;height:100dvh;border:0;background:var(--ig-bg-page);z-index:100;}
+.r44-project-frame[hidden]{display:none;}
+@media(max-width:600px){.r44-hub-actions{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));}.r44-hub-actions>*{overflow-wrap:anywhere;}}
+@media(forced-colors:active){.r44-hub-actions a,.r44-hub-actions button{background:Canvas;color:LinkText;border-color:ButtonText;}.r44-hub-actions :focus-visible{outline-color:Highlight;}}

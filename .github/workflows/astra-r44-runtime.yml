@@ -1,0 +1,32 @@
+name: Astra R44 runtime evidence (no deploy)
+on:
+  push:
+    branches: [astra/r44-creation-20261007]
+    paths:
+      - 'assets/ig-*'
+      - 'assets/data/r44-creative-invitations.json'
+      - 'scripts/build_taller_suite.py'
+      - 'scripts/taller_suite/**'
+      - 'scripts/qa/r44_browser_evidence.py'
+      - '.github/workflows/astra-r44-runtime.yml'
+permissions:
+  contents: read
+jobs:
+  evidence:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: pip install playwright==1.55.0
+      - run: python -m playwright install --with-deps chromium
+      - run: python scripts/build_taller_suite.py
+      - run: python scripts/qa/r44_browser_evidence.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: r44-runtime-evidence
+          path: reports/r44-runtime/
+          if-no-files-found: warn
