@@ -1,0 +1,235 @@
+{
+  "schema": "iris-green.solar-r03.rings-oracle.v1",
+  "date": "2026-10-07",
+  "result": "PASS",
+  "controller_syntax": true,
+  "controller_error": null,
+  "saturn_existing": {
+    "inner_km": 74658,
+    "outer_km": 136780,
+    "status": "EXISTING_TEXTURED_RING_KEEP"
+  },
+  "procedural_bodies": [
+    "jupiter",
+    "urano",
+    "neptuno"
+  ],
+  "bands": [
+    {
+      "id": "jupiter",
+      "name": "Halo",
+      "inner_km": 89400,
+      "outer_km": 123000,
+      "inner_ratio": 1.25049,
+      "outer_ratio": 1.720472,
+      "opacity": 0.018,
+      "pass": true
+    },
+    {
+      "id": "jupiter",
+      "name": "Main Ring",
+      "inner_km": 123000,
+      "outer_km": 128940,
+      "inner_ratio": 1.720472,
+      "outer_ratio": 1.803558,
+      "opacity": 0.09,
+      "pass": true
+    },
+    {
+      "id": "jupiter",
+      "name": "Amalthea Gossamer",
+      "inner_km": 128940,
+      "outer_km": 181350,
+      "inner_ratio": 1.803558,
+      "outer_ratio": 2.536647,
+      "opacity": 0.012,
+      "pass": true
+    },
+    {
+      "id": "jupiter",
+      "name": "Thebe Gossamer",
+      "inner_km": 181350,
+      "outer_km": 221900,
+      "inner_ratio": 2.536647,
+      "outer_ratio": 3.103844,
+      "opacity": 0.01,
+      "pass": true
+    },
+    {
+      "id": "jupiter",
+      "name": "Thebe Extension",
+      "inner_km": 221900,
+      "outer_km": 280000,
+      "inner_ratio": 3.103844,
+      "outer_ratio": 3.916522,
+      "opacity": 0.007,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "6",
+      "inner_km": 41836.25,
+      "outer_km": 41837.75,
+      "inner_ratio": 1.63685,
+      "outer_ratio": 1.636909,
+      "opacity": 0.06,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "5",
+      "inner_km": 42233,
+      "outer_km": 42235,
+      "inner_ratio": 1.652373,
+      "outer_ratio": 1.652451,
+      "opacity": 0.065,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "4",
+      "inner_km": 42570,
+      "outer_km": 42572,
+      "inner_ratio": 1.665558,
+      "outer_ratio": 1.665636,
+      "opacity": 0.06,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Alpha",
+      "inner_km": 44714.5,
+      "outer_km": 44721.5,
+      "inner_ratio": 1.749462,
+      "outer_ratio": 1.749736,
+      "opacity": 0.065,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Beta",
+      "inner_km": 45657,
+      "outer_km": 45665,
+      "inner_ratio": 1.786337,
+      "outer_ratio": 1.78665,
+      "opacity": 0.065,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Eta",
+      "inner_km": 47175.2,
+      "outer_km": 47176.8,
+      "inner_ratio": 1.845737,
+      "outer_ratio": 1.8458,
+      "opacity": 0.06,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Gamma",
+      "inner_km": 47625.75,
+      "outer_km": 47628.25,
+      "inner_ratio": 1.863365,
+      "outer_ratio": 1.863463,
+      "opacity": 0.06,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Delta",
+      "inner_km": 48297.5,
+      "outer_km": 48302.5,
+      "inner_ratio": 1.889647,
+      "outer_ratio": 1.889843,
+      "opacity": 0.065,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Lambda",
+      "inner_km": 50023,
+      "outer_km": 50025,
+      "inner_ratio": 1.957158,
+      "outer_ratio": 1.957236,
+      "opacity": 0.04,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "Epsilon",
+      "inner_km": 51120,
+      "outer_km": 51178,
+      "inner_ratio": 2.000078,
+      "outer_ratio": 2.002348,
+      "opacity": 0.12,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "R/2003 U 2",
+      "inner_km": 65400,
+      "outer_km": 69200,
+      "inner_ratio": 2.558786,
+      "outer_ratio": 2.707461,
+      "opacity": 0.006,
+      "pass": true
+    },
+    {
+      "id": "urano",
+      "name": "R/2003 U 1",
+      "inner_km": 89200,
+      "outer_km": 106200,
+      "inner_ratio": 3.489964,
+      "outer_ratio": 4.155092,
+      "opacity": 0.004,
+      "pass": true
+    },
+    {
+      "id": "neptuno",
+      "name": "Galle",
+      "inner_km": 40900,
+      "outer_km": 42900,
+      "inner_ratio": 1.651458,
+      "outer_ratio": 1.732214,
+      "opacity": 0.012,
+      "pass": true
+    },
+    {
+      "id": "neptuno",
+      "name": "LeVerrier",
+      "inner_km": 53150,
+      "outer_km": 53250,
+      "inner_ratio": 2.146087,
+      "outer_ratio": 2.150125,
+      "opacity": 0.055,
+      "pass": true
+    },
+    {
+      "id": "neptuno",
+      "name": "Lassell",
+      "inner_km": 51200,
+      "outer_km": 55200,
+      "inner_ratio": 2.06735,
+      "outer_ratio": 2.228862,
+      "opacity": 0.008,
+      "pass": true
+    },
+    {
+      "id": "neptuno",
+      "name": "Adams",
+      "inner_km": 62925.5,
+      "outer_km": 62940.5,
+      "inner_ratio": 2.540802,
+      "outer_ratio": 2.541408,
+      "opacity": 0.075,
+      "pass": true
+    }
+  ],
+  "assertions": {
+    "all_outside_equator": true,
+    "all_positive_width": true,
+    "display_opacity_bounded": true,
+    "no_procedural_texture": true
+  }
+}
