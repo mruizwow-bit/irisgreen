@@ -64,7 +64,7 @@ for(const tc of cases){
  if(!stage||!firstPick)throw new Error(tc.name+': workspace/first action missing');
  const workspaceFirst=stage.y<tc.height*.38 && firstPick.y<tc.height;
  const overflow=await page.evaluate(()=>document.documentElement.scrollWidth>document.documentElement.clientWidth);
- const minButton=await page.locator('button').evaluateAll(bs=>Math.min(...bs.map(b=>b.getBoundingClientRect().height)));
+ const minButton=await page.locator('button').evaluateAll(bs=>{const visible=bs.map(b=>b.getBoundingClientRect()).filter(r=>r.width>0&&r.height>0);return visible.length?Math.min(...visible.map(r=>r.height)):0});
 
  let mobileSpecific=true;
  if(tc.width<=850){
