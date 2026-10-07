@@ -52,6 +52,7 @@ jobs:
           fi
 
           npx -y netlify-cli@latest deploy \
+            --no-build \
             --prod \
             --dir=maintenance-dist \
             --site="$SITE_ID" \
