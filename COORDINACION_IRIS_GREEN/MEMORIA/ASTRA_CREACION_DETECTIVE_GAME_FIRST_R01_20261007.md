@@ -60,23 +60,23 @@ Archivos de producto:
 
 ### Sistema
 
-Cada escena genera una configuraciÃ³n simulada interna distinta para Vera:
-- luz;
-- sonido;
-- textura.
+R01.1 elimina el target secreto de la primera iteración.
 
-No existe una respuesta universal fija.
+Ya NO existe `randomProfile()`, combinación correcta oculta ni umbral de acierto para habilitar el cierre.
 
-La persona:
-1. observa;
-2. selecciona un elemento;
-3. cambia intensidad;
-4. prueba;
-5. observa tres seÃ±ales: cuerpo / respiraciÃ³n / atenciÃ³n;
-6. cambia hipÃ³tesis;
-7. resuelve cuando encuentra una configuraciÃ³n compatible con esa escena.
+Contrato actual:
 
-No puntuaciÃ³n.
+`OBSERVAR → FORMULAR HIPÓTESIS SOBRE VERA → CAMBIAR → PROBAR → COMPARAR CONSECUENCIAS → CERRAR INVESTIGACIÓN`
+
+- la escena usa un modelo de consecuencias determinista por `?scene=N`;
+- no prescribe un nivel correcto de luz/sonido/textura;
+- distintas combinaciones pueden producir señales distintas;
+- se requieren al menos dos configuraciones diferentes para cerrar la investigación;
+- la hipótesis se expresa como `A Vera le calma / A Vera le activa / Depende de la combinación`;
+- cerrar la escena significa haber comparado estrategias, no haber adivinado una respuesta;
+- `Otra escena` incrementa el seed y mantiene reproducibilidad.
+
+No puntuación.
 No vidas.
 No streak.
 No perfil.
@@ -161,4 +161,4 @@ No escala a mÃ¡s escenas antes de HUMAN QA / siguiente gate.
 
 `DETECTIVE_GAME_FIRST_VERTICAL_SLICE_READY_FOR_NEXO`
 
-Este gate significa **vertical slice de Astra ejecutado y listo para el siguiente gate técnico de Nexo**. Astra mantiene el ownership de correcciones de producto hasta HUMAN QA; Nexo no sustituye la construcción de Astra.
+El gate se emite únicamente tras ejecución verde del harness y evidencia 1440/390/320 + vídeo. Astra mantiene ownership de correcciones de producto hasta HUMAN QA.
