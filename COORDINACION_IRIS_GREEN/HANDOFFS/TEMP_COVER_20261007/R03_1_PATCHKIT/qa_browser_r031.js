@@ -52,6 +52,8 @@ const pend=(id,n)=>R.push({id,estado:'PENDIENTE',nota:n});
  ok('CALAMAR_6_FOTOFOROS_OCULARES',squidMorph['ocular-photophore']===6,JSON.stringify(squidMorph));
  const lanternFins=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'pectoral-fin':0,'adipose-fin':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
  ok('LINTERNA_ALETAS_ESPECIFICAS',lanternFins['pectoral-fin']===2&&lanternFins['adipose-fin']===1,JSON.stringify(lanternFins));
+ const lanternPhoto=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'photophore-AOa':0,'photophore-AOp':0,'photophore-Prc':0,'photophore-Pol':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
+ ok('LINTERNA_FOTOFOROS_DIAGNOSTICOS',lanternPhoto['photophore-AOa']===16&&lanternPhoto['photophore-AOp']===18&&lanternPhoto['photophore-Prc']===4&&lanternPhoto['photophore-Pol']===2,JSON.stringify(lanternPhoto));
  const hatchetMorph=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-hacha');const count={'eye-up':0,'eye-up-pupil':0,'dorsal-blade':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
  ok('HACHA_OJOS_DORSALES',hatchetMorph['eye-up']===2&&hatchetMorph['eye-up-pupil']===2,JSON.stringify(hatchetMorph));
  ok('HACHA_DORSAL_BLADE',hatchetMorph['dorsal-blade']===1,JSON.stringify(hatchetMorph));
