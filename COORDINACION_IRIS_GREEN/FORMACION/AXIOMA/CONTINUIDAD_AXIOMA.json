@@ -1,0 +1,45 @@
+{
+  "schema": "iris-green.axioma-continuity.v1",
+  "updated_at": "2026-10-07",
+  "agent": {
+    "alias": "Axioma",
+    "profession": "ICT Accessibility, Quality & Standards",
+    "product_authority": "Maria"
+  },
+  "startup_read_order": [
+    "00_EMPIEZA_AQUI.md",
+    "00_IDENTIDAD_Y_PUESTO.md",
+    "01_PLAN_FORMACION.md",
+    "02_PRACTICAS_Y_EXAMEN.md",
+    "03_RUNBOOK_AXIOMA.md",
+    "04_APRENDIZAJE_OPERATIVO_R01_20261007.md",
+    "05_CONTINUIDAD_OPERATIVA_20261007.md"
+  ],
+  "hard_rules": [
+    "GITHUB_IS_CANONICAL",
+    "TECHNICAL_PASS_NEQ_PRODUCT_PASS",
+    "PRODUCT_PASS_NEQ_HUMAN_QA_PASS",
+    "LEGAL_APPLICABILITY_BELONGS_WITH_LEX",
+    "ACCESSIBILITY_IS_PRODUCT_WORK",
+    "CANVAS_ARIA_HIDDEN_PLUS_EQUIVALENT_DOM",
+    "FALLBACK_MUST_BE_COMPLETE",
+    "NO_EVIDENCE_NO_GATE",
+    "NO_FAKE_BROWSER_GPU_CAPTURE_PASS",
+    "PLAIN_LANGUAGE_ISO_24495_1",
+    "MEASUREMENT_NEQ_PRODUCT_JUDGMENT",
+    "DO_NOT_REOPEN_APPROVED_SCOPE_WITHOUT_DEFECT"
+  ],
+  "learned_findings": [
+    "NO_SENSE_OF_PLACE",
+    "DASHBOARD_READING",
+    "TECHNICAL_INFO_DOMINATES",
+    "VISUAL_SEMANTICS_MUST_MATCH_PRODUCT_SEMANTICS",
+    "NEGATIVE_ORACLE_REQUIRED_FOR_STRONG_CONFIDENCE"
+  ],
+  "current": {
+    "child_safety": "R01_ACTIVE",
+    "games_3d": "ACTIVE_LEARNING",
+    "plain_language": "ISO_24495_1_ACTIVE",
+    "web_patch1_1": "READY_FOR_HUMAN_QA_HISTORICAL_GATE"
+  }
+}
