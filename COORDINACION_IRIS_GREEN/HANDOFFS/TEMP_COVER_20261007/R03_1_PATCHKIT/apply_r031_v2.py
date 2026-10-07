@@ -10,6 +10,19 @@ for f in (A,P,D,E):
 
 s=A.read_text(encoding='utf-8')
 
+# Argyropelecus: helper de ojo tubular orientado dorsalmente.
+if 'function eyeUp' not in s:
+    eye_marker=r"""function eye\(parent, x,y,z,r=0\.012\)\{.*?\n\}"""
+    eye_match=re.search(eye_marker,s,flags=re.S)
+    if eye_match:
+        eye_up=r'''function eyeUp(parent, x,y,z,r=0.012){
+  const white=mat(0xb8cad6,{roughness:0.34});
+  const dark=mat(0x03070a,{roughness:0.18});
+  sphere(parent,white,[x,y,z],[r*1.65,r*2.35,r*1.45],'eye-up',18);
+  sphere(parent,dark,[x,y+r*0.92,z],[r*0.72,r*0.62,r*0.62],'eye-up-pupil',16);
+}'''
+        s=s[:eye_match.end()]+"\n"+eye_up+s[eye_match.end():]
+
 if 'vIGWorld' not in s:
     pat=r"const mat = \(color, opts=\{\}\) => new THREE\.MeshStandardMaterial\(\{.*?\n\}\);"
     repl=r'''const mat = (color, opts={}) => {
@@ -103,6 +116,16 @@ if 'cuerpoSecciones(root,silver' not in s:
   ],24,'body');'''
     s,n=re.subn(r"const body=cuerpoExtrudido\(root,silver,.*?,'body'\);",hat,s,count=1,flags=re.S)
     if n!=1: raise SystemExit('no encuentro cuerpo hacha')
+
+# Argyropelecus: ojos dorsales y lámina dorsal genérica segura a nivel de género.
+s=s.replace("eye(root,L*0.38,L*0.18,L*0.07,L*0.055);","eyeUp(root,L*0.38,L*0.18,L*0.07,L*0.055);")
+s=s.replace("eye(root,L*0.38,L*0.18,-L*0.07,L*0.055);","eyeUp(root,L*0.38,L*0.18,-L*0.07,L*0.055);")
+if "'dorsal-blade'" not in s:
+    hatchet_fin=r"""(function makeHatchet\(a,L\)\{.*?const finMat=.*?;\n)"""
+    blade=r'''\1  fin(root,finMat,[[-L*0.05,L*0.20,0],[-L*0.16,L*0.43,0],[-L*0.24,L*0.22,0]],'dorsal-blade');
+'''
+    s,n=re.subn(hatchet_fin,blade,s,count=1,flags=re.S)
+    if n!=1: raise SystemExit('no encuentro inserción de dorsal blade en Argyropelecus')
 
 if 'cuerpoSecciones(root,bodyMat' not in s:
     lan=r'''const body=cuerpoSecciones(root,bodyMat,[
