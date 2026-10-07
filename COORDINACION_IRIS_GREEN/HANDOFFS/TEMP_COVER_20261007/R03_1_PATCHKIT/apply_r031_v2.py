@@ -66,6 +66,19 @@ if 'function cuerpoSecciones' not in s:
     const n=(j+1)%radial,a=i*radial+j,b=i*radial+n,c=(i+1)*radial+n,d=(i+1)*radial+j;
     idx.push(a,b,d,b,c,d);
   }
+  /* Cerrar ambos extremos. Sin estas tapas, el cuerpo sería volumétrico de lado
+     pero mostraría un agujero al verlo de frente o desde atrás. */
+  const firstCenter=verts.length/3;
+  verts.push(sections[0].x,sections[0].cy||0,0);
+  const lastCenter=verts.length/3;
+  const last=sections[sections.length-1];
+  verts.push(last.x,last.cy||0,0);
+  const lastBase=(sections.length-1)*radial;
+  for(let j=0;j<radial;j++){
+    const n=(j+1)%radial;
+    idx.push(firstCenter,n,j);
+    idx.push(lastCenter,lastBase+j,lastBase+n);
+  }
   const g=new THREE.BufferGeometry();
   g.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));
   g.setIndex(idx); g.computeVertexNormals(); g.computeBoundingSphere();
