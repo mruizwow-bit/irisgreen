@@ -34,6 +34,19 @@ Esta carpeta conserva la formación incremental de Prisma. Los documentos diario
    - anti-patrones;
    - gate Prisma antes de HUMAN QA.
 
+4. [APRENDIZAJE_PRISMA_2026-10-07.md](./APRENDIZAJE_PRISMA_2026-10-07.md)
+   - Web R02 PATCH1/PATCH1.1 y fuente de verdad derivada;
+   - inventario activo vs histórico;
+   - Cielo 3D como continuidad espacial y arquitectura escalable;
+   - star-hopping, ambigüedad y límites antes de 88/88;
+   - Vida marina 3D con billboards y límites de validación;
+   - equivalencia de decisión entre ratón y teclado;
+   - preservación de estado al cambiar ajustes;
+   - El Vado: sistemas técnicos ≠ profundidad de juego;
+   - semántica perceptiva de animaciones de carga pesada;
+   - mar/ola: confort visual, horizonte, artefactos y sincronía audiovisual;
+   - regla transversal percepción → HUMAN QA → escala.
+
 ## Regla de mantenimiento
 
 Cada nueva revisión debe registrar:
@@ -46,4 +59,4 @@ Cada nueva revisión debe registrar:
 No duplicar informes enteros aquí. Los informes detallados permanecen en sus handoffs/estudios y se enlazan desde el aprendizaje diario.
 
 Último gate:
-`PRISMA_A8_INCREMENTAL_TRAINING_20261006_UPDATED`
+`PRISMA_A8_INCREMENTAL_TRAINING_20261007_UPDATED`
