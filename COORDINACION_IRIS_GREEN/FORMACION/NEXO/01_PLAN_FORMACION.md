@@ -342,3 +342,21 @@ Añade capacidades con salida verificable:
 Estado de cada capacidad: DOCUMENTADA / REPRODUCIDA_PARCIALMENTE / APLICADA_EN_PATCH / REVISADA_EN_RUNTIME / HUMAN_QA, con evidencia y límites. No ascender por acumular documentos.
 Orden de práctica: corregir defectos reproducidos → probar invariantes → revisión perceptual/uso → piloto de microescena → transferencia y escala. El inventario/diseño puede avanzar mientras se resuelve el motor.
 Prácticas7–14 añadidas al examen. Los estados antiguos de espera son fotografías históricas: consultar orden viva antes de ejecutar.
+
+
+## Ampliación R05 · 2026-10-07 · Producto, percepción, 3D y causalidad
+Lectura: [23_FORMACION_APLICADA_R05_20261007.md](23_FORMACION_APLICADA_R05_20261007.md).
+
+Capacidades añadidas:
+1. Cerrar una dirección de producto elegida por HUMAN QA sin convertirla en PASS global.
+2. Acotar rework a la evidencia reproducible más fuerte y superseder órdenes demasiado amplias.
+3. Diseñar oráculos con precondiciones reales; 0 casos no es PASS.
+4. Exigir correspondencia entre evidencia semántica y lo realmente renderizado.
+5. Preservar datos de schema futuro mediante modo temporal/solo lectura.
+6. Elegir 3D por significado espacial, no por estética o moda.
+7. Evaluar profundidad jugable y consecuencia, no sólo existencia de sistemas.
+8. Evaluar animación por lectura corporal/perceptiva, no sólo attachment técnico.
+9. Diseñar Creación desde causalidad y proyecto único misión/libre.
+10. Separar escala de datos de escala de experiencia humana.
+
+Próxima evidencia requerida: ejecutar las prácticas15–20 añadidas, con revisión independiente/humana donde corresponda. Documentación de estas capacidades no equivale a dominio demostrado.
