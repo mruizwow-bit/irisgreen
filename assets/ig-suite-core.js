@@ -594,7 +594,7 @@
     clear(app);
     app.append(topbar, work, side, live);
     app.classList.add('igs-app');
-    app.dataset.igsTools = PARA === 'child' ? 'essential' : 'all';
+    app.dataset.igsTools = D.body.dataset.igR44Creative === 'true' || PARA === 'child' ? 'essential' : 'all';
     moreToggle.setAttribute('aria-expanded', String(app.dataset.igsTools === 'all'));
     moreToggle.querySelector('.igs-btn-label').textContent = app.dataset.igsTools === 'all' ? t('fewerTools') : t('moreTools');
 

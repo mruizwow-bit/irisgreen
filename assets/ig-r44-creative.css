@@ -45,3 +45,8 @@ body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar{position:relative;b
 body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar .igs-primary{order:0;}
 body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar button{min-width:44px;min-height:44px;}
 @media(max-width:600px){body[data-ig-r44-creative="true"] .r44-creative .igs-viewport{height:42vh;min-height:220px;}}
+
+body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar label{min-width:0;max-width:100%;flex-wrap:wrap;}
+body[data-ig-r44-creative="true"] .r44-creative .igs-toolbar select{min-width:0;max-width:100%;}
+body[data-ig-r44-creative="true"] .r44-creative .igw-ta{color:var(--ig-text);caret-color:var(--ig-focus-global);}
+@media(forced-colors:active){body[data-ig-r44-creative="true"] .r44-creative .igw-ta{color:CanvasText;caret-color:Highlight;}}
