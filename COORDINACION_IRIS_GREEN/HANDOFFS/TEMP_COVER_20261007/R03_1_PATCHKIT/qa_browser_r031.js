@@ -50,6 +50,8 @@ const pend=(id,n)=>R.push({id,estado:'PENDIENTE',nota:n});
  });
  ok('CALAMAR_8_BRAZOS_2_TENTACULOS',squidMorph.arm===8&&squidMorph.tentacle===2&&squidMorph['tentacle-club']===2,JSON.stringify(squidMorph));
  ok('CALAMAR_6_FOTOFOROS_OCULARES',squidMorph['ocular-photophore']===6,JSON.stringify(squidMorph));
+ const lanternFins=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'pectoral-fin':0,'adipose-fin':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
+ ok('LINTERNA_ALETAS_ESPECIFICAS',lanternFins['pectoral-fin']===2&&lanternFins['adipose-fin']===1,JSON.stringify(lanternFins));
  pend('PARTIAL_LIGHT_PIXEL_EVIDENCE','capturas DARK/PARTIAL/REVEALED');
  pend('HUMAN_QA_MORFOLOGIA','lateral/frontal/3-4');
  pend('GPU_REAL','benchmark hardware'); pend('AT_REAL','lector de pantalla');
