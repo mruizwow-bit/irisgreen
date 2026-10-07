@@ -17,6 +17,21 @@ const pend=(id,n)=>R.push({id,estado:'PENDIENTE',nota:n});
  ok('NORMALES',geom.every(x=>x.normals===x.meshes),JSON.stringify(geom));
  ok('PNG_NO_CUERPO',geom.every(x=>x.maps===0),JSON.stringify(geom));
  ok('SIN_COMPRESION',geom.every(x=>x.scale.every(v=>Math.abs(v-1)<1e-9)),JSON.stringify(geom));
+ const sections=await p.evaluate(()=>{
+  const roots=window.__E.escena.children.filter(o=>o.name==='prof-pez-hacha'||o.name==='prof-pez-linterna');
+  return roots.map(r=>{
+   let body=null;r.traverse(o=>{if(o.isMesh&&o.userData&&o.userData.sectionBody&&o.userData.role==='body')body=o;});
+   if(!body)return{id:r.name,found:false};
+   const prof=body.userData.sectionProfile||[], widths=prof.map(q=>q.rz), heights=prof.map(q=>(q.ryTop||0)+(q.ryBottom||0));
+   const index=body.geometry.index.array, edge=new Map();
+   const add=(a,b)=>{const k=a<b?a+':'+b:b+':'+a;edge.set(k,(edge.get(k)||0)+1);};
+   for(let i=0;i<index.length;i+=3){const a=index[i],b=index[i+1],d=index[i+2];add(a,b);add(b,d);add(d,a);}
+   return{id:r.name,found:true,sections:prof.length,widthMin:Math.min(...widths),widthMax:Math.max(...widths),
+    heightMin:Math.min(...heights),heightMax:Math.max(...heights),boundary:[...edge.values()].filter(v=>v===1).length};
+  });
+ });
+ ok('SECCIONES_VARIABLES',sections.every(x=>x.found&&x.sections>=6&&x.widthMax>x.widthMin*1.8&&x.heightMax>x.heightMin*1.8),JSON.stringify(sections));
+ ok('CUERPOS_SECCIONALES_CERRADOS',sections.every(x=>x.boundary===0),JSON.stringify(sections));
  const orient=await p.evaluate(()=>{const P=window.IG_PRUEBA3D;P.pausar(true);P.fijarReloj(9);P.latir();const roots=window.__E.escena.children.filter(o=>o.name&&o.name.startsWith('prof-'));const before=Object.fromEntries(roots.map(r=>[r.name,r.rotation.y]));window.__E.camara.position.x+=0.37;window.__E.camara.lookAt(0,0,-1);window.__E.camara.updateMatrixWorld(true);P.latir();const after=Object.fromEntries(roots.map(r=>[r.name,r.rotation.y]));return{before,after};});
  ok('ROOT_NO_MIRA_CAMARA',Object.keys(orient.before).every(id=>Math.abs(orient.before[id]-orient.after[id])<1e-8),JSON.stringify(orient));
  const ray=await p.evaluate(()=>{const P=window.IG_PRUEBA3D,c=document.getElementById('lienzo3d').getBoundingClientRect(),out=[];P.pausar(true);for(const id of P.ids()){P.apuntarAAnimal(id);P.latir();const m=P.medida().find(x=>x.id===id);out.push({id,q:P.senalarPantalla(c.left+m.centroPantalla.x,c.top+m.centroPantalla.y)});}return out;});
