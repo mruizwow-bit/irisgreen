@@ -244,3 +244,18 @@ Estado inicial de TODAS: PENDIENTE_DE_EJECUCIÓN_Y_REVISIÓN. Los fallos de orig
 Para cada ejercicio entregar: base/hash, hipótesis, caso negativo, resultado esperado, resultado observado, método, límite y siguiente decisión. Sólo pruebas relevantes al riesgo; no una batería ornamental.
 Pregunta de transferencia: explicar cómo un fallo propio de Fósiles anticipa un fallo de Cielo o Peces y demostrar la prevención en código. Repetir el concepto no es suficiente.
 Evaluación independiente: Axioma/Prisma según encargo y María para HUMAN QA; esta formación no les atribuye revisión ya realizada.
+
+
+## Prácticas15–20 · R05 · 2026-10-07
+Estado inicial: PENDIENTE salvo reproducciones ya documentadas. No aprobar por escribir el procedimiento.
+
+| Práctica | Caso | PASS |
+|---|---|---|
+| 15 · Oracle no vacío | Diseñar prueba de selección/histéresis donde el estado de dos candidatos deba ocurrir | La prueba falla si 0 casos alcanzan la precondición; fixture y caso real se etiquetan por separado. |
+| 16 · Evidencia visible | Introducir punto semántico no renderizado en patrón/objeto | Nunca cuenta para mínimo, overlay o mensaje; mismo conjunto observable en render/hit/reveal. |
+| 17 · Schema futuro | Cargar save con versión mayor y usar la app | Bytes intactos tras mover/editar/cambiar idioma; sin falso “guardado”. |
+| 18 · Dirección 3D | Comparar una tarea espacial y una no espacial | Justificar 3D sólo cuando mejora orientación/volumen/física; no imponerlo a documento/timeline. |
+| 19 · Gameplay profundo | Vertical slice con dos estrategias y consecuencia visible | No checklist prescrita; dos soluciones reales; mundo cambia y puede corregirse. |
+| 20 · Creación por consecuencia | Uno de los cinco slices Creación | Sin manual previo: primera acción autónoma, consecuencia entendida, segunda modificación, artefacto real y paso a libre en mismo proyecto. |
+
+Pregunta de examen R05: explicar con un ejemplo por qué PRODUCT_DIRECTION_SELECTED no equivale a FULL_PRODUCT_PASS y qué gates permanecen abiertos.
