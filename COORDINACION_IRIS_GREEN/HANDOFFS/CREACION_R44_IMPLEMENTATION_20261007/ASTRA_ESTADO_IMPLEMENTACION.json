@@ -26,5 +26,10 @@
   ],
   "runtime_artifact_id": 11482524580,
   "m9_rhythm_file_roundtrip": "PASS",
-  "physics_local_test": "PASS_WITH_GRAVITY_MUTATION_REJECTED"
+  "physics_local_test": "PASS_WITH_GRAVITY_MUTATION_REJECTED",
+  "c07": {
+    "state": "IMPLEMENTED_AWAITING_BROWSER_QA",
+    "scope": "Circular-orbit transit simulation; inclination, radius, cadence and detector noise; CSV/PNG/mission sheet exports",
+    "local_evidence": "r44_transit.cjs: geometry, finite exposure, validation and Kepler scaling; 4 mutations rejected"
+  }
 }

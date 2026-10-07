@@ -276,8 +276,9 @@
   /* ================= Estudio ================= */
   var IG = root.IGSuite, D = root.document; if (!IG || !D) return;
   var LANG = IG.lang;
-  var MODELS = ['life', 'wolf', 'traffic', 'net', 'eco', 'lv'];
-  var FAMILY = { life: 'famAuto', wolf: 'famAuto', traffic: 'famTraffic', net: 'famTraffic', eco: 'famEco', lv: 'famEco' };
+  var MODELS = ['life', 'wolf', 'traffic', 'net', 'eco', 'lv', 'transit'];
+  var Transit = root.IGTransit;
+  var FAMILY = { life: 'famAuto', wolf: 'famAuto', traffic: 'famTraffic', net: 'famTraffic', eco: 'famEco', lv: 'famEco', transit: 'famSpace' };
   var RULE_PRESETS = [['B3/S23', 'rpLife'], ['B36/S23', 'rpHigh'], ['B2/S', 'rpSeeds'], ['B3678/S34678', 'rpDayNight'], ['B3/S012345678', 'rpNoDeath'], ['B3/S12345', 'rpMaze']];
   var SIZES = [[32, 20], [48, 30], [64, 40], [96, 60], [128, 80]];
   var WOLF_PRESETS = [30, 90, 110, 184, 60, 150, 250];
@@ -298,6 +299,7 @@
         { id: 'phantom', title: t('stPhantom'), desc: t('stPhantomD'), para: 'teen' },
         { id: 'crossing', title: t('stCrossing'), desc: t('stCrossingD'), para: 'any' },
         { id: 'ecobalance', title: t('stEco'), desc: t('stEcoD'), para: 'any' },
+        { id: 'transit', title: t('stTransit'), desc: t('about_transit'), para: 'any' },
         { id: 'lvphase', title: t('stLv'), desc: t('stLvD'), para: 'adult' }
       ];
     },
@@ -309,7 +311,7 @@
 
   function defaults() {
     return {
-      v: 1, model: 'life', seed: 'iris', speed: 4, chart: 'time', challenge: null,
+      v: 1, transit: Transit.defaults(), model: 'life', seed: 'iris', speed: 4, chart: 'time', challenge: null,
       life: { w: 64, h: 40, wrap: true, rule: 'B3/S23', cells: '!', start: '!', gen: 0, pattern: 'glider', rot: 0, flip: false, fill: 0.3 },
       wolf: { rule: 30, w: 121, wrap: true, init: 'single', custom: '', fill: 0.5 },
       traffic: { L: 100, density: 0.3, vmax: 5, p: 0.25, init: 'even' },
@@ -395,6 +397,9 @@
         R.rnd = rngFor('eco'); R.eco = Lib.ecoInit(S.eco, R.rnd);
         R.data = table(['step', 'grass', 'rabbits', 'foxes']); recordEco();
         kc.x = clamp(kc.x, 0, S.eco.w - 1); kc.y = clamp(kc.y, 0, S.eco.h - 1);
+      } else if (m === 'transit') {
+        S.transit = S.transit || Transit.defaults(); R.rnd=rngFor('transit');
+        R.data=table(['minutes','expected','measured']); recordTransit();
       } else if (m === 'lv') {
         var P = S.lv; R.x = P.x0; R.y = P.y0; R.V0 = Lib.lvInvariant(P, R.x, R.y);
         R.data = table(['time', 'prey', 'pred']); record([0, R.x, R.y]);
@@ -403,6 +408,8 @@
       if (S.chart === 'phase' && m !== 'eco' && m !== 'lv') S.chart = 'time';
       R.fd = null;
     }
+    function recordTransit() { var sample=Transit.sample(S.transit,R.t*S.transit.cadence,R.rnd); record([R.t*S.transit.cadence,sample.expected,sample.measured]); }
+    function observeOrbit() { stop(true); resetModel(); var n=Math.ceil(Transit.period(S.transit)/S.transit.cadence); for(var i=0;i<n;i++)stepModel(); draw(); updateLive(); ctx.announce(liveText()); }
     function popOf(a) { var n = 0; for (var i = 0; i < a.length; i++) n += a[i]; return n; }
     function snapshotCars() { return R.cars.map(function (c) { return [c.x, c.v, c.id]; }); }
     function recordTraffic() {
@@ -437,6 +444,8 @@
         Lib.ecoStep(R.eco, S.eco, R.rnd); recordEco();
         var r = R.eco.rabbits.length, f = R.eco.foxes.length;
         if (!r && !f) R.halt = t('ecoAllGone', { t: R.eco.t });
+      } else if (m === 'transit') {
+        R.t += 1; recordTransit();
       } else if (m === 'lv') {
         var P = S.lv, nx = (P.method === 'euler' ? Lib.euler : Lib.rk4)(P, R.x, R.y, P.h);
         R.x = Math.max(0, nx[0]); R.y = Math.max(0, nx[1]); R.t += 1;
@@ -504,7 +513,7 @@
       if (S.model === 'life' && !quiet) syncLife(true);
       updateLive(); draw();
     }
-    function togglePlay() { if (running) { stop(); ctx.announce(t('paused', { n: currentStep() })); } else start(); }
+    function togglePlay() { if (S.model==='transit') {observeOrbit(); return;} if (ctx.reducedMotion()) {advance(10);return;} if (running) { stop(); ctx.announce(t('paused', { n: currentStep() })); } else start(); }
     function resetRun() {
       stop();
       if (S.model === 'life') { S.life.cells = S.life.start; S.life.gen = 0; ctx.commit(t('resetDone')); }
@@ -512,7 +521,7 @@
     }
     function setPlayLabel() {
       if (!runBtn) return;
-      runBtn.querySelector('.igs-btn-label').textContent = stepMode ? t('advance10') : (running ? t('pause') : t('start'));
+      runBtn.querySelector('.igs-btn-label').textContent = S.model==='transit' ? t('observeOrbit') : stepMode ? t('advance10') : (running ? t('pause') : t('start'));
       var svg = runBtn.querySelector('svg'); if (svg) svg.replaceWith(ctx.icon(!stepMode && running ? 'pause' : 'play'));
     }
     /* Life: el tablero actual es el trabajo; al pausar o avanzar se guarda como un paso deshacible. */
@@ -538,11 +547,25 @@
       else if (m === 'traffic') out = drawTraffic(g, W, H, exporting);
       else if (m === 'net') out = drawNet(g, W, H);
       else if (m === 'eco') out = drawEco(g, W, H, exporting);
+      else if(m==='transit') out=drawTransit(g,W,H);
       else out = drawPhase(g, W, H);
       badge.textContent = t('model_' + m) + ' · ' + stepLabel();
       return out;
     }
     function stepLabel() { var m = S.model; if (m === 'life') return t('genN', { n: R.gen }); if (m === 'lv') return 't = ' + num(R.t * S.lv.h, 2); return t('stepN', { n: currentStep() }); }
+    function drawTransit(g,W,H) {
+      var p=S.transit, scale=Math.min(W/(2*p.a+3),(H-64)/3), cx=W/2,cy=H/2;
+      var q=Transit.position(p,R.t*p.cadence), inc=p.inclination*Math.PI/180;
+      g.strokeStyle=COL.soft;g.lineWidth=1.5;g.setLineDash([4,4]);g.beginPath();
+      for(var j=0;j<=120;j++){var a=j/120*2*Math.PI,x=cx+p.a*Math.sin(a)*scale,y=cy+p.a*Math.cos(a)*Math.cos(inc)*scale;if(j)g.lineTo(x,y);else g.moveTo(x,y);}g.stroke();g.setLineDash([]);
+      function planet(){g.fillStyle=COL.navy;g.beginPath();g.arc(cx+q.x*scale,cy+q.y*scale,Math.max(2,p.radius*scale),0,Math.PI*2);g.fill();}
+      if(q.z<0)planet();
+      var light=g.createRadialGradient(cx-scale*.3,cy-scale*.3,0,cx,cy,scale);light.addColorStop(0,'#fff7ce');light.addColorStop(1,'#e8a62d');g.fillStyle=light;g.beginPath();g.arc(cx,cy,scale,0,Math.PI*2);g.fill();
+      if(q.z>=0)planet();
+      txt(g,t('transitScene'),10,20,{size:12});
+      txt(g,t('transitPeriod',{p:num(Transit.period(p)/60,1)}),10,H-35,{size:11});
+      return {kind:'transit'};
+    }
     function gridLayout(cols, rows, W, H, maxCell) {
       var cs = Math.max(1, Math.min(maxCell, Math.floor(Math.min((W - 16) / cols, (H - 40) / rows))));
       return { cs: cs, ox: Math.floor((W - cs * cols) / 2), oy: Math.max(30, Math.floor((H - cs * rows) / 2)) };
@@ -692,6 +715,7 @@
         var a = m === 'eco' ? cols.indexOf('rabbits') : 1, b = m === 'eco' ? cols.indexOf('foxes') : 2;
         return { phase: true, title: t('phaseTitle'), xl: t(m === 'eco' ? 'thRabbits' : 'axisPrey'), yl: t(m === 'eco' ? 'thFoxes' : 'axisPred'), pts: d.rows.map(function (r) { return [r[a], r[b]]; }) };
       }
+      if(m==='transit') return {phase:false,title:t('chartTitle_transit'),xl:t('col_minutes'),yl:t('flux'),series:[ser('expected',t('col_expected'),COL.navy),ser('measured',t('col_measured'),COL.orange,[3,3])],scaleGrass:1};
       var x = { life: t('thGen'), wolf: t('thStep'), traffic: t('thStep'), net: t('thStep'), eco: t('thStep'), lv: t('thTime') }[m];
       var list = {
         life: [ser('pop', t('thPop'), COL.navy), ser('births', t('thBirths'), COL.green, [6, 4]), ser('deaths', t('thDeaths'), COL.red, [2, 3])],
@@ -721,6 +745,7 @@
       if (x1 - x0 < 10 && S.model !== 'lv') x1 = x0 + 10;
       spec.series.forEach(function (s) { rows.forEach(function (r) { var v = r[s.i] * (s.i === R.data.cols.indexOf('grass') ? spec.scaleGrass : 1); if (v > y1) y1 = v; }); });
       if (S.model === 'wolf') y1 = Math.max(y1, 1);
+      if(S.model==='transit'){y0=1-Math.max(S.transit.radius*S.transit.radius*1.3,S.transit.noise*5/1e6,0.0002);y1=(1+Math.max(S.transit.noise*5/1e6,0.0002))/1.08;}
       var sc2 = axes(g, b, x0, x1, y0, y1 * 1.08, spec.xl, spec.yl, spec.title);
       var step = Math.max(1, Math.floor(rows.length / 1200));
       spec.series.forEach(function (s) {
@@ -753,6 +778,7 @@
         var dx = px - lay.cx, dy = py - lay.cy, d = Math.hypot(dx, dy); if (Math.abs(d - lay.rad) > 22) return null;
         var a = Math.atan2(dy, dx) + Math.PI / 2; if (a < 0) a += Math.PI * 2; return { x: Math.floor(a / (Math.PI * 2) * S.traffic.L) % S.traffic.L, y: 0 };
       }
+      if (lay.kind === 'transit') return {px:px,py:py};
       if (lay.kind === 'phase') return { px: px, py: py };
       if (lay.kind === 'net') return { px: px, py: py };
       return null;
@@ -762,6 +788,7 @@
       if (e.button !== 0) return;
       var c = cellFrom(e); if (!c) return;
       cursorShown = false;
+      if(S.model==='transit'){advance(1);return;}
       if (S.model === 'lv') {
         var sc = lay.sc, P = S.lv, b = plotBox(simCv.clientWidth, simCv.clientHeight);
         var x = (c.px - b.x) / b.w * lay.maxX, y = (b.y + b.h - c.py) / b.h * lay.maxY;
@@ -856,6 +883,7 @@
       if (!inVp) return false;
       var st = e.shiftKey ? 5 : 1, d = { ArrowLeft: [-st, 0], ArrowRight: [st, 0], ArrowUp: [0, -st], ArrowDown: [0, st] }[k], m = S.model;
       if (d) {
+        if(m==='transit'){S.transit.inclination=clamp(S.transit.inclination+d[0]-d[1],60,90);changed(t('inclination'));return true;}
         if (m === 'lv') { S.lv.x0 = Math.max(0.1, Math.round((S.lv.x0 + d[0]) * 10) / 10); S.lv.y0 = Math.max(0.1, Math.round((S.lv.y0 - d[1]) * 10) / 10); ctx.commit(t('lvStartSet')); resetModel(); renderInspector(); draw(); updateLive(); ctx.announce(t('lvStartAt', { x: num(S.lv.x0, 1), y: num(S.lv.y0, 1) })); return true; }
         if (m === 'net') return false;
         var cols = m === 'life' ? S.life.w : m === 'wolf' ? S.wolf.w : m === 'traffic' ? S.traffic.L : S.eco.w;
@@ -864,7 +892,7 @@
         else { kc.x = clamp(kc.x + d[0], 0, cols - 1); kc.y = clamp(kc.y + d[1], 0, rows - 1); }
         cursorShown = true; draw(); ctx.announce(cursorText()); return true;
       }
-      if (k === 'Enter' || k === ' ') { if (m === 'lv' || m === 'net') { advance(1); return true; } cursorShown = true; act(); return true; }
+      if (k === 'Enter' || k === ' ') { if (m === 'lv' || m === 'net' || m === 'transit') { advance(1); return true; } cursorShown = true; act(); return true; }
       if (k === 'Escape') { if (sel) { select(null); ctx.announce(t('deselected')); return true; } return false; }
       return false;
     }
@@ -880,6 +908,7 @@
     /* ================= Paneles: estructura, propiedades, herramientas ================= */
     function elementsOf(m) {
       return {
+        transit: [['telescope',t('telescope')]],
         life: [['grid', t('elGrid')], ['rule', t('elRule')], ['pattern', t('elPattern')]],
         wolf: [['wrule', t('elWRule')], ['wrow', t('elWRow')]],
         traffic: [['road', t('elRoad')], ['drivers', t('elDrivers')]],
@@ -941,6 +970,7 @@
       ctx.setInspector(out); updateLive();
     }
     function docFields() {
+      if(S.model==='transit')return transitFields();
       var m = S.model, out = [h('h4', { text: t('model_' + m) }), h('p', { class: 'igs-muted', text: t('about_' + m) })];
       out.push(F.select(t('modelLabel'), m, MODELS.map(function (x) { return [x, t('model_' + x)]; }), { onChange: setModel }));
       out.push(F.range(t('speed'), S.speed, { min: 1, max: 10, step: 1, unit: t('stepsPerSec'), onChange: function (v) { S.speed = v; ctx.commit(t('speedSet', { s: v })); syncSpeedSelect(); } }));
@@ -956,12 +986,18 @@
       out.push(h('p', { class: 'igs-muted', text: t('flashNote') }));
       return out;
     }
+    function transitFields() {
+      var out=[h('h4',{text:t('telescope')}),h('p',{text:t('about_transit')})];
+      [['a','orbitRadius',3,30,0.5],['radius','planetRadius',0.01,0.3,0.01],['inclination','inclination',60,90,0.5],['cadence','cadence',2,120,1],['noise','noise',0,5000,50],['phase','orbitalPhase',0,1,0.01]].forEach(function(f){out.push(F.number(t(f[1]),S.transit[f[0]],{min:f[2],max:f[3],step:f[4],onChange:function(v){S.transit[f[0]]=v;changed(t(f[1]));}}));});
+      out.push(h('p',{text:t('transitLimits')}));return out;
+    }
     function bitButtons(label, arr, onToggle) {
       var row = h('div', { class: 'igsim-bits', role: 'group', 'aria-label': label });
       arr.forEach(function (on, i) { var b = h('button', { type: 'button', class: 'igsim-bit', 'aria-pressed': String(!!on), 'aria-label': label + ' ' + i, text: String(i) }); b.addEventListener('click', function () { onToggle(i); }); row.appendChild(b); });
       return h('div', { class: 'igs-field' }, h('span', { class: 'igsim-bits-label', text: label }), row);
     }
     function elementFields(id) {
+      if(id==='telescope')return transitFields();
       var out = [h('h4', { text: elementName(id) })], L = S.life, Wf = S.wolf, T = S.traffic, N = S.net, E = S.eco, P = S.lv;
       function rng2(key, obj, prop, min, max, step, unit, fmt, reset) {
         return F.range(t(key), obj[prop], { min: min, max: max, step: step, unit: unit, format: fmt, onChange: function (v) { obj[prop] = v; changed(t('paramSet', { p: t(key) }), reset); } });
@@ -1062,6 +1098,7 @@
     function lastRow() { return R.data.rows[R.data.rows.length - 1]; }
     function liveText() {
       var m = S.model, r = lastRow();
+      if(m==='transit')return t('liveTransit',{n:R.data.rows.length,f:num(r[2]*100,4),time:num(r[0],1)});
       if (m === 'life') return t('liveLife', { g: R.gen, p: r[1], b: r[2], d: r[3] });
       if (m === 'wolf') return t('liveWolf', { n: r[0], o: r[1], d: num(r[2] * 100, 0) });
       if (m === 'traffic') return t('liveTraffic', { t: R.t, v: num(r[1], 2), k: num(r[1] * 27, 0), f: num(r[2], 2), s: r[3], j: jams() });
@@ -1080,6 +1117,7 @@
     }
     function summary() {
       var m = S.model, r = lastRow(), base = t('model_' + m) + '. ';
+      if(m==='transit')return base+liveText()+' '+t('transitLimits');
       if (m === 'life') return base + t('sumLife', { w: S.life.w, h: S.life.h, rule: S.life.rule, g: R.gen, p: r[1], wrap: S.life.wrap ? t('wrapYes') : t('wrapNo') }) + ' ' + t('cursorCell', { x: kc.x + 1, y: kc.y + 1 });
       if (m === 'wolf') return base + t('sumWolf', { r: S.wolf.rule, w: S.wolf.w, n: r[0], d: num(r[2] * 100, 0) });
       if (m === 'traffic') return base + t('sumTraffic', { L: S.traffic.L, n: R.cars.length, t: R.t, v: num(r[1], 2), s: r[3], j: jams() });
@@ -1172,6 +1210,7 @@
         });
       });
     }
+    ctx.addExport(t('transitSheet'), function(){if(S.model!=='transit')return;ctx.download(new Blob([t('stTransit')+'\n'+JSON.stringify(S.transit,null,2)+'\n'+t('transitPeriod',{p:num(Transit.period(S.transit)/60,2)})+'\n'+t('transitLimits')],{type:'text/plain;charset=utf-8'}),base('-mission.txt'));});
     ctx.addExport(t('exportCsv'), exportCsv);
     ctx.addExport(t('exportChart'), exportChartPng);
     ctx.addExport(t('exportSim'), exportSimPng);
@@ -1201,9 +1240,10 @@
       traffic: [['tselect', 'toolSelect', 'select'], ['addcar', 'toolAddCar', 'plus'], ['removecar', 'toolRemoveCar', 'minus']],
       net: [['nselect', 'toolSelect', 'select']],
       eco: [['eselect', 'toolInspect', 'select'], ['addrabbit', 'toolAddRabbit', 'circle'], ['addfox', 'toolAddFox', 'triangle']],
-      lv: [['lvpoint', 'toolStartPoint', 'select']]
+      lv: [['lvpoint', 'toolStartPoint', 'select']],
+      transit: [['telescope', 'telescope', 'select']]
     };
-    function runClick() { if (stepMode || ctx.reducedMotion()) advance(10); else togglePlay(); }
+    function runClick() { if(S.model==='transit'){observeOrbit();return;} if (stepMode || ctx.reducedMotion()) advance(10); else togglePlay(); }
     root.addEventListener('ig:motion-change', function () {
       stepMode = ctx.reducedMotion();
       if (stepMode) stop(true);
@@ -1277,6 +1317,7 @@
       else if (id === 'phantom') { S.model = 'traffic'; S.traffic.density = 0.3; S.traffic.p = 0.3; S.traffic.init = 'even'; S.chart = 'time'; kc = { x: 0, y: 0 }; }
       else if (id === 'crossing') { S.model = 'net'; S.challenge = 'net'; }
       else if (id === 'ecobalance') { S.model = 'eco'; S.challenge = 'eco'; kc = { x: 24, y: 16 }; }
+      else if(id==='transit'){S.model='transit';}
       else if (id === 'lvphase') { S.model = 'lv'; S.chart = 'time'; }
       resetModel(); applyModelTools(); renderAll();
     }
@@ -1285,6 +1326,7 @@
     function isNum(v, a, b) { return typeof v === 'number' && isFinite(v) && v >= a && v <= b; }
     function validate(d) {
       try {
+        if(d && d.model==='transit' && !Transit.validate(d.transit))return false;
         if (!d || MODELS.indexOf(d.model) < 0 || typeof d.seed !== 'string' || d.seed.length > 40 || !isNum(d.speed, 1, 10)) return false;
         if (d.challenge !== null && ['life', 'net', 'eco'].indexOf(d.challenge) < 0) return false;
         if (['time', 'phase', 'fundamental'].indexOf(d.chart) < 0) return false;
@@ -1309,7 +1351,7 @@
         resetModel(); if (prevModel !== S.model) applyModelTools(); renderAll();
       },
       start: function (id) { ex(id); },
-      onTool: function (id) { tool = id; draw(); },
+      onTool: function (id) { tool = id; if(S.model==='transit' && id==='telescope')select('telescope'); draw(); },
       onKey: onKey
     };
   }

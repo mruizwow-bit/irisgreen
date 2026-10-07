@@ -507,10 +507,9 @@
     "id": "C07",
     "page": "simulaciones",
     "motor": "M3",
-    "start": null,
+    "start": "transit",
     "es": "Encontrar un planeta",
     "en": "Finding a planet",
-    "verification": "NOT_IMPLEMENTED",
-    "reason": "Transit simulation missing; ecosystem seed is not equivalent."
+    "verification": "IMPLEMENTED_AWAITING_BROWSER_QA"
   }
 ]

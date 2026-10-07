@@ -2,7 +2,7 @@
 
 ENGINE = 'simulaciones'
 SLUG = {'es': 'simulaciones', 'en': 'simulations'}
-SCRIPTS = ['ig-suite-simulaciones.js']
+SCRIPTS = ['ig-suite-transit.js', 'ig-suite-simulaciones.js']
 STYLES = ['ig-suite-simulaciones.css']
 LIBRARIES = 'Canvas 2D del navegador y cálculo propio de Iris Green (sin bibliotecas externas)'
 LIBRARIES_EN = 'The browser’s 2D canvas and Iris Green’s own calculations (no outside libraries)'
@@ -377,5 +377,9 @@ for _lang in ('es', 'en'):
         STRINGS[_lang]['pat_' + _k] = _name
         STRINGS[_lang]['patInfo_' + _k] = _info
 
+STRINGS['es'].update({'famSpace': 'Espacio', 'stTransit': 'Diseña una misión para encontrar planetas', 'model_transit': 'Tránsitos planetarios', 'about_transit': 'Cambia la órbita y el telescopio. Observa cómo cambia la luz cuando un planeta pasa delante de su estrella.', 'observeOrbit': 'Observar una órbita', 'transitScene': 'Estrella y planeta · vista del observador', 'transitPeriod': 'Órbita: {p} horas', 'flux': 'Luz relativa', 'col_minutes': 'Tiempo (min)', 'col_expected': 'Luz calculada', 'col_measured': 'Luz con ruido simulado', 'chartTitle_transit': 'Curva de luz', 'inclination': 'Inclinación (°; 90 = de canto)', 'telescope': 'Órbita y telescopio', 'orbitRadius': 'Radio orbital (radios estelares)', 'planetRadius': 'Radio del planeta / radio estelar', 'cadence': 'Tiempo por medida (min)', 'noise': 'Ruido del detector (ppm)', 'orbitalPhase': 'Posición inicial (0–1)', 'transitLimits': 'Simulación: estrella de masa y radio solares, disco uniforme y órbita circular. No son observaciones reales. Sin oscurecimiento del borde ni actividad estelar. El punto del planeta tiene un tamaño mínimo para poder verlo.', 'liveTransit': '{n} medidas. Minuto {time}. Luz: {f} %.', 'transitSheet': 'Exportar ficha de misión (TXT)'})
+STRINGS['en'].update({'famSpace': 'Space', 'stTransit': 'Design a mission to find planets', 'model_transit': 'Planetary transits', 'about_transit': 'Change the orbit and telescope. Watch the light change when a planet passes in front of its star.', 'observeOrbit': 'Observe one orbit', 'transitScene': 'Star and planet · observer view', 'transitPeriod': 'Orbit: {p} hours', 'flux': 'Relative light', 'col_minutes': 'Time (min)', 'col_expected': 'Calculated light', 'col_measured': 'Light with simulated noise', 'chartTitle_transit': 'Light curve', 'inclination': 'Inclination (°; 90 = edge-on)', 'telescope': 'Orbit and telescope', 'orbitRadius': 'Orbital radius (stellar radii)', 'planetRadius': 'Planet radius / stellar radius', 'cadence': 'Time per measurement (min)', 'noise': 'Detector noise (ppm)', 'orbitalPhase': 'Initial position (0–1)', 'transitLimits': 'Simulation: solar-mass, solar-radius star, uniform disc and circular orbit. These are not real observations. No limb darkening or stellar activity. The planet marker has a minimum visible size.', 'liveTransit': '{n} measurements. Minute {time}. Light: {f}%.', 'transitSheet': 'Export mission sheet (TXT)'})
+
 assert set(STRINGS['es']) == set(STRINGS['en']), set(STRINGS['es']) ^ set(STRINGS['en'])
 assert set(PAGE['es']) == set(PAGE['en'])
+
