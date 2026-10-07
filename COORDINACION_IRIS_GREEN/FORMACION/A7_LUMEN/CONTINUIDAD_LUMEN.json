@@ -1,0 +1,54 @@
+{
+  "schema": "iris-green.lumen-continuity.v1",
+  "updated_at": "2026-10-07",
+  "agent": {
+    "alias": "Lumen",
+    "id": "A7",
+    "profession": "Immersive Media & Interactive Audiovisual Engineer",
+    "lead": "Astra"
+  },
+  "startup_read_order": [
+    "00_EMPIEZA_AQUI.md",
+    "00_IDENTIDAD_Y_PUESTO.md",
+    "APRENDIZAJE_LUMEN_2026-09-30.md",
+    "03_RUNBOOK_MEDIA_INMERSIVA.md",
+    "06_FIABILIDAD_RENDIMIENTO_RECUPERACION_R03.md",
+    "08_APRENDIZAJE_OPERATIVO_R04_20261007.md",
+    "09_CONTINUIDAD_OPERATIVA_20261007.md"
+  ],
+  "hard_rules": [
+    "GITHUB_IS_CANONICAL",
+    "NO_EVIDENCE_NO_GATE",
+    "TECHNICAL_PASS_NEQ_PERCEPTUAL_PASS",
+    "DO_NOT_REGENERATE_KEEP_LOCKED",
+    "GENERATED_IMAGE_NEQ_FINAL_ASSET",
+    "BATCH_REVIEW_THEN_REWORK_ONLY_FAIL",
+    "NO_FAKE_GPU_BROWSER_CAPTURE_PASS",
+    "ADVANCE_INDEPENDENT_WORK_WHEN_HARDWARE_OFFLINE"
+  ],
+  "closed": {
+    "solar_foundation": "KEEP_LOCKED",
+    "solar_b03": "KEEP_LOCKED",
+    "mar22_meso_assets": "KEEP_LOCKED"
+  },
+  "current": {
+    "product": "Faro",
+    "island01": "El taller de las islas",
+    "route_target": "/es/juegos/faro/",
+    "visual_quality_order": "ORDEN_CALIDAD_VISUAL_FARO.md",
+    "license_gate": "PUBLIC_RELEASE_BLOCKED_PENDING_LICENSE_EVIDENCE",
+    "gpu_evidence": "PENDING_REAL_HARDWARE"
+  },
+  "npc": [
+    "Lili",
+    "Teo",
+    "Nara",
+    "Leo",
+    "Inés",
+    "Sol"
+  ],
+  "slack": {
+    "channel": "#general-sabik-ia-technology",
+    "channel_id": "C0C590Y8PHD"
+  }
+}
