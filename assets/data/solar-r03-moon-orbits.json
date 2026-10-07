@@ -1,0 +1,69 @@
+{
+  "schema": "iris-green.solar-r03.true-gap-moon-orbits.v1",
+  "date": "2026-10-07",
+  "rules": {
+    "semimajor_axis": "kept from canonical sistema-solar.json",
+    "period": "kept from canonical sistema-solar.json",
+    "eccentricity": "R03 override from NASA/NSSDCA/JPL fact sheets",
+    "plane_tilt": "absolute tilt from parent equatorial plane; retrograde direction remains represented by canonical retrograda flag",
+    "node": "NOT_MODELED_IN_R03_FOUNDATION; plane orientation around the parent axis is schematic",
+    "scope": "true-gap batch 10 only"
+  },
+  "sources": {
+    "jupiter": "https://ssd.jpl.nasa.gov/sats/elem/sep.html",
+    "saturn": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/saturniansatfact.html"
+  },
+  "bodies": {
+    "metis": {
+      "eccentricity": 0.001,
+      "plane_tilt_deg": 0.02,
+      "retrograde": false
+    },
+    "adrastea": {
+      "eccentricity": 0.002,
+      "plane_tilt_deg": 0.05,
+      "retrograde": false
+    },
+    "amaltea": {
+      "eccentricity": 0.003,
+      "plane_tilt_deg": 0.38,
+      "retrograde": false
+    },
+    "tebe": {
+      "eccentricity": 0.018,
+      "plane_tilt_deg": 1.08,
+      "retrograde": false
+    },
+    "pan": {
+      "eccentricity": 0,
+      "plane_tilt_deg": 0,
+      "retrograde": false
+    },
+    "atlas": {
+      "eccentricity": 0,
+      "plane_tilt_deg": 0.3,
+      "retrograde": false
+    },
+    "jano": {
+      "eccentricity": 0.007,
+      "plane_tilt_deg": 0.14,
+      "retrograde": false
+    },
+    "epimeteo": {
+      "eccentricity": 0.009,
+      "plane_tilt_deg": 0.34,
+      "retrograde": false
+    },
+    "hiperion": {
+      "eccentricity": 0.1042,
+      "plane_tilt_deg": 0.43,
+      "retrograde": false
+    },
+    "febe": {
+      "eccentricity": 0.164,
+      "plane_tilt_deg": 5.2,
+      "retrograde": true,
+      "source_inclination_deg": 174.8
+    }
+  }
+}
