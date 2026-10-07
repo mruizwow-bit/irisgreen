@@ -786,6 +786,13 @@
         for (var i = 0; i < len; i++) for (var c3 = 0; c3 < ch; c3++) { var s = Math.max(-1, Math.min(1, chans[c3][i] * gain)); v.setInt16(o, s < 0 ? s * 0x8000 : s * 0x7fff, true); o += 2; }
         return new Blob([buf], { type: 'audio/wav' });
       }
+      function exportVisual() {
+        requestRender();
+        /* El PNG conserva el instrumento que se ve en pantalla; no depende del audio. */
+        ctx.canvasBlob(app.canvas).then(function (blob) {
+          ctx.download(blob, (LANG === 'en' ? 'instrument-visual-' : 'visual-instrumento-') + ctx.stamp() + '.png');
+        });
+      }
       function exportMidi() {
         var TPQ = 480;
         function vlq(n) { var bytes = [n & 0x7f]; n >>= 7; while (n > 0) { bytes.unshift((n & 0x7f) | 0x80); n >>= 7; } return bytes; }
@@ -817,6 +824,7 @@
       }
       ctx.addExport(t('exportWav'), exportWav);
       ctx.addExport(t('exportMidi'), exportMidi);
+      ctx.addExport(t('exportVisual'), exportVisual);
 
       /* ======================= Herramientas ======================= */
       var playBtn, loopBtn, metroBtn, typeBtn;
@@ -836,7 +844,7 @@
       playBtn = ctx.toolbar.querySelector('.igs-primary'); playBtn.setAttribute('aria-pressed', 'false');
       Array.prototype.forEach.call(ctx.toolbar.querySelectorAll('.igs-btn'), function (b) { var l = b.textContent; if (l === t('metronome') || l === t('typing')) b.setAttribute('aria-pressed', 'false'); });
       ctx.command('play', t('play') + ' / ' + t('stopBtn'), '', play);
-      ctx.command('wav', t('exportWav'), '', exportWav); ctx.command('midi', t('exportMidi'), '', exportMidi);
+      ctx.command('wav', t('exportWav'), '', exportWav); ctx.command('midi', t('exportMidi'), '', exportMidi); ctx.command('visual', t('exportVisual'), '', exportVisual);
 
       S = { v: 1, bpm: 100, bars: 2, loop: [0, 8], grid: 0.25, tracks: [] };
       return {

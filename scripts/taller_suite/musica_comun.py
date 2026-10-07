@@ -48,7 +48,7 @@ STRINGS = {
         'envelope': 'Envolvente (arrastra los puntos)', 'envDesc': 'Envolvente: ataque {a} s, caída {d} s, sostenido {s} %, final {r} s',
         'attack': 'Ataque', 'decay': 'Caída', 'sustain': 'Sostenido', 'release': 'Final',
         'trackAdded': 'Pista añadida: {name}', 'rendering': 'Preparando el WAV…', 'renderError': 'No se ha podido crear el archivo de sonido.',
-        'exportWav': 'Exportar sonido (WAV)', 'exportMidi': 'Exportar partitura (MIDI)', 'stopBtn': 'Parar', 'play': 'Reproducir',
+        'exportWav': 'Exportar sonido (WAV)', 'exportMidi': 'Exportar partitura (MIDI)', 'exportVisual': 'Exportar visual (PNG)', 'stopBtn': 'Parar', 'play': 'Reproducir',
         'toolDraw': 'Lápiz', 'toolSelect': 'Mover', 'toolErase': 'Borrar', 'metronome': 'Metrónomo', 'metroOn': 'Metrónomo activado.', 'metroOff': 'Metrónomo desactivado.',
         'typing': 'Tocar con el teclado', 'typingOn': 'Teclado musical activado: A W S E D F T G Y H U J K O L P.', 'typingOff': 'Teclado musical desactivado.',
     },
@@ -95,7 +95,7 @@ STRINGS = {
         'envelope': 'Envelope (drag the points)', 'envDesc': 'Envelope: attack {a} s, decay {d} s, sustain {s}%, release {r} s',
         'attack': 'Attack', 'decay': 'Decay', 'sustain': 'Sustain', 'release': 'Release',
         'trackAdded': 'Track added: {name}', 'rendering': 'Preparing the WAV…', 'renderError': 'The sound file could not be created.',
-        'exportWav': 'Export sound (WAV)', 'exportMidi': 'Export score (MIDI)', 'stopBtn': 'Stop', 'play': 'Play',
+        'exportWav': 'Export sound (WAV)', 'exportMidi': 'Export score (MIDI)', 'exportVisual': 'Export visual (PNG)', 'stopBtn': 'Stop', 'play': 'Play',
         'toolDraw': 'Pencil', 'toolSelect': 'Move', 'toolErase': 'Delete', 'metronome': 'Metronome', 'metroOn': 'Metronome on.', 'metroOff': 'Metronome off.',
         'typing': 'Play with the keyboard', 'typingOn': 'Musical keyboard on: A W S E D F T G Y H U J K O L P.', 'typingOff': 'Musical keyboard off.',
     },
@@ -113,3 +113,4 @@ def section_common(lang):
         {'h': 'Real time, audio clock', 'p': 'The playhead and the notes follow the sound card’s clock, not the page’s timers. That is why the rhythm stays tight even when the computer is busy.'},
         {'h': 'What you take away', 'p': 'WAV is the mixed sound, ready to listen to or upload. MIDI is the score: the notes of every track, which you can open in another music program to change the instruments.'},
     ]
+

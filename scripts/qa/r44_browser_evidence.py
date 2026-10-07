@@ -91,6 +91,23 @@ with sync_playwright() as p:
   c07['failure']=str(error)
  (OUT/'c07-runtime.json').write_text(json.dumps(c07,ensure_ascii=False,indent=2))
  page.close()
+ # X06 must produce a concrete visual artifact from the visible instrument.
+ page=browser.new_page(viewport={'width':390,'height':844})
+ x06={'check':'X06 instrument visual PNG export','passed':False}
+ try:
+  page.goto('http://127.0.0.1:8765/es/taller/composicion/?invitation=X06',wait_until='networkidle')
+  page.wait_for_function("() => document.getElementById('igt-app')?.dataset.r44Invitation === 'X06'",timeout=20000)
+  page.locator('.ig-r42-file-trigger').click()
+  with page.expect_download(timeout=15000) as download_info:
+   page.get_by_role('button',name='Exportar visual (PNG)',exact=True).click()
+  download=download_info.value
+  assert download.suggested_filename.endswith('.png'),download.suggested_filename
+  x06['filename']=download.suggested_filename
+  x06['passed']=True
+ except Exception as error:
+  x06['failure']=str(error)
+ (OUT/'x06-runtime.json').write_text(json.dumps(x06,ensure_ascii=False,indent=2))
+ page.close()
  # Every invitation must reach the declared starting state. This checks routing
  # and engine start IDs; it deliberately does not certify the challenge itself.
  invitations=json.loads((ROOT/'assets/data/r44-creative-invitations.json').read_text())
@@ -113,4 +130,4 @@ with sync_playwright() as p:
 server.shutdown()
 failed=[r for r in rows if not r['runtime_ready'] or r['errors'] or r.get('layout',{}).get('overflow')]
 print(f'{len(rows)} initial views; {len(failed)} runtime/layout failures. Acceptance NOT_ASSESSED.')
-raise SystemExit(bool(failed) or not file_result['passed'] or not c07['passed'] or any(not r['passed'] for r in invite_rows))
+raise SystemExit(bool(failed) or not file_result['passed'] or not c07['passed'] or not x06['passed'] or any(not r['passed'] for r in invite_rows))
