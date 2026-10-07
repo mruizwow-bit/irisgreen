@@ -15,6 +15,42 @@ out.mkdir(parents=True,exist_ok=True)
 if work.exists(): shutil.rmtree(work)
 shutil.copytree(src,work)
 
+env=os.environ.copy()
+
+# Resolver Playwright instalado vía npx, como en el equipo IrisGreen.
+def node_can_require_playwright(e):
+    return subprocess.run(['node','-e',"require('playwright');process.exit(0)"],
+                          env=e,stdout=subprocess.DEVNULL,stderr=subprocess.DEVNULL).returncode==0
+
+if not node_can_require_playwright(env):
+    candidates=[]
+    localapp=Path(env.get('LOCALAPPDATA','')) if env.get('LOCALAPPDATA') else None
+    if localapp:
+        npx=localapp/'npm-cache'/'_npx'
+        if npx.exists():
+            candidates.extend(p.parent.parent for p in npx.glob('*/node_modules/playwright/package.json'))
+    for nm in candidates:
+        test=env.copy()
+        old=test.get('NODE_PATH','')
+        test['NODE_PATH']=str(nm)+(os.pathsep+old if old else '')
+        if node_can_require_playwright(test):
+            env=test
+            break
+if not node_can_require_playwright(env):
+    raise SystemExit('No se puede resolver el módulo playwright')
+
+# Resolver Chrome real antes de permitir que Playwright intente descargar browsers.
+if not env.get('PLAYWRIGHT_CHROMIUM'):
+    chrome_candidates=[
+      Path(env.get('PROGRAMFILES','C:/Program Files'))/'Google/Chrome/Application/chrome.exe',
+      Path(env.get('PROGRAMFILES(X86)','C:/Program Files (x86)'))/'Google/Chrome/Application/chrome.exe',
+      Path(env.get('LOCALAPPDATA',''))/'Google/Chrome/Application/chrome.exe' if env.get('LOCALAPPDATA') else Path('__none__')
+    ]
+    for cp in chrome_candidates:
+        if cp.exists():
+            env['PLAYWRIGHT_CHROMIUM']=str(cp)
+            break
+
 def run(cmd,**kw):
     print('RUN', ' '.join(map(str,cmd)), flush=True)
     return subprocess.run(list(map(str,cmd)),check=True,**kw)
@@ -39,16 +75,16 @@ try:
     pruebas=work/'pruebas'; pruebas.mkdir(exist_ok=True)
     light=pruebas/'r031-light-evidence'
     views=pruebas/'r031-model-views'
-    run(['node',kit/'qa_browser_r031.js',url,'--json',pruebas/'autor-r031-browser.json'],env=os.environ.copy())
-    run(['node',kit/'capture_light_evidence_r031.js',url,light],env=os.environ.copy())
+    run(['node',kit/'qa_browser_r031.js',url,'--json',pruebas/'autor-r031-browser.json'],env=env)
+    run(['node',kit/'capture_light_evidence_r031.js',url,light],env=env)
     run([sys.executable,kit/'analyze_light_evidence_r031.py',light])
-    run(['node',kit/'capture_model_views_r031.js',url,views],env=os.environ.copy())
+    run(['node',kit/'capture_model_views_r031.js',url,views],env=env)
     run([sys.executable,kit/'make_contact_r031.py',views,views/'CONTACT_R031_MODELOS.jpg'])
 
     metric=work/'pruebas'/'metricas3d.js'
     if metric.exists():
         # hardware result: preserve whatever backend the machine reports.
-        run(['node',metric,url,'--json',pruebas/'metricas-r031.json'],env=os.environ.copy())
+        run(['node',metric,url,'--json',pruebas/'metricas-r031.json'],env=env)
 finally:
     server.terminate()
     try: server.wait(timeout=3)
