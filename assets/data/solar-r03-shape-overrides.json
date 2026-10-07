@@ -2,7 +2,7 @@
   "schema": "iris-green.solar-r03.shape-overrides.v1",
   "date": "2026-10-07",
   "scope": "R03 prototype only; does not alter canonical sistema-solar.json",
-  "convention": "ejes_km = [equatorial_diameter_x, equatorial_diameter_z, polar_diameter_y]; consumed by existing ig-sistema-solar-3d.js ellipsoid scaling",
+  "convention": "ejes_km = [equatorial_diameter_x, equatorial_diameter_z, polar_diameter_y]; consumed by existing ig-sistema-solar-3d.js ellipsoid scaling; renderer_diameter_km uses NASA volumetric mean radius so the existing ellipsoid normalization preserves physical equatorial/polar axes without inflating the body.",
   "sources": {
     "earth": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html",
     "mars": "https://nssdc.gsfc.nasa.gov/planetary/factsheet/marsfact.html",
@@ -20,7 +20,9 @@
         12756.274,
         12713.504
       ],
-      "status": "NASA_FACT_SHEET"
+      "status": "NASA_FACT_SHEET",
+      "mean_radius_km": 6371,
+      "renderer_diameter_km": 12742
     },
     "marte": {
       "equatorial_radius_km": 3396.2,
@@ -30,7 +32,9 @@
         6792.4,
         6752.4
       ],
-      "status": "NASA_FACT_SHEET"
+      "status": "NASA_FACT_SHEET",
+      "mean_radius_km": 3389.5,
+      "renderer_diameter_km": 6779
     },
     "jupiter": {
       "equatorial_radius_km": 71492,
@@ -40,7 +44,9 @@
         142984,
         133708
       ],
-      "status": "NASA_FACT_SHEET_1_BAR"
+      "status": "NASA_FACT_SHEET_1_BAR",
+      "mean_radius_km": 69911,
+      "renderer_diameter_km": 139822
     },
     "saturno": {
       "equatorial_radius_km": 60268,
@@ -50,7 +56,9 @@
         120536,
         108728
       ],
-      "status": "NASA_FACT_SHEET_1_BAR"
+      "status": "NASA_FACT_SHEET_1_BAR",
+      "mean_radius_km": 58232,
+      "renderer_diameter_km": 116464
     },
     "urano": {
       "equatorial_radius_km": 25559,
@@ -60,7 +68,9 @@
         51118,
         49946
       ],
-      "status": "NASA_FACT_SHEET_1_BAR"
+      "status": "NASA_FACT_SHEET_1_BAR",
+      "mean_radius_km": 25362,
+      "renderer_diameter_km": 50724
     },
     "neptuno": {
       "equatorial_radius_km": 24764,
@@ -70,7 +80,9 @@
         49528,
         48682
       ],
-      "status": "NASA_FACT_SHEET_1_BAR"
+      "status": "NASA_FACT_SHEET_1_BAR",
+      "mean_radius_km": 24622,
+      "renderer_diameter_km": 49244
     }
   },
   "not_overridden": {
