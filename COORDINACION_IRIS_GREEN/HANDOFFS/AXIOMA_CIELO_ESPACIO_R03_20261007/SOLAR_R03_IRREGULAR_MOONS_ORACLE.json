@@ -1,14 +1,14 @@
 {
-  "schema": "iris-green.solar-r03.irregular-moon-shape-oracle.v1",
+  "schema": "iris-green.solar-r03.irregular-moon-shape-oracle.v2",
   "date": "2026-10-07",
   "result": "PASS",
+  "scope_count": 20,
   "assertions": {
     "bundle_syntax": true,
     "controller_syntax": true,
-    "all_10_in_r03_bundle": true,
+    "all_shape_bodies_present_in_bundle": true,
     "canonical_data_unmutated": true,
-    "es_uses_r03": true,
-    "en_uses_r03": true
+    "exact_semiaxes_reconstruction": true
   },
   "rows": [
     {
@@ -157,6 +157,156 @@
         20,
         18,
         9
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "fobos",
+      "target_semiaxes_km": [
+        13,
+        11.4,
+        9.1
+      ],
+      "renderer_semiaxes_km": [
+        13,
+        11.4,
+        9.1
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "deimos",
+      "target_semiaxes_km": [
+        7.8,
+        6,
+        5.1
+      ],
+      "renderer_semiaxes_km": [
+        7.8,
+        6,
+        5.1
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "mimas",
+      "target_semiaxes_km": [
+        208,
+        197,
+        191
+      ],
+      "renderer_semiaxes_km": [
+        208,
+        197,
+        191
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "encelado",
+      "target_semiaxes_km": [
+        257,
+        251,
+        248
+      ],
+      "renderer_semiaxes_km": [
+        257,
+        251,
+        248
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "tetis",
+      "target_semiaxes_km": [
+        538,
+        528,
+        526
+      ],
+      "renderer_semiaxes_km": [
+        538,
+        528,
+        526
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "dione",
+      "target_semiaxes_km": [
+        563,
+        561,
+        560
+      ],
+      "renderer_semiaxes_km": [
+        563,
+        561,
+        560
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "rea",
+      "target_semiaxes_km": [
+        765,
+        763,
+        762
+      ],
+      "renderer_semiaxes_km": [
+        765,
+        763,
+        762
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "japeto",
+      "target_semiaxes_km": [
+        746,
+        746,
+        712
+      ],
+      "renderer_semiaxes_km": [
+        746,
+        746,
+        712
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "miranda",
+      "target_semiaxes_km": [
+        240,
+        234.2,
+        232.9
+      ],
+      "renderer_semiaxes_km": [
+        240,
+        234.2,
+        232.9
+      ],
+      "max_abs_error_km": 0,
+      "pass": true
+    },
+    {
+      "id": "ariel",
+      "target_semiaxes_km": [
+        581.1,
+        577.9,
+        577.7
+      ],
+      "renderer_semiaxes_km": [
+        581.1,
+        577.9,
+        577.7
       ],
       "max_abs_error_km": 0,
       "pass": true
