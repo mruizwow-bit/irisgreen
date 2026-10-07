@@ -117,7 +117,7 @@ with sync_playwright() as p:
   row={'id':item['id'],'page':item['page'],'start':item['start'],'passed':False}
   try:
    page.goto('http://127.0.0.1:8765/es/taller/'+item['page']+'/?invitation='+item['id'],wait_until='networkidle',timeout=30000)
-   page.wait_for_function("id => document.getElementById('igt-app')?.dataset.r44Invitation === id",item['id'],timeout=20000)
+   page.wait_for_function("id => document.getElementById('igt-app')?.dataset.r44Invitation === id",arg=item['id'],timeout=20000)
    state=page.evaluate("() => {const a=document.getElementById('igt-app');return {ready:a.dataset.igsReady,start:a.dataset.r44Invitation}}")
    assert state['ready']=='true'
    assert state['start']==item['id']
