@@ -44,12 +44,13 @@ const pend=(id,n)=>R.push({id,estado:'PENDIENTE',nota:n});
  ok('CALAMAR_BLOQUEO_KEEP',cal&&cal.bloqueado===true&&cal.examinable===false,JSON.stringify(cal&&{bloqueado:cal.bloqueado,examinable:cal.examinable}));
  const squidMorph=await p.evaluate(()=>{
   const r=window.__E.escena.children.find(o=>o.name==='prof-calamar-cristal');
-  const count={arm:0,tentacle:0,'tentacle-club':0,'ocular-photophore':0};
+  const count={arm:0,tentacle:0,'tentacle-club':0,'ocular-photophore':0,'mantle-fin-lateral':0,'mantle-fin':0};
   if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});
   return count;
  });
  ok('CALAMAR_8_BRAZOS_2_TENTACULOS',squidMorph.arm===8&&squidMorph.tentacle===2&&squidMorph['tentacle-club']===2,JSON.stringify(squidMorph));
  ok('CALAMAR_6_FOTOFOROS_OCULARES',squidMorph['ocular-photophore']===6,JSON.stringify(squidMorph));
+ ok('CALAMAR_ALETAS_LATERALES',squidMorph['mantle-fin-lateral']===2&&squidMorph['mantle-fin']===0,JSON.stringify(squidMorph));
  const lanternFins=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'pectoral-fin':0,'adipose-fin':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
  ok('LINTERNA_ALETAS_ESPECIFICAS',lanternFins['pectoral-fin']===2&&lanternFins['adipose-fin']===1,JSON.stringify(lanternFins));
  const lanternPhoto=await p.evaluate(()=>{const r=window.__E.escena.children.find(o=>o.name==='prof-pez-linterna');const count={'photophore-AOa':0,'photophore-AOp':0,'photophore-Prc':0,'photophore-Pol':0};if(r)r.traverse(o=>{const role=o.userData&&o.userData.role;if(role in count)count[role]++;});return count;});
