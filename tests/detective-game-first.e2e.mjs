@@ -17,6 +17,13 @@ const cases=[
 
 async function meter(page,id){return Number(await page.locator(id).evaluate(el=>el.parentElement.getAttribute('aria-valuenow')))}
 async function meters(page){return{body:await meter(page,'#dg-body'),breath:await meter(page,'#dg-breath'),attention:await meter(page,'#dg-attention')}}
+async function chooseObject(page,kind){
+ const mobile=(page.viewportSize()?.width||9999)<=850;
+ if(mobile&&await page.locator('#dg-panel').getAttribute('data-mobile-open')==='true')await page.locator('#dg-mobile-objects').tap();
+ const target=page.locator('[data-pick="'+kind+'"]');
+ if(mobile)await target.tap();else await target.click();
+ if(mobile&&await page.locator('#dg-panel').getAttribute('data-mobile-open')!=='true')throw new Error('mobile sheet did not open after selecting '+kind);
+}
 async function canvasRaycast(page,touch){
  const canvas=page.locator('#detective-game canvas'); const box=await canvas.boundingBox(); if(!box)throw new Error('canvas box missing');
  await page.locator('[data-pick]').evaluateAll(xs=>xs.forEach(x=>x.setAttribute('aria-pressed','false')));
@@ -31,12 +38,12 @@ async function canvasRaycast(page,touch){
  return false;
 }
 async function strategy(page,a,b,hyp){
- await page.locator('[data-pick="'+a.kind+'"]').click();
+ await chooseObject(page,a.kind);
  await page.locator('[data-level="'+a.level+'"]').click();
  await page.locator('[data-hypothesis="'+hyp+'"]').click();
  await page.locator('#dg-try').click();
  const first=await meters(page);
- await page.locator('[data-pick="'+b.kind+'"]').click();
+ await chooseObject(page,b.kind);
  await page.locator('[data-level="'+b.level+'"]').click();
  await page.locator('#dg-try').click();
  const second=await meters(page);
@@ -77,12 +84,12 @@ for(const tc of cases){
   if(await page.locator('#dg-panel').getAttribute('data-mobile-open')!=='false')throw new Error(tc.name+': mobile sheet did not close after canvas selection');
  }
 
- await page.locator('[data-pick="light"]').click();
+ await chooseObject(page,'light');
  await page.locator('[data-level="2"]').click();
  await page.locator('[data-hypothesis="depends"]').click();
  await page.locator('#dg-try').click();
  const beforeSecond=await meters(page);
- await page.locator('[data-pick="sound"]').click();
+ await chooseObject(page,'sound');
  await page.locator('[data-level="0"]').click();
  await page.locator('#dg-try').click();
  const afterSecond=await meters(page);
