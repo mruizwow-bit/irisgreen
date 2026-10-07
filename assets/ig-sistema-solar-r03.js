@@ -10,7 +10,7 @@
   var KEY = 'ig-sistema-solar-coleccion';
   var MARCA = 'IRIS GREEN · irisgreen.eu';
   var R = Math.PI / 180, AU = 149597870.7;
-  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null, R03_RINGS = null;
+  var D, BY = {}, MOONS = {}, FONDO = null, VIEW = null, R03_SHAPES = null, R03_RINGS = null, R03_APPEARANCE = null;
   var reduce = function () { return (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) || document.documentElement.getAttribute('data-ig-motion') === 'off' || document.documentElement.getAttribute('data-ig-system-motion') === 'reduce'; };
 
   /* ---------- utilidades ---------- */
@@ -484,6 +484,15 @@
         c.r03_shape_source = q.status || 'R03_SHAPE_OVERRIDE';
       });
     }
+    if (R03_APPEARANCE && R03_APPEARANCE.bodies) {
+      d3.cuerpos.forEach(function (c) {
+        var a = R03_APPEARANCE.bodies[c.id];
+        if (!a) return;
+        c.tex = null;
+        c.r03Color = parseInt(String(a.color || '#999999').replace('#', ''), 16);
+        c.r03_appearance = a.representation;
+      });
+    }
     d3.fondo = FONDO;
     return d3;
   }
@@ -549,7 +558,7 @@
       launch.textContent = T('Cargando vista…', 'Loading view…');
       window.__IGSS_DEBUG = true;
       var script = document.createElement('script');
-      script.src = '/assets/ig-sistema-solar-3d.js';
+      script.src = '/assets/ig-sistema-solar-3d-r03.js';
       script.onload = function () {
       var canGL = (function () { try { var c = document.createElement('canvas'); return !!(window.WebGLRenderingContext && (c.getContext('webgl2') || c.getContext('webgl'))); } catch (e) { return false; } })();
     if (window.IGSistemaSolar3D && canGL) {
@@ -585,8 +594,9 @@
     fetch('/es/intereses/sistema-solar/sistema-solar.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }),
     fetch('/es/intereses/sistema-solar/cielo-fondo.json', { credentials: 'same-origin' }).then(function (r) { return r.json(); }).catch(function () { return null; }),
     fetch('/assets/data/solar-r03-shape-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
-    fetch('/assets/data/solar-r03-rings.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
-  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; R03_RINGS = res[3]; start(res[0]); }).catch(function () {
+    fetch('/assets/data/solar-r03-rings.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; }),
+    fetch('/assets/data/solar-r03-appearance-overrides.json', { credentials: 'same-origin' }).then(function (r) { return r.ok ? r.json() : null; }).catch(function () { return null; })
+  ]).then(function (res) { FONDO = res[1]; R03_SHAPES = res[2]; R03_RINGS = res[3]; R03_APPEARANCE = res[4]; start(res[0]); }).catch(function () {
     var p = view && view.querySelector('.cn-stage-nojs'); if (p) p.textContent = T('No se han podido cargar los datos. Las fichas y las tablas de abajo siguen disponibles.', 'The data could not be loaded. The entries and tables below are still available.');
   });
 })();
