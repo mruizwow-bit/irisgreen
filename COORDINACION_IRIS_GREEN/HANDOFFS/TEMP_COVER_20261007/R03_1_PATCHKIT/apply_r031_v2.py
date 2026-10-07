@@ -124,6 +124,47 @@ if 'cuerpoSecciones(root,bodyMat' not in s:
 s=s.replace('emissiveIntensity:1.8,roughness:0.25});','emissiveIntensity:1.8,roughness:0.25,noReveal:true});')
 s=s.replace('emissiveIntensity:2.4,roughness:0.2});','emissiveIntensity:2.4,roughness:0.2,noReveal:true});')
 s=s.replace('emissiveIntensity:2.1});','emissiveIntensity:2.1,noReveal:true});')
+
+# Teuthowenia pellucida: 8 brazos + 2 tentáculos; brazos agrupados hacia delante.
+if "role='tentacle'" not in s and "role=\'tentacle\'" not in s:
+    arm_pat=r"""  for\(let i=0;i<8;i\+\+\)\{.*?\n  \}"""
+    arm_repl=r'''  for(let i=0;i<8;i++){
+    const ang=(i/8)*Math.PI*2;
+    const y=Math.sin(ang)*L*0.085, z=Math.cos(ang)*L*0.085;
+    const len=L*(0.27+(i%3)*0.025);
+    /* Bases rodean la corona; las puntas convergen hacia un haz anterior para
+       evitar el aspecto radial/estrella. */
+    brazoCurvo(arms,armMat,[
+      [0,y,z],[-len*0.34,y*0.92,z*0.92],
+      [-len*0.72,y*0.66+Math.sin(ang)*L*0.012,z*0.66+Math.cos(ang)*L*0.012],
+      [-len,y*0.46,z*0.46]
+    ],L*0.014,'arm');
+  }
+  /* Dos tentáculos diferenciados y más largos. No se detallan ventosas/club
+     más allá de un engrosamiento terminal prudente: esa microanatomía no es
+     necesaria para este vertical slice. */
+  for(const side of [-1,1]){
+    const z=side*L*0.045, len=L*0.56;
+    brazoCurvo(arms,armMat,[
+      [0,-L*0.015,z],[-len*0.32,-L*0.010,z*0.85],
+      [-len*0.72,L*0.005,z*0.62],[-len,L*0.012,z*0.42]
+    ],L*0.011,'tentacle');
+    sphere(arms,armMat,[-len,L*0.012,z*0.42],[L*0.045,L*0.022,L*0.018],'tentacle-club',12);
+  }'''
+    s,n=re.subn(arm_pat,arm_repl,s,count=1,flags=re.S)
+    if n!=1: raise SystemExit('no encuentro bucle de 8 brazos del calamar')
+
+# Teuthowenia: tres fotóforos por ojo (seis en total), no uno por lado.
+photo_pat=r"""  const photo=mat\(0xcffcff,\{emissive:0x86dfe9,emissiveIntensity:2\.1,noReveal:true\}\);\n  sphere\(root,photo,\[-L\*0\.27,-L\*0\.03,L\*0\.14\].*?\n  sphere\(root,photo,\[-L\*0\.27,-L\*0\.03,-L\*0\.14\].*?;"""
+photo_repl=r'''  const photo=mat(0xcffcff,{emissive:0x86dfe9,emissiveIntensity:2.1,noReveal:true});
+  for(const side of [-1,1]){
+    const z=side*L*0.14;
+    sphere(root,photo,[-L*0.285,-L*0.015,z],[L*0.018,L*0.018,L*0.014],'ocular-photophore',10);
+    sphere(root,photo,[-L*0.260,-L*0.045,z],[L*0.017,L*0.017,L*0.013],'ocular-photophore',10);
+    sphere(root,photo,[-L*0.235,-L*0.015,z],[L*0.016,L*0.016,L*0.012],'ocular-photophore',10);
+  }'''
+s,n=re.subn(photo_pat,photo_repl,s,count=1,flags=re.S)
+if n not in (0,1): raise SystemExit('fotóforos calamar ambiguos')
 A.write_text(s,encoding='utf-8')
 
 s=P.read_text(encoding='utf-8')
