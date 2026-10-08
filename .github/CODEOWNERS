@@ -1,0 +1,25 @@
+# Iris Green · propiedad de código sensible
+# Este archivo prepara la revisión obligatoria por CODEOWNERS.
+# La regla del repositorio debe exigir "Require review from Code Owners".
+
+* @mruizwow-bit
+
+# Infraestructura de publicación y mantenimiento
+/.github/workflows/ @mruizwow-bit
+/netlify.toml @mruizwow-bit
+/MAINTENANCE_ACTIVE.txt @mruizwow-bit
+/assets/maintenance.html @mruizwow-bit
+/scripts/build_site.py @mruizwow-bit
+/scripts/build_maintenance.py @mruizwow-bit
+/scripts/check_main_review_deploy.py @mruizwow-bit
+
+# Sabik / Safety / funciones
+/sabik/ @mruizwow-bit
+/netlify/functions/ @mruizwow-bit
+/scripts/*sabik* @mruizwow-bit
+/assets/**/*sabik* @mruizwow-bit
+
+# Gobernanza
+/.github/CODEOWNERS @mruizwow-bit
+/.github/workflows/protected-paths-gate.yml @mruizwow-bit
+/scripts/check_protected_paths.py @mruizwow-bit
