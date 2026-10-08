@@ -88,9 +88,12 @@ def main()->None:
         visual=(root/base/"index.html").read_text(encoding="utf-8")
         games=(root/base/("juegos" if lang=="es" else "games")/"index.html").read_text(encoding="utf-8")
         hub=(root/workshop/"index.html").read_text(encoding="utf-8")
-        need(visual.count('class="ig-activity-card"')==3,"Expected three visual support tools")
+        need(visual.count('class="ig-activity-card"')==1,"Expected printable routines as the Resources destination")
         need('/'+base+money not in visual,"Money is still in visual supports")
-        need('href="/'+base+money+'"' in games,"Money missing from Games")
+        need(games.count('class="ig-activity-card"')==2,"Expected only the two delivered games")
+        need('tarjeta-iris/' not in visual and 'iris-card/' not in visual,"Retired Iris Card remains in Resources")
+        for slug in ('cada-cerebro-su-camino','la-maquina-de-empezar'):
+            need(slug+'-ficha/' in games,"Missing delivered game: "+slug)
         need('igk-start-sec' not in hub and 'igk-prof-sec' not in hub,"Duplicate studio launchers remain")
         need(len(re.findall(r'data-studio="',hub))==27,"Each studio must appear exactly once")
         for text in (visual,games,hub):

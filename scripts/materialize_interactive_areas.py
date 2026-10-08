@@ -86,7 +86,9 @@ def materialize(root):
     text = redirects.read_text(encoding='utf-8')
     if '/es/descubrimientos/*' not in text:
         redirects.write_text(text + alias, encoding='utf-8')
-    print('Interactive areas: Games, Construction, Discovery, Night sky and Marine life mounted.')
+    from refresh_resources import run as refresh_resources
+    refresh_resources(root)
+    print('Interactive areas: resources and games refreshed; Discovery preserved.')
 
 
 if __name__ == '__main__':

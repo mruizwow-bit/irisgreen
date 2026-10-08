@@ -17,7 +17,7 @@ class References(HTMLParser):
 
 
 def validate(root):
-    pages = list((root/'es/juegos').rglob('*.html')) + list((root/'es/descubrimiento').rglob('*.html'))
+    pages = list((root/'es/juegos').rglob('*.html')) + list((root/'en/games').rglob('*.html')) + list((root/'es/descubrimiento').rglob('*.html'))
     assert len(pages) >= 12, 'Missing interactive pages'
     errors = []
     for page in pages:
@@ -33,6 +33,16 @@ def validate(root):
             if path.is_dir(): path /= 'index.html'
             if not path.is_file(): errors.append(f'{page.relative_to(root)} -> {ref}')
     assert not errors, '\n'.join(errors)
+    for base in ('es/juegos','en/games'):
+        hub = (root/base/'index.html').read_text(encoding='utf-8')
+        assert hub.count('class="ig-activity-card"') == 2, base
+        for slug in ('cada-cerebro-su-camino','la-maquina-de-empezar'):
+            assert f'/{base}/{slug}-ficha/' in hub
+            detail = (root/base/(slug+'-ficha')/'index.html').read_text(encoding='utf-8')
+            assert f'href="/{base}/{slug}/"' in detail
+            runtime = (root/base/slug/'index.html').read_text(encoding='utf-8')
+            assert f'href="/{base}/{slug}-ficha/"' in runtime
+            assert 'hreflang="es"' in runtime and 'hreflang="en"' in runtime
     home = (root/'index.html').read_text(encoding='utf-8')
     assert 'href="/es/juegos/"' in home and 'href="/es/descubrimiento/"' in home
     for path in ('es/juegos/construccion/index.html', 'es/descubrimiento/cielo-explorar/index.html', 'es/descubrimiento/vida-marina/index.html'):
