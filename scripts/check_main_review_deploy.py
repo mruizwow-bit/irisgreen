@@ -51,8 +51,10 @@ def validate_result(deploy, site, sha, production_id):
         raise ValueError("Public production deploy changed")
     if published.get("locked") is not True or "maintenance" not in published.get("title", "").lower():
         raise ValueError("Public maintenance is not locked")
-    if site.get("sso_login") is not True or site.get("sso_login_context") != "non_production":
-        raise ValueError("Review login protection changed")
+    # main-review is intentionally visible to María without Netlify visitor login.
+    # Production safety is provided by the locked maintenance deploy, not by SSO.
+    if site.get("sso_login") is True or site.get("password"):
+        raise ValueError("Unexpected site-wide visitor protection enabled")
 
 
 def netlify(path):
@@ -82,13 +84,13 @@ def main():
     validate_result(deploy, site, sha, production_id)
     evidence = {**json.loads(Path("dist/deploy-source.json").read_text()), "deploy_id": deploy_id,
                 "state": deploy["state"], "public_deploy_id": production_id, "maintenance_locked": True,
-                "review_login_protected": True, "functions": [item.get("n", item.get("name")) if isinstance(item, dict) else item for item in deploy["available_functions"]],
+                "review_login_protected": False, "functions": [item.get("n", item.get("name")) if isinstance(item, dict) else item for item in deploy["available_functions"]],
                 "permalink": deploy["links"]["permalink"]}
     Path("/tmp/irisgreen-main-review-verification.json").write_text(json.dumps(evidence, indent=2) + "\n")
     with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
         summary.write(f"\nNetlify API verification: **ready**, source **main@{sha}**.\n\n")
         summary.write(f"[Exact deploy]({evidence['permalink']}) · [Source commit]({evidence['source_url']})\n\n")
-        summary.write("Public maintenance remains locked; review retains team login. Runtime functionality is checked separately.\n")
+        summary.write("Public maintenance remains locked; main-review stays directly visible for HUMAN QA. Runtime functionality is checked separately.\n")
     print(json.dumps(evidence))
 
 
