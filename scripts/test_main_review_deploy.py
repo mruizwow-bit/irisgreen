@@ -9,7 +9,7 @@ class ReviewDeployTests(unittest.TestCase):
         self.deploy = {"site_id": SITE_ID, "state": "ready", "context": "branch-deploy",
                        "branch": "main-review", "title": f"Iris Green canonical main review {self.sha}",
                        "deploy_ssl_url": REVIEW_URL, "available_functions": [{"n": "sabik-voice-proxy"}, {"n": "sabik-library"}]}
-        self.site = {"id": SITE_ID, "sso_login": True, "sso_login_context": "non_production",
+        self.site = {"id": SITE_ID, "sso_login": False, "sso_login_context": "non_production",
                      "published_deploy": {"id": "maintenance-id", "locked": True, "title": "Public maintenance"}}
 
     def test_ready_review_preserving_maintenance(self):
@@ -32,7 +32,7 @@ class ReviewDeployTests(unittest.TestCase):
                 site["published_deploy"][key] = bad
                 with self.assertRaises(ValueError):
                     validate_result(self.deploy, site, self.sha, "maintenance-id")
-        for key, bad in (("sso_login", False), ("sso_login_context", "all")):
+        for key, bad in (("sso_login", True), ("password", "visitor-password")):
             with self.subTest(key=key):
                 with self.assertRaises(ValueError):
                     validate_result(self.deploy, {**self.site, key: bad}, self.sha, "maintenance-id")
