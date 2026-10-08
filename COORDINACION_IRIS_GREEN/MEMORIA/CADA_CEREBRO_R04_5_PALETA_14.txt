@@ -1,0 +1,38 @@
+CADA CEREBRO, SU CAMINO · PALETA DE MUNDO · 14 ROLES
+
+Los 14 roles están centralizados en WORLD_PALETTE dentro de cada-cerebro-3d.html.
+Cada rol tiene valor claro y oscuro. No se añaden colores de mundo fuera de estos roles.
+
+01 · cielo / sky          claro #DCE8EF · oscuro #081725
+02 · suelo / ground       claro #86A1A7 · oscuro #17333A
+03 · calzada / road       claro #E1E7E9 · oscuro #7F94A0
+04 · acera / sidewalk     claro #ABBEC2 · oscuro #4B6470
+05 · agua / water         claro #6F9DB5 · oscuro #204B61
+06 · muro / wall          claro #6F8392 · oscuro #5A7080
+07 · edificio / building  claro #91A6B2 · oscuro #405D6C
+08 · vegetación / tree    claro #5F806B · oscuro #4F7865
+09 · ruta / route         claro #5A49A8 · oscuro #C3B8FF
+10 · parada / stop        claro #A35F70 · oscuro #D88AA8
+11 · cálido / warm        claro #9B7476 · oscuro #8A6872
+12 · frío / cool          claro #75899C · oscuro #647A8E
+13 · madera / wood        claro #8D765F · oscuro #75644F
+14 · sombra / shadow      claro #607B91 · oscuro #294A68
+
+Regla: la sombra usa un azul desplazado (shadow), no gris multiplicado.
+El morado route queda reservado para la ruta/persona activa; no se usa como mobiliario general.
+
+Cambio R04_5 · separación del suelo en modo claro.
+El suelo, la acera y la calzada estaban a 1,24:1 y 1,23:1 de contraste entre sí:
+tres valores que el ojo lee como uno. En modo oscuro ya estaban a 2,14:1 y 1,98:1.
+  suelo   #AEBFC2 -> #86A1A7
+  acera   #C8D2D5 -> #ABBEC2
+  calzada #E1E7E9    (sin cambio)
+Ahora suelo/acera queda en 1,42:1, acera/calzada en 1,55:1 y suelo/calzada en 2,19:1.
+Mismo tono y misma familia; sólo se separan.
+
+Cambio R04_5 · la niebla.
+Las ocho bandas planas de addEdgeMist se leían como losas blancas tiradas
+sobre el suelo, y al oscurecer el suelo quedaron aún más visibles.
+Se han desactivado. La profundidad la da ahora scene.fog, que pasa de
+10.5..18.5 a 13..26: el borde del plano se difumina solo y la ciudad no
+desaparece.

@@ -39,8 +39,12 @@ def materialize(root):
             text = page.read_text(encoding='utf-8')
             text = text.replace('href="cielo/"', 'href="cielo-explorar/"')
             route = '/' + page.relative_to(root).as_posix().removesuffix('index.html')
-            text = text.replace('<head>', '<head><link rel="canonical" href="https://irisgreen.eu' + route + '">', 1)
-            text = text.replace('<head>', '<head><link rel="stylesheet" href="/assets/ig-fonts.css">', 1)
+            # Una pagina ya versionada en el repo pasa antes por los adaptadores
+            # globales, que pueden haberle puesto ya estos enlaces.
+            if 'rel="canonical"' not in text:
+                text = text.replace('<head>', '<head><link rel="canonical" href="https://irisgreen.eu' + route + '">', 1)
+            if '/assets/ig-fonts.css' not in text:
+                text = text.replace('<head>', '<head><link rel="stylesheet" href="/assets/ig-fonts.css">', 1)
             # Los pases R69 anteriores ya pueden haberla puesto: una sola vez y al final del head.
             text = re.sub(r'\s*<link rel="stylesheet" href="/assets/ig-r69-unified-ui\.css(?:\?[^"]*)?">', '', text)
             text = text.replace('</head>', '<link rel="stylesheet" href="/assets/ig-r69-unified-ui.css"></head>', 1)

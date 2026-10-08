@@ -1,0 +1,77 @@
+LENGUAJE CLARO · ISO 24495-1 · CADA CEREBRO R04_4
+
+ANTES -> DESPUÉS
+Le pesa el ruido intenso. -> Prefiere evitar el ruido intenso.
+Puede con algo de gente, pero no con aglomeraciones. -> Prefiere lugares con poca gente.
+Las escaleras son posibles; una espera larga no. -> Puede usar escaleras y prefiere esperas cortas.
+La gente no le pesa demasiado. -> Puede estar con otras personas.
+Las escaleras le cuestan más que una cuesta. -> Prefiere una cuesta antes que las escaleras.
+El ruido y la gente no son el principal problema. -> Puede estar en lugares con ruido y con gente.
+El ruido y la gente no son su problema. -> Puede estar en lugares con ruido y con gente.
+No soporta esperar sin saber cuánto va a tardar. -> Necesita saber cuánto tiempo va a esperar.
+Llega justo de tiempo. -> Tiene poco tiempo para llegar.
+Un rodeo largo le deja sin margen. -> Necesita evitar rodeos largos.
+El ruido la agota enseguida. -> Prefiere evitar el ruido intenso.
+Las aglomeraciones la hacen volverse. -> Prefiere evitar los lugares muy concurridos.
+La ruta sigue existiendo; para esta persona, este tramo pesa demasiado ahora. -> Prueba otra ruta.
+Elige el siguiente tramo con los botones de abajo. -> Elige por dónde seguir.
+
+Motivos de parada: se expresan como oraciones concretas (por ejemplo: «el ruido es demasiado intenso», «la espera es demasiado larga»), sin metáforas de peso.
+English follows the same rule: concrete subject + verb + condition; no “weighs on”, “wears out”, or “leaves no margin”.
+
+---
+
+PASADA R04_5 · «prefiere» no vale para un límite que para a la persona
+
+Motivo: si pasarse del límite detiene a la persona, el texto tiene que decirlo.
+«Prefiere» queda reservado para una elección real entre dos rutas que las dos valen.
+Además, dos personas con límites distintos no pueden compartir la misma frase:
+Mateo tiene el ruido en 3 y Ruth en 2, y decían los dos lo mismo.
+
+ANTES -> DESPUÉS
+
+Mateo (ruido 3, gente 3, escaleras 2, espera 2)
+  Tiene energía justa para el trayecto. -> Tiene energía para un trayecto corto.
+  Prefiere evitar el ruido intenso. -> Con ruido fuerte se para.
+  Prefiere lugares con poca gente. -> Con mucha gente se para.
+  Puede usar escaleras y prefiere esperas cortas. -> Puede subir escaleras. Si no sabe cuánto va a esperar, se para.
+
+Lina (ruido 4, gente 3, escaleras 1, espera 2)
+  Tolera ruido moderado si el trayecto es claro. -> Aguanta ruido medio.
+     [la condición «si el trayecto es claro» no existe en los datos: su límite es 4 y no depende de nada]
+  Puede estar con otras personas. -> Aguanta sitios con gente.
+  Prefiere una cuesta antes que las escaleras. -> Puede subir un tramo corto de escaleras. Una cuesta la cansa menos.
+  Necesita llegar sin demasiados rodeos. -> Necesita un camino corto.
+
+Sam (ruido 6, gente 4, escaleras 0, espera 2)
+  Puede estar en lugares con ruido y con gente. -> Aguanta el ruido y la gente.
+  No puede usar escaleras. -> No puede subir escaleras.
+  Tiene poca energía física. -> Se cansa pronto al andar.
+  Puede esperar un poco si el resto del camino es sencillo. -> Puede esperar un rato corto.
+
+Nora (ruido 6, gente 4, escaleras 2, espera 0)
+  Puede estar en lugares con ruido y con gente. -> Aguanta el ruido y la gente.
+  Puede con escaleras y con cuestas. -> Puede subir escaleras y cuestas.
+  Necesita saber cuánto tiempo va a esperar. -> Si tiene que esperar, se para.
+     [su límite de espera es 0: cualquier espera la detiene]
+  Prefiere un camino largo a una espera corta. -> Prefiere andar más rato antes que esperar.
+
+Diego (ruido 6, gente 4, escaleras 2, espera 2)
+  Tiene poco tiempo para llegar. -> Tiene poco tiempo.
+  Aguanta bien el ruido, la gente y las escaleras. -> Aguanta el ruido, la gente y las escaleras.
+  Necesita evitar rodeos largos. -> Si el camino da muchas vueltas, llega tarde.
+  Prefiere un tramo incómodo a uno lento. -> Prefiere un camino incómodo antes que uno lento.
+
+Ruth (ruido 2, gente 2, escaleras 2, espera 2)
+  Va sin prisa y tiene energía de sobra. -> Tiene tiempo y no tiene prisa.
+  Prefiere evitar el ruido intenso. -> Con poco ruido ya se para. Aguanta menos ruido que nadie.
+  Prefiere evitar los lugares muy concurridos. -> Con poca gente ya se para.
+  Un camino largo y vacío le sirve mejor que uno corto y lleno. -> Prefiere un camino largo y vacío antes que uno corto y lleno.
+
+Inglés: misma regla. «makes him stop» / «cannot» donde hay límite;
+«would rather» solo en las tres elecciones reales.
+
+«Prefiere» que quedan en el archivo: 3. Son las últimas frases de Nora, Diego y Ruth,
+donde hay dos caminos que valen los dos y la persona elige. Ahí es correcto.
+
+Motivos de parada: sin cambios. Ya eran oraciones concretas.

@@ -1,0 +1,36 @@
+{
+  "routes": 10,
+  "people": {
+    "Mateo": {
+      "llegan": 7,
+      "se_paran": 3,
+      "pass": true
+    },
+    "Lina": {
+      "llegan": 6,
+      "se_paran": 4,
+      "pass": true
+    },
+    "Sam": {
+      "llegan": 6,
+      "se_paran": 4,
+      "pass": true
+    },
+    "Nora": {
+      "llegan": 8,
+      "se_paran": 2,
+      "pass": true
+    },
+    "Diego": {
+      "llegan": 7,
+      "se_paran": 3,
+      "pass": true
+    },
+    "Ruth": {
+      "llegan": 3,
+      "se_paran": 7,
+      "pass": true
+    }
+  },
+  "pass": true
+}
