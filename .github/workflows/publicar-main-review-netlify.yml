@@ -66,11 +66,21 @@ jobs:
           published = before.get("published_deploy") or {}
           if not published.get("locked") or "maintenance" not in published.get("title", "").lower():
               raise SystemExit("Producción no está bloqueada en mantenimiento; no modificar configuración")
-          if (before.get("build_settings") or {}).get("stop_builds") is not True:
+          before_build_settings = dict(before.get("build_settings") or {})
+          git_linked = bool(
+              before_build_settings.get("repo_url")
+              or before_build_settings.get("repo_path")
+              or before_build_settings.get("repo_branch")
+              or before.get("repo")
+          )
+          if git_linked and before_build_settings.get("stop_builds") is not True:
               request("PATCH", {"build_settings": {"stop_builds": True}})
           after = request()
-          if (after.get("build_settings") or {}).get("stop_builds") is not True:
-              raise SystemExit("No se pudo verificar stop_builds=true")
+          after_build_settings = dict(after.get("build_settings") or {})
+          if git_linked and after_build_settings.get("stop_builds") is not True:
+              raise SystemExit("Repositorio Git enlazado pero stop_builds no quedó activo")
+          if not git_linked:
+              print("NETLIFY_GIT_REPOSITORY_UNLINKED=true")
           current = after.get("published_deploy") or {}
           if current.get("id") != published.get("id") or current.get("locked") is not True:
               raise SystemExit("Producción cambió durante la operación; revisar")
@@ -86,10 +96,11 @@ jobs:
               changed_keys = sorted(key for key in before_build.keys() | after_build.keys() if before_build.get(key) != after_build.get(key))
               raise SystemExit("Cambió otra configuración de build; revisar campos: " + ", ".join(changed_keys))
           Path("/tmp/irisgreen-production-before-review.txt").write_text(published["id"])
-          print("NETLIFY_GIT_BUILDS_STOPPED=true")
+          print("NETLIFY_GIT_BUILDS_STOPPED=" + ("true" if git_linked else "not-applicable"))
           print("PUBLIC_MAINTENANCE_PRESERVED=" + published["id"])
           with open(os.environ["GITHUB_STEP_SUMMARY"], "a") as summary:
-              summary.write("## Flujo único de revisión\n\nNetlify Git builds: detenidos. GitHub Actions construye main y actualiza el alias existente main-review. Producción bloqueada en mantenimiento.\n")
+              state = "detenidos" if git_linked else "no aplican: repositorio Git desvinculado"
+              summary.write(f"## Flujo único de revisión\n\nNetlify Git builds: {state}. GitHub Actions construye main y actualiza el alias main-review. Producción bloqueada en mantenimiento.\n")
           PY
 
       - name: Probar verificaciones del despliegue
