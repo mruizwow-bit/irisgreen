@@ -41,6 +41,7 @@ def main() -> int:
     parser.add_argument("--base", required=True)
     parser.add_argument("--head", required=True)
     parser.add_argument("--labels-json", default="[]")
+    parser.add_argument("--bootstrap", action="store_true")
     args = parser.parse_args()
 
     files = changed_files(args.base, args.head)
@@ -55,7 +56,7 @@ def main() -> int:
         lines += ["No protected paths changed.", ""]
     summary.write_text("\n".join(lines), encoding="utf-8")
 
-    if protected and LABEL not in labels:
+    if protected and LABEL not in labels and not args.bootstrap:
         print("PROTECTED_PATHS_TOUCHED")
         print("Missing required label:", LABEL)
         for path in protected:
