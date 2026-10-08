@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Camaleón / Chamaeleon</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="1041.292" cy="477.656" r="4.315"/>
+<circle id="bg-star-002" cx="821.483" cy="431.691" r="3.262"/>
+<circle id="bg-star-003" cx="267.794" cy="639.027" r="3.054"/>
+<circle id="bg-star-004" cx="301.682" cy="1099.850" r="2.911"/>
+<circle id="bg-star-005" cx="367.752" cy="609.070" r="2.904"/>
+<circle id="bg-star-006" cx="768.284" cy="613.581" r="2.807"/>
+<circle id="bg-star-007" cx="487.969" cy="1183.176" r="2.599"/>
+<circle id="bg-star-008" cx="1020.670" cy="877.002" r="2.579"/>
+<circle id="bg-star-009" cx="1017.396" cy="614.760" r="2.495"/>
+<circle id="bg-star-010" cx="1052.720" cy="525.137" r="2.371"/>
+<circle id="bg-star-011" cx="756.109" cy="517.424" r="2.332"/>
+<circle id="bg-star-012" cx="403.138" cy="1099.721" r="2.222"/>
+<circle id="bg-star-013" cx="750.887" cy="574.539" r="2.189"/>
+<circle id="bg-star-014" cx="475.110" cy="468.464" r="2.163"/>
+<circle id="bg-star-015" cx="515.596" cy="762.932" r="2.124"/>
+<circle id="bg-star-016" cx="297.190" cy="810.705" r="2.124"/>
+<circle id="bg-star-017" cx="367.726" cy="1081.269" r="2.111"/>
+<circle id="bg-star-018" cx="826.038" cy="948.586" r="2.105"/>
+<circle id="bg-star-019" cx="491.195" cy="715.797" r="2.040"/>
+<circle id="bg-star-020" cx="1141.565" cy="565.566" r="2.026"/>
+<circle id="bg-star-021" cx="1118.679" cy="718.517" r="1.968"/>
+<circle id="bg-star-022" cx="945.297" cy="698.218" r="1.968"/>
+<circle id="bg-star-023" cx="624.099" cy="1413.309" r="1.962"/>
+<circle id="bg-star-024" cx="1172.206" cy="650.104" r="1.936"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="40702" data-to-hip="51839" x1="1038.85" y1="858.826" x2="728.905" y2="822.558"/>
+<line id="edge-02" data-from-hip="51839" data-to-hip="52633" x1="728.905" y1="822.558" x2="708.009" y2="911.081"/>
+<line id="edge-03" data-from-hip="52633" data-to-hip="60000" x1="708.009" y1="911.081" x2="531.012" y2="894.811"/>
+<line id="edge-04" data-from-hip="60000" data-to-hip="58484" x1="531.012" y1="894.811" x2="550.685" y2="832.908"/>
+<line id="edge-05" data-from-hip="58484" data-to-hip="51839" x1="550.685" y1="832.908" x2="728.905" y2="822.558"/>
+</g><g id="stars">
+<circle id="hip-40702" data-hip="40702" data-mag="4.05" data-bv="0.413" cx="1038.850" cy="858.826" r="5.032" fill="rgb(255, 244, 221)"/>
+<circle id="hip-51839" data-hip="51839" data-mag="4.11" data-bv="1.58" cx="728.905" cy="822.558" r="4.951" fill="rgb(255, 150, 96)"/>
+<circle id="hip-52633" data-hip="52633" data-mag="4.45" data-bv="" cx="708.009" cy="911.081" r="4.492" fill="rgb(235, 240, 255)"/>
+<circle id="hip-58484" data-hip="58484" data-mag="4.88" data-bv="" cx="550.685" cy="832.908" r="3.912" fill="rgb(235, 240, 255)"/>
+<circle id="hip-60000" data-hip="60000" data-mag="4.24" data-bv="-0.123" cx="531.012" cy="894.811" r="4.776" fill="rgb(190, 215, 255)"/>
+</g></svg>

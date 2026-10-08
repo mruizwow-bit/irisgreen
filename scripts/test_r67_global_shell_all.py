@@ -3,6 +3,7 @@
 from __future__ import annotations
 import argparse,re,json
 from pathlib import Path
+from apply_r67_global_shell_all import EXPERIENCIAS
 
 REQ=(
  "/assets/ig-global-ui-tokens-2026.css",
@@ -20,6 +21,7 @@ def main():
  for p in sorted(set(pages)):
   s=p.read_text(encoding="utf-8")
   rel=p.relative_to(root).as_posix()
+  if rel in EXPERIENCIAS:continue  # el producto ocupa la ventana entera; ver la nota en el aplicador
   if 'data-ig-home-version="v4"' in s:continue
   if re.search(r'<meta\b[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*noindex',s,re.I) and any(x in rel.lower() for x in ("imprimir","print","sprite","preview","qa/")):continue
   checked+=1

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Tauro / Taurus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="320.601" cy="1265.156" r="5.107"/>
+<circle id="bg-star-002" cx="455.562" cy="1312.781" r="4.334"/>
+<circle id="bg-star-003" cx="1074.891" cy="1386.209" r="3.749"/>
+<circle id="bg-star-004" cx="594.872" cy="431.691" r="3.652"/>
+<circle id="bg-star-005" cx="818.800" cy="473.401" r="3.554"/>
+<circle id="bg-star-006" cx="850.424" cy="729.935" r="3.548"/>
+<circle id="bg-star-007" cx="606.914" cy="1297.935" r="3.327"/>
+<circle id="bg-star-008" cx="267.794" cy="715.081" r="3.249"/>
+<circle id="bg-star-009" cx="417.080" cy="1185.782" r="3.197"/>
+<circle id="bg-star-010" cx="1172.206" cy="1413.309" r="3.145"/>
+<circle id="bg-star-011" cx="1075.196" cy="562.827" r="3.054"/>
+<circle id="bg-star-012" cx="600.442" cy="1343.807" r="3.008"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="25428" data-to-hip="21881" x1="481.925" y1="566.326" x2="643.818" y2="776.756"/>
+<line id="edge-02" data-from-hip="21881" data-to-hip="20889" x1="643.818" y1="776.756" x2="695.163" y2="900.027"/>
+<line id="edge-03" data-from-hip="21421" data-to-hip="26451" x1="666.507" y1="985.801" x2="425.203" y2="806.874"/>
+<line id="edge-04" data-from-hip="20205" data-to-hip="20455" x1="729.829" y1="1014.3" x2="717.246" y2="952.691"/>
+<line id="edge-05" data-from-hip="20205" data-to-hip="18724" x1="729.829" y1="1014.3" x2="807.425" y2="1113.571"/>
+<line id="edge-06" data-from-hip="18724" data-to-hip="15900" x1="807.425" y1="1113.571" x2="961.889" y2="1218.578"/>
+<line id="edge-07" data-from-hip="21421" data-to-hip="20889" x1="666.507" y1="985.801" x2="695.163" y2="900.027"/>
+<line id="edge-08" data-from-hip="21421" data-to-hip="20894" x1="666.507" y1="985.801" x2="694.923" y2="1006.733"/>
+<line id="edge-09" data-from-hip="20894" data-to-hip="20205" x1="694.923" y1="1006.733" x2="729.829" y2="1014.3"/>
+<line id="edge-10" data-from-hip="20889" data-to-hip="20648" x1="695.163" y1="900.027" x2="707.281" y2="940.362"/>
+<line id="edge-11" data-from-hip="20648" data-to-hip="20455" x1="707.281" y1="940.362" x2="717.246" y2="952.691"/>
+<line id="edge-12" data-from-hip="20455" data-to-hip="17847" x1="717.246" y1="952.691" x2="844.039" y2="732.531"/>
+</g><g id="stars">
+<circle id="hip-15900" data-hip="15900" data-mag="3.61" data-bv="0.887" cx="961.889" cy="1218.578" r="5.627" fill="rgb(255, 221, 170)"/>
+<circle id="hip-17847" data-hip="17847" data-mag="3.62" data-bv="-0.07" cx="844.039" cy="732.531" r="5.613" fill="rgb(190, 215, 255)"/>
+<circle id="hip-18724" data-hip="18724" data-mag="3.41" data-bv="" cx="807.425" cy="1113.571" r="5.896" fill="rgb(235, 240, 255)"/>
+<circle id="hip-20205" data-hip="20205" data-mag="3.65" data-bv="0.981" cx="729.829" cy="1014.300" r="5.572" fill="rgb(255, 221, 170)"/>
+<circle id="hip-20455" data-hip="20455" data-mag="3.77" data-bv="0.983" cx="717.246" cy="952.691" r="5.410" fill="rgb(255, 221, 170)"/>
+<circle id="hip-20648" data-hip="20648" data-mag="4.3" data-bv="0.049" cx="707.281" cy="940.362" r="4.695" fill="rgb(190, 215, 255)"/>
+<circle id="hip-20889" data-hip="20889" data-mag="3.53" data-bv="1.014" cx="695.163" cy="900.027" r="5.734" fill="rgb(255, 221, 170)"/>
+<circle id="hip-20894" data-hip="20894" data-mag="3.4" data-bv="0.179" cx="694.923" cy="1006.733" r="5.910" fill="rgb(222, 232, 255)"/>
+<circle id="hip-21421" data-hip="21421" data-mag="0.87" data-bv="1.538" cx="666.507" cy="985.801" r="9.325" fill="rgb(255, 150, 96)"/>
+<circle id="hip-21881" data-hip="21881" data-mag="4.27" data-bv="-0.112" cx="643.818" cy="776.756" r="4.736" fill="rgb(190, 215, 255)"/>
+<circle id="hip-25428" data-hip="25428" data-mag="1.65" data-bv="-0.13" cx="481.925" cy="566.326" r="8.273" fill="rgb(190, 215, 255)"/>
+<circle id="hip-26451" data-hip="26451" data-mag="2.97" data-bv="-0.148" cx="425.203" cy="806.874" r="6.490" fill="rgb(190, 215, 255)"/>
+</g></svg>

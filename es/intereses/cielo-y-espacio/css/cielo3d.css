@@ -1,0 +1,389 @@
+/* Cielo 3D · piloto R01 · composición. Sólo valores del canon NAVY.
+   Nada se superpone al cielo: los controles alternativos van debajo, así la
+   evidencia nunca queda tapada por la propia interfaz. */
+
+html { background: var(--ig-bg); }
+body { min-height: 100vh; overflow-wrap: break-word; }
+h1, h2, h3, p, button, td, th, li { overflow-wrap: break-word; }
+
+.ig-sr {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  border: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+}
+.ig-app { display: flex; flex-direction: column; min-height: 100vh; max-width: 1600px; margin: 0 auto; }
+
+.ig-preset, .ig-nota {
+  margin: 0; font-size: 0.8125rem; line-height: 1.5;
+  color: var(--ig-muted); letter-spacing: 0.01em;
+}
+.ig-h2 { font-size: 1.25rem; margin: 0; }
+
+/* ------------------------------------------------------------- portada -- */
+.ig-portada {
+  padding: 1.5rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.75rem;
+  flex: 1 1 auto; justify-content: center; max-width: 60ch;
+}
+.ig-portada[hidden] { display: none; }
+.ig-portada h1 { margin: 0; }
+.ig-intro { margin: 0; color: var(--ig-text); max-width: 52ch; }
+.ig-acciones { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.ig-acciones-portada { margin: 0.3rem 0 0.2rem; }
+#progreso-global:empty { display: none; }
+
+/* -------------------------------------------------------------- escena -- */
+.ig-escena { display: flex; flex-direction: column; }
+.ig-escena[hidden] { display: none; }
+.ig-escena-cab {
+  padding: 0.5rem 1rem 0.3rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.8rem;
+}
+.ig-objetivo-fila {
+  padding: 0 1rem 0.5rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 0.8rem;
+}
+.ig-objetivo {
+  margin: 0; color: var(--ig-text); font-size: 1.0625rem; line-height: 1.5;
+  max-width: 60ch; flex: 1 1 24rem;
+}
+
+.ig-escenario-wrap { padding: 0 1rem; display: grid; grid-template-columns: 1fr; gap: 0.8rem; }
+.ig-escenario {
+  position: relative; width: 100%;
+  height: clamp(320px, 72vh, 860px);
+  border: 1px solid var(--ig-divider); border-radius: 10px;
+  overflow: hidden; background: var(--ig-bg);
+}
+.ig-escenario:focus-visible { outline: 3px solid var(--ig-focus); outline-offset: 2px; }
+.ig-escenario canvas { display: block; width: 100%; height: 100%; touch-action: none; cursor: crosshair; }
+.ig-escenario canvas.orientando { cursor: grabbing; }
+/* El Sistema Solar lleva dos lienzos apilados: abajo la geometría 3D en WebGL,
+   encima una capa 2D con rótulos, cerco y mira. La de encima no recibe el
+   puntero, así que el clic llega a la geometría y se resuelve por raycast. */
+.ig-escenario canvas.ig-apilado { position: absolute; inset: 0; }
+.ig-escenario canvas.ig-capa { pointer-events: none; background: transparent; }
+
+/* --------------------------------------------------------------- panel -- */
+.ig-panel {
+  background: var(--ig-panel); border: 1px solid var(--ig-divider);
+  color: var(--ig-text); overflow: auto; border-radius: 10px; min-height: 0;
+}
+.ig-panel[hidden] { display: none; }
+.ig-panel-cab {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 0.5rem; padding: 0.9rem 0.9rem 0.4rem; flex-wrap: wrap;
+}
+/* El título cede sitio y parte por palabras; el botón de cerrar NO se parte.
+   A 320 px con el texto al 200 % el título empujaba a «Cerrar» hasta dejarlo en
+   53 px de ancho por 316 de alto —una letra por línea, cortada por el borde de
+   la pantalla— y el panel se quedaba con barrido lateral. Un botón al que hay
+   que arrastrar de lado para llegar no es un botón al que se llegue. */
+.ig-panel-cab h2 { margin: 0; font-size: 1.5rem; flex: 1 1 8rem; min-width: 0; overflow-wrap: anywhere; }
+.ig-panel-cab .ig-btn { flex: 0 0 auto; white-space: nowrap; max-width: 100%; }
+.ig-panel-cuerpo { padding: 0 0.9rem 1rem; }
+.ig-panel-cuerpo p { margin: 0 0 0.7rem; }
+.ig-panel-cuerpo h3 {
+  font-size: 1rem; margin: 1.1rem 0 0.4rem; color: var(--ig-link);
+  font-family: var(--ig-body); font-weight: 700;
+}
+.ig-panel-cuerpo ul { margin: 0 0 0.7rem; padding-left: 1.1rem; color: var(--ig-muted); }
+.ig-panel-cuerpo li { margin-bottom: 0.4rem; }
+.ig-panel-cuerpo img {
+  display: block; width: 100%; height: auto; border-radius: 6px;
+  border: 1px solid var(--ig-divider); margin-bottom: 0.5rem; background: var(--ig-bg);
+}
+.ig-panel-cuerpo .ig-nota { font-size: 0.875rem; line-height: 1.55; }
+.ig-panel-cuerpo .ig-acciones { margin-top: 0.8rem; }
+.ig-datos { margin: 0 0 0.7rem; display: grid; grid-template-columns: minmax(7rem, 11rem) 1fr; }
+.ig-datos dt, .ig-datos dd {
+  margin: 0; padding: 0.35rem 0.1rem; border-bottom: 1px solid var(--ig-divider);
+  font-size: 0.9375rem; line-height: 1.5;
+}
+.ig-datos dt { color: var(--ig-muted); font-weight: 700; }
+.ig-estrella-nombre {
+  margin: 0.9rem 0 0.1rem !important;
+  font-family: var(--ig-heading); font-size: 1.0625rem; font-weight: 600;
+}
+
+@media (min-width: 860px) {
+  .ig-escenario-wrap.con-panel { grid-template-columns: minmax(0, 1fr) 340px; }
+  /* C3D-08: la ficha se acopla al lado opuesto a lo observado. En pantalla
+     estrecha no se aplica: ahí el cielo se queda arriba y la ficha debajo. */
+  .ig-escenario-wrap.con-panel.panel-izquierda { grid-template-columns: 340px minmax(0, 1fr); }
+  .ig-escenario-wrap.con-panel.panel-izquierda > .ig-escenario { order: 2; }
+  .ig-escenario-wrap.con-panel.panel-izquierda > .ig-panel { order: 1; }
+}
+
+/* ------------------------------------------------------- cuaderno ------- */
+.ig-cuaderno-fila { border-top: 1px solid var(--ig-divider); padding: 0.7rem 0 0.2rem; }
+.ig-cuaderno-fila:first-of-type { border-top: 0; }
+.ig-cuaderno-nombre { margin: 0 0 0.2rem; font-size: 1rem; }
+
+/* ------------------------------------------------------------- bandeja -- */
+.ig-bandeja {
+  padding: 0.85rem 1rem 0.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.8rem;
+}
+.ig-btn {
+  min-inline-size: 48px; min-block-size: 48px; padding: 0.6rem 1.1rem;
+  border-radius: 8px; border: 1px solid var(--ig-border);
+  background: var(--ig-panel); color: var(--ig-text); cursor: pointer;
+}
+.ig-btn:hover { background: var(--ig-surface); }
+.ig-btn.ig-primary {
+  background: var(--ig-primary); color: var(--ig-primary-text);
+  border-color: var(--ig-primary); font-weight: 700;
+}
+.ig-btn.ig-primary:hover { background: #EEF4F8; }
+.ig-btn.ig-pequeno { padding: 0.4rem 0.8rem; min-block-size: 44px; font-size: 0.9375rem; }
+.ig-btn[hidden] { display: none; }
+.ig-select {
+  min-block-size: 44px; padding: 0.4rem 0.6rem; border-radius: 8px;
+  border: 1px solid var(--ig-border); background: var(--ig-panel); color: var(--ig-text); cursor: pointer;
+  /* un select se dimensiona por su opción más larga: al 200 % de texto, el de
+     rutas pedía 485 px en una pantalla de 320 y se llevaba la página entera
+     consigo */
+  max-width: 100%; min-width: 0;
+}
+.ig-mensaje { margin: 0; color: var(--ig-text); flex: 0 1 30rem; min-width: 0; }
+.ig-mensaje .ig-mensaje-2 { display: block; }
+.ig-mensaje:empty { display: none; }
+
+/* ------------------------------------------- controles alternativos ----- */
+.ig-secundarios {
+  padding: 0.15rem 1rem 0.1rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.5rem;
+}
+/* nada de lo que va aquí puede ser más ancho que su fila */
+.ig-secundarios > * { max-width: 100%; min-width: 0; }
+.ig-bandeja > *, .ig-tira > *, .ig-tira-mandos > * { max-width: 100%; }
+.ig-panel, .ig-panel-cuerpo { max-width: 100%; }
+.ig-panel-cuerpo { overflow-wrap: anywhere; }
+.ig-mando {
+  width: 44px; height: 44px; min-inline-size: 44px; min-block-size: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 8px; background: var(--ig-panel); color: var(--ig-text);
+  border: 1px solid var(--ig-border); cursor: pointer; padding: 0;
+  font-size: 1.0625rem; line-height: 1;
+}
+.ig-mando:hover { background: var(--ig-surface); }
+.ig-secundarios .ig-btn[aria-pressed="true"] {
+  background: var(--ig-surface); border: 2px solid var(--ig-text); font-weight: 700;
+}
+
+/* --------------------------------------------------------- descripción -- */
+.ig-descripcion {
+  margin: 0.5rem 1rem 0; padding: 0.85rem 1rem;
+  background: var(--ig-panel); border: 1px solid var(--ig-divider); border-radius: 10px;
+}
+.ig-descripcion[hidden] { display: none; }
+.ig-descripcion h2 { margin: 0 0 0.4rem; font-size: 1.0625rem; font-family: var(--ig-body); font-weight: 700; }
+.ig-descripcion p { margin: 0 0 0.4rem; }
+.ig-descripcion p:last-child { margin-bottom: 0; }
+
+/* ------------------------------------------------------------ opciones -- */
+.ig-opciones {
+  margin-top: auto; padding: 0.9rem 1rem 1.25rem;
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 1.1rem;
+  border-top: 1px solid var(--ig-divider);
+}
+.ig-grupo { display: flex; align-items: center; flex-wrap: wrap; gap: 0.4rem; }
+.ig-etiqueta { color: var(--ig-muted); font-size: 0.875rem; }
+.ig-opciones .ig-btn[aria-pressed="true"] {
+  background: var(--ig-surface); border: 2px solid var(--ig-text); font-weight: 700;
+}
+.ig-aviso {
+  margin: 0.5rem 1rem 0; padding: 0.7rem 0.9rem;
+  border: 1px solid var(--ig-border); border-radius: 8px;
+  color: var(--ig-muted); background: var(--ig-panel); font-size: 0.9375rem;
+}
+.ig-aviso[hidden] { display: none; }
+.ig-fuentes-fuera {
+  margin: 0.2rem 1rem 0.6rem; padding: 0.85rem 1rem;
+  background: var(--ig-panel); border: 1px solid var(--ig-divider); border-radius: 10px;
+}
+.ig-fuentes-fuera[hidden] { display: none; }
+.ig-fuentes-fuera ul { margin: 0 0 0.5rem; padding-left: 1.1rem; color: var(--ig-muted); font-size: 0.9375rem; }
+
+/* -------------------------------------------------------------- diálogo -- */
+.ig-velo { position: fixed; inset: 0; z-index: 20; background: rgba(8, 20, 33, 0.72); }
+.ig-velo[hidden] { display: none; }
+.ig-dialogo {
+  position: fixed; z-index: 21; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: min(28rem, calc(100vw - 2rem)); padding: 1.1rem 1.2rem 1.2rem;
+  background: var(--ig-panel); color: var(--ig-text);
+  border: 1px solid var(--ig-border); border-radius: 12px;
+}
+.ig-dialogo[hidden] { display: none; }
+.ig-dialogo h2 { margin: 0 0 0.5rem; }
+.ig-dialogo p { margin: 0 0 0.9rem; }
+
+/* --------------------------------------------- composición estrecha ----- */
+@media (max-width: 859px) {
+  .ig-portada { justify-content: flex-start; padding-top: 1.6rem; }
+  .ig-escena-cab { padding: 0.35rem 1rem 0.25rem; }
+  .ig-objetivo-fila { padding-bottom: 0.4rem; }
+  .ig-objetivo { font-size: 1rem; flex: 1 1 9rem; }
+  .ig-escenario { height: min(72vh, calc(100vh - 16.5rem)); min-height: 240px; }
+  .ig-bandeja { padding: 0.6rem 1rem 0.15rem; gap: 0.5rem 0.6rem; }
+  .ig-bandeja .ig-mensaje { flex: 1 1 100%; }
+  .ig-datos { grid-template-columns: 1fr; }
+  .ig-datos dt { border-bottom: 0; padding-bottom: 0; }
+  .ig-datos dd { padding-top: 0.1rem; }
+  .ig-opciones { padding: 0.6rem 1rem 0.95rem; gap: 0.45rem 0.7rem; }
+}
+@media (max-width: 440px) {
+  #et-idioma, #et-controles {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    border: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap;
+  }
+}
+@media (max-width: 400px) {
+  .ig-portada, .ig-escena-cab, .ig-objetivo-fila, .ig-escenario-wrap,
+  .ig-bandeja, .ig-secundarios, .ig-opciones { padding-left: 0.75rem; padding-right: 0.75rem; }
+  .ig-descripcion, .ig-aviso, .ig-fuentes-fuera { margin-left: 0.75rem; margin-right: 0.75rem; }
+  .ig-acciones-portada .ig-primary { flex: 1 1 100%; }
+}
+
+/* -------------------------------------------------------- forced-colors -- */
+@media (forced-colors: active) {
+  .ig-escenario { border-color: CanvasText; }
+  .ig-panel, .ig-descripcion, .ig-aviso, .ig-fuentes-fuera, .ig-dialogo {
+    background: Canvas; color: CanvasText; border-color: CanvasText; forced-color-adjust: none;
+  }
+  .ig-panel-cuerpo h3, .ig-preset, .ig-nota, .ig-etiqueta { color: CanvasText; }
+  .ig-mando, .ig-btn, .ig-select { background: ButtonFace; color: ButtonText; border-color: ButtonText; }
+  .ig-btn.ig-primary { background: ButtonFace; color: ButtonText; border: 2px solid ButtonText; }
+  .ig-opciones .ig-btn[aria-pressed="true"], .ig-secundarios .ig-btn[aria-pressed="true"] { border-color: Highlight; }
+  .ig-datos dt, .ig-datos dd { border-color: CanvasText; color: CanvasText; }
+}
+
+/* ------------------------------------------------------------- eclipses -- */
+.ig-eclipses { padding: 0 1rem 1rem; display: grid; gap: 0.8rem; }
+.ig-eclipse { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel); }
+.ig-eclipse-titulo { margin: 0; }
+.ig-eclipse-btn {
+  width: 100%; text-align: left; min-block-size: 48px; padding: 0.8rem 1rem;
+  background: none; border: 0; color: var(--ig-text); font: inherit; font-size: 1.05rem; cursor: pointer;
+}
+.ig-eclipse-btn:hover { background: var(--ig-surface); }
+.ig-eclipse-cuerpo { padding: 0 1rem 1rem; }
+.ig-eclipse-img { display: block; width: 100%; height: auto; border-radius: 8px; background: #0B1220; }
+
+/* ---------------------------------------------- entradas del producto ---- */
+.ig-entradas { padding: 0 1rem; display: grid; gap: 0.8rem; margin: 1rem 0; }
+@media (min-width: 760px) { .ig-entradas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.ig-entrada { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel); padding: 0.2rem 1rem 1rem; }
+.ig-entrada-titulo { margin: 0; }
+.ig-entrada-btn {
+  width: 100%; text-align: left; min-block-size: 48px; padding: 0.8rem 0;
+  background: none; border: 0; color: var(--ig-text); font: inherit; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+}
+.ig-entrada-progreso { margin: 0.3rem 0 0; color: var(--ig-muted); font-size: 0.92rem; }
+
+
+/* ================================================================= R04 ===
+   WORLD_SCENE_FIRST: al entrar, el primer viewport es cielo. El chrome no
+   desaparece: queda después del escenario, disponible al desplazar/foco. */
+.ig-escena { position: relative; min-height: 100svh; }
+.ig-escena > .ig-escenario-wrap { order: -10; padding: 0; width: 100%; height: 100svh; min-height: 520px; position: relative; }
+.ig-escena > .ig-escenario-wrap > .ig-escenario { height: 100%; min-height: 100%; border: 0; border-radius: 0; }
+.ig-escena > .ig-escena-cab,
+.ig-escena > .ig-objetivo-fila,
+.ig-escena > .ig-bandeja,
+.ig-escena > .ig-secundarios,
+.ig-escena > .ig-descripcion { order: 1; }
+/* LA TIRA · el cielo se queda con la ventana entera, y lo que hace falta para
+   jugar va encima de él, dentro de la primera pantalla. Cerrar
+   WORLD_SCENE_FIRST dejó los 19 controles por debajo del pliegue y, con
+   `touch-action: none` en el lienzo, un dedo no llegaba a ninguno: funcionaba
+   con teclado y no funcionaba en el teléfono. La tira es la respuesta: sube
+   «Examinar», lo que sale de examinar, y los seis de orientar. El resto se
+   queda abajo, donde estaba. */
+.ig-tira {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 6;
+  display: flex; flex-direction: column; gap: .35rem;
+  padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(6,12,20,.93) 35%, rgba(6,12,20,.55) 80%, rgba(6,12,20,0));
+  pointer-events: none;
+}
+.ig-tira > * { pointer-events: auto; }
+.ig-tira .ig-bandeja { padding: 0; gap: .5rem .7rem; }
+.ig-tira .ig-mensaje { flex: 1 1 12rem; margin: 0; }
+.ig-tira-mandos { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem; }
+.ig-tira-mandos .ig-etiqueta { flex: 0 0 auto; }
+@media (max-width: 560px) {
+  /* a 320 px la etiqueta se lleva una fila entera y empuja los botones fuera:
+     se queda sólo para quien lee la pantalla */
+  .ig-tira-mandos .ig-etiqueta {
+    position: absolute; width: 1px; height: 1px; margin: -1px;
+    padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+  }
+  .ig-tira .ig-mando { width: 44px; height: 44px; }
+  .ig-tira { gap: .3rem; padding: .4rem .5rem calc(.4rem + env(safe-area-inset-bottom)); }
+}
+
+.ig-ayuda-flotante {
+  z-index: 3; margin: 0 auto; max-width: min(90%, 42rem); text-align: center;
+  padding: .3rem .7rem; border-radius: 4px; color: rgba(238,244,248,.92);
+  background: rgba(6,12,20,.42);
+  font-size: .9rem; line-height: 1.35; pointer-events: none;
+  transition: opacity .35s ease;
+}
+.ig-ayuda-flotante[hidden] { display:none; }
+.ig-ayuda-flotante.ig-retirada { opacity:0; }
+
+/* PERSISTENT_DOMINANT_SIDEBAR: la ficha ya no roba ancho al cielo. Se abre
+   encima sólo después de pedirla. */
+.ig-escenario-wrap.con-panel,
+.ig-escenario-wrap.con-panel.panel-izquierda { grid-template-columns: 1fr !important; }
+.ig-escenario-wrap.con-panel > .ig-escenario,
+.ig-escenario-wrap.con-panel.panel-izquierda > .ig-escenario { order: initial !important; }
+.ig-escenario-wrap > .ig-panel:not([hidden]) {
+  position: absolute; z-index: 8; inset: 1rem 1rem 1rem auto; width: min(360px, calc(100% - 2rem));
+  max-height: calc(100% - 2rem); background: color-mix(in srgb, var(--ig-panel) 96%, transparent);
+  box-shadow: 0 16px 50px rgba(0,0,0,.45); backdrop-filter: blur(8px);
+}
+/* La ficha sigue acoplándose al lado que NO tapa lo que acabas de encontrar.
+   Eso venía de R02 y no lo deroga hacerla flotante: al hacerla overlay se
+   quedó clavada a la derecha y tapaba el hallazgo cuando caía a la derecha. */
+.ig-escenario-wrap.panel-izquierda > .ig-panel:not([hidden]) { inset: 1rem auto 1rem 1rem; }
+@media (max-width: 620px) {
+  .ig-escenario-wrap > .ig-panel:not([hidden]) { inset: auto .5rem .5rem .5rem; width:auto; max-height:72%; }
+}
+
+/* Etiquetas sobre escena: texto, no cápsula. */
+.ig-estrella-nombre { background: transparent; border: 0; border-radius: 0; }
+
+@media (prefers-reduced-motion: reduce) {
+  .ig-ayuda-flotante { transition: none; }
+}
+
+/* R04.5 · LO QUE VA ENCIMA DEL CIELO NO CAMBIA CON EL TEMA DEL SITIO.
+   La tira de mandos flota sobre el cielo, y el cielo es oscuro siempre. Si el
+   sitio está en claro y la tira hereda el texto oscuro del tema, el rótulo
+   «Orientar y acercar» queda gris oscuro sobre casi negro y no se lee. Se vio
+   en la primera captura del tema claro. Así que la tira se queda con los
+   colores del tema oscuro, pase lo que pase fuera. */
+html[data-ig-theme="light"] .ig-tira,
+html[data-ig-theme="light"] .ig-tira .ig-mensaje,
+html[data-ig-theme="light"] .ig-escenario .ig-sobre-el-cielo {
+  color: #EEF4F8;
+}
+/* los rótulos de la tira van en el gris apagado del tema oscuro, igual que
+   fuera del tema claro: --ig-muted, no --ig-text */
+html[data-ig-theme="light"] .ig-tira .ig-etiqueta { color: #C9D5DD; }
+html[data-ig-theme="light"] .ig-tira .ig-btn,
+html[data-ig-theme="light"] .ig-tira button,
+html[data-ig-theme="light"] .ig-tira .ig-select {
+  background: #15304A; color: #EEF4F8; border-color: #8494A8;
+}
+html[data-ig-theme="light"] .ig-tira .ig-primary {
+  background: #DCE8F2; color: #0B1A2B; border-color: #DCE8F2;
+}
+html[data-ig-theme="light"] .ig-tira :focus-visible { outline-color: #C3B8FF; }
+@media (forced-colors: active) {
+  html[data-ig-theme="light"] .ig-tira,
+  html[data-ig-theme="light"] .ig-tira .ig-btn,
+  html[data-ig-theme="light"] .ig-tira button,
+  html[data-ig-theme="light"] .ig-tira .ig-select { color: CanvasText; background: ButtonFace; border-color: ButtonText; }
+}

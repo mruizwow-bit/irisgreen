@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Perseo / Perseus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="351.159" cy="1412.070" r="3.548"/>
+<circle id="bg-star-002" cx="1172.206" cy="1024.812" r="3.450"/>
+<circle id="bg-star-003" cx="874.116" cy="1302.420" r="3.054"/>
+<circle id="bg-star-004" cx="335.284" cy="1413.309" r="3.047"/>
+<circle id="bg-star-005" cx="375.593" cy="1412.464" r="2.982"/>
+<circle id="bg-star-006" cx="411.646" cy="843.385" r="2.950"/>
+<circle id="bg-star-007" cx="661.881" cy="775.534" r="2.937"/>
+<circle id="bg-star-008" cx="367.269" cy="1403.833" r="2.885"/>
+<circle id="bg-star-009" cx="736.499" cy="530.875" r="2.846"/>
+<circle id="bg-star-010" cx="267.794" cy="678.872" r="2.826"/>
+<circle id="bg-star-011" cx="1116.868" cy="1069.092" r="2.780"/>
+<circle id="bg-star-012" cx="654.899" cy="632.902" r="2.768"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="17448" data-to-hip="18246" x1="397.709" y1="1153.019" x2="314.412" y2="1162.219"/>
+<line id="edge-02" data-from-hip="18246" data-to-hip="18614" x1="314.412" y1="1162.219" x2="288.21" y2="1040.889"/>
+<line id="edge-03" data-from-hip="18614" data-to-hip="18532" x1="288.21" y1="1040.889" x2="311.967" y2="914.914"/>
+<line id="edge-04" data-from-hip="18532" data-to-hip="17358" x1="311.967" y1="914.914" x2="437.15" y2="688.611"/>
+<line id="edge-05" data-from-hip="17358" data-to-hip="15863" x1="437.15" y1="688.611" x2="558.102" y2="628.068"/>
+<line id="edge-06" data-from-hip="15863" data-to-hip="14328" x1="558.102" y1="628.068" x2="671.531" y2="512.732"/>
+<line id="edge-07" data-from-hip="14328" data-to-hip="13268" x1="671.531" y1="512.732" x2="744.022" y2="431.691"/>
+<line id="edge-08" data-from-hip="15863" data-to-hip="14576" x1="558.102" y1="628.068" x2="679.57" y2="891.269"/>
+<line id="edge-09" data-from-hip="14576" data-to-hip="14354" x1="679.57" y1="891.269" x2="706.937" y2="953.344"/>
+<line id="edge-10" data-from-hip="14354" data-to-hip="13254" x1="706.937" y1="953.344" x2="820.207" y2="962.063"/>
+</g><g id="stars">
+<circle id="hip-13254" data-hip="13254" data-mag="4.22" data-bv="0.343" cx="820.207" cy="962.063" r="4.803" fill="rgb(222, 232, 255)"/>
+<circle id="hip-13268" data-hip="13268" data-mag="3.77" data-bv="" cx="744.022" cy="431.691" r="5.410" fill="rgb(235, 240, 255)"/>
+<circle id="hip-14328" data-hip="14328" data-mag="2.91" data-bv="0.716" cx="671.531" cy="512.732" r="6.571" fill="rgb(255, 244, 221)"/>
+<circle id="hip-14354" data-hip="14354" data-mag="3.32" data-bv="1.528" cx="706.937" cy="953.344" r="6.018" fill="rgb(255, 150, 96)"/>
+<circle id="hip-14576" data-hip="14576" data-mag="2.09" data-bv="-0.003" cx="679.570" cy="891.269" r="7.678" fill="rgb(190, 215, 255)"/>
+<circle id="hip-15863" data-hip="15863" data-mag="1.79" data-bv="0.481" cx="558.102" cy="628.068" r="8.084" fill="rgb(255, 244, 221)"/>
+<circle id="hip-17358" data-hip="17358" data-mag="3.01" data-bv="" cx="437.150" cy="688.611" r="6.436" fill="rgb(235, 240, 255)"/>
+<circle id="hip-17448" data-hip="17448" data-mag="3.84" data-bv="0.022" cx="397.709" cy="1153.019" r="5.316" fill="rgb(190, 215, 255)"/>
+<circle id="hip-18246" data-hip="18246" data-mag="2.84" data-bv="0.271" cx="314.412" cy="1162.219" r="6.666" fill="rgb(222, 232, 255)"/>
+<circle id="hip-18532" data-hip="18532" data-mag="2.9" data-bv="-0.199" cx="311.967" cy="914.914" r="6.585" fill="rgb(168, 199, 255)"/>
+<circle id="hip-18614" data-hip="18614" data-mag="3.98" data-bv="0.016" cx="288.210" cy="1040.889" r="5.127" fill="rgb(190, 215, 255)"/>
+</g></svg>

@@ -1,0 +1,19 @@
+{
+  "html_js_syntax_pass": true,
+  "apertura": "PASS",
+  "banda_calculada_desde_game_data": "PASS",
+  "decision_calculada_desde_game_data": "PASS",
+  "mutacion_calcula_base_antes_de_mutar": "PASS",
+  "mutacion_trabajo_-30_ejecuta_banda_y_decision_reales": "PASS",
+  "mutacion_trabajo_-30_banda_exit": 1,
+  "mutacion_trabajo_-30_decision_exit": 1,
+  "game_data_version": "R04",
+  "dailyRecovery_present": false,
+  "layout_changes": [
+    "meter-list uses two fluid columns with minmax(0,1fr)",
+    "below 700px play-area is display:contents and scene is sticky top:0",
+    "scene label remains below canvas below 700px",
+    "mobile token strip remains horizontal"
+  ],
+  "visual_browser_r04": "NOT_RERUN_IN_THIS_ENVIRONMENT"
+}

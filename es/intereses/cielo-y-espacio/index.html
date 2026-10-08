@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cielo y Espacio</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="description" content="Un mismo espacio para explorar: el cielo entero, el Sistema Solar, las lluvias de meteoros, los exoplanetas y los eclipses.">
+<link rel="stylesheet" href="css/iris-green-navy.css">
+<link rel="stylesheet" href="css/fuentes-file-url.css">
+<link rel="stylesheet" href="css/cielo3d.css">
+</head>
+<body>
+
+<div class="ig-app">
+
+  <!-- -------------------------------------------------------- inicio --- -->
+  <main class="ig-portada" id="portada">
+    <h1 class="ig-hero-title" data-t="titulo">Cielo y Espacio</h1>
+    <p class="ig-intro" id="hero-intro" data-t="portada_intro"></p>
+    <div class="ig-entradas" id="entradas"></div>
+    <div class="ig-acciones ig-acciones-portada">
+      <button type="button" class="ig-btn ig-primary" id="btn-empezar"></button>
+      <button type="button" class="ig-btn ig-primary" id="btn-continuar" hidden></button>
+      <button type="button" class="ig-btn" id="btn-cuaderno-inicio" hidden></button>
+    </div>
+    <p class="ig-nota" id="pista-modalidad" data-t="pista_raton"></p>
+    <p class="ig-nota" id="progreso-global"></p>
+    <p class="ig-nota" data-t="preset"></p>
+  </main>
+
+  <!-- ---------------------------------------------- experiencia: cielo --- -->
+  <div class="ig-escena" id="escena" hidden>
+    <div class="ig-escena-cab">
+      <button type="button" class="ig-btn ig-pequeno" id="btn-volver-portada"></button>
+      <p class="ig-nota" id="orientacion"></p>
+    </div>
+
+    <div class="ig-objetivo-fila">
+      <p class="ig-objetivo" id="objetivo"></p>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-continuar-pista" hidden></button>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-seguir" hidden></button>
+    </div>
+
+    <div class="ig-escenario-wrap">
+      <div class="ig-escenario" id="escenario" tabindex="0" role="group"
+           aria-label="Cielo" aria-describedby="escenario-ayuda">
+        <canvas id="lienzo" aria-hidden="true"></canvas>
+        <p id="escenario-ayuda" class="ig-sr" data-t="area_ayuda"></p>
+      </div>
+
+      <!-- La tira: lo que hace falta para jugar, SIEMPRE dentro de la primera
+           pantalla y encima del cielo. El cielo conserva la ventana entera; lo
+           que no cabía en ella era esto, y con un dedo no se llegaba. -->
+      <div class="ig-tira" id="tira" data-occluder>
+        <p class="ig-ayuda-flotante" id="ayuda-flotante" data-t="ayuda_flota"></p>
+        <div class="ig-bandeja">
+          <button type="button" class="ig-btn ig-primary" id="btn-examinar" data-t="examinar"></button>
+          <p class="ig-mensaje" id="mensaje"></p>
+          <button type="button" class="ig-btn" id="btn-revelar" hidden></button>
+          <button type="button" class="ig-btn" id="btn-saber-mas" hidden></button>
+        </div>
+        <div class="ig-tira-mandos" role="group" aria-labelledby="et-controles">
+          <span class="ig-etiqueta" id="et-controles" data-t="controles_alternativos"></span>
+          <button type="button" class="ig-mando" data-orientar="izquierda" data-ta="orientar_izquierda">←</button>
+          <button type="button" class="ig-mando" data-orientar="derecha" data-ta="orientar_derecha">→</button>
+          <button type="button" class="ig-mando" data-orientar="arriba" data-ta="orientar_arriba">↑</button>
+          <button type="button" class="ig-mando" data-orientar="abajo" data-ta="orientar_abajo">↓</button>
+          <button type="button" class="ig-mando" data-zoom="acercar" data-ta="acercar">+</button>
+          <button type="button" class="ig-mando" data-zoom="alejar" data-ta="alejar">−</button>
+        </div>
+      </div>
+
+      <aside class="ig-panel" id="panel" data-occluder hidden
+             role="region" aria-labelledby="panel-titulo" tabindex="-1">
+        <div class="ig-panel-cab">
+          <h2 id="panel-titulo"></h2>
+          <button type="button" class="ig-btn ig-pequeno" id="btn-cerrar-panel"></button>
+        </div>
+        <div class="ig-panel-cuerpo" id="panel-cuerpo"></div>
+      </aside>
+    </div>
+
+    <div class="ig-secundarios" role="group" aria-labelledby="et-llevas">
+      <span class="ig-etiqueta" id="et-llevas" data-t="lo_que_llevas"></span>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-capa" aria-pressed="false"></button>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-cuaderno" data-t="cuaderno"></button>
+    </div>
+
+    <div class="ig-secundarios" role="group" aria-labelledby="et-explorar">
+      <span class="ig-etiqueta" id="et-explorar" data-t="como_explorar"></span>
+      <label class="ig-etiqueta" for="sel-capa" data-t="capa_lbl"></label>
+      <select class="ig-select" id="sel-capa">
+        <option value="constelaciones" data-t="capa_constelaciones"></option>
+        <option value="radiantes" data-t="capa_radiantes"></option>
+        <option value="exoplanetas" data-t="capa_exoplanetas"></option>
+      </select>
+      <label class="ig-etiqueta" for="sel-ruta" data-t="ruta_lbl"></label>
+      <select class="ig-select" id="sel-ruta"></select>
+      <label class="ig-etiqueta" for="sel-ayuda" data-t="nivel_ayuda_lbl"></label>
+      <select class="ig-select" id="sel-ayuda">
+        <option value="1" data-t="nivel_1"></option>
+        <option value="2" data-t="nivel_2"></option>
+        <option value="3" data-t="nivel_3"></option>
+      </select>
+    </div>
+
+    <section class="ig-descripcion" id="descripcion" hidden aria-labelledby="descripcion-titulo">
+      <h2 id="descripcion-titulo" data-t="descripcion_titulo"></h2>
+      <p id="descripcion-region"></p>
+      <p id="descripcion-entorno" class="ig-nota"></p>
+    </section>
+  </div>
+
+  <!-- ------------------------------------- experiencia: Sistema Solar --- -->
+  <div class="ig-escena" id="solar" hidden></div>
+
+  <!-- ----------------------------------------- experiencia: eclipses --- -->
+  <div class="ig-escena" id="eclipses" hidden></div>
+
+  <div class="ig-fuentes-fuera" id="fuentes-fuera" hidden></div>
+  <p class="ig-aviso" id="aviso" hidden></p>
+
+  <footer class="ig-opciones">
+    <div class="ig-grupo" role="group" aria-labelledby="et-idioma">
+      <span class="ig-etiqueta" id="et-idioma" data-t="idioma"></span>
+      <button type="button" class="ig-btn ig-pequeno" data-idioma="es" aria-pressed="true">ES</button>
+      <button type="button" class="ig-btn ig-pequeno" data-idioma="en" aria-pressed="false">EN</button>
+    </div>
+    <div class="ig-grupo">
+      <label class="ig-etiqueta" for="sel-movimiento" data-t="movimiento"></label>
+      <select class="ig-select" id="sel-movimiento">
+        <option value="NORMAL" data-t="mov_normal"></option>
+        <option value="REDUCED" data-t="mov_reduced"></option>
+        <option value="NONE" data-t="mov_none"></option>
+      </select>
+    </div>
+    <div class="ig-grupo">
+      <button type="button" class="ig-btn ig-pequeno" id="btn-describir" aria-pressed="false" data-t="describir"></button>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-fuentes" data-t="fuentes"></button>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-borrar" data-t="borrar_hallazgos"></button>
+    </div>
+  </footer>
+
+  <p class="ig-sr" id="anuncio" role="status" aria-live="polite"></p>
+</div>
+
+<div class="ig-velo" id="velo" hidden></div>
+<div class="ig-dialogo" id="dialogo" role="dialog" aria-modal="true"
+     aria-labelledby="dialogo-titulo" aria-describedby="dialogo-texto" hidden tabindex="-1">
+  <h2 class="ig-h2" id="dialogo-titulo"></h2>
+  <p id="dialogo-texto"></p>
+  <div class="ig-acciones">
+    <button type="button" class="ig-btn" id="dialogo-cancelar"></button>
+    <button type="button" class="ig-btn ig-primary" id="dialogo-confirmar"></button>
+  </div>
+</div>
+
+<script src="js/config.js"></script>
+<script src="js/copia.js"></script>
+<script src="js/esfera.js"></script>
+<script src="js/escena.js"></script>
+<script src="js/matriz.js"></script>
+<script src="js/r04_gpu_timer.js"></script>
+<script src="js/cuerpos3d.js"></script>
+<script src="datos/cielo88.js"></script>
+<script src="datos/r04_cielo.js"></script>
+<script src="datos/r04_fisica.js"></script>
+<script src="datos/meteoros.js"></script>
+<script src="datos/exoplanetas.js"></script>
+<script src="js/producto.js"></script>
+<script src="datos/solar.js"></script>
+<script src="datos/solar-texturas.js"></script>
+<script src="js/solar.js"></script>
+<script src="datos/eclipses.js"></script>
+<script src="js/eclipses.js"></script>
+</body>
+</html>

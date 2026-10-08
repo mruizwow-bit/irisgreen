@@ -103,13 +103,13 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/cada-cerebro-su-camino"
-  to = "/es/juegos/cada-cerebro-su-camino/"
+  to = "/es/juegos/cada-cerebro-su-camino.html"
   status = 301
   force = true
 
 [[redirects]]
   from = "/es/recursos/juegos/cada-cerebro-su-camino/*"
-  to = "/es/juegos/cada-cerebro-su-camino/"
+  to = "/es/juegos/cada-cerebro-su-camino.html"
   status = 301
   force = true
 
@@ -139,13 +139,13 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/donde-se-fue-la-energia"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/donde-se-fue-la-energia.html"
   status = 301
   force = true
 
 [[redirects]]
   from = "/es/recursos/juegos/donde-se-fue-la-energia/*"
-  to = "/es/recursos/juegos/"
+  to = "/es/juegos/donde-se-fue-la-energia.html"
   status = 301
   force = true
 
@@ -247,13 +247,13 @@
 
 [[redirects]]
   from = "/es/recursos/juegos/la-maquina-de-empezar"
-  to = "/es/juegos/la-maquina-de-empezar/"
+  to = "/es/juegos/la-maquina-de-empezar.html"
   status = 301
   force = true
 
 [[redirects]]
   from = "/es/recursos/juegos/la-maquina-de-empezar/*"
-  to = "/es/juegos/la-maquina-de-empezar/"
+  to = "/es/juegos/la-maquina-de-empezar.html"
   status = 301
   force = true
 

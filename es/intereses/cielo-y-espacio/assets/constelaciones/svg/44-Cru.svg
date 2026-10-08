@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Cruz del Sur / Crux</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="267.794" cy="1093.234" r="5.004"/>
+<circle id="bg-star-002" cx="663.071" cy="453.117" r="3.970"/>
+<circle id="bg-star-003" cx="311.866" cy="729.663" r="3.912"/>
+<circle id="bg-star-004" cx="885.161" cy="543.186" r="3.723"/>
+<circle id="bg-star-005" cx="715.139" cy="1413.309" r="3.652"/>
+<circle id="bg-star-006" cx="678.680" cy="1365.595" r="3.424"/>
+<circle id="bg-star-007" cx="994.998" cy="1151.500" r="3.379"/>
+<circle id="bg-star-008" cx="785.987" cy="997.803" r="3.067"/>
+<circle id="bg-star-009" cx="923.428" cy="1315.812" r="3.041"/>
+<circle id="bg-star-010" cx="688.827" cy="431.691" r="2.898"/>
+<circle id="bg-star-011" cx="1155.881" cy="776.546" r="2.865"/>
+<circle id="bg-star-012" cx="755.430" cy="513.297" r="2.859"/>
+<circle id="bg-star-013" cx="1172.206" cy="1005.729" r="2.846"/>
+<circle id="bg-star-014" cx="858.590" cy="620.589" r="2.820"/>
+<circle id="bg-star-015" cx="604.769" cy="851.876" r="2.780"/>
+<circle id="bg-star-016" cx="790.365" cy="1357.578" r="2.761"/>
+<circle id="bg-star-017" cx="794.309" cy="1168.569" r="2.761"/>
+<circle id="bg-star-018" cx="957.679" cy="1054.342" r="2.728"/>
+<circle id="bg-star-019" cx="844.349" cy="1201.585" r="2.709"/>
+<circle id="bg-star-020" cx="493.894" cy="515.160" r="2.625"/>
+<circle id="bg-star-021" cx="925.516" cy="1173.792" r="2.605"/>
+<circle id="bg-star-022" cx="866.896" cy="1142.097" r="2.592"/>
+<circle id="bg-star-023" cx="583.182" cy="457.559" r="2.586"/>
+<circle id="bg-star-024" cx="887.159" cy="540.386" r="2.501"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="60718" data-to-hip="61084" x1="757.872" y1="1124.476" x2="735.623" y2="841.79"/>
+<line id="edge-02" data-from-hip="62434" data-to-hip="59747" x1="649.988" y1="966.796" x2="821.472" y2="921.592"/>
+</g><g id="stars">
+<circle id="hip-59747" data-hip="59747" data-mag="2.79" data-bv="-0.193" cx="821.472" cy="921.592" r="6.733" fill="rgb(168, 199, 255)"/>
+<circle id="hip-60718" data-hip="60718" data-mag="0.77" data-bv="-0.243" cx="757.872" cy="1124.476" r="9.460" fill="rgb(168, 199, 255)"/>
+<circle id="hip-61084" data-hip="61084" data-mag="1.59" data-bv="1.6" cx="735.623" cy="841.790" r="8.354" fill="rgb(255, 150, 96)"/>
+<circle id="hip-62434" data-hip="62434" data-mag="1.25" data-bv="-0.238" cx="649.988" cy="966.796" r="8.812" fill="rgb(168, 199, 255)"/>
+</g></svg>

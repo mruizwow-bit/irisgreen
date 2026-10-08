@@ -1,0 +1,35 @@
+/* Iris Green · canon de María para prototipo aislado. Rutas relativas desde canon/. */
+@font-face{font-family:"Atkinson Hyperlegible";src:url("../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");font-style:normal;font-weight:400;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url("../assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");font-style:normal;font-weight:700;font-display:swap}
+@font-face{font-family:"Newsreader";src:url("../assets/fonts/newsreader-latin-wght-normal.woff2") format("woff2");font-style:normal;font-weight:200 800;font-display:swap}
+@font-face{font-family:"IG Zero";src:local("Segoe UI"),local("Roboto"),local("Helvetica Neue"),local("Arial"),local("Noto Sans"),local("DejaVu Sans");unicode-range:U+0030}
+:root{color-scheme:dark;--ig-bg:#0B1A2B;--ig-panel:#15304A;--ig-surface:#1D3D5C;--ig-text:#EEF4F8;--ig-muted:#C9D5DD;--ig-link:#9FDCEA;--ig-focus:#C3B8FF;--ig-border:#8494A8;--ig-divider:#2A4460;--ig-primary:#DCE8F2;--ig-primary-text:#0B1A2B;--ig-body:"IG Zero","Atkinson Hyperlegible",system-ui,sans-serif;--ig-heading:"IG Zero","Newsreader",Georgia,serif}
+/* R04.5 · EL SITIO CAMBIA ENTRE CLARO Y OSCURO CON data-ig-theme EN <html>.
+   El marco lo sigue; el cielo no. El cielo se queda oscuro siempre porque es
+   el tema del cielo, no una preferencia de interfaz: un cielo claro no es un
+   cielo. Lo que cambia es la portada, las fichas, el cuaderno y los mandos.
+   Los valores claros están copiados de assets/ig-global-ui-tokens-2026.css del
+   repo (IRIS_GREEN_GLOBAL_UI_TOKENS_2026_ADOPTED). No se leen de allí porque
+   el paquete tiene que funcionar también abierto con file://, solo. Si el sitio
+   cambia esos valores, hay que volver a copiarlos: queda dicho en
+   documentacion/R04_INTEGRACION_PENDIENTE.md para que se compare al montar.
+   Sin el atributo —abierto solo— manda el bloque oscuro de arriba. */
+html[data-ig-theme="light"]{
+  color-scheme:light;
+  --ig-bg:#F6F8FB;--ig-panel:#F4F7FA;--ig-surface:#EEF2F6;
+  --ig-text:#17395C;--ig-muted:#435268;--ig-link:#1F5F8B;
+  --ig-focus:#5A49A8;--ig-border:#7A869D;--ig-divider:#D5E1EC;
+  --ig-primary:#17395C;--ig-primary-text:#EEF4F8;
+}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--ig-bg);color:var(--ig-text);font-family:var(--ig-body);font-size:1rem;line-height:1.6}
+h1,h2,h3{font-family:var(--ig-heading);font-weight:600;line-height:1.2}
+.ig-hero-title{font-family:var(--ig-heading);font-weight:400;font-size:clamp(2.5rem,4vw,3.5rem);line-height:1.06}
+.ig-intro{font-size:1.1875rem;line-height:1.58}
+a{color:var(--ig-link)}
+button,input,select,textarea{font:inherit}
+button{min-inline-size:44px;min-block-size:44px;border:1px solid var(--ig-border);background:var(--ig-panel);color:var(--ig-text)}
+.ig-primary{background:var(--ig-primary);color:var(--ig-primary-text)}
+:focus-visible{outline:3px solid var(--ig-focus);outline-offset:2px}
+[aria-pressed="true"]{border:2px solid var(--ig-text)} /* añadir marca/texto al toggle */
+@media(forced-colors:active){body{background:Canvas;color:CanvasText}button{background:ButtonFace;color:ButtonText;border-color:ButtonText}a{color:LinkText}:focus-visible{outline-color:Highlight}[aria-pressed="true"]{border-color:Highlight}}

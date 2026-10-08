@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="es" data-ig-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>¿Dónde se fue la energía? · 3D · Iris Green</title>
+<link rel="stylesheet" href="/assets/ig-global-ui-tokens-2026.css">
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";src:url("/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");font-weight:400}
+@font-face{font-family:"Atkinson Hyperlegible";src:url("/assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");font-weight:700}
+@font-face{font-family:"Newsreader";src:url("/assets/fonts/newsreader-latin-wght-normal.woff2") format("woff2");font-weight:300 800}
+:root{--bg:var(--ig-bg-page,#0b1a2b);--surface:var(--ig-bg-surface,#15304a);--text:var(--ig-text,#eef4f8);--muted:var(--ig-text-muted,#c9d5dd);--accent:var(--ig-accent,#c3b8ff);--accent2:var(--ig-accent-secondary,#9fdcea);--line:var(--ig-separator,#2a4460);--focus:var(--ig-focus-global,#c3b8ff);--hit:44px;--radius:16px}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--text);font-family:"Atkinson Hyperlegible",system-ui,sans-serif}body{margin:0;background:var(--bg);color:var(--text);line-height:1.5}a{color:inherit}button,select{font:inherit;color:inherit;min-height:var(--hit)}button{cursor:pointer}button:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:100;background:var(--surface);padding:.7rem 1rem;border:3px solid var(--focus);border-radius:10px}
+.wrap{max-width:1180px;margin:auto;padding:20px 16px 48px}.return{display:inline-flex;min-height:44px;align-items:center;margin-bottom:8px;text-decoration:none}
+.site-head{display:flex;gap:16px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}.eyebrow{margin:0 0 4px;color:var(--muted);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}h1,h2{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.08}h1{margin:0;font-size:clamp(2rem,6vw,3.25rem)}h2{margin:.1rem 0 .55rem}
+.actions,.lang,.settings-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}.btn{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:.55rem .9rem}.btn.primary,.btn[aria-pressed="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}.btn:disabled{opacity:.45;cursor:not-allowed}
+.game-shell{display:grid;gap:12px}.status-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.status-k{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}.status-bar p{margin:.2rem 0}
+.play-area{display:grid;grid-template-columns:minmax(0,2.15fr) minmax(270px,.85fr);gap:12px;align-items:start}.scene{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--surface);min-width:0}.scene canvas{position:absolute;inset:0;display:block;width:100%;height:100%}.scene-loading,.scene-fallback{position:absolute;inset:0;display:grid;place-items:center;padding:24px;background:var(--surface);text-align:center}.scene-loading[hidden],.scene-fallback[hidden]{display:none}.scene-label{position:absolute;left:12px;top:12px;max-width:min(30rem,80%);padding:.55rem .75rem;border-radius:10px;background:color-mix(in srgb,var(--surface) 88%,transparent);border:1px solid var(--line);font-size:.9rem}
+.panel,.controls,.result{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:14px;min-width:0}.scenario-grid{display:grid;gap:8px}.scenario-grid .btn{text-align:left}.meter-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:10px}.meter-day{min-width:0;padding:.55rem .5rem;border:1px solid var(--line);border-radius:10px;text-align:center;background:var(--bg);overflow-wrap:anywhere}.meter-day strong,.meter-day span{display:block}.meter-day span{font-size:.75rem;color:var(--muted)}
+.token-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.token{min-height:86px;text-align:left;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:10px;min-width:0}.token strong,.token span{display:block}.token span{font-size:.82rem;color:var(--muted);margin-top:3px}.token[aria-pressed="true"]{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 12%,var(--surface))}
+.day-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px;margin-top:10px}.day{padding:.55rem .35rem;border:1.5px solid var(--line);border-radius:10px;background:var(--surface);min-width:0}.day strong,.day span{display:block}.day span{font-size:.75rem;color:var(--muted)}.placements{margin:.75rem 0 0;padding:.75rem 0 0;border-top:1px solid var(--line)}.placement{display:flex;justify-content:space-between;gap:8px;align-items:center;padding:.35rem 0}.placement button{min-width:44px}
+.result[hidden]{display:none}.takeaway{padding:.8rem 1rem;border-radius:12px;background:var(--bg);font-family:"Newsreader",Georgia,serif;font-size:1.08rem}.note{font-size:.88rem;color:var(--muted)}.settings-row{padding-top:6px}.settings-row label{display:flex;gap:8px;align-items:center}select{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:.45rem .6rem}
+dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text);width:min(560px,calc(100% - 24px));padding:0}dialog::backdrop{background:rgba(0,0,0,.45)}.dialog-card{padding:20px}
+@media(max-width:860px){.play-area{grid-template-columns:1fr}.status-bar{grid-template-columns:1fr}.token-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.meter-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:700px){
+.play-area{display:contents}
+.scene{position:sticky;top:0;z-index:30;overflow:visible;margin-bottom:72px;background:var(--surface);box-shadow:0 8px 18px color-mix(in srgb,var(--bg) 70%,transparent)}
+.scene-label{left:0;right:0;top:calc(100% + 8px);max-width:none;background:var(--surface)}
+.info-panel{margin-top:72px}
+}
+@media(max-width:520px){
+.day-grid,.meter-list{grid-template-columns:repeat(2,minmax(0,1fr))}
+.token-grid{display:flex;overflow-x:auto;gap:8px;scroll-snap-type:x proximity;padding-bottom:6px;position:sticky;bottom:0;z-index:20;background:var(--surface);border-top:1px solid var(--line);padding-top:8px}
+.token{flex:0 0 180px;scroll-snap-align:start}
+.wrap{padding-inline:10px}.panel,.controls,.result,.status-bar{padding:12px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(forced-colors:active){.token[aria-pressed="true"]{border:3px solid Highlight}button:focus-visible{outline:3px solid Highlight}}
+
+/* R05 · El idioma está en la barra del sitio, no aquí. Y el texto secundario
+   no puede heredar el gris del tema contrario: va fijo y emparejado con su
+   fondo, para que se lea siempre. */
+:root{--muted:#DCE8F2}
+html[data-ig-theme="light"]{--muted:#2B3D55}
+.token span,.day span,.meter-day span,.segment span,.piece span{font-size:.95rem}
+.status-k{font-size:.84rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#game">Ir al juego</a>
+<div class="wrap">
+<nav class="ig-experience-return" aria-label="Volver"><a class="return" href="/es/juegos/donde-se-fue-la-energia.html">← Volver a la ficha</a></nav>
+<header class="site-head">
+<div><p class="eyebrow" id="eyebrow">Juegos · Iris Green</p><h1 id="title">¿Dónde se fue la energía?</h1></div>
+<div class="actions"><button class="btn" id="help" type="button">Ayuda</button></div>
+</header>
+
+<main id="game" class="game-shell" tabindex="-1">
+<section class="status-bar">
+<div><div class="status-k" id="scenario-label">Situación</div><p><strong id="scenario-name">Semana de trabajo</strong></p><p id="scenario-copy">Hay varios días seguidos con trabajo y trayectos.</p></div>
+<div><div class="status-k" id="goal-label">Tu decisión</div><p id="goal">Reparte las actividades. El balance de cada día cambia la energía que queda para el siguiente.</p></div>
+</section>
+
+<section class="play-area">
+<div class="scene" id="scene-wrap">
+<div id="scene-loading" class="scene-loading">Preparando la semana…</div>
+<div id="fallback" class="scene-fallback" hidden><div><strong id="fallback-title">La escena 3D no está disponible.</strong><p id="fallback-copy">Puedes jugar igual con los controles. El panel de texto cuenta el mismo estado.</p></div></div>
+<div class="scene-label" id="scene-label">Siete días. El depósito transparente muestra la energía que queda al terminar cada día.</div>
+</div>
+<aside class="panel" aria-labelledby="week-title">
+<h2 id="week-title">Cómo va la semana</h2>
+<p id="week-copy">Coloca las siete actividades que puedes mover y prueba la semana.</p>
+<div class="meter-list" id="meter-list"></div>
+<div class="placements" id="placements"></div>
+</aside>
+</section>
+
+<section class="controls" role="group" aria-labelledby="tokens-title">
+<h2 id="tokens-title">Actividades que puedes mover</h2>
+<div class="token-grid" id="tokens"></div>
+<h2 id="days-title" style="margin-top:16px">Elige un día</h2>
+<div class="day-grid" id="days"></div>
+<div class="actions" style="margin-top:12px">
+<button class="btn primary" id="run" type="button">Recorrer la semana</button>
+<button class="btn" id="clear" type="button">Quitar las colocadas</button>
+<button class="btn" id="next" type="button">Otra situación</button>
+</div>
+</section>
+
+<section class="result" id="result" hidden aria-labelledby="result-title"><h2 id="result-title"></h2><p id="result-copy"></p><p id="takeaway" class="takeaway"></p></section>
+<div class="settings-row"><label for="motion"><span id="motion-label">Movimiento</span><select id="motion"><option value="normal">Normal</option><option value="reduced">Reducido</option><option value="none">Sin movimiento</option></select></label></div>
+<p class="note" id="family-rule">Sin puntuación, sin tiempo y sin respuesta correcta. Hay varias semanas que funcionan.</p>
+<p id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+<noscript><p>Este juego necesita JavaScript para mover actividades entre días. La idea principal: una misma actividad puede encajar mejor en un día que en otro según lo que ya haya ocurrido antes.</p></noscript>
+</main>
+</div>
+
+<dialog id="help-dialog"><form method="dialog" class="dialog-card"><h2 id="help-title">Cómo se juega</h2><p id="help-copy">Elige una actividad y después elige un día. Cuando hayas colocado las siete, recorre la semana. Si la energía se acaba, mueve una actividad y vuelve a probar.</p><p id="help-keys">Teclado: usa Tab para moverte entre los controles y Enter o Espacio para activar el botón enfocado.</p><button class="btn" id="help-close" value="close">Cerrar</button></form></dialog>
+
+<script id="game-data" type="application/json">{"version":"R04","startEnergy":2,"maxEnergy":5,"tokens":[{"id":"cama","value":2,"kind":"recharge","es":["Dormir bien","Dormir recupera energía."],"en":["Sleeping well","Sleep restores energy."]},{"id":"taza","value":1,"kind":"recharge","es":["Un rato tranquilo","Un rato tranquilo con algo caliente recupera energía."],"en":["A quiet break","A quiet break with something warm restores energy."]},{"id":"musica","value":1,"kind":"recharge","es":["Música para ti","Escuchar música a tu ritmo recupera energía."],"en":["Music for you","Listening to music at your own pace restores energy."]},{"id":"trabajo","value":-3,"kind":"spend","es":["Trabajo o estudio","Trabajar o estudiar gasta bastante energía."],"en":["Work or study","Work or study uses a lot of energy."]},{"id":"autobus","value":-2,"kind":"spend","es":["Trayecto con ruido y gente","El trayecto gasta energía por el ruido, la gente y la espera."],"en":["A noisy, busy journey","The journey uses energy because of noise, people and waiting."]},{"id":"comida","value":-1,"kind":"spend","es":["Comer con gente","Comer con gente puede gastar algo de energía."],"en":["Eating with people","Eating with people can use some energy."]},{"id":"telefono","value":-1,"kind":"spend","es":["Una llamada larga","Una llamada larga puede gastar energía."],"en":["A long phone call","A long phone call can use energy."]},{"id":"libro","value":1,"kind":"recharge","es":["Leer un rato","Leer a tu ritmo recupera energía."],"en":["Reading for a while","Reading at your own pace restores energy."]},{"id":"andar","value":1,"kind":"recharge","es":["Salir a andar","Andar un rato puede ayudarte a recuperar energía."],"en":["Going for a walk","A short walk can help restore energy."]},{"id":"perro","value":1,"kind":"recharge","es":["Pasear con el perro","Pasear con el perro puede recuperar energía."],"en":["Walking the dog","Walking the dog can restore energy."]}],"days":{"es":["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],"en":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"]},"scenarios":[{"id":"semana-social","es":["Semana con gente","Hay actividades sociales y trayectos repartidos por la semana."],"en":["Social week","Social activities and travel are spread across the week."],"fixed":{"cama":2,"taza":5,"musica":6},"movable":["trabajo","autobus","comida","telefono","libro","andar","perro"]},{"id":"semana-trabajo","es":["Semana de trabajo","El descanso está repartido, pero tú decides dónde colocar los gastos y otras recargas."],"en":["Work week","Rest is spread out, but you decide where to place spending activities and the other recharges."],"fixed":{"cama":5,"taza":4,"musica":6},"movable":["trabajo","autobus","comida","telefono","libro","andar","perro"]},{"id":"semana-cargada","es":["Semana cargada","Las recargas fijas llegan tarde. Tú decides cómo repartir el resto."],"en":["Busy week","The fixed recharges come late. You decide how to spread everything else."],"fixed":{"cama":6,"taza":6,"musica":6},"movable":["trabajo","autobus","comida","telefono","libro","andar","perro"]}]}</script>
+<script>
+window.__IG_SCENE_ERROR__ = null;
+window.__IG_THREE_READY__=(function(){
+ if(window.THREE)return Promise.resolve();
+ const sources=(location.protocol==="file:")
+  ? ["./assets/vendor/taller/three.js","../../../assets/vendor/taller/three.js"]
+  : ["/assets/vendor/taller/three.js","./assets/vendor/taller/three.js","../../../assets/vendor/taller/three.js"];
+ let i=0;
+ return new Promise((resolve,reject)=>{const next=()=>{if(window.THREE){resolve();return}if(i>=sources.length){reject(new Error("THREE unavailable"));return}const s=document.createElement("script");s.src=sources[i++];s.async=true;s.onload=()=>window.THREE?resolve():next();s.onerror=next;document.head.appendChild(s)};next()});
+})();
+</script>
+<script>
+(function(){
+"use strict";
+const DATA=JSON.parse(document.getElementById("game-data").textContent);
+const WORLD_PALETTE={
+ light:{sky:0xdce8ef,ground:0x86a1a7,sidewalk:0xabbec2,road:0xe1e7e9,rail:0x6b7f8c,shadow:0x607b91,slot:0xd7e0e5,spend:0x9c6574,recharge:0x628673,energy:0x5b8fa3,empty:0x6f679e,token:0x7a68a6,wood:0x8d765f,light:0xeaf4f7},
+ dark:{sky:0x081725,ground:0x102535,sidewalk:0x344c5f,road:0x607789,rail:0x8da0ac,shadow:0x233f59,slot:0x173246,spend:0xa46e7c,recharge:0x6f957f,energy:0x77b3c3,empty:0x9b8ccb,token:0xa99ae1,wood:0x75644f,light:0xdce9ee}
+};
+const $=s=>document.querySelector(s);
+const TOK=Object.fromEntries(DATA.tokens.map(t=>[t.id,t]));
+const TXT={
+ es:{eyebrow:"Juegos · Iris Green",title:"¿Dónde se fue la energía?",scenario:"Situación",goal:"Tu decisión",goalC:"Reparte las actividades. El balance de cada día cambia la energía que queda para el siguiente.",week:"Cómo va la semana",weekC:"Coloca las siete actividades que puedes mover y prueba la semana.",tokens:"Actividades que puedes mover",days:"Elige un día",run:"Recorrer la semana",clear:"Quitar las colocadas",next:"Otra situación",motion:"Movimiento",help:"Ayuda",helpT:"Cómo se juega",helpC:"Elige una actividad y después elige un día. Cuando hayas colocado las siete, recorre la semana. Si la energía se acaba, mueve una actividad y vuelve a probar.",helpK:"Teclado: usa Tab para moverte entre los controles y Enter o Espacio para activar el botón enfocado.",close:"Cerrar",loading:"Preparando la semana…",fallbackT:"La escena 3D no está disponible.",fallback:"Puedes jugar igual con los controles. El panel de texto cuenta el mismo estado.",scene:"Siete días. El depósito transparente muestra la energía que queda al terminar cada día.",choose:"Elige primero una actividad.",placed:"Colocada en",remove:"Quitar",notPlaced:"Sin colocar",ready:"Ya has colocado las siete actividades. Recorre la semana para ver qué pasa.",arriveT:"La semana llega al final",arriveC:"La energía llega al domingo. Esta distribución funciona. Hay otras distribuciones que también funcionan.",stopT:"La energía se acaba",stopC:d=>"La energía se acaba el "+d.toLowerCase()+". Cambia una actividad de día y vuelve a probar; lo demás se queda como está.",take:"Tu semana",rule:"Sin puntuación, sin tiempo y sin respuesta correcta. Hay varias semanas que funcionan.",energy:"Energía al final",fixed:"Fija",movable:"Puedes moverla",motionVals:{normal:"Normal",reduced:"Reducido",none:"Sin movimiento"}},
+ en:{eyebrow:"Games · Iris Green",title:"Where did the energy go?",scenario:"Situation",goal:"Your decision",goalC:"Place the activities. Each day's balance changes the energy left for the next day.",week:"How the week is going",weekC:"Place the seven activities you can move and try the week.",tokens:"Activities you can move",days:"Choose a day",run:"Run the week",clear:"Remove placed activities",next:"Another situation",motion:"Motion",help:"Help",helpT:"How to play",helpC:"Choose an activity and then choose a day. When all seven are placed, run the week. If energy runs out, move an activity and try again.",helpK:"Keyboard: use Tab to move through controls and Enter or Space to activate the focused button.",close:"Close",loading:"Preparing the week…",fallbackT:"The 3D scene is unavailable.",fallback:"You can still play with the controls. The text panel reports the same state.",scene:"Seven days. The transparent tank shows the energy left at the end of each day.",choose:"Choose an activity first.",placed:"Placed on",remove:"Remove",notPlaced:"Not placed",ready:"All seven activities are placed. Run the week to see what happens.",arriveT:"The week reaches the end",arriveC:"Energy reaches Sunday. This distribution works. Other distributions work too.",stopT:"Energy runs out",stopC:d=>"Energy runs out on "+d+". Move one activity to another day and try again; the rest stays where it is.",take:"Your week",rule:"No score, no timer and no correct answer. Several weeks work.",energy:"Energy at end",fixed:"Fixed",movable:"You can move it",motionVals:{normal:"Normal",reduced:"Reduced",none:"No motion"}}
+};
+let lang=(document.documentElement.getAttribute("lang")||"es").slice(0,2)==="en"?"en":"es",scenarioIndex=0,selected=null,placements={},lastResult=null,running=false,motion="normal",raf=0;
+let renderer=null,scene=null,camera=null,world=null,dayGroups=[],energyFills=[],tokenMeshes=[],traveller=null;let entryAnimationPlayed=false;
+const T=()=>TXT[lang],S=()=>DATA.scenarios[scenarioIndex],dayName=d=>DATA.days[lang][d];
+function temaActivo(){const t=document.documentElement.dataset.igTheme;if(t==="light"||t==="dark")return t;return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}
+function P(){return WORLD_PALETTE[temaActivo()]}
+function say(x){$("#live").textContent=x}
+function placedDay(id){return placements[id]}
+function fullPlacement(){const x={...S().fixed};for(const id of S().movable)if(placements[id]!==undefined)x[id]=placements[id];return x}
+function simulate(){const placed=fullPlacement(),levels=[],events=[];let energy=DATA.startEnergy,stop=null;for(let d=0;d<7;d++){const ids=Object.keys(placed).filter(id=>placed[id]===d);const balance=ids.reduce((sum,id)=>sum+TOK[id].value,0);energy+=balance;events.push({day:d,ids,balance,energy});if(energy<0){energy=0;stop=d;levels.push(energy);break}energy=Math.min(DATA.maxEnergy,energy);levels.push(energy)}return{ok:stop===null,stop,levels,events,placed}}
+function clearMove(){placements={};selected=null;lastResult=null;renderUI();updateSceneState()}
+function chooseToken(id){if(running)return;selected=selected===id?null:id;renderUI();say(TOK[id][lang][0])}
+function chooseDay(d){if(running)return;if(!selected){say(T().choose);return}placements[selected]=d;const name=TOK[selected][lang][0];selected=null;lastResult=null;renderUI();updateSceneState();say(name+" · "+dayName(d))}
+function removeToken(id){if(running)return;delete placements[id];lastResult=null;renderUI();updateSceneState();say(T().remove+": "+TOK[id][lang][0])}
+function nextScenario(){if(running)return;scenarioIndex=(scenarioIndex+1)%DATA.scenarios.length;placements={};selected=null;lastResult=null;buildWorld();renderUI();$("#game").focus();say(S()[lang][0])}
+function finalSentence(sim){const moved=S().movable.map(id=>TOK[id][lang][0]+(lang==="es"?" el ":" on ")+dayName(sim.placed[id])).join(lang==="es"?", ":", ");return lang==="es"?"Esta semana coloco "+moved+".":"This week I place "+moved+"."}
+function renderUI(){const t=T(),s=S();document.title=t.title+" · 3D · Iris Green";$("#eyebrow").textContent=t.eyebrow;$("#title").textContent=t.title;$("#scenario-label").textContent=t.scenario;$("#goal-label").textContent=t.goal;$("#goal").textContent=t.goalC;$("#week-title").textContent=t.week;$("#week-copy").textContent=t.weekC;$("#tokens-title").textContent=t.tokens;$("#days-title").textContent=t.days;$("#run").textContent=t.run;$("#clear").textContent=t.clear;$("#next").textContent=t.next;$("#motion-label").textContent=t.motion;$("#help").textContent=t.help;$("#help-title").textContent=t.helpT;$("#help-copy").textContent=t.helpC;$("#help-keys").textContent=t.helpK;$("#help-close").textContent=t.close;$("#scene-label").textContent=t.scene;$("#fallback-title").textContent=t.fallbackT;$("#fallback-copy").textContent=t.fallback;$("#family-rule").textContent=t.rule;$("#scenario-name").textContent=s[lang][0];$("#scenario-copy").textContent=s[lang][1];
+ const th=$("#tokens");th.textContent="";s.movable.forEach(id=>{const tok=TOK[id],b=document.createElement("button");b.type="button";b.className="token";b.setAttribute("aria-pressed",selected===id);b.innerHTML="<strong>"+tok[lang][0]+"</strong><span>"+tok[lang][1]+"</span><span>"+(placements[id]===undefined?t.notPlaced:t.placed+" "+dayName(placements[id]))+"</span>";b.addEventListener("click",()=>chooseToken(id));th.append(b)});
+ const dh=$("#days");dh.textContent="";for(let d=0;d<7;d++){const b=document.createElement("button");b.type="button";b.className="day";const fixed=Object.keys(s.fixed).filter(id=>s.fixed[id]===d).length,moved=s.movable.filter(id=>placements[id]===d).length;b.innerHTML="<strong>"+dayName(d)+"</strong><span>"+(fixed+moved)+" "+(lang==="es"?"actividad(es)":"activity/activities")+"</span>";b.addEventListener("click",()=>chooseDay(d));dh.append(b)}
+ const ph=$("#placements");ph.textContent="";s.movable.filter(id=>placements[id]!==undefined).forEach(id=>{const row=document.createElement("div");row.className="placement";const tx=document.createElement("span");tx.textContent=TOK[id][lang][0]+" · "+dayName(placements[id]);const b=document.createElement("button");b.type="button";b.className="btn";b.textContent=t.remove;b.setAttribute("aria-label",t.remove+": "+TOK[id][lang][0]);b.addEventListener("click",()=>removeToken(id));row.append(tx,b);ph.append(row)});
+ const meters=$("#meter-list");meters.textContent="";const sim=simulate();for(let d=0;d<7;d++){const x=document.createElement("div");x.className="meter-day";const lev=sim.levels[d];x.innerHTML="<strong>"+dayName(d).slice(0,3)+"</strong><span>"+(lev===undefined?"—":t.energy+": "+lev)+"</span>";meters.append(x)}
+ $("#run").disabled=s.movable.some(id=>placements[id]===undefined)||running;$("#clear").disabled=!Object.keys(placements).length||running;$("#next").disabled=running;
+ if(s.movable.every(id=>placements[id]!==undefined)&&!running&&!lastResult)$("#week-copy").textContent=t.ready;
+ if(!lastResult)$("#result").hidden=true;
+}
+function runWeek(){if(running||S().movable.some(id=>placements[id]===undefined))return;running=true;lastResult=simulate();$("#result").hidden=true;renderUI();resetVisual();if(motion==="none"||!renderer){applyResultVisual(lastResult);running=false;showResult();return}let day=0;const step=()=>{if(day>=lastResult.levels.length){running=false;showResult();return}setDayVisual(day,lastResult.levels[day]);say(dayName(day)+". "+T().energy+": "+lastResult.levels[day]);day++;raf=setTimeout(step,motion==="reduced"?700:420)};step()}
+function showResult(){const r=lastResult,t=T();$("#result").hidden=false;if(r.ok){$("#result-title").textContent=t.arriveT;$("#result-copy").textContent=t.arriveC;$("#takeaway").textContent=finalSentence(r)}else{$("#result-title").textContent=t.stopT;$("#result-copy").textContent=t.stopC(dayName(r.stop));$("#takeaway").textContent=""}renderUI();say($("#result-title").textContent+". "+$("#result-copy").textContent)}
+function mat(c,r=.82,transparent=false,opacity=1){return new THREE.MeshStandardMaterial({color:c,roughness:r,transparent,opacity})}
+function makeMesh(g,geo,c,pos=[0,0,0],rot=[0,0,0],transparent=false,opacity=1){const m=new THREE.Mesh(geo,mat(c,.82,transparent,opacity));m.position.set(...pos);m.rotation.set(...rot);g.add(m);return m}
+function clearWorld(){if(!world)return;scene.remove(world);world.traverse(o=>{if(o.geometry)o.geometry.dispose();if(o.material)o.material.dispose&&o.material.dispose()});dayGroups=[];energyFills=[];tokenMeshes=[]}
+function buildWorld(){if(!renderer)return;clearWorld();const pal=P();scene.background=new THREE.Color(pal.sky);scene.fog=new THREE.Fog(pal.sky,13,26);world=new THREE.Group();scene.add(world);const ground=makeMesh(world,new THREE.BoxGeometry(15,.22,5.2),pal.sidewalk,[0,-.25,0]);const top=makeMesh(world,new THREE.BoxGeometry(15.4,.05,5.55),pal.ground,[0,-.1,0]);const xs=[-6,-4,-2,0,2,4,6];for(let d=0;d<7;d++){const g=new THREE.Group();g.position.set(xs[d],0,0);world.add(g);makeMesh(g,new THREE.CylinderGeometry(.78,.88,.18,24),pal.road,[0,.08,0]);const tank=makeMesh(g,new THREE.CylinderGeometry(.34,.34,1.7,18,1,true),pal.rail,[0,.95,.7],[],true,.28);const fill=makeMesh(g,new THREE.CylinderGeometry(.27,.27,1,18),pal.energy,[0,.5,.7]);energyFills[d]=fill;dayGroups[d]=g;for(let i=0;i<2;i++)makeMesh(g,new THREE.BoxGeometry(.5,.16,.36),pal.slot,[-.32+i*.64,.18,-.58])}
+ traveller=new THREE.Mesh(new THREE.SphereGeometry(.22,18,12),mat(pal.token,.3));traveller.position.set(xs[0],.5,0);world.add(traveller);buildTokenMeshes();camera.position.set(.4,6.2,11.8);camera.lookAt(0,.45,0);resetVisual();draw();playEntryAnimation()}
+function buildTokenMeshes(){if(!world)return;tokenMeshes.forEach(m=>world.remove(m));tokenMeshes=[];const pal=P(),placed=fullPlacement(),xs=[-6,-4,-2,0,2,4,6];Object.keys(placed).forEach((id,i)=>{const d=placed[id],tok=TOK[id],g=new THREE.Mesh(new THREE.BoxGeometry(.34,.22,.34),mat(tok.value<0?pal.spend:pal.recharge,.5));const same=Object.keys(placed).filter(x=>placed[x]===d).indexOf(id);g.position.set(xs[d]+(same%2?.28:-.28),.3,-.58+Math.floor(same/2)*.28);g.userData.tokenId=id;g.userData.targetY=.3;world.add(g);tokenMeshes.push(g)});draw()}
+function playEntryAnimation(){if(entryAnimationPlayed||!renderer)return;entryAnimationPlayed=true;const fixedIds=Object.keys(S().fixed),target=tokenMeshes.find(m=>fixedIds.includes(m.userData.tokenId));if(!target)return;const reduced=matchMedia("(prefers-reduced-motion: reduce)").matches||motion==="none";if(reduced){target.position.y=target.userData.targetY;draw();return}const end=target.userData.targetY,startY=end+2.2,duration=2400,start=performance.now();target.position.y=startY;const tick=now=>{const p=Math.min(1,(now-start)/duration),q=1-Math.pow(1-p,3);target.position.y=startY+(end-startY)*q;draw();if(p<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)}
+function resetVisual(){if(!renderer)return;for(let d=0;d<7;d++)setDayVisual(d,DATA.startEnergy,false);if(traveller)traveller.position.set(-6,.5,0);buildTokenMeshes();draw()}
+function setDayVisual(d,level,move=true){if(!energyFills[d])return;const h=Math.max(.04,(level/DATA.maxEnergy)*1.45);energyFills[d].scale.y=h;energyFills[d].position.y=.18+h/2;if(move&&traveller)traveller.position.x=-6+d*2;draw()}
+function applyResultVisual(r){r.levels.forEach((v,d)=>setDayVisual(d,v,false));if(traveller)traveller.position.x=-6+(r.stop===null?6:r.stop*2);draw()}
+function draw(){if(renderer)renderer.render(scene,camera)}
+function resize3D(){if(!renderer)return;const host=$("#scene-wrap"),w=Math.max(240,host.clientWidth),h=Math.max(180,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();draw()}
+async function init3D(){try{if(!window.THREE)throw new Error("THREE missing");const host=$("#scene-wrap");renderer=new THREE.WebGPURenderer({antialias:true,forceWebGL:true});await renderer.init();renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));renderer.domElement.setAttribute("aria-hidden","true");renderer.domElement.setAttribute("role","presentation");host.insertBefore(renderer.domElement,host.firstChild);scene=new THREE.Scene();camera=new THREE.PerspectiveCamera(42,16/9,.1,100);scene.add(new THREE.HemisphereLight(0xffffff,0x536575,1.6));const sun=new THREE.DirectionalLight(0xffffff,1.15);sun.position.set(5,10,7);scene.add(sun);new ResizeObserver(resize3D).observe(host);buildWorld();resize3D();draw();$("#scene-loading").hidden=true;$("#fallback").hidden=true}catch(e){window.__IG_SCENE_ERROR__=(e&&e.stack)||String(e);$("#scene-loading").hidden=true;$("#fallback").hidden=false}}
+$("#run").addEventListener("click",runWeek);$("#clear").addEventListener("click",clearMove);$("#next").addEventListener("click",nextScenario);$("#help").addEventListener("click",()=>$("#help-dialog").showModal());$("#motion").addEventListener("change",e=>{motion=e.target.value;document.body.dataset.motion=motion});
+motion=matchMedia("(prefers-reduced-motion: reduce)").matches?"reduced":"normal";document.body.dataset.motion=motion;$("#motion").value=motion;
+const media=matchMedia("(prefers-color-scheme: dark)");media.addEventListener("change",()=>{if(!document.documentElement.dataset.igTheme&&renderer){buildWorld();renderUI()}});
+new MutationObserver(()=>{if(renderer){buildWorld();renderUI()}}).observe(document.documentElement,{attributes:true,attributeFilter:["data-ig-theme"]});
+window.__IG_THREE_READY__.then(async()=>{await init3D();renderUI()}).catch(async()=>{await init3D();renderUI()});
+renderUI();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Casiopea / Cassiopeia</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="948.218" cy="1028.108" r="3.151"/>
+<circle id="bg-star-002" cx="598.633" cy="1413.309" r="3.067"/>
+<circle id="bg-star-003" cx="1034.618" cy="1193.214" r="3.002"/>
+<circle id="bg-star-004" cx="572.202" cy="1316.408" r="2.794"/>
+<circle id="bg-star-005" cx="1020.449" cy="802.492" r="2.690"/>
+<circle id="bg-star-006" cx="812.910" cy="1142.931" r="2.579"/>
+<circle id="bg-star-007" cx="506.916" cy="547.368" r="2.501"/>
+<circle id="bg-star-008" cx="658.155" cy="431.691" r="2.482"/>
+<circle id="bg-star-009" cx="902.832" cy="970.411" r="2.397"/>
+<circle id="bg-star-010" cx="691.726" cy="955.979" r="2.358"/>
+<circle id="bg-star-011" cx="776.912" cy="577.791" r="2.332"/>
+<circle id="bg-star-012" cx="267.794" cy="1268.414" r="2.325"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="8886" data-to-hip="6686" x1="617.492" y1="748.942" x2="742.12" y2="918.086"/>
+<line id="edge-02" data-from-hip="6686" data-to-hip="4427" x1="742.12" y1="918.086" x2="901.889" y2="904.377"/>
+<line id="edge-03" data-from-hip="4427" data-to-hip="3179" x1="901.889" y1="904.377" x2="1002.951" y2="1080.548"/>
+<line id="edge-04" data-from-hip="3179" data-to-hip="746" x1="1002.951" y1="1080.548" x2="1172.206" y2="945.716"/>
+</g><g id="stars">
+<circle id="hip-746" data-hip="746" data-mag="2.28" data-bv="0.38" cx="1172.206" cy="945.716" r="7.422" fill="rgb(255, 244, 221)"/>
+<circle id="hip-3179" data-hip="3179" data-mag="2.24" data-bv="1.17" cx="1002.951" cy="1080.548" r="7.476" fill="rgb(255, 188, 125)"/>
+<circle id="hip-4427" data-hip="4427" data-mag="2.15" data-bv="-0.046" cx="901.889" cy="904.377" r="7.598" fill="rgb(190, 215, 255)"/>
+<circle id="hip-6686" data-hip="6686" data-mag="2.66" data-bv="" cx="742.120" cy="918.086" r="6.909" fill="rgb(235, 240, 255)"/>
+<circle id="hip-8886" data-hip="8886" data-mag="3.35" data-bv="-0.15" cx="617.492" cy="748.942" r="5.977" fill="rgb(190, 215, 255)"/>
+</g></svg>

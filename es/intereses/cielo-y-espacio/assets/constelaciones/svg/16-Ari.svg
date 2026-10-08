@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Aries / Aries</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="826.999" cy="455.087" r="3.450"/>
+<circle id="bg-star-002" cx="924.348" cy="699.575" r="3.177"/>
+<circle id="bg-star-003" cx="1079.081" cy="1330.337" r="3.047"/>
+<circle id="bg-star-004" cx="782.831" cy="507.536" r="2.780"/>
+<circle id="bg-star-005" cx="267.794" cy="1413.309" r="2.709"/>
+<circle id="bg-star-006" cx="427.006" cy="1113.915" r="2.573"/>
+<circle id="bg-star-007" cx="399.530" cy="674.829" r="2.495"/>
+<circle id="bg-star-008" cx="1172.206" cy="641.564" r="2.469"/>
+<circle id="bg-star-009" cx="599.489" cy="703.307" r="2.462"/>
+<circle id="bg-star-010" cx="589.049" cy="431.691" r="2.436"/>
+<circle id="bg-star-011" cx="513.066" cy="1051.674" r="2.391"/>
+<circle id="bg-star-012" cx="623.901" cy="776.346" r="2.377"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="13209" data-to-hip="9884" x1="583.366" y1="791.748" x2="842.272" y2="976.635"/>
+<line id="edge-02" data-from-hip="9884" data-to-hip="8903" x1="842.272" y1="976.635" x2="921.633" y2="1092.913"/>
+<line id="edge-03" data-from-hip="8903" data-to-hip="8832" x1="921.633" y1="1092.913" x2="929.834" y2="1160.359"/>
+</g><g id="stars">
+<circle id="hip-8832" data-hip="8832" data-mag="3.88" data-bv="" cx="929.834" cy="1160.359" r="5.262" fill="rgb(235, 240, 255)"/>
+<circle id="hip-8903" data-hip="8903" data-mag="2.64" data-bv="0.165" cx="921.633" cy="1092.913" r="6.936" fill="rgb(222, 232, 255)"/>
+<circle id="hip-9884" data-hip="9884" data-mag="2.01" data-bv="1.151" cx="842.272" cy="976.635" r="7.787" fill="rgb(255, 188, 125)"/>
+<circle id="hip-13209" data-hip="13209" data-mag="3.61" data-bv="-0.1" cx="583.366" cy="791.748" r="5.627" fill="rgb(190, 215, 255)"/>
+</g></svg>

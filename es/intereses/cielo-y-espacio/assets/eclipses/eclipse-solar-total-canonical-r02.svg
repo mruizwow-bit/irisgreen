@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="solar-total-r02-title solar-total-r02-desc">
+<title id="solar-total-r02-title">Total solar eclipse generic geometry and observed-disk inset</title>
+<desc id="solar-total-r02-desc">Educational representation with two linked views. Side view: the Moon is between the Sun and Earth and the umbra reaches Earth. Inset: the Moon covers the solar disk and a generic corona is shown only for totality. Not to scale and not event-specific.</desc>
+<defs>
+ <radialGradient id="sun" cx="48%" cy="45%" r="55%"><stop offset="0%" stop-color="#fffce5"/><stop offset="64%" stop-color="#ffe27a"/><stop offset="100%" stop-color="#eeb13a"/></radialGradient>
+ <radialGradient id="earth" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#75addc"/><stop offset="72%" stop-color="#346d9e"/><stop offset="100%" stop-color="#183e62"/></radialGradient>
+ <radialGradient id="moon" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#deded9"/><stop offset="78%" stop-color="#9d9e9b"/><stop offset="100%" stop-color="#70716f"/></radialGradient>
+ <radialGradient id="copper" cx="38%" cy="32%" r="68%"><stop offset="0%" stop-color="#df9774"/><stop offset="72%" stop-color="#b25b43"/><stop offset="100%" stop-color="#713128"/></radialGradient>
+ <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
+ </defs>
+
+<g opacity=".18"><path d="M340 390 L1240 456 L1240 544 L340 610 Z" fill="#8397ad"/><path d="M340 455 L1240 490 L1240 510 L340 545 Z" fill="#030812"/></g>
+<circle cx="245" cy="500" r="150" fill="#ffe7a3" opacity=".10" filter="url(#blur20)"/>
+<circle cx="245" cy="500" r="112" fill="url(#sun)"/>
+<circle cx="790" cy="500" r="38" fill="url(#moon)"/>
+<circle cx="1288" cy="500" r="74" fill="url(#earth)"/><circle cx="1288" cy="500" r="80" fill="none" stroke="#7fc2ee" stroke-width="4" opacity=".6"/>
+<path d="M357 454 L790 469 M357 546 L790 531" stroke="#f3d77b" stroke-width="2" opacity=".28"/>
+<path d="M828 475 L1210 491 M828 525 L1210 509" stroke="#d3ddea" stroke-width="2" opacity=".24"/>
+<g transform="translate(1380 175)"><circle r="87" fill="#f3cf68" opacity=".18" filter="url(#blur20)"/><circle r="62" fill="url(#sun)"/><circle r="61" fill="#090d16"/><circle r="72" fill="none" stroke="#f2e2b1" stroke-width="4" opacity=".62"/></g>
+
+</svg>

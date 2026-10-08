@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Horno / Fornax</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="569.039" cy="1413.309" r="3.528"/>
+<circle id="bg-star-002" cx="490.367" cy="666.267" r="2.748"/>
+<circle id="bg-star-003" cx="739.977" cy="1389.446" r="2.728"/>
+<circle id="bg-star-004" cx="688.982" cy="431.691" r="2.495"/>
+<circle id="bg-star-005" cx="619.370" cy="544.255" r="2.306"/>
+<circle id="bg-star-006" cx="298.894" cy="623.871" r="2.241"/>
+<circle id="bg-star-007" cx="816.962" cy="869.376" r="2.176"/>
+<circle id="bg-star-008" cx="872.815" cy="1119.169" r="2.066"/>
+<circle id="bg-star-009" cx="951.776" cy="674.503" r="2.026"/>
+<circle id="bg-star-010" cx="1041.438" cy="988.531" r="1.975"/>
+<circle id="bg-star-011" cx="1172.206" cy="964.928" r="1.929"/>
+<circle id="bg-star-012" cx="639.169" cy="856.446" r="1.897"/>
+<circle id="bg-star-013" cx="548.852" cy="675.366" r="1.864"/>
+<circle id="bg-star-014" cx="638.155" cy="1201.305" r="1.838"/>
+<circle id="bg-star-015" cx="267.794" cy="677.194" r="1.825"/>
+<circle id="bg-star-016" cx="291.344" cy="698.048" r="1.741"/>
+<circle id="bg-star-017" cx="526.091" cy="739.603" r="1.701"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="14879" data-to-hip="13147" x1="395.703" y1="911.847" x2="651.761" y2="1054.98"/>
+<line id="edge-02" data-from-hip="13147" data-to-hip="9677" x1="651.761" y1="1054.98" x2="1139.324" y2="930.675"/>
+</g><g id="stars">
+<circle id="hip-9677" data-hip="9677" data-mag="4.68" data-bv="" cx="1139.324" cy="930.675" r="4.182" fill="rgb(235, 240, 255)"/>
+<circle id="hip-13147" data-hip="13147" data-mag="4.45" data-bv="0.981" cx="651.761" cy="1054.980" r="4.492" fill="rgb(255, 221, 170)"/>
+<circle id="hip-14879" data-hip="14879" data-mag="3.8" data-bv="0.543" cx="395.703" cy="911.847" r="5.370" fill="rgb(255, 244, 221)"/>
+</g></svg>

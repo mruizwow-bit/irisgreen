@@ -1,0 +1,14 @@
+--- banda.mjs ---
+semana-social 0.000% FAIL
+semana-trabajo 0.000% FAIL
+semana-cargada 0.000% FAIL
+diferencia 0.000 puntos FAIL
+más difícil semana-cargada PASS
+exit 1
+--- decision.mjs ---
+semana-social 0.000% FAIL
+semana-trabajo 0.000% FAIL
+semana-cargada 0.000% FAIL
+exit 1
+banda.mjs FALLA COMO DEBE
+decision.mjs FALLA COMO DEBE

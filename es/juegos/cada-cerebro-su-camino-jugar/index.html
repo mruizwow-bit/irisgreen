@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="es" data-ig-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Cada cerebro, su camino · 3D · Iris Green</title>
+<link rel="stylesheet" href="/assets/ig-global-ui-tokens-2026.css">
+<style>
+@font-face{font-family:"Atkinson Hyperlegible";src:url("/assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2") format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Atkinson Hyperlegible";src:url("/assets/fonts/atkinson-hyperlegible-latin-700-normal.woff2") format("woff2");font-weight:700;font-style:normal;font-display:swap}
+@font-face{font-family:"Newsreader";src:url("/assets/fonts/newsreader-latin-wght-normal.woff2") format("woff2");font-weight:300 800;font-style:normal;font-display:swap}
+:root{--bg:var(--ig-bg-page,#f6f8fb);--surface:var(--ig-bg-surface,#fff);--text:var(--ig-text,#17395c);--muted:var(--ig-text-muted,#435268);--accent:var(--ig-accent,#5a49a8);--accent2:var(--ig-accent-secondary,#197991);--line:var(--ig-separator,#d5e1ec);--focus:var(--ig-focus-global,#5a49a8);--radius:16px;--hit:44px}
+*{box-sizing:border-box}html{background:var(--bg);color:var(--text);font-family:"Atkinson Hyperlegible",system-ui,sans-serif}body{margin:0;background:var(--bg);color:var(--text);line-height:1.5}a{color:inherit}.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}.skip{position:absolute;left:-9999px}.skip:focus{left:12px;top:12px;z-index:99;background:var(--surface);padding:.7rem 1rem;border:3px solid var(--focus);border-radius:10px}
+.wrap{max-width:1180px;margin:auto;padding:20px 16px 48px}.return{display:inline-flex;min-height:44px;align-items:center;margin-bottom:8px;text-decoration:none}.site-head{display:flex;gap:16px;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;margin-bottom:14px}.eyebrow{margin:0 0 4px;color:var(--muted);font-size:.8rem;letter-spacing:.1em;text-transform:uppercase}h1,h2{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.08}h1{margin:0;font-size:clamp(2rem,6vw,3.25rem)}h2{margin:.1rem 0 .55rem}.head-actions,.lang,.settings-row,.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+button,select{font:inherit;min-height:var(--hit);color:inherit}select{background:var(--surface);border:1.5px solid var(--line);border-radius:10px;padding:.45rem .6rem}button{cursor:pointer}.btn{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:.55rem .9rem}.btn[aria-pressed="true"],.btn.primary{background:var(--accent);color:var(--bg);border-color:var(--accent);font-weight:700}button:focus-visible,select:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:3px solid var(--focus);outline-offset:3px}
+.game-shell{display:grid;gap:12px}.status-bar{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px}.status-bar p{margin:.2rem 0}.status-k{font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.play-area{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(260px,.8fr);gap:12px;align-items:start}.scene{position:relative;aspect-ratio:16/9;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:var(--bg);min-width:0}.scene canvas{position:absolute;inset:0;display:block;width:100%;height:100%}.scene-fallback,.scene-loading{position:absolute;inset:0;display:grid;place-items:center;padding:24px;background:var(--surface);text-align:center;z-index:3}.scene-fallback[hidden],.scene-loading[hidden]{display:none}
+.info-panel,.controls,.result{border:1px solid var(--line);border-radius:var(--radius);background:var(--surface);padding:14px;min-width:0}.profile-list{padding-left:1.2rem;margin:.5rem 0}.profile-list li{margin:.35rem 0}.travel-log{margin:.75rem 0 0;padding:.75rem 0 0;border-top:1px solid var(--line);color:var(--muted)}.segment-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.segment{min-height:80px;text-align:left;border:1.5px solid var(--line);border-radius:12px;background:var(--surface);padding:10px}.segment strong,.segment span{display:block}.segment span{font-size:.84rem;color:var(--muted);margin-top:3px}.segment:disabled{opacity:.42;cursor:not-allowed}.route-strip{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0}.route-chip{padding:.4rem .6rem;border-radius:999px;background:var(--bg);border:1px solid var(--line);font-size:.9rem}.result[hidden]{display:none}.takeaway{padding:.8rem 1rem;border-radius:12px;background:var(--bg);font-family:"Newsreader",Georgia,serif;font-size:1.08rem}.settings-row{padding-top:8px}.settings-row label{display:flex;gap:8px;align-items:center}dialog{border:1px solid var(--line);border-radius:16px;background:var(--surface);color:var(--text);width:min(560px,calc(100% - 24px));padding:0}dialog::backdrop{background:rgba(0,0,0,.45)}.dialog-card{padding:20px}
+@media(max-width:860px){.play-area{grid-template-columns:1fr}.segment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.status-bar{grid-template-columns:1fr}}
+@media(max-width:420px){.segment-grid{grid-template-columns:1fr}.wrap{padding-inline:10px}.status-bar,.controls,.info-panel,.result{padding:12px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(forced-colors:active){.route-chip{border:3px solid Highlight}button:focus-visible{outline:3px solid Highlight}}
+
+/* R05 · El idioma está en la barra del sitio, no aquí. Y el texto secundario
+   no puede heredar el gris del tema contrario: va fijo y emparejado con su
+   fondo, para que se lea siempre. */
+:root{--muted:#DCE8F2}
+html[data-ig-theme="light"]{--muted:#2B3D55}
+.token span,.day span,.meter-day span,.segment span,.piece span{font-size:.95rem}
+.status-k{font-size:.84rem}
+</style>
+</head>
+<body>
+<a class="skip" href="#game">Ir al juego</a>
+<div class="wrap">
+<nav class="ig-experience-return" aria-label="Volver"><a class="return" href="/es/juegos/cada-cerebro-su-camino.html">← Volver a la ficha</a></nav>
+<header class="site-head">
+  <div><p class="eyebrow" id="eyebrow">Juegos · Iris Green</p><h1 id="title">Cada cerebro, su camino</h1></div>
+  <div class="head-actions">
+    
+    <button class="btn" id="help" type="button">Ayuda</button>
+  </div>
+</header>
+
+<main id="game" class="game-shell" tabindex="-1">
+<section class="status-bar" aria-label="Estado">
+  <div><div class="status-k" id="person-label">Persona</div><p><strong id="person-name">Mateo</strong></p><p id="destination">Va al centro de salud.</p></div>
+  <div><div class="status-k" id="task-label">Tu decisión</div><p id="task">Compón una ruta. Ningún tramo es bueno o malo por sí solo.</p></div>
+</section>
+
+<section class="play-area">
+  <div class="scene" id="scene-wrap">
+    <div class="scene-loading" id="scene-loading">Cargando escena 3D…</div>
+    <div class="scene-fallback" id="fallback" hidden><div><strong id="fallback-title">La escena 3D no ha podido cargarse.</strong><p id="fallback-text">Puedes jugar igual con los botones. El panel de texto cuenta exactamente lo que ocurre en la ruta.</p></div></div>
+  </div>
+  <aside class="info-panel" aria-labelledby="profile-title">
+    <h2 id="profile-title">Antes de salir</h2>
+    <ul id="profile-list" class="profile-list"></ul>
+    <p id="travel-log" class="travel-log">Elige una ruta y recórrela para ver qué pasa.</p>
+  </aside>
+</section>
+
+<section class="controls" role="group" aria-labelledby="segments-title">
+  <h2 id="segments-title">Elige el siguiente tramo</h2>
+  <div class="segment-grid" id="segments"></div>
+  <div class="route-strip" id="route-strip" aria-label="Ruta elegida"></div>
+  <div class="actions" style="margin-top:12px">
+    <button class="btn primary" id="travel" type="button" disabled>Recorrer ruta</button>
+    <button class="btn" id="undo" type="button" disabled>Deshacer último tramo</button>
+    <button class="btn" id="clear" type="button" disabled>Vaciar ruta</button>
+    <button class="btn" id="next" type="button">Otra persona</button>
+  </div>
+</section>
+
+<section class="result" id="result" hidden aria-labelledby="result-title">
+  <h2 id="result-title"></h2><p id="result-copy"></p><p id="takeaway" class="takeaway"></p>
+</section>
+
+<div class="settings-row">
+<label for="motion"><span id="motion-label">Movimiento</span><select id="motion"><option value="normal">Normal</option><option value="reduced">Reducido</option><option value="none">Sin movimiento</option></select></label>
+</div>
+<p id="live" class="sr-only" role="status" aria-live="polite" aria-atomic="true"></p>
+<noscript><p>Este juego necesita JavaScript para recorrer las rutas. La idea principal: una misma red de calles puede funcionar de forma distinta para personas distintas; la ruta se decide mirando a la persona, no buscando un único camino correcto.</p></noscript>
+</main>
+</div>
+
+<dialog id="help-dialog"><form method="dialog" class="dialog-card"><h2 id="help-title">Cómo se juega</h2><p id="help-copy">Mira a la persona y elige, tramo a tramo, una ruta hasta el destino. Después recórrela. La escena te enseña qué cuesta en cada parte. Si la persona se para, cambia la ruta y prueba otra.</p><p id="help-keys">Teclado: usa Tab para moverte entre los controles y Enter o Espacio para activar el botón enfocado.</p><button class="btn" id="help-close" value="close">Cerrar</button></form></dialog>
+
+<script id="game-data" type="application/json">{"nodes":{"S":{"p":[-7,0,0],"es":"Salida","en":"Start"},"A":{"p":[-4,0,3],"es":"Esquina norte","en":"North corner"},"B":{"p":[-4,0,-3],"es":"Plaza","en":"Square"},"C":{"p":[0,0,4],"es":"Cuesta","en":"Slope"},"D":{"p":[0,0,0],"es":"Cruce","en":"Junction"},"E":{"p":[0,0,-4],"es":"Escaleras","en":"Stairs"},"F":{"p":[4,0,3],"es":"Galería","en":"Arcade"},"G":{"p":[4,0,-3],"es":"Puente","en":"Bridge"},"T":{"p":[7,0,0],"es":"Destino","en":"Destination"}},"edges":[{"id":"sa","a":"S","b":"A","kind":"wide","es":"Calle ancha y vacía","en":"Wide empty street","cost":{"time":4,"energy":1,"noise":0,"people":0,"stairs":0,"light":1,"wait":0}},{"id":"sb","a":"S","b":"B","kind":"market","es":"Paso del mercado","en":"Market passage","cost":{"time":3,"energy":1,"noise":2,"people":2,"stairs":0,"light":1,"wait":0}},{"id":"ac","a":"A","b":"C","kind":"slope","es":"Cuesta larga","en":"Long slope","cost":{"time":3,"energy":2,"noise":0,"people":0,"stairs":0,"light":1,"wait":0}},{"id":"ad","a":"A","b":"D","kind":"bus","es":"Parada de autobús","en":"Bus stop","cost":{"time":2,"energy":1,"noise":1,"people":1,"stairs":0,"light":1,"wait":2}},{"id":"bd","a":"B","b":"D","kind":"tunnel","es":"Túnel corto","en":"Short tunnel","cost":{"time":2,"energy":1,"noise":1,"people":0,"stairs":0,"light":2,"wait":0}},{"id":"be","a":"B","b":"E","kind":"stairs","es":"Escaleras","en":"Stairs","cost":{"time":2,"energy":2,"noise":0,"people":0,"stairs":2,"light":1,"wait":0}},{"id":"cf","a":"C","b":"F","kind":"fluoro","es":"Pasillo con fluorescentes","en":"Fluorescent corridor","cost":{"time":2,"energy":1,"noise":1,"people":1,"stairs":0,"light":2,"wait":0}},{"id":"df","a":"D","b":"F","kind":"quiet","es":"Galería tranquila","en":"Quiet arcade","cost":{"time":3,"energy":1,"noise":0,"people":1,"stairs":0,"light":0,"wait":0}},{"id":"dg","a":"D","b":"G","kind":"crowd","es":"Puente con gente","en":"Busy bridge","cost":{"time":2,"energy":1,"noise":2,"people":2,"stairs":0,"light":1,"wait":0}},{"id":"eg","a":"E","b":"G","kind":"wide","es":"Avenida larga","en":"Long avenue","cost":{"time":4,"energy":1,"noise":0,"people":0,"stairs":0,"light":1,"wait":0}},{"id":"ft","a":"F","b":"T","kind":"ramp","es":"Rampa al destino","en":"Ramp to destination","cost":{"time":2,"energy":1,"noise":0,"people":0,"stairs":0,"light":1,"wait":0}},{"id":"gt","a":"G","b":"T","kind":"underpass","es":"Paso inferior","en":"Underpass","cost":{"time":1,"energy":1,"noise":1,"people":0,"stairs":0,"light":2,"wait":0}},{"id":"cg","a":"C","b":"G","kind":"boardwalk","es":"Pasarela sobre el agua","en":"Boardwalk over the water","cost":{"time":3,"energy":1,"noise":0,"people":0,"stairs":0,"light":1,"wait":0}},{"id":"ef","a":"E","b":"F","kind":"alley","es":"Callejón estrecho","en":"Narrow alley","cost":{"time":2,"energy":1,"noise":1,"people":1,"stairs":0,"light":1,"wait":0}},{"id":"sd","a":"S","b":"D","kind":"crowd","es":"Avenida principal","en":"Main avenue","cost":{"time":5,"energy":1,"noise":2,"people":2,"stairs":0,"light":1,"wait":0}}],"profiles":[{"id":"health","name":{"es":"Mateo","en":"Mateo"},"dest":{"es":"centro de salud","en":"health centre"},"limits":{"time":12,"energy":5,"noise":3,"people":3,"stairs":2,"light":5,"wait":2},"profile":{"es":["Tiene energía para un trayecto corto.","Con ruido fuerte se para.","Con mucha gente se para.","Puede subir escaleras. Si no sabe cuánto va a esperar, se para."],"en":["He has energy for a short trip.","Loud noise makes him stop.","A crowd makes him stop.","He can climb stairs. If he does not know how long the wait is, he stops."]}},{"id":"class","name":{"es":"Lina","en":"Lina"},"dest":{"es":"clase","en":"class"},"limits":{"time":11,"energy":5,"noise":4,"people":3,"stairs":1,"light":5,"wait":2},"profile":{"es":["Aguanta ruido medio.","Aguanta sitios con gente.","Puede subir un tramo corto de escaleras. Una cuesta la cansa menos.","Necesita un camino corto."],"en":["She can handle medium noise.","She can handle places with people.","She can climb one short flight of stairs. A slope tires her less.","She needs a short route."]}},{"id":"shop","name":{"es":"Sam","en":"Sam"},"dest":{"es":"tienda","en":"shop"},"limits":{"time":11,"energy":4,"noise":6,"people":4,"stairs":0,"light":6,"wait":2},"profile":{"es":["Aguanta el ruido y la gente.","No puede subir escaleras.","Se cansa pronto al andar.","Puede esperar un rato corto."],"en":["They can handle noise and people.","They cannot climb stairs.","They tire quickly when walking.","They can wait for a short time."]}},{"id":"library","name":{"es":"Nora","en":"Nora"},"dest":{"es":"biblioteca","en":"library"},"limits":{"time":13,"energy":5,"noise":6,"people":4,"stairs":2,"light":6,"wait":0},"profile":{"es":["Aguanta el ruido y la gente.","Puede subir escaleras y cuestas.","Si tiene que esperar, se para.","Prefiere andar más rato antes que esperar."],"en":["She can handle noise and people.","She can climb stairs and slopes.","If she has to wait, she stops.","She would rather walk longer than wait."]}},{"id":"work","name":{"es":"Diego","en":"Diego"},"dest":{"es":"trabajo","en":"work"},"limits":{"time":10,"energy":5,"noise":6,"people":4,"stairs":2,"light":6,"wait":2},"profile":{"es":["Tiene poco tiempo.","Aguanta el ruido, la gente y las escaleras.","Si el camino da muchas vueltas, llega tarde.","Prefiere un camino incómodo antes que uno lento."],"en":["He has little time.","He can handle noise, people and stairs.","If the route has many turns, he arrives late.","He would rather take an uncomfortable route than a slow one."]}},{"id":"park","name":{"es":"Ruth","en":"Ruth"},"dest":{"es":"el parque","en":"the park"},"limits":{"time":15,"energy":6,"noise":2,"people":2,"stairs":2,"light":6,"wait":2},"profile":{"es":["Tiene tiempo y no tiene prisa.","Con poco ruido ya se para. Aguanta menos ruido que nadie.","Con poca gente ya se para.","Prefiere un camino largo y vacío antes que uno corto y lleno."],"en":["She has time and is not in a hurry.","A little noise already makes her stop. She handles less noise than anyone.","A few people already make her stop.","She would rather take a long empty route than a short busy one."]}}]}</script>
+<script>
+window.__IG_THREE_READY__=(function(){
+  if(window.THREE)return Promise.resolve();
+  const sources=(location.protocol==="file:")
+    ? ["./assets/vendor/taller/three.js","../../../assets/vendor/taller/three.js"]
+    : ["/assets/vendor/taller/three.js","./assets/vendor/taller/three.js","../../../assets/vendor/taller/three.js"];
+  let i=0;
+  return new Promise((resolve,reject)=>{
+    const next=()=>{
+      if(window.THREE){resolve();return;}
+      if(i>=sources.length){reject(new Error("THREE unavailable"));return;}
+      const sc=document.createElement("script");
+      sc.src=sources[i++];sc.async=true;
+      sc.onload=()=>window.THREE?resolve():next();
+      sc.onerror=next;
+      document.head.appendChild(sc);
+    };
+    next();
+  });
+})();
+</script>
+<script>
+(function(){
+"use strict";
+const DATA=JSON.parse(document.getElementById("game-data").textContent);
+const $=s=>document.querySelector(s);
+const E=Object.fromEntries(DATA.edges.map(e=>[e.id,e]));
+const OUT={};DATA.edges.forEach(e=>(OUT[e.a]||(OUT[e.a]=[])).push(e));
+const TXT={
+es:{eyebrow:"Juegos · Iris Green",person:"Persona",decision:"Tu decisión",task:"Compón una ruta. Ningún tramo es bueno o malo por sí solo.",before:"Antes de salir",route:"Ruta",start:"Elige el primer tramo desde la salida.",segments:"Elige el siguiente tramo",travel:"Recorrer ruta",undo:"Deshacer último tramo",clear:"Vaciar ruta",next:"Otra persona",motion:"Movimiento",help:"Ayuda",helpT:"Cómo se juega",helpC:"Mira a la persona y elige, tramo a tramo, una ruta hasta el destino. Después recórrela. La escena te enseña qué cuesta en cada parte. Si la persona se para, cambia la ruta y prueba otra.",helpK:"Teclado: usa Tab para moverte entre los controles y Enter o Espacio para activar el botón enfocado.",close:"Cerrar",fallbackT:"La escena 3D no está disponible.",fallback:"Puedes jugar igual con los botones. El panel de texto cuenta exactamente lo que ocurre en la ruta.",goes:"Va a",from:"Desde aquí puedes ir por",arrived:"Llega al destino",stops:"Se para aquí",tryOther:"Prueba otra ruta.",routeReady:"La ruta llega al destino. Puedes recorrerla.",take:"Tu ruta",none:"Salida",normal:"Normal",reduced:"Reducido",nomotion:"Sin movimiento"},
+en:{eyebrow:"Games · Iris Green",person:"Person",decision:"Your decision",task:"Build a route. No segment is good or bad on its own.",before:"Before leaving",route:"Route",start:"Choose the first segment from the start.",segments:"Choose the next segment",travel:"Travel route",undo:"Undo last segment",clear:"Clear route",next:"Another person",motion:"Motion",help:"Help",helpT:"How to play",helpC:"Look at the person and choose a route, one segment at a time, to the destination. Then travel it. The scene shows what each part costs. If the person stops, change the route and try another.",helpK:"Keyboard: use Tab to move through controls and Enter or Space to activate the focused button.",close:"Close",fallbackT:"The 3D scene is unavailable.",fallback:"You can still play with the buttons. The text panel reports the same route state.",goes:"Going to",from:"From here you can go by",arrived:"Reaches the destination",stops:"Stops here",tryOther:"Try another route.",routeReady:"The route reaches the destination. You can travel it.",take:"Your route",none:"Start",normal:"Normal",reduced:"Reduced",nomotion:"No motion"}
+};
+let lang=(document.documentElement.getAttribute("lang")||"es").slice(0,2)==="en"?"en":"es",profileIndex=0,path=[],run=null;
+let renderer=null,scene=null,camera=null,world=null,person=null,edgeVisual={},motion="normal",anim=null,lastT=0;
+const T=()=>TXT[lang],P=()=>DATA.profiles[profileIndex],node=id=>DATA.nodes[id],currentNode=()=>path.length?E[path[path.length-1]].b:"S";
+const say=t=>{$("#live").textContent=t};
+function profileText(){return P().profile[lang]}
+function edgeLabel(e){return e[lang]}
+function edgeDesc(e){
+ const c=e.cost,parts=[];
+ if(c.people>=2)parts.push(lang==="es"?"mucha gente":"busy");
+ else if(c.people===1)parts.push(lang==="es"?"algo de gente":"some people");
+ else parts.push(lang==="es"?"poca gente":"few people");
+ if(c.noise>=2)parts.push(lang==="es"?"ruidoso":"noisy"); else if(c.noise===0)parts.push(lang==="es"?"tranquilo":"quiet");
+ if(c.stairs>0)parts.push(lang==="es"?"con escaleras":"with stairs");
+ if(c.wait>0)parts.push(lang==="es"?"con espera":"with a wait");
+ if(c.light>=2)parts.push(lang==="es"?"luz intensa":"strong light");
+ if(c.energy>=2)parts.push(lang==="es"?"cansa":"tiring");
+ return parts.join(" · ");
+}
+function renderUI(){
+ const t=T(),p=P();document.title=(lang==="es"?"Cada cerebro, su camino":"Every brain, its own route")+" · 3D · Iris Green";
+ $("#eyebrow").textContent=t.eyebrow;$("#person-label").textContent=t.person;$("#task-label").textContent=t.decision;$("#task").textContent=t.task;$("#profile-title").textContent=t.before;$("#segments-title").textContent=t.segments;
+ $("#travel").textContent=t.travel;$("#undo").textContent=t.undo;$("#clear").textContent=t.clear;$("#next").textContent=t.next;$("#motion-label").textContent=t.motion;$("#help").textContent=t.help;$("#help-title").textContent=t.helpT;$("#help-copy").textContent=t.helpC;$("#help-keys").textContent=t.helpK;$("#help-close").textContent=t.close;$("#fallback-title").textContent=t.fallbackT;$("#fallback-text").textContent=t.fallback;
+ 
+ $("#person-name").textContent=p.name[lang];$("#destination").textContent=t.goes+" "+p.dest[lang]+".";
+ const ul=$("#profile-list");ul.textContent="";profileText().forEach(x=>{const li=document.createElement("li");li.textContent=x;ul.appendChild(li)});
+ renderSegments();renderRoute();
+ if(!run){$("#result").hidden=true}
+ updateSceneState();
+}
+function renderSegments(){
+ const host=$("#segments");host.textContent="";const cur=currentNode();const choices=OUT[cur]||[];
+ choices.forEach(e=>{const b=document.createElement("button");b.type="button";b.className="segment";b.dataset.edge=e.id;b.innerHTML="<strong>"+edgeLabel(e)+"</strong><span>"+edgeDesc(e)+"</span>";b.addEventListener("click",()=>choose(e.id));host.appendChild(b)});
+ if(!choices.length){const p=document.createElement("p");p.textContent=T().routeReady;host.appendChild(p)}
+}
+function renderRoute(){
+ const strip=$("#route-strip");strip.textContent="";if(!path.length){const s=document.createElement("span");s.className="route-chip";s.textContent=T().none;strip.appendChild(s)}else path.forEach(id=>{const s=document.createElement("span");s.className="route-chip";s.textContent=edgeLabel(E[id]);strip.appendChild(s)});
+ const cur=currentNode(),done=cur==="T";$("#travel").disabled=!done;$("#undo").disabled=!path.length;$("#clear").disabled=!path.length;
+ $("#travel-log").textContent=done?(lang==="es"?"Ruta preparada. Recórrela para ver cómo se siente.":"Route ready. Travel it to see how it feels."):(lang==="es"?"Elige por dónde seguir.":"Choose where to go next.");
+}
+function choose(id){if(run)return;path.push(id);renderUI();say(edgeLabel(E[id]))}
+function undo(){if(run)return;path.pop();renderUI();say(T().undo)}
+function clearPath(){if(run)return;path=[];renderUI();say(T().clear)}
+function nextProfile(){cancelRun();profileIndex=(profileIndex+1)%DATA.profiles.length;path=[];run=null;buildWorld();renderUI();$("#game").focus();say(P().name[lang])}
+function cumulativeStop(){
+ const lim=P().limits,tot={time:0,energy:0,noise:0,people:0,stairs:0,light:0,wait:0};
+ for(let i=0;i<path.length;i++){const e=E[path[i]];Object.keys(tot).forEach(k=>tot[k]+=e.cost[k]);const exceeded=Object.keys(tot).filter(k=>tot[k]>lim[k]);if(exceeded.length)return{index:i,edge:e,reasons:exceeded,tot}}
+ return{index:-1,edge:null,reasons:[],tot};
+}
+function reasonWords(keys){
+ const m={es:{time:"se acaba el tiempo disponible",energy:"no queda energía suficiente",noise:"el ruido es demasiado intenso",people:"hay demasiada gente",stairs:"hay demasiadas escaleras",light:"la luz es demasiado intensa",wait:"la espera es demasiado larga"},en:{time:"there is not enough time left",energy:"there is not enough energy left",noise:"the noise is too intense",people:"there are too many people",stairs:"there are too many stairs",light:"the light is too intense",wait:"the wait is too long"}}[lang];
+ return keys.map(k=>m[k]).join(lang==="es"?"; ":"; ");
+}
+function enterAnnouncement(e){
+ const d=edgeDesc(e);
+ return edgeLabel(e)+(d?": "+d+".":".");
+}
+function stopAnnouncement(e,reasons){
+ return lang==="es"
+   ? edgeLabel(e)+": "+reasonWords(reasons)+"."
+   : edgeLabel(e)+": "+reasonWords(reasons)+".";
+}
+function announceNoMotion(stop){
+ const pieces=path.map((id,i)=>{
+   const e=E[id];
+   if(stop.index===i)return stopAnnouncement(e,stop.reasons);
+   return enterAnnouncement(e);
+ });
+ if(stop.index<0)pieces.push(lang==="es"?P().name.es+" llega al destino.":P().name.en+" reaches the destination.");
+ say(pieces.join(" "));
+}
+function finalSentence(){
+ const names=path.map(id=>edgeLabel(E[id]));const p=P(),dest=p.dest[lang];
+ if(lang==="es")return "Para ir al "+dest+", "+p.name.es+" va por "+names.slice(0,-1).join(", ")+(names.length>1?" y ":"")+names[names.length-1]+".";
+ return "To get to "+dest+", "+p.name.en+" takes "+names.slice(0,-1).join(", ")+(names.length>1?" and ":"")+names[names.length-1]+".";
+}
+function travel(){
+ if(currentNode()!=="T"||run)return;const stop=cumulativeStop();run={stop,step:0,progress:0,announcedStep:-1};$("#result").hidden=true;setControlsDisabled(true);resetHighlights();placePersonAtNode("S");
+ if(motion==="none"){path.forEach((id,i)=>highlightEdge(id,stop.index===i?"stop":(stop.index>=0&&i>stop.index?"idle":"done")));if(stop.index>=0)placePersonAtEdge(E[path[stop.index]],.58);else placePersonAtNode("T");if(renderer)renderer.render(scene,camera);announceNoMotion(stop);finishTravel(true);return}startAnimation();
+}
+function setControlsDisabled(on){$("#segments").querySelectorAll("button").forEach(b=>b.disabled=on);$("#travel").disabled=on||currentNode()!=="T";$("#undo").disabled=on||!path.length;$("#clear").disabled=on||!path.length;$("#next").disabled=on}
+function finishTravel(alreadyAnnounced){
+ const stop=run.stop,p=P(),res=$("#result");res.hidden=false;
+ if(stop.index>=0){
+   const e=stop.edge;$("#result-title").textContent=T().stops+": "+edgeLabel(e);
+   $("#result-copy").textContent=lang==="es"
+     ? p.name.es+" llega hasta "+edgeLabel(e)+", pero "+reasonWords(stop.reasons)+". "+T().tryOther
+     : p.name.en+" reaches "+edgeLabel(e)+", but "+reasonWords(stop.reasons)+". "+T().tryOther;
+   $("#takeaway").textContent="";placePersonAtEdge(e,.58);highlightEdge(e.id,"stop");
+ }else{
+   $("#result-title").textContent=T().arrived;
+   $("#result-copy").textContent=lang==="es"?p.name.es+" llega a "+p.dest.es+". La misma red permite otras rutas.":p.name.en+" reaches "+p.dest.en+". The same network allows other routes.";
+   $("#takeaway").textContent=finalSentence();placePersonAtNode("T");path.forEach(id=>highlightEdge(id,"done"));
+ }
+ camera.position.set(0,7,12);camera.lookAt(0,0,0);if(renderer)renderer.render(scene,camera);
+ setControlsDisabled(false);$("#next").disabled=false;
+ if(!alreadyAnnounced)say($("#result-title").textContent+". "+$("#result-copy").textContent);
+ run=null;
+}
+function cancelRun(){if(anim)cancelAnimationFrame(anim);anim=null;run=null;setControlsDisabled(false)}
+function startAnimation(){
+ lastT=performance.now();
+ const tick=now=>{
+   if(!run)return;
+   const dt=Math.min(.05,(now-lastT)/1000);lastT=now;
+   const e=E[path[run.step]],isStop=run.stop.index===run.step,target=isStop?.58:1;
+   if(run.announcedStep!==run.step){run.announcedStep=run.step;say(enterAnnouncement(e))}
+   run.progress=Math.min(target,run.progress+dt*(motion==="reduced"?.22:.42));
+   placePersonAtEdge(e,run.progress);highlightEdge(e.id,isStop?"active":"active");followPerson();
+   if(run.progress>=target-.0005){
+     if(isStop){highlightEdge(e.id,"stop");say(stopAnnouncement(e,run.stop.reasons));if(renderer)renderer.render(scene,camera);finishTravel(true);return}
+     highlightEdge(e.id,"done");
+     if(run.step>=path.length-1){finishTravel();return}
+     run.step++;run.progress=0;
+   }
+   renderer.render(scene,camera);anim=requestAnimationFrame(tick);
+ };
+ anim=requestAnimationFrame(tick);
+}
+function followPerson(){if(!person||!camera||!run)return;const e=E[path[run.step]];if(!e)return;const a=node(e.a).p,b=node(e.b).p;const dir=new THREE.Vector3(b[0]-a[0],0,b[2]-a[2]).normalize();const target=person.position.clone();const desired=target.clone().add(new THREE.Vector3(-dir.x*8,6,-dir.z*8));camera.position.lerp(desired,.10);const ahead=target.clone().add(dir.multiplyScalar(2.2));camera.lookAt(ahead.x,ahead.y+.25,ahead.z)}
+const WORLD_PALETTE={
+ light:{
+  sky:0xdce8ef, ground:0x86a1a7, road:0xe1e7e9, sidewalk:0xabbec2, water:0x6f9db5, wall:0x6f8392, building:0x91a6b2, tree:0x5f806b, route:0x5a49a8, stop:0xa35f70, warm:0x9b7476, cool:0x75899c, wood:0x8d765f, shadow:0x607b91
+ },
+ dark:{
+  sky:0x081725, ground:0x17333a, road:0x7f94a0, sidewalk:0x4b6470, water:0x204b61, wall:0x5a7080, building:0x405d6c, tree:0x4f7865, route:0xc3b8ff, stop:0xd88aa8, warm:0x8a6872, cool:0x647a8e, wood:0x75644f, shadow:0x294a68
+ }
+};
+function temaActivo(){
+ const t=document.documentElement.dataset.igTheme;
+ if(t==="light"||t==="dark")return t;
+ return matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";
+}
+function sceneTheme(){
+ const p=temaActivo()==="dark"?WORLD_PALETTE.dark:WORLD_PALETTE.light;
+ return {...p,people:[p.warm,p.cool,p.wood,p.wall]};
+}
+async function init3D(){
+ try{
+   if(!window.THREE)throw new Error("THREE missing");const host=$("#scene-wrap");
+   renderer=new THREE.WebGPURenderer({antialias:true,forceWebGL:true});await renderer.init();renderer.setPixelRatio(Math.min(2,window.devicePixelRatio||1));renderer.domElement.setAttribute("aria-hidden","true");renderer.domElement.setAttribute("role","presentation");host.insertBefore(renderer.domElement,host.firstChild);
+   scene=new THREE.Scene();const th=sceneTheme();scene.background=new THREE.Color(th.sky);scene.fog=new THREE.Fog(th.sky,13,26);
+   camera=new THREE.PerspectiveCamera(42,16/9,.1,100);camera.position.set(0,7,12);camera.lookAt(0,0,0);
+   scene.add(new THREE.HemisphereLight(0xffffff,th.shadow,1.65));const sun=new THREE.DirectionalLight(0xffffff,1.15);sun.position.set(6,12,8);scene.add(sun);
+   world=new THREE.Group();scene.add(world);person=makePerson();world.add(person);
+   new ResizeObserver(resize3D).observe(host);resize3D();buildWorld();renderer.render(scene,camera);$("#fallback").hidden=true;requestAnimationFrame(()=>{$("#scene-loading").hidden=true})
+ }catch(e){window.__IG_SCENE_ERROR__=(e&&e.stack)||String(e);$("#scene-loading").hidden=true;$("#fallback").hidden=false}
+}
+function resize3D(){if(!renderer)return;const host=$("#scene-wrap"),w=Math.max(240,host.clientWidth),h=Math.max(180,host.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();renderer.render(scene,camera)}
+function mat(c,rough=.8){return new THREE.MeshStandardMaterial({color:c,roughness:rough})}
+function makePerson(){
+ const th=sceneTheme(),g=new THREE.Group(),m=mat(th.route,.65),skin=mat(th.wood,.8);
+ const torso=new THREE.Mesh(new THREE.CylinderGeometry(.18,.24,.44,10),m);torso.position.y=.58;g.add(torso);
+ const head=new THREE.Mesh(new THREE.SphereGeometry(.15,14,10),skin);head.position.y=.92;g.add(head);
+ for(const x of [-.1,.1]){const leg=new THREE.Mesh(new THREE.CylinderGeometry(.065,.07,.42,8),m);leg.position.set(x,.23,0);g.add(leg)}
+ g.userData.facing=new THREE.Vector3(0,0,1);return g;
+}
+function clearWorld(){if(!world)return;Array.from(world.children).forEach(o=>{if(o===person)return;world.remove(o);o.traverse&&o.traverse(n=>{if(n.geometry)n.geometry.dispose();if(n.material){(Array.isArray(n.material)?n.material:[n.material]).forEach(m=>m.dispose&&m.dispose())}})});edgeVisual={}}
+function box(w,h,d,c,x,y,z,g){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),mat(c));m.position.set(x,y,z);g.add(m);return m}
+function cyl(r,h,c,x,y,z,g){const m=new THREE.Mesh(new THREE.CylinderGeometry(r,r,h,10),mat(c));m.position.set(x,y,z);g.add(m);return m}
+function addTree(g,x,z,th){cyl(.05,.7,th.wood,x,.35,z,g);const crown=new THREE.Mesh(new THREE.SphereGeometry(.28,10,8),mat(th.tree));crown.position.set(x,.85,z);g.add(crown)}
+function addFigure(g,x,z,scale,rot,th,tone){const pg=new THREE.Group();const pm=mat(th.people[tone%th.people.length]);const torso=new THREE.Mesh(new THREE.CylinderGeometry(.09,.12,.34,8),pm);torso.position.y=.43;pg.add(torso);const head=new THREE.Mesh(new THREE.SphereGeometry(.09,10,8),pm);head.position.y=.69;pg.add(head);for(const lx of [-.05,.05]){const l=new THREE.Mesh(new THREE.CylinderGeometry(.035,.04,.28,6),pm);l.position.set(lx,.17,0);pg.add(l)}pg.position.set(x,.08,z);pg.scale.setScalar(scale);pg.rotation.y=rot;g.add(pg)}
+function addArch(g,z,len,th,height=.92){const c=th.wall;box(.14,height,.16,c,-.62,height/2,z,g);box(.14,height,.16,c,.62,height/2,z,g);box(1.38,.14,.16,c,0,height,z,g)}
+function addRail(g,x,len,c){box(.05,.05,len,c,x,.46,0,g);for(let i=0;i<5;i++)box(.04,.46,.04,c,x,.23,-len/2+(i+.5)*len/5,g)}
+function buildStart(th){const g=new THREE.Group();box(1.4,.12,.55,th.sidewalk,-7,.06,0,g);box(.12,1.0,.12,th.building,-7.65,.5,0,g);box(.12,1.0,.12,th.building,-6.35,.5,0,g);box(1.4,.12,.12,th.building,-7,1,0,g);world.add(g)}
+function buildDestination(th){
+ const g=new THREE.Group();g.position.set(7,0,0);const id=P().id;
+ if(id==="park"){box(1.7,.12,.4,th.tree,0,.06,0,g);for(const x of [-.65,.65])box(.08,1,.08,th.tree,x,.5,0,g);box(1.38,.08,.08,th.tree,0,.92,0,g);addTree(g,.9,.15,th);addTree(g,-.9,.15,th)}
+ else {box(1.8,.95,1.25,th.building,0,.48,0,g);box(.42,.72,.08,th.cool,0,.38,-.67,g);if(id==="health"){box(.16,.62,.12,th.stop,0,.58,-.73,g);box(.58,.16,.12,th.stop,0,.58,-.73,g)}else if(id==="class"){for(let x of [-.45,0,.45])box(.25,.25,.05,th.cool,x,.62,-.66,g)}else if(id==="shop"){box(1.55,.18,.12,th.warm,0,.85,-.7,g)}else if(id==="library"){for(let x of [-.5,0,.5])box(.3,.55,.05,th.cool,x,.52,-.66,g)}else if(id==="work"){box(.9,.55,.05,th.cool,0,.55,-.66,g)}}
+ world.add(g)
+}
+function addEdgeMist(th){
+ /* la profundidad la da scene.fog; las bandas planas se leian como losas */
+ return;
+
+ const matFog=(opacity)=>new THREE.MeshBasicMaterial({color:th.sky,transparent:true,opacity,depthWrite:false});
+ const bands=[
+  {x:0,z:-5.2,w:17,d:.55,o:.10},{x:0,z:5.2,w:17,d:.55,o:.10},
+  {x:-8.2,z:0,w:.55,d:11,o:.10},{x:8.2,z:0,w:.55,d:11,o:.10},
+  {x:0,z:-5.42,w:17.4,d:.32,o:.20},{x:0,z:5.42,w:17.4,d:.32,o:.20},
+  {x:-8.42,z:0,w:.32,d:11.4,o:.20},{x:8.42,z:0,w:.32,d:11.4,o:.20}
+ ];
+ bands.forEach(b=>{const m=new THREE.Mesh(new THREE.PlaneGeometry(b.w,b.d),matFog(b.o));m.rotation.x=-Math.PI/2;m.position.set(b.x,.015,b.z);world.add(m)});
+}
+function buildWorld(){
+ if(!world)return;clearWorld();const th=sceneTheme();scene.background.set(th.sky);scene.fog.color.set(th.sky);scene.fog.near=10.5;scene.fog.far=18.5;
+ const ground=new THREE.Mesh(new THREE.PlaneGeometry(17,11),mat(th.ground));ground.rotation.x=-Math.PI/2;ground.position.y=-.04;world.add(ground);addEdgeMist(th);
+ DATA.edges.forEach(e=>buildEdge(e,th));buildStart(th);buildDestination(th);placePersonAtNode("S");camera.position.set(0,7,12);camera.lookAt(0,0,0);renderer.render(scene,camera)
+}
+function buildEdge(e,th){
+ const a=node(e.a).p,b=node(e.b).p,A=new THREE.Vector3(a[0],0.08,a[2]),B=new THREE.Vector3(b[0],0.08,b[2]),mid=A.clone().add(B).multiplyScalar(.5),len=A.distanceTo(B),grp=new THREE.Group();grp.position.copy(mid);grp.rotation.y=Math.atan2(B.x-A.x,B.z-A.z);
+ const roadW=e.kind==="wide"||e.kind==="crowd"?1.15:.78;const road=new THREE.Mesh(new THREE.BoxGeometry(roadW,.08,len),mat(th.road));road.position.y=.05;grp.add(road);
+ if(e.kind==="wide"){for(const x of [-.72,.72])box(.22,.06,len*.94,th.sidewalk,x,.08,0,grp);if(e.id==="sa"){for(const z of [-len*.32,-len*.08,len*.18,len*.37])addTree(grp,-.95,z,th)}if(e.id==="eg"){box(.08,.05,len*.9,th.sidewalk,0,.09,0,grp);for(const z of [-len*.3,0,len*.3]){cyl(.04,.75,th.wall,-.86,.38,z,grp);const lamp=box(.22,.05,.08,th.sidewalk,-.86,.76,z,grp);lamp.material.emissive=new THREE.Color(th.shadow);lamp.material.emissiveIntensity=.18}}}
+ if(e.kind==="market"){for(const side of [-1,1])for(let i=0;i<3;i++){const z=-len/2+.65+i*(len-1.3)/2;box(.5,.08,.65,[th.warm,th.cool,th.wood][i],side*.72,.72,z,grp);box(.42,.35,.4,th.sidewalk,side*.72,.22,z,grp)}[[0,.1,1,0],[.35,.75,.9,1],[-.3,-.7,1.05,2],[.15,-1.0,.85,3],[-.38,.42,.94,-.55],[.32,-.22,1.02,.65],[-.08,1.02,.88,-1.15],[.4,-.92,.98,1.35]].forEach((v,i)=>addFigure(grp,v[0],v[1],v[2],v[3],th,i))}
+ if(e.kind==="slope"){road.rotation.x=-.1;road.position.y=.24;for(let i=0;i<4;i++)box(1.25,.06,.45,th.sidewalk,0,.03+i*.08,-len/2+.55+i*(len-1.1)/3,grp)}
+ if(e.kind==="bus"){box(1.5,.08,.9,th.sidewalk,.65,.07,0,grp);box(1.3,.08,.8,th.building,.65,1.0,0,grp);for(const x of [.05,1.25])box(.06,1,.06,th.building,x,.5,0,grp);box(.75,.2,.24,th.wall,.65,.25,0,grp);cyl(.05,1.35,th.wall,-.4,.68,0,grp);box(.26,.26,.05,th.cool,-.4,1.25,0,grp)}
+ if(e.kind==="tunnel"||e.kind==="underpass"){road.material.color.set(th.shadow);addArch(grp,-len/2+.18,len,th,e.kind==="underpass"?.72:.92);addArch(grp,len/2-.18,len,th,e.kind==="underpass"?.72:.92);const lamp=new THREE.PointLight(th.cool,.55,4);lamp.position.set(0,.65,0);grp.add(lamp)}
+ if(e.kind==="stairs"){road.visible=false;for(let i=0;i<7;i++){box(.95,.10,.42,th.sidewalk,0,.06+i*.075,-len/2+.38+i*.42,grp)}for(const x of [-.58,.58])addRail(grp,x,len,th.wall)}
+ if(e.kind==="fluoro"){for(const x of [-.62,.62]){for(let i=0;i<4;i++)box(.05,.68,.05,th.wall,x,.34,-len/2+.4+i*(len-.8)/3,grp);box(.07,.07,len,th.wall,x,.69,0,grp)}for(let i=0;i<4;i++){const f=box(.55,.045,.16,th.sidewalk,0,.76,-len/2+.5+i*(len-1)/3,grp);f.material.emissive=new THREE.Color(th.cool);f.material.emissiveIntensity=.25}}
+ if(e.kind==="quiet"){for(const side of [-1,1])for(let i=0;i<4;i++){const z=-len/2+.45+i*(len-.9)/3;box(.05,.62,.05,th.wall,side*.58,.31,z,grp);const top=new THREE.Mesh(new THREE.TorusGeometry(.32,.045,6,16,Math.PI),mat(th.wall));top.rotation.z=Math.PI/2;top.position.set(side*.58,.60,z);grp.add(top)}addFigure(grp,-.28,-.35,.88,.3,th,0);addFigure(grp,.2,.45,.95,-.5,th,2)}
+ if(e.kind==="crowd"){if(e.id==="dg"){for(const x of [-.72,.72])addRail(grp,x,len,th.wall);box(1.65,.03,len*.94,th.water,0,-.02,0,grp)}else{box(.12,.04,len*.9,th.sidewalk,0,.09,0,grp);for(const z of [-len*.24,len*.22]){box(.34,.18,.58,th.wall,-.34,.18,z,grp);box(.34,.18,.58,th.wood,.34,.18,z+.25,grp)}}const pts=[[-.34,-.95,.92,.2],[.24,-.75,1.04,-.8],[-.16,-.48,.86,1.2],[.36,-.25,.96,.5],[-.28,.18,1.02,-.4],[.18,.35,.82,.9],[.32,.72,.9,-1.1]];pts.forEach((v,i)=>addFigure(grp,v[0],v[1]*Math.max(1,len/3),v[2],v[3],th,i))}
+ if(e.kind==="ramp"){road.rotation.x=.055;road.position.y=.15;for(const x of [-.55,.55])addRail(grp,x,len,th.wall)}
+ if(e.kind==="boardwalk"){road.visible=false;box(1.6,.025,len*.96,th.water,0,-.02,0,grp);const count=Math.max(6,Math.floor(len/.38));for(let i=0;i<count;i++){const z=-len/2+(i+.5)*len/count;box(1.15,.07,Math.max(.16,len/count*.72),th.wood,0,.08,z,grp)}for(const x of [-.72,.72])addRail(grp,x,len,th.wall)}
+ if(e.kind==="alley"){road.material.color.set(th.shadow);for(const x of [-.64,.64])box(.13,.72,len,th.wall,x,.36,0,grp)}
+ world.add(grp);edgeVisual[e.id]={group:grp,road,base:road.material.color.clone()};
+}
+function highlightEdge(id,state){
+ const v=edgeVisual[id];if(!v)return;const th=sceneTheme();const c=state==="active"?th.route:state==="stop"?th.stop:state==="done"?th.route:v.base;v.road.material.color.set(c);if(renderer)renderer.render(scene,camera)
+}
+function resetHighlights(){Object.entries(edgeVisual).forEach(([id,v])=>v.road.material.color.copy(v.base))}
+function updateSceneState(){if(!renderer)return;resetHighlights();path.forEach(id=>highlightEdge(id,"done"));placePersonAtNode("S");renderer.render(scene,camera)}
+function orientPerson(dx,dz){if(!person)return;person.rotation.y=Math.atan2(dx,dz)}
+function placePersonAtNode(id){if(!person)return;const p=node(id).p;person.position.set(p[0],.08,p[2])}
+function placePersonAtEdge(e,t){if(!person)return;const a=node(e.a).p,b=node(e.b).p;person.position.set(a[0]+(b[0]-a[0])*t,.08,a[2]+(b[2]-a[2])*t);orientPerson(b[0]-a[0],b[2]-a[2])}
+$("#travel").addEventListener("click",travel);$("#undo").addEventListener("click",undo);$("#clear").addEventListener("click",clearPath);$("#next").addEventListener("click",nextProfile);$("#help").addEventListener("click",()=>$("#help-dialog").showModal());$("#motion").addEventListener("change",e=>{motion=e.target.value;document.body.dataset.motion=motion});
+motion=matchMedia("(prefers-reduced-motion: reduce)").matches?"reduced":"normal";document.body.dataset.motion=motion;$("#motion").value=motion;
+const colorScheme=matchMedia("(prefers-color-scheme: dark)");
+colorScheme.addEventListener("change",()=>{if(renderer&&!document.documentElement.dataset.igTheme){buildWorld();renderUI()}});
+new MutationObserver(()=>{if(renderer){buildWorld();renderUI()}}).observe(document.documentElement,{attributes:true,attributeFilter:["data-ig-theme"]});
+window.__IG_THREE_READY__.then(async()=>{await init3D();renderUI()}).catch(async()=>{await init3D();renderUI()});
+})();
+</script>
+</body>
+</html>

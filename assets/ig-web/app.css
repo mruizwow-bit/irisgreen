@@ -1,0 +1,379 @@
+/* Las tipografías vienen de /assets/ig-fonts.css, que ya las sirve el propio sitio. */
+/* Iris Green · web nueva · canon NAVY
+   Mismos tokens que Juegos y Descubrimiento. Tema único: sin tema claro y sin selector.
+   La pila tipográfica mantiene IG Zero por delante, como en la web actual. */
+
+
+:root {
+  --fondo: #0B1A2B;
+  --panel: #15304A;
+  --superficie: #1D3D5C;
+  --texto: #EEF4F8;
+  --texto-2: #C9D5DD;
+  --enlace: #9FDCEA;
+  --acento: #C3B8FF;
+  --borde: #8494A8;
+  --separador: #2A4460;
+  --boton: #DCE8F2;
+  --boton-texto: #0B1A2B;
+  --cuerpo: 'IG Zero', 'Atkinson Hyperlegible', Verdana, system-ui, sans-serif;
+  --titulos: Newsreader, 'Iowan Old Style', Georgia, serif;
+  --ancho: 1312px;
+}
+
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+html { background: var(--fondo); }
+body {
+  margin: 0; background: var(--fondo); color: var(--texto);
+  font-family: var(--cuerpo); font-size: 1rem; line-height: 1.6;
+}
+
+.contenedor { width: 100%; max-width: var(--ancho); margin: 0 auto; padding-inline: 16px; }
+@media (min-width: 834px) { .contenedor { padding-inline: 64px; } }
+
+.saltar { position: absolute; left: 16px; top: -200px; z-index: 30; background: var(--boton);
+  color: var(--boton-texto); padding: 12px 18px; border-radius: 10px; font-weight: 700; text-decoration: none; }
+.saltar:focus { top: 12px; }
+:focus-visible { outline: 3px solid var(--acento); outline-offset: 2px; border-radius: 10px; }
+.visualmente-oculto { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+
+/* ---------- cabecera y navegación global ---------- */
+.cabecera { position: sticky; top: 0; z-index: 10; background: var(--fondo);
+  border-bottom: 1px solid var(--separador); }
+html { scroll-padding-top: 120px; }
+.cabecera__fila { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 8px 16px; min-height: 64px; padding-block: 8px; }
+.marca { display: inline-flex; align-items: center; gap: 10px; min-height: 44px; text-decoration: none;
+  color: var(--texto); font-family: var(--titulos); font-weight: 600; font-size: 1.25rem; line-height: 1.2; }
+.marca:hover { color: var(--texto); }
+.marca__mote { width: 28px; height: 28px; flex: none; border-radius: 8px; background: var(--superficie);
+  display: grid; place-items: center; }
+
+.util { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.util .util__boton { display: none; }
+@media (min-width: 600px) { .util .util__boton { display: inline-flex; } }
+/* Sabik se ve siempre: es la ayuda y no puede esconderse en un menú.
+   No usa el acento: el acento sólo marca dónde estás, qué está marcado y el foco. */
+.util .util__boton--sabik { display: inline-flex; border-width: 2px; border-color: var(--borde);
+  font-weight: 700; }
+.util .util__boton--sabik:hover { background: var(--superficie); }
+.menu-extra { display: flex; flex-direction: column; gap: 8px; margin-bottom: 12px; }
+@media (min-width: 600px) { .menu-extra { display: none; } }
+.menu-extra .util__boton { min-height: 56px; justify-content: center; border-radius: 12px; }
+.util__boton { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 14px;
+  background: transparent; color: var(--texto); border: 1px solid var(--borde); border-radius: 999px;
+  font-family: var(--cuerpo); font-size: 0.9375rem; line-height: 1.2; cursor: pointer; text-decoration: none; }
+.util__boton:hover { background: var(--superficie); color: var(--texto); }
+
+.nav__lista { display: flex; flex-wrap: wrap; gap: 2px; list-style: none; margin: 0; padding: 0; }
+.nav__enlace { display: flex; align-items: center; min-height: 44px; padding: 8px 12px; border-radius: 8px;
+  color: var(--texto); text-decoration: none; line-height: 1.2; }
+.nav__enlace:hover { background: var(--superficie); color: var(--texto);
+  text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.nav__enlace[aria-current] { background: var(--superficie); color: var(--acento); font-weight: 700;
+  box-shadow: inset 0 -3px 0 var(--acento); }
+
+.menu-boton { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; min-width: 48px;
+  padding: 10px 14px; background: transparent; color: var(--texto); border: 2px solid var(--borde);
+  border-radius: 10px; font-family: var(--cuerpo); font-size: 1rem; font-weight: 700; line-height: 1.2; cursor: pointer; }
+.menu-boton:hover { background: var(--superficie); }
+
+.nav--movil { display: none; }
+.nav--movil[data-abierto="true"] { display: block; position: fixed; inset: 0; z-index: 25;
+  background: var(--fondo); padding: 16px; overflow-y: auto; }
+.nav--movil .nav__lista { flex-direction: column; gap: 8px; }
+.nav--movil .nav__enlace { min-height: 56px; padding: 14px 16px; border: 1px solid var(--separador);
+  border-radius: 12px; font-size: 1.125rem; justify-content: space-between; }
+.nav--movil .nav__enlace[aria-current] { border: 2px solid var(--acento); }
+.menu-cabecera { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+
+/* El menú va siempre detrás del botón, como en el resto del sitio: ninguna
+   página enseña una fila fija de áreas. En una actividad ni siquiera está. */
+
+/* Un enlace que es todo el contenido de su párrafo o de su ítem es un objetivo
+   independiente, no un enlace dentro de una frase: 44 px. */
+p > a:only-child, li > a:only-child:not([class]), .tarjeta__pie > a:not(.boton),
+.aviso p > a, .ficha__cuerpo p > a:only-child {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 44px; min-width: 44px; }
+
+/* ---------- tipografía ---------- */
+h1, h2, h3, .tarjeta__titulo, .puerta__titulo { font-family: var(--titulos); font-weight: 600;
+  line-height: 1.2; margin: 0; overflow-wrap: anywhere; hyphens: auto; }
+.titulo-portada { font-weight: 400; font-size: clamp(2.5rem, 1.6rem + 3.2vw, 3.5rem); line-height: 1.06; }
+h1 { font-size: clamp(1.75rem, 1.2rem + 2vw, 2.875rem); }
+h2 { font-size: clamp(1.3125rem, 1.1rem + 0.8vw, 1.625rem); }
+h3 { font-size: 1.1875rem; }
+.entrada { font-size: 1.1875rem; line-height: 1.58; margin: 0; max-width: 62ch; }
+p { margin: 0; max-width: 72ch; }
+.apoyo { color: var(--texto-2); font-size: 0.9375rem; }
+main { padding-block: 16px 32px; }
+.bloque { display: flex; flex-direction: column; gap: 24px; }
+.bloque--apretado { gap: 12px; }
+.seccion { display: flex; flex-direction: column; gap: 16px; }
+
+a { color: var(--enlace); }
+code { overflow-wrap: anywhere; }
+a:hover { color: var(--acento); }
+
+/* ---------- botones ---------- */
+.boton { display: inline-flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap;
+  max-width: 100%; text-align: center; overflow-wrap: anywhere; min-height: 48px; padding: 12px 20px;
+  border-radius: 10px; font-weight: 700; line-height: 1.2; text-decoration: none; cursor: pointer;
+  font-family: var(--cuerpo); font-size: 1rem; background: var(--boton); color: var(--boton-texto);
+  border: 2px solid var(--boton); }
+.boton:hover { background: var(--texto); color: var(--boton-texto); }
+.boton--secundario { background: transparent; color: var(--texto); border-color: var(--borde); }
+.boton--secundario:hover { background: var(--superficie); color: var(--texto); }
+.boton[aria-disabled="true"], .boton:disabled { background: var(--superficie); color: var(--texto-2);
+  border: 2px solid var(--borde); cursor: not-allowed; }
+
+/* ---------- accesos de la portada: imagen al lado, nombre y verbo delante ----------
+   Compactos a propósito: en pantalla pequeña se recorren los seis sin huecos enormes,
+   y cuando el texto crece mucho, la tarjeta se apila sola. */
+.puertas { display: grid; gap: 12px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 760px) { .puertas { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; } }
+@media (min-width: 1240px) { .puertas { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; } }
+
+.puertas > li, .rejilla > li { min-width: 0; }
+.puerta { display: flex; flex-wrap: wrap; align-items: center; gap: 14px; height: 100%; padding: 14px;
+  background: var(--panel); border: 1px solid var(--separador); border-radius: 16px;
+  text-decoration: none; color: var(--texto); }
+.puerta:hover { border-color: var(--borde); color: var(--texto); }
+.puerta:hover .puerta__titulo { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.puerta__dibujo { position: relative; flex: none; display: grid; place-items: center;
+  width: 84px; height: 84px;
+  border-radius: 12px; background: var(--superficie); border: 1px solid var(--separador); overflow: hidden; }
+/* La imagen se adapta al hueco sin recortarse y sin desbordarlo nunca,
+   tampoco con el texto al 200 %. */
+.puerta__dibujo img, .puerta__dibujo .imagen { position: absolute; inset: 0; margin: auto;
+  width: auto; height: auto; max-width: 100%; max-height: 100%; object-fit: contain;
+  border: 0; border-radius: 10px; background: transparent; }
+/* un pictograma es línea sobre claro: se enseña entero y sobre fondo claro */
+.puerta__dibujo--picto { background: var(--texto); padding: 8px; }
+.tarjeta--muestra { align-items: center; text-align: center; }
+.tarjeta--muestra .imagen { width: 160px; height: 160px; object-fit: contain;
+  background: var(--texto); border-radius: 12px; padding: 10px; }
+/* Marca decorativa del hueco: tamaño fijo para que el hueco no crezca al ampliar el texto.
+   Va oculta al lector de pantalla, así que no es texto que haya que poder ampliar. */
+.puerta__inicial { font-family: var(--titulos); font-size: 28px; line-height: 1; color: var(--texto-2); }
+.puerta__texto-zona { display: flex; flex-direction: column; gap: 2px; flex: 1 1 11rem; min-width: 0; }
+.puerta__titulo { display: block; font-size: 1.25rem; }
+.puerta__verbo { display: block; color: var(--enlace); font-weight: 700; }
+.puerta__texto { display: block; color: var(--texto-2); font-size: 0.9375rem; }
+@media (min-width: 1240px) { .puerta__dibujo { width: 104px; height: 104px; } }
+
+/* hueco de pictograma mientras no está el archivo real */
+.picto-pendiente { display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 6px; width: 100%; height: 100%; color: var(--texto-2); text-align: center; padding: 8px; }
+.picto-pendiente code { font-size: 0.75rem; color: var(--texto-2); overflow-wrap: anywhere; max-width: 100%; }
+
+/* ---------- juego: pieza colocada y hueco lleno ---------- */
+button.tarjeta { font-family: var(--cuerpo); font-size: 1rem; color: var(--texto); text-align: left;
+  cursor: pointer; }
+button.tarjeta[data-colocado="true"] { background: var(--fondo); border-style: dashed;
+  border-color: var(--borde); cursor: default; }
+button.tarjeta[data-colocado="true"] .puerta__dibujo { opacity: 0.45; }
+button.tarjeta[data-colocado="true"] .tarjeta__titulo { color: var(--texto-2); }
+[data-hueco][data-lleno="true"] { font-weight: 700; color: var(--texto); }
+[data-huecos] .tarjeta { flex-direction: row; align-items: center; gap: 12px; }
+
+/* ---------- rejillas y tarjetas ---------- */
+.rejilla { display: grid; gap: 16px; grid-template-columns: 1fr; list-style: none; margin: 0; padding: 0; }
+@media (min-width: 640px) { .rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; } }
+@media (min-width: 1100px) { .rejilla--tres { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; } }
+
+.tarjeta { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: 18px;
+  background: var(--panel); border: 1px solid var(--separador); border-radius: 14px; }
+.tarjeta--enlace { text-decoration: none; color: var(--texto); }
+.tarjeta--enlace:hover { border-color: var(--borde); color: var(--texto); }
+.tarjeta--enlace:hover .tarjeta__titulo { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
+.tarjeta__titulo { font-size: 1.1875rem; }
+/* Encuadre por tipo. Una lámina, un espécimen, una moneda o un storyboard se enseñan
+   enteros: nunca se recortan para encajar en una proporción. */
+.imagen { display: block; border-radius: 12px; border: 1px solid var(--separador);
+  background: var(--superficie); }
+.imagen--natural { width: 100%; height: auto; }          /* proporción real del archivo */
+.imagen--entera { width: 100%; height: auto; object-fit: contain; }
+.imagen--recorte { width: 100%; height: auto; aspect-ratio: 3 / 2; object-fit: cover; }
+.tarjeta .imagen { margin-bottom: 4px; }
+.ficha__cuerpo > .imagen { border-radius: 14px; }
+.tarjeta__texto { color: var(--texto-2); }
+.tarjeta__pie { margin-top: auto; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; max-width: 100%; }
+
+.etiqueta { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; padding: 5px 10px;
+  border-radius: 999px; background: var(--superficie); border: 1px solid var(--borde); color: var(--texto-2);
+  font-size: 0.8125rem; line-height: 1.2; }
+.etiquetas { display: flex; flex-wrap: wrap; gap: 6px; }
+
+.aviso { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px; background: var(--panel);
+  border: 1px solid var(--separador); border-radius: 14px; }
+.vacio { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; padding: 24px;
+  border: 1px dashed var(--borde); border-radius: 14px; background: var(--panel); }
+
+/* ---------- buscador y filtros del catálogo ---------- */
+.buscador { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+.campo { display: flex; flex-direction: column; gap: 6px; flex: 1 1 260px; min-width: 0; max-width: 100%; }
+.campo label { font-weight: 700; }
+.campo input, .campo select { width: 100%; min-width: 0; min-height: 48px; padding: 12px 14px; border-radius: 10px;
+  background: var(--superficie); color: var(--texto); border: 2px solid var(--borde);
+  font-family: var(--cuerpo); font-size: 1rem; }
+.campo input::placeholder { color: var(--texto-2); }
+
+.filtros { display: flex; flex-direction: column; gap: 10px; }
+.filtros__grupo { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.filtros__titulo { font-weight: 700; margin-right: 4px; }
+.chip { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 14px; border-radius: 999px;
+  background: transparent; color: var(--texto); border: 1px solid var(--borde); font-family: var(--cuerpo);
+  font-size: 0.9375rem; line-height: 1.2; cursor: pointer; }
+.chip:hover { background: var(--superficie); }
+.chip[aria-pressed="true"] { background: var(--superficie); border-color: var(--acento); color: var(--acento);
+  font-weight: 700; }
+.chip[aria-pressed="true"]::before { content: "✓"; margin-right: 6px; }
+
+.resultado { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; justify-content: space-between;
+  padding-block: 4px; border-top: 1px solid var(--separador); }
+.resultado__cuenta { font-weight: 700; }
+
+/* ---------- ficha de contenido ---------- */
+.ficha { display: grid; gap: 24px; grid-template-columns: 1fr; }
+@media (min-width: 1100px) { .ficha { grid-template-columns: minmax(0, 2fr) minmax(260px, 1fr); } }
+.ficha__cuerpo { display: flex; flex-direction: column; gap: 20px; }
+.ficha__lado { display: flex; flex-direction: column; gap: 16px; }
+.ficha h2 { margin-top: 8px; }
+.ficha p + p { margin-top: 10px; }
+.indice { position: sticky; top: 16px; display: flex; flex-direction: column; gap: 8px; padding: 16px;
+  background: var(--panel); border: 1px solid var(--separador); border-radius: 14px; }
+.indice ol { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+
+.fuente { display: flex; flex-direction: column; gap: 4px; padding: 14px 16px; background: var(--superficie);
+  border: 1px solid var(--separador); border-radius: 12px; font-size: 0.9375rem; }
+
+/* ---------- tabla del directorio ---------- */
+.tabla-envoltorio { overflow-x: auto; border: 1px solid var(--separador); border-radius: 12px; }
+table { border-collapse: collapse; width: 100%; font-size: 0.9375rem; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--separador); vertical-align: top; }
+th { background: var(--superficie); font-weight: 700; }
+tr:last-child td { border-bottom: 0; }
+
+/* Sabik vive en la cabecera pegajosa: siempre visible y sin tapar nada.
+   No hay botón flotante, porque un botón flotante acaba encima de un control. */
+
+/* ---------- pie ---------- */
+.pie { border-top: 1px solid var(--separador); background: var(--fondo); padding-block: 24px; margin-top: 32px; }
+.pie__fila { display: flex; flex-wrap: wrap; gap: 24px; justify-content: space-between; }
+.pie .nav__lista { gap: 10px 18px; }
+.pie .nav__enlace { min-height: 44px; padding: 6px 0; font-size: 0.9375rem; color: var(--texto-2); }
+.pie .nav__enlace[aria-current] { background: transparent; box-shadow: none; color: var(--acento); }
+
+/* ---------- ajustes ---------- */
+fieldset { margin: 0; padding: 16px; border: 1px solid var(--separador); border-radius: 14px;
+  background: var(--panel); }
+legend { padding-inline: 8px; font-weight: 700; }
+.opcion { display: flex; align-items: flex-start; gap: 12px; min-height: 48px; padding: 8px 4px; }
+.opcion input { width: 24px; height: 24px; margin: 10px 0 0; accent-color: var(--acento); flex: none; }
+.opcion span { display: block; }
+.opcion .apoyo { display: block; }
+
+/* las anclas no se esconden bajo la cabecera pegajosa */
+:target, [id] { scroll-margin-top: 104px; }
+.indice { top: 112px; }
+
+/* ---------- movimiento ---------- */
+.boton, .nav__enlace, .tarjeta--enlace, .puerta, .chip { transition: background-color 120ms linear,
+  color 120ms linear, border-color 120ms linear; }
+@media (prefers-reduced-motion: reduce) {
+  .boton, .nav__enlace, .tarjeta--enlace, .puerta, .chip { transition-duration: 1ms; }
+  * { scroll-behavior: auto !important; }
+}
+html[data-movimiento="reduced"] .boton, html[data-movimiento="reduced"] .nav__enlace,
+html[data-movimiento="reduced"] .tarjeta--enlace, html[data-movimiento="reduced"] .puerta,
+html[data-movimiento="reduced"] .chip { transition-duration: 1ms; }
+html[data-movimiento="none"] * { transition: none !important; animation: none !important; }
+html[data-movimiento="none"] { scroll-behavior: auto !important; }
+
+/* ---------- forced-colors ---------- */
+@media (forced-colors: active) {
+  .tarjeta, .aviso, .vacio, .puerta, .puerta__dibujo, .etiqueta, .chip, .indice, .fuente { border: 1px solid CanvasText; }
+  .boton { border: 2px solid ButtonText; color: ButtonText; background: ButtonFace; }
+  .nav__enlace[aria-current] { box-shadow: none; border-bottom: 3px solid Highlight; }
+  .chip[aria-pressed="true"] { border: 2px solid Highlight; }
+  :focus-visible { outline: 3px solid Highlight; forced-color-adjust: none; }
+}
+
+/* ---------- mesas de Creación ---------- */
+.mesa .etiquetas { list-style: none; margin: 0; padding: 0; gap: 8px; }
+.campo__nombre { font-weight: 700; }
+/* En columna, la base flexible de .campo haría campos de 260 px de alto. */
+.mesa .campo { flex: 0 0 auto; }
+.dos-campos > .campo { flex: 1 1 260px; }
+.migas { margin: 0 0 4px; }
+.migas a { color: var(--enlace); }
+.mesa { display: flex; flex-direction: column; gap: 14px; }
+.campo textarea { width: 100%; min-width: 0; min-height: 140px; padding: 12px 14px; border-radius: 10px;
+  background: var(--superficie); color: var(--texto); border: 2px solid var(--borde);
+  font-family: var(--cuerpo); font-size: 1rem; line-height: 1.6; resize: vertical; }
+.campo textarea::placeholder { color: var(--texto-2); }
+fieldset.campo { border: 1px solid var(--separador); border-radius: 14px; padding: 16px; margin: 0; }
+fieldset.campo legend { padding: 0 6px; font-weight: 700; }
+.dos-campos { display: flex; flex-wrap: wrap; gap: 16px; }
+.botonera { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.botonera--campo { gap: 10px; }
+.botonera--campo input { flex: 1 1 220px; min-width: 0; min-height: 48px; padding: 12px 14px;
+  border-radius: 10px; background: var(--superficie); color: var(--texto);
+  border: 2px solid var(--borde); font-family: var(--cuerpo); font-size: 1rem; }
+.contador { margin: 0; color: var(--texto-2); }
+.boton--pequeno { min-height: 44px; padding: 8px 14px; font-size: 0.9375rem; }
+
+.mesa__lienzo { background: var(--panel); border: 1px solid var(--separador); border-radius: 14px; padding: 10px; }
+.mesa__lienzo canvas { display: block; width: 100%; height: auto; max-width: 720px; margin: 0 auto;
+  background: var(--panel); border-radius: 8px; touch-action: none; cursor: crosshair; }
+.mesa__lienzo canvas:focus-visible { outline: 3px solid var(--acento); outline-offset: 3px; }
+.chip--color { gap: 8px; }
+.muestra-color { display: inline-block; width: 18px; height: 18px; border-radius: 50%;
+  border: 1px solid var(--borde); }
+
+.lista-reglas { display: flex; flex-direction: column; gap: 8px; margin: 12px 0 0; padding-left: 22px; }
+.lista-reglas li { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+.lista-reglas__texto { flex: 1 1 200px; min-width: 0; }
+
+.ficha-juego { background: var(--panel); border: 1px solid var(--separador); border-radius: 14px;
+  padding: 18px; display: flex; flex-direction: column; gap: 10px; }
+.ficha-juego h3 { font-family: var(--titulos); font-weight: 600; line-height: 1.2; margin: 0; }
+.ficha-juego p { margin: 0; }
+.ficha-juego ol { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 6px; }
+
+@media print {
+  .cabecera, .pie, .saltar, .mesa, .migas { display: none !important; }
+  html, body { background: #fff; color: #000; }
+  .ficha-juego { background: #fff; color: #000; border: 1px solid #000; }
+  .ficha-juego h3 { color: #000; }
+  .apoyo { color: #000; }
+}
+@media (forced-colors: active) {
+  .mesa__lienzo, .ficha-juego, fieldset.campo { border: 1px solid CanvasText; }
+  .muestra-color { border: 1px solid CanvasText; }
+}
+
+/* ---------- páginas de actividad: sin puerta al resto del sitio ---------- */
+/* Sólo edad, accesibilidad e idioma. La navegación del sitio vive detrás de la
+   portada de edad; una página de juego no puede ser una entrada por detrás. */
+.cabecera--actividad .cabecera__fila { flex-wrap: wrap; gap: 12px; align-items: center;
+  justify-content: space-between; }
+.volver { min-width: 0; }
+.volver__enlace { display: inline-flex; align-items: center; min-height: 44px; padding: 8px 2px;
+  color: var(--enlace); text-decoration: none; }
+.volver__enlace:hover { text-decoration: underline; }
+.barra-actividad { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.pie--actividad { border-top: 1px solid var(--separador); }
+.pie--actividad .apoyo { margin: 0; padding: 18px 0; }
+
+/* ---------- puertas grandes y fichas de juego ---------- */
+.puerta-grande { gap: 12px; }
+.puerta-grande .imagen { height: 210px; object-fit: cover; object-position: center; border-radius: 10px; }
+.puerta-grande .imagen--hoja { object-position: center top; background: #fff; }
+.puerta-grande .etiquetas { margin-top: 2px; }
+.puerta-grande .tarjeta__pie { margin-top: auto; }
+.lista-simple { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 8px; }

@@ -1,0 +1,6 @@
+LIMITES · R04
+- No se declara HUMAN QA PASS.
+- La mecánica R02/R03 ya fue validada por enumeración independiente.
+- R04 corrige únicamente: oráculos de mutación sobre los ficheros reales, tabla semanal, tablero sticky móvil, sentinel de error y versión.
+- No se ha probado con NVDA, JAWS ni VoiceOver reales.
+- No se integra en main ni producción.

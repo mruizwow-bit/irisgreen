@@ -1,0 +1,386 @@
+{
+  "nota": "Derivado de datos/imagenes.json en cada generación. No editar a mano. «archivos» es exactamente lo que viaja en el paquete.",
+  "regla": "no se edita, recorta ni regenera ningún original",
+  "archivos": [
+    {
+      "archivo": "informacion-mapa.webp",
+      "sujeto": "Un mapa enrollado y atado con un cordel, en acuarela",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/vineta-mapa.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_AREA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "bytes": 144742,
+      "sha256": "764f50efcf7199356bb3f418d805f8cb751b8dee471e7db66302464bbf86d99b"
+    },
+    {
+      "archivo": "recursos-hablar.svg",
+      "sujeto": "Pictograma de una persona de perfil hablando, con un bocadillo",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "assets/mulberry/hablar.svg",
+      "licencia": "The Mulberry Symbol set · © 2018-2026 Steve Lee · CC BY-SA 4.0 · aviso y enlace en assets/imagenes/LICENCIA-MULBERRY.txt (no es el texto íntegro de la licencia)",
+      "estado_asignacion": "MUESTRA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        850,
+        850
+      ],
+      "bytes": 10486,
+      "sha256": "34168fcc6c80ab7494e4dc031d696e3beb40f4a5c30422076d35a1e68bda403c"
+    },
+    {
+      "archivo": "construccion-vado-1440.png",
+      "sujeto": "Escena plana del prototipo de construcción: dos orillas, un canal, materiales y una caja cerrada",
+      "sujeto_verificado": "sí · mirado en la entrega de Juegos",
+      "origen": "storyboard Construcción R02 · F01 OBJETIVO",
+      "origen_ref": "CONSTRUCTION_R02_PATCH_F01_OBJETIVO_1440.png",
+      "licencia": "material propio de Iris Green",
+      "estado_asignacion": "DESIGN_PREVIEW",
+      "gate": "READY_FOR_HUMAN_QA del artifact 11348661943 · HUMAN_QA_PENDING · no es HUMAN QA PASS",
+      "dimensiones": [
+        1440,
+        900
+      ],
+      "bytes": 41025,
+      "sha256": "469686a06c43d0d120213f919451fdc3f689f79f9fa57da21afb2d598cc56160"
+    },
+    {
+      "archivo": "descubrimiento-caballito.webp",
+      "sujeto": "Un caballito de mar en acuarela sobre papel crema, de perfil y con la cola enroscada",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/intereses/peces/pez-caballito.webp · cromo 1 del tema «peces»",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "LAMINA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1086,
+        1448
+      ],
+      "bytes": 187694,
+      "sha256": "52818e3f85d764e9c3a58650357933ebb80fbe27523dab7aceca95335a29710c"
+    },
+    {
+      "archivo": "descubrimiento-carbonero.webp",
+      "sujeto": "Un carbonero común posado en una rama, en acuarela",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/intereses/aves/ave-carbonero.webp · cromo 10 del tema «aves»",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "LAMINA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1086,
+        1448
+      ],
+      "bytes": 139028,
+      "sha256": "a47a2625ff9dc248493db5db65befae6e4c6b48d06ef71328f8abee822a19315"
+    },
+    {
+      "archivo": "descubrimiento-amapola.webp",
+      "sujeto": "Una amapola roja con su capullo, su tallo y sus hojas, en acuarela",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/intereses/flores/flor-amapola.webp · cromo 1 del tema «flores»",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "LAMINA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1086,
+        1448
+      ],
+      "bytes": 145878,
+      "sha256": "ef8595f8137e6434ccae3a8c239eed46e9f9f8b983488c9b552183bbf0c8eb6a"
+    },
+    {
+      "archivo": "descubrimiento-amatista.webp",
+      "sujeto": "Una geoda de amatista: cristales morados dentro de una piedra gris, en acuarela",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/intereses/minerales/min-amatista.webp · cromo 2 del tema «minerales»",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "LAMINA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1086,
+        1448
+      ],
+      "bytes": 241558,
+      "sha256": "c81cfb0e5908dbed8fe2f6863fafa0c825c5501869565b2f6e0e5aa074806ce1"
+    },
+    {
+      "archivo": "descubrimiento-denario.webp",
+      "sujeto": "Una moneda de plata antigua con un perfil laureado y letras alrededor del borde",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/intereses/monedas/mon-denario.webp · cromo 2 del tema «monedas»",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "LAMINA_DE_COLECCION",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1086,
+        1448
+      ],
+      "bytes": 239436,
+      "sha256": "1c17da1097750707d5ae528eb3a2b48e34be3eb22ad13f859a01ec0a51284fff"
+    },
+    {
+      "archivo": "creacion-taller.webp",
+      "sujeto": "Seis personas de distintas edades alrededor de una mesa de taller, cada una en una actividad",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-portada.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_AREA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1600,
+        900
+      ],
+      "bytes": 369684,
+      "sha256": "76f49afd69d588a986dfe60229ff82dbb049366c5b5a85c1db31db306e9096c9"
+    },
+    {
+      "archivo": "tranquilo-hoja.webp",
+      "sujeto": "Una hoja de otoño, roja y anaranjada, en acuarela",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/vineta-hoja.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_AREA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1254,
+        1254
+      ],
+      "bytes": 185448,
+      "sha256": "413b381f67a3eca5e4228fbc3f8cf492f077aac73c3d25281ab65802f105ecb4"
+    },
+    {
+      "archivo": "creacion-mesa-construir.webp",
+      "sujeto": "Manos montando una caja de cartón con una ventana, entre libros, tijeras, cinta y una regla",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-construir.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 367600,
+      "sha256": "c798c47ef5efb0ce9e80226cc20d3f2fc37d4f6ba054c53840c31d41ea8336d7"
+    },
+    {
+      "archivo": "creacion-mesa-dibujar.webp",
+      "sujeto": "Una mano dibujando tazas a lápiz en un cuaderno, con pinceles, paleta de acuarela y un maniquí de madera",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-dibujar.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 398662,
+      "sha256": "b52ed6fbcb03bdaf3e918e97251f343b8dc17250b4ce175ed54343ad2c28f231"
+    },
+    {
+      "archivo": "creacion-mesa-escribir.webp",
+      "sujeto": "Una máquina de escribir azul junto a un cuaderno abierto donde una mano escribe, con una taza y un gato dormido",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-escribir.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 425632,
+      "sha256": "c7058dead5df5c61c1db1dc8c22d6b6cc743f0a8ad1bdc2a326eb812590f4be4"
+    },
+    {
+      "archivo": "creacion-mesa-inventar.webp",
+      "sujeto": "Dos personas sobre un mapa dibujado a mano que hace de tablero, con botones como fichas, dados y un cuaderno de bocetos",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-inventar.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 442176,
+      "sha256": "6a0698db3f1e8704b31c242324a3ad3b3d8f80046af63a0ce9c12a236d2e68ea"
+    },
+    {
+      "archivo": "creacion-mesa-mirar.webp",
+      "sujeto": "Una mesa con hojas secas, piedras y fotografías ordenadas en bandejas, con una cámara y una lupa",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-mirar.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 445584,
+      "sha256": "b017be24d7c7b8e3a485fd60d4ccf3b27ecb735556ab760e013859f75ecf7f32"
+    },
+    {
+      "archivo": "creacion-mesa-sonidos.webp",
+      "sujeto": "Una mesa con grabadora de casete, micrófono, auriculares, vasos con agua a distintas alturas, cuchara y cuenco con canicas",
+      "sujeto_verificado": "sí · mirado en esta sesión",
+      "origen": "repositorio irisgreen (copia local de María)",
+      "origen_ref": "img/taller-mesa-sonidos.webp",
+      "licencia": "Ilustración propia de Iris Green",
+      "estado_asignacion": "ILUSTRACION_DE_MESA",
+      "gate": "sin gate específico",
+      "dimensiones": [
+        1448,
+        1086
+      ],
+      "bytes": 463566,
+      "sha256": "04a939071c3f904942e36f140ac2cd2d2cc5f58aa8f9f65067bd2443fdc3d7bb"
+    }
+  ],
+  "referencias_historicas": [
+    {
+      "archivo": "descubrimiento-orion.webp",
+      "estado": "HISTORICAL_NOT_PACKAGED",
+      "sha256_cuando_se_empaquetó": "27f7614a… (R02; no se vuelve a declarar aquí porque el archivo ya no viaja)",
+      "sujeto": "La constelación de Orión sobre un cielo azul oscuro",
+      "origen_ref": "img/intereses/constelaciones/04-orion.webp · cromo 4 del tema «constelaciones»",
+      "licencia": "Posiciones estelares: HYG Database, David Nash · CC BY-SA 4.0",
+      "por_que_se_retiro": "enseñaba la figura y la nombraba antes de entrar, lo que resolvía el primer objetivo de la experiencia de Cielo nocturno (punto 3 del patch R02)",
+      "no_viaja_en_el_paquete": true
+    },
+    {
+      "archivo": "construccion-vado-390.png",
+      "estado": "HISTORICAL_NOT_PACKAGED",
+      "sujeto": "La misma escena del prototipo, en vertical",
+      "origen_ref": "CONSTRUCTION_R02_PATCH_F01_OBJETIVO_390.png",
+      "licencia": "material propio de Iris Green",
+      "gate": "READY_FOR_HUMAN_QA del artifact 11348661943 · HUMAN_QA_PENDING · no es HUMAN QA PASS",
+      "por_que_se_retiro": "variante vertical del mismo storyboard. Desde el patch R02 la puerta de Juegos usa la lámina apaisada, que entra entera en el hueco cuadrado, así que ninguna colocación la usaba. No se deja viajar un archivo que nadie coloca.",
+      "no_viaja_en_el_paquete": true
+    }
+  ],
+  "fuentes": {
+    "informacion-mapa.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "recursos-hablar.svg": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "construccion-vado-1440.png": {
+      "origen": "storyboard Construcción R02 · F01 OBJETIVO",
+      "run_id": 37318454037,
+      "artifact_id": 11348661943,
+      "comprobado": "ZIP recibido y hash registrado en la entrega de Juegos R01_3"
+    },
+    "descubrimiento-caballito.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "descubrimiento-carbonero.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "descubrimiento-amapola.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "descubrimiento-amatista.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "descubrimiento-denario.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-taller.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "tranquilo-hoja.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-construir.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-dibujar.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-escribir.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-inventar.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-mirar.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    },
+    "creacion-mesa-sonidos.webp": {
+      "origen": "repositorio irisgreen (copia local de María)",
+      "commit": "4893d3cf9772e58bdc1b5f505d33965cbfea007a",
+      "fecha": "2026-09-17",
+      "comprobado": "existencia y tamaño del archivo en ese árbol; no se ha comparado hash contra el commit"
+    }
+  },
+  "recuento": {
+    "empaquetados": 16,
+    "historicos_no_empaquetados": 2
+  }
+}

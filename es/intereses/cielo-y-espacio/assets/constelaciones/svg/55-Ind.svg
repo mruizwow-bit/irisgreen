@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Indio / Indus</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="112.308" cy="258.753" r="3.339"/>
+<circle id="bg-star-002" cx="884.881" cy="1505.393" r="1.366"/>
+<circle id="bg-star-003" cx="924.617" cy="664.527" r="2.336"/>
+<circle id="bg-star-004" cx="388.453" cy="313.763" r="1.959"/>
+<circle id="bg-star-005" cx="1046.618" cy="1297.153" r="1.703"/>
+<circle id="bg-star-006" cx="174.219" cy="777.974" r="2.995"/>
+<circle id="bg-star-007" cx="571.283" cy="1284.535" r="3.203"/>
+<circle id="bg-star-008" cx="907.154" cy="906.400" r="2.338"/>
+<circle id="bg-star-009" cx="473.631" cy="1160.984" r="1.819"/>
+<circle id="bg-star-010" cx="1038.386" cy="790.612" r="2.047"/>
+<circle id="bg-star-011" cx="851.353" cy="643.419" r="2.303"/>
+<circle id="bg-star-012" cx="723.125" cy="736.786" r="2.742"/>
+<circle id="bg-star-013" cx="276.365" cy="1322.456" r="1.693"/>
+<circle id="bg-star-014" cx="990.386" cy="473.755" r="1.891"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="103227" data-to-hip="102333" x1="924.179" y1="1413.309" x2="1064.868" y2="838.159"/>
+<line id="edge-02" data-from-hip="102333" data-to-hip="101772" x1="1064.868" y1="838.159" x2="1172.206" y2="431.691"/>
+<line id="edge-03" data-from-hip="101772" data-to-hip="105319" x1="1172.206" y1="431.691" x2="663.881" y2="968.005"/>
+<line id="edge-04" data-from-hip="105319" data-to-hip="108431" x1="663.881" y1="968.005" x2="267.794" y2="1163.565"/>
+<line id="edge-05" data-from-hip="108431" data-to-hip="103227" x1="267.794" y1="1163.565" x2="924.179" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-101772" data-hip="101772" data-mag="3.11" data-bv="0.998" cx="1172.206" cy="431.691" r="6.301" fill="rgb(255, 221, 170)"/>
+<circle id="hip-102333" data-hip="102333" data-mag="4.51" data-bv="" cx="1064.868" cy="838.159" r="4.412" fill="rgb(235, 240, 255)"/>
+<circle id="hip-103227" data-hip="103227" data-mag="3.67" data-bv="1.25" cx="924.179" cy="1413.309" r="5.545" fill="rgb(255, 188, 125)"/>
+<circle id="hip-105319" data-hip="105319" data-mag="4.39" data-bv="0.191" cx="663.881" cy="968.005" r="4.574" fill="rgb(222, 232, 255)"/>
+<circle id="hip-108431" data-hip="108431" data-mag="4.4" data-bv="" cx="267.794" cy="1163.565" r="4.560" fill="rgb(235, 240, 255)"/>
+</g></svg>

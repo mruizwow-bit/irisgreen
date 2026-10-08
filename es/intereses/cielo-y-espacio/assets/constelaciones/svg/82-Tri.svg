@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Triángulo / Triangulum</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="287.015" cy="1495.513" r="2.742"/>
+<circle id="bg-star-002" cx="1220.394" cy="1351.778" r="1.577"/>
+<circle id="bg-star-003" cx="1075.646" cy="1502.485" r="2.200"/>
+<circle id="bg-star-004" cx="1275.181" cy="256.824" r="1.325"/>
+<circle id="bg-star-005" cx="563.778" cy="820.474" r="2.723"/>
+<circle id="bg-star-006" cx="1183.977" cy="1474.964" r="1.301"/>
+<circle id="bg-star-007" cx="1018.542" cy="1346.889" r="2.018"/>
+<circle id="bg-star-008" cx="151.576" cy="1440.654" r="1.786"/>
+<circle id="bg-star-009" cx="1020.809" cy="1128.953" r="2.222"/>
+<circle id="bg-star-010" cx="829.282" cy="533.074" r="3.384"/>
+<circle id="bg-star-011" cx="277.887" cy="1376.262" r="1.505"/>
+<circle id="bg-star-012" cx="978.819" cy="1324.429" r="1.759"/>
+<circle id="bg-star-013" cx="1005.877" cy="1307.078" r="1.341"/>
+<circle id="bg-star-014" cx="557.601" cy="322.991" r="1.774"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="8796" data-to-hip="10064" x1="1172.206" y1="1413.309" x2="551.779" y2="431.691"/>
+<line id="edge-02" data-from-hip="10064" data-to-hip="10670" x1="551.779" y1="431.691" x2="267.794" y2="635.118"/>
+<line id="edge-03" data-from-hip="10670" data-to-hip="8796" x1="267.794" y1="635.118" x2="1172.206" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-8796" data-hip="8796" data-mag="3.42" data-bv="0.488" cx="1172.206" cy="1413.309" r="5.883" fill="rgb(255, 244, 221)"/>
+<circle id="hip-10064" data-hip="10064" data-mag="3" data-bv="0.14" cx="551.779" cy="431.691" r="6.450" fill="rgb(222, 232, 255)"/>
+<circle id="hip-10670" data-hip="10670" data-mag="4.03" data-bv="0.019" cx="267.794" cy="635.118" r="5.059" fill="rgb(190, 215, 255)"/>
+</g></svg>

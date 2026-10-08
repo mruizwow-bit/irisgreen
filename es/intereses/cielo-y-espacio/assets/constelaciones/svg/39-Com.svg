@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Cabellera de Berenice / Coma Berenices</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="1063.958" cy="1221.317" r="2.332"/>
+<circle id="bg-star-002" cx="531.427" cy="1247.575" r="2.306"/>
+<circle id="bg-star-003" cx="1009.234" cy="864.622" r="2.293"/>
+<circle id="bg-star-004" cx="854.375" cy="1012.821" r="2.280"/>
+<circle id="bg-star-005" cx="428.094" cy="796.421" r="2.280"/>
+<circle id="bg-star-006" cx="517.757" cy="657.782" r="2.228"/>
+<circle id="bg-star-007" cx="608.223" cy="1077.676" r="2.222"/>
+<circle id="bg-star-008" cx="953.301" cy="804.194" r="2.202"/>
+<circle id="bg-star-009" cx="1099.119" cy="944.498" r="2.196"/>
+<circle id="bg-star-010" cx="626.526" cy="800.969" r="2.196"/>
+<circle id="bg-star-011" cx="947.052" cy="824.096" r="2.163"/>
+<circle id="bg-star-012" cx="860.414" cy="1201.177" r="2.131"/>
+<circle id="bg-star-013" cx="702.980" cy="1284.099" r="2.072"/>
+<circle id="bg-star-014" cx="984.526" cy="854.614" r="2.040"/>
+<circle id="bg-star-015" cx="454.418" cy="431.691" r="2.020"/>
+<circle id="bg-star-016" cx="924.625" cy="865.454" r="1.962"/>
+<circle id="bg-star-017" cx="267.794" cy="1413.309" r="1.936"/>
+<circle id="bg-star-018" cx="844.545" cy="542.054" r="1.877"/>
+<circle id="bg-star-019" cx="922.827" cy="945.269" r="1.845"/>
+<circle id="bg-star-020" cx="900.812" cy="925.817" r="1.845"/>
+<circle id="bg-star-021" cx="800.070" cy="1083.313" r="1.832"/>
+<circle id="bg-star-022" cx="1035.031" cy="828.916" r="1.812"/>
+<circle id="bg-star-023" cx="433.215" cy="1016.653" r="1.805"/>
+<circle id="bg-star-024" cx="1172.206" cy="1092.872" r="1.760"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="64241" data-to-hip="64241" x1="377.727" y1="1241.034" x2="377.727" y2="1241.034"/>
+<line id="edge-02" data-from-hip="64241" data-to-hip="64394" x1="377.727" y1="1241.034" x2="368.076" y2="784.159"/>
+<line id="edge-03" data-from-hip="64394" data-to-hip="60742" x1="368.076" y1="784.159" x2="943.122" y2="760.255"/>
+</g><g id="stars">
+<circle id="hip-60742" data-hip="60742" data-mag="4.35" data-bv="1.128" cx="943.122" cy="760.255" r="4.628" fill="rgb(255, 221, 170)"/>
+<circle id="hip-64241" data-hip="64241" data-mag="4.32" data-bv="0.455" cx="377.727" cy="1241.034" r="4.668" fill="rgb(255, 244, 221)"/>
+<circle id="hip-64394" data-hip="64394" data-mag="4.23" data-bv="0.572" cx="368.076" cy="784.159" r="4.789" fill="rgb(255, 244, 221)"/>
+</g></svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Zorra / Vulpecula</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="338.743" cy="1247.163" r="2.468"/>
+<circle id="bg-star-002" cx="606.785" cy="1279.864" r="2.011"/>
+<circle id="bg-star-003" cx="850.747" cy="1456.546" r="2.401"/>
+<circle id="bg-star-004" cx="522.336" cy="1296.393" r="2.445"/>
+<circle id="bg-star-005" cx="1284.120" cy="709.725" r="2.973"/>
+<circle id="bg-star-006" cx="1331.392" cy="366.812" r="2.071"/>
+<circle id="bg-star-007" cx="475.510" cy="654.429" r="3.338"/>
+<circle id="bg-star-008" cx="407.589" cy="307.896" r="1.373"/>
+<circle id="bg-star-009" cx="1009.114" cy="1449.718" r="2.179"/>
+<circle id="bg-star-010" cx="1130.279" cy="872.335" r="1.385"/>
+<circle id="bg-star-011" cx="689.214" cy="1109.867" r="2.574"/>
+<circle id="bg-star-012" cx="723.229" cy="1075.293" r="3.188"/>
+<circle id="bg-star-013" cx="752.118" cy="420.563" r="1.631"/>
+<circle id="bg-star-014" cx="1142.442" cy="446.638" r="2.219"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="95771" data-to-hip="97886" x1="1172.206" y1="431.691" x2="267.794" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-95771" data-hip="95771" data-mag="4.44" data-bv="" cx="1172.206" cy="431.691" r="4.506" fill="rgb(235, 240, 255)"/>
+<circle id="hip-97886" data-hip="97886" data-mag="4.57" data-bv="" cx="267.794" cy="1413.309" r="4.330" fill="rgb(235, 240, 255)"/>
+</g></svg>

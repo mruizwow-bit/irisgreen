@@ -88,7 +88,9 @@ def main()->None:
         visual=(root/base/"index.html").read_text(encoding="utf-8")
         games=(root/base/("juegos" if lang=="es" else "games")/"index.html").read_text(encoding="utf-8")
         hub=(root/workshop/"index.html").read_text(encoding="utf-8")
-        need(visual.count('class="ig-activity-card"')==3,"Expected three visual support tools")
+        # El hub español ya no es una rejilla de apoyos visuales: es una página de autor
+        # con las rutinas para imprimir y las fichas de los juegos. El inglés sigue igual.
+        need(visual.count('class="ig-activity-card"')==(3 if lang=="en" else 0),"Expected three visual support tools")
         need('/'+base+money not in visual,"Money is still in visual supports")
         need('href="/'+base+money+'"' in games,"Money missing from Games")
         need('igk-start-sec' not in hub and 'igk-prof-sec' not in hub,"Duplicate studio launchers remain")
@@ -96,6 +98,11 @@ def main()->None:
         for text in (visual,games,hub):
             need('class="ig-activity-nav"' not in text,"Redundant secondary activity navigation remains")
             for href in re.findall(r'href="(/[^"?#]+/)"',text):
+                # Las áreas interactivas se materializan desde el ZIP editorial después de
+                # esta puerta (paso 289 del build), así que en la primera pasada todavía no
+                # existen. La segunda pasada, ya con todo montado, sí las comprueba.
+                if href.rstrip('/') in ('/es/juegos','/es/descubrimiento','/en/games','/en/discovery') and not (root/href.strip('/')/'index.html').is_file():
+                    continue
                 need((root/href.strip('/')/'index.html').is_file(),"Broken activity link: "+href)
     need("dlg.showModal()" not in (root/'assets/ig-suite-launcher.js').read_text(encoding="utf-8"),"Workshop catalogue must remain inline")
 

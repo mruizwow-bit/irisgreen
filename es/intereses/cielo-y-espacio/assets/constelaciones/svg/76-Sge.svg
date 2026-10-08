@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 1800" role="img" aria-labelledby="title desc">
+<title id="title">Flecha / Sagitta</title>
+<desc id="desc">Master limpio: estrellas y figura de líneas de la constelación; sin texto editorial ni visibilidad localizada.</desc>
+<defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#040c1c"/><stop offset="100%" stop-color="#0c2037"/></linearGradient></defs>
+<rect id="background" width="1440" height="1800" fill="url(#sky)"/>
+<g id="background-stars" fill="#e5efff" fill-opacity=".65">
+<circle id="bg-star-001" cx="1265.963" cy="1521.712" r="2.121"/>
+<circle id="bg-star-002" cx="293.261" cy="663.758" r="3.229"/>
+<circle id="bg-star-003" cx="820.000" cy="863.546" r="1.694"/>
+<circle id="bg-star-004" cx="235.250" cy="586.142" r="2.567"/>
+<circle id="bg-star-005" cx="1170.355" cy="847.495" r="1.637"/>
+<circle id="bg-star-006" cx="227.507" cy="942.013" r="2.018"/>
+<circle id="bg-star-007" cx="252.475" cy="1349.065" r="2.917"/>
+<circle id="bg-star-008" cx="1014.771" cy="576.159" r="2.080"/>
+<circle id="bg-star-009" cx="1164.311" cy="308.026" r="2.302"/>
+<circle id="bg-star-010" cx="488.812" cy="1200.593" r="2.908"/>
+<circle id="bg-star-011" cx="370.996" cy="649.830" r="2.369"/>
+<circle id="bg-star-012" cx="339.230" cy="1546.400" r="3.051"/>
+<circle id="bg-star-013" cx="331.077" cy="670.930" r="2.684"/>
+<circle id="bg-star-014" cx="137.223" cy="1319.564" r="3.389"/>
+</g><g id="edges" fill="none" stroke="#80b2eb" stroke-opacity=".62" stroke-width="3">
+<line id="edge-01" data-from-hip="98337" data-to-hip="97365" x1="267.794" y1="431.691" x2="817.051" y2="905.473"/>
+<line id="edge-02" data-from-hip="97365" data-to-hip="96757" x1="817.051" y1="905.473" x2="1172.206" y2="1152.94"/>
+<line id="edge-03" data-from-hip="97365" data-to-hip="96837" x1="817.051" y1="905.473" x2="1126.64" y2="1413.309"/>
+</g><g id="stars">
+<circle id="hip-96757" data-hip="96757" data-mag="4.39" data-bv="0.777" cx="1172.206" cy="1152.940" r="4.574" fill="rgb(255, 221, 170)"/>
+<circle id="hip-96837" data-hip="96837" data-mag="4.39" data-bv="1.041" cx="1126.640" cy="1413.309" r="4.574" fill="rgb(255, 221, 170)"/>
+<circle id="hip-97365" data-hip="97365" data-mag="3.68" data-bv="" cx="817.051" cy="905.473" r="5.532" fill="rgb(235, 240, 255)"/>
+<circle id="hip-98337" data-hip="98337" data-mag="3.51" data-bv="1.571" cx="267.794" cy="431.691" r="5.761" fill="rgb(255, 150, 96)"/>
+</g></svg>

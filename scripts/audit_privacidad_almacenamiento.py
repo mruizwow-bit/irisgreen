@@ -23,8 +23,11 @@ ALLOWED_STORAGE = {
         # Delivered Games/Discovery runtimes: game progress/settings, sky
         # discoveries/view, and opt-in marine album. No network transmission.
         # Persistence and deletion reviewed in both built privacy notices.
-        "irisgreen.construction-playable-r01.v1": {"getItem", "setItem"},
-        "iris-green.cielo-nocturno.r01": {"getItem", "setItem", "removeItem"},
+        # «Cielo y Espacio» (/es/intereses/cielo-y-espacio/): el cuaderno de
+        # hallazgos y la vista. Solo navegador, borrable desde el propio cielo.
+        # Aviso publico ES/EN en Privacidad. Sustituye al cielo R02 y al taller
+        # de las islas, retirados el 08/10/2026.
+        "iris-green.cielo-3d.r02": {"getItem", "setItem", "removeItem"},
         "ig-descubrimiento-peces-r01": {"getItem", "setItem", "removeItem"},
         # Exoplanetas R12: favoritos y planetas conocidos; acción explícita,
         # solo navegador, exportación y borrado. Aviso público ES/EN revisado.
@@ -36,6 +39,11 @@ ALLOWED_STORAGE = {
         "ig-sistema-solar-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-eclipses-coleccion": {"getItem", "setItem", "removeItem"},
         "ig-a11y": {"getItem", "setItem", "removeItem"},
+        # Preferencia de movimiento de las paginas nuevas (normal / reducido /
+        # sin movimiento). La elige la persona en el panel de Accesibilidad,
+        # vive solo en su navegador y no se envia a ningun sitio. Misma familia
+        # que ig-a11y y ig-theme-2026. No se borra sola: se cambia de valor.
+        "ig-movimiento": {"getItem", "setItem"},
         # Preferencia global LIGHT/DARK NAVY; explícita, local al navegador y borrable.
         "ig-theme-2026": {"getItem", "setItem", "removeItem"},
         "ig_lang": {"getItem", "setItem", "removeItem"},

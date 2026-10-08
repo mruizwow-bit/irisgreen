@@ -11,6 +11,11 @@ import argparse
 import re
 from pathlib import Path
 
+# El índice de Recursos pasa a tener dos mitades: las rutinas para imprimir y los
+# juegos nuevos, cada uno con su ficha en /es/juegos/. Tarjeta Iris y Rutinas
+# visuales dejan de anunciarse ahí, y el catálogo de pictogramas de
+# /es/recursos/juegos/ queda como legado hasta su cambio. Sus páginas siguen
+# existiendo y accesibles por su dirección; sólo deja de exigirse el enlace.
 CHILDREN = (
     '/es/recursos/rutinas-imprimibles/',
 )
@@ -56,7 +61,7 @@ def run(root: Path) -> dict:
     for child in CHILDREN:
         assert f'href="{child}"' in hub_text, f'El índice de Recursos no enlaza {child}'
 
-    for child in ('/en/resources/', '/en/resources/printable-routines/'):
+    for child in ('/en/resources/', '/en/resources/games/', '/en/resources/visual-routines/', '/en/resources/printable-routines/'):
         assert (root / child.strip('/') / 'index.html').is_file(), child
     changed_headers = 0
     for path in sorted(root.rglob('*.html')):

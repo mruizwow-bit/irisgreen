@@ -66,9 +66,25 @@ def add_head(text,markup,bare):
  if n!=1:raise AssertionError("Public page has no </head>")
  return out
 
+# Experiencias a pantalla completa: el producto ES la pagina y se disena para
+# ocupar la ventana entera (100svh). Ponerle encima la cabecera y el pie del
+# sitio la desborda: medido, 1091 px de pagina en una ventana de 800, con una
+# banda negra debajo del suelo. Las areas interactivas montadas desde el zip ya
+# quedaban fuera por venir despues de este pase; estas viven en el arbol, asi
+# que hay que nombrarlas. La puerta de edad se aplica en la pagina desde la que
+# se entra, no aqui dentro.
+# Unica fuente de verdad: el materializador la importa de aqui. Tener dos listas
+# con el mismo nombre hacia que el test eximiera una pagina y el materializador
+# otra, y el test fallaba sobre el dist final en vida-marina.
+EXPERIENCIAS=(
+ "es/intereses/cielo-y-espacio/index.html",
+ "es/descubrimiento/vida-marina/index.html",
+)
+
 def candidate(path,root):
  rel=path.relative_to(root).as_posix()
  if rel in ("index.html","en/index.html"):return False
+ if rel in EXPERIENCIAS:return False
  if "/assets/" in "/"+rel:return False
  text=path.read_text(encoding="utf-8")
  if 'data-ig-home-version="v4"' in text:return False

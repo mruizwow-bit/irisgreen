@@ -18,7 +18,25 @@ class References(HTMLParser):
 
 def validate(root):
     pages = list((root/'es/juegos').rglob('*.html')) + list((root/'es/descubrimiento').rglob('*.html'))
-    assert len(pages) >= 12, 'Missing interactive pages'
+    # Inventario explicito en vez de un suelo. Un conteo deja que un area tape la
+    # desaparicion de otra: con >=12, retirar seis paginas de Juegos y que
+    # apareciesen seis en Descubrimiento habria pasado igual. Esto falla diciendo
+    # que archivo falta o cual sobra.
+    ESPERADAS = {
+        'es/juegos/index.html',
+        'es/juegos/cada-cerebro-su-camino.html',
+        'es/juegos/cada-cerebro-su-camino-jugar/index.html',
+        'es/juegos/la-maquina-de-empezar.html',
+        'es/juegos/la-maquina-de-empezar-jugar/index.html',
+        'es/juegos/donde-se-fue-la-energia.html',
+        'es/juegos/donde-se-fue-la-energia-jugar/index.html',
+        'es/descubrimiento/index.html',
+        'es/descubrimiento/peces.html',
+        'es/descubrimiento/vida-marina/index.html',
+    }
+    encontradas = {p.relative_to(root).as_posix() for p in pages}
+    assert encontradas == ESPERADAS, 'faltan: %s | sobran: %s' % (
+        sorted(ESPERADAS - encontradas), sorted(encontradas - ESPERADAS))
     errors = []
     for page in pages:
         text = page.read_text(encoding='utf-8')
@@ -35,7 +53,8 @@ def validate(root):
     assert not errors, '\n'.join(errors)
     home = (root/'index.html').read_text(encoding='utf-8')
     assert 'href="/es/juegos/"' in home and 'href="/es/descubrimiento/"' in home
-    for path in ('es/juegos/construccion/index.html', 'es/descubrimiento/cielo-explorar/index.html', 'es/descubrimiento/vida-marina/index.html'):
+    # Construccion y el cielo R02 se retiraron el 08/10/2026; queda Vida marina.
+    for path in ('es/descubrimiento/vida-marina/index.html',):
         assert 'ig-experience-return' in (root/path).read_text(encoding='utf-8'), path
     # Netlify canonicalizes .html and trailing slashes: a file and a directory
     # with the same stem make the exploration link loop back to its detail.

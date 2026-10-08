@@ -27,11 +27,14 @@ def run(root):
         for slug,*_ in tools:
             assert (root/base/slug/'index.html').is_file(), base+slug
         page=root/base/'index.html'
-        text=page.read_text(encoding='utf-8')
-        inner = '<header class="ig-activity-head"><h1>'+title+'</h1><p>'+desc+'</p></header><ul class="ig-activity-grid">'+''.join(card('/'+base+slug,name,info,cta) for slug,name,info,cta in tools)+'</ul>'
-        text=re.sub(r'(<main\b[^>]*>).*?</main>',lambda m:m.group(1)+inner+'</main>',text,count=1,flags=re.S)
-        text=re.sub(r'<title>.*?</title>','<title>'+title+' | Iris Green</title>',text,count=1,flags=re.S)
-        page.write_bytes(text.encode())
+        # El hub en español pasa a ser una página de autor: rutinas para imprimir y juegos,
+        # cada juego con su ficha. Ya no se genera aquí. El inglés sigue igual hasta su cambio.
+        if en:
+            text=page.read_text(encoding='utf-8')
+            inner = '<header class="ig-activity-head"><h1>'+title+'</h1><p>'+desc+'</p></header><ul class="ig-activity-grid">'+''.join(card('/'+base+slug,name,info,cta) for slug,name,info,cta in tools)+'</ul>'
+            text=re.sub(r'(<main\b[^>]*>).*?</main>',lambda m:m.group(1)+inner+'</main>',text,count=1,flags=re.S)
+            text=re.sub(r'<title>.*?</title>','<title>'+title+' | Iris Green</title>',text,count=1,flags=re.S)
+            page.write_bytes(text.encode())
         # #369 P12: global navigation already provides context; strip any legacy activity nav.
         pages=[(root/workshop/'index.html','workshop'),(root/base/'games/index.html' if en else root/base/'juegos/index.html','games'),(root/money/'index.html','games')]
         pages += [(root/base/slug/'index.html','visual') for slug,*_ in tools]
