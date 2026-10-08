@@ -28,4 +28,5 @@ jobs:
           python3 scripts/check_protected_paths.py \
             --base "$BASE_SHA" \
             --head "$HEAD_SHA" \
-            --labels-json "$LABELS_JSON"
+            --labels-json "$LABELS_JSON" \\
+            $([ "$BOOTSTRAP" = "true" ] && printf -- "--bootstrap")
