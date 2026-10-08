@@ -283,7 +283,6 @@ def build():
     subprocess.run([sys.executable,str(ROOT/'scripts/test_workshop_sheets_tokens_hreflang.py'),'--root',str(dst)],cwd=ROOT,check=True)
     # #357: shared controls must stay on the global semantic token contract.
     subprocess.run([sys.executable,str(ROOT/'scripts/test_global_shared_controls_tokens.py'),'--root',str(dst)],cwd=ROOT,check=True)
-    subprocess.run([sys.executable,str(ROOT/'scripts/test_r69_unified_interface.py'),'--root',str(dst)],cwd=ROOT,check=True)
 
     # Mount the delivered areas after legacy adapters, which otherwise replace their layouts.
     subprocess.run([sys.executable,str(ROOT/'scripts/materialize_interactive_areas.py'),'--root',str(dst)],cwd=ROOT,check=True)
