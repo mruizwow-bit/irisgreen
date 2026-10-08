@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mesa de dibujar · Iris Green</title>
+<meta name="description" content="Un lienzo para dibujar con el dedo, el ratón, el lápiz o el teclado.">
+<link rel="canonical" href="https://irisgreen.eu/es/creacion/dibujar/">
+<meta name="theme-color" content="#0B1A2B">
+<link rel="stylesheet" href="/assets/ig-fonts.css">
+<link rel="stylesheet" href="/assets/ig-web/app.css">
+<script src="/assets/ig-web/ajustes-pronto.js"></script>
+</head>
+<body data-area="creacion" data-idioma="es">
+<a class="saltar skip ig-skip" href="#main">Saltar al contenido</a>
+
+<nav class="ig-experience-return" aria-label="Volver"><a class="volver__enlace" href="/es/creacion/">← Volver a Creación</a></nav>
+<header class="cabecera cabecera--actividad">
+  <div class="contenedor cabecera__fila">
+    <div class="util">
+      <button class="util__boton" type="button" data-ig-audience-open>18 años o más</button>
+      <button class="util__boton" type="button" data-ig-music>Música</button>
+      <button class="util__boton" type="button" data-ig-reading-trigger>Accesibilidad</button>
+      <a class="util__boton" href="/en/" lang="en" hreflang="en">EN</a>
+    </div>
+  </div>
+</header>
+
+<main id="main" class="contenedor">
+<div class="bloque">
+
+  <section class="seccion">
+    <h1>Mesa de dibujar</h1>
+    <p class="entrada">Dibuja con el dedo, el ratón o el lápiz. También se puede dibujar con las
+      flechas del teclado.</p>
+  </section>
+
+  <section class="seccion mesa" aria-labelledby="dibujar-t">
+    <h2 id="dibujar-t">Tu dibujo</h2>
+    <noscript><p class="aviso">Esta mesa necesita JavaScript para dibujar. Si no lo tienes, la mesa de
+      escribir y la de inventar funcionan igual.</p></noscript>
+    <p class="campo__nombre" id="colores-t">Color del trazo</p>
+    <ul class="etiquetas" aria-labelledby="colores-t">
+        <li><button class="chip chip--color" type="button" data-color="#EEF4F8" aria-pressed="true"><span class="muestra-color" style="background:#EEF4F8" aria-hidden="true"></span>blanco hueso</button></li>
+        <li><button class="chip chip--color" type="button" data-color="#9FDCEA" aria-pressed="false"><span class="muestra-color" style="background:#9FDCEA" aria-hidden="true"></span>azul claro</button></li>
+        <li><button class="chip chip--color" type="button" data-color="#C3B8FF" aria-pressed="false"><span class="muestra-color" style="background:#C3B8FF" aria-hidden="true"></span>lila</button></li>
+        <li><button class="chip chip--color" type="button" data-color="#9BE0B4" aria-pressed="false"><span class="muestra-color" style="background:#9BE0B4" aria-hidden="true"></span>verde</button></li>
+        <li><button class="chip chip--color" type="button" data-color="#FFB3C1" aria-pressed="false"><span class="muestra-color" style="background:#FFB3C1" aria-hidden="true"></span>rosa</button></li>
+        <li><button class="chip chip--color" type="button" data-color="#8494A8" aria-pressed="false"><span class="muestra-color" style="background:#8494A8" aria-hidden="true"></span>gris</button></li>
+    </ul>
+    <p class="campo__nombre" id="grosor-t">Grosor</p>
+    <ul class="etiquetas" aria-labelledby="grosor-t">
+      <li><button class="chip" type="button" data-grosor="3" aria-pressed="false">Fino</button></li>
+      <li><button class="chip" type="button" data-grosor="8" aria-pressed="true">Medio</button></li>
+      <li><button class="chip" type="button" data-grosor="18" aria-pressed="false">Gordo</button></li>
+      <li><button class="chip" type="button" data-grosor="28" data-borrar="1" aria-pressed="false">Borrar</button></li>
+    </ul>
+    <div class="mesa__lienzo">
+      <canvas id="md-lienzo" width="1000" height="700" role="img" tabindex="0"
+              aria-label="Lienzo para dibujar. Con el teclado: flechas para mover el lápiz, Intro para bajarlo o subirlo."></canvas>
+    </div>
+    <p class="contador" id="md-estado" role="status">Lápiz levantado. Flechas para mover, Intro para bajar el lápiz.</p>
+    <div class="botonera">
+      <button class="boton" type="button" id="md-guardar">Guardar como imagen</button>
+      <button class="boton boton--secundario" type="button" id="md-deshacer">Deshacer</button>
+      <button class="boton boton--secundario" type="button" id="md-limpiar">Empezar de nuevo</button>
+    </div>
+    <p class="apoyo">Al cerrar la página el dibujo se va. Guárdalo si quieres conservarlo.</p>
+  </section>
+
+</div>
+</main>
+
+<footer class="pie pie--actividad">
+  <div class="contenedor">
+    <p class="apoyo">Iris Green · escrito en lenguaje claro. Sin publicidad y sin seguimiento.</p>
+  </div>
+</footer>
+
+<script src="/assets/ig-web/app.js"></script>
+<script src="/assets/ig-web/mesa-dibujar.js" defer></script>
+</body>
+</html>
