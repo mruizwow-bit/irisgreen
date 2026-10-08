@@ -24,9 +24,14 @@ jobs:
           LABELS_JSON: ${{ toJson(github.event.pull_request.labels) }}
           BASE_SHA: ${{ github.event.pull_request.base.sha }}
           HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          BOOTSTRAP: ${{ github.event.pull_request.number == 409 && 'true' || 'false' }}
         run: |
+          EXTRA=""
+          if [ "$BOOTSTRAP" = "true" ]; then
+            EXTRA="--bootstrap"
+          fi
           python3 scripts/check_protected_paths.py \
             --base "$BASE_SHA" \
             --head "$HEAD_SHA" \
-            --labels-json "$LABELS_JSON" \\
-            $([ "$BOOTSTRAP" = "true" ] && printf -- "--bootstrap")
+            --labels-json "$LABELS_JSON" \
+            $EXTRA
