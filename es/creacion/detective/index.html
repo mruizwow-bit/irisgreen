@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Detective · Creación · Iris Green</title>
+<meta name="robots" content="noindex,follow">
+<link rel="canonical" href="https://irisgreen.eu/es/creacion/detective/">
+<link rel="stylesheet" href="/assets/preferencias-lectura.css"><link rel="stylesheet" href="/assets/ig-r42-materials.css?v=r42-r02-1"><link rel="stylesheet" href="/assets/detective-game-first.css">
+</head>
+<body data-ig-materials="r42">
+<a class="dg-skip" href="#main">Ir al juego</a>
+<header class="dg-top"><a class="dg-brand" href="/">Iris Green</a><nav class="dg-nav" aria-label="Creación"><a href="/">Salir</a><a aria-current="page" href="/es/creacion/detective/">ES</a><a href="/en/creation/detective/">EN</a></nav></header>
+<main id="main" class="dg-main">
+<div class="dg-head"><div><h1>Detective</h1><p>Observa, prueba, cambia y mira qué ocurre.</p></div><button id="dg-motion" type="button" class="dg-motion">Movimiento: normal</button></div>
+<div class="dg-shell">
+<section id="detective-game" class="dg-stage" data-lang="es" aria-label="Escena 3D del juego">
+<div class="dg-overlay"><span id="dg-scene-label" class="dg-chip"></span><span class="dg-chip">Creación · GAME_FIRST</span></div>
+<div class="dg-quick-picks" role="group" aria-label="Objetos de la escena">
+<button type="button" data-pick="light" aria-pressed="false">Lámpara</button>
+<button type="button" data-pick="sound" aria-pressed="false">Altavoz</button>
+<button type="button" data-pick="texture" aria-pressed="false">Manta</button>
+</div>
+</section>
+<aside id="dg-panel" class="dg-panel" data-mobile-open="false" aria-label="Panel de investigación">
+<div><h2>Investiga la escena</h2><p id="dg-note"></p></div>
+<div id="dg-object" class="dg-object" hidden>
+<h3 id="dg-selection-title">Objeto</h3>
+<div class="dg-levels" role="group" aria-label="Intensidad">
+<button type="button" data-level="0" aria-pressed="false">Suave</button><button type="button" data-level="1" aria-pressed="true">Media</button><button type="button" data-level="2" aria-pressed="false">Alta</button>
+</div>
+<div class="dg-hypothesis-wrap"><p>Antes de probar, haz una hipótesis sobre Vera:</p><div class="dg-hypothesis" role="group" aria-label="Hipótesis sobre Vera"><button type="button" data-hypothesis="calm" aria-pressed="false">A Vera le calma</button><button type="button" data-hypothesis="activate" aria-pressed="false">A Vera le activa</button><button type="button" data-hypothesis="depends" aria-pressed="false">Depende de la combinación</button></div></div><button id="dg-try" type="button" class="dg-primary">Probar cambio</button>
+</div>
+<div class="dg-status" id="dg-status" role="status" aria-live="polite"></div>
+<div class="dg-signal"><span>Cuerpo</span><div class="dg-meter" role="meter" aria-label="Señal corporal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-body"></span></div></div>
+<div class="dg-signal"><span>Respiración</span><div class="dg-meter" role="meter" aria-label="Señal de respiración" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-breath"></span></div></div>
+<div class="dg-signal"><span>Atención</span><div class="dg-meter" role="meter" aria-label="Señal de atención" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50"><span id="dg-attention"></span></div></div>
+<div class="dg-actions"><button id="dg-undo" type="button" disabled>Deshacer cambio</button><button id="dg-reset" type="button">Otra escena</button><button id="dg-resolve" type="button" disabled>Resolver escena</button></div>
+<p id="dg-help" class="dg-help"></p>
+</aside>
+<div class="dg-mobile-dock" aria-label="Controles móviles"><button id="dg-mobile-objects" type="button" aria-pressed="true">Objetos</button><button id="dg-panel-toggle" type="button" aria-controls="dg-panel" aria-expanded="false">Investigar</button></div>
+</div>
+<noscript><p>Este vertical slice necesita JavaScript. No guarda perfiles ni datos personales.</p></noscript>
+</main>
+<footer class="dg-foot">IRIS GREEN · Creación GAME_FIRST · vertical slice · no producción</footer>
+<script src="/assets/preferencias-lectura.js"></script><script src="/assets/vendor/taller/three.js"></script>
+<script defer src="/assets/detective-game-first.js"></script>
+</body></html>

@@ -1,0 +1,59 @@
+name: Detective GAME_FIRST E2E
+
+on:
+  push:
+    branches:
+      - astra/detective-game-first-r01-20261007
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  detective-e2e:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Install Playwright
+        run: |
+          npm install --no-save playwright@1.55.0
+          npx playwright install --with-deps chromium
+
+      - name: Syntax checks
+        run: |
+          node --check assets/detective-game-first.js
+          node --check tests/detective-game-first.e2e.mjs
+
+      - name: Start static server
+        run: |
+          python3 -m http.server 4173 > /tmp/detective-http.log 2>&1 &
+          echo $! > /tmp/detective-http.pid
+          for i in {1..20}; do
+            if curl -fsS http://127.0.0.1:4173/es/creacion/detective/?scene=7 >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/detective-http.log
+          exit 1
+
+      - name: Run Detective E2E
+        env:
+          DETECTIVE_BASE_URL: http://127.0.0.1:4173
+          DETECTIVE_ARTIFACTS: artifacts/detective-game-first
+        run: node tests/detective-game-first.e2e.mjs
+
+      - name: Upload evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: detective-game-first-evidence
+          path: artifacts/detective-game-first
+          if-no-files-found: warn
+          retention-days: 14
