@@ -1,6 +1,4 @@
-import type { Config, Context } from "@netlify/functions";
-
-export default async (_req: Request, _context: Context) => {
+export default async (_req: Request) => {
   const enabled = Netlify.env.get("SUPPORT_PAYMENTS_ENABLED") === "true";
   const paymentLink = Netlify.env.get("STRIPE_SUPPORT_PAYMENT_LINK") || "";
 
@@ -34,6 +32,6 @@ export default async (_req: Request, _context: Context) => {
   );
 };
 
-export const config: Config = {
+export const config = {
   path: "/api/support-link"
 };
