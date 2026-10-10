@@ -1,0 +1,39 @@
+{
+  "schema": "iris-green-control-delta-v1",
+  "id": "CIFRA-APOYO-VOLUNTARIO-R01-20261010",
+  "issue": 413,
+  "pr": 414,
+  "date": "2026-10-10",
+  "decision": "ALL_CONTENT_AVAILABLE_VOLUNTARY_SUPPORT_FIRST",
+  "status": "VOLUNTARY_SUPPORT_IMPLEMENTATION_IN_REVIEW_R01",
+  "branch": "cifra/apoyo-voluntario-r01-20261010",
+  "base_main": "41ff07756ae9f899f729daa3fd80ac54fd3b657b",
+  "payment_provider": "STRIPE_PAYMENT_LINK",
+  "routes": [
+    "/es/apoyar/",
+    "/en/support/"
+  ],
+  "placements": [
+    "HOME",
+    "RESOURCES",
+    "GAMES",
+    "DISCOVERY",
+    "CREATION"
+  ],
+  "excluded": [
+    "QUIET_SPACE"
+  ],
+  "paywall": false,
+  "subscription": false,
+  "entitlement_change": false,
+  "access_change": false,
+  "gates": [
+    "VOLUNTARY_SUPPORT_BUILD_PASS",
+    "STRIPE_PAYMENT_LINK_CONNECTED_TEST_PASS",
+    "MARIA_AUTHORIZES_SUPPORT_LIVE"
+  ],
+  "supersedes_for_now": {
+    "issue": 387,
+    "state": "HOLD_NO_IMPLEMENTATION"
+  }
+}
