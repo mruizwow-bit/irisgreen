@@ -4,7 +4,7 @@ Fecha: 10/10/2026
 Issue: #413
 PR: #414
 Estado:
-`STRIPE_PAYMENT_LINK_CONNECTED_REVIEW_PENDING_R01`
+`VOLUNTARY_SUPPORT_LIVE_R01`
 
 ## Decisión de negocio
 
@@ -106,3 +106,38 @@ Solo reabrir pricing/paywall si:
 4. se preserva una capa gratuita material.
 
 El Issue #387 de suscripciones queda HOLD.
+
+
+## Producción
+
+Autorización explícita de María:
+10/10/2026.
+
+Main:
+- integración apoyo voluntario: PR #414;
+- merge commit: `685ddfc5025e236cd86e25a651a8d76c13b75721`;
+- política de publicación directa desde main: `74bd5cef69eb68fdc58be168a29517d88045d9f0`.
+
+Netlify producción:
+- site: `irisgreen-home`;
+- deploy: `6aca668e2212dc94b8be0b4f`;
+- state: `ready`;
+- context: `production`;
+- branch: `main`;
+- locked: `true`;
+- título: `Iris Green main production 74bd5cef69eb68fdc58be168a29517d88045d9f0`;
+- publicado: 10/10/2026.
+
+Netlify confirmó como archivos nuevos/modificados de este deploy, entre otros:
+- `index.html`;
+- `es/apoyar/index.html`;
+- `en/support/index.html`;
+- hubs de Recursos, Juegos, Intereses/Descubrimiento y Taller/Creación.
+
+## Política de publicación adoptada
+
+`main` vuelve a ser la vía de producción.
+
+`main-review` ya no se dispara automáticamente en cada push a main.
+
+El workflow `Publicar Iris Green en producción` publica el build canónico de main directamente en Netlify producción.
