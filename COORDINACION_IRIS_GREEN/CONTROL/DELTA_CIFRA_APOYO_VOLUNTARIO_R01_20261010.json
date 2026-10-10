@@ -5,7 +5,7 @@
   "pr": 414,
   "date": "2026-10-10",
   "decision": "ALL_CONTENT_AVAILABLE_VOLUNTARY_SUPPORT_FIRST",
-  "status": "VOLUNTARY_SUPPORT_IMPLEMENTATION_IN_REVIEW_R01",
+  "status": "STRIPE_PAYMENT_LINK_CONNECTED_REVIEW_PENDING_R01",
   "branch": "cifra/apoyo-voluntario-r01-20261010",
   "base_main": "41ff07756ae9f899f729daa3fd80ac54fd3b657b",
   "payment_provider": "STRIPE_PAYMENT_LINK",
@@ -35,5 +35,15 @@
   "supersedes_for_now": {
     "issue": 387,
     "state": "HOLD_NO_IMPLEMENTATION"
+  },
+  "payment_link": "https://buy.stripe.com/6oU7sMewr8chetZ3E53Je00",
+  "payment_link_mode": "PUBLIC_DIRECT_LINK",
+  "netlify_endpoint_required": false,
+  "stripe_config": {
+    "amount_mode": "CUSTOMER_CHOOSES",
+    "currency": "EUR",
+    "suggested_amount_eur": 5,
+    "product_tax_category": "OPTIONAL_GRATUITY",
+    "access_change": false
   }
 }
