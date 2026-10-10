@@ -1,14 +1,10 @@
 name: Publicar Iris Green en producción
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'COORDINACION_IRIS_GREEN/**'
   workflow_dispatch:
     inputs:
       confirm_reopen:
-        description: 'Escribe MARIA_EXPLICIT_REOPEN para autorizar la publicación manual'
+        description: 'Escribe MARIA_EXPLICIT_REOPEN para autorizar la reapertura pública'
         required: true
         type: string
 
@@ -17,7 +13,7 @@ permissions:
 
 jobs:
   deploy:
-    if: ${{ github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event.inputs.confirm_reopen == 'MARIA_EXPLICIT_REOPEN') }}
+    if: ${{ github.event.inputs.confirm_reopen == 'MARIA_EXPLICIT_REOPEN' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -26,12 +22,9 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Verificar main y autorización manual si corresponde
+      - name: Verificar autorización explícita
         run: |
-          test "${{ github.ref }}" = "refs/heads/main"
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            test "${{ github.event.inputs.confirm_reopen }}" = "MARIA_EXPLICIT_REOPEN"
-          fi
+          test "${{ github.event.inputs.confirm_reopen }}" = "MARIA_EXPLICIT_REOPEN"
 
       - name: Construir producto canónico
         run: python3 scripts/build_site.py
@@ -69,7 +62,7 @@ jobs:
             --dir=dist \
             --site="$SITE_ID" \
             --auth="$TOKEN" \
-            --message="Iris Green main production ${GITHUB_SHA}"
+            --message="Iris Green explicit reopen ${GITHUB_SHA}"
 
           NEW_ID="$(latest_published)"
           if [ -z "$NEW_ID" ]; then
@@ -81,4 +74,4 @@ jobs:
             -H "Authorization: Bearer $TOKEN" \
             "https://api.netlify.com/api/v1/deploys/$NEW_ID/lock" >/tmp/netlify-lock.json
 
-          echo "Producción completa publicada desde main. Deploy: $NEW_ID"
+          echo "Producción completa publicada por autorización explícita. Deploy: $NEW_ID"
