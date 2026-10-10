@@ -5,7 +5,7 @@
   "pr": 414,
   "date": "2026-10-10",
   "decision": "ALL_CONTENT_AVAILABLE_VOLUNTARY_SUPPORT_FIRST",
-  "status": "STRIPE_PAYMENT_LINK_CONNECTED_REVIEW_PENDING_R01",
+  "status": "VOLUNTARY_SUPPORT_LIVE_R01",
   "branch": "cifra/apoyo-voluntario-r01-20261010",
   "base_main": "41ff07756ae9f899f729daa3fd80ac54fd3b657b",
   "payment_provider": "STRIPE_PAYMENT_LINK",
@@ -45,5 +45,22 @@
     "suggested_amount_eur": 5,
     "product_tax_category": "OPTIONAL_GRATUITY",
     "access_change": false
-  }
+  },
+  "live": {
+    "authorized_by": "Maria",
+    "date": "2026-10-10",
+    "main_merge_commit": "685ddfc5025e236cd86e25a651a8d76c13b75721",
+    "main_publish_policy_commit": "74bd5cef69eb68fdc58be168a29517d88045d9f0",
+    "netlify_site": "irisgreen-home",
+    "netlify_deploy_id": "6aca668e2212dc94b8be0b4f",
+    "netlify_state": "ready",
+    "netlify_context": "production",
+    "branch": "main",
+    "locked": true
+  },
+  "gates_completed": [
+    "VOLUNTARY_SUPPORT_BUILD_PASS",
+    "STRIPE_PAYMENT_LINK_CONNECTED_TEST_PASS",
+    "MARIA_AUTHORIZES_SUPPORT_LIVE"
+  ]
 }
