@@ -17,6 +17,19 @@
     progreso_total: function (n) { return n + (n === 1 ? ' hallazgo en el cuaderno.' : ' hallazgos en el cuaderno.'); },
     como_explorar: 'Cómo explorar',
     ruta_libre_texto: 'A tu aire: señala lo que quieras y el cuaderno lo recoge.',
+    /* ------------------------------------------- el recorrido corto ------ */
+    ruta_cinco: 'Cinco y hemos terminado',
+    ruta_cinco_criterio: 'cinco figuras claras y cercanas entre sí, elegidas para que el recorrido no cruce el cielo',
+    cinco_cuenta: function (hechas, total) {
+      return hechas === 0 ? 'Vas a buscar ' + total + '. Todavía no has encontrado ninguna.'
+                          : 'Llevas ' + hechas + ' de ' + total + '.';
+    },
+    cinco_fin_titulo: 'Hemos terminado',
+    cinco_fin_texto: function (total) {
+      return 'Has encontrado las ' + total + '. Aquí acaba el recorrido corto. Puedes quedarte mirando el cielo, seguir a tu aire o salir: lo que has encontrado se queda guardado.';
+    },
+    cinco_fin_quedarse: 'Me quedo aquí',
+    cinco_fin_libre: 'Seguir a mi aire',
     preset: 'Vista celeste curada · sin fecha, hora ni lugar',
     pista_raton: 'Arrastra para orientar el cielo. Pulsa sobre lo que quieras examinar. La rueda acerca donde señalas.',
     empezar_explorar: 'Empezar a explorar',
@@ -54,6 +67,8 @@
     eclipse_tipos: 'Los seis tipos',
     eclipse_secuencias: 'Cómo transcurre, paso a paso',
     eclipse_secuencia_nota: 'La secuencia muestra las fases una tras otra. Los tiempos entre fases cambian de un eclipse a otro.',
+    eclipse_que_se_ve: 'Qué se ve',
+    eclipse_ya_esta: 'Cerrar el texto',
     eclipse_abierto: function (n) { return 'Abierto: ' + n + '.'; },
     eclipse_declaracion: 'Estos dibujos representan el tipo de eclipse, no un eclipse concreto visto desde un sitio concreto. La geometría es la aprobada y no se ha vuelto a dibujar aquí.',
     cuaderno_en_bloque: function (n) { return n === 1 ? 'Un hallazgo aquí.' : n + ' hallazgos aquí.'; },
@@ -214,6 +229,9 @@
     capa_apagada: 'Sólo se ve la figura activa.',
     estrellas_relevantes: 'Sus estrellas más claras',
     mas_detalle: 'Si quieres más detalle',
+    sec_elige: 'De qué',
+    sec_elige_vacio: 'Elige de qué',
+    figura_alt: function (n) { return 'Dibujo de la figura de ' + n + ': sus estrellas unidas por líneas.'; },
     sec_reconocer: 'Cómo reconocerla', sec_estrellas: 'Estrellas',
     sec_region: 'Figura y región', sec_visibilidad: 'Visibilidad',
     sec_material: 'Material', sec_fuentes: 'Fuentes',
@@ -229,6 +247,13 @@
     vis_valores: { entera: 'Entera', parte: 'En parte', no: 'No se ve', siempre: 'Siempre' },
     vis_nota: 'Es un dato del catálogo. No es una predicción para una fecha, una hora ni un lugar concretos.',
     desviacion: 'desviación',
+    /* R04.7 · los cuatro controles de pantalla y lo que hay detrás */
+    btn_ajustes: 'Ajustes',
+    btn_llevas: 'Lo que llevas',
+    ajustes_titulo: 'Ajustes',
+    acces_titulo: 'Accesibilidad',
+    acces_mandos: 'Mostrar los botones de mover',
+    acces_mandos_nota: 'El cielo se mueve arrastrando, y con el foco puesto en él las flechas del teclado también lo mueven. Estos botones son para quien no pueda hacer ninguna de las dos cosas.',
     /* R04.5 · lo técnico pasa a documentacion/PROCEDENCIA.md y en pantalla
        queda la frase corta, como ya se hizo con la orientación de la cámara. */
     cielo_nota: 'Todas las estrellas se dibujan sobre una misma esfera. El radio es el mismo para todas, así que no dice a qué distancia está cada una. Sin fecha, hora ni lugar no hay horizonte, y por eso no se dibuja ninguno.',
@@ -237,6 +262,16 @@
     estrella: 'Estrella',
     estrella_sin_datos: 'De esta estrella no hay datos propios en el catálogo entregado.',
     sin_dato: 'Sin dato',
+    /* --------------------------------- avisos antes de un cambio fuerte -- */
+    /* Se dice lo que va a pasar antes de que pase, y se dice que se puede
+       parar. Una vez por cada cosa, no cada vez. */
+    aviso_cambio_titulo: 'Lo que va a pasar',
+    aviso_cambio_revelar: 'Se van a dibujar las líneas de la figura encima de las estrellas, y va a aparecer su nombre. El cielo no se mueve.',
+    aviso_cambio_solar: 'Se va a cambiar de sitio: el cielo se queda y pasas a ver el Sol y los planetas desde fuera, girando despacio.',
+    aviso_cambio_rodear: 'La vista se va a acercar a ese cuerpo hasta quedarse dando vueltas a su alrededor. Se mueve durante unos segundos.',
+    aviso_puedes_parar: 'Puedes parar cuando quieras y volver: lo que hayas encontrado se queda guardado.',
+    aviso_mejor_no: 'Ahora no',
+    aviso_adelante: 'Adelante',
     fuentes: 'Fuentes', cerrar: 'Cerrar', cancelar: 'Cancelar',
     idioma: 'Idioma', movimiento: 'Movimiento',
     mov_normal: 'Normal', mov_reduced: 'Reducido', mov_none: 'Sin animación',
@@ -281,6 +316,19 @@
     progreso_total: function (n) { return n + (n === 1 ? ' finding in the notebook.' : ' findings in the notebook.'); },
     como_explorar: 'How to explore',
     ruta_libre_texto: 'On your own: point at whatever you like and the notebook keeps it.',
+    /* ------------------------------------------------- the short route --- */
+    ruta_cinco: 'Five and we are done',
+    ruta_cinco_criterio: 'five bright figures close to each other, chosen so the route does not cross the sky',
+    cinco_cuenta: function (hechas, total) {
+      return hechas === 0 ? 'You are going to look for ' + total + '. You have not found any yet.'
+                          : 'You have ' + hechas + ' of ' + total + '.';
+    },
+    cinco_fin_titulo: 'We are done',
+    cinco_fin_texto: function (total) {
+      return 'You have found all ' + total + '. This is where the short route ends. You can stay and look at the sky, carry on by yourself or leave: whatever you have found stays saved.';
+    },
+    cinco_fin_quedarse: 'I will stay here',
+    cinco_fin_libre: 'Carry on by myself',
     portada_intro: 'One space, seen from inside and from outside. You turn it with your hand and point at whatever you want to look at: things appear when you find them, not before. You can start wherever you like.',
     preset: 'Curated celestial view · no date, time or place',
     pista_raton: 'Drag to turn the sky. Click whatever you want to examine. The wheel zooms where you point.',
@@ -312,6 +360,8 @@
     eclipse_tipos: 'The six types',
     eclipse_secuencias: 'How it unfolds, step by step',
     eclipse_secuencia_nota: 'The sequence shows the phases one after another. The time between phases changes from one eclipse to the next.',
+    eclipse_que_se_ve: 'What you see',
+    eclipse_ya_esta: 'Close the text',
     eclipse_abierto: function (n) { return 'Opened: ' + n + '.'; },
     eclipse_declaracion: 'These drawings represent the type of eclipse, not a particular eclipse seen from a particular place. The geometry is the approved one and it has not been redrawn here.',
     cuaderno_en_bloque: function (n) { return n === 1 ? 'One finding here.' : n + ' findings here.'; },
@@ -470,6 +520,9 @@
     capa_apagada: 'Only the active figure is shown.',
     estrellas_relevantes: 'Its clearest stars',
     mas_detalle: 'If you want more detail',
+    sec_elige: 'About what',
+    sec_elige_vacio: 'Choose what about',
+    figura_alt: function (n) { return 'Drawing of the figure of ' + n + ': its stars joined by lines.'; },
     sec_reconocer: 'How to recognise it', sec_estrellas: 'Stars',
     sec_region: 'Figure and region', sec_visibilidad: 'Visibility',
     sec_material: 'Material', sec_fuentes: 'Sources',
@@ -483,12 +536,26 @@
     vis_valores: { entera: 'All of it', parte: 'Part of it', no: 'Not visible', siempre: 'Always' },
     vis_nota: 'This comes from the catalogue. It is not a prediction for a particular date, time or place.',
     desviacion: 'deviation',
+    btn_ajustes: 'Settings',
+    btn_llevas: 'Your findings',
+    ajustes_titulo: 'Settings',
+    acces_titulo: 'Accessibility',
+    acces_mandos: 'Show the movement buttons',
+    acces_mandos_nota: 'You move the sky by dragging, and with the sky focused the arrow keys move it too. These buttons are for anyone who cannot do either.',
     cielo_nota: 'All the stars are drawn on one sphere. The radius is the same for every star, so it does not tell you how far away each one is. Without a date, a time and a place there is no horizon, so none is drawn.',
     cielo_ejes: 'You look at the sphere from inside, the way you look at the real sky. The catalogue coordinates run towards the left. The axis convention is in documentacion/PROCEDENCIA.md.',
     derivacion_breve: 'This description comes from what you can see without lines or instruments. How it is built is in documentacion/PROCEDENCIA.md.',
     estrella: 'Star',
     estrella_sin_datos: 'This star has no data of its own in the delivered catalogue.',
     sin_dato: 'No data',
+    /* --------------------------------- warnings before a strong change --- */
+    aviso_cambio_titulo: 'What is about to happen',
+    aviso_cambio_revelar: 'The lines of the figure are about to be drawn over the stars, and its name will appear. The sky does not move.',
+    aviso_cambio_solar: 'You are about to move: the sky stays where it is and you go on to see the Sun and the planets from outside, turning slowly.',
+    aviso_cambio_rodear: 'The view is about to move closer to that body until it is circling around it. It moves for a few seconds.',
+    aviso_puedes_parar: 'You can stop whenever you like and come back: whatever you have found stays saved.',
+    aviso_mejor_no: 'Not now',
+    aviso_adelante: 'Go ahead',
     fuentes: 'Sources', cerrar: 'Close', cancelar: 'Cancel',
     idioma: 'Language', movimiento: 'Motion',
     mov_normal: 'Normal', mov_reduced: 'Reduced', mov_none: 'No animation',

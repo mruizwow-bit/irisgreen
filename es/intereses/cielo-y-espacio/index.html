@@ -9,8 +9,25 @@
 <link rel="stylesheet" href="css/iris-green-navy.css">
 <link rel="stylesheet" href="css/fuentes-file-url.css">
 <link rel="stylesheet" href="css/cielo3d.css">
+<style>
+/* R04.9 · La salida. Esta página es el producto a ventana entera y se queda
+   fuera del armazón del sitio a propósito -con cabecera y pie encima se
+   desborda 134 px en una ventana de 800-, así que no hay barra de arriba que
+   lleve de vuelta. Este enlace va flotando, sin ocupar sitio en el flujo, para
+   no mover ni un píxel del cielo. */
+.ig-experience-return{position:fixed;top:0;left:0;z-index:40;margin:0}
+.ig-experience-return a{display:inline-flex;align-items:center;min-height:44px;
+  margin:10px;padding:.5rem .9rem;border-radius:12px;
+  background:color-mix(in srgb,#0B1A2B 82%,transparent);
+  border:1.5px solid #2A4460;color:#DCE8F2;text-decoration:none;font-size:.95rem}
+.ig-experience-return a:hover{background:#15304A}
+.ig-experience-return a:focus-visible{outline:3px solid #C3B8FF;outline-offset:3px}
+@media (max-width:520px){.ig-experience-return a{font-size:.9rem;margin:6px}}
+</style>
 </head>
 <body>
+<nav class="ig-experience-return" aria-label="Volver"><a href="/es/descubrimiento/">← Volver a Descubrimiento</a></nav>
+
 
 <div class="ig-app">
 
@@ -30,10 +47,13 @@
   </main>
 
   <!-- ---------------------------------------------- experiencia: cielo --- -->
-  <div class="ig-escena" id="escena" hidden>
+  <div class="ig-escena ig-escena--mundo" id="escena" hidden>
     <div class="ig-escena-cab">
       <button type="button" class="ig-btn ig-pequeno" id="btn-volver-portada"></button>
-      <p class="ig-nota" id="orientacion"></p>
+      <!-- R04.8 · «Estás mirando esta parte del cielo» no le dice nada a quien
+           lo ve: ya lo está viendo. Se queda para quien lee la pantalla, que es
+           para quien sí dice algo, y deja de ocupar sitio encima del cielo. -->
+      <p class="ig-nota ig-sr" id="orientacion"></p>
     </div>
 
     <div class="ig-objetivo-fila">
@@ -54,21 +74,35 @@
            que no cabía en ella era esto, y con un dedo no se llegaba. -->
       <div class="ig-tira" id="tira" data-occluder>
         <p class="ig-ayuda-flotante" id="ayuda-flotante" data-t="ayuda_flota"></p>
+        <!-- R04.7 · Mientras se mira el cielo quedan CUATRO controles: volver
+             (arriba, en la cabecera de la escena), saber más —que sólo aparece
+             cuando ya has encontrado algo—, ajustes y lo que llevas encontrado.
+             Todo lo demás vive detrás de ajustes y se abre encima del cielo.
+             «Examinar zona central» se ha quitado: examinar es acercarse, y
+             pulsar sobre el cielo examina ahí mismo. Con el teclado sigue
+             siendo Intro sobre el cielo. -->
+        <!-- R04.8 · La cuenta del recorrido corto. Sólo aparece si se ha
+             elegido ese recorrido, que no es el de salida: por eso la primera
+             pantalla al abrir sigue sin una sola cifra, que es lo que mide C2. -->
+        <p class="ig-nota ig-cuenta-ruta" id="cuenta-ruta" hidden></p>
         <div class="ig-bandeja">
-          <button type="button" class="ig-btn ig-primary" id="btn-examinar" data-t="examinar"></button>
           <p class="ig-mensaje" id="mensaje"></p>
           <button type="button" class="ig-btn" id="btn-revelar" hidden></button>
-          <button type="button" class="ig-btn" id="btn-saber-mas" hidden></button>
+          <button type="button" class="ig-btn ig-primary" id="btn-saber-mas" hidden></button>
+          <button type="button" class="ig-btn" id="btn-llevas" data-t="btn_llevas"></button>
+          <button type="button" class="ig-btn" id="btn-ajustes" aria-expanded="false"
+                  aria-controls="ajustes" data-t="btn_ajustes"></button>
         </div>
-        <div class="ig-tira-mandos" role="group" aria-labelledby="et-controles">
-          <span class="ig-etiqueta" id="et-controles" data-t="controles_alternativos"></span>
-          <button type="button" class="ig-mando" data-orientar="izquierda" data-ta="orientar_izquierda">←</button>
-          <button type="button" class="ig-mando" data-orientar="derecha" data-ta="orientar_derecha">→</button>
-          <button type="button" class="ig-mando" data-orientar="arriba" data-ta="orientar_arriba">↑</button>
-          <button type="button" class="ig-mando" data-orientar="abajo" data-ta="orientar_abajo">↓</button>
-          <button type="button" class="ig-mando" data-zoom="acercar" data-ta="acercar">+</button>
-          <button type="button" class="ig-mando" data-zoom="alejar" data-ta="alejar">−</button>
-        </div>
+      </div>
+
+      <div class="ig-tira-mandos" id="tira-mandos" role="group" aria-labelledby="et-controles" hidden>
+        <span class="ig-etiqueta" id="et-controles" data-t="controles_alternativos"></span>
+        <button type="button" class="ig-mando" data-orientar="izquierda" data-ta="orientar_izquierda">←</button>
+        <button type="button" class="ig-mando" data-orientar="derecha" data-ta="orientar_derecha">→</button>
+        <button type="button" class="ig-mando" data-orientar="arriba" data-ta="orientar_arriba">↑</button>
+        <button type="button" class="ig-mando" data-orientar="abajo" data-ta="orientar_abajo">↓</button>
+        <button type="button" class="ig-mando" data-zoom="acercar" data-ta="acercar">+</button>
+        <button type="button" class="ig-mando" data-zoom="alejar" data-ta="alejar">−</button>
       </div>
 
       <aside class="ig-panel" id="panel" data-occluder hidden
@@ -79,30 +113,6 @@
         </div>
         <div class="ig-panel-cuerpo" id="panel-cuerpo"></div>
       </aside>
-    </div>
-
-    <div class="ig-secundarios" role="group" aria-labelledby="et-llevas">
-      <span class="ig-etiqueta" id="et-llevas" data-t="lo_que_llevas"></span>
-      <button type="button" class="ig-btn ig-pequeno" id="btn-capa" aria-pressed="false"></button>
-      <button type="button" class="ig-btn ig-pequeno" id="btn-cuaderno" data-t="cuaderno"></button>
-    </div>
-
-    <div class="ig-secundarios" role="group" aria-labelledby="et-explorar">
-      <span class="ig-etiqueta" id="et-explorar" data-t="como_explorar"></span>
-      <label class="ig-etiqueta" for="sel-capa" data-t="capa_lbl"></label>
-      <select class="ig-select" id="sel-capa">
-        <option value="constelaciones" data-t="capa_constelaciones"></option>
-        <option value="radiantes" data-t="capa_radiantes"></option>
-        <option value="exoplanetas" data-t="capa_exoplanetas"></option>
-      </select>
-      <label class="ig-etiqueta" for="sel-ruta" data-t="ruta_lbl"></label>
-      <select class="ig-select" id="sel-ruta"></select>
-      <label class="ig-etiqueta" for="sel-ayuda" data-t="nivel_ayuda_lbl"></label>
-      <select class="ig-select" id="sel-ayuda">
-        <option value="1" data-t="nivel_1"></option>
-        <option value="2" data-t="nivel_2"></option>
-        <option value="3" data-t="nivel_3"></option>
-      </select>
     </div>
 
     <section class="ig-descripcion" id="descripcion" hidden aria-labelledby="descripcion-titulo">
@@ -118,29 +128,95 @@
   <!-- ----------------------------------------- experiencia: eclipses --- -->
   <div class="ig-escena" id="eclipses" hidden></div>
 
+  <!-- R04.8 · AJUSTES, uno para las tres experiencias. Vivía dentro del cielo,
+       así que el Sistema Solar y los Eclipses no tenían dónde poner nada y se
+       quedaron con todos sus mandos por debajo del pliegue. Ahora cuelga de la
+       aplicación y lo abre cualquiera de las tres; los grupos que sólo valen
+       para el cielo se esconden cuando no se está en él. -->
+  <div class="ig-ajustes" id="ajustes" hidden role="dialog" aria-modal="false"
+       aria-labelledby="ajustes-titulo" tabindex="-1">
+    <div class="ig-ajustes-cab">
+      <h2 id="ajustes-titulo" data-t="ajustes_titulo"></h2>
+      <button type="button" class="ig-btn ig-pequeno" id="btn-cerrar-ajustes" data-t="cerrar"></button>
+    </div>
+    <div class="ig-ajustes-cuerpo">
+
+      <div class="ig-secundarios" role="group" aria-labelledby="et-llevas" data-solo="escena">
+        <span class="ig-etiqueta" id="et-llevas" data-t="lo_que_llevas"></span>
+        <button type="button" class="ig-btn ig-pequeno" id="btn-capa" aria-pressed="false"></button>
+        <button type="button" class="ig-btn ig-pequeno" id="btn-cuaderno" data-t="cuaderno"></button>
+      </div>
+
+      <!-- Tres opciones no necesitan un desplegable: menos de cinco, botones.
+           El <select> sigue existiendo oculto porque es el control de verdad
+           que lee el producto; los botones le ponen el valor y avisan. -->
+      <div class="ig-secundarios" role="group" aria-labelledby="et-explorar" data-solo="escena">
+        <span class="ig-etiqueta" id="et-explorar" data-t="como_explorar"></span>
+        <span class="ig-etiqueta" id="et-capa" data-t="capa_lbl"></span>
+        <div class="ig-opciones-botones" role="group" aria-labelledby="et-capa">
+          <button type="button" class="ig-btn ig-pequeno" data-capa="constelaciones"
+                  aria-pressed="true" data-t="capa_constelaciones"></button>
+          <button type="button" class="ig-btn ig-pequeno" data-capa="radiantes"
+                  aria-pressed="false" data-t="capa_radiantes"></button>
+          <button type="button" class="ig-btn ig-pequeno" data-capa="exoplanetas"
+                  aria-pressed="false" data-t="capa_exoplanetas"></button>
+        </div>
+        <select class="ig-select ig-sr" id="sel-capa" hidden tabindex="-1" aria-hidden="true">
+          <option value="constelaciones" data-t="capa_constelaciones"></option>
+          <option value="radiantes" data-t="capa_radiantes"></option>
+          <option value="exoplanetas" data-t="capa_exoplanetas"></option>
+        </select>
+        <label class="ig-etiqueta" for="sel-ruta" data-t="ruta_lbl"></label>
+        <select class="ig-select" id="sel-ruta"></select>
+        <label class="ig-etiqueta" for="sel-ayuda" data-t="nivel_ayuda_lbl"></label>
+        <select class="ig-select" id="sel-ayuda">
+          <option value="1" data-t="nivel_1"></option>
+          <option value="2" data-t="nivel_2"></option>
+          <option value="3" data-t="nivel_3"></option>
+        </select>
+      </div>
+
+      <footer class="ig-opciones">
+      <div class="ig-grupo" role="group" aria-labelledby="et-idioma">
+        <span class="ig-etiqueta" id="et-idioma" data-t="idioma"></span>
+        <button type="button" class="ig-btn ig-pequeno" data-idioma="es" aria-pressed="true">ES</button>
+        <button type="button" class="ig-btn ig-pequeno" data-idioma="en" aria-pressed="false">EN</button>
+      </div>
+      <div class="ig-grupo">
+        <label class="ig-etiqueta" for="sel-movimiento" data-t="movimiento"></label>
+        <select class="ig-select" id="sel-movimiento">
+          <option value="NORMAL" data-t="mov_normal"></option>
+          <option value="REDUCED" data-t="mov_reduced"></option>
+          <option value="NONE" data-t="mov_none"></option>
+        </select>
+      </div>
+      <div class="ig-grupo">
+        <button type="button" class="ig-btn ig-pequeno" id="btn-describir" aria-pressed="false" data-t="describir"></button>
+        <button type="button" class="ig-btn ig-pequeno" id="btn-fuentes" data-t="fuentes"></button>
+        <button type="button" class="ig-btn ig-pequeno" id="btn-borrar" data-t="borrar_hallazgos"></button>
+      </div>
+      </footer>
+
+      <!-- R04.7 · ACCESIBILIDAD · los botones de mover.
+           El cielo se mueve arrastrando, y con el foco puesto en él las
+           flechas del teclado lo mueven y + y − acercan. Estos botones son
+           para quien no puede hacer ni lo uno ni lo otro —pulsadores, por
+           ejemplo—, así que NO se quitan del producto: salen de la pantalla
+           y se encienden aquí. Apagados de salida. -->
+      <div class="ig-secundarios" role="group" aria-labelledby="et-acces">
+        <span class="ig-etiqueta" id="et-acces" data-t="acces_titulo"></span>
+        <button type="button" class="ig-btn ig-pequeno" id="btn-mostrar-mandos"
+                aria-pressed="false" aria-controls="tira-mandos" data-t="acces_mandos"></button>
+        <p class="ig-nota" data-t="acces_mandos_nota"></p>
+      </div>
+    </div>
+  </div>
+
+
   <div class="ig-fuentes-fuera" id="fuentes-fuera" hidden></div>
   <p class="ig-aviso" id="aviso" hidden></p>
 
-  <footer class="ig-opciones">
-    <div class="ig-grupo" role="group" aria-labelledby="et-idioma">
-      <span class="ig-etiqueta" id="et-idioma" data-t="idioma"></span>
-      <button type="button" class="ig-btn ig-pequeno" data-idioma="es" aria-pressed="true">ES</button>
-      <button type="button" class="ig-btn ig-pequeno" data-idioma="en" aria-pressed="false">EN</button>
-    </div>
-    <div class="ig-grupo">
-      <label class="ig-etiqueta" for="sel-movimiento" data-t="movimiento"></label>
-      <select class="ig-select" id="sel-movimiento">
-        <option value="NORMAL" data-t="mov_normal"></option>
-        <option value="REDUCED" data-t="mov_reduced"></option>
-        <option value="NONE" data-t="mov_none"></option>
-      </select>
-    </div>
-    <div class="ig-grupo">
-      <button type="button" class="ig-btn ig-pequeno" id="btn-describir" aria-pressed="false" data-t="describir"></button>
-      <button type="button" class="ig-btn ig-pequeno" id="btn-fuentes" data-t="fuentes"></button>
-      <button type="button" class="ig-btn ig-pequeno" id="btn-borrar" data-t="borrar_hallazgos"></button>
-    </div>
-  </footer>
+
 
   <p class="ig-sr" id="anuncio" role="status" aria-live="polite"></p>
 </div>

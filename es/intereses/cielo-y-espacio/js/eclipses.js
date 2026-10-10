@@ -30,11 +30,17 @@
     cab.appendChild(el.volver);
     raiz.appendChild(cab);
 
-    el.intro = nodo('p', 'ig-objetivo', '');
-    raiz.appendChild(el.intro);
-
+    /* R04.8 · Primero se ve, después se lee. Antes esto era una lista de ocho
+       botones de texto y los dibujos estaban escondidos detrás de cada uno:
+       una página de teoría con las imágenes apagadas. Ahora los seis dibujos
+       se ven desde el principio y el texto de cada uno se pide si se quiere.
+       El párrafo que explica por qué no hay un eclipse cada mes pasa debajo
+       de los dibujos: primero se ven, luego se lee por qué. */
     el.lista = nodo('div', 'ig-eclipses');
     raiz.appendChild(el.lista);
+
+    el.intro = nodo('p', 'ig-objetivo', '');
+    raiz.appendChild(el.intro);
 
     el.nota = nodo('p', 'ig-nota', '');
     raiz.appendChild(el.nota);
@@ -43,31 +49,41 @@
 
   function tarjeta(item, esSecuencia) {
     var L = t(), art = nodo('article', 'ig-eclipse');
-    var h = nodo('h2', 'ig-eclipse-titulo');
-    var b = nodo('button', 'ig-eclipse-btn', es() ? item.titulo_es : item.titulo_en);
-    b.type = 'button';
-    b.setAttribute('aria-expanded', 'false');
-    h.appendChild(b); art.appendChild(h);
+    var titulo = es() ? item.titulo_es : item.titulo_en;
+    var descripcion = es() ? item.alt_es : item.alt_en;
 
-    var caja = nodo('div', 'ig-eclipse-cuerpo');
-    caja.hidden = true;
+    /* El dibujo, visible. No lleva alt repetido del párrafo de abajo: quien
+       lea la pantalla oiría dos veces lo mismo. */
     var img = document.createElement('img');
     img.className = 'ig-eclipse-img';
     img.src = item.archivo;
-    img.alt = es() ? item.alt_es : item.alt_en;
+    img.alt = '';
+    img.setAttribute('role', 'presentation');
     img.loading = 'lazy';
-    caja.appendChild(img);
-    caja.appendChild(nodo('p', 'ig-nota', es() ? item.alt_es : item.alt_en));
+    art.appendChild(img);
+
+    var h = nodo('h2', 'ig-eclipse-titulo', titulo);
+    art.appendChild(h);
+
+    var caja = nodo('div', 'ig-eclipse-cuerpo');
+    caja.hidden = true;
+    caja.appendChild(nodo('p', 'ig-nota', descripcion));
     if (esSecuencia) caja.appendChild(nodo('p', 'ig-nota', L.eclipse_secuencia_nota));
+
+    var b = nodo('button', 'ig-btn ig-pequeno ig-eclipse-btn', L.eclipse_que_se_ve);
+    b.type = 'button';
+    b.setAttribute('aria-expanded', 'false');
+    art.appendChild(b);
     art.appendChild(caja);
 
     b.addEventListener('click', function () {
       var abierto = !caja.hidden;
       caja.hidden = abierto;
       b.setAttribute('aria-expanded', String(!abierto));
+      b.textContent = abierto ? L.eclipse_que_se_ve : L.eclipse_ya_esta;
       if (!abierto) {
         P.registrarHallazgo('eclipses', item.id, true);
-        P.anunciar(L.eclipse_abierto(es() ? item.titulo_es : item.titulo_en));
+        P.anunciar(L.eclipse_abierto(titulo));
       }
     });
     return art;
@@ -99,6 +115,7 @@
     P.registrarBloque({
       id: 'eclipses', seccion: 'eclipses',
       clave_nombre: 'bloque_eclipses', clave_resumen: 'bloque_eclipses_resumen',
+      imagen: 'img/portada/eclipses.webp',
       abrir: abrir, cerrar: function () {},
       aplicarIdioma: function () { if (construido) pintar(); },
       foco: function () { return el.volver; },

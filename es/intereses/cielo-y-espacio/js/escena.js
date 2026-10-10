@@ -157,12 +157,37 @@
       });
       ctx.stroke(); ctx.setLineDash([]);
     }
+    /* R04.8 · LO SEÑALADO SE SEÑALA CON LA ESTRELLA, NO CON UN ARO.
+       Antes cada estrella tomada llevaba una circunferencia de 7,5 px alrededor.
+       Un aro es una convención que hay que aprender: no dice nada de la
+       estrella, sólo la encierra. Ahora la estrella **crece, se enciende y dice
+       su nombre**, que es lo que haría alguien señalando el cielo con el dedo.
+       Nada que rodee ni encuadre. */
     marcadas.forEach(function (p) {
       var s = E.aPantalla(p.v, cam, W, H, base);
       if (!s.delante) return;
       ultimo.marcadas.push(Math.round(p.ra * 1e4) / 1e4 + '/' + Math.round(p.dec * 1e4) / 1e4);
-      ctx.strokeStyle = '#C3B8FF'; ctx.lineWidth = 1.8;
-      ctx.beginPath(); ctx.arc(s.x, s.y, 7.5, 0, Math.PI * 2); ctx.stroke();
+      var est = (p.estrella !== undefined && cielo.estrellas) ? cielo.estrellas[p.estrella] : null;
+      var rBase = est ? radio(est.mag, cam.fov) : 2.2;
+      /* crece: el doble y medio, con un mínimo para que nunca sea un punto */
+      var rGrande = Math.max(5.5, rBase * 2.5);
+      ctx.globalAlpha = 0.22; ctx.fillStyle = '#EEF4F8';
+      ctx.beginPath(); ctx.arc(s.x, s.y, rGrande * 2.2, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1; ctx.fillStyle = '#FFFFFF';
+      ctx.beginPath(); ctx.arc(s.x, s.y, rGrande, 0, Math.PI * 2); ctx.fill();
+      /* y dice su nombre: el propio si lo tiene, y si no su designación */
+      var d = est && est.datos ? est.datos : null;
+      var nombre = d ? (d.n || d.d || '') : '';
+      if (nombre) {
+        ultimo.nombradas = ultimo.nombradas || [];
+        ultimo.nombradas.push(nombre);
+        ctx.fillStyle = 'rgba(238,244,248,0.95)';
+        ctx.font = '13px "Atkinson Hyperlegible", system-ui, sans-serif';
+        ctx.textAlign = 'left';
+        ctx.shadowColor = 'rgba(0,0,0,.85)'; ctx.shadowBlur = 5;
+        ctx.fillText(nombre, s.x + rGrande + 7, s.y + 4);
+        ctx.shadowBlur = 0; ctx.textAlign = 'center';
+      }
     });
 
     /* Radiantes y estrellas con planetas ya encontrados: un aro y su nombre.

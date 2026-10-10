@@ -21,7 +21,7 @@ h1, h2, h3, p, button, td, th, li { overflow-wrap: break-word; }
 /* ------------------------------------------------------------- portada -- */
 .ig-portada {
   padding: 1.5rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.75rem;
-  flex: 1 1 auto; justify-content: center; max-width: 60ch;
+  flex: 1 1 auto; justify-content: center; max-width: min(100%, 72rem);
 }
 .ig-portada[hidden] { display: none; }
 .ig-portada h1 { margin: 0; }
@@ -258,40 +258,62 @@ h1, h2, h3, p, button, td, th, li { overflow-wrap: break-word; }
 }
 
 /* ------------------------------------------------------------- eclipses -- */
-.ig-eclipses { padding: 0 1rem 1rem; display: grid; gap: 0.8rem; }
-.ig-eclipse { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel); }
-.ig-eclipse-titulo { margin: 0; }
-.ig-eclipse-btn {
-  width: 100%; text-align: left; min-block-size: 48px; padding: 0.8rem 1rem;
-  background: none; border: 0; color: var(--ig-text); font: inherit; font-size: 1.05rem; cursor: pointer;
-}
-.ig-eclipse-btn:hover { background: var(--ig-surface); }
-.ig-eclipse-cuerpo { padding: 0 1rem 1rem; }
+/* R04.8 · Los dibujos se ven. Antes era una columna de ocho botones de texto
+   con las imágenes escondidas detrás; ahora es una rejilla de dibujos. */
+.ig-eclipses { padding: 0 1rem 1rem; display: grid; gap: 1rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
+.ig-eclipse { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel);
+  display: flex; flex-direction: column; gap: .5rem; padding: .75rem; }
+.ig-eclipse-titulo { margin: 0; font-size: 1.1rem; }
+/* los dos encabezados ocupan la fila entera: sin esto caen en una celda
+   cualquiera de la rejilla y parecen una tarjeta más */
+.ig-eclipses > .ig-h2 { grid-column: 1 / -1; margin: .6rem 0 0; }
+.ig-eclipse-cuerpo { padding: 0; }
+/* el botón ya es un .ig-btn: aquí sólo se le dice que no estire la tarjeta */
+.ig-eclipse-btn { align-self: flex-start; }
 .ig-eclipse-img { display: block; width: 100%; height: auto; border-radius: 8px; background: #0B1220; }
 
 /* ---------------------------------------------- entradas del producto ---- */
 .ig-entradas { padding: 0 1rem; display: grid; gap: 0.8rem; margin: 1rem 0; }
 @media (min-width: 760px) { .ig-entradas { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-.ig-entrada { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel); padding: 0.2rem 1rem 1rem; }
+.ig-entrada { border: 1px solid var(--ig-divider); border-radius: 10px; background: var(--ig-panel);
+  padding: 0 1rem 1rem; overflow: hidden; }
 .ig-entrada-titulo { margin: 0; }
 .ig-entrada-btn {
-  width: 100%; text-align: left; min-block-size: 48px; padding: 0.8rem 0;
+  width: calc(100% + 2rem); margin: 0 -1rem; text-align: left; min-block-size: 48px; padding: 0 0 0.6rem;
   background: none; border: 0; color: var(--ig-text); font: inherit; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+  display: flex; flex-direction: column; gap: .6rem;
 }
+/* R04.8 · la imagen de la entrada: al ancho de la tarjeta, recortada a una
+   sola proporción para que las tres midan igual y los nombres queden a la
+   misma altura. Es una captura del propio producto, no un dibujo. */
+.ig-entrada-img {
+  display: block; width: 100%; height: auto;
+  aspect-ratio: 16 / 7; object-fit: cover; object-position: center;
+  background: #0B1220; border-bottom: 1px solid var(--ig-divider);
+}
+.ig-entrada-nombre { padding: 0 1rem; }
+.ig-entrada-btn:hover .ig-entrada-nombre,
+.ig-entrada-btn:focus-visible .ig-entrada-nombre { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .ig-entrada-progreso { margin: 0.3rem 0 0; color: var(--ig-muted); font-size: 0.92rem; }
 
 
 /* ================================================================= R04 ===
    WORLD_SCENE_FIRST: al entrar, el primer viewport es cielo. El chrome no
    desaparece: queda después del escenario, disponible al desplazar/foco. */
-.ig-escena { position: relative; min-height: 100svh; }
-.ig-escena > .ig-escenario-wrap { order: -10; padding: 0; width: 100%; height: 100svh; min-height: 520px; position: relative; }
-.ig-escena > .ig-escenario-wrap > .ig-escenario { height: 100%; min-height: 100%; border: 0; border-radius: 0; }
-.ig-escena > .ig-escena-cab,
-.ig-escena > .ig-objetivo-fila,
-.ig-escena > .ig-bandeja,
-.ig-escena > .ig-secundarios,
-.ig-escena > .ig-descripcion { order: 1; }
+/* «Mundo» son las dos escenas que se miran desde dentro o desde fuera y se
+   quedan con la ventana entera: el cielo y el Sistema Solar. Los eclipses no
+   lo son —son dibujos que se leen— y por eso NO llevan esta regla: cuando se
+   les aplicó, la cabecera flotante se comió el primer párrafo. */
+.ig-escena { position: relative; }
+.ig-escena--mundo { min-height: 100svh; }
+.ig-escena--mundo > .ig-escenario-wrap { order: -10; padding: 0; width: 100%; height: 100svh; min-height: 520px; position: relative; }
+.ig-escena--mundo > .ig-escenario-wrap > .ig-escenario { height: 100%; min-height: 100%; border: 0; border-radius: 0; }
+.ig-escena--mundo > .ig-escena-cab,
+.ig-escena--mundo > .ig-objetivo-fila,
+.ig-escena--mundo > .ig-bandeja,
+.ig-escena--mundo > .ig-secundarios,
+.ig-escena--mundo > .ig-descripcion { order: 1; }
 /* LA TIRA · el cielo se queda con la ventana entera, y lo que hace falta para
    jugar va encima de él, dentro de la primera pantalla. Cerrar
    WORLD_SCENE_FIRST dejó los 19 controles por debajo del pliegue y, con
@@ -387,3 +409,127 @@ html[data-ig-theme="light"] .ig-tira :focus-visible { outline-color: #C3B8FF; }
   html[data-ig-theme="light"] .ig-tira button,
   html[data-ig-theme="light"] .ig-tira .ig-select { color: CanvasText; background: ButtonFace; border-color: ButtonText; }
 }
+
+/* R04.7 · AJUSTES · se abre ENCIMA del cielo y se cierra sin salir de él.
+   Antes esto era una fila de desplegables y un pie, siempre en pantalla, que
+   empujaban la página 317 px por debajo de la ventana: había 26 controles que
+   sólo se veían bajando. Ahora la pantalla deja cuatro y lo demás vive aquí. */
+/* Fijo a la ventana, no a una escena: lo abren las tres experiencias desde
+   que vive colgando de la aplicación. */
+.ig-ajustes {
+  position: fixed; z-index: 9; top: 1rem; left: 50%; transform: translateX(-50%);
+  width: min(42rem, calc(100vw - 2rem)); max-height: calc(100svh - 2rem); height: auto;
+  overflow: auto; overscroll-behavior: contain;
+  background: var(--ig-panel); color: var(--ig-text);
+  border: 1px solid var(--ig-border); border-radius: 14px;
+  padding: 1rem 1.1rem; box-shadow: 0 18px 50px rgba(0,0,0,.55);
+}
+.ig-ajustes[hidden] { display: none; }
+.ig-ajustes-cab { display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem 1rem; }
+.ig-ajustes-cab h2 { margin: 0; font-size: 1.375rem; flex: 1 1 8rem; min-width: 0; }
+.ig-ajustes-cab .ig-btn { flex: 0 0 auto; white-space: nowrap; }
+.ig-ajustes-cuerpo { display: flex; flex-direction: column; gap: .9rem; margin-top: .9rem; }
+.ig-ajustes-cuerpo > * { max-width: 100%; min-width: 0; }
+.ig-ajustes .ig-opciones { position: static; display: flex; flex-wrap: wrap; gap: .6rem 1rem; padding: 0; }
+
+/* Tres opciones, tres botones. El elegido se marca con relleno Y con negrita,
+   no sólo con color: quien no distingue el color tiene que verlo igual. */
+.ig-opciones-botones { display: flex; flex-wrap: wrap; gap: .4rem; }
+.ig-opciones-botones .ig-btn[aria-pressed="true"] {
+  background: var(--ig-primary); color: var(--ig-primary-text);
+  border-color: var(--ig-primary); font-weight: 700;
+}
+
+/* Los botones de mover, cuando se encienden desde accesibilidad, siguen
+   saliendo donde estaban: encima del cielo, al alcance del dedo. */
+/* El id gana al selector de clase, asi que el [hidden] hay que repetirlo
+   aqui: sin esto la tira apagada seguia tapando el cielo e interceptando
+   los clics, aunque no se viera. Visto al pulsar y no pasar nada. */
+.ig-tira-mandos[hidden], #tira-mandos[hidden], #solar-mandos[hidden] { display: none !important; }
+#tira-mandos, #solar-mandos {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 7;
+  display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .5rem;
+  padding: .5rem .75rem calc(.5rem + env(safe-area-inset-bottom));
+  background: linear-gradient(to top, rgba(6,12,20,.93) 35%, rgba(6,12,20,.55) 80%, rgba(6,12,20,0));
+}
+@media (forced-colors: active) {
+  .ig-ajustes { background: Canvas; color: CanvasText; border-color: CanvasText; }
+  .ig-opciones-botones .ig-btn[aria-pressed="true"] { background: Highlight; color: HighlightText; }
+}
+
+/* Cada grupo de ajustes es una fila con su rotulo delante, no un revoltijo:
+   antes «Ruta» y «Ayuda» quedaban sueltos entre controles. */
+.ig-ajustes .ig-secundarios {
+  display: grid; grid-template-columns: auto 1fr; gap: .5rem .75rem;
+  align-items: center; padding: 0;
+}
+.ig-ajustes .ig-secundarios > .ig-etiqueta { grid-column: 1; }
+.ig-ajustes .ig-secundarios > *:not(.ig-etiqueta) { grid-column: 2; }
+.ig-ajustes .ig-secundarios > .ig-nota { grid-column: 1 / -1; margin: 0; }
+@media (max-width: 34rem) {
+  .ig-ajustes .ig-secundarios { grid-template-columns: 1fr; }
+  .ig-ajustes .ig-secundarios > * { grid-column: 1 !important; }
+}
+
+/* R04.7 · VOLVER, EN PANTALLA.
+   El escenario ocupa la ventana entera (order:-10), asi que la cabecera de la
+   escena y la fila del objetivo quedaban DEBAJO: medido, «Volver» empezaba en
+   y=908 dentro de una ventana de 900, y la pagina se iba a 1016. O sea: el
+   primero de los cuatro controles no se veia sin bajar. Pasan a flotar encima
+   del cielo, como ya hace la tira por abajo. */
+/* R04.8 · y vale para las tres: el Sistema Solar tenía el mismo problema y
+   nadie lo había mirado, porque la regla se escribió con el cielo delante. */
+.ig-escena--mundo > .ig-escena-cab {
+  position: absolute; left: 0; right: 0; z-index: 6;
+  padding: .5rem .75rem; margin: 0;
+  background: linear-gradient(to bottom, rgba(6,12,20,.90) 40%, rgba(6,12,20,0));
+  pointer-events: none;
+}
+.ig-escena--mundo > .ig-escena-cab { top: 0; }
+/* La fila del objetivo NO flota sobre el cielo: su frase lleva cifras
+   («Busca 8 estrellas claras…») y C2 cierra el hallazgo de HUMAN QA de que la
+   pantalla se leía como un panel de control. Se queda fuera de la primera
+   pantalla, que es lo que pide «primero se ve, después se lee». Si Diseño
+   decide que esa frase debe verse al entrar, hay que decidir antes qué pasa
+   con C2: no se toca una medida para que pase un cambio. */
+.ig-escena--mundo > .ig-objetivo-fila { position: absolute; top: 3.5rem; left: 0; right: 0;
+  padding: .5rem .75rem; margin: 0; visibility: hidden; }
+.ig-escena--mundo > .ig-objetivo-fila button:not([hidden]) { visibility: visible; }
+.ig-escena--mundo > .ig-escena-cab > * { pointer-events: auto; }
+
+/* R04.7 · AJUSTES A 320 px CON EL TEXTO AL 200 %.
+   El banco lo cazó en cuanto existió el panel: 44 px de barrido lateral dentro
+   de #ajustes y «Movimiento» saliéndose 11 px. Pasa porque los desplegables
+   piden su ancho natural y las filas no rompen. Aquí rompen. */
+.ig-ajustes .ig-grupo { display: flex; flex-wrap: wrap; align-items: center; gap: .4rem .6rem; min-width: 0; }
+.ig-ajustes .ig-select { width: 100%; max-width: 100%; min-width: 0; }
+.ig-ajustes .ig-btn, .ig-ajustes .ig-etiqueta { max-width: 100%; overflow-wrap: anywhere; }
+@media (max-width: 26rem) {
+  .ig-ajustes { padding: .6rem .7rem; top: .5rem; width: calc(100vw - 1rem); max-height: calc(100svh - 1rem); }
+  .ig-ajustes-cuerpo { gap: .7rem; }
+}
+
+/* R04.8 · Ajustes compartido: los grupos del cielo se esconden fuera de él. */
+.ig-ajustes [data-solo="escena"][hidden] { display: none !important; }
+
+/* R04.8 · EL DIBUJO DE LA FIGURA, EN LA FICHA.
+   Lo primero de la ficha es la forma, no la regla con la que se comprueba. */
+.ig-figura { margin: 0 0 .6rem; padding: 0; background: #0B1220;
+  border: 1px solid var(--ig-divider); border-radius: 10px; overflow: hidden; }
+.ig-figura[hidden] { display: none; }
+.ig-figura-lienzo { display: block; width: 100%; aspect-ratio: 16 / 9; }
+@media (forced-colors: active) { .ig-figura { border-color: CanvasText; } }
+.ig-grupo-ficha { display: flex; flex-direction: column; gap: .3rem; margin: .2rem 0 .6rem; }
+.ig-grupo-ficha .ig-select { width: 100%; max-width: 100%; min-width: 0; }
+
+/* R04.8 · la cuenta del recorrido corto, encima del cielo y sólo si se ha
+   elegido ese recorrido. */
+.ig-cuenta-ruta {
+  margin: 0; align-self: flex-start;
+  padding: .25rem .6rem; border-radius: 999px;
+  background: rgba(6,12,20,.55); color: rgba(238,244,248,.95);
+}
+.ig-cuenta-ruta[hidden] { display: none; }
+@media (forced-colors: active) { .ig-cuenta-ruta { background: Canvas; color: CanvasText; border: 1px solid CanvasText; } }
+/* si no hay nada que decir del motor, el grupo no ocupa sitio */
+#solar-nota-motor[data-vacia="si"] { display: none !important; }
