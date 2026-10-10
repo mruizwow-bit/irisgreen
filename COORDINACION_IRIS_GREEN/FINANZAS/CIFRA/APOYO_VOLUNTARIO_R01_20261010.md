@@ -4,7 +4,7 @@ Fecha: 10/10/2026
 Issue: #413
 PR: #414
 Estado:
-`VOLUNTARY_SUPPORT_IMPLEMENTATION_IN_REVIEW_R01`
+`STRIPE_PAYMENT_LINK_CONNECTED_REVIEW_PENDING_R01`
 
 ## Decisión de negocio
 
@@ -62,13 +62,23 @@ una experiencia de regulación no debe incluir presión comercial.
 
 Se usa Stripe Payment Link con importe elegido por la persona.
 
+Payment Link configurado por María el 10/10/2026:
+`https://buy.stripe.com/6oU7sMewr8chetZ3E53Je00`
+
+Configuración declarada durante el alta:
+- tipo: `Los clientes deciden qué pagar`;
+- título: `Apoya Iris Green`;
+- descripción: aportación voluntaria para mantener Iris Green abierto y actualizado;
+- categoría Stripe: `Servicios > General > Gratificación opcional`;
+- divisa: EUR;
+- importe sugerido: 5 €;
+- página de confirmación personalizada ES/EN;
+- sin paywall ni cambio de acceso.
+
 La web no recibe ni almacena PAN/CVC.
 
-Activación técnica:
-- `SUPPORT_PAYMENTS_ENABLED=true`
-- `STRIPE_SUPPORT_PAYMENT_LINK=https://buy.stripe.com/...`
-
-Mientras falte cualquiera de las dos condiciones, el endpoint responde como no disponible y no se inicia ningún cobro.
+Decisión técnica:
+el Payment Link es una URL pública y se enlaza directamente desde `/es/apoyar/` y `/en/support/`. No se usa endpoint intermedio de Netlify ni clave secreta para abrir el checkout.
 
 ## Métricas futuras
 
