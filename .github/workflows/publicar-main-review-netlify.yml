@@ -1,15 +1,6 @@
 name: Main canónico · superficie de revisión
 
 on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'COORDINACION_IRIS_GREEN/**'
-      - 'MAINTENANCE_ACTIVE.txt'
-      - 'assets/maintenance.html'
-      - 'scripts/build_maintenance.py'
-      - '.github/workflows/publicar-mantenimiento-netlify.yml'
-      - '.github/workflows/publicar-produccion-netlify.yml'
   workflow_dispatch:
 
 permissions:
