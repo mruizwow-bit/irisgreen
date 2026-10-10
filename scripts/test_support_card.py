@@ -44,12 +44,14 @@ def main() -> int:
             html = path.read_text(encoding="utf-8")
             require("data-ig-support-card" not in html, f"{rel}: no debe contener tarjeta de apoyo")
 
+    payment_link = "https://buy.stripe.com/6oU7sMewr8chetZ3E53Je00"
     for rel in ["es/apoyar/index.html", "en/support/index.html"]:
         path = root / rel
         require(path.is_file(), f"falta {rel}")
         html = path.read_text(encoding="utf-8")
-        require("data-ig-support-pay" in html, f"{rel}: falta CTA de pago")
-        require("/assets/apoyo-iris.js" in html, f"{rel}: falta controlador")
+        require(f'href="{payment_link}"' in html, f"{rel}: Payment Link de Stripe ausente")
+        require("data-ig-support-pay" not in html, f"{rel}: no debe depender de JS para abrir Stripe")
+        require("/assets/apoyo-iris.js" not in html, f"{rel}: controlador antiguo no debe cargarse")
         lowered = html.lower()
         require("deducible" not in lowered and "tax-deductible" not in lowered, f"{rel}: claim fiscal no autorizado")
 
