@@ -383,11 +383,37 @@
   }
   /* Con qué se está dibujando, dicho en la interfaz. Si el navegador resuelve
      por software, se lee ahí: no se presenta como rendimiento de GPU. */
+  /* R04.8 · Dos avisos distintos, y no van en el mismo sitio.
+     «Este navegador no puede mostrar los planetas en 3D» hay que verlo: sin
+     eso no se entiende la pantalla. «Este ordenador los dibuja sin tarjeta
+     gráfica» explica por qué los bordes salen menos finos, y eso no es una
+     frase que haya que tener delante todo el rato encima del cielo: se dice
+     en Ajustes, que es donde se va a buscar por qué algo se ve como se ve. */
+  function notaEnAjustes(texto) {
+    var panel = document.getElementById('ajustes');
+    if (!panel) return;
+    var cuerpo = panel.querySelector('.ig-ajustes-cuerpo') || panel;
+    var caja = document.getElementById('solar-nota-motor');
+    if (!caja) {
+      caja = document.createElement('div');
+      caja.id = 'solar-nota-motor';
+      caja.className = 'ig-secundarios';
+      caja.setAttribute('data-solo', 'solar');
+      caja.hidden = true;
+      el.notaMotor = document.createElement('p');
+      el.notaMotor.className = 'ig-nota';
+      caja.appendChild(el.notaMotor);
+      cuerpo.appendChild(caja);
+    }
+    el.notaMotor.textContent = texto;
+    caja.setAttribute('data-vacia', texto ? 'no' : 'si');
+  }
   function pintarMotor() {
     if (!el.motor) return;
     var info = g.IG_CUERPOS3D.info();
-    if (!info.disponible) { el.motor.textContent = t().solar_sin_webgl; return; }
-    el.motor.textContent = t().solar_motor(!!info.por_software);
+    if (!info.disponible) { el.motor.textContent = t().solar_sin_webgl; notaEnAjustes(''); return; }
+    el.motor.textContent = '';
+    notaEnAjustes(t().solar_motor(!!info.por_software));
   }
 
   /* ------------------------------------------------------------- DOM ----- */
@@ -400,12 +426,15 @@
   function construir() {
     var L = t(), raiz = document.getElementById('solar');
     raiz.textContent = '';
+    /* el Sistema Solar también se queda con la ventana entera */
+    raiz.classList.add('ig-escena--mundo');
 
     var cab = nodo('div', 'ig-escena-cab');
     el.volver = nodo('button', 'ig-btn ig-pequeno', L.volver_a_la_portada);
     el.volver.type = 'button';
     el.volver.addEventListener('click', function () { P.mostrarPantalla('portada'); });
-    el.orientacion = nodo('p', 'ig-nota');
+    /* igual que en el cielo: se queda para quien lee la pantalla */
+    el.orientacion = nodo('p', 'ig-nota ig-sr');
     el.motor = nodo('p', 'ig-nota');
     el.motor.id = 'solar-motor';
     cab.appendChild(el.volver); cab.appendChild(el.orientacion); cab.appendChild(el.motor);
@@ -459,15 +488,22 @@
     el.panelCuerpo.id = 'solar-panel-cuerpo';
     el.panel.appendChild(el.panelCuerpo);
     wrap.appendChild(el.panel);
-    raiz.appendChild(wrap);
 
+    /* R04.8 · LA TIRA, también aquí. El envoltorio del escenario ocupa la
+       ventana entera, así que todo lo que colgaba de la raíz quedaba por
+       debajo del pliegue: medido, «Volver a la portada» empezaba en y=908
+       dentro de una ventana de 900 y la página se iba a 1129. O sea que al
+       entrar al Sistema Solar no se veía NI UN control, ni la salida. La
+       regla que ya cumplía el cielo —lo que hace falta, encima de la escena y
+       dentro de la primera pantalla— vale igual aquí. */
+    var tira = nodo('div', 'ig-tira');
+    tira.setAttribute('data-occluder', '');
+    el.ayudaFlotante = nodo('p', 'ig-ayuda-flotante', L.solar_objetivo);
+    tira.appendChild(el.ayudaFlotante);
     var bandeja = nodo('div', 'ig-bandeja');
-    el.examinar = nodo('button', 'ig-btn ig-primary', L.solar_examinar);
-    el.examinar.type = 'button';
-    el.examinar.addEventListener('click', function () {
-      estado.tecladoActivo = P.ultimaEntrada() === 'teclado';
-      examinarCentro();
-    });
+    /* «Examinar el centro» se ha quitado: examinar es pulsar sobre el cuerpo,
+       y con el teclado sigue siendo Intro. Un botón para hacer lo que ya hace
+       el dedo era un control de más. Misma decisión que en el cielo. */
     el.mensaje = nodo('p', 'ig-mensaje');
     el.revelar = nodo('button', 'ig-btn', '');
     el.revelar.type = 'button'; el.revelar.hidden = true;
@@ -478,18 +514,41 @@
     /* Rodear: la cámara pasa a orbitar ESE cuerpo. Es la vía sin arrastrar. */
     el.rodear = nodo('button', 'ig-btn', '');
     el.rodear.type = 'button'; el.rodear.hidden = true;
-    el.rodear.addEventListener('click', function () { if (estado.activo) rodear(estado.activo); });
+    el.rodear.addEventListener('click', function () {
+      if (!estado.activo) return;
+      var cuerpo = estado.activo;
+      P.avisarAntes('rodear', el.rodear, function () { rodear(cuerpo); });
+    });
     el.alSistema = nodo('button', 'ig-btn', '');
     el.alSistema.type = 'button'; el.alSistema.hidden = true;
     el.alSistema.addEventListener('click', function () { alSistema(); });
-    bandeja.appendChild(el.examinar); bandeja.appendChild(el.mensaje);
+    el.listaCuerpos = nodo('button', 'ig-btn ig-pequeno', L.solar_lista);
+    el.listaCuerpos.type = 'button';
+    el.listaCuerpos.addEventListener('click', abrirLista);
+    el.ajustes = nodo('button', 'ig-btn ig-pequeno', L.btn_ajustes);
+    el.ajustes.type = 'button';
+    el.ajustes.setAttribute('aria-expanded', 'false');
+    el.ajustes.setAttribute('aria-controls', 'ajustes');
+    el.ajustes.addEventListener('click', function () { P.abrirAjustes(true, el.ajustes); });
+    bandeja.appendChild(el.mensaje);
     bandeja.appendChild(el.revelar); bandeja.appendChild(el.saberMas);
     bandeja.appendChild(el.rodear); bandeja.appendChild(el.alSistema);
-    raiz.appendChild(bandeja);
+    bandeja.appendChild(el.listaCuerpos); bandeja.appendChild(el.ajustes);
+    tira.appendChild(bandeja);
+    wrap.appendChild(tira);
 
-    var sec = nodo('div', 'ig-secundarios');
-    sec.setAttribute('role', 'group');
-    sec.appendChild(nodo('span', 'ig-etiqueta', L.controles_alternativos));
+    /* Los seis de girar salen de la pantalla y se encienden en Ajustes, igual
+       que en el cielo: aquí se gira arrastrando, y con el foco en la escena
+       las flechas del teclado giran y + y − acercan. Quien no puede hacer ni
+       lo uno ni lo otro los enciende y se le quedan encendidos. */
+    el.mandos = nodo('div', 'ig-tira-mandos');
+    el.mandos.id = 'solar-mandos';
+    el.mandos.setAttribute('role', 'group');
+    el.mandos.hidden = true;
+    var et = nodo('span', 'ig-etiqueta', L.controles_alternativos);
+    et.id = 'solar-et-mandos';
+    el.mandos.setAttribute('aria-labelledby', 'solar-et-mandos');
+    el.mandos.appendChild(et);
     [['izquierda', '←', L.solar_girar_izquierda], ['derecha', '→', L.solar_girar_derecha],
      ['arriba', '↑', L.solar_inclinar_arriba], ['abajo', '↓', L.solar_inclinar_abajo],
      ['acercar', '+', L.acercar], ['alejar', '−', L.alejar]].forEach(function (b) {
@@ -497,13 +556,11 @@
       btn.type = 'button';
       btn.setAttribute('aria-label', b[2]);
       btn.addEventListener('click', function () { mando(b[0]); });
-      sec.appendChild(btn);
+      el.mandos.appendChild(btn);
     });
-    el.listaCuerpos = nodo('button', 'ig-btn ig-pequeno', L.solar_lista);
-    el.listaCuerpos.type = 'button';
-    el.listaCuerpos.addEventListener('click', abrirLista);
-    sec.appendChild(el.listaCuerpos);
-    raiz.appendChild(sec);
+    wrap.appendChild(el.mandos);
+    raiz.appendChild(wrap);
+    P.registrarTiraDeMandos(el.mandos);
     return raiz;
   }
 
@@ -584,7 +641,6 @@
     el.revelar.textContent = L.solar_ver_cual_es;
     el.saberMas.hidden = !(m && (m.tipo === 'revelado' || m.tipo === 'ya'));
     el.saberMas.textContent = L.saber_mas;
-    el.examinar.hidden = !!(m && m.tipo === 'localizado');
     el.rodear.hidden = !(estado.activo && vista.objetivo !== estado.activo);
     el.rodear.textContent = L.solar_rodear;
     el.alSistema.hidden = !vista.objetivo;
@@ -655,7 +711,12 @@
       else if (k === '+' || k === '=') mando('acercar');
       else if (k === '-' || k === '_') mando('alejar');
       else if (k === 'Enter') { estado.tecladoActivo = true; examinarCentro(); }
-      else if (k === 'o' || k === 'O') { if (estado.activo) rodear(estado.activo); }
+      else if (k === 'o' || k === 'O') {
+        if (estado.activo) {
+          var c = estado.activo;
+          P.avisarAntes('rodear', el.escenario, function () { rodear(c); });
+        }
+      }
       else if (k === 'v' || k === 'V') { if (vista.objetivo) alSistema(); }
       else hecho = false;
       if (hecho) { if (k !== 'Enter') estado.tecladoActivo = true; pintar(); ev.preventDefault(); }
@@ -897,7 +958,8 @@
     var L = t();
     if (!el.volver) return;
     el.volver.textContent = L.volver_a_la_portada;
-    el.examinar.textContent = L.solar_examinar;
+    el.ayudaFlotante.textContent = L.solar_objetivo;
+    el.ajustes.textContent = L.btn_ajustes;
     el.listaCuerpos.textContent = L.solar_lista;
     el.objetivo.textContent = L.solar_objetivo;
     el.cerrarPanel.textContent = L.cerrar;
@@ -912,6 +974,7 @@
     P.registrarBloque({
       id: 'solar', seccion: 'solar',
       clave_nombre: 'bloque_solar', clave_resumen: 'bloque_solar_resumen',
+      imagen: 'img/portada/solar.webp',
       abrir: abrir, cerrar: cerrar,
       aplicarIdioma: actualizarTextos,
       foco: function () { return el.escenario; },

@@ -14,6 +14,8 @@ ROOT = Path(__file__).resolve().parents[1]
 # antes que nosotros; pisarlo aqui dejaba publicado un hub que nadie habia
 # escrito -el del paquete editorial, sin los tres juegos nuevos- y ningun test
 # lo vigilaba.
+IMG_PORTADA_CIELO = '/img/intereses/descubrimiento/portada-cielo.webp'
+
 NO_RECLAMADAS = frozenset({'es/juegos/index.html'})
 
 # Retirados el 08/10/2026 por decision de Maria: los juegos viejos salen del
@@ -151,6 +153,19 @@ def materialize(root):
     text = home.read_text(encoding='utf-8')
     text = text.replace('href="/es/recursos/juegos/"', 'href="/es/juegos/"')
     discovery = card('/es/descubrimiento/', 'Descubrimiento', 'Explora el cielo y la vida marina a tu ritmo.', 'Explorar →', True, 'ALL_AGES')
+    # Las tarjetas de la portada traen un hueco de imagen vacio que la hoja
+    # esconde mientras no se rellena. Aqui se rellena el de Descubrimiento, y
+    # solo ese: las demas no entran en esto. El dibujo es Orion sobre el cielo
+    # de verdad, con sus lineas y su nombre puestos -una captura del propio
+    # producto, no un dibujo traido de fuera-, porque dice lo que hay dentro:
+    # no un cielo cualquiera, sino uno donde las figuras aparecen cuando las
+    # encuentras.
+    discovery = sustituir(discovery,
+        '<span class="ig-home-v4-media" data-ig-media-status="pending" aria-hidden="true"></span>',
+        '<span class="ig-home-v4-media" data-ig-media-status="ready">'
+        '<img class="ig-home-v4-img" src="' + IMG_PORTADA_CIELO + '" alt="" '
+        'width="1280" height="560" loading="lazy" decoding="async"></span>',
+        1, 'hueco de imagen de la tarjeta de Descubrimiento')
     marker = '<div class="ig-home-v4-use-grid">'
     if marker not in text:
         raise ValueError('Home exploration grid missing')

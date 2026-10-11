@@ -23,7 +23,46 @@
   /* Las rutas NO están escritas aquí: salen de los datos, con su criterio
      declarado. Encontrar fuera de ruta sigue valiendo; la ruta sólo decide qué
      se sugiere buscar a continuación. */
-  function rutas() { return (cielo && cielo.meta.rutas) || []; }
+  /* R04.8 · UN RECORRIDO CORTO CON FINAL DECLARADO.
+     Todas las rutas del catálogo son largas: la más corta tiene trece figuras
+     y la más larga cuarenta, y ninguna dice cuándo acaba. En los planetarios
+     te sientan, te llevan y la sesión termina; aquí sólo había exploración
+     libre, y para parte del público la libertad total es más difícil, no más
+     fácil: no saber cuándo acaba ni qué se espera de ti es justo lo que
+     angustia.
+
+     Estas cinco NO salen del catálogo y por eso no se escriben en sus datos:
+     son una decisión del producto. Se eligen entre las de la ruta «anclas»
+     —las que tienen una estrella de magnitud 1,0 o mejor, es decir, las que se
+     ven antes— y, de ésas, las cinco que están cerca unas de otras, para que
+     el recorrido no cruce el cielo de punta a punta. Empieza por donde se
+     entra. No es la ruta de salida: quien no la elija no ve ni la cuenta ni
+     el final, y la primera pantalla sigue sin una sola cifra. */
+  var RUTA_CORTA = {
+    id: 'cinco', tipo: 'corta', clave_nombre: 'ruta_cinco', clave_criterio: 'ruta_cinco_criterio',
+    miembros: ['Ori', 'CMa', 'CMi', 'Tau', 'Aur']
+  };
+  function rutas() {
+    var rs = (cielo && cielo.meta.rutas) || [];
+    if (!rs.length) return rs;
+    var L = t();
+    var corta = { id: RUTA_CORTA.id, tipo: RUTA_CORTA.tipo,
+                  nombre_es: COPIA.es[RUTA_CORTA.clave_nombre], nombre_en: COPIA.en[RUTA_CORTA.clave_nombre],
+                  criterio_es: COPIA.es[RUTA_CORTA.clave_criterio], criterio_en: COPIA.en[RUTA_CORTA.clave_criterio],
+                  miembros: RUTA_CORTA.miembros.filter(function (a) { return !!porAbbr(a); }) };
+    return [corta].concat(rs);
+  }
+  function enRutaCorta() {
+    var r = rutaActual();
+    return !!(r && r.tipo === 'corta');
+  }
+  function cuentaDeLaRutaCorta() {
+    var r = rutaActual();
+    if (!r || r.tipo !== 'corta') return null;
+    var total = r.miembros.length;
+    var hechas = r.miembros.filter(function (a) { return !!estado.descubiertas[a]; }).length;
+    return { hechas: hechas, total: total, quedan: total - hechas };
+  }
 
   /* ---------------------------------------------------------- capas -------
      La misma esfera sostiene tres clases de objetivo. Las constelaciones son
@@ -114,7 +153,15 @@
     ruta: 'anclas', capa: 'constelaciones', nivelAyuda: 3,
     idioma: 'es', movimiento: 'NORMAL', movimientoExplicito: false,
     describir: false, tecladoActivo: false, ruedaArmada: false,
-    ultimoExamen: null, plausibles: null
+    ultimoExamen: null, plausibles: null,
+    /* los botones de mover: apagados de salida, y si alguien los enciende
+       se quedan encendidos, que quien los necesita los necesita siempre */
+    mandos: false,
+    /* si ya se ha dicho que el recorrido corto acabó */
+    finCorto: false,
+    /* qué avisos ya se han dado: cada cambio fuerte se avisa la primera
+       vez y no se vuelve a preguntar */
+    avisos: {}
   };
 
   /* Bloques del producto. Cada uno dice cómo se llama, cómo se abre y cómo se
@@ -155,7 +202,10 @@
         lugares: estado.lugares, camara: estado.camara,
         hallazgos: estado.hallazgos, ruta: estado.ruta, ayuda: estado.nivelAyuda, capa: estado.capa,
         idioma: estado.idioma,
-        movimiento: estado.movimientoExplicito ? estado.movimiento : null
+        movimiento: estado.movimientoExplicito ? estado.movimiento : null,
+        mandos: estado.mandos,
+        finCorto: estado.finCorto,
+        avisos: Object.keys(estado.avisos)
       }));
     } catch (e) {
       if (!guardadoRoto) { guardadoRoto = true; avisar('aviso_guardado'); }
@@ -208,12 +258,19 @@
     if (typeof s.movimiento === 'string' && CFG.MOVIMIENTO[s.movimiento] !== undefined) {
       estado.movimiento = s.movimiento; estado.movimientoExplicito = true;
     }
+    if (s.mandos === true) estado.mandos = true;
+    if (s.finCorto === true) estado.finCorto = true;
+    if (Array.isArray(s.avisos)) {
+      s.avisos.forEach(function (k) { if (typeof k === 'string' && k.length < 40) estado.avisos[k] = true; });
+    }
   }
 
   /* -------------------------------------------------------- arranque ---- */
   function iniciar() {
     ['portada','escena','escenario','lienzo','panel','panel-titulo','panel-cuerpo',
-     'btn-cerrar-panel','btn-examinar','mensaje','btn-revelar','btn-saber-mas','descripcion',
+     'btn-cerrar-panel','mensaje','btn-revelar','btn-saber-mas','descripcion',
+     'btn-ajustes','btn-llevas','ajustes','btn-cerrar-ajustes','tira-mandos','btn-mostrar-mandos',
+     'cuenta-ruta',
      'descripcion-region','descripcion-entorno','aviso','btn-describir','btn-fuentes','btn-borrar',
      'anuncio','sel-movimiento','btn-empezar','btn-continuar','btn-volver-portada','objetivo',
      'btn-continuar-pista','orientacion','btn-capa','btn-cuaderno','progreso-global','hero-intro','fuentes-fuera',
@@ -274,6 +331,17 @@
     var anterior = estado.pantalla;
     estado.pantalla = p;
     tokenFicha++;
+    /* R04.8 · Ajustes cuelga ahora de la aplicación, no del cielo: si no se
+       cierra al cambiar de pantalla se queda flotando encima de la siguiente
+       y tapa lo que haya debajo. Antes desaparecía solo porque se iba con la
+       escena; ya no. */
+    if (cambia && el.ajustes && !el.ajustes.hidden) {
+      el.ajustes.hidden = true;
+      document.querySelectorAll('[aria-controls="ajustes"]').forEach(function (b2) {
+        b2.setAttribute('aria-expanded', 'false');
+      });
+      abridorAjustes = null;
+    }
     if (cambia && anterior && anterior !== 'portada' && anterior !== 'escena') {
       var b0 = bloquePorId(anterior);
       if (b0 && b0.cerrar) b0.cerrar();
@@ -315,11 +383,13 @@
         hechos: Object.keys(estado.hallazgos.exoplanetas || {}).length, total: n });
     }
     var lista = [{ id: 'escena', nombre: L.bloque_cielo, resumen: L.bloque_cielo_resumen,
+                   imagen: 'img/portada/cielo.webp',
                    hechos: Object.keys(estado.descubiertas).length,
                    total: cielo ? cielo.constelaciones.length : 0, capas: capas }];
     bloques.forEach(function (b) {
       var h = estado.hallazgos[b.id] || {};
       lista.push({ id: b.id, nombre: L[b.clave_nombre], resumen: L[b.clave_resumen],
+                   imagen: b.imagen || null,
                    hechos: Object.keys(h).length,
                    total: (b.total && b.total()) || 0 });
     });
@@ -337,10 +407,29 @@
       var b = document.createElement('button');
       b.type = 'button'; b.className = 'ig-entrada-btn';
       b.id = 'btn-inicio-' + e.id;
-      b.textContent = e.nombre;
+      /* R04.8 · Primero se ve, después se lee. La portada era título, párrafo
+         y tres artículos de texto con contadores: nada que mirar. Cada entrada
+         lleva ahora la imagen del sitio al que lleva, hecha con el propio
+         producto. La imagen va dentro del botón y no lleva texto alternativo:
+         lo que dice ya lo dice el nombre que tiene al lado y el resumen de
+         debajo, y repetirlo haría que un lector de pantalla lo contara dos
+         veces. */
+      if (e.imagen) {
+        var img = document.createElement('img');
+        img.className = 'ig-entrada-img';
+        img.src = e.imagen; img.alt = '';
+        img.width = 1280; img.height = 560;
+        img.loading = 'lazy'; img.decoding = 'async';
+        b.appendChild(img);
+      }
+      var nombre = document.createElement('span');
+      nombre.className = 'ig-entrada-nombre';
+      nombre.textContent = e.nombre;
+      b.appendChild(nombre);
       b.addEventListener('click', function () {
-        if (e.id === 'escena') abrirEscena(Object.keys(estado.descubiertas).length > 0);
-        else mostrarPantalla(e.id);
+        if (e.id === 'escena') { abrirEscena(Object.keys(estado.descubiertas).length > 0); return; }
+        if (e.id === 'solar') { avisarAntes('solar', b, function () { mostrarPantalla('solar'); }); return; }
+        mostrarPantalla(e.id);
       });
       h.appendChild(b); art.appendChild(h);
       var p1 = document.createElement('p');
@@ -503,8 +592,35 @@
     return L.pista_salto(s.desde_estrella, Math.round(s.separacion_grados),
       es ? s.direccion_es : s.direccion_en, es ? s.punos_es : s.punos_en, forma);
   }
+  /* La cuenta sólo existe mientras se hace el recorrido corto. */
+  function pintarCuentaCorta() {
+    if (!el['cuenta-ruta']) return;
+    var c = cuentaDeLaRutaCorta();
+    el['cuenta-ruta'].hidden = !c;
+    if (c) el['cuenta-ruta'].textContent = t().cinco_cuenta(c.hechas, c.total);
+  }
+  /* El final se dice, no se deduce de que deje de haber pistas. */
+  function mirarSiAcabaElRecorrido() {
+    var c = cuentaDeLaRutaCorta();
+    if (!c || c.quedan > 0 || estado.finCorto) return;
+    estado.finCorto = true;
+    guardar();
+    var L = t();
+    abrirDialogo({
+      titulo: L.cinco_fin_titulo,
+      texto: L.cinco_fin_texto(c.total),
+      cancelar: L.cinco_fin_quedarse,
+      confirmar: L.cinco_fin_libre,
+      origen: el['btn-ajustes'],
+      alConfirmar: function () {
+        el['sel-ruta'].value = 'libre';
+        el['sel-ruta'].dispatchEvent(new Event('change'));
+      }
+    });
+  }
   function pintarObjetivo() {
     var L = t();
+    pintarCuentaCorta();
     if (estado.enContextoHallazgo) {
       el.objetivo.textContent = L.contexto_hallazgo(nombreDe(estado.enContextoHallazgo));
       el['btn-continuar-pista'].hidden = false;
@@ -643,11 +759,24 @@
               dec: estado.camara.dec + ddec * paso, fov: estado.camara.fov };
     irA(E.ajustarCamara(d));
   }
+  /* R04.7 · EXAMINAR ES ACERCARSE.
+     Antes hacía falta pulsar «Examinar zona central». Ya no existe: al acercar
+     lo suficiente, se examina solo lo que haya en el centro. Se dispara UNA vez,
+     al cruzar el umbral hacia dentro, no en cada paso de rueda; para que vuelva
+     a dispararse hay que alejarse por encima del umbral otra vez. Pulsar sobre
+     el cielo sigue examinando ahí, y con el teclado sigue siendo Intro. */
+  var UMBRAL_EXAMINAR = CFG.CAMPO_VISION.minimo * 1.6;  /* 12° × 1,6 = 19,2° */
+  var dentroDelUmbral = false;
   function ampliar(f, p) {
     var m = medir();
     var d = E.camaraAmpliada(estado.camara, m.W, m.H, estado.camara.fov / f, p);
     if (Math.abs(d.fov - estado.camara.fov) < 1e-9) return;
+    var antes = dentroDelUmbral;
+    dentroDelUmbral = d.fov <= UMBRAL_EXAMINAR;
     irA(d);
+    if (dentroDelUmbral && !antes && estado.pantalla === 'escena' && !estado.panel) {
+      examinar('acercar');
+    }
   }
 
   /* -------------------------------------------------------- examinar ---- */
@@ -780,6 +909,7 @@
     asegurarVisible(el['btn-saber-mas']);
     el['btn-saber-mas'].focus();
     anunciar(t().has_encontrado(nombreDe(abbr)));
+    mirarSiAcabaElRecorrido();
   }
 
   function nombreDePunto(capa, id) {
@@ -815,13 +945,11 @@
     el.mensaje.textContent = '';
     el['btn-revelar'].hidden = true; el['btn-revelar'].textContent = '';
     el['btn-saber-mas'].hidden = true; el['btn-saber-mas'].textContent = '';
-    el['btn-examinar'].hidden = false;
     if (!m) return;
     if (m.tipo === 'punto_localizado') {
       el.mensaje.textContent = textoMensaje();
       el['btn-revelar'].textContent = m.capa === 'radiantes' ? L.ver_que_lluvia : L.ver_que_estrella;
       el['btn-revelar'].hidden = false;
-      el['btn-examinar'].hidden = true;
       return;
     }
     if (m.tipo === 'punto_revelado' || m.tipo === 'punto_ya') {
@@ -886,7 +1014,6 @@
     }
     el['btn-revelar'].textContent = L.ver_constelacion;
     el['btn-revelar'].hidden = false;
-    el['btn-examinar'].hidden = true;
   }
   /* Cada opción se describe por DÓNDE está respecto a lo que se señaló: un
      octante del cielo y una separación angular. Nada de píxeles —cambiarían
@@ -1083,6 +1210,90 @@
 
   function abrirEstrella(e) { estado.estrellaSel = e; abrirPanel('estrella', estado.panelAbbr, null); pintar(); }
 
+  /* R04.8 · EL DIBUJO DE LA FIGURA, DENTRO DE LA FICHA.
+     La ficha empezaba con «Tres estrellas casi en línea, de magnitud 1,7 a
+     2,3, separadas 1,36° y 1,39°». Eso es la regla con la que se comprueba un
+     hallazgo, no algo que nadie pueda mirar: quien lo lee todavía no sabe qué
+     forma tiene. Ahora la ficha empieza por el dibujo de la figura —las mismas
+     estrellas y las mismas aristas que la escena, vistas de frente y enteras—
+     y los números pasan a «Cómo reconocerla», que es donde sirven.
+     No se inventa nada: se proyectan los puntos que ya tiene la constelación. */
+  function dibujarFigura(lienzo, abbr) {
+    var k = porAbbr(abbr);
+    if (!k || !k.puntos || k.puntos.length < 2) return false;
+    var sx = 0, sy = 0, sz = 0;
+    k.puntos.forEach(function (p) { sx += p.v.x; sy += p.v.y; sz += p.v.z; });
+    var centro = E.unitario({ x: sx, y: sy, z: sz });
+    var radio = 0;
+    k.puntos.forEach(function (p) {
+      var a = E.anguloEntre(p.v, centro);
+      if (a > radio) radio = a;
+    });
+    /* anguloEntre ya devuelve GRADOS. Dividir otra vez por GRADO multiplicaba
+       por 57 y dejaba el campo de visión pegado al techo de 110° en todas las
+       figuras: el dibujo salía igual porque después se encaja en el recuadro,
+       pero con la perspectiva forzada. */
+    var grados = radio;
+    /* un margen del 25 % para que la figura no toque los bordes, y un techo:
+       por encima de 110° la perspectiva deforma más de lo que enseña */
+    var cam = E.aCoordenadas(centro);
+    cam.fov = Math.max(6, Math.min(110, grados * 2 * 1.25));
+    var dpr = Math.min(3, (g.devicePixelRatio || 1));
+    var W = lienzo.clientWidth || 300, H = lienzo.clientHeight || 150;
+    lienzo.width = Math.round(W * dpr); lienzo.height = Math.round(H * dpr);
+    var c = lienzo.getContext('2d');
+    if (!c) return false;
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.clearRect(0, 0, W, H);
+    var base = E.baseCamara(cam);
+    var p2 = k.puntos.map(function (p) { return E.aPantalla(p.v, cam, W, H, base); });
+    if (!p2.some(function (q) { return q.delante; })) return false;
+    /* se encaja lo proyectado en el recuadro: la figura entera, siempre */
+    var x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+    p2.forEach(function (q) {
+      if (!q.delante) return;
+      if (q.x < x0) x0 = q.x; if (q.x > x1) x1 = q.x;
+      if (q.y < y0) y0 = q.y; if (q.y > y1) y1 = q.y;
+    });
+    var margen = 14;
+    var k2 = Math.min((W - margen * 2) / Math.max(1, x1 - x0), (H - margen * 2) / Math.max(1, y1 - y0));
+    if (!isFinite(k2) || k2 <= 0) k2 = 1;
+    var ox = W / 2 - (x0 + x1) / 2 * k2, oy = H / 2 - (y0 + y1) / 2 * k2;
+    function X(q) { return q.x * k2 + ox; }
+    function Y(q) { return q.y * k2 + oy; }
+    c.strokeStyle = 'rgba(238,244,248,0.55)';
+    c.lineWidth = 1.4; c.lineCap = 'round';
+    c.beginPath();
+    (k.aristas || []).forEach(function (a) {
+      var q1 = p2[a[0]], q2 = p2[a[1]];
+      if (!q1 || !q2 || !q1.delante || !q2.delante) return;
+      c.moveTo(X(q1), Y(q1)); c.lineTo(X(q2), Y(q2));
+    });
+    c.stroke();
+    c.fillStyle = '#FFFFFF';
+    p2.forEach(function (q, i) {
+      if (!q.delante) return;
+      var est = (k.puntos[i].estrella !== undefined && cielo.estrellas)
+        ? cielo.estrellas[k.puntos[i].estrella] : null;
+      var r = est ? Math.max(1.6, 4.2 - est.mag * 0.55) : 2.2;
+      c.beginPath(); c.arc(X(q), Y(q), r, 0, Math.PI * 2); c.fill();
+    });
+    return true;
+  }
+  function figuraDeLaFicha(abbr, L) {
+    var caja = document.createElement('figure');
+    caja.className = 'ig-figura';
+    var lienzo = document.createElement('canvas');
+    lienzo.className = 'ig-figura-lienzo';
+    lienzo.setAttribute('role', 'img');
+    lienzo.setAttribute('aria-label', L.figura_alt(nombreDe(abbr)));
+    caja.appendChild(lienzo);
+    /* el tamaño del lienzo depende del ancho real del panel, así que se
+       dibuja cuando ya está colocado */
+    setTimeout(function () { if (!dibujarFigura(lienzo, abbr)) caja.hidden = true; }, 0);
+    return caja;
+  }
+
   function construirPanel() {
     var L = t(), cuerpo = el['panel-cuerpo'];
     cuerpo.textContent = '';
@@ -1259,17 +1470,16 @@
     } else if (estado.panel === 'ficha') {
       var f = g.IG_FICHA[estado.panelAbbr];
       el['panel-titulo'].textContent = estado.idioma === 'es' ? f.nombre_es : f.nombre_en;
-      cuerpo.appendChild(parrafo(f.denominacion_canonica + ' · ' + f.genitivo, 'ig-nota'));
       if (!estado.seccion) {
         var k = porAbbr(estado.panelAbbr);
-        if (k.especial) cuerpo.appendChild(parrafo(estado.idioma === 'es'
-          ? k.especial.nota : (k.especial.nota_en || k.especial.nota)));
+        /* Primero se ve: el dibujo, y después lo que se pueda leer. */
+        cuerpo.appendChild(figuraDeLaFicha(estado.panelAbbr, L));
         var idea = estado.idioma === 'es' ? valor(f.descriptor_es) : valor(f.descriptor_en);
         if (!idea) idea = estado.idioma === 'es' ? valor(f.significado_es) : valor(f.significado_en);
         if (idea) cuerpo.appendChild(parrafo(L.idea_breve(idea)));
-        if (k.relacion) cuerpo.appendChild(parrafo((estado.idioma === 'es'
-          ? k.relacion.nota : (k.relacion.nota_en || k.relacion.nota)) + ' ' +
-          '(' + k.relacion.separacion_grados + '°, ' + L.desviacion + ' ' + k.relacion.desviacion_de_la_linea_del_cinturon_grados + '°)', 'ig-nota'));
+        /* La regla de reconocimiento —magnitudes, grados, desviaciones— es con
+           lo que se comprueba un hallazgo, no con lo que se mira. Baja a
+           «Cómo reconocerla», con el resto de los números. */
         var detalleVista = document.createElement('details');
         var resumenVista = document.createElement('summary');
         resumenVista.textContent = L.datos_de_esta_vista;
@@ -1285,10 +1495,32 @@
           var n = texto(s.nombre_propio, L);
           return [n === L.sin_dato ? texto(s.designacion, L) : n, L.magnitud_valor(s.magnitud_aparente)];
         })));
+        /* Seis apartados son seis: cinco o más, desplegable; menos de cinco,
+           botones. Eran seis botones más el de seguir, que es media pantalla
+           de botones encima del cielo. */
         cuerpo.appendChild(h3(L.mas_detalle));
+        var et = document.createElement('label');
+        et.className = 'ig-etiqueta'; et.setAttribute('for', 'sel-seccion-ficha');
+        et.textContent = L.sec_elige;
+        var sel = document.createElement('select');
+        sel.className = 'ig-select'; sel.id = 'sel-seccion-ficha';
+        var vacia = document.createElement('option');
+        vacia.value = ''; vacia.textContent = L.sec_elige_vacio;
+        sel.appendChild(vacia);
         [['reconocer', L.sec_reconocer], ['estrellas', L.sec_estrellas], ['region', L.sec_region],
          ['visibilidad', L.sec_visibilidad], ['material', L.sec_material], ['fuentes', L.sec_fuentes]]
-          .forEach(function (s) { acc.appendChild(boton(s[1], function () { abrirFicha(estado.panelAbbr, s[0]); })); });
+          .forEach(function (s) {
+            var o = document.createElement('option');
+            o.value = s[0]; o.textContent = s[1];
+            sel.appendChild(o);
+          });
+        sel.addEventListener('change', function () {
+          if (sel.value) abrirFicha(estado.panelAbbr, sel.value);
+        });
+        var grupo = document.createElement('div');
+        grupo.className = 'ig-grupo-ficha';
+        grupo.appendChild(et); grupo.appendChild(sel);
+        cuerpo.appendChild(grupo);
         acc.appendChild(boton(L.seguir_explorando, function () { cerrarPanel(); volverAExplorar(); }, true));
       } else {
         cuerpo.appendChild(seccion(f, estado.seccion, L));
@@ -1301,8 +1533,16 @@
   function seccion(f, sec, L) {
     var box = document.createElement('div');
     if (sec === 'reconocer') {
+      var kk = porAbbr(estado.panelAbbr);
       box.appendChild(h3(L.sec_reconocer));
+      if (kk && kk.especial) box.appendChild(parrafo(estado.idioma === 'es'
+        ? kk.especial.nota : (kk.especial.nota_en || kk.especial.nota)));
+      if (kk && kk.relacion) box.appendChild(parrafo((estado.idioma === 'es'
+        ? kk.relacion.nota : (kk.relacion.nota_en || kk.relacion.nota)) + ' ' +
+        '(' + kk.relacion.separacion_grados + '°, ' + L.desviacion + ' ' +
+        kk.relacion.desviacion_de_la_linea_del_cinturon_grados + '°)', 'ig-nota'));
       box.appendChild(parrafo(f.como_reconocerlo[estado.idioma]));
+      box.appendChild(parrafo(f.denominacion_canonica + ' · ' + f.genitivo, 'ig-nota'));
       box.appendChild(parrafo(L.derivacion_breve, 'ig-nota'));
     } else if (sec === 'estrellas') {
       box.appendChild(h3(L.sec_estrellas));
@@ -1456,6 +1696,60 @@
     el['btn-capa'].setAttribute('aria-pressed', String(estado.capaHallazgos));
   }
 
+  /* R04.8 · AJUSTES · uno solo para las tres experiencias. Se abre encima de
+     la que esté puesta y se cierra sin salir de ella. Los grupos que sólo
+     valen para el cielo —la capa, la ruta, el nivel de ayuda y el cuaderno de
+     constelaciones— se esconden cuando no se está en el cielo: un ajuste que
+     no hace nada aquí es peor que no tenerlo. */
+  var abridorAjustes = null;
+  function abrirAjustes(abrir, origen) {
+    el.ajustes.hidden = !abrir;
+    if (abrir) abridorAjustes = origen || el['btn-ajustes'];
+    document.querySelectorAll('#ajustes [data-solo]').forEach(function (g2) {
+      g2.hidden = g2.getAttribute('data-solo') !== estado.pantalla;
+    });
+    var b = abridorAjustes || el['btn-ajustes'];
+    if (b) b.setAttribute('aria-expanded', String(!!abrir));
+    if (abrir) enfocar(el.ajustes);
+    else { enfocar(b && document.contains(b) ? b : el.escenario); abridorAjustes = null; }
+  }
+  /* Los botones de mover no son del cielo: cada experiencia tiene su tira y
+     todas obedecen al mismo interruptor. Apagados de salida. */
+  var tirasDeMandos = [];
+  function registrarTiraDeMandos(nodo) {
+    if (nodo && tirasDeMandos.indexOf(nodo) === -1) tirasDeMandos.push(nodo);
+    aplicarMandos();
+  }
+  function aplicarMandos() {
+    tirasDeMandos.forEach(function (n) { n.hidden = !estado.mandos; });
+    if (el['btn-mostrar-mandos']) {
+      el['btn-mostrar-mandos'].setAttribute('aria-pressed', String(!!estado.mandos));
+    }
+  }
+
+  /* R04.8 · AVISAR ANTES DE UN CAMBIO FUERTE.
+     En los planetarios con sesión adaptada, quien presenta dice lo que va a
+     pasar ANTES de que pase, para que dé tiempo a prepararse. Aquí hay tres
+     momentos que cambian la pantalla de golpe: revelar una figura, entrar al
+     Sistema Solar y ponerse a rodear un cuerpo. Los tres se avisan.
+
+     Se avisa UNA VEZ por cada cosa, no cada vez: avisar de lo mismo ochenta
+     y ocho veces deja de ser un aviso y pasa a ser un obstáculo. Y en el
+     aviso se dice lo otro que no decíamos en ningún sitio: que se puede
+     parar, volver, y que lo encontrado se queda. */
+  function avisarAntes(clave, origen, hacer) {
+    if (estado.avisos[clave]) { hacer(); return; }
+    var L = t();
+    abrirDialogo({
+      titulo: L.aviso_cambio_titulo,
+      texto: L['aviso_cambio_' + clave] + ' ' + L.aviso_puedes_parar,
+      cancelar: L.aviso_mejor_no,
+      confirmar: L.aviso_adelante,
+      origen: origen,
+      alConfirmar: function () { estado.avisos[clave] = true; guardar(); hacer(); }
+    });
+  }
+
   /* ---------------------------------------------------------- diálogo --- */
   function abrirDialogo(op) {
     dialogo = op;
@@ -1497,17 +1791,43 @@
       cerrarPanel(true); mostrarPantalla('portada');
     });
     el['btn-continuar-pista'].addEventListener('click', function () { volverAExplorar(); });
-    el['btn-examinar'].addEventListener('click', function () {
-      /* Con el ratón, este botón examina el centro pero NO convierte el centro
-         en la metáfora: la marca aparece sólo si se está usando el teclado. */
-      estado.tecladoActivo = (ultimaEntrada === 'teclado');
-      examinar('boton');
+    el['btn-ajustes'].addEventListener('click', function () { abrirAjustes(el.ajustes.hidden); });
+    el['btn-cerrar-ajustes'].addEventListener('click', function () { abrirAjustes(false); });
+    el.ajustes.addEventListener('keydown', function (ev) {
+      if (ev.key === 'Escape') { abrirAjustes(false); ev.preventDefault(); }
     });
-    el['btn-examinar'].addEventListener('focus', function () {
-      if (focoProgramatico || ultimaEntrada !== 'teclado') return;
-      estado.tecladoActivo = true; pintar();
+    /* «Lo que llevas» abre el cuaderno, que es donde está. */
+    el['btn-llevas'].addEventListener('click', function () { abrirCuaderno(); });
+
+    /* Tres opciones, tres botones. El <select> oculto sigue siendo el control
+       de verdad: los botones le ponen el valor y disparan su «change», así que
+       no hay dos caminos que puedan desincronizarse. */
+    function sincronizarCapa() {
+      var v = el['sel-capa'].value;
+      document.querySelectorAll('[data-capa]').forEach(function (b) {
+        b.setAttribute('aria-pressed', String(b.getAttribute('data-capa') === v));
+      });
+    }
+    document.querySelectorAll('[data-capa]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        el['sel-capa'].value = b.getAttribute('data-capa');
+        el['sel-capa'].dispatchEvent(new Event('change'));
+        sincronizarCapa();
+      });
     });
-    el['btn-revelar'].addEventListener('click', revelar);
+    el['sel-capa'].addEventListener('change', sincronizarCapa);
+    sincronizarCapa();
+
+    /* Los botones de mover: fuera de la pantalla, encendibles desde aquí. */
+    el['btn-mostrar-mandos'].addEventListener('click', function () {
+      estado.mandos = !estado.mandos;
+      aplicarMandos();
+      guardar();
+    });
+    registrarTiraDeMandos(el['tira-mandos']);
+    el['btn-revelar'].addEventListener('click', function () {
+      avisarAntes('revelar', el['btn-revelar'], revelar);
+    });
     el['btn-saber-mas'].addEventListener('click', function () {
       var m = estado.mensaje;
       if (!m) return;
@@ -1642,7 +1962,7 @@
       pintar();
     });
     el.escenario.addEventListener('blur', function () {
-      if (document.activeElement !== el['btn-examinar']) { estado.tecladoActivo = false; pintar(); }
+      if (!el['tira-mandos'].contains(document.activeElement)) { estado.tecladoActivo = false; pintar(); }
     });
 
     /* ---- puntero: arrastrar orienta, pulsar selecciona ------------------ */
@@ -1771,6 +2091,9 @@
     guardar: guardar,
     guardarDiferido: guardarDiferido,
     registrarBloque: registrarBloque,
+    abrirAjustes: abrirAjustes,
+    registrarTiraDeMandos: registrarTiraDeMandos,
+    avisarAntes: avisarAntes,
     movimiento: function () { return CFG.MOVIMIENTO[estado.movimiento]; },
     soloLectura: function () { return soloLectura; },
     ultimaEntrada: function () { return ultimaEntrada; },

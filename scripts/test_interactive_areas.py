@@ -53,6 +53,10 @@ def validate(root):
     assert not errors, '\n'.join(errors)
     home = (root/'index.html').read_text(encoding='utf-8')
     assert 'href="/es/juegos/"' in home and 'href="/es/descubrimiento/"' in home
+    # La entrada a Descubrimiento en la portada entra por un dibujo, no por un
+    # hueco vacio: el cielo con una figura dibujada y nombrada.
+    assert '/img/intereses/descubrimiento/portada-cielo.webp' in home, 'La portada perdio el dibujo de Descubrimiento'
+    assert (root/'img/intereses/descubrimiento/portada-cielo.webp').is_file(), 'Falta el archivo del dibujo de portada'
     # Construccion y el cielo R02 se retiraron el 08/10/2026; queda Vida marina.
     for path in ('es/descubrimiento/vida-marina/index.html',):
         assert 'ig-experience-return' in (root/path).read_text(encoding='utf-8'), path
